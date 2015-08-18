@@ -26,6 +26,12 @@ xcuserdata
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
 
 # CocoaPods
 #
@@ -42,4 +48,4 @@ xcuserdata
 
 Carthage/Build
 
-#Pods/
+# http://guides.cocoapods.org/using/using-cocoapods.html#should-i-ignore-the-pods-directory-in-source-control
