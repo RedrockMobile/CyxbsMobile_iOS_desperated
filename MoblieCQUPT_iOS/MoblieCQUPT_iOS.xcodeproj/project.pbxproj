@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CEE837A71B855EE700959779 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE837A61B855EE700959779 /* MainViewController.m */; };
 		CEF61B301B82BC950014B980 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B2F1B82BC950014B980 /* main.m */; };
 		CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B321B82BC950014B980 /* AppDelegate.m */; };
 		CEF61B361B82BC950014B980 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B351B82BC950014B980 /* ViewController.m */; };
@@ -52,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CEE837A51B855EE700959779 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Main/MainViewController.h; sourceTree = "<group>"; };
+		CEE837A61B855EE700959779 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Main/MainViewController.m; sourceTree = "<group>"; };
 		CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoblieCQUPT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -131,6 +134,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CEE837A41B855E9C00959779 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				CEE837A51B855EE700959779 /* MainViewController.h */,
+				CEE837A61B855EE700959779 /* MainViewController.m */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +245,7 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CEE837A41B855E9C00959779 /* Main */,
 				CEF61B5E1B82BE0C0014B980 /* README.md */,
 			);
 			path = Controller;
@@ -439,6 +452,7 @@
 				CEF61BA11B82DFA60014B980 /* UIImageView+AFNetworking.m in Sources */,
 				CEF61BA21B82DFA60014B980 /* UIProgressView+AFNetworking.m in Sources */,
 				CEF61B881B82DF9A0014B980 /* AFURLResponseSerialization.m in Sources */,
+				CEE837A71B855EE700959779 /* MainViewController.m in Sources */,
 				CEF61BA31B82DFA60014B980 /* UIRefreshControl+AFNetworking.m in Sources */,
 				CEF61B871B82DF9A0014B980 /* AFURLRequestSerialization.m in Sources */,
 				CEF61B861B82DF9A0014B980 /* AFURLConnectionOperation.m in Sources */,
@@ -649,6 +663,7 @@
 				CEF61B4F1B82BC950014B980 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CEF61B501B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT_iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -657,6 +672,7 @@
 				CEF61B521B82BC950014B980 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
