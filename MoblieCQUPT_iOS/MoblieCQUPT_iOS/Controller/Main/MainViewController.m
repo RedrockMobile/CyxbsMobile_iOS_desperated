@@ -21,11 +21,10 @@
     UIBarButtonItem *bar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_menu_1.png"] style:UIBarButtonItemStyleDone target:self action:@selector(userInfo)];
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
-        //[vc.tabBarItem setImage:[UIImage imageNamed:@"icon_menu_1.png"]];
-        
+        [vc.tabBarItem setImage:[UIImage imageNamed:@"iconfont-chakankebiao-2.png"]];
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
-            
+            [vc.tabBarItem setImage:[UIImage imageNamed:@"icon_menu_1.png"]];
             [[vc viewControllers][0] navigationItem].leftBarButtonItem = bar;
             [[vc viewControllers][0] navigationItem].rightBarButtonItem = bar;
         }
@@ -69,7 +68,7 @@
     if ([itemSelected isEqual:tabBarController.tabBar.items[2]]) {
         NSLog(@"%@",itemSelected);
 //        UITabBarItem *bar = [[UITabBarItem alloc] initWithTitle:@"ss" image:[UIImage imageNamed:@"icon_menu_1.png"] selectedImage:[UIImage imageNamed:@"icon_menu_1.png"]];
-        
+//        itemSelectednbm
         return  NO;
     }
     
