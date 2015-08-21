@@ -11,6 +11,8 @@
 		CEE837AB1B858C7400959779 /* icon_menu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE837AA1B858C7400959779 /* icon_menu_1.png */; };
 		CEE837AF1B85C65F00959779 /* icon_menu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE837AE1B85C65F00959779 /* icon_menu_2.png */; };
 		CEE837B11B85CD3D00959779 /* icon_menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE837B01B85CD3D00959779 /* icon_menu_3.png */; };
+		CEE837B31B86B21100959779 /* icon_menu_3_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE837B21B86B21100959779 /* icon_menu_3_press.png */; };
+		CEE837B71B86C35000959779 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE837B61B86C35000959779 /* NetWork.m */; };
 		CEF61B301B82BC950014B980 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B2F1B82BC950014B980 /* main.m */; };
 		CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B321B82BC950014B980 /* AppDelegate.m */; };
 		CEF61B361B82BC950014B980 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B351B82BC950014B980 /* ViewController.m */; };
@@ -61,6 +63,9 @@
 		CEE837AA1B858C7400959779 /* icon_menu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu_1.png; sourceTree = "<group>"; };
 		CEE837AE1B85C65F00959779 /* icon_menu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu_2.png; sourceTree = "<group>"; };
 		CEE837B01B85CD3D00959779 /* icon_menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu_3.png; sourceTree = "<group>"; };
+		CEE837B21B86B21100959779 /* icon_menu_3_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu_3_press.png; sourceTree = "<group>"; };
+		CEE837B51B86C35000959779 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
+		CEE837B61B86C35000959779 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoblieCQUPT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -149,6 +154,15 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		CEE837B41B86C35000959779 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				CEE837B51B86C35000959779 /* NetWork.h */,
+				CEE837B61B86C35000959779 /* NetWork.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
@@ -227,6 +241,7 @@
 		CEF61B541B82BDFE0014B980 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CEE837B21B86B21100959779 /* icon_menu_3_press.png */,
 				CEE837B01B85CD3D00959779 /* icon_menu_3.png */,
 				CEE837AE1B85C65F00959779 /* icon_menu_2.png */,
 				CEE837AA1B858C7400959779 /* icon_menu_1.png */,
@@ -274,6 +289,7 @@
 		CEF61B631B82C02E0014B980 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				CEE837B41B86C35000959779 /* NetWork */,
 				CEF61B641B82C02E0014B980 /* README.md */,
 			);
 			path = Tool;
@@ -430,6 +446,7 @@
 				CEF61B391B82BC950014B980 /* Main.storyboard in Resources */,
 				CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */,
 				CEE837AB1B858C7400959779 /* icon_menu_1.png in Resources */,
+				CEE837B31B86B21100959779 /* icon_menu_3_press.png in Resources */,
 				CEE837AF1B85C65F00959779 /* icon_menu_2.png in Resources */,
 				CEF61B3B1B82BC950014B980 /* Images.xcassets in Resources */,
 				CEE837B11B85CD3D00959779 /* icon_menu_3.png in Resources */,
@@ -466,6 +483,7 @@
 				CEF61B881B82DF9A0014B980 /* AFURLResponseSerialization.m in Sources */,
 				CEE837A71B855EE700959779 /* MainViewController.m in Sources */,
 				CEF61BA31B82DFA60014B980 /* UIRefreshControl+AFNetworking.m in Sources */,
+				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
 				CEF61B871B82DF9A0014B980 /* AFURLRequestSerialization.m in Sources */,
 				CEF61B861B82DF9A0014B980 /* AFURLConnectionOperation.m in Sources */,
 				CEF61BA01B82DFA60014B980 /* UIButton+AFNetworking.m in Sources */,

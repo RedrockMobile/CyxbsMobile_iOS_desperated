@@ -21,7 +21,8 @@
     UIBarButtonItem *bar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_menu_1.png"] style:UIBarButtonItemStyleDone target:self action:@selector(userInfo)];
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
-        [vc.tabBarItem setImage:[UIImage imageNamed:@"iconfont-chakankebiao-2.png"]];
+        [vc.tabBarItem setImage:[UIImage imageNamed:@"icon_menu_3.png"]];
+        //[vc.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_menu_3.png"]];
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
             [vc.tabBarItem setImage:[UIImage imageNamed:@"icon_menu_1.png"]];
@@ -33,6 +34,10 @@
     
     
     self.delegate = self;
+    
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/kebiao" WithParameter:@{@"stuNum":@"2013210440"} WithReturnValeuBlock:^(id returnValue) {
+        NSLog(@"%@",returnValue);
+    } WithFailureBlock:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +74,13 @@
         NSLog(@"%@",itemSelected);
 //        UITabBarItem *bar = [[UITabBarItem alloc] initWithTitle:@"ss" image:[UIImage imageNamed:@"icon_menu_1.png"] selectedImage:[UIImage imageNamed:@"icon_menu_1.png"]];
 //        itemSelectednbm
+        [UIView animateWithDuration:0.8 animations:^{
+            [itemSelected setImage:[UIImage imageNamed:@"icon_menu_3_press.png"]];
+//            [itemSelected setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                  [UIColor redColor], NSBackgroundColorAttributeName,
+//                                                  nil] forState:UIControlStateNormal];
+            //itemSelected.enabled = NO;
+        }];
         return  NO;
     }
     
