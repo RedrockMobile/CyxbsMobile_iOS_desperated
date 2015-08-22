@@ -12,6 +12,7 @@
 @property (strong, nonatomic) NSMutableArray *btnArray;
 @property (assign, nonatomic) NSInteger btnNum;
 @property (strong, nonatomic) UITabBarItem *centerBar;
+@property (strong, nonatomic) NSDictionary *buttonConfig;
 @end
 //023-62750767 023-62751732 15025308654
 @implementation MainViewController
@@ -35,7 +36,8 @@
             [[vc viewControllers][0] navigationItem].rightBarButtonItem = bar;
             vc.navigationBar.tintColor = [UIColor grayColor];
         }else{
-            [vc.tabBarItem setImage:[UIImage imageNamed:@"icon_menu_3.png"]];
+            [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
+            
         }
         
         
@@ -87,6 +89,14 @@
 
 - (void)findButtonInit{
     self.btnArray = [[NSMutableArray alloc] init];
+    self.buttonConfig = [[NSMutableDictionary alloc] init];
+    self.buttonConfig = @{
+                        @"btnOriginY":@(-MAIN_SCREEN_W*0.3),
+                        @"distance":@(MAIN_SCREEN_W*0.3),
+                        @"baseSize":@10,
+                        @"finalSize":@(MAIN_SCREEN_W*0.2),
+                          };
+    
     self.btnNum = 6;
     for (int i=0; i<self.btnNum; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectZero];
@@ -100,10 +110,10 @@
     self.centerBar.image = [self.centerBar.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     NSInteger num = self.btnNum;
-    int btnHeight = -80;
-    int distance = 100;
-    int baseSize = 10;
-    int finalSize = 60;
+    int btnHeight = [self.buttonConfig[@"btnOriginY"] intValue];
+    int distance = [self.buttonConfig[@"distance"] intValue];
+    int baseSize = [self.buttonConfig[@"baseSize"] intValue];
+    int finalSize = [self.buttonConfig[@"finalSize"] intValue];
     CGRect frame = CGRectMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H-btnHeight, baseSize, baseSize);
 
  
@@ -140,7 +150,7 @@
     self.centerBar.image = [self.centerBar.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
     NSInteger num = self.btnNum;
-    int finalSize = 60;
+    int finalSize = [self.buttonConfig[@"finalSize"] intValue];;
     [UIView animateWithDuration:0.2 animations:^{
         for (int i=0; i<num; i++) {
             UIButton *button = self.btnArray[i];
