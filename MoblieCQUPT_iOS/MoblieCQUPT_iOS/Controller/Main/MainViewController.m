@@ -24,7 +24,7 @@
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
         
-        //[vc.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_menu_3.png"]];
+        [vc.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_menu_3.png"]];
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
@@ -71,7 +71,7 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didBeginCustomizingItems:(NSArray *)items{
-    NSLog(@"s%@",items[2]);
+   // NSLog(@"s%@",items[2]);
     
 }
 

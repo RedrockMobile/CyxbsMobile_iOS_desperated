@@ -186,10 +186,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="kc5-RX-Tv2" kind="relationship" relationship="rootViewController" id="KTd-bC-GBh"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E1Q-ZV-saA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="162" y="-1058"/>
+            <point key="canvasLocation" x="194" y="-1054"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="8J0-Lf-0pd">
+            <objects>
+                <viewController id="kc5-RX-Tv2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NwE-Kv-Ihl"/>
+                        <viewControllerLayoutGuide type="bottom" id="N55-kP-x07"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0N2-yx-qmS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="43H-7J-rBs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="odM-oH-aww" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="724" y="-1006"/>
         </scene>
     </scenes>
 </document>
