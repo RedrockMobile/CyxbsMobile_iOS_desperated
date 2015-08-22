@@ -22,4 +22,19 @@
 
 #import "AFNetworking.h"
 #import "NetWork.h"
+//cxh
+#import "UPStackMenu.h"
+#import "UPStackMenuItem.h"
+#import "TitleBaseViewController.h"
+#import "CourseViewController.h"
+#import "Course.h"
+#import "CourseButton.h"
+#import "CourseView.h"
+#define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define kWidthGrid  (ScreenWidth/7.5)
+#define RGBColor(r,g,b,a) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
+//cxh
+
+
 #endif

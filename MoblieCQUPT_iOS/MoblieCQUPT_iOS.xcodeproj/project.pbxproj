@@ -55,6 +55,20 @@
 		CEF61BA21B82DFA60014B980 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B981B82DFA60014B980 /* UIProgressView+AFNetworking.m */; };
 		CEF61BA31B82DFA60014B980 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B9A1B82DFA60014B980 /* UIRefreshControl+AFNetworking.m */; };
 		CEF61BA41B82DFA60014B980 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B9C1B82DFA60014B980 /* UIWebView+AFNetworking.m */; };
+		D9B5770E1B88742D005EFD18 /* CourseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577041B88742D005EFD18 /* CourseButton.m */; };
+		D9B5770F1B88742D005EFD18 /* CourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577061B88742D005EFD18 /* CourseView.m */; };
+		D9B577101B88742D005EFD18 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577081B88742D005EFD18 /* CourseViewController.m */; };
+		D9B577111B88742D005EFD18 /* CourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B577091B88742D005EFD18 /* CourseViewController.xib */; };
+		D9B577121B88742D005EFD18 /* TitleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */; };
+		D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */; };
+		D9B577171B88743A005EFD18 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577161B88743A005EFD18 /* Course.m */; };
+		D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */; };
+		D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577191B88744F005EFD18 /* iconfont-caidan.png */; };
+		D9B577271B88746A005EFD18 /* ExampleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5771F1B88746A005EFD18 /* ExampleAnimation.m */; };
+		D9B577281B88746A005EFD18 /* OrangeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577211B88746A005EFD18 /* OrangeAnimation.m */; };
+		D9B577291B88746A005EFD18 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D9B577221B88746A005EFD18 /* README.md */; };
+		D9B5772A1B88746A005EFD18 /* UPStackMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577241B88746A005EFD18 /* UPStackMenu.m */; };
+		D9B5772B1B88746A005EFD18 /* UPStackMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B577261B88746A005EFD18 /* UPStackMenuItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +159,29 @@
 		CEF61B9A1B82DFA60014B980 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		CEF61B9B1B82DFA60014B980 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		CEF61B9C1B82DFA60014B980 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		D9B577031B88742D005EFD18 /* CourseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseButton.h; sourceTree = "<group>"; };
+		D9B577041B88742D005EFD18 /* CourseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseButton.m; sourceTree = "<group>"; };
+		D9B577051B88742D005EFD18 /* CourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseView.h; sourceTree = "<group>"; };
+		D9B577061B88742D005EFD18 /* CourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseView.m; sourceTree = "<group>"; };
+		D9B577071B88742D005EFD18 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
+		D9B577081B88742D005EFD18 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
+		D9B577091B88742D005EFD18 /* CourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseViewController.xib; sourceTree = "<group>"; };
+		D9B5770B1B88742D005EFD18 /* TitleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBaseViewController.h; sourceTree = "<group>"; };
+		D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
+		D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
+		D9B577151B88743A005EFD18 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		D9B577161B88743A005EFD18 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan-selected.png"; sourceTree = "<group>"; };
+		D9B577191B88744F005EFD18 /* iconfont-caidan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan.png"; sourceTree = "<group>"; };
+		D9B5771E1B88746A005EFD18 /* ExampleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleAnimation.h; sourceTree = "<group>"; };
+		D9B5771F1B88746A005EFD18 /* ExampleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleAnimation.m; sourceTree = "<group>"; };
+		D9B577201B88746A005EFD18 /* OrangeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeAnimation.h; sourceTree = "<group>"; };
+		D9B577211B88746A005EFD18 /* OrangeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrangeAnimation.m; sourceTree = "<group>"; };
+		D9B577221B88746A005EFD18 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D9B577231B88746A005EFD18 /* UPStackMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPStackMenu.h; sourceTree = "<group>"; };
+		D9B577241B88746A005EFD18 /* UPStackMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPStackMenu.m; sourceTree = "<group>"; };
+		D9B577251B88746A005EFD18 /* UPStackMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPStackMenuItem.h; sourceTree = "<group>"; };
+		D9B577261B88746A005EFD18 /* UPStackMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPStackMenuItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +324,8 @@
 		CEF61B541B82BDFE0014B980 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */,
+				D9B577191B88744F005EFD18 /* iconfont-caidan.png */,
 				CE7893971B8701AE000D8B57 /* Icon */,
 				CE78938A1B86F06E000D8B57 /* Menu */,
 				CE7893841B86EEAB000D8B57 /* main_login.png */,
@@ -307,6 +346,7 @@
 		CEF61B5A1B82BE070014B980 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D9B577141B88743A005EFD18 /* Course */,
 				CEF61B5B1B82BE070014B980 /* README.md */,
 			);
 			path = Model;
@@ -315,6 +355,8 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D9B577021B88742D005EFD18 /* Course */,
+				D9B5770A1B88742D005EFD18 /* TitleBase */,
 				CEE837A41B855E9C00959779 /* Main */,
 				CEF61B5E1B82BE0C0014B980 /* README.md */,
 			);
@@ -324,6 +366,7 @@
 		CEF61B601B82BE1B0014B980 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				D9B5771C1B88746A005EFD18 /* UPStackMenu */,
 				CEF61B8A1B82DFA60014B980 /* UIKit+AFNetworking */,
 				CEF61B6D1B82DF9A0014B980 /* AFNetworking */,
 				CEF61B611B82BE1B0014B980 /* README.md */,
@@ -409,6 +452,63 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		D9B577021B88742D005EFD18 /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				D9B577031B88742D005EFD18 /* CourseButton.h */,
+				D9B577041B88742D005EFD18 /* CourseButton.m */,
+				D9B577051B88742D005EFD18 /* CourseView.h */,
+				D9B577061B88742D005EFD18 /* CourseView.m */,
+				D9B577071B88742D005EFD18 /* CourseViewController.h */,
+				D9B577081B88742D005EFD18 /* CourseViewController.m */,
+				D9B577091B88742D005EFD18 /* CourseViewController.xib */,
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
+		D9B5770A1B88742D005EFD18 /* TitleBase */ = {
+			isa = PBXGroup;
+			children = (
+				D9B5770B1B88742D005EFD18 /* TitleBaseViewController.h */,
+				D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */,
+				D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */,
+			);
+			path = TitleBase;
+			sourceTree = "<group>";
+		};
+		D9B577141B88743A005EFD18 /* Course */ = {
+			isa = PBXGroup;
+			children = (
+				D9B577151B88743A005EFD18 /* Course.h */,
+				D9B577161B88743A005EFD18 /* Course.m */,
+			);
+			path = Course;
+			sourceTree = "<group>";
+		};
+		D9B5771C1B88746A005EFD18 /* UPStackMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D9B5771D1B88746A005EFD18 /* OWAnimation */,
+				D9B577231B88746A005EFD18 /* UPStackMenu.h */,
+				D9B577241B88746A005EFD18 /* UPStackMenu.m */,
+				D9B577251B88746A005EFD18 /* UPStackMenuItem.h */,
+				D9B577261B88746A005EFD18 /* UPStackMenuItem.m */,
+			);
+			path = UPStackMenu;
+			sourceTree = "<group>";
+		};
+		D9B5771D1B88746A005EFD18 /* OWAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				D9B5771E1B88746A005EFD18 /* ExampleAnimation.h */,
+				D9B5771F1B88746A005EFD18 /* ExampleAnimation.m */,
+				D9B577201B88746A005EFD18 /* OrangeAnimation.h */,
+				D9B577211B88746A005EFD18 /* OrangeAnimation.m */,
+				D9B577221B88746A005EFD18 /* README.md */,
+			);
+			path = OWAnimation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -490,6 +590,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
+				D9B577111B88742D005EFD18 /* CourseViewController.xib in Resources */,
 				CE78938E1B86F180000D8B57 /* icon_menu_2.png in Resources */,
 				CE7893961B86F2A9000D8B57 /* icon_menu_5.png in Resources */,
 				CE7893811B86E684000D8B57 /* icon_menu_4.png in Resources */,
@@ -498,14 +599,17 @@
 				CE78939B1B87067B000D8B57 /* 60-2.png in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,
 				CEF61B391B82BC950014B980 /* Main.storyboard in Resources */,
+				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
 				CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */,
 				CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */,
+				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				CE78937B1B86E36F000D8B57 /* icon_menu_1.png in Resources */,
 				CE7893851B86EEAB000D8B57 /* main_login.png in Resources */,
 				CEF61B3B1B82BC950014B980 /* Images.xcassets in Resources */,
 				CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */,
 				CE7893791B86E319000D8B57 /* icon_menu_6.png in Resources */,
 				CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */,
+				D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -524,23 +628,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEF61B811B82DF9A0014B980 /* AFHTTPRequestOperation.m in Sources */,
+				D9B577271B88746A005EFD18 /* ExampleAnimation.m in Sources */,
 				CEF61B5C1B82BE070014B980 /* README.md in Sources */,
 				CEF61B361B82BC950014B980 /* ViewController.m in Sources */,
 				CEF61B681B82C0370014B980 /* README.md in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
 				CEF61B9D1B82DFA60014B980 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				D9B577121B88742D005EFD18 /* TitleBaseViewController.m in Sources */,
 				CEF61B891B82DF9A0014B980 /* AFURLSessionManager.m in Sources */,
 				CEF61B831B82DF9A0014B980 /* AFHTTPSessionManager.m in Sources */,
 				CEF61B5F1B82BE0C0014B980 /* README.md in Sources */,
+				D9B5772B1B88746A005EFD18 /* UPStackMenuItem.m in Sources */,
 				CEF61B841B82DF9A0014B980 /* AFNetworkReachabilityManager.m in Sources */,
+				D9B5770E1B88742D005EFD18 /* CourseButton.m in Sources */,
 				CEF61B591B82BDFE0014B980 /* README.md in Sources */,
+				D9B577281B88746A005EFD18 /* OrangeAnimation.m in Sources */,
 				CEF61BA11B82DFA60014B980 /* UIImageView+AFNetworking.m in Sources */,
+				D9B577171B88743A005EFD18 /* Course.m in Sources */,
 				CEF61BA21B82DFA60014B980 /* UIProgressView+AFNetworking.m in Sources */,
 				CEF61B881B82DF9A0014B980 /* AFURLResponseSerialization.m in Sources */,
+				D9B577101B88742D005EFD18 /* CourseViewController.m in Sources */,
 				CEE837A71B855EE700959779 /* MainViewController.m in Sources */,
 				CEF61BA31B82DFA60014B980 /* UIRefreshControl+AFNetworking.m in Sources */,
 				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
 				CEF61B871B82DF9A0014B980 /* AFURLRequestSerialization.m in Sources */,
+				D9B5770F1B88742D005EFD18 /* CourseView.m in Sources */,
 				CEF61B861B82DF9A0014B980 /* AFURLConnectionOperation.m in Sources */,
 				CEF61BA01B82DFA60014B980 /* UIButton+AFNetworking.m in Sources */,
 				CEF61B9E1B82DFA60014B980 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -548,11 +660,13 @@
 				CEF61B581B82BDFE0014B980 /* README.md in Sources */,
 				CEF61B651B82C02E0014B980 /* README.md in Sources */,
 				CEF61B851B82DF9A0014B980 /* AFSecurityPolicy.m in Sources */,
+				D9B577291B88746A005EFD18 /* README.md in Sources */,
 				CEF61B621B82BE1B0014B980 /* README.md in Sources */,
 				CEF61BA41B82DFA60014B980 /* UIWebView+AFNetworking.m in Sources */,
 				CEF61B6B1B82D5260014B980 /* README.md in Sources */,
 				CEF61B301B82BC950014B980 /* main.m in Sources */,
 				CEF61B9F1B82DFA60014B980 /* UIAlertView+AFNetworking.m in Sources */,
+				D9B5772A1B88746A005EFD18 /* UPStackMenu.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
