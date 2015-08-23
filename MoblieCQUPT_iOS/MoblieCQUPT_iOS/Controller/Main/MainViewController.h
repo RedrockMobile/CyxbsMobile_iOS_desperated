@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "We.h"
+#import "AFNetworking.h"
 
 @interface MainViewController : UITabBarController
-
+- (void)showAlert:(NSString *)errStr;
 @end

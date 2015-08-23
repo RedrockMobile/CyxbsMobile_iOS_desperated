@@ -5,6 +5,23 @@
 //  Created by user on 15/8/20.
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
+#import "MainViewController.h"
+#import "DataBundle.h"
+#import "TableViewController.h"
+#import "ShowRoomViewController.h"
+//2013211854
+#define TEST_STU_NUM @"2014211889"
+#define TEST_ID_NUM @"220913"
+
+#define TEST_WEEKDAY_NUM @"1"
+#define TEST_SECTION_NUM @"0"
+#define TEST_BUILD_NUM @"2"
+#define TEST_WEEK @"1"
+
+
+
+
+
 
 #import "MainViewController.h"
 
@@ -88,6 +105,13 @@
 
 
 - (void)findButtonInit{
+    NSArray *tempStrArr = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
+    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
+        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+    
+    
+    
+    
     self.btnArray = [[NSMutableArray alloc] init];
     self.buttonConfig = [[NSMutableDictionary alloc] init];
     self.buttonConfig = @{
@@ -98,10 +122,16 @@
                           };
     
     self.btnNum = 6;
+    //123
     for (int i=0; i<self.btnNum; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectZero];
         [self.btnArray addObject:button];
+        if(i < 4){
+           [button setTitle:tempStrArr[i] forState:UIControlStateNormal];
+        }
+        [button addTarget:self action:s[i] forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
+        
     }
 }
 
@@ -175,6 +205,55 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+- (void)clickForExamSchedule
+{
+    DataBundle *dataBundle = [[DataBundle alloc]initWithDic:[DataBundle paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM]];
+    //dataBundle.delegate = self;
+    dataBundle.mainDelegate = self;
+    [dataBundle httpPost:API_EXAM_SCHEDULE];
+}
+
+- (void)clickForReexamSchedule
+{
+    DataBundle *dataBundle = [[DataBundle alloc]initWithDic:[DataBundle paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM]];
+    //dataBundle.delegate = self;
+    dataBundle.mainDelegate = self;
+    [dataBundle httpPost:API_REEXAM_SCHEDULE];
+}
+
+- (void)clickForExamGrade
+{
+    DataBundle *dataBundle = [[DataBundle alloc]initWithDic:[DataBundle paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM]];
+    //dataBundle.delegate = self;
+    dataBundle.mainDelegate = self;
+    [dataBundle httpPost:API_EXAM_GRADE];
+}
+
+- (void)clickForEmptyRooms
+{
+    ShowRoomViewController *viewController = [[ShowRoomViewController alloc]init];
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)showAlert:(NSString *)errStr
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"哎呀"
+                                                    message:errStr
+                                                   delegate:self
+                                          cancelButtonTitle:@"知道了"
+                                          otherButtonTitles:nil,nil];
+    [alert show];
+}
 /*
 #pragma mark - Navigation
 
