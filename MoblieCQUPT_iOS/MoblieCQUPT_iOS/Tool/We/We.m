@@ -178,32 +178,21 @@
     return image;
 }
 
-+ (NSArray *)getSameComponents:(NSArray *)arr, ... {
++ (NSArray *)getSameComponents:(NSArray *)arrayBundle {
     
     NSMutableArray *results = [[NSMutableArray alloc]init];
     NSMutableArray *theJoinedArray = [[NSMutableArray alloc]init];
-    va_list params;
-    NSInteger totalNum = 0;
-    id component;
-    
-    if (arr) {
-        [theJoinedArray addObjectsFromArray:arr];
-        totalNum++;
-        va_start(params, arr);
-            while ((component = va_arg(params, id))) {
-                [theJoinedArray addObjectsFromArray:component];
-                totalNum++;
-            }
-        va_end(params);
+    for (NSArray *array in arrayBundle) {
+        [theJoinedArray addObjectsFromArray:array];
     }
-    
     for (id aComponent in theJoinedArray) {
-        if ([theJoinedArray hasComponent:aComponent] == totalNum &&
+        if ([theJoinedArray hasComponent:aComponent] == arrayBundle.count &&
             [results hasComponent:aComponent] == 0) {
             [results addObject:aComponent];
         }
     }
     return results;
 }
+
 
 @end

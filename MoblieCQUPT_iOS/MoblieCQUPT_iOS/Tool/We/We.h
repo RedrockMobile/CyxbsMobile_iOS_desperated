@@ -58,5 +58,5 @@ typedef NS_ENUM(NSInteger, Color) {
 + (CGRect)getScreenFrame;
 + (CGSize)getScreenSize;
 + (UIImage *)getImageColored:(UIColor *)color Size:(CGSize)size;
-+ (NSArray *)getSameComponents:(NSArray *)arr, ...;
++ (NSArray *)getSameComponents:(NSArray *)arrayBundle;
 @end

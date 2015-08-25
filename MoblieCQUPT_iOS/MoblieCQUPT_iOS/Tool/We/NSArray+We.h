@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface NSArray (We)
-- (NSInteger)hasComponent:(id)theComponent;
+- (NSInteger)hasComponent:(NSString *)theComponent;
 @end

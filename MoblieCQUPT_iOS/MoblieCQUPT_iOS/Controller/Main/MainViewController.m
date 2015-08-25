@@ -5,22 +5,23 @@
 //  Created by user on 15/8/20.
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
+
+
 #import "MainViewController.h"
 #import "DataBundle.h"
-#import "TableViewController.h"
-#import "ShowRoomViewController.h"
+#import "SchduleViewController.h"
+#import "EmptyRoomsViewController.h"
+
+
+#pragma mark ———— Writed By RainyTunes {
 //2013211854
 #define TEST_STU_NUM @"2014211889"
 #define TEST_ID_NUM @"220913"
-
 #define TEST_WEEKDAY_NUM @"1"
 #define TEST_SECTION_NUM @"0"
 #define TEST_BUILD_NUM @"2"
 #define TEST_WEEK @"1"
-
-
-
-
+#pragma mark ———— }
 
 
 #import "MainViewController.h"
@@ -105,13 +106,6 @@
 
 
 - (void)findButtonInit{
-    NSArray *tempStrArr = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
-    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
-        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
-    
-    
-    
-    
     self.btnArray = [[NSMutableArray alloc] init];
     self.buttonConfig = [[NSMutableDictionary alloc] init];
     self.buttonConfig = @{
@@ -122,7 +116,10 @@
                           };
     
     self.btnNum = 6;
-    //123
+    //———— Writed By RainyTunes
+    NSArray *tempStrArr = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
+    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
+        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
     for (int i=0; i<self.btnNum; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectZero];
         [self.btnArray addObject:button];
@@ -131,8 +128,8 @@
         }
         [button addTarget:self action:s[i] forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
-        
     }
+    //———— Writed By RainyTunes End
 }
 
 - (void)findTbabarAnimation{
@@ -205,44 +202,36 @@
 }
 
 
-
-
-
-
-
-
-
-
-
-
+#pragma mark ———— Writed By RainyTunes {
 - (void)clickForExamSchedule
 {
-    DataBundle *dataBundle = [[DataBundle alloc]initWithDic:[DataBundle paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM]];
-    //dataBundle.delegate = self;
+    DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self;
-    [dataBundle httpPost:API_EXAM_SCHEDULE];
+    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
+    [dataBundle httpPostForSchedule:API_EXAM_SCHEDULE];
 }
 
 - (void)clickForReexamSchedule
 {
-    DataBundle *dataBundle = [[DataBundle alloc]initWithDic:[DataBundle paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM]];
-    //dataBundle.delegate = self;
+    DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self;
-    [dataBundle httpPost:API_REEXAM_SCHEDULE];
+    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
+    [dataBundle httpPostForSchedule:API_REEXAM_SCHEDULE];
 }
 
 - (void)clickForExamGrade
 {
-    DataBundle *dataBundle = [[DataBundle alloc]initWithDic:[DataBundle paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM]];
-    //dataBundle.delegate = self;
+    DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self;
-    [dataBundle httpPost:API_EXAM_GRADE];
+    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
+    [dataBundle httpPostForGrade];
 }
 
 - (void)clickForEmptyRooms
 {
-    ShowRoomViewController *viewController = [[ShowRoomViewController alloc]init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    DataBundle *dataBundle = [[DataBundle alloc]init];
+    dataBundle.mainDelegate = self;
+    [dataBundle httpPostForEmptyRooms];
 }
 
 - (void)showAlert:(NSString *)errStr
@@ -254,14 +243,7 @@
                                           otherButtonTitles:nil,nil];
     [alert show];
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma mark ———— }
 
 @end

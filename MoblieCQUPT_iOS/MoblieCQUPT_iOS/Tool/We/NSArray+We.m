@@ -9,10 +9,10 @@
 #import "NSArray+We.h"
 
 @implementation NSArray (We)
-- (NSInteger)hasComponent:(id)theComponent {
+- (NSInteger)hasComponent:(NSString *)theComponent {
     NSInteger num = 0;
-    for (id aComponent in self) {
-        if (aComponent == theComponent) {
+    for (NSString *aComponent in self) {
+        if ([aComponent isEqualToString:theComponent]) {
             num++;
         }
     }
