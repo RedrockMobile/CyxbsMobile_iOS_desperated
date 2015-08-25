@@ -10,4 +10,8 @@
 
 @interface FinderViewController : UIViewController
 
+@property (strong, nonatomic)UIButton *shopButton;
+@property (strong, nonatomic)UIButton *webButton;
+@property (strong, nonatomic)UIButton *introductionButton;
+
 @end

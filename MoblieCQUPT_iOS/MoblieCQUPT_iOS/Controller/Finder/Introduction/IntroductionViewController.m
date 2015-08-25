@@ -60,9 +60,11 @@
     CGFloat x=page.currentPage*self.scrollView.bounds.size.width;
     [_scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
 }
+
 -(void) viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     //设置图片
     for(int i=0;i<kCount;i++){
         NSString *imageName=[NSString stringWithFormat:@"重邮美景%d.jpg",i+1];

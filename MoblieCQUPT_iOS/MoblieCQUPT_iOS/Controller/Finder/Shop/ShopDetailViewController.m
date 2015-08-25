@@ -10,6 +10,7 @@
 
 @interface ShopDetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *detailDishButton;
 
 @end
 
@@ -20,6 +21,9 @@
     [_picture setImageWithURL:[NSURL URLWithString:_detailData[@"shopimg_src"]]];
     _nameLabel.text = _detailData[@"name"];
     _addressLabel.text = _detailData[@"shop_address"];
+    
+//    [_detailDishButton addTarget:self
+//                          action:@selector(DisplayDetailDish) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -27,6 +31,7 @@
     self.scrollView.frame = [UIScreen mainScreen].bounds;
 //    [self.scrollView setContentSize:CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H * 1.3)];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
