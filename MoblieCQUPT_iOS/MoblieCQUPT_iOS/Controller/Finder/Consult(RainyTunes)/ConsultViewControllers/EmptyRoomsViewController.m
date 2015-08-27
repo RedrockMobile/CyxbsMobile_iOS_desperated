@@ -9,7 +9,7 @@
 #import "EmptyRoomsViewController.h"
 #import "BFPaperCheckbox.h"
 #import "UIColor+BFPaperColors.h"
-#import "We.h"
+#import "Config.h"
 #define r bfPaperCheckboxDefaultRadius
 #define RowSpace (r + 10)
 #define fontSize 20
@@ -22,6 +22,7 @@
 @interface EmptyRoomsViewController ()
 @property (strong,nonatomic)NSMutableArray *buildCheckboxGroup, *periodCheckboxGroup;
 @property (strong,nonatomic) UILabel *results;
+
 @end
 
 @implementation EmptyRoomsViewController
@@ -33,17 +34,19 @@
     
     self.results = [[UILabel alloc]initWithFrame:CGRectMake(20, 90, [We getScreenWidth] - 40, 160)];
     [self.results setBackgroundColor:[UIColor paperColorGray100]];
+    [self.results setBackgroundColor:[We getColor:Orange]];
     [self.results setTextAlignment:NSTextAlignmentCenter];
-    [self.results setText:@"请选择教室与时段"];
+    [self.results setText:defaultResult];
     self.results.numberOfLines = -1;
+    self.results.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:self.results];
     
 }
 
 - (void)initButtons {
-    NSArray *buildNameArray    = @[@"二教", @"三教", @"四教", @"五教", @"八教", @"任意教室"];
-    NSInteger buildTagArray[6] = {2,3,4,5,8,0};
-    NSArray *periodNameArray   = @[@"一二节", @"三四节", @"五六节", @"七八节", @"九十节", @"全部时段"];
+    NSArray *buildNameArray    = buildList;
+    NSInteger buildTagArray[6] = buildTagList;
+    NSArray *periodNameArray   = periodList;
     self.buildCheckboxGroup    = [@[] mutableCopy];
     self.periodCheckboxGroup   = [@[] mutableCopy];
     for (int i = 0; i < 6; i++) {
@@ -85,6 +88,7 @@
     return checkBox;
 }
 
+
 - (UILabel *)labelWith:(CGPoint)center Text:(NSString *)text{
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
     label.center = center;
@@ -117,7 +121,17 @@
             }
         }
     }
-    [self.results setText:[self refreshResult]];
+    int flag1 = 0;
+    int flag2 = 0;
+    for (int i = 0; i < 5; i++) {
+        if ([self.buildCheckboxGroup[i] isChecked]) {
+            flag1 = 1;
+        }
+        if ([self.periodCheckboxGroup[i] isChecked]) {
+            flag2 = 1;
+        }
+    }
+    [self.results setText:[self.delegate getUserHint:flag1 :flag2]];
 }
 
 - (NSString *)refreshResult {
@@ -128,7 +142,6 @@
             [availableRooms addObjectsFromArray:[self availableRoomsInThisBuild:checkBox.tag]];
         }
     }
-    //qlog(availableRooms);
     if (availableRooms.count != 0) {
         NSMutableString *newResult = [[NSMutableString alloc]init];
         for (NSString *roomName in availableRooms) {
@@ -137,7 +150,7 @@
         }
             return newResult;
     }else{
-        return @"似乎没有合适的教室哦~";
+        return noResultHint;
     }
 }
 
@@ -158,8 +171,6 @@
     }
     return [We getSameComponents:availableRoomsInThisBuildInAllPeriods];
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

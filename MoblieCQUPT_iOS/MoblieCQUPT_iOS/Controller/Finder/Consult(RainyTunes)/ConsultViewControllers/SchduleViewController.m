@@ -20,7 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    //qlog(_dataList);
     _dataList = _delegate.json[@"data"];
     UIButton *backButton = [We getButtonWithTitle:@"返回" Color:Blue];
     [backButton addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];

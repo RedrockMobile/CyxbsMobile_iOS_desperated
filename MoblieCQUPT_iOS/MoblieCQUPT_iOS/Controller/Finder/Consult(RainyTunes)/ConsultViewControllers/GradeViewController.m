@@ -24,10 +24,16 @@
     backButton.center = CGPointMake(50, 50);
     [self.view addSubview:backButton];
     
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
-    qlog(self.delegate.htmlString)
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
+    [scrollView setContentSize:CGSizeMake([We getScreenWidth] + 300, [We getScreenHeight] - 100)];
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, [We getScreenWidth] + 300, [We getScreenHeight] - 100)];
     [webView loadHTMLString:self.delegate.htmlString baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle] resourcePath] isDirectory: YES]];
-    [self.view addSubview:webView];
+    [scrollView addSubview:webView];
+    [self.view addSubview:scrollView];
+    
+//    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
+//    [webView loadHTMLString:self.delegate.htmlString baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle] resourcePath] isDirectory: YES]];
+//    [self.view addSubview:webView];
     // Do any additional setup after loading the view.
 }
 
