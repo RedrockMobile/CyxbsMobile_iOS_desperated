@@ -49,6 +49,8 @@
 		CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7893981B8701BB000D8B57 /* 掌上重邮60-3.png */; };
 		CE78939B1B87067B000D8B57 /* 60-2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78939A1B87067B000D8B57 /* 60-2.png */; };
 		CEE837B71B86C35000959779 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE837B61B86C35000959779 /* NetWork.m */; };
+		CEF2736F1B90CF5E009B5BA2 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF2736C1B90CF5E009B5BA2 /* libMobClickLibrary.a */; };
+		CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF273701B90CFAB009B5BA2 /* libz.dylib */; };
 		CEF61B301B82BC950014B980 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B2F1B82BC950014B980 /* main.m */; };
 		CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B321B82BC950014B980 /* AppDelegate.m */; };
 		CEF61B361B82BC950014B980 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B351B82BC950014B980 /* ViewController.m */; };
@@ -191,6 +193,10 @@
 		CE78939A1B87067B000D8B57 /* 60-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-2.png"; sourceTree = "<group>"; };
 		CEE837B51B86C35000959779 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		CEE837B61B86C35000959779 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
+		CEF2736C1B90CF5E009B5BA2 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		CEF2736D1B90CF5E009B5BA2 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		CEF2736E1B90CF5E009B5BA2 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		CEF273701B90CFAB009B5BA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoblieCQUPT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -315,6 +321,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
+				CEF2736F1B90CF5E009B5BA2 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,9 +554,20 @@
 			path = NetWork;
 			sourceTree = "<group>";
 		};
+		CEF2736B1B90CF5E009B5BA2 /* UMAnalytics_Sdk_3.5.10 */ = {
+			isa = PBXGroup;
+			children = (
+				CEF2736C1B90CF5E009B5BA2 /* libMobClickLibrary.a */,
+				CEF2736D1B90CF5E009B5BA2 /* MobClick.h */,
+				CEF2736E1B90CF5E009B5BA2 /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.5.10;
+			sourceTree = "<group>";
+		};
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
+				CEF273701B90CFAB009B5BA2 /* libz.dylib */,
 				CEF61B601B82BE1B0014B980 /* SDK */,
 				CEF61B2C1B82BC950014B980 /* MoblieCQUPT_iOS */,
 				CEF61B461B82BC950014B980 /* MoblieCQUPT_iOSTests */,
@@ -668,6 +687,7 @@
 		CEF61B601B82BE1B0014B980 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				CEF2736B1B90CF5E009B5BA2 /* UMAnalytics_Sdk_3.5.10 */,
 				3BD264461B8EDD8700B291A0 /* ProgressHUD */,
 				E2FAB13A1B8C738B005C5AE7 /* MJRefresh */,
 				3B37F0831B8C45F8009C1E94 /* Classes */,
@@ -1225,6 +1245,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1237,6 +1261,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

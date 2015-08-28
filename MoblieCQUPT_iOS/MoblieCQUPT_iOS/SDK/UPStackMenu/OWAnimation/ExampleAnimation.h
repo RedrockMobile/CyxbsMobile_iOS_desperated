@@ -13,5 +13,5 @@
 
 + (void) discoverViewAnimation:(UIView *)aniView;
 
-+ (NSMutableArray *)AnimationFrom:(UIView *)fromView ;//
+//+ (NSMutableArray *)AnimationFrom:(UIView *)fromView ;//
 @end
