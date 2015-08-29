@@ -8,7 +8,7 @@
 
 #import "WebViewController.h"
 
-@interface WebViewController ()
+@interface WebViewController ()<UIWebViewDelegate>
 
 @end
 
@@ -16,8 +16,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/welcome/2015/"]]];
-    // Do any additional setup after loading the view from its nib.
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/portal/"]]];
+    
+    _webView.scalesPageToFit = YES;
 }
 
 - (void)didReceiveMemoryWarning {

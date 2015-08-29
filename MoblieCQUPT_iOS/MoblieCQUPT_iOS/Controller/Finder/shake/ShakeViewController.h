@@ -1,13 +1,13 @@
 //
-//  FinderViewController.h
+//  ShakeViewController.h
 //  MoblieCQUPT_iOS
 //
-//  Created by 张润峰 on 15/8/25.
+//  Created by 张润峰 on 15/8/28.
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface FinderViewController : UIViewController
+@interface ShakeViewController : UIViewController
 
 @end

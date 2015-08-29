@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailDishView.h"
 
 @interface ShopDetailViewController : UIViewController
 
 @property (strong, nonatomic) NSMutableDictionary *detailData;
 
+@property (strong, nonatomic) DetailDishView *detailDishView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
