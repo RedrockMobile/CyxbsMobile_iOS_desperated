@@ -10,6 +10,8 @@
 #import "UIColor+BFPaperColors.h"
 #import "MainViewController.h"
 #import "We.h"
+#import "ScheduleTableViewCell.h"
+#import "Config.h"
 @interface SchduleViewController ()
 @property NSArray *dataList;
 @property (strong, nonatomic)UITableView *tableView;
@@ -54,33 +56,35 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100;
+    return 80;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identify = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    ScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identify];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"ScheduleTableViewCell" owner:self options:nil] lastObject];
     }
     NSDictionary *info = _dataList[indexPath.row];
-    cell.textLabel.text = info[@"course"];
+    [cell.examTitle setText:info[@"course"]];
+    UIFont *iconfont = [UIFont fontWithName:@"iconfont" size:15];
+    [cell.timeIcon setFont:iconfont];
+    [cell.timeIcon setText:@"\U000f00c4"];
+    [cell.timeIcon setTextColor:[UIColor paperColorGray700]];
+    [cell.locationIcon setFont:iconfont];
+    [cell.locationIcon setText:@"\U000f014a"];
+    [cell.locationIcon setTextColor:[UIColor paperColorGray700]];
+    NSString *timeInfo, *locationInfo;
     if ([_delegate.json[@"type"] isEqualToString:API_EXAM_SCHEDULE]) {
-        NSString *str1 = [NSString stringWithFormat:@"考试日期:第%@周星期%@",info[@"week"],info[@"weekday"]];
-        NSString *str2 = [NSString stringWithFormat:@"考试地点:%@教室 %@座位",info[@"classroom"],info[@"seat"]];
-        NSString *str3 = [NSString stringWithFormat:@"考试时间:%@~%@",info[@"begin_time"],info[@"end_time"]];
-        NSString *str4 = [NSString stringWithFormat:@"考试资格:%@",info[@"status"]];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@\n%@",str1,str2,str3,str4];
-        cell.detailTextLabel.numberOfLines = 5;
+        timeInfo = [NSString stringWithFormat:@"第%@周  星期%@  %@~%@",info[@"week"],[Config transformNumFormat:info[@"weekday"]],info[@"begin_time"],info[@"end_time"]];
+        locationInfo = [NSString stringWithFormat:@"%@  %@教室  %@座位",info[@"status"],info[@"classroom"],info[@"seat"]];
     }
     if ([_delegate.json[@"type"] isEqualToString:API_REEXAM_SCHEDULE]) {
-        NSString *str1 = [NSString stringWithFormat:@"考试日期:%@",info[@"date"]];
-        NSString *str2 = [NSString stringWithFormat:@"考试地点:%@教室 %@座位",info[@"classroom"],info[@"seat"]];
-        NSString *str3 = [NSString stringWithFormat:@"考试时间:%@",info[@"time"]];
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@\n%@",str1,str2,str3];
-        cell.detailTextLabel.numberOfLines = 4;
+        timeInfo = [NSString stringWithFormat:@"%@  %@",[Config transformDateFormat:info[@"date"]],info[@"time"]];
+        locationInfo = [NSString stringWithFormat:@"正常考试  %@教室  %@座位",info[@"classroom"],info[@"seat"]];
     }
+    [cell.examTime setText:timeInfo];
     return cell;
 }
 

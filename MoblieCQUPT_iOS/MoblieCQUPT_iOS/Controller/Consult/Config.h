@@ -27,14 +27,18 @@
 
 #define consultingHint @"正在努力查询中~"
 #define consultCompleteHint @"查询完毕，正在跳转~"
-#define consultNetworkErrorHint @"您的网络是不是跪了，如果不是那就是我跪了qwq"
+#define consultNetworkErrorHint @"网络似乎跪了qwq"
 
+#define weekdayWordsArr @[@"一",@"二",@"三",@"四",@"五",@"六",@"天",]
 #define buildList @[@"二教", @"三教", @"四教", @"五教", @"八教", @"任意教室"]
 #define buildTagList {2,3,4,5,8,0};
 #define periodList @[@"一二节", @"三四节", @"五六节", @"七八节", @"九十节", @"全部时段"]
+#define tempStrArr @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"]
 #define defaultResult @"请选择教室与时段~"
 
 @interface Config : NSObject
 + (NSString *)errInfo:(NSInteger)status;
 + (NSMutableDictionary *)paramWithStuNum:(NSString *)stuNum IdNum:(NSString *)idNum;
++ (NSString *)transformDateFormat:(NSString *)dateString;
++ (NSString *)transformNumFormat:(NSString *)numString;
 @end

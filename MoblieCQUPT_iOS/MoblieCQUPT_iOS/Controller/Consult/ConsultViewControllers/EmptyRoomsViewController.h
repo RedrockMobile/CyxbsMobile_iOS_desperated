@@ -13,6 +13,5 @@
 @interface EmptyRoomsViewController : UIViewController<BFPaperCheckboxDelegate>
 @property (strong,nonatomic)DataBundle *delegate;
 - (NSString *)refreshResult;
-- (void)test;
 @end
 

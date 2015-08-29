@@ -37,6 +37,9 @@
     [self.results setBackgroundColor:[We getColor:Orange]];
     [self.results setTextAlignment:NSTextAlignmentCenter];
     [self.results setText:defaultResult];
+    //UIFont *iconfont = [UIFont fontWithName:@"iconfont" size:34];
+    //_results.font = iconfont;
+    //[self.results setText:@"\U000f0037\U000f014a"];
     self.results.numberOfLines = -1;
     self.results.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:self.results];

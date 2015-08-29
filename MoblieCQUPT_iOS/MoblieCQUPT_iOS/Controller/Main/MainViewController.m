@@ -11,26 +11,15 @@
 #import "DataBundle.h"
 #import "SchduleViewController.h"
 #import "EmptyRoomsViewController.h"
-
-
-#pragma mark ———— Writed By RainyTunes {
-//2013211854
-#define TEST_STU_NUM @"2014211889"
-#define TEST_ID_NUM @"220913"
-#define TEST_WEEKDAY_NUM @"1"
-#define TEST_SECTION_NUM @"0"
-#define TEST_BUILD_NUM @"2"
-#define TEST_WEEK @"1"
-#pragma mark ———— }
-
-
 #import "MainViewController.h"
+#import "ButtonClicker.h"
 
 @interface MainViewController () <UITabBarControllerDelegate,UITabBarDelegate>
 @property (strong, nonatomic) NSMutableArray *btnArray;
 @property (assign, nonatomic) NSInteger btnNum;
 @property (strong, nonatomic) UITabBarItem *centerBar;
 @property (strong, nonatomic) NSDictionary *buttonConfig;
+@property (nonatomic, strong) ButtonClicker *clicker;
 @end
 //023-62750767 023-62751732 15025308654
 @implementation MainViewController
@@ -116,20 +105,19 @@
                           };
     
     self.btnNum = 6;
-    //———— Writed By RainyTunes
-    NSArray *tempStrArr = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+    self.clicker = [[ButtonClicker alloc]init];
+    self.clicker.delegate = self;
     for (int i=0; i<self.btnNum; i++) {
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectZero];
         [self.btnArray addObject:button];
         if(i < 4){
            [button setTitle:tempStrArr[i] forState:UIControlStateNormal];
         }
-        [button addTarget:self action:s[i] forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
     }
-    //———— Writed By RainyTunes End
 }
 
 - (void)findTbabarAnimation{
@@ -200,50 +188,5 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [self disFindTbabarAnimation];
 }
-
-
-#pragma mark ———— Writed By RainyTunes {
-- (void)clickForExamSchedule
-{
-    DataBundle *dataBundle = [[DataBundle alloc]init];
-    dataBundle.mainDelegate = self;
-    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
-    [dataBundle httpPostForSchedule:API_EXAM_SCHEDULE];
-}
-
-- (void)clickForReexamSchedule
-{
-    DataBundle *dataBundle = [[DataBundle alloc]init];
-    dataBundle.mainDelegate = self;
-    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
-    [dataBundle httpPostForSchedule:API_REEXAM_SCHEDULE];
-}
-
-- (void)clickForExamGrade
-{
-    DataBundle *dataBundle = [[DataBundle alloc]init];
-    dataBundle.mainDelegate = self;
-    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
-    [dataBundle httpPostForGrade];
-}
-
-- (void)clickForEmptyRooms
-{
-    DataBundle *dataBundle = [[DataBundle alloc]init];
-    dataBundle.mainDelegate = self;
-    [dataBundle httpPostForEmptyRooms];
-}
-
-- (void)showAlert:(NSString *)errStr
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"哎呀"
-                                                    message:errStr
-                                                   delegate:self
-                                          cancelButtonTitle:@"知道了"
-                                          otherButtonTitles:nil,nil];
-    [alert show];
-}
-
-#pragma mark ———— }
 
 @end
