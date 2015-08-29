@@ -95,8 +95,6 @@
 		E2258ADB1B90AEE00014FD39 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2258AD91B90AEE00014FD39 /* CommunityViewController.m */; };
 		E2258ADC1B90AEE00014FD39 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2258ADA1B90AEE00014FD39 /* CommunityViewController.xib */; };
 		E23F638A1B8DBCDB004C4DEF /* DetailDishView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23F63891B8DBCDB004C4DEF /* DetailDishView.m */; };
-		E28C85991B8ED20900F9CA82 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E28C85961B8ED20900F9CA82 /* ProgressHUD.bundle */; };
-		E28C859A1B8ED20900F9CA82 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = E28C85981B8ED20900F9CA82 /* ProgressHUD.m */; };
 		E28C85B51B8F6D8800F9CA82 /* 周边美食.png in Resources */ = {isa = PBXBuildFile; fileRef = E28C85AF1B8F6D8800F9CA82 /* 周边美食.png */; };
 		E28C85B61B8F6D8800F9CA82 /* 摇一摇.png in Resources */ = {isa = PBXBuildFile; fileRef = E28C85B01B8F6D8800F9CA82 /* 摇一摇.png */; };
 		E28C85B71B8F6D8800F9CA82 /* 新生专题.png in Resources */ = {isa = PBXBuildFile; fileRef = E28C85B11B8F6D8800F9CA82 /* 新生专题.png */; };
@@ -284,9 +282,6 @@
 		E2258ADA1B90AEE00014FD39 /* CommunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityViewController.xib; sourceTree = "<group>"; };
 		E23F63881B8DBCDB004C4DEF /* DetailDishView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailDishView.h; sourceTree = "<group>"; };
 		E23F63891B8DBCDB004C4DEF /* DetailDishView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailDishView.m; sourceTree = "<group>"; };
-		E28C85961B8ED20900F9CA82 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
-		E28C85971B8ED20900F9CA82 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
-		E28C85981B8ED20900F9CA82 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		E28C85AF1B8F6D8800F9CA82 /* 周边美食.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周边美食.png"; sourceTree = "<group>"; };
 		E28C85B01B8F6D8800F9CA82 /* 摇一摇.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "摇一摇.png"; sourceTree = "<group>"; };
 		E28C85B11B8F6D8800F9CA82 /* 新生专题.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新生专题.png"; sourceTree = "<group>"; };
@@ -666,7 +661,6 @@
 		CEF61B601B82BE1B0014B980 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				E28C85951B8ED20900F9CA82 /* ProgressHUD */,
 				E2FAB13A1B8C738B005C5AE7 /* MJRefresh */,
 				3B37F0831B8C45F8009C1E94 /* Classes */,
 				3B37F0861B8C45F8009C1E94 /* Pods */,
@@ -833,16 +827,6 @@
 				E2258ADA1B90AEE00014FD39 /* CommunityViewController.xib */,
 			);
 			path = Community;
-			sourceTree = "<group>";
-		};
-		E28C85951B8ED20900F9CA82 /* ProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				E28C85961B8ED20900F9CA82 /* ProgressHUD.bundle */,
-				E28C85971B8ED20900F9CA82 /* ProgressHUD.h */,
-				E28C85981B8ED20900F9CA82 /* ProgressHUD.m */,
-			);
-			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
 		E28C85AE1B8F6D8800F9CA82 /* icon */ = {
@@ -1037,7 +1021,6 @@
 				CE78939B1B87067B000D8B57 /* 60-2.png in Resources */,
 				E2258AD61B90A9AD0014FD39 /* MenuViewController.xib in Resources */,
 				3B37F0A41B8C45F8009C1E94 /* Pods-resources.sh in Resources */,
-				E28C85991B8ED20900F9CA82 /* ProgressHUD.bundle in Resources */,
 				E28C85B71B8F6D8800F9CA82 /* 新生专题.png in Resources */,
 				E2258ADC1B90AEE00014FD39 /* CommunityViewController.xib in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,
@@ -1130,7 +1113,6 @@
 				E2FAB1511B8C738B005C5AE7 /* MJRefreshHeaderView.m in Sources */,
 				CEF61BA01B82DFA60014B980 /* UIButton+AFNetworking.m in Sources */,
 				CEF61B9E1B82DFA60014B980 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				E28C859A1B8ED20900F9CA82 /* ProgressHUD.m in Sources */,
 				CEF61B821B82DF9A0014B980 /* AFHTTPRequestOperationManager.m in Sources */,
 				CEF61B581B82BDFE0014B980 /* README.md in Sources */,
 				CEF61B651B82C02E0014B980 /* README.md in Sources */,
