@@ -166,8 +166,8 @@ static Boolean isClick = NO;
     int baseSize = [self.buttonConfig[@"baseSize"] intValue];
     int finalSize = [self.buttonConfig[@"finalSize"] intValue];
     CGRect frame = CGRectMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H-btnHeight, baseSize, baseSize);
-
- 
+    
+    
     for (int i=0; i<num; i++) {
         UIButton *button = self.btnArray[i];
         button.center = CGPointMake(MAIN_SCREEN_W/2, frame.origin.y);
