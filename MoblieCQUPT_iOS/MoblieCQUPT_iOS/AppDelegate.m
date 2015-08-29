@@ -17,6 +17,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //友盟统计
+    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
+    [MobClick setAppVersion:@"V1.0.0"];
+    [MobClick checkUpdate];
+    [MobClick updateOnlineConfig];
+    
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     view.backgroundColor = [UIColor greenColor];
     [self.window addSubview:view];
