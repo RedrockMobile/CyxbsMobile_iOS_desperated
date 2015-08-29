@@ -28,12 +28,15 @@
 
 @interface MainViewController () <UITabBarControllerDelegate,UITabBarDelegate>
 @property (strong, nonatomic) NSMutableArray *btnArray;
+@property (strong, nonatomic) NSMutableArray *btnTextArray;
 @property (assign, nonatomic) NSInteger btnNum;
 @property (strong, nonatomic) UITabBarItem *centerBar;
 @property (strong, nonatomic) NSDictionary *buttonConfig;
+@property (strong, nonatomic) UIView *discoverView;
 @end
 //023-62750767 023-62751732 15025308654
 @implementation MainViewController
+static Boolean isClick = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -88,16 +91,16 @@
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     UITabBarItem *itemSelected = tabBarController.tabBar.selectedItem;
-    
+   
     if ([itemSelected isEqual:tabBarController.tabBar.items[2]]) {
-        static Boolean isClick = NO;
+       
         self.centerBar = itemSelected;
         if (!isClick) {
             [self findTbabarAnimation];
+            
         }else{
             [self disFindTbabarAnimation];
         }
-        isClick = !isClick;
         return  NO;
     }
     
@@ -106,7 +109,14 @@
 
 
 - (void)findButtonInit{
+    _discoverView = [[UIView alloc] initWithFrame:CGRectZero];
+    _discoverView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _discoverView.alpha = 0.9;
+    
+    [self.view addSubview:_discoverView];
+    
     self.btnArray = [[NSMutableArray alloc] init];
+    self.btnTextArray = [[NSMutableArray alloc] init];
     self.buttonConfig = [[NSMutableDictionary alloc] init];
     self.buttonConfig = @{
                         @"btnOriginY":@(-MAIN_SCREEN_W*0.3),
@@ -115,16 +125,24 @@
                         @"finalSize":@(MAIN_SCREEN_W*0.2),
                           };
     
-    self.btnNum = 6;
+    self.btnNum = 4;
     //———— Writed By RainyTunes
-    NSArray *tempStrArr = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
+    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
+    NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"教室查询"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
     for (int i=0; i<self.btnNum; i++) {
+        
+        /** label **/
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.text = textArray[i];
+        [self.btnTextArray addObject:label];
+        [self.view addSubview:label];
+        /** button **/
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectZero];
         [self.btnArray addObject:button];
-        if(i < 4){
-           [button setTitle:tempStrArr[i] forState:UIControlStateNormal];
+        if(i < self.btnNum){
+            [button setImage:[UIImage imageNamed:tempStrArr[i]] forState:UIControlStateNormal];
         }
         [button addTarget:self action:s[i] forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:button];
@@ -133,6 +151,12 @@
 }
 
 - (void)findTbabarAnimation{
+    isClick = YES;
+    CGFloat barHeight = 64;
+    CGFloat tabBarHeight = self.tabBar.frame.size.height;
+//    NSLog(@"%f",barHeight);
+    _discoverView.frame = CGRectMake(0, barHeight, MAIN_SCREEN_W, MAIN_SCREEN_H-tabBarHeight-barHeight);
+    
     [self.centerBar setImage:[UIImage imageNamed:@"icon_menu_3_press.png"]];
     self.centerBar.image = [self.centerBar.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -142,20 +166,26 @@
     int baseSize = [self.buttonConfig[@"baseSize"] intValue];
     int finalSize = [self.buttonConfig[@"finalSize"] intValue];
     CGRect frame = CGRectMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H-btnHeight, baseSize, baseSize);
-
- 
+    
+    
     for (int i=0; i<num; i++) {
         UIButton *button = self.btnArray[i];
         button.center = CGPointMake(MAIN_SCREEN_W/2, frame.origin.y);
         button.layer.cornerRadius = finalSize/2;
-        button.backgroundColor = MAIN_COLOR;
+        //button.backgroundColor = MAIN_COLOR;
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 3, 29, 244, 1 });
+        [button.layer setBorderColor:colorref];
+        
+        UILabel *label = _btnTextArray[i];
+        label.frame = CGRectZero;
     }
     
     [UIView beginAnimations:@"btn" context:nil];
     //设置时常
     [UIView setAnimationDuration:0.8];
     [UIView setAnimationDelegate:self];
-    //设置翻转方向
+    
     
     double indexH  = MAIN_SCREEN_H-btnHeight;
     for (int i=0; i<num; i++) {
@@ -166,6 +196,9 @@
         }
         [self.btnArray[i] setSize:CGSizeMake(finalSize, finalSize)];
         [self.btnArray[i] setCenter:point];
+        [self.btnTextArray[i] setSize:CGSizeMake(finalSize, finalSize)];
+//        [self.btnTextArray[i] setBackgroundColor:[UIColor redColor]];
+        [self.btnTextArray[i] setCenter:CGPointMake(point.x, point.y+finalSize/2)];
     }
     
     [UIView commitAnimations];
@@ -173,6 +206,10 @@
 
 
 - (void)disFindTbabarAnimation{
+    isClick = NO;
+    _discoverView.frame = CGRectZero;
+//    [self.view sendSubviewToBack:_discoverView];
+    
     [self.centerBar setImage:[UIImage imageNamed:@"icon_menu_3.png"]];
     self.centerBar.image = [self.centerBar.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
@@ -182,9 +219,12 @@
         for (int i=0; i<num; i++) {
             UIButton *button = self.btnArray[i];
             button.layer.cornerRadius = finalSize/2;
-            button.backgroundColor = MAIN_COLOR;
+//            button.backgroundColor = MAIN_COLOR;
             button.frame =  CGRectMake(MAIN_SCREEN_W/2, button.frame.origin.y, button.frame.size.width, button.frame.size.width);
             button.center = CGPointMake(MAIN_SCREEN_W/2, button.frame.origin.y);
+            
+            UILabel *label =  _btnTextArray[i];
+            label.center = CGPointMake(MAIN_SCREEN_W/2, button.frame.origin.y+button.frame.size.height/2);
         }
     } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.4 animations:^{
@@ -192,6 +232,10 @@
                 UIButton *button = self.btnArray[i];
                 button.frame =  CGRectMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H+10, 0,0);
                 button.center = CGPointMake(MAIN_SCREEN_W/2, button.frame.origin.y);
+                
+                UILabel *label =  _btnTextArray[i];
+                label.frame = button.frame =  CGRectMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H+10, 0,0);
+                label.center = CGPointMake(MAIN_SCREEN_W/2, button.frame.origin.y);
             }
         }];
     }];

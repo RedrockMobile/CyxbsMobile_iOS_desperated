@@ -22,6 +22,8 @@
 
 #import "AFNetworking.h"
 #import "NetWork.h"
+#import "MobClick.h"
+
 //cxh
 #import "UPStackMenu.h"
 #import "UPStackMenuItem.h"
