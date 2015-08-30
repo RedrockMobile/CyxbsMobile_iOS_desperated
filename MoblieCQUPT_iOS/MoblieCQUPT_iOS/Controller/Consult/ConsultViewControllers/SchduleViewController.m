@@ -21,15 +21,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initNavigationBar:@"考试安排查询"];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     _dataList = _delegate.json[@"data"];
-    UIButton *backButton = [We getButtonWithTitle:@"返回" Color:Blue];
-    [backButton addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];
-    backButton.center = CGPointMake(50, 50);
     [self.view addSubview:self.tableView];
-    [self.view addSubview:backButton];
 }
 
+- (void)initNavigationBar:(NSString *)title{
+    UINavigationBar *navigaionBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
+    [navigaionBar pushNavigationItem:navigationItem animated:YES];
+    [navigaionBar setBackgroundColor:COLOR_NAVIGATIONBAR];
+    [navigaionBar setTintColor:COLOR_MAINCOLOR];
+    
+    navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊
+    navigaionBar.layer.shadowOpacity = 0.1f;
+    navigaionBar.layer.shadowRadius = 1.0f;
+    
+    [navigationItem setLeftBarButtonItem:leftButton];
+    [navigationItem setTitle:title];
+    [self.view addSubview:navigaionBar];
+}
 - (void)clickBack {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -37,7 +51,7 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, [We getScreenHeight] / 9, [We getScreenWidth], [We getScreenHeight] / 9 * 8) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 66, [We getScreenWidth], [We getScreenHeight] - 66) style:UITableViewStylePlain];
         _tableView.dataSource = self;//数据源代理
         _tableView.delegate = self;
     }

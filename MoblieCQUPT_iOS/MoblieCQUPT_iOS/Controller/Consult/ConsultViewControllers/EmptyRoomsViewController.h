@@ -12,6 +12,9 @@
 
 @interface EmptyRoomsViewController : UIViewController<BFPaperCheckboxDelegate>
 @property (strong,nonatomic)DataBundle *delegate;
+@property (strong,nonatomic)NSMutableArray *buildCheckboxGroup, *periodCheckboxGroup;
+@property (assign,nonatomic)BOOL isChanging;
+@property (assign,nonatomic)BOOL lock;
 - (NSString *)refreshResult;
 @end
 

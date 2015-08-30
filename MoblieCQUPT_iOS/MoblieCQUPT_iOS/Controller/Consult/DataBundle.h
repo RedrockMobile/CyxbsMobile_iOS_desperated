@@ -30,6 +30,6 @@
 - (void)httpPostForEmptyRooms;
 - (void)httpPostForGrade;
 - (instancetype)init;
-- (NSString *)getUserHint:(int)flag1 :(int)flag2;
+- (NSString *)getUserHint;
 
 @end

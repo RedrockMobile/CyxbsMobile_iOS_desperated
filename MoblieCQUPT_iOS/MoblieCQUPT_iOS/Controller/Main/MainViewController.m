@@ -21,6 +21,7 @@
 @property (strong, nonatomic) UITabBarItem *centerBar;
 @property (strong, nonatomic) NSDictionary *buttonConfig;
 @property (nonatomic, strong) ButtonClicker *clicker;
+@property (strong, nonatomic) UIView *discoverView;
 @end
 //023-62750767 023-62751732 15025308654
 @implementation MainViewController
@@ -113,14 +114,16 @@ static Boolean isClick = NO;
                         @"finalSize":@(MAIN_SCREEN_W*0.2),
                           };
     
-    self.btnNum = 6;
+    self.btnNum = 4;
+    //———— Writed By RainyTunes
+    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
+    NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
     for (int i=0; i<self.btnNum; i++) {
-        
-        /** label **/
+        ///** label **/
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.text = textArray[i];
         [self.btnTextArray addObject:label];

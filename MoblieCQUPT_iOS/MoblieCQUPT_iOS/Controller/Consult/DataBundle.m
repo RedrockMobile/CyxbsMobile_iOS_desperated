@@ -122,11 +122,30 @@
     }];
 }
 
-- (NSString *)getUserHint:(int)flag1 :(int)flag2
-{
-    if (flag1 == 1 && flag2 == 0) {
+- (NSString *)getUserHint {
+    int flag1 = 0;
+    int flag2 = 0;
+    for (int i = 0; i < 5; i++) {
+        if ([self.emptyRoomDelegate.buildCheckboxGroup[i] isChecked]) {
+            flag1++;
+        }
+        if ([self.emptyRoomDelegate.periodCheckboxGroup[i] isChecked]) {
+            flag2++;
+        }
+    }
+    
+    self.emptyRoomDelegate.lock = YES;
+    if (flag1 != 5 && [self.emptyRoomDelegate.buildCheckboxGroup[5] isChecked]) {
+        [self.emptyRoomDelegate.buildCheckboxGroup[5] uncheckAnimated:YES];
+    }
+    if (flag2 != 5 && [self.emptyRoomDelegate.periodCheckboxGroup[5] isChecked]) {
+        [self.emptyRoomDelegate.periodCheckboxGroup[5] uncheckAnimated:YES];
+    }
+    self.emptyRoomDelegate.lock = NO;
+    
+    if (flag1 != 0 && flag2 == 0) {
         return periodGroupUncheckHint;
-    }else if (flag1 == 0 && flag2 == 1) {
+    }else if (flag1 == 0 && flag2 != 0) {
         return roomGroupUncheckHint;
     }else if (flag1 == 0 && flag2 ==0) {
         return bothGroupsUncheckHint;

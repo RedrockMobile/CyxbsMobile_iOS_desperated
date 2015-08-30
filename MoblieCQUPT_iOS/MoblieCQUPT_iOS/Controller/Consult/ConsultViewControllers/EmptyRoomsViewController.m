@@ -13,15 +13,14 @@
 #define r bfPaperCheckboxDefaultRadius
 #define RowSpace (r + 10)
 #define fontSize 20
-#define x1 65
-#define y1 300
+#define x1 70
+#define y1 ScreenHeight / 2
 
-#define x2 215
-#define y2 300
+#define x2 230
+#define y2 ScreenHeight / 2
 
 @interface EmptyRoomsViewController ()
-@property (strong,nonatomic)NSMutableArray *buildCheckboxGroup, *periodCheckboxGroup;
-@property (strong,nonatomic) UILabel *results;
+@property (strong,nonatomic)UILabel *results;
 
 @end
 
@@ -29,21 +28,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self.view setBackgroundColor:COLOR_CONTENTBACKGROUND];
     [self initButtons];
-    
-    self.results = [[UILabel alloc]initWithFrame:CGRectMake(20, 90, [We getScreenWidth] - 40, 160)];
-    [self.results setBackgroundColor:[UIColor paperColorGray100]];
-    [self.results setBackgroundColor:[We getColor:Orange]];
+    [self initNavigationBar:@"空教室查询"];
+    [self initReusltDialog];
+}
+
+- (void)initReusltDialog {
+    self.results = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, [We getScreenWidth], 180)];
+    [self.results setBackgroundColor:COLOR_CONTENTREGION];
     [self.results setTextAlignment:NSTextAlignmentCenter];
-    [self.results setText:defaultResult];
-    //UIFont *iconfont = [UIFont fontWithName:@"iconfont" size:34];
-    //_results.font = iconfont;
-    //[self.results setText:@"\U000f0037\U000f014a"];
+    [self.results setText:bothGroupsUncheckHint];
     self.results.numberOfLines = -1;
     self.results.adjustsFontSizeToFitWidth = YES;
     [self.view addSubview:self.results];
+}
+
+- (void)initNavigationBar:(NSString *)title{
+    UINavigationBar *navigaionBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
+    [navigaionBar pushNavigationItem:navigationItem animated:YES];
+    [navigaionBar setBackgroundColor:COLOR_NAVIGATIONBAR];
+    [navigaionBar setTintColor:COLOR_MAINCOLOR];
     
+    navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊
+    navigaionBar.layer.shadowOpacity = 0.1f;
+    navigaionBar.layer.shadowRadius = 1.0f;
+    
+    [navigationItem setLeftBarButtonItem:leftButton];
+    [navigationItem setTitle:title];
+    [self.view addSubview:navigaionBar];
 }
 
 - (void)initButtons {
@@ -55,8 +71,15 @@
     for (int i = 0; i < 6; i++) {
         BFPaperCheckbox *checkBox1 = [self checkBoxWithCenter:CGPointMake(x1, y1 + 45 * i)];
         [checkBox1 setTag:(NSInteger)buildTagArray[i]];
+        [checkBox1 setCheckmarkColor:[UIColor paperColorOrange500]];
+        [checkBox1 setTapCirclePositiveColor:[UIColor paperColorOrange200]];
+        [checkBox1 setTapCircleNegativeColor:[UIColor paperColorGray300]];
         UILabel *label1 = [self labelWith:CGPointMake(x1 + 70, y1 + 45 * i) Text:buildNameArray[i]];
+        
         BFPaperCheckbox *checkBox2 = [self checkBoxWithCenter:CGPointMake(x2, y2 + 45 * i)];
+        [checkBox2 setCheckmarkColor:[UIColor paperColorOrange500]];
+        [checkBox2 setTapCirclePositiveColor:[UIColor paperColorOrange200]];
+        [checkBox2 setTapCircleNegativeColor:[UIColor paperColorGray300]];
         [checkBox2 setTag:i];
         UILabel *label2 = [self labelWith:CGPointMake(x2 + 70, y2 + 45 * i) Text:periodNameArray[i]];
         [self.buildCheckboxGroup addObject:checkBox1];
@@ -65,12 +88,6 @@
         [self.view addSubview:checkBox2];
         [self.view addSubview:label1];
         [self.view addSubview:label2];
-        
-        
-        UIButton *backButton = [We getButtonWithTitle:@"返回" Color:Blue];
-        [backButton addTarget:self action:@selector(clickBack) forControlEvents:UIControlEventTouchUpInside];
-        backButton.center = CGPointMake(50, 50);
-        [self.view addSubview:backButton];
     }
     [self.buildCheckboxGroup[5] setTag:100];
     [self.periodCheckboxGroup[5] setTag:-100];
@@ -93,7 +110,7 @@
 
 
 - (UILabel *)labelWith:(CGPoint)center Text:(NSString *)text{
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 80, 20)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 20)];
     label.center = center;
     label.textAlignment = NSTextAlignmentLeft;
     [label setText:text];
@@ -103,40 +120,44 @@
 
 - (void)paperCheckboxChangedState:(BFPaperCheckbox *)checkbox
 {
+    if (self.isChanging || self.lock) {
+        return;
+    }
     NSInteger tag = checkbox.tag;
     //教室列全开、全关
     if (tag == 100) {
-        for (int i = 0; i <= 4; i++) {
-            if (checkbox.isChecked) {
-                [self.buildCheckboxGroup[i] checkAnimated:YES];
-            } else {
-                [self.buildCheckboxGroup[i] uncheckAnimated:YES];
-            }
-        }
+        [self buildGroupAllChange:checkbox.isChecked];
     }
     //时段列全开、全关
     if (tag == -100) {
-        for (int i = 0; i < 5; i++) {
-            if (checkbox.isChecked) {
-                [self.periodCheckboxGroup[i] checkAnimated:YES];
-            } else {
-                [self.periodCheckboxGroup[i] uncheckAnimated:YES];
-            }
-        }
+        [self periodGroupAllChange:checkbox.isChecked];
     }
-    int flag1 = 0;
-    int flag2 = 0;
-    for (int i = 0; i < 5; i++) {
-        if ([self.buildCheckboxGroup[i] isChecked]) {
-            flag1 = 1;
-        }
-        if ([self.periodCheckboxGroup[i] isChecked]) {
-            flag2 = 1;
-        }
-    }
-    [self.results setText:[self.delegate getUserHint:flag1 :flag2]];
+    [self.results setText:[self.delegate getUserHint]];
 }
 
+- (void)buildGroupAllChange:(BOOL)isChecking {
+    self.isChanging = YES;
+    for (int i = 0; i <= 4; i++) {
+        if (isChecking) {
+            [self.buildCheckboxGroup[i] checkAnimated:YES];
+        } else {
+            [self.buildCheckboxGroup[i] uncheckAnimated:YES];
+        }
+    }
+    self.isChanging = NO;
+}
+
+- (void)periodGroupAllChange:(BOOL)isChecking {
+    self.isChanging = YES;
+    for (int i = 0; i <= 4; i++) {
+        if (isChecking) {
+            [self.periodCheckboxGroup[i] checkAnimated:YES];
+        } else {
+            [self.periodCheckboxGroup[i] uncheckAnimated:YES];
+        }
+    }
+    self.isChanging = NO;
+}
 - (NSString *)refreshResult {
     NSMutableArray *availableRooms = [[NSMutableArray alloc]init];
     for (int i = 0; i < 5; i++) {

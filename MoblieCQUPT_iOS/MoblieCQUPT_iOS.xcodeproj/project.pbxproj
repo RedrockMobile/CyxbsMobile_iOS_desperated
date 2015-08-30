@@ -717,6 +717,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBB58731B8F6EA10099EC58 /* iconfont.ttf */,
+				CEF273721B90D573009B5BA2 /* Photoes */,
 				D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */,
 				D9B577191B88744F005EFD18 /* iconfont-caidan.png */,
 				CE7893971B8701AE000D8B57 /* Icon */,
@@ -749,6 +750,7 @@
 			isa = PBXGroup;
 			children = (
 				3BBB58531B8F3DE90099EC58 /* Consult */,
+				CBE1C53C1B8F4B32004E1A00 /* News */,
 				E2FAB1121B8C7199005C5AE7 /* Finder */,
 				D9B577021B88742D005EFD18 /* Course */,
 				D9B5770A1B88742D005EFD18 /* TitleBase */,
