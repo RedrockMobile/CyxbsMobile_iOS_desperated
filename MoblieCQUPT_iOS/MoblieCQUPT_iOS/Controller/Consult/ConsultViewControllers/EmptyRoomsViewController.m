@@ -13,11 +13,10 @@
 #define r bfPaperCheckboxDefaultRadius
 #define RowSpace (r + 10)
 #define fontSize 20
-#define x1 70
-#define y1 ScreenHeight / 2
 
-#define x2 230
-#define y2 ScreenHeight / 2
+#define x1 ScreenWidth * 0.2
+#define x2 ScreenWidth * 0.625
+#define y ScreenHeight * 0.55
 
 @interface EmptyRoomsViewController ()
 @property (strong,nonatomic)UILabel *results;
@@ -35,7 +34,11 @@
 }
 
 - (void)initReusltDialog {
-    self.results = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, [We getScreenWidth], 180)];
+    int height = 210;
+    if (ScreenHeight <= 480) {
+        height = 120;
+    }
+    self.results = [[UILabel alloc]initWithFrame:CGRectMake(0, 80, [We getScreenWidth], height)];
     [self.results setBackgroundColor:COLOR_CONTENTREGION];
     [self.results setTextAlignment:NSTextAlignmentCenter];
     [self.results setText:bothGroupsUncheckHint];
@@ -68,20 +71,24 @@
     NSArray *periodNameArray   = periodList;
     self.buildCheckboxGroup    = [@[] mutableCopy];
     self.periodCheckboxGroup   = [@[] mutableCopy];
+    NSInteger height = y;
+    if (screenHeight <= 480) {
+        height = height - 40;
+    }
     for (int i = 0; i < 6; i++) {
-        BFPaperCheckbox *checkBox1 = [self checkBoxWithCenter:CGPointMake(x1, y1 + 45 * i)];
+        BFPaperCheckbox *checkBox1 = [self checkBoxWithCenter:CGPointMake(x2, height + 45 * i)];
         [checkBox1 setTag:(NSInteger)buildTagArray[i]];
         [checkBox1 setCheckmarkColor:[UIColor paperColorOrange500]];
         [checkBox1 setTapCirclePositiveColor:[UIColor paperColorOrange200]];
         [checkBox1 setTapCircleNegativeColor:[UIColor paperColorGray300]];
-        UILabel *label1 = [self labelWith:CGPointMake(x1 + 70, y1 + 45 * i) Text:buildNameArray[i]];
+        UILabel *label1 = [self labelWith:CGPointMake(x2 + 70, height + 45 * i) Text:buildNameArray[i]];
         
-        BFPaperCheckbox *checkBox2 = [self checkBoxWithCenter:CGPointMake(x2, y2 + 45 * i)];
+        BFPaperCheckbox *checkBox2 = [self checkBoxWithCenter:CGPointMake(x1, height + 45 * i)];
         [checkBox2 setCheckmarkColor:[UIColor paperColorOrange500]];
         [checkBox2 setTapCirclePositiveColor:[UIColor paperColorOrange200]];
         [checkBox2 setTapCircleNegativeColor:[UIColor paperColorGray300]];
         [checkBox2 setTag:i];
-        UILabel *label2 = [self labelWith:CGPointMake(x2 + 70, y2 + 45 * i) Text:periodNameArray[i]];
+        UILabel *label2 = [self labelWith:CGPointMake(x1 + 70, height + 45 * i) Text:periodNameArray[i]];
         [self.buildCheckboxGroup addObject:checkBox1];
         [self.periodCheckboxGroup addObject:checkBox2];
         [self.view addSubview:checkBox1];
