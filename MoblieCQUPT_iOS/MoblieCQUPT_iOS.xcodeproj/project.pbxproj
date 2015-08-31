@@ -128,9 +128,9 @@
 		E28C85C61B8F74F900F9CA82 /* 重邮美景3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E28C85C31B8F74F900F9CA82 /* 重邮美景3.jpg */; };
 		E28C85CF1B90939800F9CA82 /* ChuangyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E28C85CD1B90939800F9CA82 /* ChuangyeViewController.m */; };
 		E28C85D01B90939800F9CA82 /* ChuangyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E28C85CE1B90939800F9CA82 /* ChuangyeViewController.xib */; };
-		E2B7440E1B93106600F46575 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2B7440C1B93106600F46575 /* CommunityViewController.m */; };
-		E2B7440F1B93106600F46575 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B7440D1B93106600F46575 /* CommunityViewController.xib */; };
 		E2B744111B93160A00F46575 /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2B744101B93160A00F46575 /* ButtonView.xib */; };
+		E2E7DE1F1B94719D0081F699 /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E7DE1D1B94719D0081F699 /* CommunityViewController.m */; };
+		E2E7DE201B94719D0081F699 /* CommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE1E1B94719D0081F699 /* CommunityViewController.xib */; };
 		E2F26E0D1B90C41000E9BC3A /* 朕知道了.png in Resources */ = {isa = PBXBuildFile; fileRef = E2F26E0C1B90C41000E9BC3A /* 朕知道了.png */; };
 		E2FAB12F1B8C7199005C5AE7 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2FAB11D1B8C7199005C5AE7 /* WebViewController.m */; };
 		E2FAB1301B8C7199005C5AE7 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2FAB11E1B8C7199005C5AE7 /* WebViewController.xib */; };
@@ -348,10 +348,10 @@
 		E28C85CC1B90939800F9CA82 /* ChuangyeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuangyeViewController.h; sourceTree = "<group>"; };
 		E28C85CD1B90939800F9CA82 /* ChuangyeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuangyeViewController.m; sourceTree = "<group>"; };
 		E28C85CE1B90939800F9CA82 /* ChuangyeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChuangyeViewController.xib; sourceTree = "<group>"; };
-		E2B7440B1B93106600F46575 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
-		E2B7440C1B93106600F46575 /* CommunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityViewController.m; sourceTree = "<group>"; };
-		E2B7440D1B93106600F46575 /* CommunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityViewController.xib; sourceTree = "<group>"; };
 		E2B744101B93160A00F46575 /* ButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
+		E2E7DE1C1B94719D0081F699 /* CommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommunityViewController.h; sourceTree = "<group>"; };
+		E2E7DE1D1B94719D0081F699 /* CommunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommunityViewController.m; sourceTree = "<group>"; };
+		E2E7DE1E1B94719D0081F699 /* CommunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityViewController.xib; sourceTree = "<group>"; };
 		E2F26E0C1B90C41000E9BC3A /* 朕知道了.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "朕知道了.png"; sourceTree = "<group>"; };
 		E2FAB11C1B8C7199005C5AE7 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		E2FAB11D1B8C7199005C5AE7 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
@@ -965,15 +965,14 @@
 			path = chuangyegu;
 			sourceTree = "<group>";
 		};
-		E2B7440A1B93106600F46575 /* Community */ = {
+		E2E7DE1B1B94719D0081F699 /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				E2B7440B1B93106600F46575 /* CommunityViewController.h */,
-				E2B7440C1B93106600F46575 /* CommunityViewController.m */,
-				E2B7440D1B93106600F46575 /* CommunityViewController.xib */,
+				E2E7DE1C1B94719D0081F699 /* CommunityViewController.h */,
+				E2E7DE1D1B94719D0081F699 /* CommunityViewController.m */,
+				E2E7DE1E1B94719D0081F699 /* CommunityViewController.xib */,
 			);
-			name = Community;
-			path = icon/Community;
+			path = Community;
 			sourceTree = "<group>";
 		};
 		E2FAB1121B8C7199005C5AE7 /* Finder */ = {
@@ -986,9 +985,9 @@
 				E28C85C11B8F74F900F9CA82 /* 重邮美景1.jpg */,
 				E28C85C21B8F74F900F9CA82 /* 重邮美景2.jpg */,
 				E28C85C31B8F74F900F9CA82 /* 重邮美景3.jpg */,
+				E2E7DE1B1B94719D0081F699 /* Community */,
 				E28C85CB1B90935F00F9CA82 /* chuangyegu */,
 				E28C85AE1B8F6D8800F9CA82 /* icon */,
-				E2B7440A1B93106600F46575 /* Community */,
 				E2258AC81B909D090014FD39 /* Shake */,
 				E2FAB11B1B8C7199005C5AE7 /* RedrockWebsite */,
 				E2FAB11F1B8C7199005C5AE7 /* Shop */,
@@ -1136,6 +1135,7 @@
 				E28C85B81B8F6D8800F9CA82 /* 晒秘密.png in Resources */,
 				E20789FF1B91CDC90048B83A /* 我要创业.png in Resources */,
 				D9B577111B88742D005EFD18 /* CourseViewController.xib in Resources */,
+				E2E7DE201B94719D0081F699 /* CommunityViewController.xib in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
 				CE78938E1B86F180000D8B57 /* icon_menu_2.png in Resources */,
 				E28C85D01B90939800F9CA82 /* ChuangyeViewController.xib in Resources */,
@@ -1147,7 +1147,6 @@
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
 				CE7893691B86D05E000D8B57 /* icon_menu_3_press.png in Resources */,
 				E2FAB1341B8C7199005C5AE7 /* ShopTableViewCell.xib in Resources */,
-				E2B7440F1B93106600F46575 /* CommunityViewController.xib in Resources */,
 				CE78939B1B87067B000D8B57 /* 60-2.png in Resources */,
 				E2258AD61B90A9AD0014FD39 /* MenuViewController.xib in Resources */,
 				3B37F0A41B8C45F8009C1E94 /* Pods-resources.sh in Resources */,
@@ -1223,7 +1222,7 @@
 				CEF61B681B82C0370014B980 /* README.md in Sources */,
 				3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
-				E2B7440E1B93106600F46575 /* CommunityViewController.m in Sources */,
+				E2E7DE1F1B94719D0081F699 /* CommunityViewController.m in Sources */,
 				CEF61B9D1B82DFA60014B980 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				CBE1C5471B8F4B74004E1A00 /* MeCell.m in Sources */,
 				E2FAB1521B8C738B005C5AE7 /* UIScrollView+MJExtension.m in Sources */,
