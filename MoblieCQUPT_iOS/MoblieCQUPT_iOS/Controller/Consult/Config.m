@@ -30,4 +30,18 @@
     err[0] = @"您没有补考哟";
     return err[status];
 }
+
++ (NSString *)transformDateFormat:(NSString *)dateString{
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
+    [dateFormat setDateFormat:@"yyyyMMdd"];
+    NSDate *date = [dateFormat dateFromString:@"20140828"];
+    [dateFormat setDateFormat:@"yyyy年MM月dd日"];
+    return [dateFormat stringFromDate:date];
+    
+}
+
++ (NSString *)transformNumFormat:(NSString *)numString {
+    NSInteger num = numString.integerValue;
+    return weekdayWordsArr[num - 1];
+}
 @end

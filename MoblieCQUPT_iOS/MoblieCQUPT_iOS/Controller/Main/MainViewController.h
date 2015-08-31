@@ -11,5 +11,4 @@
 #import "AFNetworking.h"
 
 @interface MainViewController : UITabBarController
-- (void)showAlert:(NSString *)errStr;
 @end
