@@ -22,7 +22,7 @@
 
 - (void)initTitleView {
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-    imageView.backgroundColor = MAIN_COLOR;
+    imageView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:imageView];
     
     _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, ScreenWidth, 44)];

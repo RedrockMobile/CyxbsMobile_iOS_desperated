@@ -8,13 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "CourseView.h"
+#import "UPStackMenu.h"
+#import "TitleBaseViewController.h"
 
-@interface CourseViewController : TitleBaseViewController <UPStackMenuDelegate>
+
+@interface CourseViewController : TitleBaseViewController
 
 @property (strong, nonatomic)UIView *mainView;
 @property (strong, nonatomic)UIScrollView *mainScrollView;
-@property (strong, nonatomic)NSArray *colors;
-
+@property (strong, nonatomic)NSMutableArray *colorArray;
+@property (strong, nonatomic)NSMutableSet *registRepeatClassSet;
 @property (strong, nonatomic)NSArray *dataArray;
-@property (strong, nonatomic)CourseView *courseView;
+@property (strong, nonatomic)UIImageView *moreMenu;
+
+@property (strong, nonatomic) UIView *backgroundView;
+@property (strong, nonatomic) UIPageControl *page;
+@property (strong, nonatomic) UIView *alertView;
+
+@property (strong, nonatomic)NSMutableDictionary *parameter;
 @end
