@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
             <connections>
-                <outlet property="returnButton" destination="dL6-fu-Vlg" id="7R8-si-ihl"/>
+                <outlet property="returnButton" destination="dL6-fu-Vlg" id="DuR-Oc-fPp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,22 +15,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL6-fu-Vlg">
-                    <rect key="frame" x="82" y="531" width="210" height="102"/>
-                    <state key="normal" title="朕知道了" image="朕知道了.png">
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL6-fu-Vlg">
+                    <rect key="frame" x="82" y="437" width="210" height="102"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="102" id="ASC-6m-hEb"/>
+                        <constraint firstAttribute="width" constant="210" id="C5A-CY-rTe"/>
+                    </constraints>
+                    <state key="normal" image="朕知道了.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dL6-fu-Vlg" secondAttribute="trailing" constant="83" id="IvJ-1I-hVv"/>
-                <constraint firstItem="dL6-fu-Vlg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="82" id="JRD-oK-awq"/>
-                <constraint firstAttribute="bottom" secondItem="dL6-fu-Vlg" secondAttribute="bottom" constant="34" id="Z57-wv-v9t"/>
-                <constraint firstItem="dL6-fu-Vlg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="531" id="pOB-FD-FCa"/>
+                <constraint firstAttribute="centerX" secondItem="dL6-fu-Vlg" secondAttribute="centerX" constant="0.5" id="lhb-M6-asF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="378.5" y="395.5"/>
+            <point key="canvasLocation" x="16.5" y="72.5"/>
         </view>
     </objects>
     <resources>

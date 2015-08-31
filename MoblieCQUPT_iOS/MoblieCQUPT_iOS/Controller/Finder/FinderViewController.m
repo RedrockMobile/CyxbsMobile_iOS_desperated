@@ -197,9 +197,6 @@
     [self.timer invalidate];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-
-}
 
 //停止拖拽的时候时钟开始
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

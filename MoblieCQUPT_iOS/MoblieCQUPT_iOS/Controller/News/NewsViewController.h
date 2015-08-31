@@ -10,9 +10,5 @@
 
 @interface NewsViewController : UIViewController<UITextFieldDelegate>
 
-@property(strong,nonatomic)UIRefreshControl *refresh;
-@property (strong,nonatomic)NSMutableDictionary *data;
-@property (strong,nonatomic)NSMutableDictionary *data2;
-
 @end
 
