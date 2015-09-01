@@ -15,10 +15,4 @@
 
 @end
 
-@protocol CourseButtonDelegate <NSObject>
 
-//@optional
-//
-//- (void)didTouchCourseButton:(CourseButton *)courseButton;
-
-@end

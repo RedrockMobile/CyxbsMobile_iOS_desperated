@@ -27,7 +27,7 @@
 
 #define roomGroupUncheckHint @"您还没有选择教学楼哦~"
 #define periodGroupUncheckHint @"您还没有选择时段哦~"
-#define bothGroupsUncheckHint @"您还没有选择教学楼和时段哦~"
+#define bothGroupsUncheckHint @"您还没有选择时段和教学楼哦~"
 #define noResultHint @"似乎没有合适的教室哦~"
 
 #define consultingHint @"正在努力查询中~"
@@ -35,9 +35,9 @@
 #define consultNetworkErrorHint @"网络似乎跪了qwq"
 
 #define weekdayWordsArr @[@"一",@"二",@"三",@"四",@"五",@"六",@"天",]
-#define buildList @[@"二教", @"三教", @"四教", @"五教", @"八教", @"任意教学楼"]
+#define buildList @[@"二教", @"三教", @"四教", @"五教", @"八教", @"无限制"]
 #define buildTagList {2, 3, 4, 5, 8, 0};
-#define periodList @[@"1~2节", @"3~4节", @"5~6节", @"7~8节", @"9~10节", @"从早到晚"]
+#define periodList @[@"1~2节", @"3~4节", @"5~6节", @"7~8节", @"9~10节", @"全天时间"]
 
 @interface Config : NSObject
 + (NSString *)errInfo:(NSInteger)status;

@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Course.h"
+
+
 
 @interface CourseView : UIView
 
-@property (strong, nonatomic)UIView *alertView;
-@property (strong, nonatomic)UIScrollView *courseScroll;
-
+- (CourseView *)initWithFrame:(CGRect)frame withDictionary:(NSDictionary *)dic;
 @end

@@ -68,7 +68,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="九九牛肉馆.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-gA-QAz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-gA-QAz">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="242" id="06f-YY-B92"/>
@@ -104,8 +104,8 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-qd-Wgi">
-                                            <rect key="frame" x="8" y="447" width="359" height="34"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Hh-qd-Wgi">
+                                            <rect key="frame" x="8" y="448" width="359" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <state key="normal" title="查看菜单">
                                                 <color key="titleColor" red="0.12156862745098039" green="0.12941176470588237" blue="0.14117647058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -130,12 +130,16 @@
                                         <constraint firstAttribute="trailing" secondItem="uH2-gA-QAz" secondAttribute="trailing" id="WOp-Ri-p1J"/>
                                         <constraint firstItem="5CW-Sv-skv" firstAttribute="top" secondItem="Flf-wr-diU" secondAttribute="bottom" constant="15" id="WfU-SJ-uM2"/>
                                         <constraint firstItem="uH2-gA-QAz" firstAttribute="top" secondItem="eK8-lS-fDO" secondAttribute="top" id="YdD-R3-die"/>
+                                        <constraint firstItem="3Hh-qd-Wgi" firstAttribute="top" secondItem="5Mb-Ai-ZRh" secondAttribute="bottom" constant="28" id="ZMy-6c-HFx"/>
                                         <constraint firstItem="5Mb-Ai-ZRh" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" constant="8" id="bLg-Mr-orX"/>
                                         <constraint firstAttribute="trailing" secondItem="5Mb-Ai-ZRh" secondAttribute="trailing" constant="8" id="bYM-6k-aJH"/>
                                         <constraint firstItem="5CW-Sv-skv" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" constant="8" id="e7k-X2-gS0"/>
                                         <constraint firstItem="Flf-wr-diU" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" constant="8" id="eME-8d-IuD"/>
+                                        <constraint firstItem="3Hh-qd-Wgi" firstAttribute="leading" secondItem="LSk-vY-EaT" secondAttribute="leading" id="kJu-BE-gTb"/>
                                         <constraint firstItem="H60-if-K1G" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" constant="8" id="o5U-3y-MdX"/>
                                         <constraint firstItem="uH2-gA-QAz" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" id="pDd-mX-3Aq"/>
+                                        <constraint firstItem="3Hh-qd-Wgi" firstAttribute="centerX" secondItem="5Mb-Ai-ZRh" secondAttribute="centerX" id="ppB-NH-HSq"/>
+                                        <constraint firstItem="3Hh-qd-Wgi" firstAttribute="bottom" secondItem="LSk-vY-EaT" secondAttribute="bottom" id="rOK-LR-NyT"/>
                                         <constraint firstItem="LOC-UZ-rnG" firstAttribute="top" secondItem="uH2-gA-QAz" secondAttribute="bottom" constant="13" id="ui2-2l-ePu"/>
                                         <constraint firstItem="vu8-kx-L9v" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" constant="8" id="wJH-a1-ZxZ"/>
                                         <constraint firstItem="LSk-vY-EaT" firstAttribute="leading" secondItem="eK8-lS-fDO" secondAttribute="leading" constant="8" id="yBe-tv-4Pc"/>
@@ -173,9 +177,6 @@
             <point key="canvasLocation" x="355.5" y="277.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="九九牛肉馆.jpg" width="540" height="225"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
