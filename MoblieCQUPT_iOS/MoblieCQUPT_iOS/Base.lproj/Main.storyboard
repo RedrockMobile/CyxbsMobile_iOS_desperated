@@ -108,32 +108,25 @@
             </objects>
             <point key="canvasLocation" x="1056" y="385"/>
         </scene>
-        <!--Root View Controller-->
-        <scene sceneID="0WX-3b-8tr">
+        <!--Mine View Controller-->
+        <scene sceneID="aff-Tf-EaZ">
             <objects>
-                <tableViewController id="iFf-xW-etP" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="2sn-Oi-6bl">
+                <viewController id="QRm-nB-PK6" customClass="MineViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yIf-6Y-05R"/>
+                        <viewControllerLayoutGuide type="bottom" id="qIu-7j-2Vx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YsC-YH-sbF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bLF-df-wRs">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bLF-df-wRs" id="f9T-Qs-hhO">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="iFf-xW-etP" id="pgQ-gC-2PK"/>
-                            <outlet property="delegate" destination="iFf-xW-etP" id="yxb-eB-nqQ"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="l6b-gs-KxN"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qNn-cP-2Xy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="tintColor" red="0.70196080207824707" green="0.70196080207824707" blue="0.70196080207824707" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bNY-Qo-5l1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6vU-7j-ce1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1028" y="1013"/>
+            <point key="canvasLocation" x="1080" y="1114"/>
         </scene>
         <!--设置-->
         <scene sceneID="UhN-Hg-vQ5">
@@ -145,12 +138,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="iFf-xW-etP" kind="relationship" relationship="rootViewController" id="pKC-wH-Ene"/>
+                        <segue destination="QRm-nB-PK6" kind="relationship" relationship="rootViewController" id="Tyi-Qb-j5I"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xp6-Tc-K0S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200" y="1065"/>
+            <point key="canvasLocation" x="246" y="1091"/>
         </scene>
         <!--教务新闻-->
         <scene sceneID="KD4-Mp-fZm">

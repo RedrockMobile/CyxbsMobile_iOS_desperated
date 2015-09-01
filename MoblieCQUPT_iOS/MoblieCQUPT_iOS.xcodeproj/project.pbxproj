@@ -38,6 +38,7 @@
 		CBE1C5471B8F4B74004E1A00 /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE1C5411B8F4B74004E1A00 /* MeCell.m */; };
 		CBE1C5481B8F4B74004E1A00 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1C5421B8F4B74004E1A00 /* MeCell.xib */; };
 		CBE1C5491B8F4B74004E1A00 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE1C5441B8F4B74004E1A00 /* NewsViewController.m */; };
+		CE35D7081B932700005BDEBA /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35D7071B932700005BDEBA /* MineViewController.m */; };
 		CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5A1B87FF3900699E3E /* 40-3.png */; };
 		CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5C1B87FF4400699E3E /* 40-2.png */; };
 		CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5E1B87FF4D00699E3E /* 29-3.png */; };
@@ -204,6 +205,8 @@
 		CBE1C5421B8F4B74004E1A00 /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeCell.xib; sourceTree = "<group>"; };
 		CBE1C5431B8F4B74004E1A00 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		CBE1C5441B8F4B74004E1A00 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		CE35D7061B932700005BDEBA /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
+		CE35D7071B932700005BDEBA /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		CE5C7D5A1B87FF3900699E3E /* 40-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40-3.png"; sourceTree = "<group>"; };
 		CE5C7D5C1B87FF4400699E3E /* 40-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40-2.png"; sourceTree = "<group>"; };
 		CE5C7D5E1B87FF4D00699E3E /* 29-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-3.png"; sourceTree = "<group>"; };
@@ -557,6 +560,15 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		CE35D7051B9326C3005BDEBA /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				CE35D7061B932700005BDEBA /* MineViewController.h */,
+				CE35D7071B932700005BDEBA /* MineViewController.m */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
 		CE78938A1B86F06E000D8B57 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +593,13 @@
 				CE78939A1B87067B000D8B57 /* 60-2.png */,
 			);
 			name = Icon;
+			sourceTree = "<group>";
+		};
+		CE7C60041B93648800CE4A09 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Mine;
 			sourceTree = "<group>";
 		};
 		CEE837A41B855E9C00959779 /* Main */ = {
@@ -716,6 +735,7 @@
 		CEF61B541B82BDFE0014B980 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C60041B93648800CE4A09 /* Mine */,
 				3BBB58731B8F6EA10099EC58 /* iconfont.ttf */,
 				CEF273721B90D573009B5BA2 /* Photoes */,
 				D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */,
@@ -749,6 +769,7 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				CE35D7051B9326C3005BDEBA /* Mine */,
 				3BBB58531B8F3DE90099EC58 /* Consult */,
 				CBE1C53C1B8F4B32004E1A00 /* News */,
 				E2FAB1121B8C7199005C5AE7 /* Finder */,
@@ -1180,6 +1201,7 @@
 				D9B5770F1B88742D005EFD18 /* CourseView.m in Sources */,
 				E2FAB14D1B8C738B005C5AE7 /* MJRefreshBaseView.m in Sources */,
 				E2FAB12F1B8C7199005C5AE7 /* WebViewController.m in Sources */,
+				CE35D7081B932700005BDEBA /* MineViewController.m in Sources */,
 				CEF61B861B82DF9A0014B980 /* AFURLConnectionOperation.m in Sources */,
 				E2FAB1511B8C738B005C5AE7 /* MJRefreshHeaderView.m in Sources */,
 				CBE1C5491B8F4B74004E1A00 /* NewsViewController.m in Sources */,
