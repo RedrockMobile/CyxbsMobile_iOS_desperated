@@ -87,7 +87,6 @@
 		CEF61B5C1B82BE070014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B5B1B82BE070014B980 /* README.md */; };
 		CEF61B5F1B82BE0C0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B5E1B82BE0C0014B980 /* README.md */; };
 		CEF61B621B82BE1B0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B611B82BE1B0014B980 /* README.md */; };
-		CEF61B651B82C02E0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B641B82C02E0014B980 /* README.md */; };
 		CEF61B681B82C0370014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B671B82C0370014B980 /* README.md */; };
 		CEF61B6B1B82D5260014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B6A1B82D5260014B980 /* README.md */; };
 		CEF61B811B82DF9A0014B980 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B6F1B82DF9A0014B980 /* AFHTTPRequestOperation.m */; };
@@ -309,7 +308,6 @@
 		CEF61B5B1B82BE070014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B5E1B82BE0C0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B611B82BE1B0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B641B82C02E0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B671B82C0370014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B6A1B82D5260014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -921,7 +919,6 @@
 			children = (
 				3B37F0AE1B8C4691009C1E94 /* We */,
 				CEE837B41B86C35000959779 /* NetWork */,
-				CEF61B641B82C02E0014B980 /* README.md */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1440,7 +1437,6 @@
 				CEF61B9E1B82DFA60014B980 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				CEF61B821B82DF9A0014B980 /* AFHTTPRequestOperationManager.m in Sources */,
 				CEF61B581B82BDFE0014B980 /* README.md in Sources */,
-				CEF61B651B82C02E0014B980 /* README.md in Sources */,
 				CEF61B851B82DF9A0014B980 /* AFSecurityPolicy.m in Sources */,
 				E2FAB1531B8C738B005C5AE7 /* UIScrollView+MJRefresh.m in Sources */,
 				E23F638A1B8DBCDB004C4DEF /* DetailDishView.m in Sources */,
