@@ -24,11 +24,12 @@
             self.period = [dic objectForKey:@"period"];
             self.rawWeek = [dic objectForKey:@"rawWeek"];
             self.day = [dic objectForKey:@"day"];
-            self.status = [dic objectForKey:@"status"];
+            self.type = [dic objectForKey:@"type"];
             self.term = [dic objectForKey:@"term"];
             self.week = [dic objectForKey:@"week"];
             self.weekBegin = [dic objectForKey:@"weekBegin"];
             self.weekEnd = [dic objectForKey:@"weekEnd"];
+            self.color = [dic objectForKey:@"color"];
         }
     }
     return self;
@@ -45,11 +46,12 @@
     result = [result stringByAppendingFormat:@"period : %@\n",self.period];
     result = [result stringByAppendingFormat:@"rawWeek : %@\n",self.rawWeek];
     result = [result stringByAppendingFormat:@"day : %@\n",self.day];
-    result = [result stringByAppendingFormat:@"status: %@\n",self.status];
+    result = [result stringByAppendingFormat:@"type: %@\n",self.type];
     result = [result stringByAppendingFormat:@"term: %@\n",self.term];
     result = [result stringByAppendingFormat:@"week: %@\n",self.week];
     result = [result stringByAppendingFormat:@"weekBegin: %@\n",self.weekBegin];
     result = [result stringByAppendingFormat:@"weekEnd: %@\n",self.weekEnd];
+    result = [result stringByAppendingFormat:@"color: %@\n",self.color];
     return result;
 }
 

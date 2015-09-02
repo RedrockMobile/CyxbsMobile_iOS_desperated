@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "LoginViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +18,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //友盟统计
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if ([userDefault objectForKey:@"time"] != nil) {
+        NSDate *currentTime = [NSDate date];
+        NSDate *dataTime = [userDefault objectForKey:@"time"];
+        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            self.window.rootViewController = view;
+        }else {
+            [userDefault removeObjectForKey:@"stuNum"];
+            [userDefault removeObjectForKey:@"idNum"];
+            [userDefault removeObjectForKey:@"dataArray"];
+            [userDefault removeObjectForKey:@"time"];
+            [userDefault synchronize];
+            LoginViewController *login = [[LoginViewController alloc]init];
+            self.window.rootViewController = login;
+        }
+    }else {
+        LoginViewController *login = [[LoginViewController alloc]init];
+        self.window.rootViewController = login;
+    }
+
+    
     [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
     [MobClick setAppVersion:@"V1.0.0"];
     [MobClick checkUpdate];
