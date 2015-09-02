@@ -23,7 +23,7 @@
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
     _currentHeight += topView.frame.size.height;
     
-    topView.backgroundColor = [UIColor redColor];
+    topView.backgroundColor = MAIN_COLOR;
     [self.view addSubview:topView];
     self.navigationController.navigationBar.hidden = YES;
     
@@ -45,9 +45,6 @@
     [self.view addSubview:self.tableView];
     _currentHeight += _tableView.frame.size.height;
     
-    
-    
-    // Do any additional setup after loading the view.
     
 }
 

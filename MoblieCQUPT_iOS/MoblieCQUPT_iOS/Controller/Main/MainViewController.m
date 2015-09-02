@@ -32,19 +32,17 @@ static Boolean isClick = NO;
     [self findButtonInit];
     NSArray *item = @[@"我的课程",@"发现",@"查询",@"知重邮",@"设置"];
     int whichVc = 0;
-    UIBarButtonItem *bar = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"main_login.png"] style:UIBarButtonItemStyleDone target:self action:@selector(userInfo)];
     
     
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
         
-        //[vc.tabBarItem setSelectedImage:[UIImage imageNamed:@"icon_menu_3.png"]];
+
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
-            [[vc viewControllers][0] navigationItem].leftBarButtonItem = bar;
-            [[vc viewControllers][0] navigationItem].rightBarButtonItem = bar;
-            vc.navigationBar.tintColor = [UIColor grayColor];
+            vc.navigationBar.tintColor = MAIN_COLOR;
+            vc.navigationBar.barTintColor = MAIN_COLOR;
         }else{
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
             
@@ -52,7 +50,7 @@ static Boolean isClick = NO;
         
         
         
-        vc.tabBarItem.image = [vc.tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        vc.tabBarItem.image = [vc.tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         whichVc++;
     }
     
@@ -67,14 +65,7 @@ static Boolean isClick = NO;
     // Dispose of any resources that can be recreated.
 }
 
-- (void)userInfo{
-    static BOOL isPush = NO;
-    int movX = !isPush?100:0;
-    [UIView animateWithDuration:0.8 animations:^{
-        self.view.frame = CGRectMake(movX, 0, self.view.frame.size.width, self.view.frame.size.height);
-        isPush = !isPush;
-    }];
-}
+
 
 
 
