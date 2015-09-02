@@ -53,6 +53,12 @@
 		CE7893961B86F2A9000D8B57 /* icon_menu_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7893951B86F2A9000D8B57 /* icon_menu_5.png */; };
 		CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7893981B8701BB000D8B57 /* 掌上重邮60-3.png */; };
 		CE78939B1B87067B000D8B57 /* 60-2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78939A1B87067B000D8B57 /* 60-2.png */; };
+		CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8159691B96A829002CF7B2 /* libsqlite3.dylib */; };
+		CE8159771B96A84C002CF7B2 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81596D1B96A84C002CF7B2 /* FMDatabase.m */; };
+		CE8159781B96A84C002CF7B2 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CE81596F1B96A84C002CF7B2 /* FMDatabaseAdditions.m */; };
+		CE8159791B96A84C002CF7B2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159711B96A84C002CF7B2 /* FMDatabasePool.m */; };
+		CE81597A1B96A84C002CF7B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159731B96A84C002CF7B2 /* FMDatabaseQueue.m */; };
+		CE81597B1B96A84C002CF7B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159761B96A84C002CF7B2 /* FMResultSet.m */; };
 		CEE837B71B86C35000959779 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE837B61B86C35000959779 /* NetWork.m */; };
 		CEF2736F1B90CF5E009B5BA2 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF2736C1B90CF5E009B5BA2 /* libMobClickLibrary.a */; };
 		CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF273701B90CFAB009B5BA2 /* libz.dylib */; };
@@ -251,6 +257,18 @@
 		CE7893981B8701BB000D8B57 /* 掌上重邮60-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "掌上重邮60-3.png"; sourceTree = "<group>"; };
 		CE78939A1B87067B000D8B57 /* 60-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-2.png"; sourceTree = "<group>"; };
 		CE8159681B96A775002CF7B2 /* Mobile_CQUPT_iOS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mobile_CQUPT_iOS.db; sourceTree = "<group>"; };
+		CE8159691B96A829002CF7B2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CE81596C1B96A84C002CF7B2 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
+		CE81596D1B96A84C002CF7B2 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
+		CE81596E1B96A84C002CF7B2 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
+		CE81596F1B96A84C002CF7B2 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
+		CE8159701B96A84C002CF7B2 /* FMDatabasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabasePool.h; sourceTree = "<group>"; };
+		CE8159711B96A84C002CF7B2 /* FMDatabasePool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabasePool.m; sourceTree = "<group>"; };
+		CE8159721B96A84C002CF7B2 /* FMDatabaseQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseQueue.h; sourceTree = "<group>"; };
+		CE8159731B96A84C002CF7B2 /* FMDatabaseQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseQueue.m; sourceTree = "<group>"; };
+		CE8159741B96A84C002CF7B2 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
+		CE8159751B96A84C002CF7B2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
+		CE8159761B96A84C002CF7B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
 		CEE837B51B86C35000959779 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		CEE837B61B86C35000959779 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		CEF2736C1B90CF5E009B5BA2 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -435,6 +453,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */,
 				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
 				CEF2736F1B90CF5E009B5BA2 /* libMobClickLibrary.a in Frameworks */,
 			);
@@ -677,6 +696,24 @@
 			name = DataBase;
 			sourceTree = "<group>";
 		};
+		CE81596B1B96A84C002CF7B2 /* fmdb */ = {
+			isa = PBXGroup;
+			children = (
+				CE81596C1B96A84C002CF7B2 /* FMDatabase.h */,
+				CE81596D1B96A84C002CF7B2 /* FMDatabase.m */,
+				CE81596E1B96A84C002CF7B2 /* FMDatabaseAdditions.h */,
+				CE81596F1B96A84C002CF7B2 /* FMDatabaseAdditions.m */,
+				CE8159701B96A84C002CF7B2 /* FMDatabasePool.h */,
+				CE8159711B96A84C002CF7B2 /* FMDatabasePool.m */,
+				CE8159721B96A84C002CF7B2 /* FMDatabaseQueue.h */,
+				CE8159731B96A84C002CF7B2 /* FMDatabaseQueue.m */,
+				CE8159741B96A84C002CF7B2 /* FMDB.h */,
+				CE8159751B96A84C002CF7B2 /* FMResultSet.h */,
+				CE8159761B96A84C002CF7B2 /* FMResultSet.m */,
+			);
+			path = fmdb;
+			sourceTree = "<group>";
+		};
 		CEE837A41B855E9C00959779 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -734,6 +771,7 @@
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
+				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
 				CEF273701B90CFAB009B5BA2 /* libz.dylib */,
 				CEF61B601B82BE1B0014B980 /* SDK */,
 				CEF61B2C1B82BC950014B980 /* MoblieCQUPT_iOS */,
@@ -863,6 +901,7 @@
 		CEF61B601B82BE1B0014B980 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
+				CE81596B1B96A84C002CF7B2 /* fmdb */,
 				CEF2736B1B90CF5E009B5BA2 /* UMAnalytics_Sdk_3.5.10 */,
 				3BD264461B8EDD8700B291A0 /* ProgressHUD */,
 				E2FAB13A1B8C738B005C5AE7 /* MJRefresh */,
@@ -1363,9 +1402,11 @@
 				D9B577121B88742D005EFD18 /* TitleBaseViewController.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
 				CEF61B891B82DF9A0014B980 /* AFURLSessionManager.m in Sources */,
+				CE8159771B96A84C002CF7B2 /* FMDatabase.m in Sources */,
 				E2FAB1331B8C7199005C5AE7 /* ShopTableViewCell.m in Sources */,
 				3BBB58671B8F3DE90099EC58 /* ScheduleTableViewCell.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
+				CE8159781B96A84C002CF7B2 /* FMDatabaseAdditions.m in Sources */,
 				E2FAB1501B8C738B005C5AE7 /* MJRefreshFooterView.m in Sources */,
 				CEF61B831B82DF9A0014B980 /* AFHTTPSessionManager.m in Sources */,
 				CEF61B5F1B82BE0C0014B980 /* README.md in Sources */,
@@ -1384,6 +1425,7 @@
 				CEF61BA31B82DFA60014B980 /* UIRefreshControl+AFNetworking.m in Sources */,
 				CBE1C5451B8F4B74004E1A00 /* FirstViewController.m in Sources */,
 				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
+				CE81597B1B96A84C002CF7B2 /* FMResultSet.m in Sources */,
 				CEF61B871B82DF9A0014B980 /* AFURLRequestSerialization.m in Sources */,
 				E23827091B9477D80058970E /* CourseViewController.m in Sources */,
 				3B37F0B71B8C4691009C1E94 /* We.m in Sources */,
@@ -1423,8 +1465,10 @@
 				E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */,
 				E23827071B9477D80058970E /* CourseButton.m in Sources */,
 				E2FAB1541B8C738B005C5AE7 /* UIView+MJExtension.m in Sources */,
+				CE8159791B96A84C002CF7B2 /* FMDatabasePool.m in Sources */,
 				CEF61B9F1B82DFA60014B980 /* UIAlertView+AFNetworking.m in Sources */,
 				D9B5772A1B88746A005EFD18 /* UPStackMenu.m in Sources */,
+				CE81597A1B96A84C002CF7B2 /* FMDatabaseQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
