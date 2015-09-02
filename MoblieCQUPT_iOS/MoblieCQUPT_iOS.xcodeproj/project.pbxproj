@@ -250,6 +250,7 @@
 		CE7893951B86F2A9000D8B57 /* icon_menu_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu_5.png; sourceTree = "<group>"; };
 		CE7893981B8701BB000D8B57 /* 掌上重邮60-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "掌上重邮60-3.png"; sourceTree = "<group>"; };
 		CE78939A1B87067B000D8B57 /* 60-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-2.png"; sourceTree = "<group>"; };
+		CE8159681B96A775002CF7B2 /* Mobile_CQUPT_iOS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mobile_CQUPT_iOS.db; sourceTree = "<group>"; };
 		CEE837B51B86C35000959779 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		CEE837B61B86C35000959779 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		CEF2736C1B90CF5E009B5BA2 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
@@ -668,6 +669,14 @@
 			name = Mine;
 			sourceTree = "<group>";
 		};
+		CE8159671B96A75F002CF7B2 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				CE8159681B96A775002CF7B2 /* Mobile_CQUPT_iOS.db */,
+			);
+			name = DataBase;
+			sourceTree = "<group>";
+		};
 		CEE837A41B855E9C00959779 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +801,7 @@
 		CEF61B531B82BDFE0014B980 /* Resoure */ = {
 			isa = PBXGroup;
 			children = (
+				CE8159671B96A75F002CF7B2 /* DataBase */,
 				CEF61B541B82BDFE0014B980 /* Images */,
 				CEF61B561B82BDFE0014B980 /* Views */,
 			);
@@ -801,6 +811,8 @@
 		CEF61B541B82BDFE0014B980 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E2E7DE301B9476810081F699 /* CourseIcon */,
+				E2E7DE271B9476730081F699 /* LoginIconImage */,
 				CE7C60041B93648800CE4A09 /* Mine */,
 				3BBB58731B8F6EA10099EC58 /* iconfont.ttf */,
 				CEF273721B90D573009B5BA2 /* Photoes */,
@@ -835,6 +847,8 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E23826FF1B9477D80058970E /* Course */,
+				E2E7DE211B94764A0081F699 /* Login */,
 				CE35D7051B9326C3005BDEBA /* Mine */,
 				3BBB58531B8F3DE90099EC58 /* Consult */,
 				CBE1C53C1B8F4B32004E1A00 /* News */,
