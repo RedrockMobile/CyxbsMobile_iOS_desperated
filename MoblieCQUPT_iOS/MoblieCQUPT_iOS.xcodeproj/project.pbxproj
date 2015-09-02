@@ -84,11 +84,8 @@
 		CEF61B4A1B82BC950014B980 /* MoblieCQUPT_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */; };
 		CEF61B581B82BDFE0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B551B82BDFE0014B980 /* README.md */; };
 		CEF61B591B82BDFE0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B571B82BDFE0014B980 /* README.md */; };
-		CEF61B5C1B82BE070014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B5B1B82BE070014B980 /* README.md */; };
-		CEF61B5F1B82BE0C0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B5E1B82BE0C0014B980 /* README.md */; };
 		CEF61B621B82BE1B0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B611B82BE1B0014B980 /* README.md */; };
 		CEF61B681B82C0370014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B671B82C0370014B980 /* README.md */; };
-		CEF61B6B1B82D5260014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B6A1B82D5260014B980 /* README.md */; };
 		CEF61B811B82DF9A0014B980 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B6F1B82DF9A0014B980 /* AFHTTPRequestOperation.m */; };
 		CEF61B821B82DF9A0014B980 /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B711B82DF9A0014B980 /* AFHTTPRequestOperationManager.m */; };
 		CEF61B831B82DF9A0014B980 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B731B82DF9A0014B980 /* AFHTTPSessionManager.m */; };
@@ -305,11 +302,8 @@
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
 		CEF61B551B82BDFE0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B571B82BDFE0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B5B1B82BE070014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B5E1B82BE0C0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B611B82BE1B0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B671B82C0370014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B6A1B82D5260014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CEF61B6E1B82DF9A0014B980 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		CEF61B6F1B82DF9A0014B980 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -875,7 +869,6 @@
 			isa = PBXGroup;
 			children = (
 				E238270B1B9478190058970E /* Course */,
-				CEF61B5B1B82BE070014B980 /* README.md */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -891,7 +884,6 @@
 				E2FAB1121B8C7199005C5AE7 /* Finder */,
 				D9B5770A1B88742D005EFD18 /* TitleBase */,
 				CEE837A41B855E9C00959779 /* Main */,
-				CEF61B5E1B82BE0C0014B980 /* README.md */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -934,7 +926,6 @@
 		CEF61B691B82D5260014B980 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				CEF61B6A1B82D5260014B980 /* README.md */,
 				CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */,
 			);
 			path = Config;
@@ -1386,7 +1377,6 @@
 			files = (
 				CEF61B811B82DF9A0014B980 /* AFHTTPRequestOperation.m in Sources */,
 				D9B577271B88746A005EFD18 /* ExampleAnimation.m in Sources */,
-				CEF61B5C1B82BE070014B980 /* README.md in Sources */,
 				CEF61B361B82BC950014B980 /* ViewController.m in Sources */,
 				CEF61B681B82C0370014B980 /* README.md in Sources */,
 				3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */,
@@ -1406,7 +1396,6 @@
 				CE8159781B96A84C002CF7B2 /* FMDatabaseAdditions.m in Sources */,
 				E2FAB1501B8C738B005C5AE7 /* MJRefreshFooterView.m in Sources */,
 				CEF61B831B82DF9A0014B980 /* AFHTTPSessionManager.m in Sources */,
-				CEF61B5F1B82BE0C0014B980 /* README.md in Sources */,
 				D9B5772B1B88746A005EFD18 /* UPStackMenuItem.m in Sources */,
 				CEF61B841B82DF9A0014B980 /* AFNetworkReachabilityManager.m in Sources */,
 				3BBB58631B8F3DE90099EC58 /* EmptyRoomsViewController.m in Sources */,
@@ -1452,7 +1441,6 @@
 				3B37F0A31B8C45F8009C1E94 /* Pods-dummy.m in Sources */,
 				3B37F0AA1B8C45F8009C1E94 /* UIColor+BFPaperColors.m in Sources */,
 				CEF61BA41B82DFA60014B980 /* UIWebView+AFNetworking.m in Sources */,
-				CEF61B6B1B82D5260014B980 /* README.md in Sources */,
 				3BBB58661B8F3DE90099EC58 /* DataBundle.m in Sources */,
 				CEF61B301B82BC950014B980 /* main.m in Sources */,
 				3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */,
