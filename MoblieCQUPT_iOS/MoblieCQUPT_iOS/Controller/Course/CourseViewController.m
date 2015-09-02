@@ -80,7 +80,7 @@
 
 - (void)loadNetData {
     
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/kebiao" WithParameter:@{@"stuNum":@"2014213071"} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/kebiao" WithParameter:@{@"stuNum":@"2014211207"} WithReturnValeuBlock:^(id returnValue) {
 //        NSArray *dataArray = [[NSArray alloc]init];
         _dataArray = [returnValue objectForKey:@"data"];
         [self handleWeek:_dataArray];
