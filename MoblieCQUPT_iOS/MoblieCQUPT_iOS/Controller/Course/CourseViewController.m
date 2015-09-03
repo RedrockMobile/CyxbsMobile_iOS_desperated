@@ -112,9 +112,13 @@
 }
 
 - (void)loadNetData {
-    
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/kebiao" WithParameter:@{@"stuNum":@"2014211207"} WithReturnValeuBlock:^(id returnValue) {
-//        NSArray *dataArray = [[NSArray alloc]init];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *stuNum = [userDefault objectForKey:@"stuNum"];
+    NSLog(@"%@",stuNum);
+    _parameter = [NSMutableDictionary dictionary];
+    _dataArray = [NSMutableArray array];
+    [_parameter setObject:stuNum forKey:@"stuNum"];
+    [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
         _dataArray = [returnValue objectForKey:@"data"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
         [userDefault synchronize];
