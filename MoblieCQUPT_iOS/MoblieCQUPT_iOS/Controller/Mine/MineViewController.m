@@ -32,12 +32,14 @@
     
     //button
     for (int i=0; i<4; i++) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
-        button.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        button.layer.borderWidth = 1;
-        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",i+1]] forState:UIControlStateNormal];
+        UILabel *labelButton = [[UILabel alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
+        labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+        labelButton.layer.borderWidth = 1;
+        UIFont *iconfont = [UIFont fontWithName:@"uxIconFont" size: 34];
+        labelButton.font = iconfont;
+        labelButton.text = @"\U000f00fa";
         
-        [self.view addSubview:button];
+        [self.view addSubview:labelButton];
     }
     
     _currentHeight += MAIN_SCREEN_H*0.1;
@@ -46,6 +48,22 @@
     _currentHeight += _tableView.frame.size.height;
     
     
+    
+    
+    
+    
+    for (NSString* family in [UIFont familyNames])
+    {
+       
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            if ([name  isEqual: @"uxIconFont"]) {
+                NSLog(@"  %@", name);
+            }
+            
+        }
+    }
 }
 
 - (UITableView *)tableView{

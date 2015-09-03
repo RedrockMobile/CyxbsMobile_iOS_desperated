@@ -30,7 +30,7 @@ static Boolean isClick = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self findButtonInit];
-    NSArray *item = @[@"我的课程",@"发现",@"查询",@"知重邮",@"设置"];
+    NSArray *item = @[@"我的课程",@"发现",@"查询",@"知重邮",@"我的"];
     int whichVc = 0;
     
     
@@ -41,17 +41,11 @@ static Boolean isClick = NO;
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
+            
             vc.navigationBar.tintColor = MAIN_COLOR;
             vc.navigationBar.barTintColor = MAIN_COLOR;
-        }else{
-            [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
-            
         }
-        
-        
-        
-//        vc.tabBarItem.image = [vc.tabBarItem.image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        whichVc++;
+        whichVc==1?whichVc+=2:whichVc++;
     }
     
     
@@ -72,17 +66,17 @@ static Boolean isClick = NO;
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
     UITabBarItem *itemSelected = tabBarController.tabBar.selectedItem;
    
-    if ([itemSelected isEqual:tabBarController.tabBar.items[2]]) {
-       
-        self.centerBar = itemSelected;
-        if (!isClick) {
-            [self findTbabarAnimation];
-            
-        }else{
-            [self disFindTbabarAnimation];
-        }
-        return  NO;
-    }
+//    if ([itemSelected isEqual:tabBarController.tabBar.items[2]]) {
+//       
+//        self.centerBar = itemSelected;
+//        if (!isClick) {
+//            [self findTbabarAnimation];
+//            
+//        }else{
+//            [self disFindTbabarAnimation];
+//        }
+//        return  NO;
+//    }
     
     return  YES;
 }

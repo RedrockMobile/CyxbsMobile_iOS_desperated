@@ -241,6 +241,7 @@
 		CE35D7071B932700005BDEBA /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		CE3FC93E1B9702A6000085E5 /* SqliteCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteCache.h; sourceTree = "<group>"; };
 		CE3FC93F1B9702A6000085E5 /* SqliteCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteCache.m; sourceTree = "<group>"; };
+		CE3FC9421B973228000085E5 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		CE5C7D5A1B87FF3900699E3E /* 40-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40-3.png"; sourceTree = "<group>"; };
 		CE5C7D5C1B87FF4400699E3E /* 40-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40-2.png"; sourceTree = "<group>"; };
 		CE5C7D5E1B87FF4D00699E3E /* 29-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-3.png"; sourceTree = "<group>"; };
@@ -650,6 +651,14 @@
 			path = Mine;
 			sourceTree = "<group>";
 		};
+		CE3FC9411B973215000085E5 /* Icon-Font */ = {
+			isa = PBXGroup;
+			children = (
+				CE3FC9421B973228000085E5 /* iconfont.ttf */,
+			);
+			name = "Icon-Font";
+			sourceTree = "<group>";
+		};
 		CE78938A1B86F06E000D8B57 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -836,6 +845,7 @@
 		CEF61B531B82BDFE0014B980 /* Resoure */ = {
 			isa = PBXGroup;
 			children = (
+				CE3FC9411B973215000085E5 /* Icon-Font */,
 				CE8159671B96A75F002CF7B2 /* DataBase */,
 				CEF61B541B82BDFE0014B980 /* Images */,
 				CEF61B561B82BDFE0014B980 /* Views */,
