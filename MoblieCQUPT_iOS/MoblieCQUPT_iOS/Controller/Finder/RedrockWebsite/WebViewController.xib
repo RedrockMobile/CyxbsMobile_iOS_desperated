@@ -15,12 +15,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TU1-4f-oee">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TU1-4f-oee">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="TU1-4f-oee" secondAttribute="trailing" id="U09-x7-fyq"/>
+                <constraint firstItem="TU1-4f-oee" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="UAY-MX-7go"/>
+                <constraint firstAttribute="bottom" secondItem="TU1-4f-oee" secondAttribute="bottom" id="jdD-5l-evG"/>
+                <constraint firstItem="TU1-4f-oee" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="sa2-5A-Zkh"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="264.5" y="351.5"/>
         </view>

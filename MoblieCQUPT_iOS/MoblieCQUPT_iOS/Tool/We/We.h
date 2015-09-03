@@ -12,6 +12,8 @@
 #import "NSArray+We.h"
 #import "NSString+We.h"
 
+#define screenWidth CGRectGetWidth([UIScreen mainScreen].bounds)
+#define screenHeight CGRectGetHeight([UIScreen mainScreen].bounds)
 #define qlog(x) printf("%s\n",[[NSString stringWithFormat:@"%@",x] UTF8String]);
 #define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 typedef NS_ENUM(NSInteger, Color) {

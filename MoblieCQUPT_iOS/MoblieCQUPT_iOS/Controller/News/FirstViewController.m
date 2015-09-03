@@ -11,6 +11,7 @@
 @interface FirstViewController ()
 @property (strong,nonatomic)UIScrollView *scrollView;
 @property (strong,nonatomic)NSMutableDictionary *backData;
+@property (strong, nonatomic)UITextView *textView;
 @end
 
 @implementation FirstViewController
@@ -24,10 +25,10 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = CGRectMake(0, 170 , 375, 600); // frame中的size指UIScrollView的可视范围
     [self.view addSubview:scrollView];
-    UITextView *textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 375, 600)];
-    textView.text = @"查询中。。。";
-//    textView.userInteractionEnabled = NO;
-    [scrollView addSubview:textView];
+    _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 375, 600)];
+    _textView.text = @"查询中。。。";
+    _textView.userInteractionEnabled = NO;
+    [scrollView addSubview:_textView];
          // 隐藏水平滚动条
          scrollView.showsHorizontalScrollIndicator = NO;
          scrollView.showsVerticalScrollIndicator = YES;
@@ -41,19 +42,24 @@
         // top  left  bottom  right
     
         _scrollView = scrollView;
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data1[@"id"]} WithReturnValeuBlock:^(id returnValue) {
-        
-        self.backData = returnValue;
-        NSLog(@"%@",self.backData);
+
         self.day1label.text =self.data1[@"date"];
         self.time1lable.text =self.data1[@"read"];
-        textView.text = self.backData[@"data"][@"content"];
-        self.top1label.text =self.backData[@"data"][@"title"];
-        //[_scrollView reloadData];
-    } WithFailureBlock:nil];
+        _textView.text = self.data1[@"newsContent"];
+    
+        self.top1label.text =self.data1[@"title"];
+
 }
 
-   
+- (float) heightForString:(NSString *)value fontSize:(float)fontSize andWidth:(float)width
+{
+    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize]
+                         constrainedToSize:CGSizeMake(width -16.0, CGFLOAT_MAX)
+                             lineBreakMode:NSLineBreakByWordWrapping];
+    //此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
+    return sizeToFit.height + 16.0;
+}
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -62,9 +68,9 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    _scrollView.contentInset = UIEdgeInsetsMake(0, 0, 2000, [UIScreen mainScreen].bounds.size.width);
-    _scrollView.backgroundColor = [UIColor blueColor];
-    
+   float H = [self heightForString:self.data1[@"newsContent"] fontSize:14 andWidth:MAIN_SCREEN_W];
+    _scrollView.contentSize = CGSizeMake(MAIN_SCREEN_W,H);
+    _scrollView.backgroundColor = [UIColor clearColor];
 }
 
 

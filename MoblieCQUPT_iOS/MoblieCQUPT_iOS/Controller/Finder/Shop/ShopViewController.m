@@ -13,6 +13,7 @@
 #import "UIImage+AFNetworking.h"
 #import "MJRefresh.h"
 #import "WebViewController.h"
+#import "ProgressHUD.h"
 
 #define SHOPLIST_ENDPAGE 4
 
@@ -62,20 +63,25 @@
 
 #pragma mark 开始进入刷新状态
 - (void)headerRereshing{
-    NSLog(@"下拉刷新");
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-        NSLog(@"data is %@", returnValue);
         // 刷新表格
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
         [self.tableView headerEndRefreshing];
-    } WithFailureBlock:nil];
+    } WithFailureBlock:^{
+        UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+        faileLable.text = @"哎呀！网络开小差了 T^T";
+        faileLable.textColor = [UIColor whiteColor];
+        faileLable.backgroundColor = [UIColor grayColor];
+        faileLable.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:faileLable];
+        [_tableView removeFromSuperview];
+    }];
 }
 
 - (void)footerRereshing{
-    NSLog(@"上拉加载");
     _flag += 1;
     if (_flag <= 3) {
         [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
@@ -84,7 +90,15 @@
             [self.tableView reloadData];
             // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
             [self.tableView footerEndRefreshing];
-        } WithFailureBlock:nil];
+        } WithFailureBlock:^{
+            UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+            faileLable.text = @"哎呀！网络开小差了 T^T";
+            faileLable.textColor = [UIColor whiteColor];
+            faileLable.backgroundColor = [UIColor grayColor];
+            faileLable.textAlignment = NSTextAlignmentCenter;
+            [self.view addSubview:faileLable];
+            [_tableView removeFromSuperview];
+        }];
     }else if (_flag >= 4){
         [self.tableView footerEndRefreshing];
     }
@@ -107,11 +121,20 @@
 
 - (void)dataFlash{
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+        [ProgressHUD show:@"加载中..."];
         _data = [[NSMutableArray alloc] init];
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-        NSLog(@"data is %@", returnValue);
         [_tableView reloadData];
-    } WithFailureBlock:nil];
+        [ProgressHUD showSuccess:@"加载完成~"];
+    } WithFailureBlock:^{
+        UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+        failLabel.text = @"哎呀！网络开小差了 T^T";
+        failLabel.textColor = [UIColor whiteColor];
+        failLabel.backgroundColor = [UIColor grayColor];
+        failLabel.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:failLabel];
+        [_tableView removeFromSuperview];
+    }];
 }
 
 #pragma mark - Table view data source
@@ -149,20 +172,5 @@
     detailViewController.detailData = _data[indexPath.row];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

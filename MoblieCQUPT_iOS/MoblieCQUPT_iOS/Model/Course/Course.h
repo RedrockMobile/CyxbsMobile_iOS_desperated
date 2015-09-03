@@ -19,11 +19,13 @@
 @property (strong, nonatomic)NSString *period;//课程长度
 @property (strong, nonatomic)NSString *rawWeek;//课程周期 eg：1-16
 @property (strong, nonatomic)NSString *day;//星期几
-@property (strong, nonatomic)NSString *status;//必修 选修 重修
+@property (strong, nonatomic)NSString *type;//必修 选修 重修
 @property (strong, nonatomic)NSString *term;//学期
 @property (strong, nonatomic)NSArray *week;//课程的周数组
 @property (strong, nonatomic)NSString *weekBegin;//课程开始的周
 @property (strong, nonatomic)NSString *weekEnd;//课程结束的周
+
+@property (strong, nonatomic)NSString *color;//课程颜色
 
 
 

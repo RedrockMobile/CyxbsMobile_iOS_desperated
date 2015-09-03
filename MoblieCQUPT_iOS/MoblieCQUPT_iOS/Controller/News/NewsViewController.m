@@ -13,9 +13,13 @@
 #import "MJRefresh.h"
 
 @interface NewsViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (strong,nonatomic)UITableView  *tableview;
-@property (strong,nonatomic)NSMutableArray *infos;
+
+@property(strong,nonatomic)UIRefreshControl *refresh;
+@property (strong,nonatomic)NSMutableDictionary *data;
+@property (strong,nonatomic)UITableView  *tableView;
 @property (strong, nonatomic)NSMutableArray *BothData;
+@property (assign, nonatomic)NSInteger flag;
+
 @end
 
 @implementation NewsViewController
@@ -26,6 +30,8 @@
     self.navigationItem.title = @"教务信息";
     self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0 green:90 blue:50 alpha:1];
     [super viewDidLoad];
+    _flag = 1;
+    [self setupRefresh];
     self.data = [[NSMutableDictionary alloc] init];
     _BothData = [[NSMutableArray alloc] init];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
@@ -35,79 +41,59 @@
                     NSMutableDictionary *dic = [self.data[@"data"][i] mutableCopy];
                     [dic setValue:returnValue[@"data"][@"content"] forKey:@"newsContent"];
                     [_BothData addObject:dic];
-                    [_tableview reloadData];
+                    [_tableView reloadData];
                 } WithFailureBlock:nil];
             }
     } WithFailureBlock:nil];
-    
-    
-//self.specificlable.text = self.data2[@"data"][@"content"];
-  
-    
-//
-//  MJRefreshGifHeader *header = [MJRefreshGifHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-    self.tableview.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-    }];
-    
-    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadNewData方法）
-    self.tableview.header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
-   
-       // 马上进入刷新状态
-    [self.tableview.header beginRefreshing];
-    self.tableview.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        // 进入刷新状态后会自动调用这个block
-    }];
-    
-    // 设置回调（一旦进入刷新状态，就调用target的action，也就是调用self的loadMoreData方法）
-    self.tableview.footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreData)];
-      
-  
-} 
-//
-- (NSString *)loadNewData
-{
-    self.data = [[NSMutableDictionary alloc] init];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
-        _data = [returnValue objectForKey:@"data"];
-
-        self.data = returnValue;
-
-        [_tableview reloadData];
-        
-    } WithFailureBlock:^{
-        
-    }];
-    return @"200";
+    [self.view addSubview:self.tableview];
 }
-- (NSString *)loadMoreData
+
+/**
+ *  集成刷新控件
+ */
+- (void)setupRefresh
 {
-    self.data = [[NSMutableDictionary alloc] init];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"2"} WithReturnValeuBlock:^(id returnValue) {
-        _data = [returnValue objectForKey:@"data"];
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+
+    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+    self.tableView.headerPullToRefreshText = @"下拉即可刷新";
+    self.tableView.headerReleaseToRefreshText = @"松开即可刷新";
+    self.tableView.headerRefreshingText = @"正在刷新中";
+    
+    self.tableView.footerPullToRefreshText = @"上拉加载更多";
+    self.tableView.footerReleaseToRefreshText = @"松开加载更多";
+    self.tableView.footerRefreshingText = @"正在刷新中";
+}
+
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing{
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
         self.data = returnValue;
-        [_tableview reloadData];
-    } WithFailureBlock:^{
-        
-    }];
-    return @"222";
+        for (int i = 0; i<[self.data[@"data"] count]; i++) {
+            [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data[@"data"][i][@"id"]} WithReturnValeuBlock:^(id returnValue) {
+                NSMutableDictionary *dic = [self.data[@"data"][i] mutableCopy];
+                [dic setValue:returnValue[@"data"][@"content"] forKey:@"newsContent"];
+                [_BothData addObject:dic];
+                [_tableView reloadData];
+            } WithFailureBlock:nil];
+        }
+    } WithFailureBlock:nil];
 }
 
 //初始化tableview
 
 - (UITableView *)tableview
 {
-    int x = [[UIScreen mainScreen]bounds].size.width;
-    int y = [[UIScreen mainScreen]bounds].size.height ;
-    if (!_tableview) {
-        _tableview =[[UITableView alloc]initWithFrame:CGRectMake(0,5, x, y) style:UITableViewStylePlain];
-        _tableview.dataSource = self;
-        _tableview.delegate = self;
+    if (!_tableView) {
+        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,64, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStylePlain];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
         UINib *nib = [UINib nibWithNibName:@"MeCell" bundle:nil];
-        [_tableview registerNib:nib forCellReuseIdentifier:@"cell"];
-        _tableview.separatorStyle = NO;
+        [_tableView registerNib:nib forCellReuseIdentifier:@"cell"];
+        _tableView.separatorStyle = NO;
     }
-    return _tableview;
+    return _tableView;
     
 }
 //一组多少个
@@ -115,8 +101,6 @@
 {
     return 1;
 }
-
-
 
 //分成多少个组
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -140,7 +124,7 @@
     cell.specificlable.text = _BothData[indexPath.section][@"newsContent"];
     cell.backgroundColor=[UIColor clearColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-    NSLog(@"%@",_BothData[indexPath.section]);
+//    NSLog(@"%@",_BothData[indexPath.section]);
 //     cell.specificlable.text = self.data[@"data"][indexPath.section][@"id"];
     return cell;
 }
@@ -158,7 +142,8 @@
     FirstViewController *fvc = [[FirstViewController alloc]init];
     //NSLog(@"%@",self.data);
     fvc.data1 = [[NSMutableDictionary alloc] init];
-    fvc.data1 = self.data[@"data"][indexPath.section];
+    fvc.data1 = _BothData[indexPath.section];
+   // DDLog(@"dTA1：%@",_data[@"data"]);
     [self.navigationController pushViewController:fvc animated:YES];
 }
 
@@ -169,14 +154,5 @@
 //- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 //    return 5.0;
 //}
-
-
-
-- (void)viewDidAppear:(BOOL)animated{
-    
-    
-
-    [self.view addSubview:self.tableview];
-}
 
 @end
