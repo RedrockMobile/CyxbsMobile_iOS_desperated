@@ -55,6 +55,8 @@
         dayLabel.text = [NSString stringWithFormat:@"%@",array[i]];
         dayLabel.textAlignment = NSTextAlignmentCenter;
         dayLabel.textColor = MAIN_COLOR;
+//        dayLabel.highlighted = YES;
+//        dayLabel.highlightedTextColor = [UIColor blueColor];
         [dayView addSubview:dayLabel];
     }
     

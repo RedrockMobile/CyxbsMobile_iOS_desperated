@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MainViewController.h"
 @interface ButtonClicker : NSObject
-@property (nonatomic, strong) MainViewController *delegate;
+@property (nonatomic, strong) UIViewController *delegate;
 - (void)clickForExamSchedule;
 - (void)clickForReexamSchedule;
 - (void)clickForExamGrade;

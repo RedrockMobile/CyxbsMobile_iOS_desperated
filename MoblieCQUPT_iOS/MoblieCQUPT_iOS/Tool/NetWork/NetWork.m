@@ -8,9 +8,11 @@
 
 
 #import "NetWork.h"
-
+#import "FMDB.h"
 
 @implementation NetWork
+
+
 
 
 #pragma 监测网络的可链接性
@@ -92,6 +94,10 @@
         
         //DDLog(@"%@", dic);
         if(block){
+            NSString *paths = [[NSBundle mainBundle] pathForResource:@"Mobile_CQUPT_iOS.db" ofType:@"db"];
+            
+//            self.database_path = [documents stringByAppendingPathComponent:DBNAME];
+//            self.db = [FMDatabase databaseWithPath:self.database_path];
             block(dic);
         }else{
             NSLog(@"无成功调用");
@@ -135,54 +141,6 @@
     return manager;
 }
 
-/**
- *  @author Orange-W, 15-07-24 21:07:26
- *
- *  @brief  快捷 post
- *  @param theModel    model
- *  @param requestUrl  url 地址
- *  @param ditParam   参数
- *  @return  jsonModel 数据对象
- */
-+ (void) PostFastObjectFromJsonModel: (id) theModel
-                               Url:(NSString*) requestUrl
-                         WithParam:(NSDictionary*) ditParam
-                       SucessBlock:(SucessWithJson) sucessBlock
-                      FailureBlock:(FailureFunction) failureBlock
-{
-    
-    void (^dealWithDataBlock)(id returnValue)= ^(id returnValue){
-        NSArray *out = [requestUrl componentsSeparatedByString:@"/"];
-        int end = (int)([out count]-1);
-        DDLog(@"\n%@获取成功!\n原始数据如下:%@",out[end],returnValue);
-        int status = [returnValue[@"status"] intValue];
-        
-        if(status==Sucess){
-            if(sucessBlock != nil){
-                sucessBlock(returnValue);
-            }
-        }else if (status==PurviewNotEnough){
-            NSLog(@"权限不够,请先登录!");
-            //登录页面调用
-        }
-    };
-    void (^failureDealWithBlock)()=^(){
-        NSArray *out = [requestUrl componentsSeparatedByString:@"/"];
-        int end = (int)([out count]-1);
-        NSLog(@"%@获取失败!",out[end] );
-    };
-    
-    
-    if(failureBlock == nil){
-        failureBlock = failureDealWithBlock;
-    }
-    
-
-    [NetWork NetRequestPOSTWithRequestURL       : requestUrl
-                                  WithParameter : ditParam
-                          WithReturnValeuBlock  : dealWithDataBlock
-                             WithFailureBlock   : failureBlock];
-}
 
 
 

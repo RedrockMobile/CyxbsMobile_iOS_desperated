@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ButtonView" owner:self options:nil];
     _buttonsView = [nib objectAtIndex:0];
     _buttonsView.frame = CGRectMake(0, MAIN_SCREEN_W/1.5 + 64, MAIN_SCREEN_W, 300);

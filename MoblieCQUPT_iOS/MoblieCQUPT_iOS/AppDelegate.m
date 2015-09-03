@@ -47,7 +47,7 @@
     [MobClick updateOnlineConfig];
     
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    view.backgroundColor = [UIColor greenColor];
+    view.backgroundColor = [UIColor yellowColor];
     [self.window addSubview:view];
     return YES;
 }
