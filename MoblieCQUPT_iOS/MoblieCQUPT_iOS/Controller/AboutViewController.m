@@ -1,0 +1,77 @@
+//
+//  AboutViewController.m
+//  MoblieCQUPT_iOS
+//
+//  Created by RainyTunes on 9/3/15.
+//  Copyright (c) 2015 Orange-W. All rights reserved.
+//
+
+#import "AboutViewController.h"
+#import "UIColor+BFPaperColors.h"
+#import "We.h"
+
+@interface AboutViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *appName;
+@property (weak, nonatomic) IBOutlet UILabel *appVersion;
+@property (weak, nonatomic) IBOutlet UIButton *buttonToUpdate;
+@property (weak, nonatomic) IBOutlet UIButton *buttonToWebsite;
+@property (weak, nonatomic) IBOutlet UIButton *buttonToCopyRight;
+
+
+@end
+
+@implementation AboutViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.appName setTextColor:[UIColor paperColorGray500]];
+    [self.appVersion setTextColor:[UIColor paperColorGray500]];
+    
+    [self.buttonToUpdate addTarget:self action:@selector(clickToUpdate) forControlEvents:UIControlEventTouchUpInside];
+    [self.buttonToWebsite addTarget:self action:@selector(clickToWebsite) forControlEvents:UIControlEventTouchUpInside];
+    [self.buttonToCopyRight addTarget:self action:@selector(clickToCopyRight) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Do any additional setup after loading the view from its nib.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+- (void)clickToCopyRight {
+    qlog(@"2");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"使用条款"
+                                                    message:@"版权归红岩网校工作站所有，感谢您的使用"
+                                                   delegate:self
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil,nil];
+    [alert show];
+}
+
+- (void)clickToWebsite {
+    qlog(@"1");
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/"]];
+}
+
+- (void)clickToUpdate {
+    qlog(@"3");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检查更新"
+                                                    message:@"哎哟，这个功能好像还没做好哦，敬请期待"
+                                                   delegate:self
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil,nil];
+    [alert show];
+}
+
+@end
