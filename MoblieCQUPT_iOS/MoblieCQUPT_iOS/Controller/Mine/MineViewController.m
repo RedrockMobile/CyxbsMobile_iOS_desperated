@@ -7,12 +7,15 @@
 //
 
 #import "MineViewController.h"
+#import "ButtonClicker.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
 @property (strong, nonatomic) UILabel *loginLabel;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
+@property (strong, nonatomic) ButtonClicker *clicker;
+@property (strong, nonatomic) NSMutableArray *cellDictionary;
 @end
 
 @implementation MineViewController
@@ -20,6 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentHeight = 0;
+    _cellDictionary = [NSMutableArray array];
+    _cellDictionary = [@[
+                        @{@"cell":@"去哪吃",@"img":@""},
+                         @{@"cell":@"校历",@"img":@""},
+                         @{@"cell":@"反馈信息",@"img":@""},
+                         @{@"cell":@"关于",@"img":@""},
+                         @{@"cell":@"退出登录",@"img":@""},
+                        ]
+                       mutableCopy];
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
     _currentHeight += topView.frame.size.height;
     
@@ -30,14 +42,23 @@
     [self.view addSubview:self.myPhoto];
     [self.view addSubview:self.loginLabel];
     
+    /**button **/
+    self.clicker = [[ButtonClicker alloc]init];
+    self.clicker.delegate = self;
+    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
+    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
+        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+    
     //button
     for (int i=0; i<4; i++) {
-        UILabel *labelButton = [[UILabel alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
+        UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
         labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         labelButton.layer.borderWidth = 1;
-        UIFont *iconfont = [UIFont fontWithName:@"uxIconFont" size: 34];
-        labelButton.font = iconfont;
-        labelButton.text = @"\U000f00fa";
+        UIImage *stretchableButtonImage = [[UIImage imageNamed:tempStrArr[i]]  stretchableImageWithLeftCapWidth:0  topCapHeight:0];
+        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
+//        labelButton.imageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        /**/
+        [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:labelButton];
     }
@@ -124,7 +145,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"butttonCell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
-        cell.textLabel.text = @"我的消息";
+        cell.textLabel.text = _cellDictionary[indexPath.section][@"cell"];
         [cell.detailTextLabel setFont:[UIFont fontWithName:@"Courier" size:20]];
 //        cell.detailTextLabel.textColor = [UIColor groupTableViewBackgroundColor];
         cell.detailTextLabel.text = @">";

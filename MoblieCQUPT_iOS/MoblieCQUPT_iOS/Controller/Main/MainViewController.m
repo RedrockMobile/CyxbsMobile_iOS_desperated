@@ -42,7 +42,7 @@ static Boolean isClick = NO;
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
             
-            vc.navigationBar.tintColor = MAIN_COLOR;
+            vc.navigationBar.tintColor = [UIColor lightTextColor];
             vc.navigationBar.barTintColor = MAIN_COLOR;
         }
         whichVc==1?whichVc+=2:whichVc++;
@@ -64,7 +64,7 @@ static Boolean isClick = NO;
 
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-    UITabBarItem *itemSelected = tabBarController.tabBar.selectedItem;
+//    UITabBarItem *itemSelected = tabBarController.tabBar.selectedItem;
    
 //    if ([itemSelected isEqual:tabBarController.tabBar.items[2]]) {
 //       
@@ -141,12 +141,11 @@ static Boolean isClick = NO;
     int finalSize = [self.buttonConfig[@"finalSize"] intValue];
     CGRect frame = CGRectMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H-btnHeight, baseSize, baseSize);
     
-    
+    /*飞按钮*/
     for (int i=0; i<num; i++) {
         UIButton *button = self.btnArray[i];
         button.center = CGPointMake(MAIN_SCREEN_W/2, frame.origin.y);
         button.layer.cornerRadius = finalSize/2;
-        //button.backgroundColor = MAIN_COLOR;
         CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
         CGColorRef colorref = CGColorCreate(colorSpace,(CGFloat[]){ 3, 29, 244, 1 });
         [button.layer setBorderColor:colorref];
@@ -171,7 +170,6 @@ static Boolean isClick = NO;
         [self.btnArray[i] setSize:CGSizeMake(finalSize, finalSize)];
         [self.btnArray[i] setCenter:point];
         [self.btnTextArray[i] setSize:CGSizeMake(finalSize, finalSize)];
-//        [self.btnTextArray[i] setBackgroundColor:[UIColor redColor]];
         [self.btnTextArray[i] setCenter:CGPointMake(point.x, point.y+finalSize/2)];
     }
     
