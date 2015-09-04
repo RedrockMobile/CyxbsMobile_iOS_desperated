@@ -10,6 +10,8 @@
 #import "MainViewController.h"
 @interface ButtonClicker : NSObject
 @property (nonatomic, strong) UIViewController *delegate;
+@property (nonatomic, strong) NSString *stuNum;
+@property (nonatomic, strong) NSString *idNum;
 - (void)clickForExamSchedule;
 - (void)clickForReexamSchedule;
 - (void)clickForExamGrade;

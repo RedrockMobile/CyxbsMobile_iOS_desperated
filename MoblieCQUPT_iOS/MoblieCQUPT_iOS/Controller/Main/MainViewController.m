@@ -32,18 +32,17 @@ static Boolean isClick = NO;
     [self findButtonInit];
     NSArray *item = @[@"我的课程",@"发现",@"查询",@"知重邮",@"我的"];
     int whichVc = 0;
-    
+    self.tabBar.tintColor = MAIN_COLOR;
     
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
-        
 
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
             
             vc.navigationBar.tintColor = [UIColor lightTextColor];
-            vc.navigationBar.barTintColor = MAIN_COLOR;
+            vc.navigationBar.barTintColor = [UIColor orangeColor];
         }
         whichVc==1?whichVc+=2:whichVc++;
     }
@@ -105,8 +104,13 @@ static Boolean isClick = NO;
     NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *str1 = [userDefault objectForKey:@"stuNum"];
+    NSString *str2 = [userDefault objectForKey:@"idNum"];
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
+    self.clicker.stuNum = str1;
+    self.clicker.idNum = str2;
     for (int i=0; i<self.btnNum; i++) {
         ///** label **/
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
