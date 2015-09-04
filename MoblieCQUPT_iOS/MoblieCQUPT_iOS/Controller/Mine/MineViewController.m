@@ -31,7 +31,7 @@
                          @{@"cell":@"校历",@"img":@"iconfont77.png"},
                          @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
                          @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
-                         @{@"cell":@"退出登录",@"img":@"tuichu.png"},
+                         @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
                         ]
                        mutableCopy];
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
