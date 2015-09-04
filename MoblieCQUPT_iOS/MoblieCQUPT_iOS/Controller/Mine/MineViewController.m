@@ -27,8 +27,8 @@
     _currentHeight = 0;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[
-                        @{@"cell":@"去哪吃",@"img":@""},
-                         @{@"cell":@"校历",@"img":@"xiaoli.png"},
+                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png"},
+                         @{@"cell":@"校历",@"img":@"iconfont77.png"},
                          @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
                          @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
                          @{@"cell":@"退出登录",@"img":@"tuichu.png"},
@@ -37,7 +37,7 @@
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
     _currentHeight += topView.frame.size.height;
     
-    topView.backgroundColor = MAIN_COLOR;
+    topView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:topView];
 
     
@@ -48,6 +48,8 @@
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
+    NSArray *text = @[@"考试安排",@"补考查询",@"期末成绩",@"找自习室"];
+//     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
     
@@ -57,8 +59,23 @@
         labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         labelButton.layer.borderWidth = 1;
         UIImage *stretchableButtonImage = [[UIImage imageNamed:tempStrArr[i]]  stretchableImageWithLeftCapWidth:0  topCapHeight:0];
-        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
-//        labelButton.imageView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+//        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
+        UIImageView *buttonView = [[UIImageView alloc] initWithImage:stretchableButtonImage];
+        CGRect contentFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+        buttonView.frame = contentFrame;
+        buttonView.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2 +8 -  buttonView.frame.size.height/2);
+        [labelButton addSubview:buttonView];
+        
+        CGRect textFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.04, MAIN_SCREEN_W*0.04);
+        UILabel *textLabel = [[UILabel alloc]initWithFrame:textFrame];
+        textLabel.text = text[i];
+        [textLabel setFont:[UIFont fontWithName:@"GeezaPro" size:12]];
+        [textLabel sizeToFit];
+        textLabel.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2+12+textLabel.frame.size.height/2);
+        [labelButton addSubview:buttonView];
+       
+        
+        [labelButton addSubview:textLabel];
         /**/
         [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
         
