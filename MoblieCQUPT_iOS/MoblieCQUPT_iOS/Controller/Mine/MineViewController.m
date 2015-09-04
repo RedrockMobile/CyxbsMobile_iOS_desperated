@@ -10,6 +10,7 @@
 #import "ButtonClicker.h"
 #import "SuggestionViewController.h"
 #import "AboutViewController.h"
+#import "ShakeViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
@@ -27,8 +28,8 @@
     _currentHeight = 0;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[
-                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png"},
-                         @{@"cell":@"校历",@"img":@"iconfont77.png"},
+                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
+                         @{@"cell":@"校历",@"img":@"iconfont77.png",@"controller":@"CalendarViewController"},
                          @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
                          @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
                          @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},

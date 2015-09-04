@@ -31,7 +31,7 @@
         _suggestText.layer.cornerRadius = 8;
         _suggestText.backgroundColor = [MAIN_COLOR colorWithAlphaComponent:0.2];
         _suggestText.contentSize = CGSizeMake(_suggestText.frame.size.width, _suggestText.frame.size.height);
-        _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+        _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
         _suggestText.delegate = self;
         
         self.automaticallyAdjustsScrollViewInsets = NO;
