@@ -22,6 +22,9 @@
 		3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B01B8C4691009C1E94 /* NSArray+We.m */; };
 		3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B21B8C4691009C1E94 /* NSString+We.m */; };
 		3B37F0B71B8C4691009C1E94 /* We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B41B8C4691009C1E94 /* We.m */; };
+		3B9FD0AA1B985C380081A100 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0A91B985C380081A100 /* icon.png */; };
+		3B9FD0C11B98B7A90081A100 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */; };
+		3B9FD0C21B98B7A90081A100 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */; };
 		3BBB58371B8EEE080099EC58 /* ButtonClicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58361B8EEE080099EC58 /* ButtonClicker.m */; };
 		3BBB58621B8F3DE90099EC58 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58551B8F3DE90099EC58 /* Config.m */; };
 		3BBB58631B8F3DE90099EC58 /* EmptyRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58581B8F3DE90099EC58 /* EmptyRoomsViewController.m */; };
@@ -211,6 +214,10 @@
 		3B37F0B21B8C4691009C1E94 /* NSString+We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+We.m"; sourceTree = "<group>"; };
 		3B37F0B31B8C4691009C1E94 /* We.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = We.h; sourceTree = "<group>"; };
 		3B37F0B41B8C4691009C1E94 /* We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = We.m; sourceTree = "<group>"; };
+		3B9FD0A91B985C380081A100 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Tool/icon.png; sourceTree = "<group>"; };
+		3B9FD0BE1B98B7A90081A100 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		3BBB58351B8EEE080099EC58 /* ButtonClicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonClicker.h; sourceTree = "<group>"; };
 		3BBB58361B8EEE080099EC58 /* ButtonClicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonClicker.m; sourceTree = "<group>"; };
 		3BBB58541B8F3DE90099EC58 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -592,6 +599,16 @@
 			path = We;
 			sourceTree = "<group>";
 		};
+		3B9FD0A31B984E3B0081A100 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				3B9FD0BE1B98B7A90081A100 /* AboutViewController.h */,
+				3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */,
+				3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
 		3BBB58531B8F3DE90099EC58 /* Consult */ = {
 			isa = PBXGroup;
 			children = (
@@ -868,6 +885,7 @@
 		CEF61B541B82BDFE0014B980 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3B9FD0A91B985C380081A100 /* icon.png */,
 				E2E7DE301B9476810081F699 /* CourseIcon */,
 				E2E7DE271B9476730081F699 /* LoginIconImage */,
 				CE7C60041B93648800CE4A09 /* Mine */,
@@ -903,6 +921,7 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3B9FD0A31B984E3B0081A100 /* About */,
 				E23826FF1B9477D80058970E /* Course */,
 				E2E7DE211B94764A0081F699 /* Login */,
 				CE35D7051B9326C3005BDEBA /* Mine */,
@@ -1326,6 +1345,7 @@
 				3B37F0A41B8C45F8009C1E94 /* Pods-resources.sh in Resources */,
 				CEF273941B90D573009B5BA2 /* 20-3exam.png in Resources */,
 				CEF2738D1B90D573009B5BA2 /* 20-3.png in Resources */,
+				3B9FD0C21B98B7A90081A100 /* AboutViewController.xib in Resources */,
 				E2E7DE3F1B9476810081F699 /* iconfont-shijian.png in Resources */,
 				E2E7DE421B9476810081F699 /* iconfont-yonghu01.png in Resources */,
 				3BD2644A1B8EDD8700B291A0 /* ProgressHUD.bundle in Resources */,
@@ -1340,6 +1360,7 @@
 				CEF61B391B82BC950014B980 /* Main.storyboard in Resources */,
 				CEF2738A1B90D573009B5BA2 /* 20-2补考.png in Resources */,
 				E2FAB14F1B8C738B005C5AE7 /* MJRefreshExample-Info.plist in Resources */,
+				3B9FD0AA1B985C380081A100 /* icon.png in Resources */,
 				E28C85C61B8F74F900F9CA82 /* 重邮美景3.jpg in Resources */,
 				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
 				E2E7DE3C1B9476810081F699 /* iconfont-caidan.png in Resources */,
@@ -1429,6 +1450,7 @@
 				3BBB58631B8F3DE90099EC58 /* EmptyRoomsViewController.m in Sources */,
 				CEF61B591B82BDFE0014B980 /* README.md in Sources */,
 				D9B577281B88746A005EFD18 /* OrangeAnimation.m in Sources */,
+				3B9FD0C11B98B7A90081A100 /* AboutViewController.m in Sources */,
 				CEF61BA11B82DFA60014B980 /* UIImageView+AFNetworking.m in Sources */,
 				E2258AD51B90A9AD0014FD39 /* MenuViewController.m in Sources */,
 				3B37F0A01B8C45F8009C1E94 /* BFPaperCheckbox.m in Sources */,
