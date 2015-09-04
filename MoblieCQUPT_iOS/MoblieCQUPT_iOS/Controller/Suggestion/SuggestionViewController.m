@@ -8,8 +8,9 @@
 
 #import "SuggestionViewController.h"
 
-@interface SuggestionViewController ()
+@interface SuggestionViewController ()<UITextViewDelegate>
 @property (strong, nonatomic) UITextView *suggestText;
+@property (strong, nonatomic) UIBarButtonItem *send;
 @end
 
 @implementation SuggestionViewController
@@ -31,6 +32,8 @@
         _suggestText.backgroundColor = [MAIN_COLOR colorWithAlphaComponent:0.2];
         _suggestText.contentSize = CGSizeMake(_suggestText.frame.size.width, _suggestText.frame.size.height);
         _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+        _suggestText.delegate = self;
+        
         self.automaticallyAdjustsScrollViewInsets = NO;
 //        _suggestText.tintAdjustmentMode = NO;
 //        _suggestText.textColor = [UIColor whiteColor];
@@ -38,6 +41,14 @@
     }
     return _suggestText;
 }
+
+- (UIBarButtonItem *)send{
+    if (!_send) {
+        _send = [[UIBarButtonItem alloc]initWithTitle:@"反馈" style:UIBarButtonItemStylePlain target:self action:nil];
+    }
+    return _send;
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -47,9 +58,18 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    self.navigationItem.rightBarButtonItem = nil;
     self.navigationItem.title = @"意见反馈";
 //    self.navigationController.navigationBar.backItem.title = @"返回";
     [self.view addSubview:self.suggestText];
+}
+
+- (void)textViewDidChange:(UITextView *)textView{
+    if (self.suggestText.text.length > 5) {
+        self.navigationItem.rightBarButtonItem = self.send;
+    }else{
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 /*
