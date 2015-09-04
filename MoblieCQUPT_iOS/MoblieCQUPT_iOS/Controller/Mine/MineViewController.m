@@ -9,6 +9,7 @@
 #import "MineViewController.h"
 #import "ButtonClicker.h"
 #import "SuggestionViewController.h"
+#import "AboutViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
@@ -29,7 +30,7 @@
                         @{@"cell":@"去哪吃",@"img":@""},
                          @{@"cell":@"校历",@"img":@""},
                          @{@"cell":@"反馈信息",@"img":@"",@"controller":@"SuggestionViewController"},
-                         @{@"cell":@"关于",@"img":@""},
+                         @{@"cell":@"关于",@"img":@"",@"controller":@"AboutViewController"},
                          @{@"cell":@"退出登录",@"img":@""},
                         ]
                        mutableCopy];
