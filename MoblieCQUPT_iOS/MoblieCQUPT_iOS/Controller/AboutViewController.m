@@ -50,7 +50,6 @@
 */
 
 - (void)clickToCopyRight {
-    qlog(@"2");
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"使用条款"
                                                     message:@"版权归红岩网校工作站所有，感谢您的使用"
                                                    delegate:self
@@ -60,12 +59,10 @@
 }
 
 - (void)clickToWebsite {
-    qlog(@"1");
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/"]];
 }
 
 - (void)clickToUpdate {
-    qlog(@"3");
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检查更新"
                                                     message:@"哎哟，这个功能好像还没做好哦，敬请期待"
                                                    delegate:self

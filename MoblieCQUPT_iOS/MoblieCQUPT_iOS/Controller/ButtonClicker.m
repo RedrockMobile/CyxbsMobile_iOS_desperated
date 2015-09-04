@@ -15,7 +15,7 @@
 {
     DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
-    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
+    dataBundle.postParams = [Config paramWithStuNum:self.stuNum IdNum:self.idNum];
     [dataBundle httpPostForSchedule:API_EXAM_SCHEDULE];
 }
 
@@ -23,7 +23,7 @@
 {
     DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
-    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
+    dataBundle.postParams = [Config paramWithStuNum:self.stuNum IdNum:self.idNum];
     [dataBundle httpPostForSchedule:API_REEXAM_SCHEDULE];
 }
 
@@ -31,7 +31,7 @@
 {
     DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
-    dataBundle.postParams = [Config paramWithStuNum:TEST_STU_NUM IdNum:TEST_ID_NUM];
+    dataBundle.postParams = [Config paramWithStuNum:self.stuNum IdNum:self.idNum];
     [dataBundle httpPostForGrade];
 }
 
