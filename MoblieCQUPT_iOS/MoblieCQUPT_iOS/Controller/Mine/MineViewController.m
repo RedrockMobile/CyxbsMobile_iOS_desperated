@@ -28,10 +28,10 @@
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[
                         @{@"cell":@"去哪吃",@"img":@""},
-                         @{@"cell":@"校历",@"img":@""},
-                         @{@"cell":@"反馈信息",@"img":@"",@"controller":@"SuggestionViewController"},
-                         @{@"cell":@"关于",@"img":@"",@"controller":@"AboutViewController"},
-                         @{@"cell":@"退出登录",@"img":@""},
+                         @{@"cell":@"校历",@"img":@"xiaoli.png"},
+                         @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
+                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
+                         @{@"cell":@"退出登录",@"img":@"tuichu.png"},
                         ]
                        mutableCopy];
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
@@ -147,11 +147,25 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"butttonCell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
-        cell.textLabel.text = _cellDictionary[indexPath.section][@"cell"];
+        UILabel *label = [[UILabel alloc] init];
+        
+
         [cell.detailTextLabel setFont:[UIFont fontWithName:@"Courier" size:20]];
-//        cell.detailTextLabel.textColor = [UIColor groupTableViewBackgroundColor];
+
         cell.detailTextLabel.text = @">";
-        cell.imageView.image = [UIImage imageNamed:@"icon_menu_2.png"];
+        UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
+        UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
+        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.06, MAIN_SCREEN_W*0.06);
+        imgView.center = CGPointMake(imgView.center.x, cell.center.y+8);
+        [cell addSubview:imgView];
+        
+        label.text = _cellDictionary[indexPath.section][@"cell"];
+        label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
+        [label sizeToFit];
+        label.center = CGPointMake(label.center.x, cell.center.y+8);
+        [cell addSubview:label];
+
+        
     }
     
     return cell;
