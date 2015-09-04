@@ -8,6 +8,8 @@
 
 #import "MineViewController.h"
 #import "ButtonClicker.h"
+#import "SuggestionViewController.h"
+#import "AboutViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
@@ -27,8 +29,8 @@
     _cellDictionary = [@[
                         @{@"cell":@"去哪吃",@"img":@""},
                          @{@"cell":@"校历",@"img":@""},
-                         @{@"cell":@"反馈信息",@"img":@""},
-                         @{@"cell":@"关于",@"img":@""},
+                         @{@"cell":@"反馈信息",@"img":@"",@"controller":@"SuggestionViewController"},
+                         @{@"cell":@"关于",@"img":@"",@"controller":@"AboutViewController"},
                          @{@"cell":@"退出登录",@"img":@""},
                         ]
                        mutableCopy];
@@ -37,7 +39,7 @@
     
     topView.backgroundColor = MAIN_COLOR;
     [self.view addSubview:topView];
-    self.navigationController.navigationBar.hidden = YES;
+
     
     [self.view addSubview:self.myPhoto];
     [self.view addSubview:self.loginLabel];
@@ -169,6 +171,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return (_tableView.frame.size.height-8*3-2)/5;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *className;
+    if ((className = _cellDictionary[indexPath.section][@"controller"])) {
+        
+        id viewController =  [[NSClassFromString(className) alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+   
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 @end
