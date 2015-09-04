@@ -1,4 +1,4 @@
-;//
+//
 //  main.m
 //  MoblieCQUPT_iOS
 //

@@ -38,6 +38,7 @@
 		CBE1C5471B8F4B74004E1A00 /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE1C5411B8F4B74004E1A00 /* MeCell.m */; };
 		CBE1C5481B8F4B74004E1A00 /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBE1C5421B8F4B74004E1A00 /* MeCell.xib */; };
 		CBE1C5491B8F4B74004E1A00 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE1C5441B8F4B74004E1A00 /* NewsViewController.m */; };
+		CE1BE9B91B98894E00F7B08A /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BE9B71B98894E00F7B08A /* SuggestionViewController.m */; };
 		CE35D7081B932700005BDEBA /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35D7071B932700005BDEBA /* MineViewController.m */; };
 		CE3FC9401B9702A6000085E5 /* SqliteCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3FC93F1B9702A6000085E5 /* SqliteCache.m */; };
 		CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5A1B87FF3900699E3E /* 40-3.png */; };
@@ -237,6 +238,8 @@
 		CBE1C5421B8F4B74004E1A00 /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeCell.xib; sourceTree = "<group>"; };
 		CBE1C5431B8F4B74004E1A00 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		CBE1C5441B8F4B74004E1A00 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		CE1BE9B61B98894E00F7B08A /* SuggestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionViewController.h; sourceTree = "<group>"; };
+		CE1BE9B71B98894E00F7B08A /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		CE35D7061B932700005BDEBA /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		CE35D7071B932700005BDEBA /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		CE3FC93E1B9702A6000085E5 /* SqliteCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteCache.h; sourceTree = "<group>"; };
@@ -642,6 +645,15 @@
 			path = News;
 			sourceTree = "<group>";
 		};
+		CE1BE9B51B98892700F7B08A /* Suggestion */ = {
+			isa = PBXGroup;
+			children = (
+				CE1BE9B61B98894E00F7B08A /* SuggestionViewController.h */,
+				CE1BE9B71B98894E00F7B08A /* SuggestionViewController.m */,
+			);
+			path = Suggestion;
+			sourceTree = "<group>";
+		};
 		CE35D7051B9326C3005BDEBA /* Mine */ = {
 			isa = PBXGroup;
 			children = (
@@ -898,6 +910,7 @@
 				CBE1C53C1B8F4B32004E1A00 /* News */,
 				E2FAB1121B8C7199005C5AE7 /* Finder */,
 				D9B5770A1B88742D005EFD18 /* TitleBase */,
+				CE1BE9B51B98892700F7B08A /* Suggestion */,
 				CEE837A41B855E9C00959779 /* Main */,
 			);
 			path = Controller;
@@ -1466,6 +1479,7 @@
 				E23827071B9477D80058970E /* CourseButton.m in Sources */,
 				E2FAB1541B8C738B005C5AE7 /* UIView+MJExtension.m in Sources */,
 				CE8159791B96A84C002CF7B2 /* FMDatabasePool.m in Sources */,
+				CE1BE9B91B98894E00F7B08A /* SuggestionViewController.m in Sources */,
 				CEF61B9F1B82DFA60014B980 /* UIAlertView+AFNetworking.m in Sources */,
 				D9B5772A1B88746A005EFD18 /* UPStackMenu.m in Sources */,
 				CE81597A1B96A84C002CF7B2 /* FMDatabaseQueue.m in Sources */,
