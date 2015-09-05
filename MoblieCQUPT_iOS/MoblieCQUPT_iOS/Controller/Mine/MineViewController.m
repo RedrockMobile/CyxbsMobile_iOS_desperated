@@ -124,11 +124,15 @@
 
 - (UIImageView *)myPhoto{
     if (!_myPhoto) {
-        _myPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
+        _myPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.6, MAIN_SCREEN_W*0.31)];
         _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
-        [_myPhoto setImage:[UIImage imageNamed:@"main_login.png"]];
-        _myPhoto.backgroundColor = [UIColor whiteColor];
-        _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
+        [_myPhoto setImage:[UIImage imageNamed:@"mobile.png"]];
+        _myPhoto.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.122];
+//        _myPhoto.layer.masksToBounds = YES;
+        _myPhoto.layer.cornerRadius = (_myPhoto.frame.size.width+_myPhoto.frame.size.height)/2;
+//        _myPhoto.layer.borderColor = [UIColor blueColor].CGColor;
+//        _myPhoto.layer.borderWidth = 1;
+        
     }
     return _myPhoto;
 }
