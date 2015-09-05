@@ -10,4 +10,9 @@
 
 @interface LoginEntry : NSObject
 
++ (BOOL)loginWithId:(NSString *)stuentId
+          passworld:(NSString *)passworld
+withDictionaryParam:(NSDictionary *)paramDictionary;
+
++ (BOOL)loginoutWithParamArrayString:(NSArray *) paramArray;
 @end
