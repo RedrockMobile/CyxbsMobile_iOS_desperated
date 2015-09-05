@@ -51,12 +51,18 @@
     
     NSArray *array = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
     for (int i = 0; i < 7; i ++) {
-        UILabel *dayLabel = [[UILabel alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 0, kWidthGrid, 30)];
+        UILabel *dayLabel = [[UILabel alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 1, kWidthGrid, 29)];
         dayLabel.text = [NSString stringWithFormat:@"%@",array[i]];
         dayLabel.textAlignment = NSTextAlignmentCenter;
         dayLabel.textColor = MAIN_COLOR;
-//        dayLabel.highlighted = YES;
-//        dayLabel.highlightedTextColor = [UIColor blueColor];
+        NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+        NSInteger weekDay = [componets weekday];
+        if (i == weekDay - 2) {
+            dayLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
+            dayLabel.layer.borderColor = MAIN_COLOR.CGColor;
+            dayLabel.layer.borderWidth = 1;
+            dayLabel.layer.cornerRadius = 3;
+        }
         [dayView addSubview:dayLabel];
     }
     
@@ -73,16 +79,17 @@
     
     _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
     _moreMenu.backgroundColor = [UIColor whiteColor];
+    _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
     _moreMenu.image = [UIImage imageNamed:@"iconfont-qita.png"];
     
     UPStackMenu *stack = [[UPStackMenu alloc] initWithContentView:_moreMenu];
     
-    UPStackMenuItem *item = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-caidan.png"] highlightedImage:[UIImage imageNamed:@"iconfont-caidan-selected.png"] title:@""];
+    UPStackMenuItem *item = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-meixueqi.png"] highlightedImage:[UIImage imageNamed:@"iconfont-meixueqi.png"]  title:@""];
     [item setTitleColor:[UIColor redColor]];
     item.tag = 1;
     [stack addItem:item];
     
-    UPStackMenuItem *item1 = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-caidan.png"] highlightedImage:[UIImage imageNamed:@"iconfont-caidan-selected.png"] title:@""];
+    UPStackMenuItem *item1 = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_meizhou"] highlightedImage:[UIImage imageNamed:@"iconfont_meizhou"] title:@""];
     [stack addItem:item1];
     item1.tag = 2;
     [self.view addSubview:stack];
@@ -95,21 +102,19 @@
 
 
 - (void)didTouchStackMenuItem:(UPStackMenuItem *)item {
+    for (int i = 0; i < _buttonTag.count; i ++) {
+        [_buttonTag[i] removeFromSuperview];
+    }
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     if (item.tag == 1) {
         //查询学期课程
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSArray *dataArray = [userDefault objectForKey:@"dataArray"];
         [self handleWeek:dataArray];
     }else if (item.tag == 2) {
         //查询本周课程
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        [userDefault removeObjectForKey:@"stuNum"];
-        [userDefault removeObjectForKey:@"idNum"];
-        [userDefault removeObjectForKey:@"dataArray"];
-        [userDefault removeObjectForKey:@"time"];
-        [userDefault synchronize];
-        LoginViewController *login = [[LoginViewController alloc]init];
-        [self presentViewController:login animated:YES completion:nil];
+        NSArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
+        [self handleWeek:weekDataArray];
+
     }
 }
 
@@ -122,7 +127,13 @@
     [_parameter setObject:stuNum forKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
         _dataArray = [returnValue objectForKey:@"data"];
+        NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
+        [_parameter setObject:nowWeek forKey:@"week"];
+        [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
+            _weekDataArray = [returnValue objectForKey:@"data"];
+        } WithFailureBlock:nil];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
+        [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
         [userDefault synchronize];
         [self handleWeek:_dataArray];
     } WithFailureBlock:nil];
@@ -187,6 +198,7 @@
 
 - (void)handleData:(NSMutableArray *)courses {
     NSInteger currentTag = -1;
+    _buttonTag = [NSMutableArray array];
     if (courses.count > 0) {
         int currentBegin = 0;
         int currentDay = 0;
@@ -199,15 +211,17 @@
             if (rowNum == currentBegin && colNum == currentDay) {
                 UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-17, kWidthGrid*rowNum+kWidthGrid*period-17, 16, 16)];
                 tagView.image = [UIImage imageNamed:@"iconfont-tag.png"];
+                [_buttonTag addObject:tagView];
                 [_mainScrollView addSubview:tagView];
                 if (currentTag!=-1) {
                     [self.registRepeatClassSet addObject:[NSNumber numberWithInteger:currentTag]];
                     [self.registRepeatClassSet addObject:[NSNumber numberWithInteger:currentTag+1]];
                 }
             }else {
-                CourseButton *courseButton = [[CourseButton alloc] initWithFrame:CGRectMake((colNum-0.5)*kWidthGrid+1, kWidthGrid*rowNum+1, kWidthGrid-1, kWidthGrid*period-1)];
+                CourseButton *courseButton = [[CourseButton alloc] initWithFrame:CGRectMake((colNum-0.5)*kWidthGrid+1, kWidthGrid*rowNum+1, kWidthGrid-2, kWidthGrid*period-2)];
                 [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@",course.course,course.classroom,course.rawWeek]forState:UIControlStateNormal];
                 courseButton.tag = i;
+                [_buttonTag addObject:courseButton];
                 courseButton.backgroundColor = [self handleRandomColorStr:course.color];
                 [courseButton addTarget:self action:@selector(courseClick:) forControlEvents:UIControlEventTouchUpInside];
                 [_mainScrollView addSubview:courseButton];
