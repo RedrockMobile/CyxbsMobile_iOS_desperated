@@ -7,12 +7,18 @@
 //
 
 #import "MineViewController.h"
+#import "ButtonClicker.h"
+#import "SuggestionViewController.h"
+#import "AboutViewController.h"
+#import "ShakeViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
 @property (strong, nonatomic) UILabel *loginLabel;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
+@property (strong, nonatomic) ButtonClicker *clicker;
+@property (strong, nonatomic) NSMutableArray *cellDictionary;
 @end
 
 @implementation MineViewController
@@ -20,24 +26,61 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentHeight = 0;
+    _cellDictionary = [NSMutableArray array];
+    _cellDictionary = [@[
+                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
+                         @{@"cell":@"校历",@"img":@"iconfont77.png",@"controller":@"CalendarViewController"},
+                         @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
+                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
+                         @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
+                        ]
+                       mutableCopy];
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
     _currentHeight += topView.frame.size.height;
     
-    topView.backgroundColor = MAIN_COLOR;
+    topView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:topView];
-    self.navigationController.navigationBar.hidden = YES;
+
     
     [self.view addSubview:self.myPhoto];
     [self.view addSubview:self.loginLabel];
     
+    /**button **/
+    self.clicker = [[ButtonClicker alloc]init];
+    self.clicker.delegate = self;
+    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
+    NSArray *text = @[@"考试安排",@"补考查询",@"期末成绩",@"找自习室"];
+//     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
+    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
+        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+    
     //button
     for (int i=0; i<4; i++) {
-        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
-        button.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        button.layer.borderWidth = 1;
-        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",i+1]] forState:UIControlStateNormal];
+        UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
+        labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+        labelButton.layer.borderWidth = 1;
+        UIImage *stretchableButtonImage = [[UIImage imageNamed:tempStrArr[i]]  stretchableImageWithLeftCapWidth:0  topCapHeight:0];
+//        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
+        UIImageView *buttonView = [[UIImageView alloc] initWithImage:stretchableButtonImage];
+        CGRect contentFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+        buttonView.frame = contentFrame;
+        buttonView.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2 +8 -  buttonView.frame.size.height/2);
+        [labelButton addSubview:buttonView];
         
-        [self.view addSubview:button];
+        CGRect textFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.04, MAIN_SCREEN_W*0.04);
+        UILabel *textLabel = [[UILabel alloc]initWithFrame:textFrame];
+        textLabel.text = text[i];
+        [textLabel setFont:[UIFont fontWithName:@"GeezaPro" size:12]];
+        [textLabel sizeToFit];
+        textLabel.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2+12+textLabel.frame.size.height/2);
+        [labelButton addSubview:buttonView];
+       
+        
+        [labelButton addSubview:textLabel];
+        /**/
+        [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:labelButton];
     }
     
     _currentHeight += MAIN_SCREEN_H*0.1;
@@ -46,6 +89,22 @@
     _currentHeight += _tableView.frame.size.height;
     
     
+    
+    
+    
+    
+    for (NSString* family in [UIFont familyNames])
+    {
+       
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            if ([name  isEqual: @"uxIconFont"]) {
+                NSLog(@"  %@", name);
+            }
+            
+        }
+    }
 }
 
 - (UITableView *)tableView{
@@ -106,11 +165,25 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"butttonCell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
-        cell.textLabel.text = @"我的消息";
+        UILabel *label = [[UILabel alloc] init];
+        
+
         [cell.detailTextLabel setFont:[UIFont fontWithName:@"Courier" size:20]];
-//        cell.detailTextLabel.textColor = [UIColor groupTableViewBackgroundColor];
+
         cell.detailTextLabel.text = @">";
-        cell.imageView.image = [UIImage imageNamed:@"icon_menu_2.png"];
+        UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
+        UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
+        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.06, MAIN_SCREEN_W*0.06);
+        imgView.center = CGPointMake(imgView.center.x, cell.center.y+8);
+        [cell addSubview:imgView];
+        
+        label.text = _cellDictionary[indexPath.section][@"cell"];
+        label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
+        [label sizeToFit];
+        label.center = CGPointMake(label.center.x, cell.center.y+8);
+        [cell addSubview:label];
+
+        
     }
     
     return cell;
@@ -130,6 +203,21 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return (_tableView.frame.size.height-8*3-2)/5;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSString *className;
+    if ((className = _cellDictionary[indexPath.section][@"controller"])) {
+        
+        id viewController =  [[NSClassFromString(className) alloc] init];
+        [self.navigationController pushViewController:viewController animated:YES];
+    }
+   
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 @end

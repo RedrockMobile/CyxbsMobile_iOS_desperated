@@ -37,7 +37,7 @@
 //覆盖初始化方法
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 100, MAIN_SCREEN_W-20*2, MAIN_SCREEN_H/2)];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 90, MAIN_SCREEN_W-20*2, MAIN_SCREEN_H/2)];
         NSLog(@"%@",_shopId);
         [self dataFlash];
         _tableView.delegate = self;
