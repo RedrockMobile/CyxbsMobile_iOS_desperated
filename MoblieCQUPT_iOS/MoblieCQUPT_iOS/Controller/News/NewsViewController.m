@@ -14,11 +14,13 @@
 
 @interface NewsViewController ()<UITableViewDataSource,UITableViewDelegate>
 
-@property(strong,nonatomic)UIRefreshControl *refresh;
-@property (strong,nonatomic)NSMutableDictionary *data;
-@property (strong,nonatomic)UITableView  *tableView;
-@property (strong, nonatomic)NSMutableArray *BothData;
-@property (assign, nonatomic)NSInteger flag;
+@property (strong,nonatomic) UIRefreshControl *refresh;
+@property (strong,nonatomic) NSMutableDictionary *data;
+@property (strong,nonatomic) UITableView  *tableView;
+@property (strong, nonatomic) NSMutableArray *BothData;
+@property (assign, nonatomic) NSInteger flag;
+
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
 @end
 
@@ -28,7 +30,6 @@
   
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"教务信息";
-    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0 green:90 blue:50 alpha:1];
     [super viewDidLoad];
     _flag = 1;
     [self setupRefresh];
@@ -115,17 +116,14 @@
         cell = [[MeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
         cell.backview.layer.cornerRadius = 10;
-//    cell.backview.layer.shadowColor = [[UIColor blueColor]CGColor];
-//    cell.backview.layer.shadowRadius = 4.0;
-//    cell.backview.layer.shadowOffset = CGSizeMake(4, 4);
+
     cell.toplable.text = _BothData[indexPath.section][@"title"];
     cell.daylable.text = _BothData[indexPath.section][@"date"];
      cell.timelabel.text = _BothData[indexPath.section][@"read"];
     cell.specificlable.text = _BothData[indexPath.section][@"newsContent"];
     cell.backgroundColor=[UIColor clearColor];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
-//    NSLog(@"%@",_BothData[indexPath.section]);
-//     cell.specificlable.text = self.data[@"data"][indexPath.section][@"id"];
+
     return cell;
 }
 
