@@ -209,7 +209,8 @@
     NSString *className;
     if ((className = _cellDictionary[indexPath.section][@"controller"])) {
         
-        id viewController =  [[NSClassFromString(className) alloc] init];
+        UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
+        viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
         [self.navigationController pushViewController:viewController animated:YES];
     }
    
