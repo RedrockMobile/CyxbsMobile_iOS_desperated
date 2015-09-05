@@ -40,8 +40,6 @@
 		CE1B36E01B9A1B6800824B96 /* new_icon_menu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DA1B9A1B6800824B96 /* new_icon_menu_2.png */; };
 		CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */; };
 		CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */; };
-		CE1B36E31B9A1B6800824B96 /* new_icon_menu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DD1B9A1B6800824B96 /* new_icon_menu_4.png */; };
-		CE1B36E41B9A1B6800824B96 /* new_icon_menu_6.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DE1B9A1B6800824B96 /* new_icon_menu_6.png */; };
 		CE1B36E81B9A1F6F00824B96 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1B36E71B9A1F6F00824B96 /* CalendarViewController.m */; };
 		CE1B36EA1B9A207100824B96 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36E91B9A207100824B96 /* calendar.png */; };
 		CE1BE9B91B98894E00F7B08A /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1BE9B71B98894E00F7B08A /* SuggestionViewController.m */; };
@@ -52,9 +50,7 @@
 		CE30FDE01B9968C000C15AD4 /* kaoshichaxun.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD31B9968C000C15AD4 /* kaoshichaxun.png */; };
 		CE30FDE11B9968C000C15AD4 /* icon_menu_new1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD41B9968C000C15AD4 /* icon_menu_new1.png */; };
 		CE30FDE21B9968C000C15AD4 /* kongjiaoshichaxun.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD51B9968C000C15AD4 /* kongjiaoshichaxun.png */; };
-		CE30FDE31B9968C000C15AD4 /* icon_menu_new4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD61B9968C000C15AD4 /* icon_menu_new4.png */; };
 		CE30FDE41B9968C000C15AD4 /* tuichu.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD71B9968C000C15AD4 /* tuichu.png */; };
-		CE30FDE61B9968C000C15AD4 /* icon_menu_new3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD91B9968C000C15AD4 /* icon_menu_new3.png */; };
 		CE30FDE71B9968C000C15AD4 /* zuobiao.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDDA1B9968C000C15AD4 /* zuobiao.png */; };
 		CE35D7081B932700005BDEBA /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35D7071B932700005BDEBA /* MineViewController.m */; };
 		CE3FC9401B9702A6000085E5 /* SqliteCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3FC93F1B9702A6000085E5 /* SqliteCache.m */; };
@@ -77,6 +73,7 @@
 		CE8159791B96A84C002CF7B2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159711B96A84C002CF7B2 /* FMDatabasePool.m */; };
 		CE81597A1B96A84C002CF7B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159731B96A84C002CF7B2 /* FMDatabaseQueue.m */; };
 		CE81597B1B96A84C002CF7B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159761B96A84C002CF7B2 /* FMResultSet.m */; };
+		CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */; };
 		CEC96BD01B9AC6270047648A /* new_icon_menu_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC96BCF1B9AC6270047648A /* new_icon_menu_5.png */; };
 		CEC96BD21B9AC6F90047648A /* 0960.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEC96BD11B9AC6F90047648A /* 0960.jpg */; };
 		CEC96BD81B9ACB110047648A /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC96BD71B9ACB110047648A /* mobile.png */; };
@@ -322,6 +319,8 @@
 		CE8159741B96A84C002CF7B2 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		CE8159751B96A84C002CF7B2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		CE8159761B96A84C002CF7B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		CEC93BDE1B9B114500AC9E00 /* LoginEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginEntry.h; sourceTree = "<group>"; };
+		CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginEntry.m; sourceTree = "<group>"; };
 		CEC96BCF1B9AC6270047648A /* new_icon_menu_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_5.png; sourceTree = "<group>"; };
 		CEC96BD11B9AC6F90047648A /* 0960.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0960.jpg; sourceTree = "<group>"; };
 		CEC96BD71B9ACB110047648A /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
@@ -838,6 +837,15 @@
 			path = fmdb;
 			sourceTree = "<group>";
 		};
+		CEC93BDD1B9B112900AC9E00 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CEC93BDE1B9B114500AC9E00 /* LoginEntry.h */,
+				CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		CEE1E2231B99A0D80088EC7C /* ButtonView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,6 +1069,7 @@
 		CEF61B631B82C02E0014B980 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				CEC93BDD1B9B112900AC9E00 /* Login */,
 				3B37F0AE1B8C4691009C1E94 /* We */,
 				CEE837B41B86C35000959779 /* NetWork */,
 			);
@@ -1460,10 +1469,7 @@
 				3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */,
 				E2D31A4A1B9ADCA500E1F5A8 /* 我要创业.png in Resources */,
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
-				E28C85B81B8F6D8800F9CA82 /* 晒秘密.png in Resources */,
 				CEE1E2221B999C3E0088EC7C /* icon_menu_5.png in Resources */,
-				E20789FF1B91CDC90048B83A /* 我要创业.png in Resources */,
-				E2E7DE201B94719D0081F699 /* CommunityViewController.xib in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
 				E2D31A4D1B9ADCA500E1F5A8 /* 红岩门户.png in Resources */,
 				E2D31A541B9ADCA500E1F5A8 /* ShakeViewController.xib in Resources */,
@@ -1506,6 +1512,7 @@
 				E2E7DE411B9476810081F699 /* iconfont-wenjian.png in Resources */,
 				CEE1E2281B99AFF00088EC7C /* tuichu_red.png in Resources */,
 				CEC96BD81B9ACB110047648A /* mobile.png in Resources */,
+				E2D31A481B9ADCA500E1F5A8 /* 周边美食.png in Resources */,
 				CEF61B391B82BC950014B980 /* Main.storyboard in Resources */,
 				CEF2738A1B90D573009B5BA2 /* 20-2补考.png in Resources */,
 				E2FAB14F1B8C738B005C5AE7 /* MJRefreshExample-Info.plist in Resources */,
@@ -1554,8 +1561,6 @@
 				CE30FDDC1B9968C000C15AD4 /* chenjichaxun.png in Resources */,
 				CEF273911B90D573009B5BA2 /* 20-3w.png in Resources */,
 				3B37F0A51B8C45F8009C1E94 /* Pods.debug.xcconfig in Resources */,
-				E28C85B61B8F6D8800F9CA82 /* 摇一摇.png in Resources */,
-				E28C85C51B8F74F900F9CA82 /* 重邮美景2.jpg in Resources */,
 				D99C4A841B9AB70200BEF33C /* iconfont_meizhou.png in Resources */,
 				E28BAE781B91B0E300EC4964 /* 20-3c.png in Resources */,
 				E2D31A4C1B9ADCA500E1F5A8 /* 晒秘密.png in Resources */,
@@ -1564,11 +1569,6 @@
 				CEF273871B90D573009B5BA2 /* 20-2c.png in Resources */,
 				CEF273931B90D573009B5BA2 /* 20-3餐厅psd.png in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
-				E2FAB1301B8C7199005C5AE7 /* WebViewController.xib in Resources */,
-				E28C85C41B8F74F900F9CA82 /* 重邮美景1.jpg in Resources */,
-				E2B744111B93160A00F46575 /* ButtonView.xib in Resources */,
-				E28C85B51B8F6D8800F9CA82 /* 周边美食.png in Resources */,
-				E28C85BA1B8F6D8800F9CA82 /* 重邮地图.png in Resources */,
 				D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */,
 				3B37F0A61B8C45F8009C1E94 /* Pods.release.xcconfig in Resources */,
 				CEF2738C1B90D573009B5BA2 /* 20-3-2.png in Resources */,
@@ -1612,6 +1612,7 @@
 				3BBB58671B8F3DE90099EC58 /* ScheduleTableViewCell.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				E2D31A511B9ADCA500E1F5A8 /* WebViewController.m in Sources */,
+				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
 				CE8159781B96A84C002CF7B2 /* FMDatabaseAdditions.m in Sources */,
 				E2FAB1501B8C738B005C5AE7 /* MJRefreshFooterView.m in Sources */,
 				CEF61B831B82DF9A0014B980 /* AFHTTPSessionManager.m in Sources */,
