@@ -184,13 +184,13 @@
         UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
         imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.06, MAIN_SCREEN_W*0.06);
-        imgView.center = CGPointMake(imgView.center.x, cell.center.y+8);
+        imgView.center = CGPointMake(imgView.center.x, cell.center.y);
         [cell addSubview:imgView];
         
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
         [label sizeToFit];
-        label.center = CGPointMake(label.center.x, cell.center.y+8);
+        label.center = CGPointMake(label.center.x, cell.center.y);
         [cell addSubview:label];
 
         
