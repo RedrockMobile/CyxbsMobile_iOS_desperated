@@ -11,6 +11,7 @@
 #import "SuggestionViewController.h"
 #import "AboutViewController.h"
 #import "ShakeViewController.h"
+#import "LoginEntry.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
@@ -216,6 +217,8 @@
         UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
         viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
         [self.navigationController pushViewController:viewController animated:YES];
+    }else if (indexPath.section == 4){
+        [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray"]];
     }
    
 }
