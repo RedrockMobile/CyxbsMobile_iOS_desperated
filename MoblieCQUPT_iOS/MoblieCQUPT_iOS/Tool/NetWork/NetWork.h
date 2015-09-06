@@ -53,5 +53,5 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
                    //WithErrorCodeBlock: (ErrorCode) errorBlock
                      WithFailureBlock: (FailureFunction) failureBlock;
 
-
++ (BOOL) netWorkReachability:(NSString *) strUrl;
 @end

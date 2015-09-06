@@ -30,6 +30,7 @@
             self.weekBegin = [dic objectForKey:@"weekBegin"];
             self.weekEnd = [dic objectForKey:@"weekEnd"];
             self.color = [dic objectForKey:@"color"];
+            self.courseTitle = [dic objectForKey:@"courseTitle"];
         }
     }
     return self;
@@ -52,6 +53,7 @@
     result = [result stringByAppendingFormat:@"weekBegin: %@\n",self.weekBegin];
     result = [result stringByAppendingFormat:@"weekEnd: %@\n",self.weekEnd];
     result = [result stringByAppendingFormat:@"color: %@\n",self.color];
+    result = [result stringByAppendingFormat:@"courseTitle: %@\n",self.courseTitle];
     return result;
 }
 
