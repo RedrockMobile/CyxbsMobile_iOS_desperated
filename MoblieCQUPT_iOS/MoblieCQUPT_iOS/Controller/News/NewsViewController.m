@@ -123,9 +123,13 @@
     cell.daylable.text = _BothData[indexPath.section][@"date"];
      cell.timelabel.text = _BothData[indexPath.section][@"read"];
     cell.specificlable.text = _BothData[indexPath.section][@"newsContent"];
-
+    if (indexPath.section %2 ==0) {
+        cell.backview.backgroundColor  = RGBColor(255, 232, 186, 0.1);
+    }else{
+        cell.backview.backgroundColor  = RGBColor(65, 141, 122, 0.1);
+    }
 //    cell.backgroundColor=[UIColor orangeColor];
-//    cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
 
     return cell;
 }
