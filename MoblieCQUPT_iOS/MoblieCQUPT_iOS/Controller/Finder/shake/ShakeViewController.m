@@ -28,6 +28,11 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 -(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     NSLog(@"began");
     
