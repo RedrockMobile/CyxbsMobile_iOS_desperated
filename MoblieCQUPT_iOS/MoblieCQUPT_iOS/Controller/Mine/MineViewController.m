@@ -12,6 +12,7 @@
 #import "AboutViewController.h"
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
+#import "LoginViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UIImageView *myPhoto;
@@ -94,18 +95,18 @@
     
     
     
-    for (NSString* family in [UIFont familyNames])
-    {
-       
-        
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            if ([name  isEqual: @"uxIconFont"]) {
-                NSLog(@"  %@", name);
-            }
-            
-        }
-    }
+//    for (NSString* family in [UIFont familyNames])
+//    {
+//       
+//        
+//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+//        {
+//            if ([name  isEqual: @"uxIconFont"]) {
+//                NSLog(@"  %@", name);
+//            }
+//            
+//        }
+//    }
 }
 
 - (UITableView *)tableView{
@@ -125,12 +126,12 @@
 
 - (UIImageView *)myPhoto{
     if (!_myPhoto) {
-        _myPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.6, MAIN_SCREEN_W*0.31)];
+        _myPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.3, MAIN_SCREEN_W*0.3)];
         _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
         [_myPhoto setImage:[UIImage imageNamed:@"mobile.png"]];
-        _myPhoto.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.122];
+//        _myPhoto.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
 //        _myPhoto.layer.masksToBounds = YES;
-        _myPhoto.layer.cornerRadius = (_myPhoto.frame.size.width+_myPhoto.frame.size.height)/2;
+        _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
 //        _myPhoto.layer.borderColor = [UIColor blueColor].CGColor;
 //        _myPhoto.layer.borderWidth = 1;
         
@@ -141,9 +142,13 @@
 - (UILabel *)loginLabel{
     if (!_loginLabel) {
         _loginLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,MAIN_SCREEN_W/2, 0)];
-        _loginLabel.textColor = [UIColor greenColor];
-        NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc] initWithString:@"刘慧吱"];
-        [loginText addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 3)];
+        _loginLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+        
+        NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
+        NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc]
+                                                initWithString:[NSString stringWithFormat:@"欢迎您, %@",name]];
+        
+        [loginText addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 4)];
         _loginLabel.attributedText = loginText;
         _loginLabel.textAlignment = NSTextAlignmentCenter;
         
@@ -218,7 +223,11 @@
         viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
         [self.navigationController pushViewController:viewController animated:YES];
     }else if (indexPath.section == 4){
-        [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray"]];
+        
+        LoginViewController *login = [[LoginViewController alloc]init];
+        [self.navigationController presentViewController:login animated:YES completion:^{
+            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray"]];
+        }];
     }
    
 }

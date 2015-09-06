@@ -124,11 +124,11 @@
      cell.timelabel.text = _BothData[indexPath.section][@"read"];
     cell.specificlable.text = _BothData[indexPath.section][@"newsContent"];
     if (indexPath.section %2 ==0) {
-        cell.backview.backgroundColor  = RGBColor(255, 232, 186, 0.1);
+        cell.backview.backgroundColor  = RGBColor(255, 232, 186, 0.4);
     }else{
-        cell.backview.backgroundColor  = RGBColor(65, 141, 122, 0.1);
+        cell.backview.backgroundColor  = RGBColor(65, 141, 122, 0.15);
     }
-//    cell.backgroundColor=[UIColor orangeColor];
+    cell.backview.layer.cornerRadius = 1;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
 
     return cell;
