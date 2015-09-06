@@ -7,6 +7,7 @@
 //
 
 #import "SuggestionViewController.h"
+#import "ProgressHUD.h"
 
 @interface SuggestionViewController ()<UITextViewDelegate>
 @property (strong, nonatomic) UITextView *suggestText;
@@ -31,7 +32,7 @@
         _suggestText.layer.cornerRadius = 8;
         _suggestText.backgroundColor = [MAIN_COLOR colorWithAlphaComponent:0.2];
         _suggestText.contentSize = CGSizeMake(_suggestText.frame.size.width, _suggestText.frame.size.height);
-        _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+        _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
         _suggestText.delegate = self;
         
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -44,7 +45,7 @@
 
 - (UIBarButtonItem *)send{
     if (!_send) {
-        _send = [[UIBarButtonItem alloc]initWithTitle:@"反馈" style:UIBarButtonItemStylePlain target:self action:nil];
+        _send = [[UIBarButtonItem alloc]initWithTitle:@"反馈" style:UIBarButtonItemStylePlain target:self action:@selector(sendSuggest)];
     }
     return _send;
 }
@@ -72,6 +73,24 @@
     }
 }
 
+
+-(void)sendSuggest{
+    NSString *deviceInfo = [NSString stringWithFormat:@"iOS:%@+H:%f+W:%f",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],MAIN_SCREEN_H,MAIN_SCREEN_W];
+    NSDictionary *dic = @{
+                        @"paw":@"cyxbs_suggestion",
+                        @"deviceInfo":deviceInfo,
+                        @"content":self.suggestText.text,
+                        };
+    [ProgressHUD show:@"反馈中..."];
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion" WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
+        [ProgressHUD showSuccess:@"反馈成功"];
+//        NSLog(@"%@",returnValue);
+        _suggestText.text = @"";
+    } WithFailureBlock:^{
+        [ProgressHUD showError:@"网络故障!"];
+    }];
+
+}
 /*
 #pragma mark - Navigation
 

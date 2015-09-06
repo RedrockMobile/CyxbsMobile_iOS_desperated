@@ -30,7 +30,7 @@ static Boolean isClick = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self findButtonInit];
-    NSArray *item = @[@"我的课程",@"发现",@"查询",@"知重邮",@"我的"];
+    NSArray *item = @[@"我的课程",@"发现",@"查询",@"教务重邮",@"我的"];
     int whichVc = 0;
     self.tabBar.tintColor = MAIN_COLOR;
     
@@ -39,8 +39,8 @@ static Boolean isClick = NO;
 
         if ([vc respondsToSelector:@selector(viewControllers)]) {
             [[vc viewControllers][0] navigationItem].title = item[whichVc];
-            [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
-            
+            [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_icon_menu_%d.png",whichVc+1]]];
+
             vc.navigationBar.tintColor = [UIColor lightTextColor];
             vc.navigationBar.barTintColor = [UIColor orangeColor];
         }

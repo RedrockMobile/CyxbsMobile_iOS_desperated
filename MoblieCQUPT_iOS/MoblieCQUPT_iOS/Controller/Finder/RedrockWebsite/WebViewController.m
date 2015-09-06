@@ -24,14 +24,11 @@
     _indicatorView.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H);
     [_indicatorView setCenter:CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H/2)];
     [self.view addSubview:_indicatorView];
+    [_indicatorView startAnimating];
     
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/portal/"]]];
     
     _webView.scalesPageToFit = YES;
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [_indicatorView startAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

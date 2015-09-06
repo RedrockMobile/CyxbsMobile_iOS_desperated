@@ -19,7 +19,9 @@
 @property (strong, nonatomic)NSMutableArray *colorArray;
 @property (strong, nonatomic)NSMutableSet *registRepeatClassSet;
 @property (strong, nonatomic)NSArray *dataArray;
+@property (strong, nonatomic)NSArray *weekDataArray;
 @property (strong, nonatomic)UIImageView *moreMenu;
+@property (strong, nonatomic)NSMutableArray *buttonTag;
 
 @property (strong, nonatomic) UIView *backgroundView;
 @property (strong, nonatomic) UIPageControl *page;
