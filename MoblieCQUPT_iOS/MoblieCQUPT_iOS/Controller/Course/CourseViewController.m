@@ -114,7 +114,6 @@
         //查询本周课程
         NSArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
         [self handleWeek:weekDataArray];
-
     }
 }
 
