@@ -36,6 +36,7 @@
 		3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58731B8F6EA10099EC58 /* iconfont.ttf */; };
 		3BD2644A1B8EDD8700B291A0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BD264471B8EDD8700B291A0 /* ProgressHUD.bundle */; };
 		3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD264491B8EDD8700B291A0 /* ProgressHUD.m */; };
+		CE1401341B9BE5CC00C4C7B7 /* new_icon_menu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1401331B9BE5CC00C4C7B7 /* new_icon_menu_4.png */; };
 		CE1B36DF1B9A1B6800824B96 /* new_icon_menu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36D91B9A1B6800824B96 /* new_icon_menu_1.png */; };
 		CE1B36E01B9A1B6800824B96 /* new_icon_menu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DA1B9A1B6800824B96 /* new_icon_menu_2.png */; };
 		CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */; };
@@ -266,11 +267,11 @@
 		3BD264471B8EDD8700B291A0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		3BD264481B8EDD8700B291A0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		3BD264491B8EDD8700B291A0 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		CE1401331B9BE5CC00C4C7B7 /* new_icon_menu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_4.png; sourceTree = "<group>"; };
 		CE1B36D91B9A1B6800824B96 /* new_icon_menu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_1.png; sourceTree = "<group>"; };
 		CE1B36DA1B9A1B6800824B96 /* new_icon_menu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_2.png; sourceTree = "<group>"; };
 		CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_3.png; sourceTree = "<group>"; };
 		CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_3_press.png; sourceTree = "<group>"; };
-		CE1B36DD1B9A1B6800824B96 /* new_icon_menu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_4.png; sourceTree = "<group>"; };
 		CE1B36DE1B9A1B6800824B96 /* new_icon_menu_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_6.png; sourceTree = "<group>"; };
 		CE1B36E61B9A1F6F00824B96 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		CE1B36E71B9A1F6F00824B96 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
@@ -721,7 +722,7 @@
 				CE1B36DA1B9A1B6800824B96 /* new_icon_menu_2.png */,
 				CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */,
 				CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */,
-				CE1B36DD1B9A1B6800824B96 /* new_icon_menu_4.png */,
+				CE1401331B9BE5CC00C4C7B7 /* new_icon_menu_4.png */,
 				CE1B36DE1B9A1B6800824B96 /* new_icon_menu_6.png */,
 			);
 			path = Archive;
@@ -1522,6 +1523,7 @@
 				CE30FDE41B9968C000C15AD4 /* tuichu.png in Resources */,
 				E2D31A5C1B9ADCA500E1F5A8 /* ShopTableViewCell.xib in Resources */,
 				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
+				CE1401341B9BE5CC00C4C7B7 /* new_icon_menu_4.png in Resources */,
 				E2E7DE3C1B9476810081F699 /* iconfont-caidan.png in Resources */,
 				E2D31A601B9ADCA500E1F5A8 /* 重邮美景2.jpg in Resources */,
 				CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */,
