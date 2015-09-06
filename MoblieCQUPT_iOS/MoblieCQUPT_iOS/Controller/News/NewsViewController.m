@@ -40,7 +40,9 @@
             for (int i = 0; i<[self.data[@"data"] count]; i++) {
                 [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data[@"data"][i][@"id"]} WithReturnValeuBlock:^(id returnValue) {
                     NSMutableDictionary *dic = [self.data[@"data"][i] mutableCopy];
-                    [dic setValue:returnValue[@"data"][@"content"] forKey:@"newsContent"];
+                    NSString *contentDetil = returnValue[@"data"][@"content"];
+                    contentDetil = [contentDetil stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                    [dic setValue:contentDetil forKey:@"newsContent"];
                     [_BothData addObject:dic];
                     [_tableView reloadData];
                 } WithFailureBlock:nil];
@@ -115,13 +117,18 @@
     if (!cell) {
         cell = [[MeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
-        cell.backview.layer.cornerRadius = 10;
+        cell.backview.layer.cornerRadius = 0;
 
     cell.toplable.text = _BothData[indexPath.section][@"title"];
     cell.daylable.text = _BothData[indexPath.section][@"date"];
      cell.timelabel.text = _BothData[indexPath.section][@"read"];
     cell.specificlable.text = _BothData[indexPath.section][@"newsContent"];
-    cell.backgroundColor=[UIColor clearColor];
+    if (indexPath.section %2 ==0) {
+        cell.backview.backgroundColor  = RGBColor(255, 232, 186, 0.4);
+    }else{
+        cell.backview.backgroundColor  = RGBColor(65, 141, 122, 0.15);
+    }
+    cell.backview.layer.cornerRadius = 1;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
 
     return cell;

@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "NetWork.h"
 #import "CourseViewController.h"
+#import "LoginEntry.h"
 
 #define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 
@@ -191,13 +192,18 @@
         }else {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
             [alert show];
-            NSDate *futureTime = [NSDate dateWithTimeIntervalSinceNow:60*60*24*15];
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:_nameField.text forKey:@"stuNum"];
-            [userDefaults setObject:_passwordField.text forKey:@"idNum"];
-            [userDefaults setObject:futureTime forKey:@"time"];
-            [userDefaults setObject:_dataDic[@"data"][@"name"] forKey:@"name"];
-            [userDefaults synchronize];
+            NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
+            
+            [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
+            
+//            NSDate *futureTime = [NSDate dateWithTimeIntervalSinceNow:60*60*24*15];
+//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//            [userDefaults setObject:_nameField.text forKey:@"stuNum"];
+//            [userDefaults setObject:_passwordField.text forKey:@"idNum"];
+//            [userDefaults setObject:futureTime forKey:@"time"];
+//            [userDefaults setObject:_dataDic[@"data"][@"name"] forKey:@"name"];
+//            [userDefaults synchronize];
+
             
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
