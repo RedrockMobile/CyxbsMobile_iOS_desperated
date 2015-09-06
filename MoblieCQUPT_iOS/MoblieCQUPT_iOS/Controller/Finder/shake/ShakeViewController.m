@@ -16,6 +16,7 @@
 @interface ShakeViewController ()
 
 @property (strong, nonatomic)NSMutableArray *data;
+@property (strong, nonatomic)ShopDetailViewController *detailViewController;
 
 @end
 
@@ -23,8 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
-    [self becomeFirstResponder];
     
 }
 
@@ -54,13 +53,38 @@
             failLabel.textAlignment = NSTextAlignmentCenter;
             [self.view addSubview:failLabel];
         }];
-
     }
     
-    ShopDetailViewController *detailViewController = [[ShopDetailViewController alloc] init];
-    NSInteger randomNum = arc4random() % 40;
-    detailViewController.detailData = _data[randomNum];
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    NSLog(@"%@", _data);
+
+    [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
+    [self becomeFirstResponder];
+    
 }
+
+-(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    NSLog(@"began");
+    
+}
+-(void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    NSLog(@"cancel");
+}
+-(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    NSLog(@"end");
+    
+    if (!_detailViewController) {
+         _detailViewController = [[ShopDetailViewController alloc] init];
+    }
+    NSInteger randomNum = arc4random() % 40;
+    _detailViewController.detailData = _data[randomNum];
+    [self.navigationController pushViewController:_detailViewController animated:YES];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 
 @end

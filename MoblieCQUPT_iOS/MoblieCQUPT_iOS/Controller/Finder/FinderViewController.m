@@ -12,11 +12,13 @@
 #import "ChuangyeViewController.h"
 #import "ShakeViewController.h"
 #import "CommunityViewController.h"
+#import "MapViewController.h"
 
 #define kCount 3
 
 @interface FinderViewController ()<UIScrollViewDelegate>
 
+@property (strong, nonatomic) UIScrollView *mainScrollView;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIPageControl *pageControl;
 @property (strong, nonatomic) NSTimer *timer;
@@ -30,14 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *shakeButton;
 @property (weak, nonatomic) IBOutlet UIButton *communityButton;
 
-
-//@property (strong, nonatomic)UIButton *shopButton;
-//@property (strong, nonatomic)UIButton *webButton;
-//@property (strong, nonatomic)UIButton *introductionButton;
-//@property (strong, nonatomic)UIButton *mapButton;
-//@property (strong, nonatomic)UIButton *shakeButton;
-//@property (strong, nonatomic)UIButton *secretButton;
-
 @end
 
 @implementation FinderViewController
@@ -45,10 +39,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+    _mainScrollView.showsVerticalScrollIndicator = NO;
+    if (MAIN_SCREEN_W == 320 && MAIN_SCREEN_H == 480) {
+        _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H*1.2);
+    }else{
+        _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H);
+    }
+    [self.view addSubview:_mainScrollView];
+
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ButtonView" owner:self options:nil];
     _buttonsView = [nib objectAtIndex:0];
     _buttonsView.frame = CGRectMake(0, MAIN_SCREEN_W/1.5 + 64, MAIN_SCREEN_W, 300);
-    [self.view addSubview:_buttonsView];
+    [self.mainScrollView addSubview:_buttonsView];
+    
     //图片轮播
     self.automaticallyAdjustsScrollViewInsets = NO;//防止出现20或64的下移
     self.view.backgroundColor = [UIColor whiteColor];
@@ -117,8 +121,9 @@
 }
 
 - (void)enterMap{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://map.baidu.com/mobile/webapp/place/detail/qt=ninf&wd=%E9%87%8D%E5%BA%86%E9%82%AE%E7%94%B5%E5%A4%A7%E5%AD%A6&c=132&searchFlag=bigBox&version=5&exptype=dep&src_from=webapp_all_bigbox&nb_x=11868605&nb_y=3422975&center_rank=1&uid=844a750e01b56cba626858cd&industry=education&qid=9839006734857167438/showall=1&pos=0&da_ref=listclk&da_qrtp=11&detail_from=list&third_party=webapp-aladdin&vt=map"]];
-
+    MapViewController *mvc = [[MapViewController alloc] init];
+    [self.navigationController pushViewController:mvc
+                                         animated:YES];
 }
 
 - (void)enterShake{
@@ -140,7 +145,7 @@
         //初始化scrollView
         _scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, MAIN_SCREEN_W, MAIN_SCREEN_W/1.5)];
         _scrollView.backgroundColor=[UIColor yellowColor];
-        [self.view addSubview:_scrollView];
+        [self.mainScrollView addSubview:_scrollView];
         //设置scrollView的相关属性
         _scrollView.contentSize=CGSizeMake(kCount*_scrollView.bounds.size.width, 0);
         _scrollView.bounces=NO;
@@ -166,7 +171,7 @@
         //        _pageControl.pageIndicatorTintColor=[UIColor grayColor];
         //        _pageControl.currentPageIndicatorTintColor=[UIColor blackColor];
         //添加控件
-        [self.view addSubview:_pageControl];
+        [self.mainScrollView addSubview:_pageControl];
         //添加事件
         [_pageControl addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
     }

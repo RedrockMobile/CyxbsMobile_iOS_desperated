@@ -4,9 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CommunityViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController">
             <connections>
-                <outlet property="communityWebView" destination="pho-nh-nyw" id="5FL-DC-qP8"/>
+                <outlet property="mapWebView" destination="1zc-3v-g52" id="iMH-Pl-FVk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,20 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pho-nh-nyw">
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zc-3v-g52">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="pho-nh-nyw" secondAttribute="bottom" id="UBl-Yq-EDH"/>
-                <constraint firstAttribute="trailing" secondItem="pho-nh-nyw" secondAttribute="trailing" id="XtO-Wc-DMR"/>
-                <constraint firstItem="pho-nh-nyw" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="h4m-uO-EIZ"/>
-                <constraint firstItem="pho-nh-nyw" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="urM-3x-i9a"/>
+                <constraint firstItem="1zc-3v-g52" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="PjW-cI-ijC"/>
+                <constraint firstAttribute="trailing" secondItem="1zc-3v-g52" secondAttribute="trailing" id="fL1-wC-769"/>
+                <constraint firstItem="1zc-3v-g52" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qGH-vT-q6E"/>
+                <constraint firstAttribute="bottom" secondItem="1zc-3v-g52" secondAttribute="bottom" id="tA1-Ew-E0o"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="260.5" y="381.5"/>
+            <point key="canvasLocation" x="270.5" y="382.5"/>
         </view>
     </objects>
 </document>

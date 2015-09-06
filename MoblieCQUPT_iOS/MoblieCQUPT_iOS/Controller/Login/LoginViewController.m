@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "NetWork.h"
 #import "CourseViewController.h"
+#import "LoginEntry.h"
 
 #define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 
@@ -81,10 +82,26 @@
     _loginButton.layer.cornerRadius = 5.0;
     [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor colorWithRed:0/255.0 green:255/255.0 blue:255/255.0 alpha:1] forState:UIControlStateHighlighted];
-//    _loginButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.3];
-    _loginButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1];
-//    _loginButton.layer.borderColor = [UIColor whiteColor].CGColor;
-//    _loginButton.layer.borderWidth = 1.0;
+    _loginButton.backgroundColor = [UIColor grayColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.nameField];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.passwordField];
+}
+
+- (void)textChange {
+    if (_nameField.text.length == 10 && _passwordField.text.length == 6) {
+        _loginButton.enabled = YES;
+        [UIView animateWithDuration:0.8 animations:^{
+            _loginButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1];
+            [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } completion:nil];
+    }else {
+        _loginButton.enabled = NO;
+        [UIView animateWithDuration:0.8 animations:^{
+            _loginButton.backgroundColor = [UIColor grayColor];
+            [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        } completion:nil];
+    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
@@ -158,6 +175,12 @@
 
 - (IBAction)login:(UIButton *)sender {
     [self commonAnimation:0];
+    [UIView animateWithDuration:1.5 animations:^{
+        sender.backgroundColor = [UIColor colorWithRed:3/255.0 green:169/25.0 blue:244/255.0 alpha:1];
+        [sender setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+        [sender setTitle:@"登录中" forState:UIControlStateNormal];
+        
+    } completion:nil];
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setObject:_nameField.text forKey:@"stuNum"];
     [parameter setObject:_passwordField.text forKey:@"idNum"];
@@ -169,12 +192,18 @@
         }else {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
             [alert show];
-            NSDate *futureTime = [NSDate dateWithTimeIntervalSinceNow:60*60*24*15];
-            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-            [userDefaults setObject:_nameField.text forKey:@"stuNum"];
-            [userDefaults setObject:_passwordField.text forKey:@"idNum"];
-            [userDefaults setObject:futureTime forKey:@"time"];
-            [userDefaults synchronize];
+            NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
+            
+            [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
+            
+//            NSDate *futureTime = [NSDate dateWithTimeIntervalSinceNow:60*60*24*15];
+//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//            [userDefaults setObject:_nameField.text forKey:@"stuNum"];
+//            [userDefaults setObject:_passwordField.text forKey:@"idNum"];
+//            [userDefaults setObject:futureTime forKey:@"time"];
+//            [userDefaults setObject:_dataDic[@"data"][@"name"] forKey:@"name"];
+//            [userDefaults synchronize];
+
             
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
@@ -183,6 +212,12 @@
     } WithFailureBlock:^{
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请检查你的网络连接" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
         [alert show];
+        [UIView animateWithDuration:1.5 animations:^{
+            sender.backgroundColor = MAIN_COLOR;
+            [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [sender setTitle:@"登录" forState:UIControlStateNormal];
+            
+        } completion:nil];
         NSLog(@"请求失败");
     }];
     
