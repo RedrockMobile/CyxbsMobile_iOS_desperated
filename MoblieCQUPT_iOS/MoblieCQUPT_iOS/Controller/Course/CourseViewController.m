@@ -93,7 +93,7 @@
     _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
     _moreMenu.backgroundColor = [UIColor whiteColor];
     _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
-    _moreMenu.image = [UIImage imageNamed:@"iconfont-qita.png"];
+    _moreMenu.image = [UIImage imageNamed:@"iconfont-others2.png"];
     
     UPStackMenu *stack = [[UPStackMenu alloc] initWithContentView:_moreMenu];
     

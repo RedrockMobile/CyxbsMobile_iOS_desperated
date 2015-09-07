@@ -13,6 +13,7 @@
 #import "EmptyRoomsViewController.h"
 #import "MainViewController.h"
 #import "ButtonClicker.h"
+#import "Config.h"
 
 @interface MainViewController () <UITabBarControllerDelegate,UITabBarDelegate>
 @property (strong, nonatomic) NSMutableArray *btnArray;
@@ -42,7 +43,12 @@ static Boolean isClick = NO;
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_icon_menu_%d.png",whichVc+1]]];
 
             vc.navigationBar.tintColor = [UIColor lightTextColor];
-            vc.navigationBar.barTintColor = [UIColor orangeColor];
+            vc.navigationBar.barTintColor = COLOR_NAVIGATIONBAR;
+            
+            vc.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+            vc.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+            vc.navigationBar.layer.shadowOpacity = 0.1f;
+            vc.navigationBar.layer.shadowRadius = 0.5f;
         }
         whichVc==1?whichVc+=2:whichVc++;
     }
