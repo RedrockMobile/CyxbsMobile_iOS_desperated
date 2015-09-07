@@ -183,14 +183,14 @@
         cell.detailTextLabel.text = @">";
         UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.06, MAIN_SCREEN_W*0.06);
-        imgView.center = CGPointMake(imgView.center.x, cell.center.y+8);
+        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+        imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
         [cell addSubview:imgView];
         
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
         [label sizeToFit];
-        label.center = CGPointMake(label.center.x, cell.center.y+8);
+        label.center = CGPointMake(label.center.x, cell.center.y+imgView.frame.size.height/4);
         [cell addSubview:label];
 
         
@@ -226,7 +226,7 @@
         
         LoginViewController *login = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:login animated:YES completion:^{
-            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray"]];
+            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
         }];
     }
    

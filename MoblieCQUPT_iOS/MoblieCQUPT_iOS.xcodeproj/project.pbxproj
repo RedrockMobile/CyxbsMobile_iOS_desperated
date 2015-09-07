@@ -130,7 +130,7 @@
 		CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFDE57C1B9C4D7900E772F0 /* mobile.png */; };
 		D99C4A841B9AB70200BEF33C /* iconfont_meizhou.png in Resources */ = {isa = PBXBuildFile; fileRef = D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */; };
 		D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */ = {isa = PBXBuildFile; fileRef = D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */; };
-		D99C4A871B9AB7F600BEF33C /* iconfont-qita.png in Resources */ = {isa = PBXBuildFile; fileRef = D99C4A861B9AB7F600BEF33C /* iconfont-qita.png */; };
+		D9A9532C1B9DA4F500D62690 /* iconfont-more.png in Resources */ = {isa = PBXBuildFile; fileRef = D9A9532B1B9DA4F500D62690 /* iconfont-more.png */; };
 		D9B577121B88742D005EFD18 /* TitleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */; };
 		D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */; };
 		D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */; };
@@ -190,8 +190,6 @@
 		E2E7DE2E1B9476730081F699 /* iconfont-iconfontzhanghu.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE2A1B9476730081F699 /* iconfont-iconfontzhanghu.png */; };
 		E2E7DE2F1B9476730081F699 /* iconfont-mima.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE2B1B9476730081F699 /* iconfont-mima.png */; };
 		E2E7DE3A1B9476810081F699 /* iconfont-biaoji.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE311B9476810081F699 /* iconfont-biaoji.png */; };
-		E2E7DE3B1B9476810081F699 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE321B9476810081F699 /* iconfont-caidan-selected.png */; };
-		E2E7DE3C1B9476810081F699 /* iconfont-caidan.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE331B9476810081F699 /* iconfont-caidan.png */; };
 		E2E7DE3D1B9476810081F699 /* iconfont-leixing.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE341B9476810081F699 /* iconfont-leixing.png */; };
 		E2E7DE3F1B9476810081F699 /* iconfont-shijian.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE361B9476810081F699 /* iconfont-shijian.png */; };
 		E2E7DE401B9476810081F699 /* iconfont-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE371B9476810081F699 /* iconfont-tag.png */; };
@@ -411,7 +409,7 @@
 		CEFDE57C1B9C4D7900E772F0 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
 		D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfont_meizhou.png; sourceTree = "<group>"; };
 		D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-meixueqi.png"; sourceTree = "<group>"; };
-		D99C4A861B9AB7F600BEF33C /* iconfont-qita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-qita.png"; sourceTree = "<group>"; };
+		D9A9532B1B9DA4F500D62690 /* iconfont-more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-more.png"; sourceTree = "<group>"; };
 		D9B5770B1B88742D005EFD18 /* TitleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBaseViewController.h; sourceTree = "<group>"; };
 		D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
 		D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
@@ -426,6 +424,7 @@
 		D9B577241B88746A005EFD18 /* UPStackMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPStackMenu.m; sourceTree = "<group>"; };
 		D9B577251B88746A005EFD18 /* UPStackMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPStackMenuItem.h; sourceTree = "<group>"; };
 		D9B577261B88746A005EFD18 /* UPStackMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPStackMenuItem.m; sourceTree = "<group>"; };
+		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E23827001B9477D80058970E /* CourseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseButton.h; sourceTree = "<group>"; };
 		E23827011B9477D80058970E /* CourseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseButton.m; sourceTree = "<group>"; };
 		E23827021B9477D80058970E /* CourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseView.h; sourceTree = "<group>"; };
@@ -495,8 +494,6 @@
 		E2E7DE2A1B9476730081F699 /* iconfont-iconfontzhanghu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-iconfontzhanghu.png"; sourceTree = "<group>"; };
 		E2E7DE2B1B9476730081F699 /* iconfont-mima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-mima.png"; sourceTree = "<group>"; };
 		E2E7DE311B9476810081F699 /* iconfont-biaoji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-biaoji.png"; sourceTree = "<group>"; };
-		E2E7DE321B9476810081F699 /* iconfont-caidan-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan-selected.png"; sourceTree = "<group>"; };
-		E2E7DE331B9476810081F699 /* iconfont-caidan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan.png"; sourceTree = "<group>"; };
 		E2E7DE341B9476810081F699 /* iconfont-leixing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-leixing.png"; sourceTree = "<group>"; };
 		E2E7DE361B9476810081F699 /* iconfont-shijian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-shijian.png"; sourceTree = "<group>"; };
 		E2E7DE371B9476810081F699 /* iconfont-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-tag.png"; sourceTree = "<group>"; };
@@ -916,6 +913,7 @@
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
+				D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */,
 				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
 				CEF273701B90CFAB009B5BA2 /* libz.dylib */,
 				CEF61B601B82BE1B0014B980 /* SDK */,
@@ -1346,12 +1344,10 @@
 		E2E7DE301B9476810081F699 /* CourseIcon */ = {
 			isa = PBXGroup;
 			children = (
-				D99C4A861B9AB7F600BEF33C /* iconfont-qita.png */,
+				D9A9532B1B9DA4F500D62690 /* iconfont-more.png */,
 				D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */,
 				D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */,
 				E2E7DE311B9476810081F699 /* iconfont-biaoji.png */,
-				E2E7DE321B9476810081F699 /* iconfont-caidan-selected.png */,
-				E2E7DE331B9476810081F699 /* iconfont-caidan.png */,
 				E2E7DE341B9476810081F699 /* iconfont-leixing.png */,
 				E2E7DE361B9476810081F699 /* iconfont-shijian.png */,
 				E2E7DE371B9476810081F699 /* iconfont-tag.png */,
@@ -1503,6 +1499,7 @@
 				E2E7DE2F1B9476730081F699 /* iconfont-mima.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,
+				D9A9532C1B9DA4F500D62690 /* iconfont-more.png in Resources */,
 				3B37F0A91B8C45F8009C1E94 /* Pods-UIColor+BFPaperColors.xcconfig in Resources */,
 				CEF2738E1B90D573009B5BA2 /* 20-3a.png in Resources */,
 				CEE1E22A1B99B0AF0088EC7C /* tuichu_red_blod.png in Resources */,
@@ -1523,17 +1520,14 @@
 				E2D31A5C1B9ADCA500E1F5A8 /* ShopTableViewCell.xib in Resources */,
 				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
 				CE1401341B9BE5CC00C4C7B7 /* new_icon_menu_4.png in Resources */,
-				E2E7DE3C1B9476810081F699 /* iconfont-caidan.png in Resources */,
 				E2D31A601B9ADCA500E1F5A8 /* 重邮美景2.jpg in Resources */,
 				CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */,
 				E238270A1B9477D80058970E /* CourseViewController.xib in Resources */,
 				D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */,
 				3B37F0A81B8C45F8009C1E94 /* Pods-UIColor+BFPaperColors-Private.xcconfig in Resources */,
 				3B37F0A21B8C45F8009C1E94 /* Pods-acknowledgements.plist in Resources */,
-				D99C4A871B9AB7F600BEF33C /* iconfont-qita.png in Resources */,
 				CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */,
 				E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */,
-				E2E7DE3B1B9476810081F699 /* iconfont-caidan-selected.png in Resources */,
 				E2E7DE401B9476810081F699 /* iconfont-tag.png in Resources */,
 				E2D31A0D1B9ADC9C00E1F5A8 /* MeCell.xib in Resources */,
 				CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */,
