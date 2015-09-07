@@ -22,6 +22,9 @@
 		3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B01B8C4691009C1E94 /* NSArray+We.m */; };
 		3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B21B8C4691009C1E94 /* NSString+We.m */; };
 		3B37F0B71B8C4691009C1E94 /* We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B41B8C4691009C1E94 /* We.m */; };
+		3B87D0A81B9D6F3D005A364D /* iconfont-qita.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B87D0A61B9D6F3D005A364D /* iconfont-qita.png */; };
+		3B87D0B21B9D7340005A364D /* iconfont-others.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B87D0B11B9D7340005A364D /* iconfont-others.png */; };
+		3B87D0B41B9D75F4005A364D /* iconfont-others2.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B87D0B31B9D75F4005A364D /* iconfont-others2.png */; };
 		3B9FD0AA1B985C380081A100 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0A91B985C380081A100 /* icon.png */; };
 		3B9FD0C11B98B7A90081A100 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */; };
 		3B9FD0C21B98B7A90081A100 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */; };
@@ -130,7 +133,6 @@
 		CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFDE57C1B9C4D7900E772F0 /* mobile.png */; };
 		D99C4A841B9AB70200BEF33C /* iconfont_meizhou.png in Resources */ = {isa = PBXBuildFile; fileRef = D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */; };
 		D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */ = {isa = PBXBuildFile; fileRef = D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */; };
-		D99C4A871B9AB7F600BEF33C /* iconfont-qita.png in Resources */ = {isa = PBXBuildFile; fileRef = D99C4A861B9AB7F600BEF33C /* iconfont-qita.png */; };
 		D9B577121B88742D005EFD18 /* TitleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */; };
 		D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */; };
 		D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */; };
@@ -244,6 +246,9 @@
 		3B37F0B21B8C4691009C1E94 /* NSString+We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+We.m"; sourceTree = "<group>"; };
 		3B37F0B31B8C4691009C1E94 /* We.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = We.h; sourceTree = "<group>"; };
 		3B37F0B41B8C4691009C1E94 /* We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = We.m; sourceTree = "<group>"; };
+		3B87D0A61B9D6F3D005A364D /* iconfont-qita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-qita.png"; sourceTree = "<group>"; };
+		3B87D0B11B9D7340005A364D /* iconfont-others.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-others.png"; sourceTree = "<group>"; };
+		3B87D0B31B9D75F4005A364D /* iconfont-others2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iconfont-others2.png"; path = "../LoginIconImage/iconfont-others2.png"; sourceTree = "<group>"; };
 		3B9FD0A91B985C380081A100 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Tool/icon.png; sourceTree = "<group>"; };
 		3B9FD0BE1B98B7A90081A100 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
@@ -411,7 +416,6 @@
 		CEFDE57C1B9C4D7900E772F0 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
 		D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconfont_meizhou.png; sourceTree = "<group>"; };
 		D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-meixueqi.png"; sourceTree = "<group>"; };
-		D99C4A861B9AB7F600BEF33C /* iconfont-qita.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-qita.png"; sourceTree = "<group>"; };
 		D9B5770B1B88742D005EFD18 /* TitleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBaseViewController.h; sourceTree = "<group>"; };
 		D9B5770C1B88742D005EFD18 /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
 		D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
@@ -1348,7 +1352,9 @@
 		E2E7DE301B9476810081F699 /* CourseIcon */ = {
 			isa = PBXGroup;
 			children = (
-				D99C4A861B9AB7F600BEF33C /* iconfont-qita.png */,
+				3B87D0A61B9D6F3D005A364D /* iconfont-qita.png */,
+				3B87D0B31B9D75F4005A364D /* iconfont-others2.png */,
+				3B87D0B11B9D7340005A364D /* iconfont-others.png */,
 				D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */,
 				D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */,
 				E2E7DE311B9476810081F699 /* iconfont-biaoji.png */,
@@ -1470,6 +1476,7 @@
 			files = (
 				E2D31A4E1B9ADCA500E1F5A8 /* 重邮地图.png in Resources */,
 				3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */,
+				3B87D0A81B9D6F3D005A364D /* iconfont-qita.png in Resources */,
 				E2D31A4A1B9ADCA500E1F5A8 /* 我要创业.png in Resources */,
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
 				CEE1E2221B999C3E0088EC7C /* icon_menu_5.png in Resources */,
@@ -1532,7 +1539,6 @@
 				D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */,
 				3B37F0A81B8C45F8009C1E94 /* Pods-UIColor+BFPaperColors-Private.xcconfig in Resources */,
 				3B37F0A21B8C45F8009C1E94 /* Pods-acknowledgements.plist in Resources */,
-				D99C4A871B9AB7F600BEF33C /* iconfont-qita.png in Resources */,
 				CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */,
 				E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */,
 				E2E7DE3B1B9476810081F699 /* iconfont-caidan-selected.png in Resources */,
@@ -1543,6 +1549,7 @@
 				CE30FDDF1B9968C000C15AD4 /* iconfont77.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				CE1B36DF1B9A1B6800824B96 /* new_icon_menu_1.png in Resources */,
+				3B87D0B41B9D75F4005A364D /* iconfont-others2.png in Resources */,
 				3BBB58681B8F3DE90099EC58 /* ScheduleTableViewCell.xib in Resources */,
 				CEC96BD01B9AC6270047648A /* new_icon_menu_5.png in Resources */,
 				CE78937B1B86E36F000D8B57 /* icon_menu_1.png in Resources */,
@@ -1576,6 +1583,7 @@
 				D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */,
 				3B37F0A61B8C45F8009C1E94 /* Pods.release.xcconfig in Resources */,
 				CEF2738C1B90D573009B5BA2 /* 20-3-2.png in Resources */,
+				3B87D0B21B9D7340005A364D /* iconfont-others.png in Resources */,
 				E2D31A421B9ADCA500E1F5A8 /* ButtonView.xib in Resources */,
 				E2E7DE2D1B9476730081F699 /* icon_Logo.png in Resources */,
 			);
