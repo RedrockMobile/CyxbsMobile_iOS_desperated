@@ -18,7 +18,8 @@
 #define MAIN_COLOR  [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1]
 #define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
-
+#define kBarTintColor [UIColor whiteColor]
+#define kItemTintColor [UIColor blackColor]
 
 #import "AFNetworking.h"
 #import "NetWork.h"
