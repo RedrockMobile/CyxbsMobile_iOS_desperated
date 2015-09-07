@@ -17,6 +17,7 @@
 #import "UPStackMenu.h"
 #import "UPStackMenuItem.h"
 #import "LoginViewController.h"
+#import <SystemConfiguration/SystemConfiguration.h>
 
 @interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate>
 @end
@@ -26,9 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    _dataArray = [userDefault objectForKey:@"dataArray"];
-    if (_dataArray != nil) {
+    BOOL isReachability = [NetWork netWorkReachability:Course_API];
+    if (isReachability) {
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        _dataArray = [userDefault objectForKey:@"dataArray"];
         [self handleWeek:_dataArray];
     }else {
         [self loadNetData];
@@ -44,6 +46,7 @@
     _registRepeatClassSet = [[NSMutableSet alloc] init];
     _mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49)];
     [self.view addSubview:_mainView];
+    
     UIView *dayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
     [_mainView addSubview:dayView];
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, ScreenWidth, _mainView.frame.size.height - 30)];
@@ -67,7 +70,17 @@
     }
     
     _mainScrollView.contentSize = CGSizeMake(ScreenWidth, kWidthGrid * 12);
+    _mainScrollView.showsVerticalScrollIndicator = NO;
     [_mainView addSubview:_mainScrollView];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    UILabel *weekLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
+    weekLabel.center = CGPointMake(ScreenWidth/2, -25);
+    NSString *week = [userDefaults objectForKey:@"nowWeek"];
+    weekLabel.text = [NSString stringWithFormat:@"第%@周",week];
+    weekLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
+    weekLabel.textAlignment = NSTextAlignmentCenter;
+    [_mainScrollView addSubview:weekLabel];
     
     for (int i = 0; i < 12; i ++) {
         UILabel *classNum = [[UILabel alloc]initWithFrame:CGRectMake(0, i*kWidthGrid, kWidthGrid*0.5, kWidthGrid)];
@@ -96,7 +109,6 @@
     item.delegate = self;
     item1.delegate = self;
     
-    self.titleLabel.text = @"课表";
     self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
 }
 
@@ -114,26 +126,33 @@
         //查询本周课程
         NSArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
         [self handleWeek:weekDataArray];
-
     }
 }
 
 - (void)loadNetData {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
-    NSLog(@"%@",stuNum);
     _parameter = [NSMutableDictionary dictionary];
     _dataArray = [NSMutableArray array];
     [_parameter setObject:stuNum forKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
         _dataArray = [returnValue objectForKey:@"data"];
+        for (int i = 0; i < _dataArray.count; i ++) {
+            NSString *period = [NSString stringWithFormat:@"%@",[_dataArray[i] objectForKey:@"period"]];
+            if ([period isEqualToString:@"3"]) {
+                [_dataArray[i] setObject:@"2" forKey:@"period"];
+                [_dataArray[i] setObject:@"(3节连上)" forKey:@"courseTitle"];
+            }
+        }
         NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
         [_parameter setObject:nowWeek forKey:@"week"];
         [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
             _weekDataArray = [returnValue objectForKey:@"data"];
+            [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
+            [userDefault synchronize];
         } WithFailureBlock:nil];
+        [userDefault setObject:nowWeek forKey:@"nowWeek"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
-        [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
         [userDefault synchronize];
         [self handleWeek:_dataArray];
     } WithFailureBlock:nil];
@@ -219,7 +238,11 @@
                 }
             }else {
                 CourseButton *courseButton = [[CourseButton alloc] initWithFrame:CGRectMake((colNum-0.5)*kWidthGrid+1, kWidthGrid*rowNum+1, kWidthGrid-2, kWidthGrid*period-2)];
-                [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@",course.course,course.classroom,course.rawWeek]forState:UIControlStateNormal];
+                if (course.courseTitle == nil) {
+                    [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@",course.course,course.classroom,course.rawWeek]forState:UIControlStateNormal];
+                }else {
+                    [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@ %@",course.course,course.classroom,course.rawWeek,course.courseTitle]forState:UIControlStateNormal];
+                }
                 courseButton.tag = i;
                 [_buttonTag addObject:courseButton];
                 courseButton.backgroundColor = [self handleRandomColorStr:course.color];

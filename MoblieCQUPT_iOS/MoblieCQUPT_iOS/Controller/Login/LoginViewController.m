@@ -10,6 +10,7 @@
 #import "NetWork.h"
 #import "CourseViewController.h"
 #import "LoginEntry.h"
+#import "ProgressHUD.h"
 
 #define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 
@@ -175,6 +176,8 @@
 
 - (IBAction)login:(UIButton *)sender {
     [self commonAnimation:0];
+    sender.enabled = NO;
+    [ProgressHUD show:@"登录中"];
     [UIView animateWithDuration:1.5 animations:^{
         sender.backgroundColor = [UIColor colorWithRed:3/255.0 green:169/25.0 blue:244/255.0 alpha:1];
         [sender setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
@@ -187,36 +190,28 @@
     [NetWork NetRequestPOSTWithRequestURL:Base_Login WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         self.dataDic = returnValue;
         if (![_dataDic[@"info"] isEqualToString:@"success"]) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"账号或密码输入错误,请重新输入" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alert show];
+            [ProgressHUD showError:@"账号或密码输入错误,请重新输入"];
+            [UIView animateWithDuration:1.5 animations:^{
+                sender.backgroundColor = MAIN_COLOR;
+                [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [sender setTitle:@"登录" forState:UIControlStateNormal];
+            } completion:nil];
+            sender.enabled = YES;
         }else {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]] delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alert show];
+            [ProgressHUD showSuccess:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]]];
             NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
-            
             [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
-            
-//            NSDate *futureTime = [NSDate dateWithTimeIntervalSinceNow:60*60*24*15];
-//            NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//            [userDefaults setObject:_nameField.text forKey:@"stuNum"];
-//            [userDefaults setObject:_passwordField.text forKey:@"idNum"];
-//            [userDefaults setObject:futureTime forKey:@"time"];
-//            [userDefaults setObject:_dataDic[@"data"][@"name"] forKey:@"name"];
-//            [userDefaults synchronize];
-
-            
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
             [self presentViewController:view animated:YES completion:nil];
         }
     } WithFailureBlock:^{
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"请检查你的网络连接" delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-        [alert show];
+        sender.enabled = YES;
+        [ProgressHUD showError:@"请检查你的网络连接"];
         [UIView animateWithDuration:1.5 animations:^{
             sender.backgroundColor = MAIN_COLOR;
             [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [sender setTitle:@"登录" forState:UIControlStateNormal];
-            
         } completion:nil];
         NSLog(@"请求失败");
     }];
