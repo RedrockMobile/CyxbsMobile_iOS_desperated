@@ -15,13 +15,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找美食？摇一摇！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygD-Pv-Vy8">
-                    <rect key="frame" x="52" y="141" width="270" height="33"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                    <rect key="frame" x="52" y="145" width="270" height="24"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="1" green="0.54206767720000004" blue="0.14311323400000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="开始摇一摇 .png" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-If-CLh">
-                    <rect key="frame" x="52" y="244" width="270" height="288"/>
+                    <rect key="frame" x="52" y="239" width="270" height="293"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -36,6 +36,7 @@
                 <constraint firstAttribute="centerX" secondItem="AUC-If-CLh" secondAttribute="centerX" constant="0.5" id="vhd-Z1-GEe"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="333.5" y="292.5"/>
         </view>
     </objects>
     <resources>

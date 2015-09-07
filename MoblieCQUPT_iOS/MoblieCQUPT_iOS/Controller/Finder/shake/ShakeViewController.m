@@ -25,41 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-}
-
--(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    NSLog(@"began");
-    
-}
--(void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    NSLog(@"cancel");
-}
--(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    NSLog(@"end");
-    for (int i = 1; i<= 3; i++) {
-        [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
-            _data = [[NSMutableArray alloc] init];
-            [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-        } WithFailureBlock:^{
-            UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
-            failLabel.text = @"哎呀！网络开小差了 T^T";
-            failLabel.textColor = [UIColor whiteColor];
-            failLabel.backgroundColor = [UIColor grayColor];
-            failLabel.textAlignment = NSTextAlignmentCenter;
-            [self.view addSubview:failLabel];
-        }];
-    }
+    self.navigationItem.title = @"摇一摇";
     
     NSLog(@"%@", _data);
-
+    
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
     [self becomeFirstResponder];
-    
 }
 
 -(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
@@ -75,7 +46,7 @@
     if (!_detailViewController) {
          _detailViewController = [[ShopDetailViewController alloc] init];
     }
-    NSInteger randomNum = arc4random() % 40;
+    NSInteger randomNum = arc4random() % [_data count];
     _detailViewController.detailData = _data[randomNum];
     [self.navigationController pushViewController:_detailViewController animated:YES];
 }
@@ -84,6 +55,20 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    
+    for (int i = 1; i<= 3; i++) {
+        [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
+            _data = [[NSMutableArray alloc] init];
+            [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        } WithFailureBlock:^{
+            UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+            failLabel.text = @"哎呀！网络开小差了 T^T";
+            failLabel.textColor = [UIColor whiteColor];
+            failLabel.backgroundColor = [UIColor grayColor];
+            failLabel.textAlignment = NSTextAlignmentCenter;
+            [self.view addSubview:failLabel];
+        }];
+    }
 }
 
 

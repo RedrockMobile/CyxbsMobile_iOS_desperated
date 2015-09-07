@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSMutableArray *BothData;
 @property (assign, nonatomic) NSInteger flag;
 
-@property (strong, nonatomic) UIActivityIndicatorView *indicator;
+@property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 
 @end
 
@@ -35,19 +35,7 @@
     [self setupRefresh];
     self.data = [[NSMutableDictionary alloc] init];
     _BothData = [[NSMutableArray alloc] init];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
-            self.data = returnValue;
-            for (int i = 0; i<[self.data[@"data"] count]; i++) {
-                [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data[@"data"][i][@"id"]} WithReturnValeuBlock:^(id returnValue) {
-                    NSMutableDictionary *dic = [self.data[@"data"][i] mutableCopy];
-                    NSString *contentDetil = returnValue[@"data"][@"content"];
-                    contentDetil = [contentDetil stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-                    [dic setValue:contentDetil forKey:@"newsContent"];
-                    [_BothData addObject:dic];
-                    [_tableView reloadData];
-                } WithFailureBlock:nil];
-            }
-    } WithFailureBlock:nil];
+    
     [self.view addSubview:self.tableview];
 }
 
@@ -58,7 +46,10 @@
 {
     // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
     [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
-
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
     // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
     self.tableView.headerPullToRefreshText = @"下拉即可刷新";
     self.tableView.headerReleaseToRefreshText = @"松开即可刷新";
@@ -81,7 +72,15 @@
                 [_tableView reloadData];
             } WithFailureBlock:nil];
         }
-    } WithFailureBlock:nil];
+    } WithFailureBlock:^{
+        UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+        faileLable.text = @"哎呀！网络开小差了 T^T";
+        faileLable.textColor = [UIColor whiteColor];
+        faileLable.backgroundColor = [UIColor grayColor];
+        faileLable.textAlignment = NSTextAlignmentCenter;
+        [self.view addSubview:faileLable];
+        [_tableView removeFromSuperview];
+    }];
 }
 
 //初始化tableview
@@ -90,20 +89,56 @@
 {
     if (!_tableView) {
         _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,64, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStylePlain];
+        [self dataFlash];
         _tableView.dataSource = self;
         _tableView.delegate = self;
+        
         UINib *nib = [UINib nibWithNibName:@"MeCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"cell"];
-        _tableView.separatorStyle = NO;
+       _tableView.separatorStyle = NO;
     }
     return _tableView;
-    
 }
+
+- (void)dataFlash{
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
+        _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        _indicatorView.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H);
+        [_indicatorView setCenter:CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H/2)];
+        [self.view addSubview:_indicatorView];
+        [_indicatorView startAnimating];
+        
+        self.data = returnValue;
+        for (int i = 0; i<[self.data[@"data"] count]; i++) {
+            [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data[@"data"][i][@"id"]} WithReturnValeuBlock:^(id returnValue) {
+                NSMutableDictionary *dic = [self.data[@"data"][i] mutableCopy];
+                NSString *contentDetil = returnValue[@"data"][@"content"];
+                contentDetil = [contentDetil stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+                [dic setValue:contentDetil forKey:@"newsContent"];
+                [_BothData addObject:dic];
+                
+                [_tableView reloadData];
+                
+                [_indicatorView stopAnimating];
+            } WithFailureBlock:^{
+                UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+                faileLable.text = @"哎呀！网络开小差了 T^T";
+                faileLable.textColor = [UIColor whiteColor];
+                faileLable.backgroundColor = [UIColor grayColor];
+                faileLable.textAlignment = NSTextAlignmentCenter;
+                [self.view addSubview:faileLable];
+                [_tableView removeFromSuperview];
+            }];
+        }
+    } WithFailureBlock:nil];
+}
+
 //一组多少个
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 1;
 }
+
 
 //分成多少个组
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -118,7 +153,10 @@
         cell = [[MeCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
         cell.backview.layer.cornerRadius = 0;
+    
+     UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
 
+    cell.specificlable.font = font;
     cell.toplable.text = _BothData[indexPath.section][@"title"];
     cell.daylable.text = _BothData[indexPath.section][@"date"];
      cell.timelabel.text = _BothData[indexPath.section][@"read"];
@@ -142,7 +180,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-//实现 tableView点动
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     FirstViewController *fvc = [[FirstViewController alloc]init];
     //NSLog(@"%@",self.data);
@@ -151,13 +189,5 @@
    // DDLog(@"dTA1：%@",_data[@"data"]);
     [self.navigationController pushViewController:fvc animated:YES];
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-//    return 1;
-//}
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-//    return 5.0;
-//}
 
 @end
