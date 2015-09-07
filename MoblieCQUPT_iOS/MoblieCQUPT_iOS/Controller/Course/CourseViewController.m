@@ -121,12 +121,12 @@
     if (item.tag == 1) {
         //查询学期课程
         NSArray *dataArray = [userDefault objectForKey:@"dataArray"];
-        _dataArray = [NSArray arrayWithArray:dataArray];
+        _dataArray = dataArray;
         [self handleWeek:dataArray];
     }else if (item.tag == 2) {
         //查询本周课程
         NSArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
-        _dataArray = [NSArray arrayWithArray:weekDataArray];
+        _dataArray = weekDataArray;
         [self handleWeek:weekDataArray];
     }
 }
@@ -149,7 +149,7 @@
             }
             [data addObject:dataDic];
         }
-        _dataArray = [NSArray arrayWithArray:data];
+        _dataArray = data;
         NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
         NSLog(@"%@",nowWeek);
         [_parameter setObject:nowWeek forKey:@"week"];
@@ -161,7 +161,7 @@
                 [weekDataDic setObject:@"" forKey:@"rawWeek"];
                 [data addObject:weekDataDic];
             }
-            _weekDataArray = [NSArray arrayWithArray:data];
+            _weekDataArray = data;
             [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
             [userDefault synchronize];
         } WithFailureBlock:nil];
@@ -287,8 +287,6 @@
 - (void)courseClick:(UIButton *)sender {
     NSInteger tagNum = sender.tag;
     NSInteger endNum = tagNum;
-    NSLog(@"%ld",_dataArray.count);
-    NSLog(@"%@",_dataArray[33]);
     NSSet *tagSet = [[NSSet alloc]initWithObjects:[NSNumber numberWithInteger:tagNum], nil];
     if ([tagSet isSubsetOfSet:self.registRepeatClassSet]) {
         NSDictionary *dic = _dataArray[tagNum];
@@ -354,7 +352,6 @@
     [_alertView addSubview:_page];
 
     CGFloat indexX = 0;
-    NSLog(@"%@",_dataArray);
     for (NSInteger i=starTag; i<=endTag; i++) {
         NSDictionary *dataDic = _dataArray[i];
         CourseView *courseView = [[CourseView alloc]initWithFrame:CGRectMake(indexX, 0, ScreenWidth/9*7-30, ScreenHeight/7*5-75-65) withDictionary:dataDic];
