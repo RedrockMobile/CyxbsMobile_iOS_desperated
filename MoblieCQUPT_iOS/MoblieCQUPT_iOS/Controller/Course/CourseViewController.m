@@ -136,18 +136,30 @@
     _dataArray = [NSMutableArray array];
     [_parameter setObject:stuNum forKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
-        _dataArray = [returnValue objectForKey:@"data"];
-        for (int i = 0; i < _dataArray.count; i ++) {
-            NSString *period = [NSString stringWithFormat:@"%@",[_dataArray[i] objectForKey:@"period"]];
+        NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
+        NSMutableArray *data = [NSMutableArray array];
+        for (int i = 0; i < dataArray.count; i ++) {
+            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc]initWithDictionary:dataArray[i]];
+            NSString *period = [NSString stringWithFormat:@"%@",[dataDic objectForKey:@"period"]];
             if ([period isEqualToString:@"3"]) {
-                [_dataArray[i] setObject:@"2" forKey:@"period"];
-                [_dataArray[i] setObject:@"(3节连上)" forKey:@"courseTitle"];
+                [dataDic setObject:@"2" forKey:@"period"];
+                [dataDic setObject:@"(3节连上)" forKey:@"courseTitle"];
             }
+            [data addObject:dataDic];
         }
+        _dataArray = data;
         NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
+        NSLog(@"%@",nowWeek);
         [_parameter setObject:nowWeek forKey:@"week"];
         [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
-            _weekDataArray = [returnValue objectForKey:@"data"];
+            NSMutableArray *weekDataArray = [NSMutableArray arrayWithArray:[returnValue objectForKey:@"data"]];
+            NSMutableArray *data = [NSMutableArray array];
+            for (int i = 0;i < weekDataArray.count; i ++) {
+                NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:weekDataArray[i]];
+                [weekDataDic removeObjectForKey:@"rawWeek"];
+                [data addObject:weekDataDic];
+            }
+            _weekDataArray = data;
             [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
             [userDefault synchronize];
         } WithFailureBlock:nil];
@@ -238,7 +250,9 @@
                 }
             }else {
                 CourseButton *courseButton = [[CourseButton alloc] initWithFrame:CGRectMake((colNum-0.5)*kWidthGrid+1, kWidthGrid*rowNum+1, kWidthGrid-2, kWidthGrid*period-2)];
-                if (course.courseTitle == nil) {
+                if (course.courseTitle == nil && course.rawWeek == nil) {
+                    [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@",course.course,course.classroom]forState:UIControlStateNormal];
+                }else if (course.courseTitle == nil) {
                     [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@",course.course,course.classroom,course.rawWeek]forState:UIControlStateNormal];
                 }else {
                     [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@ %@",course.course,course.classroom,course.rawWeek,course.courseTitle]forState:UIControlStateNormal];
