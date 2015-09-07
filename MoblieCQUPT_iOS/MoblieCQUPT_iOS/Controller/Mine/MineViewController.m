@@ -226,7 +226,7 @@
         
         LoginViewController *login = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:login animated:YES completion:^{
-            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray"]];
+            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
         }];
     }
    
