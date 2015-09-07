@@ -93,7 +93,7 @@
     _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
     _moreMenu.backgroundColor = [UIColor whiteColor];
     _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
-    _moreMenu.image = [UIImage imageNamed:@"iconfont-others2.png"];
+    _moreMenu.image = [UIImage imageNamed:@"iconfont-more.png"];
     
     UPStackMenu *stack = [[UPStackMenu alloc] initWithContentView:_moreMenu];
     
@@ -121,10 +121,13 @@
     if (item.tag == 1) {
         //查询学期课程
         NSArray *dataArray = [userDefault objectForKey:@"dataArray"];
+        _dataArray = dataArray;
         [self handleWeek:dataArray];
     }else if (item.tag == 2) {
         //查询本周课程
         NSArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
+        _dataArray = [NSMutableArray array];
+        _dataArray = weekDataArray;
         [self handleWeek:weekDataArray];
     }
 }
@@ -156,7 +159,7 @@
             NSMutableArray *data = [NSMutableArray array];
             for (int i = 0;i < weekDataArray.count; i ++) {
                 NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:weekDataArray[i]];
-                [weekDataDic removeObjectForKey:@"rawWeek"];
+                [weekDataDic setObject:@"" forKey:@"rawWeek"];
                 [data addObject:weekDataDic];
             }
             _weekDataArray = data;
@@ -250,9 +253,7 @@
                 }
             }else {
                 CourseButton *courseButton = [[CourseButton alloc] initWithFrame:CGRectMake((colNum-0.5)*kWidthGrid+1, kWidthGrid*rowNum+1, kWidthGrid-2, kWidthGrid*period-2)];
-                if (course.courseTitle == nil && course.rawWeek == nil) {
-                    [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@",course.course,course.classroom]forState:UIControlStateNormal];
-                }else if (course.courseTitle == nil) {
+                if (course.courseTitle == nil) {
                     [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@",course.course,course.classroom,course.rawWeek]forState:UIControlStateNormal];
                 }else {
                     [courseButton setTitle:[NSString stringWithFormat:@"%@ @%@ %@ %@",course.course,course.classroom,course.rawWeek,course.courseTitle]forState:UIControlStateNormal];
@@ -303,7 +304,6 @@
     [self viewCourseWithTag:tagNum endTag:endNum];
 }
 - (void)viewCourseWithTag:(NSInteger )starTag endTag:(NSInteger)endTag {
-    
     _backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     _backgroundView.backgroundColor = [UIColor grayColor];
     _backgroundView.alpha = 0.8;
@@ -371,9 +371,6 @@
     [self.backgroundView removeFromSuperview];
     [self.alertView removeFromSuperview];
     [self.page removeFromSuperview];
-
-    
-    
 }
 
 @end
