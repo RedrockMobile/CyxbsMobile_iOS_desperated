@@ -41,7 +41,8 @@
 
 @interface Config : NSObject
 + (NSString *)errInfo:(NSInteger)status;
-+ (NSMutableDictionary *)paramWithStuNum:(NSString *)stuNum IdNum:(NSString *)idNum;
+
 + (NSString *)transformDateFormat:(NSString *)dateString;
 + (NSString *)transformNumFormat:(NSString *)numString;
++ (NSMutableDictionary *)paramWithStuNum;
 @end
