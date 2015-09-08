@@ -19,6 +19,7 @@
 #define COLOR_CONTENTBACKGROUND [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1]
 #define COLOR_CONTENTREGION [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1]
 #define COLOR_MAINCOLOR [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1]
+#define COLOR_NAVIGATIONBAR_TINT [UIColor paperColorGray900]
 
 #define API_EXAM_SCHEDULE @"http://hongyan.cqupt.edu.cn/api/examSchedule"
 #define API_EXAM_GRADE @"http://jwc.cqupt.edu.cn/showStuQmcj.php"
