@@ -145,6 +145,7 @@
 		E23827091B9477D80058970E /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23827051B9477D80058970E /* CourseViewController.m */; };
 		E238270A1B9477D80058970E /* CourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E23827061B9477D80058970E /* CourseViewController.xib */; };
 		E238270E1B9478190058970E /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E238270D1B9478190058970E /* Course.m */; };
+		E24681F51B9EBE6900BBB8A8 /* ImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24681F41B9EBE6900BBB8A8 /* ImagePickerController.m */; };
 		E28BAE781B91B0E300EC4964 /* 20-3c.png in Resources */ = {isa = PBXBuildFile; fileRef = E28BAE771B91B0E300EC4964 /* 20-3c.png */; };
 		E2D31A0A1B9ADC9C00E1F5A8 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2D31A031B9ADC9C00E1F5A8 /* FirstViewController.m */; };
 		E2D31A0B1B9ADC9C00E1F5A8 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2D31A041B9ADC9C00E1F5A8 /* FirstViewController.xib */; };
@@ -434,6 +435,8 @@
 		E23827061B9477D80058970E /* CourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseViewController.xib; sourceTree = "<group>"; };
 		E238270C1B9478190058970E /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		E238270D1B9478190058970E /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		E24681F31B9EBE6900BBB8A8 /* ImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerController.h; sourceTree = "<group>"; };
+		E24681F41B9EBE6900BBB8A8 /* ImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagePickerController.m; sourceTree = "<group>"; };
 		E28BAE771B91B0E300EC4964 /* 20-3c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3c.png"; sourceTree = "<group>"; };
 		E2D31A021B9ADC9C00E1F5A8 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		E2D31A031B9ADC9C00E1F5A8 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
@@ -771,6 +774,7 @@
 				CEE1E2231B99A0D80088EC7C /* ButtonView */,
 				CE35D7061B932700005BDEBA /* MineViewController.h */,
 				CE35D7071B932700005BDEBA /* MineViewController.m */,
+				E24681F21B9EBE5C00BBB8A8 /* avatar */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -1197,6 +1201,15 @@
 				E238270D1B9478190058970E /* Course.m */,
 			);
 			path = Course;
+			sourceTree = "<group>";
+		};
+		E24681F21B9EBE5C00BBB8A8 /* avatar */ = {
+			isa = PBXGroup;
+			children = (
+				E24681F31B9EBE6900BBB8A8 /* ImagePickerController.h */,
+				E24681F41B9EBE6900BBB8A8 /* ImagePickerController.m */,
+			);
+			path = avatar;
 			sourceTree = "<group>";
 		};
 		E2D31A011B9ADC9C00E1F5A8 /* News */ = {
@@ -1635,6 +1648,7 @@
 				CEF61B861B82DF9A0014B980 /* AFURLConnectionOperation.m in Sources */,
 				E2FAB1511B8C738B005C5AE7 /* MJRefreshHeaderView.m in Sources */,
 				CEF61BA01B82DFA60014B980 /* UIButton+AFNetworking.m in Sources */,
+				E24681F51B9EBE6900BBB8A8 /* ImagePickerController.m in Sources */,
 				3BBB58651B8F3DE90099EC58 /* SchduleViewController.m in Sources */,
 				CEF61B9E1B82DFA60014B980 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				CEF61B821B82DF9A0014B980 /* AFHTTPRequestOperationManager.m in Sources */,

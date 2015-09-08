@@ -150,7 +150,6 @@
         _scrollView.contentSize=CGSizeMake(kCount*_scrollView.bounds.size.width, 0);
         _scrollView.bounces=NO;
         _scrollView.pagingEnabled=YES;
-        _scrollView.showsHorizontalScrollIndicator=NO;
         _scrollView.showsVerticalScrollIndicator=NO;
         //添加代理方法
         _scrollView.delegate=self;
