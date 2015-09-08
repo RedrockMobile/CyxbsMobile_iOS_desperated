@@ -13,20 +13,31 @@
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
+#import "ImagePickerController.h"
 
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) UIImageView *myPhoto;
+@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) UIScrollView *mainScrollView;
+@property (strong, nonatomic) UIButton *myPhoto;
 @property (strong, nonatomic) UILabel *loginLabel;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
 @property (strong, nonatomic) ButtonClicker *clicker;
 @property (strong, nonatomic) NSMutableArray *cellDictionary;
+
 @end
 
 @implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+    _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H -20);
+    _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _mainScrollView.showsVerticalScrollIndicator=NO;
+    [self.view addSubview:_mainScrollView];
+    
     _currentHeight = 0;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[
@@ -41,11 +52,11 @@
     _currentHeight += topView.frame.size.height;
     
     topView.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:topView];
+    [_mainScrollView addSubview:topView];
 
     
-    [self.view addSubview:self.myPhoto];
-    [self.view addSubview:self.loginLabel];
+    [_mainScrollView addSubview:self.myPhoto];
+    [_mainScrollView addSubview:self.loginLabel];
     
     /**button **/
     self.clicker = [[ButtonClicker alloc]init];
@@ -77,23 +88,19 @@
         textLabel.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2+12+textLabel.frame.size.height/2);
         [labelButton addSubview:buttonView];
        
-        
         [labelButton addSubview:textLabel];
         /**/
         [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
         
-        [self.view addSubview:labelButton];
+        labelButton.backgroundColor = [UIColor whiteColor];
+        
+        [_mainScrollView addSubview:labelButton];
     }
     
     _currentHeight += MAIN_SCREEN_H*0.1;
 
-    [self.view addSubview:self.tableView];
+    [_mainScrollView addSubview:self.tableView];
     _currentHeight += _tableView.frame.size.height;
-    
-    
-    
-    
-    
     
 //    for (NSString* family in [UIFont familyNames])
 //    {
@@ -124,19 +131,34 @@
     return _tableView;
 }
 
-- (UIImageView *)myPhoto{
+- (UIButton *)myPhoto{
     if (!_myPhoto) {
-        _myPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.3, MAIN_SCREEN_W*0.3)];
+        _myPhoto = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
         _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
-        [_myPhoto setImage:[UIImage imageNamed:@"mobile.png"]];
-//        _myPhoto.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
-//        _myPhoto.layer.masksToBounds = YES;
-        _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
-//        _myPhoto.layer.borderColor = [UIColor blueColor].CGColor;
-//        _myPhoto.layer.borderWidth = 1;
+        UIImage *image = [UIImage imageNamed:@"mobile.png"];
+        [_myPhoto setImage:image forState:UIControlStateNormal];
         
+        _myPhoto.layer.masksToBounds = YES;
+        _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
+        [_myPhoto addTarget:self
+                     action:@selector(selectPhoto)
+           forControlEvents:UIControlEventTouchUpInside];
+
+        _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
     }
     return _myPhoto;
+}
+
+- (void)selectPhoto{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    //在照片库里选择照片作为头像
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    
+    [self presentViewController:imagePicker
+                       animated:YES
+                     completion:nil];
 }
 
 - (UILabel *)loginLabel{
@@ -210,7 +232,6 @@
 }
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return (_tableView.frame.size.height-8*3-2)/5;
 }
@@ -235,6 +256,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+}
+
+#pragma mark - UIImagePickerController委托方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    [_myPhoto setImage:image forState:UIControlStateNormal];
 }
 
 @end
