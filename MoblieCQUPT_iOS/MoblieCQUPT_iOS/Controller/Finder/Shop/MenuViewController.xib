@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" constant="102" id="ASC-6m-hEb"/>
                         <constraint firstAttribute="width" constant="210" id="C5A-CY-rTe"/>
                     </constraints>
-                    <state key="normal" image="朕知道了.png">
+                    <state key="normal" image="ok.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -36,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="朕知道了.png" width="460" height="230"/>
+        <image name="ok.png" width="460" height="230"/>
     </resources>
 </document>

@@ -13,7 +13,6 @@
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
-#import "ImagePickerController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -262,6 +261,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     [_myPhoto setImage:image forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 @end

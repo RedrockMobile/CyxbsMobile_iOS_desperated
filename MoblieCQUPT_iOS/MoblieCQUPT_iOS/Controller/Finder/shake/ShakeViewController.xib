@@ -20,17 +20,17 @@
                     <color key="textColor" red="1" green="0.54206767720000004" blue="0.14311323400000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="开始摇一摇 .png" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-If-CLh">
-                    <rect key="frame" x="52" y="239" width="270" height="293"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake.png" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-If-CLh">
+                    <rect key="frame" x="52" y="239" width="270" height="265"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="AUC-If-CLh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="52" id="1Ap-2P-Tgn"/>
-                <constraint firstAttribute="bottom" secondItem="AUC-If-CLh" secondAttribute="bottom" constant="135" id="3kZ-Ex-Muz"/>
                 <constraint firstAttribute="centerY" secondItem="ygD-Pv-Vy8" secondAttribute="centerY" constant="176.5" id="7Hh-h0-xCM"/>
                 <constraint firstAttribute="centerX" secondItem="ygD-Pv-Vy8" secondAttribute="centerX" constant="0.5" id="AR3-sL-Qk5"/>
                 <constraint firstItem="ygD-Pv-Vy8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="52" id="D3l-Z4-0lK"/>
+                <constraint firstAttribute="bottom" secondItem="AUC-If-CLh" secondAttribute="bottom" constant="163" id="f2y-WY-9Yk"/>
                 <constraint firstItem="AUC-If-CLh" firstAttribute="top" secondItem="ygD-Pv-Vy8" secondAttribute="bottom" constant="70" id="kZW-3Y-Noe"/>
                 <constraint firstAttribute="trailing" secondItem="AUC-If-CLh" secondAttribute="trailing" constant="53" id="v0w-VD-ysK"/>
                 <constraint firstAttribute="centerX" secondItem="AUC-If-CLh" secondAttribute="centerX" constant="0.5" id="vhd-Z1-GEe"/>
@@ -40,6 +40,6 @@
         </view>
     </objects>
     <resources>
-        <image name="开始摇一摇 .png" width="287" height="275"/>
+        <image name="shake.png" width="143" height="137"/>
     </resources>
 </document>

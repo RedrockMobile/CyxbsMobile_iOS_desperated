@@ -37,6 +37,7 @@
     _BothData = [[NSMutableArray alloc] init];
     
     [self.view addSubview:self.tableview];
+    [self setupRefresh];
 }
 
 /**
