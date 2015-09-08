@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
   
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"教务信息";
+    self.navigationItem.title = @"教务";
     [super viewDidLoad];
     _flag = 1;
     [self setupRefresh];
