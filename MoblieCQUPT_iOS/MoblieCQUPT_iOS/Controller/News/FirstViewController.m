@@ -52,7 +52,7 @@
                          constrainedToSize:CGSizeMake(width -16.0, CGFLOAT_MAX)
                              lineBreakMode:NSLineBreakByWordWrapping];
     //此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-    return sizeToFit.height + 16.0;
+    return sizeToFit.height + 16;
 }
 
 
@@ -66,6 +66,7 @@
    float H = [self heightForString:self.data1[@"newsContent"] fontSize:14 andWidth:MAIN_SCREEN_W];
     _scrollView.contentSize = CGSizeMake(MAIN_SCREEN_W,H);
     _scrollView.backgroundColor = [UIColor clearColor];
+    [_scrollView sizeToFit];
 }
 
 

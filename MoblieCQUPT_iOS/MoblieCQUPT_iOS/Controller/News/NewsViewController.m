@@ -65,7 +65,7 @@ static int nowPage= 1;
 
 #pragma mark 开始进入刷新状态
 - (void)footerRereshing{
-    nowPage++;
+    
     [self dataFresh:EnumDataAdd];
 
 }
@@ -93,6 +93,28 @@ static int nowPage= 1;
 }
 
 - (void)dataFresh:(EnumFreshType)type{
+    void (^typeFunction)(id objet);
+    switch (type) {
+        case EnumDataRefresh:
+            nowPage=1;
+         typeFunction = ^(NSMutableArray *object){
+             [object removeAllObjects];
+            
+         };
+            break;
+        case EnumDataAdd:
+            nowPage++;
+            typeFunction = ^(NSMutableArray *object){};
+            break;
+        default:
+            typeFunction = ^(NSMutableArray *object){
+                [object removeAllObjects];
+                
+            };
+            break;
+    }
+    
+    
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList"
                             WithParameter:@{@"page":[NSNumber numberWithInt:nowPage]}
                      WithReturnValeuBlock:^(id returnValue) {
@@ -102,16 +124,7 @@ static int nowPage= 1;
         [self.view addSubview:_indicatorView];
         [_indicatorView startAnimating];
         
-         switch (type) {
-             case EnumDataRefresh:
-                 [_BothData removeAllObjects];
-                 break;
-             case EnumDataAdd:
-                 break;
-             default:
-                 [_BothData removeAllObjects];
-                 break;
-         }
+        typeFunction(_BothData);
                          
         self.data = returnValue;
         for (int i = 0; i<[self.data[@"data"] count]; i++) {
@@ -124,8 +137,6 @@ static int nowPage= 1;
 
                 [_BothData addObject:dic];
                 [_tableView reloadData];
-//                [_tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationNone];
-
 
                 [_indicatorView stopAnimating];
             } WithFailureBlock:^{
@@ -137,11 +148,11 @@ static int nowPage= 1;
                 [self.view addSubview:faileLable];
                 [_tableView removeFromSuperview];
             }];
+//            [self dataFresh];
         }
                          
         [self.tableView headerEndRefreshing];
         [self.tableView footerEndRefreshing];
-        nowPage = 1;
     } WithFailureBlock:nil];
 }
 
