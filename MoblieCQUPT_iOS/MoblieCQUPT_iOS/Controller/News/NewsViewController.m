@@ -26,17 +26,19 @@
 
 @implementation NewsViewController
 
+static int nowPage= 1;
+
 - (void)viewDidLoad {
   
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"教务信息";
+    self.navigationItem.title = @"教务";
     [super viewDidLoad];
     _flag = 1;
-    [self setupRefresh];
     self.data = [[NSMutableDictionary alloc] init];
     _BothData = [[NSMutableArray alloc] init];
     
     [self.view addSubview:self.tableview];
+    [self setupRefresh];
 }
 
 /**
@@ -44,10 +46,11 @@
  */
 - (void)setupRefresh
 {
-    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
-    [self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
-    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    [self.tableView addHeaderWithTarget:self action:@selector(dataFresh)];
+    
+//     2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
     [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
     
     // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
@@ -57,30 +60,14 @@
     
     self.tableView.footerPullToRefreshText = @"上拉加载更多";
     self.tableView.footerReleaseToRefreshText = @"松开加载更多";
-    self.tableView.footerRefreshingText = @"正在刷新中";
+    self.tableView.footerRefreshingText = @"玩命加载中 =_=|||";
 }
 
 #pragma mark 开始进入刷新状态
-- (void)headerRereshing{
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
-        self.data = returnValue;
-        for (int i = 0; i<[self.data[@"data"] count]; i++) {
-            [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data[@"data"][i][@"id"]} WithReturnValeuBlock:^(id returnValue) {
-                NSMutableDictionary *dic = [self.data[@"data"][i] mutableCopy];
-                [dic setValue:returnValue[@"data"][@"content"] forKey:@"newsContent"];
-                [_BothData addObject:dic];
-                [_tableView reloadData];
-            } WithFailureBlock:nil];
-        }
-    } WithFailureBlock:^{
-        UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
-        faileLable.text = @"哎呀！网络开小差了 T^T";
-        faileLable.textColor = [UIColor whiteColor];
-        faileLable.backgroundColor = [UIColor grayColor];
-        faileLable.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:faileLable];
-        [_tableView removeFromSuperview];
-    }];
+- (void)footerRereshing{
+    
+    [self dataFresh:EnumDataAdd];
+
 }
 
 //初始化tableview
@@ -88,26 +75,57 @@
 - (UITableView *)tableview
 {
     if (!_tableView) {
-        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,64, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStylePlain];
-        [self dataFlash];
+        _tableView =[[UITableView alloc]initWithFrame:CGRectMake(0,64, MAIN_SCREEN_W, MAIN_SCREEN_H-64-44) style:UITableViewStylePlain];
+        [self dataFresh];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         
         UINib *nib = [UINib nibWithNibName:@"MeCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"cell"];
        _tableView.separatorStyle = NO;
+        
     }
     return _tableView;
 }
 
-- (void)dataFlash{
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList" WithParameter:@{@"page":@"1"} WithReturnValeuBlock:^(id returnValue) {
+- (void)dataFresh{
+    [self dataFresh:EnumDataRefresh];
+}
+
+- (void)dataFresh:(EnumFreshType)type{
+    void (^typeFunction)(id objet);
+    switch (type) {
+        case EnumDataRefresh:
+            nowPage=1;
+         typeFunction = ^(NSMutableArray *object){
+             [object removeAllObjects];
+            
+         };
+            break;
+        case EnumDataAdd:
+            nowPage++;
+            typeFunction = ^(NSMutableArray *object){};
+            break;
+        default:
+            typeFunction = ^(NSMutableArray *object){
+                [object removeAllObjects];
+                
+            };
+            break;
+    }
+    
+    
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsList"
+                            WithParameter:@{@"page":[NSNumber numberWithInt:nowPage]}
+                     WithReturnValeuBlock:^(id returnValue) {
         _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         _indicatorView.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H);
         [_indicatorView setCenter:CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H/2)];
         [self.view addSubview:_indicatorView];
         [_indicatorView startAnimating];
         
+        typeFunction(_BothData);
+                         
         self.data = returnValue;
         for (int i = 0; i<[self.data[@"data"] count]; i++) {
             [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/jwNewsContent" WithParameter:@{@"id":self.data[@"data"][i][@"id"]} WithReturnValeuBlock:^(id returnValue) {
@@ -115,10 +133,11 @@
                 NSString *contentDetil = returnValue[@"data"][@"content"];
                 contentDetil = [contentDetil stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 [dic setValue:contentDetil forKey:@"newsContent"];
+
+
                 [_BothData addObject:dic];
-                
                 [_tableView reloadData];
-                
+
                 [_indicatorView stopAnimating];
             } WithFailureBlock:^{
                 UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
@@ -129,7 +148,11 @@
                 [self.view addSubview:faileLable];
                 [_tableView removeFromSuperview];
             }];
+//            [self dataFresh];
         }
+                         
+        [self.tableView headerEndRefreshing];
+        [self.tableView footerEndRefreshing];
     } WithFailureBlock:nil];
 }
 

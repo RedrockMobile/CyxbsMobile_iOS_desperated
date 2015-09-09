@@ -83,7 +83,7 @@
     
     //设置图片
     for(int i=0;i<kCount;i++){
-        NSString *imageName=[NSString stringWithFormat:@"重邮美景%d.jpg",i+1];
+        NSString *imageName=[NSString stringWithFormat:@"cqupt%d.jpg",i+1];
         UIImage *image=[UIImage imageNamed:imageName];
         
         UIImageView *imageView=[[UIImageView alloc] initWithFrame:self.scrollView.bounds];

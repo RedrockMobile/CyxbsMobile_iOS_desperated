@@ -43,7 +43,7 @@ static Boolean isClick = NO;
             [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_icon_menu_%d.png",whichVc+1]]];
 
 //            vc.navigationBar.tintColor = kBarTintColor;
-            vc.navigationBar.barTintColor = kBarTintColor;
+            vc.navigationBar.barTintColor = COLOR_NAVIGATIONBAR;
             
             vc.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
             vc.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
@@ -105,22 +105,19 @@ static Boolean isClick = NO;
                           };
     
     self.btnNum = 4;
-    //———— Writed By RainyTunes
+    
+    
+    
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
-    NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"空教室查询"];
+    //NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"找空教室"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *str1 = [userDefault objectForKey:@"stuNum"];
-    NSString *str2 = [userDefault objectForKey:@"idNum"];
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
-    self.clicker.stuNum = str1;
-    self.clicker.idNum = str2;
     for (int i=0; i<self.btnNum; i++) {
         ///** label **/
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.text = textArray[i];
+        //label.text = textArray[i];
         [self.btnTextArray addObject:label];
         [self.view addSubview:label];
         /** button **/

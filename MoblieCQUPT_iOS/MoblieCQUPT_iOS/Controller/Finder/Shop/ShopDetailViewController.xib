@@ -68,7 +68,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-gA-QAz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="uH2-gA-QAz">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="242"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="242" id="06f-YY-B92"/>
@@ -177,6 +177,9 @@
             <point key="canvasLocation" x="355.5" y="277.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="loading.png" width="215" height="144"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

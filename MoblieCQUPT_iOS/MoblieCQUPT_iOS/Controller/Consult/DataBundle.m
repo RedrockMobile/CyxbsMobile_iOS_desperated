@@ -17,7 +17,6 @@
 
 @interface DataBundle ()
 @property (nonatomic, strong) EmptyRoomsViewController *emptyRoomDelegate;
-
 @end
 
 @implementation DataBundle

@@ -13,7 +13,9 @@
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
-#import "ImagePickerController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "LoginEntry.h"
+
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -62,7 +64,7 @@
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
-    NSArray *text = @[@"考试安排",@"补考查询",@"期末成绩",@"找自习室"];
+    NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
 //     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
@@ -135,8 +137,23 @@
     if (!_myPhoto) {
         _myPhoto = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
         _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
-        UIImage *image = [UIImage imageNamed:@"mobile.png"];
-        [_myPhoto setImage:image forState:UIControlStateNormal];
+        NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
+        if (url) {
+            ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+            [lib assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
+                UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+                [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+            } failureBlock:nil];
+        }else{
+            
+            UIImage *saveImage = [UIImage imageNamed:@"mobile.png"];
+            [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+            _myPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+            _myPhoto.layer.borderWidth = 1;
+        }
+        
+        
+        
         
         _myPhoto.layer.masksToBounds = YES;
         _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
@@ -145,6 +162,7 @@
            forControlEvents:UIControlEventTouchUpInside];
 
         _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
+        
     }
     return _myPhoto;
 }
@@ -260,8 +278,39 @@
 
 #pragma mark - UIImagePickerController委托方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
+//    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    /** 保存图片 **/
+    NSError *error;
+    
+    NSURL *url = info[UIImagePickerControllerReferenceURL];
+     ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+    [lib assetForURL:url resultBlock:^(ALAsset *asset) {
+        UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+        NSDictionary *dicParam = @{@"defaultImageNSUrl":[url absoluteString]};
+        [LoginEntry saveByUserdefaultWithDictionary:dicParam];
+        
+        [self image:saveImage didFinishSavingWithError:error contextInfo:nil];
+    } failureBlock:nil];
+    
+//    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
     [_myPhoto setImage:image forState:UIControlStateNormal];
+    _myPhoto.layer.borderWidth = 0;
+    
+}
+
+- (UIImage *)fullResolutionImageFromALAsset:(ALAsset *)asset
+{
+    ALAssetRepresentation *assetRep = [asset defaultRepresentation];
+    CGImageRef imgRef = [assetRep fullResolutionImage];
+    UIImage *img = [UIImage imageWithCGImage:imgRef
+                                       scale:assetRep.scale
+                                 orientation:(UIImageOrientation)assetRep.orientation];
+    return img;
 }
 
 @end
