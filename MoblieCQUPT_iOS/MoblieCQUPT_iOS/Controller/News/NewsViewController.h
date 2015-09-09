@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface NewsViewController : UIViewController<UITextFieldDelegate>
+typedef NS_ENUM(NSInteger, EnumFreshType)
+{
+    //以下是枚举成员
+    EnumDataRefresh = 0,
+    EnumDataAdd = 1,
+};
 
 @end
 

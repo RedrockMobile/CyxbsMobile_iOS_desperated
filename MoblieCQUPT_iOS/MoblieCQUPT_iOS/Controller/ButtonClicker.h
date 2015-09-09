@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "MainViewController.h"
 @interface ButtonClicker : NSObject
-@property (nonatomic, strong) UIViewController *delegate;
+@property (nonatomic, strong) MainViewController *delegate;
 @property (nonatomic, strong) NSString *stuNum;
 @property (nonatomic, strong) NSString *idNum;
+@property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, strong) UIButton *nowButton;
 - (void)clickForExamSchedule;
 - (void)clickForReexamSchedule;
 - (void)clickForExamGrade;

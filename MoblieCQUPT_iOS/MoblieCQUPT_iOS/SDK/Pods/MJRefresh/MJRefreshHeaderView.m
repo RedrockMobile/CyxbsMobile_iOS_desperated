@@ -193,7 +193,7 @@
                 self.lastUpdateTime = [NSDate date];
                 
                 [UIView animateWithDuration:MJRefreshSlowAnimationDuration animations:^{
-#warning 这句代码修复了，top值不断累加的bug
+//#warning 这句代码修复了，top值不断累加的bug
                     self.scrollView.mj_contentInsetTop -= self.mj_height;
                 }];
             } else {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
@@ -21,13 +21,13 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o0l-GM-fyP">
                     <rect key="frame" x="153" y="15" width="70" height="70"/>
-                    <state key="normal" title="重邮地图" image="重邮地图.png">
+                    <state key="normal" title="重邮地图" image="map.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhY-HL-CFm">
                     <rect key="frame" x="263" y="15" width="70" height="70"/>
-                    <state key="normal" title="摇一摇" image="摇一摇.png">
+                    <state key="normal" title="摇一摇" image="shakeForShop.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -73,19 +73,19 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NDi-Dn-2jG">
                     <rect key="frame" x="263" y="133" width="70" height="70"/>
-                    <state key="normal" title="重邮社区" image="晒秘密.png">
+                    <state key="normal" title="重邮社区" image="community.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uvv-we-XK2">
                     <rect key="frame" x="43" y="133" width="70" height="70"/>
-                    <state key="normal" title="周边美食" image="周边美食.png">
+                    <state key="normal" title="周边美食" image="shop.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZB7-Bf-abi">
                     <rect key="frame" x="152" y="133" width="70" height="70"/>
-                    <state key="normal" title="Button" image="我要创业.png">
+                    <state key="normal" title="Button" image="chuangye.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -95,7 +95,7 @@
                         <constraint firstAttribute="width" constant="70" id="DAI-Gh-eqx"/>
                         <constraint firstAttribute="height" constant="70" id="aSV-tD-V9p"/>
                     </constraints>
-                    <state key="normal" title="红岩门户" image="红岩门户.png">
+                    <state key="normal" title="红岩门户" image="redrock.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
@@ -160,15 +160,15 @@
                     <exclude reference="oGI-dP-YJQ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="803.5" y="435"/>
+            <point key="canvasLocation" x="917.5" y="360"/>
         </view>
     </objects>
     <resources>
-        <image name="周边美食.png" width="96" height="96"/>
-        <image name="我要创业.png" width="96" height="96"/>
-        <image name="摇一摇.png" width="96" height="96"/>
-        <image name="晒秘密.png" width="96" height="96"/>
-        <image name="红岩门户.png" width="96" height="96"/>
-        <image name="重邮地图.png" width="96" height="96"/>
+        <image name="chuangye.png" width="96" height="96"/>
+        <image name="community.png" width="96" height="96"/>
+        <image name="map.png" width="96" height="96"/>
+        <image name="redrock.png" width="96" height="96"/>
+        <image name="shakeForShop.png" width="96" height="96"/>
+        <image name="shop.png" width="96" height="96"/>
     </resources>
 </document>

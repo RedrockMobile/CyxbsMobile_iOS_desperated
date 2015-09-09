@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:COLOR_CONTENTBACKGROUND];
     [self initButtons];
-    [self initNavigationBar:@"空教室查询"];
+    [self initNavigationBar:@"找空教室"];
     [self initReusltDialog];
 }
 
@@ -53,7 +53,7 @@
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
     [navigaionBar pushNavigationItem:navigationItem animated:YES];
     [navigaionBar setBackgroundColor:COLOR_NAVIGATIONBAR];
-    [navigaionBar setTintColor:COLOR_MAINCOLOR];
+    [navigaionBar setTintColor:COLOR_NAVIGATIONBAR_TINT];
     
     navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
     navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊

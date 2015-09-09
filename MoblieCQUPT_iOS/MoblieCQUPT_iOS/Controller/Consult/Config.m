@@ -9,7 +9,10 @@
 #import "Config.h"
 
 @implementation Config
-+ (NSMutableDictionary *)paramWithStuNum:(NSString *)stuNum IdNum:(NSString *)idNum {
++ (NSMutableDictionary *)paramWithStuNum {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *stuNum = [userDefault objectForKey:@"stuNum"];
+    NSString *idNum = [userDefault objectForKey:@"idNum"];
     NSMutableDictionary *param = [[NSMutableDictionary alloc]init];
     [param setValue:stuNum forKey:@"stuNum"];
     [param setValue:stuNum forKey:@"stu"];

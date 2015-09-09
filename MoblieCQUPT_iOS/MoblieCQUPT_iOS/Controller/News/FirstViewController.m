@@ -33,13 +33,6 @@
          scrollView.showsHorizontalScrollIndicator = NO;
          scrollView.showsVerticalScrollIndicator = YES;
             // 用来记录scrollview滚动的位置
-   //    scrollView.contentOffset = ;
-    
-       // 去掉弹簧效果
-//       scrollView.bounces = NO;
-    
-         // 增加额外的滚动区域（逆时针，上、左、下、右）
-        // top  left  bottom  right
     
         _scrollView = scrollView;
 
@@ -49,6 +42,8 @@
     
         self.top1label.text =self.data1[@"title"];
 
+         UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
+        self.textView.font = font;
 }
 
 - (float) heightForString:(NSString *)value fontSize:(float)fontSize andWidth:(float)width

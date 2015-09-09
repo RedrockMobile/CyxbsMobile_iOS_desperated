@@ -24,6 +24,7 @@
 @property (strong, nonatomic)NSArray *week;//课程的周数组
 @property (strong, nonatomic)NSString *weekBegin;//课程开始的周
 @property (strong, nonatomic)NSString *weekEnd;//课程结束的周
+@property (strong, nonatomic)NSString *courseTitle;//3节课以上的情况多加的标题
 
 @property (strong, nonatomic)NSString *color;//课程颜色
 

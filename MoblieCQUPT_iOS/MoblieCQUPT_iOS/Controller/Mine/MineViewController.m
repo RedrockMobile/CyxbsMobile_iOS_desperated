@@ -13,20 +13,33 @@
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "LoginEntry.h"
 
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) UIImageView *myPhoto;
+
+@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+
+@property (strong, nonatomic) UIScrollView *mainScrollView;
+@property (strong, nonatomic) UIButton *myPhoto;
 @property (strong, nonatomic) UILabel *loginLabel;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
 @property (strong, nonatomic) ButtonClicker *clicker;
 @property (strong, nonatomic) NSMutableArray *cellDictionary;
+
 @end
 
 @implementation MineViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+    _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H -20);
+    _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    _mainScrollView.showsVerticalScrollIndicator=NO;
+    [self.view addSubview:_mainScrollView];
+    
     _currentHeight = 0;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[
@@ -41,17 +54,17 @@
     _currentHeight += topView.frame.size.height;
     
     topView.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:topView];
+    [_mainScrollView addSubview:topView];
 
     
-    [self.view addSubview:self.myPhoto];
-    [self.view addSubview:self.loginLabel];
+    [_mainScrollView addSubview:self.myPhoto];
+    [_mainScrollView addSubview:self.loginLabel];
     
     /**button **/
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
-    NSArray *text = @[@"考试安排",@"补考查询",@"期末成绩",@"找自习室"];
+    NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
 //     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
@@ -77,23 +90,19 @@
         textLabel.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2+12+textLabel.frame.size.height/2);
         [labelButton addSubview:buttonView];
        
-        
         [labelButton addSubview:textLabel];
         /**/
         [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
         
-        [self.view addSubview:labelButton];
+        labelButton.backgroundColor = [UIColor whiteColor];
+        
+        [_mainScrollView addSubview:labelButton];
     }
     
     _currentHeight += MAIN_SCREEN_H*0.1;
 
-    [self.view addSubview:self.tableView];
+    [_mainScrollView addSubview:self.tableView];
     _currentHeight += _tableView.frame.size.height;
-    
-    
-    
-    
-    
     
 //    for (NSString* family in [UIFont familyNames])
 //    {
@@ -124,19 +133,50 @@
     return _tableView;
 }
 
-- (UIImageView *)myPhoto{
+- (UIButton *)myPhoto{
     if (!_myPhoto) {
-        _myPhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.3, MAIN_SCREEN_W*0.3)];
+        _myPhoto = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
         _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
-        [_myPhoto setImage:[UIImage imageNamed:@"mobile.png"]];
-//        _myPhoto.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.5];
-//        _myPhoto.layer.masksToBounds = YES;
+        NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
+        if (url) {
+            ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+            [lib assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
+                UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+                [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+            } failureBlock:nil];
+        }else{
+            
+            UIImage *saveImage = [UIImage imageNamed:@"mobile.png"];
+            [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+            _myPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+            _myPhoto.layer.borderWidth = 1;
+        }
+        
+        
+        
+        
+        _myPhoto.layer.masksToBounds = YES;
+        _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
+        [_myPhoto addTarget:self
+                     action:@selector(selectPhoto)
+           forControlEvents:UIControlEventTouchUpInside];
+
         _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
-//        _myPhoto.layer.borderColor = [UIColor blueColor].CGColor;
-//        _myPhoto.layer.borderWidth = 1;
         
     }
     return _myPhoto;
+}
+
+- (void)selectPhoto{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    //在照片库里选择照片作为头像
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    
+    [self presentViewController:imagePicker
+                       animated:YES
+                     completion:nil];
 }
 
 - (UILabel *)loginLabel{
@@ -183,14 +223,14 @@
         cell.detailTextLabel.text = @">";
         UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.06, MAIN_SCREEN_W*0.06);
-        imgView.center = CGPointMake(imgView.center.x, cell.center.y+8);
+        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+        imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
         [cell addSubview:imgView];
         
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
         [label sizeToFit];
-        label.center = CGPointMake(label.center.x, cell.center.y+8);
+        label.center = CGPointMake(label.center.x, cell.center.y+imgView.frame.size.height/4);
         [cell addSubview:label];
 
         
@@ -210,7 +250,6 @@
 }
 
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return (_tableView.frame.size.height-8*3-2)/5;
 }
@@ -226,7 +265,7 @@
         
         LoginViewController *login = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:login animated:YES completion:^{
-            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray"]];
+            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
         }];
     }
    
@@ -235,6 +274,43 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+}
+
+#pragma mark - UIImagePickerController委托方法
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
+//    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    /** 保存图片 **/
+    NSError *error;
+    
+    NSURL *url = info[UIImagePickerControllerReferenceURL];
+     ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+    [lib assetForURL:url resultBlock:^(ALAsset *asset) {
+        UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+        NSDictionary *dicParam = @{@"defaultImageNSUrl":[url absoluteString]};
+        [LoginEntry saveByUserdefaultWithDictionary:dicParam];
+        
+        [self image:saveImage didFinishSavingWithError:error contextInfo:nil];
+    } failureBlock:nil];
+    
+//    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    [_myPhoto setImage:image forState:UIControlStateNormal];
+    _myPhoto.layer.borderWidth = 0;
+    
+}
+
+- (UIImage *)fullResolutionImageFromALAsset:(ALAsset *)asset
+{
+    ALAssetRepresentation *assetRep = [asset defaultRepresentation];
+    CGImageRef imgRef = [assetRep fullResolutionImage];
+    UIImage *img = [UIImage imageWithCGImage:imgRef
+                                       scale:assetRep.scale
+                                 orientation:(UIImageOrientation)assetRep.orientation];
+    return img;
 }
 
 @end

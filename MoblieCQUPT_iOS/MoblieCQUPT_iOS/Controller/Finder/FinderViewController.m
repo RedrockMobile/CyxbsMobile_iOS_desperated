@@ -83,7 +83,7 @@
     
     //设置图片
     for(int i=0;i<kCount;i++){
-        NSString *imageName=[NSString stringWithFormat:@"重邮美景%d.jpg",i+1];
+        NSString *imageName=[NSString stringWithFormat:@"cqupt%d.jpg",i+1];
         UIImage *image=[UIImage imageNamed:imageName];
         
         UIImageView *imageView=[[UIImageView alloc] initWithFrame:self.scrollView.bounds];
@@ -150,7 +150,6 @@
         _scrollView.contentSize=CGSizeMake(kCount*_scrollView.bounds.size.width, 0);
         _scrollView.bounces=NO;
         _scrollView.pagingEnabled=YES;
-        _scrollView.showsHorizontalScrollIndicator=NO;
         _scrollView.showsVerticalScrollIndicator=NO;
         //添加代理方法
         _scrollView.delegate=self;
