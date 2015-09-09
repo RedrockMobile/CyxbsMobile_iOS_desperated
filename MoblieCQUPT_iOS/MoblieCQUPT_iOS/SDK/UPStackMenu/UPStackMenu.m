@@ -226,10 +226,13 @@ const static NSTimeInterval             kStackMenuDefaultCloseAnimationDurationO
 
 - (void)toggleStack:(id)sender
 {    
-    if(!_isOpen)
+    if(!_isOpen) {
+        
         [self openStack];
-    else
+    }else {
+        
         [self closeStack];
+    }
 }
 
 - (void)openStack

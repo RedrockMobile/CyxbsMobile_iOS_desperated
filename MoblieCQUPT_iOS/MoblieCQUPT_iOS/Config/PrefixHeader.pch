@@ -15,7 +15,7 @@
 
 #define DDLog(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
-#define MAIN_COLOR  [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1]
+#define MAIN_COLOR  [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1]
 #define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kBarTintColor [UIColor whiteColor]
