@@ -13,7 +13,6 @@
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
-#import "ImagePickerController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -62,7 +61,7 @@
     self.clicker = [[ButtonClicker alloc]init];
     self.clicker.delegate = self;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
-    NSArray *text = @[@"考试安排",@"补考查询",@"期末成绩",@"找自习室"];
+    NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
 //     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
@@ -262,6 +261,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     [_myPhoto setImage:image forState:UIControlStateNormal];
+    [self dismissViewControllerAnimated:YES
+                             completion:nil];
 }
 
 @end

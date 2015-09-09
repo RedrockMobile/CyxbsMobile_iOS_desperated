@@ -15,15 +15,16 @@
 {
     DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
-    dataBundle.postParams = [Config paramWithStuNum:self.stuNum IdNum:self.idNum];
+    dataBundle.postParams = [Config paramWithStuNum];
     [dataBundle httpPostForSchedule:API_EXAM_SCHEDULE];
 }
+
 
 - (void)clickForReexamSchedule
 {
     DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
-    dataBundle.postParams = [Config paramWithStuNum:self.stuNum IdNum:self.idNum];
+    dataBundle.postParams = [Config paramWithStuNum];;
     [dataBundle httpPostForSchedule:API_REEXAM_SCHEDULE];
 }
 
@@ -31,7 +32,7 @@
 {
     DataBundle *dataBundle = [[DataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
-    dataBundle.postParams = [Config paramWithStuNum:self.stuNum IdNum:self.idNum];
+    dataBundle.postParams = [Config paramWithStuNum];;
     [dataBundle httpPostForGrade];
 }
 
@@ -41,4 +42,6 @@
     dataBundle.mainDelegate = self.delegate;
     [dataBundle httpPostForEmptyRooms];
 }
+
 @end
+
