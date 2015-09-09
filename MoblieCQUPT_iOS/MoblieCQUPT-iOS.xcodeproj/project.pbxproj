@@ -353,7 +353,7 @@
 		CEF273811B90D573009B5BA2 /* 20-3补考.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3补考.png"; sourceTree = "<group>"; };
 		CEF273821B90D573009B5BA2 /* 20-3餐厅psd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3餐厅psd.png"; sourceTree = "<group>"; };
 		CEF273831B90D573009B5BA2 /* 20-3exam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3exam.png"; sourceTree = "<group>"; };
-		CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoblieCQUPT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF61B2A1B82BC950014B980 /* cyxbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cyxbs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEF61B311B82BC950014B980 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -363,7 +363,7 @@
 		CEF61B381B82BC950014B980 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEF61B3A1B82BC950014B980 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CEF61B3D1B82BC950014B980 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CEF61B431B82BC950014B980 /* MoblieCQUPT_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoblieCQUPT_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF61B431B82BC950014B980 /* MoblieCQUPT-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoblieCQUPT-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B481B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
 		CEF61B551B82BDFE0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -930,8 +930,8 @@
 		CEF61B2B1B82BC950014B980 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */,
-				CEF61B431B82BC950014B980 /* MoblieCQUPT_iOSTests.xctest */,
+				CEF61B2A1B82BC950014B980 /* cyxbs.app */,
+				CEF61B431B82BC950014B980 /* MoblieCQUPT-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1389,9 +1389,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CEF61B291B82BC950014B980 /* MoblieCQUPT_iOS */ = {
+		CEF61B291B82BC950014B980 /* MoblieCQUPT-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEF61B4D1B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT_iOS" */;
+			buildConfigurationList = CEF61B4D1B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT-iOS" */;
 			buildPhases = (
 				CEF61B261B82BC950014B980 /* Sources */,
 				CEF61B271B82BC950014B980 /* Frameworks */,
@@ -1401,14 +1401,14 @@
 			);
 			dependencies = (
 			);
-			name = MoblieCQUPT_iOS;
+			name = "MoblieCQUPT-iOS";
 			productName = MoblieCQUPT_iOS;
-			productReference = CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */;
+			productReference = CEF61B2A1B82BC950014B980 /* cyxbs.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CEF61B421B82BC950014B980 /* MoblieCQUPT_iOSTests */ = {
+		CEF61B421B82BC950014B980 /* MoblieCQUPT-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CEF61B501B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT_iOSTests" */;
+			buildConfigurationList = CEF61B501B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT-iOSTests" */;
 			buildPhases = (
 				CEF61B3F1B82BC950014B980 /* Sources */,
 				CEF61B401B82BC950014B980 /* Frameworks */,
@@ -1419,9 +1419,9 @@
 			dependencies = (
 				CEF61B451B82BC950014B980 /* PBXTargetDependency */,
 			);
-			name = MoblieCQUPT_iOSTests;
+			name = "MoblieCQUPT-iOSTests";
 			productName = MoblieCQUPT_iOSTests;
-			productReference = CEF61B431B82BC950014B980 /* MoblieCQUPT_iOSTests.xctest */;
+			productReference = CEF61B431B82BC950014B980 /* MoblieCQUPT-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1442,7 +1442,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CEF61B251B82BC950014B980 /* Build configuration list for PBXProject "MoblieCQUPT_iOS" */;
+			buildConfigurationList = CEF61B251B82BC950014B980 /* Build configuration list for PBXProject "MoblieCQUPT-iOS" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1455,8 +1455,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CEF61B291B82BC950014B980 /* MoblieCQUPT_iOS */,
-				CEF61B421B82BC950014B980 /* MoblieCQUPT_iOSTests */,
+				CEF61B291B82BC950014B980 /* MoblieCQUPT-iOS */,
+				CEF61B421B82BC950014B980 /* MoblieCQUPT-iOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1692,7 +1692,7 @@
 /* Begin PBXTargetDependency section */
 		CEF61B451B82BC950014B980 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CEF61B291B82BC950014B980 /* MoblieCQUPT_iOS */;
+			target = CEF61B291B82BC950014B980 /* MoblieCQUPT-iOS */;
 			targetProxy = CEF61B441B82BC950014B980 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1809,7 +1809,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = cyxbs;
 			};
 			name = Debug;
 		};
@@ -1825,7 +1825,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = cyxbs;
 			};
 			name = Release;
 		};
@@ -1843,7 +1843,7 @@
 				);
 				INFOPLIST_FILE = MoblieCQUPT_iOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MoblieCQUPT-iOSTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoblieCQUPT_iOS.app/MoblieCQUPT_iOS";
 			};
 			name = Debug;
@@ -1858,7 +1858,7 @@
 				);
 				INFOPLIST_FILE = MoblieCQUPT_iOSTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MoblieCQUPT-iOSTests";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoblieCQUPT_iOS.app/MoblieCQUPT_iOS";
 			};
 			name = Release;
@@ -1866,7 +1866,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CEF61B251B82BC950014B980 /* Build configuration list for PBXProject "MoblieCQUPT_iOS" */ = {
+		CEF61B251B82BC950014B980 /* Build configuration list for PBXProject "MoblieCQUPT-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEF61B4B1B82BC950014B980 /* Debug */,
@@ -1875,7 +1875,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEF61B4D1B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT_iOS" */ = {
+		CEF61B4D1B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEF61B4E1B82BC950014B980 /* Debug */,
@@ -1884,7 +1884,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CEF61B501B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT_iOSTests" */ = {
+		CEF61B501B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CEF61B511B82BC950014B980 /* Debug */,
