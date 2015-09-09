@@ -15,4 +15,7 @@
 withDictionaryParam:(NSDictionary *)paramDictionary;
 
 + (BOOL)loginoutWithParamArrayString:(NSArray *) paramArray;
+
++ (BOOL)saveByUserdefaultWithDictionary:(NSDictionary *)paramDictionary;
++ (id)getByUserdefaultWithKey:(NSString *)key;
 @end

@@ -74,6 +74,7 @@
 		CE8159791B96A84C002CF7B2 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159711B96A84C002CF7B2 /* FMDatabasePool.m */; };
 		CE81597A1B96A84C002CF7B2 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159731B96A84C002CF7B2 /* FMDatabaseQueue.m */; };
 		CE81597B1B96A84C002CF7B2 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8159761B96A84C002CF7B2 /* FMResultSet.m */; };
+		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */; };
 		CEC96BD01B9AC6270047648A /* new_icon_menu_5.png in Resources */ = {isa = PBXBuildFile; fileRef = CEC96BCF1B9AC6270047648A /* new_icon_menu_5.png */; };
 		CEC96BD21B9AC6F90047648A /* 0960.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEC96BD11B9AC6F90047648A /* 0960.jpg */; };
@@ -318,6 +319,7 @@
 		CE8159741B96A84C002CF7B2 /* FMDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDB.h; sourceTree = "<group>"; };
 		CE8159751B96A84C002CF7B2 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		CE8159761B96A84C002CF7B2 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
+		CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CEC93BDE1B9B114500AC9E00 /* LoginEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginEntry.h; sourceTree = "<group>"; };
 		CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginEntry.m; sourceTree = "<group>"; };
 		CEC96BCF1B9AC6270047648A /* new_icon_menu_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_5.png; sourceTree = "<group>"; };
@@ -523,6 +525,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */,
 				CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */,
 				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
 				CEF2736F1B90CF5E009B5BA2 /* libMobClickLibrary.a in Frameworks */,
@@ -913,6 +916,7 @@
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
+				CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */,
 				D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */,
 				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
 				CEF273701B90CFAB009B5BA2 /* libz.dylib */,

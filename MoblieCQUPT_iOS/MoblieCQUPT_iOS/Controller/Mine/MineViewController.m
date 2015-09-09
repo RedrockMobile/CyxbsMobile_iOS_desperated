@@ -13,6 +13,9 @@
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "LoginEntry.h"
+
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -134,8 +137,23 @@
     if (!_myPhoto) {
         _myPhoto = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
         _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
-        UIImage *image = [UIImage imageNamed:@"mobile.png"];
-        [_myPhoto setImage:image forState:UIControlStateNormal];
+        NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
+        if (url) {
+            ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+            [lib assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
+                UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+                [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+            } failureBlock:nil];
+        }else{
+            
+            UIImage *saveImage = [UIImage imageNamed:@"mobile.png"];
+            [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+            _myPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+            _myPhoto.layer.borderWidth = 1;
+        }
+        
+        
+        
         
         _myPhoto.layer.masksToBounds = YES;
         _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
@@ -144,6 +162,7 @@
            forControlEvents:UIControlEventTouchUpInside];
 
         _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
+        
     }
     return _myPhoto;
 }
@@ -259,10 +278,39 @@
 
 #pragma mark - UIImagePickerController委托方法
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
-    [_myPhoto setImage:image forState:UIControlStateNormal];
+//    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    /** 保存图片 **/
+    NSError *error;
+    
+    NSURL *url = info[UIImagePickerControllerReferenceURL];
+     ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+    [lib assetForURL:url resultBlock:^(ALAsset *asset) {
+        UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+        NSDictionary *dicParam = @{@"defaultImageNSUrl":[url absoluteString]};
+        [LoginEntry saveByUserdefaultWithDictionary:dicParam];
+        
+        [self image:saveImage didFinishSavingWithError:error contextInfo:nil];
+    } failureBlock:nil];
+    
+//    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     [self dismissViewControllerAnimated:YES
                              completion:nil];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    [_myPhoto setImage:image forState:UIControlStateNormal];
+    _myPhoto.layer.borderWidth = 0;
+    
+}
+
+- (UIImage *)fullResolutionImageFromALAsset:(ALAsset *)asset
+{
+    ALAssetRepresentation *assetRep = [asset defaultRepresentation];
+    CGImageRef imgRef = [assetRep fullResolutionImage];
+    UIImage *img = [UIImage imageWithCGImage:imgRef
+                                       scale:assetRep.scale
+                                 orientation:(UIImageOrientation)assetRep.orientation];
+    return img;
 }
 
 @end

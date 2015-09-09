@@ -19,15 +19,8 @@ withDictionaryParam:(NSDictionary *)paramDictionary{
     [userDefaults setObject:passworld forKey:@"idNum"];
     [userDefaults setObject:futureTime forKey:@"time"];
     
-    NSLock *lock = [[NSLock alloc] init];
-    [lock lock];
-    [paramDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-        [userDefaults setObject:obj forKey:key];
-    }];
-    [lock unlock];
-    
-    if([userDefaults synchronize]){
-        return YES;
+    if ([LoginEntry saveByUserdefaultWithDictionary:paramDictionary]) {
+      return [userDefaults synchronize];
     }else{
         return NO;
     }
@@ -54,4 +47,27 @@ withDictionaryParam:(NSDictionary *)paramDictionary{
         return NO;
     }
 }
+
+
++ (BOOL)saveByUserdefaultWithDictionary:(NSDictionary *)paramDictionary{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLock *lock = [[NSLock alloc] init];
+    [lock lock];
+    [paramDictionary enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+        [userDefaults setObject:obj forKey:key];
+    }];
+    [lock unlock];
+    
+    if([userDefaults synchronize]){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
++ (id)getByUserdefaultWithKey:(NSString *)key{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    return [userDefaults objectForKey:key];
+}
+
 @end
