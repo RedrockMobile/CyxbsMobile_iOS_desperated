@@ -33,11 +33,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    self.view.backgroundColor = MAIN_COLOR;
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H -20);
     _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     _mainScrollView.showsVerticalScrollIndicator=NO;
+    _mainScrollView.backgroundColor = MAIN_COLOR;
     [self.view addSubview:_mainScrollView];
     
     _currentHeight = 0;
@@ -53,7 +54,7 @@
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
     _currentHeight += topView.frame.size.height;
     
-    topView.backgroundColor = [UIColor orangeColor];
+    topView.backgroundColor = MAIN_COLOR;
     [_mainScrollView addSubview:topView];
 
     
