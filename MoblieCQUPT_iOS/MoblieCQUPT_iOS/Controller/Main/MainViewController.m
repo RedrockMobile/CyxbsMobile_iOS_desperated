@@ -31,7 +31,7 @@ static Boolean isClick = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self findButtonInit];
-    NSArray *item = @[@"课程",@"发现",@"查询",@"教务",@"我的"];
+    NSArray *item = @[@"我的课表",@"发现",@"查询",@"教务重邮",@"我的"];
     int whichVc = 0;
     self.tabBar.tintColor = MAIN_COLOR;
     

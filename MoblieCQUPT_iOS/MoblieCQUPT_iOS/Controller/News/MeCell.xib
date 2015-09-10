@@ -18,7 +18,7 @@
                         <rect key="frame" x="8" y="5" width="360" height="118"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Labelkjfihefjnfjdngjkdfnjkvfdjfhgjksnfkjdfkjdgjkngjnjngjkfndjkgdkgjkj" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mjy-JR-PZv">
-                                <rect key="frame" x="0.0" y="54" width="351.5" height="56"/>
+                                <rect key="frame" x="8" y="54" width="343.5" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.2810733876" green="0.2810733876" blue="0.2810733876" alpha="0.70000000000000007" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -26,7 +26,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mjy-JR-PZv" firstAttribute="leading" secondItem="gIc-0w-J1e" secondAttribute="leading" id="VzP-7n-QrA"/>
+                            <constraint firstItem="mjy-JR-PZv" firstAttribute="leading" secondItem="gIc-0w-J1e" secondAttribute="leading" constant="8" id="VzP-7n-QrA"/>
                             <constraint firstAttribute="trailing" secondItem="mjy-JR-PZv" secondAttribute="trailing" constant="8" id="npp-W8-pNh"/>
                             <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="mjy-JR-PZv" secondAttribute="bottom" priority="600" constant="8" id="xtD-Yw-f4g"/>
                         </constraints>

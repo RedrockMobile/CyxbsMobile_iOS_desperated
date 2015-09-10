@@ -17,7 +17,7 @@
 #import "UPStackMenu.h"
 #import "UPStackMenuItem.h"
 #import "LoginViewController.h"
-#import <SystemConfiguration/SystemConfiguration.h>
+#import "ProgressHUD.h"
 
 @interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate>
 @end
@@ -27,14 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-    BOOL isReachability = [NetWork netWorkReachability:Course_API];
-    if (isReachability) {
-        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-        _dataArray = [userDefault objectForKey:@"dataArray"];
-        [self handleWeek:_dataArray];
-    }else {
-        [self loadNetData];
-    }
+//    BOOL isReachability = [NetWork netWorkReachability:Course_API];
+//    if (!isReachability) {
+//        
+//    }
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    _dataArray = [userDefault objectForKey:@"dataArray"];
+    [self handleWeek:_dataArray];
+    [self loadNetData];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -43,14 +44,27 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)initView {
+    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     _registRepeatClassSet = [[NSMutableSet alloc] init];
     _mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49)];
     [self.view addSubview:_mainView];
     
     UIView *dayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
+    dayView.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
     [_mainView addSubview:dayView];
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, ScreenWidth, _mainView.frame.size.height - 30)];
     
+    for (int i = 0; i < 7; i ++) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 0, kWidthGrid-2, kWidthGrid*12-2)];
+        NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
+        NSInteger weekDay = [componets weekday];
+        if (i == weekDay - 2) {
+            view.backgroundColor = [UIColor colorWithRed:253/255.0 green:251/255.0 blue:234/255.0 alpha:1];
+        }
+
+        [_mainScrollView addSubview:view];
+    }
     
     NSArray *array = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
     for (int i = 0; i < 7; i ++) {
@@ -61,10 +75,8 @@
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
         if (i == weekDay - 2) {
-            dayLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
-            dayLabel.layer.borderColor = MAIN_COLOR.CGColor;
-            dayLabel.layer.borderWidth = 1;
-            dayLabel.layer.cornerRadius = 3;
+            dayLabel.textColor = [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1];
+            dayLabel.backgroundColor = [UIColor colorWithRed:253/255.0 green:251/255.0 blue:234/255.0 alpha:1];
         }
         [dayView addSubview:dayLabel];
     }
@@ -132,12 +144,14 @@
 }
 
 - (void)loadNetData {
+    [ProgressHUD show:@"正在加载中"];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
     _parameter = [NSMutableDictionary dictionary];
     _dataArray = [NSMutableArray array];
     [_parameter setObject:stuNum forKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
+        [ProgressHUD showSuccess:@"加载成功"];
         NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
         NSMutableArray *data = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i ++) {
@@ -151,7 +165,6 @@
         }
         _dataArray = data;
         NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
-        NSLog(@"%@",nowWeek);
         [_parameter setObject:nowWeek forKey:@"week"];
         [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
             NSMutableArray *weekDataArray = [NSMutableArray arrayWithArray:[returnValue objectForKey:@"data"]];
@@ -165,9 +178,18 @@
             [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
             [userDefault synchronize];
         } WithFailureBlock:nil];
+        UILabel *weekLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
+        weekLabel.center = CGPointMake(ScreenWidth/2, -25);
+        weekLabel.text = [NSString stringWithFormat:@"第%@周",nowWeek];
+        weekLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
+        weekLabel.textAlignment = NSTextAlignmentCenter;
+        [_mainScrollView addSubview:weekLabel];
         [userDefault setObject:nowWeek forKey:@"nowWeek"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
         [userDefault synchronize];
+        for (int i = 0; i < _buttonTag.count; i ++) {
+            [_buttonTag[i] removeFromSuperview];
+        }
         [self handleWeek:_dataArray];
     } WithFailureBlock:nil];
 }
@@ -207,6 +229,7 @@
 
 - (void)handleColor:(NSMutableArray *)courses {
     _colorArray = [[NSMutableArray alloc]initWithObjects:@"229,28,35",@"233,30,99",@"156,39,175",@"103,58,183",@"63,81,181",@"86,119,252",@"3,169,244",@"0,188,212",@"0,150,136",@"37,150,36",@"139,195,74",@"205,220,57",@"29,233,182",@"255,193,7",@"255,152,0",@"255,87,34",@"224,64,251",@"255,109,0",@"61,90,254",@"213,0,249", nil];
+//    _colorArray = [[NSMutableArray alloc]initWithObjects:@"255,161,16",@"56,188,242",@"149,213,27", nil];
     NSMutableArray *allCourses = [NSMutableArray array];
     NSMutableArray *courseArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < courses.count; i ++) {

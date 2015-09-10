@@ -47,8 +47,10 @@
     [MobClick updateOnlineConfig];
     
     UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    view.backgroundColor = [UIColor yellowColor];
+    view.backgroundColor = [UIColor whiteColor];
     [self.window addSubview:view];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     return YES;
 }
 

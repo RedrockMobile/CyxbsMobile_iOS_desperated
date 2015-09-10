@@ -21,12 +21,13 @@
     [self.view setBackgroundColor:[UIColor whiteColor]];
     [self initNavigationBar:@"成绩查询"];
     
-    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
-    [scrollView setContentSize:CGSizeMake([We getScreenWidth] + 300, [We getScreenHeight] - 100)];
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, [We getScreenWidth] + 300, [We getScreenHeight] - 100)];
+//    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
+//    [scrollView setContentSize:CGSizeMake([We getScreenWidth] + 300, [We getScreenHeight] - 100)];
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 64, MAIN_SCREEN_W+64, MAIN_SCREEN_H-64)];
     [webView loadHTMLString:self.delegate.htmlString baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle] resourcePath] isDirectory: YES]];
-    [scrollView addSubview:webView];
-    [self.view addSubview:scrollView];
+    webView.scalesPageToFit = YES;
+//    [scrollView addSubview:webView];
+    [self.view addSubview:webView];
     
 //    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
 //    [webView loadHTMLString:self.delegate.htmlString baseURL:[NSURL fileURLWithPath: [[NSBundle mainBundle] resourcePath] isDirectory: YES]];
