@@ -22,20 +22,19 @@
 		3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B01B8C4691009C1E94 /* NSArray+We.m */; };
 		3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B21B8C4691009C1E94 /* NSString+We.m */; };
 		3B37F0B71B8C4691009C1E94 /* We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B41B8C4691009C1E94 /* We.m */; };
-		3B86CDA71BA17E5200059B0A /* XBSEmptyRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B86CDA51BA17E5200059B0A /* XBSEmptyRoomViewController.xib */; };
 		3B9FD0C11B98B7A90081A100 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */; };
-		3B9FD0C21B98B7A90081A100 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */; };
 		3BBB58371B8EEE080099EC58 /* XBSConsultButtonClicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58361B8EEE080099EC58 /* XBSConsultButtonClicker.m */; };
-		3BBB58621B8F3DE90099EC58 /* XBSConsultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58551B8F3DE90099EC58 /* XBSConsultConfig.m */; };
 		3BBB58631B8F3DE90099EC58 /* XBSEmptyRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58581B8F3DE90099EC58 /* XBSEmptyRoomViewController.m */; };
 		3BBB58641B8F3DE90099EC58 /* XBSGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585A1B8F3DE90099EC58 /* XBSGradeViewController.m */; };
 		3BBB58651B8F3DE90099EC58 /* XBSSchduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585C1B8F3DE90099EC58 /* XBSSchduleViewController.m */; };
 		3BBB58661B8F3DE90099EC58 /* XBSConsultDataBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585E1B8F3DE90099EC58 /* XBSConsultDataBundle.m */; };
-		3BBB58671B8F3DE90099EC58 /* XBSScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58601B8F3DE90099EC58 /* XBSScheduleTableViewCell.m */; };
-		3BBB58681B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58611B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib */; };
 		3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58731B8F6EA10099EC58 /* iconfont.ttf */; };
 		3BD2644A1B8EDD8700B291A0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BD264471B8EDD8700B291A0 /* ProgressHUD.bundle */; };
 		3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD264491B8EDD8700B291A0 /* ProgressHUD.m */; };
+		3BFA630E1BA1AACE005B025D /* XBSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA630D1BA1AACE005B025D /* XBSNavigationBar.m */; };
+		3BFA63171BA1AC20005B025D /* XBSScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA63151BA1AC20005B025D /* XBSScheduleTableViewCell.m */; };
+		3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */; };
+		3BFA631D1BA1AD17005B025D /* XBSScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BFA631C1BA1AD17005B025D /* XBSScheduleTableViewCell.xib */; };
 		CE1401341B9BE5CC00C4C7B7 /* new_icon_menu_4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1401331B9BE5CC00C4C7B7 /* new_icon_menu_4.png */; };
 		CE1B36DF1B9A1B6800824B96 /* new_icon_menu_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36D91B9A1B6800824B96 /* new_icon_menu_1.png */; };
 		CE1B36E01B9A1B6800824B96 /* new_icon_menu_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DA1B9A1B6800824B96 /* new_icon_menu_2.png */; };
@@ -154,7 +153,6 @@
 		E238270E1B9478190058970E /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E238270D1B9478190058970E /* Course.m */; };
 		E24681F91B9F164600BBB8A8 /* loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24681F81B9F164600BBB8A8 /* loading@2x.png */; };
 		E24682011B9F25A800BBB8A8 /* chuangye.png in Resources */ = {isa = PBXBuildFile; fileRef = E24681FA1B9F25A800BBB8A8 /* chuangye.png */; };
-		E24682021B9F25A800BBB8A8 /* community.png in Resources */ = {isa = PBXBuildFile; fileRef = E24681FB1B9F25A800BBB8A8 /* community.png */; };
 		E24682031B9F25A800BBB8A8 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = E24681FC1B9F25A800BBB8A8 /* map.png */; };
 		E24682041B9F25A800BBB8A8 /* redrock.png in Resources */ = {isa = PBXBuildFile; fileRef = E24681FD1B9F25A800BBB8A8 /* redrock.png */; };
 		E24682051B9F25A800BBB8A8 /* shake@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E24681FE1B9F25A800BBB8A8 /* shake@2x.png */; };
@@ -244,14 +242,10 @@
 		3B37F0B21B8C4691009C1E94 /* NSString+We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+We.m"; sourceTree = "<group>"; };
 		3B37F0B31B8C4691009C1E94 /* We.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = We.h; sourceTree = "<group>"; };
 		3B37F0B41B8C4691009C1E94 /* We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = We.m; sourceTree = "<group>"; };
-		3B86CDA51BA17E5200059B0A /* XBSEmptyRoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XBSEmptyRoomViewController.xib; path = ../Controller/Consult/XBSEmptyRoomViewController.xib; sourceTree = "<group>"; };
 		3B9FD0BE1B98B7A90081A100 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
-		3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 		3BBB58351B8EEE080099EC58 /* XBSConsultButtonClicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSConsultButtonClicker.h; path = ../Controller/XBSConsultButtonClicker.h; sourceTree = "<group>"; };
 		3BBB58361B8EEE080099EC58 /* XBSConsultButtonClicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSConsultButtonClicker.m; path = ../Controller/XBSConsultButtonClicker.m; sourceTree = "<group>"; };
-		3BBB58541B8F3DE90099EC58 /* XBSConsultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSConsultConfig.h; path = ../Controller/Consult/XBSConsultConfig.h; sourceTree = "<group>"; };
-		3BBB58551B8F3DE90099EC58 /* XBSConsultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSConsultConfig.m; path = ../Controller/Consult/XBSConsultConfig.m; sourceTree = "<group>"; };
 		3BBB58571B8F3DE90099EC58 /* XBSEmptyRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSEmptyRoomViewController.h; path = ConsultViewControllers/XBSEmptyRoomViewController.h; sourceTree = "<group>"; };
 		3BBB58581B8F3DE90099EC58 /* XBSEmptyRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSEmptyRoomViewController.m; path = ConsultViewControllers/XBSEmptyRoomViewController.m; sourceTree = "<group>"; };
 		3BBB58591B8F3DE90099EC58 /* XBSGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSGradeViewController.h; path = ConsultViewControllers/XBSGradeViewController.h; sourceTree = "<group>"; };
@@ -260,13 +254,17 @@
 		3BBB585C1B8F3DE90099EC58 /* XBSSchduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSSchduleViewController.m; path = ConsultViewControllers/XBSSchduleViewController.m; sourceTree = "<group>"; };
 		3BBB585D1B8F3DE90099EC58 /* XBSConsultDataBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSConsultDataBundle.h; path = ../Controller/Consult/XBSConsultDataBundle.h; sourceTree = "<group>"; };
 		3BBB585E1B8F3DE90099EC58 /* XBSConsultDataBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSConsultDataBundle.m; path = ../Controller/Consult/XBSConsultDataBundle.m; sourceTree = "<group>"; };
-		3BBB585F1B8F3DE90099EC58 /* XBSScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSScheduleTableViewCell.h; path = ../Controller/Consult/XBSScheduleTableViewCell.h; sourceTree = "<group>"; };
-		3BBB58601B8F3DE90099EC58 /* XBSScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSScheduleTableViewCell.m; path = ../Controller/Consult/XBSScheduleTableViewCell.m; sourceTree = "<group>"; };
-		3BBB58611B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XBSScheduleTableViewCell.xib; path = ../Controller/Consult/XBSScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		3BBB58731B8F6EA10099EC58 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		3BD264471B8EDD8700B291A0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		3BD264481B8EDD8700B291A0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		3BD264491B8EDD8700B291A0 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		3BFA630C1BA1AACE005B025D /* XBSNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSNavigationBar.h; sourceTree = "<group>"; };
+		3BFA630D1BA1AACE005B025D /* XBSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSNavigationBar.m; sourceTree = "<group>"; };
+		3BFA63141BA1AC20005B025D /* XBSScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSScheduleTableViewCell.h; sourceTree = "<group>"; };
+		3BFA63151BA1AC20005B025D /* XBSScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSScheduleTableViewCell.m; sourceTree = "<group>"; };
+		3BFA63191BA1AC91005B025D /* XBSConsultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSConsultConfig.h; sourceTree = "<group>"; };
+		3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSConsultConfig.m; sourceTree = "<group>"; };
+		3BFA631C1BA1AD17005B025D /* XBSScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		CE1401331B9BE5CC00C4C7B7 /* new_icon_menu_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_4.png; sourceTree = "<group>"; };
 		CE1B36D91B9A1B6800824B96 /* new_icon_menu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_1.png; sourceTree = "<group>"; };
 		CE1B36DA1B9A1B6800824B96 /* new_icon_menu_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_2.png; sourceTree = "<group>"; };
@@ -671,10 +669,11 @@
 		3B86CDA81BA17E6A00059B0A /* Consult */ = {
 			isa = PBXGroup;
 			children = (
-				3B86CDA51BA17E5200059B0A /* XBSEmptyRoomViewController.xib */,
-				3BBB585F1B8F3DE90099EC58 /* XBSScheduleTableViewCell.h */,
-				3BBB58601B8F3DE90099EC58 /* XBSScheduleTableViewCell.m */,
-				3BBB58611B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib */,
+				3BFA631C1BA1AD17005B025D /* XBSScheduleTableViewCell.xib */,
+				3BFA63141BA1AC20005B025D /* XBSScheduleTableViewCell.h */,
+				3BFA63151BA1AC20005B025D /* XBSScheduleTableViewCell.m */,
+				3BFA630C1BA1AACE005B025D /* XBSNavigationBar.h */,
+				3BFA630D1BA1AACE005B025D /* XBSNavigationBar.m */,
 			);
 			name = Consult;
 			sourceTree = "<group>";
@@ -695,7 +694,6 @@
 			children = (
 				3B9FD0BE1B98B7A90081A100 /* AboutViewController.h */,
 				3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */,
-				3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -1098,8 +1096,8 @@
 		CEF61B691B82D5260014B980 /* Config */ = {
 			isa = PBXGroup;
 			children = (
-				3BBB58541B8F3DE90099EC58 /* XBSConsultConfig.h */,
-				3BBB58551B8F3DE90099EC58 /* XBSConsultConfig.m */,
+				3BFA63191BA1AC91005B025D /* XBSConsultConfig.h */,
+				3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */,
 				CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */,
 			);
 			path = Config;
@@ -1503,9 +1501,6 @@
 				CE30FDDB1B9968C000C15AD4 /* bukaochaxun.png in Resources */,
 				E24682051B9F25A800BBB8A8 /* shake@2x.png in Resources */,
 				E2D31A5E1B9ADCA500E1F5A8 /* ok@2x.png in Resources */,
-				3B9FD0C21B98B7A90081A100 /* AboutViewController.xib in Resources */,
-				E2D31A491B9ADCA500E1F5A8 /* 开始摇一摇 .png in Resources */,
-				E2D31A4B1B9ADCA500E1F5A8 /* 摇一摇.png in Resources */,
 				D96125E91B9F0DA9002D4F80 /* iconfont-menuiconaccount.png in Resources */,
 				3BD2644A1B8EDD8700B291A0 /* ProgressHUD.bundle in Resources */,
 				E2D31A521B9ADCA500E1F5A8 /* WebViewController.xib in Resources */,
@@ -1520,10 +1515,9 @@
 				CEF273921B90D573009B5BA2 /* 20-3补考.png in Resources */,
 				D96125F11B9F10D1002D4F80 /* iconfont-status.png in Resources */,
 				3B37F0A11B8C45F8009C1E94 /* Manifest.lock in Resources */,
-				E2D31A551B9ADCA500E1F5A8 /* 开始摇一摇 .png in Resources */,
 				D96125E71B9F0DA9002D4F80 /* iconfont-clock.png in Resources */,
 				D96125EF1B9F1010002D4F80 /* iconfont-week.png in Resources */,
-				E2D31A611B9ADCA500E1F5A8 /* 重邮美景3.jpg in Resources */,
+				E2D31A611B9ADCA500E1F5A8 /* cqupt3@2x.jpg in Resources */,
 				CEE1E2281B99AFF00088EC7C /* tuichu_red.png in Resources */,
 				CEF61B391B82BC950014B980 /* Main.storyboard in Resources */,
 				CEF2738A1B90D573009B5BA2 /* 20-2补考.png in Resources */,
@@ -1550,7 +1544,6 @@
 				CE30FDDF1B9968C000C15AD4 /* iconfont77.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				CE1B36DF1B9A1B6800824B96 /* new_icon_menu_1.png in Resources */,
-				3BBB58681B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib in Resources */,
 				CEC96BD01B9AC6270047648A /* new_icon_menu_5.png in Resources */,
 				CE78937B1B86E36F000D8B57 /* icon_menu_1.png in Resources */,
 				E24682031B9F25A800BBB8A8 /* map.png in Resources */,
@@ -1578,11 +1571,12 @@
 				CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */,
 				CEE1E2201B9994E90088EC7C /* yijianfankui.png in Resources */,
 				CEF273871B90D573009B5BA2 /* 20-2c.png in Resources */,
+				3BFA631D1BA1AD17005B025D /* XBSScheduleTableViewCell.xib in Resources */,
 				D96125E11B9F0C53002D4F80 /* iconfont-wodekecheng.png in Resources */,
 				CEF273931B90D573009B5BA2 /* 20-3餐厅psd.png in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
 				D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */,
-				3B86CDA71BA17E5200059B0A /* XBSEmptyRoomViewController.xib in Resources */,
+				E24681F91B9F164600BBB8A8 /* loading@2x.png in Resources */,
 				3B37F0A61B8C45F8009C1E94 /* Pods.release.xcconfig in Resources */,
 				CEF2738C1B90D573009B5BA2 /* 20-3-2.png in Resources */,
 				E2D31A421B9ADCA500E1F5A8 /* ButtonView.xib in Resources */,
@@ -1608,10 +1602,10 @@
 				D9B577271B88746A005EFD18 /* ExampleAnimation.m in Sources */,
 				CEF61B361B82BC950014B980 /* ViewController.m in Sources */,
 				CEF61B681B82C0370014B980 /* README.md in Sources */,
+				3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */,
 				3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */,
 				E2D31A0C1B9ADC9C00E1F5A8 /* MeCell.m in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
-				3BBB58621B8F3DE90099EC58 /* XBSConsultConfig.m in Sources */,
 				E2D31A0E1B9ADC9C00E1F5A8 /* NewsViewController.m in Sources */,
 				CEF61B9D1B82DFA60014B980 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E2FAB1521B8C738B005C5AE7 /* UIScrollView+MJExtension.m in Sources */,
@@ -1622,7 +1616,6 @@
 				CE8159771B96A84C002CF7B2 /* FMDatabase.m in Sources */,
 				CE1B36E81B9A1F6F00824B96 /* CalendarViewController.m in Sources */,
 				E2D31A561B9ADCA500E1F5A8 /* DetailDishView.m in Sources */,
-				3BBB58671B8F3DE90099EC58 /* XBSScheduleTableViewCell.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				E2D31A511B9ADCA500E1F5A8 /* WebViewController.m in Sources */,
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
@@ -1642,7 +1635,9 @@
 				CEF61B881B82DF9A0014B980 /* AFURLResponseSerialization.m in Sources */,
 				E238270E1B9478190058970E /* Course.m in Sources */,
 				CEF61BA31B82DFA60014B980 /* UIRefreshControl+AFNetworking.m in Sources */,
+				3BFA630E1BA1AACE005B025D /* XBSNavigationBar.m in Sources */,
 				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
+				3BFA63171BA1AC20005B025D /* XBSScheduleTableViewCell.m in Sources */,
 				CE81597B1B96A84C002CF7B2 /* FMResultSet.m in Sources */,
 				CEF61B871B82DF9A0014B980 /* AFURLRequestSerialization.m in Sources */,
 				E23827091B9477D80058970E /* CourseViewController.m in Sources */,
@@ -1652,7 +1647,6 @@
 				CEF61B861B82DF9A0014B980 /* AFURLConnectionOperation.m in Sources */,
 				E2FAB1511B8C738B005C5AE7 /* MJRefreshHeaderView.m in Sources */,
 				CEF61BA01B82DFA60014B980 /* UIButton+AFNetworking.m in Sources */,
-				E24681F51B9EBE6900BBB8A8 /* ImagePickerController.m in Sources */,
 				3BBB58651B8F3DE90099EC58 /* XBSSchduleViewController.m in Sources */,
 				CEF61B9E1B82DFA60014B980 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				CEF61B821B82DF9A0014B980 /* AFHTTPRequestOperationManager.m in Sources */,

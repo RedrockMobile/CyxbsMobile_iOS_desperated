@@ -9,6 +9,7 @@
 #import "XBSGradeViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "We.h"
+#import "XBSNavigationBar.h"
 
 @interface XBSGradeViewController ()
 
@@ -36,21 +37,24 @@
 }
 
 - (void)initNavigationBar:(NSString *)title{
-    UINavigationBar *navigaionBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-    UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
-    [navigaionBar pushNavigationItem:navigationItem animated:YES];
-    [navigaionBar setBackgroundColor:COLOR_MAINCOLOR];
-    [navigaionBar setTintColor:COLOR_MAINCOLOR];
-    
-    navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
-    navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊
-    navigaionBar.layer.shadowOpacity = 0.1f;
-    navigaionBar.layer.shadowRadius = 1.0f;
-    
-    [navigationItem setLeftBarButtonItem:leftButton];
-    [navigationItem setTitle:title];
-    [self.view addSubview:navigaionBar];
+//    UINavigationBar *navigaionBar = [[UINavigationBar alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+//    UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
+//    [navigaionBar pushNavigationItem:navigationItem animated:YES];
+//    [navigaionBar setBackgroundColor:COLOR_MAINCOLOR];
+//    [navigaionBar setTintColor:COLOR_MAINCOLOR];
+//    
+//    navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
+//    navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊
+//    navigaionBar.layer.shadowOpacity = 0.1f;
+//    navigaionBar.layer.shadowRadius = 1.0f;
+//    
+//    [navigationItem setLeftBarButtonItem:leftButton];
+//    [navigationItem setTitle:title];
+    //[self.view addSubview:navigaionBar];
+
+    XBSNavigationBar *navigationBar = [[XBSNavigationBar alloc]initWithTitle:@"成绩查询" Delegate:self];
+    [self.view addSubview:navigationBar];
 }
 
 - (void)didReceiveMemoryWarning {
