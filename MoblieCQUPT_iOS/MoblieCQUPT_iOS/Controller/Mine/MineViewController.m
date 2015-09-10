@@ -7,7 +7,7 @@
 //
 
 #import "MineViewController.h"
-#import "ButtonClicker.h"
+#import "XBSConsultButtonClicker.h"
 #import "SuggestionViewController.h"
 #import "AboutViewController.h"
 #import "ShakeViewController.h"
@@ -22,7 +22,7 @@
 @property (strong, nonatomic) UILabel *loginLabel;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
-@property (strong, nonatomic) ButtonClicker *clicker;
+@property (strong, nonatomic) XBSConsultButtonClicker *clicker;
 @property (strong, nonatomic) NSMutableArray *cellDictionary;
 
 @end
@@ -59,7 +59,7 @@
     [_mainScrollView addSubview:self.loginLabel];
     
     /**button **/
-    self.clicker = [[ButtonClicker alloc]init];
+    self.clicker = [[XBSConsultButtonClicker alloc]init];
     self.clicker.delegate = self;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
     NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];

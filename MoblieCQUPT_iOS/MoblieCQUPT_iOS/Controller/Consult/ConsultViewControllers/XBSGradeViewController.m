@@ -1,19 +1,20 @@
 //
-//  GradeViewController.m
+//  XBSGradeViewController.m
 //  MoblieCQUPT_iOS
 //
 //  Created by RainyTunes on 8/25/15.
 //  Copyright (c) 2015 Orange-W. All rights reserved.
 //
 
-#import "GradeViewController.h"
+#import "XBSGradeViewController.h"
+#import "UIColor+BFPaperColors.h"
 #import "We.h"
 
-@interface GradeViewController ()
+@interface XBSGradeViewController ()
 
 @end
 
-@implementation GradeViewController
+@implementation XBSGradeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +39,7 @@
     UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
     [navigaionBar pushNavigationItem:navigationItem animated:YES];
-    [navigaionBar setBackgroundColor:COLOR_NAVIGATIONBAR];
+    [navigaionBar setBackgroundColor:COLOR_MAINCOLOR];
     [navigaionBar setTintColor:COLOR_MAINCOLOR];
     
     navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;

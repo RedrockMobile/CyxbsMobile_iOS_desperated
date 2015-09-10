@@ -1,19 +1,19 @@
 //
-//  ButtonClicker.m
+//  XBSConsultButtonClicker.m
 //  MoblieCQUPT_iOS
 //
 //  Created by RainyTunes on 8/27/15.
 //  Copyright (c) 2015 Orange-W. All rights reserved.
 //
 
-#import "ButtonClicker.h"
-#import "DataBundle.h"
-#import "Config.h"
+#import "XBSConsultButtonClicker.h"
+#import "XBSConsultDataBundle.h"
+#import "XBSConsultConfig.h"
 
-@implementation ButtonClicker
+@implementation XBSConsultButtonClicker
 - (void)clickForExamSchedule
 {
-    DataBundle *dataBundle = [[DataBundle alloc]init];
+    XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
     dataBundle.postParams = [Config paramWithStuNum];
     [dataBundle httpPostForSchedule:API_EXAM_SCHEDULE];
@@ -22,7 +22,7 @@
 
 - (void)clickForReexamSchedule
 {
-    DataBundle *dataBundle = [[DataBundle alloc]init];
+    XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
     dataBundle.postParams = [Config paramWithStuNum];;
     [dataBundle httpPostForSchedule:API_REEXAM_SCHEDULE];
@@ -30,7 +30,7 @@
 
 - (void)clickForExamGrade
 {
-    DataBundle *dataBundle = [[DataBundle alloc]init];
+    XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
     dataBundle.postParams = [Config paramWithStuNum];;
     [dataBundle httpPostForGrade];
@@ -38,7 +38,7 @@
 
 - (void)clickForEmptyRooms
 {
-    DataBundle *dataBundle = [[DataBundle alloc]init];
+    XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
     [dataBundle httpPostForEmptyRooms];
 }

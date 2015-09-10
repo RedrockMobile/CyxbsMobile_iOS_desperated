@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Orange-W. All rights reserved.
 //
 
-#import "Config.h"
+#import "XBSConsultConfig.h"
 
 @implementation Config
 + (NSMutableDictionary *)paramWithStuNum {

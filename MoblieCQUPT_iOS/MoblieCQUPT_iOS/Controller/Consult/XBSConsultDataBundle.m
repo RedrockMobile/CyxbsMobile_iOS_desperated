@@ -1,25 +1,25 @@
 //
-//  DataBundle.m
+//  XBSConsultDataBundle.m
 //  ConsultingTest
 //
 //  Created by RainyTunes on 8/22/15.
 //  Copyright (c) 2015 RainyTunes. All rights reserved.
 //
 
-#import "DataBundle.h"
+#import "XBSConsultDataBundle.h"
 #import "We.h"
-#import "SchduleViewController.h"
+#import "XBSSchduleViewController.h"
 #import "MainViewController.h"
 #import "ViewController.h"
-#import "EmptyRoomsViewController.h"
-#import "GradeViewController.h"
+#import "XBSEmptyRoomViewController.h"
+#import "XBSGradeViewController.h"
 #import "ProgressHUD.h"
 
-@interface DataBundle ()
-@property (nonatomic, strong) EmptyRoomsViewController *emptyRoomDelegate;
+@interface XBSConsultDataBundle ()
+@property (nonatomic, strong) XBSEmptyRoomViewController *emptyRoomDelegate;
 @end
 
-@implementation DataBundle
+@implementation XBSConsultDataBundle
 
 - (instancetype)init
 {
@@ -70,7 +70,7 @@
             // 如果这是最后一个网络请求了
             if (self.hasCompleted == 5) {
                 [ProgressHUD showSuccess:consultCompleteHint];
-                EmptyRoomsViewController *viewController = [[EmptyRoomsViewController alloc]init];
+                XBSEmptyRoomViewController *viewController = [[XBSEmptyRoomViewController alloc]init];
                 viewController.delegate = self;
                 self.emptyRoomDelegate = viewController;
                 [self.mainDelegate presentViewController:viewController animated:YES completion:nil];
@@ -87,7 +87,7 @@
 - (void)pushToShowResults:(NSString *)type{
     [ProgressHUD showSuccess:consultCompleteHint];
     [_json setObject:type forKey:@"type"];
-    SchduleViewController *viewController = [[SchduleViewController alloc]init];
+    XBSSchduleViewController *viewController = [[XBSSchduleViewController alloc]init];
     viewController.delegate = self;
     [_mainDelegate presentViewController:viewController animated:YES completion:nil];
 }
@@ -112,7 +112,7 @@
     _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [_manager POST:API_EXAM_GRADE parameters:_postParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.htmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        GradeViewController *viewController = [[GradeViewController alloc]init];
+        XBSGradeViewController *viewController = [[XBSGradeViewController alloc]init];
         viewController.delegate = self;
         [ProgressHUD showSuccess:consultCompleteHint];
         [_mainDelegate presentViewController:viewController animated:YES completion:nil];

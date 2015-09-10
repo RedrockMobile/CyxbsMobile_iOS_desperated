@@ -1,5 +1,5 @@
 //
-//  ButtonClicker.h
+//  XBSConsultButtonClicker.h
 //  MoblieCQUPT_iOS
 //
 //  Created by RainyTunes on 8/27/15.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MainViewController.h"
-@interface ButtonClicker : NSObject
+@interface XBSConsultButtonClicker : NSObject
 @property (nonatomic, strong) MainViewController *delegate;
 @property (nonatomic, strong) NSString *stuNum;
 @property (nonatomic, strong) NSString *idNum;

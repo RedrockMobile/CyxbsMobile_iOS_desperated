@@ -1,23 +1,23 @@
 //
-//  SchduleViewController.m
+//  XBSSchduleViewController.m
 //  ConsultingTest
 //
 //  Created by RainyTunes on 8/21/15.
 //  Copyright (c) 2015 RainyTunes. All rights reserved.
 //
 
-#import "SchduleViewController.h"
+#import "XBSSchduleViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "MainViewController.h"
 #import "We.h"
-#import "ScheduleTableViewCell.h"
-#import "Config.h"
-@interface SchduleViewController ()
+#import "XBSScheduleTableViewCell.h"
+#import "XBSConsultConfig.h"
+@interface XBSSchduleViewController ()
 @property NSArray *dataList;
 @property (strong, nonatomic)UITableView *tableView;
 @end
 
-@implementation SchduleViewController
+@implementation XBSSchduleViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,7 +32,7 @@
     UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
     [navigaionBar pushNavigationItem:navigationItem animated:YES];
-    [navigaionBar setBackgroundColor:COLOR_NAVIGATIONBAR];
+    [navigaionBar setBackgroundColor:COLOR_MAINCOLOR];
     [navigaionBar setTintColor:COLOR_MAINCOLOR];
     
     navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -76,9 +76,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identify = @"cell";
-    ScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+    XBSScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"ScheduleTableViewCell" owner:self options:nil] lastObject];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"XBSScheduleTableViewCell" owner:self options:nil] lastObject];
     }
     NSDictionary *info = _dataList[indexPath.row];
     [cell.examTitle setText:info[@"course"]];

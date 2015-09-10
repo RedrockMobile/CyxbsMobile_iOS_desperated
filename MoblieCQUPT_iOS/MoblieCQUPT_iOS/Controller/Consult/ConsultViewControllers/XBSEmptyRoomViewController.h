@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DataBundle.h"
+#import "XBSConsultDataBundle.h"
 #import "BFPaperCheckbox.h"
 
-@interface EmptyRoomsViewController : UIViewController<BFPaperCheckboxDelegate>
-@property (strong,nonatomic)DataBundle *delegate;
+@interface XBSEmptyRoomViewController : UIViewController<BFPaperCheckboxDelegate>
+@property (strong,nonatomic)XBSConsultDataBundle *delegate;
 @property (strong,nonatomic)NSMutableArray *buildCheckboxGroup, *periodCheckboxGroup;
 @property (assign,nonatomic)BOOL isChanging;
 @property (assign,nonatomic)BOOL lock;

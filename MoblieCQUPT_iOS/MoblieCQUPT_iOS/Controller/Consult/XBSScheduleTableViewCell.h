@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScheduleTableViewCell : UITableViewCell
+@interface XBSScheduleTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *examTitle;
 @property (weak, nonatomic) IBOutlet UILabel *timeIcon;
 @property (weak, nonatomic) IBOutlet UILabel *locationIcon;

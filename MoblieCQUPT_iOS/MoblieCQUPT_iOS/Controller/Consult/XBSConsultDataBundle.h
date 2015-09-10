@@ -1,5 +1,5 @@
 //
-//  DataBundle.h
+//  XBSConsultDataBundle.h
 //  ConsultingTest
 //
 //  Created by RainyTunes on 8/22/15.
@@ -10,9 +10,9 @@
 #import "AFNetworking.h"
 #import "ViewController.h"
 #import "MainViewController.h"
-#import "Config.h"
+#import "XBSConsultConfig.h"
 
-@interface DataBundle : NSObject
+@interface XBSConsultDataBundle : NSObject
 
 @property (nonatomic, strong) NSDictionary *postParams;
 @property (nonatomic, strong) NSMutableDictionary *json;
@@ -21,9 +21,9 @@
 @property (nonatomic, strong) MainViewController *mainDelegate;
 
 
-@property (assign, atomic)NSInteger flag;
-@property (assign, atomic)NSInteger hasCompleted;
-@property (strong, atomic)NSMutableArray *emptyRoomBundle;
+@property (assign, atomic) NSInteger flag;
+@property (assign, atomic) NSInteger hasCompleted;
+@property (strong, atomic) NSMutableArray *emptyRoomBundle;
 @property (nonatomic, strong) NSString *htmlString;
 
 - (void)httpPostForSchedule:(NSString *)postType;

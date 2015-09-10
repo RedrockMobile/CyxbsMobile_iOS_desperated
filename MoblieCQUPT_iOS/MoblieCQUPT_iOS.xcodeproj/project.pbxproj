@@ -22,17 +22,17 @@
 		3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B01B8C4691009C1E94 /* NSArray+We.m */; };
 		3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B21B8C4691009C1E94 /* NSString+We.m */; };
 		3B37F0B71B8C4691009C1E94 /* We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B41B8C4691009C1E94 /* We.m */; };
-		3B9FD0AA1B985C380081A100 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0A91B985C380081A100 /* icon.png */; };
+		3B86CDA71BA17E5200059B0A /* XBSEmptyRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B86CDA51BA17E5200059B0A /* XBSEmptyRoomViewController.xib */; };
 		3B9FD0C11B98B7A90081A100 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */; };
 		3B9FD0C21B98B7A90081A100 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */; };
-		3BBB58371B8EEE080099EC58 /* ButtonClicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58361B8EEE080099EC58 /* ButtonClicker.m */; };
-		3BBB58621B8F3DE90099EC58 /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58551B8F3DE90099EC58 /* Config.m */; };
-		3BBB58631B8F3DE90099EC58 /* EmptyRoomsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58581B8F3DE90099EC58 /* EmptyRoomsViewController.m */; };
-		3BBB58641B8F3DE90099EC58 /* GradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585A1B8F3DE90099EC58 /* GradeViewController.m */; };
-		3BBB58651B8F3DE90099EC58 /* SchduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585C1B8F3DE90099EC58 /* SchduleViewController.m */; };
-		3BBB58661B8F3DE90099EC58 /* DataBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585E1B8F3DE90099EC58 /* DataBundle.m */; };
-		3BBB58671B8F3DE90099EC58 /* ScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58601B8F3DE90099EC58 /* ScheduleTableViewCell.m */; };
-		3BBB58681B8F3DE90099EC58 /* ScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58611B8F3DE90099EC58 /* ScheduleTableViewCell.xib */; };
+		3BBB58371B8EEE080099EC58 /* XBSConsultButtonClicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58361B8EEE080099EC58 /* XBSConsultButtonClicker.m */; };
+		3BBB58621B8F3DE90099EC58 /* XBSConsultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58551B8F3DE90099EC58 /* XBSConsultConfig.m */; };
+		3BBB58631B8F3DE90099EC58 /* XBSEmptyRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58581B8F3DE90099EC58 /* XBSEmptyRoomViewController.m */; };
+		3BBB58641B8F3DE90099EC58 /* XBSGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585A1B8F3DE90099EC58 /* XBSGradeViewController.m */; };
+		3BBB58651B8F3DE90099EC58 /* XBSSchduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585C1B8F3DE90099EC58 /* XBSSchduleViewController.m */; };
+		3BBB58661B8F3DE90099EC58 /* XBSConsultDataBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB585E1B8F3DE90099EC58 /* XBSConsultDataBundle.m */; };
+		3BBB58671B8F3DE90099EC58 /* XBSScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BBB58601B8F3DE90099EC58 /* XBSScheduleTableViewCell.m */; };
+		3BBB58681B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58611B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib */; };
 		3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58731B8F6EA10099EC58 /* iconfont.ttf */; };
 		3BD2644A1B8EDD8700B291A0 /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3BD264471B8EDD8700B291A0 /* ProgressHUD.bundle */; };
 		3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD264491B8EDD8700B291A0 /* ProgressHUD.m */; };
@@ -243,25 +243,25 @@
 		3B37F0B21B8C4691009C1E94 /* NSString+We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+We.m"; sourceTree = "<group>"; };
 		3B37F0B31B8C4691009C1E94 /* We.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = We.h; sourceTree = "<group>"; };
 		3B37F0B41B8C4691009C1E94 /* We.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = We.m; sourceTree = "<group>"; };
-		3B9FD0A91B985C380081A100 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../../Tool/icon.png; sourceTree = "<group>"; };
+		3B86CDA51BA17E5200059B0A /* XBSEmptyRoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XBSEmptyRoomViewController.xib; path = ../Controller/Consult/XBSEmptyRoomViewController.xib; sourceTree = "<group>"; };
 		3B9FD0BE1B98B7A90081A100 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		3B9FD0BF1B98B7A90081A100 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		3B9FD0C01B98B7A90081A100 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
-		3BBB58351B8EEE080099EC58 /* ButtonClicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonClicker.h; sourceTree = "<group>"; };
-		3BBB58361B8EEE080099EC58 /* ButtonClicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonClicker.m; sourceTree = "<group>"; };
-		3BBB58541B8F3DE90099EC58 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
-		3BBB58551B8F3DE90099EC58 /* Config.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Config.m; sourceTree = "<group>"; };
-		3BBB58571B8F3DE90099EC58 /* EmptyRoomsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyRoomsViewController.h; sourceTree = "<group>"; };
-		3BBB58581B8F3DE90099EC58 /* EmptyRoomsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyRoomsViewController.m; sourceTree = "<group>"; };
-		3BBB58591B8F3DE90099EC58 /* GradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeViewController.h; sourceTree = "<group>"; };
-		3BBB585A1B8F3DE90099EC58 /* GradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeViewController.m; sourceTree = "<group>"; };
-		3BBB585B1B8F3DE90099EC58 /* SchduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchduleViewController.h; sourceTree = "<group>"; };
-		3BBB585C1B8F3DE90099EC58 /* SchduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchduleViewController.m; sourceTree = "<group>"; };
-		3BBB585D1B8F3DE90099EC58 /* DataBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBundle.h; sourceTree = "<group>"; };
-		3BBB585E1B8F3DE90099EC58 /* DataBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBundle.m; sourceTree = "<group>"; };
-		3BBB585F1B8F3DE90099EC58 /* ScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleTableViewCell.h; sourceTree = "<group>"; };
-		3BBB58601B8F3DE90099EC58 /* ScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleTableViewCell.m; sourceTree = "<group>"; };
-		3BBB58611B8F3DE90099EC58 /* ScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleTableViewCell.xib; sourceTree = "<group>"; };
+		3BBB58351B8EEE080099EC58 /* XBSConsultButtonClicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSConsultButtonClicker.h; path = ../Controller/XBSConsultButtonClicker.h; sourceTree = "<group>"; };
+		3BBB58361B8EEE080099EC58 /* XBSConsultButtonClicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSConsultButtonClicker.m; path = ../Controller/XBSConsultButtonClicker.m; sourceTree = "<group>"; };
+		3BBB58541B8F3DE90099EC58 /* XBSConsultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSConsultConfig.h; path = ../Controller/Consult/XBSConsultConfig.h; sourceTree = "<group>"; };
+		3BBB58551B8F3DE90099EC58 /* XBSConsultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSConsultConfig.m; path = ../Controller/Consult/XBSConsultConfig.m; sourceTree = "<group>"; };
+		3BBB58571B8F3DE90099EC58 /* XBSEmptyRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSEmptyRoomViewController.h; path = ConsultViewControllers/XBSEmptyRoomViewController.h; sourceTree = "<group>"; };
+		3BBB58581B8F3DE90099EC58 /* XBSEmptyRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSEmptyRoomViewController.m; path = ConsultViewControllers/XBSEmptyRoomViewController.m; sourceTree = "<group>"; };
+		3BBB58591B8F3DE90099EC58 /* XBSGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSGradeViewController.h; path = ConsultViewControllers/XBSGradeViewController.h; sourceTree = "<group>"; };
+		3BBB585A1B8F3DE90099EC58 /* XBSGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSGradeViewController.m; path = ConsultViewControllers/XBSGradeViewController.m; sourceTree = "<group>"; };
+		3BBB585B1B8F3DE90099EC58 /* XBSSchduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSSchduleViewController.h; path = ConsultViewControllers/XBSSchduleViewController.h; sourceTree = "<group>"; };
+		3BBB585C1B8F3DE90099EC58 /* XBSSchduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSSchduleViewController.m; path = ConsultViewControllers/XBSSchduleViewController.m; sourceTree = "<group>"; };
+		3BBB585D1B8F3DE90099EC58 /* XBSConsultDataBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSConsultDataBundle.h; path = ../Controller/Consult/XBSConsultDataBundle.h; sourceTree = "<group>"; };
+		3BBB585E1B8F3DE90099EC58 /* XBSConsultDataBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSConsultDataBundle.m; path = ../Controller/Consult/XBSConsultDataBundle.m; sourceTree = "<group>"; };
+		3BBB585F1B8F3DE90099EC58 /* XBSScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSScheduleTableViewCell.h; path = ../Controller/Consult/XBSScheduleTableViewCell.h; sourceTree = "<group>"; };
+		3BBB58601B8F3DE90099EC58 /* XBSScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSScheduleTableViewCell.m; path = ../Controller/Consult/XBSScheduleTableViewCell.m; sourceTree = "<group>"; };
+		3BBB58611B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XBSScheduleTableViewCell.xib; path = ../Controller/Consult/XBSScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		3BBB58731B8F6EA10099EC58 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		3BD264471B8EDD8700B291A0 /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		3BD264481B8EDD8700B291A0 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
@@ -666,6 +666,28 @@
 			path = We;
 			sourceTree = "<group>";
 		};
+		3B86CDA81BA17E6A00059B0A /* Consult */ = {
+			isa = PBXGroup;
+			children = (
+				3B86CDA51BA17E5200059B0A /* XBSEmptyRoomViewController.xib */,
+				3BBB585F1B8F3DE90099EC58 /* XBSScheduleTableViewCell.h */,
+				3BBB58601B8F3DE90099EC58 /* XBSScheduleTableViewCell.m */,
+				3BBB58611B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib */,
+			);
+			name = Consult;
+			sourceTree = "<group>";
+		};
+		3B86CDA91BA1832100059B0A /* Consult */ = {
+			isa = PBXGroup;
+			children = (
+				3BBB58351B8EEE080099EC58 /* XBSConsultButtonClicker.h */,
+				3BBB58361B8EEE080099EC58 /* XBSConsultButtonClicker.m */,
+				3BBB585D1B8F3DE90099EC58 /* XBSConsultDataBundle.h */,
+				3BBB585E1B8F3DE90099EC58 /* XBSConsultDataBundle.m */,
+			);
+			name = Consult;
+			sourceTree = "<group>";
+		};
 		3B9FD0A31B984E3B0081A100 /* About */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,29 +701,14 @@
 		3BBB58531B8F3DE90099EC58 /* Consult */ = {
 			isa = PBXGroup;
 			children = (
-				3BBB58541B8F3DE90099EC58 /* Config.h */,
-				3BBB58551B8F3DE90099EC58 /* Config.m */,
-				3BBB585D1B8F3DE90099EC58 /* DataBundle.h */,
-				3BBB585E1B8F3DE90099EC58 /* DataBundle.m */,
-				3BBB585F1B8F3DE90099EC58 /* ScheduleTableViewCell.h */,
-				3BBB58601B8F3DE90099EC58 /* ScheduleTableViewCell.m */,
-				3BBB58611B8F3DE90099EC58 /* ScheduleTableViewCell.xib */,
-				3BBB58561B8F3DE90099EC58 /* ConsultViewControllers */,
+				3BBB58571B8F3DE90099EC58 /* XBSEmptyRoomViewController.h */,
+				3BBB58581B8F3DE90099EC58 /* XBSEmptyRoomViewController.m */,
+				3BBB58591B8F3DE90099EC58 /* XBSGradeViewController.h */,
+				3BBB585A1B8F3DE90099EC58 /* XBSGradeViewController.m */,
+				3BBB585B1B8F3DE90099EC58 /* XBSSchduleViewController.h */,
+				3BBB585C1B8F3DE90099EC58 /* XBSSchduleViewController.m */,
 			);
 			path = Consult;
-			sourceTree = "<group>";
-		};
-		3BBB58561B8F3DE90099EC58 /* ConsultViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				3BBB58571B8F3DE90099EC58 /* EmptyRoomsViewController.h */,
-				3BBB58581B8F3DE90099EC58 /* EmptyRoomsViewController.m */,
-				3BBB58591B8F3DE90099EC58 /* GradeViewController.h */,
-				3BBB585A1B8F3DE90099EC58 /* GradeViewController.m */,
-				3BBB585B1B8F3DE90099EC58 /* SchduleViewController.h */,
-				3BBB585C1B8F3DE90099EC58 /* SchduleViewController.m */,
-			);
-			path = ConsultViewControllers;
 			sourceTree = "<group>";
 		};
 		3BD264461B8EDD8700B291A0 /* ProgressHUD */ = {
@@ -862,8 +869,6 @@
 			children = (
 				3B37F0AB1B8C4644009C1E94 /* MainViewController.h */,
 				3B37F0AC1B8C4644009C1E94 /* MainViewController.m */,
-				3BBB58351B8EEE080099EC58 /* ButtonClicker.h */,
-				3BBB58361B8EEE080099EC58 /* ButtonClicker.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -1001,7 +1006,6 @@
 				CE1B36E91B9A207100824B96 /* calendar.png */,
 				CE1B36D81B9A1B6800824B96 /* Archive */,
 				CE30FDCD1B9968C000C15AD4 /* new_images */,
-				3B9FD0A91B985C380081A100 /* icon.png */,
 				E2E7DE301B9476810081F699 /* CourseIcon */,
 				E2E7DE271B9476730081F699 /* LoginIconImage */,
 				3BBB58731B8F6EA10099EC58 /* iconfont.ttf */,
@@ -1028,6 +1032,7 @@
 		CEF61B5A1B82BE070014B980 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3B86CDA91BA1832100059B0A /* Consult */,
 				E238270B1B9478190058970E /* Course */,
 			);
 			path = Model;
@@ -1036,6 +1041,7 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				3BBB58531B8F3DE90099EC58 /* Consult */,
 				E2D31A0F1B9ADCA500E1F5A8 /* Finder */,
 				E2D31A011B9ADC9C00E1F5A8 /* News */,
 				3B9FD0A31B984E3B0081A100 /* About */,
@@ -1043,7 +1049,6 @@
 				E2E7DE211B94764A0081F699 /* Login */,
 				CE35D7051B9326C3005BDEBA /* Mine */,
 				CE1B36E51B9A1F3B00824B96 /* Calendar */,
-				3BBB58531B8F3DE90099EC58 /* Consult */,
 				D9B5770A1B88742D005EFD18 /* TitleBase */,
 				CE1BE9B51B98892700F7B08A /* Suggestion */,
 				CEE837A41B855E9C00959779 /* Main */,
@@ -1082,6 +1087,7 @@
 		CEF61B661B82C0370014B980 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				3B86CDA81BA17E6A00059B0A /* Consult */,
 				CEF61B671B82C0370014B980 /* README.md */,
 			);
 			path = ViewModel;
@@ -1090,6 +1096,8 @@
 		CEF61B691B82D5260014B980 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				3BBB58541B8F3DE90099EC58 /* XBSConsultConfig.h */,
+				3BBB58551B8F3DE90099EC58 /* XBSConsultConfig.m */,
 				CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */,
 			);
 			path = Config;
@@ -1527,7 +1535,6 @@
 				CEF2738A1B90D573009B5BA2 /* 20-2补考.png in Resources */,
 				E2FAB14F1B8C738B005C5AE7 /* MJRefreshExample-Info.plist in Resources */,
 				CEE1E21E1B9994A80088EC7C /* guanyu.png in Resources */,
-				3B9FD0AA1B985C380081A100 /* icon.png in Resources */,
 				E2D31A581B9ADCA500E1F5A8 /* MenuViewController.xib in Resources */,
 				CE30FDE41B9968C000C15AD4 /* tuichu.png in Resources */,
 				E2D31A5C1B9ADCA500E1F5A8 /* ShopTableViewCell.xib in Resources */,
@@ -1548,7 +1555,7 @@
 				CE30FDDF1B9968C000C15AD4 /* iconfont77.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				CE1B36DF1B9A1B6800824B96 /* new_icon_menu_1.png in Resources */,
-				3BBB58681B8F3DE90099EC58 /* ScheduleTableViewCell.xib in Resources */,
+				3BBB58681B8F3DE90099EC58 /* XBSScheduleTableViewCell.xib in Resources */,
 				CEC96BD01B9AC6270047648A /* new_icon_menu_5.png in Resources */,
 				CE78937B1B86E36F000D8B57 /* icon_menu_1.png in Resources */,
 				E2D31A5A1B9ADCA500E1F5A8 /* ShopDetailViewController.xib in Resources */,
@@ -1579,6 +1586,7 @@
 				CEF273931B90D573009B5BA2 /* 20-3餐厅psd.png in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
 				D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */,
+				3B86CDA71BA17E5200059B0A /* XBSEmptyRoomViewController.xib in Resources */,
 				3B37F0A61B8C45F8009C1E94 /* Pods.release.xcconfig in Resources */,
 				CEF2738C1B90D573009B5BA2 /* 20-3-2.png in Resources */,
 				E2D31A421B9ADCA500E1F5A8 /* ButtonView.xib in Resources */,
@@ -1607,7 +1615,7 @@
 				3BD2644B1B8EDD8700B291A0 /* ProgressHUD.m in Sources */,
 				E2D31A0C1B9ADC9C00E1F5A8 /* MeCell.m in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
-				3BBB58621B8F3DE90099EC58 /* Config.m in Sources */,
+				3BBB58621B8F3DE90099EC58 /* XBSConsultConfig.m in Sources */,
 				E2D31A0E1B9ADC9C00E1F5A8 /* NewsViewController.m in Sources */,
 				CEF61B9D1B82DFA60014B980 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E2FAB1521B8C738B005C5AE7 /* UIScrollView+MJExtension.m in Sources */,
@@ -1618,7 +1626,7 @@
 				CE8159771B96A84C002CF7B2 /* FMDatabase.m in Sources */,
 				CE1B36E81B9A1F6F00824B96 /* CalendarViewController.m in Sources */,
 				E2D31A561B9ADCA500E1F5A8 /* DetailDishView.m in Sources */,
-				3BBB58671B8F3DE90099EC58 /* ScheduleTableViewCell.m in Sources */,
+				3BBB58671B8F3DE90099EC58 /* XBSScheduleTableViewCell.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				E2D31A511B9ADCA500E1F5A8 /* WebViewController.m in Sources */,
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
@@ -1627,7 +1635,7 @@
 				CEF61B831B82DF9A0014B980 /* AFHTTPSessionManager.m in Sources */,
 				D9B5772B1B88746A005EFD18 /* UPStackMenuItem.m in Sources */,
 				CEF61B841B82DF9A0014B980 /* AFNetworkReachabilityManager.m in Sources */,
-				3BBB58631B8F3DE90099EC58 /* EmptyRoomsViewController.m in Sources */,
+				3BBB58631B8F3DE90099EC58 /* XBSEmptyRoomViewController.m in Sources */,
 				CEF61B591B82BDFE0014B980 /* README.md in Sources */,
 				D9B577281B88746A005EFD18 /* OrangeAnimation.m in Sources */,
 				3B9FD0C11B98B7A90081A100 /* AboutViewController.m in Sources */,
@@ -1649,7 +1657,7 @@
 				E2FAB1511B8C738B005C5AE7 /* MJRefreshHeaderView.m in Sources */,
 				CEF61BA01B82DFA60014B980 /* UIButton+AFNetworking.m in Sources */,
 				E24681F51B9EBE6900BBB8A8 /* ImagePickerController.m in Sources */,
-				3BBB58651B8F3DE90099EC58 /* SchduleViewController.m in Sources */,
+				3BBB58651B8F3DE90099EC58 /* XBSSchduleViewController.m in Sources */,
 				CEF61B9E1B82DFA60014B980 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				CEF61B821B82DF9A0014B980 /* AFHTTPRequestOperationManager.m in Sources */,
 				CEF61B581B82BDFE0014B980 /* README.md in Sources */,
@@ -1660,8 +1668,8 @@
 				E2D31A571B9ADCA500E1F5A8 /* MenuViewController.m in Sources */,
 				CEE1E2261B99A1020088EC7C /* MineButton.m in Sources */,
 				E2FAB14E1B8C738B005C5AE7 /* MJRefreshConst.m in Sources */,
-				3BBB58371B8EEE080099EC58 /* ButtonClicker.m in Sources */,
-				3BBB58641B8F3DE90099EC58 /* GradeViewController.m in Sources */,
+				3BBB58371B8EEE080099EC58 /* XBSConsultButtonClicker.m in Sources */,
+				3BBB58641B8F3DE90099EC58 /* XBSGradeViewController.m in Sources */,
 				E2D31A0A1B9ADC9C00E1F5A8 /* FirstViewController.m in Sources */,
 				CEF61B621B82BE1B0014B980 /* README.md in Sources */,
 				E2D31A531B9ADCA500E1F5A8 /* ShakeViewController.m in Sources */,
@@ -1670,7 +1678,7 @@
 				3B37F0AA1B8C45F8009C1E94 /* UIColor+BFPaperColors.m in Sources */,
 				E2D31A5B1B9ADCA500E1F5A8 /* ShopTableViewCell.m in Sources */,
 				CEF61BA41B82DFA60014B980 /* UIWebView+AFNetworking.m in Sources */,
-				3BBB58661B8F3DE90099EC58 /* DataBundle.m in Sources */,
+				3BBB58661B8F3DE90099EC58 /* XBSConsultDataBundle.m in Sources */,
 				CEF61B301B82BC950014B980 /* main.m in Sources */,
 				3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */,
 				3B37F0A71B8C45F8009C1E94 /* Pods-UIColor+BFPaperColors-dummy.m in Sources */,

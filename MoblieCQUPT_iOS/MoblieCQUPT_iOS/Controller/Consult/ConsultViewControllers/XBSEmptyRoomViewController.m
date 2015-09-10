@@ -6,10 +6,10 @@
 //  Copyright (c) 2015 RainyTunes. All rights reserved.
 //
 
-#import "EmptyRoomsViewController.h"
+#import "XBSEmptyRoomViewController.h"
 #import "BFPaperCheckbox.h"
 #import "UIColor+BFPaperColors.h"
-#import "Config.h"
+#import "XBSConsultConfig.h"
 #define r bfPaperCheckboxDefaultRadius
 #define RowSpace (r + 10)
 #define fontSize 20
@@ -18,12 +18,12 @@
 #define x2 ScreenWidth * 0.625
 #define y ScreenHeight * 0.55
 
-@interface EmptyRoomsViewController ()
+@interface XBSEmptyRoomViewController ()
 @property (strong,nonatomic)UILabel *results;
 
 @end
 
-@implementation EmptyRoomsViewController
+@implementation XBSEmptyRoomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,13 +52,15 @@
     UINavigationItem *navigationItem  = [[UINavigationItem alloc]initWithTitle:nil];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(clickBack)];
     [navigaionBar pushNavigationItem:navigationItem animated:YES];
-    [navigaionBar setBackgroundColor:COLOR_NAVIGATIONBAR];
-    [navigaionBar setTintColor:COLOR_NAVIGATIONBAR_TINT];
-    
-    navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
-    navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊
-    navigaionBar.layer.shadowOpacity = 0.1f;
-    navigaionBar.layer.shadowRadius = 1.0f;
+    //[[UINavigationBar appearance] setBarTintColor:COLOR_MAINCOLOR];
+    [navigaionBar setBackgroundColor:[UIColor greenColor]];
+    [navigaionBar setTintColor:[UIColor whiteColor]];
+    [navigaionBar setBarTintColor:[UIColor whiteColor]];
+//    
+//    navigaionBar.layer.shadowColor = [UIColor blackColor].CGColor;
+//    navigaionBar.layer.shadowOffset = CGSizeMake(2.0f, 2.0f);//有个毛线用啊
+//    navigaionBar.layer.shadowOpacity = 0.1f;
+//    navigaionBar.layer.shadowRadius = 1.0f;
     
     [navigationItem setLeftBarButtonItem:leftButton];
     [navigationItem setTitle:title];
