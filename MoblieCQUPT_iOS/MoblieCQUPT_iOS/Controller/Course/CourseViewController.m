@@ -15,14 +15,16 @@
 #import "CourseButton.h"
 #import "CourseView.h"
 #import "UPStackMenu.h"
-#import "UPStackMenuItem.h"
+//#import "UPStackMenuItem.h"
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
 
-@interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate>
+@interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate,UPStackMenuDelegate>
 @end
 
 @implementation CourseViewController
+
+static const CGFloat AniTime = 0.4;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -99,11 +101,17 @@
     }
     
     _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
-    _moreMenu.backgroundColor = [UIColor whiteColor];
+//    _moreMenu.backgroundColor = [UIColor whiteColor];
     _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
+    _moreMenu.layer.borderColor = [UIColor whiteColor].CGColor;
+    _moreMenu.layer.borderWidth = 2;
     _moreMenu.image = [UIImage imageNamed:@"iconfont-more.png"];
     
     UPStackMenu *stack = [[UPStackMenu alloc] initWithContentView:_moreMenu];
+    stack.clipsToBounds = YES;
+    stack.delegate = self;
+    
+    [stack setAnimationType:UPStackMenuAnimationType_progressiveInverse];
     
     UPStackMenuItem *item = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-meixueqi.png"] highlightedImage:[UIImage imageNamed:@"iconfont-meixueqi.png"]  title:@""];
     [item setTitleColor:[UIColor redColor]];
