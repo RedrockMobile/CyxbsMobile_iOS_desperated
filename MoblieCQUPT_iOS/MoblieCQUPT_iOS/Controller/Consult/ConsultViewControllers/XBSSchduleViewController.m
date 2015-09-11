@@ -20,7 +20,7 @@
 @implementation XBSSchduleViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];  //
     [self.view setBackgroundColor:[UIColor whiteColor]];
     _dataList = _delegate.json[@"data"];
     [self.view addSubview:self.tableView];
