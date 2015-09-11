@@ -27,10 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-//    BOOL isReachability = [NetWork netWorkReachability:Course_API];
-//    if (!isReachability) {
-//        
-//    }
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _dataArray = [userDefault objectForKey:@"dataArray"];
     [self handleWeek:_dataArray];
@@ -124,7 +120,6 @@
     self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
 }
 
-
 - (void)didTouchStackMenuItem:(UPStackMenuItem *)item {
     for (int i = 0; i < _buttonTag.count; i ++) {
         [_buttonTag[i] removeFromSuperview];
@@ -144,14 +139,11 @@
 }
 
 - (void)loadNetData {
-    [ProgressHUD show:@"正在加载中"];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
     _parameter = [NSMutableDictionary dictionary];
-    _dataArray = [NSMutableArray array];
     [_parameter setObject:stuNum forKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
-        [ProgressHUD showSuccess:@"加载成功"];
         NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
         NSMutableArray *data = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i ++) {
@@ -191,7 +183,9 @@
             [_buttonTag[i] removeFromSuperview];
         }
         [self handleWeek:_dataArray];
-    } WithFailureBlock:nil];
+    } WithFailureBlock:^{
+        [ProgressHUD showError:@"xxxx"];
+    }];
 }
 
 - (void)handleWeek:(NSArray *)array {
@@ -347,8 +341,7 @@
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, ScreenWidth/9*7, 2)];
     lineView.backgroundColor = MAIN_COLOR;
     [_alertView addSubview:lineView];
-    
-    
+                                                                                                                                                                                                                                
     UIButton *done = [[UIButton alloc]initWithFrame:CGRectMake(10, ScreenHeight-ScreenHeight/7*2-50, ScreenWidth/9*7-20, 45)];
     done.layer.cornerRadius = 2.0;
     [done setTitle:@"确认" forState:UIControlStateNormal];
