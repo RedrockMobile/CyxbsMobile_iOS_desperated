@@ -9,7 +9,7 @@
 #import "MineViewController.h"
 #import "XBSConsultButtonClicker.h"
 #import "SuggestionViewController.h"
-#import "AboutViewController.h"
+#import "XBSAboutViewController.h"
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
@@ -46,7 +46,7 @@
                         @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
                          @{@"cell":@"校历",@"img":@"iconfont77.png",@"controller":@"CalendarViewController"},
                          @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
-                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
+                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"XBSAboutViewController"},
                          @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
                         ]
                        mutableCopy];

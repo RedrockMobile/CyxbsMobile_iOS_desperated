@@ -26,19 +26,20 @@
 #define API_EMPTY_ROOMS @"http://hongyan.cqupt.edu.cn/api/roomEmpty"
 #define API_REEXAM_SCHEDULE @"http://hongyan.cqupt.edu.cn/examapi/index.php?s=/Home/Index/index"
 
-#define roomGroupUncheckHint @"您还没有选择教学楼哦~"
-#define periodGroupUncheckHint @"您还没有选择时段哦~"
-#define bothGroupsUncheckHint @"您还没有选择时段和教学楼哦~"
-#define noResultHint @"似乎没有合适的教室哦~"
+#define RoomGroupUncheckHint @"您还没有选择教学楼哦~"
+#define PeriodGroupUncheckHint @"您还没有选择时段哦~"
+#define BothGroupsUncheckHint @"您还没有选择时段和教学楼哦~"
+#define NoResultHint @"似乎没有合适的教室哦~"
 
-#define consultingHint @"正在努力查询中~"
-#define consultCompleteHint @"查询完毕，正在跳转~"
-#define consultNetworkErrorHint @"网络似乎跪了qwq"
+#define ConsultingHint @"正在努力查询中~"
+#define ConsultCompleteHint @"查询完毕，正在跳转~"
+#define ConsultNetworkErrorHint @"网络似乎跪了qwq"
 
-#define weekdayWordsArr @[@"一",@"二",@"三",@"四",@"五",@"六",@"天",]
-#define buildList @[@"二教", @"三教", @"四教", @"五教", @"八教", @"无限制"]
-#define buildTagList {2, 3, 4, 5, 8, 0};
-#define periodList @[@"1~2节", @"3~4节", @"5~6节", @"7~8节", @"9~10节", @"全天时间"]
+#define ConsultFuntionName @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"]
+#define WeekdayWordsArr @[@"一",@"二",@"三",@"四",@"五",@"六",@"天",]
+#define BuildList @[@"二教", @"三教", @"四教", @"五教", @"八教", @"无限制"]
+#define BuildTagList {2, 3, 4, 5, 8, 0};
+#define PeriodList @[@"1~2节", @"3~4节", @"5~6节", @"7~8节", @"9~10节", @"全天时间"]
 
 @interface Config : NSObject
 + (NSString *)errInfo:(NSInteger)status;

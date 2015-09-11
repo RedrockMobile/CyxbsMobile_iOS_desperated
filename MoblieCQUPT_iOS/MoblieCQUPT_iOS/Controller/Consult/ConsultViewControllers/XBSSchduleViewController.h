@@ -10,7 +10,8 @@
 #import "We.h"
 #import "MainViewController.h"
 #import "XBSConsultDataBundle.h"
+#import "XBSViewController.h"
 
-@interface XBSSchduleViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@interface XBSSchduleViewController : XBSViewController<UITableViewDataSource, UITableViewDelegate>
 @property (strong,nonatomic)XBSConsultDataBundle *delegate;
 @end

@@ -1,16 +1,16 @@
 //
-//  AboutViewController.m
+//  XBSAboutViewController.m
 //  MoblieCQUPT_iOS
 //
 //  Created by RainyTunes on 9/3/15.
 //  Copyright (c) 2015 Orange-W. All rights reserved.
 //
 
-#import "AboutViewController.h"
+#import "XBSAboutViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "We.h"
 
-@interface AboutViewController ()
+@interface XBSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appName;
 @property (weak, nonatomic) IBOutlet UILabel *appVersion;
 @property (weak, nonatomic) IBOutlet UIButton *buttonToUpdate;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation AboutViewController
+@implementation XBSAboutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

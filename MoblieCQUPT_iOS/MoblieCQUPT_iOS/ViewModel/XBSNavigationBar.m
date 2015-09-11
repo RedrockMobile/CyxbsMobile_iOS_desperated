@@ -10,17 +10,15 @@
 #import "MainViewController.h"
 #import "We.h"
 @interface XBSNavigationBar ()
-@property (nonatomic, strong) UIViewController *parentDelegate;
+
 @end
 @implementation XBSNavigationBar
 - (instancetype)initWithTitle:(NSString *)title Delegate:(UIViewController *)delegate {
     self.parentDelegate = delegate;
-    self = [super initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    self = [super initWithFrame:CGRectMake(0, 20, ScreenWidth, 44)];
     if (self) {
         //反面教材
         //[self setBackgroundColor:[UIColor greenColor]];
-        self.translucent = YES;
-
         
         //backgroundColor
         [self setTintColor:[UIColor whiteColor]];
@@ -33,11 +31,11 @@
         
         //title
         NSLog(@"%f",leftButton.width);
-        UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, 100, 44)];
-        titleLabel.textColor = [UIColor whiteColor];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.text = title;
-        navigationItem.titleView = titleLabel;
+        self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, 100, 44)];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.text = title;
+        navigationItem.titleView = self.titleLabel;
         
         [self pushNavigationItem:navigationItem animated:NO];
         

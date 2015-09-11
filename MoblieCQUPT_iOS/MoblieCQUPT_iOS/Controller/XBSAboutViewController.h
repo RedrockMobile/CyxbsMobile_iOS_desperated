@@ -1,5 +1,5 @@
 //
-//  AboutViewController.h
+//  XBSAboutViewController.h
 //  MoblieCQUPT_iOS
 //
 //  Created by RainyTunes on 9/3/15.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutViewController : UIViewController
+@interface XBSAboutViewController : UIViewController
 
 @end

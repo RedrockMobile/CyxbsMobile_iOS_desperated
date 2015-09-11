@@ -34,7 +34,7 @@
 
 - (void)httpPostForSchedule:(NSString *)postType
 {
-    [ProgressHUD show:consultingHint];
+    [ProgressHUD show:ConsultingHint];
     [_manager POST:postType parameters:_postParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         _json = [[self handleHexDataStream:responseObject] mutableCopy];
         if(_json)
@@ -42,13 +42,13 @@
             [self pushToShowResults:postType];
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [ProgressHUD showError:consultNetworkErrorHint];
+        [ProgressHUD showError:ConsultNetworkErrorHint];
     }];
 }
 
 - (void)httpPostForEmptyRooms
 {
-    [ProgressHUD show:consultingHint];
+    [ProgressHUD show:ConsultingHint];
     self.emptyRoomBundle = [[NSMutableArray alloc]init];
     self.flag = 0;
     self.hasCompleted = 0;
@@ -69,7 +69,7 @@
             self.hasCompleted++;
             // 如果这是最后一个网络请求了
             if (self.hasCompleted == 5) {
-                [ProgressHUD showSuccess:consultCompleteHint];
+                [ProgressHUD showSuccess:ConsultCompleteHint];
                 XBSEmptyRoomViewController *viewController = [[XBSEmptyRoomViewController alloc]init];
                 viewController.delegate = self;
                 self.emptyRoomDelegate = viewController;
@@ -78,14 +78,14 @@
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             if (self.flag == 0) {
                 self.flag = -1;
-                [ProgressHUD showError:consultNetworkErrorHint];
+                [ProgressHUD showError:ConsultNetworkErrorHint];
             }
         }];
     }
 }
 
 - (void)pushToShowResults:(NSString *)type{
-    [ProgressHUD showSuccess:consultCompleteHint];
+    [ProgressHUD showSuccess:ConsultCompleteHint];
     [_json setObject:type forKey:@"type"];
     XBSSchduleViewController *viewController = [[XBSSchduleViewController alloc]init];
     viewController.delegate = self;
@@ -108,16 +108,16 @@
 }
 
 - (void)httpPostForGrade {
-    [ProgressHUD show:consultingHint];
+    [ProgressHUD show:ConsultingHint];
     _manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     [_manager POST:API_EXAM_GRADE parameters:_postParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
         self.htmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         XBSGradeViewController *viewController = [[XBSGradeViewController alloc]init];
         viewController.delegate = self;
-        [ProgressHUD showSuccess:consultCompleteHint];
+        [ProgressHUD showSuccess:ConsultCompleteHint];
         [_mainDelegate presentViewController:viewController animated:YES completion:nil];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        [ProgressHUD showError:consultNetworkErrorHint];
+        [ProgressHUD showError:ConsultNetworkErrorHint];
     }];
 }
 
@@ -143,11 +143,11 @@
     self.emptyRoomDelegate.lock = NO;
     
     if (flag1 != 0 && flag2 == 0) {
-        return periodGroupUncheckHint;
+        return PeriodGroupUncheckHint;
     }else if (flag1 == 0 && flag2 != 0) {
-        return roomGroupUncheckHint;
+        return RoomGroupUncheckHint;
     }else if (flag1 == 0 && flag2 ==0) {
-        return bothGroupsUncheckHint;
+        return BothGroupsUncheckHint;
     }else {
         return [self.emptyRoomDelegate refreshResult];
     }

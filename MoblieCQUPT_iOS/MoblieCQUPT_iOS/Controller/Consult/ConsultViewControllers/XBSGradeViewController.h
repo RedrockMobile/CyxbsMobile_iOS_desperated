@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "XBSConsultDataBundle.h"
+#import "XBSViewController.h"
 
-@interface XBSGradeViewController : UIViewController
+
+@interface XBSGradeViewController : XBSViewController
 @property (nonatomic, strong) XBSConsultDataBundle *delegate;
 @end

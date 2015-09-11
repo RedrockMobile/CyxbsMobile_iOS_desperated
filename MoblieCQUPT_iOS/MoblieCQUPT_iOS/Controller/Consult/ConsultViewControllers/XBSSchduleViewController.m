@@ -21,7 +21,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initNavigationBar:@"考试安排查询"];
     [self.view setBackgroundColor:[UIColor whiteColor]];
     _dataList = _delegate.json[@"data"];
     [self.view addSubview:self.tableView];
@@ -91,10 +90,12 @@
     [cell.locationIcon setTextColor:[UIColor paperColorGray700]];
     NSString *timeInfo, *locationInfo;
     if ([_delegate.json[@"type"] isEqualToString:API_EXAM_SCHEDULE]) {
+        self.navigationBar.titleLabel.text = ConsultFuntionName[0];
         timeInfo = [NSString stringWithFormat:@"第%@周  星期%@  %@~%@",info[@"week"],[Config transformNumFormat:info[@"weekday"]],info[@"begin_time"],info[@"end_time"]];
         locationInfo = [NSString stringWithFormat:@"%@  %@教室  %@座位",info[@"status"],info[@"classroom"],info[@"seat"]];
     }
     if ([_delegate.json[@"type"] isEqualToString:API_REEXAM_SCHEDULE]) {
+        self.navigationBar.titleLabel.text = ConsultFuntionName[1];
         timeInfo = [NSString stringWithFormat:@"%@  %@",[Config transformDateFormat:info[@"date"]],info[@"time"]];
         locationInfo = [NSString stringWithFormat:@"正常考试  %@教室  %@座位",info[@"classroom"],info[@"seat"]];
     }

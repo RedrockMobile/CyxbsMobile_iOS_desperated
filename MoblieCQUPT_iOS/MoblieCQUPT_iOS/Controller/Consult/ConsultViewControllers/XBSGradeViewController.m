@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    [self initNavigationBar:@"成绩查询"];
+    self.navigationBar.titleLabel.text = ConsultFuntionName[2];
     
 //    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 100, [We getScreenWidth], [We getScreenHeight] - 100)];
 //    [scrollView setContentSize:CGSizeMake([We getScreenWidth] + 300, [We getScreenHeight] - 100)];

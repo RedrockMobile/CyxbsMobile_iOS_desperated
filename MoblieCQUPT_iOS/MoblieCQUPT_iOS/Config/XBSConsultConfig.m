@@ -45,6 +45,6 @@
 
 + (NSString *)transformNumFormat:(NSString *)numString {
     NSInteger num = numString.integerValue;
-    return weekdayWordsArr[num - 1];
+    return WeekdayWordsArr[num - 1];
 }
 @end
