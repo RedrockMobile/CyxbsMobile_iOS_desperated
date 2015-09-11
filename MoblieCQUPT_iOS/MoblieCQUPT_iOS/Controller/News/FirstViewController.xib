@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -26,13 +26,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1685" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0e-9M-1LI">
-                    <rect key="frame" x="68" y="119" width="32" height="30"/>
+                    <rect key="frame" x="68" y="126" width="32" height="16"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.2810733876" green="0.2810733876" blue="0.2810733876" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 教学简报2015年第2期" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSC-hO-J52" userLabel="教学简报2015年第2期">
-                    <rect key="frame" x="12" y="75" width="200.5" height="36"/>
+                    <rect key="frame" x="12" y="75" width="201" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -44,13 +44,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRF-yl-DQe">
-                    <rect key="frame" x="108" y="124" width="14" height="17"/>
+                    <rect key="frame" x="108" y="126" width="14" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015年07月21日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0M-sB-CWs">
-                    <rect key="frame" x="261" y="119" width="106" height="28"/>
+                    <rect key="frame" x="261" y="126" width="106" height="18"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.2810733876" green="0.2810733876" blue="0.2810733876" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -60,26 +60,32 @@
             <constraints>
                 <constraint firstItem="V0M-sB-CWs" firstAttribute="leading" secondItem="hW9-uo-OBG" secondAttribute="trailing" constant="-82" id="2Yx-RL-txT"/>
                 <constraint firstItem="hW9-uo-OBG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="143" id="5k4-ro-Avh"/>
-                <constraint firstItem="XRF-yl-DQe" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="13" id="626-Hv-6R1"/>
+                <constraint firstItem="XRF-yl-DQe" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="15" id="626-Hv-6R1"/>
                 <constraint firstItem="hW9-uo-OBG" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="32" id="G3g-sn-r3F"/>
                 <constraint firstItem="ITo-zd-NrJ" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="15" id="Le8-Fb-tpJ"/>
                 <constraint firstItem="V0M-sB-CWs" firstAttribute="firstBaseline" secondItem="E0e-9M-1LI" secondAttribute="firstBaseline" id="NUw-Mo-zYq"/>
                 <constraint firstAttribute="centerY" secondItem="E0e-9M-1LI" secondAttribute="centerY" constant="199.5" id="SJE-K0-dEw"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tSC-hO-J52" secondAttribute="trailing" priority="800" constant="8" id="YT0-M4-PbE"/>
                 <constraint firstItem="tSC-hO-J52" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="YjX-L3-xs9"/>
-                <constraint firstItem="E0e-9M-1LI" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="8" id="e9j-hv-VEa"/>
+                <constraint firstItem="E0e-9M-1LI" firstAttribute="centerY" secondItem="ITo-zd-NrJ" secondAttribute="centerY" constant="-0.5" id="dux-CS-7jl"/>
+                <constraint firstItem="E0e-9M-1LI" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="15" id="e9j-hv-VEa"/>
                 <constraint firstAttribute="trailing" secondItem="V0M-sB-CWs" secondAttribute="trailing" constant="8" id="fVT-uo-yLU"/>
                 <constraint firstItem="ITo-zd-NrJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="fYb-ei-jcU"/>
                 <constraint firstItem="tSC-hO-J52" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="gYe-3H-dxe"/>
                 <constraint firstAttribute="trailing" secondItem="hW9-uo-OBG" secondAttribute="trailing" constant="8" id="h71-8x-jO9"/>
+                <constraint firstItem="E0e-9M-1LI" firstAttribute="centerY" secondItem="ITo-zd-NrJ" secondAttribute="centerY" id="lNA-Xc-6Ft"/>
                 <constraint firstItem="hW9-uo-OBG" firstAttribute="leading" secondItem="E0e-9M-1LI" secondAttribute="trailing" constant="-97" id="oBj-PZ-EhN"/>
                 <constraint firstItem="E0e-9M-1LI" firstAttribute="leading" secondItem="ITo-zd-NrJ" secondAttribute="trailing" id="pSu-gp-p4S"/>
                 <constraint firstItem="XRF-yl-DQe" firstAttribute="leading" secondItem="E0e-9M-1LI" secondAttribute="trailing" constant="8" id="sLx-sx-gug"/>
                 <constraint firstItem="V0M-sB-CWs" firstAttribute="centerY" secondItem="XRF-yl-DQe" secondAttribute="centerY" id="uyI-kY-xDC"/>
+                <constraint firstItem="E0e-9M-1LI" firstAttribute="centerY" secondItem="XRF-yl-DQe" secondAttribute="centerY" constant="1.5" id="zw0-Ec-ZIs"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="dux-CS-7jl"/>
+                    <exclude reference="lNA-Xc-6Ft"/>
+                    <exclude reference="zw0-Ec-ZIs"/>
                     <exclude reference="2Yx-RL-txT"/>
                 </mask>
             </variation>

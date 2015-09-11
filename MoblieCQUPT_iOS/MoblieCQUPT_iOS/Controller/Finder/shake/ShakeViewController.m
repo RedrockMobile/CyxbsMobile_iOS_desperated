@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
 
+#import <AVFoundation/AVFoundation.h>
 #import "ShakeViewController.h"
 #import "ShopDetailViewController.h"
 #import "UIImage+AFNetworking.h"
@@ -26,35 +27,55 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"摇一摇";
-    
-    NSLog(@"%@", _data);
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
     [self becomeFirstResponder];
 }
 
 -(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    NSLog(@"began");
-    
+
 }
+
 -(void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    NSLog(@"cancel");
+
 }
+
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-    NSLog(@"end");
     
-    if (!_detailViewController) {
-         _detailViewController = [[ShopDetailViewController alloc] init];
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    
+    // 要播放的音频文件地址
+    NSString *urlPath = [[NSBundle mainBundle] pathForResource:@"shake_match" ofType:@"mp3"];
+    
+    NSURL *url = [NSURL fileURLWithPath:urlPath];
+    
+    // 声明需要播放的音频文件ID[unsigned long]
+    SystemSoundID ID;
+    
+    // 创建系统声音，同时返回一个ID
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &ID);
+
+    // 根据ID播放自定义系统声音
+    AudioServicesPlaySystemSound(ID);
+    
+    _detailViewController = [[ShopDetailViewController alloc] init];
+    if (!_data) {
+        ;
+    } else {
+        NSInteger randomNum = arc4random() % [_data count];
+        _detailViewController.detailData = _data[randomNum];
+        
+        [self.navigationController pushViewController:_detailViewController animated:YES];
     }
-    NSInteger randomNum = arc4random() % [_data count];
-    _detailViewController.detailData = _data[randomNum];
-    [self.navigationController pushViewController:_detailViewController animated:YES];
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
     
     for (int i = 1; i<= 3; i++) {
         [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
@@ -63,13 +84,12 @@
         } WithFailureBlock:^{
             UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
             failLabel.text = @"哎呀！网络开小差了 T^T";
-            failLabel.textColor = [UIColor whiteColor];
-            failLabel.backgroundColor = [UIColor grayColor];
+            failLabel.textColor = [UIColor blackColor];
+            failLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
             failLabel.textAlignment = NSTextAlignmentCenter;
             [self.view addSubview:failLabel];
         }];
     }
 }
-
 
 @end

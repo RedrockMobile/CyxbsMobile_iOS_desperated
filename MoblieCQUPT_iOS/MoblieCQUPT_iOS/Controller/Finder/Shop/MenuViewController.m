@@ -21,7 +21,6 @@
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) UITableView *tableView;
 
-
 @end
 
 @implementation MenuViewController
@@ -60,8 +59,8 @@
     } WithFailureBlock:^{
         UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         failLabel.text = @"哎呀！网络开小差了 T^T";
-        failLabel.textColor = [UIColor whiteColor];
-        failLabel.backgroundColor = [UIColor grayColor];
+        failLabel.textColor = [UIColor blackColor];
+        failLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
         failLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:failLabel];
         [_tableView removeFromSuperview];

@@ -25,7 +25,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = CGRectMake(0, 170 , 375, 600); // frame中的size指UIScrollView的可视范围
     [self.view addSubview:scrollView];
-    _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 375, 600)];
+    _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _textView.text = @"查询中。。。";
     _textView.userInteractionEnabled = NO;
     [scrollView addSubview:_textView];

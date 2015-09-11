@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShakeViewController">
@@ -14,32 +15,26 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找美食？摇一摇！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ygD-Pv-Vy8">
-                    <rect key="frame" x="52" y="145" width="270" height="24"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <color key="textColor" red="1" green="0.54206767720000004" blue="0.14311323400000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake.png" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-If-CLh">
-                    <rect key="frame" x="52" y="239" width="270" height="265"/>
+                    <rect key="frame" x="87" y="224" width="200" height="220"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="AUC-If-CLh" secondAttribute="height" multiplier="325:358" id="59B-ef-20A"/>
+                        <constraint firstAttribute="height" constant="220" id="5eD-y9-4XA"/>
+                        <constraint firstAttribute="width" constant="200" id="nZU-0R-kZi"/>
+                    </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="AUC-If-CLh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="52" id="1Ap-2P-Tgn"/>
-                <constraint firstAttribute="centerY" secondItem="ygD-Pv-Vy8" secondAttribute="centerY" constant="176.5" id="7Hh-h0-xCM"/>
-                <constraint firstAttribute="centerX" secondItem="ygD-Pv-Vy8" secondAttribute="centerX" constant="0.5" id="AR3-sL-Qk5"/>
-                <constraint firstItem="ygD-Pv-Vy8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="52" id="D3l-Z4-0lK"/>
-                <constraint firstAttribute="bottom" secondItem="AUC-If-CLh" secondAttribute="bottom" constant="163" id="f2y-WY-9Yk"/>
-                <constraint firstItem="AUC-If-CLh" firstAttribute="top" secondItem="ygD-Pv-Vy8" secondAttribute="bottom" constant="70" id="kZW-3Y-Noe"/>
-                <constraint firstAttribute="trailing" secondItem="AUC-If-CLh" secondAttribute="trailing" constant="53" id="v0w-VD-ysK"/>
-                <constraint firstAttribute="centerX" secondItem="AUC-If-CLh" secondAttribute="centerX" constant="0.5" id="vhd-Z1-GEe"/>
+                <constraint firstAttribute="centerY" secondItem="AUC-If-CLh" secondAttribute="centerY" constant="-0.5" id="2Ug-yQ-PVP"/>
+                <constraint firstAttribute="trailing" secondItem="AUC-If-CLh" secondAttribute="trailing" constant="88" id="S6c-pM-Vze"/>
+                <constraint firstItem="AUC-If-CLh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="87" id="cwL-Cu-Ivx"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="333.5" y="292.5"/>
         </view>
     </objects>
     <resources>
-        <image name="shake.png" width="143" height="137"/>
+        <image name="shake.png" width="162" height="179"/>
     </resources>
 </document>
