@@ -12,7 +12,7 @@
 #import "TitleBaseViewController.h"
 
 
-@interface CourseViewController : TitleBaseViewController
+@interface CourseViewController : TitleBaseViewController<UITabBarControllerDelegate>
 
 @property (strong, nonatomic)UIView *mainView;
 @property (strong, nonatomic)UIScrollView *mainScrollView;
@@ -28,4 +28,6 @@
 @property (strong, nonatomic) UIView *alertView;
 
 @property (strong, nonatomic)NSMutableDictionary *parameter;
+
+@property (assign, nonatomic)BOOL isSelectedView;
 @end

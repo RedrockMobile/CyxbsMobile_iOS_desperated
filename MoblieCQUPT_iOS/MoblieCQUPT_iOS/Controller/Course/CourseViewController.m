@@ -15,22 +15,20 @@
 #import "CourseButton.h"
 #import "CourseView.h"
 #import "UPStackMenu.h"
-#import "UPStackMenuItem.h"
+//#import "UPStackMenuItem.h"
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
 
-@interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate>
+@interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate,UPStackMenuDelegate>
 @end
 
 @implementation CourseViewController
 
+static const CGFloat AniTime = 0.4;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
-//    BOOL isReachability = [NetWork netWorkReachability:Course_API];
-//    if (!isReachability) {
-//        
-//    }
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _dataArray = [userDefault objectForKey:@"dataArray"];
     [self handleWeek:_dataArray];
@@ -103,11 +101,17 @@
     }
     
     _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
-    _moreMenu.backgroundColor = [UIColor whiteColor];
+//    _moreMenu.backgroundColor = [UIColor whiteColor];
     _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
+    _moreMenu.layer.borderColor = [UIColor whiteColor].CGColor;
+    _moreMenu.layer.borderWidth = 2;
     _moreMenu.image = [UIImage imageNamed:@"iconfont-more.png"];
     
     UPStackMenu *stack = [[UPStackMenu alloc] initWithContentView:_moreMenu];
+    stack.clipsToBounds = YES;
+    stack.delegate = self;
+    
+    [stack setAnimationType:UPStackMenuAnimationType_progressiveInverse];
     
     UPStackMenuItem *item = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-meixueqi.png"] highlightedImage:[UIImage imageNamed:@"iconfont-meixueqi.png"]  title:@""];
     [item setTitleColor:[UIColor redColor]];
@@ -123,7 +127,6 @@
     
     self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
 }
-
 
 - (void)didTouchStackMenuItem:(UPStackMenuItem *)item {
     for (int i = 0; i < _buttonTag.count; i ++) {
@@ -144,14 +147,11 @@
 }
 
 - (void)loadNetData {
-    [ProgressHUD show:@"正在加载中"];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
     _parameter = [NSMutableDictionary dictionary];
-    _dataArray = [NSMutableArray array];
     [_parameter setObject:stuNum forKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
-        [ProgressHUD showSuccess:@"加载成功"];
         NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
         NSMutableArray *data = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i ++) {
@@ -191,7 +191,9 @@
             [_buttonTag[i] removeFromSuperview];
         }
         [self handleWeek:_dataArray];
-    } WithFailureBlock:nil];
+    } WithFailureBlock:^{
+        [ProgressHUD showError:@"xxxx"];
+    }];
 }
 
 - (void)handleWeek:(NSArray *)array {
@@ -347,8 +349,7 @@
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, ScreenWidth/9*7, 2)];
     lineView.backgroundColor = MAIN_COLOR;
     [_alertView addSubview:lineView];
-    
-    
+                                                                                                                                                                                                                                
     UIButton *done = [[UIButton alloc]initWithFrame:CGRectMake(10, ScreenHeight-ScreenHeight/7*2-50, ScreenWidth/9*7-20, 45)];
     done.layer.cornerRadius = 2.0;
     [done setTitle:@"确认" forState:UIControlStateNormal];
