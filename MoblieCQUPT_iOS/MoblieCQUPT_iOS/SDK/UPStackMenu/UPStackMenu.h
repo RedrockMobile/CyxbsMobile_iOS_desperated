@@ -28,6 +28,9 @@ typedef enum {
 
 @interface UPStackMenu : UIView <UPStackMenuItemDelegate>
 
+
+@property  (nonatomic, readwrite)  UIButton *baseButton;
+
 // Vertical spacing between each stack menu item
 @property (nonatomic, readwrite)            CGFloat                     itemsSpacing;
 // Whether the items should bounce at the end of the opening animation, or a the beginning of the closing animaton

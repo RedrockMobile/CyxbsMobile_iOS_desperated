@@ -25,7 +25,7 @@ fprintf(stderr, "-------\n");                                               \
 #define MAIN_COLOR  [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1]
 #define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
-#define kBarTintColor [UIColor whiteColor]
+#define kBarTintColor MAIN_COLOR
 #define kItemTintColor [UIColor blackColor]
 
 #import "AFNetworking.h"

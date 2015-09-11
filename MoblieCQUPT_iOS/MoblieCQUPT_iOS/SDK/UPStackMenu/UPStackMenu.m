@@ -21,7 +21,7 @@ const static NSTimeInterval             kStackMenuDefaultCloseAnimationDurationO
 
 
 @interface UPStackMenu() {
-    UIButton *_baseButton;
+
     NSMutableArray *_items;
     
     CGSize _openedSize;
