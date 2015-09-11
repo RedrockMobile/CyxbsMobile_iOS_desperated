@@ -20,7 +20,6 @@
 @property (nonatomic, strong) ViewController *delegate;
 @property (nonatomic, strong) MainViewController *mainDelegate;
 
-
 @property (assign, atomic) NSInteger flag;
 @property (assign, atomic) NSInteger hasCompleted;
 @property (strong, atomic) NSMutableArray *emptyRoomBundle;
