@@ -8,12 +8,12 @@
 
 
 #import "MainViewController.h"
-#import "DataBundle.h"
-#import "SchduleViewController.h"
-#import "EmptyRoomsViewController.h"
+#import "XBSConsultDataBundle.h"
+#import "XBSSchduleViewController.h"
+#import "XBSEmptyRoomViewController.h"
 #import "MainViewController.h"
-#import "ButtonClicker.h"
-#import "Config.h"
+#import "XBSConsultButtonClicker.h"
+#import "XBSConsultConfig.h"
 
 @interface MainViewController () <UITabBarControllerDelegate,UITabBarDelegate>
 @property (strong, nonatomic) NSMutableArray *btnArray;
@@ -21,7 +21,7 @@
 @property (assign, nonatomic) NSInteger btnNum;
 @property (strong, nonatomic) UITabBarItem *centerBar;
 @property (strong, nonatomic) NSDictionary *buttonConfig;
-@property (nonatomic, strong) ButtonClicker *clicker;
+@property (nonatomic, strong) XBSConsultButtonClicker *clicker;
 @property (strong, nonatomic) UIView *discoverView;
 @end
 //023-62750767 023-62751732 15025308654
@@ -112,7 +112,7 @@ static Boolean isClick = NO;
     //NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"找空教室"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
         @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
-    self.clicker = [[ButtonClicker alloc]init];
+    self.clicker = [[XBSConsultButtonClicker alloc]init];
     self.clicker.delegate = self;
     for (int i=0; i<self.btnNum; i++) {
         ///** label **/
