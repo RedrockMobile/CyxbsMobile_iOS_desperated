@@ -12,6 +12,7 @@
 @property (strong,nonatomic)UIScrollView *scrollView;
 @property (strong,nonatomic)NSMutableDictionary *backData;
 @property (strong, nonatomic)UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIView *devLine;
 @end
 
 @implementation FirstViewController
@@ -23,7 +24,7 @@
     
     // 1.创建UIScrollView
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.frame = CGRectMake(0, 170 , 375, 600); // frame中的size指UIScrollView的可视范围
+    scrollView.frame = CGRectMake(0, _devLine.frame.origin.y+4 , MAIN_SCREEN_W, MAIN_SCREEN_H-_devLine.frame.origin.y-20); // frame中的size指UIScrollView的可视范围
     [self.view addSubview:scrollView];
     _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _textView.text = @"查询中。。。";
