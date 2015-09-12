@@ -7,9 +7,9 @@
 //
 
 #import "MineViewController.h"
-#import "ButtonClicker.h"
+#import "XBSConsultButtonClicker.h"
 #import "SuggestionViewController.h"
-#import "AboutViewController.h"
+#import "XBSAboutViewController.h"
 #import "ShakeViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) UILabel *loginLabel;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
-@property (strong, nonatomic) ButtonClicker *clicker;
+@property (strong, nonatomic) XBSConsultButtonClicker *clicker;
 @property (strong, nonatomic) NSMutableArray *cellDictionary;
 
 @end
@@ -33,35 +33,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, -20, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+//    self.view.backgroundColor = MAIN_COLOR;
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H -20);
     _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     _mainScrollView.showsVerticalScrollIndicator=NO;
+    _mainScrollView.backgroundColor = MAIN_COLOR;
     [self.view addSubview:_mainScrollView];
     
-    _currentHeight = 0;
+    _currentHeight = 44;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[
                         @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
                          @{@"cell":@"校历",@"img":@"iconfont77.png",@"controller":@"CalendarViewController"},
                          @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
-                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"AboutViewController"},
+                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"XBSAboutViewController"},
                          @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
                         ]
                        mutableCopy];
     UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
-    _currentHeight += topView.frame.size.height;
-    
-    topView.backgroundColor = [UIColor orangeColor];
-    [_mainScrollView addSubview:topView];
 
     
-    [_mainScrollView addSubview:self.myPhoto];
-    [_mainScrollView addSubview:self.loginLabel];
+    topView.backgroundColor = MAIN_COLOR;
+/****  UI 改版 ******/
+//    _currentHeight += topView.frame.size.height;
+//    [_mainScrollView addSubview:topView];
+
+    
+//    [_mainScrollView addSubview:self.myPhoto];
+//    [_mainScrollView addSubview:self.loginLabel];
+/****--------******/
     
     /**button **/
-    self.clicker = [[ButtonClicker alloc]init];
+    self.clicker = [[XBSConsultButtonClicker alloc]init];
     self.clicker.delegate = self;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
     NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
@@ -71,7 +75,7 @@
     
     //button
     for (int i=0; i<4; i++) {
-        UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, topView.frame.size.height, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
+        UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, _currentHeight, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
         labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         labelButton.layer.borderWidth = 1;
         UIImage *stretchableButtonImage = [[UIImage imageNamed:tempStrArr[i]]  stretchableImageWithLeftCapWidth:0  topCapHeight:0];
@@ -120,7 +124,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _currentHeight, MAIN_SCREEN_W, MAIN_SCREEN_H-_currentHeight-44) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, _currentHeight, MAIN_SCREEN_W, _mainScrollView.contentSize.height+100) style:UITableViewStyleGrouped];
         _tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
         _tableView.sectionFooterHeight = 0;
         _tableView.sectionFooterHeight = 0;
@@ -251,7 +255,8 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return (_tableView.frame.size.height-8*3-2)/5;
+//    return (_tableView.frame.size.height-8*3-2)/5;
+    return 60;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

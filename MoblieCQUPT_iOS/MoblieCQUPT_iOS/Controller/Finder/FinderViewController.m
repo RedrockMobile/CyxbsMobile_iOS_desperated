@@ -31,6 +31,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *mapButton;
 @property (weak, nonatomic) IBOutlet UIButton *shakeButton;
 @property (weak, nonatomic) IBOutlet UIButton *communityButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
 
 @end
 
@@ -50,7 +52,7 @@
 
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ButtonView" owner:self options:nil];
     _buttonsView = [nib objectAtIndex:0];
-    _buttonsView.frame = CGRectMake(0, MAIN_SCREEN_W/1.5 + 64, MAIN_SCREEN_W, 300);
+    _buttonsView.frame = CGRectMake(0, MAIN_SCREEN_W/1.3 , MAIN_SCREEN_W, 300);
     [self.mainScrollView addSubview:_buttonsView];
     
     //图片轮播
@@ -102,6 +104,10 @@
     [self startTime];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+     self.navigationController.navigationBarHidden=YES;
+}
+
 - (void)enterShop{
     ShopViewController *svc = [[ShopViewController alloc] init];
     [self.navigationController pushViewController:svc
@@ -143,14 +149,15 @@
 {
     if(_scrollView==nil){
         //初始化scrollView
-        _scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, MAIN_SCREEN_W, MAIN_SCREEN_W/1.5)];
-        _scrollView.backgroundColor=[UIColor yellowColor];
+        _scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_W/1.4)];
+        _scrollView.backgroundColor=[UIColor clearColor];
         [self.mainScrollView addSubview:_scrollView];
         //设置scrollView的相关属性
         _scrollView.contentSize=CGSizeMake(kCount*_scrollView.bounds.size.width, 0);
-        _scrollView.bounces=NO;
-        _scrollView.pagingEnabled=YES;
-        _scrollView.showsVerticalScrollIndicator=NO;
+        _scrollView.bounces = NO;
+        _scrollView.pagingEnabled = YES;
+        _scrollView.showsVerticalScrollIndicator = NO;
+        _scrollView.showsHorizontalScrollIndicator = NO;
         //添加代理方法
         _scrollView.delegate=self;
     }
@@ -165,7 +172,7 @@
         //控件的尺寸
         CGSize size=[_pageControl sizeForNumberOfPages:kCount];
         _pageControl.bounds=CGRectMake(0, 0, size.width, size.height);
-        _pageControl.center=CGPointMake(self.view.center.x, 64 + MAIN_SCREEN_W/1.5 - 15);
+        _pageControl.center=CGPointMake(self.view.center.x,  MAIN_SCREEN_W/1.4 - 15);
         //相关的属性
         //        _pageControl.pageIndicatorTintColor=[UIColor grayColor];
         //        _pageControl.currentPageIndicatorTintColor=[UIColor blackColor];

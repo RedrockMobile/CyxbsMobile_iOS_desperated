@@ -37,6 +37,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -117,6 +121,10 @@
     [self commonAnimation:0];
 }
 
+- (void)keyboardWillHide:(NSNotification *)aNotification {
+    [self commonAnimation:0];
+}
+
 
 //封装动画 特效方法
 - (void)commonAnimation:(int) tag{
@@ -176,7 +184,9 @@
     NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
     [parameter setObject:_nameField.text forKey:@"stuNum"];
     [parameter setObject:_passwordField.text forKey:@"idNum"];
-    [NetWork NetRequestPOSTWithRequestURL:Base_Login WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:Base_Login
+                            WithParameter:parameter
+                     WithReturnValeuBlock:^(id returnValue) {
         self.dataDic = returnValue;
         if (![_dataDic[@"info"] isEqualToString:@"success"]) {
             [ProgressHUD showError:@"账号或密码输入错误,请重新输入"];
@@ -185,7 +195,7 @@
             } completion:nil];
             sender.enabled = YES;
         }else {
-            [ProgressHUD showSuccess:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]]];
+//            [ProgressHUD showSuccess:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]]];
             NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
             [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
