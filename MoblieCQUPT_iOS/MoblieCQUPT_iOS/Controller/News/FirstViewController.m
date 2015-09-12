@@ -49,11 +49,9 @@
 
 - (float) heightForString:(NSString *)value fontSize:(float)fontSize andWidth:(float)width
 {
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize]
-                         constrainedToSize:CGSizeMake(width -16.0, CGFLOAT_MAX)
-                             lineBreakMode:NSLineBreakByWordWrapping];
-    //此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-    return sizeToFit.height + 16;
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]};
+    CGSize size = [value boundingRectWithSize:CGSizeMake(width-16, CGFLOAT_MAX) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    return size.height+16;
 }
 
 
