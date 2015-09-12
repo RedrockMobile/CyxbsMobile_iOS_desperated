@@ -51,7 +51,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015年07月21日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0M-sB-CWs">
-                    <rect key="frame" x="261" y="127" width="106" height="17"/>
+                    <rect key="frame" x="249" y="127" width="106" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.2810733876" green="0.2810733876" blue="0.2810733876" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -72,7 +72,7 @@
                 <constraint firstItem="tSC-hO-J52" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="YjX-L3-xs9"/>
                 <constraint firstItem="E0e-9M-1LI" firstAttribute="centerY" secondItem="ITo-zd-NrJ" secondAttribute="centerY" constant="-0.5" id="dux-CS-7jl"/>
                 <constraint firstItem="E0e-9M-1LI" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="15" id="e9j-hv-VEa"/>
-                <constraint firstAttribute="trailing" secondItem="V0M-sB-CWs" secondAttribute="trailing" constant="8" id="fVT-uo-yLU"/>
+                <constraint firstAttribute="trailing" secondItem="V0M-sB-CWs" secondAttribute="trailing" constant="20" symbolic="YES" id="fVT-uo-yLU"/>
                 <constraint firstItem="ITo-zd-NrJ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="12" id="fYb-ei-jcU"/>
                 <constraint firstItem="tSC-hO-J52" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="gYe-3H-dxe"/>
                 <constraint firstAttribute="trailing" secondItem="hW9-uo-OBG" secondAttribute="trailing" constant="8" id="h71-8x-jO9"/>
