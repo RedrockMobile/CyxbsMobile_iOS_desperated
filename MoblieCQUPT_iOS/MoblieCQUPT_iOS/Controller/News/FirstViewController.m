@@ -12,6 +12,7 @@
 @property (strong,nonatomic)UIScrollView *scrollView;
 @property (strong,nonatomic)NSMutableDictionary *backData;
 @property (strong, nonatomic)UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIView *devLine;
 @end
 
 @implementation FirstViewController
@@ -23,9 +24,9 @@
     
     // 1.创建UIScrollView
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.frame = CGRectMake(0, 170 , 375, 600); // frame中的size指UIScrollView的可视范围
+    scrollView.frame = CGRectMake(0, _devLine.frame.origin.y+4 , MAIN_SCREEN_W, MAIN_SCREEN_H-_devLine.frame.origin.y-20); // frame中的size指UIScrollView的可视范围
     [self.view addSubview:scrollView];
-    _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, 375, 600)];
+    _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _textView.text = @"查询中。。。";
     _textView.userInteractionEnabled = NO;
     [scrollView addSubview:_textView];
@@ -48,11 +49,9 @@
 
 - (float) heightForString:(NSString *)value fontSize:(float)fontSize andWidth:(float)width
 {
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize]
-                         constrainedToSize:CGSizeMake(width -16.0, CGFLOAT_MAX)
-                             lineBreakMode:NSLineBreakByWordWrapping];
-    //此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
-    return sizeToFit.height + 16;
+    NSDictionary *attribute = @{NSFontAttributeName: [UIFont systemFontOfSize:fontSize]};
+    CGSize size = [value boundingRectWithSize:CGSizeMake(width-16, CGFLOAT_MAX) options: NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:attribute context:nil].size;
+    return size.height+16;
 }
 
 

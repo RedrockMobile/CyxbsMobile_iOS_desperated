@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dL6-fu-Vlg">
-                    <rect key="frame" x="82" y="475" width="210" height="102"/>
+                    <rect key="frame" x="82" y="505" width="210" height="102"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="102" id="ASC-6m-hEb"/>
                         <constraint firstAttribute="width" constant="210" id="C5A-CY-rTe"/>
@@ -28,7 +28,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="dL6-fu-Vlg" secondAttribute="bottom" constant="90" id="Bqs-dm-Dqq"/>
+                <constraint firstAttribute="bottom" secondItem="dL6-fu-Vlg" secondAttribute="bottom" constant="60" id="Bqs-dm-Dqq"/>
                 <constraint firstAttribute="centerX" secondItem="dL6-fu-Vlg" secondAttribute="centerX" constant="0.5" id="lhb-M6-asF"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -36,6 +36,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ok.png" width="460" height="230"/>
+        <image name="ok.png" width="230" height="115"/>
     </resources>
 </document>

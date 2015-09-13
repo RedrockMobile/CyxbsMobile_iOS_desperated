@@ -39,6 +39,13 @@
     [self.view addSubview:self.tableView];
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+}
+
 /**
  *  集成刷新控件
  */
@@ -57,7 +64,7 @@
     
     self.tableView.footerPullToRefreshText = @"上拉加载更多";
     self.tableView.footerReleaseToRefreshText = @"松开加载更多";
-    self.tableView.footerRefreshingText = @"正在刷新中";
+    self.tableView.footerRefreshingText = @"玩命加载中";
 }
 
 
@@ -73,8 +80,8 @@
     } WithFailureBlock:^{
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
-        faileLable.textColor = [UIColor whiteColor];
-        faileLable.backgroundColor = [UIColor grayColor];
+        faileLable.textColor = [UIColor blackColor];
+        faileLable.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
         faileLable.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:faileLable];
         [_tableView removeFromSuperview];
@@ -93,8 +100,8 @@
         } WithFailureBlock:^{
             UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
             faileLable.text = @"哎呀！网络开小差了 T^T";
-            faileLable.textColor = [UIColor whiteColor];
-            faileLable.backgroundColor = [UIColor grayColor];
+            faileLable.textColor = [UIColor blackColor];
+            faileLable.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
             faileLable.textAlignment = NSTextAlignmentCenter;
             [self.view addSubview:faileLable];
             [_tableView removeFromSuperview];
@@ -129,8 +136,8 @@
     } WithFailureBlock:^{
         UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         failLabel.text = @"哎呀！网络开小差了 T^T";
-        failLabel.textColor = [UIColor whiteColor];
-        failLabel.backgroundColor = [UIColor grayColor];
+        failLabel.textColor = [UIColor blackColor];
+        failLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
         failLabel.textAlignment = NSTextAlignmentCenter;
         [self.view addSubview:failLabel];
         [_tableView removeFromSuperview];

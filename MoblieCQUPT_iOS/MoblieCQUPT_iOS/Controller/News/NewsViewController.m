@@ -29,10 +29,13 @@
 static int nowPage= 1;
 
 - (void)viewDidLoad {
-  
+    
+    [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navigationItem.title = @"教务";
-    [super viewDidLoad];
+    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    
     _flag = 1;
     self.data = [[NSMutableDictionary alloc] init];
     _BothData = [[NSMutableArray alloc] init];
@@ -49,7 +52,6 @@ static int nowPage= 1;
     
     // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
     [self.tableView addHeaderWithTarget:self action:@selector(dataFresh)];
-    
 //     2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
     [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
     
@@ -60,7 +62,7 @@ static int nowPage= 1;
     
     self.tableView.footerPullToRefreshText = @"上拉加载更多";
     self.tableView.footerReleaseToRefreshText = @"松开加载更多";
-    self.tableView.footerRefreshingText = @"玩命加载中 =_=|||";
+    self.tableView.footerRefreshingText = @"玩命加载中";
 }
 
 #pragma mark 开始进入刷新状态
@@ -82,7 +84,7 @@ static int nowPage= 1;
         
         UINib *nib = [UINib nibWithNibName:@"MeCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"cell"];
-       _tableView.separatorStyle = NO;
+       _tableView.separatorStyle = YES;
         
     }
     return _tableView;
@@ -99,7 +101,6 @@ static int nowPage= 1;
             nowPage=1;
          typeFunction = ^(NSMutableArray *object){
              [object removeAllObjects];
-            
          };
             break;
         case EnumDataAdd:
@@ -139,15 +140,7 @@ static int nowPage= 1;
                 [_tableView reloadData];
 
                 [_indicatorView stopAnimating];
-            } WithFailureBlock:^{
-                UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
-                faileLable.text = @"哎呀！网络开小差了 T^T";
-                faileLable.textColor = [UIColor whiteColor];
-                faileLable.backgroundColor = [UIColor grayColor];
-                faileLable.textAlignment = NSTextAlignmentCenter;
-                [self.view addSubview:faileLable];
-                [_tableView removeFromSuperview];
-            }];
+            } WithFailureBlock:nil];
 //            [self dataFresh];
         }
                          
@@ -155,6 +148,8 @@ static int nowPage= 1;
         [self.tableView footerEndRefreshing];
     } WithFailureBlock:nil];
 }
+
+#pragma mark - tableViewDeleget
 
 //一组多少个
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -177,18 +172,14 @@ static int nowPage= 1;
     }
         cell.backview.layer.cornerRadius = 0;
     
-     UIFont *font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
-
-    cell.specificlable.font = font;
+    tableView.separatorInset = UIEdgeInsetsMake(0, 1, 0, 8);//修改分隔线长度
+    tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+    
     cell.toplable.text = _BothData[indexPath.section][@"title"];
     cell.daylable.text = _BothData[indexPath.section][@"date"];
      cell.timelabel.text = _BothData[indexPath.section][@"read"];
     cell.specificlable.text = _BothData[indexPath.section][@"newsContent"];
-    if (indexPath.section %2 ==0) {
-        cell.backview.backgroundColor  = RGBColor(255, 232, 186, 0.4);
-    }else{
-        cell.backview.backgroundColor  = RGBColor(65, 141, 122, 0.15);
-    }
+
     cell.backview.layer.cornerRadius = 1;
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
 
@@ -197,11 +188,7 @@ static int nowPage= 1;
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 120;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+    return 100;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
