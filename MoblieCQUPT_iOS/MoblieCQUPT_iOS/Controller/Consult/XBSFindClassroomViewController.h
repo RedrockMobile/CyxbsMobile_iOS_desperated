@@ -8,6 +8,8 @@
 
 #import "XBSViewController.h"
 
-@interface XBSFindClassroomViewController : XBSViewController
-
+@interface XBSFindClassroomViewController : XBSViewController <UITableViewDataSource>
+@property (nonatomic, strong) NSMutableArray *periodViewArray;
+@property (nonatomic, strong) UIButton *buildingSelectorButton;
+@property (nonatomic, strong) UIButton *dateSelectorButton;
 @end

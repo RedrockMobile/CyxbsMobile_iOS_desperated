@@ -12,7 +12,6 @@
 		3B13889E1BA3531D0011EBF2 /* XBSGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388991BA3531D0011EBF2 /* XBSGradeViewController.m */; };
 		3B13889F1BA3531D0011EBF2 /* XBSSchduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B13889B1BA3531D0011EBF2 /* XBSSchduleViewController.m */; };
 		3B1388B21BA353F70011EBF2 /* XBSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388A91BA353F70011EBF2 /* XBSNavigationBar.m */; };
-		3B1388B31BA353F70011EBF2 /* XBSNavigationBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388AA1BA353F70011EBF2 /* XBSNavigationBar.xib */; };
 		3B1388B41BA353F70011EBF2 /* XBSScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388AC1BA353F70011EBF2 /* XBSScheduleTableViewCell.m */; };
 		3B1388B51BA353F70011EBF2 /* XBSScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388AD1BA353F70011EBF2 /* XBSScheduleTableViewCell.xib */; };
 		3B1388BA1BA354930011EBF2 /* XBSConsultButtonClicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388B91BA354930011EBF2 /* XBSConsultButtonClicker.m */; };
@@ -22,9 +21,6 @@
 		3B1388D01BA369890011EBF2 /* new_icon_menu_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388CE1BA369890011EBF2 /* new_icon_menu_4@2x.png */; };
 		3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388CF1BA369890011EBF2 /* new_icon_menu_5@2x.png */; };
 		3B1388D71BA3EEC70011EBF2 /* XBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388D61BA3EEC70011EBF2 /* XBSViewController.m */; };
-		3B1388DB1BA3EF420011EBF2 /* XBSFindClassroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388DA1BA3EF420011EBF2 /* XBSFindClassroomViewController.xib */; };
-		3B1388DF1BA3F1570011EBF2 /* XBSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388DD1BA3F1570011EBF2 /* XBSAboutViewController.m */; };
-		3B1388E01BA3F1570011EBF2 /* XBSAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388DE1BA3F1570011EBF2 /* XBSAboutViewController.xib */; };
 		3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0AC1B8C4644009C1E94 /* MainViewController.m */; };
 		3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B01B8C4691009C1E94 /* NSArray+We.m */; };
 		3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B21B8C4691009C1E94 /* NSString+We.m */; };
@@ -71,7 +67,12 @@
 		3B51FBA51BA328BA009FB3C0 /* UPStackMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB7B1BA328BA009FB3C0 /* UPStackMenu.m */; };
 		3B51FBA61BA328BA009FB3C0 /* UPStackMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB7D1BA328BA009FB3C0 /* UPStackMenuItem.m */; };
 		3B685C881BA44D6300E34491 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B685C871BA44D6300E34491 /* Images.xcassets */; };
+		3B685C8C1BA4783100E34491 /* XBSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B685C8A1BA4783100E34491 /* XBSAboutViewController.m */; };
+		3B685C8D1BA4783100E34491 /* XBSAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B685C8B1BA4783100E34491 /* XBSAboutViewController.xib */; };
+		3B685C901BA47D7400E34491 /* XBSFindClassroomPeriodView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B685C8F1BA47D7400E34491 /* XBSFindClassroomPeriodView.m */; };
 		3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58731B8F6EA10099EC58 /* iconfont.ttf */; };
+		3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC309F91BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m */; };
+		3BC309FC1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC309FA1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib */; };
 		3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */; };
 		CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */; };
 		CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */; };
@@ -215,7 +216,6 @@
 		3B13889B1BA3531D0011EBF2 /* XBSSchduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSSchduleViewController.m; sourceTree = "<group>"; };
 		3B1388A81BA353F70011EBF2 /* XBSNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSNavigationBar.h; sourceTree = "<group>"; };
 		3B1388A91BA353F70011EBF2 /* XBSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSNavigationBar.m; sourceTree = "<group>"; };
-		3B1388AA1BA353F70011EBF2 /* XBSNavigationBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSNavigationBar.xib; sourceTree = "<group>"; };
 		3B1388AB1BA353F70011EBF2 /* XBSScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSScheduleTableViewCell.h; sourceTree = "<group>"; };
 		3B1388AC1BA353F70011EBF2 /* XBSScheduleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSScheduleTableViewCell.m; sourceTree = "<group>"; };
 		3B1388AD1BA353F70011EBF2 /* XBSScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSScheduleTableViewCell.xib; sourceTree = "<group>"; };
@@ -229,10 +229,6 @@
 		3B1388CF1BA369890011EBF2 /* new_icon_menu_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_icon_menu_5@2x.png"; sourceTree = "<group>"; };
 		3B1388D51BA3EEC70011EBF2 /* XBSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSViewController.h; sourceTree = "<group>"; };
 		3B1388D61BA3EEC70011EBF2 /* XBSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSViewController.m; sourceTree = "<group>"; };
-		3B1388DA1BA3EF420011EBF2 /* XBSFindClassroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSFindClassroomViewController.xib; sourceTree = "<group>"; };
-		3B1388DC1BA3F1570011EBF2 /* XBSAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSAboutViewController.h; sourceTree = "<group>"; };
-		3B1388DD1BA3F1570011EBF2 /* XBSAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSAboutViewController.m; sourceTree = "<group>"; };
-		3B1388DE1BA3F1570011EBF2 /* XBSAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSAboutViewController.xib; sourceTree = "<group>"; };
 		3B37F0AB1B8C4644009C1E94 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Main/MainViewController.h; sourceTree = "<group>"; };
 		3B37F0AC1B8C4644009C1E94 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Main/MainViewController.m; sourceTree = "<group>"; };
 		3B37F0AF1B8C4691009C1E94 /* NSArray+We.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+We.h"; sourceTree = "<group>"; };
@@ -326,7 +322,15 @@
 		3B51FB7C1BA328BA009FB3C0 /* UPStackMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPStackMenuItem.h; sourceTree = "<group>"; };
 		3B51FB7D1BA328BA009FB3C0 /* UPStackMenuItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPStackMenuItem.m; sourceTree = "<group>"; };
 		3B685C871BA44D6300E34491 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3B685C891BA4783100E34491 /* XBSAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XBSAboutViewController.h; path = About/XBSAboutViewController.h; sourceTree = "<group>"; };
+		3B685C8A1BA4783100E34491 /* XBSAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XBSAboutViewController.m; path = About/XBSAboutViewController.m; sourceTree = "<group>"; };
+		3B685C8B1BA4783100E34491 /* XBSAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = XBSAboutViewController.xib; path = About/XBSAboutViewController.xib; sourceTree = "<group>"; };
+		3B685C8E1BA47D7400E34491 /* XBSFindClassroomPeriodView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSFindClassroomPeriodView.h; sourceTree = "<group>"; };
+		3B685C8F1BA47D7400E34491 /* XBSFindClassroomPeriodView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomPeriodView.m; sourceTree = "<group>"; };
 		3BBB58731B8F6EA10099EC58 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
+		3BC309F81BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSFindClassroomTableViewCell.h; sourceTree = "<group>"; };
+		3BC309F91BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomTableViewCell.m; sourceTree = "<group>"; };
+		3BC309FA1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSFindClassroomTableViewCell.xib; sourceTree = "<group>"; };
 		3BFA63191BA1AC91005B025D /* XBSConsultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSConsultConfig.h; sourceTree = "<group>"; };
 		3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSConsultConfig.m; sourceTree = "<group>"; };
 		CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_3.png; sourceTree = "<group>"; };
@@ -519,22 +523,18 @@
 		3B1388A51BA353F70011EBF2 /* Consult */ = {
 			isa = PBXGroup;
 			children = (
-				3B1388B71BA353FE0011EBF2 /* CustomView */,
-			);
-			path = Consult;
-			sourceTree = "<group>";
-		};
-		3B1388B71BA353FE0011EBF2 /* CustomView */ = {
-			isa = PBXGroup;
-			children = (
 				3B1388A81BA353F70011EBF2 /* XBSNavigationBar.h */,
 				3B1388A91BA353F70011EBF2 /* XBSNavigationBar.m */,
-				3B1388AA1BA353F70011EBF2 /* XBSNavigationBar.xib */,
 				3B1388AB1BA353F70011EBF2 /* XBSScheduleTableViewCell.h */,
 				3B1388AC1BA353F70011EBF2 /* XBSScheduleTableViewCell.m */,
 				3B1388AD1BA353F70011EBF2 /* XBSScheduleTableViewCell.xib */,
+				3BC309F81BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.h */,
+				3BC309F91BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m */,
+				3BC309FA1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib */,
+				3B685C8E1BA47D7400E34491 /* XBSFindClassroomPeriodView.h */,
+				3B685C8F1BA47D7400E34491 /* XBSFindClassroomPeriodView.m */,
 			);
-			name = CustomView;
+			path = Consult;
 			sourceTree = "<group>";
 		};
 		3B37F0AE1B8C4691009C1E94 /* We */ = {
@@ -719,9 +719,9 @@
 		3B9FD0A31B984E3B0081A100 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				3B1388DC1BA3F1570011EBF2 /* XBSAboutViewController.h */,
-				3B1388DD1BA3F1570011EBF2 /* XBSAboutViewController.m */,
-				3B1388DE1BA3F1570011EBF2 /* XBSAboutViewController.xib */,
+				3B685C891BA4783100E34491 /* XBSAboutViewController.h */,
+				3B685C8A1BA4783100E34491 /* XBSAboutViewController.m */,
+				3B685C8B1BA4783100E34491 /* XBSAboutViewController.xib */,
 			);
 			name = About;
 			sourceTree = "<group>";
@@ -739,7 +739,6 @@
 				3B13889B1BA3531D0011EBF2 /* XBSSchduleViewController.m */,
 				3B13888F1BA352FA0011EBF2 /* XBSFindClassroomViewController.h */,
 				3B1388901BA352FA0011EBF2 /* XBSFindClassroomViewController.m */,
-				3B1388DA1BA3EF420011EBF2 /* XBSFindClassroomViewController.xib */,
 			);
 			path = Consult;
 			sourceTree = "<group>";
@@ -1367,9 +1366,9 @@
 				CE1B36EA1B9A207100824B96 /* calendar.png in Resources */,
 				CE78939B1B87067B000D8B57 /* 60-2.png in Resources */,
 				3B51FB8D1BA328BA009FB3C0 /* MJRefresh.bundle in Resources */,
-				3B1388E01BA3F1570011EBF2 /* XBSAboutViewController.xib in Resources */,
-				3B1388DB1BA3EF420011EBF2 /* XBSFindClassroomViewController.xib in Resources */,
+				3B685C8D1BA4783100E34491 /* XBSAboutViewController.xib in Resources */,
 				E2D31A5F1B9ADCA500E1F5A8 /* cqupt1@2x.jpg in Resources */,
+				3BC309FC1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib in Resources */,
 				E2D31A0B1B9ADC9C00E1F5A8 /* FirstViewController.xib in Resources */,
 				CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */,
 				E24682011B9F25A800BBB8A8 /* chuangye.png in Resources */,
@@ -1384,7 +1383,6 @@
 				E2E7DE2F1B9476730081F699 /* iconfont-mima.png in Resources */,
 				3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
-				3B1388B31BA353F70011EBF2 /* XBSNavigationBar.xib in Resources */,
 				D96125F51B9F1178002D4F80 /* iconfont-location.png in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,
 				D9A9532C1B9DA4F500D62690 /* iconfont-more.png in Resources */,
@@ -1492,10 +1490,12 @@
 				3B51FB7F1BA328BA009FB3C0 /* AFHTTPRequestOperationManager.m in Sources */,
 				E2D31A511B9ADCA500E1F5A8 /* WebViewController.m in Sources */,
 				3B1388BD1BA354BB0011EBF2 /* XBSConsultDataBundle.m in Sources */,
+				3B685C901BA47D7400E34491 /* XBSFindClassroomPeriodView.m in Sources */,
 				3B51FB811BA328BA009FB3C0 /* AFNetworkReachabilityManager.m in Sources */,
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
 				3B51FB931BA328BA009FB3C0 /* UIScrollView+MJExtension.m in Sources */,
 				3B51FB801BA328BA009FB3C0 /* AFHTTPSessionManager.m in Sources */,
+				3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */,
 				CEF61B591B82BDFE0014B980 /* README.md in Sources */,
 				E2D31A471B9ADCA500E1F5A8 /* FinderViewController.m in Sources */,
 				E238270E1B9478190058970E /* Course.m in Sources */,
@@ -1538,7 +1538,7 @@
 				3B51FB8C1BA328BA009FB3C0 /* FMResultSet.m in Sources */,
 				3B51FB9E1BA328BA009FB3C0 /* UIProgressView+AFNetworking.m in Sources */,
 				3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */,
-				3B1388DF1BA3F1570011EBF2 /* XBSAboutViewController.m in Sources */,
+				3B685C8C1BA4783100E34491 /* XBSAboutViewController.m in Sources */,
 				3B51FB861BA328BA009FB3C0 /* AFURLSessionManager.m in Sources */,
 				E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */,
 				3B13889F1BA3531D0011EBF2 /* XBSSchduleViewController.m in Sources */,
