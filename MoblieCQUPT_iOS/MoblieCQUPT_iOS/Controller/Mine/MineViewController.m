@@ -225,8 +225,11 @@
         [cell.detailTextLabel setFont:[UIFont fontWithName:@"Courier" size:20]];
 
         cell.detailTextLabel.text = @">";
-        UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
+        UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAutomatic];
+        
+
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
+//        imgView.tintColor = [UIColor blackColor];
         imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
         imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
         [cell addSubview:imgView];
@@ -308,6 +311,13 @@
     
 }
 
+/**
+ *  @author Orange-W, 15-09-13 03:09:05
+ *
+ *  @brief  头像功能
+ *  @param asset <#asset description#>
+ *  @return <#return value description#>
+ */
 - (UIImage *)fullResolutionImageFromALAsset:(ALAsset *)asset
 {
     ALAssetRepresentation *assetRep = [asset defaultRepresentation];
