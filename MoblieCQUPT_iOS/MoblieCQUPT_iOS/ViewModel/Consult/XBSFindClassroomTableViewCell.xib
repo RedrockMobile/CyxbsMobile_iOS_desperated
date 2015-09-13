@@ -94,10 +94,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cellItem1" destination="Rmu-Pe-s1h" id="3J3-Qh-QkX"/>
-                <outlet property="cellItem2" destination="TJ5-gm-HWH" id="umc-KG-idI"/>
-                <outlet property="cellItem3" destination="JpX-au-Qca" id="Qrb-5X-mXc"/>
-                <outlet property="cellItem4" destination="eZD-MM-krz" id="zDb-X8-Rfx"/>
                 <outlet property="cellLabel1" destination="Rmu-Pe-s1h" id="Jre-It-qSw"/>
                 <outlet property="cellLabel2" destination="TJ5-gm-HWH" id="NSQ-h1-K9F"/>
                 <outlet property="cellLabel3" destination="JpX-au-Qca" id="sXm-fu-MwI"/>
