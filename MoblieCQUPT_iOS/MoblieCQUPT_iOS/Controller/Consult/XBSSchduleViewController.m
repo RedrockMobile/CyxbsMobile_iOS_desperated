@@ -74,7 +74,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identify = @"cell";
+    static NSString *identify = @"XBSScheduleTableViewCell";
     XBSScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"XBSScheduleTableViewCell" owner:self options:nil] lastObject];

@@ -5,7 +5,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XBSAboutViewController">
             <connections>
                 <outlet property="appName" destination="qj2-jC-mua" id="sb8-ig-kdg"/>
                 <outlet property="appVersion" destination="noA-jV-5d1" id="Tfq-bu-RVT"/>
@@ -20,11 +20,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccA-P0-RHd" userLabel="container2">
-                    <rect key="frame" x="0.0" y="319" width="414" height="161"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccA-P0-RHd" userLabel="container2">
+                    <rect key="frame" x="0.0" y="490" width="414" height="246"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUe-uW-dl6" userLabel="bottom">
-                            <rect key="frame" x="18" y="45" width="286" height="73"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zUe-uW-dl6" userLabel="bottom">
+                            <rect key="frame" x="64" y="87" width="286" height="73"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="红岩网校产品" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KO2-ye-7A4">
                                     <rect key="frame" x="101" y="4" width="84" height="17"/>
@@ -149,11 +149,11 @@
                         <constraint firstAttribute="centerX" secondItem="zUe-uW-dl6" secondAttribute="centerX" id="rGQ-hf-B6N"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Gv-KiY" userLabel="container1">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SYZ-Gv-KiY" userLabel="container1">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="491"/>
                     <subviews>
-                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qxg-pD-o4G" userLabel="logo">
-                            <rect key="frame" x="106" y="76" width="110" height="170"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxg-pD-o4G" userLabel="logo">
+                            <rect key="frame" x="152" y="161" width="110" height="170"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="掌上重邮" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj2-jC-mua">
                                     <rect key="frame" x="23" y="126" width="65" height="24"/>
@@ -223,7 +223,7 @@
                 <constraint firstAttribute="bottom" secondItem="ccA-P0-RHd" secondAttribute="bottom" id="sMQ-kZ-F0c"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-            <point key="canvasLocation" x="486.5" y="288.5"/>
+            <point key="canvasLocation" x="541" y="211"/>
         </view>
     </objects>
     <resources>

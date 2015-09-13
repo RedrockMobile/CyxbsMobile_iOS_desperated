@@ -14,6 +14,7 @@
 #import "XBSEmptyRoomViewController.h"
 #import "XBSGradeViewController.h"
 #import "ProgressHUD.h"
+#import "XBSFindClassroomViewController.h"
 
 @interface XBSConsultDataBundle ()
 @property (nonatomic, strong) XBSEmptyRoomViewController *emptyRoomDelegate;
@@ -48,40 +49,42 @@
 
 - (void)httpPostForEmptyRooms
 {
-    [ProgressHUD show:ConsultingHint];
-    self.emptyRoomBundle = [[NSMutableArray alloc]init];
-    self.flag = 0;
-    self.hasCompleted = 0;
-    for (int i = 0; i < 5; i++) {
-        NSDictionary *param = @{@"sectionNum":[NSString stringWithFormat:@"%d",i]};
-        [_manager POST:API_EMPTY_ROOMS parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            //对「时段数组」进行筛选处理
-            NSMutableArray *roomNameArray = [self handleHexDataStream:responseObject][@"data"];
-            for (int i = 0;i < roomNameArray.count;i++) {
-                unichar c = [roomNameArray[i] characterAtIndex:0];
-                if (c < '2' || c > '8') {
-                    roomNameArray[i] = @"";
-                }
-            }
-            [roomNameArray removeObject:@""];
-            //「时段数组」加入「当日数组」
-            [self.emptyRoomBundle addObject:roomNameArray];
-            self.hasCompleted++;
-            // 如果这是最后一个网络请求了
-            if (self.hasCompleted == 5) {
-                [ProgressHUD showSuccess:ConsultCompleteHint];
-                XBSEmptyRoomViewController *viewController = [[XBSEmptyRoomViewController alloc]init];
-                viewController.delegate = self;
-                self.emptyRoomDelegate = viewController;
-                [self.mainDelegate presentViewController:viewController animated:YES completion:nil];
-            }
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            if (self.flag == 0) {
-                self.flag = -1;
-                [ProgressHUD showError:ConsultNetworkErrorHint];
-            }
-        }];
-    }
+//    [ProgressHUD show:ConsultingHint];
+//    self.emptyRoomBundle = [[NSMutableArray alloc]init];
+//    self.flag = 0;
+//    self.hasCompleted = 0;
+//    for (int i = 0; i < 5; i++) {
+//        NSDictionary *param = @{@"sectionNum":[NSString stringWithFormat:@"%d",i]};
+//        [_manager POST:API_EMPTY_ROOMS parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//            //对「时段数组」进行筛选处理
+//            NSMutableArray *roomNameArray = [self handleHexDataStream:responseObject][@"data"];
+//            for (int i = 0;i < roomNameArray.count;i++) {
+//                unichar c = [roomNameArray[i] characterAtIndex:0];
+//                if (c < '2' || c > '8') {
+//                    roomNameArray[i] = @"";
+//                }
+//            }
+//            [roomNameArray removeObject:@""];
+//            //「时段数组」加入「当日数组」
+//            [self.emptyRoomBundle addObject:roomNameArray];
+//            self.hasCompleted++;
+//            // 如果这是最后一个网络请求了
+//            if (self.hasCompleted == 5) {
+//                [ProgressHUD showSuccess:ConsultCompleteHint];
+//                XBSEmptyRoomViewController *viewController = [[XBSEmptyRoomViewController alloc]init];
+//                viewController.delegate = self;
+//                self.emptyRoomDelegate = viewController;
+//                [self.mainDelegate presentViewController:viewController animated:YES completion:nil];
+//            }
+//        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//            if (self.flag == 0) {
+//                self.flag = -1;
+//                [ProgressHUD showError:ConsultNetworkErrorHint];
+//            }
+//        }];
+//    }
+    XBSFindClassroomViewController *vc = [[XBSFindClassroomViewController alloc]init];
+    [self.mainDelegate presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)pushToShowResults:(NSString *)type{
