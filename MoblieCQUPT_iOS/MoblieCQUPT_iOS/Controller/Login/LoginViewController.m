@@ -195,7 +195,7 @@
             } completion:nil];
             sender.enabled = YES;
         }else {
-//            [ProgressHUD showSuccess:[NSString stringWithFormat:@"欢迎登录 %@ 同学",_dataDic[@"data"][@"name"]]];
+            [ProgressHUD showSuccess:@"登录成功"];
             NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
             [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

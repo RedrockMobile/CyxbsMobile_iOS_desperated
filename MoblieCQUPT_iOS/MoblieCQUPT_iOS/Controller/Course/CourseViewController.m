@@ -84,13 +84,13 @@ static const CGFloat AniTime = 0.4;
     [_mainView addSubview:_mainScrollView];
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    UILabel *weekLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
-    weekLabel.center = CGPointMake(ScreenWidth/2, -25);
+    _weekLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
+    _weekLabel.center = CGPointMake(ScreenWidth/2, -25);
     NSString *week = [userDefaults objectForKey:@"nowWeek"];
-    weekLabel.text = [NSString stringWithFormat:@"第%@周",week];
-    weekLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
-    weekLabel.textAlignment = NSTextAlignmentCenter;
-    [_mainScrollView addSubview:weekLabel];
+    _weekLabel.text = [NSString stringWithFormat:@"第%@周",week];
+    _weekLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
+    _weekLabel.textAlignment = NSTextAlignmentCenter;
+    [_mainScrollView addSubview:_weekLabel];
     
     for (int i = 0; i < 12; i ++) {
         UILabel *classNum = [[UILabel alloc]initWithFrame:CGRectMake(0, i*kWidthGrid, kWidthGrid*0.5, kWidthGrid)];
@@ -178,12 +178,7 @@ static const CGFloat AniTime = 0.4;
             [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
             [userDefault synchronize];
         } WithFailureBlock:nil];
-        UILabel *weekLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
-        weekLabel.center = CGPointMake(ScreenWidth/2, -25);
-        weekLabel.text = [NSString stringWithFormat:@"第%@周",nowWeek];
-        weekLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
-        weekLabel.textAlignment = NSTextAlignmentCenter;
-        [_mainScrollView addSubview:weekLabel];
+        _weekLabel.text = [NSString stringWithFormat:@"第%@周",nowWeek];
         [userDefault setObject:nowWeek forKey:@"nowWeek"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
         [userDefault synchronize];
@@ -192,7 +187,7 @@ static const CGFloat AniTime = 0.4;
         }
         [self handleWeek:_dataArray];
     } WithFailureBlock:^{
-        [ProgressHUD showError:@"xxxx"];
+        NSLog(@"数据错误");
     }];
 }
 
@@ -226,7 +221,6 @@ static const CGFloat AniTime = 0.4;
         }
     }
     [self handleColor:allCourses];
-    
 }
 
 - (void)handleColor:(NSMutableArray *)courses {
