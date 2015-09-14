@@ -258,7 +258,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className;
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if ((className = _cellDictionary[indexPath.section][@"controller"])) {
         
         UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
