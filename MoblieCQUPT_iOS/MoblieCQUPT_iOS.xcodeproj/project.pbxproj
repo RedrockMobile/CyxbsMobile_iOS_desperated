@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B1388921BA352FA0011EBF2 /* XBSFindClassroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388901BA352FA0011EBF2 /* XBSFindClassroomViewController.m */; };
 		3B13889D1BA3531D0011EBF2 /* XBSEmptyRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388971BA3531D0011EBF2 /* XBSEmptyRoomViewController.m */; };
 		3B13889E1BA3531D0011EBF2 /* XBSGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388991BA3531D0011EBF2 /* XBSGradeViewController.m */; };
 		3B13889F1BA3531D0011EBF2 /* XBSSchduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B13889B1BA3531D0011EBF2 /* XBSSchduleViewController.m */; };
@@ -73,6 +72,9 @@
 		3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3BBB58731B8F6EA10099EC58 /* iconfont.ttf */; };
 		3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BC309F91BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m */; };
 		3BC309FC1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC309FA1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib */; };
+		3BDE16281BA5E6D3008F2DB7 /* XBSFindClassroomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE16261BA5E6D3008F2DB7 /* XBSFindClassroomViewController.m */; };
+		3BDE16291BA5E6D3008F2DB7 /* XBSFindClassroomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BDE16271BA5E6D3008F2DB7 /* XBSFindClassroomViewController.xib */; };
+		3BDE162C1BA5FEED008F2DB7 /* XBSFindClassroomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE162B1BA5FEED008F2DB7 /* XBSFindClassroomModel.m */; };
 		3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */; };
 		CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */; };
 		CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */; };
@@ -209,8 +211,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3B13888F1BA352FA0011EBF2 /* XBSFindClassroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSFindClassroomViewController.h; sourceTree = "<group>"; };
-		3B1388901BA352FA0011EBF2 /* XBSFindClassroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomViewController.m; sourceTree = "<group>"; };
 		3B1388961BA3531D0011EBF2 /* XBSEmptyRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSEmptyRoomViewController.h; sourceTree = "<group>"; };
 		3B1388971BA3531D0011EBF2 /* XBSEmptyRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSEmptyRoomViewController.m; sourceTree = "<group>"; };
 		3B1388981BA3531D0011EBF2 /* XBSGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSGradeViewController.h; sourceTree = "<group>"; };
@@ -334,6 +334,11 @@
 		3BC309F81BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSFindClassroomTableViewCell.h; sourceTree = "<group>"; };
 		3BC309F91BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomTableViewCell.m; sourceTree = "<group>"; };
 		3BC309FA1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSFindClassroomTableViewCell.xib; sourceTree = "<group>"; };
+		3BDE16251BA5E6D3008F2DB7 /* XBSFindClassroomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSFindClassroomViewController.h; sourceTree = "<group>"; };
+		3BDE16261BA5E6D3008F2DB7 /* XBSFindClassroomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomViewController.m; sourceTree = "<group>"; };
+		3BDE16271BA5E6D3008F2DB7 /* XBSFindClassroomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSFindClassroomViewController.xib; sourceTree = "<group>"; };
+		3BDE162A1BA5FEED008F2DB7 /* XBSFindClassroomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSFindClassroomModel.h; sourceTree = "<group>"; };
+		3BDE162B1BA5FEED008F2DB7 /* XBSFindClassroomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomModel.m; sourceTree = "<group>"; };
 		3BFA63191BA1AC91005B025D /* XBSConsultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSConsultConfig.h; sourceTree = "<group>"; };
 		3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSConsultConfig.m; sourceTree = "<group>"; };
 		CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_3.png; sourceTree = "<group>"; };
@@ -713,6 +718,8 @@
 		3B86CDA91BA1832100059B0A /* Consult */ = {
 			isa = PBXGroup;
 			children = (
+				3BDE162A1BA5FEED008F2DB7 /* XBSFindClassroomModel.h */,
+				3BDE162B1BA5FEED008F2DB7 /* XBSFindClassroomModel.m */,
 				3B1388BB1BA354BB0011EBF2 /* XBSConsultDataBundle.h */,
 				3B1388BC1BA354BB0011EBF2 /* XBSConsultDataBundle.m */,
 				3B1388B81BA354930011EBF2 /* XBSConsultButtonClicker.h */,
@@ -742,8 +749,9 @@
 				3B1388991BA3531D0011EBF2 /* XBSGradeViewController.m */,
 				3B13889A1BA3531D0011EBF2 /* XBSSchduleViewController.h */,
 				3B13889B1BA3531D0011EBF2 /* XBSSchduleViewController.m */,
-				3B13888F1BA352FA0011EBF2 /* XBSFindClassroomViewController.h */,
-				3B1388901BA352FA0011EBF2 /* XBSFindClassroomViewController.m */,
+				3BDE16251BA5E6D3008F2DB7 /* XBSFindClassroomViewController.h */,
+				3BDE16261BA5E6D3008F2DB7 /* XBSFindClassroomViewController.m */,
+				3BDE16271BA5E6D3008F2DB7 /* XBSFindClassroomViewController.xib */,
 			);
 			path = Consult;
 			sourceTree = "<group>";
@@ -1374,24 +1382,14 @@
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
 				E263C77C1BA35E26008488FA /* map@2x.png in Resources */,
-				CE78938E1B86F180000D8B57 /* icon_menu_2.png in Resources */,
-				CE7893811B86E684000D8B57 /* icon_menu_4.png in Resources */,
-				CE7893901B86F1CA000D8B57 /* icon_menu_3.png in Resources */,
-				E2D31A541B9ADCA500E1F5A8 /* ShakeViewController.xib in Resources */,
-				E24682041B9F25A800BBB8A8 /* redrock.png in Resources */,
-				E2D31A441B9ADCA500E1F5A8 /* ChuangyeViewController.xib in Resources */,
-				E2D31A501B9ADCA500E1F5A8 /* MapViewController.xib in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_4@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
 				CE1B36EA1B9A207100824B96 /* calendar.png in Resources */,
-				CE7893691B86D05E000D8B57 /* icon_menu_3_press.png in Resources */,
 				E263C7861BA35E26008488FA /* WebViewController.xib in Resources */,
 				CE78939B1B87067B000D8B57 /* 60-2.png in Resources */,
 				3B51FB8D1BA328BA009FB3C0 /* MJRefresh.bundle in Resources */,
 				3B685C8D1BA4783100E34491 /* XBSAboutViewController.xib in Resources */,
-				E2D31A5F1B9ADCA500E1F5A8 /* cqupt1@2x.jpg in Resources */,
 				3BC309FC1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib in Resources */,
-				E2D31A0B1B9ADC9C00E1F5A8 /* FirstViewController.xib in Resources */,
 				CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */,
 				E263C77B1BA35E26008488FA /* cqupt3@2x.jpg in Resources */,
 				E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */,
@@ -1401,11 +1399,11 @@
 				CE30FDDB1B9968C000C15AD4 /* bukaochaxun.png in Resources */,
 				D96125E91B9F0DA9002D4F80 /* iconfont-menuiconaccount.png in Resources */,
 				E263C77A1BA35E26008488FA /* cqupt2@2x.jpg in Resources */,
-				E2D31A521B9ADCA500E1F5A8 /* WebViewController.xib in Resources */,
 				3B685C881BA44D6300E34491 /* Images.xcassets in Resources */,
 				E2E7DE2F1B9476730081F699 /* iconfont-mima.png in Resources */,
 				3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
+				3BDE16291BA5E6D3008F2DB7 /* XBSFindClassroomViewController.xib in Resources */,
 				D96125F51B9F1178002D4F80 /* iconfont-location.png in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,
 				D9A9532C1B9DA4F500D62690 /* iconfont-more.png in Resources */,
@@ -1426,8 +1424,6 @@
 				3B51FB901BA328BA009FB3C0 /* MJRefreshExample-Info.plist in Resources */,
 				CE30FDE41B9968C000C15AD4 /* tuichu.png in Resources */,
 				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
-				CE1401341B9BE5CC00C4C7B7 /* new_icon_menu_4.png in Resources */,
-				E2D31A601B9ADCA500E1F5A8 /* cqupt2@2x.jpg in Resources */,
 				CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */,
 				E238270A1B9477D80058970E /* CourseViewController.xib in Resources */,
 				D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */,
@@ -1438,28 +1434,19 @@
 				E2E7DE2E1B9476730081F699 /* iconfont-iconfontzhanghu.png in Resources */,
 				CE30FDDF1B9968C000C15AD4 /* iconfont77.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
-				CE1B36DF1B9A1B6800824B96 /* new_icon_menu_1.png in Resources */,
-				CEC96BD01B9AC6270047648A /* new_icon_menu_5.png in Resources */,
-				CE78937B1B86E36F000D8B57 /* icon_menu_1.png in Resources */,
 				E263C7801BA35E26008488FA /* shake_match.mp3 in Resources */,
 				3B1388CA1BA364530011EBF2 /* new_icon_menu_2@2x.png in Resources */,
-				E24682031B9F25A800BBB8A8 /* map.png in Resources */,
-				E2D31A5A1B9ADCA500E1F5A8 /* ShopDetailViewController.xib in Resources */,
 				CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */,
 				E263C78C1BA35E26008488FA /* MenuViewController.xib in Resources */,
-				CE1B36E01B9A1B6800824B96 /* new_icon_menu_2.png in Resources */,
 				CE30FDDD1B9968C000C15AD4 /* icon_menu_new2.png in Resources */,
 				CE30FDE21B9968C000C15AD4 /* kongjiaoshichaxun.png in Resources */,
 				CE30FDE11B9968C000C15AD4 /* icon_menu_new1.png in Resources */,
-				CEF61B3B1B82BC950014B980 /* Images.xcassets in Resources */,
 				E263C77E1BA35E26008488FA /* redrock@2x.png in Resources */,
 				CEC96BD21B9AC6F90047648A /* 0960.jpg in Resources */,
 				CE30FDE71B9968C000C15AD4 /* zuobiao.png in Resources */,
 				CE30FDE01B9968C000C15AD4 /* kaoshichaxun.png in Resources */,
 				CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */,
-				CE7893791B86E319000D8B57 /* icon_menu_6.png in Resources */,
 				E263C7821BA35E26008488FA /* shop@2x.png in Resources */,
-				E2D31A461B9ADCA500E1F5A8 /* CommunityViewController.xib in Resources */,
 				E2E7DE2C1B9476730081F699 /* background.png in Resources */,
 				CE30FDDC1B9968C000C15AD4 /* chenjichaxun.png in Resources */,
 				3B1388CD1BA364530011EBF2 /* new_icon_menu_1@2x.png in Resources */,
@@ -1510,9 +1497,7 @@
 				3B1388B21BA353F70011EBF2 /* XBSNavigationBar.m in Sources */,
 				3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */,
 				3B1388BA1BA354930011EBF2 /* XBSConsultButtonClicker.m in Sources */,
-				E2D31A0C1B9ADC9C00E1F5A8 /* MeCell.m in Sources */,
 				3B51FB971BA328BA009FB3C0 /* ProgressHUD.m in Sources */,
-				3B1388921BA352FA0011EBF2 /* XBSFindClassroomViewController.m in Sources */,
 				3B51FB831BA328BA009FB3C0 /* AFURLConnectionOperation.m in Sources */,
 				3B51FB8A1BA328BA009FB3C0 /* FMDatabasePool.m in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
@@ -1524,11 +1509,10 @@
 				3B51FB981BA328BA009FB3C0 /* UIColor+BFPaperColors.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
 				3B13889D1BA3531D0011EBF2 /* XBSEmptyRoomViewController.m in Sources */,
-				E2D31A431B9ADCA500E1F5A8 /* ChuangyeViewController.m in Sources */,
 				CE1B36E81B9A1F6F00824B96 /* CalendarViewController.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				3B51FB7F1BA328BA009FB3C0 /* AFHTTPRequestOperationManager.m in Sources */,
-				E2D31A511B9ADCA500E1F5A8 /* WebViewController.m in Sources */,
+				3BDE162C1BA5FEED008F2DB7 /* XBSFindClassroomModel.m in Sources */,
 				3B1388BD1BA354BB0011EBF2 /* XBSConsultDataBundle.m in Sources */,
 				3B685C901BA47D7400E34491 /* XBSFindClassroomPeriodView.m in Sources */,
 				3B51FB811BA328BA009FB3C0 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1540,12 +1524,8 @@
 				E263C7891BA35E26008488FA /* DetailDishView.m in Sources */,
 				E263C7871BA35E26008488FA /* ShakeViewController.m in Sources */,
 				E263C79B1BA35E60008488FA /* FirstViewController.m in Sources */,
-				3B9FD0C11B98B7A90081A100 /* XBSAboutViewController.m in Sources */,
-				3B51FB181BA31978009FB3C0 /* XBSViewController.m in Sources */,
-				E2D31A471B9ADCA500E1F5A8 /* FinderViewController.m in Sources */,
 				E238270E1B9478190058970E /* Course.m in Sources */,
 				E263C79D1BA35E60008488FA /* MeCell.m in Sources */,
-				3BFA630E1BA1AACE005B025D /* XBSNavigationBar.m in Sources */,
 				3B51FB8B1BA328BA009FB3C0 /* FMDatabaseQueue.m in Sources */,
 				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
 				3B51FB951BA328BA009FB3C0 /* UIView+MJExtension.m in Sources */,
@@ -1553,7 +1533,6 @@
 				3B51FB821BA328BA009FB3C0 /* AFSecurityPolicy.m in Sources */,
 				E263C78D1BA35E26008488FA /* ShopDetailViewController.m in Sources */,
 				E263C7721BA35E26008488FA /* ChuangyeViewController.m in Sources */,
-				3BFA63171BA1AC20005B025D /* XBSScheduleTableViewCell.m in Sources */,
 				3B13889E1BA3531D0011EBF2 /* XBSGradeViewController.m in Sources */,
 				3B51FBA21BA328BA009FB3C0 /* ExampleAnimation.m in Sources */,
 				3B51FB9F1BA328BA009FB3C0 /* UIRefreshControl+AFNetworking.m in Sources */,
@@ -1568,6 +1547,7 @@
 				E263C78F1BA35E26008488FA /* ShopTableViewCell.m in Sources */,
 				CE3FC9401B9702A6000085E5 /* SqliteCache.m in Sources */,
 				3B51FB941BA328BA009FB3C0 /* UIScrollView+MJRefresh.m in Sources */,
+				3BDE16281BA5E6D3008F2DB7 /* XBSFindClassroomViewController.m in Sources */,
 				3B51FB8F1BA328BA009FB3C0 /* MJRefreshConst.m in Sources */,
 				CEE1E2261B99A1020088EC7C /* MineButton.m in Sources */,
 				3B51FB9A1BA328BA009FB3C0 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1582,8 +1562,6 @@
 				CEF61B621B82BE1B0014B980 /* README.md in Sources */,
 				3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */,
 				E263C7851BA35E26008488FA /* WebViewController.m in Sources */,
-				3BBB58661B8F3DE90099EC58 /* XBSConsultDataBundle.m in Sources */,
-				E2D31A5B1B9ADCA500E1F5A8 /* ShopTableViewCell.m in Sources */,
 				3B51FB881BA328BA009FB3C0 /* FMDatabase.m in Sources */,
 				CEF61B301B82BC950014B980 /* main.m in Sources */,
 				3B51FB8C1BA328BA009FB3C0 /* FMResultSet.m in Sources */,

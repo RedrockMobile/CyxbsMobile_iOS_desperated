@@ -69,7 +69,7 @@
     NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
 //     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
-        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+        @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
     
     //button
     for (int i=0; i<4; i++) {

@@ -30,7 +30,6 @@
         navigationItem.leftBarButtonItem = leftButton;
         
         //title
-        NSLog(@"%f",leftButton.width);
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 20, 100, 44)];
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;

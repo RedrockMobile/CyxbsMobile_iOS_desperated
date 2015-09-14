@@ -9,17 +9,16 @@
 #import "XBSFindClassroomViewController.h"
 #import "XBSFindClassroomPeriodView.h"
 #import "XBSFindClassroomTableViewCell.h"
-
+#import "XBSConsultConfig.h"
 @interface XBSFindClassroomViewController ()
-
+@property (nonatomic, assign) NSInteger nowRow;
 @end
 
 @implementation XBSFindClassroomViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationBar.titleLabel.text = @"找空教室";
-    [self initViews];
+    self.navigationBar.titleLabel.text = ConsultFuntionName[3];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,12 +26,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)initViews {
+- (instancetype)init {
     //一组图标
+    self = [super init];
+    //为啥self.navigationBar.titleLabel.text = ConsultFuntionName[3];
     self.periodViewArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < 6; i++) {
-        XBSFindClassroomPeriodView *view = [[XBSFindClassroomPeriodView alloc]initWithIndex:i];
+        XBSFindClassroomPeriodView *view = [[XBSFindClassroomPeriodView alloc]initWithIndex:i Delegate:self];
         [self.periodViewArray addObject:view];
         [self.view addSubview:view];
     }
@@ -62,26 +62,59 @@
     consultLabel.textColor            = MAIN_COLOR;
     consultLabel.font                 = [UIFont boldSystemFontOfSize:20];
     //表格
-    UITableView *table                = [[UITableView alloc]init];
-    table.frame                       = CGRectMake(0, 240, ScreenWidth, ScreenHeight - 240);
-    table.dataSource                  = self;
-    table.separatorStyle = NO;
-    table.showsVerticalScrollIndicator = NO;
+    self.table                              = [[UITableView alloc]init];
+    self.table.hidden                       = YES;
+    self.table.frame                        = CGRectMake(0, 240, ScreenWidth, ScreenHeight - 240);
+    self.table.dataSource                   = self;
+    self.table.separatorStyle               = NO;
+    self.table.showsVerticalScrollIndicator = NO;
+    self.table.allowsSelection              = NO;
+    //选取器
+    self.buildingPickerView.delegate        = self;
+    self.buildingPickerView.dataSource      = self;
+    self.buildingPickerView.hidden          = YES;
+    self.buildingPickerView.backgroundColor = [UIColor whiteColor];
+    //toolBar
+    self.doneToolBar.hidden          = YES;
+    self.doneToolBar.backgroundColor = [UIColor whiteColor];
+    UIBarButtonItem *item1           = self.doneToolBar.items.lastObject;
+    UIBarButtonItem *item2           = self.doneToolBar.items[0];
+    item1.target                     = self;
+    item1.action                     = @selector(selectDone);
+    item2.target                     = self;
+    item2.action                     = @selector(selectCancelled);
     //加入
+    [self.view addSubview:self.table];
     [self.view addSubview:self.buildingSelectorButton];
     [self.view addSubview:self.dateSelectorButton];
+    [self.view addSubview:self.buildingPickerView];
+    [self.view addSubview:self.doneToolBar];
     [self.view addSubview:consultLabel];
     [self.view addSubview:consultIconImageView];
-    [self.view addSubview:table];
+    return self;
 }
 
 #pragma mark - ButtonClicker
 - (void)selectBuilding {
-    NSLog(@"building");
+    self.doneToolBar.hidden = NO;
+    self.buildingPickerView.hidden = NO;
 }
 
 - (void)selectDate {
-    NSLog(@"date");
+    
+}
+
+- (void)selectCancelled {
+    self.doneToolBar.hidden = YES;
+    self.buildingPickerView.hidden = YES;
+}
+
+- (void)selectDone {
+    self.doneToolBar.hidden = YES;
+    self.buildingPickerView.hidden = YES;
+    self.buildingSelectorButton.tag = self.nowRow;
+    [self.buildingSelectorButton setTitle:BuildList[self.nowRow] forState:UIControlStateNormal];
+    [self.model refreshEmptyClassroomTableData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -89,7 +122,16 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    NSInteger returnNum;
+    NSInteger n = self.model.resultClassroomArray.count;
+    if (n % 4 == 0) {
+        returnNum =  n / 4;
+    }else{
+        returnNum = n / 4 + 1;
+    }
+    NSLog(@"count = %ld",self.model.resultClassroomArray.count);
+    NSLog(@"rowNum = %ld",returnNum);
+    return returnNum;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,8 +154,74 @@
 - (void)configureCell:(XBSFindClassroomTableViewCell *)cell
     forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //do sth
+    if (indexPath.row == 13) {
+        //do sth
+    }
+    NSLog(@"——————————第%ld行",indexPath.row);
+    if (indexPath.row * 4 + 1 <= self.model.resultClassroomArray.count) {
+        NSLog(@"%ld",indexPath.row * 4 + 0);
+        cell.cellLabel1.text = self.model.resultClassroomArray[indexPath.row * 4 + 0];
+    }else{
+        cell.cellLabel1.text = @"";
+    }
+    if (indexPath.row * 4 + 2 <= self.model.resultClassroomArray.count) {
+        NSLog(@"%ld",indexPath.row * 4 + 1);
+        cell.cellLabel2.text = self.model.resultClassroomArray[indexPath.row * 4 + 1];
+    }else{
+        cell.cellLabel2.text = @"";
+    }
+    if (indexPath.row * 4 + 3 <= self.model.resultClassroomArray.count) {
+        NSLog(@"%ld",indexPath.row * 4 + 2);
+        cell.cellLabel3.text = self.model.resultClassroomArray[indexPath.row * 4 + 2];
+    }else{
+        cell.cellLabel3.text = @"";
+    }
+    if (indexPath.row * 4 + 4 <= self.model.resultClassroomArray.count) {
+        NSLog(@"%ld",indexPath.row * 4 + 3);
+        cell.cellLabel4.text = self.model.resultClassroomArray[indexPath.row * 4 + 3];
+    }else{
+        cell.cellLabel4.text = @"";
+    }
 }
+
+#pragma mark - UIPickerViewDelegate
+
+- (NSString *)pickerView:(UIPickerView *)pickerView
+             titleForRow:(NSInteger)row
+            forComponent:(NSInteger)component
+{
+    return BuildList[row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView
+      didSelectRow:(NSInteger)row
+       inComponent:(NSInteger)component
+{
+    self.nowRow = row;
+}
+
+#pragma mark - UIPickerDataSource
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView
+numberOfRowsInComponent:(NSInteger)component
+{
+    return BuildList.count;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+
+//#pragma mark - UITextFieldDelegate
+//-(void)textFieldDidEndEditing:(UITextField *)textField{
+//    NSInteger row = [selectPicker selectedRowInComponent:0];
+//    self.textField.text = [ objectAtIndex:row];
+//}
+
+
+
+
 
 
 @end

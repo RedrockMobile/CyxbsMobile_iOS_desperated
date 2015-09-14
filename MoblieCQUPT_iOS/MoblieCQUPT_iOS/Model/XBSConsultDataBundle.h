@@ -30,5 +30,6 @@
 - (void)httpPostForGrade;
 - (instancetype)init;
 - (NSString *)getUserHint;
++ (NSDictionary *)handleHexDataStream:(id)responseObject;
 
 @end
