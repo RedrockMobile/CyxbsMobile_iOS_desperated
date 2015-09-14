@@ -174,6 +174,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     ShopDetailViewController *detailViewController = [[ShopDetailViewController alloc] init];
     detailViewController.detailData = _data[indexPath.row];
     [self.navigationController pushViewController:detailViewController animated:YES];

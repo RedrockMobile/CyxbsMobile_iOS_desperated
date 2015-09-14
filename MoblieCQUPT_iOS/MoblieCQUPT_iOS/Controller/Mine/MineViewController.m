@@ -51,18 +51,16 @@
                          @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
                         ]
                        mutableCopy];
-    UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.35)];
+    UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.2)];
 
     
     topView.backgroundColor = MAIN_COLOR;
-/****  UI 改版 ******/
-//    _currentHeight += topView.frame.size.height;
-//    [_mainScrollView addSubview:topView];
 
-    
-//    [_mainScrollView addSubview:self.myPhoto];
-//    [_mainScrollView addSubview:self.loginLabel];
-/****--------******/
+    _currentHeight += topView.frame.size.height;
+    [_mainScrollView addSubview:topView];
+
+    [_mainScrollView addSubview:self.myPhoto];
+    [_mainScrollView addSubview:self.loginLabel];
     
     /**button **/
     self.clicker = [[XBSConsultButtonClicker alloc]init];
@@ -95,7 +93,7 @@
         [labelButton addSubview:buttonView];
        
         [labelButton addSubview:textLabel];
-        /**/
+        
         [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
         
         labelButton.backgroundColor = [UIColor whiteColor];
@@ -140,7 +138,7 @@
 - (UIButton *)myPhoto{
     if (!_myPhoto) {
         _myPhoto = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
-        _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.12);
+        _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.1);
         NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
         if (url) {
             ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
@@ -215,24 +213,24 @@
     return 5;
 }
 
+#pragma mark - TableView Delegate
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"butttonCell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
         UILabel *label = [[UILabel alloc] init];
         
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
 
-        [cell.detailTextLabel setFont:[UIFont fontWithName:@"Courier" size:20]];
-
-        cell.detailTextLabel.text = @">";
         UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
         imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
         [cell addSubview:imgView];
         
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
+        label.font = [UIFont fontWithName:@"Arial" size:15];
         [label sizeToFit];
         label.center = CGPointMake(label.center.x, cell.center.y+imgView.frame.size.height/4);
         [cell addSubview:label];
@@ -255,12 +253,12 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return (_tableView.frame.size.height-8*3-2)/5;
-    return 60;
+    return 50;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className;
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     if ((className = _cellDictionary[indexPath.section][@"controller"])) {
         
         UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
@@ -273,7 +271,6 @@
             [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
         }];
     }
-   
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -281,7 +278,7 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
-#pragma mark - UIImagePickerController委托方法
+#pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
 //    UIImage *image = info[UIImagePickerControllerOriginalImage];
     /** 保存图片 **/
