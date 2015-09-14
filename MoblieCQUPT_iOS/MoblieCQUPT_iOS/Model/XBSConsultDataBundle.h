@@ -26,10 +26,8 @@
 @property (nonatomic, strong) NSString *htmlString;
 
 - (void)httpPostForSchedule:(NSString *)postType;
-- (void)httpPostForEmptyRooms;
 - (void)httpPostForGrade;
 - (instancetype)init;
-- (NSString *)getUserHint;
 + (NSDictionary *)handleHexDataStream:(id)responseObject;
 
 @end

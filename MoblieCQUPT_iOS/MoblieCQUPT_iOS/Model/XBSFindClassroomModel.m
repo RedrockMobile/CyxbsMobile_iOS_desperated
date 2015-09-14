@@ -24,7 +24,7 @@
 
 
 - (void)httpPostForEmptyClassroom {
-    [ProgressHUD show:ConsultingHint];
+    [ProgressHUD show:ConsultingHint Interaction:NO];
     for (int i = 0; i < 6; i++) {
         NSDictionary *param = @{@"sectionNum":[NSString stringWithFormat:@"%d",i]};
         [self.manager POST:API_EMPTY_ROOMS parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -58,6 +58,7 @@
     self = [super init];
     self.manager                    = [AFHTTPRequestOperationManager manager];
     self.manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    self.manager.requestSerializer.timeoutInterval = 5;
     self.availableClassroomArray    = [[NSMutableArray alloc]init];
     self.hasCompleted               = 0;
     return self;
