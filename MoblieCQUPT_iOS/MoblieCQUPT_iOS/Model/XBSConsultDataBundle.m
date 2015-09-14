@@ -37,7 +37,7 @@
 {
     [ProgressHUD show:ConsultingHint];
     [_manager POST:postType parameters:_postParams success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        _json = [[self handleHexDataStream:responseObject] mutableCopy];
+        _json = [[XBSConsultDataBundle handleHexDataStream:responseObject] mutableCopy];
         if(_json)
         {
             [self pushToShowResults:postType];
@@ -83,8 +83,9 @@
 //            }
 //        }];
 //    }
-    XBSFindClassroomViewController *vc = [[XBSFindClassroomViewController alloc]init];
-    [self.mainDelegate presentViewController:vc animated:YES completion:nil];
+    NSLog(@"怎么跑到这里来了");
+//    XBSFindClassroomViewController *vc = [[XBSFindClassroomViewController alloc]init];
+//    [self.mainDelegate presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)pushToShowResults:(NSString *)type{
@@ -95,7 +96,7 @@
     [_mainDelegate presentViewController:viewController animated:YES completion:nil];
 }
 
-- (NSDictionary *)handleHexDataStream:(id)responseObject
++ (NSDictionary *)handleHexDataStream:(id)responseObject
 {
     NSDictionary *json = [We getDictionaryWithHexData:responseObject];
     NSInteger status = [json[@"status"] integerValue];

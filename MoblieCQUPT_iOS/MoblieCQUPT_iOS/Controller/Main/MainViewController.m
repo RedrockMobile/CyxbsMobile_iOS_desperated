@@ -111,7 +111,7 @@ static Boolean isClick = NO;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
     //NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"找空教室"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
-        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+        @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
     self.clicker = [[XBSConsultButtonClicker alloc]init];
     self.clicker.delegate = self;
     for (int i=0; i<self.btnNum; i++) {

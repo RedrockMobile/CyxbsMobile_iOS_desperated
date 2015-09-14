@@ -15,6 +15,8 @@
 @property (nonatomic, strong) UIImage     *image;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel     *label;
-- (instancetype)initWithIndex:(NSInteger)index;
+
+//- (instancetype)initWithIndex:(NSInteger)index;
+- (instancetype)initWithIndex:(NSInteger)index Delegate:(UIViewController *)delegate;
 
 @end
