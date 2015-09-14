@@ -11,7 +11,6 @@
 #import "UIImageView+AFNetworking.h"
 #import "NetWork.h"
 #import "ShopTableViewCell.h"
-#import "ProgressHUD.h"
 
 @interface MenuViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -51,11 +50,10 @@
 
 - (void)dataFlash{
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/menuList" WithParameter:@{@"shop_id":_shopId} WithReturnValeuBlock:^(id returnValue) {
-        [ProgressHUD show:@"加载中..."];
         
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         [_tableView reloadData];
-        [ProgressHUD showSuccess:@"加载完成~"];
+
     } WithFailureBlock:^{
         UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         failLabel.text = @"哎呀！网络开小差了 T^T";

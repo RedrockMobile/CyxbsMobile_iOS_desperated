@@ -61,7 +61,9 @@
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.rightBarButtonItem = nil;
     self.navigationItem.title = @"意见反馈";
-//    self.navigationController.navigationBar.backItem.title = @"返回";
+    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.view addSubview:self.suggestText];
 }
 
@@ -91,14 +93,5 @@
     }];
 
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
