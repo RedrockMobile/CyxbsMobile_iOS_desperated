@@ -10,7 +10,6 @@
 #import "MainViewController.h"
 #import "XBSConsultDataBundle.h"
 #import "XBSSchduleViewController.h"
-#import "XBSEmptyRoomViewController.h"
 #import "MainViewController.h"
 #import "XBSConsultButtonClicker.h"
 #import "XBSConsultConfig.h"

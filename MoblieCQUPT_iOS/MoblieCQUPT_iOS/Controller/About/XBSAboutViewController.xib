@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="appName" destination="qj2-jC-mua" id="sb8-ig-kdg"/>
                 <outlet property="appVersion" destination="noA-jV-5d1" id="Tfq-bu-RVT"/>
+                <outlet property="authorLabel" destination="KO2-ye-7A4" id="Ol5-0L-ihv"/>
                 <outlet property="buttonToCopyRight" destination="BP8-NT-3yD" id="6ua-NG-KWK"/>
                 <outlet property="buttonToUpdate" destination="bqm-iP-n0E" id="1DC-RA-zCS"/>
                 <outlet property="buttonToWebsite" destination="vGj-0v-izT" id="vY3-hT-0GU"/>

@@ -9,6 +9,7 @@
 #import "XBSAboutViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "We.h"
+#import "F3HNumberTileGameViewController.h"
 
 @interface XBSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appName;
@@ -16,7 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonToUpdate;
 @property (weak, nonatomic) IBOutlet UIButton *buttonToWebsite;
 @property (weak, nonatomic) IBOutlet UIButton *buttonToCopyRight;
-
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (nonatomic, assign) NSInteger tapNum;
 
 @end
 
@@ -24,14 +26,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"viewDidLoad");
+    self.tapNum = 0;
     [self.appName setTextColor:[UIColor paperColorGray500]];
     [self.appVersion setTextColor:[UIColor paperColorGray500]];
-    
     [self.buttonToUpdate addTarget:self action:@selector(clickToUpdate) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonToWebsite addTarget:self action:@selector(clickToWebsite) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonToCopyRight addTarget:self action:@selector(clickToCopyRight) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+    tap.numberOfTapsRequired = 1;
+    self.authorLabel.userInteractionEnabled = YES;
+    [self.authorLabel addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+//- (void)loadView {
+////    [super loadView];
+////    self.view.backgroundColor = [UIColor whiteColor];
+//    NSLog(@"loadView");
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+//    tap.numberOfTapsRequired = 1;
+//    [self.authorLabel addGestureRecognizer:tap];
+//}
+
+- (void)tapAction:(UITapGestureRecognizer *)sender {
+    self.tapNum++;
+    NSLog(@"点击了%ld次",self.tapNum);
+    if (self.tapNum == 10) {
+        self.tapNum = 0;
+        NSLog(@"开始游戏吧！");
+        [self playGame];
+    }
+}
+
+- (void)playGame {
+    F3HNumberTileGameViewController *c = [F3HNumberTileGameViewController numberTileGameWithDimension:4
+                                                                                         winThreshold:2048
+                                                                                      backgroundColor:[UIColor whiteColor]
+                                                                                          scoreModule:YES
+                                                                                       buttonControls:NO
+                                                                                        swipeControls:YES];
+    [self.navigationController pushViewController:c animated:YES];
+    //[self presentViewController:c animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,4 +107,7 @@
     [alert show];
 }
 
+
+
 @end
+

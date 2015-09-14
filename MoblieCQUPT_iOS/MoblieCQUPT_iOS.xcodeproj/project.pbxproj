@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3B13889D1BA3531D0011EBF2 /* XBSEmptyRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388971BA3531D0011EBF2 /* XBSEmptyRoomViewController.m */; };
 		3B13889E1BA3531D0011EBF2 /* XBSGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388991BA3531D0011EBF2 /* XBSGradeViewController.m */; };
 		3B13889F1BA3531D0011EBF2 /* XBSSchduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B13889B1BA3531D0011EBF2 /* XBSSchduleViewController.m */; };
 		3B1388B21BA353F70011EBF2 /* XBSNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388A91BA353F70011EBF2 /* XBSNavigationBar.m */; };
@@ -20,6 +19,24 @@
 		3B1388D01BA369890011EBF2 /* new_icon_menu_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388CE1BA369890011EBF2 /* new_icon_menu_4@2x.png */; };
 		3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3B1388CF1BA369890011EBF2 /* new_icon_menu_5@2x.png */; };
 		3B1388D71BA3EEC70011EBF2 /* XBSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1388D61BA3EEC70011EBF2 /* XBSViewController.m */; };
+		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
+		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
+		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
+		3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B26610A1BA6E417008632F3 /* UIKit.framework */; };
+		3B2661341BA6E473008632F3 /* F3HAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661131BA6E473008632F3 /* F3HAppDelegate.m */; };
+		3B2661351BA6E473008632F3 /* F3HNumberTileGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661151BA6E473008632F3 /* F3HNumberTileGameViewController.m */; };
+		3B2661361BA6E473008632F3 /* F3HTileAppearanceProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661171BA6E473008632F3 /* F3HTileAppearanceProvider.m */; };
+		3B2661371BA6E473008632F3 /* F3HViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661191BA6E473008632F3 /* F3HViewController.m */; };
+		3B26613A1BA6E473008632F3 /* F3HGameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B26611E1BA6E473008632F3 /* F3HGameModel.m */; };
+		3B26613B1BA6E473008632F3 /* F3HMergeTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661201BA6E473008632F3 /* F3HMergeTile.m */; };
+		3B26613C1BA6E473008632F3 /* F3HMoveOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661221BA6E473008632F3 /* F3HMoveOrder.m */; };
+		3B26613D1BA6E473008632F3 /* F3HQueueCommand.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661241BA6E473008632F3 /* F3HQueueCommand.m */; };
+		3B26613E1BA6E473008632F3 /* F3HTileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661261BA6E473008632F3 /* F3HTileModel.m */; };
+		3B26613F1BA6E473008632F3 /* NumberTileGame-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B2661271BA6E473008632F3 /* NumberTileGame-Info.plist */; };
+		3B2661401BA6E473008632F3 /* F3HControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B26612B1BA6E473008632F3 /* F3HControlView.m */; };
+		3B2661411BA6E473008632F3 /* F3HGameboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B26612D1BA6E473008632F3 /* F3HGameboardView.m */; };
+		3B2661421BA6E473008632F3 /* F3HScoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B26612F1BA6E473008632F3 /* F3HScoreView.m */; };
+		3B2661431BA6E473008632F3 /* F3HTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2661311BA6E473008632F3 /* F3HTileView.m */; };
 		3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0AC1B8C4644009C1E94 /* MainViewController.m */; };
 		3B37F0B51B8C4691009C1E94 /* NSArray+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B01B8C4691009C1E94 /* NSArray+We.m */; };
 		3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B37F0B21B8C4691009C1E94 /* NSString+We.m */; };
@@ -211,8 +228,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3B1388961BA3531D0011EBF2 /* XBSEmptyRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSEmptyRoomViewController.h; sourceTree = "<group>"; };
-		3B1388971BA3531D0011EBF2 /* XBSEmptyRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSEmptyRoomViewController.m; sourceTree = "<group>"; };
 		3B1388981BA3531D0011EBF2 /* XBSGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSGradeViewController.h; sourceTree = "<group>"; };
 		3B1388991BA3531D0011EBF2 /* XBSGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSGradeViewController.m; sourceTree = "<group>"; };
 		3B13889A1BA3531D0011EBF2 /* XBSSchduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSSchduleViewController.h; sourceTree = "<group>"; };
@@ -232,6 +247,38 @@
 		3B1388CF1BA369890011EBF2 /* new_icon_menu_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "new_icon_menu_5@2x.png"; sourceTree = "<group>"; };
 		3B1388D51BA3EEC70011EBF2 /* XBSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSViewController.h; sourceTree = "<group>"; };
 		3B1388D61BA3EEC70011EBF2 /* XBSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSViewController.m; sourceTree = "<group>"; };
+		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3B26610A1BA6E417008632F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3B2661121BA6E473008632F3 /* F3HAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HAppDelegate.h; sourceTree = "<group>"; };
+		3B2661131BA6E473008632F3 /* F3HAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HAppDelegate.m; sourceTree = "<group>"; };
+		3B2661141BA6E473008632F3 /* F3HNumberTileGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HNumberTileGameViewController.h; sourceTree = "<group>"; };
+		3B2661151BA6E473008632F3 /* F3HNumberTileGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HNumberTileGameViewController.m; sourceTree = "<group>"; };
+		3B2661161BA6E473008632F3 /* F3HTileAppearanceProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HTileAppearanceProvider.h; sourceTree = "<group>"; };
+		3B2661171BA6E473008632F3 /* F3HTileAppearanceProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HTileAppearanceProvider.m; sourceTree = "<group>"; };
+		3B2661181BA6E473008632F3 /* F3HViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HViewController.h; sourceTree = "<group>"; };
+		3B2661191BA6E473008632F3 /* F3HViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HViewController.m; sourceTree = "<group>"; };
+		3B26611D1BA6E473008632F3 /* F3HGameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HGameModel.h; sourceTree = "<group>"; };
+		3B26611E1BA6E473008632F3 /* F3HGameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HGameModel.m; sourceTree = "<group>"; };
+		3B26611F1BA6E473008632F3 /* F3HMergeTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HMergeTile.h; sourceTree = "<group>"; };
+		3B2661201BA6E473008632F3 /* F3HMergeTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HMergeTile.m; sourceTree = "<group>"; };
+		3B2661211BA6E473008632F3 /* F3HMoveOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HMoveOrder.h; sourceTree = "<group>"; };
+		3B2661221BA6E473008632F3 /* F3HMoveOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HMoveOrder.m; sourceTree = "<group>"; };
+		3B2661231BA6E473008632F3 /* F3HQueueCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HQueueCommand.h; sourceTree = "<group>"; };
+		3B2661241BA6E473008632F3 /* F3HQueueCommand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HQueueCommand.m; sourceTree = "<group>"; };
+		3B2661251BA6E473008632F3 /* F3HTileModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HTileModel.h; sourceTree = "<group>"; };
+		3B2661261BA6E473008632F3 /* F3HTileModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HTileModel.m; sourceTree = "<group>"; };
+		3B2661271BA6E473008632F3 /* NumberTileGame-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NumberTileGame-Info.plist"; sourceTree = "<group>"; };
+		3B2661281BA6E473008632F3 /* NumberTileGame-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NumberTileGame-Prefix.pch"; sourceTree = "<group>"; };
+		3B26612A1BA6E473008632F3 /* F3HControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HControlView.h; sourceTree = "<group>"; };
+		3B26612B1BA6E473008632F3 /* F3HControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HControlView.m; sourceTree = "<group>"; };
+		3B26612C1BA6E473008632F3 /* F3HGameboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HGameboardView.h; sourceTree = "<group>"; };
+		3B26612D1BA6E473008632F3 /* F3HGameboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HGameboardView.m; sourceTree = "<group>"; };
+		3B26612E1BA6E473008632F3 /* F3HScoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HScoreView.h; sourceTree = "<group>"; };
+		3B26612F1BA6E473008632F3 /* F3HScoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HScoreView.m; sourceTree = "<group>"; };
+		3B2661301BA6E473008632F3 /* F3HTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = F3HTileView.h; sourceTree = "<group>"; };
+		3B2661311BA6E473008632F3 /* F3HTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = F3HTileView.m; sourceTree = "<group>"; };
 		3B37F0AB1B8C4644009C1E94 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainViewController.h; path = Main/MainViewController.h; sourceTree = "<group>"; };
 		3B37F0AC1B8C4644009C1E94 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainViewController.m; path = Main/MainViewController.m; sourceTree = "<group>"; };
 		3B37F0AF1B8C4691009C1E94 /* NSArray+We.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+We.h"; sourceTree = "<group>"; };
@@ -513,6 +560,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */,
+				3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */,
+				3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */,
+				3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */,
 				CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */,
 				CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */,
 				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
@@ -545,6 +596,70 @@
 				3B685C8F1BA47D7400E34491 /* XBSFindClassroomPeriodView.m */,
 			);
 			path = Consult;
+			sourceTree = "<group>";
+		};
+		3B26610C1BA6E422008632F3 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				3B26610A1BA6E417008632F3 /* UIKit.framework */,
+				3B2661081BA6E40A008632F3 /* CoreGraphics.framework */,
+				3B2661061BA6E401008632F3 /* Foundation.framework */,
+				3B2661041BA6E3F5008632F3 /* QuartzCore.framework */,
+				CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */,
+				D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */,
+			);
+			name = Framework;
+			sourceTree = "<group>";
+		};
+		3B26610D1BA6E473008632F3 /* NumberTileGame */ = {
+			isa = PBXGroup;
+			children = (
+				3B2661121BA6E473008632F3 /* F3HAppDelegate.h */,
+				3B2661131BA6E473008632F3 /* F3HAppDelegate.m */,
+				3B2661141BA6E473008632F3 /* F3HNumberTileGameViewController.h */,
+				3B2661151BA6E473008632F3 /* F3HNumberTileGameViewController.m */,
+				3B2661161BA6E473008632F3 /* F3HTileAppearanceProvider.h */,
+				3B2661171BA6E473008632F3 /* F3HTileAppearanceProvider.m */,
+				3B2661181BA6E473008632F3 /* F3HViewController.h */,
+				3B2661191BA6E473008632F3 /* F3HViewController.m */,
+				3B26611C1BA6E473008632F3 /* Models */,
+				3B2661271BA6E473008632F3 /* NumberTileGame-Info.plist */,
+				3B2661281BA6E473008632F3 /* NumberTileGame-Prefix.pch */,
+				3B2661291BA6E473008632F3 /* Views */,
+			);
+			path = NumberTileGame;
+			sourceTree = "<group>";
+		};
+		3B26611C1BA6E473008632F3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B26611D1BA6E473008632F3 /* F3HGameModel.h */,
+				3B26611E1BA6E473008632F3 /* F3HGameModel.m */,
+				3B26611F1BA6E473008632F3 /* F3HMergeTile.h */,
+				3B2661201BA6E473008632F3 /* F3HMergeTile.m */,
+				3B2661211BA6E473008632F3 /* F3HMoveOrder.h */,
+				3B2661221BA6E473008632F3 /* F3HMoveOrder.m */,
+				3B2661231BA6E473008632F3 /* F3HQueueCommand.h */,
+				3B2661241BA6E473008632F3 /* F3HQueueCommand.m */,
+				3B2661251BA6E473008632F3 /* F3HTileModel.h */,
+				3B2661261BA6E473008632F3 /* F3HTileModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		3B2661291BA6E473008632F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3B26612A1BA6E473008632F3 /* F3HControlView.h */,
+				3B26612B1BA6E473008632F3 /* F3HControlView.m */,
+				3B26612C1BA6E473008632F3 /* F3HGameboardView.h */,
+				3B26612D1BA6E473008632F3 /* F3HGameboardView.m */,
+				3B26612E1BA6E473008632F3 /* F3HScoreView.h */,
+				3B26612F1BA6E473008632F3 /* F3HScoreView.m */,
+				3B2661301BA6E473008632F3 /* F3HTileView.h */,
+				3B2661311BA6E473008632F3 /* F3HTileView.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		3B37F0AE1B8C4691009C1E94 /* We */ = {
@@ -731,6 +846,7 @@
 		3B9FD0A31B984E3B0081A100 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				3B26610D1BA6E473008632F3 /* NumberTileGame */,
 				3B685C891BA4783100E34491 /* XBSAboutViewController.h */,
 				3B685C8A1BA4783100E34491 /* XBSAboutViewController.m */,
 				3B685C8B1BA4783100E34491 /* XBSAboutViewController.xib */,
@@ -743,8 +859,6 @@
 			children = (
 				3B1388D51BA3EEC70011EBF2 /* XBSViewController.h */,
 				3B1388D61BA3EEC70011EBF2 /* XBSViewController.m */,
-				3B1388961BA3531D0011EBF2 /* XBSEmptyRoomViewController.h */,
-				3B1388971BA3531D0011EBF2 /* XBSEmptyRoomViewController.m */,
 				3B1388981BA3531D0011EBF2 /* XBSGradeViewController.h */,
 				3B1388991BA3531D0011EBF2 /* XBSGradeViewController.m */,
 				3B13889A1BA3531D0011EBF2 /* XBSSchduleViewController.h */,
@@ -923,8 +1037,7 @@
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
-				CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */,
-				D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */,
+				3B26610C1BA6E422008632F3 /* Framework */,
 				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
 				CEF273701B90CFAB009B5BA2 /* libz.dylib */,
 				CEF61B601B82BE1B0014B980 /* SDK */,
@@ -1393,6 +1506,7 @@
 				CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */,
 				E263C77B1BA35E26008488FA /* cqupt3@2x.jpg in Resources */,
 				E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */,
+				3B26613F1BA6E473008632F3 /* NumberTileGame-Info.plist in Resources */,
 				E263C7881BA35E26008488FA /* ShakeViewController.xib in Resources */,
 				CEF273941B90D573009B5BA2 /* 20-3exam.png in Resources */,
 				CEF2738D1B90D573009B5BA2 /* 20-3.png in Resources */,
@@ -1492,9 +1606,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B51FB911BA328BA009FB3C0 /* MJRefreshFooterView.m in Sources */,
+				3B26613C1BA6E473008632F3 /* F3HMoveOrder.m in Sources */,
 				CEF61B361B82BC950014B980 /* ViewController.m in Sources */,
 				CEF61B681B82C0370014B980 /* README.md in Sources */,
 				3B1388B21BA353F70011EBF2 /* XBSNavigationBar.m in Sources */,
+				3B2661361BA6E473008632F3 /* F3HTileAppearanceProvider.m in Sources */,
 				3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */,
 				3B1388BA1BA354930011EBF2 /* XBSConsultButtonClicker.m in Sources */,
 				3B51FB971BA328BA009FB3C0 /* ProgressHUD.m in Sources */,
@@ -1504,28 +1620,32 @@
 				E263C7741BA35E26008488FA /* CommunityViewController.m in Sources */,
 				3B51FB9C1BA328BA009FB3C0 /* UIButton+AFNetworking.m in Sources */,
 				3B51FB841BA328BA009FB3C0 /* AFURLRequestSerialization.m in Sources */,
+				3B2661421BA6E473008632F3 /* F3HScoreView.m in Sources */,
 				D9B577121B88742D005EFD18 /* TitleBaseViewController.m in Sources */,
 				E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */,
 				3B51FB981BA328BA009FB3C0 /* UIColor+BFPaperColors.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
-				3B13889D1BA3531D0011EBF2 /* XBSEmptyRoomViewController.m in Sources */,
 				CE1B36E81B9A1F6F00824B96 /* CalendarViewController.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				3B51FB7F1BA328BA009FB3C0 /* AFHTTPRequestOperationManager.m in Sources */,
 				3BDE162C1BA5FEED008F2DB7 /* XBSFindClassroomModel.m in Sources */,
 				3B1388BD1BA354BB0011EBF2 /* XBSConsultDataBundle.m in Sources */,
 				3B685C901BA47D7400E34491 /* XBSFindClassroomPeriodView.m in Sources */,
+				3B2661341BA6E473008632F3 /* F3HAppDelegate.m in Sources */,
 				3B51FB811BA328BA009FB3C0 /* AFNetworkReachabilityManager.m in Sources */,
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
 				3B51FB931BA328BA009FB3C0 /* UIScrollView+MJExtension.m in Sources */,
 				3B51FB801BA328BA009FB3C0 /* AFHTTPSessionManager.m in Sources */,
 				3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */,
 				CEF61B591B82BDFE0014B980 /* README.md in Sources */,
+				3B2661351BA6E473008632F3 /* F3HNumberTileGameViewController.m in Sources */,
 				E263C7891BA35E26008488FA /* DetailDishView.m in Sources */,
 				E263C7871BA35E26008488FA /* ShakeViewController.m in Sources */,
 				E263C79B1BA35E60008488FA /* FirstViewController.m in Sources */,
 				E238270E1B9478190058970E /* Course.m in Sources */,
+				3B26613E1BA6E473008632F3 /* F3HTileModel.m in Sources */,
 				E263C79D1BA35E60008488FA /* MeCell.m in Sources */,
+				3B2661371BA6E473008632F3 /* F3HViewController.m in Sources */,
 				3B51FB8B1BA328BA009FB3C0 /* FMDatabaseQueue.m in Sources */,
 				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
 				3B51FB951BA328BA009FB3C0 /* UIView+MJExtension.m in Sources */,
@@ -1539,6 +1659,8 @@
 				E263C78B1BA35E26008488FA /* MenuViewController.m in Sources */,
 				E23827091B9477D80058970E /* CourseViewController.m in Sources */,
 				3B37F0B71B8C4691009C1E94 /* We.m in Sources */,
+				3B26613D1BA6E473008632F3 /* F3HQueueCommand.m in Sources */,
+				3B2661401BA6E473008632F3 /* F3HControlView.m in Sources */,
 				CE35D7081B932700005BDEBA /* MineViewController.m in Sources */,
 				3B1388D71BA3EEC70011EBF2 /* XBSViewController.m in Sources */,
 				3B51FB921BA328BA009FB3C0 /* MJRefreshHeaderView.m in Sources */,
@@ -1555,9 +1677,11 @@
 				3B51FBA01BA328BA009FB3C0 /* UIWebView+AFNetworking.m in Sources */,
 				3B51FBA61BA328BA009FB3C0 /* UPStackMenuItem.m in Sources */,
 				3B51FBA51BA328BA009FB3C0 /* UPStackMenu.m in Sources */,
+				3B2661431BA6E473008632F3 /* F3HTileView.m in Sources */,
 				3B51FB8E1BA328BA009FB3C0 /* MJRefreshBaseView.m in Sources */,
 				3B51FBA31BA328BA009FB3C0 /* OrangeAnimation.m in Sources */,
 				3B51FB991BA328BA009FB3C0 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				3B26613B1BA6E473008632F3 /* F3HMergeTile.m in Sources */,
 				3B51FB871BA328BA009FB3C0 /* BFPaperCheckbox.m in Sources */,
 				CEF61B621B82BE1B0014B980 /* README.md in Sources */,
 				3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */,
@@ -1575,6 +1699,8 @@
 				CE1BE9B91B98894E00F7B08A /* SuggestionViewController.m in Sources */,
 				3B51FB9B1BA328BA009FB3C0 /* UIAlertView+AFNetworking.m in Sources */,
 				E263C7761BA35E26008488FA /* FinderViewController.m in Sources */,
+				3B26613A1BA6E473008632F3 /* F3HGameModel.m in Sources */,
+				3B2661411BA6E473008632F3 /* F3HGameboardView.m in Sources */,
 				3B51FB851BA328BA009FB3C0 /* AFURLResponseSerialization.m in Sources */,
 				E263C7831BA35E26008488FA /* MapViewController.m in Sources */,
 				3B51FB9D1BA328BA009FB3C0 /* UIImageView+AFNetworking.m in Sources */,

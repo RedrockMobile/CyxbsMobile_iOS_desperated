@@ -37,13 +37,6 @@
     [dataBundle httpPostForGrade];
 }
 
-- (void)clickForEmptyRooms
-{
-    XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
-    dataBundle.mainDelegate = self.delegate;
-    [dataBundle httpPostForEmptyRooms];
-}
-
 - (void)clickForEmptyClassroom {
     XBSFindClassroomModel *model = [[XBSFindClassroomModel alloc]init];
     model.mainDelegate = self.delegate;

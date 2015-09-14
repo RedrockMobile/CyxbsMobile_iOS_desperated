@@ -225,18 +225,22 @@ const static NSTimeInterval             kStackMenuDefaultCloseAnimationDurationO
 #pragma mark - Interactions
 
 - (void)toggleStack:(id)sender
-{    
+{
     if(!_isOpen) {
-        
         [self openStack];
     }else {
-        
         [self closeStack];
     }
 }
 
 - (void)openStack
 {
+    [UIView animateWithDuration:0.1 animations:^{
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.4 animations:^{
+            _baseButton.transform = CGAffineTransformMakeRotation(M_PI_4);
+        } completion:nil];
+    }];
     if(_isAnimating || _isOpen)
         return;
     
@@ -286,6 +290,9 @@ const static NSTimeInterval             kStackMenuDefaultCloseAnimationDurationO
 
 - (void)closeStack
 {
+    [UIView animateWithDuration:0.4 animations:^{
+        _baseButton.transform = CGAffineTransformMakeRotation(0);
+    } completion:nil];
     if(_isAnimating || !_isOpen)
         return;
     
