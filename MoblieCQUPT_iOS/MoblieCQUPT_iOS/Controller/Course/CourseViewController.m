@@ -24,7 +24,7 @@
 
 @implementation CourseViewController
 
-static const CGFloat AniTime = 0.4;
+//static const CGFloat AniTime = 0.4;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
