@@ -101,7 +101,6 @@ static const CGFloat AniTime = 0.4;
     }
     
     _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
-//    _moreMenu.backgroundColor = [UIColor whiteColor];
     _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
     _moreMenu.layer.borderColor = [UIColor whiteColor].CGColor;
     _moreMenu.layer.borderWidth = 2;
