@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonToCopyRight;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (nonatomic, assign) NSInteger tapNum;
+@property (weak, nonatomic) IBOutlet UIImageView *imageToTop;
 
 @end
 
@@ -35,8 +36,8 @@
     [self.buttonToCopyRight addTarget:self action:@selector(clickToCopyRight) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
     tap.numberOfTapsRequired = 1;
-    self.authorLabel.userInteractionEnabled = YES;
-    [self.authorLabel addGestureRecognizer:tap];
+    self.imageToTop.userInteractionEnabled = YES;
+    [self.imageToTop addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -53,7 +54,7 @@
 - (void)tapAction:(UITapGestureRecognizer *)sender {
     self.tapNum++;
     NSLog(@"点击了%ld次",self.tapNum);
-    if (self.tapNum == 10) {
+    if (self.tapNum >= 1) {
         self.tapNum = 0;
         NSLog(@"开始游戏吧！");
         [self playGame];

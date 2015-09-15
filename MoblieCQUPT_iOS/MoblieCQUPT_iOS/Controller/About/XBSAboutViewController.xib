@@ -13,6 +13,7 @@
                 <outlet property="buttonToCopyRight" destination="BP8-NT-3yD" id="6ua-NG-KWK"/>
                 <outlet property="buttonToUpdate" destination="bqm-iP-n0E" id="1DC-RA-zCS"/>
                 <outlet property="buttonToWebsite" destination="vGj-0v-izT" id="vY3-hT-0GU"/>
+                <outlet property="imageToTop" destination="MYp-eg-MXO" id="PWk-oc-N03"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

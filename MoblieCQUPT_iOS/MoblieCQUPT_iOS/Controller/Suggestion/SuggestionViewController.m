@@ -12,6 +12,7 @@
 @interface SuggestionViewController ()<UITextViewDelegate>
 @property (strong, nonatomic) UITextView *suggestText;
 @property (strong, nonatomic) UIBarButtonItem *send;
+@property (strong, nonatomic) UIButton *sendButton;
 @end
 
 @implementation SuggestionViewController
@@ -27,6 +28,7 @@
     if (!_suggestText) {
         _suggestText = [[UITextView alloc] initWithFrame:CGRectMake(20, 64+20, MAIN_SCREEN_W-40, MAIN_SCREEN_H*0.4)];
 //        _suggestText.backgroundColor = [UIColor blueColor];
+        
         _suggestText.layer.borderColor = [UIColor grayColor].CGColor;
         _suggestText.layer.borderWidth = 1;
         _suggestText.layer.cornerRadius = 8;
@@ -41,6 +43,21 @@
 
     }
     return _suggestText;
+}
+
+- (UIButton *)sendButton{
+    if (!_sendButton) {
+        _sendButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        _sendButton.frame = CGRectMake(20, 400, 200, 30);
+        _sendButton.titleLabel.text = @"kkk";
+        
+        _sendButton.titleLabel.textColor = [UIColor yellowColor];
+        
+        _sendButton.layer.cornerRadius = 6;
+//        _sendButton.backgroundColor = [UIColor redColor];
+    }
+    
+    return _sendButton;
 }
 
 - (UIBarButtonItem *)send{
@@ -65,6 +82,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.view addSubview:self.suggestText];
+    [self.view addSubview:self.sendButton];
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
