@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = RGBColor(231, 231, 231, 1);
     
 }
 
@@ -31,8 +31,8 @@
         
         _suggestText.layer.borderColor = [UIColor grayColor].CGColor;
         _suggestText.layer.borderWidth = 1;
-        _suggestText.layer.cornerRadius = 8;
-        _suggestText.backgroundColor = [MAIN_COLOR colorWithAlphaComponent:0.2];
+//        _suggestText.layer.cornerRadius = 8;
+//        _suggestText.backgroundColor = [MAIN_COLOR colorWithAlphaComponent:0.2];
         _suggestText.contentSize = CGSizeMake(_suggestText.frame.size.width, _suggestText.frame.size.height);
         _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
         _suggestText.delegate = self;
@@ -48,13 +48,13 @@
 - (UIButton *)sendButton{
     if (!_sendButton) {
         _sendButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        _sendButton.frame = CGRectMake(20, 400, 200, 30);
-        _sendButton.titleLabel.text = @"kkk";
-        
-        _sendButton.titleLabel.textColor = [UIColor yellowColor];
-        
-        _sendButton.layer.cornerRadius = 6;
-//        _sendButton.backgroundColor = [UIColor redColor];
+        _sendButton.frame = CGRectMake(0, _suggestText.frame.size.height+_suggestText.frame.origin.y, 200, 30);
+        [_sendButton setTitle:@"内容请补全5字" forState:UIControlStateNormal];
+//        [_sendButton setTitle:@"反馈请大于5字" forState:UIControlStateDisabled];
+        _sendButton.center = CGPointMake(MAIN_SCREEN_W/2, _sendButton.frame.origin.y);
+        _sendButton.tintColor = [UIColor whiteColor];
+        _sendButton.layer.cornerRadius = 3;
+        _sendButton.backgroundColor = MAIN_COLOR;
     }
     
     return _sendButton;
@@ -62,7 +62,7 @@
 
 - (UIBarButtonItem *)send{
     if (!_send) {
-        _send = [[UIBarButtonItem alloc]initWithTitle:@"反馈" style:UIBarButtonItemStylePlain target:self action:@selector(sendSuggest)];
+        _send = [[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(sendSuggest)];
     }
     return _send;
 }
@@ -87,8 +87,10 @@
 
 - (void)textViewDidChange:(UITextView *)textView{
     if (self.suggestText.text.length > 5) {
+        [_sendButton setTitle:@"请点击右上角提交" forState:UIControlStateNormal];
         self.navigationItem.rightBarButtonItem = self.send;
     }else{
+        [_sendButton setTitle:@"内容不足5字" forState:UIControlStateNormal];
         self.navigationItem.rightBarButtonItem = nil;
     }
 }
