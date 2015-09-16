@@ -221,7 +221,7 @@
         UILabel *label = [[UILabel alloc] init];
         
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-
+   
         UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
         if (indexPath.section == 4 ) {
