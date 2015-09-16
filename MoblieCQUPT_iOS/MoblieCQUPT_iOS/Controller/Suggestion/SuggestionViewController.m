@@ -11,7 +11,7 @@
 #import "ORWInputTextView.h"
 
 @interface SuggestionViewController ()<UITextViewDelegate>
-@property (strong, nonatomic) UITextView *suggestText;
+@property (strong, nonatomic) ORWInputTextView *suggestTextView;
 @property (strong, nonatomic) UIBarButtonItem *send;
 
 @end
@@ -24,30 +24,10 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = RGBColor(235, 240, 239, 1);
     
-    ORWInputTextView *textView = [[ORWInputTextView alloc] initWithFrame:CGRectMake(20, 84, MAIN_SCREEN_W-40, (MAIN_SCREEN_W-40)/4)];
-    [textView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
-    [self.view addSubview:textView];
-}
-
-- (UITextView *)suggestText{
-    if (!_suggestText) {
-        _suggestText = [[UITextView alloc] initWithFrame:CGRectMake(20, 64+20, MAIN_SCREEN_W-40, MAIN_SCREEN_H*0.4)];
-//        _suggestText.backgroundColor = [UIColor blueColor];
-        
-        _suggestText.layer.borderColor = [UIColor grayColor].CGColor;
-        _suggestText.layer.borderWidth = 1;
-        _suggestText.layer.cornerRadius = 1;
-//        _suggestText.backgroundColor = [MAIN_COLOR colorWithAlphaComponent:0.2];
-        _suggestText.contentSize = CGSizeMake(_suggestText.frame.size.width, _suggestText.frame.size.height);
-        _suggestText.font = [UIFont fontWithName:@"Helvetica-Bold" size:14];
-        _suggestText.delegate = self;
-        
-        
-//        _suggestText.tintAdjustmentMode = NO;
-//        _suggestText.textColor = [UIColor whiteColor];
-
-    }
-    return _suggestText;
+    _suggestTextView = [[ORWInputTextView alloc] initWithFrame:CGRectMake(20, 84, MAIN_SCREEN_W-40, (MAIN_SCREEN_W-40)/4)];
+    [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
+    _suggestTextView.delegate = self;
+    [self.view addSubview:_suggestTextView];
 }
 
 
@@ -79,10 +59,12 @@
 
 
 - (void)textViewDidChange:(UITextView *)textView{
-    if (self.suggestText.text.length > 5) {
+    if (_suggestTextView.text.length > 0) {
         self.navigationItem.rightBarButtonItem = self.send;
+        [_suggestTextView setPlaceHolder:@""];
     }else{
         self.navigationItem.rightBarButtonItem = nil;
+        [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
     }
 }
 
@@ -92,13 +74,13 @@
     NSDictionary *dic = @{
                         @"paw":@"cyxbs_suggestion",
                         @"deviceInfo":deviceInfo,
-                        @"content":self.suggestText.text,
+                        @"content":_suggestTextView.text,
                         };
     [ProgressHUD show:@"反馈中..."];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion" WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
         [ProgressHUD showSuccess:@"反馈成功"];
 //        NSLog(@"%@",returnValue);
-        _suggestText.text = @"";
+        _suggestTextView.text = @"";
     } WithFailureBlock:^{
         [ProgressHUD showError:@"网络故障!"];
     }];
