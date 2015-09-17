@@ -1,4 +1,8 @@
-//
+
+
+
+
+
 //  SqliteCache.h
 //  MoblieCQUPT_iOS
 //
@@ -14,11 +18,15 @@ typedef NS_ENUM(NSInteger, ORWCacheOption){
     ORWCacheOptionNone = 1,
 };
 
-
 @property (strong, nonatomic, readonly) NSString *dataBaseName;
 @property (strong, nonatomic, readonly) NSString *filePath;
 
-
 + (NSString *)SqliteCacheDataBaseName;
 + (NSString *)SqliteCacheFilePath;
+
+- (NSString *)dataBaseName;
+- (NSString *)filePath;
+- (NSDictionary *)selectDataList;
+- (NSDictionary *)selectDataWithUrl:(NSString *)url;
+
 @end
