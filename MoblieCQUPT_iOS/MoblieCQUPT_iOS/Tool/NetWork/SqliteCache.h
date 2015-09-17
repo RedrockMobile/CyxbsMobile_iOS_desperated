@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @interface SqliteCache : NSObject
-+ (NSString *)dataPath;
-+ (NSString *)dataBaseName;
+
+typedef NS_ENUM(NSInteger, ORWCacheOption){
+    ORWCacheOptionNone = 1,
+};
+
+
+@property (strong, nonatomic, readonly) NSString *dataBaseName;
+@property (strong, nonatomic, readonly) NSString *filePath;
+
+
++ (NSString *)SqliteCacheDataBaseName;
++ (NSString *)SqliteCacheFilePath;
 @end
