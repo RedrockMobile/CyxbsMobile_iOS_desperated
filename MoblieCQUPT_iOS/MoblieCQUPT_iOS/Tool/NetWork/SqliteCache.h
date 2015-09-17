@@ -26,7 +26,7 @@ typedef NS_ENUM(NSInteger, ORWCacheOption){
 
 - (NSString *)dataBaseName;
 - (NSString *)filePath;
-- (NSDictionary *)selectDataList;
-- (NSDictionary *)selectDataWithUrl:(NSString *)url;
+- (NSDictionary *)selectCacheDataList;
+- (NSDictionary *)selectCacheDataWithUrl:(NSString *)url;
 
 @end

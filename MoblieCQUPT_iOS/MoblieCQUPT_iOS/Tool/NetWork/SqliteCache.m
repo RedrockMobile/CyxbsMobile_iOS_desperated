@@ -62,11 +62,11 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
 
 
 /** 查询相关 **/
--(NSDictionary *)selectDataList{
+-(NSDictionary *)selectCacheDataList{
     return [self selectCacheDataWithSql:[NSString stringWithFormat:@"SELECT * FROM '%@'",self.dataBaseName]];
 }
 
-- (NSDictionary *)selectDataWithUrl:(NSString *)url{
+- (NSDictionary *)selectCacheDataWithUrl:(NSString *)url{
     NSString *selectSql = [NSString stringWithFormat:@"SELECT * FROM '%@' WHERE '%@'='%@'",self.dataBaseName,ORWPrimaryKeyCol,url];
     return [self selectCacheDataWithSql:selectSql];
 }
