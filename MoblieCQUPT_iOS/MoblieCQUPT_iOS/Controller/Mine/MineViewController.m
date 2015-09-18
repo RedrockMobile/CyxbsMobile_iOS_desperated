@@ -76,7 +76,7 @@
         UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, _currentHeight, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
         labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
         labelButton.layer.borderWidth = 1;
-        UIImage *stretchableButtonImage = [[UIImage imageNamed:tempStrArr[i]]  stretchableImageWithLeftCapWidth:0  topCapHeight:0];
+        UIImage *stretchableButtonImage = [UIImage imageNamed:tempStrArr[i]];
 //        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
         UIImageView *buttonView = [[UIImageView alloc] initWithImage:stretchableButtonImage];
         CGRect contentFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
@@ -221,9 +221,15 @@
         UILabel *label = [[UILabel alloc] init];
         
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-
-        UIImage *img = [UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]];
+   
+        UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
+        if (indexPath.section == 4 ) {
+            imgView.tintColor = [UIColor redColor];
+        }else{
+            imgView.tintColor = MAIN_COLOR;
+        }
+        
         imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
         imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
         [cell addSubview:imgView];
