@@ -78,6 +78,7 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
         if([result next]) {
             NSString *requestUrl = [result stringForColumn:[ORWPrimaryKeyCol copy]];
             NSData *requestData = [result dataForColumn:[ORWDataCol copy]];
+
             NSInteger deadtime = [result intForColumn:[ORWDeadtimeCol copy]];
             NSDictionary *returnData = @{@"request_url":requestUrl,
                                          @"request_data":requestData,
