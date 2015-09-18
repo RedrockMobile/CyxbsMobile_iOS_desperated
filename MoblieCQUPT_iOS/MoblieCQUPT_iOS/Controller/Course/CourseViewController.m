@@ -69,6 +69,9 @@
         dayLabel.textColor = MAIN_COLOR;
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
+        if (weekDay == 1) {
+            weekDay = 8;
+        }
         if (i == weekDay - 2) {
             dayLabel.textColor = [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1];
             dayLabel.backgroundColor = [UIColor colorWithRed:253/255.0 green:251/255.0 blue:234/255.0 alpha:1];
