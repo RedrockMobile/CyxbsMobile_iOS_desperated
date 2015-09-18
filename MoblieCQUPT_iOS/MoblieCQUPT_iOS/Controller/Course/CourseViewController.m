@@ -15,7 +15,6 @@
 #import "CourseButton.h"
 #import "CourseView.h"
 #import "UPStackMenu.h"
-//#import "UPStackMenuItem.h"
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
 
@@ -24,16 +23,14 @@
 
 @implementation CourseViewController
 
-//static const CGFloat AniTime = 0.4;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _dataArray = [userDefault objectForKey:@"dataArray"];
-    [self handleWeek:_dataArray];
+    [self handleData:_dataArray];
     [self loadNetData];
-    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -134,14 +131,14 @@
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     if (item.tag == 1) {
         //查询学期课程
-        NSArray *dataArray = [userDefault objectForKey:@"dataArray"];
+        NSMutableArray *dataArray = [userDefault objectForKey:@"dataArray"];
         _dataArray = dataArray;
-        [self handleWeek:dataArray];
+        [self handleData:_dataArray];
     }else if (item.tag == 2) {
         //查询本周课程
-        NSArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
+        NSMutableArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
         _dataArray = weekDataArray;
-        [self handleWeek:weekDataArray];
+        [self handleData:_dataArray];
     }
 }
 
@@ -162,6 +159,8 @@
             }
             [data addObject:dataDic];
         }
+        [self handleWeek:data];
+        [self handleColor:data];
         _dataArray = data;
         NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
         [_parameter setObject:nowWeek forKey:@"week"];
@@ -170,9 +169,11 @@
             NSMutableArray *data = [NSMutableArray array];
             for (int i = 0;i < weekDataArray.count; i ++) {
                 NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:weekDataArray[i]];
-                [weekDataDic setObject:@"" forKey:@"rawWeek"];
+                [weekDataDic setObject:[NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]] forKey:@"rawWeek"];
                 [data addObject:weekDataDic];
             }
+            [self handleWeek:data];
+            [self handleColor:data];
             _weekDataArray = data;
             [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
             [userDefault synchronize];
@@ -184,17 +185,14 @@
         for (int i = 0; i < _buttonTag.count; i ++) {
             [_buttonTag[i] removeFromSuperview];
         }
-        [self handleWeek:_dataArray];
+        [self handleData:_dataArray];
     } WithFailureBlock:^{
-        NSLog(@"数据错误");
     }];
 }
 
-- (void)handleWeek:(NSArray *)array {
-    NSMutableArray *allCourses = [NSMutableArray array];
+- (void)handleWeek:(NSMutableArray *)array {
     if (array != nil && array.count > 0) {
         for (int i = 0; i < array.count; i++) {
-
             NSString *day = [array[i] objectForKey:@"day"];
             NSString *weekNum;
             if ([@"星期一" isEqualToString:day]) {
@@ -214,18 +212,13 @@
             }else {
                 weekNum = day;
             }
-            NSMutableDictionary *courseDic = [NSMutableDictionary dictionaryWithDictionary:array[i]];
-            [courseDic setObject:weekNum forKey:@"day"];
-            [allCourses addObject:courseDic];
+            [array[i] setObject:weekNum forKey:@"day"];
         }
     }
-    [self handleColor:allCourses];
 }
 
 - (void)handleColor:(NSMutableArray *)courses {
     _colorArray = [[NSMutableArray alloc]initWithObjects:@"229,28,35",@"233,30,99",@"156,39,175",@"103,58,183",@"63,81,181",@"86,119,252",@"3,169,244",@"0,188,212",@"0,150,136",@"37,150,36",@"139,195,74",@"205,220,57",@"29,233,182",@"255,193,7",@"255,152,0",@"255,87,34",@"224,64,251",@"255,109,0",@"61,90,254",@"213,0,249", nil];
-//    _colorArray = [[NSMutableArray alloc]initWithObjects:@"255,161,16",@"56,188,242",@"149,213,27", nil];
-    NSMutableArray *allCourses = [NSMutableArray array];
     NSMutableArray *courseArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < courses.count; i ++) {
         [courseArray addObject:[courses[i] objectForKey:@"course"]];
@@ -240,21 +233,16 @@
         }
         [_colorArray removeObjectAtIndex:j];
     }
-    for (int l = 0; l < courses.count; l ++) {
-        Course *course = [[Course alloc]initWithPropertiesDictionary:courses[l]];
-        [allCourses addObject:course];
-    }
-    [self handleData:allCourses];
 }
 
-- (void)handleData:(NSMutableArray *)courses {
+- (void)handleData:(NSArray *)courses {
     NSInteger currentTag = -1;
     _buttonTag = [NSMutableArray array];
     if (courses.count > 0) {
         int currentBegin = 0;
         int currentDay = 0;
         for (int i = 0; i<courses.count; i++) {
-            Course *course = courses[i];
+            Course *course = [[Course alloc]initWithPropertiesDictionary:courses[i]];
             int rowNum = course.begin_lesson.intValue - 1;
             int colNum = course.day.intValue;
             int period = course.period.intValue;
