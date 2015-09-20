@@ -15,7 +15,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SqliteCache : NSObject
+@interface ORWRequestCache : NSObject
 
 typedef NS_ENUM(NSInteger, ORWCacheOption){
     ORWCacheOptionNone = 1,
@@ -26,8 +26,8 @@ typedef NS_ENUM(NSInteger, ORWCacheOption){
 @property (strong, nonatomic) NSString *dataBaseNameEXT;
 @property (assign, nonatomic) NSInteger defaultCacheTime;//second
 
-+ (NSString *)SqliteCacheDataBaseName;
-+ (NSString *)SqliteCacheFilePath;
++ (NSString *)ORWRequestCacheDataBaseName;
++ (NSString *)ORWRequestCacheFilePath;
 
 - (NSString *)dataBaseName;
 - (NSString *)filePath;

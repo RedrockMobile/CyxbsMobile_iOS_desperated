@@ -6,27 +6,28 @@
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
 
-#import "SqliteCache.h"
+#import "ORWRequestCache.h"
 #import "FMDatabase.h"
 
-@interface SqliteCache()
+@interface ORWRequestCache()
 @property (nonatomic, strong) FMDatabase *db;
 @end
 
-@implementation SqliteCache
+@implementation ORWRequestCache
 static const NSString *dataBaseName = @"ORWCacheSqlite";
 
 static const NSString *ORWPrimaryKeyCol = @"request_url";
 static const NSString *ORWDataCol = @"data";
 static const NSString *ORWDeadtimeCol = @"deadtime";
+static const NSInteger ORWDeafultCacheTime = 60*60*24;
 
-+ (NSString *)SqliteCacheDataBaseName {
-    SqliteCache *cache = [[SqliteCache alloc]init];
++ (NSString *)ORWRequestCacheDataBaseName {
+    ORWRequestCache *cache = [[ORWRequestCache alloc]init];
     return [cache dataBaseName];
 }
 
-+ (NSString *)SqliteCacheFilePath {
-    SqliteCache *cache = [[SqliteCache alloc]init];
++ (NSString *)ORWRequestCacheFilePath {
+    ORWRequestCache *cache = [[ORWRequestCache alloc]init];
     return [cache filePath];
 }
 
@@ -48,6 +49,7 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
     return self;
 }
 
+#pragma mark  /** 各个属性 **/
 - (NSString *)dataBaseName{
     return [dataBaseName copy];
 }
@@ -57,7 +59,7 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
     NSString *documents = [paths lastObject];
     NSString *fileName = [NSString stringWithFormat:@"%@.%@",self.dataBaseName,self.dataBaseNameEXT];
     NSString *dataFilePath = [documents stringByAppendingPathComponent:fileName];
-    
+
     return dataFilePath;
 }
 
@@ -70,20 +72,20 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
 
 - (NSInteger)defaultCacheTime{
     if (!_defaultCacheTime) {
-        return 60*60*24;
+        return ORWDeafultCacheTime;
     }
     return _defaultCacheTime;
 }
 
 
-/** 查询相关 **/
+#pragma mark /** 查询相关 **/
 /**
  *  @author Orange-W, 15-09-18 14:09:18
  *
  *  @brief  打印缓存列表
  *  @return 列表字段字典
  */
--(NSDictionary *)selectCacheDataList{
+-(NSArray *)selectCacheDataList{
     return [self selectCacheDataWithSql:[NSString stringWithFormat:@"SELECT * FROM '%@'",self.dataBaseName]];
 }
 
@@ -96,30 +98,39 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
  */
 - (NSDictionary *)selectCacheDataWithUrl:(NSString *)url{
     NSString *selectSql = [NSString stringWithFormat:@"SELECT * FROM '%@' WHERE '%@'='%@'",self.dataBaseName,ORWPrimaryKeyCol,url];
-    return [self selectCacheDataWithSql:selectSql];
+    return [[self selectCacheDataWithSql:selectSql] firstObject];
 }
 
 
-- (NSDictionary *)selectCacheDataWithSql:(NSString *)selectSql{
+- (NSArray *)selectCacheDataWithSql:(NSString *)selectSql{
     if ([self.db open]) {
-        FMResultSet * result = [self.db executeQuery:selectSql];
-        [self.db close];
-        if([result next]) {
-            NSString *requestUrl = [result stringForColumn:[ORWPrimaryKeyCol copy]];
-            NSData *requestData = [result dataForColumn:[ORWDataCol copy]];
-
-            NSInteger deadtime = [result intForColumn:[ORWDeadtimeCol copy]];
-            NSDictionary *returnData = @{@"request_url":requestUrl,
-                                         @"request_data":requestData,
-                                         @"deadtime":[NSNumber numberWithInteger:deadtime]};
-            return returnData;
+        FMResultSet *result = [self.db executeQuery:selectSql];
+        NSMutableArray *returnArray = [[NSMutableArray alloc]init];
+        while([result next]) {
+            [returnArray addObject:[self fectchFirstDataFromResultSet:result]];
         }
+        
+        [self.db close];
+        return [returnArray copy];
     }
+    [self.db close];
     return nil;
 }
 
+- (NSDictionary *)fectchFirstDataFromResultSet:(FMResultSet *)resultSet
+{
+        NSString *requestUrl = [resultSet stringForColumn:[ORWPrimaryKeyCol copy]];
+        NSData *requestData = [resultSet dataForColumn:[ORWDataCol copy]];
+        
+        NSInteger deadtime = [resultSet intForColumn:[ORWDeadtimeCol copy]];
+        NSDictionary *fectchDataDictory = @{@"request_url":requestUrl,
+                                     @"request_data":requestData,
+                                     @"deadtime":[NSNumber numberWithInteger:deadtime]};
+    return fectchDataDictory;
+}
 
-/** 插入/跟新相关 **/
+
+#pragma mark  /** 插入/跟新相关 **/
 /**
  *  @author Orange-W, 15-09-18 14:09:43
  *
@@ -146,7 +157,7 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
                            url:(NSString *) urlString
                      cacheTime:(NSInteger) second{
     second = second>0?:60*60*24*365;
-    second += [[self getNowDateComponents] second];
+    second += [[NSDate date] timeIntervalSince1970];
     
     
 #warning (二进制格式转换要改)
@@ -160,34 +171,36 @@ static const NSString *ORWDeadtimeCol = @"deadtime";
     if ([self.db open]) {
         
         BOOL isUpdate = [self.db executeUpdate:updateSql];
-        [self.db close];
+        
         if (!isUpdate) {
             NSLog(@"error when insert cache db data");
         }else{
+            [self.db close];
             return YES;
         }
         
     }
-    
+    [self.db close];
     return NO;
 }
 
 - (BOOL)updateDataWithSql:(NSString *)updateSql{
     if ([self.db open]) {
         BOOL isUpdate = [self.db executeUpdate:updateSql];
-        [self.db close];
+        
         if (!isUpdate) {
             NSLog(@"error when insert cache db data");
         }else{
+            [self.db close];
             return YES;
         }
         
     }
-    
+    [self.db close];
     return NO;
 }
 
-
+#pragma mark  /** 获得当前时间格式 **/
 - (NSDateComponents *) getNowDateComponents{
     NSDate *now = [NSDate date];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
