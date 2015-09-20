@@ -1,11 +1,5 @@
 
 
-
-
-
-
-
-
 //  SqliteCache.h
 //  MoblieCQUPT_iOS
 //
@@ -32,6 +26,7 @@ typedef NS_ENUM(NSInteger, ORWCacheOption){
 - (NSString *)dataBaseName;
 - (NSString *)filePath;
 
+- (BOOL)isOutOfDateWithUrl:(NSString *)urlString;
 - (NSDictionary *)selectCacheDataList;
 - (NSDictionary *)selectCacheDataWithUrl:(NSString *)url;
 

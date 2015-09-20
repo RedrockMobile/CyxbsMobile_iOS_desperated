@@ -220,16 +220,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
         UILabel *label = [[UILabel alloc] init];
         
-
-        [cell.detailTextLabel setFont:[UIFont fontWithName:@"Courier" size:20]];
-
-        cell.detailTextLabel.text = @">";
-        UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAutomatic];
-        
-
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+   
+        UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-//        imgView.tintColor = [UIColor blackColor];
-        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+        if (indexPath.section == 4 ) {
+            imgView.tintColor = [UIColor redColor];
+        }else{
+            imgView.tintColor = MAIN_COLOR;
+        }
+        
+        imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
         imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
         [cell addSubview:imgView];
         
