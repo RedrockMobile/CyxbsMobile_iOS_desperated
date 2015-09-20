@@ -51,6 +51,9 @@
 //    [self.window addSubview:view];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    SqliteCache *cache = [[SqliteCache alloc] init];
+    NSLog(@"%@",[cache filePath]);
     return YES;
 }
 
