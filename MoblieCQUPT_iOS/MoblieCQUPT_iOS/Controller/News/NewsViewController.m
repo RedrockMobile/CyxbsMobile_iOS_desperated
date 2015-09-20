@@ -32,7 +32,7 @@ static int nowPage= 1;
     
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationItem.title = @"教务";
+    self.navigationItem.title = @"教务信息";
     self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     

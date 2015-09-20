@@ -1,4 +1,11 @@
-//
+
+
+
+
+
+
+
+
 //  SqliteCache.h
 //  MoblieCQUPT_iOS
 //
@@ -9,6 +16,30 @@
 #import <Foundation/Foundation.h>
 
 @interface SqliteCache : NSObject
-+ (NSString *)dataPath;
-+ (NSString *)dataBaseName;
+
+typedef NS_ENUM(NSInteger, ORWCacheOption){
+    ORWCacheOptionNone = 1,
+};
+
+@property (strong, nonatomic, readonly) NSString *dataBaseName;
+@property (copy, nonatomic, readonly) NSString *filePath;
+@property (strong, nonatomic) NSString *dataBaseNameEXT;
+@property (assign, nonatomic) NSInteger defaultCacheTime;//second
+
++ (NSString *)SqliteCacheDataBaseName;
++ (NSString *)SqliteCacheFilePath;
+
+- (NSString *)dataBaseName;
+- (NSString *)filePath;
+
+- (NSDictionary *)selectCacheDataList;
+- (NSDictionary *)selectCacheDataWithUrl:(NSString *)url;
+
+- (BOOL)saveDataWithDictionary:(NSDictionary *) dictionaryData
+                           url:(NSString *) urlString;
+- (BOOL)saveDataWithDictionary:(NSDictionary *) dictionaryData
+                           url:(NSString *) urlString
+                     cacheTime:(NSInteger) second;
+
+- (NSDateComponents *) getNowDateComponents;//当前时间各信息
 @end

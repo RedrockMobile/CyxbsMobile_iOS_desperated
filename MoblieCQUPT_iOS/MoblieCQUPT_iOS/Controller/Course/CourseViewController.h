@@ -26,6 +26,7 @@
 @property (strong, nonatomic) UIView *backgroundView;
 @property (strong, nonatomic) UIPageControl *page;
 @property (strong, nonatomic) UIView *alertView;
+@property (strong, nonatomic) UILabel *weekLabel;
 
 @property (strong, nonatomic)NSMutableDictionary *parameter;
 

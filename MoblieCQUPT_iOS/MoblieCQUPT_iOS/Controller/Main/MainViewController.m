@@ -10,7 +10,6 @@
 #import "MainViewController.h"
 #import "XBSConsultDataBundle.h"
 #import "XBSSchduleViewController.h"
-#import "XBSEmptyRoomViewController.h"
 #import "MainViewController.h"
 #import "XBSConsultButtonClicker.h"
 #import "XBSConsultConfig.h"
@@ -31,7 +30,7 @@ static Boolean isClick = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self findButtonInit];
-    NSArray *item = @[@"我的课表",@"发现",@"查询",@"教务重邮",@"我的"];
+    NSArray *item = @[@"我的课表",@"发现",@"查询",@"教务信息",@"我的"];
     int whichVc = 0;
     self.tabBar.tintColor = MAIN_COLOR;
     
@@ -111,7 +110,7 @@ static Boolean isClick = NO;
     NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
     //NSArray *textArray = @[@"考试查询",@"补考查询",@"成绩查询",@"找空教室"];
     SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
-        @selector(clickForExamGrade),@selector(clickForEmptyRooms)};
+        @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
     self.clicker = [[XBSConsultButtonClicker alloc]init];
     self.clicker.delegate = self;
     for (int i=0; i<self.btnNum; i++) {
