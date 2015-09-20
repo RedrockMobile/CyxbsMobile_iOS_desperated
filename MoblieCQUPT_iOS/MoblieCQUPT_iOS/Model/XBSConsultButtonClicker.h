@@ -17,6 +17,6 @@
 - (void)clickForExamSchedule;
 - (void)clickForReexamSchedule;
 - (void)clickForExamGrade;
-- (void)clickForEmptyRooms;
+- (void)clickForEmptyClassroom;
 
 @end

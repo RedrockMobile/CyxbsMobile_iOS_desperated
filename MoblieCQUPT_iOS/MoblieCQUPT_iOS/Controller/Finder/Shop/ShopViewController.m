@@ -13,7 +13,6 @@
 #import "UIImage+AFNetworking.h"
 #import "MJRefresh.h"
 #import "WebViewController.h"
-#import "ProgressHUD.h"
 
 #define SHOPLIST_ENDPAGE 4
 
@@ -128,11 +127,11 @@
 
 - (void)dataFlash{
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
-        [ProgressHUD show:@"加载中..."];
+
         _data = [[NSMutableArray alloc] init];
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         [_tableView reloadData];
-        [ProgressHUD showSuccess:@"加载完成~"];
+
     } WithFailureBlock:^{
         UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         failLabel.text = @"哎呀！网络开小差了 T^T";
@@ -175,6 +174,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     ShopDetailViewController *detailViewController = [[ShopDetailViewController alloc] init];
     detailViewController.detailData = _data[indexPath.row];
     [self.navigationController pushViewController:detailViewController animated:YES];

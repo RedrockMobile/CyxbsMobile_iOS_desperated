@@ -9,6 +9,7 @@
 #import "XBSConsultButtonClicker.h"
 #import "XBSConsultDataBundle.h"
 #import "XBSConsultConfig.h"
+#import "XBSFindClassroomModel.h"
 
 @implementation XBSConsultButtonClicker
 - (void)clickForExamSchedule
@@ -36,11 +37,10 @@
     [dataBundle httpPostForGrade];
 }
 
-- (void)clickForEmptyRooms
-{
-    XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
-    dataBundle.mainDelegate = self.delegate;
-    [dataBundle httpPostForEmptyRooms];
+- (void)clickForEmptyClassroom {
+    XBSFindClassroomModel *model = [[XBSFindClassroomModel alloc]init];
+    model.mainDelegate = self.delegate;
+    [model httpPostForEmptyClassroom];
 }
 
 @end

@@ -37,8 +37,8 @@
 
 #define ConsultFuntionName @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"]
 #define WeekdayWordsArr @[@"一",@"二",@"三",@"四",@"五",@"六",@"天",]
-#define BuildList @[@"二教", @"三教", @"四教", @"五教", @"八教", @"无限制"]
-#define BuildTagList {2, 3, 4, 5, 8, 0};
+#define BuildList @[@"二教", @"三教", @"四教", @"五教", @"八教"]
+#define BuildTagList {2, 3, 4, 5, 8};
 #define PeriodList @[@"1~2节", @"3~4节", @"5~6节", @"7~8节", @"9~10节", @"全天时间"]
 
 @interface Config : NSObject

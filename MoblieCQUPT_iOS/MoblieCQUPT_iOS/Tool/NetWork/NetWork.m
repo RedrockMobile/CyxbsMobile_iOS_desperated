@@ -8,7 +8,7 @@
 
 
 #import "NetWork.h"
-#import "FMDB.h"
+
 
 @implementation NetWork
 
@@ -94,8 +94,6 @@
         
         //DDLog(@"%@", dic);
         if(block){
-            NSString *paths = [[NSBundle mainBundle] pathForResource:@"Mobile_CQUPT_iOS.db" ofType:@"db"];
-            
 //            self.database_path = [documents stringByAppendingPathComponent:DBNAME];
 //            self.db = [FMDatabase databaseWithPath:self.database_path];
             block(dic);

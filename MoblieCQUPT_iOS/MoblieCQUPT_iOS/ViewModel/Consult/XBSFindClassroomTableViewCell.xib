@@ -14,8 +14,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4201" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmu-Pe-s1h">
-                        <rect key="frame" x="8" y="11" width="40" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rmu-Pe-s1h">
+                        <rect key="frame" x="8" y="11" width="40" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="Ny2-Ta-9xf"/>
                             <constraint firstAttribute="height" constant="20" id="Tuf-8e-yrc"/>
@@ -24,8 +24,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4202" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJ5-gm-HWH">
-                        <rect key="frame" x="96" y="11" width="40" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJ5-gm-HWH">
+                        <rect key="frame" x="96" y="11" width="40" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="40" id="FZ9-kM-kof"/>
                             <constraint firstAttribute="height" constant="20" id="QQj-qP-V2o"/>
@@ -34,8 +34,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4203" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpX-au-Qca">
-                        <rect key="frame" x="184" y="11" width="40" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpX-au-Qca">
+                        <rect key="frame" x="184" y="11" width="40" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="OHf-Ff-sjX"/>
                             <constraint firstAttribute="width" constant="40" id="XvS-8u-gai"/>
@@ -44,8 +44,8 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4204" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-MM-krz">
-                        <rect key="frame" x="272" y="11" width="40" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eZD-MM-krz">
+                        <rect key="frame" x="272" y="11" width="40" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="M7N-ek-Xvw"/>
                             <constraint firstAttribute="width" constant="40" id="tnD-ex-bhP"/>
@@ -60,14 +60,14 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="780-Wp-Ahc">
-                        <rect key="frame" x="224" y="11" width="48" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-FB-ANf">
+                        <rect key="frame" x="48" y="11" width="48" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYk-FB-ANf">
-                        <rect key="frame" x="48" y="11" width="48" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="780-Wp-Ahc">
+                        <rect key="frame" x="224" y="11" width="48" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -94,10 +94,6 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cellItem1" destination="Rmu-Pe-s1h" id="3J3-Qh-QkX"/>
-                <outlet property="cellItem2" destination="TJ5-gm-HWH" id="umc-KG-idI"/>
-                <outlet property="cellItem3" destination="JpX-au-Qca" id="Qrb-5X-mXc"/>
-                <outlet property="cellItem4" destination="eZD-MM-krz" id="zDb-X8-Rfx"/>
                 <outlet property="cellLabel1" destination="Rmu-Pe-s1h" id="Jre-It-qSw"/>
                 <outlet property="cellLabel2" destination="TJ5-gm-HWH" id="NSQ-h1-K9F"/>
                 <outlet property="cellLabel3" destination="JpX-au-Qca" id="sXm-fu-MwI"/>

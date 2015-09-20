@@ -9,6 +9,7 @@
 #import "XBSAboutViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "We.h"
+#import "F3HNumberTileGameViewController.h"
 
 @interface XBSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appName;
@@ -16,7 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonToUpdate;
 @property (weak, nonatomic) IBOutlet UIButton *buttonToWebsite;
 @property (weak, nonatomic) IBOutlet UIButton *buttonToCopyRight;
-
+@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property (nonatomic, assign) NSInteger tapNum;
+@property (weak, nonatomic) IBOutlet UIImageView *imageToTop;
 
 @end
 
@@ -24,14 +27,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"viewDidLoad");
+    self.tapNum = 0;
     [self.appName setTextColor:[UIColor paperColorGray500]];
     [self.appVersion setTextColor:[UIColor paperColorGray500]];
-    
     [self.buttonToUpdate addTarget:self action:@selector(clickToUpdate) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonToWebsite addTarget:self action:@selector(clickToWebsite) forControlEvents:UIControlEventTouchUpInside];
     [self.buttonToCopyRight addTarget:self action:@selector(clickToCopyRight) forControlEvents:UIControlEventTouchUpInside];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+    tap.numberOfTapsRequired = 1;
+    self.imageToTop.userInteractionEnabled = YES;
+    [self.imageToTop addGestureRecognizer:tap];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+//- (void)loadView {
+////    [super loadView];
+////    self.view.backgroundColor = [UIColor whiteColor];
+//    NSLog(@"loadView");
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+//    tap.numberOfTapsRequired = 1;
+//    [self.authorLabel addGestureRecognizer:tap];
+//}
+
+- (void)tapAction:(UITapGestureRecognizer *)sender {
+    self.tapNum++;
+    NSLog(@"点击了%ld次",self.tapNum);
+    if (self.tapNum >= 1) {
+        self.tapNum = 0;
+        NSLog(@"开始游戏吧！");
+        [self playGame];
+    }
+}
+
+- (void)playGame {
+    F3HNumberTileGameViewController *c = [F3HNumberTileGameViewController numberTileGameWithDimension:4
+                                                                                         winThreshold:2048
+                                                                                      backgroundColor:[UIColor whiteColor]
+                                                                                          scoreModule:YES
+                                                                                       buttonControls:NO
+                                                                                        swipeControls:YES];
+    [self.navigationController pushViewController:c animated:YES];
+    //[self presentViewController:c animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,18 +81,10 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"关于";
-    //    self.navigationController.navigationBar.backItem.title = @"返回";
+    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (void)clickToCopyRight {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"使用条款"
@@ -78,4 +108,7 @@
     [alert show];
 }
 
+
+
 @end
+

@@ -10,11 +10,13 @@
 
 @interface XBSFindClassroomPeriodView : UIView
 @property (nonatomic, assign) BOOL selected;
-
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
 @property (nonatomic, assign) NSInteger   index;
 @property (nonatomic, strong) UIImage     *image;
 @property (nonatomic, strong) UIImageView *imageView;
 @property (nonatomic, strong) UILabel     *label;
-- (instancetype)initWithIndex:(NSInteger)index;
+
+//- (instancetype)initWithIndex:(NSInteger)index;
+- (instancetype)initWithIndex:(NSInteger)index Delegate:(UIViewController *)delegate;
 
 @end

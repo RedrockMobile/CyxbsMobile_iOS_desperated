@@ -9,9 +9,11 @@
             <connections>
                 <outlet property="appName" destination="qj2-jC-mua" id="sb8-ig-kdg"/>
                 <outlet property="appVersion" destination="noA-jV-5d1" id="Tfq-bu-RVT"/>
+                <outlet property="authorLabel" destination="KO2-ye-7A4" id="Ol5-0L-ihv"/>
                 <outlet property="buttonToCopyRight" destination="BP8-NT-3yD" id="6ua-NG-KWK"/>
                 <outlet property="buttonToUpdate" destination="bqm-iP-n0E" id="1DC-RA-zCS"/>
                 <outlet property="buttonToWebsite" destination="vGj-0v-izT" id="vY3-hT-0GU"/>
+                <outlet property="imageToTop" destination="MYp-eg-MXO" id="PWk-oc-N03"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -177,6 +179,7 @@
                                 </label>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="掌上重邮60-3.png" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-eg-MXO">
                                     <rect key="frame" x="0.0" y="0.0" width="110" height="111"/>
+                                    <color key="tintColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="110" id="36L-TR-o86"/>
                                         <constraint firstAttribute="height" constant="111" id="Qx9-Nx-ERE"/>
