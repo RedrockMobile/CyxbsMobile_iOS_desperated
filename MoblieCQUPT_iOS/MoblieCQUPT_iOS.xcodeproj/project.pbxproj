@@ -110,7 +110,7 @@
 		CE30FDE41B9968C000C15AD4 /* tuichu.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDD71B9968C000C15AD4 /* tuichu.png */; };
 		CE30FDE71B9968C000C15AD4 /* zuobiao.png in Resources */ = {isa = PBXBuildFile; fileRef = CE30FDDA1B9968C000C15AD4 /* zuobiao.png */; };
 		CE35D7081B932700005BDEBA /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE35D7071B932700005BDEBA /* MineViewController.m */; };
-		CE3FC9401B9702A6000085E5 /* SqliteCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3FC93F1B9702A6000085E5 /* SqliteCache.m */; };
+		CE3FC9401B9702A6000085E5 /* ORWRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3FC93F1B9702A6000085E5 /* ORWRequestCache.m */; };
 		CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5A1B87FF3900699E3E /* 40-3.png */; };
 		CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5C1B87FF4400699E3E /* 40-2.png */; };
 		CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5C7D5E1B87FF4D00699E3E /* 29-3.png */; };
@@ -413,8 +413,8 @@
 		CE30FDDA1B9968C000C15AD4 /* zuobiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zuobiao.png; sourceTree = "<group>"; };
 		CE35D7061B932700005BDEBA /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		CE35D7071B932700005BDEBA /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
-		CE3FC93E1B9702A6000085E5 /* SqliteCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteCache.h; sourceTree = "<group>"; };
-		CE3FC93F1B9702A6000085E5 /* SqliteCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteCache.m; sourceTree = "<group>"; };
+		CE3FC93E1B9702A6000085E5 /* ORWRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORWRequestCache.h; sourceTree = "<group>"; };
+		CE3FC93F1B9702A6000085E5 /* ORWRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORWRequestCache.m; sourceTree = "<group>"; };
 		CE3FC9421B973228000085E5 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
 		CE5C7D5A1B87FF3900699E3E /* 40-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40-3.png"; sourceTree = "<group>"; };
 		CE5C7D5C1B87FF4400699E3E /* 40-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40-2.png"; sourceTree = "<group>"; };
@@ -993,6 +993,15 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		CED4D3911BAEC9DB009A3C9B /* ORWRequestCache */ = {
+			isa = PBXGroup;
+			children = (
+				CE3FC93E1B9702A6000085E5 /* ORWRequestCache.h */,
+				CE3FC93F1B9702A6000085E5 /* ORWRequestCache.m */,
+			);
+			name = ORWRequestCache;
+			sourceTree = "<group>";
+		};
 		CEE1E2231B99A0D80088EC7C /* ButtonView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1014,10 +1023,9 @@
 		CEE837B41B86C35000959779 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				CED4D3911BAEC9DB009A3C9B /* ORWRequestCache */,
 				CEE837B51B86C35000959779 /* NetWork.h */,
 				CEE837B61B86C35000959779 /* NetWork.m */,
-				CE3FC93E1B9702A6000085E5 /* SqliteCache.h */,
-				CE3FC93F1B9702A6000085E5 /* SqliteCache.m */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -1681,7 +1689,7 @@
 				3B51FB7E1BA328BA009FB3C0 /* AFHTTPRequestOperation.m in Sources */,
 				CEF61B581B82BDFE0014B980 /* README.md in Sources */,
 				E263C78F1BA35E26008488FA /* ShopTableViewCell.m in Sources */,
-				CE3FC9401B9702A6000085E5 /* SqliteCache.m in Sources */,
+				CE3FC9401B9702A6000085E5 /* ORWRequestCache.m in Sources */,
 				3B51FB941BA328BA009FB3C0 /* UIScrollView+MJRefresh.m in Sources */,
 				3BDE16281BA5E6D3008F2DB7 /* XBSFindClassroomViewController.m in Sources */,
 				3B51FB8F1BA328BA009FB3C0 /* MJRefreshConst.m in Sources */,

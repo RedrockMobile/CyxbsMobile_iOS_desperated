@@ -56,7 +56,9 @@
     self.navigationItem.rightBarButtonItem = self.send;
 }
 
-
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [_suggestTextView resignFirstResponder];
+}
 
 - (void)textViewDidChange:(UITextView *)textView{
     if (_suggestTextView.text.length > 0) {
