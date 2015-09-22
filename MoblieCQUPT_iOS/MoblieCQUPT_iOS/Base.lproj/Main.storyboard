@@ -43,7 +43,7 @@
         <!--Main View Controller-->
         <scene sceneID="7pK-Dq-FKx">
             <objects>
-                <tabBarController storyboardIdentifier="MainViewController" id="MjZ-iQ-Zd5" customClass="MainViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainViewController" hidesBottomBarWhenPushed="YES" id="MjZ-iQ-Zd5" customClass="MainViewController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="jg8-lx-J0s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

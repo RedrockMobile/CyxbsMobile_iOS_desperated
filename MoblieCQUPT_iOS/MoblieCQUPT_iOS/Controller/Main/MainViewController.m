@@ -23,7 +23,7 @@
 @property (nonatomic, strong) XBSConsultButtonClicker *clicker;
 @property (strong, nonatomic) UIView *discoverView;
 @end
-//023-62750767 023-62751732 15025308654
+
 @implementation MainViewController
 static Boolean isClick = NO;
 
@@ -49,13 +49,16 @@ static Boolean isClick = NO;
             vc.navigationBar.layer.shadowOpacity = 0.1f;
             vc.navigationBar.layer.shadowRadius = 0.5f;
         }
+        vc.tabBarController.hidesBottomBarWhenPushed = YES;
+        vc.hidesBottomBarWhenPushed = YES;
         whichVc==1?whichVc+=2:whichVc++;
     }
     
-    
     self.delegate = self;
-    
+}
 
+- (void)viewWillDisappear:(BOOL)animated{
+     self.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
