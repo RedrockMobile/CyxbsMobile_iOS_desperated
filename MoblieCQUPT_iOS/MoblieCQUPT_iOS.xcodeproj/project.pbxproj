@@ -76,7 +76,6 @@
 		3B51FB9E1BA328BA009FB3C0 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB6A1BA328BA009FB3C0 /* UIProgressView+AFNetworking.m */; };
 		3B51FB9F1BA328BA009FB3C0 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB6C1BA328BA009FB3C0 /* UIRefreshControl+AFNetworking.m */; };
 		3B51FBA01BA328BA009FB3C0 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB6E1BA328BA009FB3C0 /* UIWebView+AFNetworking.m */; };
-		3B51FBA11BA328BA009FB3C0 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B51FB701BA328BA009FB3C0 /* libMobClickLibrary.a */; };
 		3B51FBA21BA328BA009FB3C0 /* ExampleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB761BA328BA009FB3C0 /* ExampleAnimation.m */; };
 		3B51FBA31BA328BA009FB3C0 /* OrangeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB781BA328BA009FB3C0 /* OrangeAnimation.m */; };
 		3B51FBA41BA328BA009FB3C0 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB791BA328BA009FB3C0 /* README.md */; };
@@ -182,7 +181,6 @@
 		E263C77A1BA35E26008488FA /* cqupt2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E263C74D1BA35E26008488FA /* cqupt2@2x.jpg */; };
 		E263C77B1BA35E26008488FA /* cqupt3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E263C74E1BA35E26008488FA /* cqupt3@2x.jpg */; };
 		E263C77C1BA35E26008488FA /* map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E263C74F1BA35E26008488FA /* map@2x.png */; };
-		E263C77D1BA35E26008488FA /* ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E263C7501BA35E26008488FA /* ok@2x.png */; };
 		E263C77E1BA35E26008488FA /* redrock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E263C7511BA35E26008488FA /* redrock@2x.png */; };
 		E263C77F1BA35E26008488FA /* shake@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E263C7521BA35E26008488FA /* shake@2x.png */; };
 		E263C7801BA35E26008488FA /* shake_match.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E263C7531BA35E26008488FA /* shake_match.mp3 */; };
@@ -208,7 +206,9 @@
 		E263C79D1BA35E60008488FA /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C7971BA35E60008488FA /* MeCell.m */; };
 		E263C79E1BA35E60008488FA /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C7981BA35E60008488FA /* MeCell.xib */; };
 		E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C79A1BA35E60008488FA /* NewsViewController.m */; };
+		E28B22871BAEBE24006E4A1F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E28B22841BAEBE24006E4A1F /* libMobClickLibrary.a */; settings = {ASSET_TAGS = (); }; };
 		E28BAE781B91B0E300EC4964 /* 20-3c.png in Resources */ = {isa = PBXBuildFile; fileRef = E28BAE771B91B0E300EC4964 /* 20-3c.png */; };
+		E2AA1A211BB19B290088DDC9 /* ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E2AA1A201BB19B290088DDC9 /* ok@2x.png */; settings = {ASSET_TAGS = (); }; };
 		E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E7DE231B94764A0081F699 /* LoginViewController.m */; };
 		E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE241B94764A0081F699 /* LoginViewController.xib */; };
 		E2E7DE2C1B9476730081F699 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE281B9476730081F699 /* background.png */; };
@@ -360,9 +360,6 @@
 		3B51FB6C1BA328BA009FB3C0 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		3B51FB6D1BA328BA009FB3C0 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		3B51FB6E1BA328BA009FB3C0 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
-		3B51FB701BA328BA009FB3C0 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
-		3B51FB711BA328BA009FB3C0 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
-		3B51FB721BA328BA009FB3C0 /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		3B51FB751BA328BA009FB3C0 /* ExampleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleAnimation.h; sourceTree = "<group>"; };
 		3B51FB761BA328BA009FB3C0 /* ExampleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleAnimation.m; sourceTree = "<group>"; };
 		3B51FB771BA328BA009FB3C0 /* OrangeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeAnimation.h; sourceTree = "<group>"; };
@@ -510,7 +507,6 @@
 		E263C74D1BA35E26008488FA /* cqupt2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt2@2x.jpg"; sourceTree = "<group>"; };
 		E263C74E1BA35E26008488FA /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
 		E263C74F1BA35E26008488FA /* map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map@2x.png"; sourceTree = "<group>"; };
-		E263C7501BA35E26008488FA /* ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok@2x.png"; sourceTree = "<group>"; };
 		E263C7511BA35E26008488FA /* redrock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "redrock@2x.png"; sourceTree = "<group>"; };
 		E263C7521BA35E26008488FA /* shake@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shake@2x.png"; sourceTree = "<group>"; };
 		E263C7531BA35E26008488FA /* shake_match.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shake_match.mp3; sourceTree = "<group>"; };
@@ -547,7 +543,11 @@
 		E263C7981BA35E60008488FA /* MeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MeCell.xib; sourceTree = "<group>"; };
 		E263C7991BA35E60008488FA /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
 		E263C79A1BA35E60008488FA /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		E28B22841BAEBE24006E4A1F /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		E28B22851BAEBE24006E4A1F /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		E28B22861BAEBE24006E4A1F /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		E28BAE771B91B0E300EC4964 /* 20-3c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3c.png"; sourceTree = "<group>"; };
+		E2AA1A201BB19B290088DDC9 /* ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ok@2x.png"; sourceTree = "<group>"; };
 		E2E7DE221B94764A0081F699 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E2E7DE231B94764A0081F699 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2E7DE241B94764A0081F699 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -566,11 +566,11 @@
 				3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */,
 				3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */,
 				3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */,
+				E28B22871BAEBE24006E4A1F /* libMobClickLibrary.a in Frameworks */,
 				3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */,
 				CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */,
 				CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */,
 				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
-				3B51FBA11BA328BA009FB3C0 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,16 +797,6 @@
 				3B51FB6E1BA328BA009FB3C0 /* UIWebView+AFNetworking.m */,
 			);
 			path = "UIKit+AFNetworking";
-			sourceTree = "<group>";
-		};
-		3B51FB6F1BA328BA009FB3C0 /* UMAnalytics_Sdk_3.5.10 */ = {
-			isa = PBXGroup;
-			children = (
-				3B51FB701BA328BA009FB3C0 /* libMobClickLibrary.a */,
-				3B51FB711BA328BA009FB3C0 /* MobClick.h */,
-				3B51FB721BA328BA009FB3C0 /* MobClickSocialAnalytics.h */,
-			);
-			path = UMAnalytics_Sdk_3.5.10;
 			sourceTree = "<group>";
 		};
 		3B51FB731BA328BA009FB3C0 /* UPStackMenu */ = {
@@ -1193,7 +1183,7 @@
 				3B51FB551BA328BA009FB3C0 /* ProgressHUD */,
 				3B51FB591BA328BA009FB3C0 /* UIColor+BFPaperColors */,
 				3B51FB5C1BA328BA009FB3C0 /* UIKit+AFNetworking */,
-				3B51FB6F1BA328BA009FB3C0 /* UMAnalytics_Sdk_3.5.10 */,
+				E28B22831BAEBE24006E4A1F /* UMAnalytics_Sdk_3.5.10 */,
 				3B51FB731BA328BA009FB3C0 /* UPStackMenu */,
 				CEF61B611B82BE1B0014B980 /* README.md */,
 			);
@@ -1308,8 +1298,8 @@
 				E263C74C1BA35E26008488FA /* cqupt1@2x.jpg */,
 				E263C74D1BA35E26008488FA /* cqupt2@2x.jpg */,
 				E263C74E1BA35E26008488FA /* cqupt3@2x.jpg */,
+				E2AA1A201BB19B290088DDC9 /* ok@2x.png */,
 				E263C74F1BA35E26008488FA /* map@2x.png */,
-				E263C7501BA35E26008488FA /* ok@2x.png */,
 				E263C7511BA35E26008488FA /* redrock@2x.png */,
 				E263C7521BA35E26008488FA /* shake@2x.png */,
 				E263C7531BA35E26008488FA /* shake_match.mp3 */,
@@ -1383,6 +1373,16 @@
 				E263C79A1BA35E60008488FA /* NewsViewController.m */,
 			);
 			path = News;
+			sourceTree = "<group>";
+		};
+		E28B22831BAEBE24006E4A1F /* UMAnalytics_Sdk_3.5.10 */ = {
+			isa = PBXGroup;
+			children = (
+				E28B22841BAEBE24006E4A1F /* libMobClickLibrary.a */,
+				E28B22851BAEBE24006E4A1F /* MobClick.h */,
+				E28B22861BAEBE24006E4A1F /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.5.10;
 			sourceTree = "<group>";
 		};
 		E2E7DE211B94764A0081F699 /* Login */ = {
@@ -1472,6 +1472,7 @@
 				TargetAttributes = {
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 777RZL5E43;
 					};
 					CEF61B421B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1503,7 +1504,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E263C77D1BA35E26008488FA /* ok@2x.png in Resources */,
 				3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */,
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
@@ -1590,6 +1590,7 @@
 				CEF273871B90D573009B5BA2 /* 20-2c.png in Resources */,
 				D96125E11B9F0C53002D4F80 /* iconfont-wodekecheng.png in Resources */,
 				CEF273931B90D573009B5BA2 /* 20-3餐厅psd.png in Resources */,
+				E2AA1A211BB19B290088DDC9 /* ok@2x.png in Resources */,
 				E263C79C1BA35E60008488FA /* FirstViewController.xib in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
 				D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */,
@@ -1845,6 +1846,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
@@ -1854,6 +1858,7 @@
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
 				PRODUCT_NAME = MoblieCQUPT_iOS;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1861,6 +1866,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
@@ -1870,6 +1878,7 @@
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
 				PRODUCT_NAME = MoblieCQUPT_iOS;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
