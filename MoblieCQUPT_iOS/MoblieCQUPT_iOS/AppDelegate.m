@@ -45,16 +45,13 @@
     [MobClick setAppVersion:@"V1.0.0"];
     [MobClick checkUpdate];
     [MobClick updateOnlineConfig];
-    
-//    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-////    view.backgroundColor = [UIColor whiteColor];
-//    [self.window addSubview:view];
+
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    ORWRequestCache *cache = [[ORWRequestCache alloc] init];
+//    ORWRequestCache *cache = [[ORWRequestCache alloc] init];
 //    NSLog(@"%d",[cache saveDataWithDictionary:@{@"test":@"1",@"haha":@2} url:@"http://122222223.com"]);
-    NSLog(@"%@",[cache filePath]);
+//    NSLog(@"%@",[cache filePath]);
     return YES;
 }
 
