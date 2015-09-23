@@ -57,9 +57,6 @@ static Boolean isClick = NO;
     self.delegate = self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-     self.tabBar.hidden = YES;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
