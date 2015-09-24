@@ -51,9 +51,10 @@
 - (void)dataFlash{
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/menuList" WithParameter:@{@"shop_id":_shopId} WithReturnValeuBlock:^(id returnValue) {
         
-        [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-        [_tableView reloadData];
-
+        if (returnValue) {
+            [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
+            [_tableView reloadData];
+        }
     } WithFailureBlock:^{
         UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         failLabel.text = @"哎呀！网络开小差了 T^T";

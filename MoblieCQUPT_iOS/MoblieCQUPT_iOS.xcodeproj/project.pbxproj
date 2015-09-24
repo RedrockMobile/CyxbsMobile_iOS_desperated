@@ -451,7 +451,6 @@
 		CEF273821B90D573009B5BA2 /* 20-3餐厅psd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3餐厅psd.png"; sourceTree = "<group>"; };
 		CEF273831B90D573009B5BA2 /* 20-3exam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3exam.png"; sourceTree = "<group>"; };
 		CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoblieCQUPT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEF61B311B82BC950014B980 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEF61B321B82BC950014B980 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1091,7 +1090,6 @@
 		CEF61B2D1B82BC950014B980 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CEF61B2E1B82BC950014B980 /* Info.plist */,
 				CEF61B2F1B82BC950014B980 /* main.m */,
 			);
 			name = "Supporting Files";
