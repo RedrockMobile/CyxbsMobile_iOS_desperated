@@ -71,6 +71,7 @@
 - (void)headerRereshing{
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
+        
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         // 刷新表格
         [self.tableView reloadData];

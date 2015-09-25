@@ -30,6 +30,8 @@
     [_returnButton addTarget:self
                       action:@selector(returnView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.tableView];
+    
+    [self dataFlash];
 }
 
 //覆盖初始化方法
@@ -37,7 +39,7 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(20, 90, MAIN_SCREEN_W-20*2, MAIN_SCREEN_H/2)];
         NSLog(@"%@",_shopId);
-        [self dataFlash];
+        
         _tableView.delegate = self;
         _tableView.dataSource = self;
         

@@ -38,13 +38,13 @@
 
 //显示详细菜单
 - (void)displayDetailDish{
-    
+    if (_detailData) {
         MenuViewController *mvc = [[MenuViewController alloc] init];
         mvc.shopId = _detailData[@"id"] ;
         [self presentViewController:mvc
                            animated:YES
                          completion:nil];
-
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
