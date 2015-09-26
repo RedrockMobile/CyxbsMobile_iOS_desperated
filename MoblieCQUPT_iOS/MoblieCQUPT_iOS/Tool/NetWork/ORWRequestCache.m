@@ -85,8 +85,18 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
  *  @brief  打印缓存列表
  *  @return 列表字段字典
  */
--(NSArray *)selectCacheDataList{
+- (NSArray *)selectCacheDataList{
     return [self selectCacheDataWithSql:[NSString stringWithFormat:@"SELECT * FROM '%@'",self.dataBaseName]];
+}
+
+- (BOOL)isOutOfDateWithUrl:(NSString *)urlString{
+    NSDictionary *fectchDictory= [self selectCacheDataWithUrl:urlString];
+    if (fectchDictory) {
+        NSInteger cacheDeadTime = (NSInteger)[fectchDictory objectForKey:ORWDeadtimeCol];
+        return (cacheDeadTime>[[NSDate date] timeIntervalSince1970]?YES:NO);
+    }
+    
+    return YES;
 }
 
 /**
@@ -178,7 +188,6 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
             [self.db close];
             return YES;
         }
-        
     }
     [self.db close];
     return NO;
@@ -194,7 +203,6 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
             [self.db close];
             return YES;
         }
-        
     }
     [self.db close];
     return NO;

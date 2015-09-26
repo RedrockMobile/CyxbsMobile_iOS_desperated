@@ -281,6 +281,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.navigationController.navigationBar.hidden = YES;
 }
 
@@ -311,6 +312,13 @@
     
 }
 
+/**
+ *  @author Orange-W, 15-09-13 03:09:05
+ *
+ *  @brief  头像功能
+ *  @param asset ALAsset
+ *  @return uiimage
+ */
 - (UIImage *)fullResolutionImageFromALAsset:(ALAsset *)asset
 {
     ALAssetRepresentation *assetRep = [asset defaultRepresentation];
@@ -320,5 +328,7 @@
                                  orientation:(UIImageOrientation)assetRep.orientation];
     return img;
 }
+
+
 
 @end
