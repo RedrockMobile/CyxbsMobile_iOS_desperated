@@ -30,31 +30,30 @@ static Boolean isClick = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self findButtonInit];
-    NSArray *item = @[@"我的课表",@"发现",@"查询",@"教务信息",@"我的"];
+    NSArray *item = @[@"课程",@"教务信息",@"查询",@"发现",@"我的"];
     int whichVc = 0;
     self.tabBar.tintColor = MAIN_COLOR;
     
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
-
-        if ([vc respondsToSelector:@selector(viewControllers)]) {
-            [[vc viewControllers][0] navigationItem].title = item[whichVc];
-            [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_icon_menu_%d.png",whichVc+1]]];
-
-            vc.navigationBar.tintColor = kItemTintColor;
-            vc.navigationBar.barTintColor = kBarTintColor;
-            
-            vc.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
-            vc.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-            vc.navigationBar.layer.shadowOpacity = 0.1f;
-            vc.navigationBar.layer.shadowRadius = 0.5f;
-        }
-        vc.tabBarController.hidesBottomBarWhenPushed = YES;
-        vc.hidesBottomBarWhenPushed = YES;
+        
+        [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_icon_menu_%d.png",whichVc+1]]];
+        vc.navigationController.navigationBar.hidden = NO;
+        vc.navigationController.navigationBar.tintColor = kItemTintColor;
+        vc.navigationController.navigationBar.barTintColor = kBarTintColor;
+        vc.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+        vc.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+        vc.navigationController.navigationBar.layer.shadowOpacity = 0.1f;
+        vc.navigationController.navigationBar.layer.shadowRadius = 0.5f;
+        vc.navigationController.navigationItem.title = item[whichVc];
+        
+//        vc.tabBarController.hidesBottomBarWhenPushed = YES;
+//        vc.hidesBottomBarWhenPushed = YES;
         whichVc==1?whichVc+=2:whichVc++;
     }
     
     self.delegate = self;
+    NSLog(@"%@",self.navigationController);
 }
 
 

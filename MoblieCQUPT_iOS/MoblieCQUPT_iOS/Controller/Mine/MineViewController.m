@@ -285,6 +285,10 @@
     self.navigationController.navigationBar.hidden = YES;
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 #pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
 //    UIImage *image = info[UIImagePickerControllerOriginalImage];
