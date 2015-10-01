@@ -206,9 +206,9 @@
 		E263C79D1BA35E60008488FA /* MeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C7971BA35E60008488FA /* MeCell.m */; };
 		E263C79E1BA35E60008488FA /* MeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C7981BA35E60008488FA /* MeCell.xib */; };
 		E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C79A1BA35E60008488FA /* NewsViewController.m */; };
-		E28B22871BAEBE24006E4A1F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E28B22841BAEBE24006E4A1F /* libMobClickLibrary.a */; settings = {ASSET_TAGS = (); }; };
+		E28B22871BAEBE24006E4A1F /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E28B22841BAEBE24006E4A1F /* libMobClickLibrary.a */; };
 		E28BAE781B91B0E300EC4964 /* 20-3c.png in Resources */ = {isa = PBXBuildFile; fileRef = E28BAE771B91B0E300EC4964 /* 20-3c.png */; };
-		E28D2A8F1BB3E43100490C41 /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = E28D2A8E1BB3E43100490C41 /* ok.png */; settings = {ASSET_TAGS = (); }; };
+		E28D2A8F1BB3E43100490C41 /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = E28D2A8E1BB3E43100490C41 /* ok.png */; };
 		E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E7DE231B94764A0081F699 /* LoginViewController.m */; };
 		E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE241B94764A0081F699 /* LoginViewController.xib */; };
 		E2E7DE2C1B9476730081F699 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE281B9476730081F699 /* background.png */; };
@@ -451,7 +451,6 @@
 		CEF273821B90D573009B5BA2 /* 20-3餐厅psd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3餐厅psd.png"; sourceTree = "<group>"; };
 		CEF273831B90D573009B5BA2 /* 20-3exam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3exam.png"; sourceTree = "<group>"; };
 		CEF61B2A1B82BC950014B980 /* cyxbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cyxbs.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEF61B311B82BC950014B980 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CEF61B321B82BC950014B980 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1865,6 +1864,7 @@
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
 				PRODUCT_NAME = cyxbs;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1884,6 +1884,7 @@
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
 				PRODUCT_NAME = cyxbs;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
