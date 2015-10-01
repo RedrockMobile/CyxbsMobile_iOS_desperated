@@ -108,6 +108,10 @@
      self.navigationController.navigationBarHidden=YES;
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    self.navigationController.navigationBar.hidden = NO;
+}
+
 - (void)enterShop{
     ShopViewController *svc = [[ShopViewController alloc] init];
     [self.navigationController pushViewController:svc

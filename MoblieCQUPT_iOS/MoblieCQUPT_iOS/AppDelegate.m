@@ -24,7 +24,7 @@
         NSDate *dataTime = [userDefault objectForKey:@"time"];
         if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
             self.window.rootViewController = view;
         }else {
             [userDefault removeObjectForKey:@"stuNum"];

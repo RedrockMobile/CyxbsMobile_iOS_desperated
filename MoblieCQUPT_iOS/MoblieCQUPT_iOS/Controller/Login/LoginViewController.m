@@ -199,7 +199,7 @@
             NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
             [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
             [self presentViewController:view animated:YES completion:nil];
         }
     } WithFailureBlock:^{
