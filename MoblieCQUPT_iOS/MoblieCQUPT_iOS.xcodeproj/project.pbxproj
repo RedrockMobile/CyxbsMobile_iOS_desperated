@@ -453,7 +453,7 @@
 		CEF273811B90D573009B5BA2 /* 20-3补考.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3补考.png"; sourceTree = "<group>"; };
 		CEF273821B90D573009B5BA2 /* 20-3餐厅psd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3餐厅psd.png"; sourceTree = "<group>"; };
 		CEF273831B90D573009B5BA2 /* 20-3exam.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3exam.png"; sourceTree = "<group>"; };
-		CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoblieCQUPT_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEF61B2A1B82BC950014B980 /* cyxbs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cyxbs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B2E1B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B2F1B82BC950014B980 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CEF61B311B82BC950014B980 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -1071,7 +1071,7 @@
 		CEF61B2B1B82BC950014B980 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */,
+				CEF61B2A1B82BC950014B980 /* cyxbs.app */,
 				CEF61B431B82BC950014B980 /* MoblieCQUPT_iOSTests.xctest */,
 			);
 			name = Products;
@@ -1448,7 +1448,7 @@
 			);
 			name = MoblieCQUPT_iOS;
 			productName = MoblieCQUPT_iOS;
-			productReference = CEF61B2A1B82BC950014B980 /* MoblieCQUPT_iOS.app */;
+			productReference = CEF61B2A1B82BC950014B980 /* cyxbs.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CEF61B421B82BC950014B980 /* MoblieCQUPT_iOSTests */ = {
@@ -1861,7 +1861,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_NAME = MoblieCQUPT_iOS;
+				PRODUCT_NAME = cyxbs;
 			};
 			name = Debug;
 		};
@@ -1877,7 +1877,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
-				PRODUCT_NAME = MoblieCQUPT_iOS;
+				PRODUCT_NAME = cyxbs;
 			};
 			name = Release;
 		};
