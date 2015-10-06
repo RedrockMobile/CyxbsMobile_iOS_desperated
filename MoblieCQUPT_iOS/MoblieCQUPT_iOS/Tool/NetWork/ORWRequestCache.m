@@ -86,14 +86,17 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
  *  @return 列表字段字典
  */
 - (NSArray *)selectCacheDataList{
-    return [self selectCacheDataWithSql:[NSString stringWithFormat:@"SELECT * FROM '%@'",self.dataBaseName]];
+    return [self selectCacheDataWithSql:[NSString stringWithFormat:@"SELECT * FROM %@",self.dataBaseName]];
 }
 
 - (BOOL)isOutOfDateWithUrl:(NSString *)urlString{
     NSDictionary *fectchDictory= [self selectCacheDataWithUrl:urlString];
+//    NSLog(@"%@",fectchDictory);
     if (fectchDictory) {
         NSInteger cacheDeadTime = (NSInteger)[fectchDictory objectForKey:ORWDeadtimeCol];
-        return (cacheDeadTime>[[NSDate date] timeIntervalSince1970]?YES:NO);
+        NSInteger nowTime = [[NSDate date] timeIntervalSince1970];
+        NSLog(@"比较:现在%d-记录%d",nowTime,cacheDeadTime);
+        return (cacheDeadTime>nowTime?YES:NO);
     }
     
     return YES;
@@ -107,16 +110,19 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
  *  @return 请求的 data 数据字典
  */
 - (NSDictionary *)selectCacheDataWithUrl:(NSString *)url{
-    NSString *selectSql = [NSString stringWithFormat:@"SELECT * FROM '%@' WHERE '%@'='%@'",self.dataBaseName,ORWPrimaryKeyCol,url];
+    NSString *selectSql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@='%@'",self.dataBaseName,ORWPrimaryKeyCol,url];
     return [[self selectCacheDataWithSql:selectSql] firstObject];
 }
 
 
 - (NSArray *)selectCacheDataWithSql:(NSString *)selectSql{
+    
     if ([self.db open]) {
+//        NSLog(@"sql:%@",selectSql);
         FMResultSet *result = [self.db executeQuery:selectSql];
         NSMutableArray *returnArray = [[NSMutableArray alloc]init];
         while([result next]) {
+//            NSLog(@"提取数据");
             [returnArray addObject:[self fectchFirstDataFromResultSet:result]];
         }
         
@@ -136,6 +142,7 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
         NSDictionary *fectchDataDictory = @{@"request_url":requestUrl,
                                      @"request_data":requestData,
                                      @"deadtime":[NSNumber numberWithInteger:deadtime]};
+//    NSLog(@"列值:%@", fectchDataDictory);
     return fectchDataDictory;
 }
 
@@ -169,15 +176,13 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
     second = second>0?:60*60*24*365;
     second += [[NSDate date] timeIntervalSince1970];
     
-    
-#warning (二进制格式转换要改)
     NSString *updateSql = [NSString
                            stringWithFormat:@"REPLACE INTO '%@' ('%@', '%@', '%@') VALUES ('%@', '%@', '%ld')",
                            self.dataBaseName,
                            ORWPrimaryKeyCol,
                            ORWDataCol,
                            ORWDeadtimeCol,
-                           urlString,dictionaryData,second];
+                           urlString,dictionaryData,(long)second];
     if ([self.db open]) {
         
         BOOL isUpdate = [self.db executeUpdate:updateSql];

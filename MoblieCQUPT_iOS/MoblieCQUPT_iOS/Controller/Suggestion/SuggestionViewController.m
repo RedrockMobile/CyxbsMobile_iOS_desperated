@@ -63,6 +63,8 @@
 - (void)textViewDidChange:(UITextView *)textView{
     if (_suggestTextView.text.length > 5) {
         self.navigationItem.rightBarButtonItem = self.send;
+        
+    }else if (_suggestTextView.text.length > 0){
         [_suggestTextView setPlaceHolder:@""];
     }else{
         self.navigationItem.rightBarButtonItem = nil;
