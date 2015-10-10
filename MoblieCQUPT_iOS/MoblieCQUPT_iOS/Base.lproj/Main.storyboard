@@ -43,7 +43,6 @@
         <!--Main View Controller-->
         <scene sceneID="7pK-Dq-FKx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fnw-6Y-uMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="MainViewController" hidesBottomBarWhenPushed="YES" id="MjZ-iQ-Zd5" customClass="MainViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="nbC-ns-h9Z"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -60,6 +59,7 @@
                         <segue destination="QRm-nB-PK6" kind="relationship" relationship="viewControllers" id="iiF-QW-juZ"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fnw-6Y-uMr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-776" y="508"/>
         </scene>
@@ -145,7 +145,6 @@
         <!--Navigation Controller-->
         <scene sceneID="cze-cx-ec5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="j6V-7z-MpZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MainNavigation" hidesBottomBarWhenPushed="YES" id="Ddu-Er-zQN" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nrl-rF-rJJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -158,6 +157,7 @@
                         <segue destination="MjZ-iQ-Zd5" kind="relationship" relationship="rootViewController" id="iNe-u8-qk3"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j6V-7z-MpZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1572" y="508"/>
         </scene>
