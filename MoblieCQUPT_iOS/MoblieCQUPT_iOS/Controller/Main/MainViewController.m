@@ -67,19 +67,14 @@ static Boolean isClick = NO;
 
 
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController{
-//    UITabBarItem *itemSelected = tabBarController.tabBar.selectedItem;
+    UITabBarItem *itemSelected = tabBarController.tabBar.selectedItem;
    
-//    if ([itemSelected isEqual:tabBarController.tabBar.items[2]]) {
-//       
-//        self.centerBar = itemSelected;
-//        if (!isClick) {
-//            [self findTbabarAnimation];
-//            
-//        }else{
-//            [self disFindTbabarAnimation];
-//        }
-//        return  NO;
-//    }
+    if ([itemSelected isEqual:tabBarController.tabBar.items[3]] || [itemSelected isEqual:tabBarController.tabBar.items[2]]) {
+        viewController.navigationController.navigationBarHidden = YES;
+    }else{
+        viewController.navigationController.navigationBarHidden = NO;
+        
+    }
     
     return  YES;
 }
