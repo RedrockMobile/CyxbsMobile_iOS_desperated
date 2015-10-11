@@ -63,9 +63,7 @@
     AudioServicesPlaySystemSound(ID);
     
     _detailViewController = [[ShopDetailViewController alloc] init];
-    if (!_data) {
-        ;
-    } else {
+    if (_data) {
         NSInteger randomNum = arc4random() % [_data count];
         _detailViewController.detailData = _data[randomNum];
         

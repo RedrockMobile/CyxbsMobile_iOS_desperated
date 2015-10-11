@@ -281,12 +281,12 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
-    self.navigationController.navigationBar.hidden = NO;
+    [super viewWillDisappear:animated];
 }
 
 #pragma mark - UIImagePickerController Delegate
