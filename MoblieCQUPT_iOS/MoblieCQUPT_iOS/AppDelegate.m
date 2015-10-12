@@ -24,7 +24,7 @@
         NSDate *dataTime = [userDefault objectForKey:@"time"];
         if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
             self.window.rootViewController = view;
         }else {
             [userDefault removeObjectForKey:@"stuNum"];
@@ -45,15 +45,13 @@
     [MobClick setAppVersion:@"V1.0.0"];
     [MobClick checkUpdate];
     [MobClick updateOnlineConfig];
-    
-//    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-////    view.backgroundColor = [UIColor whiteColor];
-//    [self.window addSubview:view];
+
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    SqliteCache *cache = [[SqliteCache alloc] init];
-    NSLog(@"%@",[cache filePath]);
+//    ORWRequestCache *cache = [[ORWRequestCache alloc] init];
+//    NSLog(@"%d",[cache saveDataWithDictionary:@{@"test":@"1",@"haha":@2} url:@"http://122222223.com"]);
+//    NSLog(@"%@",[cache filePath]);
     return YES;
 }
 

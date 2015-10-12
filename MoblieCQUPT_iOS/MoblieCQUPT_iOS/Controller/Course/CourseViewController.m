@@ -173,6 +173,7 @@
             for (int i = 0;i < weekDataArray.count; i ++) {
                 NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:weekDataArray[i]];
                 [weekDataDic setObject:[NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]] forKey:@"rawWeek"];
+                self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]] ;
                 [data addObject:weekDataDic];
             }
             [self handleWeek:data];

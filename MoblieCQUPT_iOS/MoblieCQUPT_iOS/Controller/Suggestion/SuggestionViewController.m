@@ -53,7 +53,7 @@
     self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = self.send;
+
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -61,8 +61,10 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
-    if (_suggestTextView.text.length > 0) {
+    if (_suggestTextView.text.length > 5) {
         self.navigationItem.rightBarButtonItem = self.send;
+        
+    }else if (_suggestTextView.text.length > 0){
         [_suggestTextView setPlaceHolder:@""];
     }else{
         self.navigationItem.rightBarButtonItem = nil;

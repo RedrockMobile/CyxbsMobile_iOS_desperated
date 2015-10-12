@@ -29,20 +29,22 @@
     _nameLabel.text = _detailData[@"name"];
     _addressLabel.text = _detailData[@"shop_address"];
     _menu = [[NSMutableArray alloc] init];
-    [_detailDishButton addTarget:self
-                          action:@selector(displayDetailDish) forControlEvents:UIControlEventTouchUpInside];
-    // Do any additional setup after loading the view from its nib.
+    
+    if (_detailData) {
+        [_detailDishButton addTarget:self
+                              action:@selector(displayDetailDish) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 //显示详细菜单
 - (void)displayDetailDish{
-    
+    if (_detailData) {
         MenuViewController *mvc = [[MenuViewController alloc] init];
         mvc.shopId = _detailData[@"id"] ;
         [self presentViewController:mvc
                            animated:YES
                          completion:nil];
-
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{

@@ -13,7 +13,7 @@
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 #import "UIKit+AFNetworking.h"
-#import "SqliteCache.h"
+#import "ORWRequestCache.h"
 
 /**
  *  @author Orange-W, 15-07-17 20:07:44
