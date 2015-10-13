@@ -269,6 +269,7 @@
         
         UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
         viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
+        self.navigationController.navigationBarHidden = NO;
         [self.navigationController pushViewController:viewController animated:YES];
     }else if (indexPath.section == 4){
         
@@ -287,6 +288,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
 }
 
 #pragma mark - UIImagePickerController Delegate
