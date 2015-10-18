@@ -19,10 +19,12 @@
 #import "ProgressHUD.h"
 
 @interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate,UPStackMenuDelegate>
+
+@property (assign, nonatomic)BOOL weekListShow;
+
 @end
 
 @implementation CourseViewController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,8 +41,6 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)initView {
-    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     _registRepeatClassSet = [[NSMutableSet alloc] init];
     _mainView = [[UIView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 49)];
     [self.view addSubview:_mainView];
@@ -252,7 +252,7 @@
             int period = course.period.intValue;
             
             if (rowNum == currentBegin && colNum == currentDay) {
-                UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-17, kWidthGrid*rowNum+kWidthGrid*period-17, 16, 16)];
+                UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-13, kWidthGrid*rowNum+kWidthGrid*period-13, 10, 10)];
                 tagView.image = [UIImage imageNamed:@"iconfont-tag.png"];
                 [_buttonTag addObject:tagView];
                 [_mainScrollView addSubview:tagView];
@@ -380,6 +380,10 @@
     [self.backgroundView removeFromSuperview];
     [self.alertView removeFromSuperview];
     [self.page removeFromSuperview];
+}
+
+- (void)showWeekList {
+    NSLog(@"11");
 }
 
 @end

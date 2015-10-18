@@ -24,7 +24,7 @@
     
     UIView *infoView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth/9*7-30, ScreenHeight/7*5-75-65)];
 
-    NSArray *array1 = [[NSArray alloc]initWithObjects:@"名称",@"老师",@"教室",@"时间",@"属性",@"周数", nil];
+    NSArray *array1 = [[NSArray alloc]initWithObjects:@"名称",@"老师",@"教室",@"时间",@"类型",@"周数", nil];
     NSArray *array2 = [[NSArray alloc]initWithObjects:@"iconfont-wodekecheng.png",@"iconfont-menuiconaccount.png",@"iconfont-location.png",@"iconfont-clock.png",@"iconfont-status.png",@"iconfont-week.png", nil];
     NSArray *array3 = [[NSArray alloc]initWithObjects:[dic objectForKey:@"course"],[dic objectForKey:@"teacher"],[dic objectForKey:@"classroom"],[NSString stringWithFormat:@"%@",[dic objectForKey:@"lesson"]],[dic objectForKey:@"type"],[dic objectForKey:@"rawWeek"], nil];
     for (int i = 0; i < 6; i ++) {

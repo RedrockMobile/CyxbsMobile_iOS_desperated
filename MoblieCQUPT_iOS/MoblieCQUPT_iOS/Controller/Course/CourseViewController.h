@@ -9,10 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "CourseView.h"
 #import "UPStackMenu.h"
-#import "TitleBaseViewController.h"
 
 
-@interface CourseViewController : TitleBaseViewController<UITabBarControllerDelegate>
+@interface CourseViewController : UIViewController<UITabBarControllerDelegate>
 
 @property (strong, nonatomic)UIView *mainView;
 @property (strong, nonatomic)UIScrollView *mainScrollView;

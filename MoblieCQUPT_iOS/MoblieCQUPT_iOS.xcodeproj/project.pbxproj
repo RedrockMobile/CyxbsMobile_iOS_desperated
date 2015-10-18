@@ -165,6 +165,9 @@
 		D9B577131B88742D005EFD18 /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */; };
 		D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */; };
 		D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577191B88744F005EFD18 /* iconfont-caidan.png */; };
+		D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = D9D7BD191BD0C3EC000B0EC9 /* iconfont-tag.png */; settings = {ASSET_TAGS = (); }; };
+		D9DF23A51BD32FF8007874D9 /* iconfont-name.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF23A31BD32FF8007874D9 /* iconfont-name.png */; settings = {ASSET_TAGS = (); }; };
+		D9DF23A61BD32FF8007874D9 /* iconfont-password.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF23A41BD32FF8007874D9 /* iconfont-password.png */; settings = {ASSET_TAGS = (); }; };
 		E23827071B9477D80058970E /* CourseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E23827011B9477D80058970E /* CourseButton.m */; };
 		E23827081B9477D80058970E /* CourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = E23827031B9477D80058970E /* CourseView.m */; };
 		E23827091B9477D80058970E /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E23827051B9477D80058970E /* CourseViewController.m */; };
@@ -214,9 +217,6 @@
 		E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE241B94764A0081F699 /* LoginViewController.xib */; };
 		E2E7DE2C1B9476730081F699 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE281B9476730081F699 /* background.png */; };
 		E2E7DE2D1B9476730081F699 /* icon_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE291B9476730081F699 /* icon_Logo.png */; };
-		E2E7DE2E1B9476730081F699 /* iconfont-iconfontzhanghu.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE2A1B9476730081F699 /* iconfont-iconfontzhanghu.png */; };
-		E2E7DE2F1B9476730081F699 /* iconfont-mima.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE2B1B9476730081F699 /* iconfont-mima.png */; };
-		E2E7DE401B9476810081F699 /* iconfont-tag.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE371B9476810081F699 /* iconfont-tag.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -483,6 +483,9 @@
 		D9B5770D1B88742D005EFD18 /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
 		D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan-selected.png"; sourceTree = "<group>"; };
 		D9B577191B88744F005EFD18 /* iconfont-caidan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan.png"; sourceTree = "<group>"; };
+		D9D7BD191BD0C3EC000B0EC9 /* iconfont-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-tag.png"; sourceTree = "<group>"; };
+		D9DF23A31BD32FF8007874D9 /* iconfont-name.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-name.png"; sourceTree = "<group>"; };
+		D9DF23A41BD32FF8007874D9 /* iconfont-password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-password.png"; sourceTree = "<group>"; };
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E23827001B9477D80058970E /* CourseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseButton.h; sourceTree = "<group>"; };
 		E23827011B9477D80058970E /* CourseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseButton.m; sourceTree = "<group>"; };
@@ -554,9 +557,6 @@
 		E2E7DE241B94764A0081F699 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		E2E7DE281B9476730081F699 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		E2E7DE291B9476730081F699 /* icon_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_Logo.png; sourceTree = "<group>"; };
-		E2E7DE2A1B9476730081F699 /* iconfont-iconfontzhanghu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-iconfontzhanghu.png"; sourceTree = "<group>"; };
-		E2E7DE2B1B9476730081F699 /* iconfont-mima.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-mima.png"; sourceTree = "<group>"; };
-		E2E7DE371B9476810081F699 /* iconfont-tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-tag.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1407,10 +1407,10 @@
 		E2E7DE271B9476730081F699 /* LoginIconImage */ = {
 			isa = PBXGroup;
 			children = (
+				D9DF23A31BD32FF8007874D9 /* iconfont-name.png */,
+				D9DF23A41BD32FF8007874D9 /* iconfont-password.png */,
 				E2E7DE281B9476730081F699 /* background.png */,
 				E2E7DE291B9476730081F699 /* icon_Logo.png */,
-				E2E7DE2A1B9476730081F699 /* iconfont-iconfontzhanghu.png */,
-				E2E7DE2B1B9476730081F699 /* iconfont-mima.png */,
 			);
 			path = LoginIconImage;
 			sourceTree = "<group>";
@@ -1418,6 +1418,7 @@
 		E2E7DE301B9476810081F699 /* CourseIcon */ = {
 			isa = PBXGroup;
 			children = (
+				D9D7BD191BD0C3EC000B0EC9 /* iconfont-tag.png */,
 				D96125F41B9F1178002D4F80 /* iconfont-location.png */,
 				D96125F01B9F10D1002D4F80 /* iconfont-status.png */,
 				D96125EE1B9F1010002D4F80 /* iconfont-week.png */,
@@ -1427,7 +1428,6 @@
 				D9A9532B1B9DA4F500D62690 /* iconfont-more.png */,
 				D99C4A821B9AB70200BEF33C /* iconfont_meizhou.png */,
 				D99C4A831B9AB70200BEF33C /* iconfont-meixueqi.png */,
-				E2E7DE371B9476810081F699 /* iconfont-tag.png */,
 			);
 			path = CourseIcon;
 			sourceTree = "<group>";
@@ -1517,6 +1517,7 @@
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
 				E263C77C1BA35E26008488FA /* map@2x.png in Resources */,
+				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
 				CE1B36EA1B9A207100824B96 /* calendar.png in Resources */,
@@ -1537,7 +1538,6 @@
 				E28D2A8F1BB3E43100490C41 /* ok.png in Resources */,
 				E263C77A1BA35E26008488FA /* cqupt2@2x.jpg in Resources */,
 				3B685C881BA44D6300E34491 /* Images.xcassets in Resources */,
-				E2E7DE2F1B9476730081F699 /* iconfont-mima.png in Resources */,
 				3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
 				3BDE16291BA5E6D3008F2DB7 /* XBSFindClassroomViewController.xib in Resources */,
@@ -1566,14 +1566,13 @@
 				D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */,
 				CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */,
 				E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */,
-				E2E7DE401B9476810081F699 /* iconfont-tag.png in Resources */,
 				CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */,
-				E2E7DE2E1B9476730081F699 /* iconfont-iconfontzhanghu.png in Resources */,
 				CE30FDDF1B9968C000C15AD4 /* iconfont77.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				E263C7801BA35E26008488FA /* shake_match.mp3 in Resources */,
 				3B1388CA1BA364530011EBF2 /* new_icon_menu_4@2x.png in Resources */,
 				CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */,
+				D9DF23A61BD32FF8007874D9 /* iconfont-password.png in Resources */,
 				E263C78C1BA35E26008488FA /* MenuViewController.xib in Resources */,
 				CE30FDDD1B9968C000C15AD4 /* icon_menu_new2.png in Resources */,
 				CE30FDE21B9968C000C15AD4 /* kongjiaoshichaxun.png in Resources */,
@@ -1583,6 +1582,7 @@
 				CE30FDE71B9968C000C15AD4 /* zuobiao.png in Resources */,
 				CE30FDE01B9968C000C15AD4 /* kaoshichaxun.png in Resources */,
 				CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */,
+				D9DF23A51BD32FF8007874D9 /* iconfont-name.png in Resources */,
 				E263C7821BA35E26008488FA /* shop@2x.png in Resources */,
 				E2E7DE2C1B9476730081F699 /* background.png in Resources */,
 				CE30FDDC1B9968C000C15AD4 /* chenjichaxun.png in Resources */,
