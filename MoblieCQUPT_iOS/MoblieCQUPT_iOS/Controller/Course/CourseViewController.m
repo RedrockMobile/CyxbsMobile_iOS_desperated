@@ -34,6 +34,11 @@
     [self handleData:_dataArray];
     [self loadNetData];
     // Do any additional setup after loading the view from its nib.
+    self.commonNavigationItem.title = @"22";
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    self.navigationItem.title = @"asdasdas";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -327,7 +332,7 @@
     UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, ScreenWidth/9*7-20, 40)];
     infoLabel.text = @"课程详细信息";
     infoLabel.textAlignment = NSTextAlignmentCenter;
-    infoLabel.font = [UIFont systemFontOfSize:25];
+    infoLabel.font = [UIFont systemFontOfSize:24];
     infoLabel.textColor = MAIN_COLOR;
     [_alertView addSubview:infoLabel];
     

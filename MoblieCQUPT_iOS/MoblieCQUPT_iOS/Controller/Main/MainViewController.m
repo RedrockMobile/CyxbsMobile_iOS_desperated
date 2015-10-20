@@ -31,7 +31,9 @@ static Boolean isClick = NO;
     [super viewDidLoad];
     [self findButtonInit];
     NSArray *item = @[@"课程",@"教务信息",@"查询",@"发现",@"我的"];
-    self.navigationItem.title = [item firstObject];
+    
+//    self.navigationController.title=@"22";
+    
     int whichVc = 0;
     self.tabBar.tintColor = MAIN_COLOR;
     
@@ -39,22 +41,28 @@ static Boolean isClick = NO;
         vc.title = item[whichVc];
         
         [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"new_icon_menu_%d.png",whichVc+1]]];
-        vc.navigationController.navigationBar.hidden = NO;
+//        vc.navigationController.navigationBar.hidden = NO;
         vc.navigationController.navigationBar.tintColor = kItemTintColor;
         vc.navigationController.navigationBar.barTintColor = kBarTintColor;
-        vc.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
-        vc.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
-        vc.navigationController.navigationBar.layer.shadowOpacity = 0.1f;
-        vc.navigationController.navigationBar.layer.shadowRadius = 0.5f;
+//        vc.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+//        vc.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
+//        vc.navigationController.navigationBar.layer.shadowOpacity = 0.1f;
+//        vc.navigationController.navigationBar.layer.shadowRadius = 0.5f;
         vc.navigationController.navigationItem.title = item[whichVc];
+        self.navigationItem.title = [item firstObject];
         
-//        vc.tabBarController.hidesBottomBarWhenPushed = YES;
-//        vc.hidesBottomBarWhenPushed = YES;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Wundeclared-selector"
+        if([vc respondsToSelector:@selector(setCommonNavigationItem:)]){
+            [vc performSelector:@selector(setCommonNavigationItem:) withObject:self.navigationItem];
+        }
+#pragma clang diagnostic pop
+        
         whichVc==1?whichVc+=2:whichVc++;
     }
-    
+
+
     self.delegate = self;
-    NSLog(@"%@",self.navigationController);
 }
 
 

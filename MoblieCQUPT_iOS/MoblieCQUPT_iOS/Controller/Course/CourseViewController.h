@@ -13,6 +13,8 @@
 
 @interface CourseViewController : UIViewController<UITabBarControllerDelegate>
 
+@property (nonatomic, strong) UINavigationItem *commonNavigationItem;
+
 @property (strong, nonatomic)UIView *mainView;
 @property (strong, nonatomic)UIScrollView *mainScrollView;
 @property (strong, nonatomic)NSMutableArray *colorArray;
