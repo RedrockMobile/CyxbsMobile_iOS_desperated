@@ -13,7 +13,7 @@
 
 @interface CourseViewController : UIViewController<UITabBarControllerDelegate>
 
-@property (nonatomic, strong) UINavigationItem *commonNavigationItem;
+@property (nonatomic, weak) UINavigationItem *commonNavigationItem;
 
 @property (strong, nonatomic)UIView *mainView;
 @property (strong, nonatomic)UIScrollView *mainScrollView;
