@@ -12,24 +12,4 @@
 
 
 @interface CourseViewController : UIViewController<UITabBarControllerDelegate>
-
-@property (nonatomic, weak) UINavigationItem *commonNavigationItem;
-
-@property (strong, nonatomic)UIView *mainView;
-@property (strong, nonatomic)UIScrollView *mainScrollView;
-@property (strong, nonatomic)NSMutableArray *colorArray;
-@property (strong, nonatomic)NSMutableSet *registRepeatClassSet;
-@property (strong, nonatomic)NSArray *dataArray;
-@property (strong, nonatomic)NSArray *weekDataArray;
-@property (strong, nonatomic)UIImageView *moreMenu;
-@property (strong, nonatomic)NSMutableArray *buttonTag;
-
-@property (strong, nonatomic) UIView *backgroundView;
-@property (strong, nonatomic) UIPageControl *page;
-@property (strong, nonatomic) UIView *alertView;
-@property (strong, nonatomic) UILabel *weekLabel;
-
-@property (strong, nonatomic)NSMutableDictionary *parameter;
-
-@property (assign, nonatomic)BOOL isSelectedView;
 @end

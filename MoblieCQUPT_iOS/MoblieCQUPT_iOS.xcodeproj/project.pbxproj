@@ -152,6 +152,8 @@
 		CEF61B621B82BE1B0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B611B82BE1B0014B980 /* README.md */; };
 		CEF61B681B82C0370014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B671B82C0370014B980 /* README.md */; };
 		CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFDE57C1B9C4D7900E772F0 /* mobile.png */; };
+		D910EE031BD66B7900EB9E89 /* iconfont-titleTag.png in Resources */ = {isa = PBXBuildFile; fileRef = D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */; settings = {ASSET_TAGS = (); }; };
+		D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */ = {isa = PBXBuildFile; fileRef = D95E8E5A1BD91AC8001776D5 /* iconfont-backTag.png */; settings = {ASSET_TAGS = (); }; };
 		D96125E11B9F0C53002D4F80 /* iconfont-wodekecheng.png in Resources */ = {isa = PBXBuildFile; fileRef = D96125E01B9F0C53002D4F80 /* iconfont-wodekecheng.png */; };
 		D96125E71B9F0DA9002D4F80 /* iconfont-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = D96125E31B9F0DA9002D4F80 /* iconfont-clock.png */; };
 		D96125E91B9F0DA9002D4F80 /* iconfont-menuiconaccount.png in Resources */ = {isa = PBXBuildFile; fileRef = D96125E51B9F0DA9002D4F80 /* iconfont-menuiconaccount.png */; };
@@ -469,6 +471,8 @@
 		CEF61B671B82C0370014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CEFDE57C1B9C4D7900E772F0 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
+		D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-titleTag.png"; sourceTree = "<group>"; };
+		D95E8E5A1BD91AC8001776D5 /* iconfont-backTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-backTag.png"; sourceTree = "<group>"; };
 		D96125E01B9F0C53002D4F80 /* iconfont-wodekecheng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-wodekecheng.png"; sourceTree = "<group>"; };
 		D96125E31B9F0DA9002D4F80 /* iconfont-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-clock.png"; sourceTree = "<group>"; };
 		D96125E51B9F0DA9002D4F80 /* iconfont-menuiconaccount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-menuiconaccount.png"; sourceTree = "<group>"; };
@@ -1418,6 +1422,8 @@
 		E2E7DE301B9476810081F699 /* CourseIcon */ = {
 			isa = PBXGroup;
 			children = (
+				D95E8E5A1BD91AC8001776D5 /* iconfont-backTag.png */,
+				D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */,
 				D9D7BD191BD0C3EC000B0EC9 /* iconfont-tag.png */,
 				D96125F41B9F1178002D4F80 /* iconfont-location.png */,
 				D96125F01B9F10D1002D4F80 /* iconfont-status.png */,
@@ -1481,7 +1487,7 @@
 				TargetAttributes = {
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 777RZL5E43;
+						DevelopmentTeam = MFV8K76J3Y;
 					};
 					CEF61B421B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
@@ -1517,6 +1523,7 @@
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
 				E263C77C1BA35E26008488FA /* map@2x.png in Resources */,
+				D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */,
 				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
@@ -1567,6 +1574,7 @@
 				CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */,
 				E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */,
 				CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */,
+				D910EE031BD66B7900EB9E89 /* iconfont-titleTag.png in Resources */,
 				CE30FDDF1B9968C000C15AD4 /* iconfont77.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				E263C7801BA35E26008488FA /* shake_match.mp3 in Resources */,
@@ -1862,11 +1870,13 @@
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mredrock.cyxbs-test";
 				PRODUCT_NAME = "掌上重邮";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1882,11 +1892,13 @@
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mredrock.cyxbs-test";
 				PRODUCT_NAME = "掌上重邮";
 				PROVISIONING_PROFILE = "";
 			};

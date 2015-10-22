@@ -14,31 +14,111 @@
 #import "Course.h"
 #import "CourseButton.h"
 #import "CourseView.h"
-#import "UPStackMenu.h"
 #import "LoginViewController.h"
 #import "ProgressHUD.h"
 
 @interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate,UPStackMenuDelegate>
 
-@property (assign, nonatomic)BOOL weekListShow;
+@property (assign, nonatomic) BOOL weekViewShow;
+@property (strong, nonatomic) UIButton *titleButton;
+@property (strong, nonatomic) UIImageView *tagView;
+@property (strong, nonatomic) UIScrollView *weekScrollView;
+@property (strong, nonatomic) UIView *shadeView;
+@property (strong, nonatomic) UIView *backView;
+@property (strong, nonatomic) UIButton *clickBtn;
+@property (strong, nonatomic) UIView *nav;
 
+@property (strong, nonatomic)UIView *mainView;
+@property (strong, nonatomic)UIScrollView *mainScrollView;
+@property (strong, nonatomic)NSMutableArray *colorArray;
+@property (strong, nonatomic)NSMutableSet *registRepeatClassSet;
+@property (strong, nonatomic)NSArray *dataArray;
+@property (strong, nonatomic)NSArray *weekDataArray;
+@property (strong, nonatomic)NSMutableArray *buttonTag;
+
+@property (strong, nonatomic) UIView *backgroundView;
+@property (strong, nonatomic) UIPageControl *page;
+@property (strong, nonatomic) UIView *alertView;
+
+@property (strong, nonatomic)NSMutableDictionary *parameter;
 @end
 
 @implementation CourseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _weekViewShow = NO;
     [self initView];
+    
+    _backView = [[UIView alloc]initWithFrame:CGRectMake(0, -370, ScreenWidth, 370)];
+    [self.view addSubview:_backView];
+    
+    _weekScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 340)];
+    _weekScrollView.contentSize = CGSizeMake(ScreenWidth, 35*19);
+    _weekScrollView.backgroundColor = [UIColor whiteColor];
+    _weekScrollView.bounces = NO;
+    [_backView addSubview:_weekScrollView];
+    
+    NSArray *weekArray = @[@"本学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周"];
+    
+    for (int i = 0; i < 19; i ++) {
+        UIButton *weekBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        weekBtn.frame = CGRectMake(0, 35*i, ScreenWidth, 35);
+        [weekBtn setTitle:weekArray[i] forState:UIControlStateNormal];
+        if (i == 0) {
+            weekBtn.selected = YES;
+            [weekBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            weekBtn.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+            _clickBtn = weekBtn;
+        }else {
+            [weekBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        }
+        [weekBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+        weekBtn.tag = i;
+        [_weekScrollView addSubview:weekBtn];
+    }
+    
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 340, ScreenWidth, 30);
+    backBtn.backgroundColor = [UIColor whiteColor];
+    [backBtn addTarget:self action:@selector(hiddenWeekView) forControlEvents:UIControlEventTouchUpInside];
+    [_backView addSubview:backBtn];
+    
+    UIImageView *backBtnImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
+    backBtnImage.center = CGPointMake(backBtn.frame.size.width/2, backBtn.frame.size.height/2);
+    backBtnImage.image = [UIImage imageNamed:@"iconfont-backTag.png"];
+    [backBtn addSubview:backBtnImage];
+    
+    UIView *underLine = [[UIView alloc]initWithFrame:CGRectMake(0, 340, ScreenWidth, 1)];
+    underLine.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+    [_backView addSubview:underLine];
+    
+    _nav = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    _nav.backgroundColor = MAIN_COLOR;
+    [self.view addSubview:_nav];
+    
+    _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    _titleButton.frame = CGRectMake(0, 0, 100, 44);
+    _titleButton.center = CGPointMake(ScreenWidth/2, _nav.frame.size.height/2+10);
+    [_titleButton setTitle:@"本学期" forState:UIControlStateNormal];
+    [_titleButton addTarget:self action:@selector(showWeekList) forControlEvents:UIControlEventTouchUpInside];
+    [_nav addSubview:_titleButton];
+    
+    _tagView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 17, 8)];
+    _tagView.center = CGPointMake(ScreenWidth/2+35, _nav.frame.size.height/2+10);
+    _tagView.image = [UIImage imageNamed:@"iconfont-titleTag.png"];
+    [_nav addSubview:_tagView];
+    
+    _shadeView = [[UIView alloc]initWithFrame:CGRectMake(0, 434, ScreenWidth, ScreenHeight-64-370)];
+    _shadeView.backgroundColor = [UIColor grayColor];
+    _shadeView.alpha = 0.8;
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _dataArray = [userDefault objectForKey:@"dataArray"];
     [self handleData:_dataArray];
     [self loadNetData];
     // Do any additional setup after loading the view from its nib.
-    self.commonNavigationItem.title = @"22";
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    self.navigationItem.title = @"asdasdas";
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -62,7 +142,6 @@
         if (i == weekDay - 2) {
             view.backgroundColor = [UIColor colorWithRed:253/255.0 green:251/255.0 blue:234/255.0 alpha:1];
         }
-
         [_mainScrollView addSubview:view];
     }
     
@@ -88,15 +167,6 @@
     _mainScrollView.showsVerticalScrollIndicator = NO;
     [_mainView addSubview:_mainScrollView];
     
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    _weekLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 40)];
-    _weekLabel.center = CGPointMake(ScreenWidth/2, -25);
-    NSString *week = [userDefaults objectForKey:@"nowWeek"];
-    _weekLabel.text = [NSString stringWithFormat:@"第%@周",week];
-    _weekLabel.textColor = [UIColor colorWithRed:3/255.0 green:169/255.0 blue:244/255.0 alpha:1];
-    _weekLabel.textAlignment = NSTextAlignmentCenter;
-    [_mainScrollView addSubview:_weekLabel];
-    
     for (int i = 0; i < 12; i ++) {
         UILabel *classNum = [[UILabel alloc]initWithFrame:CGRectMake(0, i*kWidthGrid, kWidthGrid*0.5, kWidthGrid)];
         classNum.text = [NSString stringWithFormat:@"%d",i+1];
@@ -104,50 +174,7 @@
         classNum.textColor = MAIN_COLOR;
         [_mainScrollView addSubview:classNum];
     }
-    
-    _moreMenu = [[UIImageView alloc]initWithFrame:CGRectMake(ScreenWidth - 60, ScreenHeight - 109, 45, 45)];
-    _moreMenu.layer.cornerRadius = _moreMenu.frame.size.width/2;
-    _moreMenu.layer.borderColor = [UIColor whiteColor].CGColor;
-    _moreMenu.layer.borderWidth = 2;
-    _moreMenu.image = [UIImage imageNamed:@"iconfont-more.png"];
-    
-    UPStackMenu *stack = [[UPStackMenu alloc] initWithContentView:_moreMenu];
-    stack.clipsToBounds = YES;
-    stack.delegate = self;
-    
-    [stack setAnimationType:UPStackMenuAnimationType_progressiveInverse];
-    
-    UPStackMenuItem *item = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont-meixueqi.png"] highlightedImage:[UIImage imageNamed:@"iconfont-meixueqi.png"]  title:@""];
-    [item setTitleColor:[UIColor redColor]];
-    item.tag = 1;
-    [stack addItem:item];
-    
-    UPStackMenuItem *item1 = [[UPStackMenuItem alloc] initWithImage:[UIImage imageNamed:@"iconfont_meizhou"] highlightedImage:[UIImage imageNamed:@"iconfont_meizhou"] title:@""];
-    [stack addItem:item1];
-    item1.tag = 2;
-    [self.view addSubview:stack];
-    item.delegate = self;
-    item1.delegate = self;
-    
     self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
-}
-
-- (void)didTouchStackMenuItem:(UPStackMenuItem *)item {
-    for (int i = 0; i < _buttonTag.count; i ++) {
-        [_buttonTag[i] removeFromSuperview];
-    }
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    if (item.tag == 1) {
-        //查询学期课程
-        NSMutableArray *dataArray = [userDefault objectForKey:@"dataArray"];
-        _dataArray = dataArray;
-        [self handleData:_dataArray];
-    }else if (item.tag == 2) {
-        //查询本周课程
-        NSMutableArray *weekDataArray = [userDefault objectForKey:@"weekDataArray"];
-        _dataArray = weekDataArray;
-        [self handleData:_dataArray];
-    }
 }
 
 - (void)loadNetData {
@@ -170,25 +197,9 @@
         [self handleWeek:data];
         [self handleColor:data];
         _dataArray = data;
-        NSString *nowWeek = [returnValue objectForKey:@"nowWeek"];
-        [_parameter setObject:nowWeek forKey:@"week"];
-        [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
-            NSMutableArray *weekDataArray = [NSMutableArray arrayWithArray:[returnValue objectForKey:@"data"]];
-            NSMutableArray *data = [NSMutableArray array];
-            for (int i = 0;i < weekDataArray.count; i ++) {
-                NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:weekDataArray[i]];
-                [weekDataDic setObject:[NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]] forKey:@"rawWeek"];
-                self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]] ;
-                [data addObject:weekDataDic];
-            }
-            [self handleWeek:data];
-            [self handleColor:data];
-            _weekDataArray = data;
-            [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
-            [userDefault synchronize];
-        } WithFailureBlock:nil];
-        _weekLabel.text = [NSString stringWithFormat:@"第%@周",nowWeek];
-        [userDefault setObject:nowWeek forKey:@"nowWeek"];
+        _weekDataArray = data;
+        self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
+        [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
         [userDefault synchronize];
         for (int i = 0; i < _buttonTag.count; i ++) {
@@ -388,7 +399,84 @@
 }
 
 - (void)showWeekList {
-    NSLog(@"11");
+    if (_weekViewShow) {
+        [_shadeView removeFromSuperview];
+        [UIView animateWithDuration:0.3 animations:^{
+            _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+        } completion:nil];
+        _tagView.transform = CGAffineTransformMakeRotation(0);
+        _weekViewShow = NO;
+    }else {
+        [UIView animateWithDuration:0.3 animations:^{
+            _backView.transform = CGAffineTransformMakeTranslation(0, 434);
+        } completion:^(BOOL finished) {
+            [[[UIApplication sharedApplication]keyWindow]addSubview:_shadeView];
+        }];
+        _tagView.transform = CGAffineTransformMakeRotation(M_PI);
+        _weekViewShow = YES;
+        
+    }
+}
+
+- (void)hiddenWeekView {
+    [_shadeView removeFromSuperview];
+    [UIView animateWithDuration:0.3 animations:^{
+        _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+    } completion:nil];
+    _tagView.transform = CGAffineTransformMakeRotation(0);
+    _weekViewShow = NO;
+}
+
+- (void)clickBtn:(UIButton *)sender {
+    for (int i = 0; i < _buttonTag.count; i ++) {
+        [_buttonTag[i] removeFromSuperview];
+    }
+    if (sender.tag >= 0 && sender.tag <= 10) {
+        _tagView.center = CGPointMake(ScreenWidth/2+35, _nav.frame.size.height/2+10);
+    }else if (sender.tag > 10 && sender.tag < 19) {
+        _tagView.center = CGPointMake(ScreenWidth/2+45, _nav.frame.size.height/2+10);
+    }
+    
+    if (_clickBtn == nil) {
+        sender.selected = YES;
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        sender.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+        [_titleButton setTitle:[NSString stringWithFormat:@"%@",sender.titleLabel.text] forState:UIControlStateNormal];
+        _clickBtn = sender;
+    }else if (_clickBtn == sender) {
+        sender.selected = YES;
+    }else if (_clickBtn != sender) {
+        _clickBtn.selected = NO;
+        [_clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        _clickBtn.backgroundColor = [UIColor whiteColor];
+        sender.selected = YES;
+        [sender setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        sender.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+        [_titleButton setTitle:[NSString stringWithFormat:@"%@",sender.titleLabel.text] forState:UIControlStateNormal];
+        _clickBtn = sender;
+    }
+    _dataArray = [self getWeekCourseArray:sender.tag];
+    [self handleData:_dataArray];
+    [self showWeekList];
+}
+
+- (NSMutableArray *)getWeekCourseArray:(NSInteger)week {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    _dataArray = [userDefault objectForKey:@"dataArray"];
+    _weekDataArray = [userDefault objectForKey:@"weekDataArray"];
+    NSMutableArray *weekCourseArray = [NSMutableArray array];
+    if (week == 0) {
+        weekCourseArray = [NSMutableArray arrayWithArray:_dataArray];
+    }else {
+        for (int i = 0; i < _weekDataArray.count; i ++) {
+            if ([_weekDataArray[i][@"week"] containsObject:[NSNumber numberWithInteger:week]]) {
+                NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:_weekDataArray[i]];
+                [weekDataDic setObject:[NSString stringWithFormat:@"%ld周",week] forKey:@"rawWeek"];
+                [weekCourseArray addObject:weekDataDic];
+            }
+        }
+    }
+    return weekCourseArray;
 }
 
 @end

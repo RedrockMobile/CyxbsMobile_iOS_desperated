@@ -76,7 +76,7 @@ static Boolean isClick = NO;
 
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    if ([item isEqual:self.tabBar.items[3]] || [item isEqual:self.tabBar.items[2]]) {
+    if ([item isEqual:self.tabBar.items[0]] || [item isEqual:self.tabBar.items[2]] || [item isEqual:self.tabBar.items[3]]) {
         self.navigationController.navigationBarHidden = YES;
     }else{
         self.navigationController.navigationBarHidden = NO;
@@ -88,7 +88,7 @@ static Boolean isClick = NO;
             self.navigationItem.title = names[i];
         }
     }
-    }
+}
 
 
 
