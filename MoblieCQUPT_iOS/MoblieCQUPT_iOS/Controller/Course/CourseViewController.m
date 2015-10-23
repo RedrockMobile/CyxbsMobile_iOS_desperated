@@ -104,8 +104,8 @@
     [_titleButton addTarget:self action:@selector(showWeekList) forControlEvents:UIControlEventTouchUpInside];
     [_nav addSubview:_titleButton];
     
-    _tagView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 17, 8)];
-    _tagView.center = CGPointMake(ScreenWidth/2+35, _nav.frame.size.height/2+10);
+    _tagView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 13, 6)];
+    _tagView.center = CGPointMake(ScreenWidth/2+37, _nav.frame.size.height/2+10);
     _tagView.image = [UIImage imageNamed:@"iconfont-titleTag.png"];
     [_nav addSubview:_tagView];
     
@@ -131,7 +131,7 @@
     [self.view addSubview:_mainView];
     
     UIView *dayView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 30)];
-    dayView.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
+    dayView.backgroundColor = [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1];
     [_mainView addSubview:dayView];
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 30, ScreenWidth, _mainView.frame.size.height - 30)];
     
@@ -140,26 +140,30 @@
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
         if (i == weekDay - 2) {
-            view.backgroundColor = [UIColor colorWithRed:253/255.0 green:251/255.0 blue:234/255.0 alpha:1];
+            view.backgroundColor = [UIColor colorWithRed:253/255.0 green:246/255.0 blue:235/255.0 alpha:1];
         }
         [_mainScrollView addSubview:view];
     }
     
-    NSArray *array = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
+    NSArray *array = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];
     for (int i = 0; i < 7; i ++) {
         UILabel *dayLabel = [[UILabel alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 1, kWidthGrid, 29)];
         dayLabel.text = [NSString stringWithFormat:@"%@",array[i]];
+        dayLabel.font = [UIFont systemFontOfSize:14];
         dayLabel.textAlignment = NSTextAlignmentCenter;
-        dayLabel.textColor = MAIN_COLOR;
+        dayLabel.textColor = [UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1];
+        
+        UIView *dayLabelUnderLine = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 29, kWidthGrid, 1)];
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
         if (weekDay == 1) {
             weekDay = 8;
         }
         if (i == weekDay - 2) {
-            dayLabel.textColor = [UIColor colorWithRed:255/255.0 green:152/255.0 blue:0/255.0 alpha:1];
-            dayLabel.backgroundColor = [UIColor colorWithRed:253/255.0 green:251/255.0 blue:234/255.0 alpha:1];
+            dayLabel.textColor = MAIN_COLOR;
+            dayLabelUnderLine.backgroundColor = MAIN_COLOR;
         }
+        [dayView addSubview:dayLabelUnderLine];
         [dayView addSubview:dayLabel];
     }
     
@@ -171,7 +175,7 @@
         UILabel *classNum = [[UILabel alloc]initWithFrame:CGRectMake(0, i*kWidthGrid, kWidthGrid*0.5, kWidthGrid)];
         classNum.text = [NSString stringWithFormat:@"%d",i+1];
         classNum.textAlignment = NSTextAlignmentCenter;
-        classNum.textColor = MAIN_COLOR;
+        classNum.textColor = [UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1];
         [_mainScrollView addSubview:classNum];
     }
     self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
@@ -238,20 +242,20 @@
 }
 
 - (void)handleColor:(NSMutableArray *)courses {
-    _colorArray = [[NSMutableArray alloc]initWithObjects:@"229,28,35",@"233,30,99",@"156,39,175",@"103,58,183",@"63,81,181",@"86,119,252",@"3,169,244",@"0,188,212",@"0,150,136",@"37,150,36",@"139,195,74",@"205,220,57",@"29,233,182",@"255,193,7",@"255,152,0",@"255,87,34",@"224,64,251",@"255,109,0",@"61,90,254",@"213,0,249", nil];
+    _colorArray = [[NSMutableArray alloc]initWithObjects:@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242", @"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",nil];
     NSMutableArray *courseArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < courses.count; i ++) {
         [courseArray addObject:[courses[i] objectForKey:@"course"]];
     }
     NSSet *courseSet = [NSSet setWithArray:courseArray];
+    int j = 0;
     for (NSString *string in courseSet) {
-        int j = arc4random()%_colorArray.count;
         for (int i = 0; i < courses.count; i ++) {
             if ([string isEqualToString:[NSString stringWithFormat:@"%@",[courses[i] objectForKey:@"course"]]]) {
                 [courses[i] setObject:_colorArray[j] forKey:@"color"];
             }
         }
-        [_colorArray removeObjectAtIndex:j];
+        j++;
     }
 }
 
@@ -305,7 +309,7 @@
         NSString *red = array[0];
         NSString *green = array[1];
         NSString *blue = array[2];
-        return RGBColor(red.floatValue, green.floatValue, blue.floatValue, 0.5);
+        return RGBColor(red.floatValue, green.floatValue, blue.floatValue, 1);
     }
     return [UIColor lightGrayColor];
 }
@@ -432,7 +436,7 @@
         [_buttonTag[i] removeFromSuperview];
     }
     if (sender.tag >= 0 && sender.tag <= 10) {
-        _tagView.center = CGPointMake(ScreenWidth/2+35, _nav.frame.size.height/2+10);
+        _tagView.center = CGPointMake(ScreenWidth/2+37, _nav.frame.size.height/2+10);
     }else if (sender.tag > 10 && sender.tag < 19) {
         _tagView.center = CGPointMake(ScreenWidth/2+45, _nav.frame.size.height/2+10);
     }
