@@ -152,8 +152,7 @@
         dayLabel.font = [UIFont systemFontOfSize:14];
         dayLabel.textAlignment = NSTextAlignmentCenter;
         dayLabel.textColor = [UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1];
-        
-        UIView *dayLabelUnderLine = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 29, kWidthGrid, 1)];
+        UIView *dayLabelUnderLine = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid+1, 29, kWidthGrid-2, 1)];
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
         if (weekDay == 1) {
@@ -272,7 +271,7 @@
             int period = course.period.intValue;
             
             if (rowNum == currentBegin && colNum == currentDay) {
-                UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-13, kWidthGrid*rowNum+kWidthGrid*period-13, 10, 10)];
+                UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-8, kWidthGrid*rowNum+kWidthGrid*period-8, 6, 6)];
                 tagView.image = [UIImage imageNamed:@"iconfont-tag.png"];
                 [_buttonTag addObject:tagView];
                 [_mainScrollView addSubview:tagView];
