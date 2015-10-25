@@ -76,13 +76,13 @@ static Boolean isClick = NO;
 
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    if ([item isEqual:self.tabBar.items[0]] || [item isEqual:self.tabBar.items[2]] || [item isEqual:self.tabBar.items[3]]) {
+    if ([item isEqual:self.tabBar.items[0]] || [item isEqual:self.tabBar.items[2]]) {
         self.navigationController.navigationBarHidden = YES;
     }else{
         self.navigationController.navigationBarHidden = NO;
     }
     
-    NSArray *names = @[@"课程",@"教务信息",@"查询",@"发现",@"我的"];
+    NSArray *names = @[@"课程",@"教务信息",@"发现",@"我的"];
     for (int i=0; i<=3; i++) {
         if ([item isEqual:self.tabBar.items[i]]){
             self.navigationItem.title = names[i];
