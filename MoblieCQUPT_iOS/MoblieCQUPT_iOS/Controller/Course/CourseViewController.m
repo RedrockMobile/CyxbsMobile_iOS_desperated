@@ -113,6 +113,11 @@
     _shadeView.backgroundColor = [UIColor grayColor];
     _shadeView.alpha = 0.8;
     
+    UIButton *shadeViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shadeViewBtn.frame = CGRectMake(0, 0, _shadeView.frame.size.width, _shadeView.frame.size.height);
+    [shadeViewBtn addTarget:self action:@selector(clickShadeView) forControlEvents:UIControlEventTouchUpInside];
+    [_shadeView  addSubview:shadeViewBtn];
+    
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     _dataArray = [userDefault objectForKey:@"dataArray"];
     [self handleData:_dataArray];
@@ -461,6 +466,15 @@
     _dataArray = [self getWeekCourseArray:sender.tag];
     [self handleData:_dataArray];
     [self showWeekList];
+}
+
+- (void)clickShadeView {
+    [_shadeView removeFromSuperview];
+    [UIView animateWithDuration:0.3 animations:^{
+        _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+    } completion:nil];
+    _tagView.transform = CGAffineTransformMakeRotation(0);
+    _weekViewShow = NO;
 }
 
 - (NSMutableArray *)getWeekCourseArray:(NSInteger)week {
