@@ -44,14 +44,14 @@
     _currentHeight = 44;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[@{},
-                         @{@"cell":@"考试安排"},
-                         @{@"cell":@"补考安排"},
-                         @{@"cell":@"期末成绩"},
-                         @{@"cell":@"空教室"},
+                         @{@"cell":@"考试安排",@"img":@"考试安排.png"},
+                         @{@"cell":@"补考安排",@"img":@"补考安排.png"},
+                         @{@"cell":@"期末成绩",@"img":@"期末成绩.png"},
+                         @{@"cell":@"空教室",@"img":@"空教室.png"},
 //                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
-                         @{@"cell":@"校历",@"img":@"iconfont77.png",@"controller":@"CalendarViewController"},
-                         @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
-                         @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"XBSAboutViewController"},
+                         @{@"cell":@"校历",@"img":@"校历.png",@"controller":@"CalendarViewController"},
+                         @{@"cell":@"反馈信息",@"img":@"反馈信息.png",@"controller":@"SuggestionViewController"},
+                         @{@"cell":@"关于",@"img":@"关于.png",@"controller":@"XBSAboutViewController"},
                          @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
                         ]
                        mutableCopy];
@@ -214,17 +214,32 @@
         
         cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
    
+        
+        
+        if(indexPath.section == 0){
+            
+            UIButton *headImage = self.myPhoto;
+            headImage.backgroundColor = [UIColor blackColor];
+            headImage.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
+            headImage.center = CGPointMake(headImage.center.x, cell.contentView.center.y);
+            [cell addSubview:headImage];
+            return  cell;
+        }
+        
+        
         UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
-        if (indexPath.section == 4 ) {
-            imgView.tintColor = [UIColor redColor];
-        }else{
-            imgView.tintColor = MAIN_COLOR;
+        
+        /** 登出图标 **/
+        if (indexPath.section == [_cellDictionary count]-1 ) {
+            imgView.tintColor = [UIColor blackColor];
         }
         
         imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
         imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y);
         [cell addSubview:imgView];
+        
+        
         
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
