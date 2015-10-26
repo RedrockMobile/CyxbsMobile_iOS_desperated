@@ -12,5 +12,5 @@
 @property (nonatomic, strong) UIViewController *parentDelegate;
 @property (nonatomic, strong) UILabel *titleLabel;
 - (instancetype)initWithTitle:(NSString *)title Delegate:(UIViewController *)delegate;
-
+ 
 @end
