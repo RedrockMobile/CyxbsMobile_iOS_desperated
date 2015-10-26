@@ -20,38 +20,42 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hW9-uo-OBG">
-                    <rect key="frame" x="3" y="143" width="364" height="1"/>
+                    <rect key="frame" x="3" y="179" width="364" height="1"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="DUL-KO-Qjr"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1685" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E0e-9M-1LI">
-                    <rect key="frame" x="68" y="126" width="32" height="17"/>
+                    <rect key="frame" x="68" y="162" width="32" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 教学简报2015年第2期" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSC-hO-J52" userLabel="教学简报2015年第2期">
-                    <rect key="frame" x="12" y="75" width="201" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 教学简报2015年第2期" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSC-hO-J52" userLabel="教学简报2015年第2期">
+                    <rect key="frame" x="12" y="75" width="200.5" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="08E-tk-nQx"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="72" id="B9Y-Ao-tzC"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="浏览量：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITo-zd-NrJ">
-                    <rect key="frame" x="12" y="126" width="56" height="17"/>
+                    <rect key="frame" x="12" y="162" width="56" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="次" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRF-yl-DQe">
-                    <rect key="frame" x="108" y="126" width="14" height="19"/>
+                    <rect key="frame" x="108" y="162" width="14" height="19"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015年07月21日" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V0M-sB-CWs">
-                    <rect key="frame" x="249" y="127" width="106" height="17"/>
+                    <rect key="frame" x="249" y="163" width="106" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -61,7 +65,6 @@
             <constraints>
                 <constraint firstItem="E0e-9M-1LI" firstAttribute="height" secondItem="V0M-sB-CWs" secondAttribute="height" id="1fo-e5-gwf"/>
                 <constraint firstItem="V0M-sB-CWs" firstAttribute="leading" secondItem="hW9-uo-OBG" secondAttribute="trailing" constant="-82" id="2Yx-RL-txT"/>
-                <constraint firstItem="hW9-uo-OBG" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="143" id="5k4-ro-Avh"/>
                 <constraint firstItem="XRF-yl-DQe" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="15" id="626-Hv-6R1"/>
                 <constraint firstItem="hW9-uo-OBG" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="32" id="G3g-sn-r3F"/>
                 <constraint firstItem="ITo-zd-NrJ" firstAttribute="top" secondItem="tSC-hO-J52" secondAttribute="bottom" constant="15" id="Le8-Fb-tpJ"/>
