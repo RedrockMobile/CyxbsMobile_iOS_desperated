@@ -75,7 +75,7 @@
     _passwordField.placeholder = @"身份证后六位";
     _passwordField.tintColor = MAIN_COLOR;
     _passwordField.secureTextEntry = YES;
-    _passwordField.keyboardType = UIKeyboardTypeNumberPad;
+    _passwordField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     _passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _passwordField.delegate = self;
     [textFieldView addSubview:_passwordField];
