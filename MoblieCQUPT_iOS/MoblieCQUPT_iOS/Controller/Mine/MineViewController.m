@@ -44,11 +44,12 @@
     
     _currentHeight = 65;
     _cellDictionary = [NSMutableArray array];
+//    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule), @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
     _cellDictionary = [@[@{},
-                         @{@"cell":@"考试安排",@"img":@"考试安排.png"},
-                         @{@"cell":@"补考安排",@"img":@"补考安排.png"},
-                         @{@"cell":@"期末成绩",@"img":@"期末成绩.png"},
-                         @{@"cell":@"空教室",@"img":@"空教室.png"},
+                         @{@"cell":@"考试安排",@"img":@"考试安排.png",@"action":@"clickForExamSchedule"},
+                         @{@"cell":@"补考安排",@"img":@"补考安排.png",@"action":@"clickForExamSchedule"},
+                         @{@"cell":@"期末成绩",@"img":@"期末成绩.png",@"action":@"clickForExamGrade"},
+                         @{@"cell":@"空教室",@"img":@"空教室.png",@"action":@"clickForEmptyClassroom"},
 //                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
                          @{@"cell":@"校历",@"img":@"校历.png",@"controller":@"CalendarViewController"},
                          @{@"cell":@"反馈信息",@"img":@"反馈信息.png",@"controller":@"SuggestionViewController"},
@@ -69,7 +70,7 @@
     
     /**button **/
 //    self.clicker = [[XBSConsultButtonClicker alloc]init];
-//    self.clicker.delegate = self;
+    self.clicker.delegate = (MainViewController *)self;
 
 #pragma mark 各种button的查询
 //    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
@@ -114,6 +115,13 @@
     _currentHeight += _tableView.frame.size.height;
     
 
+}
+
+- (XBSConsultButtonClicker *)clicker{
+    if (!_clicker) {
+        _clicker = [[XBSConsultButtonClicker alloc]init];
+    }
+    return _clicker;
 }
 
 - (UITableView *)tableView{
@@ -169,26 +177,6 @@
 }
 
 
-
-- (UILabel *)loginLabel{
-    if (!_loginLabel) {
-        _loginLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0,MAIN_SCREEN_W/2, 0)];
-        _loginLabel.textColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
-        
-        NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
-        NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc]
-                                                initWithString:[NSString stringWithFormat:@"欢迎您, %@",name]];
-        
-        [loginText addAttribute:NSForegroundColorAttributeName value:[UIColor whiteColor] range:NSMakeRange(0, 4)];
-        _loginLabel.attributedText = loginText;
-        _loginLabel.textAlignment = NSTextAlignmentCenter;
-        
-        [_loginLabel setFont:[UIFont fontWithName:@"Helvetica-Bold" size:20]];
-        [_loginLabel sizeToFit];
-        _loginLabel.center = CGPointMake(MAIN_SCREEN_W/2, _myPhoto.center.y+_myPhoto.frame.size.height/2+_loginLabel.frame.size.height+8);
-    }
-    return _loginLabel;
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -300,6 +288,16 @@
             [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek",@"defaultImageNSUrl"]];
         }];
     }
+    
+    if(_cellDictionary[indexPath.section][@"action"]){
+        NSString *selectString = _cellDictionary[indexPath.section][@"action"];
+        [self.clicker performSelector:NSSelectorFromString(selectString)];
+//        NSLog(@"s");
+        //        [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+//
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
