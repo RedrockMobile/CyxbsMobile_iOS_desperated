@@ -43,8 +43,12 @@
     
     _currentHeight = 44;
     _cellDictionary = [NSMutableArray array];
-    _cellDictionary = [@[
-                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
+    _cellDictionary = [@[@{},
+                         @{@"cell":@"考试安排"},
+                         @{@"cell":@"补考安排"},
+                         @{@"cell":@"期末成绩"},
+                         @{@"cell":@"空教室"},
+//                        @{@"cell":@"去哪吃",@"img":@"zuobiao.png",@"controller":@"ShakeViewController"},
                          @{@"cell":@"校历",@"img":@"iconfont77.png",@"controller":@"CalendarViewController"},
                          @{@"cell":@"反馈信息",@"img":@"yijianfankui.png",@"controller":@"SuggestionViewController"},
                          @{@"cell":@"关于",@"img":@"guanyu.png",@"controller":@"XBSAboutViewController"},
@@ -56,68 +60,59 @@
     
     topView.backgroundColor = MAIN_COLOR;
 
-    _currentHeight += topView.frame.size.height;
-    [_mainScrollView addSubview:topView];
+//    _currentHeight += topView.frame.size.height;
+//    [_mainScrollView addSubview:topView];
 
-    [_mainScrollView addSubview:self.myPhoto];
-    [_mainScrollView addSubview:self.loginLabel];
+//    [_mainScrollView addSubview:self.myPhoto];
+//    [_mainScrollView addSubview:self.loginLabel];
     
     /**button **/
-    self.clicker = [[XBSConsultButtonClicker alloc]init];
-    self.clicker.delegate = self;
-    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
-    NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
+//    self.clicker = [[XBSConsultButtonClicker alloc]init];
+//    self.clicker.delegate = self;
+
+#pragma mark 各种button的查询
+//    NSArray *tempStrArr = @[@"20-3b.png",@"20-3补考.png",@"20-3exam.png",@"20-3c.png"];
+//    NSArray *text = @[@"考试安排",@"补考安排",@"期末成绩",@"找自习室"];
 //     NSArray *tempStrArr = @[@"kaoshichaxun.png",@"bukaochaxun.png",@"chenjichaxun",@"kongjiaoshichaxun.png"];
-    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
-        @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
+//    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule),
+//        @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
     
-    //button
-    for (int i=0; i<4; i++) {
-        UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, _currentHeight, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
-        labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
-        labelButton.layer.borderWidth = 1;
-        UIImage *stretchableButtonImage = [UIImage imageNamed:tempStrArr[i]];
-//        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
-        UIImageView *buttonView = [[UIImageView alloc] initWithImage:stretchableButtonImage];
-        CGRect contentFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
-        buttonView.frame = contentFrame;
-        buttonView.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2 +8 -  buttonView.frame.size.height/2);
-        [labelButton addSubview:buttonView];
-        
-        CGRect textFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.04, MAIN_SCREEN_W*0.04);
-        UILabel *textLabel = [[UILabel alloc]initWithFrame:textFrame];
-        textLabel.text = text[i];
-        [textLabel setFont:[UIFont fontWithName:@"GeezaPro" size:12]];
-        [textLabel sizeToFit];
-        textLabel.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2+12+textLabel.frame.size.height/2);
-        [labelButton addSubview:buttonView];
-       
-        [labelButton addSubview:textLabel];
-        
-        [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
-        
-        labelButton.backgroundColor = [UIColor whiteColor];
-        
-        [_mainScrollView addSubview:labelButton];
-    }
-    
-    _currentHeight += MAIN_SCREEN_H*0.1;
+
+//    for (int i=0; i<4; i++) {
+//        UIButton *labelButton = [[UIButton alloc] initWithFrame:CGRectMake( MAIN_SCREEN_W/4*i, _currentHeight, MAIN_SCREEN_W/4, MAIN_SCREEN_H*0.1)];
+//        labelButton.layer.borderColor = [UIColor groupTableViewBackgroundColor].CGColor;
+//        labelButton.layer.borderWidth = 1;
+//        UIImage *stretchableButtonImage = [UIImage imageNamed:tempStrArr[i]];
+////        [labelButton setImage:stretchableButtonImage forState:UIControlStateNormal];
+//        UIImageView *buttonView = [[UIImageView alloc] initWithImage:stretchableButtonImage];
+//        CGRect contentFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.08, MAIN_SCREEN_W*0.08);
+//        buttonView.frame = contentFrame;
+//        buttonView.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2 +8 -  buttonView.frame.size.height/2);
+//        [labelButton addSubview:buttonView];
+//        
+//        CGRect textFrame = CGRectMake(0, 0, MAIN_SCREEN_W*0.04, MAIN_SCREEN_W*0.04);
+//        UILabel *textLabel = [[UILabel alloc]initWithFrame:textFrame];
+//        textLabel.text = text[i];
+//        [textLabel setFont:[UIFont fontWithName:@"GeezaPro" size:12]];
+//        [textLabel sizeToFit];
+//        textLabel.center = CGPointMake(labelButton.frame.size.width/2, labelButton.frame.size.height/2+12+textLabel.frame.size.height/2);
+//        [labelButton addSubview:buttonView];
+//       
+//        [labelButton addSubview:textLabel];
+//        
+//        [labelButton addTarget:self.clicker action:s[i] forControlEvents:UIControlEventTouchUpInside];
+//        
+//        labelButton.backgroundColor = [UIColor whiteColor];
+//        
+//        [_mainScrollView addSubview:labelButton];
+//    }
+//    
+//    _currentHeight += MAIN_SCREEN_H*0.1;
 
     [_mainScrollView addSubview:self.tableView];
     _currentHeight += _tableView.frame.size.height;
     
-//    for (NSString* family in [UIFont familyNames])
-//    {
-//       
-//        
-//        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-//        {
-//            if ([name  isEqual: @"uxIconFont"]) {
-//                NSLog(@"  %@", name);
-//            }
-//            
-//        }
-//    }
+
 }
 
 - (UITableView *)tableView{
@@ -153,9 +148,6 @@
             _myPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
             _myPhoto.layer.borderWidth = 1;
         }
-        
-        
-        
         
         _myPhoto.layer.masksToBounds = YES;
         _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
@@ -210,7 +202,7 @@
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 5;
+    return [_cellDictionary count];
 }
 
 #pragma mark - TableView Delegate
@@ -231,14 +223,14 @@
         }
         
         imgView.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
-        imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y+imgView.frame.size.height/4);
+        imgView.center = CGPointMake(imgView.center.x, cell.contentView.center.y);
         [cell addSubview:imgView];
         
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
         label.font = [UIFont fontWithName:@"Arial" size:15];
         [label sizeToFit];
-        label.center = CGPointMake(label.center.x, cell.center.y+imgView.frame.size.height/4);
+        label.center = CGPointMake(label.center.x, cell.center.y);
         [cell addSubview:label];
 
         
@@ -247,19 +239,23 @@
     return cell;
 }
 
+#pragma mark 分割tableview设置
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    NSSet *set = [NSSet setWithObjects:@0,@1,@4, nil];
+    NSSet *set = [NSSet setWithObjects:@1,@5, nil];
     NSSet *nowSet = [NSSet setWithObject:[NSNumber numberWithInteger:section]];
     if ([nowSet isSubsetOfSet:set]) {
-        return 8;
+        return 15;
     }else{
-        return 0.000001;
+        return 0.00001;
     }
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    if(indexPath.section == 0){
+        return 100;
+    }
+    return -1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -271,7 +267,7 @@
         viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
         self.navigationController.navigationBarHidden = NO;
         [self.navigationController pushViewController:viewController animated:YES];
-    }else if (indexPath.section == 4){
+    }else if (indexPath.section == [_cellDictionary count]-1){
         
         LoginViewController *login = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:login animated:YES completion:^{
@@ -283,13 +279,8 @@
 - (void)viewWillAppear:(BOOL)animated{
 //    [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    self.navigationController.navigationBar.hidden = YES;
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-}
 
 #pragma mark - UIImagePickerController Delegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
