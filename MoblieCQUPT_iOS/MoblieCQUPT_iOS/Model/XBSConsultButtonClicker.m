@@ -14,6 +14,7 @@
 @implementation XBSConsultButtonClicker
 - (void)clickForExamSchedule
 {
+    NSLog(@"s");
     XBSConsultDataBundle *dataBundle = [[XBSConsultDataBundle alloc]init];
     dataBundle.mainDelegate = self.delegate;
     dataBundle.postParams = [Config paramWithStuNum];
