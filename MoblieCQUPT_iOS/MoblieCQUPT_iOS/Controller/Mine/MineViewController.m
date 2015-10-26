@@ -33,15 +33,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.view.backgroundColor = MAIN_COLOR;
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
-    _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H -20);
+//    self.view.backgroundColor = [UIColor whiteColor];
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H-20)];
+    _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, 600);
     _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     _mainScrollView.showsVerticalScrollIndicator=NO;
-    _mainScrollView.backgroundColor = MAIN_COLOR;
+    _mainScrollView.backgroundColor = [UIColor whiteColor];
+    _mainScrollView.bounces = NO;
     [self.view addSubview:_mainScrollView];
     
-    _currentHeight = 44;
+    _currentHeight = 65;
     _cellDictionary = [NSMutableArray array];
     _cellDictionary = [@[@{},
                          @{@"cell":@"考试安排",@"img":@"考试安排.png"},
@@ -55,11 +56,11 @@
                          @{@"cell":@"退出登录",@"img":@"tuichu_red_blod.png"},
                         ]
                        mutableCopy];
-    UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.2)];
-
-    
-    topView.backgroundColor = MAIN_COLOR;
-
+//    UIView *topView = [[UIView  alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H*0.2)];
+//
+//    
+//    topView.backgroundColor = MAIN_COLOR;
+//
 //    _currentHeight += topView.frame.size.height;
 //    [_mainScrollView addSubview:topView];
 
@@ -132,46 +133,42 @@
 
 - (UIButton *)myPhoto{
     if (!_myPhoto) {
-        _myPhoto = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.2, MAIN_SCREEN_W*0.2)];
-        _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.1);
-        NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
-        if (url) {
-            ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
-            [lib assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
-                UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
-                [_myPhoto setImage:saveImage forState:UIControlStateNormal];
-            } failureBlock:nil];
-        }else{
-            
-            UIImage *saveImage = [UIImage imageNamed:@"mobile.png"];
-            [_myPhoto setImage:saveImage forState:UIControlStateNormal];
-            _myPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
-            _myPhoto.layer.borderWidth = 1;
-        }
         
-        _myPhoto.layer.masksToBounds = YES;
-        _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
-        [_myPhoto addTarget:self
-                     action:@selector(selectPhoto)
-           forControlEvents:UIControlEventTouchUpInside];
-
-        _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
+        [self getMyPhotoWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W*0.1, MAIN_SCREEN_W*0.1)];
+        _myPhoto.center = CGPointMake(MAIN_SCREEN_W/2, MAIN_SCREEN_H*0.1);
         
     }
     return _myPhoto;
 }
 
-- (void)selectPhoto{
-    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+- (UIButton *)getMyPhotoWithFrame:(CGRect)rect{
+    _myPhoto = [[UIButton alloc] initWithFrame:rect];
+    NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
+    if (url) {
+        ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
+        [lib assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
+            UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
+            [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+        } failureBlock:nil];
+    }else{
+        
+        UIImage *saveImage = [UIImage imageNamed:@"mobile.png"];
+        [_myPhoto setImage:saveImage forState:UIControlStateNormal];
+        _myPhoto.layer.borderColor = RGBColor(231, 231, 231, 1).CGColor;
+        _myPhoto.layer.borderWidth = 1;
+    }
     
-    //在照片库里选择照片作为头像
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    imagePicker.delegate = self;
+    _myPhoto.layer.masksToBounds = YES;
+    _myPhoto.layer.cornerRadius = MAIN_SCREEN_W*0.2;
+    [_myPhoto addTarget:self
+                 action:@selector(selectPhoto)
+       forControlEvents:UIControlEventTouchUpInside];
     
-    [self presentViewController:imagePicker
-                       animated:YES
-                     completion:nil];
+    _myPhoto.layer.cornerRadius = _myPhoto.frame.size.width/2;
+    return _myPhoto;
 }
+
+
 
 - (UILabel *)loginLabel{
     if (!_loginLabel) {
@@ -205,27 +202,41 @@
     return [_cellDictionary count];
 }
 
-#pragma mark - TableView Delegate
+#pragma mark - TableView 代理
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"butttonCell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
-        UILabel *label = [[UILabel alloc] init];
-        
-        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
-   
-        
         
         if(indexPath.section == 0){
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"imageHead"];
+//            cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
+            CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
+            CGSize size = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+            UIButton *headImage = [self getMyPhotoWithFrame:CGRectMake(20, CGRectGetHeight(cell.frame)/2, 50, 50)];
+            headImage.center = CGPointMake(headImage.center.x
+                                           , rectInTableView.origin.y+size.height);
             
-            UIButton *headImage = self.myPhoto;
-            headImage.backgroundColor = [UIColor blackColor];
-            headImage.frame = CGRectMake(8, CGRectGetHeight(cell.frame)/2, MAIN_SCREEN_W*0.05, MAIN_SCREEN_W*0.05);
-            headImage.center = CGPointMake(headImage.center.x, cell.contentView.center.y);
+            
             [cell addSubview:headImage];
+            
+            UILabel *label = [[UILabel alloc] init];
+            label.text = @"王诚志";
+            label.frame = CGRectMake(headImage.frame.size.width+30, 0, 0, 0);
+            label.font = [UIFont fontWithName:@"Arial" size:16];
+            label.tintColor = [UIColor lightTextColor];
+            [label sizeToFit];
+            label.center = CGPointMake(label.center.x, headImage.center.y);
+            
+            
+            [cell addSubview:label];
             return  cell;
         }
         
+        
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"butttonCell"];
+        
+        
+        cell.accessoryType=UITableViewCellAccessoryDisclosureIndicator;
         
         UIImage *img = [[UIImage imageNamed:_cellDictionary[indexPath.section][@"img"]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:img];
@@ -240,7 +251,7 @@
         [cell addSubview:imgView];
         
         
-        
+        UILabel *label = [[UILabel alloc] init];
         label.text = _cellDictionary[indexPath.section][@"cell"];
         label.frame = CGRectMake(16+CGRectGetWidth(imgView.frame), 0, 0, 0);
         label.font = [UIFont fontWithName:@"Arial" size:15];
@@ -286,7 +297,7 @@
         
         LoginViewController *login = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:login animated:YES completion:^{
-            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
+            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek",@"defaultImageNSUrl"]];
         }];
     }
 }
@@ -328,9 +339,20 @@
  *  @author Orange-W, 15-09-13 03:09:05
  *
  *  @brief  头像功能
- *  @param asset ALAsset
- *  @return uiimage
  */
+
+- (void)selectPhoto{
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    //在照片库里选择照片作为头像
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    
+    [self presentViewController:imagePicker
+                       animated:YES
+                     completion:nil];
+}
+
 - (UIImage *)fullResolutionImageFromALAsset:(ALAsset *)asset
 {
     ALAssetRepresentation *assetRep = [asset defaultRepresentation];
