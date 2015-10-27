@@ -216,7 +216,7 @@ static const NSInteger ORWDeafultCacheTime = 60*60*24;
 #pragma mark  /** 获得当前时间格式 **/
 - (NSDateComponents *) getNowDateComponents{
     NSDate *now = [NSDate date];
-    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSDateComponents *comps;
     NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday |
     NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     

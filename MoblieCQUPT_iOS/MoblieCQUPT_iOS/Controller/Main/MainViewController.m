@@ -163,6 +163,7 @@ static Boolean isClick = NO;
         [button.layer setBorderColor:colorref];
         
         UILabel *label = _btnTextArray[i];
+        
         label.frame = CGRectZero;
     }
     
