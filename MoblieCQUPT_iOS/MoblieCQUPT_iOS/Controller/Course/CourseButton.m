@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.layer.cornerRadius = 2.0;
+        self.layer.cornerRadius = 1.5;
         self.titleLabel.font = [UIFont systemFontOfSize:11.0];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.numberOfLines = 6;

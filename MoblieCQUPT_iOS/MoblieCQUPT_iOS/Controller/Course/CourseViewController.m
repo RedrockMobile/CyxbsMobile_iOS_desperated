@@ -27,6 +27,7 @@
 @property (strong, nonatomic) UIView *backView;
 @property (strong, nonatomic) UIButton *clickBtn;
 @property (strong, nonatomic) UIView *nav;
+@property (strong, nonatomic) NSMutableArray *weekBtnArray;
 
 @property (strong, nonatomic)UIView *mainView;
 @property (strong, nonatomic)UIScrollView *mainScrollView;
@@ -49,37 +50,43 @@
     [super viewDidLoad];
     _weekViewShow = NO;
     [self initView];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
-    _backView = [[UIView alloc]initWithFrame:CGRectMake(0, -370, ScreenWidth, 370)];
+    _backView = [[UIView alloc]initWithFrame:CGRectMake(0, -ScreenHeight/2, ScreenWidth, ScreenHeight/2)];
     [self.view addSubview:_backView];
     
-    _weekScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 340)];
+    _weekScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight/2-30)];
     _weekScrollView.contentSize = CGSizeMake(ScreenWidth, 35*19);
     _weekScrollView.backgroundColor = [UIColor whiteColor];
     _weekScrollView.bounces = NO;
     [_backView addSubview:_weekScrollView];
     
     NSArray *weekArray = @[@"本学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周"];
-    
+    NSString *nowWeek = [userDefault objectForKey:@"nowWeek"];
+    _weekBtnArray = [NSMutableArray array];
     for (int i = 0; i < 19; i ++) {
         UIButton *weekBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         weekBtn.frame = CGRectMake(0, 35*i, ScreenWidth, 35);
         [weekBtn setTitle:weekArray[i] forState:UIControlStateNormal];
-        if (i == 0) {
+        if (nowWeek != nil && i == [nowWeek integerValue]) {
             weekBtn.selected = YES;
             [weekBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             weekBtn.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
             _clickBtn = weekBtn;
+            if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
+                _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
+            }
         }else {
             [weekBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         }
         [weekBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
         weekBtn.tag = i;
+        [_weekBtnArray addObject:weekBtn];
         [_weekScrollView addSubview:weekBtn];
     }
     
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(0, 340, ScreenWidth, 30);
+    backBtn.frame = CGRectMake(0, ScreenHeight/2-30, ScreenWidth, 30);
     backBtn.backgroundColor = [UIColor whiteColor];
     [backBtn addTarget:self action:@selector(hiddenWeekView) forControlEvents:UIControlEventTouchUpInside];
     [_backView addSubview:backBtn];
@@ -89,7 +96,7 @@
     backBtnImage.image = [UIImage imageNamed:@"iconfont-backTag.png"];
     [backBtn addSubview:backBtnImage];
     
-    UIView *underLine = [[UIView alloc]initWithFrame:CGRectMake(0, 340, ScreenWidth, 1)];
+    UIView *underLine = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenHeight/2-30, ScreenWidth, 1)];
     underLine.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     [_backView addSubview:underLine];
     
@@ -100,7 +107,7 @@
     _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _titleButton.frame = CGRectMake(0, 0, 100, 44);
     _titleButton.center = CGPointMake(ScreenWidth/2, _nav.frame.size.height/2+10);
-    [_titleButton setTitle:@"本学期" forState:UIControlStateNormal];
+    [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekArray[[nowWeek integerValue]]] forState:UIControlStateNormal];
     [_titleButton addTarget:self action:@selector(showWeekList) forControlEvents:UIControlEventTouchUpInside];
     [_nav addSubview:_titleButton];
     
@@ -109,11 +116,15 @@
     _tagView.image = [UIImage imageNamed:@"iconfont-titleTag.png"];
     [_nav addSubview:_tagView];
     
-    _shadeView = [[UIView alloc]initWithFrame:CGRectMake(0, 434, ScreenWidth, ScreenHeight-64-370)];
+    _shadeView = [[UIView alloc]initWithFrame:CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight-64-_backView.frame.size.height)];
     _shadeView.backgroundColor = [UIColor grayColor];
     _shadeView.alpha = 0.8;
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    UIButton *shadeViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    shadeViewBtn.frame = CGRectMake(0, 0, _shadeView.frame.size.width, _shadeView.frame.size.height);
+    [shadeViewBtn addTarget:self action:@selector(clickShadeView) forControlEvents:UIControlEventTouchUpInside];
+    [_shadeView  addSubview:shadeViewBtn];
+    
     _dataArray = [userDefault objectForKey:@"dataArray"];
     [self handleData:_dataArray];
     [self loadNetData];
@@ -152,8 +163,7 @@
         dayLabel.font = [UIFont systemFontOfSize:14];
         dayLabel.textAlignment = NSTextAlignmentCenter;
         dayLabel.textColor = [UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1];
-        
-        UIView *dayLabelUnderLine = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 29, kWidthGrid, 1)];
+        UIView *dayLabelUnderLine = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid+1, 29, kWidthGrid-2, 1)];
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
         if (weekDay == 1) {
@@ -202,14 +212,30 @@
         [self handleColor:data];
         _dataArray = data;
         _weekDataArray = data;
+        NSString *nowWeek = [NSString stringWithFormat:@"%@",[returnValue objectForKey:@"nowWeek"]];
         self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
+        [userDefault setObject:nowWeek forKey:@"nowWeek"];
         [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
         [userDefault synchronize];
         for (int i = 0; i < _buttonTag.count; i ++) {
             [_buttonTag[i] removeFromSuperview];
         }
+        _dataArray = [self getWeekCourseArray:[nowWeek integerValue]];
         [self handleData:_dataArray];
+        for (int i = 0; i < _weekBtnArray.count; i ++) {
+            if (i == [nowWeek integerValue]) {
+                UIButton *weekBtn1 = _weekBtnArray[i];
+                weekBtn1.selected = YES;
+                [weekBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                weekBtn1.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+                _clickBtn = weekBtn1;
+                [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
+                if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
+                    _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
+                }
+            }
+        }
     } WithFailureBlock:^{
     }];
 }
@@ -272,7 +298,7 @@
             int period = course.period.intValue;
             
             if (rowNum == currentBegin && colNum == currentDay) {
-                UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-13, kWidthGrid*rowNum+kWidthGrid*period-13, 10, 10)];
+                UIImageView *tagView = [[UIImageView alloc]initWithFrame:CGRectMake((colNum+0.5)*kWidthGrid-8, kWidthGrid*rowNum+kWidthGrid*period-8, 6, 6)];
                 tagView.image = [UIImage imageNamed:@"iconfont-tag.png"];
                 [_buttonTag addObject:tagView];
                 [_mainScrollView addSubview:tagView];
@@ -412,7 +438,8 @@
         _weekViewShow = NO;
     }else {
         [UIView animateWithDuration:0.3 animations:^{
-            _backView.transform = CGAffineTransformMakeTranslation(0, 434);
+            _backView.transform = CGAffineTransformMakeTranslation(0, _backView
+                                                                   .frame.size.height+64);
         } completion:^(BOOL finished) {
             [[[UIApplication sharedApplication]keyWindow]addSubview:_shadeView];
         }];
@@ -462,6 +489,15 @@
     _dataArray = [self getWeekCourseArray:sender.tag];
     [self handleData:_dataArray];
     [self showWeekList];
+}
+
+- (void)clickShadeView {
+    [_shadeView removeFromSuperview];
+    [UIView animateWithDuration:0.3 animations:^{
+        _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+    } completion:nil];
+    _tagView.transform = CGAffineTransformMakeRotation(0);
+    _weekViewShow = NO;
 }
 
 - (NSMutableArray *)getWeekCourseArray:(NSInteger)week {

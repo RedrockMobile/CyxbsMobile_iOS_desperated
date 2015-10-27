@@ -75,7 +75,7 @@
     _passwordField.placeholder = @"身份证后六位";
     _passwordField.tintColor = MAIN_COLOR;
     _passwordField.secureTextEntry = YES;
-    _passwordField.keyboardType = UIKeyboardTypeNumberPad;
+    _passwordField.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     _passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _passwordField.delegate = self;
     [textFieldView addSubview:_passwordField];
@@ -128,7 +128,6 @@
                              } completion:nil];
                              sender.enabled = YES;
                          }else {
-                             [ProgressHUD showSuccess:@"登录成功"];
                              NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
                              [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
                              UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
