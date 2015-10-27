@@ -88,7 +88,7 @@
     [cell.locationIcon setFont:iconfont];
     [cell.locationIcon setText:@"\U000f014a"];
     [cell.locationIcon setTextColor:[UIColor paperColorGray700]];
-    NSString *timeInfo, *locationInfo;
+    NSString *timeInfo;//, *locationInfo;
     if ([_delegate.json[@"type"] isEqualToString:API_EXAM_SCHEDULE]) {
         self.navigationBar.titleLabel.text = ConsultFuntionName[0];
         timeInfo = [NSString stringWithFormat:@"第%@周  星期%@  %@~%@",info[@"week"],[Config transformNumFormat:info[@"weekday"]],info[@"begin_time"],info[@"end_time"]];
