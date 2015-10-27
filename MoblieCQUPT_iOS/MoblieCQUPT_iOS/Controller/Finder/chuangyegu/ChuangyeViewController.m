@@ -32,6 +32,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"我要创业";
     self.navigationController.navigationBar.barTintColor = MAIN_COLOR;

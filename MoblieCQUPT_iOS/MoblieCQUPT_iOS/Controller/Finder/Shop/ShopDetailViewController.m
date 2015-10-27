@@ -48,6 +48,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.scrollView.frame = [UIScreen mainScreen].bounds;
 //    [self.scrollView setContentSize:CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H * 1.3)];
 }
