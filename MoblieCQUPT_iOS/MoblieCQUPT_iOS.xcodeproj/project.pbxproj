@@ -78,7 +78,6 @@
 		3B51FBA01BA328BA009FB3C0 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB6E1BA328BA009FB3C0 /* UIWebView+AFNetworking.m */; };
 		3B51FBA21BA328BA009FB3C0 /* ExampleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB761BA328BA009FB3C0 /* ExampleAnimation.m */; };
 		3B51FBA31BA328BA009FB3C0 /* OrangeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB781BA328BA009FB3C0 /* OrangeAnimation.m */; };
-		3B51FBA41BA328BA009FB3C0 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB791BA328BA009FB3C0 /* README.md */; };
 		3B51FBA51BA328BA009FB3C0 /* UPStackMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB7B1BA328BA009FB3C0 /* UPStackMenu.m */; };
 		3B51FBA61BA328BA009FB3C0 /* UPStackMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51FB7D1BA328BA009FB3C0 /* UPStackMenuItem.m */; };
 		3B685C881BA44D6300E34491 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B685C871BA44D6300E34491 /* Images.xcassets */; };
@@ -158,10 +157,6 @@
 		CEF61B391B82BC950014B980 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEF61B371B82BC950014B980 /* Main.storyboard */; };
 		CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF61B3C1B82BC950014B980 /* LaunchScreen.xib */; };
 		CEF61B4A1B82BC950014B980 /* MoblieCQUPT_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */; };
-		CEF61B581B82BDFE0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B551B82BDFE0014B980 /* README.md */; };
-		CEF61B591B82BDFE0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B571B82BDFE0014B980 /* README.md */; };
-		CEF61B621B82BE1B0014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B611B82BE1B0014B980 /* README.md */; };
-		CEF61B681B82C0370014B980 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = CEF61B671B82C0370014B980 /* README.md */; };
 		CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = CEFDE57C1B9C4D7900E772F0 /* mobile.png */; };
 		D910EE031BD66B7900EB9E89 /* iconfont-titleTag.png in Resources */ = {isa = PBXBuildFile; fileRef = D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */; };
 		D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */ = {isa = PBXBuildFile; fileRef = D95E8E5A1BD91AC8001776D5 /* iconfont-backTag.png */; };
@@ -378,7 +373,6 @@
 		3B51FB761BA328BA009FB3C0 /* ExampleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleAnimation.m; sourceTree = "<group>"; };
 		3B51FB771BA328BA009FB3C0 /* OrangeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrangeAnimation.h; sourceTree = "<group>"; };
 		3B51FB781BA328BA009FB3C0 /* OrangeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrangeAnimation.m; sourceTree = "<group>"; };
-		3B51FB791BA328BA009FB3C0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		3B51FB7A1BA328BA009FB3C0 /* UPStackMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPStackMenu.h; sourceTree = "<group>"; };
 		3B51FB7B1BA328BA009FB3C0 /* UPStackMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UPStackMenu.m; sourceTree = "<group>"; };
 		3B51FB7C1BA328BA009FB3C0 /* UPStackMenuItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UPStackMenuItem.h; sourceTree = "<group>"; };
@@ -487,10 +481,6 @@
 		CEF61B431B82BC950014B980 /* MoblieCQUPT_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoblieCQUPT_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B481B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
-		CEF61B551B82BDFE0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B571B82BDFE0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B611B82BE1B0014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		CEF61B671B82C0370014B980 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CEFDE57C1B9C4D7900E772F0 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
 		D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-titleTag.png"; sourceTree = "<group>"; };
@@ -845,7 +835,6 @@
 				3B51FB761BA328BA009FB3C0 /* ExampleAnimation.m */,
 				3B51FB771BA328BA009FB3C0 /* OrangeAnimation.h */,
 				3B51FB781BA328BA009FB3C0 /* OrangeAnimation.m */,
-				3B51FB791BA328BA009FB3C0 /* README.md */,
 			);
 			path = OWAnimation;
 			sourceTree = "<group>";
@@ -1195,7 +1184,6 @@
 				D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */,
 				D9B577191B88744F005EFD18 /* iconfont-caidan.png */,
 				CE7893971B8701AE000D8B57 /* Icon */,
-				CEF61B551B82BDFE0014B980 /* README.md */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -1203,7 +1191,6 @@
 		CEF61B561B82BDFE0014B980 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CEF61B571B82BDFE0014B980 /* README.md */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1247,7 +1234,6 @@
 				3B51FB5C1BA328BA009FB3C0 /* UIKit+AFNetworking */,
 				E28B22831BAEBE24006E4A1F /* UMAnalytics_Sdk_3.5.10 */,
 				3B51FB731BA328BA009FB3C0 /* UPStackMenu */,
-				CEF61B611B82BE1B0014B980 /* README.md */,
 			);
 			name = SDK;
 			path = MoblieCQUPT_iOS/SDK;
@@ -1267,7 +1253,6 @@
 			isa = PBXGroup;
 			children = (
 				3B1388A51BA353F70011EBF2 /* Consult */,
-				CEF61B671B82C0370014B980 /* README.md */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1700,7 +1685,6 @@
 				3B51FB911BA328BA009FB3C0 /* MJRefreshFooterView.m in Sources */,
 				3B26613C1BA6E473008632F3 /* F3HMoveOrder.m in Sources */,
 				CEF61B361B82BC950014B980 /* ViewController.m in Sources */,
-				CEF61B681B82C0370014B980 /* README.md in Sources */,
 				3B1388B21BA353F70011EBF2 /* XBSNavigationBar.m in Sources */,
 				3B2661361BA6E473008632F3 /* F3HTileAppearanceProvider.m in Sources */,
 				3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */,
@@ -1729,7 +1713,6 @@
 				3B51FB931BA328BA009FB3C0 /* UIScrollView+MJExtension.m in Sources */,
 				3B51FB801BA328BA009FB3C0 /* AFHTTPSessionManager.m in Sources */,
 				3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */,
-				CEF61B591B82BDFE0014B980 /* README.md in Sources */,
 				CE1E462E1BA96083006E2CFB /* ORWInputTextView.m in Sources */,
 				3B2661351BA6E473008632F3 /* F3HNumberTileGameViewController.m in Sources */,
 				E263C7891BA35E26008488FA /* DetailDishView.m in Sources */,
@@ -1758,7 +1741,6 @@
 				3B1388D71BA3EEC70011EBF2 /* XBSViewController.m in Sources */,
 				3B51FB921BA328BA009FB3C0 /* MJRefreshHeaderView.m in Sources */,
 				3B51FB7E1BA328BA009FB3C0 /* AFHTTPRequestOperation.m in Sources */,
-				CEF61B581B82BDFE0014B980 /* README.md in Sources */,
 				E263C78F1BA35E26008488FA /* ShopTableViewCell.m in Sources */,
 				CE3FC9401B9702A6000085E5 /* ORWRequestCache.m in Sources */,
 				3B51FB941BA328BA009FB3C0 /* UIScrollView+MJRefresh.m in Sources */,
@@ -1766,7 +1748,6 @@
 				3B51FB8F1BA328BA009FB3C0 /* MJRefreshConst.m in Sources */,
 				CEE1E2261B99A1020088EC7C /* MineButton.m in Sources */,
 				3B51FB9A1BA328BA009FB3C0 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				3B51FBA41BA328BA009FB3C0 /* README.md in Sources */,
 				3B51FBA01BA328BA009FB3C0 /* UIWebView+AFNetworking.m in Sources */,
 				3B51FBA61BA328BA009FB3C0 /* UPStackMenuItem.m in Sources */,
 				3B51FBA51BA328BA009FB3C0 /* UPStackMenu.m in Sources */,
@@ -1776,7 +1757,6 @@
 				3B51FB991BA328BA009FB3C0 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				3B26613B1BA6E473008632F3 /* F3HMergeTile.m in Sources */,
 				3B51FB871BA328BA009FB3C0 /* BFPaperCheckbox.m in Sources */,
-				CEF61B621B82BE1B0014B980 /* README.md in Sources */,
 				3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */,
 				E263C7851BA35E26008488FA /* WebViewController.m in Sources */,
 				3B51FB881BA328BA009FB3C0 /* FMDatabase.m in Sources */,
