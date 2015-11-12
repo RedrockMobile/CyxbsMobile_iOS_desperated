@@ -110,7 +110,6 @@
 
 - (void)loginButton:(UIButton *)sender {
     sender.enabled = NO;
-    [ProgressHUD show:@"登录中"];
     [UIView animateWithDuration:1.5 animations:^{
         [sender setTitle:@"登录中" forState:UIControlStateNormal];
     } completion:nil];

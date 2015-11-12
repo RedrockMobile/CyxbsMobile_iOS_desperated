@@ -15,7 +15,7 @@
 #import "CourseButton.h"
 #import "CourseView.h"
 #import "LoginViewController.h"
-#import "ProgressHUD.h"
+
 
 @interface CourseViewController ()<UIScrollViewDelegate,UPStackMenuItemDelegate,UPStackMenuDelegate>
 
@@ -42,6 +42,9 @@
 @property (strong, nonatomic) UIView *alertView;
 
 @property (strong, nonatomic)NSMutableDictionary *parameter;
+@property (assign, nonatomic) CGPoint startPoint;
+@property (assign, nonatomic) CGPoint startPoint1;
+
 @end
 
 @implementation CourseViewController
@@ -89,6 +92,8 @@
     backBtn.frame = CGRectMake(0, ScreenHeight/2-30, ScreenWidth, 30);
     backBtn.backgroundColor = [UIColor whiteColor];
     [backBtn addTarget:self action:@selector(hiddenWeekView) forControlEvents:UIControlEventTouchUpInside];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(backViewChange:)];
+    [backBtn addGestureRecognizer:pan];
     [_backView addSubview:backBtn];
     
     UIImageView *backBtnImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 20, 20)];
@@ -116,17 +121,18 @@
     _tagView.image = [UIImage imageNamed:@"iconfont-titleTag.png"];
     [_nav addSubview:_tagView];
     
-    _shadeView = [[UIView alloc]initWithFrame:CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight-64-_backView.frame.size.height)];
-    _shadeView.backgroundColor = [UIColor grayColor];
-    _shadeView.alpha = 0.8;
+    _shadeView = [[UIView alloc]initWithFrame:CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight)];
+    _shadeView.backgroundColor = [UIColor blackColor];
+    _shadeView.alpha = 0.7;
     
     UIButton *shadeViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     shadeViewBtn.frame = CGRectMake(0, 0, _shadeView.frame.size.width, _shadeView.frame.size.height);
     [shadeViewBtn addTarget:self action:@selector(clickShadeView) forControlEvents:UIControlEventTouchUpInside];
     [_shadeView  addSubview:shadeViewBtn];
     
-    _dataArray = [userDefault objectForKey:@"dataArray"];
-    [self handleData:_dataArray];
+    _weekDataArray = [userDefault objectForKey:@"weekDataArray"];
+    _weekDataArray = [self getWeekCourseArray:[nowWeek integerValue]];
+    [self handleData:_weekDataArray];
     [self loadNetData];
     // Do any additional setup after loading the view from its nib.
     self.navigationController.navigationBarHidden = YES;
@@ -150,6 +156,9 @@
         UIView *view = [[UIView alloc]initWithFrame:CGRectMake((i+0.5)*kWidthGrid, 0, kWidthGrid-2, kWidthGrid*12-2)];
         NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
         NSInteger weekDay = [componets weekday];
+        if (weekDay == 1) {
+            weekDay = 8;
+        }
         if (i == weekDay - 2) {
             view.backgroundColor = [UIColor colorWithRed:253/255.0 green:246/255.0 blue:235/255.0 alpha:1];
         }
@@ -226,10 +235,16 @@
         for (int i = 0; i < _weekBtnArray.count; i ++) {
             if (i == [nowWeek integerValue]) {
                 UIButton *weekBtn1 = _weekBtnArray[i];
-                weekBtn1.selected = YES;
-                [weekBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                weekBtn1.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
-                _clickBtn = weekBtn1;
+                if (_clickBtn != weekBtn1 || _clickBtn == nil) {
+                    _clickBtn.selected = NO;
+                    [_clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    _clickBtn.backgroundColor = [UIColor whiteColor];
+                    weekBtn1.selected = YES;
+                    [weekBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    weekBtn1.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+                    [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
+                    _clickBtn = weekBtn1;
+                }
                 [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
                 if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
                     _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
@@ -268,20 +283,23 @@
 }
 
 - (void)handleColor:(NSMutableArray *)courses {
-    _colorArray = [[NSMutableArray alloc]initWithObjects:@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242", @"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",nil];
+    _colorArray = [[NSMutableArray alloc]initWithObjects:@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",nil];
     NSMutableArray *courseArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < courses.count; i ++) {
         [courseArray addObject:[courses[i] objectForKey:@"course"]];
     }
     NSSet *courseSet = [NSSet setWithArray:courseArray];
-    int j = 0;
     for (NSString *string in courseSet) {
+        if (_colorArray.count == 0) {
+            _colorArray = [[NSMutableArray alloc]initWithObjects:@"156,171,246",@"255,161,16",@"249,141,156",@"149,213,27",@"56,188,242",nil];
+        }
+        int j = arc4random()%_colorArray.count;
         for (int i = 0; i < courses.count; i ++) {
             if ([string isEqualToString:[NSString stringWithFormat:@"%@",[courses[i] objectForKey:@"course"]]]) {
                 [courses[i] setObject:_colorArray[j] forKey:@"color"];
             }
         }
-        j++;
+        [_colorArray removeObject:_colorArray[j]];
     }
 }
 
@@ -361,13 +379,17 @@
 }
 - (void)viewCourseWithTag:(NSInteger )starTag endTag:(NSInteger)endTag {
     _backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    _backgroundView.backgroundColor = [UIColor grayColor];
-    _backgroundView.alpha = 0.8;
+    _backgroundView.backgroundColor = [UIColor blackColor];
+    _backgroundView.alpha = 0.7;
+    UIButton *backgroundViewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backgroundViewBtn.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+    [backgroundViewBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
+    [_backgroundView addSubview:backgroundViewBtn];
     [[[UIApplication sharedApplication]keyWindow]addSubview:_backgroundView];
     
     _alertView = [[UIView alloc]initWithFrame:CGRectMake(ScreenWidth/9, ScreenHeight/7, ScreenWidth/9*7, ScreenHeight/7*5)];
     _alertView.backgroundColor = [UIColor whiteColor];
-    _alertView.layer.cornerRadius = 5.0;
+    _alertView.layer.cornerRadius = 1.0;
     [[[UIApplication sharedApplication]keyWindow]addSubview:_alertView];
     
     UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 10, ScreenWidth/9*7-20, 40)];
@@ -380,11 +402,10 @@
     UIView *lineView = [[UIView alloc]initWithFrame:CGRectMake(0, 60, ScreenWidth/9*7, 2)];
     lineView.backgroundColor = MAIN_COLOR;
     [_alertView addSubview:lineView];
-                                                                                                                                                                                                                                
+    
     UIButton *done = [[UIButton alloc]initWithFrame:CGRectMake(10, ScreenHeight-ScreenHeight/7*2-50, ScreenWidth/9*7-20, 45)];
     done.layer.cornerRadius = 2.0;
     [done setTitle:@"确认" forState:UIControlStateNormal];
-    [done setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     done.backgroundColor = MAIN_COLOR;
     done.titleLabel.textAlignment = NSTextAlignmentCenter;
     [done addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
@@ -405,7 +426,7 @@
     [_page setCurrentPageIndicatorTintColor:MAIN_COLOR];
     [_page setPageIndicatorTintColor:[UIColor grayColor]];
     [_alertView addSubview:_page];
-
+    
     CGFloat indexX = 0;
     for (NSInteger i=starTag; i<=endTag; i++) {
         NSDictionary *dataDic = _dataArray[i];
@@ -432,15 +453,15 @@
     if (_weekViewShow) {
         [_shadeView removeFromSuperview];
         [UIView animateWithDuration:0.3 animations:^{
-            _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+            _backView.frame = CGRectMake(0, -ScreenHeight/2, _backView.frame.size.width, _backView.frame.size.height);
         } completion:nil];
         _tagView.transform = CGAffineTransformMakeRotation(0);
         _weekViewShow = NO;
     }else {
         [UIView animateWithDuration:0.3 animations:^{
-            _backView.transform = CGAffineTransformMakeTranslation(0, _backView
-                                                                   .frame.size.height+64);
+            _backView.frame = CGRectMake(0, 64, _backView.frame.size.width, _backView.frame.size.height);
         } completion:^(BOOL finished) {
+            _shadeView.frame = CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight);
             [[[UIApplication sharedApplication]keyWindow]addSubview:_shadeView];
         }];
         _tagView.transform = CGAffineTransformMakeRotation(M_PI);
@@ -452,7 +473,7 @@
 - (void)hiddenWeekView {
     [_shadeView removeFromSuperview];
     [UIView animateWithDuration:0.3 animations:^{
-        _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+        _backView.frame = CGRectMake(0, -ScreenHeight/2, _backView.frame.size.width, _backView.frame.size.height);
     } completion:nil];
     _tagView.transform = CGAffineTransformMakeRotation(0);
     _weekViewShow = NO;
@@ -494,7 +515,7 @@
 - (void)clickShadeView {
     [_shadeView removeFromSuperview];
     [UIView animateWithDuration:0.3 animations:^{
-        _backView.transform = CGAffineTransformMakeTranslation(0, 0);
+        _backView.frame = CGRectMake(0, -ScreenHeight/2, _backView.frame.size.width, _backView.frame.size.height);
     } completion:nil];
     _tagView.transform = CGAffineTransformMakeRotation(0);
     _weekViewShow = NO;
@@ -511,12 +532,79 @@
         for (int i = 0; i < _weekDataArray.count; i ++) {
             if ([_weekDataArray[i][@"week"] containsObject:[NSNumber numberWithInteger:week]]) {
                 NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:_weekDataArray[i]];
-                [weekDataDic setObject:[NSString stringWithFormat:@"%ld周",week] forKey:@"rawWeek"];
                 [weekCourseArray addObject:weekDataDic];
             }
         }
+        [self handleColor:weekCourseArray];
     }
+    
+    
     return weekCourseArray;
+}
+
+- (void)backViewChange:(UIPanGestureRecognizer *)gesture {
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        _startPoint = _backView.center;
+        _startPoint1 = _shadeView.center;
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        CGPoint point = [gesture translationInView:_backView];//求出手指在屏幕上的位移
+        if (point.y < 0) {
+            _backView.center = CGPointMake(_backView.center.x,_startPoint.y + point.y);
+            _shadeView.center = CGPointMake(_shadeView.center.x, _startPoint1.y + point.y);
+        }
+    }
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        CGPoint point = [gesture translationInView:_backView];
+        CGPoint point1 = [gesture velocityInView:_backView];
+        if (point1.y < 0) {
+            if (point.y > -60) {
+                [UIView animateWithDuration:0.2 animations:^{
+                    _backView.frame = CGRectMake(0, 64, _backView.frame.size.width, _backView.frame.size.height);
+                    _shadeView.frame = CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight);
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.05 animations:^{
+                        _backView.frame = CGRectMake(0, 61, _backView.frame.size.width, _backView.frame.size.height);
+                        _shadeView.frame = CGRectMake(0, _backView.frame.size.height+61, ScreenWidth, ScreenHeight);
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:0.05 animations:^{
+                            _backView.frame = CGRectMake(0, 63, _backView.frame.size.width, _backView.frame.size.height);
+                            _shadeView.frame = CGRectMake(0, _backView.frame.size.height+63, ScreenWidth, ScreenHeight);
+                        } completion:^(BOOL finished) {
+                            [UIView animateWithDuration:0.05 animations:^{
+                                _backView.frame = CGRectMake(0, 64, _backView.frame.size.width, _backView.frame.size.height);
+                                _shadeView.frame = CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight);
+                            } completion:nil];
+                        }];
+                    }];
+                }];
+            }else {
+                [self hiddenWeekView];
+            }
+        }else if(point1.y > 0){
+            [UIView animateWithDuration:0.2 animations:^{
+                _backView.frame = CGRectMake(0, 64, _backView.frame.size.width, _backView.frame.size.height);
+                _shadeView.frame = CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight);
+            } completion:^(BOOL finished) {
+                [UIView animateWithDuration:0.05 animations:^{
+                    _backView.frame = CGRectMake(0, 61, _backView.frame.size.width, _backView.frame.size.height);
+                    _shadeView.frame = CGRectMake(0, _backView.frame.size.height+61, ScreenWidth, ScreenHeight);
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:0.05 animations:^{
+                        _backView.frame = CGRectMake(0, 63, _backView.frame.size.width, _backView.frame.size.height);
+                        _shadeView.frame = CGRectMake(0, _backView.frame.size.height+63, ScreenWidth, ScreenHeight);
+                    } completion:^(BOOL finished) {
+                        [UIView animateWithDuration:0.05 animations:^{
+                            _backView.frame = CGRectMake(0, 64, _backView.frame.size.width, _backView.frame.size.height);
+                            _shadeView.frame = CGRectMake(0, _backView.frame.size.height+64, ScreenWidth, ScreenHeight);
+                        } completion:nil];
+                    }];
+                }];
+            }];
+            
+        }
+    }
 }
 
 @end
