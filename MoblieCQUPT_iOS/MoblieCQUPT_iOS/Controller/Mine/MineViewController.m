@@ -208,7 +208,8 @@
             [cell addSubview:headImage];
             
             UILabel *label = [[UILabel alloc] init];
-            label.text = @"王诚志";
+            NSString *name = [[NSUserDefaults standardUserDefaults] objectForKey:@"name"];
+            label.text = name;
             label.frame = CGRectMake(headImage.frame.size.width+30, 0, 0, 0);
             label.font = [UIFont fontWithName:@"Arial" size:16];
             label.tintColor = [UIColor lightTextColor];
