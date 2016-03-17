@@ -1,0 +1,56 @@
+//
+//  PrefixHeader.pch
+//  MoblieCQUPT_iOS
+//
+//  Created by user on 15/8/18.
+//  Copyright (c) 2015年 Orange-W. All rights reserved.
+//
+
+#ifndef MoblieCQUPT_iOS_PrefixHeader_pch
+#define MoblieCQUPT_iOS_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#if DEBUG
+    #define DDLog(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define NSLog(format, ...) do {                                                                          \
+    fprintf(stderr, "<%s : %d> | %s\n",                                           \
+    [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],  \
+    __LINE__, __func__);                                                        \
+    (NSLog)((format), ##__VA_ARGS__);                                           \
+    fprintf(stderr, "-------\n");                                               \
+    } while (0)
+#else
+    #define DDLog(xx, ...)     ;
+    #define NSLog(format, ...) ;
+#endif
+
+#define MAIN_COLOR  [UIColor colorWithRed:43/255.0 green:157/255.0 blue:178/255.0 alpha:1]
+//#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
+#define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define kBarTintColor MAIN_COLOR
+#define kItemTintColor [UIColor blackColor]
+
+//#import <AFNetworking.h>
+#import <AFNetworking.h>
+#import "NetWork.h"
+#import <MobClick.h>
+//#import "MobClick.h"
+
+#pragma Group共享
+#define kAPPGroupID @"group.com.mredrock.cyxbs"
+#define kAppGroupShareNowDay @"nowDay"
+#define kAppGroupShareThisWeekArray @"thisWeekArray"
+
+#define kAPPUserDefaultLoginName @"name"
+#define kAPPUserDefaultStudentID @"stuNum"
+
+#define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define kWidthGrid  (ScreenWidth/7.5)
+#define RGBColor(r,g,b,a) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
+
+#define ColorArray [[NSMutableArray alloc]initWithObjects:@"254,145,103",@"120,201,252",@"111,219,188",@"191,161,233",nil];
+
+#endif
