@@ -96,6 +96,7 @@
 		CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7893981B8701BB000D8B57 /* 掌上重邮60-3.png */; };
 		CE78939B1B87067B000D8B57 /* 60-2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78939A1B87067B000D8B57 /* 60-2.png */; };
 		CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8159691B96A829002CF7B2 /* libsqlite3.dylib */; };
+		CE922F851C9C4AD9000B9DA0 /* MOHLessonTimeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE922F841C9C4AD9000B9DA0 /* MOHLessonTimeModel.m */; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		CEAA7C991C227E7C00C9B1F9 /* ic_exam_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAA7C951C227E7C00C9B1F9 /* ic_exam_clock.png */; };
 		CEAA7C9A1C227E7C00C9B1F9 /* ic_exam_star_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAA7C961C227E7C00C9B1F9 /* ic_exam_star_normal.png */; };
@@ -407,6 +408,8 @@
 		CE78939A1B87067B000D8B57 /* 60-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60-2.png"; sourceTree = "<group>"; };
 		CE8159681B96A775002CF7B2 /* Mobile_CQUPT_iOS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mobile_CQUPT_iOS.db; sourceTree = "<group>"; };
 		CE8159691B96A829002CF7B2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CE922F831C9C4AD9000B9DA0 /* MOHLessonTimeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHLessonTimeModel.h; sourceTree = "<group>"; };
+		CE922F841C9C4AD9000B9DA0 /* MOHLessonTimeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHLessonTimeModel.m; sourceTree = "<group>"; };
 		CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CEAA7C951C227E7C00C9B1F9 /* ic_exam_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_exam_clock.png; sourceTree = "<group>"; };
 		CEAA7C961C227E7C00C9B1F9 /* ic_exam_star_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_exam_star_normal.png; sourceTree = "<group>"; };
@@ -867,6 +870,7 @@
 		CE4334481BE7C52D000C407D /* ClassWidget */ = {
 			isa = PBXGroup;
 			children = (
+				CE922F7F1C9C49A5000B9DA0 /* Model */,
 				CE907C0A1C193B1A00B22D49 /* resoure */,
 				CE25501F1C15BD9500BCDDB8 /* ClassWidget.entitlements */,
 				CE43344B1BE7C52D000C407D /* TodayViewController.h */,
@@ -991,6 +995,15 @@
 				CEE35F441C2171D100F544AB /* ClassTableViewCell.xib */,
 			);
 			path = resoure;
+			sourceTree = "<group>";
+		};
+		CE922F7F1C9C49A5000B9DA0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE922F831C9C4AD9000B9DA0 /* MOHLessonTimeModel.h */,
+				CE922F841C9C4AD9000B9DA0 /* MOHLessonTimeModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		CEC93BDD1B9B112900AC9E00 /* Login */ = {
@@ -1861,6 +1874,7 @@
 				CE41EE121C1FE1A2004C873A /* ViewController.m in Sources */,
 				CE43344D1BE7C52D000C407D /* TodayViewController.m in Sources */,
 				CEE35F451C2171D100F544AB /* ClassTableViewCell.m in Sources */,
+				CE922F851C9C4AD9000B9DA0 /* MOHLessonTimeModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
