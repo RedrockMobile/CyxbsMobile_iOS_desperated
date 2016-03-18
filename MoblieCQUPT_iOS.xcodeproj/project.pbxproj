@@ -181,13 +181,6 @@
 		D9B501941BFC554E008E5EE0 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B501931BFC554E008E5EE0 /* logo.png */; };
 		D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */; };
 		D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577191B88744F005EFD18 /* iconfont-caidan.png */; };
-		D9B5813F1C911F300083DCEE /* PingFang Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B581391C911F300083DCEE /* PingFang Bold.ttf */; };
-		D9B581401C911F300083DCEE /* PingFang ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B5813A1C911F300083DCEE /* PingFang ExtraLight.ttf */; };
-		D9B581411C911F300083DCEE /* PingFang Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B5813B1C911F300083DCEE /* PingFang Heavy.ttf */; };
-		D9B581421C911F300083DCEE /* PingFang Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B5813C1C911F300083DCEE /* PingFang Light.ttf */; };
-		D9B581431C911F300083DCEE /* PingFang Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B5813D1C911F300083DCEE /* PingFang Medium.ttf */; };
-		D9B581441C911F300083DCEE /* PingFang Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B5813E1C911F300083DCEE /* PingFang Regular.ttf */; };
-		D9B581461C9124830083DCEE /* one.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9B581451C9124830083DCEE /* one.ttf */; };
 		D9B581481C9184210083DCEE /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B581471C9184210083DCEE /* edit.png */; };
 		D9B7F61D1C16EFAA0035C2EE /* QGERestTimeCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9B7F61B1C16EFAA0035C2EE /* QGERestTimeCourseViewController.m */; };
 		D9B7F61E1C16EFAA0035C2EE /* QGERestTimeCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9B7F61C1C16EFAA0035C2EE /* QGERestTimeCourseViewController.xib */; };
@@ -527,13 +520,6 @@
 		D9B501931BFC554E008E5EE0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan-selected.png"; sourceTree = "<group>"; };
 		D9B577191B88744F005EFD18 /* iconfont-caidan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan.png"; sourceTree = "<group>"; };
-		D9B581391C911F300083DCEE /* PingFang Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Bold.ttf"; sourceTree = "<group>"; };
-		D9B5813A1C911F300083DCEE /* PingFang ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang ExtraLight.ttf"; sourceTree = "<group>"; };
-		D9B5813B1C911F300083DCEE /* PingFang Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Heavy.ttf"; sourceTree = "<group>"; };
-		D9B5813C1C911F300083DCEE /* PingFang Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Light.ttf"; sourceTree = "<group>"; };
-		D9B5813D1C911F300083DCEE /* PingFang Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Medium.ttf"; sourceTree = "<group>"; };
-		D9B5813E1C911F300083DCEE /* PingFang Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PingFang Regular.ttf"; sourceTree = "<group>"; };
-		D9B581451C9124830083DCEE /* one.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = one.ttf; sourceTree = "<group>"; };
 		D9B581471C9184210083DCEE /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
 		D9B7F61A1C16EFAA0035C2EE /* QGERestTimeCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGERestTimeCourseViewController.h; sourceTree = "<group>"; };
 		D9B7F61B1C16EFAA0035C2EE /* QGERestTimeCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGERestTimeCourseViewController.m; sourceTree = "<group>"; };
@@ -863,13 +849,6 @@
 		CE3FC9411B973215000085E5 /* Icon-Font */ = {
 			isa = PBXGroup;
 			children = (
-				D9B581451C9124830083DCEE /* one.ttf */,
-				D9B581391C911F300083DCEE /* PingFang Bold.ttf */,
-				D9B5813A1C911F300083DCEE /* PingFang ExtraLight.ttf */,
-				D9B5813B1C911F300083DCEE /* PingFang Heavy.ttf */,
-				D9B5813C1C911F300083DCEE /* PingFang Light.ttf */,
-				D9B5813D1C911F300083DCEE /* PingFang Medium.ttf */,
-				D9B5813E1C911F300083DCEE /* PingFang Regular.ttf */,
 				CE3FC9421B973228000085E5 /* iconfont.ttf */,
 			);
 			name = "Icon-Font";
@@ -1690,17 +1669,14 @@
 				E263C77C1BA35E26008488FA /* map@2x.png in Resources */,
 				D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */,
 				D952C7591C0C75B300AA24C0 /* iconfont-status.png in Resources */,
-				D9B581441C911F300083DCEE /* PingFang Regular.ttf in Resources */,
 				CE0ADC991BDDD03E00374CDC /* 关于@2x.png in Resources */,
 				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
 				D98B5D1A1C08483E0010BC9E /* chuangye_new@2x.png in Resources */,
-				D9B5813F1C911F300083DCEE /* PingFang Bold.ttf in Resources */,
 				D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */,
 				D9B7F61E1C16EFAA0035C2EE /* QGERestTimeCourseViewController.xib in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
 				CE1B36EA1B9A207100824B96 /* calendar.png in Resources */,
-				D9B581431C911F300083DCEE /* PingFang Medium.ttf in Resources */,
 				D99B769A1C8DBD4F00FFE538 /* emptyClassTag1.png in Resources */,
 				E263C7861BA35E26008488FA /* WebViewController.xib in Resources */,
 				D99B76981C8DBC9B00FFE538 /* emptyClassTag.png in Resources */,
@@ -1754,7 +1730,6 @@
 				D9B501941BFC554E008E5EE0 /* logo.png in Resources */,
 				E263C7841BA35E26008488FA /* MapViewController.xib in Resources */,
 				CE30FDE41B9968C000C15AD4 /* tuichu.png in Resources */,
-				D9B581461C9124830083DCEE /* one.ttf in Resources */,
 				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
 				CE46485D1BDFB85900C3C24B /* XBSAboutViewController.xib in Resources */,
 				CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */,
@@ -1773,7 +1748,6 @@
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
 				E263C7801BA35E26008488FA /* shake_match.mp3 in Resources */,
 				3B1388CA1BA364530011EBF2 /* new_icon_menu_4@2x.png in Resources */,
-				D9B581411C911F300083DCEE /* PingFang Heavy.ttf in Resources */,
 				CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */,
 				D9DF23A61BD32FF8007874D9 /* iconfont-password.png in Resources */,
 				E263C78C1BA35E26008488FA /* MenuViewController.xib in Resources */,
@@ -1788,7 +1762,6 @@
 				CE30FDE01B9968C000C15AD4 /* kaoshichaxun.png in Resources */,
 				CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */,
 				D9DF23A51BD32FF8007874D9 /* iconfont-name.png in Resources */,
-				D9B581401C911F300083DCEE /* PingFang ExtraLight.ttf in Resources */,
 				E263C7821BA35E26008488FA /* shop@2x.png in Resources */,
 				E2E7DE2C1B9476730081F699 /* background.png in Resources */,
 				CE30FDDC1B9968C000C15AD4 /* chenjichaxun.png in Resources */,
@@ -1803,7 +1776,6 @@
 				CEE6147C1BEA3F2B004873AA /* ProgressHUD.bundle in Resources */,
 				D952C75F1C0EC44500AA24C0 /* iconfont-shop1.png in Resources */,
 				CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */,
-				D9B581421C911F300083DCEE /* PingFang Light.ttf in Resources */,
 				D99B769C1C8DBD7D00FFE538 /* emptyClassTag2.png in Resources */,
 				CE0ADC9A1BDDD03E00374CDC /* 反馈信息@2x.png in Resources */,
 				E263C79E1BA35E60008488FA /* MeCell.xib in Resources */,

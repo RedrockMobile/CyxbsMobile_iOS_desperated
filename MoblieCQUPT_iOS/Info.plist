@@ -40,13 +40,6 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>one.ttf</string>
-		<string>PingFang Regular.ttf</string>
-		<string>PingFang Medium.ttf</string>
-		<string>PingFang Light.ttf</string>
-		<string>PingFang Heavy.ttf</string>
-		<string>PingFang ExtraLight.ttf</string>
-		<string>PingFang Bold.tff</string>
 		<string>iconfont.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
