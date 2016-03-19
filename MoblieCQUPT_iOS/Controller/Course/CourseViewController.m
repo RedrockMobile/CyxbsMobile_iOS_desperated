@@ -227,6 +227,7 @@
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
     _parameter = [NSMutableDictionary dictionary];
     [_parameter setObject:stuNum forKey:@"stuNum"];
+    
     [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
         NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
         NSMutableArray *data = [NSMutableArray array];

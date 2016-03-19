@@ -6,6 +6,9 @@
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
 
+#define kHeadImage @"defaultImageNSUrl"
+#define kPersonalImage [kHeadImage stringByAppendingString: [LoginEntry getByUserdefaultWithKey:@"stuNum"]]
+
 #import "MineViewController.h"
 #import "XBSConsultButtonClicker.h"
 #import "SuggestionViewController.h"
@@ -105,7 +108,8 @@
 
 - (UIButton *)getMyPhotoWithFrame:(CGRect)rect{
     _myPhoto = [[UIButton alloc] initWithFrame:rect];
-    NSString *url = [LoginEntry getByUserdefaultWithKey:@"defaultImageNSUrl"];
+    ;
+    NSString *url = [LoginEntry getByUserdefaultWithKey:kPersonalImage];
     if (url) {
         ALAssetsLibrary *lib = [[ALAssetsLibrary alloc] init];
         [lib assetForURL:[NSURL URLWithString:url] resultBlock:^(ALAsset *asset) {
@@ -271,7 +275,7 @@
     if (buttonIndex == 1) {
         LoginViewController *login = [[LoginViewController alloc]init];
         [self.navigationController presentViewController:login animated:YES completion:^{
-            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek",@"defaultImageNSUrl"]];
+            [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
         }];
     }
 }
@@ -293,7 +297,7 @@
      ALAssetsLibrary   *lib = [[ALAssetsLibrary alloc] init];
     [lib assetForURL:url resultBlock:^(ALAsset *asset) {
         UIImage *saveImage = [self fullResolutionImageFromALAsset:asset];
-        NSDictionary *dicParam = @{@"defaultImageNSUrl":[url absoluteString]};
+        NSDictionary *dicParam = @{kPersonalImage:[url absoluteString]};
         [LoginEntry saveByUserdefaultWithDictionary:dicParam];
         
         [self image:saveImage didFinishSavingWithError:error contextInfo:nil];

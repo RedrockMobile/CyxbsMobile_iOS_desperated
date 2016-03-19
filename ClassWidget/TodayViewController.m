@@ -26,6 +26,7 @@ fprintf(stderr, "-------\n");                                               \
 #import "TodayViewController.h"
 #import "ClassTableViewCell.h"
 #import <NotificationCenter/NotificationCenter.h>
+#import "MOHLessonTimeModel.h"
 
 @interface TodayViewController () <NCWidgetProviding,UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray *todayClassArray;
@@ -49,15 +50,18 @@ fprintf(stderr, "-------\n");                                               \
 }
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
+    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
+    NSArray *weakDataArray = [shared objectForKey:kAppGroupShareThisWeekArray];
+    self.todayClassArray = [self todayClassArrayFromWeakClassArray:weakDataArray];
     
+    if (self.todayClassArray) {
+        completionHandler(NCUpdateResultNewData);
+    }else{
+        completionHandler(NCUpdateResultNoData);
+    }
     
-    // Perform any setup necessary in order to update the view.
-    
-    // If an error is encountered, use NCUpdateResultFailed
-    // If there's no update required, use NCUpdateResultNoData
-    // If there's an update, use NCUpdateResultNewData
 
-    completionHandler(NCUpdateResultNewData);
+    
 }
 
 
@@ -68,6 +72,8 @@ fprintf(stderr, "-------\n");                                               \
     today -= 1; //从周日开始转为从周一开始
     today = today>0?today:7;
 //    NSLog(@"%@",[NSDate date]);
+    today = 2;
+    
     
     NSMutableArray *mutableToDayClassArray = [NSMutableArray array];
     for (NSDictionary *row in weakClassArray) {
@@ -108,9 +114,7 @@ fprintf(stderr, "-------\n");                                               \
 - (void)updateTodayClass{
     
     [self widgetPerformUpdateWithCompletionHandler:^(NCUpdateResult result) {
-        NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
-        NSArray *weakDataArray = [shared objectForKey:kAppGroupShareThisWeekArray];
-        self.todayClassArray = [self todayClassArrayFromWeakClassArray:weakDataArray];
+        
         [self updateView];
     }];
     NSLog(@"更新今日课程数据");
@@ -150,14 +154,11 @@ fprintf(stderr, "-------\n");                                               \
         cell = [[ClassTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     }
     NSDictionary *lessonDictionary = self.todayClassArray[indexPath.row];
-    NSString *classTime = [NSString stringWithFormat:@"%@",
-                                            [self
-                                                           stringWithBeginLesson:
-                                                               [lessonDictionary[@"begin_lesson"] integerValue]
-                                                           period:
-                                                               [lessonDictionary[@"period"] integerValue]
-                                            ]
-                            ];
+    NSString *classTime =
+    [MOHLessonTimeModel
+        stringWithBeginLesson:[lessonDictionary[@"begin_lesson"] integerValue]
+        period:[lessonDictionary[@"period"] integerValue]];
+
     if([lessonDictionary[@"begin_lesson"] integerValue]==-1){
         cell.classNameLabel.textColor = [UIColor orangeColor];
     }
@@ -173,49 +174,49 @@ fprintf(stderr, "-------\n");                                               \
 }
 
 
-- (NSString *)stringWithBeginLesson:(NSInteger)beginLesson
-                             period:(NSInteger)time{
-    NSLog(@"%ld==%ld",(long)beginLesson,(long)time);
-    NSString *startTimeString,*endTimeString,*string;
-    NSInteger baseClassNum = 1;
-    if (beginLesson == -1) {
-        //没课
-        return @"全天无课";
-    }
-    
-    
-    if (beginLesson<5) {
-        string = @"08:00";
-        
-    }else if(beginLesson <9){
-        string = @"14:00";
-        baseClassNum = 5;
-    }else{
-        string = @"19:00";
-        baseClassNum = 9;
-    }
-    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-        [inputFormatter setDateFormat:@"HH:mm"];
-        NSDate *inputDate = [inputFormatter dateFromString:string];
-        NSInteger addMin = (beginLesson-baseClassNum)*55;
-        if (beginLesson-baseClassNum >=3) {
-            addMin += 10;
-        }
-        NSDate *classDate = [NSDate dateWithTimeInterval:addMin*60
-                                               sinceDate:inputDate];
-        addMin = time*45 + (time-1)*10;
-        if (time >=3 ) {
-            addMin+=10;
-        }
-        NSDate *classEndDate = [NSDate dateWithTimeInterval:addMin*60
-                                                  sinceDate:classDate];
-        
-        startTimeString = [inputFormatter stringFromDate:classDate];
-        endTimeString = [inputFormatter stringFromDate:classEndDate];
-
-    return [NSString stringWithFormat:@"%@~%@",startTimeString,endTimeString];
-}
+//- (NSString *)stringWithBeginLesson:(NSInteger)beginLesson
+//                             period:(NSInteger)time{
+//    NSLog(@"%ld==%ld",(long)beginLesson,(long)time);
+//    NSString *startTimeString,*endTimeString,*string;
+//    NSInteger baseClassNum = 1;
+//    if (beginLesson == -1) {
+//        //没课
+//        return @"全天无课";
+//    }
+//    
+//    
+//    if (beginLesson<5) {
+//        string = @"08:00";
+//        
+//    }else if(beginLesson <9){
+//        string = @"14:00";
+//        baseClassNum = 5;
+//    }else{
+//        string = @"19:00";
+//        baseClassNum = 9;
+//    }
+//    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
+//        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+//        [inputFormatter setDateFormat:@"HH:mm"];
+//        NSDate *inputDate = [inputFormatter dateFromString:string];
+//        NSInteger addMin = (beginLesson-baseClassNum)*55;
+//        if (beginLesson-baseClassNum >=3) {
+//            addMin += 10;
+//        }
+//        NSDate *classDate = [NSDate dateWithTimeInterval:addMin*60
+//                                               sinceDate:inputDate];
+//        addMin = time*45 + (time-1)*10;
+//        if (time >=3 ) {
+//            addMin+=10;
+//        }
+//        NSDate *classEndDate = [NSDate dateWithTimeInterval:addMin*60
+//                                                  sinceDate:classDate];
+//        
+//        startTimeString = [inputFormatter stringFromDate:classDate];
+//        endTimeString = [inputFormatter stringFromDate:classEndDate];
+//
+//    return [NSString stringWithFormat:@"%@~%@",startTimeString,endTimeString];
+//}
 
 - (UITableView *)classTableView{
     if (!_classTableView) {
