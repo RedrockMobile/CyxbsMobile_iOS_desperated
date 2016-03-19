@@ -52,6 +52,7 @@ fprintf(stderr, "-------\n");                                               \
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
     NSArray *weakDataArray = [shared objectForKey:kAppGroupShareThisWeekArray];
+//    NSLog(@"%@",weakDataArray);
     self.todayClassArray = [self todayClassArrayFromWeakClassArray:weakDataArray];
     
     if (self.todayClassArray) {
@@ -72,7 +73,7 @@ fprintf(stderr, "-------\n");                                               \
     today -= 1; //从周日开始转为从周一开始
     today = today>0?today:7;
 //    NSLog(@"%@",[NSDate date]);
-    today = 2;
+    today = 4;
     
     
     NSMutableArray *mutableToDayClassArray = [NSMutableArray array];
