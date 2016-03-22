@@ -641,7 +641,7 @@
     UIView *infotitleView = [[UIView alloc]initWithFrame:CGRectMake(15, 5, _alertView.frame.size.width-30, 40)];
     [_alertView addSubview:infotitleView];
     UILabel *infoLabel = [[UILabel alloc]initWithFrame:CGRectMake(6, 0, _alertView.frame.size.width, 40)];
-    infoLabel.text = @"无课表详情";
+    infoLabel.text = @"没课约详情";
     infoLabel.textAlignment = NSTextAlignmentLeft;
     infoLabel.font = [UIFont systemFontOfSize:20];
     infoLabel.textColor = MAIN_COLOR;
