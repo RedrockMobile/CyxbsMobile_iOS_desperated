@@ -73,7 +73,7 @@ fprintf(stderr, "-------\n");                                               \
     today -= 1; //从周日开始转为从周一开始
     today = today>0?today:7;
 //    NSLog(@"%@",[NSDate date]);
-    today = 4;
+//    today = 4;
     
     
     NSMutableArray *mutableToDayClassArray = [NSMutableArray array];
