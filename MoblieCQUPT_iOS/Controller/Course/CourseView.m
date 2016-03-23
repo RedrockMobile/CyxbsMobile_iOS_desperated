@@ -72,7 +72,7 @@
                 label1.font = [UIFont systemFontOfSize:15];
                 label1.text = array3[i];
                 NSInteger hash_lesson = [[dic objectForKey:@"hash_lesson"] integerValue];
-                NSInteger day = [[dic objectForKey:@"day"] integerValue];
+                NSInteger day = [[dic objectForKey:@"hash_day"] integerValue];
                 label1.text = [NSString stringWithFormat:@"%@ %@",array5[day],array3[i]];
                 label1.numberOfLines = 0;
                 [label1 sizeToFit];

@@ -15,7 +15,7 @@
 @interface QGERestTimeCourseViewController ()<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UITextField *stuNumField;
-@property (strong, nonatomic) UIButton *addBtn;
+//@property (strong, nonatomic) UIButton *addBtn;
 @property (strong, nonatomic) UIButton *editBtn;
 @property (strong, nonatomic) UILabel *addedLabel;
 @property (strong, nonatomic) UIView *table;
@@ -61,23 +61,24 @@
     fieldView.layer.borderColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1].CGColor;
     [self.view addSubview:fieldView];
     
-    _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _addBtn.frame = CGRectMake(fieldView.frame.size.width-60, 0, 60, 40);
-    _addBtn.backgroundColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1];
-    [_addBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    _addBtn.enabled = NO;
-    [_addBtn setTitle:@"添加" forState:UIControlStateNormal];
-    _addBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    [_addBtn addTarget:self action:@selector(addStuNum) forControlEvents:UIControlEventTouchUpInside];
-    [fieldView addSubview:_addBtn];
+//    _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _addBtn.frame = CGRectMake(fieldView.frame.size.width-60, 0, 60, 40);
+//    _addBtn.backgroundColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1];
+//    [_addBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//    _addBtn.enabled = NO;
+//    [_addBtn setTitle:@"添加" forState:UIControlStateNormal];
+//    _addBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+//    [_addBtn addTarget:self action:@selector(addStuNum) forControlEvents:UIControlEventTouchUpInside];
+//    [fieldView addSubview:_addBtn];
     
-    _stuNumField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, fieldView.frame.size.width-10-_addBtn.frame.size.width, 40)];
+    _stuNumField = [[UITextField alloc]initWithFrame:CGRectMake(10, 0, fieldView.frame.size.width-10, 40)];
     _stuNumField.placeholder = @"输入学号可以继续添加";
     _stuNumField.tintColor = MAIN_COLOR;
     _stuNumField.font = [UIFont systemFontOfSize:16];
     _stuNumField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _stuNumField.delegate = self;
-    _stuNumField.keyboardType = UIKeyboardTypeNumberPad;
+    _stuNumField.keyboardType = UIKeyboardTypeDefault;
+    _stuNumField.returnKeyType = UIReturnKeySearch;
     _stuNumField.layer.borderColor = MAIN_COLOR.CGColor;
     [fieldView addSubview:_stuNumField];
     
@@ -129,15 +130,18 @@
 }
 
 - (void)textChange {
-    if (_stuNumField.text.length == 10) {
-        _addBtn.enabled = YES;
-        _addBtn.backgroundColor = MAIN_COLOR;
-        [_addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    }else {
-        _addBtn.enabled = NO;
-        _addBtn.backgroundColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1];
-        [_addBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    }
+    NSLog(@"11");
+    
+    
+//    if (_stuNumField.text.length == 10) {
+//        _addBtn.enabled = YES;
+//        _addBtn.backgroundColor = MAIN_COLOR;
+//        [_addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    }else {
+//        _addBtn.enabled = NO;
+//        _addBtn.backgroundColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1];
+//        [_addBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//    }
 }
 
 - (void)editTableViewCell {
@@ -152,10 +156,16 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    [self addStuNum];
+    return YES;
+}
+
 - (void)addStuNum {
-    _addBtn.enabled = NO;
-    _addBtn.backgroundColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1];
-    [_addBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//    _addBtn.enabled = NO;
+//    _addBtn.backgroundColor = [UIColor colorWithRed:197/255.0 green:197/255.0 blue:197/255.0 alpha:1];
+//    [_addBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     NSDictionary *parameter = @{@"stunum":_stuNumField.text};
     [NetWork NetRequestGETWithRequestURL:GETNAME_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         [self textChange];

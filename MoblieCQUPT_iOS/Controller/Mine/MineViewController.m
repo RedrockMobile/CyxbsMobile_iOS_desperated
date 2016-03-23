@@ -326,6 +326,7 @@
     //在照片库里选择照片作为头像
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
     
     [self presentViewController:imagePicker
                        animated:YES
