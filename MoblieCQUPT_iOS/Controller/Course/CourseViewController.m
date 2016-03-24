@@ -647,6 +647,7 @@
     
     return weekCourseArray;
 }
+#pragma mark -
 #pragma mark 手势
 - (void)backViewChange:(UIPanGestureRecognizer *)gesture {
     if (gesture.state == UIGestureRecognizerStateBegan) {

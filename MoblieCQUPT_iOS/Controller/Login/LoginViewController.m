@@ -20,7 +20,8 @@
 @property (strong, nonatomic)UITextField *passwordField;
 @property (strong, nonatomic)UIButton *loginButton;
 
-@property (strong, nonatomic) MBProgressHUD *hub;
+@property (strong, nonatomic) MBProgressHUD *loadHub;
+@property (strong, nonatomic) MBProgressHUD *AlertHub;
 
 @end
 
@@ -95,6 +96,7 @@
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [_loginButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     _loginButton.backgroundColor = MAIN_COLOR;
+    _loginButton.alpha = 0.5;
     _loginButton.layer.cornerRadius = 5.0;
     _loginButton.enabled = NO;
     [_loginButton addTarget:self action:@selector(loginButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -103,15 +105,24 @@
 
 - (void)textChange {
     if (_nameField.text.length == 10 && _passwordField.text.length == 6) {
-        _loginButton.enabled = YES;
+        [UIView animateWithDuration:0.2 animations:^{
+            _loginButton.alpha = 1;
+        } completion:^(BOOL finished) {
+            _loginButton.enabled = YES;
+        }];
+        
     }else {
-        _loginButton.enabled = NO;
+        [UIView animateWithDuration:0.2 animations:^{
+            _loginButton.alpha = 0.5;
+        } completion:^(BOOL finished) {
+            _loginButton.enabled = NO;
+        }];
     }
 }
 
 - (void)loginButton:(UIButton *)sender {
-    _hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hub.labelText = @"正在登陆...";
+    _loadHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _loadHub.labelText = @"正在登陆...";
     sender.enabled = NO;
     [UIView animateWithDuration:1.5 animations:^{
         [sender setTitle:@"登录中" forState:UIControlStateNormal];
@@ -122,15 +133,26 @@
     [NetWork NetRequestPOSTWithRequestURL:Base_Login
                             WithParameter:parameter
                      WithReturnValeuBlock:^(id returnValue) {
+                         NSLog(@"2121");
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
+                         _AlertHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                         _AlertHub.mode = MBProgressHUDModeText;
                          self.dataDic = returnValue;
                          if (![_dataDic[@"info"] isEqualToString:@"success"]) {
                              if([_dataDic[@"info"] isEqualToString:@"authentication error"]) {
-                                 UIAlertView *passwordErrorAlert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"输入的密码有问题,请重新输入" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                                 [passwordErrorAlert show];
+                                 _AlertHub.labelText = @"输入的密码有问题,请重新输入";
+                                 [_AlertHub showAnimated:YES whileExecutingBlock:^{
+                                     sleep(1.5);
+                                 } completionBlock:^{
+                                     [_AlertHub removeFromSuperview];
+                                 }];
                              }else if ([_dataDic[@"info"] isEqualToString:@"student id error"]) {
-                                 UIAlertView *idErrorAlert = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"输入的学号有问题,请重新输入" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-                                 [idErrorAlert show];
+                                 _AlertHub.labelText = @"输入的学号有问题,请重新输入";
+                                 [_AlertHub showAnimated:YES whileExecutingBlock:^{
+                                     sleep(1.5);
+                                 } completionBlock:^{
+                                     [_AlertHub removeFromSuperview];
+                                 }];
                              }
                              [UIView animateWithDuration:0.8 animations:^{
                                  [sender setTitle:@"登录" forState:UIControlStateNormal];
