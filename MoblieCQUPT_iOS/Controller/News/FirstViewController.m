@@ -79,9 +79,11 @@
                      WithReturnValeuBlock:^(id returnValue) {
                          _annex = returnValue;
                          
-                         if (![_annex[@"data"][@"annex"][0][@"address"] isEqualToString:@""]) {
-                             UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"打开附件" style:UIBarButtonItemStylePlain target:self action:@selector(OpenAnnex)];
-                             self.navigationItem.rightBarButtonItem = rightBarButton;
+                        
+                         NSInteger num =  ((NSArray *)_annex[@"data"]).count;
+                         if (num && ![_annex[@"data"][@"annex"][0][@"address"] isEqualToString:@""]) {
+                            //UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"打开附件" style:UIBarButtonItemStylePlain target:self action:@selector(OpenAnnex)];
+                            // self.navigationItem.rightBarButtonItem = rightBarButton;
                          }
                          
                      } WithFailureBlock:nil];
