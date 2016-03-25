@@ -101,6 +101,8 @@
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleActionSheet];
     
+    NSArray *annexArray = _annex[@"data"][@"annex"];
+    
     for (int i = 0; i < annexArray.count; i++) {
         [alert addAction:[UIAlertAction actionWithTitle:_annex[@"data"][@"annex"][i][@"name"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [self OpenFile:i];
