@@ -40,6 +40,7 @@
     if ([userDefault objectForKey:@"time"] != nil) {
         NSDate *currentTime = [NSDate date];
         NSDate *dataTime = [userDefault objectForKey:@"time"];
+        //选择是跳转到mainViewController还是loginViewController
         if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
@@ -58,15 +59,8 @@
         self.window.rootViewController = login;
     }
 
-    
-
-
-    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-
-    
-
     return YES;
 }
 
