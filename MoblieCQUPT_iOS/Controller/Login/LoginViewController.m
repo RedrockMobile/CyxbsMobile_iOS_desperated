@@ -88,92 +88,102 @@
     underLine.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     [textFieldView addSubview:underLine];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.nameField];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChange) name:UITextFieldTextDidChangeNotification object:self.passwordField];
-    
     _loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _loginButton.frame = CGRectMake(20, 210, ScreenWidth-40, 50);
     [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-    [_loginButton setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
     _loginButton.backgroundColor = MAIN_COLOR;
-    _loginButton.alpha = 0.5;
     _loginButton.layer.cornerRadius = 5.0;
-    _loginButton.enabled = NO;
     [_loginButton addTarget:self action:@selector(loginButton:) forControlEvents:UIControlEventTouchUpInside];
+    [_loginButton addTarget:self action:@selector(touchDown) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:_loginButton];
 }
 
-- (void)textChange {
-    if (_nameField.text.length == 10 && _passwordField.text.length == 6) {
+- (void)touchDown {
+    _loginButton.alpha = 0.5;
+}
+
+- (void)loginButton:(UIButton *)sender {
+    _loadHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _loadHub.labelText = @"正在登陆";
+    [_loadHub showAnimated:NO whileExecutingBlock:^{
+        [UIView animateWithDuration:1.5 animations:^{
+            [sender setTitle:@"登录中" forState:UIControlStateNormal];
+        } completion:nil];
+        sleep(1);
+        _loginButton.enabled = NO;
+    } completionBlock:^{
+        if (_nameField.text.length == 10 && _passwordField.text.length == 6) {
+            NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
+            [parameter setObject:_nameField.text forKey:@"stuNum"];
+            [parameter setObject:_passwordField.text forKey:@"idNum"];
+            [NetWork NetRequestPOSTWithRequestURL:Base_Login
+                                    WithParameter:parameter
+                             WithReturnValeuBlock:^(id returnValue) {
+                                 self.dataDic = returnValue;
+                                 if (![_dataDic[@"info"] isEqualToString:@"success"]) {
+                                     if([_dataDic[@"info"] isEqualToString:@"authentication error"]) {
+                                         [self alertAnimation:1];
+                                     }else if ([_dataDic[@"info"] isEqualToString:@"student id error"]) {
+                                         [self alertAnimation:2];
+                                     }
+                                 }else {
+                                     NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
+                                     [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
+                                     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                     id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+                                     [self presentViewController:view animated:YES completion:nil];
+                                 }
+                             } WithFailureBlock:^{
+                                 [self alertAnimation:5];
+                                 NSLog(@"请求失败");
+                             }];
+            
+        }else if (_nameField.text.length == 10 && _passwordField.text.length == 0) {
+            [self alertAnimation:4];
+        }else if (_nameField.text.length == 0 && _passwordField.text.length == 6) {
+            [self alertAnimation:3];
+        }else {
+            [self alertAnimation:0];
+        }
+    }];
+    
+    
+}
+
+- (void)alertAnimation:(NSInteger)style {
+    [_loadHub removeFromSuperview];
+    _AlertHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _AlertHub.mode = MBProgressHUDModeText;
+    
+    if (style == 0) {
+        _AlertHub.labelText = @"请检查账号密码输入是否正确";
+    }else if (style == 1) {
+        _AlertHub.labelText = @"输入的密码有问题,请重新输入";
+    }else if (style == 2) {
+        _AlertHub.labelText = @"输入的学号有问题,请重新输入";
+    }else if (style == 3) {
+        _AlertHub.labelText = @"请输入账号";
+    }else if (style == 4) {
+        _AlertHub.labelText = @"请输入密码";
+    }else if (style == 5) {
+        _AlertHub.labelText = @"网络连接失败,请检查网络";
+    }
+    [_AlertHub showAnimated:NO whileExecutingBlock:^{
+        sleep(1.5);
+    } completionBlock:^{
+        [_AlertHub removeFromSuperview];
+    }];
+    [UIView animateWithDuration:0.8 animations:^{
+        [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
+    } completion:^(BOOL finished) {
         [UIView animateWithDuration:0.2 animations:^{
             _loginButton.alpha = 1;
         } completion:^(BOOL finished) {
             _loginButton.enabled = YES;
         }];
-        
-    }else {
-        [UIView animateWithDuration:0.2 animations:^{
-            _loginButton.alpha = 0.5;
-        } completion:^(BOOL finished) {
-            _loginButton.enabled = NO;
-        }];
-    }
+    }];
 }
 
-- (void)loginButton:(UIButton *)sender {
-    _loadHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _loadHub.labelText = @"正在登陆...";
-    sender.enabled = NO;
-    [UIView animateWithDuration:1.5 animations:^{
-        [sender setTitle:@"登录中" forState:UIControlStateNormal];
-    } completion:nil];
-    NSMutableDictionary *parameter = [NSMutableDictionary dictionary];
-    [parameter setObject:_nameField.text forKey:@"stuNum"];
-    [parameter setObject:_passwordField.text forKey:@"idNum"];
-    [NetWork NetRequestPOSTWithRequestURL:Base_Login
-                            WithParameter:parameter
-                     WithReturnValeuBlock:^(id returnValue) {
-                         NSLog(@"2121");
-                         [MBProgressHUD hideHUDForView:self.view animated:YES];
-                         _AlertHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                         _AlertHub.mode = MBProgressHUDModeText;
-                         self.dataDic = returnValue;
-                         if (![_dataDic[@"info"] isEqualToString:@"success"]) {
-                             if([_dataDic[@"info"] isEqualToString:@"authentication error"]) {
-                                 _AlertHub.labelText = @"输入的密码有问题,请重新输入";
-                                 [_AlertHub showAnimated:YES whileExecutingBlock:^{
-                                     sleep(1.5);
-                                 } completionBlock:^{
-                                     [_AlertHub removeFromSuperview];
-                                 }];
-                             }else if ([_dataDic[@"info"] isEqualToString:@"student id error"]) {
-                                 _AlertHub.labelText = @"输入的学号有问题,请重新输入";
-                                 [_AlertHub showAnimated:YES whileExecutingBlock:^{
-                                     sleep(1.5);
-                                 } completionBlock:^{
-                                     [_AlertHub removeFromSuperview];
-                                 }];
-                             }
-                             [UIView animateWithDuration:0.8 animations:^{
-                                 [sender setTitle:@"登录" forState:UIControlStateNormal];
-                             } completion:nil];
-                             sender.enabled = YES;
-                         }else {
-                             NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
-                             [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
-                             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-                             [self presentViewController:view animated:YES completion:nil];
-                         }
-                     } WithFailureBlock:^{
-                         sender.enabled = YES;
-                         [UIView animateWithDuration:0.8 animations:^{
-                             [sender setTitle:@"登录" forState:UIControlStateNormal];
-                         } completion:nil];
-                         NSLog(@"请求失败");
-                     }];
-
-}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [_nameField resignFirstResponder];
