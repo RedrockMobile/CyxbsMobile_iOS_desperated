@@ -30,7 +30,7 @@ static Boolean isClick = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self findButtonInit];
-    NSArray *item = @[@"课程",@"教育信息",@"查询",@"发现",@"我的"];
+    NSArray *item = @[@"社区",@"课表",@"查询",@"发现",@"我的"];
     
 //    self.navigationController.title=@"22";
     
@@ -77,13 +77,13 @@ static Boolean isClick = NO;
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    if ([item isEqual:self.tabBar.items[0]]) {
+    if ([item isEqual:self.tabBar.items[1]]) {
         self.navigationController.navigationBarHidden = YES;
     }else{
         self.navigationController.navigationBarHidden = NO;
     }
     
-    NSArray *names = @[@"课程",@"教育信息",@"发现",@"我的"];
+    NSArray *names = @[@"社区",@"课表",@"发现",@"我的"];
     for (int i=0; i<=3; i++) {
         if ([item isEqual:self.tabBar.items[i]]){
             self.navigationItem.title = names[i];

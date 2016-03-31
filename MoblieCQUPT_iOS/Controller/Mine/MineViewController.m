@@ -209,7 +209,7 @@
         [cell addSubview:label];
         
 
-        NSSet *set = [NSSet setWithObjects:@2,@3,@4,@5,@7,@8, nil];
+        NSSet *set = [NSSet setWithObjects:@2,@3,@4,@5,@6,@8,@9, nil];
         NSSet *nowSet = [NSSet setWithObject:[NSNumber numberWithInteger:indexPath.section]];
         if ([nowSet isSubsetOfSet:set]) {
             UIView *underLine = [[UIView alloc]initWithFrame:CGRectMake(label.frame.origin.x, 0, MAIN_SCREEN_W, 0.5)];
@@ -225,7 +225,7 @@
 
 #pragma mark 分割tableview设置
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    NSSet *set = [NSSet setWithObjects:@1,@6,@9, nil];
+    NSSet *set = [NSSet setWithObjects:@1,@7, nil];
     NSSet *nowSet = [NSSet setWithObject:[NSNumber numberWithInteger:section]];
     if ([nowSet isSubsetOfSet:set]) {
         return 15;

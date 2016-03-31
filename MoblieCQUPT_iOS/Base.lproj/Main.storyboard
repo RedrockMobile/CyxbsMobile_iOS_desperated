@@ -87,7 +87,7 @@
         <!--news-->
         <scene sceneID="5ep-I1-zrV">
             <objects>
-                <viewController title="news" id="Zs5-pY-eiB" customClass="NewsViewController" sceneMemberID="viewController">
+                <viewController title="news" id="Zs5-pY-eiB" customClass="CourseViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QyF-Wh-iS1"/>
                         <viewControllerLayoutGuide type="bottom" id="PQw-CK-YaV"/>
@@ -165,7 +165,7 @@
         <!--course-->
         <scene sceneID="8J0-Lf-0pd">
             <objects>
-                <viewController title="course" id="kc5-RX-Tv2" customClass="CourseViewController" sceneMemberID="viewController">
+                <viewController title="course" id="kc5-RX-Tv2" customClass="MBCommunityViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NwE-Kv-Ihl"/>
                         <viewControllerLayoutGuide type="bottom" id="N55-kP-x07"/>

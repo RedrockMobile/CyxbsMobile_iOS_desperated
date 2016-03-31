@@ -571,7 +571,6 @@
 
 #pragma mark 处理课表颜色
 - (void)handleColor:(NSMutableArray *)courses {
-    NSLog(@"%@",courses);
     _colorArray = ColorArray;
     for (int i = 0; i < courses.count; i ++) {
         NSString *day = courses[i][@"hash_day"];
