@@ -571,14 +571,15 @@
 
 #pragma mark 处理课表颜色
 - (void)handleColor:(NSMutableArray *)courses {
+    NSLog(@"%@",courses);
     _colorArray = ColorArray;
     for (int i = 0; i < courses.count; i ++) {
         NSString *day = courses[i][@"hash_day"];
-        NSString *lesson = courses[i][@"hash_lesson"];
+        NSString *lesson = courses[i][@"begin_lesson"];
         if (day.integerValue >= 0 && day.integerValue < 5) {
-            if (lesson.integerValue >= 0 && lesson.integerValue < 2) {
+            if (lesson.integerValue >= 1 && lesson.integerValue < 5) {
                 [courses[i] setObject:_colorArray[0] forKey:@"color"];
-            }else if (lesson.integerValue >= 2 && lesson.integerValue < 4) {
+            }else if (lesson.integerValue >= 5 && lesson.integerValue < 9) {
                 [courses[i] setObject:_colorArray[1] forKey:@"color"];
             }else {
                 [courses[i] setObject:_colorArray[2] forKey:@"color"];
