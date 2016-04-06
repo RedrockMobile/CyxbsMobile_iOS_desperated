@@ -247,16 +247,21 @@
         NSString *nowWeek = [NSString stringWithFormat:@"%@",[returnValue objectForKey:@"nowWeek"]];
         self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
         
-        /**共享数据 by Orange-W**/
-        NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
-        [shared setObject:[self getWeekCourseArray:[nowWeek integerValue]] forKey:kAppGroupShareThisWeekArray];
-        [shared synchronize];
-        /***/
+        
+        
         
         [userDefault setObject:nowWeek forKey:@"nowWeek"];
         [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
         [userDefault setObject:_dataArray forKey:@"dataArray"];
         [userDefault synchronize];
+        
+        /**共享数据 by Orange-W**/
+        NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
+        NSLog(@"%@",_dataArray);
+        [shared setObject:_dataArray forKey:kAppGroupShareThisTermArray];
+        [shared synchronize];
+        /***/
+        
         for (int i = 0; i < _buttonTag.count; i ++) {
             [_buttonTag[i] removeFromSuperview];
         }

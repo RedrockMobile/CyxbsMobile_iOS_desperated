@@ -19,7 +19,7 @@ fprintf(stderr, "-------\n");                                               \
 #endif
 #define kAPPGroupID @"group.com.mredrock.cyxbs"
 #define kAppGroupShareNowDay @"nowDay"
-#define kAppGroupShareThisWeekArray @"thisWeekArray"
+#define kAppGroupShareThisTermArray @"thisTerm"
 #define kAutoUpdateInterval 60*5
 #define kTableViewCellRowHeight 100
 
@@ -51,7 +51,10 @@ fprintf(stderr, "-------\n");                                               \
 
 - (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
     NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
-    NSArray *weakDataArray = [shared objectForKey:kAppGroupShareThisWeekArray];
+    NSArray *itemDataArray = [shared objectForKey:kAppGroupShareThisTermArray];
+    
+    
+    NSArray *weakDataArray = [self getWeek:[self getThisWeek] fromTermArray:itemDataArray];
 //    NSLog(@"%@",weakDataArray);
     self.todayClassArray = [self todayClassArrayFromWeakClassArray:weakDataArray];
     
@@ -237,4 +240,39 @@ fprintf(stderr, "-------\n");                                               \
 }
 
 
+#pragma mark 当前周
+- (NSInteger)getThisWeek{
+    NSTimeInterval time = [[self convertDateFromString:@"2016-02-28"] timeIntervalSinceNow];
+    int week = ceil(fabs(time/(3600*24*7)));
+    //NSLog(@"week:%d-- %lf",week,fabs(time/(3600*24*7)));
+   return  week;
+}
+
+- (NSDate*) convertDateFromString:(NSString*)dateString
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date=[formatter dateFromString:dateString];
+    return date;
+}
+
+#pragma mark 获取周课表
+- (NSMutableArray *)getWeek:(NSInteger)week fromTermArray:(NSArray *)dataArray{
+    
+    NSMutableArray *weekCourseArray = [NSMutableArray array];
+    if (week == 0) {
+        weekCourseArray = [NSMutableArray arrayWithArray:dataArray];
+    }else {
+        for (int i = 0; i < dataArray.count; i ++) {
+            if ([dataArray[i][@"week"] containsObject:[NSNumber numberWithInteger:week]]) {
+                NSMutableDictionary *weekDataDic = [[NSMutableDictionary alloc]initWithDictionary:dataArray[i]];
+                [weekCourseArray addObject:weekDataDic];
+            }
+        }
+        //[self handleColor:weekCourseArray];
+    }
+    
+    NSLog(@"weekCourse:%@",weekCourseArray);
+    return weekCourseArray;
+}
 @end

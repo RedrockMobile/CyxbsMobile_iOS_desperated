@@ -31,7 +31,7 @@
     // 创建UIScrollView
     _scrollView = [[UIScrollView alloc] init];
     _scrollView.frame = CGRectMake(15, _devLine.frame.origin.y+15, MAIN_SCREEN_W-30, MAIN_SCREEN_H-_devLine.frame.origin.y); // frame中的size指UIScrollView的可视范围
-    _scrollView.contentSize = CGSizeMake(MAIN_SCREEN_W-30, MAIN_SCREEN_H-_devLine.frame.origin.y);
+    _scrollView.contentSize = CGSizeMake(0, MAIN_SCREEN_H-_devLine.frame.origin.y);
     [self.view addSubview:_scrollView];
     _textView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W-30, MAIN_SCREEN_H)];
     _textView.text = @"查询中";
@@ -71,7 +71,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
    float H = [self heightForString:self.data1[@"newsContent"] fontSize:14 andWidth:MAIN_SCREEN_W];
-    _scrollView.contentSize = CGSizeMake(MAIN_SCREEN_W,H);
+    _scrollView.contentSize = CGSizeMake(0,H);
     _scrollView.backgroundColor = [UIColor clearColor];
     [_scrollView sizeToFit];
     
