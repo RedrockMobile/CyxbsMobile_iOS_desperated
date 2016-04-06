@@ -242,9 +242,9 @@ fprintf(stderr, "-------\n");                                               \
 
 #pragma mark 当前周
 - (NSInteger)getThisWeek{
-    NSInteger time = [[self convertDateFromString:@"2016-02-09"] timeIntervalSinceNow];
-    int week = ceil(labs(time/(3600*24*7)));
-    NSLog(@"week:%d--",week);
+    NSTimeInterval time = [[self convertDateFromString:@"2016-02-28"] timeIntervalSinceNow];
+    int week = ceil(fabs(time/(3600*24*7)));
+    //NSLog(@"week:%d-- %lf",week,fabs(time/(3600*24*7)));
    return  week;
 }
 
