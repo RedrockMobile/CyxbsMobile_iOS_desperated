@@ -41,7 +41,7 @@
 #pragma Group共享
 #define kAPPGroupID @"group.com.mredrock.cyxbs"
 #define kAppGroupShareNowDay @"nowDay"
-#define kAppGroupShareThisWeekArray @"thisWeekArray"
+#define kAppGroupShareThisTermArray @"thisTerm"
 
 #define kAPPUserDefaultLoginName @"name"
 #define kAPPUserDefaultStudentID @"stuNum"
