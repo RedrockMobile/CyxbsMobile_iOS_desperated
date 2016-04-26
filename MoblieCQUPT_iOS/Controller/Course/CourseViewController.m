@@ -16,6 +16,7 @@
 #import "CourseView.h"
 #import "LoginViewController.h"
 #import "MBProgressHUD.h"
+#import "UIImage+ImageEffects.h"
 
 
 @interface CourseViewController ()<UIScrollViewDelegate>
@@ -26,6 +27,8 @@
 @property (strong, nonatomic) UIScrollView *weekScrollView;
 @property (strong, nonatomic) UIView *shadeView;
 @property (strong, nonatomic) UIView *backView;
+@property (strong, nonatomic) UIImageView *blurImageView;
+@property (strong, nonatomic) UIImage *screenshot;
 @property (strong, nonatomic) UIButton *clickBtn;
 @property (strong, nonatomic) UIView *nav;
 @property (strong, nonatomic) NSMutableArray *weekBtnArray;
@@ -219,7 +222,6 @@
         classNum.textColor = [UIColor colorWithRed:74/255.0 green:74/255.0 blue:74/255.0 alpha:1];
         [_mainScrollView addSubview:classNum];
     }
-    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
 }
 #pragma mark 请求课表数据
 - (void)loadNetData {
@@ -444,7 +446,20 @@
     [backgroundViewBtn addTarget:self action:@selector(doneClick) forControlEvents:UIControlEventTouchUpInside];
     [_backgroundView addSubview:backgroundViewBtn];
     
-    
+    self.screenshot = [self _screenshotFromView:[UIApplication sharedApplication].keyWindow];
+    [_backgroundView addSubview:self.blurImageView];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        UIImage* blurImage = [self.screenshot applyBlurWithRadius:20
+                                                        tintColor:RGBColor(0, 0, 0, 0.6)
+                                            saturationDeltaFactor:1.4
+                                                        maskImage:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            _blurImageView.image = blurImage;
+            [UIView animateWithDuration:0.1f animations:^{
+                _blurImageView.alpha = 1.0f;
+            }];
+        });
+    });
     if(ScreenWidth == 320) {
         _alertView = [[UIView alloc]initWithFrame:CGRectMake(ScreenWidth/9, ScreenHeight/7, 240, 380+10)];
     }else {
@@ -509,11 +524,28 @@
     [[[UIApplication sharedApplication]keyWindow]addSubview:_alertView];
     
     [UIView animateWithDuration:0.1 animations:^{
-        _backgroundView.alpha = 0.7;
+        _backgroundView.alpha = 1;
         _alertView.alpha = 1;
     } completion:^(BOOL finished) {
         
     }];
+}
+
+//获取屏幕截图
+- (UIImage *)_screenshotFromView:(UIView *)aView {
+    UIGraphicsBeginImageContextWithOptions(aView.bounds.size,NO,[UIScreen mainScreen].scale);
+    [aView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage* screenshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return screenshotImage;
+}
+
+- (UIImageView *)blurImageView {
+    if (!_blurImageView) {
+        _blurImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        _blurImageView.alpha = 0.0f;
+    }
+    return _blurImageView;
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

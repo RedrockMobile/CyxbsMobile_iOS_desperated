@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="XBSFindClassroomViewController">
@@ -19,14 +19,12 @@
             <subviews>
                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vA1-HE-wpL">
                     <rect key="frame" x="0.0" y="505" width="375" height="162"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="162" id="2Yq-aa-eSQ"/>
                     </constraints>
                 </pickerView>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vNe-WS-UkP">
                     <rect key="frame" x="0.0" y="461" width="375" height="44"/>
-                    <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="thr-VC-l02"/>
                     </constraints>
@@ -37,7 +35,6 @@
                     </items>
                 </toolbar>
             </subviews>
-            <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="vA1-HE-wpL" secondAttribute="trailing" id="3Na-bh-emg"/>

@@ -51,6 +51,8 @@
 #define kWidthGrid  (ScreenWidth/7.5)
 #define RGBColor(r,g,b,a) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
 
-#define ColorArray [[NSMutableArray alloc]initWithObjects:@"254,145,103",@"120,201,252",@"111,219,188",@"191,161,233",nil];
+#define ColorArray [[NSMutableArray alloc]initWithObjects:@"254,145,103",@"120,201,252",@"111,219,188",@"191,161,233",nil]
+
+#define kPhotoImageViewW (ScreenWidth - 2 * 10 - 2) / 3
 
 #endif

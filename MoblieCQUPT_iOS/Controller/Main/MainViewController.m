@@ -32,6 +32,7 @@ static Boolean isClick = NO;
     [self findButtonInit];
     NSArray *item = @[@"社区",@"课表",@"查询",@"发现",@"我的"];
     
+    self.tabBar.translucent = YES;
 //    self.navigationController.title=@"22";
     
     int whichVc = 0;
