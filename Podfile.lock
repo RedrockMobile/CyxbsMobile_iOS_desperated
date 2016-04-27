@@ -32,6 +32,9 @@ PODS:
   - UIColor+BFPaperColors (1.7.2)
   - UMengAnalytics-NO-IDFA (3.6.7)
   - UPStackMenu (1.0.0)
+  - YYKit (1.0.5):
+    - YYKit/no-arc (= 1.0.5)
+  - YYKit/no-arc (1.0.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
@@ -42,6 +45,7 @@ DEPENDENCIES:
   - UIColor+BFPaperColors
   - UMengAnalytics-NO-IDFA
   - UPStackMenu
+  - YYKit
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -52,5 +56,6 @@ SPEC CHECKSUMS:
   UIColor+BFPaperColors: 03101fe6c10ed00c6daae7c26553f1de41500853
   UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
   UPStackMenu: 4e834206f76451c1d78a6cacee46e47ecf83b174
+  YYKit: f2654fe525de2283648db957bddb37ddd8e06549
 
 COCOAPODS: 0.39.0

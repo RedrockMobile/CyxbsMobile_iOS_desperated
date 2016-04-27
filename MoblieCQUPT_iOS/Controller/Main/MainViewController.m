@@ -179,9 +179,9 @@ static Boolean isClick = NO;
         if ((i+1)%3==0) {
             indexH -= distance;
         }
-        [self.btnArray[i] setSize:CGSizeMake(finalSize, finalSize)];
+//        [self.btnArray[i] setSize:CGSizeMake(finalSize, finalSize)];
         [self.btnArray[i] setCenter:point];
-        [self.btnTextArray[i] setSize:CGSizeMake(finalSize, finalSize)];
+//        [self.btnTextArray[i] setSize:CGSizeMake(finalSize, finalSize)];
         [self.btnTextArray[i] setCenter:CGPointMake(point.x, point.y+finalSize/2)];
     }
     
