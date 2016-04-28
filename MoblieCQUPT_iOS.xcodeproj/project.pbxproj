@@ -229,6 +229,11 @@
 		D9DF5EB81CD0915300C89F6A /* MBCommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EB61CD0915300C89F6A /* MBCommunityModel.m */; };
 		D9DF5EBE1CD0915900C89F6A /* MBCommunityNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EBB1CD0915900C89F6A /* MBCommunityNetWorking.m */; };
 		D9DF5EBF1CD0915900C89F6A /* UIShortTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EBD1CD0915900C89F6A /* UIShortTapGestureRecognizer.m */; };
+		D9DF5EC31CD096CE00C89F6A /* MBReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EC11CD096CE00C89F6A /* MBReleaseViewController.m */; };
+		D9DF5EC41CD096CE00C89F6A /* MBReleaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DF5EC21CD096CE00C89F6A /* MBReleaseViewController.xib */; };
+		D9DF5EC61CD09A6100C89F6A /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF5EC51CD09A6100C89F6A /* add.png */; };
+		D9DF5EC91CD0DB8800C89F6A /* MBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EC81CD0DB8800C89F6A /* MBTextView.m */; };
+		D9DF5ECC1CD0E1B400C89F6A /* MBInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5ECB1CD0E1B400C89F6A /* MBInputView.m */; };
 		D9E7B8231C8AB07C00253C38 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E7B8221C8AB07C00253C38 /* GradeView.m */; };
 		D9F7671C1CB7AB1F00DEF12A /* 熊.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */; };
 		D9F7671E1CB7AB3400DEF12A /* 智妍1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */; };
@@ -629,6 +634,14 @@
 		D9DF5EBB1CD0915900C89F6A /* MBCommunityNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityNetWorking.m; sourceTree = "<group>"; };
 		D9DF5EBC1CD0915900C89F6A /* UIShortTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIShortTapGestureRecognizer.h; sourceTree = "<group>"; };
 		D9DF5EBD1CD0915900C89F6A /* UIShortTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIShortTapGestureRecognizer.m; sourceTree = "<group>"; };
+		D9DF5EC01CD096CE00C89F6A /* MBReleaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBReleaseViewController.h; sourceTree = "<group>"; };
+		D9DF5EC11CD096CE00C89F6A /* MBReleaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBReleaseViewController.m; sourceTree = "<group>"; };
+		D9DF5EC21CD096CE00C89F6A /* MBReleaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBReleaseViewController.xib; sourceTree = "<group>"; };
+		D9DF5EC51CD09A6100C89F6A /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		D9DF5EC71CD0DB8800C89F6A /* MBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBTextView.h; sourceTree = "<group>"; };
+		D9DF5EC81CD0DB8800C89F6A /* MBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTextView.m; sourceTree = "<group>"; };
+		D9DF5ECA1CD0E1B400C89F6A /* MBInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBInputView.h; sourceTree = "<group>"; };
+		D9DF5ECB1CD0E1B400C89F6A /* MBInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBInputView.m; sourceTree = "<group>"; };
 		D9E7B8211C8AB07C00253C38 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
 		D9E7B8221C8AB07C00253C38 /* GradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeView.m; sourceTree = "<group>"; };
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1404,6 +1417,7 @@
 				D99007711CB69AB500EDAFD1 /* comment1.png */,
 				D99007721CB69AB500EDAFD1 /* support1.png */,
 				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
+				D9DF5EC51CD09A6100C89F6A /* add.png */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
 				D9DF5EB21CD0915300C89F6A /* Model */,
 				D9DF5E891CD0910800C89F6A /* Cell */,
@@ -1518,12 +1532,15 @@
 		D9DF5E7E1CD090EE00C89F6A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				D9DF5E7F1CD090EE00C89F6A /* MBCommuityDetailsViewController.h */,
-				D9DF5E801CD090EE00C89F6A /* MBCommuityDetailsViewController.m */,
-				D9DF5E811CD090EE00C89F6A /* MBCommuityDetailsViewController.xib */,
 				D9DF5E821CD090EE00C89F6A /* MBCommunityViewController.h */,
 				D9DF5E831CD090EE00C89F6A /* MBCommunityViewController.m */,
 				D9DF5E841CD090EE00C89F6A /* MBCommunityViewController.xib */,
+				D9DF5E7F1CD090EE00C89F6A /* MBCommuityDetailsViewController.h */,
+				D9DF5E801CD090EE00C89F6A /* MBCommuityDetailsViewController.m */,
+				D9DF5E811CD090EE00C89F6A /* MBCommuityDetailsViewController.xib */,
+				D9DF5EC01CD096CE00C89F6A /* MBReleaseViewController.h */,
+				D9DF5EC11CD096CE00C89F6A /* MBReleaseViewController.m */,
+				D9DF5EC21CD096CE00C89F6A /* MBReleaseViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1554,6 +1571,8 @@
 				D9DF5E9C1CD0913B00C89F6A /* MBPhotoContainerView.m */,
 				D9DF5E9D1CD0913B00C89F6A /* MBSegmentedView.h */,
 				D9DF5E9E1CD0913B00C89F6A /* MBSegmentedView.m */,
+				D9DF5ECA1CD0E1B400C89F6A /* MBInputView.h */,
+				D9DF5ECB1CD0E1B400C89F6A /* MBInputView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1598,6 +1617,8 @@
 				D9DF5EBB1CD0915900C89F6A /* MBCommunityNetWorking.m */,
 				D9DF5EBC1CD0915900C89F6A /* UIShortTapGestureRecognizer.h */,
 				D9DF5EBD1CD0915900C89F6A /* UIShortTapGestureRecognizer.m */,
+				D9DF5EC71CD0DB8800C89F6A /* MBTextView.h */,
+				D9DF5EC81CD0DB8800C89F6A /* MBTextView.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -1933,6 +1954,7 @@
 				D9A0FE1A1CBA729200BFD01D /* 图片6.jpg in Resources */,
 				E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */,
 				D969649B1CB51EEC00B12B2E /* 智妍2.jpg in Resources */,
+				D9DF5EC61CD09A6100C89F6A /* add.png in Resources */,
 				D96964971CB51ED600B12B2E /* 智妍4.jpg in Resources */,
 				D99007741CB69AB500EDAFD1 /* support1.png in Resources */,
 				E263C7881BA35E26008488FA /* ShakeViewController.xib in Resources */,
@@ -2042,6 +2064,7 @@
 				CE4648751BDFB91C00C3C24B /* TitleBaseViewController.xib in Resources */,
 				CEE1E2201B9994E90088EC7C /* yijianfankui.png in Resources */,
 				D9A0FE1C1CBA729900BFD01D /* 图片5.jpg in Resources */,
+				D9DF5EC41CD096CE00C89F6A /* MBReleaseViewController.xib in Resources */,
 				CEF273871B90D573009B5BA2 /* 20-2c.png in Resources */,
 				CEF273931B90D573009B5BA2 /* 20-3餐厅psd.png in Resources */,
 				E263C79C1BA35E60008488FA /* FirstViewController.xib in Resources */,
@@ -2139,6 +2162,7 @@
 				3B1388BA1BA354930011EBF2 /* XBSConsultButtonClicker.m in Sources */,
 				CE3BC7D51BE8C6270002CBA4 /* F3HNumberTileGameViewController.m in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
+				D9DF5EC91CD0DB8800C89F6A /* MBTextView.m in Sources */,
 				E263C7741BA35E26008488FA /* CommunityViewController.m in Sources */,
 				D9C66AE21C23C9890086AEE6 /* QGERestTimeDetailView.m in Sources */,
 				CE4648741BDFB91C00C3C24B /* TitleBaseViewController.m in Sources */,
@@ -2196,6 +2220,8 @@
 				CE3BC7DA1BE8C6270002CBA4 /* F3HMoveOrder.m in Sources */,
 				D9DF5EB01CD0914A00C89F6A /* UIImage+Helper.m in Sources */,
 				CE4648641BDFB87C00C3C24B /* ORWInputTextView.m in Sources */,
+				D9DF5ECC1CD0E1B400C89F6A /* MBInputView.m in Sources */,
+				D9DF5EC31CD096CE00C89F6A /* MBReleaseViewController.m in Sources */,
 				CEE614981BEA4B9A004873AA /* UIView+MJExtension.m in Sources */,
 				D9DF5E9F1CD0913B00C89F6A /* MBBrowserItem.m in Sources */,
 				D9DF5E851CD090EE00C89F6A /* MBCommuityDetailsViewController.m in Sources */,

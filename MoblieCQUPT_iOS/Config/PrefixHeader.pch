@@ -56,4 +56,7 @@
 
 #define kPhotoImageViewW (ScreenWidth - 2 * 10 - 2) / 3
 
+//gege
+#define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
+
 #endif
