@@ -15,14 +15,10 @@
 @interface MBPhotoContainerView ()
 
 @property (strong, nonatomic) NSArray *imageViewArray;
-@property (assign, nonatomic) BOOL isBig;
+@property (strong, nonatomic) NSMutableArray *addPicArray;
 @property (strong, nonatomic) NSMutableArray *imageViewOrigin;
 
 @property (strong, nonatomic) UIImageView *currenImageView;
-
-@property (strong, nonatomic) UIView *back;
-
-@property (strong, nonatomic) UIView *backView;
 
 @end
 
@@ -32,12 +28,12 @@
     if (self = [super initWithFrame:frame]) {
         [self setupContainerView];
         [CATransaction setDisableActions:YES];
-        _isBig = NO;
     }
     return  self;
 }
 
 - (void)setupContainerView {
+    
     NSMutableArray *temp = [NSMutableArray new];
     for (int i = 0; i < 9; i++) {
         UIImageView *imageView = [UIImageView new];
@@ -124,13 +120,13 @@
 
 
 
-- (CGRect)calculateDestinationFrameWithSize:(CGSize)size{
-    CGRect rect = CGRectMake(0.0f,
-                             (ScreenHeight - size.height * ScreenWidth/size.width)/2,
-                             ScreenWidth,
-                             size.height * ScreenWidth/size.width);
-    return rect;
-}
+//- (CGRect)calculateDestinationFrameWithSize:(CGSize)size{
+//    CGRect rect = CGRectMake(0.0f,
+//                             (ScreenHeight - size.height * ScreenWidth/size.width)/2,
+//                             ScreenWidth,
+//                             size.height * ScreenWidth/size.width);
+//    return rect;
+//}
 
 /*
 // Only override drawRect: if you perform custom drawing.

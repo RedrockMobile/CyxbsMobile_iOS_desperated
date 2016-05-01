@@ -234,6 +234,8 @@
 		D9DF5EC61CD09A6100C89F6A /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = D9DF5EC51CD09A6100C89F6A /* add.png */; };
 		D9DF5EC91CD0DB8800C89F6A /* MBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EC81CD0DB8800C89F6A /* MBTextView.m */; };
 		D9DF5ECC1CD0E1B400C89F6A /* MBInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5ECB1CD0E1B400C89F6A /* MBInputView.m */; };
+		D9DF5ECF1CD4C70C00C89F6A /* MBAddPhotoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5ECE1CD4C70C00C89F6A /* MBAddPhotoContainerView.m */; };
+		D9DF5F141CD61F4500C89F6A /* MBAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5F131CD61F4500C89F6A /* MBAddImageView.m */; };
 		D9E7B8231C8AB07C00253C38 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9E7B8221C8AB07C00253C38 /* GradeView.m */; };
 		D9F7671C1CB7AB1F00DEF12A /* 熊.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */; };
 		D9F7671E1CB7AB3400DEF12A /* 智妍1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */; };
@@ -642,6 +644,10 @@
 		D9DF5EC81CD0DB8800C89F6A /* MBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTextView.m; sourceTree = "<group>"; };
 		D9DF5ECA1CD0E1B400C89F6A /* MBInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBInputView.h; sourceTree = "<group>"; };
 		D9DF5ECB1CD0E1B400C89F6A /* MBInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBInputView.m; sourceTree = "<group>"; };
+		D9DF5ECD1CD4C70C00C89F6A /* MBAddPhotoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAddPhotoContainerView.h; sourceTree = "<group>"; };
+		D9DF5ECE1CD4C70C00C89F6A /* MBAddPhotoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAddPhotoContainerView.m; sourceTree = "<group>"; };
+		D9DF5F121CD61F4500C89F6A /* MBAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAddImageView.h; sourceTree = "<group>"; };
+		D9DF5F131CD61F4500C89F6A /* MBAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAddImageView.m; sourceTree = "<group>"; };
 		D9E7B8211C8AB07C00253C38 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
 		D9E7B8221C8AB07C00253C38 /* GradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeView.m; sourceTree = "<group>"; };
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1573,6 +1579,10 @@
 				D9DF5E9E1CD0913B00C89F6A /* MBSegmentedView.m */,
 				D9DF5ECA1CD0E1B400C89F6A /* MBInputView.h */,
 				D9DF5ECB1CD0E1B400C89F6A /* MBInputView.m */,
+				D9DF5ECD1CD4C70C00C89F6A /* MBAddPhotoContainerView.h */,
+				D9DF5ECE1CD4C70C00C89F6A /* MBAddPhotoContainerView.m */,
+				D9DF5F121CD61F4500C89F6A /* MBAddImageView.h */,
+				D9DF5F131CD61F4500C89F6A /* MBAddImageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2190,11 +2200,13 @@
 				CEE614951BEA4B9A004873AA /* MJRefreshHeaderView.m in Sources */,
 				CEE614921BEA4B9A004873AA /* MJRefreshConst.m in Sources */,
 				CEE614911BEA4B9A004873AA /* MJRefreshBaseView.m in Sources */,
+				D9DF5F141CD61F4500C89F6A /* MBAddImageView.m in Sources */,
 				CE3BC7E01BE8C6270002CBA4 /* F3HScoreView.m in Sources */,
 				D9DF5EA31CD0913B00C89F6A /* MBSegmentedView.m in Sources */,
 				E263C79B1BA35E60008488FA /* FirstViewController.m in Sources */,
 				E238270E1B9478190058970E /* Course.m in Sources */,
 				E263C79D1BA35E60008488FA /* MeCell.m in Sources */,
+				D9DF5ECF1CD4C70C00C89F6A /* MBAddPhotoContainerView.m in Sources */,
 				CE3BC7EE1BE8C63B0002CBA4 /* XBSGradeViewController.m in Sources */,
 				D9E7B8231C8AB07C00253C38 /* GradeView.m in Sources */,
 				CEE837B71B86C35000959779 /* NetWork.m in Sources */,

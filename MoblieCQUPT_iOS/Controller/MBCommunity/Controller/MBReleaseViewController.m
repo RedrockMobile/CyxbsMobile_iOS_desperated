@@ -82,8 +82,10 @@
 
 - (MBInputView *)inputView {
     if (!_inputView) {
-        _inputView = [[MBInputView alloc]initWithFrame:CGRectMake(0, 74, ScreenWidth, 250)];
+        _inputView = [[MBInputView alloc]initWithFrame:CGRectMake(0, 74, ScreenWidth, 250) withInptuViewStyle:MBInputViewStyleWithPhoto];
         _inputView.backgroundColor = [UIColor whiteColor];
+        _inputView.textView.backgroundColor = [UIColor redColor];
+        _inputView.textView.placeholder = @"和大家一起哔哔叨叨吧";
     }
     return _inputView;
 }

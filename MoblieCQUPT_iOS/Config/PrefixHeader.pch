@@ -54,7 +54,7 @@
 
 #define ColorArray [[NSMutableArray alloc]initWithObjects:@"254,145,103",@"120,201,252",@"111,219,188",@"191,161,233",nil]
 
-#define kPhotoImageViewW (ScreenWidth - 2 * 10 - 2) / 3
+#define kPhotoImageViewW (ScreenWidth - 2 * 10 - 4) / 3
 
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]

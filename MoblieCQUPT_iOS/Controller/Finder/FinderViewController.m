@@ -55,7 +55,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _mainScrollView.showsVerticalScrollIndicator = NO;
     if (MAIN_SCREEN_W == 320 && MAIN_SCREEN_H == 480) {

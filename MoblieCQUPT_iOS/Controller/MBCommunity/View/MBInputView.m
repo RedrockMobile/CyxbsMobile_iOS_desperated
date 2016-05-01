@@ -7,17 +7,34 @@
 //
 
 #import "MBInputView.h"
-
+#import "MBAddPhotoContainerView.h"
 
 @implementation MBInputView
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame withInptuViewStyle:(MBInputViewStyle)style {
     self = [super initWithFrame:frame];
     if (self) {
-        _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, 120)];
-        [self addSubview:self.textView];
-        _textView.placeholder = @"和大家一起哔哔叨叨吧";
-        _textView.placeholderColor = [UIColor lightGrayColor];
+        if (style == MBInputViewStyleDefault) {
+            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, frame.size.height - 20)];
+            [self addSubview:self.textView];
+            _textView.placeholderColor = [UIColor lightGrayColor];
+        }else if (style == MBInputViewStyleWithPhoto) {
+            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, 120)];
+            [self addSubview:self.textView];
+            
+            MBAddPhotoContainerView *container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, ScreenWidth - 20, 200)];
+            
+            
+            NSArray *pic = @[@"图片1.png",@"图片2.png",@"图片3.png",@"图片4.png",@"图片5.png"];
+            NSMutableArray *picMutable = [NSMutableArray array];
+            for (int i = 0; i < 4; i ++) {
+                int index = arc4random()%3;
+                [picMutable addObject:pic[index]];
+            }
+            
+            container.sourcePicArray = [picMutable mutableCopy];
+            [self addSubview:container];
+        }
     }
     return self;
 }
