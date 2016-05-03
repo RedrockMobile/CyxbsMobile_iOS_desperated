@@ -7,8 +7,9 @@
 //
 
 #import "MBReleaseViewController.h"
+#import "MBAddPhotoContainerView.h"
 
-@interface MBReleaseViewController ()
+@interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate>
 
 //@property (strong, nonatomic) UIButton *doneBtn;
 //@property (strong, nonatomic) UIButton *cancelBtn;
@@ -86,8 +87,13 @@
         _inputView.backgroundColor = [UIColor whiteColor];
         _inputView.textView.backgroundColor = [UIColor redColor];
         _inputView.textView.placeholder = @"和大家一起哔哔叨叨吧";
+        _inputView.container.eventDelegate = self;
     }
     return _inputView;
+}
+
+- (void)clickPhotoContainerViewAdd {
+    NSLog(@"点击添加图片");
 }
 
 - (void)clickDone:(UIButton *)sender {

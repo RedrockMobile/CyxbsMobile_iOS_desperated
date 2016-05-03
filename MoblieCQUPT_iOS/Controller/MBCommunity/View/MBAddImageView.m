@@ -35,7 +35,7 @@
     UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat width = 20;
     CGFloat height = 20;
-    CGFloat x = CGRectGetMaxX(self.frame) - width;
+    CGFloat x = self.frame.size.width- width;
     CGFloat y = 0;
     deleteBtn.frame = (CGRect){{x,y},{width,height}};
     

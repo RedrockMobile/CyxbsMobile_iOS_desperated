@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) NSMutableArray *originPostionArray;
 
+@property (strong, nonatomic) NSMutableArray *subViewArray;
+
 @end
 
 @implementation MBAddPhotoContainerView
@@ -39,8 +41,8 @@
 
 - (void)clickAdd:(UIButton *)sender {
     
-    if (self.clickAddBlock) {
-        self.clickAddBlock(sender);
+    if ([self.eventDelegate respondsToSelector:@selector(clickPhotoContainerViewAdd)]) {
+        [self.eventDelegate clickPhotoContainerViewAdd];
     }
 }
 
@@ -64,7 +66,15 @@
     }];
 }
 
+- (void)layoutSubviews {
+    NSInteger row = self.originPostionArray.count / 3.5;
+    CGFloat height = (row + 1) * kPhotoImageViewW + row * 2;
+    
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
+}
+
 - (void)clickDelete:(MBAddImageView *)sender {
+    [_originPostionArray removeObjectAtIndex:sender.tag];
     [sender removeFromSuperview];
 }
 

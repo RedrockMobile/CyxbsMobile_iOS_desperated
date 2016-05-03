@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBTextView.h"
 
+@class MBAddPhotoContainerView;
 typedef NS_ENUM(NSInteger, MBInputViewStyle) {
     MBInputViewStyleDefault, //普通的输入框
     MBInputViewStyleWithPhoto, //带照片的输入框
@@ -18,6 +19,8 @@ typedef NS_ENUM(NSInteger, MBInputViewStyle) {
 @interface MBInputView : UIView
 
 @property (strong, nonatomic) MBTextView *textView;
+
+@property (strong, nonatomic) MBAddPhotoContainerView *container;
 
 @property (assign, nonatomic) MBInputViewStyle style;
 

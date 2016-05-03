@@ -75,7 +75,7 @@
     }else if (picCount == 0){
         photoContainerW = 0;
         photoContainerH = 0;
-    }else {// picCount = 1 2 3 5 6 7 8 9张
+    }else {// picCount = 2 3 5 6 7 8 9张
         //算出每行有几个图片
         NSInteger perRowItemCount;
         NSInteger perColunmItemCount;

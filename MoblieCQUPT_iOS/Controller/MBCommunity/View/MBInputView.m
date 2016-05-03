@@ -9,6 +9,11 @@
 #import "MBInputView.h"
 #import "MBAddPhotoContainerView.h"
 
+@interface MBInputView ()
+
+
+@end
+
 @implementation MBInputView
 
 - (instancetype)initWithFrame:(CGRect)frame withInptuViewStyle:(MBInputViewStyle)style {
@@ -22,21 +27,25 @@
             _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, 120)];
             [self addSubview:self.textView];
             
-            MBAddPhotoContainerView *container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, ScreenWidth - 20, 200)];
+            _container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, ScreenWidth - 20, 200)];
             
             
             NSArray *pic = @[@"图片1.png",@"图片2.png",@"图片3.png",@"图片4.png",@"图片5.png"];
             NSMutableArray *picMutable = [NSMutableArray array];
-            for (int i = 0; i < 4; i ++) {
+            for (int i = 0; i < 9; i ++) {
                 int index = arc4random()%3;
                 [picMutable addObject:pic[index]];
             }
             
-            container.sourcePicArray = [picMutable mutableCopy];
-            [self addSubview:container];
+            _container.sourcePicArray = [picMutable mutableCopy];
+            [self addSubview:self.container];
         }
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGRectGetMaxY(self.container.frame) + 5);
 }
 
 /*

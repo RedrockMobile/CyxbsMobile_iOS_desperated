@@ -8,14 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ClickAddBlock)(UIButton *sender);
 //发布界面的图片容器
+
+@protocol MBAddPhotoContainerViewAddEventDelegate <NSObject>
+
+@optional
+
+- (void)clickPhotoContainerViewAdd;
+
+@end
 
 @interface MBAddPhotoContainerView : UIView
 
 @property (strong, nonatomic) NSArray *sourcePicArray;
 
-@property (copy, nonatomic) ClickAddBlock clickAddBlock;
+@property (weak, nonatomic) id<MBAddPhotoContainerViewAddEventDelegate> eventDelegate;
 
 
 @end
