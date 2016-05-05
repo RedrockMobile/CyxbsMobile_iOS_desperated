@@ -30,14 +30,7 @@
             _container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, ScreenWidth - 20, 200)];
             
             
-            NSArray *pic = @[@"图片1.png",@"图片2.png",@"图片3.png",@"图片4.png",@"图片5.png"];
-            NSMutableArray *picMutable = [NSMutableArray array];
-            for (int i = 0; i < 9; i ++) {
-                int index = arc4random()%3;
-                [picMutable addObject:pic[index]];
-            }
             
-            _container.sourcePicArray = [picMutable mutableCopy];
             [self addSubview:self.container];
         }
     }
@@ -45,7 +38,7 @@
 }
 
 - (void)layoutSubviews {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGRectGetMaxY(self.container.frame) + 5);
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGRectGetMaxY(self.container.frame) + 10);
 }
 
 /*

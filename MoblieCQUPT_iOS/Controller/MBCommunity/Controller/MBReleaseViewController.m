@@ -94,6 +94,15 @@
 
 - (void)clickPhotoContainerViewAdd {
     NSLog(@"点击添加图片");
+    
+    NSArray *pic = @[@"图片1.png",@"图片2.png",@"图片3.png",@"图片4.png",@"图片5.png"];
+    NSMutableArray *picMutable = [NSMutableArray array];
+    for (int i = 0; i < 9; i ++) {
+        int index = arc4random()%3;
+        [picMutable addObject:pic[index]];
+    }
+    
+    _inputView.container.sourcePicArray = [picMutable copy];
 }
 
 - (void)clickDone:(UIButton *)sender {
