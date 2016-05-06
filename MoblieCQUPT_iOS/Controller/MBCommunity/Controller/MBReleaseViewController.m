@@ -162,9 +162,29 @@
 
 - (void)assetsPickerController:(GMImagePickerController *)picker didFinishPickingAssets:(NSArray *)assetArray
 {
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.version = PHImageRequestOptionsVersionCurrent;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
+    options.synchronous = YES;
+    int i=0;
+    for (PHAsset *ph in assetArray) {
+        i++;
+        [[PHImageManager defaultManager] requestImageDataForAsset:ph options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            
+            UIImage *image = [UIImage imageWithData:imageData];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.frame = (CGRect){i*20,0,300,500};
+            [self.view addSubview:imageView];
+            
+            NSLog(@"%d",i);
+        }];
+    }
+    NSLog(@"3");
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
-    NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
+    
+    
+
 }
 
 //Optional implementation:
