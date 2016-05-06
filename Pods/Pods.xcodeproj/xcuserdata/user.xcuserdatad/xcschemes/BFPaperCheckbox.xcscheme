@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'F3AB9506B0E11CE22521F94D'
+               BlueprintIdentifier = '64D3E99462BB7A751EF67956'
                BlueprintName = 'BFPaperCheckbox'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libBFPaperCheckbox.a'>

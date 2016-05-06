@@ -2004,7 +2004,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ClassWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.ClassWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2020,7 +2020,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ClassWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.ClassWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2134,7 +2134,7 @@
 					"\"${PODS_ROOT}/Headers/Public/libxml2.2\"",
 				);
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2172,7 +2172,7 @@
 					"\"${PODS_ROOT}/Headers/Public/libxml2.2\"",
 				);
 				INFOPLIST_FILE = MoblieCQUPT_iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

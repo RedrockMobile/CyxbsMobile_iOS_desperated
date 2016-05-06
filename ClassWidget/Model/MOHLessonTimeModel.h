@@ -14,5 +14,4 @@
 @property (strong,readonly,nonatomic) NSDictionary * serialLessonEnd;
 + (NSString *)stringWithBeginLesson:(NSInteger)beginLesson
                              period:(NSInteger)time;
-+ (NSArray *)refreshLessonArray;
 @end

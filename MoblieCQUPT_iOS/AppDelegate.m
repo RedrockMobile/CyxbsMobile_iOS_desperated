@@ -22,12 +22,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //BUGHD
-    //[BugHD handleCrashWithKey:@"24f1019e4d09ab778e0b9f2780ae4de0"];
-    
-    //3D-Touch
-    [self creatShortCutItemWithIcon];
-    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
+        //3D-Touch
+        [self creatShortCutItemWithIcon];
+    }
+
     //友盟统计
     [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@""];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
