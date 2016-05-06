@@ -1,4 +1,4 @@
-platform :ios,8.4
+platform :ios,8.0
   
 pod 'SDWebImage'
 pod 'AFNetworking’,’~> 2.6.3’
