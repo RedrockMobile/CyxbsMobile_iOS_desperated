@@ -8,12 +8,15 @@
 
 #import "MBReleaseViewController.h"
 #import "MBAddPhotoContainerView.h"
+#import <GMImagePickerController.h>
 
-@interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate>
-
+@interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate,GMImagePickerControllerDelegate>
+{
+    GMImagePickerController *_pickView;
+}
 //@property (strong, nonatomic) UIButton *doneBtn;
 //@property (strong, nonatomic) UIButton *cancelBtn;
-
+@property (strong, readonly) GMImagePickerController *pickView;
 @property (strong, nonatomic) UIView *navigationView;
 @property (strong, nonatomic) MBInputView *inputView;
 
@@ -97,6 +100,8 @@
     
     NSArray *pic = @[@"图片1.png",@"图片2.png",@"图片3.png",@"图片4.png",@"图片5.png"];
     NSMutableArray *picMutable = [NSMutableArray array];
+    [self showViewController:self.pickView sender:nil];
+    
     for (int i = 0; i < 9; i ++) {
         int index = arc4random()%3;
         [picMutable addObject:pic[index]];
@@ -123,4 +128,48 @@
 }
 */
 
+- (GMImagePickerController *)pickView{
+    if (self && !_pickView) {
+        GMImagePickerController *picker = [[GMImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.title = @"相册";
+        
+        picker.customDoneButtonTitle = @"完成";
+        picker.customCancelButtonTitle = @"取消";
+        picker.customNavigationBarPrompt = @"请选择图片";
+        
+        picker.colsInPortrait = 3;
+        picker.colsInLandscape = 5;
+        picker.minimumInteritemSpacing = 2.0;
+        
+        //    picker.allowsMultipleSelection = NO;
+        //    picker.confirmSingleSelection = YES;
+        //    picker.confirmSingleSelectionPrompt = @"Do you want to select the image you have chosen?";
+        
+        //    picker.showCameraButton = YES;
+        //    picker.autoSelectCameraImages = YES;
+        
+        picker.modalPresentationStyle = UIModalPresentationPopover;
+        
+        picker.mediaTypes = @[@(PHAssetMediaTypeImage)];
+        _pickView = picker;
+    }
+
+    return _pickView;
+}
+
+#pragma mark - GMImagePickerControllerDelegate
+
+- (void)assetsPickerController:(GMImagePickerController *)picker didFinishPickingAssets:(NSArray *)assetArray
+{
+    [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    NSLog(@"GMImagePicker: User ended picking assets. Number of selected items is: %lu", (unsigned long)assetArray.count);
+}
+
+//Optional implementation:
+-(void)assetsPickerControllerDidCancel:(GMImagePickerController *)picker
+{
+    NSLog(@"GMImagePicker: User pressed cancel button");
+}
 @end

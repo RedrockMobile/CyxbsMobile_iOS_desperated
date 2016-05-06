@@ -57,6 +57,38 @@ install_resource()
       ;;
   esac
 }
+if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "GMImagePicker/GMImagePicker/GMEmptyFolder@1x.png"
+  install_resource "GMImagePicker/GMImagePicker/GMEmptyFolder@2x.png"
+  install_resource "GMImagePicker/GMImagePicker/GMSelected.png"
+  install_resource "GMImagePicker/GMImagePicker/GMSelected@2x.png"
+  install_resource "GMImagePicker/GMImagePicker/GMVideoIcon.png"
+  install_resource "GMImagePicker/GMImagePicker/GMVideoIcon@2x.png"
+  install_resource "GMImagePicker/GMImagePicker/Base.lproj"
+  install_resource "GMImagePicker/GMImagePicker/ca.lproj"
+  install_resource "GMImagePicker/GMImagePicker/de.lproj"
+  install_resource "GMImagePicker/GMImagePicker/en.lproj"
+  install_resource "GMImagePicker/GMImagePicker/es.lproj"
+  install_resource "GMImagePicker/GMImagePicker/fr.lproj"
+  install_resource "GMImagePicker/GMImagePicker/it.lproj"
+  install_resource "GMImagePicker/GMImagePicker/pt.lproj"
+fi
+if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "GMImagePicker/GMImagePicker/GMEmptyFolder@1x.png"
+  install_resource "GMImagePicker/GMImagePicker/GMEmptyFolder@2x.png"
+  install_resource "GMImagePicker/GMImagePicker/GMSelected.png"
+  install_resource "GMImagePicker/GMImagePicker/GMSelected@2x.png"
+  install_resource "GMImagePicker/GMImagePicker/GMVideoIcon.png"
+  install_resource "GMImagePicker/GMImagePicker/GMVideoIcon@2x.png"
+  install_resource "GMImagePicker/GMImagePicker/Base.lproj"
+  install_resource "GMImagePicker/GMImagePicker/ca.lproj"
+  install_resource "GMImagePicker/GMImagePicker/de.lproj"
+  install_resource "GMImagePicker/GMImagePicker/en.lproj"
+  install_resource "GMImagePicker/GMImagePicker/es.lproj"
+  install_resource "GMImagePicker/GMImagePicker/fr.lproj"
+  install_resource "GMImagePicker/GMImagePicker/it.lproj"
+  install_resource "GMImagePicker/GMImagePicker/pt.lproj"
+fi
 
 mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
