@@ -1,4 +1,4 @@
-platform :ios,8.4
+platform :ios,8.0
   
 pod 'SDWebImage'
 pod 'AFNetworking’,’~> 2.6.3’
@@ -9,3 +9,4 @@ pod 'BFPaperCheckbox'
 pod 'UMengAnalytics-NO-IDFA' 
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'YYKit'
+pod 'GMImagePicker'
