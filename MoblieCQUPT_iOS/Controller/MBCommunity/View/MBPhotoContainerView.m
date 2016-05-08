@@ -14,7 +14,7 @@
 
 @interface MBPhotoContainerView ()
 
-@property (strong, nonatomic) NSArray *imageViewArray;
+@property (strong, nonatomic) NSMutableArray *imageViewArray;
 @property (strong, nonatomic) NSMutableArray *addPicArray;
 @property (strong, nonatomic) NSMutableArray *imageViewOrigin;
 
@@ -27,48 +27,44 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setupContainerView];
+        self.layer.masksToBounds = YES;
         [CATransaction setDisableActions:YES];
     }
     return  self;
 }
 
 - (void)setupContainerView {
-    
-    NSMutableArray *temp = [NSMutableArray new];
+    _imageViewArray = [NSMutableArray new];
     for (int i = 0; i < 9; i++) {
         UIImageView *imageView = [UIImageView new];
         [self addSubview:imageView];
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.clipsToBounds = YES;
-        imageView.userInteractionEnabled = YES;
+        imageView.userInteractionEnabled = NO;
         imageView.tag = i;
+        imageView.hidden = YES;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageView:)];
         [imageView addGestureRecognizer:tap];
-        [temp addObject:imageView];
+        [_imageViewArray addObject:imageView];
     }
-    
-    self.imageViewArray = [temp copy];
 }
 
-- (void)setPicNameArray:(NSArray *)picNameArray {
-    _picNameArray = picNameArray;
-    for (NSInteger i = self.picNameArray.count; i < 9; i++) {
-        UIImageView *imageView = [self.imageViewArray objectAtIndex:i];
-        imageView.hidden = YES;
-    }
-    if (_picNameArray.count != 0) {
-        NSInteger perRowItemCount = [self perRowItemCountForPicPathArray:self.picNameArray];
-        CGSize itemSize = [self itemSizeForPicArray:self.picNameArray];
-        [_picNameArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+- (void)setThumbnailPictureArray:(NSArray *)thumbnailPictureArray {
+    _thumbnailPictureArray = thumbnailPictureArray;
+
+    if (_thumbnailPictureArray.count != 0) {
+        NSInteger perRowItemCount = [self perRowItemCountForPicPathArray:self.thumbnailPictureArray];
+        CGSize itemSize = [self itemSizeForPicArray:self.thumbnailPictureArray];
+        [_thumbnailPictureArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             NSInteger colunm = idx % perRowItemCount;
             NSUInteger row = idx / perRowItemCount;
             UIImageView *imageView = [_imageViewArray objectAtIndex:idx];
-            imageView.hidden = NO;
             imageView.frame = (CGRect){{colunm * (itemSize.width + 2),row * (itemSize.height + 2)},{itemSize.width,itemSize.height}};
-            imageView.image = [UIImage imageNamed:self.picNameArray[idx]];
+            imageView.hidden = NO;
+            [imageView sd_setImageWithURL:[NSURL URLWithString:self.thumbnailPictureArray[idx]] placeholderImage:[UIImage imageWithBgColor:BACK_GRAY_COLOR] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+                imageView.userInteractionEnabled = YES;
+            }];
         }];
-    }else {
-        NSLog(@"没有图片");
     }
 }
 - (void)tapImageView:(UITapGestureRecognizer *)gesture {
@@ -83,7 +79,7 @@
         [_imageViewOrigin addObject:NSStringFromCGRect(originRect)];
     }
     
-    MBPhotoBrowser *browser = [[MBPhotoBrowser alloc]initWithSourceContainerView:self currentImageItem:imageView.tag sourceImageArray:self.picNameArray imageViewOriginArray:self.imageViewOrigin];
+    MBPhotoBrowser *browser = [[MBPhotoBrowser alloc]initWithSourceContainerView:self currentImageItem:imageView.tag sourceImageArray:self.picNameArray sourceThumbnailPictureArray:self.thumbnailPictureArray imageViewOriginArray:self.imageViewOrigin];
     [browser show];
     
 }
@@ -92,16 +88,17 @@
     if (array.count == 0) {
         return (CGSize){0,0};
     }else if (array.count == 1) {
-        UIImage *image = [UIImage imageNamed:array[0]];
-        if (image.size.width == image.size.height) {
-            return (CGSize){kPhotoImageViewW*1.2,kPhotoImageViewW*1.2};
-        }else if (image.size.width > image.size.height) {
-            CGFloat width = image.size.width / image.size.height * kPhotoImageViewW*1.2;
-            return (CGSize){width,kPhotoImageViewW*1.2};
-        }else {
-            CGFloat height = image.size.height / image.size.width * kPhotoImageViewW*1.2;
-            return (CGSize){kPhotoImageViewW*1.2,height};
-        }
+//        UIImage *image = [UIImage imageNamed:array[0]];
+//        if (image.size.width == image.size.height) {
+//            return (CGSize){kPhotoImageViewW*1.2,kPhotoImageViewW*1.2};
+//        }else if (image.size.width > image.size.height) {
+//            CGFloat width = image.size.width / image.size.height * kPhotoImageViewW*1.2;
+//            return (CGSize){width,kPhotoImageViewW*1.2};
+//        }else {
+//            CGFloat height = image.size.height / image.size.width * kPhotoImageViewW*1.2;
+//            return (CGSize){kPhotoImageViewW*1.2,height};
+//        }
+        return (CGSize){kPhotoImageViewW,kPhotoImageViewW};
     }else {
         return (CGSize){kPhotoImageViewW,kPhotoImageViewW};
     }

@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger , MBDataType) {
+    MBDataTypeCommunityBBDD,
+    MBDataTypeCommunitySearchHot,
+    MBDataTypeCommunityNews,
+    MBDataTypeCommunityComment
+};
+
 @interface MBCommunityNetWorking : NSObject
 
-+ (void)NetRequestPOST;
++ (void)NetRequestPOSTwithDataType:(MBDataType)type WithParameter:(NSDictionary *)dic;
 + (void)NetUploadPOST;
 
 @end

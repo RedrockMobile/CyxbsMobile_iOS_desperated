@@ -114,4 +114,5 @@
  */
 - (UIImage*)imageCompressWithSimple:(UIImage*)image scaledToSize:(CGSize)size;
 
+
 @end

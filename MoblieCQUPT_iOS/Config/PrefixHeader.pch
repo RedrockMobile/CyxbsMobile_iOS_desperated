@@ -58,5 +58,30 @@
 
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
+//哔哔叨叨列表
+#define LISTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/listArticle"
+//热门动态列表
+#define SEARCHHOTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/searchHotArticle"
+//获取评论列表
+#define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/getremark"
+//官方咨询列表
+#define LISTNEWS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/listNews"
+//获取评论
+#define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/getremark"
+
+//赞接口
+#define ADDSUPPORT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/addone"
+//取消赞接口
+#define CANCELSUPPOTRT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+
+
+//#import "SDWebImageManager.h"
+#import "UIColor+Helper.h"
+#import <SDWebImageManager.h>
+#import <UIImageView+WebCache.h>
+#import <YYImage.h>
+#import "LoginEntry.h"
+#import "MJRefresh.h"
+
 
 #endif

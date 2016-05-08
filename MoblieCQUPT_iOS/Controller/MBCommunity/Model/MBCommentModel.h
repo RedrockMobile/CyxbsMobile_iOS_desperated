@@ -15,4 +15,6 @@
 @property (copy, nonatomic) NSString *timeLabel;
 @property (copy, nonatomic) NSString *contentLabel;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dic;
+
 @end

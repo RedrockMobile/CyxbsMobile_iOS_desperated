@@ -172,6 +172,9 @@
 		D98B5D1E1C08483E0010BC9E /* shop_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98B5D191C08483E0010BC9E /* shop_new@2x.png */; };
 		D98B5D201C08491A0010BC9E /* shakeForShop_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98B5D1F1C08491A0010BC9E /* shakeForShop_new@2x.png */; };
 		D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98B5D271C0865300010BC9E /* icon_menu_selected_4@2x.png */; };
+		D98BE6351CDDB6560071DDD2 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = D98BE6341CDDB6560071DDD2 /* UIColor+Helper.m */; };
+		D98BE6371CDE0ABB0071DDD2 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = D98BE6361CDE0ABB0071DDD2 /* support.png */; };
+		D98BE6441CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D98BE6431CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m */; };
 		D98BFDED1C06F40000B7D53A /* icon_menu_selected_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98BFDE91C06F40000B7D53A /* icon_menu_selected_2@2x.png */; };
 		D98BFDF01C06F40000B7D53A /* icon_menu_selected_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98BFDEC1C06F40000B7D53A /* icon_menu_selected_5@2x.png */; };
 		D99007671CB684E700EDAFD1 /* 1智妍.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D99007641CB684E700EDAFD1 /* 1智妍.jpg */; };
@@ -557,6 +560,11 @@
 		D98B5D191C08483E0010BC9E /* shop_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_new@2x.png"; sourceTree = "<group>"; };
 		D98B5D1F1C08491A0010BC9E /* shakeForShop_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shakeForShop_new@2x.png"; sourceTree = "<group>"; };
 		D98B5D271C0865300010BC9E /* icon_menu_selected_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_selected_4@2x.png"; sourceTree = "<group>"; };
+		D98BE6331CDDB6560071DDD2 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
+		D98BE6341CDDB6560071DDD2 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
+		D98BE6361CDE0ABB0071DDD2 /* support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = support.png; sourceTree = "<group>"; };
+		D98BE6421CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LXMImagePosition.h"; sourceTree = "<group>"; };
+		D98BE6431CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LXMImagePosition.m"; sourceTree = "<group>"; };
 		D98BFDE91C06F40000B7D53A /* icon_menu_selected_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_selected_2@2x.png"; sourceTree = "<group>"; };
 		D98BFDEC1C06F40000B7D53A /* icon_menu_selected_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_selected_5@2x.png"; sourceTree = "<group>"; };
 		D99007641CB684E700EDAFD1 /* 1智妍.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1智妍.jpg"; sourceTree = "<group>"; };
@@ -1422,6 +1430,7 @@
 				D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */,
 				D99007711CB69AB500EDAFD1 /* comment1.png */,
 				D99007721CB69AB500EDAFD1 /* support1.png */,
+				D98BE6361CDE0ABB0071DDD2 /* support.png */,
 				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
 				D9DF5EC51CD09A6100C89F6A /* add.png */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
@@ -1601,10 +1610,14 @@
 		D9DF5EAB1CD0914A00C89F6A /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				D98BE6421CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.h */,
+				D98BE6431CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m */,
 				D9DF5EAC1CD0914A00C89F6A /* UIImage+Helper.h */,
 				D9DF5EAD1CD0914A00C89F6A /* UIImage+Helper.m */,
 				D9DF5EAE1CD0914A00C89F6A /* UIImage+ImageEffects.h */,
 				D9DF5EAF1CD0914A00C89F6A /* UIImage+ImageEffects.m */,
+				D98BE6331CDDB6560071DDD2 /* UIColor+Helper.h */,
+				D98BE6341CDDB6560071DDD2 /* UIColor+Helper.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1965,6 +1978,7 @@
 				E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */,
 				D969649B1CB51EEC00B12B2E /* 智妍2.jpg in Resources */,
 				D9DF5EC61CD09A6100C89F6A /* add.png in Resources */,
+				D98BE6371CDE0ABB0071DDD2 /* support.png in Resources */,
 				D96964971CB51ED600B12B2E /* 智妍4.jpg in Resources */,
 				D99007741CB69AB500EDAFD1 /* support1.png in Resources */,
 				E263C7881BA35E26008488FA /* ShakeViewController.xib in Resources */,
@@ -2176,6 +2190,7 @@
 				E263C7741BA35E26008488FA /* CommunityViewController.m in Sources */,
 				D9C66AE21C23C9890086AEE6 /* QGERestTimeDetailView.m in Sources */,
 				CE4648741BDFB91C00C3C24B /* TitleBaseViewController.m in Sources */,
+				D98BE6441CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m in Sources */,
 				E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
@@ -2256,6 +2271,7 @@
 				E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */,
 				E23827071B9477D80058970E /* CourseButton.m in Sources */,
 				CE3BC7D71BE8C6270002CBA4 /* F3HViewController.m in Sources */,
+				D98BE6351CDDB6560071DDD2 /* UIColor+Helper.m in Sources */,
 				CE46486F1BDFB8E700C3C24B /* CalendarViewController.m in Sources */,
 				E263C7761BA35E26008488FA /* FinderViewController.m in Sources */,
 				E263C7831BA35E26008488FA /* MapViewController.m in Sources */,
