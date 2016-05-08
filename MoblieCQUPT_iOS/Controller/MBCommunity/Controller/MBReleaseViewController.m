@@ -9,6 +9,7 @@
 #import "MBReleaseViewController.h"
 #import "MBAddPhotoContainerView.h"
 #import <GMImagePickerController.h>
+#import "MBProgressHUD.h"
 
 @interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate,GMImagePickerControllerDelegate>
 {
@@ -19,6 +20,7 @@
 @property (strong, readonly) GMImagePickerController *pickView;
 @property (strong, nonatomic) UIView *navigationView;
 @property (strong, nonatomic) MBInputView *inputView;
+
 
 
 @end
@@ -111,17 +113,9 @@
 
 - (void)clickPhotoContainerViewAdd {
     NSLog(@"点击添加图片");
-    
-    NSArray *pic = @[@"图片1.jpg",@"图片2.jpg",@"图片3.jpg",@"图片4.jpg",@"图片5.jpg"];
-    NSMutableArray *picMutable = [NSMutableArray array];
-//    [self showViewController:self.pickView sender:nil];
-    int row = arc4random()%10;
-    for (int i = 0; i < row; i ++) {
-        int index = arc4random()%3;
-        [picMutable addObject:pic[index]];
-    }
-    
-    _inputView.container.sourcePicArray = [picMutable copy];
+
+    [self showViewController:self.pickView sender:nil];
+
 }
 
 - (void)clickDone:(UIButton *)sender {
@@ -130,6 +124,10 @@
 
 - (void)clickCancel:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)clickDeleteImageViewWithTag:(NSInteger)tag {
+    
 }
 
 /*
@@ -156,13 +154,6 @@
         picker.colsInLandscape = 5;
         picker.minimumInteritemSpacing = 2.0;
         
-        //    picker.allowsMultipleSelection = NO;
-        //    picker.confirmSingleSelection = YES;
-        //    picker.confirmSingleSelectionPrompt = @"Do you want to select the image you have chosen?";
-        
-        //    picker.showCameraButton = YES;
-        //    picker.autoSelectCameraImages = YES;
-        
         picker.modalPresentationStyle = UIModalPresentationPopover;
         
         picker.mediaTypes = @[@(PHAssetMediaTypeImage)];
@@ -180,33 +171,32 @@
     options.version = PHImageRequestOptionsVersionCurrent;
     options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     options.synchronous = YES;
-    int i=0;
+    NSMutableArray<UIImage *> *picMutable = [NSMutableArray array];
     for (PHAsset *ph in assetArray) {
-        i++;
         [[PHImageManager defaultManager] requestImageDataForAsset:ph options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
             
             UIImage *image = [UIImage imageWithData:imageData];
-            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-            imageView.frame = (CGRect){i*20,0,300,500};
-            [self.view addSubview:imageView];
+            [picMutable addObject:image];
             
-            NSLog(@"%d",i);
         }];
     }
-    NSLog(@"3");
+    _inputView.container.sourcePicArray = [picMutable copy];
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
-
 }
+
+
 
 - (BOOL)assetsPickerController:(GMImagePickerController *)picker shouldSelectAsset:(PHAsset *)asset {
     NSLog(@"已经选了 %ld 张",picker.selectedAssets.count);
-    if (picker.selectedAssets.count > 9) {
+    if (picker.selectedAssets.count >= 9) {
         NSLog(@"大于9张了");
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"只能获取9张图" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-        [alertController addAction:cancelAction];
-        [self presentViewController:alertController animated:YES completion:nil];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:picker.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"只能选9张图片哦";
+        
+        [hud hide:YES afterDelay:1];
+        return NO;
     }
     
     return YES;

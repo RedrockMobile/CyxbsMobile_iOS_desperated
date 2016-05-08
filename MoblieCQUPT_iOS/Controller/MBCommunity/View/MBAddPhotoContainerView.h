@@ -15,6 +15,7 @@
 @optional
 
 - (void)clickPhotoContainerViewAdd;
+- (void)clickDeleteImageViewWithTag:(NSInteger)tag;
 
 @end
 

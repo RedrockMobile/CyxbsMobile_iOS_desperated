@@ -151,6 +151,7 @@
 		D94F63481CDF4C7B00F91664 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F63471CDF4C7B00F91664 /* cancel.png */; };
 		D94F634D1CDF53BC00F91664 /* MBReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F634C1CDF53BC00F91664 /* MBReplyView.m */; };
 		D94F634F1CDF56DE00F91664 /* addPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D94F634E1CDF56DE00F91664 /* addPhoto.jpg */; };
+		D94F63571CDF723500F91664 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F63561CDF723500F91664 /* xia.png */; };
 		D95256411C8BC32E00CD7921 /* PickView.m in Sources */ = {isa = PBXBuildFile; fileRef = D95256401C8BC32E00CD7921 /* PickView.m */; };
 		D95256461C8BC8D200CD7921 /* GQclass.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256431C8BC8D200CD7921 /* GQclass.png */; };
 		D95256471C8BC8D200CD7921 /* GQsection.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256441C8BC8D200CD7921 /* GQsection.png */; };
@@ -542,6 +543,7 @@
 		D94F634B1CDF53BC00F91664 /* MBReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBReplyView.h; sourceTree = "<group>"; };
 		D94F634C1CDF53BC00F91664 /* MBReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBReplyView.m; sourceTree = "<group>"; };
 		D94F634E1CDF56DE00F91664 /* addPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addPhoto.jpg; sourceTree = "<group>"; };
+		D94F63561CDF723500F91664 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xia.png; sourceTree = "<group>"; };
 		D952563F1C8BC32E00CD7921 /* PickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickView.h; sourceTree = "<group>"; };
 		D95256401C8BC32E00CD7921 /* PickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickView.m; sourceTree = "<group>"; };
 		D95256431C8BC8D200CD7921 /* GQclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GQclass.png; sourceTree = "<group>"; };
@@ -1442,6 +1444,7 @@
 				D9DF5EC51CD09A6100C89F6A /* add.png */,
 				D94F63471CDF4C7B00F91664 /* cancel.png */,
 				D94F634E1CDF56DE00F91664 /* addPhoto.jpg */,
+				D94F63561CDF723500F91664 /* xia.png */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
 				D9DF5EB21CD0915300C89F6A /* Model */,
 				D9DF5E891CD0910800C89F6A /* Cell */,
@@ -1965,6 +1968,7 @@
 				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
 				D98B5D1A1C08483E0010BC9E /* chuangye_new@2x.png in Resources */,
 				D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */,
+				D94F63571CDF723500F91664 /* xia.png in Resources */,
 				D9B7F61E1C16EFAA0035C2EE /* QGERestTimeCourseViewController.xib in Resources */,
 				D99007671CB684E700EDAFD1 /* 1智妍.jpg in Resources */,
 				D90928941CACCD6400CA97CD /* 我的动态@2x.png in Resources */,

@@ -11,7 +11,7 @@
 #import "MBCommunityTableView.h"
 #import "MBCommentCell.h"
 #import "MBReleaseViewController.h"
-
+#import "MBReplyView.h"
 
 /*
  *
@@ -50,7 +50,7 @@
 
 @property (assign, nonatomic) BOOL isLoadedComment;
 
-@property (strong, nonatomic) UIView *replyView;
+@property (strong, nonatomic) MBReplyView *replyView;
 
 
 @end
@@ -62,13 +62,31 @@
     _isLoadedComment = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     [self.view addSubview:self.tableView];
-    
+    [self.view addSubview:self.replyView];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)keyboardWillShow:(NSNotification *)aNotification {
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    [UIView animateWithDuration:0.3 animations:^{
+        _replyView.frame = CGRectMake(0, ScreenHeight - height - self.replyView.frame.size.height, self.replyView.frame.size.width, self.replyView.frame.size.height);
+    } completion:^(BOOL finished) {
+        
+    }];
+    
+    NSLog(@"%d",height);
 }
 
 - (MBCommunityTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+        _tableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight -50) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.sectionHeaderHeight = 0;
@@ -122,9 +140,10 @@
 }
 
 //评论框
-- (UIView *)replyView {
+- (MBReplyView *)replyView {
     if (!_replyView) {
-        _replyView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 40)];
+        _replyView = [[MBReplyView alloc]init];
+        _replyView.textView.returnKeyType = UIReturnKeySend;
     }
     
     return _replyView;
@@ -215,6 +234,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
+        [_replyView.textView becomeFirstResponder];
+        NSString *nickName = viewModel.model.IDLabel;
+        NSString *placeholder = [NSString stringWithFormat:@"回复 %@ : ",nickName];
+        _replyView.textView.placeholder = placeholder;
     }
 }
 
@@ -253,6 +277,7 @@
     
     
 }
+
 
 #pragma mark -
 

@@ -58,7 +58,7 @@
         MBAddImageView *imageView = self.subViewArray[idx];
         imageView.hidden = NO;
         [_currentPostionArray addObject:NSStringFromCGRect(imageView.frame)];
-        imageView.image = [UIImage imageNamed:obj];
+        imageView.image = obj;
         imageView.delegate = self;
         [self addSubview:imageView];
     }];
@@ -84,20 +84,11 @@
         NSUInteger row = i / 3;
         MBAddImageView *imageView = [[MBAddImageView alloc]init];
         imageView.frame = (CGRect){{colunm * (kPhotoImageViewW + 2),row * (kPhotoImageViewW + 2)},{kPhotoImageViewW,kPhotoImageViewW}};
-//        [self addSubview:imageView];
         imageView.tag = i;
         imageView.hidden = YES;
         [temp addObject:imageView];
         
         [_originPostionArray addObject:NSStringFromCGRect(imageView.frame)];
-        
-//        UILabel *tag = [[UILabel alloc]init];
-//        tag.text = [NSString stringWithFormat:@"%ld",imageView.tag];
-//        tag.textColor = [UIColor whiteColor];
-//        tag.font = [UIFont systemFontOfSize:16];
-//        [tag sizeToFit];
-//        tag.center = CGPointMake(kPhotoImageViewW/2, kPhotoImageViewW/2);
-//        [imageView addSubview:tag];
     }
     
     self.subViewArray = temp;
@@ -114,11 +105,13 @@
     
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
     
-    
-    
 }
 
 - (void)clickDelete:(MBAddImageView *)sender {
+    if ([self.eventDelegate respondsToSelector:@selector(clickDeleteImageViewWithTag:)]) {
+        [self.eventDelegate clickDeleteImageViewWithTag:sender.tag];
+    }
+    
     NSLog(@"%ld ~ %ld",sender.tag,_subViewArray.count);
     if (_currentPostionArray.count == 1 || sender.tag == self.currentPostionArray.count - 1) {
         _addButton.hidden = NO;
