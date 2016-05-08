@@ -35,12 +35,13 @@
     UIButton *deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     CGFloat width = 20;
     CGFloat height = 20;
-    CGFloat x = kPhotoImageViewW- width;
-    CGFloat y = 0;
+    CGFloat x = kPhotoImageViewW- width+2;
+    CGFloat y = -2;
     deleteBtn.frame = (CGRect){{x,y},{width,height}};
-    
+    deleteBtn.layer.cornerRadius = 2;
+    [deleteBtn setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
     [deleteBtn addTarget:self action:@selector(clickDelete:) forControlEvents:UIControlEventTouchUpInside];
-    deleteBtn.backgroundColor = [UIColor blueColor];
+    deleteBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.5];
     [self addSubview:deleteBtn];
 }
 

@@ -31,7 +31,21 @@
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.inputView];
     self.view.backgroundColor = BACK_GRAY_COLOR;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)keyboardWillShow:(NSNotification *)aNotification {
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    
+    NSLog(@"%d",height);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,7 +102,7 @@
     if (!_inputView) {
         _inputView = [[MBInputView alloc]initWithFrame:CGRectMake(0, 74, ScreenWidth, 250) withInptuViewStyle:MBInputViewStyleWithPhoto];
         _inputView.backgroundColor = [UIColor whiteColor];
-        _inputView.textView.backgroundColor = [UIColor redColor];
+        _inputView.textView.backgroundColor = [UIColor clearColor];
         _inputView.textView.placeholder = @"和大家一起哔哔叨叨吧";
         _inputView.container.eventDelegate = self;
     }
@@ -98,11 +112,11 @@
 - (void)clickPhotoContainerViewAdd {
     NSLog(@"点击添加图片");
     
-    NSArray *pic = @[@"图片1.png",@"图片2.png",@"图片3.png",@"图片4.png",@"图片5.png"];
+    NSArray *pic = @[@"图片1.jpg",@"图片2.jpg",@"图片3.jpg",@"图片4.jpg",@"图片5.jpg"];
     NSMutableArray *picMutable = [NSMutableArray array];
-    [self showViewController:self.pickView sender:nil];
-    
-    for (int i = 0; i < 9; i ++) {
+//    [self showViewController:self.pickView sender:nil];
+    int row = arc4random()%10;
+    for (int i = 0; i < row; i ++) {
         int index = arc4random()%3;
         [picMutable addObject:pic[index]];
     }
@@ -182,9 +196,20 @@
     NSLog(@"3");
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
-    
-    
 
+}
+
+- (BOOL)assetsPickerController:(GMImagePickerController *)picker shouldSelectAsset:(PHAsset *)asset {
+    NSLog(@"已经选了 %ld 张",picker.selectedAssets.count);
+    if (picker.selectedAssets.count > 9) {
+        NSLog(@"大于9张了");
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"温馨提示" message:@"只能获取9张图" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:cancelAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    return YES;
 }
 
 //Optional implementation:

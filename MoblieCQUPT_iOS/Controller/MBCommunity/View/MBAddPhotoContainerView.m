@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIButton *addButton;
 
 @property (strong, nonatomic) NSMutableArray *originPostionArray;
+@property (strong, nonatomic) NSMutableArray *currentPostionArray;
 
 @property (strong, nonatomic) NSMutableArray *subViewArray;
 
@@ -25,8 +26,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self addSubview:self.addButton];
-//        [self setupImageView];
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
@@ -34,7 +34,8 @@
     if (!_addButton) {
         _addButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _addButton.frame = CGRectMake(0, 0, kPhotoImageViewW, kPhotoImageViewW);
-        _addButton.backgroundColor = [UIColor greenColor];
+//        _addButton.backgroundColor = [UIColor greenColor];
+        [_addButton setBackgroundImage:[UIImage imageNamed:@"addPhoto.jpg"] forState:UIControlStateNormal];
         [_addButton addTarget:self action:@selector(clickAdd:) forControlEvents:UIControlEventTouchUpInside];
     }
     
@@ -51,30 +52,25 @@
 - (void)setSourcePicArray:(NSArray *)sourcePicArray {
     _sourcePicArray = sourcePicArray;
     [self setupImageView];
-    NSInteger perRowItemCount = [self perRowItemCountForPicPathArray:self.sourcePicArray];
-    _originPostionArray = [NSMutableArray array];
     
+    _currentPostionArray = [NSMutableArray array];
     [_sourcePicArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSInteger colunm = idx % perRowItemCount;
-        NSUInteger row = idx / perRowItemCount;
         MBAddImageView *imageView = self.subViewArray[idx];
-        imageView.frame = (CGRect){{colunm * (kPhotoImageViewW + 2),row * (kPhotoImageViewW + 2)},{kPhotoImageViewW,kPhotoImageViewW}};
-        imageView.image = [UIImage imageNamed:self.sourcePicArray[idx]];
-        imageView.tag = idx;
         imageView.hidden = NO;
-        [_originPostionArray addObject:NSStringFromCGRect(imageView.frame)];
-        
+        [_currentPostionArray addObject:NSStringFromCGRect(imageView.frame)];
+        imageView.image = [UIImage imageNamed:obj];
         imageView.delegate = self;
-        
         [self addSubview:imageView];
     }];
     if (_sourcePicArray.count == 9) {
         _addButton.hidden = YES;
+    }else {
+        _addButton.frame = CGRectFromString(self.originPostionArray[self.sourcePicArray.count]);
     }
 }
 
 - (void)setupImageView {
-    
+    _originPostionArray = [NSMutableArray array];
     if (self.subViewArray.count != 0) {
         for (int idx = 0; idx < self.subViewArray.count; idx ++) {
             MBAddImageView *imageView = self.subViewArray[idx];
@@ -84,19 +80,24 @@
     
     NSMutableArray *temp = [NSMutableArray new];
     for (int i = 0; i < 9; i++) {
+        NSInteger colunm = i % 3;
+        NSUInteger row = i / 3;
         MBAddImageView *imageView = [[MBAddImageView alloc]init];
-        [self addSubview:imageView];
+        imageView.frame = (CGRect){{colunm * (kPhotoImageViewW + 2),row * (kPhotoImageViewW + 2)},{kPhotoImageViewW,kPhotoImageViewW}};
+//        [self addSubview:imageView];
         imageView.tag = i;
         imageView.hidden = YES;
         [temp addObject:imageView];
         
-        UILabel *tag = [[UILabel alloc]init];
-        tag.text = [NSString stringWithFormat:@"%ld",imageView.tag];
-        tag.textColor = [UIColor whiteColor];
-        tag.font = [UIFont systemFontOfSize:16];
-        [tag sizeToFit];
-        tag.center = CGPointMake(kPhotoImageViewW/2, kPhotoImageViewW/2);
-        [imageView addSubview:tag];
+        [_originPostionArray addObject:NSStringFromCGRect(imageView.frame)];
+        
+//        UILabel *tag = [[UILabel alloc]init];
+//        tag.text = [NSString stringWithFormat:@"%ld",imageView.tag];
+//        tag.textColor = [UIColor whiteColor];
+//        tag.font = [UIFont systemFontOfSize:16];
+//        [tag sizeToFit];
+//        tag.center = CGPointMake(kPhotoImageViewW/2, kPhotoImageViewW/2);
+//        [imageView addSubview:tag];
     }
     
     self.subViewArray = temp;
@@ -104,10 +105,10 @@
 
 - (void)layoutSubviews {
     NSInteger row;
-    if (self.originPostionArray.count < 9) {
-        row = (self.originPostionArray.count + 1) / 3.5;
+    if (self.currentPostionArray.count < 9) {
+        row = (self.currentPostionArray.count + 1) / 3.5;
     }else {
-        row = self.originPostionArray.count / 3.5;
+        row = self.currentPostionArray.count / 3.5;
     }
     CGFloat height = (row + 1) * kPhotoImageViewW + row * 2;
     
@@ -119,26 +120,25 @@
 
 - (void)clickDelete:(MBAddImageView *)sender {
     NSLog(@"%ld ~ %ld",sender.tag,_subViewArray.count);
-    if (_originPostionArray.count == 1 || sender.tag == self.originPostionArray.count - 1) {
+    if (_currentPostionArray.count == 1 || sender.tag == self.currentPostionArray.count - 1) {
         _addButton.hidden = NO;
-        _addButton.frame = CGRectFromString([self.originPostionArray lastObject]);
+        _addButton.frame = CGRectFromString([self.currentPostionArray lastObject]);
     }else {
-        NSLog(@"22");
-        for (NSInteger i = sender.tag; i < self.originPostionArray.count; i ++) {
-            if ((i + 1) < self.originPostionArray.count) {
+        for (NSInteger i = sender.tag; i < self.currentPostionArray.count; i ++) {
+            if ((i + 1) < self.currentPostionArray.count) {
                 MBAddImageView *nextImageView = self.subViewArray[i+1];
                 nextImageView.tag = i;
                 [UIView animateWithDuration:0.2 animations:^{
-                    nextImageView.frame = CGRectFromString(self.originPostionArray[i]);
+                    nextImageView.frame = CGRectFromString(self.currentPostionArray[i]);
                     _addButton.hidden = NO;
-                    _addButton.frame = CGRectFromString([self.originPostionArray lastObject]);
+                    _addButton.frame = CGRectFromString([self.currentPostionArray lastObject]);
                 } completion:^(BOOL finished) {
                     
                 }];
             }
         }
     }
-    [_originPostionArray removeObjectAtIndex:self.originPostionArray.count - 1];
+    [_currentPostionArray removeObjectAtIndex:self.currentPostionArray.count - 1];
     [_subViewArray removeObject:sender];
     [sender removeFromSuperview];
     
