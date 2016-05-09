@@ -85,6 +85,7 @@
 		CE46486F1BDFB8E700C3C24B /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE46486E1BDFB8E700C3C24B /* CalendarViewController.m */; };
 		CE4648741BDFB91C00C3C24B /* TitleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4648721BDFB91C00C3C24B /* TitleBaseViewController.m */; };
 		CE4648751BDFB91C00C3C24B /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4648731BDFB91C00C3C24B /* TitleBaseViewController.xib */; };
+		CE5154921CE0FED3008BD324 /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5154911CE0FED3008BD324 /* MOHImageParamModel.m */; };
 		CE5402E01BDD2DAB00488428 /* icon_menu_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5402DC1BDD2DAB00488428 /* icon_menu_4@2x.png */; };
 		CE5402E11BDD2DAB00488428 /* icon_menu_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5402DD1BDD2DAB00488428 /* icon_menu_5@2x.png */; };
 		CE5402E21BDD2DAB00488428 /* icon_menu_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5402DE1BDD2DAB00488428 /* icon_menu_2@2x.png */; };
@@ -449,6 +450,7 @@
 		CE4648721BDFB91C00C3C24B /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
 		CE4648731BDFB91C00C3C24B /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
 		CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHImageParamModel.h; sourceTree = "<group>"; };
+		CE5154911CE0FED3008BD324 /* MOHImageParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHImageParamModel.m; sourceTree = "<group>"; };
 		CE5402DC1BDD2DAB00488428 /* icon_menu_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_4@2x.png"; sourceTree = "<group>"; };
 		CE5402DD1BDD2DAB00488428 /* icon_menu_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_5@2x.png"; sourceTree = "<group>"; };
 		CE5402DE1BDD2DAB00488428 /* icon_menu_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_2@2x.png"; sourceTree = "<group>"; };
@@ -1217,6 +1219,7 @@
 				CEE837B51B86C35000959779 /* NetWork.h */,
 				CEE837B61B86C35000959779 /* NetWork.m */,
 				CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */,
+				CE5154911CE0FED3008BD324 /* MOHImageParamModel.m */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -2255,6 +2258,7 @@
 				D9A022E51C89AF6200A5F93B /* ExamGradeViewController.m in Sources */,
 				CE3BC7DF1BE8C6270002CBA4 /* F3HGameboardView.m in Sources */,
 				CE3BC7DA1BE8C6270002CBA4 /* F3HMoveOrder.m in Sources */,
+				CE5154921CE0FED3008BD324 /* MOHImageParamModel.m in Sources */,
 				D9DF5EB01CD0914A00C89F6A /* UIImage+Helper.m in Sources */,
 				CE4648641BDFB87C00C3C24B /* ORWInputTextView.m in Sources */,
 				D9DF5ECC1CD0E1B400C89F6A /* MBInputView.m in Sources */,

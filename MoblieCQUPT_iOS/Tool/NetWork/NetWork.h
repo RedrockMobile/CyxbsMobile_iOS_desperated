@@ -58,7 +58,7 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 + (void)uploadFileWithUrlString:(NSString *)url;
 
 + (void)uploadImageWithUrl:(NSString *)url
-               imageParams:(NSArray<MOHImageParamModel> *)imageParamsArray
+               imageParams:(NSArray<MOHImageParamModel *> *)imageParamsArray
                otherParams:(NSDictionary *)params
           imageQualityRate:(CGFloat)rate
               successBlock:(SucessWithJson) block

@@ -157,7 +157,7 @@
  *  @param failureBlock  失败调用
  */
 + (void)uploadImageWithUrl:(NSString *)url
-      imageParams:(NSArray<MOHImageParamModel> *)imageParamsArray
+      imageParams:(NSArray<MOHImageParamModel *> *)imageParamsArray
          otherParams:(NSDictionary *)params
           imageQualityRate:(CGFloat)rate
         successBlock:(SucessWithJson) block
@@ -165,7 +165,7 @@
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        for ( NSObject<MOHImageParamModel> *imageParams in imageParamsArray) {
+        for ( MOHImageParamModel *imageParams in imageParamsArray) {
             NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,rate);
             
             //添加图片 header
