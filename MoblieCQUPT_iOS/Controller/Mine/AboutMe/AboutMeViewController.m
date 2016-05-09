@@ -204,13 +204,16 @@
         }
         
         if (_data[indexPath.section][@"photo_src"]) {
-            [remarkCell.avatar setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]]];
+            [remarkCell.avatar sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]]];
             remarkCell.avatar.layer.masksToBounds = YES;
             remarkCell.avatar.layer.cornerRadius = remarkCell.avatar.frame.size.height/2;
         }
         
         if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
-            
+            NSString *imageString1 = _data[indexPath.section][@"article_photo_src"];
+            NSArray *imageNameArray1 = [imageString1 componentsSeparatedByString:@","];
+            NSString *imageUrl1 = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
+            [remarkCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             remarkCell.articlePhotoWidth.constant = 0.1;
             [remarkCell setNeedsLayout];
@@ -232,13 +235,18 @@
         }
         
         if (![_data[indexPath.section][@"photo_src"] isEqualToString:@""]) {
-            [praiseCell.avatar setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]]];
+            [praiseCell.avatar sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]] placeholderImage:[UIImage imageNamed:@"headImage.png"]];
             praiseCell.avatar.layer.masksToBounds = YES;
             praiseCell.avatar.layer.cornerRadius = praiseCell.avatar.frame.size.height/2;
+        } else {
+            [praiseCell.avatar setImage:[UIImage imageNamed:@"headImage.png"]];
         }
         
         if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
-            
+            NSString *imageString2 = _data[indexPath.section][@"article_photo_src"];
+            NSArray *imageNameArray2 = [imageString2 componentsSeparatedByString:@","];
+            NSString *imageUrl2 = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
+            [praiseCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             praiseCell.articlePhotoWidth.constant = 0.1;
             [praiseCell setNeedsLayout];
@@ -253,4 +261,10 @@
     return  nil;
 }
 
+//- (void)setPraiseCellImage:(NSIndexPath *)indexPath {
+//    NSString *imageString = _data[indexPath.section][@"article_photo_src"];
+//    NSArray *imageNameArray = [imageString componentsSeparatedByString:@","];
+//    NSLog(@"first image :%@",imageNameArray[0]);
+//    _
+//}
 @end
