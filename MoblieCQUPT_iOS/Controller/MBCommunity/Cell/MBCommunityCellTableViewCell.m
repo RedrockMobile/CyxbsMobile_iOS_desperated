@@ -114,7 +114,6 @@
 //重写viewModel的set方法 在设置ViewModel的时候 自动进行数据加载
 - (void)setSubViewFrame:(MBCommunity_ViewModel *)subViewFrame {
     _subViewFrame = subViewFrame;
-    
     //为控件设置数据
     [self setupData];
     //为控件设置frame

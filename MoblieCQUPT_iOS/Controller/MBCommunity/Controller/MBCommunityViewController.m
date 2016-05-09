@@ -100,6 +100,7 @@
 
 //当从详情界面返回时 重新刷新cell
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     if (_currenSelectCellOfRow) {
         NSInteger row = [self.currenSelectCellOfRow integerValue];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
@@ -353,8 +354,11 @@
     };
     
     cell.subViewFrame = viewModel;
+
     return cell;
 }
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

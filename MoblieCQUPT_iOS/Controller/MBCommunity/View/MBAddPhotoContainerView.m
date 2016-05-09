@@ -49,7 +49,7 @@
     }
 }
 
-- (void)setSourcePicArray:(NSArray *)sourcePicArray {
+- (void)setSourcePicArray:(NSMutableArray *)sourcePicArray {
     _sourcePicArray = sourcePicArray;
     [self setupImageView];
     
@@ -112,7 +112,6 @@
         [self.eventDelegate clickDeleteImageViewWithTag:sender.tag];
     }
     
-    NSLog(@"%ld ~ %ld",sender.tag,_subViewArray.count);
     if (_currentPostionArray.count == 1 || sender.tag == self.currentPostionArray.count - 1) {
         _addButton.hidden = NO;
         _addButton.frame = CGRectFromString([self.currentPostionArray lastObject]);
@@ -134,7 +133,7 @@
     [_currentPostionArray removeObjectAtIndex:self.currentPostionArray.count - 1];
     [_subViewArray removeObject:sender];
     [sender removeFromSuperview];
-    
+    [_sourcePicArray removeObjectAtIndex:sender.tag];
 }
 
 - (NSInteger)perRowItemCountForPicPathArray:(NSArray *)array

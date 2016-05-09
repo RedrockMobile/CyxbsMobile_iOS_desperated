@@ -49,9 +49,9 @@ const CGFloat kDuration = 0.18f;
 - (void)setThumbnailPic:(NSString *)thumbnailPic {
     SDWebImageManager *manger = [[SDWebImageManager alloc]init];
     NSString *key = [manger cacheKeyForURL:[NSURL URLWithString:thumbnailPic]];
-    
+
     UIImage *image = [manger.imageCache imageFromMemoryCacheForKey:key];
-    if (!image) {
+    if (image != [manger.imageCache imageFromMemoryCacheForKey:key]) {
         image = [UIImage imageWithColor:BACK_GRAY_COLOR];
     }
     

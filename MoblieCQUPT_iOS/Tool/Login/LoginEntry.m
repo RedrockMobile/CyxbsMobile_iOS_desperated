@@ -64,6 +64,21 @@ withDictionaryParam:(NSDictionary *)paramDictionary{
         return NO;
     }
 }
++ (BOOL)saveByUserdefaultWithUserID:(NSString *)userID {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLock *lock = [[NSLock alloc] init];
+    [lock lock];
+    
+    [userDefaults setObject:userID forKey:@"user_id"];
+    
+    [lock unlock];
+    
+    if([userDefaults synchronize]){
+        return YES;
+    }else{
+        return NO;
+    }
+}
 
 + (id)getByUserdefaultWithKey:(NSString *)key{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
