@@ -8,6 +8,7 @@
 
 #import "MBCommunityCellTableViewCell.h"
 #import "MBPhotoContainerView.h"
+//#import "SDWebImageManager.h"
 
 @interface MBCommunityCellTableViewCell ()
 
@@ -53,17 +54,22 @@
     _supportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _supportBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [_supportBtn setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
+    [_supportBtn setTitleColor:[UIColor colorWithRed:225/255.0 green:65/255.0 blue:35/255.0 alpha:1] forState:UIControlStateSelected];
     _supportBtn.tag = 1;
-    [_supportBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [_supportBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
     
-    _supportImage = [[UIImageView alloc]init];
-    _supportImage.image = [UIImage imageNamed:@"support1.png"];
+//    _supportImage = [[UIImageView alloc]init];
+//    _supportImage.image = [UIImage imageNamed:@"support1.png"];
+    _supportImage = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_supportImage setImage:[UIImage imageNamed:@"support1.png"] forState:UIControlStateNormal];
+    [_supportImage setImage:[UIImage imageNamed:@"support.png"] forState:UIControlStateSelected];
+    [_supportImage addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
     
     _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _commentBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [_commentBtn setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
     _commentBtn.tag = 2;
-    [_commentBtn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+//    [_commentBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
     
     _commentImage = [[UIImageView alloc]init];
     _commentImage.image = [UIImage imageNamed:@"comment1.png"];
@@ -79,8 +85,19 @@
     [self.contentView addSubview:self.commentImage];
 }
 
-- (void)clickBtn:(UIButton *)sender {
-    NSLog(@"%@",sender.titleLabel.text);
+
+
+- (void)clickSupportBtn {
+//    if (_supportImage.selected && _supportBtn.selected) {
+//        _supportImage.selected = !_supportImage.selected;
+//        _supportBtn.selected = !_supportBtn.selected;
+//    }else {
+//        _supportImage.selected = !_supportImage.selected;
+//        _supportBtn.selected = !_supportBtn.selected;
+//    }
+    if (self.clickSupportBtnBlock) {
+        self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.model);
+    }
 }
 
 + (instancetype)cellWithTableView:(MBCommunityTableView *)tableView
@@ -105,15 +122,22 @@
 }
 
 - (void)setupData {
-    MBCommunityModel *model = self.subViewFrame.model;
+    _model = self.subViewFrame.model;
     
-    _headImageView.image = [UIImage imageNamed:model.headImageView];
-    _IDLabel.text = model.IDLabel;
-    _timeLabel.text = model.timeLabel;
-    _contentLabel.text = model.contentLabel;
-    _photoContainer.picNameArray = model.pictureArray;
-    [_supportBtn setTitle:model.numOfSupport forState:UIControlStateNormal];
-    [_commentBtn setTitle:model.numOfComment forState:UIControlStateNormal];
+    NSArray *color = ColorArray;
+    int idx = arc4random()%color.count;
+    UIImage *image = [UIImage imageWithColor:[UIColor handleRandomColorStr:color[idx]]];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.subViewFrame.model.headImageView] placeholderImage:image];
+    _IDLabel.text = self.model.IDLabel;
+    _timeLabel.text = self.model.timeLabel;
+    _contentLabel.text = self.model.contentLabel;
+    _photoContainer.thumbnailPictureArray = self.model.thumbnailPictureArray;
+    _photoContainer.picNameArray = self.model.pictureArray;
+    
+    _supportImage.selected = [self.subViewFrame.model.isMyLike boolValue];
+    _supportBtn.selected = [self.subViewFrame.model.isMyLike boolValue];
+    [_supportBtn setTitle:self.model.numOfSupport forState:UIControlStateNormal];
+    [_commentBtn setTitle:self.model.numOfComment forState:UIControlStateNormal];
     
 }
 - (void)setupFrame {

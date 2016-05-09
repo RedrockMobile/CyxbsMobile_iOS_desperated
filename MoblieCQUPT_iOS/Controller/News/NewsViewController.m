@@ -139,7 +139,6 @@ static int nowPage= 1;
                 
                 contentDetail = [contentDetail stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
                 [dic setValue:contentDetail forKey:@"newsContent"];
-                
                 [_BothData addObject:dic];
                 [_tableView reloadData];
 

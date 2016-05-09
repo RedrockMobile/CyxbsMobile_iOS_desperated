@@ -19,7 +19,9 @@
 
 @property (strong, nonatomic) UIImageView *imageView;
 
-@property (strong, nonatomic) NSString *pic;
+@property (copy, nonatomic) NSString *pic;
+//@property (copy, nonatomic) NSString *thumbnailPic;
+@property (strong, nonatomic) NSString *thumbnailPic;
 
 @property (assign, nonatomic ,getter=isFirstShow) BOOL firstShow;
 

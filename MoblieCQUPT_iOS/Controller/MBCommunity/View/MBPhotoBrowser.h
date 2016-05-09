@@ -18,6 +18,8 @@
 
 @property (strong, nonatomic) NSArray *sourceImageArray;
 
+@property (strong, nonatomic) NSArray *sourceThumbnailPictureArray;
+
 @property (assign, nonatomic) NSInteger currentImageItem;
 
 @property (strong, nonatomic) NSArray *imageViewOriginArray;
@@ -29,7 +31,8 @@
 - (instancetype)initWithSourceContainerView:(UIView *)sourceContainerView
                            currentImageItem:(NSInteger)currentImageItem
                            sourceImageArray:(NSArray *)sourceImageArray
-                       imageViewOriginArray:(NSArray *)imageViewOriginArray;
+                sourceThumbnailPictureArray:(NSArray *)sourceThumbnailPictureArray
+                       imageViewOriginArray:(NSArray *)imageViewOriginArray ;
 
 
 @end

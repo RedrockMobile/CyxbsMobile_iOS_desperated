@@ -8,20 +8,34 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, MBCommunityModelType) {
+    MBCommunityModelTypeHot,
+    MBCommunityModelTypeListArticle,
+    MBCommunityModelTypeListNews
+};
+
 @interface MBCommunityModel : NSObject
+
+@property (copy, nonatomic) NSString *typeID;
+
+@property (copy, nonatomic) NSString *stuNum;
 
 @property (copy, nonatomic) NSString *headImageView;
 @property (copy, nonatomic) NSString *IDLabel;
 @property (copy, nonatomic) NSString *timeLabel;
 @property (copy, nonatomic) NSString *contentLabel;
 
-@property (strong, nonatomic) NSArray *pictureArray;//高质量图片
-@property (strong, nonatomic) NSArray *comprssPictureArray;//压缩图片
+@property (copy, nonatomic) NSString *articleID;
+
+@property (strong, nonatomic) NSMutableArray *pictureArray;//高质量图片
+@property (strong, nonatomic) NSMutableArray *thumbnailPictureArray;//压缩图片
 
 @property (copy, nonatomic) NSString *numOfSupport;
 @property (copy, nonatomic) NSString *numOfComment;
 
-@property (assign, nonatomic) BOOL isMyLike;//我是否点赞
+@property (copy, nonatomic) NSString *isMyLike;//我是否点赞
 
+
+- (instancetype)initWithDictionary:(NSDictionary *)dic withMBCommunityModelType:(MBCommunityModelType)modelType;
 
 @end

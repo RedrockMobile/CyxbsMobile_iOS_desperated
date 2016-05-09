@@ -11,5 +11,6 @@
 @interface MBPhotoContainerView : UIView
 
 @property (strong, nonatomic) NSArray *picNameArray;
+@property (strong, nonatomic) NSArray *thumbnailPictureArray;
 
 @end

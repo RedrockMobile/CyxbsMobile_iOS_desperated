@@ -7,19 +7,38 @@
 //
 
 #import "MBInputView.h"
+#import "MBAddPhotoContainerView.h"
 
+@interface MBInputView ()
+
+
+@end
 
 @implementation MBInputView
 
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame withInptuViewStyle:(MBInputViewStyle)style {
     self = [super initWithFrame:frame];
     if (self) {
-        _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, 120)];
-        [self addSubview:self.textView];
-        _textView.placeholder = @"和大家一起哔哔叨叨吧";
-        _textView.placeholderColor = [UIColor lightGrayColor];
+        if (style == MBInputViewStyleDefault) {
+            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, frame.size.height - 20)];
+            [self addSubview:self.textView];
+            _textView.placeholderColor = [UIColor lightGrayColor];
+        }else if (style == MBInputViewStyleWithPhoto) {
+            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 7, ScreenWidth - 20, 120)];
+            [self addSubview:self.textView];
+            
+            _container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, ScreenWidth - 20, 200)];
+            
+            
+            
+            [self addSubview:self.container];
+        }
     }
     return self;
+}
+
+- (void)layoutSubviews {
+    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGRectGetMaxY(self.container.frame) + 10);
 }
 
 /*

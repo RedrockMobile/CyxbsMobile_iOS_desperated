@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GMImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -52,7 +57,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2C167BB8E52028397D87852CEEECC872</key>
+		<key>0C9CADC748254875034C1C6CD4393CF9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>35DABFCB7A547CD9545DB4B7095BDC44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +77,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>51F7AEECEF982FD7CEBAD7BAF5CFFAB1</key>
+		<key>61E73B5ECFD68A5592AC0D03D47169A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>61E73B5ECFD68A5592AC0D03D47169A2</key>
+		<key>9781A9E4F3F455D11D2314A8E73295F6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9EA3829EA5F5DDB2444F6945153C20A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,12 +97,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE2A966FF7C4CEBC80E58B221D9F2EEA</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CC0B87DFCAA47CECEB2DC127C822A3D5</key>
+		<key>DFA1313D83D54A31C5E87F5F6788F989</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -112,6 +112,7 @@
  *
  *  @return 返回指定大小的image
  */
-- (UIImage*)imageCompressWithSimple:(UIImage*)image scaledToSize:(CGSize)size;
+//- (UIImage*)imageCompressWithSimple:(UIImage*)image scaledToSize:(CGSize)size;
+
 
 @end

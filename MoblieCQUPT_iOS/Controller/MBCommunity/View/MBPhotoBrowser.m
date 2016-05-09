@@ -9,6 +9,7 @@
 #import "MBPhotoBrowser.h"
 #import "MBBrowserItem.h"
 #import "UIImage+ImageEffects.h"
+#import "UIImage+Helper.h"
 
 #define PhotoBrowserImageViewMargin 10
 
@@ -32,6 +33,7 @@
 - (instancetype)initWithSourceContainerView:(UIView *)sourceContainerView
                            currentImageItem:(NSInteger)currentImageItem
                            sourceImageArray:(NSArray *)sourceImageArray
+                sourceThumbnailPictureArray:(NSArray *)sourceThumbnailPictureArray
                        imageViewOriginArray:(NSArray *)imageViewOriginArray {
     
     self = [super init];
@@ -40,6 +42,7 @@
         _sourceContainerView = sourceContainerView;
         _currentImageItem = currentImageItem;
         _sourceImageArray = sourceImageArray;
+        _sourceThumbnailPictureArray = sourceThumbnailPictureArray;
         _imageViewOriginArray = imageViewOriginArray;
         self.screenshot = [self _screenshotFromView:[UIApplication sharedApplication].keyWindow];
         [self addSubview:self.blurImageView];
@@ -124,10 +127,8 @@
     
     [_imageViewArray addObject:browserItem];
     
-    UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:self.currentImageItem]];
-    CGRect rect = [self calculateDestinationFrameWithSize:image.size index:0];
-
-    browserItem.imageView.image = image;
+    [browserItem.imageView sd_setImageWithURL:[NSURL URLWithString:self.sourceThumbnailPictureArray[self.currentImageItem]] placeholderImage:[UIImage imageWithBgColor:BACK_GRAY_COLOR]];
+    CGRect rect = [self calculateDestinationFrameWithSize:browserItem.imageView.image.size index:0];
     
     [self addSubview:browserItem];
     
@@ -139,7 +140,12 @@
         _scrollView.hidden = NO;
         [self addSubview:_indexLabel];
         browserItem.frame = CGRectMake(kImageBrowserWidth * self.currentImageItem, 0, ScreenWidth, kImageBrowserHeight);
+        browserItem.pic = self.sourceImageArray[self.currentImageItem];
+        browserItem.thumbnailPic = self.sourceThumbnailPictureArray[self.currentImageItem];
+//        browserItem.thumbnailPic = browserItem.imageView.image;
         [_scrollView addSubview:browserItem];
+        
+        
     }];
 }
 
@@ -159,9 +165,10 @@
     for (NSInteger i = 0; i < self.sourceImageArray.count; i ++) {
         if (i != self.currentImageItem) {
             MBBrowserItem *browserItem = [[MBBrowserItem alloc]initWithFrame:CGRectMake(kImageBrowserWidth * i, 0, ScreenWidth, kImageBrowserHeight)];
-            UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:i]];
-            browserItem.imageView.image = image;
-            browserItem.imageView.frame = [self calculateDestinationFrameWithSize:image.size index:0];
+//            UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:i]];
+//            browserItem.imageView.image = image;
+            browserItem.pic = self.sourceImageArray[i];
+            browserItem.thumbnailPic = self.sourceThumbnailPictureArray[i];
             browserItem.eventDelegate = self;
             [_scrollView addSubview:browserItem];
             browserItem.tag = i;
@@ -172,13 +179,15 @@
 #pragma mark MBBroswerItem Delegate
 - (void)didClickedItemToHide {
     UIImageView *tem = [[UIImageView alloc]init];
-    UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:self.currentImageItem]];
-    CGRect rect = [self calculateDestinationFrameWithSize:image.size index:0];
+//    UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:self.currentImageItem]];
+//    CGRect rect = [self calculateDestinationFrameWithSize:image.size index:0];
+    [tem sd_setImageWithURL:[NSURL URLWithString:self.sourceThumbnailPictureArray[self.currentImageItem]] placeholderImage:nil];
+    CGRect rect = [self calculateDestinationFrameWithSize:tem.image.size index:0];
     tem.frame = rect;
 
     tem.contentMode = UIViewContentModeScaleAspectFill;
     tem.clipsToBounds = YES;
-    tem.image = image;
+//    tem.image = image;
     
     _scrollView.hidden = YES;
     [_indexLabel removeFromSuperview];

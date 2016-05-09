@@ -54,28 +54,30 @@
         photoContainerW = kPhotoImageViewW * 2 + 2;
         photoContainerH = photoContainerW;
     }else if (picCount == 1){
-        UIImageView *imageView = [[UIImageView alloc]init];
-        imageView.image = [UIImage imageNamed:self.model.pictureArray[0]];
-        if (imageView.image.size.width == imageView.image.size.height) {
-            imageView.frame = CGRectMake(0, 0, kPhotoImageViewW*1.2, kPhotoImageViewW*1.2);
-            photoContainerW = imageView.frame.size.width;
-            photoContainerH = imageView.frame.size.height;
-        }else if (imageView.image.size.width < imageView.image.size.height) {
-            CGFloat picH = imageView.image.size.height / imageView.image.size.width * kPhotoImageViewW*1.2;
-            imageView.frame = CGRectMake(0, 0, kPhotoImageViewW*1.2, picH);
-            photoContainerW = imageView.frame.size.width;
-            photoContainerH = imageView.frame.size.height;
-        }else {
-            CGFloat picW = imageView.image.size.width / imageView.image.size.height * kPhotoImageViewW*1.2;
-            imageView.frame = CGRectMake(0, 0, picW, kPhotoImageViewW*1.2);
-            photoContainerW = imageView.frame.size.width;
-            photoContainerH = imageView.frame.size.height;
-        }
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
+//        UIImageView *imageView = [[UIImageView alloc]init];
+//        imageView.image = [UIImage imageNamed:self.model.pictureArray[0]];
+//        if (imageView.image.size.width == imageView.image.size.height) {
+//            imageView.frame = CGRectMake(0, 0, kPhotoImageViewW*1.2, kPhotoImageViewW*1.2);
+//            photoContainerW = imageView.frame.size.width;
+//            photoContainerH = imageView.frame.size.height;
+//        }else if (imageView.image.size.width < imageView.image.size.height) {
+//            CGFloat picH = imageView.image.size.height / imageView.image.size.width * kPhotoImageViewW*1.2;
+//            imageView.frame = CGRectMake(0, 0, kPhotoImageViewW*1.2, picH);
+//            photoContainerW = imageView.frame.size.width;
+//            photoContainerH = imageView.frame.size.height;
+//        }else {
+//            CGFloat picW = imageView.image.size.width / imageView.image.size.height * kPhotoImageViewW*1.2;
+//            imageView.frame = CGRectMake(0, 0, picW, kPhotoImageViewW*1.2);
+//            photoContainerW = imageView.frame.size.width;
+//            photoContainerH = imageView.frame.size.height;
+//        }
+//        imageView.contentMode = UIViewContentModeScaleAspectFit;
+        photoContainerW = kPhotoImageViewW;
+        photoContainerH = kPhotoImageViewW;
     }else if (picCount == 0){
         photoContainerW = 0;
         photoContainerH = 0;
-    }else {// picCount = 1 2 3 5 6 7 8 9张
+    }else {// picCount = 2 3 5 6 7 8 9张
         //算出每行有几个图片
         NSInteger perRowItemCount;
         NSInteger perColunmItemCount;
