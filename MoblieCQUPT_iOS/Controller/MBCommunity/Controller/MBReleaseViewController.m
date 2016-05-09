@@ -144,22 +144,30 @@
 
 - (GMImagePickerController *)pickView{
     if (self && !_pickView) {
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 20)];
+        view.backgroundColor = MAIN_COLOR;
+        
         GMImagePickerController *picker = [[GMImagePickerController alloc] init];
         picker.delegate = self;
         picker.title = @"相册";
         
+        [picker.view addSubview:view];
+        
         picker.customDoneButtonTitle = @"完成";
         picker.customCancelButtonTitle = @"取消";
-        picker.customNavigationBarPrompt = @"请选择图片";
+//        picker.customNavigationBarPrompt = @"请选择图片";
         
         picker.colsInPortrait = 3;
         picker.colsInLandscape = 5;
         picker.minimumInteritemSpacing = 2.0;
         
         picker.modalPresentationStyle = UIModalPresentationPopover;
-        
+        picker.navigationBarTintColor = [UIColor whiteColor];
+        picker.navigationBarBackgroundColor = MAIN_COLOR;
+        picker.navigationBarTextColor = [UIColor whiteColor];
         picker.mediaTypes = @[@(PHAssetMediaTypeImage)];
         _pickView = picker;
+        
     }
 
     return _pickView;
@@ -182,7 +190,7 @@
             
         }];
     }
-    _inputView.container.sourcePicArray = [picMutable copy];
+    _inputView.container.sourcePicArray = picMutable;
     [picker.presentingViewController dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -210,9 +218,18 @@
         NSLog(@"点击发送");
     }
     
-    NSLog(@"%@",text);
-    
     return YES;
+}
+
+
+- (void)releaseNewArticle {
+    NSString *type_id = @"5";
+    NSString *title = @"随便试试";
+    NSString *user_id;
+    NSString *content;
+    NSString *thumbnail_src;
+    NSString *photo_src;
+    
 }
 
 //Optional implementation:
