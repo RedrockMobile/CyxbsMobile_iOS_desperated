@@ -299,6 +299,7 @@
 		E2C75D8F1CE0A7F100EA8FEA /* MBReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D8E1CE0A7F100EA8FEA /* MBReplyView.m */; };
 		E2C75D921CE0A82F00EA8FEA /* MBAddPhotoContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D911CE0A82F00EA8FEA /* MBAddPhotoContainerView.m */; };
 		E2C75D951CE0A85900EA8FEA /* MBAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D941CE0A85900EA8FEA /* MBAddImageView.m */; };
+		E2C75D971CE0B31100EA8FEA /* headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C75D961CE0B31100EA8FEA /* headImage.png */; };
 		E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E7DE231B94764A0081F699 /* LoginViewController.m */; };
 		E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE241B94764A0081F699 /* LoginViewController.xib */; };
 		E2E7DE2C1B9476730081F699 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE281B9476730081F699 /* background.png */; };
@@ -753,6 +754,7 @@
 		E2C75D911CE0A82F00EA8FEA /* MBAddPhotoContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAddPhotoContainerView.m; sourceTree = "<group>"; };
 		E2C75D931CE0A85900EA8FEA /* MBAddImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAddImageView.h; sourceTree = "<group>"; };
 		E2C75D941CE0A85900EA8FEA /* MBAddImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBAddImageView.m; sourceTree = "<group>"; };
+		E2C75D961CE0B31100EA8FEA /* headImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headImage.png; sourceTree = "<group>"; };
 		E2E7DE221B94764A0081F699 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E2E7DE231B94764A0081F699 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2E7DE241B94764A0081F699 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1310,6 +1312,7 @@
 		D909288B1CACCB3500CA97CD /* MBCommunity */ = {
 			isa = PBXGroup;
 			children = (
+				E2C75D961CE0B31100EA8FEA /* headImage.png */,
 				D9A0FE0D1CB9A29400BFD01D /* 图片1.jpg */,
 				D9A0FE0E1CB9A29400BFD01D /* 图片2.jpg */,
 				D9A0FE0F1CB9A29400BFD01D /* 图片3.jpg */,
@@ -2060,7 +2063,6 @@
 				E218DCE41CD20AC200DD3C8C /* EmptyClassViewController.xib in Resources */,
 				D95256461C8BC8D200CD7921 /* GQclass.png in Resources */,
 				D952C7601C0EC44500AA24C0 /* iconfont-shop2.png in Resources */,
-				D94F63591CE0AEB800F91664 /* headImage.png in Resources */,
 				D98B5D1E1C08483E0010BC9E /* shop_new@2x.png in Resources */,
 				CE30FDDB1B9968C000C15AD4 /* bukaochaxun.png in Resources */,
 				E218DCEE1CD20AC200DD3C8C /* QGERestDetailViewController.xib in Resources */,
@@ -2167,6 +2169,7 @@
 				E263C79C1BA35E60008488FA /* FirstViewController.xib in Resources */,
 				CE0ADC9F1BDDD03E00374CDC /* 补考安排@2x.png in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
+				E2C75D971CE0B31100EA8FEA /* headImage.png in Resources */,
 				D98B5D1B1C08483E0010BC9E /* community_new@2x.png in Resources */,
 				E263C7711BA35E26008488FA /* ButtonView.xib in Resources */,
 				E263C7811BA35E26008488FA /* shakeForShop@2x.png in Resources */,
