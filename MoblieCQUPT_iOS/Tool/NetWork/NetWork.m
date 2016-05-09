@@ -143,7 +143,64 @@
     return manager;
 }
 
-
-
++ (void)uploadImageWithUrl:(NSString *)URL
+             WithParameter:(NSDictionary *)params
+           WithUploadImage:(UIImage *)image
+      WithReturnValueBlock:(SucessWithJson) block
+          WithFailureBlock:(FailureFunction) failureBlock {
+    
+//    //获取图片路径
+//    NSString *fileName = @"pic";
+//    NSURL *filePath = [[NSBundle mainBundle] URLForResource:fileName withExtension:@"png"];
+    //奖图片写入Document文件目录下
+    NSData *imgData = UIImageJPEGRepresentation(image, 0.5);
+    NSDate *currentTime = [NSDate date];
+    NSString *imgName = [NSString stringWithFormat:@"%@",currentTime];
+    NSString *fullPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:imgName];
+    [imgData writeToFile:fullPath atomically:NO];
+    NSURL *filePath = [NSURL URLWithString:fullPath];
+    // 额外请求参数
+//    NSDictionary *params = @{@"name":@"pic.png"};
+    // 请求地址
+//    NSString* url = [NSString stringWithFormat:@"%@%@", SERVER_URL, @"uploadPicture" ];
+    
+    // 初始化请求的manager.
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    /*
+     设置请求头的contentTypes 以下两种方法任选一种
+     也可以修改AFHTTPResponseSerialization.m 里面的self.acceptableContentTypes（添加@"text/html"）.
+     */
+    //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    //    manager.responseSerializer.acceptableContentTypes = [manager.responseSerializer.acceptableContentTypes setByAddingObject:@"text/html"];
+    
+    // 将request与response序列化
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    // 发送post请求.
+    [manager POST:URL parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        /**
+         *  appendPartWithFileURL   //  指定上传的文件
+         *  name                    //  指定在服务器中获取对应文件或文本时的key
+         *  fileName                //  指定上传文件的原始文件名
+         *  mimeType                //  指定上传文件的MIME类型
+         */
+        [formData appendPartWithFileURL:filePath name:@"fold" error:nil];
+        
+    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSLog(@"uploadSuccess!");
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        
+        if(block){
+            block(dic);
+        }else{
+            NSLog(@"无成功调用");
+        }
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"failure uploaded!. err:%@", error);
+        
+    }];
+}
 
 @end

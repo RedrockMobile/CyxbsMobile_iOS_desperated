@@ -18,4 +18,5 @@ withDictionaryParam:(NSDictionary *)paramDictionary;
 
 + (BOOL)saveByUserdefaultWithDictionary:(NSDictionary *)paramDictionary;
 + (id)getByUserdefaultWithKey:(NSString *)key;
+
 @end

@@ -109,11 +109,11 @@
         }]];
     }
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"取消"
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消"
                                                             style:UIAlertActionStyleCancel
                                                           handler:^(UIAlertAction * action) {}];
     
-    [alert addAction:defaultAction];
+    [alert addAction:cancelAction];
 
     [self presentViewController:alert animated:YES completion:nil];
 }

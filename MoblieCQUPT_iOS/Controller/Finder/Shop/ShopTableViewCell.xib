@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -17,7 +17,6 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading.png" translatesAutoresizingMaskIntoConstraints="NO" id="uUe-nH-8lh">
                         <rect key="frame" x="8" y="10" width="120" height="80"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="120" id="8BO-hY-dhX"/>
                             <constraint firstAttribute="height" constant="80" id="hW4-ge-Ztv"/>
@@ -25,7 +24,6 @@
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="老校门门口" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8c-HG-T1A">
                         <rect key="frame" x="143" y="77" width="224" height="13"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="13" id="b2Y-tr-XKf"/>
                         </constraints>
@@ -35,7 +33,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="推荐介绍:暂无" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G7r-6a-bms">
                         <rect key="frame" x="143" y="33" width="175" height="15"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="width" constant="175" id="ZAo-HB-qcq"/>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="pN5-Im-JCq"/>
@@ -47,7 +44,6 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="黄焖鸡米饭" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zr8-IJ-oLG">
                         <rect key="frame" x="143" y="8" width="75" height="15"/>
-                        <animations/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="CSM-9y-gqc"/>
                         </constraints>
@@ -56,7 +52,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <animations/>
                 <constraints>
                     <constraint firstItem="uUe-nH-8lh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="2" id="A5Y-w5-8zb"/>
                     <constraint firstAttribute="trailingMargin" secondItem="G7r-6a-bms" secondAttribute="trailing" constant="49" id="Brf-Oq-IpS"/>
@@ -71,7 +66,6 @@
                     <constraint firstItem="G7r-6a-bms" firstAttribute="leading" secondItem="uUe-nH-8lh" secondAttribute="trailing" constant="15" id="zxY-UK-uLR"/>
                 </constraints>
             </tableViewCellContentView>
-            <animations/>
             <connections>
                 <outlet property="addressLabel" destination="P8c-HG-T1A" id="IYR-Zj-b6J"/>
                 <outlet property="nameLabel" destination="zr8-IJ-oLG" id="2sF-A6-ca0"/>
