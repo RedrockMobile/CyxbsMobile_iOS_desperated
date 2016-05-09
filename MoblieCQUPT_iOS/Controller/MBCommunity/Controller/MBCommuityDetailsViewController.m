@@ -57,6 +57,9 @@
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
+@property (copy, nonatomic) NSString *currenSelectCellOfRow;
+@property (copy, nonatomic) NSString *currenSelectCellOfTableView;
+
 
 @end
 
@@ -67,6 +70,8 @@
     [super viewDidLoad];
     _isLoadedComment = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationItem.title = @"详情";
+    
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.replyView];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -207,7 +212,8 @@
         MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
         cell.subViewFrame = self.viewModel;
         __weak typeof(self) weakSelf = self;
-        cell.clickSupportBtnBlock = ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunityModel *model) {
+        cell.clickSupportBtnBlock = ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel) {
+            MBCommunityModel *model = viewModel.model;
             if (imageBtn.selected && labelBtn.selected) {
                 NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
                 NSInteger nowSupportNum;
@@ -218,7 +224,7 @@
                 }
                 [labelBtn setTitle:[NSString stringWithFormat:@"%ld",nowSupportNum] forState:UIControlStateNormal];
                 model.numOfSupport = [NSString stringWithFormat:@"%ld",nowSupportNum];
-                [weakSelf uploadSupport:model withType:1];
+                [weakSelf uploadSupport:viewModel withType:1];
                 imageBtn.selected = !imageBtn.selected;
                 labelBtn.selected = !labelBtn.selected;
                 NSLog(@"点击取消赞");
@@ -226,7 +232,7 @@
                 NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
                 [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
                 model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
-                [weakSelf uploadSupport:model withType:0];
+                [weakSelf uploadSupport:viewModel withType:0];
                 imageBtn.selected = !imageBtn.selected;
                 labelBtn.selected = !labelBtn.selected;
                 NSLog(@"点击赞");
@@ -383,9 +389,9 @@
 
 #pragma mark - 上传点赞
 
-- (void)uploadSupport:(MBCommunityModel *)model withType:(NSInteger)type {
+- (void)uploadSupport:(MBCommunity_ViewModel *)viewModel withType:(NSInteger)type {
     //type == 0 赞 , type == 1 取消赞
-    
+    MBCommunityModel *model = viewModel.model;
     NSString *url;
     if (type == 0) {
         url = ADDSUPPORT_API;
@@ -404,9 +410,16 @@
                                 @"type_id":type_id};
     
     __block MBCommunityModel *modelBlock = model;
+    __block MBCommunity_ViewModel *viewModelBlock = viewModel;
+    __weak typeof(self) weakSelf = self;
     
     [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
+        viewModelBlock.model = modelBlock;
+        NSInteger row = [weakSelf.currenSelectCellOfRow integerValue];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
+        MBCommunityTableView *tableView = weakSelf.tableView;
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
         NSLog(@"请求 %@",modelBlock.isMyLike);
     } WithFailureBlock:^{
         NSLog(@"请求赞出错");

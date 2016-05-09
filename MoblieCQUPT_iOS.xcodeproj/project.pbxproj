@@ -2060,6 +2060,7 @@
 				E218DCE41CD20AC200DD3C8C /* EmptyClassViewController.xib in Resources */,
 				D95256461C8BC8D200CD7921 /* GQclass.png in Resources */,
 				D952C7601C0EC44500AA24C0 /* iconfont-shop2.png in Resources */,
+				D94F63591CE0AEB800F91664 /* headImage.png in Resources */,
 				D98B5D1E1C08483E0010BC9E /* shop_new@2x.png in Resources */,
 				CE30FDDB1B9968C000C15AD4 /* bukaochaxun.png in Resources */,
 				E218DCEE1CD20AC200DD3C8C /* QGERestDetailViewController.xib in Resources */,

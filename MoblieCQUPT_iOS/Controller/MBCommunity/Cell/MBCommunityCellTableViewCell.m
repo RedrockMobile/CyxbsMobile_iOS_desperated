@@ -96,7 +96,7 @@
 //        _supportBtn.selected = !_supportBtn.selected;
 //    }
     if (self.clickSupportBtnBlock) {
-        self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.model);
+        self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.subViewFrame);
     }
 }
 
@@ -123,10 +123,7 @@
 
 - (void)setupData {
     _model = self.subViewFrame.model;
-    
-    NSArray *color = ColorArray;
-    int idx = arc4random()%color.count;
-    UIImage *image = [UIImage imageWithColor:[UIColor handleRandomColorStr:color[idx]]];
+    UIImage *image = [UIImage imageNamed:@"headImage.png"];
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.subViewFrame.model.headImageView] placeholderImage:image];
     _IDLabel.text = self.model.IDLabel;
     _timeLabel.text = self.model.timeLabel;
