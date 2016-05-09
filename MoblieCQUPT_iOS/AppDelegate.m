@@ -27,7 +27,12 @@
     MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
     model.paramName = @"fold";
     model.uploadImage = [UIImage imageNamed:@"mobile.png"];
-    [NetWork uploadImageWithUrl:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle" imageParams:@[model] otherParams:@{@"stunum":@"23013"}imageQualityRate:1.0 successBlock:nil failureBlock:nil];
+    [NetWork uploadImageWithUrl:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
+                    imageParams:@[model]
+                    otherParams:@{@"stunum":@"23013"}
+               imageQualityRate:1.0
+                   successBlock:nil
+                   failureBlock:nil];
     NSLog(@"2");
 
     
