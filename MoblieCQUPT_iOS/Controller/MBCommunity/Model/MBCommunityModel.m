@@ -61,7 +61,8 @@
         //头像
         if ([dic containsObjectForKey:@"photo_src"] && ![dic[@"photo_src"] isEqualToString:@""]) {
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/";
-            if ([dic[@"photo_src"] hasPrefix:prefix]) {
+            NSString *prefix1 = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/";
+            if ([dic[@"photo_src"] hasPrefix:prefix] || [dic[@"photo_src"] hasPrefix:prefix1]) {
                 self.headImageView = dic[@"photo_src"];
             }else {
                 NSString *newURL = [prefix stringByAppendingString:dic[@"photo_src"]];
@@ -69,7 +70,8 @@
             }
         }else if ([dic containsObjectForKey:@"user_head"] && ![dic[@"user_head"] isEqualToString:@""]) {
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/";
-            if ([dic[@"user_head"] hasPrefix:prefix]) {
+            NSString *prefix1 = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/";
+            if ([dic[@"user_head"] hasPrefix:prefix] || [dic[@"user_head"] hasPrefix:prefix1]) {
                 self.headImageView = dic[@"user_head"];
             }else {
                 NSString *newURL = [prefix stringByAppendingString:dic[@"user_head"]];
@@ -126,6 +128,9 @@
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/thumbnail/";
             NSArray *pic = [dic[@"img"][@"img_small_src"] componentsSeparatedByString:@","];
             [pic enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (idx >= 9) {
+                    return;
+                }
                 if (![pic[idx] isEqualToString:@""]) {
                     if ([pic[idx] hasPrefix:prefix]) {
                         [self.thumbnailPictureArray addObject:pic[idx]];
@@ -139,6 +144,9 @@
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/thumbnail/";
             NSArray *pic = [dic[@"article_thumbnail_src"] componentsSeparatedByString:@","];
             [pic enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (idx >= 9) {
+                    return;
+                }
                 if (![pic[idx] isEqualToString:@""]) {
                     if ([pic[idx] hasPrefix:prefix]) {
                         [self.thumbnailPictureArray addObject:pic[idx]];
@@ -153,6 +161,9 @@
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/";
             NSArray *pic = [dic[@"img"][@"img_src"] componentsSeparatedByString:@","];
             [pic enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (idx >= 9) {
+                    return;
+                }
                 if (![pic[idx] isEqualToString:@""]) {
                     if ([pic[idx] hasPrefix:prefix]) {
                         [self.pictureArray addObject:pic[idx]];
@@ -166,6 +177,9 @@
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/";
             NSArray *pic = [dic[@"article_photo_src"] componentsSeparatedByString:@","];
             [pic enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (idx >= 9) {
+                    return;
+                }
                 if (![pic[idx] isEqualToString:@""]) {
                     if ([pic[idx] hasPrefix:prefix]) {
                         [self.pictureArray addObject:pic[idx]];

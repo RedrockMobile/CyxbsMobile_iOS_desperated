@@ -168,11 +168,12 @@
     }else if (style == 5) {
         _AlertHub.labelText = @"网络连接失败,请检查网络";
     }
-    [_AlertHub showAnimated:NO whileExecutingBlock:^{
-        sleep(1.5);
-    } completionBlock:^{
-        [_AlertHub removeFromSuperview];
-    }];
+//    [_AlertHub showAnimated:NO whileExecutingBlock:^{
+//        sleep(1.5);
+//    } completionBlock:^{
+//        [_AlertHub removeFromSuperview];
+//    }];
+    [_AlertHub hide:YES afterDelay:1.5];
     [UIView animateWithDuration:0.8 animations:^{
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
     } completion:^(BOOL finished) {

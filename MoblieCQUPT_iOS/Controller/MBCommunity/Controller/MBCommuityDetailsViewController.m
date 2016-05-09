@@ -12,6 +12,7 @@
 #import "MBCommentCell.h"
 #import "MBReleaseViewController.h"
 #import "MBReplyView.h"
+#import "MBProgressHUD.h"
 
 /*
  *
@@ -39,12 +40,14 @@
  *                 代码无BUG!
  */
 
-@interface MBCommuityDetailsViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MBCommuityDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 
 @property (strong, nonatomic) MBCommunityTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
 
 @property (strong, nonatomic) UIView *headView;
+
+@property (strong, nonatomic) UILabel *headLabel;
 
 @property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 
@@ -52,12 +55,15 @@
 
 @property (strong, nonatomic) MBReplyView *replyView;
 
+@property (strong, nonatomic) MBProgressHUD *hud;
+
 
 @end
 
 @implementation MBCommuityDetailsViewController
 
 - (void)viewDidLoad {
+    NSLog(@"view didload");
     [super viewDidLoad];
     _isLoadedComment = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
@@ -104,13 +110,13 @@
     
 }
 
-- (NSMutableArray *)dataArray {
-    
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
+//- (NSMutableArray *)dataArray {
+//    
+//    if (!_dataArray) {
+//        _dataArray = [NSMutableArray array];
+//    }
+//    return _dataArray;
+//}
 
 //评论的heedView
 - (UIView *)headView {
@@ -122,7 +128,8 @@
         back.backgroundColor = [UIColor whiteColor];
         
         UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 40)];
-        headLabel.text = @"评论";
+        NSInteger numOfComment = [self.viewModel.model.numOfComment integerValue];
+        headLabel.text = [NSString stringWithFormat:@"评论 %ld",numOfComment];
         headLabel.font = [UIFont systemFontOfSize:16];
         headLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
         [headLabel sizeToFit];
@@ -131,6 +138,7 @@
         UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
         line.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
         
+        _headLabel = headLabel;
         [back addSubview:headLabel];
         [back addSubview:line];
         [_headView addSubview:back];
@@ -144,6 +152,7 @@
     if (!_replyView) {
         _replyView = [[MBReplyView alloc]init];
         _replyView.textView.returnKeyType = UIReturnKeySend;
+        _replyView.textView.delegate = self;
     }
     
     return _replyView;
@@ -197,6 +206,32 @@
     if (indexPath.section == 0) {
         MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
         cell.subViewFrame = self.viewModel;
+        __weak typeof(self) weakSelf = self;
+        cell.clickSupportBtnBlock = ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunityModel *model) {
+            if (imageBtn.selected && labelBtn.selected) {
+                NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
+                NSInteger nowSupportNum;
+                if (currentSupportNum == 0) {
+                    nowSupportNum = 0;
+                }else {
+                    nowSupportNum = currentSupportNum - 1;
+                }
+                [labelBtn setTitle:[NSString stringWithFormat:@"%ld",nowSupportNum] forState:UIControlStateNormal];
+                model.numOfSupport = [NSString stringWithFormat:@"%ld",nowSupportNum];
+                [weakSelf uploadSupport:model withType:1];
+                imageBtn.selected = !imageBtn.selected;
+                labelBtn.selected = !labelBtn.selected;
+                NSLog(@"点击取消赞");
+            }else {
+                NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
+                [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
+                model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
+                [weakSelf uploadSupport:model withType:0];
+                imageBtn.selected = !imageBtn.selected;
+                labelBtn.selected = !labelBtn.selected;
+                NSLog(@"点击赞");
+            }
+        };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else {
@@ -226,6 +261,9 @@
             MBCommentCell *cell = [MBCommentCell cellWithTableView:tableView];
             MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
             cell.viewModel = viewModel;
+            NSInteger numOfComment = [self.viewModel.model.numOfComment integerValue];
+            _headLabel.text = [NSString stringWithFormat:@"评论 %ld",numOfComment];
+            [_headLabel sizeToFit];
             return cell;
         }
     }
@@ -234,17 +272,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
-        [_replyView.textView becomeFirstResponder];
-        NSString *nickName = viewModel.model.IDLabel;
-        NSString *placeholder = [NSString stringWithFormat:@"回复 %@ : ",nickName];
-        _replyView.textView.placeholder = placeholder;
+        if (self.dataArray.count != 0) {
+            MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
+            [_replyView.textView becomeFirstResponder];
+            NSString *nickName = viewModel.model.IDLabel;
+            NSString *placeholder = [NSString stringWithFormat:@"回复 %@ : ",nickName];
+            _replyView.textView.placeholder = placeholder;
+        }
     }
 }
 
 #pragma mark - 请求网络数据
 
 - (void)loadNetWorkData {
+     _dataArray = [NSMutableArray array];
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *article_id = self.viewModel.model.articleID;
@@ -256,6 +297,7 @@
                                 @"type_id":type_id};
     
     [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        NSLog(@"%ld",((NSArray *)returnValue[@"data"]).count);
         _isLoadedComment = YES;
         for (NSDictionary *dic in returnValue[@"data"]) {
             MBCommentModel *commentModel = [[MBCommentModel alloc]initWithDictionary:dic];
@@ -271,13 +313,105 @@
             [self.tableView reloadData];
         }
     } WithFailureBlock:^{
+        [_indicatorView stopAnimating];
+        [self.tableView reloadData];
         _isLoadedComment = YES;
         NSLog(@"请求评论出错");
     }];
-    
-    
 }
 
+
+#pragma mark -
+
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+
+    if ([text isEqualToString:@"\n"]) {
+        if ([_replyView.textView.placeholder isEqualToString:@"评论"]) {
+            [self upLoadCommentWithContent:self.replyView.textView.text];
+        }else {
+            NSString *content = [NSString stringWithFormat:@"%@%@",_replyView.textView.placeholder,_replyView.textView.text];
+            [self upLoadCommentWithContent:content];
+        }
+    }
+    return YES;
+}
+
+#pragma mark - 评论上传
+
+- (void)upLoadCommentWithContent:(NSString *)content {
+    
+    [_replyView.textView resignFirstResponder];
+    [UIView animateWithDuration:0.25 animations:^{
+        _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
+    } completion:^(BOOL finished) {
+        
+    }];
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = @"正在发送评论...";
+    
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *article_id = self.viewModel.model.articleID;
+    NSString *type_id = self.viewModel.model.typeID;
+    
+    NSDictionary *parameter = @{@"stuNum":stuNum,
+                                @"idNum":idNum,
+                                @"article_id":article_id,
+                                @"type_id":type_id,
+                                @"content":content};
+    
+    __weak typeof(self) weakSelf = self;
+    [NetWork NetRequestPOSTWithRequestURL:POSTREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        weakSelf.hud.mode = MBProgressHUDModeText;
+        weakSelf.hud.labelText = @"评论成功";
+        [weakSelf.hud hide:YES afterDelay:1.5];
+        weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",[self.viewModel.model.numOfComment integerValue]+1];
+        [weakSelf loadNetWorkData];
+//        [weakSelf.tableView reloadData];
+        weakSelf.replyView.textView.placeholder = @"评论";
+        weakSelf.replyView.textView.text = @"";
+    } WithFailureBlock:^{
+        weakSelf.hud.mode = MBProgressHUDModeText;
+        weakSelf.hud.labelText = @"网络错误";
+        [weakSelf.hud hide:YES afterDelay:1.5];
+        [weakSelf.replyView.textView becomeFirstResponder];
+    }];
+}
+
+#pragma mark -
+
+#pragma mark - 上传点赞
+
+- (void)uploadSupport:(MBCommunityModel *)model withType:(NSInteger)type {
+    //type == 0 赞 , type == 1 取消赞
+    
+    NSString *url;
+    if (type == 0) {
+        url = ADDSUPPORT_API;
+    }else if (type == 1) {
+        url = CANCELSUPPOTRT_API;
+    }
+    
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *article_id = model.articleID;
+    NSString *type_id = model.typeID;
+    
+    NSDictionary *parameter = @{@"stuNum":stuNum,
+                                @"idNum":idNum,
+                                @"article_id":article_id,
+                                @"type_id":type_id};
+    
+    __block MBCommunityModel *modelBlock = model;
+    
+    [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
+        NSLog(@"请求 %@",modelBlock.isMyLike);
+    } WithFailureBlock:^{
+        NSLog(@"请求赞出错");
+    }];
+}
 
 #pragma mark -
 

@@ -68,7 +68,8 @@
 #define LISTNEWS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/listNews"
 //获取评论
 #define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/getremark"
-
+//评论接口
+#define POSTREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
 //赞接口
 #define ADDSUPPORT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/addone"
 //取消赞接口

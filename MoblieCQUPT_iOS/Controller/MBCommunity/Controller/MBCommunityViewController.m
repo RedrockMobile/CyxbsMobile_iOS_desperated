@@ -38,6 +38,9 @@
 @property (strong, nonatomic) NSMutableArray *tableViewArray;
 @property (strong, nonatomic) NSMutableArray *indicatorViewArray;
 
+@property (copy, nonatomic) NSString *currenSelectCellOfRow;
+@property (copy, nonatomic) NSString *currenSelectCellOfTableView;
+
 //@property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
 
 @end
@@ -92,6 +95,22 @@
     [self.view addSubview:_segmentView];
     
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    if (_currenSelectCellOfRow) {
+        NSInteger row = [self.currenSelectCellOfRow integerValue];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
+        MBCommunityTableView *tableView = self.tableViewArray[[self.currenSelectCellOfTableView integerValue]];
+        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
+
+- (NSMutableDictionary *)allData {
+    if (!_allData) {
+        _allData = [NSMutableDictionary dictionary];
+    }
+    return _allData;
 }
 
 #pragma mark - 请求网络数据
@@ -211,7 +230,6 @@
 
 - (UIBarButtonItem *)addButton {
     if (!_addButton) {
-        NSLog(@"创建右");
         UIButton *add = [UIButton buttonWithType:UIButtonTypeCustom];
         [add setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
         add.frame = CGRectMake(0, 0, 17, 17);
@@ -315,6 +333,7 @@
             imageBtn.selected = !imageBtn.selected;
             labelBtn.selected = !labelBtn.selected;
             NSLog(@"点击取消赞");
+            
         }else {
             NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
             [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
@@ -345,6 +364,8 @@
     }
     d.viewModel = viewModel;
     NSLog(@"%@",viewModel.model);
+    _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
+    _currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
     [self.navigationController pushViewController:d animated:YES];
 }
 

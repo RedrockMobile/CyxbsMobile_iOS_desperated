@@ -234,7 +234,6 @@
 		D9DF5EB11CD0914A00C89F6A /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EAF1CD0914A00C89F6A /* UIImage+ImageEffects.m */; };
 		D9DF5EB71CD0915300C89F6A /* MBCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EB41CD0915300C89F6A /* MBCommentModel.m */; };
 		D9DF5EB81CD0915300C89F6A /* MBCommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EB61CD0915300C89F6A /* MBCommunityModel.m */; };
-		D9DF5EBE1CD0915900C89F6A /* MBCommunityNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EBB1CD0915900C89F6A /* MBCommunityNetWorking.m */; };
 		D9DF5EBF1CD0915900C89F6A /* UIShortTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EBD1CD0915900C89F6A /* UIShortTapGestureRecognizer.m */; };
 		D9DF5EC31CD096CE00C89F6A /* MBReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DF5EC11CD096CE00C89F6A /* MBReleaseViewController.m */; };
 		D9DF5EC41CD096CE00C89F6A /* MBReleaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9DF5EC21CD096CE00C89F6A /* MBReleaseViewController.xib */; };
@@ -649,8 +648,6 @@
 		D9DF5EB41CD0915300C89F6A /* MBCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommentModel.m; sourceTree = "<group>"; };
 		D9DF5EB51CD0915300C89F6A /* MBCommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunityModel.h; sourceTree = "<group>"; };
 		D9DF5EB61CD0915300C89F6A /* MBCommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityModel.m; sourceTree = "<group>"; };
-		D9DF5EBA1CD0915900C89F6A /* MBCommunityNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunityNetWorking.h; sourceTree = "<group>"; };
-		D9DF5EBB1CD0915900C89F6A /* MBCommunityNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityNetWorking.m; sourceTree = "<group>"; };
 		D9DF5EBC1CD0915900C89F6A /* UIShortTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIShortTapGestureRecognizer.h; sourceTree = "<group>"; };
 		D9DF5EBD1CD0915900C89F6A /* UIShortTapGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIShortTapGestureRecognizer.m; sourceTree = "<group>"; };
 		D9DF5EC01CD096CE00C89F6A /* MBReleaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBReleaseViewController.h; sourceTree = "<group>"; };
@@ -1650,8 +1647,6 @@
 		D9DF5EB91CD0915900C89F6A /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				D9DF5EBA1CD0915900C89F6A /* MBCommunityNetWorking.h */,
-				D9DF5EBB1CD0915900C89F6A /* MBCommunityNetWorking.m */,
 				D9DF5EBC1CD0915900C89F6A /* UIShortTapGestureRecognizer.h */,
 				D9DF5EBD1CD0915900C89F6A /* UIShortTapGestureRecognizer.m */,
 				D9DF5EC71CD0DB8800C89F6A /* MBTextView.h */,
@@ -2225,7 +2220,6 @@
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
 				CE3BC7DC1BE8C6270002CBA4 /* F3HTileModel.m in Sources */,
 				D9DF5E871CD090EE00C89F6A /* MBCommunityViewController.m in Sources */,
-				D9DF5EBE1CD0915900C89F6A /* MBCommunityNetWorking.m in Sources */,
 				3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */,
 				E263C7891BA35E26008488FA /* DetailDishView.m in Sources */,
 				E263C7871BA35E26008488FA /* ShakeViewController.m in Sources */,

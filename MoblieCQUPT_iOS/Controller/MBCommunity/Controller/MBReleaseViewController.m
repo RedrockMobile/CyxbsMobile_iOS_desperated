@@ -11,7 +11,7 @@
 #import <GMImagePickerController.h>
 #import "MBProgressHUD.h"
 
-@interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate,GMImagePickerControllerDelegate>
+@interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate,GMImagePickerControllerDelegate,UITextViewDelegate>
 {
     GMImagePickerController *_pickView;
 }
@@ -106,7 +106,9 @@
         _inputView.backgroundColor = [UIColor whiteColor];
         _inputView.textView.backgroundColor = [UIColor clearColor];
         _inputView.textView.placeholder = @"和大家一起哔哔叨叨吧";
+        _inputView.textView.delegate = self;
         _inputView.container.eventDelegate = self;
+        _inputView.textView.keyboardType = UIReturnKeySend;
     }
     return _inputView;
 }
@@ -198,6 +200,17 @@
         [hud hide:YES afterDelay:1];
         return NO;
     }
+    
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if ([text isEqualToString:@"\n"]) {
+        NSLog(@"点击发送");
+    }
+    
+    NSLog(@"%@",text);
     
     return YES;
 }
