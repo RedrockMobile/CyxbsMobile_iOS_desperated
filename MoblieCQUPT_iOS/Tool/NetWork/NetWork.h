@@ -54,10 +54,4 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 
 + (BOOL) netWorkReachability:(NSString *) strUrl;
 
-+ (void)uploadImageWithUrl:(NSString *)URL
-             WithParameter:(NSDictionary *)params
-           WithUploadImage:(UIImage *)image
-      WithReturnValueBlock:(SucessWithJson) block
-          WithFailureBlock:(FailureFunction) failureBlock;
-
 @end

@@ -11,6 +11,7 @@
 #import "CourseViewController.h"
 #import "LoginEntry.h"
 #import "MBProgressHUD.h"
+#import "VerifyMyInfoViewController.h"
 
 #define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 
@@ -126,7 +127,7 @@
                                      if([_dataDic[@"info"] isEqualToString:@"authentication error"]) {
                                          [weakSelf alertAnimation:1];
                                      }else if ([_dataDic[@"info"] isEqualToString:@"student id error"]) {
-                                         [weakSelf alertAnimation:2];
+                                          [weakSelf alertAnimation:2];
                                      }
                                  }else {
                                      //账号信息存本地
@@ -160,7 +161,7 @@
         //如果返回的data 内容不是nil 则跳转到主界面
         //否则 跳转到 完善个人信息界面
         
-        if (returnValue[@"data"]) {
+        if (!returnValue[@"data"]) {
             //完善个人信息 把id 作为user_id 存在本地 以便发布内容时使用
             NSString *user_id = returnValue[@"data"][@"id"] ?: @"";
             [LoginEntry saveByUserdefaultWithUserID:user_id];
@@ -170,14 +171,9 @@
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
             [self presentViewController:view animated:YES completion:nil];
         }else {
-            //没有完善信息
-            
-            /**
-             *  跳转到完善个人的界面的
-             *
-             *
-             *
-             **/
+            //没有完善信息,跳转到完善个人的界面
+            VerifyMyInfoViewController *verifyMyInfoVC = [[VerifyMyInfoViewController alloc] init];
+            [self presentViewController:verifyMyInfoVC animated:YES completion:nil];
         }
         
     } WithFailureBlock:^{

@@ -1,12 +1,13 @@
 //
-//  MyInfoViewController.m
+//  VerifyMyInfoViewController.m
 //  MoblieCQUPT_iOS
 //
-//  Created by 张润峰 on 16/4/21.
+//  Created by 张润峰 on 16/5/10.
 //  Copyright © 2016年 Orange-W. All rights reserved.
 //
 
-#import "MyInfoViewController.h"
+#import "VerifyMyInfoViewController.h"
+
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+AFNetworking.h"
 #import "UITextField+Custom.h"
@@ -14,81 +15,46 @@
 #import "MBProgressHUD.h"
 #import "MyInfoModel.h"
 
-@interface MyInfoViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate>
+@interface VerifyMyInfoViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) MyInfoModel *MyInfoModel;
 @property (strong, nonatomic) UIImageView *avatar;
 @property (strong, nonatomic) UITextField *nicknameTextField;
 @property (strong, nonatomic) UITextField *introductionTextField;
 @property (strong, nonatomic) UITextField *qqTextField;
 @property (strong, nonatomic) UITextField *phoneTextField;
-@property (strong, nonatomic) NSMutableDictionary *data;
 
 @end
 
-@implementation MyInfoViewController
+@implementation VerifyMyInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
+    UIView *nav = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
+    nav.backgroundColor = MAIN_COLOR;
+    [self.view addSubview:nav];
+    
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 120, 44)];
+    titleLabel.text = @"请完善个人信息";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.center = CGPointMake(ScreenWidth/2, nav.frame.size.height/2+10);
+    [nav addSubview:titleLabel];
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.frame = CGRectMake(MAIN_SCREEN_W-60-20, 20, 60, 44);
+    [cancelButton setTitle:@"完成" forState:UIControlStateNormal];
+    cancelButton.backgroundColor = MAIN_COLOR;
+    [cancelButton addTarget:self action:@selector(refreshMyInfo) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:cancelButton];
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, MAIN_SCREEN_W, MAIN_SCREEN_H-64) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(refreshMyInfo)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
-    
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"myInfoModel"];
-    _MyInfoModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSLog(@"_MyInfoModel :%@", _MyInfoModel);
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"appear");
-    //网络请求头像和简介
-        //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
-        
-        if ([returnValue objectForKey:@"data"]) {
-            if (!_data) {
-                _data = [[NSMutableDictionary alloc] init];
-                [_data setDictionary:[returnValue objectForKey:@"data"]];
-            } else {
-                [_data removeAllObjects];
-                [_data setDictionary:[returnValue objectForKey:@"data"]];
-            }
-            NSLog(@"_data :%@", _data);
-            
-            //更新信息
-            if ([_data[@"photo_thumbnail_src"] isEqualToString:@""]) {
-                [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
-            } else {
-                [_avatar sd_setImageWithURL:[NSURL URLWithString:_data[@"photo_thumbnail_src"]]];
-            }
-            
-            if (![_data[@"nickname"] isEqualToString:@""]) {
-                _nicknameTextField.text = _data[@"nickname"];
-            }
-            
-            if (![_data[@"introduction"] isEqualToString:@""]) {
-                _introductionTextField.text = _data[@"introduction"];
-            }
-            
-            if (![_data[@"qq"] isEqualToString:@""]) {
-                _qqTextField.text = _data[@"qq"];
-            }
-            
-            if (![_data[@"phone"] isEqualToString:@""]) {
-                _phoneTextField.text = _data[@"phone"];
-            }
-        }
-        
-    } WithFailureBlock:^{
-        
-    }];
 }
 
 //更新数据，上传服务器
@@ -101,15 +67,52 @@
                      WithReturnValeuBlock:^(id returnValue) {
                          NSString *status = [returnValue objectForKey:@"status"];
                          if ([status isEqualToString:@"200"]) {
-                             MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                             uploadProgress.mode = MBProgressHUDModeText;
-                             uploadProgress.labelText = @"上传成功";
-                             [uploadProgress hide:YES afterDelay:1];
+                             
+                             [self setUserId];
                          }
-    } WithFailureBlock:^{
+                     } WithFailureBlock:^{
+                         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+                         faileLable.text = @"哎呀！网络开小差了 T^T";
+                         faileLable.textColor = [UIColor blackColor];
+                         faileLable.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
+                         faileLable.textAlignment = NSTextAlignmentCenter;
+                         [self.view addSubview:faileLable];
+                         [_tableView removeFromSuperview];
+                     }];
     
-    }];
+}
 
+- (void)setUserId {
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum,@"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
+        
+        if (returnValue[@"data"]) {
+            MBProgressHUD *uploadProgress1 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            uploadProgress1.mode = MBProgressHUDModeText;
+            uploadProgress1.labelText = @"上传成功";
+            [uploadProgress1 hide:YES afterDelay:1];
+            sleep(1);
+            //完善个人信息 把id 作为user_id 存在本地 以便发布内容时使用
+            NSString *user_id = returnValue[@"data"][@"id"];
+            [LoginEntry saveByUserdefaultWithUserID:user_id];
+            NSLog(@"user_id : %@", user_id);
+            //跳转到 主界面
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+            [self presentViewController:view animated:YES completion:nil];
+        }else {
+            NSLog(@"未完成个人信息");
+            MBProgressHUD *uploadProgress2 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            uploadProgress2.mode = MBProgressHUDModeText;
+            uploadProgress2.labelText = @"信息不完整";
+            [uploadProgress2 hide:YES afterDelay:2];
+        }
+        
+    } WithFailureBlock:^{
+        
+    }];
 }
 
 #pragma mark - TableViewDataSource
@@ -131,7 +134,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-        return 15.0;
+    return 15.0;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -159,7 +162,7 @@
     
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userinfo"];
-
+        
         [cell.contentView addSubview:self.avatar];
         
         textLabel.text = titles[indexPath.section];
@@ -213,18 +216,6 @@
     _avatar.layer.masksToBounds = YES;
     _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
     
-//    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"avatar"];
-//    if (![UIImage imageWithContentsOfFile:path]) {
-//        _avatar.image = [UIImage imageNamed:@"new_icon_menu_5.png"];
-//    } else {
-//        _avatar.image = [UIImage imageWithContentsOfFile:path];
-//    }
-    
-    if (!_MyInfoModel.thumbnailAvatar) {
-        _avatar.image = [UIImage imageNamed:@"new_icon_menu_5.png"];
-    } else {
-        _avatar = _MyInfoModel.thumbnailAvatar;
-    }
     return _avatar;
 }
 
@@ -243,15 +234,9 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
     _avatar.image = image;
     
-
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"avatarChanged" object:image];
-    
     //数据持久化
-//    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"avatar"];
-//    [UIImagePNGRepresentation(_avatar.image) writeToFile:path atomically:YES];
-    _MyInfoModel.thumbnailAvatar = imageView;
+    //    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"avatar"];
+    //    [UIImagePNGRepresentation(_avatar.image) writeToFile:path atomically:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -263,3 +248,4 @@
 }
 
 @end
+

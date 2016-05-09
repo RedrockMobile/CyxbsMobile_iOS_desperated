@@ -26,7 +26,7 @@
 
 @property (strong, nonatomic) UIScrollView *mainScrollView;
 @property (strong, nonatomic) UIImageView *avatar;
-@property (strong, nonatomic) UILabel *labelOfRemark;
+@property (strong, nonatomic) UILabel *labelOfIntrodution;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
 @property (strong, nonatomic) NSMutableArray *cellDictionary;
@@ -73,18 +73,25 @@
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
-        if (!_data) {
-            _data = [[NSMutableDictionary alloc] init];
-            [_data setDictionary:[returnValue objectForKey:@"data"]];
-        } else {
-            [_data removeAllObjects];
-            [_data setDictionary:[returnValue objectForKey:@"data"]];
+        
+        if ([returnValue objectForKey:@"data"]) {
+            if (!_data) {
+                _data = [[NSMutableDictionary alloc] init];
+                [_data setDictionary:[returnValue objectForKey:@"data"]];
+            } else {
+                [_data removeAllObjects];
+                [_data setDictionary:[returnValue objectForKey:@"data"]];
+            }
+            NSLog(@"_data :%@", _data);
+            //更新信息
+            _labelOfIntrodution.text = _data[@"introduction"];
+            if ([_data[@"photo_thumbnail_src"] isEqualToString:@""]) {
+                [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
+            } else {
+                [_avatar sd_setImageWithURL:[NSURL URLWithString:_data[@"photo_thumbnail_src"]]];
+            }
         }
-        NSLog(@"_data :%@", _data);
-        //更新信息
-        _labelOfRemark.text = _data[@"introduction"];
-        [_avatar setImageWithURL:[NSURL URLWithString:_data[@"photo_thumbnail_src"]]];
-
+        
     } WithFailureBlock:^{
         
     }];
@@ -125,12 +132,8 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"imageHead"];
             _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 50, 50)];
             _avatar.layer.masksToBounds = YES;
+            [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
             _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
-//            NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"avatar"];
-//            UIImage *img = [UIImage imageWithContentsOfFile:path];
-//            if (img == nil) {
-//                avatar.image = [UIImage imageNamed:@"new_icon_menu_5.png"];
-//            }
             
             [cell.contentView addSubview:_avatar];
             
@@ -144,12 +147,12 @@
             [cell.contentView addSubview:labelOfUserName];
             
             //设置个人简介
-            _labelOfRemark = [[UILabel alloc] initWithFrame:CGRectMake(50+32, 45, MAIN_SCREEN_W-82-40, 0)];
-            _labelOfRemark.text = @"简介：请点击我完善个人信息，愉快玩耍";
-            _labelOfRemark.font = [UIFont fontWithName:@"Arial" size:12];
-            _labelOfRemark.textColor = [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7];
-            [_labelOfRemark sizeToFit];
-            [cell.contentView addSubview:_labelOfRemark];
+            _labelOfIntrodution = [[UILabel alloc] initWithFrame:CGRectMake(50+32, 45, MAIN_SCREEN_W-82-40, 0)];
+            _labelOfIntrodution.text = @"简介：请点击我完善个人信息，愉快玩耍";
+            _labelOfIntrodution.font = [UIFont fontWithName:@"Arial" size:12];
+            _labelOfIntrodution.textColor = [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7];
+            [_labelOfIntrodution sizeToFit];
+            [cell.contentView addSubview:_labelOfIntrodution];
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return  cell;
