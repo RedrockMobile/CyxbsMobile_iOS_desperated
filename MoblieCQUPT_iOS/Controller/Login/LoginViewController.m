@@ -160,8 +160,8 @@
         
         //如果返回的data 内容不是nil 则跳转到主界面
         //否则 跳转到 完善个人信息界面
-        
-        if (!returnValue[@"data"]) {
+        NSLog(@"result :%@", returnValue);
+        if (returnValue[@"data"]) {
             //完善个人信息 把id 作为user_id 存在本地 以便发布内容时使用
             NSString *user_id = returnValue[@"data"][@"id"] ?: @"";
             [LoginEntry saveByUserdefaultWithUserID:user_id];

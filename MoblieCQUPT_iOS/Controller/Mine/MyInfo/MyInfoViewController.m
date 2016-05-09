@@ -12,12 +12,11 @@
 #import "UITextField+Custom.h"
 #import "LoginEntry.h"
 #import "MBProgressHUD.h"
-#import "MyInfoModel.h"
+
 
 @interface MyInfoViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) MyInfoModel *MyInfoModel;
 @property (strong, nonatomic) UIImageView *avatar;
 @property (strong, nonatomic) UITextField *nicknameTextField;
 @property (strong, nonatomic) UITextField *introductionTextField;
@@ -38,14 +37,7 @@
     
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(refreshMyInfo)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
-    
-    NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"myInfoModel"];
-    _MyInfoModel = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    NSLog(@"_MyInfoModel :%@", _MyInfoModel);
-}
 
-- (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"appear");
     //网络请求头像和简介
         //获取已登录用户的账户信息
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
@@ -89,6 +81,10 @@
     } WithFailureBlock:^{
         
     }];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
 }
 
 //更新数据，上传服务器
@@ -109,7 +105,6 @@
     } WithFailureBlock:^{
     
     }];
-
 }
 
 #pragma mark - TableViewDataSource
@@ -220,11 +215,6 @@
 //        _avatar.image = [UIImage imageWithContentsOfFile:path];
 //    }
     
-    if (!_MyInfoModel.thumbnailAvatar) {
-        _avatar.image = [UIImage imageNamed:@"new_icon_menu_5.png"];
-    } else {
-        _avatar = _MyInfoModel.thumbnailAvatar;
-    }
     return _avatar;
 }
 
@@ -242,16 +232,20 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
     _avatar.image = image;
-    
-
-    
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"avatarChanged" object:image];
-    
-    //数据持久化
-//    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"avatar"];
-//    [UIImagePNGRepresentation(_avatar.image) writeToFile:path atomically:YES];
-    _MyInfoModel.thumbnailAvatar = imageView;
+    //上传头像
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
+    model.paramName = @"fold";
+    model.uploadImage = image;
+    [NetWork uploadImageWithUrl:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/photo/upload"
+                    imageParams:@[model]
+                    otherParams:@{@"stunum":stuNum}
+               imageQualityRate:0.5
+                   successBlock:^(id returnValue) {
+                       
+                   } failureBlock:^{
+                       
+                   }];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

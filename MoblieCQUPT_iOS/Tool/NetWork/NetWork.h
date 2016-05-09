@@ -55,4 +55,11 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
 
 + (BOOL) netWorkReachability:(NSString *) strUrl;
 
++ (void)uploadImageWithUrl:(NSString *)url
+               imageParams:(NSArray<MOHImageParamModel *> *)imageParamsArray
+               otherParams:(NSDictionary *)params
+          imageQualityRate:(CGFloat)rate
+              successBlock:(SucessWithJson) block
+              failureBlock:(FailureFunction) failureBlock;
+
 @end

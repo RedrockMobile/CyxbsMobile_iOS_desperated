@@ -95,7 +95,6 @@
 		CEE614961BEA4B9A004873AA /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE6148B1BEA4B9A004873AA /* UIScrollView+MJExtension.m */; };
 		CEE614971BEA4B9A004873AA /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE6148D1BEA4B9A004873AA /* UIScrollView+MJRefresh.m */; };
 		CEE614981BEA4B9A004873AA /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE6148F1BEA4B9A004873AA /* UIView+MJExtension.m */; };
-		CEE837B71B86C35000959779 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = CEE837B61B86C35000959779 /* NetWork.m */; };
 		CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF273701B90CFAB009B5BA2 /* libz.dylib */; };
 		CEF273841B90D573009B5BA2 /* 20-2...png in Resources */ = {isa = PBXBuildFile; fileRef = CEF273731B90D573009B5BA2 /* 20-2...png */; };
 		CEF273851B90D573009B5BA2 /* 20-2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEF273741B90D573009B5BA2 /* 20-2.png */; };
@@ -301,6 +300,8 @@
 		E2C75D951CE0A85900EA8FEA /* MBAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D941CE0A85900EA8FEA /* MBAddImageView.m */; };
 		E2C75D9E1CE1004F00EA8FEA /* VerifyMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D9D1CE1004F00EA8FEA /* VerifyMyInfoViewController.m */; };
 		E2C75DA01CE1169100EA8FEA /* headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C75D9F1CE1169100EA8FEA /* headImage.png */; };
+		E2C75DA41CE1278000EA8FEA /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA31CE1278000EA8FEA /* MOHImageParamModel.m */; };
+		E2C75DA71CE127D300EA8FEA /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA61CE127D300EA8FEA /* NetWork.m */; };
 		E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E7DE231B94764A0081F699 /* LoginViewController.m */; };
 		E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE241B94764A0081F699 /* LoginViewController.xib */; };
 		E2E7DE2C1B9476730081F699 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE281B9476730081F699 /* background.png */; };
@@ -458,8 +459,6 @@
 		CEE6148D1BEA4B9A004873AA /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		CEE6148E1BEA4B9A004873AA /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		CEE6148F1BEA4B9A004873AA /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
-		CEE837B51B86C35000959779 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
-		CEE837B61B86C35000959779 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		CEF273701B90CFAB009B5BA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CEF273731B90D573009B5BA2 /* 20-2...png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-2...png"; sourceTree = "<group>"; };
 		CEF273741B90D573009B5BA2 /* 20-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-2.png"; sourceTree = "<group>"; };
@@ -759,6 +758,9 @@
 		E2C75D9C1CE1004F00EA8FEA /* VerifyMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyMyInfoViewController.h; sourceTree = "<group>"; };
 		E2C75D9D1CE1004F00EA8FEA /* VerifyMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyMyInfoViewController.m; sourceTree = "<group>"; };
 		E2C75D9F1CE1169100EA8FEA /* headImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headImage.png; sourceTree = "<group>"; };
+		E2C75DA31CE1278000EA8FEA /* MOHImageParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHImageParamModel.m; sourceTree = "<group>"; };
+		E2C75DA51CE127C800EA8FEA /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
+		E2C75DA61CE127D300EA8FEA /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		E2E7DE221B94764A0081F699 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E2E7DE231B94764A0081F699 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2E7DE241B94764A0081F699 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1106,9 +1108,10 @@
 			isa = PBXGroup;
 			children = (
 				CED4D3911BAEC9DB009A3C9B /* ORWRequestCache */,
-				CEE837B51B86C35000959779 /* NetWork.h */,
-				CEE837B61B86C35000959779 /* NetWork.m */,
 				CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */,
+				E2C75DA31CE1278000EA8FEA /* MOHImageParamModel.m */,
+				E2C75DA51CE127C800EA8FEA /* NetWork.h */,
+				E2C75DA61CE127D300EA8FEA /* NetWork.m */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -2302,6 +2305,7 @@
 				E27A8D991C999B6D0010EBC8 /* AnnexViewController.m in Sources */,
 				3B685C901BA47D7400E34491 /* XBSFindClassroomPeriodView.m in Sources */,
 				E218DCCA1CD20AC200DD3C8C /* F3HMergeTile.m in Sources */,
+				E2C75DA71CE127D300EA8FEA /* NetWork.m in Sources */,
 				D9DF5EA21CD0913B00C89F6A /* MBPhotoContainerView.m in Sources */,
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
 				D9DF5E871CD090EE00C89F6A /* MBCommunityViewController.m in Sources */,
@@ -2326,7 +2330,6 @@
 				E218DCE51CD20AC200DD3C8C /* PickView.m in Sources */,
 				E218DCCF1CD20AC200DD3C8C /* F3HControlView.m in Sources */,
 				E263C79D1BA35E60008488FA /* MeCell.m in Sources */,
-				CEE837B71B86C35000959779 /* NetWork.m in Sources */,
 				E218DCE31CD20AC200DD3C8C /* EmptyClassViewController.m in Sources */,
 				3B1388B41BA353F70011EBF2 /* XBSScheduleTableViewCell.m in Sources */,
 				E263C78D1BA35E26008488FA /* ShopDetailViewController.m in Sources */,
@@ -2356,6 +2359,7 @@
 				E218DCE11CD20AC200DD3C8C /* XBSSchduleViewController.m in Sources */,
 				3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */,
 				E263C7851BA35E26008488FA /* WebViewController.m in Sources */,
+				E2C75DA41CE1278000EA8FEA /* MOHImageParamModel.m in Sources */,
 				E218DCC51CD20AC200DD3C8C /* F3HAppDelegate.m in Sources */,
 				D9DF5EB71CD0915300C89F6A /* MBCommentModel.m in Sources */,
 				E218DCD11CD20AC200DD3C8C /* F3HScoreView.m in Sources */,

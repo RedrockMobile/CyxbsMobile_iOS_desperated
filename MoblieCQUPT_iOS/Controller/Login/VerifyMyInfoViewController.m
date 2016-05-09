@@ -234,9 +234,21 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
     _avatar.image = image;
     
-    //数据持久化
-    //    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"avatar"];
-    //    [UIImagePNGRepresentation(_avatar.image) writeToFile:path atomically:YES];
+    //上传头像
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
+    model.paramName = @"fold";
+    model.uploadImage = image;
+    [NetWork uploadImageWithUrl:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/photo/upload"
+                    imageParams:@[model]
+                    otherParams:@{@"stunum":stuNum}
+               imageQualityRate:0.5
+                   successBlock:^(id returnValue) {
+                       
+                   } failureBlock:^{
+                       
+                   }];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
