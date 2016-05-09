@@ -29,7 +29,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.view addSubview:self.navigationView];
     [self.view addSubview:self.inputView];
     self.view.backgroundColor = BACK_GRAY_COLOR;

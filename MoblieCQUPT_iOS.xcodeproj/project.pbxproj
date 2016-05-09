@@ -60,6 +60,7 @@
 		CE4334521BE7C52D000C407D /* ClassWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* ClassWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CE4648741BDFB91C00C3C24B /* TitleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4648721BDFB91C00C3C24B /* TitleBaseViewController.m */; };
 		CE4648751BDFB91C00C3C24B /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4648731BDFB91C00C3C24B /* TitleBaseViewController.xib */; };
+		CE5154921CE0FED3008BD324 /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE5154911CE0FED3008BD324 /* MOHImageParamModel.m */; };
 		CE5402E01BDD2DAB00488428 /* icon_menu_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5402DC1BDD2DAB00488428 /* icon_menu_4@2x.png */; };
 		CE5402E11BDD2DAB00488428 /* icon_menu_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5402DD1BDD2DAB00488428 /* icon_menu_5@2x.png */; };
 		CE5402E21BDD2DAB00488428 /* icon_menu_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE5402DE1BDD2DAB00488428 /* icon_menu_2@2x.png */; };
@@ -408,6 +409,8 @@
 		CE4648711BDFB91C00C3C24B /* TitleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBaseViewController.h; sourceTree = "<group>"; };
 		CE4648721BDFB91C00C3C24B /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
 		CE4648731BDFB91C00C3C24B /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
+		CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHImageParamModel.h; sourceTree = "<group>"; };
+		CE5154911CE0FED3008BD324 /* MOHImageParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHImageParamModel.m; sourceTree = "<group>"; };
 		CE5402DC1BDD2DAB00488428 /* icon_menu_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_4@2x.png"; sourceTree = "<group>"; };
 		CE5402DD1BDD2DAB00488428 /* icon_menu_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_5@2x.png"; sourceTree = "<group>"; };
 		CE5402DE1BDD2DAB00488428 /* icon_menu_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_2@2x.png"; sourceTree = "<group>"; };
@@ -1107,6 +1110,8 @@
 				CED4D3911BAEC9DB009A3C9B /* ORWRequestCache */,
 				CEE837B51B86C35000959779 /* NetWork.h */,
 				CEE837B61B86C35000959779 /* NetWork.m */,
+				CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */,
+				CE5154911CE0FED3008BD324 /* MOHImageParamModel.m */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
