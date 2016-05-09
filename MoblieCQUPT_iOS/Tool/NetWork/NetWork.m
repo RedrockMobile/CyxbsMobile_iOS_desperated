@@ -144,6 +144,18 @@
     return manager;
 }
 
+/**
+ *  @author Orange-W, 15-07-21 23:07:14
+ *
+ *  @brief  上传图片
+ *
+ *  @param url   上传网址
+ *  @param imageParamsArray   多图上传数组,要求符合MOHImageParamModel规范
+ *  @param params   除图片外的其他参数
+ *  @param rate   图片压缩率(0.0~1.0) 1.0为不失真图
+ *  @param block   成功调用
+ *  @param failureBlock  失败调用
+ */
 + (void)uploadImageWithUrl:(NSString *)url
       imageParams:(NSArray<MOHImageParamModel> *)imageParamsArray
          otherParams:(NSDictionary *)params
@@ -155,6 +167,8 @@
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for ( NSObject<MOHImageParamModel> *imageParams in imageParamsArray) {
             NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,rate);
+            
+            //添加图片 header
             [formData appendPartWithFileData:data
                                         name:imageParams.paramName
                                     fileName:imageParams.fileName?:@"tmp.png"
