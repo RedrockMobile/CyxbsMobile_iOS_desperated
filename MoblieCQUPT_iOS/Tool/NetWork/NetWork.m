@@ -10,6 +10,7 @@
 #import "NetWork.h"
 #import "ORWRequestCache.h"
 
+
 @implementation NetWork
 
 
@@ -143,7 +144,36 @@
     return manager;
 }
 
-
-
-
++ (void)uploadImageWithUrl:(NSString *)url
+      imageParams:(NSArray<MOHImageParamModel> *)imageParamsArray
+         otherParams:(NSDictionary *)params
+          imageQualityRate:(CGFloat)rate
+        successBlock:(SucessWithJson) block
+        failureBlock:(FailureFunction) failureBlock {
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        for ( NSObject<MOHImageParamModel> *imageParams in imageParamsArray) {
+            NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,rate);
+            [formData appendPartWithFileData:data
+                                        name:imageParams.paramName
+                                    fileName:imageParams.fileName?:@"tmp.png"
+                                    mimeType:@"image/png"];
+        }
+        
+    } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        if (block) {
+            block(dic);
+        }
+        block(dic);
+        NSLog(@"%@",responseObject);
+    } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSData *d = operation.responseData;
+        NSString* aStr = [[NSString alloc] initWithData:d   encoding:NSASCIIStringEncoding];
+        
+        NSLog(@"%@--",aStr);
+    }];
+    
+}
 @end

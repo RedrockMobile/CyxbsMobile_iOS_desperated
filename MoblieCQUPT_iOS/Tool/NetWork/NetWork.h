@@ -14,6 +14,7 @@
 #import <AFNetworking.h>
 #import "UIKit+AFNetworking.h"
 #import "ORWRequestCache.h"
+#import "MOHImageParamModel.h"
 
 /**
  *  @author Orange-W, 15-07-17 20:07:44
@@ -41,17 +42,26 @@ typedef void (^ErrorCode) (id errorCode);
 typedef void (^FailureFunction)();
 typedef void (^NetWorkBlock)(BOOL netConnetState);
 
-+ (void) NetRequestGETWithRequestURL: (NSString *) requestURLString
++ (void)NetRequestGETWithRequestURL: (NSString *) requestURLString
                        WithParameter: (NSDictionary *) parameter
                 WithReturnValeuBlock: (SucessWithJson) successFunction
                   //WithErrorCodeBlock: (ErrorCode) errorBlock
                     WithFailureBlock: (FailureFunction) failureFunction;
 
-+ (void) NetRequestPOSTWithRequestURL: (NSString *) requestURLString
++ (void)NetRequestPOSTWithRequestURL: (NSString *) requestURLString
                         WithParameter: (NSDictionary *) parameter
                  WithReturnValeuBlock: (SucessWithJson) block
                    //WithErrorCodeBlock: (ErrorCode) errorBlock
                      WithFailureBlock: (FailureFunction) failureBlock;
 
-+ (BOOL) netWorkReachability:(NSString *) strUrl;
++ (BOOL)netWorkReachability:(NSString *) strUrl;
++ (void)uploadFileWithUrlString:(NSString *)url;
+
++ (void)uploadImageWithUrl:(NSString *)url
+               imageParams:(NSArray<MOHImageParamModel> *)imageParamsArray
+               otherParams:(NSDictionary *)params
+          imageQualityRate:(CGFloat)rate
+              successBlock:(SucessWithJson) block
+              failureBlock:(FailureFunction) failureBlock;
+
 @end
