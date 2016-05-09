@@ -152,6 +152,7 @@
 		D94F634D1CDF53BC00F91664 /* MBReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F634C1CDF53BC00F91664 /* MBReplyView.m */; };
 		D94F634F1CDF56DE00F91664 /* addPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D94F634E1CDF56DE00F91664 /* addPhoto.jpg */; };
 		D94F63571CDF723500F91664 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F63561CDF723500F91664 /* xia.png */; };
+		D94F63591CE0AEB800F91664 /* headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F63581CE0AEB800F91664 /* headImage.png */; };
 		D95256411C8BC32E00CD7921 /* PickView.m in Sources */ = {isa = PBXBuildFile; fileRef = D95256401C8BC32E00CD7921 /* PickView.m */; };
 		D95256461C8BC8D200CD7921 /* GQclass.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256431C8BC8D200CD7921 /* GQclass.png */; };
 		D95256471C8BC8D200CD7921 /* GQsection.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256441C8BC8D200CD7921 /* GQsection.png */; };
@@ -178,7 +179,6 @@
 		D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98B5D271C0865300010BC9E /* icon_menu_selected_4@2x.png */; };
 		D98BE6351CDDB6560071DDD2 /* UIColor+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = D98BE6341CDDB6560071DDD2 /* UIColor+Helper.m */; };
 		D98BE6371CDE0ABB0071DDD2 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = D98BE6361CDE0ABB0071DDD2 /* support.png */; };
-		D98BE6441CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m in Sources */ = {isa = PBXBuildFile; fileRef = D98BE6431CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m */; };
 		D98BFDED1C06F40000B7D53A /* icon_menu_selected_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98BFDE91C06F40000B7D53A /* icon_menu_selected_2@2x.png */; };
 		D98BFDF01C06F40000B7D53A /* icon_menu_selected_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D98BFDEC1C06F40000B7D53A /* icon_menu_selected_5@2x.png */; };
 		D99007671CB684E700EDAFD1 /* 1智妍.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D99007641CB684E700EDAFD1 /* 1智妍.jpg */; };
@@ -543,6 +543,7 @@
 		D94F634C1CDF53BC00F91664 /* MBReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBReplyView.m; sourceTree = "<group>"; };
 		D94F634E1CDF56DE00F91664 /* addPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addPhoto.jpg; sourceTree = "<group>"; };
 		D94F63561CDF723500F91664 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xia.png; sourceTree = "<group>"; };
+		D94F63581CE0AEB800F91664 /* headImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headImage.png; sourceTree = "<group>"; };
 		D952563F1C8BC32E00CD7921 /* PickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickView.h; sourceTree = "<group>"; };
 		D95256401C8BC32E00CD7921 /* PickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickView.m; sourceTree = "<group>"; };
 		D95256431C8BC8D200CD7921 /* GQclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GQclass.png; sourceTree = "<group>"; };
@@ -571,8 +572,6 @@
 		D98BE6331CDDB6560071DDD2 /* UIColor+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Helper.h"; sourceTree = "<group>"; };
 		D98BE6341CDDB6560071DDD2 /* UIColor+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Helper.m"; sourceTree = "<group>"; };
 		D98BE6361CDE0ABB0071DDD2 /* support.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = support.png; sourceTree = "<group>"; };
-		D98BE6421CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LXMImagePosition.h"; sourceTree = "<group>"; };
-		D98BE6431CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LXMImagePosition.m"; sourceTree = "<group>"; };
 		D98BFDE91C06F40000B7D53A /* icon_menu_selected_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_selected_2@2x.png"; sourceTree = "<group>"; };
 		D98BFDEC1C06F40000B7D53A /* icon_menu_selected_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_selected_5@2x.png"; sourceTree = "<group>"; };
 		D99007641CB684E700EDAFD1 /* 1智妍.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1智妍.jpg"; sourceTree = "<group>"; };
@@ -1442,6 +1441,7 @@
 				D94F63471CDF4C7B00F91664 /* cancel.png */,
 				D94F634E1CDF56DE00F91664 /* addPhoto.jpg */,
 				D94F63561CDF723500F91664 /* xia.png */,
+				D94F63581CE0AEB800F91664 /* headImage.png */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
 				D9DF5EB21CD0915300C89F6A /* Model */,
 				D9DF5E891CD0910800C89F6A /* Cell */,
@@ -1621,8 +1621,6 @@
 		D9DF5EAB1CD0914A00C89F6A /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				D98BE6421CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.h */,
-				D98BE6431CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m */,
 				D9DF5EAC1CD0914A00C89F6A /* UIImage+Helper.h */,
 				D9DF5EAD1CD0914A00C89F6A /* UIImage+Helper.m */,
 				D9DF5EAE1CD0914A00C89F6A /* UIImage+ImageEffects.h */,
@@ -2002,6 +2000,7 @@
 				D99526011C16F9D6003C27C8 /* QGERestDetailViewController.xib in Resources */,
 				D95256461C8BC8D200CD7921 /* GQclass.png in Resources */,
 				D952C7601C0EC44500AA24C0 /* iconfont-shop2.png in Resources */,
+				D94F63591CE0AEB800F91664 /* headImage.png in Resources */,
 				D98B5D1E1C08483E0010BC9E /* shop_new@2x.png in Resources */,
 				CE30FDDB1B9968C000C15AD4 /* bukaochaxun.png in Resources */,
 				D909287C1CACC7B700CA97CD /* icon_menu_1@2x.png in Resources */,
@@ -2202,7 +2201,6 @@
 				E263C7741BA35E26008488FA /* CommunityViewController.m in Sources */,
 				D9C66AE21C23C9890086AEE6 /* QGERestTimeDetailView.m in Sources */,
 				CE4648741BDFB91C00C3C24B /* TitleBaseViewController.m in Sources */,
-				D98BE6441CDE1E8B0071DDD2 /* UIButton+LXMImagePosition.m in Sources */,
 				E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,

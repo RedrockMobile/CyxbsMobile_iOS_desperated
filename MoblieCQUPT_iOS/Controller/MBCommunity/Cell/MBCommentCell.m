@@ -68,11 +68,7 @@
 
 - (void)setupData {
     _model = self.viewModel.model;
-    
-//    _headImageView.image = [UIImage imageNamed:self.model.headImageView];
-    NSArray *color = ColorArray;
-    int idx = arc4random()%color.count;
-    UIImage *image = [UIImage imageWithColor:[UIColor handleRandomColorStr:color[idx]]];
+    UIImage *image = [UIImage imageNamed:@"headImage.png"];
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.model.headImageView] placeholderImage:image];
     _IDLabel.text = self.model.IDLabel;
     _timeLabel.text = self.model.timeLabel;

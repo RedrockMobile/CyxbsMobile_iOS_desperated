@@ -13,7 +13,7 @@
 #import "MBCommunityTableView.h"
 
 
-typedef void(^ClickSupportBtnBlock)(UIButton *imageBtn,UIButton *labelBtn,MBCommunityModel *model);
+typedef void(^ClickSupportBtnBlock)(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel);
 
 @interface MBCommunityCellTableViewCell : UITableViewCell
 
