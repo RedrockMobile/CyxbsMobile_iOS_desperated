@@ -306,6 +306,8 @@
 		E2C75D9E1CE1004F00EA8FEA /* VerifyMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D9D1CE1004F00EA8FEA /* VerifyMyInfoViewController.m */; };
 		E2C75DA01CE1169100EA8FEA /* headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C75D9F1CE1169100EA8FEA /* headImage.png */; };
 		E2C75DA71CE127D300EA8FEA /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA61CE127D300EA8FEA /* NetWork.m */; };
+		E2C75DAA1CE1AEBD00EA8FEA /* MyMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA91CE1AEBD00EA8FEA /* MyMessagesViewController.m */; };
+		E2C75DAE1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DAD1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m */; };
 		E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E7DE231B94764A0081F699 /* LoginViewController.m */; };
 		E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE241B94764A0081F699 /* LoginViewController.xib */; };
 		E2E7DE2C1B9476730081F699 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = E2E7DE281B9476730081F699 /* background.png */; };
@@ -770,6 +772,10 @@
 		E2C75D9F1CE1169100EA8FEA /* headImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headImage.png; sourceTree = "<group>"; };
 		E2C75DA51CE127C800EA8FEA /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		E2C75DA61CE127D300EA8FEA /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
+		E2C75DA81CE1AEBD00EA8FEA /* MyMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessagesViewController.h; sourceTree = "<group>"; };
+		E2C75DA91CE1AEBD00EA8FEA /* MyMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessagesViewController.m; sourceTree = "<group>"; };
+		E2C75DAC1CE1C8E300EA8FEA /* MyMessagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessagesTableViewCell.h; sourceTree = "<group>"; };
+		E2C75DAD1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessagesTableViewCell.m; sourceTree = "<group>"; };
 		E2E7DE221B94764A0081F699 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E2E7DE231B94764A0081F699 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E2E7DE241B94764A0081F699 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -1660,6 +1666,10 @@
 		E218DCB11CD20AC200DD3C8C /* MyMessages */ = {
 			isa = PBXGroup;
 			children = (
+				E2C75DA81CE1AEBD00EA8FEA /* MyMessagesViewController.h */,
+				E2C75DA91CE1AEBD00EA8FEA /* MyMessagesViewController.m */,
+				E2C75DAC1CE1C8E300EA8FEA /* MyMessagesTableViewCell.h */,
+				E2C75DAD1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m */,
 			);
 			path = MyMessages;
 			sourceTree = "<group>";
@@ -2337,6 +2347,7 @@
 				CEE614951BEA4B9A004873AA /* MJRefreshHeaderView.m in Sources */,
 				CEE614921BEA4B9A004873AA /* MJRefreshConst.m in Sources */,
 				CEE614911BEA4B9A004873AA /* MJRefreshBaseView.m in Sources */,
+				E2C75DAA1CE1AEBD00EA8FEA /* MyMessagesViewController.m in Sources */,
 				E218DCF51CD20AC200DD3C8C /* SuggestionViewController.m in Sources */,
 				E218DCEA1CD20AC200DD3C8C /* MineViewController.m in Sources */,
 				D9DF5EA31CD0913B00C89F6A /* MBSegmentedView.m in Sources */,
@@ -2382,6 +2393,7 @@
 				E218DCD11CD20AC200DD3C8C /* F3HScoreView.m in Sources */,
 				E218DCCB1CD20AC200DD3C8C /* F3HMoveOrder.m in Sources */,
 				D9DF5EBF1CD0915900C89F6A /* UIShortTapGestureRecognizer.m in Sources */,
+				E2C75DAE1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m in Sources */,
 				E218DCD51CD20AC200DD3C8C /* AboutMeTableViewCell.m in Sources */,
 				E218DCCC1CD20AC200DD3C8C /* F3HQueueCommand.m in Sources */,
 				E218DCC81CD20AC200DD3C8C /* F3HViewController.m in Sources */,
