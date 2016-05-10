@@ -138,7 +138,7 @@
 - (void)clickDone:(UIButton *)sender {
     NSLog(@"点击完成 : %@",_inputView.textView.text);
     
-    if (![_inputView.textView.text isEqualToString:@""]) {
+    if (![_inputView.textView.text isEqualToString:@""] && _inputView.textView.text.length < 300) {
         _imageParamer = [NSMutableArray array];
         for (int i = 0; i < self.inputView.container.sourcePicArray.count; i ++) {
             UIImage *image = self.inputView.container.sourcePicArray[i];
@@ -157,6 +157,11 @@
         }else {
             [self releaseNewArticle];
         }
+    }else if (_inputView.textView.text.length > 300) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.mode = MBProgressHUDModeText;
+        _hud.labelText = @"内容超过300字了啦 太多啦!";
+        [_hud hide:YES afterDelay:1.5];
     }else {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.mode = MBProgressHUDModeText;
