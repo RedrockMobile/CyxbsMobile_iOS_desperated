@@ -59,10 +59,10 @@
                 }
                 
             }else if ([dic containsObjectForKey:@"nick_name"]) {
-                if ([dic[@"nickname"] isEqualToString:@""]) {
+                if ([dic[@"nick_name"] isEqualToString:@""]) {
                     self.IDLabel = @"这个人懒到没有填名字";
                 }else {
-                    self.IDLabel = dic[@"nickname"] ?: @"啥子都没得";
+                    self.IDLabel = dic[@"nick_name"] ?: @"啥子都没得";
                 }
             }
         }
