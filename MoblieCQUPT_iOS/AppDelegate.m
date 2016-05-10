@@ -42,7 +42,7 @@
     }
     
     //友盟统计
-    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@""];
+    [MobClick startWithAppkey:@"573183a5e0f55a59c9000694" reportPolicy:BATCH   channelId:@""];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
 //    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
