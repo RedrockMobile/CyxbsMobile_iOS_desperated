@@ -78,6 +78,7 @@
 		CEAA7C9C1C227E7C00C9B1F9 /* ic_exam_position.png in Resources */ = {isa = PBXBuildFile; fileRef = CEAA7C981C227E7C00C9B1F9 /* ic_exam_position.png */; };
 		CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */; };
 		CEC96BD21B9AC6F90047648A /* 0960.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEC96BD11B9AC6F90047648A /* 0960.jpg */; };
+		CED749B01CE1A8EE00DCBF7E /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CED749AF1CE1A8EE00DCBF7E /* MOHImageParamModel.m */; };
 		CEE1E21E1B9994A80088EC7C /* guanyu.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE1E21D1B9994A80088EC7C /* guanyu.png */; };
 		CEE1E2201B9994E90088EC7C /* yijianfankui.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE1E21F1B9994E90088EC7C /* yijianfankui.png */; };
 		CEE1E2281B99AFF00088EC7C /* tuichu_red.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE1E2271B99AFF00088EC7C /* tuichu_red.png */; };
@@ -121,6 +122,10 @@
 		D90928951CACCD6400CA97CD /* 夜间模式@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90928921CACCD6400CA97CD /* 夜间模式@2x.png */; };
 		D90928961CACCD6400CA97CD /* 与我相关@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90928931CACCD6400CA97CD /* 与我相关@2x.png */; };
 		D910EE031BD66B7900EB9E89 /* iconfont-titleTag.png in Resources */ = {isa = PBXBuildFile; fileRef = D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */; };
+		D94F635B1CE1718000F91664 /* addPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D94F635A1CE1718000F91664 /* addPhoto.jpg */; };
+		D94F635D1CE1719D00F91664 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F635C1CE1719D00F91664 /* cancel.png */; };
+		D94F63601CE175E200F91664 /* NSNull+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F635F1CE175E200F91664 /* NSNull+Helper.m */; };
+		D94F63621CE17DFA00F91664 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F63611CE17DFA00F91664 /* xia.png */; };
 		D95256461C8BC8D200CD7921 /* GQclass.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256431C8BC8D200CD7921 /* GQclass.png */; };
 		D95256471C8BC8D200CD7921 /* GQsection.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256441C8BC8D200CD7921 /* GQsection.png */; };
 		D95256481C8BC8D200CD7921 /* GQtime.png in Resources */ = {isa = PBXBuildFile; fileRef = D95256451C8BC8D200CD7921 /* GQtime.png */; };
@@ -300,7 +305,6 @@
 		E2C75D951CE0A85900EA8FEA /* MBAddImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D941CE0A85900EA8FEA /* MBAddImageView.m */; };
 		E2C75D9E1CE1004F00EA8FEA /* VerifyMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75D9D1CE1004F00EA8FEA /* VerifyMyInfoViewController.m */; };
 		E2C75DA01CE1169100EA8FEA /* headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E2C75D9F1CE1169100EA8FEA /* headImage.png */; };
-		E2C75DA41CE1278000EA8FEA /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA31CE1278000EA8FEA /* MOHImageParamModel.m */; };
 		E2C75DA71CE127D300EA8FEA /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA61CE127D300EA8FEA /* NetWork.m */; };
 		E2C75DAA1CE1AEBD00EA8FEA /* MyMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DA91CE1AEBD00EA8FEA /* MyMessagesViewController.m */; };
 		E2C75DAE1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E2C75DAD1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m */; };
@@ -411,7 +415,6 @@
 		CE4648711BDFB91C00C3C24B /* TitleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBaseViewController.h; sourceTree = "<group>"; };
 		CE4648721BDFB91C00C3C24B /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
 		CE4648731BDFB91C00C3C24B /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
-		CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHImageParamModel.h; sourceTree = "<group>"; };
 		CE5402DC1BDD2DAB00488428 /* icon_menu_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_4@2x.png"; sourceTree = "<group>"; };
 		CE5402DD1BDD2DAB00488428 /* icon_menu_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_5@2x.png"; sourceTree = "<group>"; };
 		CE5402DE1BDD2DAB00488428 /* icon_menu_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_2@2x.png"; sourceTree = "<group>"; };
@@ -434,6 +437,8 @@
 		CEC93BDF1B9B114500AC9E00 /* LoginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginEntry.m; sourceTree = "<group>"; };
 		CEC96BD11B9AC6F90047648A /* 0960.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0960.jpg; sourceTree = "<group>"; };
 		CED0F5CE1BBD7DA000C7E535 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CED749AE1CE1A8EE00DCBF7E /* MOHImageParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHImageParamModel.h; sourceTree = "<group>"; };
+		CED749AF1CE1A8EE00DCBF7E /* MOHImageParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHImageParamModel.m; sourceTree = "<group>"; };
 		CEE1E21D1B9994A80088EC7C /* guanyu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guanyu.png; sourceTree = "<group>"; };
 		CEE1E21F1B9994E90088EC7C /* yijianfankui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yijianfankui.png; sourceTree = "<group>"; };
 		CEE1E2271B99AFF00088EC7C /* tuichu_red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tuichu_red.png; sourceTree = "<group>"; };
@@ -497,6 +502,11 @@
 		D90928921CACCD6400CA97CD /* 夜间模式@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "夜间模式@2x.png"; sourceTree = "<group>"; };
 		D90928931CACCD6400CA97CD /* 与我相关@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "与我相关@2x.png"; sourceTree = "<group>"; };
 		D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-titleTag.png"; sourceTree = "<group>"; };
+		D94F635A1CE1718000F91664 /* addPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addPhoto.jpg; sourceTree = "<group>"; };
+		D94F635C1CE1719D00F91664 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		D94F635E1CE175E200F91664 /* NSNull+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+Helper.h"; sourceTree = "<group>"; };
+		D94F635F1CE175E200F91664 /* NSNull+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+Helper.m"; sourceTree = "<group>"; };
+		D94F63611CE17DFA00F91664 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xia.png; sourceTree = "<group>"; };
 		D95256431C8BC8D200CD7921 /* GQclass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GQclass.png; sourceTree = "<group>"; };
 		D95256441C8BC8D200CD7921 /* GQsection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GQsection.png; sourceTree = "<group>"; };
 		D95256451C8BC8D200CD7921 /* GQtime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GQtime.png; sourceTree = "<group>"; };
@@ -760,7 +770,6 @@
 		E2C75D9C1CE1004F00EA8FEA /* VerifyMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyMyInfoViewController.h; sourceTree = "<group>"; };
 		E2C75D9D1CE1004F00EA8FEA /* VerifyMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyMyInfoViewController.m; sourceTree = "<group>"; };
 		E2C75D9F1CE1169100EA8FEA /* headImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headImage.png; sourceTree = "<group>"; };
-		E2C75DA31CE1278000EA8FEA /* MOHImageParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHImageParamModel.m; sourceTree = "<group>"; };
 		E2C75DA51CE127C800EA8FEA /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		E2C75DA61CE127D300EA8FEA /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		E2C75DA81CE1AEBD00EA8FEA /* MyMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessagesViewController.h; sourceTree = "<group>"; };
@@ -1114,10 +1123,10 @@
 			isa = PBXGroup;
 			children = (
 				CED4D3911BAEC9DB009A3C9B /* ORWRequestCache */,
-				CE5154901CE0EDC1008BD324 /* MOHImageParamModel.h */,
-				E2C75DA31CE1278000EA8FEA /* MOHImageParamModel.m */,
 				E2C75DA51CE127C800EA8FEA /* NetWork.h */,
 				E2C75DA61CE127D300EA8FEA /* NetWork.m */,
+				CED749AE1CE1A8EE00DCBF7E /* MOHImageParamModel.h */,
+				CED749AF1CE1A8EE00DCBF7E /* MOHImageParamModel.m */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -1326,6 +1335,7 @@
 		D909288B1CACCB3500CA97CD /* MBCommunity */ = {
 			isa = PBXGroup;
 			children = (
+				D94F635C1CE1719D00F91664 /* cancel.png */,
 				E2C75D9F1CE1169100EA8FEA /* headImage.png */,
 				D9A0FE0D1CB9A29400BFD01D /* 图片1.jpg */,
 				D9A0FE0E1CB9A29400BFD01D /* 图片2.jpg */,
@@ -1341,6 +1351,8 @@
 				D98BE6361CDE0ABB0071DDD2 /* support.png */,
 				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
 				D9DF5EC51CD09A6100C89F6A /* add.png */,
+				D94F635A1CE1718000F91664 /* addPhoto.jpg */,
+				D94F63611CE17DFA00F91664 /* xia.png */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
 				D9DF5EB21CD0915300C89F6A /* Model */,
 				D9DF5E891CD0910800C89F6A /* Cell */,
@@ -1461,6 +1473,8 @@
 				D9DF5EAF1CD0914A00C89F6A /* UIImage+ImageEffects.m */,
 				D98BE6331CDDB6560071DDD2 /* UIColor+Helper.h */,
 				D98BE6341CDDB6560071DDD2 /* UIColor+Helper.m */,
+				D94F635E1CE175E200F91664 /* NSNull+Helper.h */,
+				D94F635F1CE175E200F91664 /* NSNull+Helper.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1988,7 +2002,6 @@
 				TargetAttributes = {
 					CE4334431BE7C52D000C407D = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 777RZL5E43;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 0;
@@ -2061,6 +2074,7 @@
 				CE1B36EA1B9A207100824B96 /* calendar.png in Resources */,
 				D90928951CACCD6400CA97CD /* 夜间模式@2x.png in Resources */,
 				D99B769A1C8DBD4F00FFE538 /* emptyClassTag1.png in Resources */,
+				D94F63621CE17DFA00F91664 /* xia.png in Resources */,
 				E263C7861BA35E26008488FA /* WebViewController.xib in Resources */,
 				D99B76981C8DBC9B00FFE538 /* emptyClassTag.png in Resources */,
 				E218DCF01CD20AC200DD3C8C /* QGERestTimeCourseViewController.xib in Resources */,
@@ -2101,6 +2115,7 @@
 				E28D2A8F1BB3E43100490C41 /* ok.png in Resources */,
 				E263C77A1BA35E26008488FA /* cqupt2@2x.jpg in Resources */,
 				3B685C881BA44D6300E34491 /* Images.xcassets in Resources */,
+				D94F635D1CE1719D00F91664 /* cancel.png in Resources */,
 				D96964991CB51EDC00B12B2E /* 智妍3.jpg in Resources */,
 				3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
@@ -2176,6 +2191,7 @@
 				D9DF5E861CD090EE00C89F6A /* MBCommuityDetailsViewController.xib in Resources */,
 				E28BAE781B91B0E300EC4964 /* 20-3c.png in Resources */,
 				D9DF5E881CD090EE00C89F6A /* MBCommunityViewController.xib in Resources */,
+				D94F635B1CE1718000F91664 /* addPhoto.jpg in Resources */,
 				CE267A221BA4A9B90059C2A5 /* splash.jpg in Resources */,
 				CEE6147C1BEA3F2B004873AA /* ProgressHUD.bundle in Resources */,
 				D952C75F1C0EC44500AA24C0 /* iconfont-shop1.png in Resources */,
@@ -2304,6 +2320,7 @@
 				E218DCF11CD20AC200DD3C8C /* QGERestTimeDetailView.m in Sources */,
 				E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
+				D94F63601CE175E200F91664 /* NSNull+Helper.m in Sources */,
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				E218DCDE1CD20AC200DD3C8C /* XBSFindClassroomViewController.m in Sources */,
 				D9DF5EA01CD0913B00C89F6A /* MBCommunityTableView.m in Sources */,
@@ -2370,7 +2387,7 @@
 				E218DCE11CD20AC200DD3C8C /* XBSSchduleViewController.m in Sources */,
 				3B37F0B61B8C4691009C1E94 /* NSString+We.m in Sources */,
 				E263C7851BA35E26008488FA /* WebViewController.m in Sources */,
-				E2C75DA41CE1278000EA8FEA /* MOHImageParamModel.m in Sources */,
+				CED749B01CE1A8EE00DCBF7E /* MOHImageParamModel.m in Sources */,
 				E218DCC51CD20AC200DD3C8C /* F3HAppDelegate.m in Sources */,
 				D9DF5EB71CD0915300C89F6A /* MBCommentModel.m in Sources */,
 				E218DCD11CD20AC200DD3C8C /* F3HScoreView.m in Sources */,
@@ -2434,7 +2451,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ClassWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.ClassWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2449,7 +2466,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ClassWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.ClassWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";

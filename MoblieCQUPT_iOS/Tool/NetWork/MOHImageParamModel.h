@@ -14,5 +14,6 @@
 
 //可选
 @property (copy, nonatomic, nullable) NSString *fileName;///上传的名字 (服务器一般要求 png 结尾)
+@property (assign, nonatomic)  CGFloat perproRate;///独立压缩率,不设置则使用公共压缩率
 
 @end

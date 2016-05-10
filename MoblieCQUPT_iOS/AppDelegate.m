@@ -31,7 +31,7 @@
     }
     
     //友盟统计
-    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@""];
+    [MobClick startWithAppkey:@"573183a5e0f55a59c9000694" reportPolicy:BATCH   channelId:@""];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
 //    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
@@ -39,7 +39,7 @@
 
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    if ([userDefault objectForKey:@"time"] != nil) {
+    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
         NSDate *currentTime = [NSDate date];
         NSDate *dataTime = [userDefault objectForKey:@"time"];
         //选择是跳转到mainViewController还是loginViewController

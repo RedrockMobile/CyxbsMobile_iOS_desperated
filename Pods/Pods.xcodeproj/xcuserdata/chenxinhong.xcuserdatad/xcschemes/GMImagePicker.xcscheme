@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '9F99DB204BDE6F19FE833238'
-               BlueprintName = 'UIColor+BFPaperColors'
+               BlueprintIdentifier = '0E16978662D4AE73B7A9DF25'
+               BlueprintName = 'GMImagePicker'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libUIColor+BFPaperColors.a'>
+               BuildableName = 'libGMImagePicker.a'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

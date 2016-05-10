@@ -167,8 +167,9 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for ( MOHImageParamModel *imageParams in imageParamsArray) {
-            NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,rate);
             
+            NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,imageParams.perproRate>0.0?imageParams.perproRate:rate);
+           
             //添加图片 header
             [formData appendPartWithFileData:data
                                         name:imageParams.paramName
@@ -177,14 +178,17 @@
         }
         
     } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        NSLog(@"成功");
+        NSLog(@"%@",responseObject);
+//         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+
         if (block) {
-            block(dic);
+            block(responseObject);
         }else{
             NSLog(@"无成功调用");
         }
-        block(dic);
-        NSLog(@"%@",responseObject);
+//        block(responseObject);
+
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSData *d = operation.responseData;
         NSString* aStr = [[NSString alloc] initWithData:d   encoding:NSASCIIStringEncoding];
