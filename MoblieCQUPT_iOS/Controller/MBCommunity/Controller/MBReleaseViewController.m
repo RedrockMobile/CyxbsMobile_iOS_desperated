@@ -152,7 +152,11 @@
             }
             [_imageParamer addObject:imageModel];
         }
-        [self uploadImageWithImageModel:self.imageParamer[0] withFlag:0];
+        if (_imageParamer.count != 0) {
+            [self uploadImageWithImageModel:self.imageParamer[0] withFlag:0];
+        }else {
+            [self releaseNewArticle];
+        }
     }else {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.mode = MBProgressHUDModeText;
