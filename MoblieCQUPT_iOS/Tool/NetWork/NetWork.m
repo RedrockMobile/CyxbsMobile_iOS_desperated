@@ -166,7 +166,8 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for ( MOHImageParamModel *imageParams in imageParamsArray) {
-            NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,rate);
+            
+            NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,imageParams.perproRate>0.0?imageParams.perproRate:rate);
             
             //添加图片 header
             [formData appendPartWithFileData:data
