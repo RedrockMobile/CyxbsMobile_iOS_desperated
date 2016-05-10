@@ -20,4 +20,5 @@ withDictionaryParam:(NSDictionary *)paramDictionary;
 
 + (BOOL)saveByUserdefaultWithUserID:(NSString *)userID;
 + (id)getByUserdefaultWithKey:(NSString *)key;
+
 @end

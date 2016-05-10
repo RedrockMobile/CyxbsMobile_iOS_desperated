@@ -29,7 +29,7 @@
 #import "AFURLSessionManager.h"
 #endif
 
-static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;
+static NSTimeInterval const kAFNetworkActivityIndddddicatorInvisibilityDelay = 0.17;
 
 static NSURLRequest * AFNetworkRequestFromNotification(NSNotification *notification) {
     if ([[notification object] isKindOfClass:[AFURLConnectionOperation class]]) {
@@ -100,7 +100,7 @@ static NSURLRequest * AFNetworkRequestFromNotification(NSNotification *notificat
         // Delay hiding of activity indicator for a short interval, to avoid flickering
         if (![self isNetworkActivityIndicatorVisible]) {
             [self.activityIndicatorVisibilityTimer invalidate];
-            self.activityIndicatorVisibilityTimer = [NSTimer timerWithTimeInterval:kAFNetworkActivityIndicatorInvisibilityDelay target:self selector:@selector(updateNetworkActivityIndicatorVisibility) userInfo:nil repeats:NO];
+            self.activityIndicatorVisibilityTimer = [NSTimer timerWithTimeInterval:kAFNetworkActivityIndddddicatorInvisibilityDelay target:self selector:@selector(updateNetworkActivityIndicatorVisibility) userInfo:nil repeats:NO];
             [[NSRunLoop mainRunLoop] addTimer:self.activityIndicatorVisibilityTimer forMode:NSRunLoopCommonModes];
         } else {
             [self performSelectorOnMainThread:@selector(updateNetworkActivityIndicatorVisibility) withObject:nil waitUntilDone:NO modes:@[NSRunLoopCommonModes]];

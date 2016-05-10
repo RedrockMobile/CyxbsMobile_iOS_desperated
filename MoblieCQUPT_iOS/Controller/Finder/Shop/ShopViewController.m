@@ -23,10 +23,7 @@
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *data;
-@property (assign, nonatomic) NSInteger flag;
-//peek
-@property (assign, nonatomic) CGRect sourceRect;
-@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (assign, nonatomic) NSInteger flag;//标记页数
 
 @end
 

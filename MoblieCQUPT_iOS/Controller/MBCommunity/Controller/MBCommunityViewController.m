@@ -575,9 +575,6 @@
     }
 }
 
-
-#pragma mark -
-
 #pragma mark - 上传点赞
 
 - (void)uploadSupport:(MBCommunity_ViewModel *)viewModel withType:(NSInteger)type {
