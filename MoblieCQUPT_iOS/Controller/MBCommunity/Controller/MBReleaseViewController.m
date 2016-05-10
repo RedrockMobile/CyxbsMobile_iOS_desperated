@@ -159,6 +159,7 @@
         _hud.labelText = @"内容不能为空";
         [_hud hide:YES afterDelay:1.5];
     }
+    [_inputView.textView resignFirstResponder];
 }
 
 - (void)clickCancel:(UIButton *)sender {
@@ -325,7 +326,8 @@
             [weakSelf releaseNewArticle];
         }
     } failureBlock:^{
-        
+        weakSelf.hud.mode = MBProgressHUDModeText;
+        weakSelf.hud.labelText = @"网络错误";
     }];
 }
 
