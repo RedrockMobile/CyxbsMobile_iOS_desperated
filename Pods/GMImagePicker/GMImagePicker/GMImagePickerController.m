@@ -90,12 +90,7 @@
     
     _navigationController.navigationBar.backgroundColor = _navigationBarBackgroundColor;
     _navigationController.navigationBar.tintColor = _navigationBarTintColor;
-<<<<<<< HEAD
-    
-=======
-    _navigationController.navigationBar.barTintColor = _navigationBarBackgroundColor;
 
->>>>>>> 99ca4365a8899ef9b474c4463b562b5d3ae0dc58
     NSDictionary *attributes;
     if (_useCustomFontForNavigationBar) {
         attributes = @{NSForegroundColorAttributeName : _navigationBarTextColor,

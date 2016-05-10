@@ -178,26 +178,17 @@
         }
         
     } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-<<<<<<< HEAD
         NSLog(@"成功");
         NSLog(@"%@",responseObject);
 //         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
-=======
-        //NSLog(@"%@",responseObject);
-         //NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
->>>>>>> 99ca4365a8899ef9b474c4463b562b5d3ae0dc58
+
         if (block) {
             block(responseObject);
         }else{
             NSLog(@"无成功调用");
         }
-<<<<<<< HEAD
 //        block(responseObject);
-        
-        
-=======
-        NSLog(@"%@",responseObject);
->>>>>>> 99ca4365a8899ef9b474c4463b562b5d3ae0dc58
+
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSData *d = operation.responseData;
         NSString* aStr = [[NSString alloc] initWithData:d   encoding:NSASCIIStringEncoding];

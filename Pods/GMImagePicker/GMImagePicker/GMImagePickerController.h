@@ -9,10 +9,7 @@
 @import UIKit;
 @import Photos;
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 99ca4365a8899ef9b474c4463b562b5d3ae0dc58
 //This is the default image picker size!
 //static CGSize const kPopoverContentSize = {320, 480};
 //However, the iPad is 1024x768 so it can allow popups up to 768!

@@ -16,11 +16,19 @@
     if (self = [super init]) {
         //昵称
         if ([dic containsObjectForKey:@"nickname"]) {
-            self.IDLabel = dic[@"nickname"] ?: @"啥子都没得";
+            if ([dic[@"nickname"] isEqualToString:@""]) {
+                self.IDLabel = @"这个人懒到没有填名字";
+            }else {
+                self.IDLabel = dic[@"nickname"] ?: @"啥子都没得";
+            }
+            
         }else if ([dic containsObjectForKey:@"nick_name"]) {
-            self.IDLabel = dic[@"nick_name"] ?: @"啥子都没得";
+            if ([dic[@"nickname"] isEqualToString:@""]) {
+                self.IDLabel = @"这个人懒到没有填名字";
+            }else {
+                self.IDLabel = dic[@"nickname"] ?: @"啥子都没得";
+            }
         }
-        
         //头像
         if ([dic containsObjectForKey:@"photo_src"] && ![dic[@"photo_src"] isEqualToString:@""]) {
             NSString *prefix = @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/";
