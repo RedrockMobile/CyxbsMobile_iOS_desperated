@@ -30,9 +30,9 @@
     self.tapNum = 0;
     [self.appName setTextColor:[UIColor paperColorGray500]];
     [self.appVersion setTextColor:[UIColor paperColorGray500]];
-    [self.buttonToUpdate addTarget:self action:@selector(clickToUpdate) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonToWebsite addTarget:self action:@selector(clickToWebsite) forControlEvents:UIControlEventTouchUpInside];
-    [self.buttonToCopyRight addTarget:self action:@selector(clickToCopyRight) forControlEvents:UIControlEventTouchUpInside];
+//    [self.buttonToUpdate addTarget:self action:@selector(clickToUpdate) forControlEvents:UIControlEventTouchUpInside];
+//    [self.buttonToWebsite addTarget:self action:@selector(clickToWebsite) forControlEvents:UIControlEventTouchUpInside];
+//    [self.buttonToCopyRight addTarget:self action:@selector(clickToCopyRight) forControlEvents:UIControlEventTouchUpInside];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
     tap.numberOfTapsRequired = 1;
     self.imageToTop.userInteractionEnabled = YES;
@@ -85,27 +85,27 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
-- (void)clickToCopyRight {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"使用条款"
-                                                    message:@"版权归红岩网校工作站所有，感谢您的使用"
-                                                   delegate:self
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil,nil];
-    [alert show];
-}
-
-- (void)clickToWebsite {
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/"]];
-}
-
-- (void)clickToUpdate {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检查更新"
-                                                    message:@"哎哟，这个功能好像还没做好哦，敬请期待"
-                                                   delegate:self
-                                          cancelButtonTitle:@"确定"
-                                          otherButtonTitles:nil,nil];
-    [alert show];
-}
+//- (void)clickToCopyRight {
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"使用条款"
+//                                                    message:@"版权归红岩网校工作站所有，感谢您的使用"
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"确定"
+//                                          otherButtonTitles:nil,nil];
+//    [alert show];
+//}
+//
+//- (void)clickToWebsite {
+//	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/"]];
+//}
+//
+//- (void)clickToUpdate {
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"检查更新"
+//                                                    message:@"哎哟，这个功能好像还没做好哦，敬请期待"
+//                                                   delegate:self
+//                                          cancelButtonTitle:@"确定"
+//                                          otherButtonTitles:nil,nil];
+//    [alert show];
+//}
 
 
 
