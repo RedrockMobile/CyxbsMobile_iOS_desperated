@@ -95,12 +95,17 @@
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"
                             WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text}
                      WithReturnValeuBlock:^(id returnValue) {
-                         NSString *status = [returnValue objectForKey:@"status"];
-                         if ([status isEqualToString:@"200"]) {
+                         NSString *status = [returnValue objectForKey:@"info"];
+                         if ([status isEqualToString:@"success"]) {
                              MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                              uploadProgress.mode = MBProgressHUDModeText;
                              uploadProgress.labelText = @"上传成功";
                              [uploadProgress hide:YES afterDelay:1];
+                         } else if ([status isEqualToString:@"failed"]) {
+                             MBProgressHUD *uploadProgress1 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                             uploadProgress1.mode = MBProgressHUDModeText;
+                             uploadProgress1.labelText = @"非法关键字，请重新输入";
+                             [uploadProgress1 hide:YES afterDelay:1];
                          }
     } WithFailureBlock:^{
     

@@ -38,6 +38,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.translucent = YES;
+    self.automaticallyAdjustsScrollViewInsets = YES;
     [self.view addSubview:self.communityTableView];
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
@@ -125,6 +127,7 @@
 }
 
 - (void)headerRereshing{
+    _flag = 0;
     _allDataArray = [NSMutableArray array];
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
@@ -145,16 +148,16 @@
             viewModel.model = model;
             [weakSelf.allDataArray addObject:viewModel];
             [weakSelf.communityTableView reloadData];
-            [weakSelf.communityTableView headerEndRefreshing];
         }
+        [weakSelf.communityTableView headerEndRefreshing];
     } WithFailureBlock:^{
-        
+        [weakSelf.communityTableView headerEndRefreshing];
     }];
 }
 
 - (void)footerRereshing{
     _flag += 1;
-    _allDataArray = [NSMutableArray array];
+//    _allDataArray = [NSMutableArray array];
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *size = @"15";
@@ -174,10 +177,10 @@
             viewModel.model = model;
             [weakSelf.allDataArray addObject:viewModel];
             [weakSelf.communityTableView reloadData];
-            [weakSelf.communityTableView footerEndRefreshing];
         }
+        [weakSelf.communityTableView footerEndRefreshing];
     } WithFailureBlock:^{
-        
+        [weakSelf.communityTableView footerEndRefreshing];
     }];
 }
 

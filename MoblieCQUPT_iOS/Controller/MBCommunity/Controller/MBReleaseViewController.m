@@ -21,6 +21,11 @@
 @property (strong, nonatomic) UIView *navigationView;
 @property (strong, nonatomic) MBInputView *inputView;
 
+@property (strong, nonatomic) NSMutableArray *uploadPicArray;
+@property (strong, nonatomic) NSMutableArray *uploadthumbnailPicArray;
+@property (strong, nonatomic) NSMutableArray<MOHImageParamModel *> *imageParamer;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation MBReleaseViewController
