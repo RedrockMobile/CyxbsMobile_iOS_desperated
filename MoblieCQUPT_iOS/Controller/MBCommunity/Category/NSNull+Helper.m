@@ -7,7 +7,18 @@
 //
 
 #import "NSNull+Helper.h"
+#define NSNullObjects @[@"",@0,@{},@[]]
 
 @implementation NSNull (Helper)
+
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    for (NSObject *object in NSNullObjects)
+    {
+        if ([object respondsToSelector:aSelector]) {
+            return object;
+        }
+    }
+    return [super forwardingTargetForSelector:aSelector];
+}
 
 @end

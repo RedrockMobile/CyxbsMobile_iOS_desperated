@@ -50,7 +50,7 @@
 
     
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    if ([userDefault objectForKey:@"time"] != nil) {
+    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
         NSDate *currentTime = [NSDate date];
         NSDate *dataTime = [userDefault objectForKey:@"time"];
         //选择是跳转到mainViewController还是loginViewController

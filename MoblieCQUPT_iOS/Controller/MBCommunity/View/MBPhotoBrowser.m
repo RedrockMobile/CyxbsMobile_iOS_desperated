@@ -46,8 +46,9 @@
         _imageViewOriginArray = imageViewOriginArray;
         self.screenshot = [self _screenshotFromView:[UIApplication sharedApplication].keyWindow];
         [self addSubview:self.blurImageView];
+        __weak typeof(self) weakSelf = self;
         dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            UIImage* blurImage = [self.screenshot applyBlurWithRadius:20
+            UIImage* blurImage = [weakSelf.screenshot applyBlurWithRadius:20
                                                             tintColor:RGBColor(0, 0, 0, 0.85)
                                                 saturationDeltaFactor:1.4
                                                             maskImage:nil];
@@ -132,16 +133,17 @@
     
     [self addSubview:browserItem];
     
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.2 animations:^{
         browserItem.imageView.frame = rect;
     } completion:^(BOOL finished) {
-        [self loadPreAndNextItem];
+        [weakSelf loadPreAndNextItem];
         [browserItem removeFromSuperview];
         _scrollView.hidden = NO;
-        [self addSubview:_indexLabel];
+        [weakSelf addSubview:_indexLabel];
         browserItem.frame = CGRectMake(kImageBrowserWidth * self.currentImageItem, 0, ScreenWidth, kImageBrowserHeight);
-        browserItem.pic = self.sourceImageArray[self.currentImageItem];
-        browserItem.thumbnailPic = self.sourceThumbnailPictureArray[self.currentImageItem];
+        browserItem.pic = weakSelf.sourceImageArray[weakSelf.currentImageItem];
+        browserItem.thumbnailPic = weakSelf.sourceThumbnailPictureArray[weakSelf.currentImageItem];
 //        browserItem.thumbnailPic = browserItem.imageView.image;
         [_scrollView addSubview:browserItem];
         
@@ -165,8 +167,6 @@
     for (NSInteger i = 0; i < self.sourceImageArray.count; i ++) {
         if (i != self.currentImageItem) {
             MBBrowserItem *browserItem = [[MBBrowserItem alloc]initWithFrame:CGRectMake(kImageBrowserWidth * i, 0, ScreenWidth, kImageBrowserHeight)];
-//            UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:i]];
-//            browserItem.imageView.image = image;
             browserItem.pic = self.sourceImageArray[i];
             browserItem.thumbnailPic = self.sourceThumbnailPictureArray[i];
             browserItem.eventDelegate = self;
@@ -179,25 +179,22 @@
 #pragma mark MBBroswerItem Delegate
 - (void)didClickedItemToHide {
     UIImageView *tem = [[UIImageView alloc]init];
-//    UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:self.currentImageItem]];
-//    CGRect rect = [self calculateDestinationFrameWithSize:image.size index:0];
     [tem sd_setImageWithURL:[NSURL URLWithString:self.sourceThumbnailPictureArray[self.currentImageItem]] placeholderImage:nil];
     CGRect rect = [self calculateDestinationFrameWithSize:tem.image.size index:0];
     tem.frame = rect;
 
     tem.contentMode = UIViewContentModeScaleAspectFill;
     tem.clipsToBounds = YES;
-//    tem.image = image;
     
     _scrollView.hidden = YES;
     [_indexLabel removeFromSuperview];
     [self addSubview:tem];
-    
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:0.2f animations:^{
-        tem.frame = CGRectFromString(self.imageViewOriginArray[self.currentImageItem]);
-        self.blurImageView.alpha = 0;
+        tem.frame = CGRectFromString(weakSelf.imageViewOriginArray[weakSelf.currentImageItem]);
+        weakSelf.blurImageView.alpha = 0;
     } completion:^(BOOL finished) {
-        [self removeFromSuperview];
+        [weakSelf removeFromSuperview];
     }];
 }
 

@@ -21,8 +21,8 @@
 @property (strong, nonatomic) UIView *navigationView;
 @property (strong, nonatomic) MBInputView *inputView;
 
-
-
+@property (strong, nonatomic) NSMutableArray *uploadPicArray;
+@property (strong, nonatomic) NSMutableArray *uploadthumbnailPicArray;
 @end
 
 @implementation MBReleaseViewController
@@ -120,7 +120,10 @@
 }
 
 - (void)clickDone:(UIButton *)sender {
-    NSLog(@"点击完成");
+    NSLog(@"点击完成 : %@",_inputView.textView.text);
+    
+    NSMutableArray<MOHImageParamModel *> *imageParamer = [NSMutableArray array];
+    
 }
 
 - (void)clickCancel:(UIButton *)sender {
@@ -214,7 +217,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     
     if ([text isEqualToString:@"\n"]) {
-        NSLog(@"点击发送");
+        NSLog(@"点击发送 : %@",_inputView.textView.text);
     }
     
     return YES;
@@ -224,8 +227,8 @@
 - (void)releaseNewArticle {
     NSString *type_id = @"5";
     NSString *title = @"随便试试";
-    NSString *user_id;
-    NSString *content;
+    NSString *user_id = [LoginEntry getByUserdefaultWithKey:@"user_id"];
+    NSString *content = self.inputView.textView.text;
     NSString *thumbnail_src;
     NSString *photo_src;
     
