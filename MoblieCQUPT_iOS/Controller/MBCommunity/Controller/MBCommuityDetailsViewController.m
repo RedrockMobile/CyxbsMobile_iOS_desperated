@@ -373,7 +373,10 @@
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"评论成功";
         [weakSelf.hud hide:YES afterDelay:1.5];
+        MBCommunity_ViewModel *viewModel_new = weakSelf.viewModel;
         weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",[self.viewModel.model.numOfComment integerValue]+1];
+        viewModel_new.model = weakSelf.viewModel.model;
+        weakSelf.viewModel = viewModel_new;
         [weakSelf loadNetWorkData];
 //        [weakSelf.tableView reloadData];
         weakSelf.replyView.textView.placeholder = @"评论";
