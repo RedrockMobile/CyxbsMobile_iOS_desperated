@@ -169,7 +169,7 @@
         for ( MOHImageParamModel *imageParams in imageParamsArray) {
             
             NSData *data = UIImageJPEGRepresentation(imageParams.uploadImage,imageParams.perproRate>0.0?imageParams.perproRate:rate);
-            
+           
             //添加图片 header
             [formData appendPartWithFileData:data
                                         name:imageParams.paramName
