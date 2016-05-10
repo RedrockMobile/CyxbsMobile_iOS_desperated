@@ -178,13 +178,13 @@
         }
         
     } success:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
-         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+        //NSLog(@"%@",responseObject);
+         //NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if (block) {
-            block(dic);
+            block(responseObject);
         }else{
             NSLog(@"无成功调用");
         }
-        block(dic);
         NSLog(@"%@",responseObject);
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSData *d = operation.responseData;
