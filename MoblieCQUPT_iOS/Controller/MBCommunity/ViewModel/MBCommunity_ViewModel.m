@@ -56,6 +56,13 @@
     }else if (picCount == 1){
 //        UIImageView *imageView = [[UIImageView alloc]init];
 //        imageView.image = [UIImage imageNamed:self.model.pictureArray[0]];
+//        SDWebImageManager *manger = [[SDWebImageManager alloc]init];
+//        NSString *key = [manger cacheKeyForURL:[NSURL URLWithString:self.model.thumbnailPictureArray[0]]];
+//        
+//        UIImage *image = [manger.imageCache imageFromMemoryCacheForKey:key];
+//        if (!image) {
+//            image = [UIImage imageNamed:@"智妍1.png"];
+//        }
 //        if (imageView.image.size.width == imageView.image.size.height) {
 //            imageView.frame = CGRectMake(0, 0, kPhotoImageViewW*1.2, kPhotoImageViewW*1.2);
 //            photoContainerW = imageView.frame.size.width;
@@ -72,8 +79,8 @@
 //            photoContainerH = imageView.frame.size.height;
 //        }
 //        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        photoContainerW = kPhotoImageViewW;
-        photoContainerH = kPhotoImageViewW;
+        photoContainerW = kPhotoImageViewW*1.5;
+        photoContainerH = kPhotoImageViewW*1.5;
     }else if (picCount == 0){
         photoContainerW = 0;
         photoContainerH = 0;

@@ -35,7 +35,6 @@
     };
 }
 
-
 //定义返回请求数据的block类型
 typedef void (^SucessWithJson) (id returnValue);
 typedef void (^ErrorCode) (id errorCode);
@@ -54,8 +53,7 @@ typedef void (^NetWorkBlock)(BOOL netConnetState);
                    //WithErrorCodeBlock: (ErrorCode) errorBlock
                      WithFailureBlock: (FailureFunction) failureBlock;
 
-+ (BOOL)netWorkReachability:(NSString *) strUrl;
-+ (void)uploadFileWithUrlString:(NSString *)url;
++ (BOOL) netWorkReachability:(NSString *) strUrl;
 
 + (void)uploadImageWithUrl:(NSString *)url
                imageParams:(NSArray<MOHImageParamModel *> *)imageParamsArray

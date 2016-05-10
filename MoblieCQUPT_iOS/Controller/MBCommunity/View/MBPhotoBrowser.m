@@ -141,6 +141,7 @@
         [self addSubview:_indexLabel];
         browserItem.frame = CGRectMake(kImageBrowserWidth * self.currentImageItem, 0, ScreenWidth, kImageBrowserHeight);
         browserItem.pic = self.sourceImageArray[self.currentImageItem];
+        browserItem.thumbnailPic = self.sourceThumbnailPictureArray[self.currentImageItem];
 //        browserItem.thumbnailPic = browserItem.imageView.image;
         [_scrollView addSubview:browserItem];
         
@@ -167,6 +168,7 @@
 //            UIImage *image = [UIImage imageNamed:[self.sourceImageArray objectAtIndex:i]];
 //            browserItem.imageView.image = image;
             browserItem.pic = self.sourceImageArray[i];
+            browserItem.thumbnailPic = self.sourceThumbnailPictureArray[i];
             browserItem.eventDelegate = self;
             [_scrollView addSubview:browserItem];
             browserItem.tag = i;

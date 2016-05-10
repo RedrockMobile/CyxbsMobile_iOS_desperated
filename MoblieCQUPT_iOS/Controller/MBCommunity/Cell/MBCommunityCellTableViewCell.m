@@ -96,7 +96,7 @@
 //        _supportBtn.selected = !_supportBtn.selected;
 //    }
     if (self.clickSupportBtnBlock) {
-        self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.model);
+        self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.subViewFrame);
     }
 }
 
@@ -114,7 +114,6 @@
 //重写viewModel的set方法 在设置ViewModel的时候 自动进行数据加载
 - (void)setSubViewFrame:(MBCommunity_ViewModel *)subViewFrame {
     _subViewFrame = subViewFrame;
-    
     //为控件设置数据
     [self setupData];
     //为控件设置frame
@@ -123,10 +122,7 @@
 
 - (void)setupData {
     _model = self.subViewFrame.model;
-    
-    NSArray *color = ColorArray;
-    int idx = arc4random()%color.count;
-    UIImage *image = [UIImage imageWithColor:[UIColor handleRandomColorStr:color[idx]]];
+    UIImage *image = [UIImage imageNamed:@"headImage.png"];
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.subViewFrame.model.headImageView] placeholderImage:image];
     _IDLabel.text = self.model.IDLabel;
     _timeLabel.text = self.model.timeLabel;

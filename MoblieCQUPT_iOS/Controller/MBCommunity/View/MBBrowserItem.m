@@ -44,14 +44,21 @@ const CGFloat kDuration = 0.18f;
 
 - (void)setPic:(NSString *)pic {
     _pic = pic;
-    [self.imageView setShowActivityIndicatorView:YES];
-    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.pic] placeholderImage:[UIImage imageWithBgColor:BACK_GRAY_COLOR] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        self.imageView.frame = [self calculateDestinationFrameWithSize:self.imageView.image.size];
-    }];
 }
 
-- (void)setThumbnailPic:(UIImage *)thumbnailPic {
+- (void)setThumbnailPic:(NSString *)thumbnailPic {
+    SDWebImageManager *manger = [[SDWebImageManager alloc]init];
+    NSString *key = [manger cacheKeyForURL:[NSURL URLWithString:thumbnailPic]];
+
+    UIImage *image = [manger.imageCache imageFromMemoryCacheForKey:key];
+    if (image != [manger.imageCache imageFromMemoryCacheForKey:key]) {
+        image = [UIImage imageWithColor:BACK_GRAY_COLOR];
+    }
     
+    [self.imageView setShowActivityIndicatorView:YES];
+    [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.pic] placeholderImage:image completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        self.imageView.frame = [self calculateDestinationFrameWithSize:self.imageView.image.size];
+    }];
 }
 
 - (void)setupGestures {

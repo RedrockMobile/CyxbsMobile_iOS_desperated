@@ -15,12 +15,13 @@
 @optional
 
 - (void)clickPhotoContainerViewAdd;
+- (void)clickDeleteImageViewWithTag:(NSInteger)tag;
 
 @end
 
 @interface MBAddPhotoContainerView : UIView
 
-@property (strong, nonatomic) NSArray *sourcePicArray;
+@property (strong, nonatomic) NSMutableArray *sourcePicArray;
 
 @property (weak, nonatomic) id<MBAddPhotoContainerViewAddEventDelegate> eventDelegate;
 

@@ -163,6 +163,7 @@
         successBlock:(SucessWithJson) block
         failureBlock:(FailureFunction) failureBlock {
     
+    // 初始化请求的manager.
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager POST:url parameters:params constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for ( MOHImageParamModel *imageParams in imageParamsArray) {
@@ -180,6 +181,8 @@
          NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
         if (block) {
             block(dic);
+        }else{
+            NSLog(@"无成功调用");
         }
         block(dic);
         NSLog(@"%@",responseObject);
@@ -191,4 +194,5 @@
     }];
     
 }
+
 @end

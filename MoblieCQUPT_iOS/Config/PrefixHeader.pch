@@ -31,6 +31,9 @@
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kBarTintColor MAIN_COLOR
 #define kItemTintColor [UIColor blackColor]
+#define kFont [UIFont fontWithName:@"Arial" size:15]
+#define kTextColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
+#define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
 
 //#import <AFNetworking.h>
 #import <AFNetworking.h>
@@ -68,11 +71,17 @@
 #define LISTNEWS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/listNews"
 //获取评论
 #define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/getremark"
-
+//评论接口
+#define POSTREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
 //赞接口
 #define ADDSUPPORT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/addone"
 //取消赞接口
 #define CANCELSUPPOTRT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+//发布动态接口
+#define ADDARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/addArticle"
+//查询个人信息接口
+#define SEARCH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+
 
 
 //#import "SDWebImageManager.h"
