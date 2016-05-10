@@ -66,7 +66,6 @@
 @implementation MBCommuityDetailsViewController
 
 - (void)viewDidLoad {
-    NSLog(@"view didload");
     [super viewDidLoad];
     _isLoadedComment = NO;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
