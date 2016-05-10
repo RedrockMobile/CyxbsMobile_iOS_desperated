@@ -301,9 +301,10 @@
                                 @"idNum":idNum,
                                 @"article_id":article_id,
                                 @"type_id":type_id};
-    
+    __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        NSLog(@"%ld",((NSArray *)returnValue[@"data"]).count);
+        NSInteger numOfComment = ((NSArray *)returnValue[@"data"]).count;
+        weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",numOfComment];
         _isLoadedComment = YES;
         for (NSDictionary *dic in returnValue[@"data"]) {
             MBCommentModel *commentModel = [[MBCommentModel alloc]initWithDictionary:dic];
@@ -313,10 +314,10 @@
         }
         if (_dataArray.count == 0) {
             [_indicatorView stopAnimating];
-            [self.tableView reloadData];
+            [weakSelf.tableView reloadData];
         }else {
             [_indicatorView stopAnimating];
-            [self.tableView reloadData];
+            [weakSelf.tableView reloadData];
         }
     } WithFailureBlock:^{
         [_indicatorView stopAnimating];

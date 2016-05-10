@@ -23,6 +23,9 @@
 
 @property (strong, nonatomic) NSMutableArray *uploadPicArray;
 @property (strong, nonatomic) NSMutableArray *uploadthumbnailPicArray;
+@property (strong, nonatomic) NSMutableArray<MOHImageParamModel *> *imageParamer;
+
+@property (strong, nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation MBReleaseViewController
@@ -52,6 +55,19 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSMutableArray *)uploadPicArray {
+    if (!_uploadPicArray) {
+        _uploadPicArray = [NSMutableArray array];
+    }
+    return _uploadPicArray;
+}
+- (NSMutableArray *)uploadthumbnailPicArray {
+    if (!_uploadthumbnailPicArray) {
+        _uploadthumbnailPicArray = [NSMutableArray array];
+    }
+    return _uploadthumbnailPicArray;
 }
 
 - (UIView *)navigationView {
@@ -122,8 +138,27 @@
 - (void)clickDone:(UIButton *)sender {
     NSLog(@"点击完成 : %@",_inputView.textView.text);
     
-    NSMutableArray<MOHImageParamModel *> *imageParamer = [NSMutableArray array];
-    
+    if (![_inputView.textView.text isEqualToString:@""]) {
+        _imageParamer = [NSMutableArray array];
+        for (int i = 0; i < self.inputView.container.sourcePicArray.count; i ++) {
+            UIImage *image = self.inputView.container.sourcePicArray[i];
+            MOHImageParamModel *imageModel = [[MOHImageParamModel alloc]init];
+            imageModel.uploadImage = image;
+            imageModel.paramName = @"fold";
+            NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+            CGFloat length = [imageData length]/1000/1024.0;
+            if (length > 2.0) {
+                imageModel.perproRate = 2.0/length;
+            }
+            [_imageParamer addObject:imageModel];
+        }
+        [self uploadImageWithImageModel:self.imageParamer[0] withFlag:0];
+    }else {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.mode = MBProgressHUDModeText;
+        _hud.labelText = @"内容不能为空";
+        [_hud hide:YES afterDelay:1.5];
+    }
 }
 
 - (void)clickCancel:(UIButton *)sender {
@@ -157,7 +192,6 @@
         
         picker.customDoneButtonTitle = @"完成";
         picker.customCancelButtonTitle = @"取消";
-//        picker.customNavigationBarPrompt = @"请选择图片";
         
         picker.colsInPortrait = 3;
         picker.colsInLandscape = 5;
@@ -225,14 +259,76 @@
 
 
 - (void)releaseNewArticle {
+    NSLog(@"请求发布");
     NSString *type_id = @"5";
     NSString *title = @"随便试试";
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *user_id = [LoginEntry getByUserdefaultWithKey:@"user_id"];
     NSString *content = self.inputView.textView.text;
-    NSString *thumbnail_src;
-    NSString *photo_src;
+    NSString *thumbnail_src = @"";
+    NSString *photo_src = @"";
+    
+    for (int i = 0; i < _uploadPicArray.count; i ++) {
+        if (i == 0) {
+            photo_src = [NSString stringWithFormat:@"%@",self.uploadPicArray[i]];
+        }else {
+            photo_src = [NSString stringWithFormat:@"%@,%@",photo_src,self.uploadPicArray[i]];
+        }
+        
+    }
+    for (int i = 0; i < _uploadthumbnailPicArray.count; i ++) {
+        if (i == 0) {
+            thumbnail_src = [NSString stringWithFormat:@"%@",self.uploadthumbnailPicArray[i]];
+        }else {
+            thumbnail_src = [NSString stringWithFormat:@"%@,%@",thumbnail_src,self.uploadthumbnailPicArray[i]];
+        }
+    }
+    
+    NSDictionary *parameter = @{@"stuNum":stuNum,
+                                @"idNum":idNum,
+                                @"type_id":type_id,
+                                @"title":title,
+                                @"user_id":user_id,
+                                @"content":content,
+                                @"photo_src":photo_src,
+                                @"thumbnail_src":thumbnail_src};
+    _hud.labelText = @"正在发布...";
+    __weak typeof(self) weakSelf = self;
+    [NetWork NetRequestPOSTWithRequestURL:ADDARTICLE_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        weakSelf.hud.mode = MBProgressHUDModeText;
+        weakSelf.hud.labelText = @"发布成功";
+        [weakSelf.hud hide:YES afterDelay:1.5];
+        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    } WithFailureBlock:^{
+        
+    }];
     
 }
+
+- (void)uploadImageWithImageModel:(MOHImageParamModel *)imageModel withFlag:(NSInteger)flag {
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    _hud.labelText = [NSString stringWithFormat:@"正在上传第%ld张图片...",flag+1];
+    NSLog(@"请求第%ld",flag+1);
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    __weak typeof(self) weakSelf = self;
+    __block NSInteger flagBlock = flag;
+    [NetWork uploadImageWithUrl:UPLOADARTICLE_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {
+        [weakSelf.hud hide:YES];
+        [weakSelf.uploadPicArray addObject:(NSString *)returnValue[@"data"][@"photosrc"]];
+        [weakSelf.uploadthumbnailPicArray addObject:(NSString *)returnValue[@"data"][@"thumbnail_src"]];
+        flagBlock++;
+        if (flagBlock < weakSelf.imageParamer.count) {
+            [weakSelf uploadImageWithImageModel:weakSelf.imageParamer[flagBlock] withFlag:flagBlock];
+        }else {
+            [weakSelf.hud hide:YES];
+            [weakSelf releaseNewArticle];
+        }
+    } failureBlock:^{
+        
+    }];
+}
+
 
 //Optional implementation:
 -(void)assetsPickerControllerDidCancel:(GMImagePickerController *)picker

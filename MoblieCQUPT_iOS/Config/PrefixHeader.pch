@@ -81,7 +81,8 @@
 #define ADDARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/addArticle"
 //查询个人信息接口
 #define SEARCH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
-
+//上传图片接口
+#define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
 
 
 //#import "SDWebImageManager.h"
