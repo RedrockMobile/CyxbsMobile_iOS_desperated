@@ -328,6 +328,7 @@
     } failureBlock:^{
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"网络错误";
+        [weakSelf.hud hide:YES afterDelay:1.5];
     }];
 }
 
