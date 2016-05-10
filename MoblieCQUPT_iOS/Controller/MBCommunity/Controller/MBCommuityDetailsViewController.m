@@ -115,14 +115,6 @@
     
 }
 
-//- (NSMutableArray *)dataArray {
-//    
-//    if (!_dataArray) {
-//        _dataArray = [NSMutableArray array];
-//    }
-//    return _dataArray;
-//}
-
 //评论的heedView
 - (UIView *)headView {
     

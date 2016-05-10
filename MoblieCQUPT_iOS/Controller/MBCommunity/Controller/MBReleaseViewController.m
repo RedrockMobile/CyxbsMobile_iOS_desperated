@@ -21,8 +21,6 @@
 @property (strong, nonatomic) UIView *navigationView;
 @property (strong, nonatomic) MBInputView *inputView;
 
-
-
 @end
 
 @implementation MBReleaseViewController
