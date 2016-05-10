@@ -301,14 +301,21 @@
     _hud.labelText = @"正在发布...";
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:ADDARTICLE_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        [weakSelf.hud hide:YES];
+        weakSelf.hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"发布成功";
         [weakSelf.hud hide:YES afterDelay:1.5];
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        [weakSelf performSelector:@selector(delayMethod) withObject:nil afterDelay:1.5f];
+        
     } WithFailureBlock:^{
         
     }];
     
+}
+
+- (void)delayMethod {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)uploadImageWithImageModel:(MOHImageParamModel *)imageModel withFlag:(NSInteger)flag {
