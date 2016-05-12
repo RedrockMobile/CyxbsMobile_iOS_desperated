@@ -52,6 +52,7 @@
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
+
 #pragma mark - 分页加载
 //集成刷新控件
 - (void)setupRefresh

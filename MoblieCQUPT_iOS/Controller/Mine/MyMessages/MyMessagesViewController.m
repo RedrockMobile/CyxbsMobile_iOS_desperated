@@ -29,7 +29,6 @@
 @property (strong, nonatomic) NSMutableArray *allDataArray;
 @property (strong, nonatomic) NSMutableDictionary *myInfoData;
 @property (copy, nonatomic) NSString *currenSelectCellOfRow;
-@property (copy, nonatomic) NSString *currenSelectCellOfTableView;
 @property (assign, nonatomic) NSInteger flag;
 
 @end
@@ -99,9 +98,14 @@
         NSArray *dataArray = returnValue[@"data"];
         NSLog(@"the :%@", returnValue);
         for (int i = 0; i < dataArray.count; i++) {
-            MBCommunityModel *model = [[MBCommunityModel alloc]initWithDictionary:dataArray[i] withMBCommunityModelType:MBCommunityModelTypeListArticle];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
+            [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
+            [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
+            MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
+            communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
+            communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-            viewModel.model = model;
+            viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
             [weakSelf.communityTableView reloadData];
         }
@@ -148,9 +152,14 @@
         NSArray *dataArray = returnValue[@"data"];
         NSLog(@"the :%@", returnValue);
         for (int i = 0; i < dataArray.count; i++) {
-            MBCommunityModel *model = [[MBCommunityModel alloc]initWithDictionary:dataArray[i] withMBCommunityModelType:MBCommunityModelTypeListArticle];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
+            [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
+            [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
+            MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
+            communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
+            communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-            viewModel.model = model;
+            viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
             [weakSelf.communityTableView reloadData];
         }
@@ -177,9 +186,14 @@
         NSArray *dataArray = returnValue[@"data"];
         NSLog(@"the :%@", returnValue);
         for (int i = 0; i < dataArray.count; i++) {
-            MBCommunityModel *model = [[MBCommunityModel alloc]initWithDictionary:dataArray[i] withMBCommunityModelType:MBCommunityModelTypeListArticle];
+            NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
+            [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
+            [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
+            MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
+            communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
+            communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-            viewModel.model = model;
+            viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
             [weakSelf.communityTableView reloadData];
         }
@@ -261,11 +275,11 @@
     }else {
         MBCommunityCellTableViewCell *communityCell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
         MBCommunity_ViewModel *viewModel = self.allDataArray[indexPath.section - 2];
-        MBCommunityModel *model = [[MBCommunityModel alloc]init];
-        model = viewModel.model;
-        model.headImageView = self.myInfoData[@"photo_thumbnail_src"];
-        model.IDLabel = [NSString stringWithFormat:@"%@",self.myInfoData[@"nickname"]];
-        viewModel.model = model;
+//        MBCommunityModel *model = [[MBCommunityModel alloc]init];
+//        model = viewModel.model;
+//        model.headImageView = self.myInfoData[@"photo_thumbnail_src"];
+//        model.IDLabel = [NSString stringWithFormat:@"%@",self.myInfoData[@"nickname"]];
+//        viewModel.model = model;
         communityCell.subViewFrame = viewModel;
         
         return communityCell;
@@ -298,7 +312,7 @@
                          communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
                          communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
                          
-                         MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
+                         MBCommunity_ViewModel *community_ViewModel = self.allDataArray[indexPath.section - 2];
                          community_ViewModel.model = communityModel;
                          MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
                          commuityDetailsVC.viewModel = community_ViewModel;
