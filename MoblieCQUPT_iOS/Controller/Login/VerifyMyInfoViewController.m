@@ -99,9 +99,13 @@
             [uploadProgress1 hide:YES afterDelay:1];
             sleep(1);
             //完善个人信息 把id 作为user_id 存在本地 以便发布内容时使用
-            NSString *user_id = returnValue[@"data"][@"id"];
+            NSString *user_id = returnValue[@"data"][@"id"] ?: @"";
+            NSString *nickname = returnValue[@"data"][@"nickname"] ?: @"";
+            NSString *photo_src = returnValue[@"data"][@"photo_src"] ?: @"";
             [LoginEntry saveByUserdefaultWithUserID:user_id];
-            NSLog(@"user_id : %@", user_id);
+            [LoginEntry saveByUserdefaultWithNickname:nickname];
+            [LoginEntry saveByUserdefaultWithPhoto_src:photo_src];
+            NSLog(@"%@,%@,%@",user_id,nickname,photo_src);
             //跳转到 主界面
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];

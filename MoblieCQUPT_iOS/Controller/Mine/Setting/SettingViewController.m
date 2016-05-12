@@ -129,7 +129,7 @@
 - (void)logOut {
     LoginViewController *login = [[LoginViewController alloc]init];
     [self.navigationController presentViewController:login animated:YES completion:^{
-        [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek"]];
+        [LoginEntry loginoutWithParamArrayString:@[@"dataArray",@"weekDataArray",@"nowWeek",@"user_id",@"nickname",@"photo_src"]];
     }];
 }
 

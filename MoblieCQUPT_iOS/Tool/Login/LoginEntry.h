@@ -19,6 +19,8 @@ withDictionaryParam:(NSDictionary *)paramDictionary;
 + (BOOL)saveByUserdefaultWithDictionary:(NSDictionary *)paramDictionary;
 
 + (BOOL)saveByUserdefaultWithUserID:(NSString *)userID;
++ (BOOL)saveByUserdefaultWithNickname:(NSString *)nickname;
++ (BOOL)saveByUserdefaultWithPhoto_src:(NSString *)photo_src;
 + (id)getByUserdefaultWithKey:(NSString *)key;
 
 @end

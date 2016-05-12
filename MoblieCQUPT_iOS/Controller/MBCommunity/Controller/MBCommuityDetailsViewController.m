@@ -296,6 +296,8 @@
     [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSInteger numOfComment = ((NSArray *)returnValue[@"data"]).count;
         weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",numOfComment];
+        MBCommunityModel *newModel = weakSelf.viewModel.model;
+        weakSelf.viewModel.model = newModel;
         _isLoadedComment = YES;
         for (NSDictionary *dic in returnValue[@"data"]) {
             MBCommentModel *commentModel = [[MBCommentModel alloc]initWithDictionary:dic];

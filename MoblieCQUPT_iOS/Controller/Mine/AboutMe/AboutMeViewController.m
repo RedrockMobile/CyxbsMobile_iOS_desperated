@@ -205,7 +205,12 @@
                      WithReturnValeuBlock:^(id returnValue) {
                          NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
                          [dic setObject:_nickname[indexPath.section] forKey:@"nickname"];
+                         [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
+                         [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
                          MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
+                         communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
+                         communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
+                         
                          MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
                          community_ViewModel.model = communityModel;
                          MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
