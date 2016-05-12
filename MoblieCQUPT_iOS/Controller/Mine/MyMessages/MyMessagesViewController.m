@@ -71,10 +71,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (_currenSelectCellOfRow) {
         NSInteger row = [self.currenSelectCellOfRow integerValue];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
-    
+        
         [self.communityTableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
     }
 }
@@ -268,6 +273,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0 || indexPath.section == 1) {
+        return;
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
     //查询文章内容

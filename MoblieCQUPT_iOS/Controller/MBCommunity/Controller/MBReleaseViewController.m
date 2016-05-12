@@ -138,7 +138,7 @@
 - (void)clickDone:(UIButton *)sender {
     NSLog(@"点击完成 : %@",_inputView.textView.text);
     
-    if (![_inputView.textView.text isEqualToString:@""]) {
+    if (![_inputView.textView.text isEqualToString:@""] && _inputView.textView.text.length < 300) {
         _imageParamer = [NSMutableArray array];
         for (int i = 0; i < self.inputView.container.sourcePicArray.count; i ++) {
             UIImage *image = self.inputView.container.sourcePicArray[i];
@@ -152,13 +152,23 @@
             }
             [_imageParamer addObject:imageModel];
         }
-        [self uploadImageWithImageModel:self.imageParamer[0] withFlag:0];
+        if (_imageParamer.count != 0) {
+            [self uploadImageWithImageModel:self.imageParamer[0] withFlag:0];
+        }else {
+            [self releaseNewArticle];
+        }
+    }else if (_inputView.textView.text.length > 300) {
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.mode = MBProgressHUDModeText;
+        _hud.labelText = @"内容超过300字了啦 太多啦!";
+        [_hud hide:YES afterDelay:1.5];
     }else {
         _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _hud.mode = MBProgressHUDModeText;
         _hud.labelText = @"内容不能为空";
         [_hud hide:YES afterDelay:1.5];
     }
+    [_inputView.textView resignFirstResponder];
 }
 
 - (void)clickCancel:(UIButton *)sender {
@@ -296,14 +306,21 @@
     _hud.labelText = @"正在发布...";
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:ADDARTICLE_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        [weakSelf.hud hide:YES];
+        weakSelf.hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"发布成功";
         [weakSelf.hud hide:YES afterDelay:1.5];
-        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        [weakSelf performSelector:@selector(delayMethod) withObject:nil afterDelay:1.5f];
+        
     } WithFailureBlock:^{
         
     }];
     
+}
+
+- (void)delayMethod {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)uploadImageWithImageModel:(MOHImageParamModel *)imageModel withFlag:(NSInteger)flag {
@@ -315,8 +332,13 @@
     __block NSInteger flagBlock = flag;
     [NetWork uploadImageWithUrl:UPLOADARTICLE_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {
         [weakSelf.hud hide:YES];
-        [weakSelf.uploadPicArray addObject:(NSString *)returnValue[@"data"][@"photosrc"]];
-        [weakSelf.uploadthumbnailPicArray addObject:(NSString *)returnValue[@"data"][@"thumbnail_src"]];
+        NSRange range = [returnValue[@"data"][@"photosrc"] rangeOfString:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"];
+        NSRange range1 = [returnValue[@"data"][@"thumbnail_src"] rangeOfString:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/thumbnail/"];
+        NSString *photoUrlString = [returnValue[@"data"][@"photosrc"] substringFromIndex:range.length];
+        NSString *thumbnailUrlString = [returnValue[@"data"][@"thumbnail_src"] substringFromIndex:range1.length];
+        
+        [weakSelf.uploadPicArray addObject:photoUrlString];
+        [weakSelf.uploadthumbnailPicArray addObject:thumbnailUrlString];
         flagBlock++;
         if (flagBlock < weakSelf.imageParamer.count) {
             [weakSelf uploadImageWithImageModel:weakSelf.imageParamer[flagBlock] withFlag:flagBlock];
@@ -325,7 +347,9 @@
             [weakSelf releaseNewArticle];
         }
     } failureBlock:^{
-        
+        weakSelf.hud.mode = MBProgressHUDModeText;
+        weakSelf.hud.labelText = @"网络错误";
+        [weakSelf.hud hide:YES afterDelay:1.5];
     }];
 }
 
