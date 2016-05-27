@@ -84,7 +84,6 @@
 //上传图片接口
 #define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
 
-
 //#import "SDWebImageManager.h"
 #import "UIColor+Helper.h"
 #import <SDWebImageManager.h>
@@ -93,5 +92,21 @@
 #import "LoginEntry.h"
 #import "MJRefresh.h"
 
+//魔塔小游戏
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#import "MacroUtils.h"
+#define APPDEBUG NO
+#define NOTI_StopControllerTimer @"NOTI_StopControllerTimer"
+#define NOTI_RunToFloor @"NOTI_RunToFloor"
 
 #endif

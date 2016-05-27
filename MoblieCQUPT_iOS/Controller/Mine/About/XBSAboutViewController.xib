@@ -71,7 +71,7 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-eg-MXO">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-eg-MXO">
                                     <rect key="frame" x="0.0" y="0.0" width="110" height="111"/>
                                     <color key="tintColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
