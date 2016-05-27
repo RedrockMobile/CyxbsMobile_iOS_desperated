@@ -47,11 +47,15 @@
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
             self.window.rootViewController = view;
+            NSLog(@"%@,%@,%@",[userDefault objectForKey:@"user_id"],[userDefault objectForKey:@"nickname"],[userDefault objectForKey:@"photo_src"]);
         }else {
             [userDefault removeObjectForKey:@"stuNum"];
             [userDefault removeObjectForKey:@"idNum"];
             [userDefault removeObjectForKey:@"dataArray"];
             [userDefault removeObjectForKey:@"time"];
+            [userDefault removeObjectForKey:@"user_id"];
+            [userDefault removeObjectForKey:@"nickname"];
+            [userDefault removeObjectForKey:@"photo_src"];
             [userDefault synchronize];
             LoginViewController *login = [[LoginViewController alloc]init];
             self.window.rootViewController = login;

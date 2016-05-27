@@ -26,7 +26,8 @@
 
 @property (strong, nonatomic) UIScrollView *mainScrollView;
 @property (strong, nonatomic) UIImageView *avatar;
-@property (strong, nonatomic) UILabel *labelOfIntrodution;
+@property (strong, nonatomic) UILabel *nickname;
+@property (strong, nonatomic) UILabel *introdution;
 @property (strong, nonatomic) UITableView *tableView;
 @property (assign, nonatomic) CGFloat currentHeight;
 @property (strong, nonatomic) NSMutableArray *cellDictionary;
@@ -83,9 +84,10 @@
                 [_data removeAllObjects];
                 [_data setDictionary:[returnValue objectForKey:@"data"]];
             }
-            NSLog(@"_data :%@", _data);
+            
             //更新信息
-            _labelOfIntrodution.text = _data[@"introduction"];
+            _nickname.text = _data[@"nickname"];
+            _introdution.text = _data[@"introduction"];
             if ([_data[@"photo_thumbnail_src"] isEqualToString:@""]) {
                 [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
             } else {
@@ -139,21 +141,20 @@
             [cell.contentView addSubview:_avatar];
             
             //设置用户名
-            UILabel *labelOfUserName = [[UILabel alloc] init];
-            labelOfUserName.text = [LoginEntry getByUserdefaultWithKey:@"name"];
-            labelOfUserName.frame = CGRectMake(50+32, 18, 0, 0);
-            labelOfUserName.font = [UIFont fontWithName:@"Arial" size:16];
-            labelOfUserName.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
-            [labelOfUserName sizeToFit];
-            [cell.contentView addSubview:labelOfUserName];
+            _nickname = [[UILabel alloc] init];
+            _nickname.text = @"这个人懒到没有填名字";
+            _nickname.frame = CGRectMake(50+32, 18, MAIN_SCREEN_W-82-40, 18);
+            _nickname.font = [UIFont fontWithName:@"Arial" size:16];
+            _nickname.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
+            [cell.contentView addSubview:_nickname];
             
             //设置个人简介
-            _labelOfIntrodution = [[UILabel alloc] initWithFrame:CGRectMake(50+32, 45, MAIN_SCREEN_W-82-40, 0)];
-            _labelOfIntrodution.text = @"简介：请点击我完善个人信息，愉快玩耍";
-            _labelOfIntrodution.font = [UIFont fontWithName:@"Arial" size:12];
-            _labelOfIntrodution.textColor = [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7];
-            [_labelOfIntrodution sizeToFit];
-            [cell.contentView addSubview:_labelOfIntrodution];
+            _introdution = [[UILabel alloc] initWithFrame:CGRectMake(50+32, 45, MAIN_SCREEN_W-82-40, 0)];
+            _introdution.text = @"简介：请点击我完善个人信息，愉快玩耍";
+            _introdution.font = [UIFont fontWithName:@"Arial" size:12];
+            _introdution.textColor = [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7];
+            [_introdution sizeToFit];
+            [cell.contentView addSubview:_introdution];
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             return  cell;

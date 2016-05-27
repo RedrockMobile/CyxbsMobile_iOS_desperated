@@ -81,6 +81,37 @@ withDictionaryParam:(NSDictionary *)paramDictionary{
     }
 }
 
++ (BOOL)saveByUserdefaultWithNickname:(NSString *)nickname {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLock *lock = [[NSLock alloc] init];
+    [lock lock];
+    
+    [userDefaults setObject:nickname forKey:@"nickname"];
+    
+    [lock unlock];
+    
+    if([userDefaults synchronize]){
+        return YES;
+    }else{
+        return NO;
+    }
+}
++ (BOOL)saveByUserdefaultWithPhoto_src:(NSString *)photo_src {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSLock *lock = [[NSLock alloc] init];
+    [lock lock];
+    
+    [userDefaults setObject:photo_src forKey:@"photo_src"];
+    
+    [lock unlock];
+    
+    if([userDefaults synchronize]){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 + (id)getByUserdefaultWithKey:(NSString *)key{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     return [userDefaults objectForKey:key];
