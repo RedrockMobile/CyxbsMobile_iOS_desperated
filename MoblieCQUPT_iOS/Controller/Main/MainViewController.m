@@ -72,6 +72,14 @@ static Boolean isClick = NO;
     // Dispose of any resources that can be recreated.
 }
 
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation{
+    return UIInterfaceOrientationPortrait;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 
 
 

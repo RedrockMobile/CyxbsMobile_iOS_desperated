@@ -30,11 +30,11 @@
     _completeBlock = [block copy];
     NSLog(@"NPC:%d", _NPCType);
     if (_NPCType == 0) {
-        [self showAlertTipViewWithName:@"仙女" WithString:@"欢迎来到魔塔世界，好了我就不多说什么了，加油"];
+        [self showAlertTipViewWithName:@"主页君" WithString:@"快去追上公主呀,如果被你追上了,就让你嘿嘿嘿。"];
     } else if (_NPCType == 1) {
-        [self showAlertTipViewWithName:@"老人" WithString:@"感谢你来救我，我把我的功力全部传授给你了，呵呵，其实我也是菜鸟啦"];
+        [self showAlertTipViewWithName:@"老司机" WithString:@"感谢你来救我，我要把我毕生的功力全部传授给你,别说话，快上车!"];
     } else if (_NPCType == 2) {
-        [self showAlertTipViewWithName:@"老人" WithString:@"感谢你来救我，我把我的功力全部传授给你了，其实我是更大的菜鸟"];
+        [self showAlertTipViewWithName:@"老司机" WithString:@"感谢你来救我，我把我的功力全部传授给你了，以后你也是老司机了"];
     } else if (_NPCType == 3) {
         [self showAlertTipViewWithName:@"小偷" WithString:@"感谢你来救我，这是二层铜门的钥匙，再见了"];
     } else if (_NPCType == 8) {
@@ -42,7 +42,7 @@
     } else if (_NPCType == 9) {
         [self showAlertTipViewWithName:@"老人" WithString:@"我这有500点经验，就送给你了"];
     } else if (_NPCType == 10) {
-        [self showAlertTipViewWithName:@"丫头" WithString:@"小猪，你终于来啦，我是丫头，我在这里，么么哒"];
+        [self showAlertTipViewWithName:@"小萝莉" WithString:@"呀,被追到了,要嘿嘿嘿了。~~~~(>_<)~~~~"];
     }
 }
 
