@@ -9,7 +9,7 @@
 #import "XBSAboutViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "We.h"
-#import "F3HNumberTileGameViewController.h"
+#import "TW_ViewController.h"
 
 @interface XBSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appName;
@@ -61,13 +61,8 @@
 }
 
 - (void)playGame {
-    F3HNumberTileGameViewController *c = [F3HNumberTileGameViewController numberTileGameWithDimension:4
-                                                                                         winThreshold:2048
-                                                                                      backgroundColor:[UIColor whiteColor]
-                                                                                          scoreModule:YES
-                                                                                       buttonControls:NO
-                                                                                        swipeControls:YES];
-    [self.navigationController pushViewController:c animated:YES];
+    TW_ViewController *c = [[TW_ViewController alloc]init];
+    [self presentViewController:c animated:NO completion:nil];
     //[self presentViewController:c animated:YES completion:nil];
 }
 

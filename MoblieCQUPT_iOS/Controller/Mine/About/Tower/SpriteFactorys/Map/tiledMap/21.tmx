@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="11" height="11" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="door" tilewidth="32" tileheight="32">
+  <image source="door.png" width="128" height="128"/>
+ </tileset>
+ <tileset firstgid="17" name="down_floor" tilewidth="32" tileheight="32">
+  <image source="down_floor.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="18" name="enemy" tilewidth="32" tileheight="32">
+  <image source="enemy.png" width="128" height="2048"/>
+  <tile id="28">
+   <properties>
+    <property name="enemy" value="7"/>
+   </properties>
+  </tile>
+  <tile id="136">
+   <properties>
+    <property name="enemy" value="34"/>
+   </properties>
+  </tile>
+  <tile id="216">
+   <properties>
+    <property name="enemy" value="54"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="274" name="item" tilewidth="32" tileheight="32">
+  <image source="item.png" width="128" height="512"/>
+ </tileset>
+ <tileset firstgid="338" name="terrain" tilewidth="32" tileheight="32">
+  <image source="terrain.png" width="64" height="32"/>
+ </tileset>
+ <tileset firstgid="340" name="up_floor" tilewidth="32" tileheight="32">
+  <image source="up_floor.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="341" name="08a" tilewidth="32" tileheight="32" spacing="1">
+  <image source="08a.jpg" width="989" height="989"/>
+  <tile id="600">
+   <properties>
+    <property name="door" value="5"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="1241" name="hero" tilewidth="32" tileheight="32">
+  <image source="hero.png" width="128" height="128"/>
+  <tile id="12">
+   <properties>
+    <property name="point" value="2"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="wall" width="11" height="11" opacity="0.07">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwx0AAAHkAAE=
+  </data>
+ </layer>
+ <layer name="road" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYCAdhDJCMIyNLoZNHbJaXHL4zMVlNjaMy73EqMXmP1zqcLl9sAEA1VAMxQ==
+  </data>
+ </layer>
+ <layer name="enemy" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAM6JGg9hWN1I4C/AAA1KICAw==
+  </data>
+ </layer>
+ <layer name="item" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwx0AAAHkAAE=
+  </data>
+ </layer>
+ <layer name="door" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwx0AAAHkAAE=
+  </data>
+ </layer>
+ <layer name="upfloor" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFwx0AAAHkAAE=
+  </data>
+ </layer>
+ <layer name="downfloor" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgF1ACCA+0APAAADEAAEg==
+  </data>
+ </layer>
+ <layer name="other" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJwzZWZgMCURwwCMjS6GTR2yWlxy+MzFZTY2gMu9xKjF5j9c6mB4LVTdWjLCkh4YAGu1E4k=
+  </data>
+ </layer>
+ <layer name="heroPoint" width="11" height="11">
+  <data encoding="base64" compression="zlib">
+   eJxjYBhZ4CnLQLuA/gAA3/QA6g==
+  </data>
+ </layer>
+</map>
