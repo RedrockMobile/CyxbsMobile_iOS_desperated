@@ -82,8 +82,12 @@
             [weekBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             weekBtn.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
             _clickBtn = weekBtn;
-            if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
-                _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
+            if ([nowWeek integerValue] > 4 && [nowWeek integerValue] < 14) {
+                _weekScrollView.contentOffset = CGPointMake(0, 35*[nowWeek integerValue]-_weekScrollView.frame.size.height/2);
+            }else if ([nowWeek integerValue] >= 14) {
+                _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.contentSize.height - _weekScrollView.frame.size.height);
+            }else {
+                _weekScrollView.contentOffset = CGPointMake(0, 0);
             }
         }else {
             [weekBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -152,12 +156,12 @@
     [self handleData:_weekDataArray];
     [self loadNetData];
     // Do any additional setup after loading the view from its nib.
-    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -580,6 +584,14 @@
         }];
     }else {
         _tagView.transform = CGAffineTransformMakeRotation(M_PI);
+        NSInteger btnTag = self.clickBtn.tag;
+        if (btnTag > 4 && btnTag < 14) {
+            _weekScrollView.contentOffset = CGPointMake(0, 35*btnTag-_weekScrollView.frame.size.height/2);
+        }else if (btnTag >= 14) {
+            _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.contentSize.height - _weekScrollView.frame.size.height);
+        }else {
+            _weekScrollView.contentOffset = CGPointMake(0, 0);
+        }
         [UIView animateWithDuration:0.3 animations:^{
             _backView.frame = CGRectMake(0, 64, _backView.frame.size.width, _backView.frame.size.height);
         } completion:^(BOOL finished) {
