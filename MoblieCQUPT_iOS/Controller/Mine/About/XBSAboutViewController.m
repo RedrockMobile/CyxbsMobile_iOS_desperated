@@ -9,7 +9,6 @@
 #import "XBSAboutViewController.h"
 #import "UIColor+BFPaperColors.h"
 #import "We.h"
-#import "TW_ViewController.h"
 
 @interface XBSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appName;
@@ -61,8 +60,6 @@
 }
 
 - (void)playGame {
-    TW_ViewController *c = [[TW_ViewController alloc]init];
-    [self presentViewController:c animated:NO completion:nil];
     //[self presentViewController:c animated:YES completion:nil];
 }
 

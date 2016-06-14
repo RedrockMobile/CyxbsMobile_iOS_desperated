@@ -22,7 +22,7 @@
     } while (0)
 #else
     #define DDLog(xx, ...)     ;
-    #define NSLog(format, ...) ;
+    //#define NSLog(format, ...) ;
 #endif
 
 #define MAIN_COLOR  [UIColor colorWithRed:43/255.0 green:157/255.0 blue:178/255.0 alpha:1]
@@ -91,22 +91,5 @@
 #import <YYImage.h>
 #import "LoginEntry.h"
 #import "MJRefresh.h"
-
-//魔塔小游戏
-#import <Availability.h>
-
-#ifndef __IPHONE_5_0
-#warning "This project uses features only available in iOS SDK 5.0 and later."
-#endif
-
-#ifdef __OBJC__
-#import <UIKit/UIKit.h>
-#import <Foundation/Foundation.h>
-#endif
-
-#import "MacroUtils.h"
-#define APPDEBUG NO
-#define NOTI_StopControllerTimer @"NOTI_StopControllerTimer"
-#define NOTI_RunToFloor @"NOTI_RunToFloor"
 
 #endif

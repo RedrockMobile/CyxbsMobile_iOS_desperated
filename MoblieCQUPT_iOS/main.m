@@ -11,6 +11,8 @@
 
 int main(int argc, char * argv[]) {
     @autoreleasepool {
+        NSString *homeDir = NSHomeDirectory();
+        NSLog(@"%@", homeDir);
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }
