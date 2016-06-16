@@ -41,6 +41,7 @@
     _flag = 0;
     
     [self setupRefresh];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
 }
 
