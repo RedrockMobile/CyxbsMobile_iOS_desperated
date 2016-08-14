@@ -52,7 +52,6 @@
                 [_data removeAllObjects];
                 [_data setDictionary:[returnValue objectForKey:@"data"]];
             }
-            NSLog(@"_data :%@", _data);
             
             //更新信息
             if ([_data[@"photo_thumbnail_src"] isEqualToString:@""]) {

@@ -131,7 +131,7 @@
                                      }
                                  }else {
                                      //账号信息存本地
-                                     NSDictionary *dic = @{@"name":_nameField.text};
+                                     NSDictionary *dic = @{@"name":_dataDic[@"data"][@"name"]};
                                      [LoginEntry loginWithId:_nameField.text passworld:_passwordField.text withDictionaryParam:dic];
                                      
                                      //个人消息验证

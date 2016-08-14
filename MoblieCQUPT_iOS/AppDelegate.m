@@ -11,7 +11,7 @@
 #import "MineViewController.h"
 #import "XBSGradeViewController.h"
 #import "XBSFindClassroomViewController.h"
-
+#import "MBReleaseViewController.h"
 
 @interface AppDelegate ()
 
@@ -80,9 +80,9 @@
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
     [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"course" localizedTitle:@"本周课表" localizedSubtitle:nil icon:icon1 userInfo:nil]];
-    [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"news" localizedTitle:@"教育信息" localizedSubtitle:nil icon:icon2 userInfo:nil]];
+    [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"news" localizedTitle:@"社区热门" localizedSubtitle:nil icon:icon2 userInfo:nil]];
     [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"exam" localizedTitle:@"考试安排" localizedSubtitle:nil icon:icon3 userInfo:nil]];
-    [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"classroom" localizedTitle:@"查空教室" localizedSubtitle:nil icon:icon4 userInfo:nil]];
+    [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"release" localizedTitle:@"发送动态" localizedSubtitle:nil icon:icon4 userInfo:nil]];
     [UIApplication sharedApplication].shortcutItems = items;
 }
 
@@ -93,8 +93,8 @@
         [self launchViewController:1 withChoose:0];
     }else if ([shortcutItem.type isEqualToString:@"exam"]){
         [self launchViewController:3 withChoose:1];
-    }else if ([shortcutItem.type isEqualToString:@"classroom"]){
-        [self launchViewController:3 withChoose:2];
+    }else if ([shortcutItem.type isEqualToString:@"release"]){
+        [self launchViewController:1 withChoose:2];
     }
 }
 
@@ -105,22 +105,20 @@
         NSDate *dataTime = [userDefault objectForKey:@"time"];
         if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-            UITabBarController *tab = (UITabBarController *)view.viewControllers[0];
+            UINavigationController *mainNavigationVC = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+            UITabBarController *tab = (UITabBarController *)mainNavigationVC.viewControllers[0];
             
             if (secondChooseIndex == 0) {
                 tab.selectedIndex = selectIndex;
-                self.window.rootViewController = view;
+                self.window.rootViewController = mainNavigationVC;
             }else if (secondChooseIndex == 1) {
                 tab.selectedIndex = selectIndex;
-                self.window.rootViewController = view;
-//                XBSGradeViewController *gradeVC = [[XBSGradeViewController alloc] init];
-//                [tab.navigationController pushViewController:gradeVC animated:YES];
+                self.window.rootViewController = mainNavigationVC;
             }else if (secondChooseIndex == 2) {
                 tab.selectedIndex = selectIndex;
-                self.window.rootViewController = view;
-                XBSFindClassroomViewController *findClassroomVC = [[XBSFindClassroomViewController alloc] init];
-                [tab presentViewController:findClassroomVC animated:YES completion:nil];
+                self.window.rootViewController = mainNavigationVC;
+                MBReleaseViewController *RVC = [[MBReleaseViewController alloc] init];
+                [mainNavigationVC pushViewController:RVC animated:YES];
             }
         }else {
             [userDefault removeObjectForKey:@"stuNum"];

@@ -21,6 +21,7 @@
 #import "SettingViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+AFNetworking.h"
+#import "LoginViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
@@ -226,15 +227,41 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    if ((className = _cellDictionary[indexPath.section][@"controller"])) {
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    NSSet *set = [NSSet setWithObjects:@1, @2, @5, nil];
+    NSSet *needLoginSet = [NSSet setWithObject: [NSNumber numberWithInteger:indexPath.section]];
+    
+    //需账户登陆
+    if ([needLoginSet isSubsetOfSet:set]) {
+        if ([userDefaults objectForKey:@"user_id"]) {
+           
+            if ((className = _cellDictionary[indexPath.section][@"controller"])) {
         
-        UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
-        viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
-        self.navigationController.navigationBarHidden = NO;
-        [self.navigationController pushViewController:viewController animated:YES];
+                UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
+                viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
+                self.navigationController.navigationBarHidden = NO;
+                [self.navigationController pushViewController:viewController animated:YES];
+            }
+            
+        } else {
+            LoginViewController *LVC = [[LoginViewController alloc] init];
+            [self presentViewController:LVC animated:YES completion:nil];
+        }
+    } else {
+        
+        //无需账户信息
+        if ((className = _cellDictionary[indexPath.section][@"controller"])) {
+            
+            UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
+            viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
+            self.navigationController.navigationBarHidden = NO;
+            [self.navigationController pushViewController:viewController animated:YES];
+        }
+        
     }
 }
-
 
 
 //#pragma mark - UIImagePickerController Delegate

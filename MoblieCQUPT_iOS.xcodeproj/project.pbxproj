@@ -41,7 +41,6 @@
 		CE0ADC9F1BDDD03E00374CDC /* 补考安排@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0ADC981BDDD03E00374CDC /* 补考安排@2x.png */; };
 		CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */; };
 		CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */; };
-		CE1B36EA1B9A207100824B96 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1B36E91B9A207100824B96 /* calendar.png */; };
 		CE267A221BA4A9B90059C2A5 /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE267A211BA4A9B90059C2A5 /* splash.jpg */; };
 		CE3FC9401B9702A6000085E5 /* ORWRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3FC93F1B9702A6000085E5 /* ORWRequestCache.m */; };
 		CE41EE121C1FE1A2004C873A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41EE111C1FE1A2004C873A /* ViewController.m */; };
@@ -226,6 +225,7 @@
 		E238270E1B9478190058970E /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E238270D1B9478190058970E /* Course.m */; };
 		E243BC2F1CDE27B400C7DDD6 /* MyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E243BC2E1CDE27B400C7DDD6 /* MyInfoModel.m */; };
 		E24749551CDB4591006AEB9B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24749541CDB4591006AEB9B /* SettingViewController.m */; };
+		E259FCCA1D605BB800B9B14E /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = E259FCC91D605BB800B9B14E /* calendar.png */; };
 		E263C7711BA35E26008488FA /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C73E1BA35E26008488FA /* ButtonView.xib */; };
 		E263C7721BA35E26008488FA /* ChuangyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C7411BA35E26008488FA /* ChuangyeViewController.m */; };
 		E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C7421BA35E26008488FA /* ChuangyeViewController.xib */; };
@@ -358,7 +358,6 @@
 		CE1B36DB1B9A1B6800824B96 /* new_icon_menu_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_3.png; sourceTree = "<group>"; };
 		CE1B36DC1B9A1B6800824B96 /* new_icon_menu_3_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_3_press.png; sourceTree = "<group>"; };
 		CE1B36DE1B9A1B6800824B96 /* new_icon_menu_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_icon_menu_1.png; sourceTree = "<group>"; };
-		CE1B36E91B9A207100824B96 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		CE25501E1C15BD8900BCDDB8 /* 掌上重邮.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "掌上重邮.entitlements"; sourceTree = "<group>"; };
 		CE25501F1C15BD9500BCDDB8 /* ClassWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ClassWidget.entitlements; sourceTree = "<group>"; };
 		CE267A211BA4A9B90059C2A5 /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
@@ -625,6 +624,7 @@
 		E24749531CDB4591006AEB9B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		E24749541CDB4591006AEB9B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		E259FCC91D605BB800B9B14E /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
 		E263C73E1BA35E26008488FA /* ButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
 		E263C7401BA35E26008488FA /* ChuangyeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuangyeViewController.h; sourceTree = "<group>"; };
 		E263C7411BA35E26008488FA /* ChuangyeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuangyeViewController.m; sourceTree = "<group>"; };
@@ -807,6 +807,7 @@
 		CE0ADC911BDDD03E00374CDC /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				E259FCC91D605BB800B9B14E /* calendar.png */,
 				D95256421C8BC8C600CD7921 /* GQConsult */,
 				D90928911CACCD6400CA97CD /* 我的动态@2x.png */,
 				D90928921CACCD6400CA97CD /* 夜间模式@2x.png */,
@@ -1155,7 +1156,6 @@
 				D952C75C1C0EC43700AA24C0 /* Shop */,
 				CE0ADC911BDDD03E00374CDC /* Mine */,
 				CE5402DB1BDD2DAB00488428 /* TarbarImg */,
-				CE1B36E91B9A207100824B96 /* calendar.png */,
 				CE1B36D81B9A1B6800824B96 /* Archive */,
 				E2E7DE301B9476810081F699 /* CourseIcon */,
 				E2E7DE271B9476730081F699 /* LoginIconImage */,
@@ -1854,7 +1854,7 @@
 				TargetAttributes = {
 					CE4334431BE7C52D000C407D = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = FYYE36HAH8;
+						DevelopmentTeam = 777RZL5E43;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1863,7 +1863,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = FYYE36HAH8;
+						DevelopmentTeam = 777RZL5E43;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1918,6 +1918,7 @@
 				D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */,
 				D952C7591C0C75B300AA24C0 /* iconfont-status.png in Resources */,
 				CE0ADC991BDDD03E00374CDC /* 关于@2x.png in Resources */,
+				E259FCCA1D605BB800B9B14E /* calendar.png in Resources */,
 				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
 				D98B5D1A1C08483E0010BC9E /* chuangye_new@2x.png in Resources */,
 				D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */,
@@ -1925,7 +1926,6 @@
 				D90928941CACCD6400CA97CD /* 我的动态@2x.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
-				CE1B36EA1B9A207100824B96 /* calendar.png in Resources */,
 				D90928951CACCD6400CA97CD /* 夜间模式@2x.png in Resources */,
 				D99B769A1C8DBD4F00FFE538 /* emptyClassTag1.png in Resources */,
 				D94F63621CE17DFA00F91664 /* xia.png in Resources */,
