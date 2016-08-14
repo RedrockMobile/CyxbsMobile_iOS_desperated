@@ -225,7 +225,8 @@
 		E238270E1B9478190058970E /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E238270D1B9478190058970E /* Course.m */; };
 		E243BC2F1CDE27B400C7DDD6 /* MyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E243BC2E1CDE27B400C7DDD6 /* MyInfoModel.m */; };
 		E24749551CDB4591006AEB9B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24749541CDB4591006AEB9B /* SettingViewController.m */; };
-		E259FCCA1D605BB800B9B14E /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = E259FCC91D605BB800B9B14E /* calendar.png */; };
+		E259FCCC1D609EB800B9B14E /* calendar1.png in Resources */ = {isa = PBXBuildFile; fileRef = E259FCCB1D609EB800B9B14E /* calendar1.png */; };
+		E259FCCE1D609EC000B9B14E /* calendar2.png in Resources */ = {isa = PBXBuildFile; fileRef = E259FCCD1D609EC000B9B14E /* calendar2.png */; };
 		E263C7711BA35E26008488FA /* ButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C73E1BA35E26008488FA /* ButtonView.xib */; };
 		E263C7721BA35E26008488FA /* ChuangyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C7411BA35E26008488FA /* ChuangyeViewController.m */; };
 		E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C7421BA35E26008488FA /* ChuangyeViewController.xib */; };
@@ -624,7 +625,8 @@
 		E24749531CDB4591006AEB9B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		E24749541CDB4591006AEB9B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		E259FCC91D605BB800B9B14E /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
+		E259FCCB1D609EB800B9B14E /* calendar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar1.png; sourceTree = "<group>"; };
+		E259FCCD1D609EC000B9B14E /* calendar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar2.png; sourceTree = "<group>"; };
 		E263C73E1BA35E26008488FA /* ButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonView.xib; sourceTree = "<group>"; };
 		E263C7401BA35E26008488FA /* ChuangyeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuangyeViewController.h; sourceTree = "<group>"; };
 		E263C7411BA35E26008488FA /* ChuangyeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuangyeViewController.m; sourceTree = "<group>"; };
@@ -807,7 +809,8 @@
 		CE0ADC911BDDD03E00374CDC /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				E259FCC91D605BB800B9B14E /* calendar.png */,
+				E259FCCB1D609EB800B9B14E /* calendar1.png */,
+				E259FCCD1D609EC000B9B14E /* calendar2.png */,
 				D95256421C8BC8C600CD7921 /* GQConsult */,
 				D90928911CACCD6400CA97CD /* 我的动态@2x.png */,
 				D90928921CACCD6400CA97CD /* 夜间模式@2x.png */,
@@ -1918,7 +1921,6 @@
 				D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */,
 				D952C7591C0C75B300AA24C0 /* iconfont-status.png in Resources */,
 				CE0ADC991BDDD03E00374CDC /* 关于@2x.png in Resources */,
-				E259FCCA1D605BB800B9B14E /* calendar.png in Resources */,
 				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
 				D98B5D1A1C08483E0010BC9E /* chuangye_new@2x.png in Resources */,
 				D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */,
@@ -1926,6 +1928,7 @@
 				D90928941CACCD6400CA97CD /* 我的动态@2x.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
+				E259FCCE1D609EC000B9B14E /* calendar2.png in Resources */,
 				D90928951CACCD6400CA97CD /* 夜间模式@2x.png in Resources */,
 				D99B769A1C8DBD4F00FFE538 /* emptyClassTag1.png in Resources */,
 				D94F63621CE17DFA00F91664 /* xia.png in Resources */,
@@ -2055,6 +2058,7 @@
 				E2C75DA01CE1169100EA8FEA /* headImage.png in Resources */,
 				D98B5D1B1C08483E0010BC9E /* community_new@2x.png in Resources */,
 				E263C7711BA35E26008488FA /* ButtonView.xib in Resources */,
+				E259FCCC1D609EB800B9B14E /* calendar1.png in Resources */,
 				E263C7811BA35E26008488FA /* shakeForShop@2x.png in Resources */,
 				E263C7771BA35E26008488FA /* chuangye@2x.png in Resources */,
 				E263C7791BA35E26008488FA /* cqupt1@2x.jpg in Resources */,
