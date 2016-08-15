@@ -27,8 +27,8 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-#import <BFPaperCheckbox.h>
-#import <UIColor+BFPaperColors.h>
+#import "BFPaperCheckbox.h"
+#import "UIColor+BFPaperColors.h"
 
 @interface BFPaperCheckbox()
 @property CGPoint centerPoint;

@@ -230,7 +230,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSSet *set = [NSSet setWithObjects:@1, @2, @5, nil];
+    NSSet *set = [NSSet setWithObjects:@0, @1, @2, @5, nil];
     NSSet *needLoginSet = [NSSet setWithObject: [NSNumber numberWithInteger:indexPath.section]];
     
     //需账户登陆

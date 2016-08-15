@@ -111,7 +111,7 @@ else {
 }
 ```
 
-Cocoapods
+CocoaPods
 -------
 
 CocoaPods are the best way to manage library dependencies in Objective-C projects.
@@ -120,7 +120,7 @@ Learn more at http://cocoapods.org
 Add this to your podfile to add BFPaperCheckbox to your project.
 ```ruby
 platform :ios, '7.0'
-pod 'BFPaperCheckbox', '~> 1.2.7'
+pod 'BFPaperCheckbox'
 ```
 
 

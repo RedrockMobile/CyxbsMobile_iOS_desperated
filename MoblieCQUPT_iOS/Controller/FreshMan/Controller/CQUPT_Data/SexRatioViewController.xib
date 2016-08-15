@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SexRatioViewController">
+            <connections>
+                <outlet property="bt" destination="xSJ-Ve-ubd" id="iPB-rK-RTF"/>
+                <outlet property="bt1" destination="GG2-js-IsU" id="Y1h-sg-k9A"/>
+                <outlet property="exampleColorLb1" destination="k22-ZV-Hgm" id="YfX-CT-HoN"/>
+                <outlet property="exampleColorLb2" destination="amM-61-TQw" id="zQF-f3-tmt"/>
+                <outlet property="exampleNameLb1" destination="EV5-2K-Qpe" id="sQ5-s3-xo2"/>
+                <outlet property="exampleNameLb2" destination="Efk-g0-xf6" id="HXo-av-xAt"/>
+                <outlet property="lb" destination="X1v-HQ-lwd" id="R57-3M-ich"/>
+                <outlet property="lb1" destination="O43-ut-98n" id="AFM-fn-hYi"/>
+                <outlet property="pieView" destination="P1w-mY-JQh" id="Mno-e0-goC"/>
+                <outlet property="view" destination="P1w-mY-JQh" id="Q3X-La-iM7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EV5-2K-Qpe">
+                    <rect key="frame" x="142.5" y="398" width="187.5" height="62.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="EV5-2K-Qpe" secondAttribute="height" multiplier="3:1" id="LPr-x1-ZWt"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="104" y="256" width="116.5" height="44"/>
+                    </variation>
+                </label>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Efk-g0-xf6">
+                    <rect key="frame" x="412.5" y="398" width="187.5" height="62.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="284" y="256" width="116" height="44"/>
+                    </variation>
+                </label>
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1w-mY-JQh">
+                    <rect key="frame" x="212.5" y="207" width="176.5" height="176"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="P1w-mY-JQh" secondAttribute="height" multiplier="1:1" id="WFJ-KN-p8y">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                    </constraints>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="196" y="238" width="8" height="8"/>
+                    </variation>
+                </view>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O43-ut-98n">
+                    <rect key="frame" x="18" y="106" width="564" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="O43-ut-98n" secondAttribute="height" multiplier="25:3" id="hKg-Nz-bqF"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="hKg-Nz-bqF"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="18" y="188" width="239.5" height="30"/>
+                    </variation>
+                </label>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amM-61-TQw">
+                    <rect key="frame" x="350" y="398" width="62.5" height="62.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="241" y="255" width="43.5" height="44.5"/>
+                    </variation>
+                </label>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1v-HQ-lwd">
+                    <rect key="frame" x="18" y="18" width="564" height="70.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="X1v-HQ-lwd" secondAttribute="height" multiplier="25:3" id="5OM-Lj-VKr"/>
+                        <constraint firstAttribute="width" secondItem="X1v-HQ-lwd" secondAttribute="height" multiplier="8" id="7TF-dn-9zh"/>
+                        <constraint firstAttribute="width" secondItem="X1v-HQ-lwd" secondAttribute="height" multiplier="89:5" constant="8" id="Xxw-px-kOy"/>
+                        <constraint firstAttribute="width" secondItem="X1v-HQ-lwd" secondAttribute="height" multiplier="8:1" id="hBp-e8-eU9">
+                            <variation key="widthClass=compact" constant="0.0"/>
+                        </constraint>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="5OM-Lj-VKr"/>
+                            <exclude reference="7TF-dn-9zh"/>
+                            <exclude reference="Xxw-px-kOy"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="NO"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="18" y="140" width="239.5" height="30"/>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSJ-Ve-ubd">
+                    <rect key="frame" x="511" y="18" width="70.5" height="70.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="xSJ-Ve-ubd" secondAttribute="height" multiplier="1:1" id="SYH-tx-dqT"/>
+                    </constraints>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GG2-js-IsU">
+                    <rect key="frame" x="511" y="106" width="70.5" height="70.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="GG2-js-IsU" secondAttribute="height" multiplier="19:18" id="BV9-47-DCe"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="BV9-47-DCe"/>
+                        </mask>
+                    </variation>
+                    <variation key="widthClass=compact" layoutMarginsFollowReadableWidth="YES"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="257" y="188" width="30" height="30"/>
+                    </variation>
+                </button>
+                <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k22-ZV-Hgm">
+                    <rect key="frame" x="80" y="397.5" width="62.5" height="62.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="k22-ZV-Hgm" secondAttribute="height" multiplier="1:1" id="6JQ-IU-Oqn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="heightClass=compact-widthClass=compact" misplaced="YES">
+                        <rect key="frame" x="60" y="256" width="44" height="44"/>
+                    </variation>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Efk-g0-xf6" firstAttribute="leading" secondItem="amM-61-TQw" secondAttribute="trailing" id="8zh-Y6-RCA"/>
+                <constraint firstItem="EV5-2K-Qpe" firstAttribute="leading" secondItem="k22-ZV-Hgm" secondAttribute="trailing" id="AaH-X0-Xej"/>
+                <constraint firstItem="EV5-2K-Qpe" firstAttribute="height" secondItem="k22-ZV-Hgm" secondAttribute="height" id="Aqb-vH-Bc7"/>
+                <constraint firstItem="X1v-HQ-lwd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="18" id="CfG-W5-8Ji"/>
+                <constraint firstItem="Efk-g0-xf6" firstAttribute="centerY" secondItem="k22-ZV-Hgm" secondAttribute="centerY" id="Ddj-uO-qj9"/>
+                <constraint firstItem="P1w-mY-JQh" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DiF-ZL-MkO">
+                    <variation key="widthClass=compact" constant="0.0"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="xSJ-Ve-ubd" secondAttribute="trailing" constant="18" id="Ei8-lI-R9G"/>
+                <constraint firstItem="amM-61-TQw" firstAttribute="leading" secondItem="EV5-2K-Qpe" secondAttribute="trailing" constant="20" id="FgN-M3-HiB"/>
+                <constraint firstItem="O43-ut-98n" firstAttribute="centerX" secondItem="X1v-HQ-lwd" secondAttribute="centerX" id="G7Q-xP-Fef"/>
+                <constraint firstItem="EV5-2K-Qpe" firstAttribute="height" secondItem="Efk-g0-xf6" secondAttribute="height" id="Gdl-js-WJ1"/>
+                <constraint firstItem="xSJ-Ve-ubd" firstAttribute="height" secondItem="GG2-js-IsU" secondAttribute="height" id="Iz4-hY-5p8"/>
+                <constraint firstItem="O43-ut-98n" firstAttribute="top" secondItem="X1v-HQ-lwd" secondAttribute="bottom" constant="18" id="JN7-s9-BRH"/>
+                <constraint firstItem="EV5-2K-Qpe" firstAttribute="top" secondItem="P1w-mY-JQh" secondAttribute="bottom" constant="15" id="Je7-Bg-LQD">
+                    <variation key="widthClass=compact" constant="15"/>
+                </constraint>
+                <constraint firstAttribute="trailing" secondItem="X1v-HQ-lwd" secondAttribute="trailing" constant="18" id="L21-2J-65B"/>
+                <constraint firstAttribute="trailing" secondItem="GG2-js-IsU" secondAttribute="trailing" constant="18" id="Lqx-n2-HEB"/>
+                <constraint firstItem="xSJ-Ve-ubd" firstAttribute="centerY" secondItem="X1v-HQ-lwd" secondAttribute="centerY" id="MI2-E4-jJm"/>
+                <constraint firstItem="X1v-HQ-lwd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="18" id="Mc2-Rj-iYe">
+                    <variation key="widthClass=compact" constant="18"/>
+                </constraint>
+                <constraint firstItem="P1w-mY-JQh" firstAttribute="top" secondItem="O43-ut-98n" secondAttribute="bottom" constant="30" id="MvB-Dy-ihP">
+                    <variation key="widthClass=compact" constant="30"/>
+                </constraint>
+                <constraint firstItem="X1v-HQ-lwd" firstAttribute="height" secondItem="xSJ-Ve-ubd" secondAttribute="height" id="PKr-1Q-0VM"/>
+                <constraint firstItem="amM-61-TQw" firstAttribute="centerY" secondItem="k22-ZV-Hgm" secondAttribute="centerY" id="Q1s-d9-T29"/>
+                <constraint firstItem="xSJ-Ve-ubd" firstAttribute="width" secondItem="GG2-js-IsU" secondAttribute="width" id="RUU-G9-P78"/>
+                <constraint firstAttribute="trailing" secondItem="Efk-g0-xf6" secondAttribute="trailing" id="T7Q-NJ-uHE">
+                    <variation key="widthClass=compact" constant="0.0"/>
+                </constraint>
+                <constraint firstItem="k22-ZV-Hgm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="Vap-Mz-P2P"/>
+                <constraint firstItem="O43-ut-98n" firstAttribute="centerX" secondItem="X1v-HQ-lwd" secondAttribute="centerX" id="Vz2-Qb-kYZ"/>
+                <constraint firstItem="k22-ZV-Hgm" firstAttribute="centerY" secondItem="EV5-2K-Qpe" secondAttribute="centerY" id="XEZ-wH-HdX"/>
+                <constraint firstItem="k22-ZV-Hgm" firstAttribute="height" secondItem="amM-61-TQw" secondAttribute="height" id="Z3y-1T-Vfr"/>
+                <constraint firstItem="EV5-2K-Qpe" firstAttribute="width" secondItem="Efk-g0-xf6" secondAttribute="width" id="bqC-LU-4tW"/>
+                <constraint firstItem="X1v-HQ-lwd" firstAttribute="height" secondItem="O43-ut-98n" secondAttribute="height" id="d2u-80-Tt1"/>
+                <constraint firstItem="X1v-HQ-lwd" firstAttribute="width" secondItem="O43-ut-98n" secondAttribute="width" id="dfy-rI-wPr"/>
+                <constraint firstItem="k22-ZV-Hgm" firstAttribute="width" secondItem="amM-61-TQw" secondAttribute="width" id="gJ1-ck-9Zh"/>
+                <constraint firstAttribute="bottom" secondItem="k22-ZV-Hgm" secondAttribute="bottom" constant="140" id="nqM-So-88Z"/>
+                <constraint firstItem="GG2-js-IsU" firstAttribute="centerY" secondItem="O43-ut-98n" secondAttribute="centerY" id="qwT-7g-Auc"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Vz2-Qb-kYZ"/>
+                </mask>
+            </variation>
+            <variation key="widthClass=compact">
+                <mask key="subviews">
+                    <include reference="EV5-2K-Qpe"/>
+                    <include reference="Efk-g0-xf6"/>
+                    <include reference="P1w-mY-JQh"/>
+                    <include reference="O43-ut-98n"/>
+                    <include reference="amM-61-TQw"/>
+                    <include reference="X1v-HQ-lwd"/>
+                    <include reference="xSJ-Ve-ubd"/>
+                    <include reference="GG2-js-IsU"/>
+                    <include reference="k22-ZV-Hgm"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="321" y="-17"/>
+        </view>
+    </objects>
+</document>

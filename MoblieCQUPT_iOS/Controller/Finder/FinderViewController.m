@@ -13,6 +13,7 @@
 #import "ShakeViewController.h"
 #import "CommunityViewController.h"
 #import "MapViewController.h"
+#import "FreshManMainViewController.h"
 
 #define kCount 3
 
@@ -246,9 +247,11 @@
 }
 
 - (void)enterCommunity{
-    CommunityViewController *cvc = [[CommunityViewController alloc] init];
-    [self.navigationController pushViewController:cvc
-                                         animated:YES];
+//    CommunityViewController *cvc = [[CommunityViewController alloc] init];
+//    [self.navigationController pushViewController:cvc
+//                                         animated:YES];
+    FreshManMainViewController *fvc = [[FreshManMainViewController alloc]init];
+    [self.navigationController pushViewController:fvc animated:YES];
     _communityView.backgroundColor = [UIColor clearColor];
     _communityOfView.backgroundColor = [UIColor clearColor];
 }
