@@ -80,7 +80,6 @@
         }
         [_titleScrollView addSubview:btn];
         [_btnArray addObject:btn];
-        NSLog(@"%@ %f", _subviewControllers[i].title,_kTitileBtnWidth);
     }
     _sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, titleHeight-2, _kTitileBtnWidth, 2)];
     _sliderView.backgroundColor = MAIN_COLOR;
@@ -88,7 +87,6 @@
     [_titleScrollView addSubview:cuttingLine];
     [_titleScrollView addSubview:self.sliderView];
     [self addSubview:self.titleScrollView];
-    NSLog(@"%@", _titleScrollView.subviews);
 }
 
 - (void)initWithScrollView {
@@ -103,7 +101,6 @@
     _mainScrollView.delegate = self;
     
     for (int i = 0; i < _subviewControllers.count; i++) {
-        NSLog(@"%p", self.subviewControllers[i].view);
         UIView *view = [[UIView alloc]initWithFrame:CGRectZero];
         view = self.subviewControllers[i].view;
         view.frame = CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT-20-_kTitileBtnWidth);

@@ -65,15 +65,17 @@
 }
 
 - (void)eventWhenScrollSubViewWithIndex:(NSInteger)index {
+    NSLog(@"%ld",index);
     if (index == 1 && !_isLoadView1) {
         [_two downLoad];
-        _isLoadView2 = YES;
+        _isLoadView1 = YES;
     }else if (index == 2 && !_isLoadView2) {
         [_three downLoad];
-        _isLoadView3 = YES;
+        NSLog(@"33");
+        _isLoadView2 = YES;
     }else if (index == 3 && !_isLoadView3) {
         [_four downLoad];
-        _isLoadView4 = YES;
+        _isLoadView3 = YES;
     }else if (index == 4 && !_isLoadView4) {
         [_five downLoad];
         _isLoadView4 = YES;
