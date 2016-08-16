@@ -73,8 +73,8 @@
 
     //网络请求头像和简介
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
         if ([returnValue objectForKey:@"data"]) {
@@ -246,8 +246,33 @@
             }
             
         } else {
-            LoginViewController *LVC = [[LoginViewController alloc] init];
-            [self presentViewController:LVC animated:YES completion:nil];
+            
+            NSString *message;
+            if ([needLoginSet containsObject:@0]) {
+                message = @"登录后才能查看个人信息哦";
+            }else if ([needLoginSet containsObject:@1]) {
+                message = @"登录后才能查看与我相关哦";
+            }else if ([needLoginSet containsObject:@2]) {
+                message = @"登录后才能查看我的动态哦";
+            }else if ([needLoginSet containsObject:@5]) {
+                message = @"登录后才能查看期末成绩哦";
+            }
+            
+            UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:message preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+            
+            __weak typeof(self) weakSelf = self;
+            UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                LoginViewController *LVC = [[LoginViewController alloc] init];
+                [weakSelf presentViewController:LVC animated:YES completion:nil];
+            }];
+            
+            [alertC addAction:cancel];
+            [alertC addAction:confirm];
+            
+            [self presentViewController:alertC animated:YES completion:nil];
+            
         }
     } else {
         

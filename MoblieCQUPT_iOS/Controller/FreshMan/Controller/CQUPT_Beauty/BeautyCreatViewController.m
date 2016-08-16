@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "MediaPlayer/MediaPlayer.h"
+#import "BeautyCreatDetailViewController.h"
 #define maxScreenHeight [UIScreen mainScreen].bounds.size.height
 #define maxScreenWdith [UIScreen mainScreen].bounds.size.width
 
@@ -34,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 //    [self downLoad];
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.height-114) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-114) style:UITableViewStylePlain];
     _tableView.delegate = self;
     _tableView.dataSource = self;
 //    [self.view addSubview:_tableView];
@@ -45,6 +46,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    _tableView.frame = CGRectMake(0, 114, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-114);
+}
 
 
 - (void)downLoad
@@ -116,17 +120,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSURL *movieUrl = [NSURL URLWithString:_dataArray[indexPath.row][@"video_url"]];
-
-   _videoView  = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    _videoView.scalesPageToFit = YES;
-    _videoView.delegate = self;
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    BeautyCreatDetailViewController *bcdvc = [[BeautyCreatDetailViewController alloc]init];
     
-    NSURLRequest *request = [NSURLRequest requestWithURL:movieUrl];
+    bcdvc.videoUrlStr = _dataArray[indexPath.row][@"video_url"] ?: @"";
     
-    [_videoView loadRequest:request];
-    
-    [self.view addSubview:_videoView];
+    [self presentViewController:bcdvc animated:YES completion:nil];
 }
 
 /*

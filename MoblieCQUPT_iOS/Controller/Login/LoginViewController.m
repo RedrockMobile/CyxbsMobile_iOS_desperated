@@ -169,11 +169,12 @@
             [LoginEntry saveByUserdefaultWithUserID:user_id];
             [LoginEntry saveByUserdefaultWithNickname:nickname];
             [LoginEntry saveByUserdefaultWithPhoto_src:photo_src];
-            NSLog(@"%@,%@,%@",user_id,nickname,photo_src);
             //跳转到 主界面
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-            [self presentViewController:view animated:YES completion:nil];
+//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+//            [self presentViewController:view animated:YES completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
         }else {
             //没有完善信息,跳转到完善个人的界面
             VerifyMyInfoViewController *verifyMyInfoVC = [[VerifyMyInfoViewController alloc] init];

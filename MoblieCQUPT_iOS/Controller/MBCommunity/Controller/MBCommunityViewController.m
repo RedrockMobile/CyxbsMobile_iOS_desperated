@@ -14,6 +14,7 @@
 #import "MBCommunityCellTableViewCell.h"
 #import "MBCommuityDetailsViewController.h"
 #import "MBReleaseViewController.h"
+#import "LoginViewController.h"
 
 
 @interface MBCommunityViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -35,7 +36,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *allData;
 
-@property (strong, nonatomic) NSMutableArray *tableViewArray;
+@property (strong, nonatomic) NSMutableArray<MBCommunityTableView *> *tableViewArray;
 @property (strong, nonatomic) NSMutableArray *indicatorViewArray;
 
 @property (copy, nonatomic) NSString *currenSelectCellOfRow;
@@ -101,6 +102,9 @@
 //当从详情界面返回时 重新刷新cell
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    for (int i = 0; i < self.tableViewArray.count; i ++) {
+        [self.tableViewArray[i] reloadData];
+    }
     
 }
 - (void)viewDidAppear:(BOOL)animated {
@@ -128,8 +132,8 @@
     NSLog(@"%ld",type);
     
     //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"] ?: @"";
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"] ?: @"";
     NSString *page = @"0";
     NSString *size = @"0";
     NSString *type_id = @"5";
@@ -256,7 +260,7 @@
 
 
 - (void)setupTableView:(NSArray *)segments {
-    _tableViewArray = [NSMutableArray array];
+    _tableViewArray = [NSMutableArray<MBCommunityTableView *> array];
     for (int i = 0; i < segments.count; i ++) {
         MBCommunityTableView *tableView = [[MBCommunityTableView alloc]initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, _segmentView.backScrollView.frame.size.height) style:UITableViewStyleGrouped];
         tableView.dataSource = self;
@@ -346,15 +350,22 @@
             NSLog(@"点击取消赞");
             
         }else {
-            NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
-            [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
-            model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
-            [weakSelf uploadSupport:viewModel withType:0];
-            imageBtn.selected = !imageBtn.selected;
-            labelBtn.selected = !labelBtn.selected;
-            weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
-            weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
-            NSLog(@"点击赞");
+            NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+            NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+            if (stuNum.length == 0 && idNum.length == 0) {
+                [weakSelf uploadSupport:viewModel withType:0];
+            }else {
+                NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
+                [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
+                model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
+                [weakSelf uploadSupport:viewModel withType:0];
+                imageBtn.selected = !imageBtn.selected;
+                labelBtn.selected = !labelBtn.selected;
+                weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
+                weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
+                NSLog(@"点击赞");
+            }
+            
         }
     };
     
@@ -393,8 +404,8 @@
         __weak typeof(MBCommunityTableView *) weakTableView = tableView;
         __weak typeof(self) weakSelf = self;
         
-        __block NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-        __block NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+        __block NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"] ?: @"";
+        __block NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"] ?: @"";
         __block NSString *page;
         __block NSString *currentPage;
         __block NSString *size = @"0";
@@ -596,27 +607,45 @@
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *article_id = model.articleID;
     NSString *type_id = model.typeID;
+    //如果stuNum和idNum为nil 则不能点赞 提示是否登录
     
-    NSDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"article_id":article_id,
-                                @"type_id":type_id};
-    
-    __block MBCommunityModel *modelBlock = model;
-    __block MBCommunity_ViewModel *viewModelBlock = viewModel;
-    __weak typeof(self) weakSelf = self;
-    
-    [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
-        viewModelBlock.model = modelBlock;
-        NSInteger row = [weakSelf.currenSelectCellOfRow integerValue];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
-        MBCommunityTableView *tableView = weakSelf.tableViewArray[[weakSelf.currenSelectCellOfTableView integerValue]];
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-        NSLog(@"请求 %@",modelBlock.isMyLike);
-    } WithFailureBlock:^{
-        NSLog(@"请求赞出错");
-    }];
+    if (stuNum.length == 0 && idNum.length == 0) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息呢,肯定不让你点赞呀" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+        
+        __weak typeof(self) weakSelf = self;
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            LoginViewController *LVC = [[LoginViewController alloc] init];
+            [weakSelf presentViewController:LVC animated:YES completion:nil];
+        }];
+        
+        [alertC addAction:cancel];
+        [alertC addAction:confirm];
+        
+        [self presentViewController:alertC animated:YES completion:nil];
+    }else {
+        NSDictionary *parameter = @{@"stuNum":stuNum,
+                                    @"idNum":idNum,
+                                    @"article_id":article_id,
+                                    @"type_id":type_id};
+        
+        __block MBCommunityModel *modelBlock = model;
+        __block MBCommunity_ViewModel *viewModelBlock = viewModel;
+        __weak typeof(self) weakSelf = self;
+        
+        [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+            modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
+            viewModelBlock.model = modelBlock;
+            NSInteger row = [weakSelf.currenSelectCellOfRow integerValue];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
+            MBCommunityTableView *tableView = weakSelf.tableViewArray[[weakSelf.currenSelectCellOfTableView integerValue]];
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            NSLog(@"请求 %@",modelBlock.isMyLike);
+        } WithFailureBlock:^{
+            NSLog(@"请求赞出错");
+        }];
+    }
 }
 
 #pragma mark -

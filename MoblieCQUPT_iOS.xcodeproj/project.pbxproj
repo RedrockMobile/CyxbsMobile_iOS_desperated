@@ -188,6 +188,8 @@
 		D9F1C9B01CE428AF00F692DB /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F1C9AF1CE428AF00F692DB /* cancel.png */; };
 		D9F7671C1CB7AB1F00DEF12A /* 熊.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */; };
 		D9F7671E1CB7AB3400DEF12A /* 智妍1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */; };
+		D9F9F0321D62F44D00CA98C1 /* courseMengbi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9F9F0311D62F44D00CA98C1 /* courseMengbi.jpg */; };
+		D9F9F0351D630AFC00CA98C1 /* BeautyCreatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F9F0341D630AFC00CA98C1 /* BeautyCreatDetailViewController.m */; };
 		D9FAECF71BEDF5220010ED3F /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9FAECF61BEDF5220010ED3F /* View.xib */; };
 		E20F27DB1D6203D100C5DF79 /* 大艺团.txt in Resources */ = {isa = PBXBuildFile; fileRef = E20F27BF1D6203D100C5DF79 /* 大艺团.txt */; };
 		E20F27DC1D6203D100C5DF79 /* 红岩网校工作站简介.txt in Resources */ = {isa = PBXBuildFile; fileRef = E20F27C01D6203D100C5DF79 /* 红岩网校工作站简介.txt */; };
@@ -637,6 +639,9 @@
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "熊.jpg"; sourceTree = "<group>"; };
 		D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "智妍1.jpg"; sourceTree = "<group>"; };
+		D9F9F0311D62F44D00CA98C1 /* courseMengbi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = courseMengbi.jpg; sourceTree = "<group>"; };
+		D9F9F0331D630AFC00CA98C1 /* BeautyCreatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyCreatDetailViewController.h; sourceTree = "<group>"; };
+		D9F9F0341D630AFC00CA98C1 /* BeautyCreatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyCreatDetailViewController.m; sourceTree = "<group>"; };
 		D9FAECF61BEDF5220010ED3F /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		E20F27BF1D6203D100C5DF79 /* 大艺团.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "大艺团.txt"; sourceTree = "<group>"; };
 		E20F27C01D6203D100C5DF79 /* 红岩网校工作站简介.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "红岩网校工作站简介.txt"; sourceTree = "<group>"; };
@@ -1987,6 +1992,7 @@
 		E2E7DE301B9476810081F699 /* CourseIcon */ = {
 			isa = PBXGroup;
 			children = (
+				D9F9F0311D62F44D00CA98C1 /* courseMengbi.jpg */,
 				D95E8E5A1BD91AC8001776D5 /* iconfont-backTag.png */,
 				D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */,
 				D9D7BD191BD0C3EC000B0EC9 /* iconfont-tag.png */,
@@ -2117,6 +2123,8 @@
 				E20F27CC1D6203D100C5DF79 /* BeautyCreatTableViewCell.m */,
 				E20F27CD1D6203D100C5DF79 /* BeautyCreatViewController.h */,
 				E20F27CE1D6203D100C5DF79 /* BeautyCreatViewController.m */,
+				D9F9F0331D630AFC00CA98C1 /* BeautyCreatDetailViewController.h */,
+				D9F9F0341D630AFC00CA98C1 /* BeautyCreatDetailViewController.m */,
 				E20F27CF1D6203D100C5DF79 /* BeautyExcellentStudentCollectionViewCell.h */,
 				E20F27D01D6203D100C5DF79 /* BeautyExcellentStudentCollectionViewCell.m */,
 				E20F27D11D6203D100C5DF79 /* BeautyExcellentStudentViewController.h */,
@@ -2329,6 +2337,7 @@
 				D99007741CB69AB500EDAFD1 /* support1.png in Resources */,
 				E2F0A3BF1D6165A600DFF37D /* 寝室介绍3.txt in Resources */,
 				E2F0A3B71D6165A600DFF37D /* 学生手册节选.txt in Resources */,
+				D9F9F0321D62F44D00CA98C1 /* courseMengbi.jpg in Resources */,
 				E263C7881BA35E26008488FA /* ShakeViewController.xib in Resources */,
 				CE0ADC9D1BDDD03E00374CDC /* 空教室@2x.png in Resources */,
 				D9F7671E1CB7AB3400DEF12A /* 智妍1.jpg in Resources */,
@@ -2634,6 +2643,7 @@
 				D9DF5EAA1CD0914300C89F6A /* MBCommunity_ViewModel.m in Sources */,
 				E263C78F1BA35E26008488FA /* ShopTableViewCell.m in Sources */,
 				CE3FC9401B9702A6000085E5 /* ORWRequestCache.m in Sources */,
+				D9F9F0351D630AFC00CA98C1 /* BeautyCreatDetailViewController.m in Sources */,
 				D9DF5EA11CD0913B00C89F6A /* MBPhotoBrowser.m in Sources */,
 				E2F0A3AA1D6165A600DFF37D /* FiveViewController.m in Sources */,
 				E2F0A3D01D6165A600DFF37D /* TwoViewController.m in Sources */,

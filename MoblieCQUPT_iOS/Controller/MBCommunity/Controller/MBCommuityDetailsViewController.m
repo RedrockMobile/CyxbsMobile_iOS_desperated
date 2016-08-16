@@ -13,6 +13,7 @@
 #import "MBReleaseViewController.h"
 #import "MBReplyView.h"
 #import "MBProgressHUD.h"
+#import "LoginViewController.h"
 
 /*
  *
@@ -220,13 +221,21 @@
                 labelBtn.selected = !labelBtn.selected;
                 NSLog(@"点击取消赞");
             }else {
-                NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
-                [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
-                model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
-                [weakSelf uploadSupport:viewModel withType:0];
-                imageBtn.selected = !imageBtn.selected;
-                labelBtn.selected = !labelBtn.selected;
-                NSLog(@"点击赞");
+                NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+                NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+                if (stuNum.length == 0 && idNum.length == 0) {
+                    [weakSelf uploadSupport:viewModel withType:0];
+                }else {
+                    NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
+                    [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
+                    model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
+                    [weakSelf uploadSupport:viewModel withType:0];
+                    imageBtn.selected = !imageBtn.selected;
+                    labelBtn.selected = !labelBtn.selected;
+                    weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
+                    weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
+                    NSLog(@"点击赞");
+                }
             }
         };
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -283,8 +292,8 @@
 
 - (void)loadNetWorkData {
      _dataArray = [NSMutableArray array];
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
     NSString *article_id = self.viewModel.model.articleID;
     NSString *type_id = self.viewModel.model.typeID;
     
@@ -341,45 +350,66 @@
 
 - (void)upLoadCommentWithContent:(NSString *)content {
     
-    [_replyView.textView resignFirstResponder];
-    [UIView animateWithDuration:0.25 animations:^{
-        _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
-    } completion:^(BOOL finished) {
-        
-    }];
-    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _hud.labelText = @"正在发送评论...";
-    
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *article_id = self.viewModel.model.articleID;
     NSString *type_id = self.viewModel.model.typeID;
     
-    NSDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"article_id":article_id,
-                                @"type_id":type_id,
-                                @"content":content};
     
-    __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:POSTREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        weakSelf.hud.mode = MBProgressHUDModeText;
-        weakSelf.hud.labelText = @"评论成功";
-        [weakSelf.hud hide:YES afterDelay:1.5];
-        MBCommunity_ViewModel *viewModel_new = weakSelf.viewModel;
-        weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",[self.viewModel.model.numOfComment integerValue]+1];
-        viewModel_new.model = weakSelf.viewModel.model;
-        weakSelf.viewModel = viewModel_new;
-        [weakSelf loadNetWorkData];
-//        [weakSelf.tableView reloadData];
-        weakSelf.replyView.textView.placeholder = @"评论";
-        weakSelf.replyView.textView.text = @"";
-    } WithFailureBlock:^{
-        weakSelf.hud.mode = MBProgressHUDModeText;
-        weakSelf.hud.labelText = @"网络错误";
-        [weakSelf.hud hide:YES afterDelay:1.5];
-        [weakSelf.replyView.textView becomeFirstResponder];
-    }];
+    if (stuNum.length == 0 && idNum.length == 0) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息,还想发评论?" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+        
+        __weak typeof(self) weakSelf = self;
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            LoginViewController *LVC = [[LoginViewController alloc] init];
+            [weakSelf presentViewController:LVC animated:YES completion:nil];
+        }];
+        
+        [alertC addAction:cancel];
+        [alertC addAction:confirm];
+        
+        [self presentViewController:alertC animated:YES completion:nil];
+    }else {
+        NSDictionary *parameter = @{@"stuNum":stuNum,
+                                    @"idNum":idNum,
+                                    @"article_id":article_id,
+                                    @"type_id":type_id,
+                                    @"content":content};
+        
+        
+        [_replyView.textView resignFirstResponder];
+        [UIView animateWithDuration:0.25 animations:^{
+            _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
+        } completion:^(BOOL finished) {
+            
+        }];
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.labelText = @"正在发送评论...";
+        
+        
+        __weak typeof(self) weakSelf = self;
+        [NetWork NetRequestPOSTWithRequestURL:POSTREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+            weakSelf.hud.mode = MBProgressHUDModeText;
+            weakSelf.hud.labelText = @"评论成功";
+            [weakSelf.hud hide:YES afterDelay:1.5];
+            MBCommunity_ViewModel *viewModel_new = weakSelf.viewModel;
+            weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",[self.viewModel.model.numOfComment integerValue]+1];
+            viewModel_new.model = weakSelf.viewModel.model;
+            weakSelf.viewModel = viewModel_new;
+            [weakSelf loadNetWorkData];
+            weakSelf.replyView.textView.placeholder = @"评论";
+            weakSelf.replyView.textView.text = @"";
+        } WithFailureBlock:^{
+            weakSelf.hud.mode = MBProgressHUDModeText;
+            weakSelf.hud.labelText = @"网络错误";
+            [weakSelf.hud hide:YES afterDelay:1.5];
+            [weakSelf.replyView.textView becomeFirstResponder];
+        }];
+
+    }
+    
 }
 
 #pragma mark -
@@ -401,26 +431,45 @@
     NSString *article_id = model.articleID;
     NSString *type_id = model.typeID;
     
-    NSDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"article_id":article_id,
-                                @"type_id":type_id};
+    if (stuNum.length == 0 && idNum.length == 0) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息呢,肯定不让你点赞呀" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+        
+        __weak typeof(self) weakSelf = self;
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            LoginViewController *LVC = [[LoginViewController alloc] init];
+            [weakSelf presentViewController:LVC animated:YES completion:nil];
+        }];
+        
+        [alertC addAction:cancel];
+        [alertC addAction:confirm];
+        
+        [self presentViewController:alertC animated:YES completion:nil];
+    }else {
+        NSDictionary *parameter = @{@"stuNum":stuNum,
+                                    @"idNum":idNum,
+                                    @"article_id":article_id,
+                                    @"type_id":type_id};
+        
+        __block MBCommunityModel *modelBlock = model;
+        __block MBCommunity_ViewModel *viewModelBlock = viewModel;
+        __weak typeof(self) weakSelf = self;
+        
+        [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+            modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
+            viewModelBlock.model = modelBlock;
+            NSInteger row = [weakSelf.currenSelectCellOfRow integerValue];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
+            MBCommunityTableView *tableView = weakSelf.tableView;
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+            NSLog(@"请求 %@",modelBlock.isMyLike);
+        } WithFailureBlock:^{
+            NSLog(@"请求赞出错");
+        }];
+
+    }
     
-    __block MBCommunityModel *modelBlock = model;
-    __block MBCommunity_ViewModel *viewModelBlock = viewModel;
-    __weak typeof(self) weakSelf = self;
-    
-    [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
-        viewModelBlock.model = modelBlock;
-        NSInteger row = [weakSelf.currenSelectCellOfRow integerValue];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
-        MBCommunityTableView *tableView = weakSelf.tableView;
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-        NSLog(@"请求 %@",modelBlock.isMyLike);
-    } WithFailureBlock:^{
-        NSLog(@"请求赞出错");
-    }];
 }
 
 #pragma mark -

@@ -51,6 +51,9 @@
 @property (assign, nonatomic) CGPoint startPoint;
 @property (assign, nonatomic) CGPoint startPoint1;
 
+
+@property (strong, nonatomic) UIView *courseMengbi;
+
 @end
 
 @implementation CourseViewController
@@ -154,7 +157,7 @@
     _weekDataArray = [self getWeekCourseArray:[nowWeek integerValue]];
     _dataArray = _weekDataArray;
     [self handleData:_weekDataArray];
-    [self loadNetData];
+//    [self loadNetData];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -162,6 +165,7 @@
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
     self.navigationController.navigationBarHidden = YES;
+    [self loadNetData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -232,71 +236,108 @@
 - (void)loadNetData {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
-    _parameter = [NSMutableDictionary dictionary];
-    [_parameter setObject:stuNum forKey:@"stuNum"];
-    
-    [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
-        NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
-        NSMutableArray *data = [NSMutableArray array];
-        for (int i = 0; i < dataArray.count; i ++) {
-            NSMutableDictionary *dataDic = [[NSMutableDictionary alloc]initWithDictionary:dataArray[i]];
-            NSString *period = [NSString stringWithFormat:@"%@",[dataDic objectForKey:@"period"]];
-            if ([period isEqualToString:@"3"]) {
-                [dataDic setObject:@"2" forKey:@"period"];
-                [dataDic setObject:@"(3节连上)" forKey:@"courseTitle"];
+    if (stuNum.length == 0) {
+        _titleButton.enabled = NO;
+        
+        //如果没有学号 即没有登录过 课表不请求
+        _courseMengbi = [[UIView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-49)];
+        _courseMengbi.backgroundColor = [UIColor whiteColor];
+        
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth/2, ScreenWidth/2)];
+        imageView.image = [UIImage imageNamed:@"courseMengbi.jpg"];
+        imageView.center = CGPointMake(_courseMengbi.frame.size.width/2, _courseMengbi.frame.size.height/2-40);
+        
+        //登录按钮
+        UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        loginBtn.frame = CGRectZero;
+        [loginBtn setTitle:@"点击登录,拯救课表菌!!!" forState:UIControlStateNormal];
+        [loginBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
+        [loginBtn setTitleColor:[UIColor colorWithRed:43/255.0 green:157/255.0 blue:178/255.0 alpha:0.6] forState:UIControlStateHighlighted];
+        [loginBtn addTarget:self action:@selector(clickLoginBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [loginBtn sizeToFit];
+        loginBtn.center = CGPointMake(ScreenWidth/2, CGRectGetMaxY(imageView.frame)+CGRectGetMidY(loginBtn.frame)+20);
+        
+        [_courseMengbi addSubview:imageView];
+        [_courseMengbi addSubview:loginBtn];
+        [self.view addSubview:_courseMengbi];
+        
+        
+    }else {
+        [_courseMengbi removeFromSuperview];
+        _titleButton.enabled = YES;
+        _parameter = [NSMutableDictionary dictionary];
+        [_parameter setObject:stuNum forKey:@"stuNum"];
+        
+        [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
+            NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
+            NSMutableArray *data = [NSMutableArray array];
+            for (int i = 0; i < dataArray.count; i ++) {
+                NSMutableDictionary *dataDic = [[NSMutableDictionary alloc]initWithDictionary:dataArray[i]];
+                NSString *period = [NSString stringWithFormat:@"%@",[dataDic objectForKey:@"period"]];
+                if ([period isEqualToString:@"3"]) {
+                    [dataDic setObject:@"2" forKey:@"period"];
+                    [dataDic setObject:@"(3节连上)" forKey:@"courseTitle"];
+                }
+                [data addObject:dataDic];
             }
-            [data addObject:dataDic];
-        }
-        [self handleWeek:data];
-        [self handleColor:data];
-        _dataArray = data;
-        _weekDataArray = data;
-        NSString *nowWeek = [NSString stringWithFormat:@"%@",[returnValue objectForKey:@"nowWeek"]];
-        self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
-        
-        /**共享数据 by Orange-W**/
-        NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
-        [shared setObject:[self getWeekCourseArray:[nowWeek integerValue]] forKey:kAppGroupShareThisWeekArray];
-        [shared synchronize];
-        /***/
-        
-        [userDefault setObject:nowWeek forKey:@"nowWeek"];
-        [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
-        [userDefault setObject:_dataArray forKey:@"dataArray"];
-        [userDefault synchronize];
-        for (int i = 0; i < _buttonTag.count; i ++) {
-            [_buttonTag[i] removeFromSuperview];
-        }
-        _dataArray = [self getWeekCourseArray:[nowWeek integerValue]];
-        [self handleData:_dataArray];
-        for (int i = 0; i < _weekBtnArray.count; i ++) {
-            if (i == [nowWeek integerValue]) {
-                UIButton *weekBtn1 = _weekBtnArray[i];
-                [weekBtn1 setTitle:@"本周" forState:UIControlStateNormal];
-                if (_clickBtn != weekBtn1 || _clickBtn == nil) {
-                    _clickBtn.selected = NO;
-                    [_clickBtn setTitle:[NSString stringWithFormat:@"%@",_weekArray[i-1]] forState:UIControlStateNormal];
-                    [_clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                    _clickBtn.backgroundColor = [UIColor whiteColor];
-                    weekBtn1.selected = YES;
-                    [weekBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    weekBtn1.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+            [self handleWeek:data];
+            [self handleColor:data];
+            _dataArray = data;
+            _weekDataArray = data;
+            NSString *nowWeek = [NSString stringWithFormat:@"%@",[returnValue objectForKey:@"nowWeek"]];
+            self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
+            
+            /**共享数据 by Orange-W**/
+            NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
+            [shared setObject:[self getWeekCourseArray:[nowWeek integerValue]] forKey:kAppGroupShareThisWeekArray];
+            [shared synchronize];
+            /***/
+            
+            [userDefault setObject:nowWeek forKey:@"nowWeek"];
+            [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
+            [userDefault setObject:_dataArray forKey:@"dataArray"];
+            [userDefault synchronize];
+            for (int i = 0; i < _buttonTag.count; i ++) {
+                [_buttonTag[i] removeFromSuperview];
+            }
+            _dataArray = [self getWeekCourseArray:[nowWeek integerValue]];
+            [self handleData:_dataArray];
+            for (int i = 0; i < _weekBtnArray.count; i ++) {
+                if (i == [nowWeek integerValue]) {
+                    UIButton *weekBtn1 = _weekBtnArray[i];
+                    [weekBtn1 setTitle:@"本周" forState:UIControlStateNormal];
+                    if (_clickBtn != weekBtn1 || _clickBtn == nil) {
+                        _clickBtn.selected = NO;
+                        [_clickBtn setTitle:[NSString stringWithFormat:@"%@",_weekArray[i-1]] forState:UIControlStateNormal];
+                        [_clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                        _clickBtn.backgroundColor = [UIColor whiteColor];
+                        weekBtn1.selected = YES;
+                        [weekBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                        weekBtn1.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
+                        [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
+                        _clickBtn = weekBtn1;
+                    }
                     [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
-                    _clickBtn = weekBtn1;
-                }
-                [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
-                [_titleButton sizeToFit];
-                _titleButton.center = CGPointMake(ScreenWidth/2, _nav.frame.size.height/2+10);
-                _tagView.center = CGPointMake(_titleButton.center.x+_titleButton.frame.size.width/2+8, _nav.frame.size.height/2+10);
-                if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
-                    _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
+                    [_titleButton sizeToFit];
+                    _titleButton.center = CGPointMake(ScreenWidth/2, _nav.frame.size.height/2+10);
+                    _tagView.center = CGPointMake(_titleButton.center.x+_titleButton.frame.size.width/2+8, _nav.frame.size.height/2+10);
+                    if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
+                        _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
+                    }
                 }
             }
-        }
-    } WithFailureBlock:^{
-        NSLog(@"课表数据请求失败");
-    }];
+        } WithFailureBlock:^{
+            NSLog(@"课表数据请求失败");
+        }];
+    }
+    
 }
+
+- (void)clickLoginBtn:(UIButton *)sender {
+    NSLog(@"登录");
+
+}
+
 #pragma mark 处理课表数据的周数
 - (void)handleWeek:(NSMutableArray *)array {
     if (array != nil && array.count > 0) {

@@ -20,7 +20,7 @@
 #import "MBCommuityDetailsViewController.h"
 #import "MBProgressHUD.h"
 
-#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/searchtrends"
+
 
 @interface MyMessagesViewController ()<UITableViewDelegate, UITableViewDataSource>
 

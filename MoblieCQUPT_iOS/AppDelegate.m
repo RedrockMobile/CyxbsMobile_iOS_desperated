@@ -38,32 +38,36 @@
 //    [MobClick setAppVersion:@"V2.3.0"];
 
     
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
-        NSDate *currentTime = [NSDate date];
-        NSDate *dataTime = [userDefault objectForKey:@"time"];
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
+//        NSDate *currentTime = [NSDate date];
+//        NSDate *dataTime = [userDefault objectForKey:@"time"];
         //选择是跳转到mainViewController还是loginViewController
-        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-            self.window.rootViewController = view;
-            NSLog(@"%@,%@,%@",[userDefault objectForKey:@"user_id"],[userDefault objectForKey:@"nickname"],[userDefault objectForKey:@"photo_src"]);
-        }else {
-            [userDefault removeObjectForKey:@"stuNum"];
-            [userDefault removeObjectForKey:@"idNum"];
-            [userDefault removeObjectForKey:@"dataArray"];
-            [userDefault removeObjectForKey:@"time"];
-            [userDefault removeObjectForKey:@"user_id"];
-            [userDefault removeObjectForKey:@"nickname"];
-            [userDefault removeObjectForKey:@"photo_src"];
-            [userDefault synchronize];
-            LoginViewController *login = [[LoginViewController alloc]init];
-            self.window.rootViewController = login;
-        }
-    }else {
-        LoginViewController *login = [[LoginViewController alloc]init];
-        self.window.rootViewController = login;
-    }
+//        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
+//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+//            self.window.rootViewController = view;
+//            NSLog(@"%@,%@,%@",[userDefault objectForKey:@"user_id"],[userDefault objectForKey:@"nickname"],[userDefault objectForKey:@"photo_src"]);
+//        }else {
+//            [userDefault removeObjectForKey:@"stuNum"];
+//            [userDefault removeObjectForKey:@"idNum"];
+//            [userDefault removeObjectForKey:@"dataArray"];
+//            [userDefault removeObjectForKey:@"time"];
+//            [userDefault removeObjectForKey:@"user_id"];
+//            [userDefault removeObjectForKey:@"nickname"];
+//            [userDefault removeObjectForKey:@"photo_src"];
+//            [userDefault synchronize];
+//            LoginViewController *login = [[LoginViewController alloc]init];
+//            self.window.rootViewController = login;
+//        }
+//    }else {
+//        LoginViewController *login = [[LoginViewController alloc]init];
+//        self.window.rootViewController = login;
+//    }
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+    self.window.rootViewController = view;
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
