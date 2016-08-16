@@ -43,8 +43,8 @@
     one.title = @"学生组织";
     _two.title = @"原创重邮";
     _three.title = @"美在重邮";
-    _four.title = @"优秀学子";
-    _five.title = @"优秀教师";
+    _four.title = @"学生代表";
+    _five.title = @"教师代表";
     
     _isLoadView1 = NO;
     _isLoadView2 = NO;

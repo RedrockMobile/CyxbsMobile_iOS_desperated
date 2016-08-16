@@ -88,7 +88,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.view addSubview:self.collectionView];
             [self.collectionView reloadData];
-            NSLog(@"%@",_dataDict);
+//            NSLog(@"%@",_dataDict);
         });
     }];
     [sessionDataTask resume];

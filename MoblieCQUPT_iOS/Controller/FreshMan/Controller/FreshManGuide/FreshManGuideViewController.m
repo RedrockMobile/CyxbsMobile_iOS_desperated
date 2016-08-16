@@ -52,7 +52,7 @@
     _isLoadView8 = NO;
 
     
-    one.title = @"入学须知";
+    one.title = @"安全须知";
     two.title = @"须知路线";
     _three.title = @"寝室概况";
     four.title = @"必备清单";

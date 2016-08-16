@@ -51,7 +51,7 @@
     NSString *Content3 = [NSString stringWithContentsOfFile:txtpath3 encoding:NSUTF8StringEncoding error:&error];
     NSString *Content4 = [NSString stringWithContentsOfFile:txtpath4 encoding:NSUTF8StringEncoding error:&error];
     self.arrayContent = @[Content1,Content2,Content3,Content4];
-    NSLog(@"%@",self.arrayContent);
+//    NSLog(@"%@",self.arrayContent);
     [self tableview];
     
     

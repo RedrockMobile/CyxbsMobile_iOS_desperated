@@ -40,28 +40,28 @@
 -(void)Data{
     
     NSError *error = nil;
-    NSString *txtpath1 = [[NSBundle mainBundle] pathForResource:@"入学须知" ofType:@"txt"];
+//    NSString *txtpath1 = [[NSBundle mainBundle] pathForResource:@"入学须知" ofType:@"txt"];
     NSString *txtpath2 = [[NSBundle mainBundle] pathForResource:@"安全须知" ofType:@"txt"];
-    NSString *txtpath3 = [[NSBundle mainBundle] pathForResource:@"奖学金设置" ofType:@"txt"];
-    NSString *txtpath4 = [[NSBundle mainBundle] pathForResource:@"学生手册节选" ofType:@"txt"];
-    NSString *RuXue = [NSString stringWithContentsOfFile:txtpath1 encoding:NSUTF8StringEncoding error:&error];
+//    NSString *txtpath3 = [[NSBundle mainBundle] pathForResource:@"奖学金设置" ofType:@"txt"];
+//    NSString *txtpath4 = [[NSBundle mainBundle] pathForResource:@"学生手册节选" ofType:@"txt"];
+//    NSString *RuXue = [NSString stringWithContentsOfFile:txtpath1 encoding:NSUTF8StringEncoding error:&error];
     NSString *AnQuan = [NSString stringWithContentsOfFile:txtpath2 encoding:NSUTF8StringEncoding error:&error];
-    NSString *JiangXueJin = [NSString stringWithContentsOfFile:txtpath3 encoding:NSUTF8StringEncoding error:&error];
-    NSString *XueSheng = [NSString stringWithContentsOfFile:txtpath4 encoding:NSUTF8StringEncoding error:&error];
+//    NSString *JiangXueJin = [NSString stringWithContentsOfFile:txtpath3 encoding:NSUTF8StringEncoding error:&error];
+//    NSString *XueSheng = [NSString stringWithContentsOfFile:txtpath4 encoding:NSUTF8StringEncoding error:&error];
     
     
     self.Content = [[NSArray alloc]init];
     self.Name = [[NSArray alloc]init];
     self.rectArray = [NSMutableArray array];
-    NSString *Name1 = @"入学须知";
+//    NSString *Name1 = @"入学须知";
     NSString *Name2 = @"安全须知";
-    NSString *Name3 = @"奖学金设置";
-    NSString *Name4 = @"学生手册节选";
-    self.Name = @[Name1,Name2,Name3,Name4];
-    self.Content = @[RuXue,AnQuan,JiangXueJin,XueSheng];
+//    NSString *Name3 = @"奖学金设置";
+//    NSString *Name4 = @"学生手册节选";
+    self.Name = @[Name2];
+    self.Content = @[AnQuan];
     
     _modelArray = [NSMutableArray<GGCellModel *> array];
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 1; i++) {
         GGCellModel *model = [[GGCellModel alloc]initWithContentData:self.Content[i]];
         [_modelArray addObject:model];
     }
@@ -96,7 +96,7 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 4;
+    return 1;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
