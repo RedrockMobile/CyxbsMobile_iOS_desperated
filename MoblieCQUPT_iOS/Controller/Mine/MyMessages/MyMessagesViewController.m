@@ -24,6 +24,10 @@
 
 @interface MyMessagesViewController ()<UITableViewDelegate, UITableViewDataSource>
 
+@property (copy, nonatomic) NSString *stunum_other;//请求动态的学号
+
+@property (assign, nonatomic) MessagesViewLoadType loadType;
+
 @property (strong, nonatomic) MBCommunityTableView *communityTableView;
 @property (strong, nonatomic) UIView *headView;
 @property (strong, nonatomic) NSMutableArray *allDataArray;
@@ -39,23 +43,75 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = YES;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationItem.title = @"个人动态";
     [self.view addSubview:self.communityTableView];
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     [self setupRefresh];
     _flag = 0;
     //请求个人信息
-    __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
-                            WithParameter:@{@"stuNum":stuNum, @"idNum":idNum}
-                     WithReturnValeuBlock:^(id returnValue) {
-                         _myInfoData = returnValue[@"data"];
-                         [weakSelf.communityTableView reloadData];
-                         [weakSelf loadNet];
-                     } WithFailureBlock:^{
-                         
-                     }];
+    if (_loadType == MessagesViewLoadTypeSelf) {
+        NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+        NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+        _stunum_other = stuNum;
+        __weak typeof(self) weakSelf = self;
+        [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+                                WithParameter:@{@"stuNum":stuNum, @"idNum":idNum}
+                         WithReturnValeuBlock:^(id returnValue) {
+                             _myInfoData = returnValue[@"data"];
+                             [weakSelf.communityTableView reloadData];
+                             [weakSelf loadNet];
+                         } WithFailureBlock:^{
+                             
+                         }];
+
+    }else {
+        if (self.model) {
+            _stunum_other = self.model.stuNum;
+        }else if (self.commentModel) {
+            _stunum_other = self.commentModel.stuNum;
+        }
+        
+         __weak typeof(self) weakSelf = self;
+        [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+                                WithParameter:@{@"stuNum":@"2014213071",
+                                                @"idNum":@"040975",
+                                                @"stunum_other":self.stunum_other}
+                         WithReturnValeuBlock:^(id returnValue) {
+                             _myInfoData = returnValue[@"data"];
+                             [weakSelf.communityTableView reloadData];
+                             [weakSelf loadNet];
+                         } WithFailureBlock:^{
+                             
+                         }];
+//        [self.communityTableView reloadData];
+//        [self loadNet];
+    }
 }
+- (instancetype)initWithLoadType:(MessagesViewLoadType)loadType withCommunityModel:(MBCommunityModel *)model {
+    _model = model;
+    return [self initWithLoadType:loadType];
+}
+
+- (instancetype)initWithLoadType:(MessagesViewLoadType)loadType withCommentModel:(MBCommentModel *)model {
+    _commentModel = model;
+    return [self initWithLoadType:loadType];
+}
+
+- (instancetype)initWithLoadType:(MessagesViewLoadType)loadType {
+    if (self = [super init]) {
+        _loadType = loadType;
+    }
+    return self;
+}
+
+//- (instancetype)initWithCommunityModel:(MBCommunityModel *)model {
+//    self = [super init];
+//    if (self) {
+//        
+//    }
+//    return self;
+//}
 
 - (MBCommunityTableView *)communityTableView {
     if (!_communityTableView) {
@@ -84,26 +140,24 @@
 }
 - (void)loadNet {
     _allDataArray = [NSMutableArray array];
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *size = @"15";
-    NSString *stunum_other = stuNum;
-    NSDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"page":[NSNumber numberWithInteger:_flag],
+    NSString *stunum_other = self.stunum_other;
+    NSDictionary *parameter = @{@"page":[NSNumber numberWithInteger:_flag],
                                 @"size":size,
                                 @"stunum_other":stunum_other};
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:SEARCHTREBDS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSArray *dataArray = returnValue[@"data"];
-        NSLog(@"the :%@", returnValue);
+//        NSLog(@"the :%@", returnValue);
         for (int i = 0; i < dataArray.count; i++) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
             [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
             MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
-            communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
-            communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
+            communityModel.IDLabel = _myInfoData[@"nickname"];
+            communityModel.headImageView =  _myInfoData[@"photo_thumbnail_src"];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
@@ -138,13 +192,11 @@
 - (void)headerRereshing{
     _flag = 0;
     _allDataArray = [NSMutableArray array];
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *size = @"15";
-    NSString *stunum_other = stuNum;
-    NSDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"page":[NSNumber numberWithInteger:_flag],
+    NSString *stunum_other = self.stunum_other;
+    NSDictionary *parameter = @{@"page":[NSNumber numberWithInteger:_flag],
                                 @"size":size,
                                 @"stunum_other":stunum_other};
     __weak typeof(self) weakSelf = self;
@@ -156,8 +208,8 @@
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
             [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
             MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
-            communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
-            communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
+            communityModel.IDLabel = _myInfoData[@"nickname"];
+            communityModel.headImageView =  _myInfoData[@"photo_thumbnail_src"];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
@@ -172,13 +224,11 @@
 - (void)footerRereshing{
     _flag += 1;
 //    _allDataArray = [NSMutableArray array];
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *size = @"15";
-    NSString *stunum_other = stuNum;
-    NSDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"page":[NSNumber numberWithInteger:_flag],
+    NSString *stunum_other = self.stunum_other;
+    NSDictionary *parameter = @{@"page":[NSNumber numberWithInteger:_flag],
                                 @"size":size,
                                 @"stunum_other":stunum_other};
     __weak typeof(self) weakSelf = self;
@@ -190,8 +240,8 @@
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
             [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
             MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
-            communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
-            communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
+            communityModel.IDLabel = _myInfoData[@"nickname"];
+            communityModel.headImageView =  _myInfoData[@"photo_thumbnail_src"];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
@@ -281,6 +331,7 @@
 //        model.IDLabel = [NSString stringWithFormat:@"%@",self.myInfoData[@"nickname"]];
 //        viewModel.model = model;
         communityCell.subViewFrame = viewModel;
+        communityCell.headImageView.userInteractionEnabled = NO;
         
         return communityCell;
     }
@@ -293,24 +344,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
     //查询文章内容
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *artcileID;
     if (indexPath.section > 1) {
         MBCommunityModel *model = ((MBCommunity_ViewModel *)self.allDataArray[indexPath.section - 2]).model;
         artcileID = model.articleID;
     }
     __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/searchContent"
-                            WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":artcileID}
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
+                            WithParameter:@{@"type_id":@5, @"article_id":artcileID}
                      WithReturnValeuBlock:^(id returnValue) {
                          NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
                          [dic setObject:_myInfoData[@"nickname"] forKey:@"nickname"];
                          [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
                          [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
                          MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic withMBCommunityModelType:MBCommunityModelTypeListArticle];
-                         communityModel.IDLabel = [LoginEntry getByUserdefaultWithKey:@"nickname"];
-                         communityModel.headImageView = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
+                         communityModel.IDLabel = _myInfoData[@"nickname"];
+                         communityModel.headImageView =  _myInfoData[@"photo_thumbnail_src"];
                          
                          MBCommunity_ViewModel *community_ViewModel = self.allDataArray[indexPath.section - 2];
                          community_ViewModel.model = communityModel;

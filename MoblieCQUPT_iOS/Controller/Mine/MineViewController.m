@@ -76,7 +76,7 @@
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
-        
+        NSLog(@"请求");
         if ([returnValue objectForKey:@"data"]) {
             if (!_data) {
                 _data = [[NSMutableDictionary alloc] init];

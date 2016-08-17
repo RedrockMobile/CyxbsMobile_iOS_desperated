@@ -51,7 +51,6 @@
 @property (assign, nonatomic) CGPoint startPoint;
 @property (assign, nonatomic) CGPoint startPoint1;
 
-
 @property (strong, nonatomic) UIView *courseMengbi;
 
 @end
@@ -236,9 +235,9 @@
 - (void)loadNetData {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
-    if (stuNum.length == 0) {
+    if (stuNum.length == 0 && !_courseMengbi) {
         _titleButton.enabled = NO;
-        
+        NSLog(@"生成课表懵逼");
         //如果没有学号 即没有登录过 课表不请求
         _courseMengbi = [[UIView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-49)];
         _courseMengbi.backgroundColor = [UIColor whiteColor];
@@ -262,7 +261,8 @@
         [self.view addSubview:_courseMengbi];
         
         
-    }else {
+    }else if(stuNum.length != 0 && _courseMengbi){
+        NSLog(@"去除课表");
         [_courseMengbi removeFromSuperview];
         _titleButton.enabled = YES;
         _parameter = [NSMutableDictionary dictionary];
@@ -335,6 +335,20 @@
 
 - (void)clickLoginBtn:(UIButton *)sender {
     NSLog(@"登录");
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"马上登录拯救课表菌" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+    
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LoginViewController *LVC = [[LoginViewController alloc] init];
+        [weakSelf presentViewController:LVC animated:YES completion:nil];
+    }];
+    
+    [alertC addAction:cancel];
+    [alertC addAction:confirm];
+    
+    [self presentViewController:alertC animated:YES completion:nil];
 
 }
 

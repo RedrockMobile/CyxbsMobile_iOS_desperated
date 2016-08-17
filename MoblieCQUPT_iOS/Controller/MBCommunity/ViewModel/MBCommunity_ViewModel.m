@@ -44,6 +44,7 @@
     CGRect contentSize = [_model.contentLabel boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
     _contentLabelFrame = (CGRect){{contentX,contentY},contentSize.size};
     
+    
     //图片容器
     CGFloat photoContainerX = MARGIN;
     CGFloat photoContainerY = CGRectGetMaxY(_contentLabelFrame) + MARGIN+5;
@@ -135,8 +136,9 @@
     CGFloat supportImageH = 27/2;
     _supportImageFrame = (CGRect){{supportImageX,supportImageY},{supportImageW,supportImageH}};
     
-    
     self.cellHeight = CGRectGetMaxY(_numOfSupportFrame) + MARGIN+5;
+    
+    
 }
 
 @end

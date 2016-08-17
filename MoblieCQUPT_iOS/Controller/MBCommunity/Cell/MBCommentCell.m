@@ -36,6 +36,11 @@
     _headImageView.layer.borderWidth = 0.5;
     _headImageView.layer.borderColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5].CGColor;
     
+    //给评论的头像添加点击事件
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickHeadImageView:)];
+    _headImageView.userInteractionEnabled = YES;
+    [_headImageView addGestureRecognizer:tap];
+    
     _IDLabel = [[UILabel alloc]init];
     _IDLabel.font = [UIFont systemFontOfSize:13];
     _IDLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
@@ -81,6 +86,12 @@
     _timeLabel.frame = self.viewModel.timeLabelFrame;
     _contentLabel.frame = self.viewModel.contentLabelFrame;
     _underLine.frame = CGRectMake(0, self.viewModel.cellHeight - 1, ScreenWidth, 1);
+}
+
+- (void)clickHeadImageView:(UITapGestureRecognizer *)gesture {
+    if (self.eventDelegate && [self.eventDelegate respondsToSelector:@selector(commentEvenWhenClickHeadImageView:)]) {
+        [self.eventDelegate commentEvenWhenClickHeadImageView:self.model];
+    }
 }
 
 - (void)awakeFromNib {

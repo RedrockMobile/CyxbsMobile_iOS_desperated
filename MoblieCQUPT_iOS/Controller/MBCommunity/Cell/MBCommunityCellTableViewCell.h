@@ -12,12 +12,21 @@
 #import "MBPhotoContainerView.h"
 #import "MBCommunityTableView.h"
 
-
 typedef void(^ClickSupportBtnBlock)(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel);
+
+
+@protocol MBCommunityCellEventDelegate <NSObject>
+
+@optional
+- (void)eventWhenclickHeadImageView:(MBCommunityModel *)model;
+
+@end
 
 @interface MBCommunityCellTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) MBCommunityModel *model;
+
+@property (weak, nonatomic) id<MBCommunityCellEventDelegate> eventDelegate;
 
 @property (strong, nonatomic) UIImageView *headImageView;//头像
 @property (strong, nonatomic) UILabel *IDLabel;//昵称

@@ -14,6 +14,12 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dic {
 
     if (self = [super init]) {
+        
+        //学号
+        if ([dic containsObjectForKey:@"stunum"]) {
+            self.stuNum = dic[@"stunum"];
+        }
+        
         //昵称
         if ([dic containsObjectForKey:@"nickname"]) {
             if ([dic[@"nickname"] isEqualToString:@""]) {

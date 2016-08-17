@@ -15,9 +15,10 @@
 #import "MBCommuityDetailsViewController.h"
 #import "MBReleaseViewController.h"
 #import "LoginViewController.h"
+#import "MyMessagesViewController.h"
 
 
-@interface MBCommunityViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MBCommunityViewController ()<UITableViewDataSource,UITableViewDelegate,MBCommunityCellEventDelegate>
 
 @property (strong, nonatomic) MBSegmentedView *segmentView;
 
@@ -320,6 +321,7 @@
 
 - (MBCommunityCellTableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
+    cell.eventDelegate = self;
     MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
     if (tableView.tag == 0) {
         viewModel = _allData[@"hotData"][@"data"][indexPath.section];
@@ -327,6 +329,9 @@
         viewModel = _allData[@"BBDDData"][@"data"][indexPath.section];
     }else if (tableView.tag == 2) {
         viewModel = _allData[@"newsData"][@"data"][indexPath.section];
+    }
+    if (tableView.tag == 2) {
+        cell.headImageView.userInteractionEnabled = NO;
     }
     
     __weak typeof(self) weakSelf = self;
@@ -374,6 +379,13 @@
     return cell;
 }
 
+//点击cell的头像的代理方法
+- (void)eventWhenclickHeadImageView:(MBCommunityModel *)model {
+    MyMessagesViewController *myMeVc = [[MyMessagesViewController alloc]initWithLoadType:MessagesViewLoadTypeOther withCommunityModel:model];
+    
+    [self.navigationController pushViewController:myMeVc animated:YES];
+}
+
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -390,7 +402,7 @@
         viewModel = _allData[@"newsData"][@"data"][indexPath.section];
     }
     d.viewModel = viewModel;
-    NSLog(@"%@",viewModel.model);
+//    NSLog(@"%@",viewModel.model);
     _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
     _currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
     [self.navigationController pushViewController:d animated:YES];

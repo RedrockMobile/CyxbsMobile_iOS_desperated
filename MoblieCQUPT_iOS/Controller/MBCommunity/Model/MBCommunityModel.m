@@ -12,6 +12,7 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic withMBCommunityModelType:(MBCommunityModelType)modelType{
     if (self = [super init]) {
+        _modelType = modelType;
         
         //type_id
         if ([dic containsObjectForKey:@"type_id"]) {
@@ -23,6 +24,8 @@
         //stuNum 学号
         if ([dic containsObjectForKey:@"stunum"]) {
             self.stuNum = dic[@"stunum"];
+        }else if ([dic containsObjectForKey:@"user_id"]) {
+            self.stuNum = dic[@"user_id"];
         }
         
         
@@ -33,7 +36,7 @@
             self.articleID = dic[@"id"] ?: @"";
         }
         //昵称
-        if (modelType == MBCommunityModelTypeListNews || (![dic[@"type_id"] isEqualToString:@"5"] && ![dic[@"type_id"] isEqualToString:@"6"] )) {
+        if (modelType == MBCommunityModelTypeListNews) {
             NSString *key;
             if ([dic containsObjectForKey:@"articletype_id"]) {
                 key = @"articletype_id";
@@ -101,11 +104,13 @@
         
         
         //内容
-        if (modelType == MBCommunityModelTypeListNews || (![dic[@"type_id"] isEqualToString:@"5"] && ![dic[@"type_id"] isEqualToString:@"6"] )) {
+        if (modelType == MBCommunityModelTypeListNews) {
             if ([dic[@"content"] isKindOfClass:[NSDictionary class]]) {
                 self.contentLabel = [dic[@"content"] objectForKey:@"title"];
+                self.newsContent = [self removeHTML:dic[@"content"]];
             }else {
                 self.contentLabel = dic[@"title"];
+                self.newsContent = [self removeHTML:dic[@"content"]];
             }
         }else {
             if ([dic containsObjectForKey:@"content"]) {
@@ -202,6 +207,48 @@
         
     }
     return self;
+}
+
+- (NSString *)removeHTML:(NSString *)html {
+    
+    NSScanner *theScanner;
+    
+    NSString *text = nil;
+    
+    html = [html stringByReplacingOccurrencesOfString: @"\r" withString:@""];
+    html = [html stringByReplacingOccurrencesOfString: @"&nbsp" withString:@""];
+    html = [html stringByReplacingOccurrencesOfString: @"\t" withString:@"  "];
+    
+    theScanner = [NSScanner scannerWithString:html];
+    
+    
+    
+    while ([theScanner isAtEnd] == NO) {
+        
+        // find start of tag
+        
+        [theScanner scanUpToString:@"<" intoString:NULL] ;
+        
+        
+        
+        // find end of tag
+        
+        [theScanner scanUpToString:@">" intoString:&text] ;
+        
+        
+        
+        // replace the found tag with a space
+        
+        //(you can filter multi-spaces out later if you wish)
+        
+        html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
+        
+        
+        
+    }
+    
+    return html;
+    
 }
 
 - (NSString *)description {

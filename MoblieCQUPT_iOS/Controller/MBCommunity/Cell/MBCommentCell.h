@@ -11,10 +11,19 @@
 #import "MBCommentModel.h"
 #import "MBComment_ViewModel.h"
 
+
+@protocol MBCommentEventDelegate <NSObject>
+
+@optional
+- (void)commentEvenWhenClickHeadImageView:(MBCommentModel *)model;
+
+@end
+
 @interface MBCommentCell : UITableViewCell
 
 @property (strong, nonatomic) MBCommentModel *model;
 @property (strong, nonatomic) MBComment_ViewModel *viewModel;
+@property (weak, nonatomic) id<MBCommentEventDelegate> eventDelegate;
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *IDLabel;
 @property (strong, nonatomic) UILabel *timeLabel;

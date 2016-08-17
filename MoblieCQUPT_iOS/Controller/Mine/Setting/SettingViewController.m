@@ -127,10 +127,20 @@
 }
 
 - (void)logOut {
-    LoginViewController *login = [[LoginViewController alloc]init];
-    [self.navigationController presentViewController:login animated:YES completion:^{
+//    NSLog(@"log out");
+//    LoginViewController *login = [[LoginViewController alloc]init];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+    [self.navigationController presentViewController:view animated:YES completion:^{
         [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
     }];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        
+//    }];
+//    [self.navigationController presentViewController:login animated:YES completion:^{
+//        [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
+//    }];
+    
 }
 
 @end

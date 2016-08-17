@@ -36,6 +36,11 @@
     _headImageView.layer.borderWidth = 0.5;
     _headImageView.layer.borderColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:0.5].CGColor;
     
+    //给头像添加点击事件
+    _headImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tagImageView = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(clickHeadImageView:)];
+    [_headImageView addGestureRecognizer:tagImageView];
+    
     _IDLabel = [[UILabel alloc]init];
     _IDLabel.font = [UIFont systemFontOfSize:16];
     _IDLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
@@ -146,6 +151,13 @@
     _supportImage.frame = self.subViewFrame.supportImageFrame;
     _commentBtn.frame = self.subViewFrame.numOfCommentFrame;
     _commentImage.frame = self.subViewFrame.commentImageFrame;
+}
+
+- (void)clickHeadImageView:(UITapGestureRecognizer *)gesture {
+    if (self.eventDelegate && [self.eventDelegate respondsToSelector:@selector(eventWhenclickHeadImageView:)]) {
+        [self.eventDelegate eventWhenclickHeadImageView:self.model];
+    }
+    
 }
 
 - (void)awakeFromNib {

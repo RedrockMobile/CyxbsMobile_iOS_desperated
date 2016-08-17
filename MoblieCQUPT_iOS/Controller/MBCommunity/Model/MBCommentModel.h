@@ -10,6 +10,7 @@
 
 @interface MBCommentModel : NSObject
 
+@property (copy, nonatomic) NSString *stuNum;
 @property (copy, nonatomic) NSString *headImageView;
 @property (copy, nonatomic) NSString *IDLabel;
 @property (copy, nonatomic) NSString *timeLabel;

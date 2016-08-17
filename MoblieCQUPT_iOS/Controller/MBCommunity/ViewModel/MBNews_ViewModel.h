@@ -1,18 +1,17 @@
 //
-//  MBCommunity_ViewModel.h
+//  MBNews_ViewModel.h
 //  MoblieCQUPT_iOS
 //
-//  Created by GQuEen on 16/4/7.
+//  Created by GQuEen on 16/8/18.
 //  Copyright © 2016年 Orange-W. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "MBCommunityModel.h"
-//#import "MBPhotoContainerView.h"
+#import "MBNewsModel.h"
 
-@interface MBCommunity_ViewModel : NSObject
+@interface MBNews_ViewModel : NSObject
 
-@property (strong, nonatomic) MBCommunityModel *model;
+@property (strong, nonatomic) MBNewsModel *model;
 
 @property (assign, nonatomic) CGRect headImageViewFrame;//头像的frame
 @property (assign, nonatomic) CGRect IDLabelFrame;//昵称的frame
@@ -24,10 +23,7 @@
 @property (assign, nonatomic) CGRect commentImageFrame;
 @property (assign, nonatomic) CGRect supportImageFrame;
 
-
 @property (assign, nonatomic) CGRect photoContainerViewFrame;
 @property (assign, nonatomic) CGFloat cellHeight;//cell的高度
-
-@property (assign, nonatomic) CGFloat newsDetailCellHeight;
 
 @end

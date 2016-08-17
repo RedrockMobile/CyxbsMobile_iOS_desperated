@@ -14,6 +14,7 @@ typedef NS_ENUM(NSInteger, MBCommunityModelType) {
     MBCommunityModelTypeListNews
 };
 
+
 @interface MBCommunityModel : NSObject
 
 @property (copy, nonatomic) NSString *typeID;
@@ -24,6 +25,7 @@ typedef NS_ENUM(NSInteger, MBCommunityModelType) {
 @property (copy, nonatomic) NSString *IDLabel;
 @property (copy, nonatomic) NSString *timeLabel;
 @property (copy, nonatomic) NSString *contentLabel;
+@property (copy, nonatomic) NSString *newsContent;
 
 @property (copy, nonatomic) NSString *articleID;
 
@@ -34,6 +36,8 @@ typedef NS_ENUM(NSInteger, MBCommunityModelType) {
 @property (copy, nonatomic) NSString *numOfComment;
 
 @property (copy, nonatomic) NSString *isMyLike;//我是否点赞
+
+@property (assign, nonatomic) MBCommunityModelType modelType;
 
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic withMBCommunityModelType:(MBCommunityModelType)modelType;

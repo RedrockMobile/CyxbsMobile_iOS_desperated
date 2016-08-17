@@ -14,6 +14,7 @@
 #import "MBReplyView.h"
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
+#import "MyMessagesViewController.h"
 
 /*
  *
@@ -41,7 +42,7 @@
  *                 代码无BUG!
  */
 
-@interface MBCommuityDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
+@interface MBCommuityDetailsViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate,MBCommentEventDelegate>
 
 @property (strong, nonatomic) MBCommunityTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
@@ -174,7 +175,12 @@
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return self.viewModel.cellHeight;
+        if (self.viewModel.model.modelType == MBCommunityModelTypeListNews) {
+            CGRect contentSize = [self.viewModel.model.newsContent boundingRectWithSize:CGSizeMake(ScreenWidth-20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
+            return self.viewModel.cellHeight + contentSize.size.height -35;
+        }else {
+            return self.viewModel.cellHeight;
+        }
     }else {
         if (self.dataArray.count == 0) {
             return 200;
@@ -203,6 +209,19 @@
     if (indexPath.section == 0) {
         MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
         cell.subViewFrame = self.viewModel;
+        if (self.viewModel.model.modelType == MBCommunityModelTypeListNews) {
+            CGRect contentSize = [self.viewModel.model.newsContent boundingRectWithSize:CGSizeMake(ScreenWidth-20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
+            cell.contentLabel.text = self.viewModel.model.newsContent;
+            cell.contentLabel.frame = (CGRect){{cell.contentLabel.frame.origin.x,cell.contentLabel.frame.origin.y},{ScreenWidth-20 ,contentSize.size.height}};
+//            [cell.contentLabel sizeToFit];
+            cell.supportBtn.frame = (CGRect){{cell.supportBtn.frame.origin.x,CGRectGetMaxY(cell.contentLabel.frame)},{cell.supportBtn.frame.size.width,cell.supportBtn.frame.size.height}};
+            
+            cell.supportImage.frame = (CGRect){{cell.supportImage.frame.origin.x,CGRectGetMaxY(cell.contentLabel.frame)},{cell.supportImage.frame.size.width,cell.supportImage.frame.size.height}};;
+            
+            cell.commentBtn.frame = (CGRect){{cell.commentBtn.frame.origin.x,CGRectGetMaxY(cell.contentLabel.frame)},{cell.commentBtn.frame.size.width,cell.commentBtn.frame.size.height}};;
+            
+            cell.commentImage.frame = (CGRect){{cell.commentImage.frame.origin.x,CGRectGetMaxY(cell.contentLabel.frame)},{cell.commentImage.frame.size.width,cell.commentImage.frame.size.height}};;
+        }
         __weak typeof(self) weakSelf = self;
         cell.clickSupportBtnBlock = ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel) {
             MBCommunityModel *model = viewModel.model;
@@ -265,6 +284,7 @@
             return cell;
         }else {
             MBCommentCell *cell = [MBCommentCell cellWithTableView:tableView];
+            cell.eventDelegate = self;
             MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
             cell.viewModel = viewModel;
             NSInteger numOfComment = [self.viewModel.model.numOfComment integerValue];
@@ -273,6 +293,12 @@
             return cell;
         }
     }
+}
+
+- (void)commentEvenWhenClickHeadImageView:(MBCommentModel *)model {
+    MyMessagesViewController *myMeVc = [[MyMessagesViewController alloc]initWithLoadType:MessagesViewLoadTypeOther withCommentModel:model];
+    
+    [self.navigationController pushViewController:myMeVc animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

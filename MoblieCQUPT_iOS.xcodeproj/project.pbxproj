@@ -152,6 +152,8 @@
 		D9A0FE1C1CBA729900BFD01D /* 图片5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9A0FE1B1CBA729900BFD01D /* 图片5.jpg */; };
 		D9A0FE1E1CBA72CC00BFD01D /* 图片7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D9A0FE1D1CBA72CC00BFD01D /* 图片7.jpg */; };
 		D9A9532C1B9DA4F500D62690 /* iconfont-more.png in Resources */ = {isa = PBXBuildFile; fileRef = D9A9532B1B9DA4F500D62690 /* iconfont-more.png */; };
+		D9AFFF901D649FE50048E8C5 /* MBNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AFFF8F1D649FE50048E8C5 /* MBNewsModel.m */; };
+		D9AFFF931D64C8680048E8C5 /* MBNews_ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AFFF921D64C8680048E8C5 /* MBNews_ViewModel.m */; };
 		D9B501941BFC554E008E5EE0 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B501931BFC554E008E5EE0 /* logo.png */; };
 		D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */; };
 		D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */ = {isa = PBXBuildFile; fileRef = D9B577191B88744F005EFD18 /* iconfont-caidan.png */; };
@@ -583,6 +585,10 @@
 		D9A0FE1B1CBA729900BFD01D /* 图片5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "图片5.jpg"; sourceTree = "<group>"; };
 		D9A0FE1D1CBA72CC00BFD01D /* 图片7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "图片7.jpg"; sourceTree = "<group>"; };
 		D9A9532B1B9DA4F500D62690 /* iconfont-more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-more.png"; sourceTree = "<group>"; };
+		D9AFFF8E1D649FE50048E8C5 /* MBNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNewsModel.h; sourceTree = "<group>"; };
+		D9AFFF8F1D649FE50048E8C5 /* MBNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBNewsModel.m; sourceTree = "<group>"; };
+		D9AFFF911D64C8680048E8C5 /* MBNews_ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNews_ViewModel.h; sourceTree = "<group>"; };
+		D9AFFF921D64C8680048E8C5 /* MBNews_ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBNews_ViewModel.m; sourceTree = "<group>"; };
 		D9B501931BFC554E008E5EE0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D9B577181B88744F005EFD18 /* iconfont-caidan-selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan-selected.png"; sourceTree = "<group>"; };
 		D9B577191B88744F005EFD18 /* iconfont-caidan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-caidan.png"; sourceTree = "<group>"; };
@@ -1558,6 +1564,8 @@
 				D9DF5EA61CD0914300C89F6A /* MBComment_ViewModel.m */,
 				D9DF5EA71CD0914300C89F6A /* MBCommunity_ViewModel.h */,
 				D9DF5EA81CD0914300C89F6A /* MBCommunity_ViewModel.m */,
+				D9AFFF911D64C8680048E8C5 /* MBNews_ViewModel.h */,
+				D9AFFF921D64C8680048E8C5 /* MBNews_ViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1584,6 +1592,8 @@
 				D9DF5EB41CD0915300C89F6A /* MBCommentModel.m */,
 				D9DF5EB51CD0915300C89F6A /* MBCommunityModel.h */,
 				D9DF5EB61CD0915300C89F6A /* MBCommunityModel.m */,
+				D9AFFF8E1D649FE50048E8C5 /* MBNewsModel.h */,
+				D9AFFF8F1D649FE50048E8C5 /* MBNewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2589,6 +2599,7 @@
 				CEE6147D1BEA3F2B004873AA /* ProgressHUD.m in Sources */,
 				E20F27E31D6203D100C5DF79 /* BeautyCquptTableViewCell.m in Sources */,
 				3BDE162C1BA5FEED008F2DB7 /* XBSFindClassroomModel.m in Sources */,
+				D9AFFF901D649FE50048E8C5 /* MBNewsModel.m in Sources */,
 				CEE614961BEA4B9A004873AA /* UIScrollView+MJExtension.m in Sources */,
 				D9DF5EA91CD0914300C89F6A /* MBComment_ViewModel.m in Sources */,
 				3B1388BD1BA354BB0011EBF2 /* XBSConsultDataBundle.m in Sources */,
@@ -2623,6 +2634,7 @@
 				E263C79B1BA35E60008488FA /* FirstViewController.m in Sources */,
 				E2176ACD1D61C16C00A40B6E /* LZScrollView.m in Sources */,
 				E2F0A35B1D615F7500DFF37D /* SegmentView.m in Sources */,
+				D9AFFF931D64C8680048E8C5 /* MBNews_ViewModel.m in Sources */,
 				E2F0A3AD1D6165A600DFF37D /* GQUCell.m in Sources */,
 				E238270E1B9478190058970E /* Course.m in Sources */,
 				E2176ACA1D61C16C00A40B6E /* GraduateViewController.m in Sources */,
