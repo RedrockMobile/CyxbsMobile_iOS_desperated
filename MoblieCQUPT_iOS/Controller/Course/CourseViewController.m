@@ -347,10 +347,10 @@
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         LoginViewController *LVC = [[LoginViewController alloc] init];
         LVC.loginSuccessHandler = ^(BOOL success) {
-            [weakSelf loadNetData];
             if (success) {
                 weakSelf.isLoadCourseData = NO;
             }
+            [weakSelf loadNetData];
         };
         [weakSelf presentViewController:LVC animated:YES completion:nil];
     }];

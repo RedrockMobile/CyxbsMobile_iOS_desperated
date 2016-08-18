@@ -33,7 +33,7 @@
 @property (strong, nonatomic) NSMutableArray *allDataArray;
 @property (strong, nonatomic) NSMutableDictionary *myInfoData;
 @property (copy, nonatomic) NSString *currenSelectCellOfRow;
-@property (assign, nonatomic) NSInteger flag;
+@property (copy, nonatomic) NSString *flag;
 
 @end
 
@@ -48,7 +48,7 @@
     self.navigationItem.title = @"个人动态";
     [self.view addSubview:self.communityTableView];
     [self setupRefresh];
-    _flag = 0;
+    _flag = @"0";
     //请求个人信息
     if (_loadType == MessagesViewLoadTypeSelf) {
         NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
@@ -139,18 +139,15 @@
     }
 }
 - (void)loadNet {
-    _allDataArray = [NSMutableArray array];
-//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *size = @"15";
     NSString *stunum_other = self.stunum_other;
-    NSDictionary *parameter = @{@"page":[NSNumber numberWithInteger:_flag],
+    NSDictionary *parameter = @{@"page":_flag,
                                 @"size":size,
                                 @"stunum_other":stunum_other};
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:SEARCHTREBDS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSArray *dataArray = returnValue[@"data"];
-//        NSLog(@"the :%@", returnValue);
+        weakSelf.allDataArray = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i++) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
@@ -161,8 +158,8 @@
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
-            [weakSelf.communityTableView reloadData];
         }
+        [weakSelf.communityTableView reloadData];
     } WithFailureBlock:^{
         
     }];
@@ -190,19 +187,18 @@
 }
 
 - (void)headerRereshing{
-    _flag = 0;
-    _allDataArray = [NSMutableArray array];
-//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    _flag = @"0";
+    
     NSString *size = @"15";
     NSString *stunum_other = self.stunum_other;
-    NSDictionary *parameter = @{@"page":[NSNumber numberWithInteger:_flag],
+    NSDictionary *parameter = @{@"page":_flag,
                                 @"size":size,
                                 @"stunum_other":stunum_other};
     __weak typeof(self) weakSelf = self;
+    NSLog(@"上拉加载");
     [NetWork NetRequestPOSTWithRequestURL:SEARCHTREBDS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSArray *dataArray = returnValue[@"data"];
-        NSLog(@"the :%@", returnValue);
+        weakSelf.allDataArray = [NSMutableArray array];
         for (int i = 0; i < dataArray.count; i++) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
@@ -213,28 +209,25 @@
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
-            [weakSelf.communityTableView reloadData];
         }
+        [weakSelf.communityTableView reloadData];
         [weakSelf.communityTableView headerEndRefreshing];
     } WithFailureBlock:^{
+        NSLog(@"请求失败");
         [weakSelf.communityTableView headerEndRefreshing];
     }];
 }
 
 - (void)footerRereshing{
-    _flag += 1;
-//    _allDataArray = [NSMutableArray array];
-//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    _flag = [NSString stringWithFormat:@"%ld",(long)[_flag integerValue]+1];
     NSString *size = @"15";
     NSString *stunum_other = self.stunum_other;
-    NSDictionary *parameter = @{@"page":[NSNumber numberWithInteger:_flag],
+    NSDictionary *parameter = @{@"page":_flag,
                                 @"size":size,
                                 @"stunum_other":stunum_other};
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:SEARCHTREBDS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSArray *dataArray = returnValue[@"data"];
-        NSLog(@"the :%@", returnValue);
         for (int i = 0; i < dataArray.count; i++) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
@@ -245,8 +238,9 @@
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;
             [weakSelf.allDataArray addObject:viewModel];
-            [weakSelf.communityTableView reloadData];
+            
         }
+        [weakSelf.communityTableView reloadData];
         [weakSelf.communityTableView footerEndRefreshing];
     } WithFailureBlock:^{
         [weakSelf.communityTableView footerEndRefreshing];
@@ -323,8 +317,9 @@
         }
         return cell;
     }else {
+        NSInteger se = indexPath.section;
         MBCommunityCellTableViewCell *communityCell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
-        MBCommunity_ViewModel *viewModel = self.allDataArray[indexPath.section - 2];
+        MBCommunity_ViewModel *viewModel = _allDataArray[indexPath.section - 2];
 //        MBCommunityModel *model = [[MBCommunityModel alloc]init];
 //        model = viewModel.model;
 //        model.headImageView = self.myInfoData[@"photo_thumbnail_src"];
@@ -344,8 +339,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
     //查询文章内容
-//    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-//    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *artcileID;
     if (indexPath.section > 1) {
         MBCommunityModel *model = ((MBCommunity_ViewModel *)self.allDataArray[indexPath.section - 2]).model;

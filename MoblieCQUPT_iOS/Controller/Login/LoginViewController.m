@@ -190,10 +190,11 @@
 //            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
 //            [self presentViewController:view animated:YES completion:nil];
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
             if (weakSelf.loginSuccessHandler) {
                 weakSelf.loginSuccessHandler(YES);
             }
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            
         }else {
             //没有完善信息,跳转到完善个人的界面
             VerifyMyInfoViewController *verifyMyInfoVC = [[VerifyMyInfoViewController alloc] init];
