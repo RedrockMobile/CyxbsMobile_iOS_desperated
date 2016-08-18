@@ -87,6 +87,7 @@
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [aValue CGRectValue];
     int height = keyboardRect.size.height;
+    _replyView.cancel.transform = CGAffineTransformMakeRotation(0);
     [UIView animateWithDuration:0.3 animations:^{
         _replyView.frame = CGRectMake(0, ScreenHeight - height - self.replyView.frame.size.height, self.replyView.frame.size.width, self.replyView.frame.size.height);
     } completion:^(BOOL finished) {
@@ -310,6 +311,7 @@
             NSString *nickName = viewModel.model.IDLabel;
             NSString *placeholder = [NSString stringWithFormat:@"回复 %@ : ",nickName];
             _replyView.textView.placeholder = placeholder;
+            _replyView.cancel.transform = CGAffineTransformMakeRotation(0);
         }
     }
 }
@@ -363,9 +365,11 @@
 
     if ([text isEqualToString:@"\n"]) {
         if ([_replyView.textView.placeholder isEqualToString:@"评论"]) {
+            _replyView.cancel.transform = CGAffineTransformMakeRotation(M_PI);
             [self upLoadCommentWithContent:self.replyView.textView.text];
         }else {
             NSString *content = [NSString stringWithFormat:@"%@%@",_replyView.textView.placeholder,_replyView.textView.text];
+            _replyView.cancel.transform = CGAffineTransformMakeRotation(M_PI);
             [self upLoadCommentWithContent:content];
         }
     }
@@ -383,13 +387,27 @@
     
     
     if (stuNum.length == 0 && idNum.length == 0) {
+        [_replyView.textView resignFirstResponder];
+        [UIView animateWithDuration:0.25 animations:^{
+            _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
+        } completion:^(BOOL finished) {
+            
+        }];
+        __weak typeof(self) weakSelf = self;
         UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息,还想发评论?" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//            [weakSelf.replyView.textView becomeFirstResponder];
+        }];
         
-        __weak typeof(self) weakSelf = self;
+        
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             LoginViewController *LVC = [[LoginViewController alloc] init];
+            LVC.loginSuccessHandler = ^(BOOL success) {
+                if (success) {
+                    [weakSelf upLoadCommentWithContent:content];
+                }
+            };
             [weakSelf presentViewController:LVC animated:YES completion:nil];
         }];
         
@@ -404,7 +422,7 @@
                                     @"type_id":type_id,
                                     @"content":content};
         
-        
+        NSLog(@"发送评论");
         [_replyView.textView resignFirstResponder];
         [UIView animateWithDuration:0.25 animations:^{
             _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
@@ -465,6 +483,11 @@
         __weak typeof(self) weakSelf = self;
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             LoginViewController *LVC = [[LoginViewController alloc] init];
+            LVC.loginSuccessHandler = ^(BOOL success) {
+                if (success) {
+                    [weakSelf uploadSupport:viewModel withType:type];
+                }
+            };
             [weakSelf presentViewController:LVC animated:YES completion:nil];
         }];
         

@@ -11,6 +11,8 @@
 
 @interface MBReplyView ()
 
+
+
 @end
 
 @implementation MBReplyView
@@ -31,19 +33,20 @@
         _textView.placeholder = @"评论";
         _textView.layer.cornerRadius = 5;
         
-        UIButton *cancle = [UIButton buttonWithType:UIButtonTypeCustom];
-        [cancle setBackgroundImage:[UIImage imageNamed:@"xia.png"] forState:UIControlStateNormal];
-        cancle.backgroundColor = BACK_GRAY_COLOR;
+        _cancel = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_cancel setBackgroundImage:[UIImage imageNamed:@"xia.png"] forState:UIControlStateNormal];
+        _cancel.transform = CGAffineTransformMakeRotation(M_PI);
+        _cancel.backgroundColor = BACK_GRAY_COLOR;
         
         CGFloat btnX = CGRectGetMaxX(_textView.frame);
         
-        cancle.frame = CGRectMake(btnX + 10, self.textView.frame.origin.y, 20, 20);
-        cancle.center = CGPointMake(CGRectGetMidX(cancle.frame), self.frame.size.height/2);
+        _cancel.frame = CGRectMake(btnX + 10, self.textView.frame.origin.y, 20, 20);
+        _cancel.center = CGPointMake(CGRectGetMidX(_cancel.frame), self.frame.size.height/2);
         
-        [cancle addTarget:self action:@selector(clickCancle:) forControlEvents:UIControlEventTouchUpInside];
+        [_cancel addTarget:self action:@selector(clickCancle:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.layer addSublayer:line];
-        [self addSubview:cancle];
+        [self addSubview:_cancel];
         [self addSubview:self.textView];
     }
     return self;
@@ -51,6 +54,7 @@
 
 - (void)clickCancle:(UIButton *)sender {
     [_textView resignFirstResponder];
+    _cancel.transform = CGAffineTransformMakeRotation(M_PI);
     [UIView animateWithDuration:0.25 animations:^{
         self.frame = CGRectMake(0, ScreenHeight - self.frame.size.height, self.frame.size.width, self.frame.size.height);
     } completion:^(BOOL finished) {

@@ -89,7 +89,7 @@
 - (void)setUserId {
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
-    
+    __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum,@"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
         if (returnValue[@"data"]) {
@@ -105,7 +105,10 @@
             [LoginEntry saveByUserdefaultWithUserID:user_id];
             [LoginEntry saveByUserdefaultWithNickname:nickname];
             [LoginEntry saveByUserdefaultWithPhoto_src:photo_src];
-            NSLog(@"%@,%@,%@",user_id,nickname,photo_src);
+//            NSLog(@"%@,%@,%@",user_id,nickname,photo_src);
+            if (weakSelf.verifySuccessHandler) {
+                weakSelf.verifySuccessHandler(YES);
+            }
             //跳转到 主界面
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];

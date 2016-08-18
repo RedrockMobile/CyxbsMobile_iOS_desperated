@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^VerifySuccessHandler)(BOOL success);
+
 @interface VerifyMyInfoViewController : UIViewController
+
+@property (copy, nonatomic) VerifySuccessHandler verifySuccessHandler;
 
 @end

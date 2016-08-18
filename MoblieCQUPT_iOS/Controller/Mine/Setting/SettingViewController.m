@@ -131,9 +131,8 @@
 //    LoginViewController *login = [[LoginViewController alloc]init];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-    [self.navigationController presentViewController:view animated:YES completion:^{
-        [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
-    }];
+    [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
+    [self.navigationController presentViewController:view animated:YES completion:nil];
 //    [self dismissViewControllerAnimated:YES completion:^{
 //        
 //    }];

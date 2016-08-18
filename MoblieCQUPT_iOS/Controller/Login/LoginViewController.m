@@ -47,6 +47,14 @@
     nav.backgroundColor = MAIN_COLOR;
     [self.view addSubview:nav];
     
+    //左上角取消按钮
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelBtn.frame = CGRectMake(15, 0, 20, 20);
+    [cancelBtn setBackgroundImage:[UIImage imageNamed:@"叉叉.png"] forState:UIControlStateNormal];
+    cancelBtn.center = CGPointMake(CGRectGetMidX(cancelBtn.frame), nav.frame.size.height/2+10);
+    [cancelBtn addTarget:self action:@selector(clickCancelBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [nav addSubview:cancelBtn];
+    
     UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 60, 44)];
     titleLabel.text = @"登录";
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -98,6 +106,15 @@
     [_loginButton addTarget:self action:@selector(loginButton:) forControlEvents:UIControlEventTouchUpInside];
     [_loginButton addTarget:self action:@selector(touchDown) forControlEvents:UIControlEventTouchDown];
     [self.view addSubview:_loginButton];
+}
+
+- (void)clickCancelBtn:(UIButton *)sender {
+    __weak typeof(self) weakSelf = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (weakSelf.loginSuccessHandler) {
+            weakSelf.loginSuccessHandler(NO);
+        }
+    }];
 }
 
 - (void)touchDown {
@@ -155,7 +172,7 @@
 - (void)verifyUserInfo {
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
-    
+    __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":stuNum,@"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
         //如果返回的data 内容不是nil 则跳转到主界面
@@ -169,16 +186,25 @@
             [LoginEntry saveByUserdefaultWithUserID:user_id];
             [LoginEntry saveByUserdefaultWithNickname:nickname];
             [LoginEntry saveByUserdefaultWithPhoto_src:photo_src];
+            if (weakSelf.loginSuccessHandler) {
+                weakSelf.loginSuccessHandler(YES);
+            }
             //跳转到 主界面
 //            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
 //            [self presentViewController:view animated:YES completion:nil];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
             
         }else {
             //没有完善信息,跳转到完善个人的界面
             VerifyMyInfoViewController *verifyMyInfoVC = [[VerifyMyInfoViewController alloc] init];
-            [self presentViewController:verifyMyInfoVC animated:YES completion:nil];
+            verifyMyInfoVC.verifySuccessHandler = ^(BOOL success) {
+                if (weakSelf.loginSuccessHandler) {
+                    weakSelf.loginSuccessHandler(success);
+                }
+            
+            };
+            [weakSelf presentViewController:verifyMyInfoVC animated:YES completion:nil];
         }
         
     } WithFailureBlock:^{

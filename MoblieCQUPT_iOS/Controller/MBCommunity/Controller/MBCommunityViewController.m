@@ -629,6 +629,12 @@
         __weak typeof(self) weakSelf = self;
         UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             LoginViewController *LVC = [[LoginViewController alloc] init];
+            LVC.loginSuccessHandler = ^(BOOL success) {
+                if (success) {
+                    [weakSelf uploadSupport:viewModel withType:type];
+                }
+            };
+
             [weakSelf presentViewController:LVC animated:YES completion:nil];
         }];
         

@@ -52,6 +52,7 @@
 @property (assign, nonatomic) CGPoint startPoint1;
 
 @property (strong, nonatomic) UIView *courseMengbi;
+@property (assign, nonatomic) BOOL isLoadCourseData;
 
 @end
 
@@ -60,6 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _weekViewShow = NO;
+    _isLoadCourseData = NO;
     [self initView];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
@@ -235,7 +237,8 @@
 - (void)loadNetData {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
-    if (stuNum.length == 0 && !_courseMengbi) {
+    NSLog(@"%@",stuNum);
+    if (stuNum.length == 0) {
         _titleButton.enabled = NO;
         NSLog(@"生成课表懵逼");
         //如果没有学号 即没有登录过 课表不请求
@@ -261,14 +264,15 @@
         [self.view addSubview:_courseMengbi];
         
         
-    }else if(stuNum.length != 0 && _courseMengbi){
-        NSLog(@"去除课表");
+    }else if(stuNum.length != 0 && !_isLoadCourseData){
+        NSLog(@"去除课表菌 加载课表数据");
         [_courseMengbi removeFromSuperview];
         _titleButton.enabled = YES;
         _parameter = [NSMutableDictionary dictionary];
         [_parameter setObject:stuNum forKey:@"stuNum"];
-        
+        __weak typeof(self) weakSelf = self;
         [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {
+            weakSelf.isLoadCourseData = YES;
             NSMutableArray *dataArray = [returnValue objectForKey:@"data"];
             NSMutableArray *data = [NSMutableArray array];
             for (int i = 0; i < dataArray.count; i ++) {
@@ -280,49 +284,49 @@
                 }
                 [data addObject:dataDic];
             }
-            [self handleWeek:data];
-            [self handleColor:data];
-            _dataArray = data;
-            _weekDataArray = data;
+            [weakSelf handleWeek:data];
+            [weakSelf handleColor:data];
+            weakSelf.dataArray = data;
+            weakSelf.weekDataArray = data;
             NSString *nowWeek = [NSString stringWithFormat:@"%@",[returnValue objectForKey:@"nowWeek"]];
-            self.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
+            weakSelf.tabBarItem.title = [NSString stringWithFormat:@"第%@周",[returnValue objectForKey:@"nowWeek"]];
             
             /**共享数据 by Orange-W**/
             NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
-            [shared setObject:[self getWeekCourseArray:[nowWeek integerValue]] forKey:kAppGroupShareThisWeekArray];
+            [shared setObject:[weakSelf getWeekCourseArray:[nowWeek integerValue]] forKey:kAppGroupShareThisWeekArray];
             [shared synchronize];
             /***/
             
             [userDefault setObject:nowWeek forKey:@"nowWeek"];
-            [userDefault setObject:_weekDataArray forKey:@"weekDataArray"];
-            [userDefault setObject:_dataArray forKey:@"dataArray"];
+            [userDefault setObject:weakSelf.weekDataArray forKey:@"weekDataArray"];
+            [userDefault setObject:weakSelf.dataArray forKey:@"dataArray"];
             [userDefault synchronize];
-            for (int i = 0; i < _buttonTag.count; i ++) {
-                [_buttonTag[i] removeFromSuperview];
+            for (int i = 0; i < weakSelf.buttonTag.count; i ++) {
+                [weakSelf.buttonTag[i] removeFromSuperview];
             }
-            _dataArray = [self getWeekCourseArray:[nowWeek integerValue]];
-            [self handleData:_dataArray];
-            for (int i = 0; i < _weekBtnArray.count; i ++) {
+            weakSelf.dataArray = [self getWeekCourseArray:[nowWeek integerValue]];
+            [self handleData:weakSelf.dataArray];
+            for (int i = 0; i < weakSelf.weekBtnArray.count; i ++) {
                 if (i == [nowWeek integerValue]) {
-                    UIButton *weekBtn1 = _weekBtnArray[i];
+                    UIButton *weekBtn1 = weakSelf.weekBtnArray[i];
                     [weekBtn1 setTitle:@"本周" forState:UIControlStateNormal];
-                    if (_clickBtn != weekBtn1 || _clickBtn == nil) {
-                        _clickBtn.selected = NO;
-                        [_clickBtn setTitle:[NSString stringWithFormat:@"%@",_weekArray[i-1]] forState:UIControlStateNormal];
-                        [_clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                        _clickBtn.backgroundColor = [UIColor whiteColor];
+                    if (weakSelf.clickBtn != weekBtn1 || weakSelf.clickBtn == nil) {
+                        weakSelf.clickBtn.selected = NO;
+                        [weakSelf.clickBtn setTitle:[NSString stringWithFormat:@"%@",weakSelf.weekArray[i-1]] forState:UIControlStateNormal];
+                        [weakSelf.clickBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                        weakSelf.clickBtn.backgroundColor = [UIColor whiteColor];
                         weekBtn1.selected = YES;
                         [weekBtn1 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                         weekBtn1.backgroundColor = [UIColor colorWithRed:250/255.0 green:165/255.0 blue:69/255.0 alpha:1];
-                        [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
-                        _clickBtn = weekBtn1;
+                        [weakSelf.titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
+                        weakSelf.clickBtn = weekBtn1;
                     }
-                    [_titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
-                    [_titleButton sizeToFit];
-                    _titleButton.center = CGPointMake(ScreenWidth/2, _nav.frame.size.height/2+10);
-                    _tagView.center = CGPointMake(_titleButton.center.x+_titleButton.frame.size.width/2+8, _nav.frame.size.height/2+10);
+                    [weakSelf.titleButton setTitle:[NSString stringWithFormat:@"%@",weekBtn1.titleLabel.text] forState:UIControlStateNormal];
+                    [weakSelf.titleButton sizeToFit];
+                    weakSelf.titleButton.center = CGPointMake(ScreenWidth/2, _nav.frame.size.height/2+10);
+                    weakSelf.tagView.center = CGPointMake(weakSelf.titleButton.center.x+weakSelf.titleButton.frame.size.width/2+8, weakSelf.nav.frame.size.height/2+10);
                     if ([nowWeek integerValue] > 6 && [nowWeek integerValue] < 13) {
-                        _weekScrollView.contentOffset = CGPointMake(0, _weekScrollView.frame.size.height/2);
+                        weakSelf.weekScrollView.contentOffset = CGPointMake(0, weakSelf.weekScrollView.frame.size.height/2);
                     }
                 }
             }
@@ -342,6 +346,12 @@
     __weak typeof(self) weakSelf = self;
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         LoginViewController *LVC = [[LoginViewController alloc] init];
+        LVC.loginSuccessHandler = ^(BOOL success) {
+            [weakSelf loadNetData];
+            if (success) {
+                weakSelf.isLoadCourseData = NO;
+            }
+        };
         [weakSelf presentViewController:LVC animated:YES completion:nil];
     }];
     

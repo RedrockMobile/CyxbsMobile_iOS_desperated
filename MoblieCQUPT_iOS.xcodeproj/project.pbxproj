@@ -107,6 +107,7 @@
 		D90928951CACCD6400CA97CD /* 夜间模式@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90928921CACCD6400CA97CD /* 夜间模式@2x.png */; };
 		D90928961CACCD6400CA97CD /* 与我相关@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D90928931CACCD6400CA97CD /* 与我相关@2x.png */; };
 		D910EE031BD66B7900EB9E89 /* iconfont-titleTag.png in Resources */ = {isa = PBXBuildFile; fileRef = D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */; };
+		D91E01151D65A3400027CDE4 /* 叉叉.png in Resources */ = {isa = PBXBuildFile; fileRef = D91E01141D65A3400027CDE4 /* 叉叉.png */; };
 		D94F635B1CE1718000F91664 /* addPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D94F635A1CE1718000F91664 /* addPhoto.jpg */; };
 		D94F63601CE175E200F91664 /* NSNull+Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = D94F635F1CE175E200F91664 /* NSNull+Helper.m */; };
 		D94F63621CE17DFA00F91664 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = D94F63611CE17DFA00F91664 /* xia.png */; };
@@ -537,6 +538,7 @@
 		D90928921CACCD6400CA97CD /* 夜间模式@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "夜间模式@2x.png"; sourceTree = "<group>"; };
 		D90928931CACCD6400CA97CD /* 与我相关@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "与我相关@2x.png"; sourceTree = "<group>"; };
 		D910EE011BD66B7900EB9E89 /* iconfont-titleTag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iconfont-titleTag.png"; sourceTree = "<group>"; };
+		D91E01141D65A3400027CDE4 /* 叉叉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "叉叉.png"; path = "../MBCommunity/叉叉.png"; sourceTree = "<group>"; };
 		D94F635A1CE1718000F91664 /* addPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addPhoto.jpg; sourceTree = "<group>"; };
 		D94F635E1CE175E200F91664 /* NSNull+Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+Helper.h"; sourceTree = "<group>"; };
 		D94F635F1CE175E200F91664 /* NSNull+Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+Helper.m"; sourceTree = "<group>"; };
@@ -1980,6 +1982,7 @@
 		E2E7DE211B94764A0081F699 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D91E01141D65A3400027CDE4 /* 叉叉.png */,
 				E2E7DE221B94764A0081F699 /* LoginViewController.h */,
 				E2E7DE231B94764A0081F699 /* LoginViewController.m */,
 				E2E7DE241B94764A0081F699 /* LoginViewController.xib */,
@@ -2373,6 +2376,7 @@
 				3B685C881BA44D6300E34491 /* Images.xcassets in Resources */,
 				D96964991CB51EDC00B12B2E /* 智妍3.jpg in Resources */,
 				E20F27E11D6203D100C5DF79 /* 团委.txt in Resources */,
+				D91E01151D65A3400027CDE4 /* 叉叉.png in Resources */,
 				3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,

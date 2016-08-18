@@ -12,5 +12,5 @@
 @interface MBReplyView : UIView
 
 @property (strong, nonatomic) MBTextView *textView;
-
+@property (strong ,nonatomic) UIButton *cancel;
 @end

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^LoginSuccessHandler)(BOOL success);
+
 @interface LoginViewController : UIViewController<UITextFieldDelegate>
 
+@property (copy, nonatomic) LoginSuccessHandler loginSuccessHandler;
 
 @end
