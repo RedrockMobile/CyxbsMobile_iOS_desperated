@@ -255,8 +255,34 @@
 }
 
 - (void)clickAddButton:(UIButton *) sender{
-    MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
-    [self.navigationController presentViewController:releaseVC animated:YES completion:nil];
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    if (stuNum.length == 0) {
+        UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"你都没有登录咯,肯定不让你发布呀" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+        
+        __weak typeof(self) weakSelf = self;
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            LoginViewController *LVC = [[LoginViewController alloc] init];
+            LVC.loginSuccessHandler = ^(BOOL success) {
+                if (success) {
+                    [weakSelf clickAddButton:sender];
+                }
+            };
+            
+            [weakSelf presentViewController:LVC animated:YES completion:nil];
+        }];
+        
+        [alertC addAction:cancel];
+        [alertC addAction:confirm];
+        
+        [self presentViewController:alertC animated:YES completion:nil];
+
+    }else if (stuNum.length != 0) {
+        MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
+        [self.navigationController presentViewController:releaseVC animated:YES completion:nil];
+    }
+
 }
 
 
