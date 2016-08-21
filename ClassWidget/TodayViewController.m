@@ -17,7 +17,7 @@ fprintf(stderr, "-------\n");                                               \
 #else
 #define NSLog(format, ...) ;
 #endif
-#define kAPPGroupID @"group.com.mredrock.cyxbs"
+#define kAPPGroupID @"group.com.redrock.mobile"
 #define kAppGroupShareNowDay @"nowDay"
 #define kAppGroupShareThisWeekArray @"thisWeekArray"
 #define kAutoUpdateInterval 60*5

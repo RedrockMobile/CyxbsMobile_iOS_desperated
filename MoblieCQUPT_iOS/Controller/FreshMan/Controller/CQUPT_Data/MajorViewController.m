@@ -68,7 +68,7 @@
     _bt.layer.cornerRadius = 4;
     _bt.layer.masksToBounds = YES;
     _bt.tag = 0;
-    [self.bt setBackgroundImage:[UIImage imageNamed:@"pick.png"] forState:UIControlStateNormal];
+    [self.bt setBackgroundImage:[UIImage imageNamed:@"pick"] forState:UIControlStateNormal];
     [self.bt addTarget:self action:@selector(click:)  forControlEvents:UIControlEventTouchUpInside];
     
     _exampleColorLb1.backgroundColor = [UIColor colorWithRed:207/255.f green:205/255.f blue:252/255.f alpha:1];

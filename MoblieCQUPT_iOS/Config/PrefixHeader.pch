@@ -43,7 +43,7 @@
 //#import "MobClick.h"
 
 #pragma Group共享
-#define kAPPGroupID @"group.com.mredrock.cyxbs"
+#define kAPPGroupID @"group.com.redrock.mobile"
 #define kAppGroupShareNowDay @"nowDay"
 #define kAppGroupShareThisWeekArray @"thisWeekArray"
 

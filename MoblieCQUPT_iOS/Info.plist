@@ -22,7 +22,7 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.mredrock.cyxbs</string>
+			<string>com.redrock.mobile</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>cyxbs</string>

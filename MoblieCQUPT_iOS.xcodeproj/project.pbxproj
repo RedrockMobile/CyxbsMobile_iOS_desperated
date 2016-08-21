@@ -222,7 +222,6 @@
 		E2176AD11D61C16C00A40B6E /* SexRatioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2176AC51D61C16C00A40B6E /* SexRatioViewController.xib */; };
 		E2176AD21D61C16C00A40B6E /* Timer.m in Sources */ = {isa = PBXBuildFile; fileRef = E2176AC71D61C16C00A40B6E /* Timer.m */; };
 		E2176AD31D61C16C00A40B6E /* UIImage+FillColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E2176AC91D61C16C00A40B6E /* UIImage+FillColor.m */; };
-		E2176AD61D61C42700A40B6E /* pick.png in Resources */ = {isa = PBXBuildFile; fileRef = E2176AD51D61C42700A40B6E /* pick.png */; };
 		E218DCD31CD20AC200DD3C8C /* XBSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E218DC7D1CD20AC200DD3C8C /* XBSAboutViewController.m */; };
 		E218DCD41CD20AC200DD3C8C /* XBSAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E218DC7E1CD20AC200DD3C8C /* XBSAboutViewController.xib */; };
 		E218DCD51CD20AC200DD3C8C /* AboutMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E218DC811CD20AC200DD3C8C /* AboutMeTableViewCell.m */; };
@@ -259,8 +258,6 @@
 		E238270E1B9478190058970E /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = E238270D1B9478190058970E /* Course.m */; };
 		E243BC2F1CDE27B400C7DDD6 /* MyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E243BC2E1CDE27B400C7DDD6 /* MyInfoModel.m */; };
 		E24749551CDB4591006AEB9B /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E24749541CDB4591006AEB9B /* SettingViewController.m */; };
-		E259FCCC1D609EB800B9B14E /* calendar1.png in Resources */ = {isa = PBXBuildFile; fileRef = E259FCCB1D609EB800B9B14E /* calendar1.png */; };
-		E259FCCE1D609EC000B9B14E /* calendar2.png in Resources */ = {isa = PBXBuildFile; fileRef = E259FCCD1D609EC000B9B14E /* calendar2.png */; };
 		E263C7721BA35E26008488FA /* ChuangyeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C7411BA35E26008488FA /* ChuangyeViewController.m */; };
 		E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E263C7421BA35E26008488FA /* ChuangyeViewController.xib */; };
 		E263C7741BA35E26008488FA /* CommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E263C7451BA35E26008488FA /* CommunityViewController.m */; };
@@ -696,7 +693,6 @@
 		E2176AC71D61C16C00A40B6E /* Timer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timer.m; sourceTree = "<group>"; };
 		E2176AC81D61C16C00A40B6E /* UIImage+FillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FillColor.h"; sourceTree = "<group>"; };
 		E2176AC91D61C16C00A40B6E /* UIImage+FillColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FillColor.m"; sourceTree = "<group>"; };
-		E2176AD51D61C42700A40B6E /* pick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pick.png; sourceTree = "<group>"; };
 		E218DC7C1CD20AC200DD3C8C /* XBSAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSAboutViewController.h; sourceTree = "<group>"; };
 		E218DC7D1CD20AC200DD3C8C /* XBSAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSAboutViewController.m; sourceTree = "<group>"; };
 		E218DC7E1CD20AC200DD3C8C /* XBSAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSAboutViewController.xib; sourceTree = "<group>"; };
@@ -759,8 +755,6 @@
 		E24749531CDB4591006AEB9B /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		E24749541CDB4591006AEB9B /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		E259FCCB1D609EB800B9B14E /* calendar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar1.png; sourceTree = "<group>"; };
-		E259FCCD1D609EC000B9B14E /* calendar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar2.png; sourceTree = "<group>"; };
 		E263C7401BA35E26008488FA /* ChuangyeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuangyeViewController.h; sourceTree = "<group>"; };
 		E263C7411BA35E26008488FA /* ChuangyeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuangyeViewController.m; sourceTree = "<group>"; };
 		E263C7421BA35E26008488FA /* ChuangyeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChuangyeViewController.xib; sourceTree = "<group>"; };
@@ -1007,8 +1001,6 @@
 		CE0ADC911BDDD03E00374CDC /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				E259FCCB1D609EB800B9B14E /* calendar1.png */,
-				E259FCCD1D609EC000B9B14E /* calendar2.png */,
 				D95256421C8BC8C600CD7921 /* GQConsult */,
 				D90928911CACCD6400CA97CD /* 我的动态@2x.png */,
 				D90928921CACCD6400CA97CD /* 夜间模式@2x.png */,
@@ -1614,7 +1606,6 @@
 		E2176AD41D61C42700A40B6E /* resource */ = {
 			isa = PBXGroup;
 			children = (
-				E2176AD51D61C42700A40B6E /* pick.png */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -2245,7 +2236,7 @@
 				TargetAttributes = {
 					CE4334431BE7C52D000C407D = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 777RZL5E43;
+						DevelopmentTeam = HPM8HVK7C6;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2254,7 +2245,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 777RZL5E43;
+						DevelopmentTeam = HPM8HVK7C6;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2318,7 +2309,6 @@
 				D90928941CACCD6400CA97CD /* 我的动态@2x.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
-				E259FCCE1D609EC000B9B14E /* calendar2.png in Resources */,
 				E2F0A3B41D6165A600DFF37D /* arrow.png in Resources */,
 				E2F0A3B21D6165A600DFF37D /* OneTableViewCell.xib in Resources */,
 				E2176ACF1D61C16C00A40B6E /* MajorViewController.xib in Resources */,
@@ -2449,7 +2439,6 @@
 				CEF273911B90D573009B5BA2 /* 20-3w.png in Resources */,
 				E2176ACB1D61C16C00A40B6E /* GraduateViewController.xib in Resources */,
 				D952C75B1C0C75B300AA24C0 /* iconfont-wodekecheng.png in Resources */,
-				E2176AD61D61C42700A40B6E /* pick.png in Resources */,
 				E20F27DF1D6203D100C5DF79 /* 青协.txt in Resources */,
 				E20F27DC1D6203D100C5DF79 /* 红岩网校工作站简介.txt in Resources */,
 				D99C4A841B9AB70200BEF33C /* iconfont_meizhou.png in Resources */,
@@ -2485,7 +2474,6 @@
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
 				E2C75DA01CE1169100EA8FEA /* headImage.png in Resources */,
 				D98B5D1B1C08483E0010BC9E /* community_new@2x.png in Resources */,
-				E259FCCC1D609EB800B9B14E /* calendar1.png in Resources */,
 				E263C7811BA35E26008488FA /* shakeForShop@2x.png in Resources */,
 				E263C7771BA35E26008488FA /* chuangye@2x.png in Resources */,
 				E2F0A3B91D6165A600DFF37D /* 寝室0.jpg in Resources */,
@@ -2752,7 +2740,7 @@
 				INFOPLIST_FILE = ClassWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.ClassWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redrock.mobile.ClassWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -2768,7 +2756,7 @@
 				INFOPLIST_FILE = ClassWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.ClassWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redrock.mobile.ClassWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -2887,7 +2875,7 @@
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redrock.mobile;
 				PRODUCT_NAME = "掌上重邮";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2925,7 +2913,7 @@
 					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
 				);
 				New_Setting = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
+				PRODUCT_BUNDLE_IDENTIFIER = com.redrock.mobile;
 				PRODUCT_NAME = "掌上重邮";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

@@ -121,8 +121,6 @@
             }else if (secondChooseIndex == 2) {
                 tab.selectedIndex = selectIndex;
                 self.window.rootViewController = mainNavigationVC;
-                MBReleaseViewController *RVC = [[MBReleaseViewController alloc] init];
-                [mainNavigationVC pushViewController:RVC animated:YES];
             }
         }else {
             [userDefault removeObjectForKey:@"stuNum"];
