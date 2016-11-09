@@ -128,7 +128,7 @@
         
         UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 40)];
         NSInteger numOfComment = [self.viewModel.model.numOfComment integerValue];
-        headLabel.text = [NSString stringWithFormat:@"评论 %ld",numOfComment];
+        headLabel.text = [NSString stringWithFormat:@"评论 %ld",(long)numOfComment];
         headLabel.font = [UIFont systemFontOfSize:16];
         headLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
         [headLabel sizeToFit];
@@ -176,7 +176,7 @@
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        if (self.viewModel.model.modelType == MBCommunityModelTypeListNews) {
+        if (self.viewModel.model.modelType == MBCommunityModelTypeListNews || ![self.viewModel.model.typeID isEqualToString:@"5"]) {
             CGRect contentSize = [self.viewModel.model.newsContent boundingRectWithSize:CGSizeMake(ScreenWidth-20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
             return self.viewModel.cellHeight + contentSize.size.height -35;
         }else {
@@ -210,7 +210,7 @@
     if (indexPath.section == 0) {
         MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
         cell.subViewFrame = self.viewModel;
-        if (self.viewModel.model.modelType == MBCommunityModelTypeListNews) {
+        if (self.viewModel.model.modelType == MBCommunityModelTypeListNews || ![self.viewModel.model.typeID isEqualToString:@"5"]) {
             CGRect contentSize = [self.viewModel.model.newsContent boundingRectWithSize:CGSizeMake(ScreenWidth-20, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
             cell.contentLabel.text = self.viewModel.model.newsContent;
             cell.contentLabel.frame = (CGRect){{cell.contentLabel.frame.origin.x,cell.contentLabel.frame.origin.y},{ScreenWidth-20 ,contentSize.size.height}};
@@ -234,8 +234,8 @@
                 }else {
                     nowSupportNum = currentSupportNum - 1;
                 }
-                [labelBtn setTitle:[NSString stringWithFormat:@"%ld",nowSupportNum] forState:UIControlStateNormal];
-                model.numOfSupport = [NSString stringWithFormat:@"%ld",nowSupportNum];
+                [labelBtn setTitle:[NSString stringWithFormat:@"%ld",(long)nowSupportNum] forState:UIControlStateNormal];
+                model.numOfSupport = [NSString stringWithFormat:@"%ld",(long)nowSupportNum];
                 [weakSelf uploadSupport:viewModel withType:1];
                 imageBtn.selected = !imageBtn.selected;
                 labelBtn.selected = !labelBtn.selected;
@@ -252,8 +252,8 @@
                     [weakSelf uploadSupport:viewModel withType:0];
                     imageBtn.selected = !imageBtn.selected;
                     labelBtn.selected = !labelBtn.selected;
-                    weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
-                    weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
+                    weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",(long)indexPath.section];
+                    weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",(long)tableView.tag];
                     NSLog(@"点击赞");
                 }
             }
@@ -289,7 +289,7 @@
             MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
             cell.viewModel = viewModel;
             NSInteger numOfComment = [self.viewModel.model.numOfComment integerValue];
-            _headLabel.text = [NSString stringWithFormat:@"评论 %ld",numOfComment];
+            _headLabel.text = [NSString stringWithFormat:@"评论 %ld",(long)numOfComment];
             [_headLabel sizeToFit];
             return cell;
         }
@@ -332,7 +332,7 @@
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSInteger numOfComment = ((NSArray *)returnValue[@"data"]).count;
-        weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",numOfComment];
+        weakSelf.viewModel.model.numOfComment = [NSString stringWithFormat:@"%ld",(long)numOfComment];
         MBCommunityModel *newModel = weakSelf.viewModel.model;
         weakSelf.viewModel.model = newModel;
         _isLoadedComment = YES;

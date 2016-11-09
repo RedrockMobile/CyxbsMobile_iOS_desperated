@@ -36,20 +36,20 @@
             self.articleID = dic[@"id"] ?: @"";
         }
         //昵称
-        if (modelType == MBCommunityModelTypeListNews) {
-            NSString *key;
-            if ([dic containsObjectForKey:@"articletype_id"]) {
-                key = @"articletype_id";
-            }else if ([dic containsObjectForKey:@"type_id"]) {
-               key = @"type_id";
-            }
-            if ([dic[key] isEqualToString:@"1"]) {
+        if (modelType == MBCommunityModelTypeListNews || ![self.typeID isEqualToString:@"5"]) {
+//            NSString *key;
+//            if ([dic containsObjectForKey:@"articletype_id"]) {
+//                key = @"articletype_id";
+//            }else if ([dic containsObjectForKey:@"type_id"]) {
+//               key = @"type_id";
+//            }
+            if ([self.typeID isEqualToString:@"1"]) {
                 self.IDLabel = @"重邮新闻";
-            }else if ([dic[key] isEqualToString:@"2"]) {
+            }else if ([self.typeID isEqualToString:@"2"]) {
                 self.IDLabel = @"教务在线";
-            }else if ([dic[key] isEqualToString:@"3"]) {
+            }else if ([self.typeID isEqualToString:@"3"]) {
                 self.IDLabel = @"学生咨询";
-            }else if ([dic[key] isEqualToString:@"4"]) {
+            }else if ([self.typeID isEqualToString:@"4"]) {
                 self.IDLabel = @"校务公告";
             }
             
@@ -102,12 +102,11 @@
             }
         }
         
-        
         //内容
-        if (modelType == MBCommunityModelTypeListNews) {
+        if (modelType == MBCommunityModelTypeListNews || ![self.typeID isEqualToString:@"5"]) {
             if ([dic[@"content"] isKindOfClass:[NSDictionary class]]) {
                 self.contentLabel = [dic[@"content"] objectForKey:@"title"];
-                self.newsContent = [self removeHTML:dic[@"content"]];
+                self.newsContent = [self removeHTML:dic[@"content"][@"content"]];
             }else {
                 self.contentLabel = dic[@"title"];
                 self.newsContent = [self removeHTML:dic[@"content"]];

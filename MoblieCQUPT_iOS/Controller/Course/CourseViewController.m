@@ -269,6 +269,7 @@
         [_courseMengbi removeFromSuperview];
         _titleButton.enabled = YES;
         _parameter = [NSMutableDictionary dictionary];
+//        stuNum = @"2014214450";
         [_parameter setObject:stuNum forKey:@"stuNum"];
         __weak typeof(self) weakSelf = self;
         [NetWork NetRequestPOSTWithRequestURL:Course_API WithParameter:_parameter WithReturnValeuBlock:^(id returnValue) {

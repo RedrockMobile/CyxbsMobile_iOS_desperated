@@ -130,7 +130,7 @@
 
 - (void)loadNetDataWithType:(NSInteger)type {
     
-    NSLog(@"%ld",type);
+    NSLog(@"%ld",(long)type);
     
     //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"] ?: @"";
@@ -186,6 +186,7 @@
             MBCommunityModel *model;
             if (type == 0) {
                 model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeHot];
+                NSLog(@"adadwadawdwa");
             }else if (type == 1) {
                 model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListArticle];
             }else if (type == 2) {
