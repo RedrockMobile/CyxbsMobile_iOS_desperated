@@ -31,7 +31,7 @@
 		3BC309FC1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BC309FA1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib */; };
 		3BDE162C1BA5FEED008F2DB7 /* XBSFindClassroomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BDE162B1BA5FEED008F2DB7 /* XBSFindClassroomModel.m */; };
 		3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */; };
-		90E434C3D429E96197B8FD49 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E2AFDDCD20890382879F9AB7 /* libPods.a */; };
+		463E0067C92960DB7BB5B9B7 /* libPods-MoblieCQUPT_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */; };
 		CE0ADC991BDDD03E00374CDC /* 关于@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0ADC921BDDD03E00374CDC /* 关于@2x.png */; };
 		CE0ADC9A1BDDD03E00374CDC /* 反馈信息@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0ADC931BDDD03E00374CDC /* 反馈信息@2x.png */; };
 		CE0ADC9B1BDDD03E00374CDC /* 期末成绩@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CE0ADC941BDDD03E00374CDC /* 期末成绩@2x.png */; };
@@ -389,6 +389,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		3B1388A81BA353F70011EBF2 /* XBSNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSNavigationBar.h; sourceTree = "<group>"; };
 		3B1388A91BA353F70011EBF2 /* XBSNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSNavigationBar.m; sourceTree = "<group>"; };
 		3B1388AB1BA353F70011EBF2 /* XBSScheduleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSScheduleTableViewCell.h; sourceTree = "<group>"; };
@@ -425,7 +426,7 @@
 		3BDE162B1BA5FEED008F2DB7 /* XBSFindClassroomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSFindClassroomModel.m; sourceTree = "<group>"; };
 		3BFA63191BA1AC91005B025D /* XBSConsultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSConsultConfig.h; sourceTree = "<group>"; };
 		3BFA631A1BA1AC91005B025D /* XBSConsultConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XBSConsultConfig.m; sourceTree = "<group>"; };
-		408AE65A0152F5A0D430613B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CE0ADC921BDDD03E00374CDC /* 关于@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于@2x.png"; sourceTree = "<group>"; };
 		CE0ADC931BDDD03E00374CDC /* 反馈信息@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "反馈信息@2x.png"; sourceTree = "<group>"; };
 		CE0ADC941BDDD03E00374CDC /* 期末成绩@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "期末成绩@2x.png"; sourceTree = "<group>"; };
@@ -528,7 +529,6 @@
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
 		CEF61B6C1B82D58B0014B980 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		CEFDE57C1B9C4D7900E772F0 /* mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobile.png; sourceTree = "<group>"; };
-		D50AD870251D6B49755C7A6F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D909287A1CACC7B700CA97CD /* icon_menu_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_2@2x.png"; sourceTree = "<group>"; };
 		D909287E1CACC83800CA97CD /* icon_menu_selected_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_menu_selected_2@2x.png"; sourceTree = "<group>"; };
 		D90928911CACCD6400CA97CD /* 我的动态@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的动态@2x.png"; sourceTree = "<group>"; };
@@ -648,6 +648,7 @@
 		D9F9F0331D630AFC00CA98C1 /* BeautyCreatDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyCreatDetailViewController.h; sourceTree = "<group>"; };
 		D9F9F0341D630AFC00CA98C1 /* BeautyCreatDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyCreatDetailViewController.m; sourceTree = "<group>"; };
 		D9FAECF61BEDF5220010ED3F /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
+		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E20F27BF1D6203D100C5DF79 /* 大艺团.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "大艺团.txt"; sourceTree = "<group>"; };
 		E20F27C01D6203D100C5DF79 /* 红岩网校工作站简介.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "红岩网校工作站简介.txt"; sourceTree = "<group>"; };
 		E20F27C11D6203D100C5DF79 /* 科联.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "科联.txt"; sourceTree = "<group>"; };
@@ -817,7 +818,6 @@
 		E2889BD21CDF42D400E94127 /* UITextField+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Custom.m"; sourceTree = "<group>"; };
 		E28BAE771B91B0E300EC4964 /* 20-3c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "20-3c.png"; sourceTree = "<group>"; };
 		E28D2A8E1BB3E43100490C41 /* ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok.png; sourceTree = "<group>"; };
-		E2AFDDCD20890382879F9AB7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2C75D8D1CE0A7F100EA8FEA /* MBReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBReplyView.h; sourceTree = "<group>"; };
 		E2C75D8E1CE0A7F100EA8FEA /* MBReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBReplyView.m; sourceTree = "<group>"; };
 		E2C75D901CE0A82F00EA8FEA /* MBAddPhotoContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBAddPhotoContainerView.h; sourceTree = "<group>"; };
@@ -925,8 +925,8 @@
 				CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */,
 				CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */,
 				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
-				90E434C3D429E96197B8FD49 /* libPods.a in Frameworks */,
 				E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */,
+				463E0067C92960DB7BB5B9B7 /* libPods-MoblieCQUPT_iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,11 +989,11 @@
 			name = Consult;
 			sourceTree = "<group>";
 		};
-		B5578B0A1B1B528E8B4567EF /* Pods */ = {
+		C66265BA2143171179039C97 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D50AD870251D6B49755C7A6F /* Pods.debug.xcconfig */,
-				408AE65A0152F5A0D430613B /* Pods.release.xcconfig */,
+				0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */,
+				BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1051,7 +1051,7 @@
 			children = (
 				E2594C621C9058EF00E612FE /* libxml2.2.tbd */,
 				CE4334461BE7C52D000C407D /* NotificationCenter.framework */,
-				E2AFDDCD20890382879F9AB7 /* libPods.a */,
+				DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1267,7 +1267,7 @@
 				CE4334481BE7C52D000C407D /* ClassWidget */,
 				CE4334451BE7C52D000C407D /* Frameworks */,
 				CEF61B2B1B82BC950014B980 /* Products */,
-				B5578B0A1B1B528E8B4567EF /* Pods */,
+				C66265BA2143171179039C97 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2207,13 +2207,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CEF61B4D1B82BC950014B980 /* Build configuration list for PBXNativeTarget "MoblieCQUPT_iOS" */;
 			buildPhases = (
-				E3A221C7D0ADA491D199C590 /* Check Pods Manifest.lock */,
+				D547774CDBD719B739A4D9AB /* [CP] Check Pods Manifest.lock */,
 				CEF61B261B82BC950014B980 /* Sources */,
 				CEF61B271B82BC950014B980 /* Frameworks */,
 				CEF61B281B82BC950014B980 /* Resources */,
 				CE4334561BE7C52D000C407D /* Embed App Extensions */,
-				6020B742D2DFB7C326F08835 /* Copy Pods Resources */,
-				2F801EFE761E5727C2BB3D75 /* Embed Pods Frameworks */,
+				EE81DFEAA2E9482E22C8C20D /* [CP] Embed Pods Frameworks */,
+				08A429D9F7D3BA74685ED5B2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2495,49 +2495,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F801EFE761E5727C2BB3D75 /* Embed Pods Frameworks */ = {
+		08A429D9F7D3BA74685ED5B2 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6020B742D2DFB7C326F08835 /* Copy Pods Resources */ = {
+		D547774CDBD719B739A4D9AB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E3A221C7D0ADA491D199C590 /* Check Pods Manifest.lock */ = {
+		EE81DFEAA2E9482E22C8C20D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2846,7 +2846,7 @@
 		};
 		CEF61B4E1B82BC950014B980 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D50AD870251D6B49755C7A6F /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
@@ -2884,7 +2884,7 @@
 		};
 		CEF61B4F1B82BC950014B980 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 408AE65A0152F5A0D430613B /* Pods.release.xcconfig */;
+			baseConfigurationReference = BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
