@@ -1074,7 +1074,7 @@
 		F2E5016C1E06E3CF00806B6B /* 书@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "书@3x.png"; sourceTree = "<group>"; };
 		F2E5016D1E06E3CF00806B6B /* 删除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除@2x.png"; sourceTree = "<group>"; };
 		F2E5016E1E06E3CF00806B6B /* 删除@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除@3x.png"; sourceTree = "<group>"; };
-		F2E5016F1E06E3CF00806B6B /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "启动页.jpg"; sourceTree = "<group>"; };
+		F2E5016F1E06E3CF00806B6B /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "启动页.jpg"; path = "../Controller/LZCourse/image/启动页.jpg"; sourceTree = "<group>"; };
 		F2E501701E06E3CF00806B6B /* 周数@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周数@2x.png"; sourceTree = "<group>"; };
 		F2E501711E06E3CF00806B6B /* 周数@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周数@3x.png"; sourceTree = "<group>"; };
 		F2E501721E06E3CF00806B6B /* 地点@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地点@2x.png"; sourceTree = "<group>"; };
@@ -1280,6 +1280,7 @@
 		CE267A201BA4A9A00059C2A5 /* LuanchImage */ = {
 			isa = PBXGroup;
 			children = (
+				F2E5016F1E06E3CF00806B6B /* 启动页.jpg */,
 				CE267A211BA4A9B90059C2A5 /* splash.jpg */,
 			);
 			name = LuanchImage;
@@ -2553,7 +2554,6 @@
 				F2E5016C1E06E3CF00806B6B /* 书@3x.png */,
 				F2E5016D1E06E3CF00806B6B /* 删除@2x.png */,
 				F2E5016E1E06E3CF00806B6B /* 删除@3x.png */,
-				F2E5016F1E06E3CF00806B6B /* 启动页.jpg */,
 				F2E501701E06E3CF00806B6B /* 周数@2x.png */,
 				F2E501711E06E3CF00806B6B /* 周数@3x.png */,
 				F2E501721E06E3CF00806B6B /* 地点@2x.png */,
