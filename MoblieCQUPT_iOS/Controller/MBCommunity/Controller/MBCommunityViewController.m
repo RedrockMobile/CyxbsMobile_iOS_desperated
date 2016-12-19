@@ -55,7 +55,7 @@
     _isLoadingBBDDData = NO;
     _isLoadingNewsData = NO;
     _allData = [NSMutableDictionary dictionary];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor]};
     self.tabBarController.navigationItem.rightBarButtonItem = self.addButton;
     NSArray *segments = @[@"热门动态",@"哔哔叨叨",@"官方资讯"];
     _segmentView = [[MBSegmentedView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-49) withSegments:segments];
@@ -110,7 +110,7 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.tabBarController.navigationItem.rightBarButtonItem = self.addButton;
+    self.navigationItem.rightBarButtonItem = self.addButton;
     if (_currenSelectCellOfRow) {
         NSInteger row = [self.currenSelectCellOfRow integerValue];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];

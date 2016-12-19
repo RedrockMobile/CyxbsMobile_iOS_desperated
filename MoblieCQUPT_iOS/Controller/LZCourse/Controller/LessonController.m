@@ -38,6 +38,10 @@
 @end
 
 @implementation LessonController
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -72,6 +76,7 @@
     [self.barBtn setTitle:@"本周" forState:UIControlStateNormal];
     [self.barBtn setTitleColor:[UIColor colorWithRed:64/255.f green:64/255.f blue:64/255.f alpha:1] forState:UIControlStateNormal];
     self.barBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+//    self.navigationItem.titleView = self.barBtn;
     self.navigationItem.titleView = self.barBtn;
     //初始化点击Button
     
@@ -181,7 +186,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
     NSString *idNum = [defaults objectForKey:@"idNum"];
-    if (stuNum==nil || idNum == nil) {
+//    if (stuNum==nil || idNum == nil) {
         stuNum = @"2015211572";
         idNum = @"200015";
         [[NSUserDefaults standardUserDefaults]setObject:stuNum forKey:@"stuNum"];
@@ -225,7 +230,7 @@
         //    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //        NSLog(@"%@",error);
         //    }];
-    }
+//    }
 
 }
 
@@ -244,10 +249,6 @@
         make.left.equalTo(self.barBtn.titleLabel.mas_right).offset(5);
         make.centerY.equalTo(self.barBtn.titleLabel);
     }];
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)addAction{

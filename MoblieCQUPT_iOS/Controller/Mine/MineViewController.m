@@ -42,7 +42,6 @@
     [super viewDidLoad];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H-20)];
     _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, 600);
     _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -50,7 +49,7 @@
     _mainScrollView.bounces = YES;
     [self.view addSubview:_mainScrollView];
     
-    _currentHeight = 65;
+    _currentHeight = 0;
     _cellDictionary = [NSMutableArray array];
 //    SEL s[4] = {@selector(clickForExamSchedule),@selector(clickForReexamSchedule), @selector(clickForExamGrade),@selector(clickForEmptyClassroom)};
     _cellDictionary = [@[@{@"cell":@"修改信息",@"controller":@"MyInfoViewController"},
@@ -60,7 +59,7 @@
                          @{@"cell":@"空教室",@"img":@"空教室.png",@"controller":@"EmptyClassViewController"},
                          @{@"cell":@"期末成绩",@"img":@"期末成绩.png",@"controller":@"ExamGradeViewController"},
                          @{@"cell":@"校历",@"img":@"校历.png",@"controller":@"CalendarViewController"},
-                         @{@"cell":@"设置",@"img":@"关于.png",@"controller":@"SettingViewController"},
+                         @{@"cell":@"设置",@"img":@"关于.png",@"    ":@"SettingViewController"},
                         ]
                        mutableCopy];
 }
@@ -68,7 +67,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor]};
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     //网络请求头像和简介

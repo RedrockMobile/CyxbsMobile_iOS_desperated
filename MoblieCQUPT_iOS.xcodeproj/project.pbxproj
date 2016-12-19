@@ -1682,24 +1682,7 @@
 		D909288B1CACCB3500CA97CD /* MBCommunity */ = {
 			isa = PBXGroup;
 			children = (
-				D9F1C9AF1CE428AF00F692DB /* cancel.png */,
-				E2C75D9F1CE1169100EA8FEA /* headImage.png */,
-				D9A0FE0D1CB9A29400BFD01D /* 图片1.jpg */,
-				D9A0FE0E1CB9A29400BFD01D /* 图片2.jpg */,
-				D9A0FE0F1CB9A29400BFD01D /* 图片3.jpg */,
-				D9A0FE171CBA728300BFD01D /* 图片4.jpg */,
-				D9A0FE1B1CBA729900BFD01D /* 图片5.jpg */,
-				D9A0FE191CBA729200BFD01D /* 图片6.jpg */,
-				D9A0FE1D1CBA72CC00BFD01D /* 图片7.jpg */,
-				D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */,
-				D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */,
-				D99007711CB69AB500EDAFD1 /* comment1.png */,
-				D99007721CB69AB500EDAFD1 /* support1.png */,
-				D98BE6361CDE0ABB0071DDD2 /* support.png */,
-				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
-				D9DF5EC51CD09A6100C89F6A /* add.png */,
-				D94F635A1CE1718000F91664 /* addPhoto.jpg */,
-				D94F63611CE17DFA00F91664 /* xia.png */,
+				F23773681E07D35E00B87EE4 /* Image */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
 				D9DF5EB21CD0915300C89F6A /* Model */,
 				D9DF5E891CD0910800C89F6A /* Cell */,
@@ -2430,6 +2413,31 @@
 				E2F0A39A1D6165A600DFF37D /* 龙头寺.txt */,
 			);
 			path = resource;
+			sourceTree = "<group>";
+		};
+		F23773681E07D35E00B87EE4 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D9F1C9AF1CE428AF00F692DB /* cancel.png */,
+				E2C75D9F1CE1169100EA8FEA /* headImage.png */,
+				D9A0FE0D1CB9A29400BFD01D /* 图片1.jpg */,
+				D9A0FE0E1CB9A29400BFD01D /* 图片2.jpg */,
+				D9A0FE0F1CB9A29400BFD01D /* 图片3.jpg */,
+				D9A0FE171CBA728300BFD01D /* 图片4.jpg */,
+				D9A0FE1B1CBA729900BFD01D /* 图片5.jpg */,
+				D9A0FE191CBA729200BFD01D /* 图片6.jpg */,
+				D9A0FE1D1CBA72CC00BFD01D /* 图片7.jpg */,
+				D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */,
+				D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */,
+				D99007711CB69AB500EDAFD1 /* comment1.png */,
+				D99007721CB69AB500EDAFD1 /* support1.png */,
+				D98BE6361CDE0ABB0071DDD2 /* support.png */,
+				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
+				D9DF5EC51CD09A6100C89F6A /* add.png */,
+				D94F635A1CE1718000F91664 /* addPhoto.jpg */,
+				D94F63611CE17DFA00F91664 /* xia.png */,
+			);
+			name = Image;
 			sourceTree = "<group>";
 		};
 		F2E501111E06E3CF00806B6B /* LZCourse */ = {

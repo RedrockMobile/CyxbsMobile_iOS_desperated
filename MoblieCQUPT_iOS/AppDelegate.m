@@ -65,11 +65,11 @@
 //        self.window.rootViewController = login;
 //    }
     
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-    self.window.rootViewController = view;
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UITabBarController *tbc = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    self.window.rootViewController = tbc;
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;
 }

@@ -61,9 +61,12 @@
     NSTimeInterval  oneDay = 24*60*60;
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:now];
-    self.monthLabel.text = [[monthFormatter stringFromDate:[NSDate dateWithTimeInterval:((week-nowWeek)*7-(components.weekday+5)%7)*oneDay sinceDate:now]] stringByAppendingString:@"\n月"];
     for (int i = 0; i < DAY; i++) {
-        NSDate *date = [NSDate dateWithTimeInterval:((week-nowWeek)*7+(i-(components.weekday+5)%7))*oneDay sinceDate:now];
+        NSTimeInterval timeInterval = ((week-nowWeek)*7+(i-(components.weekday+5)%7))*oneDay;
+        NSDate *date = [NSDate dateWithTimeInterval:timeInterval sinceDate:now];
+        if (i == 0) {
+            self.monthLabel.text = [[monthFormatter stringFromDate:date] stringByAppendingString:@"\n月"];
+        }
         NSString *day = [dayFormatter stringFromDate:date];
         if (i != 0 && [day isEqualToString:@"01"]) {
             day = [[monthFormatter stringFromDate:date] stringByAppendingString:@"月"];
