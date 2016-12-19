@@ -24,6 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = YES;
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;

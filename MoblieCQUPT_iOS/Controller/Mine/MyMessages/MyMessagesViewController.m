@@ -43,8 +43,9 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = YES;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"个人动态";
     [self.view addSubview:self.communityTableView];
     [self setupRefresh];

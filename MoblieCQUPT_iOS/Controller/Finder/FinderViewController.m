@@ -175,6 +175,8 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

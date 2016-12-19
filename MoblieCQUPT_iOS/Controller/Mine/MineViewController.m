@@ -59,7 +59,7 @@
                          @{@"cell":@"空教室",@"img":@"空教室.png",@"controller":@"EmptyClassViewController"},
                          @{@"cell":@"期末成绩",@"img":@"期末成绩.png",@"controller":@"ExamGradeViewController"},
                          @{@"cell":@"校历",@"img":@"校历.png",@"controller":@"CalendarViewController"},
-                         @{@"cell":@"设置",@"img":@"关于.png",@"    ":@"SettingViewController"},
+                         @{@"cell":@"设置",@"img":@"关于.png",@"controller":@"SettingViewController"},
                         ]
                        mutableCopy];
 }
@@ -67,7 +67,9 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     //网络请求头像和简介
@@ -277,7 +279,7 @@
         
         //无需账户信息
         if ((className = _cellDictionary[indexPath.section][@"controller"])) {
-            
+            NSLog(@"%ld",indexPath.section);
             UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
             viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
             self.navigationController.navigationBarHidden = NO;

@@ -81,7 +81,9 @@
     
     _isDone = NO;
     
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = YES;
     
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 84, 17, 20)];
     imageView.image = [UIImage imageNamed:@"emptyClass.png"];
