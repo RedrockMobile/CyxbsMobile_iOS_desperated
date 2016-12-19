@@ -14,6 +14,7 @@
 #import "HttpClient.h"
 #import "AddRemindViewController.h"
 #import <Masonry.h>
+#import "RemindNotification.h"
 
 @interface DetailRemindViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property NSMutableArray <RemindMatter *>* reminds;
@@ -198,6 +199,7 @@
     if([reminds writeToFile:self.remindPath atomically:YES]){
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center postNotificationName:@"deleteRemind" object:identifier];
+//        [[[RemindNotification alloc]init] deleteNotificationAndIdentifiers];
     }
     HttpClient *client = [HttpClient defaultClient];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

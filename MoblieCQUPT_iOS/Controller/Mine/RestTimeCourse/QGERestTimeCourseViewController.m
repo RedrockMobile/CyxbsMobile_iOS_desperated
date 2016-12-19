@@ -26,6 +26,9 @@
 
 @implementation QGERestTimeCourseViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _isEdting = NO;

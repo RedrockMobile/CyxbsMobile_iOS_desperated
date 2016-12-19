@@ -50,7 +50,6 @@
     NSMutableArray *identifierArray = [[NSMutableArray alloc] init];
     NSDateComponents *comp = [[NSDateComponents alloc] init];
     
-    //待修改
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [docPath stringByAppendingPathComponent:@"remind.plist"];
     events = [NSMutableArray arrayWithContentsOfFile:filePath];
@@ -75,11 +74,14 @@
             identifier = [identifier stringByAppendingString:[NSString stringWithFormat:@"%@",dateDic[@"class"]]];
             [identifierArray addObject:identifier];
             
-            lessonDateStr = [self calculateLessonDateWithWeek:weekArray[i] nowWeek:[userDefault objectForKey:@"nowWeek"] day:dateDic[@"day"] class:dateDic[@"class"]];
+            if ([[userDefault objectForKey:@"nowWeek"] intValue] - [weekArray[i] intValue] >+ 0) {
+                      lessonDateStr = [self calculateLessonDateWithWeek:weekArray[i] nowWeek:[userDefault objectForKey:@"nowWeek"] day:dateDic[@"day"] class:dateDic[@"class"]];
             
             comp = [self calculateNotificationTimeWithIntervalTime:updateDic[@"time"] LessonDate:lessonDateStr];
             
             [self addNotificationWithTitle:updateDic[@"title"] Content:updateDic[@"content"] Identifier:identifier components:comp];
+            }
+            
       }
     }
     [self.identifierDic setObject:identifierArray forKey:newIdentifier];
@@ -132,12 +134,14 @@
                 identifierStr = identifiers[identifierCount];
                 identifierCount++;
                 
-                
-                lessonDateStr = [self calculateLessonDateWithWeek:weekStr nowWeek:nowWeekStr day:dayStr class:classStr];
+                if ([nowWeekStr intValue] - [weekStr intValue] >+ 0) {
+                                   lessonDateStr = [self calculateLessonDateWithWeek:weekStr nowWeek:nowWeekStr day:dayStr class:classStr];
 
                 comp = [self calculateNotificationTimeWithIntervalTime:timeStr LessonDate:lessonDateStr];
 
                 [self addNotificationWithTitle:titleStr Content:contentStr Identifier:identifierStr components:comp];
+                }
+ 
             }
         }
     }
@@ -219,12 +223,13 @@
     content.title = title;
     content.body = text;
     
-//    UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comp repeats:NO];
+    UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comp repeats:NO];
     
-    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:YES];
+//
+//    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
     
     NSString *requestIdentifier = identifier;
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:trigger1];
+    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:calendarTrigger];
     
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
         NSLog(@"Error:%@",error);

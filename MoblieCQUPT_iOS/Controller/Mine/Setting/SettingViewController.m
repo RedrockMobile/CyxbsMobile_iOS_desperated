@@ -12,6 +12,7 @@
 #import "XBSAboutViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
+#import "LessonRemindNotification.h"
 
 @interface SettingViewController()<UITableViewDelegate, UITableViewDataSource>
 
@@ -24,9 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    self.tabBarController.tabBar.hidden = YES;
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
@@ -34,6 +32,7 @@
     
     _cellArray = @[@{@"cell":@"意见与反馈", @"controller":@"SuggestionViewController"},
                    @{@"cell":@"关于", @"controller":@"XBSAboutViewController"},
+                   @{@"cell":@"设置课前提醒"},
                    @{@"cell":@"退出当前账号"},
                    ];
 }
@@ -46,7 +45,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 2;
+        return 3;
     } else {
         return 1;
     }
@@ -75,6 +74,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:identifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        if (indexPath.row == 2) {
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            UISwitch *switchview = [[UISwitch alloc] initWithFrame:CGRectZero];
+            [switchview addTarget:self action:@selector(switchValueChanged:) forControlEvents:UIControlEventValueChanged];
+            if ([userDefault objectForKey:@"switchState"] == nil) {
+                [userDefault setObject:[NSNumber numberWithBool:switchview.on] forKey:@"switchState"];
+            }
+            switchview.on = [[userDefault objectForKey:@"switchState"] boolValue];
+            cell.accessoryView = switchview;
+        }
     }
     
     if (indexPath.section == 0) {
@@ -84,12 +93,11 @@
         textLabel.textColor = kDetailTextColor;
         textLabel.textAlignment = NSTextAlignmentLeft;
         [textLabel sizeToFit];
-        
         [cell.contentView addSubview:textLabel];
     } else {
         cell.accessoryType = UITableViewStylePlain;
         
-        textLabel.text = _cellArray[indexPath.row+2][@"cell"];
+        textLabel.text = _cellArray[indexPath.row+3][@"cell"];
         textLabel.font = kFont;
         textLabel.textColor = kDetailTextColor;
         textLabel.textAlignment = NSTextAlignmentCenter;
@@ -115,33 +123,47 @@
                                                                        message:@"所有的个人信息将清除,你确定要登出此帐号吗?"
                                                                 preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"确定"
-                                                         style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * _Nonnull action) {
-                                                           [self logOut];
-                                                       }];
+                                                                style:UIAlertActionStyleDefault
+                                                              handler:^(UIAlertAction * _Nonnull action) {
+                                                                  [self logOut];
+                                                              }];
         [alert addAction:defaultAction];
         
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
-                                                                style:UIAlertActionStyleCancel
+                                                               style:UIAlertActionStyleCancel
                                                              handler:nil];
         [alert addAction:cancelAction];
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
+- (void)switchValueChanged:(UISwitch *)sender
+{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:[NSNumber numberWithBool:sender.on] forKey:@"switchState"];
+    LessonRemindNotification *lrNotic = [[LessonRemindNotification alloc] init];
+    if (sender.on) {
+        [lrNotic notificationBody];
+        [lrNotic addTomorrowNotification];
+        [lrNotic setGcdTimer];
+    }else{
+        [lrNotic deleteNotification];
+    }
+}
+
 - (void)logOut {
-//    NSLog(@"log out");
-//    LoginViewController *login = [[LoginViewController alloc]init];
+    //    NSLog(@"log out");
+    //    LoginViewController *login = [[LoginViewController alloc]init];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
     [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
     [self.navigationController presentViewController:view animated:YES completion:nil];
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        
-//    }];
-//    [self.navigationController presentViewController:login animated:YES completion:^{
-//        [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
-//    }];
+    //    [self dismissViewControllerAnimated:YES completion:^{
+    //
+    //    }];
+    //    [self.navigationController presentViewController:login animated:YES completion:^{
+    //        [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
+    //    }];
     
 }
 

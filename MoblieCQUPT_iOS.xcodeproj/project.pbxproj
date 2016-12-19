@@ -467,6 +467,7 @@
 		F2E502301E06E3D000806B6B /* TimeChooseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BB1E06E3CF00806B6B /* TimeChooseScrollView.m */; };
 		F2E502311E06E3D000806B6B /* WeekChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */; };
 		F2E502321E06E3D000806B6B /* WeekScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */; };
+		F2E90CB81E0813A200EA30A9 /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1150,6 +1151,8 @@
 		F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekChooseButton.m; sourceTree = "<group>"; };
 		F2E501BE1E06E3CF00806B6B /* WeekScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekScrollView.h; sourceTree = "<group>"; };
 		F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekScrollView.m; sourceTree = "<group>"; };
+		F2E90CB61E0813A200EA30A9 /* LessonRemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
+		F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2635,6 +2638,8 @@
 		F2E501A61E06E3CF00806B6B /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				F2E90CB61E0813A200EA30A9 /* LessonRemindNotification.h */,
+				F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */,
 				F2E501A71E06E3CF00806B6B /* RemindNotification.h */,
 				F2E501A81E06E3CF00806B6B /* RemindNotification.m */,
 			);
@@ -3266,6 +3271,7 @@
 				F2E502321E06E3D000806B6B /* WeekScrollView.m in Sources */,
 				E2C75DAE1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m in Sources */,
 				E218DCD51CD20AC200DD3C8C /* AboutMeTableViewCell.m in Sources */,
+				F2E90CB81E0813A200EA30A9 /* LessonRemindNotification.m in Sources */,
 				E2F0A3AC1D6165A600DFF37D /* GGCellModel.m in Sources */,
 				E2F0A3611D6160D800DFF37D /* FreshManGuideViewController.m in Sources */,
 				E2F0A3C91D6165A600DFF37D /* SevenTableViewCell.m in Sources */,

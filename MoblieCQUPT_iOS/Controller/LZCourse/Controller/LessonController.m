@@ -18,6 +18,7 @@
 #import "AddRemindViewController.h"
 #import "CoverView.h"
 #import <Masonry.h>
+#define kAPPGroupID @"group.com.redrock.mobile"
 
 
 @interface LessonController ()
@@ -186,7 +187,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
     NSString *idNum = [defaults objectForKey:@"idNum"];
-    if (stuNum==nil || idNum == nil) {
+    stuNum = @"2015211572";
+    idNum = @"200015";
+//    if (stuNum==nil || idNum == nil) {
         [[NSUserDefaults standardUserDefaults]setObject:stuNum forKey:@"stuNum"];
         [[NSUserDefaults standardUserDefaults]setObject:idNum forKey:@"idNum"];
         NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
@@ -197,10 +200,18 @@
         [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
             
         } success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
+//            NSLog(@"%@",responseObject);
             [defaults setObject:[responseObject objectForKey:@"nowWeek"] forKey:@"nowWeek"];
-            [defaults setObject:responseObject forKey:@"response"];
+            [defaults setObject:responseObject forKey:@"lessonResponse"];
+            
+            // 共享数据
+            NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
+            [shared setObject:responseObject forKey:@"lessonResponse"];
+            [shared synchronize];
+            //
+            
             [self reloadView];
+            
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"%@",error);
         }];
@@ -228,8 +239,7 @@
         //    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         //        NSLog(@"%@",error);
         //    }];
-    }
-
+//    }
 }
 
 - (void)reloadView{

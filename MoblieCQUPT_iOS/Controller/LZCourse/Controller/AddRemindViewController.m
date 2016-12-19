@@ -346,7 +346,7 @@
         if([reminds writeToFile:remindPath atomically:YES]){
             NSNotificationCenter *center= [NSNotificationCenter defaultCenter];
             [center postNotificationName:@"addRemind" object:identifier];
-
+//            [[[RemindNotification alloc]init] addNotifictaion];
         }
         [client requestWithPath:ADDREMINDAPI method:HttpRequestPost parameters:jsonParameters prepareExecute:^{
             
@@ -380,6 +380,7 @@
         [reminds addObject:remind];
         if([reminds writeToFile:remindPath atomically:YES]){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"editRemind" object:self.idNum];
+//            [[[RemindNotification alloc]init] updateNotificationWithIdetifiers:[self.idNum stringValue]];
         }
         [client requestWithPath:EDITREMINDAPI method:HttpRequestPost parameters:jsonParameters prepareExecute:^{
             
