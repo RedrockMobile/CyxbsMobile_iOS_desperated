@@ -182,6 +182,7 @@
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)enterShop{

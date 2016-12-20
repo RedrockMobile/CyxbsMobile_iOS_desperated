@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [_mapWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://720yun.com/t/0e929mp6utn?pano_id=473004"]]];
 }
 

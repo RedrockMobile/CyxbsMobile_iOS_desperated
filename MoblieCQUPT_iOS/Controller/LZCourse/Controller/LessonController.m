@@ -92,7 +92,7 @@
 
 - (void)initMainView{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.dataArray = [[userDefaults objectForKey:@"response"] objectForKey:@"data"];
+    self.dataArray = [[userDefaults objectForKey:@"lessonResponse"] objectForKey:@"data"];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
 //    NSString *examPath = [path stringByAppendingString:@"exam.plist"];

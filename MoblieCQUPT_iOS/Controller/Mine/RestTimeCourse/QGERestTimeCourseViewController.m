@@ -26,9 +26,7 @@
 
 @implementation QGERestTimeCourseViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _isEdting = NO;
@@ -36,7 +34,7 @@
     [self initView];
     _stuNumArray = [NSMutableArray array];
     _stuInfoArray = [NSMutableArray array];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     
     // Do any additional setup after loading the view from its nib.

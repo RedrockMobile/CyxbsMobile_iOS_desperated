@@ -21,8 +21,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
     self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"2016新生专题网";
     NSArray *pic = @[@"新生攻略.png",@"大数据.png",@"重邮风采.png"];

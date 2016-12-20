@@ -35,8 +35,6 @@
     [super viewDidLoad];
     [self initUI];
     [self postGradeData];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
     self.tabBarController.tabBar.hidden = YES;
     
     // Do any additional setup after loading the view from its nib.

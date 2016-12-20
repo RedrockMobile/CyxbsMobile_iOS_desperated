@@ -45,7 +45,6 @@ static Boolean isClick = NO;
         [vc.tabBarItem setSelectedImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_selected_%d.png",whichVc+1]]];
 //        vc.navigationController.navigationBar.hidden = NO;
 //        vc.navigationBar.tintColor = kItemTintColor;
-        vc.navigationBar.barTintColor = [UIColor whiteColor];
         vc.navigationBar.tintColor = FONT_COLOR;
 //      vc.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
 //        vc.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);

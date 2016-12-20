@@ -40,8 +40,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H-20)];
     _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, 600);
     _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
@@ -67,8 +65,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
     self.tabBarController.tabBar.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 

@@ -69,12 +69,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
     self.navigationItem.title = @"关于";
-    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 //- (void)clickToCopyRight {
