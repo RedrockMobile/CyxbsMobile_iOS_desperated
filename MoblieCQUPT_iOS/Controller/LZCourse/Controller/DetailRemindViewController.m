@@ -52,6 +52,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     self.editButton.selected = NO;
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -199,7 +200,7 @@
     if([reminds writeToFile:self.remindPath atomically:YES]){
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         [center postNotificationName:@"deleteRemind" object:identifier];
-//        [[[RemindNotification alloc]init] deleteNotificationAndIdentifiers];
+        [[RemindNotification shareInstance] deleteNotificationAndIdentifiers];
     }
     HttpClient *client = [HttpClient defaultClient];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

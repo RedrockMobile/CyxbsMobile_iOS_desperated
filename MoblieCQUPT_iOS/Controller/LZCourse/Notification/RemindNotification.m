@@ -20,6 +20,38 @@
 @end
 
 @implementation RemindNotification
+static RemindNotification *_instance;
+
++ (id)allocWithZone:(struct _NSZone *)zone
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [super allocWithZone:zone];
+    });
+    return _instance;
+}
+
++ (instancetype)shareInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[RemindNotification alloc] init];
+    });
+    return _instance;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return _instance;
+}
+
+- (NSMutableArray *)eventArray
+{
+    if (!_eventArray) {
+        self.eventArray = [[NSMutableArray alloc] init];
+    }
+    return _eventArray;
+}
 
 - (NSMutableDictionary *)identifierDic
 {
@@ -29,12 +61,24 @@
     return _identifierDic;
 }
 
-- (NSMutableArray *)eventArray
+- (void)deleteAllNotification
 {
-    if (!_eventArray) {
-        self.eventArray = [[NSMutableArray alloc] init];
+    NSMutableArray *identifiers = [[NSMutableArray alloc] init];
+    NSString *idStr = [[NSString alloc] init];
+    
+    NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *filePath = [docPath stringByAppendingPathComponent:@"remind.plist"];
+    NSMutableArray *events = [NSMutableArray arrayWithContentsOfFile:filePath];
+    
+    NSDictionary *newDataDic = [[NSDictionary alloc] init];
+    
+    for (NSInteger i = 0; i < events.count; i++) {
+        newDataDic = events[i];
+        idStr = [NSString stringWithFormat:@"%@",newDataDic[@"id"]];
+        identifiers = self.identifierDic[idStr];
+        [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:identifiers];
+        [self.identifierDic removeObjectForKey:idStr];
     }
-    return _eventArray;
 }
 
 - (void)updateNotificationWithIdetifiers:(NSString *)newIdentifier
@@ -57,7 +101,8 @@
     [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:self.identifierDic[newIdentifier]];
     
     for (NSInteger i = 0; i < events.count; i++) {
-        if ([[NSString stringWithFormat:@"%@",events[i][@"id"]] isEqualToString:newIdentifier]) {
+        if ([[NSString stringWithFormat:@"%@",events[i][@"id"]] isEqualToString:newIdentifier])
+        {
             updateDic = events[i];
             break;
         }
@@ -74,15 +119,15 @@
             identifier = [identifier stringByAppendingString:[NSString stringWithFormat:@"%@",dateDic[@"class"]]];
             [identifierArray addObject:identifier];
             
-            if ([[userDefault objectForKey:@"nowWeek"] intValue] - [weekArray[i] intValue] >+ 0) {
-                      lessonDateStr = [self calculateLessonDateWithWeek:weekArray[i] nowWeek:[userDefault objectForKey:@"nowWeek"] day:dateDic[@"day"] class:dateDic[@"class"]];
-            
-            comp = [self calculateNotificationTimeWithIntervalTime:updateDic[@"time"] LessonDate:lessonDateStr];
-            
-            [self addNotificationWithTitle:updateDic[@"title"] Content:updateDic[@"content"] Identifier:identifier components:comp];
+            if ([[userDefault objectForKey:@"nowWeek"] intValue] - [weekArray[j] intValue] <= 0&&updateDic[@"time"]!=nil) {
+                lessonDateStr = [self calculateLessonDateWithWeek:weekArray[j] nowWeek:[NSString stringWithFormat:@"%@",[userDefault objectForKey:@"nowWeek"]] day:[NSString stringWithFormat:@"%@",dateDic[@"day"]] class:[NSString  stringWithFormat:@"%@",dateDic[@"class"]]];
+                
+                comp = [self calculateNotificationTimeWithIntervalTime:[NSString stringWithFormat:@"%@",updateDic[@"time"]] LessonDate:lessonDateStr];
+                
+                [self addNotificationWithTitle:[NSString stringWithFormat:@"%@", updateDic[@"title"]] Content:[NSString stringWithFormat:@"%@", updateDic[@"content"]] Identifier:identifier components:comp];
             }
             
-      }
+        }
     }
     [self.identifierDic setObject:identifierArray forKey:newIdentifier];
     self.eventArray = events;
@@ -134,14 +179,14 @@
                 identifierStr = identifiers[identifierCount];
                 identifierCount++;
                 
-                if ([nowWeekStr intValue] - [weekStr intValue] >+ 0) {
-                                   lessonDateStr = [self calculateLessonDateWithWeek:weekStr nowWeek:nowWeekStr day:dayStr class:classStr];
-
-                comp = [self calculateNotificationTimeWithIntervalTime:timeStr LessonDate:lessonDateStr];
-
-                [self addNotificationWithTitle:titleStr Content:contentStr Identifier:identifierStr components:comp];
+                if ([nowWeekStr intValue] - [weekStr intValue] <= 0&&timeStr!=nil) {
+                    lessonDateStr = [self calculateLessonDateWithWeek:weekStr nowWeek:nowWeekStr day:dayStr class:classStr];
+                    
+                    comp = [self calculateNotificationTimeWithIntervalTime:timeStr LessonDate:lessonDateStr];
+                    
+                    [self addNotificationWithTitle:titleStr Content:contentStr Identifier:identifierStr components:comp];
                 }
- 
+                
             }
         }
     }
@@ -153,7 +198,6 @@
     NSMutableArray *identifiers = [[NSMutableArray alloc] init];
     NSString *idStr = [[NSString alloc] init];
     
-    //待修改2
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [docPath stringByAppendingPathComponent:@"remind.plist"];
     NSMutableArray *events = [NSMutableArray arrayWithContentsOfFile:filePath];
@@ -181,10 +225,8 @@
 {
     self.newEventCount = 0;
     NSString *identifier = [[NSString alloc] init];
-    
     NSMutableArray *events = [[NSMutableArray alloc] init];
     
-    //待修改3
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [docPath stringByAppendingPathComponent:@"remind.plist"];
     events = [NSMutableArray arrayWithContentsOfFile:filePath];
@@ -197,7 +239,7 @@
     NSMutableArray *identifierArray = [[NSMutableArray alloc] init];
     
     for (NSInteger i = self.eventArray.count; i < events.count; i++) {
-
+        
         dataDic = events[i];
         dateArray = dataDic[@"date"];
         for (NSInteger j = 0; j < dateArray.count; j++) {
@@ -225,8 +267,8 @@
     
     UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comp repeats:NO];
     
-//
-//    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
+    ////测试用trigger
+    //    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:20 repeats:NO];
     
     NSString *requestIdentifier = identifier;
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:calendarTrigger];

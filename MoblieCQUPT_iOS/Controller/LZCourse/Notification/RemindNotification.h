@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface RemindNotification : NSObject
++ (instancetype)shareInstance;
 
 - (void)addNotifictaion;
 
@@ -16,4 +17,7 @@
 
 - (void)updateNotificationWithIdetifiers:(NSString *)newIdentifier;
 
+- (void)deleteAllNotification;
+
+- (void)creatIdentifiers;
 @end

@@ -142,7 +142,11 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:[NSNumber numberWithBool:sender.on] forKey:@"switchState"];
     LessonRemindNotification *lrNotic = [[LessonRemindNotification alloc] init];
+    UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"课前提醒" message:@"每晚十点小帮手会准时把明日课表发给你哦" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道啦" style:UIAlertActionStyleCancel handler:nil];
+    [alerController addAction:okAction];
     if (sender.on) {
+        [self presentViewController:alerController animated:YES completion:nil];
         [lrNotic notificationBody];
         [lrNotic addTomorrowNotification];
         [lrNotic setGcdTimer];
@@ -156,7 +160,7 @@
     //    LoginViewController *login = [[LoginViewController alloc]init];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
+    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq",@"switchState"]];
     NSFileManager *manager=[NSFileManager defaultManager];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];

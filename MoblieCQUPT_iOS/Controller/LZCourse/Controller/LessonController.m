@@ -20,6 +20,7 @@
 #import <Masonry.h>
 #import "NoLoginView.h"
 #import "LoginViewController.h"
+#import "RemindNotification.h"
 #define kAPPGroupID @"group.com.redrock.mobile"
 
 @interface LessonController ()
@@ -100,6 +101,7 @@
 - (void)afterRequest{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"nowWeek"]!=nil && [defaults objectForKey:@"lessonResponse"]!=nil) {
+        [[RemindNotification shareInstance]addNotifictaion];
         [self initWeekScrollView];
         [self reloadView];
     }
@@ -107,8 +109,6 @@
 
 - (void)reloadView{
     [self initMainView];
-    [self initBtnController];
-    [self showMatterWithWeek:@(self.selectedWeek)];
     [self.detailViewController reloadMatters:self.controllerArray[self.detailViewController.time].matter];
 }
 

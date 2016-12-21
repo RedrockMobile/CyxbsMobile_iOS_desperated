@@ -85,6 +85,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[RemindNotification shareInstance]creatIdentifiers];
     self.title = @"事项编辑";
     self.titileTextView.delegate = self;
     self.contentTextView.delegate = self;
@@ -346,7 +347,7 @@
         if([reminds writeToFile:remindPath atomically:YES]){
             NSNotificationCenter *center= [NSNotificationCenter defaultCenter];
             [center postNotificationName:@"addRemind" object:identifier];
-//            [[[RemindNotification alloc]init] addNotifictaion];
+            [[RemindNotification shareInstance]addNotifictaion];
         }
         [client requestWithPath:ADDREMINDAPI method:HttpRequestPost parameters:jsonParameters prepareExecute:^{
             
@@ -380,7 +381,7 @@
         [reminds addObject:remind];
         if([reminds writeToFile:remindPath atomically:YES]){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"editRemind" object:self.idNum];
-//            [[[RemindNotification alloc]init] updateNotificationWithIdetifiers:[self.idNum stringValue]];
+             [[RemindNotification shareInstance]updateNotificationWithIdetifiers:self.idNum.stringValue];
         }
         [client requestWithPath:EDITREMINDAPI method:HttpRequestPost parameters:jsonParameters prepareExecute:^{
             
