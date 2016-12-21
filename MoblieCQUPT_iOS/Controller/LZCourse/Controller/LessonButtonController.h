@@ -15,5 +15,4 @@
 @property LessonButton *btn;
 - (BOOL)matterWithWeek:(NSNumber *)week;
 //- (BOOL)remindWithWeek:(NSNumber *)week;
-//- (BOOL)examWithLesson:(NSNumber *)week;
 @end

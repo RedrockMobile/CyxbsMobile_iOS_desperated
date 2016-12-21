@@ -203,8 +203,8 @@
     }
     HttpClient *client = [HttpClient defaultClient];
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject:stuNum forKey:@"idNum"];
-    [parameters setObject:idNum forKey:@"stuNum"];
+    [parameters setObject:stuNum forKey:@"stuNum"];
+    [parameters setObject:idNum forKey:@"idNum"];
     [parameters setObject:identifier forKey:@"id"];
     
     [client requestWithPath:DELETEREMINDAPI method:HttpRequestPost parameters:parameters prepareExecute:^{

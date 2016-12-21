@@ -12,7 +12,7 @@
 #import "UIImage+Color.h"
 #import <Masonry.h>
 @interface LessonButtonController ()
-@property int lesson;
+@property int beginLesson;
 @property UIImageView *remindArrow;
 @end
 
@@ -22,22 +22,27 @@
     [super viewDidLoad];
     
 }
+
+- (void)addLesson:(NSArray *)lessonArray{
+    
+}
+
 - (instancetype)initWithDay:(int)day Lesson:(int)lesson{
     self = [super init];
     if (self) {
-        self.lesson = lesson;
+        self.beginLesson = lesson;
         self.matter = [[LessonBtnModel alloc]init];
         self.view.frame = CGRectMake(MWIDTH+day*LESSONBTNSIDE+SEGMENT/2, lesson*LESSONBTNSIDE*2+SEGMENT/2, LESSONBTNSIDE-SEGMENT, LESSONBTNSIDE*2-SEGMENT);
         self.btn = [[LessonButton alloc]initWithFrame:self.view.frame];
+        self.btn.tag = day*LONGLESSON+lesson;
     }
     return self;
 }
 
 - (BOOL)matterWithWeek:(NSNumber *)week{
-    [self.remindArrow removeFromSuperview];
     [self.btn setTitle:@"" forState:UIControlStateNormal];
 //    self.remindArrow = [[UIImageView alloc]init];
-    if (self.lesson<6 && self.lesson >=4) {
+    if (self.beginLesson<6 && self.beginLesson >=4) {
         if (self.matter.lessonArray.count > 1) {
             [self.btn setBackgroundImage:[UIImage imageNamed:@"多课2"] forState:UIControlStateNormal];
         }
@@ -45,7 +50,7 @@
             [self.btn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:120/255.f green:219/255.f blue:195/255.f alpha:1]] forState:UIControlStateNormal];
         }
     }
-    else if (self.lesson<4 && self.lesson >=2) {
+    else if (self.beginLesson<4 && self.beginLesson >=2) {
         if (self.matter.lessonArray.count >1) {
             [self.btn setBackgroundImage:[UIImage imageNamed:@"多课1"] forState:UIControlStateNormal];
         }
@@ -124,13 +129,13 @@
 }
 
 - (void)showRemindWithoutLesson{
-    if (self.lesson<6 && self.lesson>=4) {
+    if (self.beginLesson<6 && self.beginLesson>=4) {
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind2"] forState:UIControlStateNormal];
     }
-    else if(self.lesson <4 && self.lesson>= 2){
+    else if(self.beginLesson <4 && self.beginLesson>= 2){
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind1"] forState:UIControlStateNormal];
     }
-    else if(self.lesson <2 &&self.lesson>=0){
+    else if(self.beginLesson <2 &&self.beginLesson>=0){
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind0"] forState:UIControlStateNormal];
     }
 }

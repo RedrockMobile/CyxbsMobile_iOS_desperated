@@ -111,7 +111,7 @@
             }
             //跳转到 主界面
             UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
             [self presentViewController:view animated:YES completion:nil];
         }else {
             NSLog(@"未完成个人信息");

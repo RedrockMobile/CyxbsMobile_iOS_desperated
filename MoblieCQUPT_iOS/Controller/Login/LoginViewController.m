@@ -190,8 +190,10 @@
 //            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 //            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
 //            [self presentViewController:view animated:YES completion:nil];
+               [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
             if (weakSelf.loginSuccessHandler) {
                 weakSelf.loginSuccessHandler(YES);
+             
             }
             [weakSelf dismissViewControllerAnimated:YES completion:nil];
             

@@ -18,14 +18,15 @@
 #import "AddRemindViewController.h"
 #import "CoverView.h"
 #import <Masonry.h>
+#import "NoLoginView.h"
+#import "LoginViewController.h"
 #define kAPPGroupID @"group.com.redrock.mobile"
-
 
 @interface LessonController ()
 @property MainView *mainView;
 @property WeekScrollView *weekScrollView;
 @property UIButton *barBtn;
-@property NSMutableArray *dataArray;
+@property NSMutableArray *lessonArray;
 @property NSMutableArray *remindArray;
 @property NSMutableArray *examArray;
 @property NSNumber *nowWeek;
@@ -36,6 +37,7 @@
 @property CoverView *coverView;
 @property DetailViewController *detailViewController;
 @property AddRemindViewController *addRemindViewController;
+@property NoLoginView *noLoginView;
 @end
 
 @implementation LessonController
@@ -45,23 +47,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(reloadView) name:@"deleteRemind" object:nil];
-    [center addObserver:self selector:@selector(reloadView) name:@"addRemind" object:nil];
-    [center addObserver:self selector:@selector(reloadView) name:@"editRemind" object:nil];
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回剪头"]];
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回剪头"]];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
-    [self initNavigationBar];
-    [self initPullImageView];
-    [self initWeekScrollView];
-    [self initMainView];
-    [self request];
-    [self reTryRequest];
+    [self addNotification];
+    self.view.backgroundColor = [UIColor whiteColor];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *stuNum = [defaults objectForKey:@"stuNum"];
+    NSString *idNum = [defaults objectForKey:@"idNum"];
+    if (stuNum == nil || idNum == nil) {
+         self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-(STATUSBARHEIGHT+NVGBARHEIGHT+TABBARHEIGHT))];
+        [self.view addSubview:self.noLoginView];
+        [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else{
+        [self afterLogin];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -70,14 +68,63 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)clickLoginBtn{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否登录" message:@"马上登录拯救课表菌" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LoginViewController *loginViewController = [[LoginViewController alloc]init];
+        [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
+    }];
+    [alertController addAction:cancelAction];
+    [alertController addAction:loginAction];
+    [self.navigationController presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)addNotification{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(reloadView) name:@"deleteRemind" object:nil];
+    [center addObserver:self selector:@selector(reloadView) name:@"addRemind" object:nil];
+    [center addObserver:self selector:@selector(reloadView) name:@"editRemind" object:nil];
+    [center addObserver:self selector:@selector(afterLogin) name:@"loginSuccess" object:nil];
+}
+
+- (void)afterLogin{
+    [self.noLoginView removeFromSuperview];
+    [self request];
+    [self initWeekScrollView];
+    [self initNavigationBar];
+    [self initMainView];
+    [self reTryRequest];
+}
+
+- (void)afterRequest{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"nowWeek"]!=nil && [defaults objectForKey:@"lessonResponse"]!=nil) {
+        [self initWeekScrollView];
+        [self reloadView];
+    }
+}
+
+- (void)reloadView{
+    [self initMainView];
+    [self initBtnController];
+    [self showMatterWithWeek:@(self.selectedWeek)];
+    [self.detailViewController reloadMatters:self.controllerArray[self.detailViewController.time].matter];
+}
+
 - (void)initNavigationBar{
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回箭头"]];
+    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回箭头"]];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    backItem.title=@"";
+    self.navigationItem.backBarButtonItem = backItem;
+
     self.barBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, NVGBARHEIGHT*2, NVGBARHEIGHT)];
-    [self.barBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [self.barBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.barBtn setTitle:@"本周" forState:UIControlStateNormal];
     [self.barBtn setTitleColor:[UIColor colorWithRed:64/255.f green:64/255.f blue:64/255.f alpha:1] forState:UIControlStateNormal];
     self.barBtn.titleLabel.font = [UIFont systemFontOfSize:18];
-//    self.navigationItem.titleView = self.barBtn;
     self.navigationItem.titleView = self.barBtn;
     //初始化点击Button
     
@@ -87,49 +134,22 @@
     [addBtn setBackgroundImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:addBtn];
     //初始化右边添加button
+    [self initPullImageView];//初始化下拉箭头
 }
 
 
 - (void)initMainView{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.dataArray = [[userDefaults objectForKey:@"lessonResponse"] objectForKey:@"data"];
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-//    NSString *examPath = [path stringByAppendingString:@"exam.plist"];
-    NSLog(@"%@",remindPath);
-    self.remindArray = [NSMutableArray arrayWithContentsOfFile:remindPath];
-//    self.examArray = [NSMutableArray arrayWithContentsOfFile:examPath];
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self.mainView removeFromSuperview];
     self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-STATUSBARHEIGHT-NVGBARHEIGHT-TABBARHEIGHT)];
     [self.view addSubview:self.mainView]; //初始化主界面
     [self initBtnController];
-    for (NSDictionary *lessonDic in self.dataArray) {
-        LessonMatter *lesson = [LessonHandle handle:lessonDic];
-        NSInteger index = lesson.hash_day.integerValue*LONGLESSON+lesson.begin_lesson.integerValue/2;
-        [self.controllerArray[index].matter.lessonArray addObject:lesson];
-    }
-    
-    for (NSDictionary *remind in self.remindArray) {
-        for (NSDictionary *date in [remind objectForKey:@"date"]) {
-            RemindMatter *remindMatter = [[RemindMatter alloc]initWithRemind:remind];
-            remindMatter.week = [date objectForKey:@"week"];
-            remindMatter.classNum = [date objectForKey:@"class"];
-            remindMatter.day = [date objectForKey:@"day"];
-            NSInteger index = remindMatter.day.integerValue*LONGLESSON+remindMatter.classNum.integerValue;
-            [self.controllerArray[index].matter.remindArray addObject:remindMatter];
-        }
-    }
-    
-    //    for (NSDictionary *exam in self.examArray) {
-    //        ExamMatter *examMatter = [[ExamMatter alloc]init];
-    //    }
-    // 获取数据
     [self showMatterWithWeek:@(self.selectedWeek)];
-    //初始化课程button
 }
 
 
 - (void)initWeekScrollView{
+    [self.weekScrollView removeFromSuperview];
+    [self.coverView removeFromSuperview];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.nowWeek = [userDefaults objectForKey:@"nowWeek"];
     self.weekScrollView = [[WeekScrollView alloc]initWithFrame:CGRectMake(0, NVGBARHEIGHT+STATUSBARHEIGHT, SCREENWIDTH, SCREENHEIGHT/2.5)];
@@ -156,14 +176,47 @@
 }
 
 - (void)initBtnController{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.lessonArray = [[userDefaults objectForKey:@"lessonResponse"] objectForKey:@"data"];
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    NSLog(@"%@",remindPath);
+    self.remindArray = [NSMutableArray arrayWithContentsOfFile:remindPath];
+    // 获取数据
+    
     self.controllerArray = [[NSMutableArray alloc]initWithCapacity:(LONGLESSON*DAY)];
     for (int i = 0; i<DAY; i++) {
         for (int j = 0; j<LONGLESSON; j++) {
             self.controllerArray[i*LONGLESSON+j] = [[LessonButtonController alloc]initWithDay:i Lesson:j];
-            [self.controllerArray[i*LONGLESSON+j].btn setTag:i*LONGLESSON+j];
             [self.controllerArray[i*LONGLESSON+j].btn addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
+    for (NSDictionary *lessonDic in self.lessonArray) {
+        LessonMatter *lesson = [LessonHandle handle:lessonDic];
+        NSInteger index = lesson.hash_day.integerValue*LONGLESSON+lesson.begin_lesson.integerValue/2;
+        [self.controllerArray[index].matter.lessonArray addObject:lesson];
+    }
+    
+    for (NSDictionary *remind in self.remindArray) {
+        for (NSDictionary *date in [remind objectForKey:@"date"]) {
+            RemindMatter *remindMatter = [[RemindMatter alloc]initWithRemind:remind];
+            remindMatter.week = [date objectForKey:@"week"];
+            remindMatter.classNum = [date objectForKey:@"class"];
+            remindMatter.day = [date objectForKey:@"day"];
+            NSInteger index = remindMatter.day.integerValue*LONGLESSON+remindMatter.classNum.integerValue;
+            [self.controllerArray[index].matter.remindArray addObject:remindMatter];
+        }
+    }
+    //初始化课程button
+}
+
+- (void)initPullImageView{
+    self.pullImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"下拉"]];
+    [self.barBtn addSubview:self.pullImageView];
+    [self.pullImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.barBtn.titleLabel.mas_right).offset(5);
+        make.centerY.equalTo(self.barBtn.titleLabel);
+    }];
 }
 
 - (void)showMatterWithWeek:(NSNumber *)week{
@@ -183,87 +236,15 @@
     }
 }
 
-- (void)request{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    NSString *idNum = [defaults objectForKey:@"idNum"];
-    stuNum = @"2015211572";
-    idNum = @"200015";
-//    if (stuNum==nil || idNum == nil) {
-        [[NSUserDefaults standardUserDefaults]setObject:stuNum forKey:@"stuNum"];
-        [[NSUserDefaults standardUserDefaults]setObject:idNum forKey:@"idNum"];
-        NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-        NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-        //    NSString *examPath = [path stringByAppendingPathComponent:@"exam.plist"];
-        HttpClient *client = [HttpClient defaultClient];
-        NSDictionary *parameter = @{@"stuNum":stuNum};
-        [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
-            
-        } success:^(NSURLSessionDataTask *task, id responseObject) {
-//            NSLog(@"%@",responseObject);
-            [defaults setObject:[responseObject objectForKey:@"nowWeek"] forKey:@"nowWeek"];
-            [defaults setObject:responseObject forKey:@"lessonResponse"];
-            
-            // 共享数据
-            NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
-            [shared setObject:responseObject forKey:@"lessonResponse"];
-            [shared synchronize];
-            //
-            
-            [self reloadView];
-            
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error);
-        }];
-        
-        [client requestWithPath:GETREMINDAPI method:HttpRequestPost parameters:@{@"stuNum":stuNum,@"idNum":idNum} prepareExecute:^{
-            
-        } progress:^(NSProgress *progress) {
-            
-        } success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
-            NSMutableArray *reminds = [responseObject objectForKey:@"data"];
-            if ([reminds writeToFile:remindPath atomically:YES]) {
-                [self reloadView];
-            }
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error);
-        }];
-        //    [client requestWithPath:EXAMAPI method:HttpRequestPost parameters:@{@"stuNum":@"2015211572"}prepareExecute:^{
-        //
-        //    } progress:^(NSProgress *progress) {
-        //
-        //    } success:^(NSURLSessionDataTask *task, id responseObject) {
-        ////        [[responseObject objectForKey:@"data"] writeToFile:examPath atomically:YES encoding:NSUTF16StringEncoding error:nil];
-        //        NSLog(@"%@",responseObject);
-        //    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //        NSLog(@"%@",error);
-        //    }];
-//    }
-}
-
-- (void)reloadView{
-    [self.mainView removeFromSuperview];
-    [self.weekScrollView removeFromSuperview];
-    [self initMainView];
-    [self initWeekScrollView];
-    [self.detailViewController reloadMatters:self.controllerArray[self.detailViewController.time].matter];
-}
-
-- (void)initPullImageView{
-    self.pullImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"下拉"]];
-    [self.barBtn addSubview:self.pullImageView];
-    [self.pullImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.barBtn.titleLabel.mas_right).offset(5);
-        make.centerY.equalTo(self.barBtn.titleLabel);
-    }];
+- (void)showDetail:(UIButton *)sender{
+    self.detailViewController = [[DetailViewController alloc]initWithMatters:self.controllerArray[sender.tag].matter week:self.selectedWeek time:sender.tag];
+    [self.navigationController pushViewController:self.detailViewController animated:YES];
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)addAction{
     AddRemindViewController *vc = [[AddRemindViewController alloc]init];
-    [self addChildViewController:vc];
     [self.navigationController pushViewController:vc animated:YES];
-    [vc didMoveToParentViewController:self];
     self.tabBarController.tabBar.hidden = YES;
 }
 
@@ -272,8 +253,7 @@
     self.weekScrollView.btnArray[self.selectedWeek].selected = NO;
     self.selectedWeek = sender.tag;
     sender.selected = YES;
-    
-    if ([self.barBtn.currentTitle  isEqual: @"整学期"]) {
+    if ([self.barBtn.currentTitle isEqual: @"整学期"]) {
         [self.mainView removeDayLbTime];
         [self showMatterWithWeek:@0];
     }
@@ -299,6 +279,7 @@
         self.pullImageView.image = [UIImage imageNamed:@"上拉"];
         NSInteger initial = (self.selectedWeek-4)>0?(self.selectedWeek-4):0;
         [self.weekScrollView setContentOffset:CGPointMake(0, initial*self.weekScrollView.btnArray[self.selectedWeek].frame.size.height)];
+        // 选中button居中
         [self.view addSubview:self.coverView];
         [self.view addSubview:self.weekScrollView];
         
@@ -317,10 +298,48 @@
     }
 }
 
-- (void)showDetail:(UIButton *)sender{
-    self.tabBarController.tabBar.hidden = YES;
-    self.detailViewController = [[DetailViewController alloc]initWithMatters:self.controllerArray[sender.tag].matter week:self.selectedWeek time:sender.tag];
-    [self.navigationController pushViewController:self.detailViewController animated:YES];
+- (void)request{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *stuNum = [defaults objectForKey:@"stuNum"];
+    NSString *idNum = [defaults objectForKey:@"idNum"];
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    HttpClient *client = [HttpClient defaultClient];
+    NSDictionary *parameter = @{@"stuNum":stuNum};
+    [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSNumber *nowWeek = [responseObject objectForKey:@"nowWeek"];
+        if (nowWeek.integerValue > 20) {
+            nowWeek = @20;
+        }
+        [defaults setObject:nowWeek forKey:@"nowWeek"];
+        [defaults setObject:responseObject forKey:@"lessonResponse"];
+        [self afterRequest];
+        
+        // 共享数据
+        NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
+        [shared setObject:responseObject forKey:@"lessonResponse"];
+        [shared synchronize];
+        //
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
+    
+    [client requestWithPath:GETREMINDAPI method:HttpRequestPost parameters:@{@"stuNum":stuNum,@"idNum":idNum} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSMutableArray *reminds = [responseObject objectForKey:@"data"];
+        if ([reminds writeToFile:remindPath atomically:YES]) {
+            [self afterRequest];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 - (void)reTryRequest{

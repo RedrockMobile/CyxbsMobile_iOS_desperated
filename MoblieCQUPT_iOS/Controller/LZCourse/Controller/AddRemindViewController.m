@@ -329,8 +329,8 @@
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dateArray options:NSJSONWritingPrettyPrinted error:&error];
     NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
     NSMutableDictionary *jsonParameters = [@{
-                                         @"stuNum":idNum,
-                                         @"idNum":stuNum,
+                                         @"stuNum":stuNum,
+                                         @"idNum":idNum,
                                          @"date":jsonString,
                                          @"time":self.time,
                                          @"title":self.titileTextView.text,

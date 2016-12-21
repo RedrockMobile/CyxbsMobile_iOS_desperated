@@ -155,8 +155,19 @@
     //    NSLog(@"log out");
     //    LoginViewController *login = [[LoginViewController alloc]init];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-    [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
+    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
+    NSFileManager *manager=[NSFileManager defaultManager];
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
+    NSError *error;
+    if ([manager removeItemAtPath:remindPath error:&error]) {
+        NSLog(@"%@",error);
+    }
+    if ([manager removeItemAtPath:failurePath error:&error]) {
+        NSLog(@"%@",error);
+    }
     [self.navigationController presentViewController:view animated:YES completion:nil];
     //    [self dismissViewControllerAnimated:YES completion:^{
     //

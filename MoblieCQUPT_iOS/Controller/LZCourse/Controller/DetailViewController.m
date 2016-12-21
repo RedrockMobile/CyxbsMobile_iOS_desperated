@@ -124,13 +124,14 @@
         }
     }
     else {
+        NSMutableArray *remindArray = [NSMutableArray array];
         for (RemindMatter *remind in self.matters.remindArray) {
             if([remind.week containsObject:@(self.week)]){
-                self.remindController = [[DetailRemindViewController alloc]initWithRemindMatters:self.matters.remindArray];
+                [remindArray addObject:remind];
                 ishaveRemind = YES;
-                break;
             }
         }
+        self.remindController = [[DetailRemindViewController alloc]initWithRemindMatters:remindArray];
     }
     if(!ishaveRemind){
         self.remindController = [[DetailRemindViewController alloc]initWithRemindMatters:nil];
@@ -152,7 +153,18 @@
 
 - (void)reloadMatters:(LessonBtnModel *)matters{
     self.matters = matters;
-    [self.remindController reloadWithRemindMatters:matters.remindArray];
+    if (self.week == 0) {
+        [self.remindController reloadWithRemindMatters:matters.remindArray];
+    }
+    else {
+        NSMutableArray *remindArray = [NSMutableArray array];
+        for (RemindMatter *remind in self.matters.remindArray) {
+            if([remind.week containsObject:@(self.week)]){
+                [remindArray addObject:remind];
+            }
+        }
+        [self.remindController reloadWithRemindMatters:remindArray];
+    }
 }
 
 - (void)showExamView{

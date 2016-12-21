@@ -362,6 +362,9 @@
 		E2F0A3CE1D6165A600DFF37D /* ThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3A41D6165A600DFF37D /* ThreeTableViewCell.xib */; };
 		E2F0A3CF1D6165A600DFF37D /* ThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F0A3A61D6165A600DFF37D /* ThreeViewController.m */; };
 		E2F0A3D01D6165A600DFF37D /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F0A3A81D6165A600DFF37D /* TwoViewController.m */; };
+		F204206B1E095CA1003807BA /* NoLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = F204206A1E095CA1003807BA /* NoLoginView.m */; };
+		F204206E1E097A61003807BA /* 返回箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F204206C1E097A61003807BA /* 返回箭头@2x.png */; };
+		F204206F1E097A61003807BA /* 返回箭头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F204206D1E097A61003807BA /* 返回箭头@3x.png */; };
 		F2E501C01E06E3CF00806B6B /* BaseMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501141E06E3CF00806B6B /* BaseMatter.m */; };
 		F2E501C11E06E3CF00806B6B /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501161E06E3CF00806B6B /* BaseTableViewController.m */; };
 		F2E501C21E06E3CF00806B6B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501181E06E3CF00806B6B /* BaseViewController.m */; };
@@ -447,8 +450,6 @@
 		F2E5021C1E06E3D000806B6B /* 编辑箭头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501931E06E3CF00806B6B /* 编辑箭头@3x.png */; };
 		F2E5021D1E06E3D000806B6B /* 老师@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501941E06E3CF00806B6B /* 老师@2x.png */; };
 		F2E5021E1E06E3D000806B6B /* 老师@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501951E06E3CF00806B6B /* 老师@3x.png */; };
-		F2E5021F1E06E3D000806B6B /* 返回剪头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501961E06E3CF00806B6B /* 返回剪头@2x.png */; };
-		F2E502201E06E3D000806B6B /* 返回剪头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501971E06E3CF00806B6B /* 返回剪头@3x.png */; };
 		F2E502211E06E3D000806B6B /* 选择@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501981E06E3CF00806B6B /* 选择@2x.png */; };
 		F2E502221E06E3D000806B6B /* 选择@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501991E06E3CF00806B6B /* 选择@3x.png */; };
 		F2E502231E06E3D000806B6B /* ExamMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5019C1E06E3CF00806B6B /* ExamMatter.m */; };
@@ -1009,6 +1010,10 @@
 		E2F0A3A61D6165A600DFF37D /* ThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeViewController.m; sourceTree = "<group>"; };
 		E2F0A3A71D6165A600DFF37D /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		E2F0A3A81D6165A600DFF37D /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
+		F20420691E095CA1003807BA /* NoLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoLoginView.h; sourceTree = "<group>"; };
+		F204206A1E095CA1003807BA /* NoLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoLoginView.m; sourceTree = "<group>"; };
+		F204206C1E097A61003807BA /* 返回箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回箭头@2x.png"; sourceTree = "<group>"; };
+		F204206D1E097A61003807BA /* 返回箭头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回箭头@3x.png"; sourceTree = "<group>"; };
 		F2E501131E06E3CF00806B6B /* BaseMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMatter.h; sourceTree = "<group>"; };
 		F2E501141E06E3CF00806B6B /* BaseMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMatter.m; sourceTree = "<group>"; };
 		F2E501151E06E3CF00806B6B /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -1114,8 +1119,6 @@
 		F2E501931E06E3CF00806B6B /* 编辑箭头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑箭头@3x.png"; sourceTree = "<group>"; };
 		F2E501941E06E3CF00806B6B /* 老师@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "老师@2x.png"; sourceTree = "<group>"; };
 		F2E501951E06E3CF00806B6B /* 老师@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "老师@3x.png"; sourceTree = "<group>"; };
-		F2E501961E06E3CF00806B6B /* 返回剪头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回剪头@2x.png"; sourceTree = "<group>"; };
-		F2E501971E06E3CF00806B6B /* 返回剪头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回剪头@3x.png"; sourceTree = "<group>"; };
 		F2E501981E06E3CF00806B6B /* 选择@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择@2x.png"; sourceTree = "<group>"; };
 		F2E501991E06E3CF00806B6B /* 选择@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择@3x.png"; sourceTree = "<group>"; };
 		F2E5019B1E06E3CF00806B6B /* ExamMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamMatter.h; sourceTree = "<group>"; };
@@ -2545,6 +2548,8 @@
 		F2E5015A1E06E3CF00806B6B /* image */ = {
 			isa = PBXGroup;
 			children = (
+				F204206C1E097A61003807BA /* 返回箭头@2x.png */,
+				F204206D1E097A61003807BA /* 返回箭头@3x.png */,
 				F2E5015B1E06E3CF00806B6B /* add@2x.png */,
 				F2E5015C1E06E3CF00806B6B /* add@3x.png */,
 				F2E5015D1E06E3CF00806B6B /* remind0@2x.png */,
@@ -2603,8 +2608,6 @@
 				F2E501931E06E3CF00806B6B /* 编辑箭头@3x.png */,
 				F2E501941E06E3CF00806B6B /* 老师@2x.png */,
 				F2E501951E06E3CF00806B6B /* 老师@3x.png */,
-				F2E501961E06E3CF00806B6B /* 返回剪头@2x.png */,
-				F2E501971E06E3CF00806B6B /* 返回剪头@3x.png */,
 				F2E501981E06E3CF00806B6B /* 选择@2x.png */,
 				F2E501991E06E3CF00806B6B /* 选择@3x.png */,
 			);
@@ -2669,6 +2672,8 @@
 				F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */,
 				F2E501BE1E06E3CF00806B6B /* WeekScrollView.h */,
 				F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */,
+				F20420691E095CA1003807BA /* NoLoginView.h */,
+				F204206A1E095CA1003807BA /* NoLoginView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2802,6 +2807,7 @@
 				D99007671CB684E700EDAFD1 /* 1智妍.jpg in Resources */,
 				D90928941CACCD6400CA97CD /* 我的动态@2x.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
+				F204206F1E097A61003807BA /* 返回箭头@3x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
 				E2F0A3B41D6165A600DFF37D /* arrow.png in Resources */,
 				E2F0A3B21D6165A600DFF37D /* OneTableViewCell.xib in Resources */,
@@ -2902,6 +2908,7 @@
 				F2E501E91E06E3CF00806B6B /* remind1@3x.png in Resources */,
 				F2E5020F1E06E3D000806B6B /* 时间@2x.png in Resources */,
 				3B1388B51BA353F70011EBF2 /* XBSScheduleTableViewCell.xib in Resources */,
+				F204206E1E097A61003807BA /* 返回箭头@2x.png in Resources */,
 				E2F0A3B01D6165A600DFF37D /* GuideViewController.xib in Resources */,
 				CEF273921B90D573009B5BA2 /* 20-3补考.png in Resources */,
 				F2E501F31E06E3CF00806B6B /* 不提醒@3x.png in Resources */,
@@ -2918,7 +2925,6 @@
 				F2E5021D1E06E3D000806B6B /* 老师@2x.png in Resources */,
 				E2F0A3BC1D6165A600DFF37D /* 寝室3.jpg in Resources */,
 				F2E502041E06E3CF00806B6B /* 完成@3x.png in Resources */,
-				F2E5021F1E06E3D000806B6B /* 返回剪头@2x.png in Resources */,
 				F2E5021E1E06E3D000806B6B /* 老师@3x.png in Resources */,
 				CEF2738A1B90D573009B5BA2 /* 20-2补考.png in Resources */,
 				F2E502191E06E3D000806B6B /* 编辑完成@2x.png in Resources */,
@@ -3001,7 +3007,6 @@
 				CE5C7D5B1B87FF3900699E3E /* 40-3.png in Resources */,
 				E2F0A3BB1D6165A600DFF37D /* 寝室2.jpg in Resources */,
 				D99B769C1C8DBD7D00FFE538 /* emptyClassTag2.png in Resources */,
-				F2E502201E06E3D000806B6B /* 返回剪头@3x.png in Resources */,
 				CE0ADC9A1BDDD03E00374CDC /* 反馈信息@2x.png in Resources */,
 				F2E501D81E06E3CF00806B6B /* DetailPageController.xib in Resources */,
 				F2E502031E06E3CF00806B6B /* 完成@2x.png in Resources */,
@@ -3218,6 +3223,7 @@
 				F2E502291E06E3D000806B6B /* ChooseButton.m in Sources */,
 				F2E501C41E06E3CF00806B6B /* UIImage+Color.m in Sources */,
 				F2E501D11E06E3CF00806B6B /* RemindTableViewCell.m in Sources */,
+				F204206B1E095CA1003807BA /* NoLoginView.m in Sources */,
 				F2E501DA1E06E3CF00806B6B /* DetailViewController.m in Sources */,
 				F2E501C31E06E3CF00806B6B /* UIColor+Hex.m in Sources */,
 				E2F0A36A1D61611300DFF37D /* FreshManMainViewController.m in Sources */,
