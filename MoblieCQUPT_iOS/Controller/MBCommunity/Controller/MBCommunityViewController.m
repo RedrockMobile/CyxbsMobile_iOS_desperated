@@ -55,7 +55,7 @@
     _isLoadingBBDDData = NO;
     _isLoadingNewsData = NO;
     _allData = [NSMutableDictionary dictionary];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.tabBarController.navigationItem.rightBarButtonItem = self.addButton;
     NSArray *segments = @[@"热门动态",@"哔哔叨叨",@"官方资讯"];
     _segmentView = [[MBSegmentedView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-49) withSegments:segments];
@@ -106,11 +106,11 @@
     for (int i = 0; i < self.tableViewArray.count; i ++) {
         [self.tableViewArray[i] reloadData];
     }
-    
+    self.tabBarController.tabBar.hidden = NO;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.tabBarController.navigationItem.rightBarButtonItem = self.addButton;
+    self.navigationItem.rightBarButtonItem = self.addButton;
     if (_currenSelectCellOfRow) {
         NSInteger row = [self.currenSelectCellOfRow integerValue];
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
@@ -246,7 +246,7 @@
     if (!_addButton) {
         UIButton *add = [UIButton buttonWithType:UIButtonTypeCustom];
         [add setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-        add.frame = CGRectMake(0, 0, 17, 17);
+        add.frame = CGRectMake(0, 0, NVGBARHEIGHT/2, NVGBARHEIGHT/2);
         [add addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
         
         _addButton = [[UIBarButtonItem alloc]initWithCustomView:add];

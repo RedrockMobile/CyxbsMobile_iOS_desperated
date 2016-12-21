@@ -18,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     _webView.delegate = self;
     _indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     _indicatorView.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H);
@@ -35,9 +34,9 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"红岩门户";
-    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

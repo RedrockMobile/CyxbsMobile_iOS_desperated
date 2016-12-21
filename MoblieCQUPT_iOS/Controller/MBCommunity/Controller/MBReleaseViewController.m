@@ -73,11 +73,11 @@
 - (UIView *)navigationView {
     if (!_navigationView) {
         _navigationView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64)];
-        _navigationView.backgroundColor = MAIN_COLOR;
+        _navigationView.backgroundColor = [UIColor whiteColor];
         
         UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectZero];
         titleLabel.text = @"哔哔叨叨";
-        titleLabel.textColor = [UIColor whiteColor];
+        titleLabel.textColor = FONT_COLOR;
         titleLabel.font = [UIFont systemFontOfSize:17];
         [titleLabel sizeToFit];
         titleLabel.center = CGPointMake(ScreenWidth/2, 42);
@@ -88,8 +88,8 @@
         [doneBtn setTitle:@"完成" forState:UIControlStateNormal];
         [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
         
-        [doneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [cancelBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [doneBtn setTitleColor:FONT_COLOR forState:UIControlStateNormal];
+        [cancelBtn setTitleColor:FONT_COLOR forState:UIControlStateNormal];
         
         [doneBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
         [cancelBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];

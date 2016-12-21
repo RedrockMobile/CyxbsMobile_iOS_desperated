@@ -76,12 +76,7 @@
     _classPickArray = @[@"请选择教学楼",@"2教",@"3教",@"4教",@"5教",@"8教"];
     _sectionPickArray = @[@"请选择时间",@"1~2节",@"3~4节",@"5~6节",@"7~8节",@"9~10节",@"11~12节"];
     
-    
-
-    
     _isDone = NO;
-    
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, 84, 17, 20)];
     imageView.image = [UIImage imageNamed:@"emptyClass.png"];

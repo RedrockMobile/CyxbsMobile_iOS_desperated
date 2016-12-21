@@ -29,35 +29,35 @@ static Boolean isClick = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self findButtonInit];
+    NSLog(@"233");
+//    [self findButtonInit];
     NSArray *item = @[@"课表",@"社区",@"查询",@"发现",@"我的"];
     
-    self.tabBar.translucent = YES;
-//    self.navigationController.title=@"22";
+//    self.tabBar.translucent = YES;
     
     int whichVc = 0;
     self.tabBar.tintColor = MAIN_COLOR;
     
     for (UINavigationController *vc in self.viewControllers) {
         vc.title = item[whichVc];
-        
+        vc.viewControllers[0].title = item[whichVc];
         [vc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",whichVc+1]]];
         [vc.tabBarItem setSelectedImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_selected_%d.png",whichVc+1]]];
 //        vc.navigationController.navigationBar.hidden = NO;
-        vc.navigationController.navigationBar.tintColor = kItemTintColor;
-        vc.navigationController.navigationBar.barTintColor = kBarTintColor;
-//        vc.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+//        vc.navigationBar.tintColor = kItemTintColor;
+        vc.navigationBar.tintColor = FONT_COLOR;
+//      vc.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
 //        vc.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(1.0f, 1.0f);
 //        vc.navigationController.navigationBar.layer.shadowOpacity = 0.1f;
 //        vc.navigationController.navigationBar.layer.shadowRadius = 0.5f;
-        vc.navigationController.navigationItem.title = item[whichVc];
-        self.navigationItem.title = [item firstObject];
+        vc.title = item[whichVc];
+//        self.navigationItem.title = [item firstObject];
         
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored"-Wundeclared-selector"
-        if([vc respondsToSelector:@selector(setCommonNavigationItem:)]){
-            [vc performSelector:@selector(setCommonNavigationItem:) withObject:self.navigationItem];
-        }
+//        if([vc respondsToSelector:@selector(setCommonNavigationItem:)]){
+//            [vc performSelector:@selector(setCommonNavigationItem:) withObject:self.navigationItem];
+//        }
 #pragma clang diagnostic pop
         
         whichVc==1?whichVc+=2:whichVc++;
@@ -85,7 +85,7 @@ static Boolean isClick = NO;
 
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+//    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
     if ([item isEqual:self.tabBar.items[0]]) {
         self.navigationController.navigationBarHidden = YES;
     }else{

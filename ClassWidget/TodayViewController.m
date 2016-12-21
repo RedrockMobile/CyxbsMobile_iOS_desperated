@@ -5,235 +5,204 @@
 //  Created by user on 15/11/3.
 //  Copyright (c) 2015年 Orange-W. All rights reserved.
 //
-#warning 先放这测试,remove
-#if DEBUG
-#define NSLog(format, ...) do {                                                                          \
-fprintf(stderr, "<%s : %d> | %s\n",                                           \
-[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],  \
-__LINE__, __func__);                                                        \
-(NSLog)((format), ##__VA_ARGS__);                                           \
-fprintf(stderr, "-------\n");                                               \
-} while (0)
-#else
-#define NSLog(format, ...) ;
-#endif
-#define kAPPGroupID @"group.com.redrock.mobile"
-#define kAppGroupShareNowDay @"nowDay"
-#define kAppGroupShareThisWeekArray @"thisWeekArray"
-#define kAutoUpdateInterval 60*5
-#define kTableViewCellRowHeight 100
+//#warning 先放这测试,remove
+//#if DEBUG
+//#define NSLog(format, ...) do {                                                                          \
+//fprintf(stderr, "<%s : %d> | %s\n",                                           \
+//[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],  \
+//__LINE__, __func__);                                                        \
+//(NSLog)((format), ##__VA_ARGS__);                                           \
+//fprintf(stderr, "-------\n");                                               \
+//} while (0)
+//#else
+//#define NSLog(format, ...) ;
+//#endif
+//#define kAPPGroupID @"group.com.redrock.mobile"
+//#define kAppGroupShareNowDay @"nowDay"
+//#define kAppGroupShareThisWeekArray @"thisWeekArray"
+//#define kAutoUpdateInterval 60*5
+//#define kTableViewCellRowHeight 100
 
 #import "TodayViewController.h"
-#import "ClassTableViewCell.h"
 #import <NotificationCenter/NotificationCenter.h>
-#import "MOHLessonTimeModel.h"
 
-@interface TodayViewController () <NCWidgetProviding,UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) NSArray *todayClassArray;
-@property (strong, nonatomic) UITableView *classTableView;
+#define kAPPGroupID @"group.com.redrock.mobile"
+#define MaxWidth [UIScreen mainScreen].bounds.size.width
+#define NumberLabelHeight 17
+#define NumberLabelWidth 17
+#define LessonLabelWidth (MaxWidth -NumberLabelWidth) * 0.75
+#define ClassroomLabelWidth (MaxWidth -NumberLabelWidth) * 0.37
+
+@interface TodayViewController () <NCWidgetProviding>
+
+@property (nonatomic, strong) NSMutableArray *weekDataArray;
+@property (nonatomic, strong) NSMutableArray <UILabel *>*lessonLabelArray;
+
 @end
 
 @implementation TodayViewController
 
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self.view addSubview:self.classTableView];
-    [self autoUpdateTimer];
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self newWeekDataArray];
+    [self creatNumberLabel];
+    [self creatLessonLabel];
+    [self creatRoomLabel];
 }
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
+    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
 }
 
-- (void)widgetPerformUpdateWithCompletionHandler:(void (^)(NCUpdateResult))completionHandler {
-    NSUserDefaults *shared = [[NSUserDefaults alloc] initWithSuiteName:kAPPGroupID];
-    NSArray *weakDataArray = [shared objectForKey:kAppGroupShareThisWeekArray];
-//    NSLog(@"%@",weakDataArray);
-    self.todayClassArray = [self todayClassArrayFromWeakClassArray:weakDataArray];
-    
-    if (self.todayClassArray) {
-        completionHandler(NCUpdateResultNewData);
-    }else{
-        completionHandler(NCUpdateResultNoData);
+- (void)creatRoomLabel
+{
+    NSString *infoStr = [[NSString alloc] init];
+    for (int i = 0;i < self.weekDataArray.count; i++)
+    {
+        infoStr = [NSString stringWithFormat:@"%@",self.weekDataArray[i][@"classroom"]];
+        UILabel *infoLabel = [[UILabel alloc] init];
+        CGRect labelFrame = self.lessonLabelArray[i].frame;
+        
+        labelFrame.origin.x = NumberLabelWidth + LessonLabelWidth;
+        labelFrame.size.width = ClassroomLabelWidth;
+        
+        [self makeLabelWithText:infoStr frame:labelFrame label:infoLabel color:self.lessonLabelArray[i].backgroundColor courseLesson:YES];
+        [self.view addSubview:infoLabel];
     }
-    
+}
 
-    
+- (void)creatLessonLabel
+{
+    NSString *infoStr = [[NSString alloc] init];
+    UIColor *lableColor = [[UIColor alloc] init];
+    self.lessonLabelArray = [[NSMutableArray alloc] init];
+    int hashLesson,beginLesson,period;
+    for (int i = 0; i < self.weekDataArray.count; i++) {
+        UILabel *infoLabel = [[UILabel alloc] init];
+        hashLesson = [[NSString stringWithFormat:@"%@",self.weekDataArray[i][@"hash_lesson"]] intValue];
+        beginLesson = [[NSString stringWithFormat:@"%@",self.weekDataArray[i][@"begin_lesson"]] intValue];
+        period = [[NSString stringWithFormat:@"%@",self.weekDataArray[i][@"period"]]intValue];
+        infoStr = [NSString stringWithFormat:@"     %@",self.weekDataArray[i][@"course"]];
+        if (beginLesson<=12) {
+            lableColor = [UIColor colorWithRed:120/255.f green:219/255.f blue:195/255.f alpha:1];
+        }
+        if (beginLesson<=8){
+            lableColor = [UIColor colorWithRed:249/255.f green:175/255.f blue:87/255.f alpha:1];
+        }
+        if (beginLesson<=4){
+            lableColor = [UIColor colorWithRed:99/255.f green:210/255.f blue:246/255.f alpha:1];
+        }
+        if (hashLesson!=0) {
+            hashLesson += period;
+        }
+        [self makeLabelWithText:infoStr frame:CGRectMake(NumberLabelWidth, hashLesson * NumberLabelHeight, LessonLabelWidth, period * NumberLabelHeight) label:infoLabel color:lableColor courseLesson:YES];
+        [self.lessonLabelArray addObject:infoLabel];
+        [self.view addSubview:infoLabel];
+    }
+}
+
+- (void)creatNumberLabel
+{
+    for (int i = 0; i <= 12; i++) {
+        UILabel *numberLabel = [[UILabel alloc] init];
+        [self makeLabelWithText:[NSString stringWithFormat:@"%d",i+1] frame:CGRectMake(0, i * NumberLabelHeight, NumberLabelWidth, NumberLabelHeight) label:numberLabel color:nil courseLesson:NO];
+        [self.view addSubview:numberLabel];
+    }
 }
 
 
+- (void)makeLabelWithText:(NSString *)text frame:(CGRect)frame label:(UILabel *)label  color:(UIColor *)color courseLesson:(BOOL)course {
+    label.numberOfLines = 0;
+    if (course == YES) {
+        label.textColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1];
+        label.backgroundColor = color;
+        label.font = [UIFont systemFontOfSize:13];
+        label.textAlignment = NSTextAlignmentLeft;
+    }else{
+        label.textColor = [UIColor colorWithRed:97/255.0 green:102/255.0 blue:106/255.0 alpha:1];
+        label.backgroundColor = [UIColor colorWithRed:206/255.0 green:214/255.0 blue:222/255.0 alpha:1];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:7];
+    }
+    label.text = text;
+    [label setFrame:frame];
+}
 
-- (NSArray *)todayClassArrayFromWeakClassArray:(NSArray *)weakClassArray{
-    NSDateComponents *componets = [[NSCalendar autoupdatingCurrentCalendar] components:NSCalendarUnitWeekday fromDate:[NSDate date]];
-    NSInteger today =  [componets weekday];
-    today -= 1; //从周日开始转为从周一开始
-    today = today>0?today:7;
-//    NSLog(@"%@",[NSDate date]);
-//    today = 4;
-    
-    
-    NSMutableArray *mutableToDayClassArray = [NSMutableArray array];
-    for (NSDictionary *row in weakClassArray) {
-        NSString *tmpString = row[@"day"];
 
-        if ([tmpString integerValue] == today) {
-            [mutableToDayClassArray addObject:row];
+- (void)newWeekDataArray
+{
+    self.weekDataArray = [[NSMutableArray alloc]init];
+    NSUserDefaults *userDefault = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
+    NSString *hashDate = [[NSString alloc] init];
+    NSString *hashDay = [[NSString alloc] init];
+    hashDate = [self weekDayStr];
+    NSString *nowWeek = [NSString stringWithFormat:@"%@",[userDefault objectForKey:@"lessonResponse"][@"nowWeek"]];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[userDefault objectForKey:@"lessonResponse"][@"data"]];
+    for (int i = 0; i < array.count; i++) {
+        hashDay = [NSString stringWithFormat:@"%@",array[i][@"hash_day"]];
+        if ([hashDay isEqualToString:hashDate]&&[array[i][@"week"] containsObject:[NSNumber numberWithInteger:[nowWeek integerValue]]]) {
+            [self.weekDataArray addObject:array[i]];
         }
     }
-    if (mutableToDayClassArray.count == 0) {
-        //如果今天没课
-        mutableToDayClassArray = [@[
-                                    @{
-                                      @"course":@"今天没有课程",
-                                      @"classroom":@"红岩网校工作站",
-                                      @"teacher":@"难得的一天,尽情的玩耍下吧^_^",
-                                      @"begin_lesson":@"-1"}
-                                      ] mutableCopy];
+}
+
+
+- (NSString *)weekDayStr
+{
+    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+    
+    [outputFormatter setDateFormat:@"EEEE"];
+    
+    NSString *newDateString = [outputFormatter stringFromDate:[NSDate date]];
+    
+    if ([newDateString isEqualToString:@"星期一"]) {
+        return @"0";
     }
-    NSLog(@"今日周%ld,数据:%@",(long)today,mutableToDayClassArray);
-    return mutableToDayClassArray;
-}
-
-- (void)autoUpdateTimer{
-    NSTimer *timer = [[NSTimer alloc]
-                initWithFireDate:[NSDate distantPast]
-                        interval:kAutoUpdateInterval
-                        target:self
-                        selector:@selector(updateTodayClass)
-                        userInfo:nil
-                        repeats:YES];
-    
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-    
-}
-
-
-- (void)updateTodayClass{
-    
-    [self widgetPerformUpdateWithCompletionHandler:^(NCUpdateResult result) {
+    if ([newDateString isEqualToString:@"星期二"]) {
         
-        [self updateView];
-    }];
-    NSLog(@"更新今日课程数据");
-    
-    
-    
-}
-
-#pragma UI 相关
-- (void) updateView{
-    NSLog(@"更新界面:%ld",(unsigned long)self.todayClassArray.count);
-    [self.classTableView reloadData];
-    self.preferredContentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, kTableViewCellRowHeight*self.todayClassArray.count);
-    self.classTableView.frame = self.view.bounds;
-    
-    
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.todayClassArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return kTableViewCellRowHeight;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.extensionContext openURL:[NSURL URLWithString:@"cyxbs://class"] completionHandler:^(BOOL success) {
-        NSLog(@"open succeed");
-    }];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *identify = @"ClassCell";
-    ClassTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-    if (!cell) {
-        cell = [[ClassTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+        return @"1";
     }
-    NSDictionary *lessonDictionary = self.todayClassArray[indexPath.row];
-    NSString *classTime =
-    [MOHLessonTimeModel
-        stringWithBeginLesson:[lessonDictionary[@"begin_lesson"] integerValue]
-        period:[lessonDictionary[@"period"] integerValue]];
-
-    if([lessonDictionary[@"begin_lesson"] integerValue]==-1){
-        cell.classNameLabel.textColor = [UIColor orangeColor];
+    if ([newDateString isEqualToString:@"星期三"]) {
+        
+        return @"2";
     }
-
-    
-    cell.classNameLabel.text = lessonDictionary[@"course"];
-    cell.teacherLabel.text   = lessonDictionary[@"teacher"] ;
-    cell.classroomLabel.text = lessonDictionary[@"classroom"];
-    cell.classTimeLabel.text = classTime;
-
-    return cell;
-    
+    if ([newDateString isEqualToString:@"星期四"]) {
+        
+        return @"3";
+    }
+    if ([newDateString isEqualToString:@"星期五"]) {
+        
+        return @"4";
+    }
+    if ([newDateString isEqualToString:@"星期六"]) {
+        
+        return @"5";
+    }
+    if ([newDateString isEqualToString:@"星期天"]) {
+        return @"6";
+    }
+    return 0;
 }
 
-
-//- (NSString *)stringWithBeginLesson:(NSInteger)beginLesson
-//                             period:(NSInteger)time{
-//    NSLog(@"%ld==%ld",(long)beginLesson,(long)time);
-//    NSString *startTimeString,*endTimeString,*string;
-//    NSInteger baseClassNum = 1;
-//    if (beginLesson == -1) {
-//        //没课
-//        return @"全天无课";
-//    }
-//    
-//    
-//    if (beginLesson<5) {
-//        string = @"08:00";
-//        
-//    }else if(beginLesson <9){
-//        string = @"14:00";
-//        baseClassNum = 5;
-//    }else{
-//        string = @"19:00";
-//        baseClassNum = 9;
-//    }
-//    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-//        [inputFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-//        [inputFormatter setDateFormat:@"HH:mm"];
-//        NSDate *inputDate = [inputFormatter dateFromString:string];
-//        NSInteger addMin = (beginLesson-baseClassNum)*55;
-//        if (beginLesson-baseClassNum >=3) {
-//            addMin += 10;
-//        }
-//        NSDate *classDate = [NSDate dateWithTimeInterval:addMin*60
-//                                               sinceDate:inputDate];
-//        addMin = time*45 + (time-1)*10;
-//        if (time >=3 ) {
-//            addMin+=10;
-//        }
-//        NSDate *classEndDate = [NSDate dateWithTimeInterval:addMin*60
-//                                                  sinceDate:classDate];
-//        
-//        startTimeString = [inputFormatter stringFromDate:classDate];
-//        endTimeString = [inputFormatter stringFromDate:classEndDate];
-//
-//    return [NSString stringWithFormat:@"%@~%@",startTimeString,endTimeString];
-//}
-
-- (UITableView *)classTableView{
-    if (!_classTableView) {
-        _classTableView = [[UITableView alloc]init];
-        _classTableView.delegate = self;
-        _classTableView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 44*self.todayClassArray.count);
-        _classTableView.dataSource = self;
-        UINib *nib = [UINib nibWithNibName:@"ClassTableViewCell" bundle:nil];
-        [_classTableView registerNib:nib forCellReuseIdentifier:@"ClassCell"];
-//        _classTableView.backgroundColor = [UIColor whiteColor]
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
+{
+    switch (activeDisplayMode)
+    {
+        case NCWidgetDisplayModeCompact:
+        {
+            self.preferredContentSize = CGSizeMake(0, 110);
+        }
+            break;
+        case NCWidgetDisplayModeExpanded:
+        {
+            self.preferredContentSize = CGSizeMake(0, NumberLabelHeight*12);
+        }
+            break;
     }
-    return _classTableView;
-}
-
-- (UIEdgeInsets)widgetMarginInsetsForProposedMarginInsets:(UIEdgeInsets)defaultMarginInsets{
-    return UIEdgeInsetsMake(0, 8, 10, 10);
 }
 
 

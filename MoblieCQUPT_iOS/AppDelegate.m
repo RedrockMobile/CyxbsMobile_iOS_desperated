@@ -12,6 +12,7 @@
 #import "XBSGradeViewController.h"
 #import "XBSFindClassroomViewController.h"
 #import "MBReleaseViewController.h"
+#import <UserNotifications/UserNotifications.h>
 
 @interface AppDelegate ()
 
@@ -65,11 +66,17 @@
 //        self.window.rootViewController = login;
 //    }
     
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-    self.window.rootViewController = view;
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    UITabBarController *tbc = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    self.window.rootViewController = tbc;
 
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter]; //请求获取通知权限
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        //获取用户是否同意开启通知
+        NSLog(@"request authorization successed!");
+    }];
     
     return YES;
 }
@@ -100,6 +107,7 @@
     }else if ([shortcutItem.type isEqualToString:@"release"]){
         [self launchViewController:1 withChoose:2];
     }
+    
 }
 
 - (void)launchViewController:(NSInteger) selectIndex withChoose:(NSInteger) secondChooseIndex {

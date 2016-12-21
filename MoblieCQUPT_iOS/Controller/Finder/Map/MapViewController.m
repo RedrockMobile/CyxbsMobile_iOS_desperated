@@ -16,7 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [_mapWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://720yun.com/t/0e929mp6utn?pano_id=473004"]]];
 }
 
@@ -24,9 +23,9 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     self.navigationItem.title = @"重邮地图";
-    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 @end

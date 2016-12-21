@@ -83,9 +83,6 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-}
-
 //更新数据，上传服务器
 - (void)refreshMyInfo {
     //获取已登录用户的账户信息

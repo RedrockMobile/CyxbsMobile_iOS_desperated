@@ -35,7 +35,7 @@
     [super viewDidLoad];
     [self initUI];
     [self postGradeData];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.hidden = YES;
     
     // Do any additional setup after loading the view from its nib.
 }

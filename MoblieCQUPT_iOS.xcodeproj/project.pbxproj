@@ -362,6 +362,113 @@
 		E2F0A3CE1D6165A600DFF37D /* ThreeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2F0A3A41D6165A600DFF37D /* ThreeTableViewCell.xib */; };
 		E2F0A3CF1D6165A600DFF37D /* ThreeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F0A3A61D6165A600DFF37D /* ThreeViewController.m */; };
 		E2F0A3D01D6165A600DFF37D /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F0A3A81D6165A600DFF37D /* TwoViewController.m */; };
+		F204206B1E095CA1003807BA /* NoLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = F204206A1E095CA1003807BA /* NoLoginView.m */; };
+		F204206E1E097A61003807BA /* 返回箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F204206C1E097A61003807BA /* 返回箭头@2x.png */; };
+		F204206F1E097A61003807BA /* 返回箭头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F204206D1E097A61003807BA /* 返回箭头@3x.png */; };
+		F2E501C01E06E3CF00806B6B /* BaseMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501141E06E3CF00806B6B /* BaseMatter.m */; };
+		F2E501C11E06E3CF00806B6B /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501161E06E3CF00806B6B /* BaseTableViewController.m */; };
+		F2E501C21E06E3CF00806B6B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501181E06E3CF00806B6B /* BaseViewController.m */; };
+		F2E501C31E06E3CF00806B6B /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5011B1E06E3CF00806B6B /* UIColor+Hex.m */; };
+		F2E501C41E06E3CF00806B6B /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5011D1E06E3CF00806B6B /* UIImage+Color.m */; };
+		F2E501CF1E06E3CF00806B6B /* DetailRemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501351E06E3CF00806B6B /* DetailRemindTableViewCell.m */; };
+		F2E501D01E06E3CF00806B6B /* DetailRemindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E501361E06E3CF00806B6B /* DetailRemindTableViewCell.xib */; };
+		F2E501D11E06E3CF00806B6B /* RemindTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501381E06E3CF00806B6B /* RemindTableViewCell.m */; };
+		F2E501D21E06E3CF00806B6B /* RemindTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E501391E06E3CF00806B6B /* RemindTableViewCell.xib */; };
+		F2E501D31E06E3CF00806B6B /* AddRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5013C1E06E3CF00806B6B /* AddRemindViewController.m */; };
+		F2E501D41E06E3CF00806B6B /* AddRemindViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E5013D1E06E3CF00806B6B /* AddRemindViewController.xib */; };
+		F2E501D51E06E3CF00806B6B /* DetailLessonController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5013F1E06E3CF00806B6B /* DetailLessonController.m */; };
+		F2E501D61E06E3CF00806B6B /* DetailLessonController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E501401E06E3CF00806B6B /* DetailLessonController.xib */; };
+		F2E501D71E06E3CF00806B6B /* DetailPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501421E06E3CF00806B6B /* DetailPageController.m */; };
+		F2E501D81E06E3CF00806B6B /* DetailPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E501431E06E3CF00806B6B /* DetailPageController.xib */; };
+		F2E501D91E06E3CF00806B6B /* DetailRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501451E06E3CF00806B6B /* DetailRemindViewController.m */; };
+		F2E501DA1E06E3CF00806B6B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501471E06E3CF00806B6B /* DetailViewController.m */; };
+		F2E501DB1E06E3CF00806B6B /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501491E06E3CF00806B6B /* ExamViewController.m */; };
+		F2E501DC1E06E3CF00806B6B /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2E5014A1E06E3CF00806B6B /* ExamViewController.xib */; };
+		F2E501DD1E06E3CF00806B6B /* LessonButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5014C1E06E3CF00806B6B /* LessonButtonController.m */; };
+		F2E501DE1E06E3CF00806B6B /* LessonController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5014E1E06E3CF00806B6B /* LessonController.m */; };
+		F2E501DF1E06E3CF00806B6B /* TimeChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501501E06E3CF00806B6B /* TimeChooseViewController.m */; };
+		F2E501E01E06E3CF00806B6B /* WeekChooseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501521E06E3CF00806B6B /* WeekChooseViewController.m */; };
+		F2E501E11E06E3CF00806B6B /* LessonHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501551E06E3CF00806B6B /* LessonHandle.m */; };
+		F2E501E21E06E3CF00806B6B /* RemindHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501571E06E3CF00806B6B /* RemindHandle.m */; };
+		F2E501E31E06E3CF00806B6B /* TimeHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501591E06E3CF00806B6B /* TimeHandle.m */; };
+		F2E501E41E06E3CF00806B6B /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5015B1E06E3CF00806B6B /* add@2x.png */; };
+		F2E501E51E06E3CF00806B6B /* add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5015C1E06E3CF00806B6B /* add@3x.png */; };
+		F2E501E61E06E3CF00806B6B /* remind0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5015D1E06E3CF00806B6B /* remind0@2x.png */; };
+		F2E501E71E06E3CF00806B6B /* remind0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5015E1E06E3CF00806B6B /* remind0@3x.png */; };
+		F2E501E81E06E3CF00806B6B /* remind1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5015F1E06E3CF00806B6B /* remind1@2x.png */; };
+		F2E501E91E06E3CF00806B6B /* remind1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501601E06E3CF00806B6B /* remind1@3x.png */; };
+		F2E501EA1E06E3CF00806B6B /* remind2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501611E06E3CF00806B6B /* remind2@2x.png */; };
+		F2E501EB1E06E3CF00806B6B /* remind2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501621E06E3CF00806B6B /* remind2@3x.png */; };
+		F2E501EC1E06E3CF00806B6B /* remind@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501631E06E3CF00806B6B /* remind@2x.png */; };
+		F2E501ED1E06E3CF00806B6B /* remind@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501641E06E3CF00806B6B /* remind@3x.png */; };
+		F2E501EE1E06E3CF00806B6B /* 上拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501651E06E3CF00806B6B /* 上拉@2x.png */; };
+		F2E501EF1E06E3CF00806B6B /* 上拉@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501661E06E3CF00806B6B /* 上拉@3x.png */; };
+		F2E501F01E06E3CF00806B6B /* 下拉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501671E06E3CF00806B6B /* 下拉@2x.png */; };
+		F2E501F11E06E3CF00806B6B /* 下拉@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501681E06E3CF00806B6B /* 下拉@3x.png */; };
+		F2E501F21E06E3CF00806B6B /* 不提醒@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501691E06E3CF00806B6B /* 不提醒@2x.png */; };
+		F2E501F31E06E3CF00806B6B /* 不提醒@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5016A1E06E3CF00806B6B /* 不提醒@3x.png */; };
+		F2E501F41E06E3CF00806B6B /* 书@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5016B1E06E3CF00806B6B /* 书@2x.png */; };
+		F2E501F51E06E3CF00806B6B /* 书@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5016C1E06E3CF00806B6B /* 书@3x.png */; };
+		F2E501F61E06E3CF00806B6B /* 删除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5016D1E06E3CF00806B6B /* 删除@2x.png */; };
+		F2E501F71E06E3CF00806B6B /* 删除@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5016E1E06E3CF00806B6B /* 删除@3x.png */; };
+		F2E501F81E06E3CF00806B6B /* 启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2E5016F1E06E3CF00806B6B /* 启动页.jpg */; };
+		F2E501F91E06E3CF00806B6B /* 周数@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501701E06E3CF00806B6B /* 周数@2x.png */; };
+		F2E501FA1E06E3CF00806B6B /* 周数@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501711E06E3CF00806B6B /* 周数@3x.png */; };
+		F2E501FB1E06E3CF00806B6B /* 地点@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501721E06E3CF00806B6B /* 地点@2x.png */; };
+		F2E501FC1E06E3CF00806B6B /* 地点@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501731E06E3CF00806B6B /* 地点@3x.png */; };
+		F2E501FD1E06E3CF00806B6B /* 多课0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501741E06E3CF00806B6B /* 多课0@2x.png */; };
+		F2E501FE1E06E3CF00806B6B /* 多课0@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501751E06E3CF00806B6B /* 多课0@3x.png */; };
+		F2E501FF1E06E3CF00806B6B /* 多课1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501761E06E3CF00806B6B /* 多课1@2x.png */; };
+		F2E502001E06E3CF00806B6B /* 多课1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501771E06E3CF00806B6B /* 多课1@3x.png */; };
+		F2E502011E06E3CF00806B6B /* 多课2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501781E06E3CF00806B6B /* 多课2@2x.png */; };
+		F2E502021E06E3CF00806B6B /* 多课2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501791E06E3CF00806B6B /* 多课2@3x.png */; };
+		F2E502031E06E3CF00806B6B /* 完成@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5017A1E06E3CF00806B6B /* 完成@2x.png */; };
+		F2E502041E06E3CF00806B6B /* 完成@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5017B1E06E3CF00806B6B /* 完成@3x.png */; };
+		F2E502051E06E3CF00806B6B /* 左三角@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5017C1E06E3CF00806B6B /* 左三角@2x.png */; };
+		F2E502061E06E3CF00806B6B /* 左三角@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5017D1E06E3CF00806B6B /* 左三角@3x.png */; };
+		F2E502071E06E3D000806B6B /* 提醒@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5017E1E06E3CF00806B6B /* 提醒@2x.png */; };
+		F2E502081E06E3D000806B6B /* 提醒@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5017F1E06E3CF00806B6B /* 提醒@3x.png */; };
+		F2E502091E06E3D000806B6B /* 无事项@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501801E06E3CF00806B6B /* 无事项@2x.png */; };
+		F2E5020A1E06E3D000806B6B /* 无事项@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501811E06E3CF00806B6B /* 无事项@3x.png */; };
+		F2E5020B1E06E3D000806B6B /* 无考试@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501821E06E3CF00806B6B /* 无考试@2x.png */; };
+		F2E5020C1E06E3D000806B6B /* 无考试@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501831E06E3CF00806B6B /* 无考试@3x.png */; };
+		F2E5020D1E06E3D000806B6B /* 无课@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501841E06E3CF00806B6B /* 无课@2x.png */; };
+		F2E5020E1E06E3D000806B6B /* 无课@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501851E06E3CF00806B6B /* 无课@3x.png */; };
+		F2E5020F1E06E3D000806B6B /* 时间@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501861E06E3CF00806B6B /* 时间@2x.png */; };
+		F2E502101E06E3D000806B6B /* 时间@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501871E06E3CF00806B6B /* 时间@3x.png */; };
+		F2E502111E06E3D000806B6B /* 椭圆@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501881E06E3CF00806B6B /* 椭圆@2x.png */; };
+		F2E502121E06E3D000806B6B /* 椭圆@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501891E06E3CF00806B6B /* 椭圆@3x.png */; };
+		F2E502131E06E3D000806B6B /* 箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5018A1E06E3CF00806B6B /* 箭头@2x.png */; };
+		F2E502141E06E3D000806B6B /* 箭头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5018B1E06E3CF00806B6B /* 箭头@3x.png */; };
+		F2E502151E06E3D000806B6B /* 类型@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5018C1E06E3CF00806B6B /* 类型@2x.png */; };
+		F2E502161E06E3D000806B6B /* 类型@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5018D1E06E3CF00806B6B /* 类型@3x.png */; };
+		F2E502171E06E3D000806B6B /* 编辑@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5018E1E06E3CF00806B6B /* 编辑@2x.png */; };
+		F2E502181E06E3D000806B6B /* 编辑@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E5018F1E06E3CF00806B6B /* 编辑@3x.png */; };
+		F2E502191E06E3D000806B6B /* 编辑完成@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501901E06E3CF00806B6B /* 编辑完成@2x.png */; };
+		F2E5021A1E06E3D000806B6B /* 编辑完成@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501911E06E3CF00806B6B /* 编辑完成@3x.png */; };
+		F2E5021B1E06E3D000806B6B /* 编辑箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501921E06E3CF00806B6B /* 编辑箭头@2x.png */; };
+		F2E5021C1E06E3D000806B6B /* 编辑箭头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501931E06E3CF00806B6B /* 编辑箭头@3x.png */; };
+		F2E5021D1E06E3D000806B6B /* 老师@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501941E06E3CF00806B6B /* 老师@2x.png */; };
+		F2E5021E1E06E3D000806B6B /* 老师@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501951E06E3CF00806B6B /* 老师@3x.png */; };
+		F2E502211E06E3D000806B6B /* 选择@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501981E06E3CF00806B6B /* 选择@2x.png */; };
+		F2E502221E06E3D000806B6B /* 选择@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E501991E06E3CF00806B6B /* 选择@3x.png */; };
+		F2E502231E06E3D000806B6B /* ExamMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5019C1E06E3CF00806B6B /* ExamMatter.m */; };
+		F2E502241E06E3D000806B6B /* LessonBtnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E5019E1E06E3CF00806B6B /* LessonBtnModel.m */; };
+		F2E502251E06E3D000806B6B /* LessonMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501A01E06E3CF00806B6B /* LessonMatter.m */; };
+		F2E502261E06E3D000806B6B /* RemindMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501A21E06E3CF00806B6B /* RemindMatter.m */; };
+		F2E502271E06E3D000806B6B /* HttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501A51E06E3CF00806B6B /* HttpClient.m */; };
+		F2E502281E06E3D000806B6B /* RemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501A81E06E3CF00806B6B /* RemindNotification.m */; };
+		F2E502291E06E3D000806B6B /* ChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501AD1E06E3CF00806B6B /* ChooseButton.m */; };
+		F2E5022A1E06E3D000806B6B /* CoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501AF1E06E3CF00806B6B /* CoverView.m */; };
+		F2E5022B1E06E3D000806B6B /* DayLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501B11E06E3CF00806B6B /* DayLabel.m */; };
+		F2E5022C1E06E3D000806B6B /* LessonButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501B31E06E3CF00806B6B /* LessonButton.m */; };
+		F2E5022D1E06E3D000806B6B /* LessonNumLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501B51E06E3CF00806B6B /* LessonNumLabel.m */; };
+		F2E5022E1E06E3D000806B6B /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501B71E06E3CF00806B6B /* MainView.m */; };
+		F2E5022F1E06E3D000806B6B /* TickButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501B91E06E3CF00806B6B /* TickButton.m */; };
+		F2E502301E06E3D000806B6B /* TimeChooseScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BB1E06E3CF00806B6B /* TimeChooseScrollView.m */; };
+		F2E502311E06E3D000806B6B /* WeekChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */; };
+		F2E502321E06E3D000806B6B /* WeekScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */; };
+		F2E90CB81E0813A200EA30A9 /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -903,6 +1010,152 @@
 		E2F0A3A61D6165A600DFF37D /* ThreeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeViewController.m; sourceTree = "<group>"; };
 		E2F0A3A71D6165A600DFF37D /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
 		E2F0A3A81D6165A600DFF37D /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
+		F20420691E095CA1003807BA /* NoLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoLoginView.h; sourceTree = "<group>"; };
+		F204206A1E095CA1003807BA /* NoLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoLoginView.m; sourceTree = "<group>"; };
+		F204206C1E097A61003807BA /* 返回箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回箭头@2x.png"; sourceTree = "<group>"; };
+		F204206D1E097A61003807BA /* 返回箭头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回箭头@3x.png"; sourceTree = "<group>"; };
+		F2E501131E06E3CF00806B6B /* BaseMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMatter.h; sourceTree = "<group>"; };
+		F2E501141E06E3CF00806B6B /* BaseMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMatter.m; sourceTree = "<group>"; };
+		F2E501151E06E3CF00806B6B /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
+		F2E501161E06E3CF00806B6B /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
+		F2E501171E06E3CF00806B6B /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		F2E501181E06E3CF00806B6B /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
+		F2E5011A1E06E3CF00806B6B /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		F2E5011B1E06E3CF00806B6B /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		F2E5011C1E06E3CF00806B6B /* UIImage+Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		F2E5011D1E06E3CF00806B6B /* UIImage+Color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		F2E501341E06E3CF00806B6B /* DetailRemindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailRemindTableViewCell.h; sourceTree = "<group>"; };
+		F2E501351E06E3CF00806B6B /* DetailRemindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailRemindTableViewCell.m; sourceTree = "<group>"; };
+		F2E501361E06E3CF00806B6B /* DetailRemindTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailRemindTableViewCell.xib; sourceTree = "<group>"; };
+		F2E501371E06E3CF00806B6B /* RemindTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindTableViewCell.h; sourceTree = "<group>"; };
+		F2E501381E06E3CF00806B6B /* RemindTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindTableViewCell.m; sourceTree = "<group>"; };
+		F2E501391E06E3CF00806B6B /* RemindTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RemindTableViewCell.xib; sourceTree = "<group>"; };
+		F2E5013B1E06E3CF00806B6B /* AddRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRemindViewController.h; sourceTree = "<group>"; };
+		F2E5013C1E06E3CF00806B6B /* AddRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRemindViewController.m; sourceTree = "<group>"; };
+		F2E5013D1E06E3CF00806B6B /* AddRemindViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddRemindViewController.xib; sourceTree = "<group>"; };
+		F2E5013E1E06E3CF00806B6B /* DetailLessonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLessonController.h; sourceTree = "<group>"; };
+		F2E5013F1E06E3CF00806B6B /* DetailLessonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLessonController.m; sourceTree = "<group>"; };
+		F2E501401E06E3CF00806B6B /* DetailLessonController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLessonController.xib; sourceTree = "<group>"; };
+		F2E501411E06E3CF00806B6B /* DetailPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailPageController.h; sourceTree = "<group>"; };
+		F2E501421E06E3CF00806B6B /* DetailPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailPageController.m; sourceTree = "<group>"; };
+		F2E501431E06E3CF00806B6B /* DetailPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailPageController.xib; sourceTree = "<group>"; };
+		F2E501441E06E3CF00806B6B /* DetailRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailRemindViewController.h; sourceTree = "<group>"; };
+		F2E501451E06E3CF00806B6B /* DetailRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailRemindViewController.m; sourceTree = "<group>"; };
+		F2E501461E06E3CF00806B6B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		F2E501471E06E3CF00806B6B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		F2E501481E06E3CF00806B6B /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		F2E501491E06E3CF00806B6B /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
+		F2E5014A1E06E3CF00806B6B /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
+		F2E5014B1E06E3CF00806B6B /* LessonButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonButtonController.h; sourceTree = "<group>"; };
+		F2E5014C1E06E3CF00806B6B /* LessonButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonButtonController.m; sourceTree = "<group>"; };
+		F2E5014D1E06E3CF00806B6B /* LessonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonController.h; sourceTree = "<group>"; };
+		F2E5014E1E06E3CF00806B6B /* LessonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonController.m; sourceTree = "<group>"; };
+		F2E5014F1E06E3CF00806B6B /* TimeChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeChooseViewController.h; sourceTree = "<group>"; };
+		F2E501501E06E3CF00806B6B /* TimeChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeChooseViewController.m; sourceTree = "<group>"; };
+		F2E501511E06E3CF00806B6B /* WeekChooseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekChooseViewController.h; sourceTree = "<group>"; };
+		F2E501521E06E3CF00806B6B /* WeekChooseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekChooseViewController.m; sourceTree = "<group>"; };
+		F2E501541E06E3CF00806B6B /* LessonHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonHandle.h; sourceTree = "<group>"; };
+		F2E501551E06E3CF00806B6B /* LessonHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonHandle.m; sourceTree = "<group>"; };
+		F2E501561E06E3CF00806B6B /* RemindHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindHandle.h; sourceTree = "<group>"; };
+		F2E501571E06E3CF00806B6B /* RemindHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindHandle.m; sourceTree = "<group>"; };
+		F2E501581E06E3CF00806B6B /* TimeHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeHandle.h; sourceTree = "<group>"; };
+		F2E501591E06E3CF00806B6B /* TimeHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeHandle.m; sourceTree = "<group>"; };
+		F2E5015B1E06E3CF00806B6B /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		F2E5015C1E06E3CF00806B6B /* add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@3x.png"; sourceTree = "<group>"; };
+		F2E5015D1E06E3CF00806B6B /* remind0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind0@2x.png"; sourceTree = "<group>"; };
+		F2E5015E1E06E3CF00806B6B /* remind0@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind0@3x.png"; sourceTree = "<group>"; };
+		F2E5015F1E06E3CF00806B6B /* remind1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind1@2x.png"; sourceTree = "<group>"; };
+		F2E501601E06E3CF00806B6B /* remind1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind1@3x.png"; sourceTree = "<group>"; };
+		F2E501611E06E3CF00806B6B /* remind2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind2@2x.png"; sourceTree = "<group>"; };
+		F2E501621E06E3CF00806B6B /* remind2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind2@3x.png"; sourceTree = "<group>"; };
+		F2E501631E06E3CF00806B6B /* remind@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind@2x.png"; sourceTree = "<group>"; };
+		F2E501641E06E3CF00806B6B /* remind@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind@3x.png"; sourceTree = "<group>"; };
+		F2E501651E06E3CF00806B6B /* 上拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上拉@2x.png"; sourceTree = "<group>"; };
+		F2E501661E06E3CF00806B6B /* 上拉@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上拉@3x.png"; sourceTree = "<group>"; };
+		F2E501671E06E3CF00806B6B /* 下拉@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉@2x.png"; sourceTree = "<group>"; };
+		F2E501681E06E3CF00806B6B /* 下拉@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下拉@3x.png"; sourceTree = "<group>"; };
+		F2E501691E06E3CF00806B6B /* 不提醒@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "不提醒@2x.png"; sourceTree = "<group>"; };
+		F2E5016A1E06E3CF00806B6B /* 不提醒@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "不提醒@3x.png"; sourceTree = "<group>"; };
+		F2E5016B1E06E3CF00806B6B /* 书@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "书@2x.png"; sourceTree = "<group>"; };
+		F2E5016C1E06E3CF00806B6B /* 书@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "书@3x.png"; sourceTree = "<group>"; };
+		F2E5016D1E06E3CF00806B6B /* 删除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除@2x.png"; sourceTree = "<group>"; };
+		F2E5016E1E06E3CF00806B6B /* 删除@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除@3x.png"; sourceTree = "<group>"; };
+		F2E5016F1E06E3CF00806B6B /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "启动页.jpg"; path = "../Controller/LZCourse/image/启动页.jpg"; sourceTree = "<group>"; };
+		F2E501701E06E3CF00806B6B /* 周数@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周数@2x.png"; sourceTree = "<group>"; };
+		F2E501711E06E3CF00806B6B /* 周数@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "周数@3x.png"; sourceTree = "<group>"; };
+		F2E501721E06E3CF00806B6B /* 地点@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地点@2x.png"; sourceTree = "<group>"; };
+		F2E501731E06E3CF00806B6B /* 地点@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地点@3x.png"; sourceTree = "<group>"; };
+		F2E501741E06E3CF00806B6B /* 多课0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多课0@2x.png"; sourceTree = "<group>"; };
+		F2E501751E06E3CF00806B6B /* 多课0@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多课0@3x.png"; sourceTree = "<group>"; };
+		F2E501761E06E3CF00806B6B /* 多课1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多课1@2x.png"; sourceTree = "<group>"; };
+		F2E501771E06E3CF00806B6B /* 多课1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多课1@3x.png"; sourceTree = "<group>"; };
+		F2E501781E06E3CF00806B6B /* 多课2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多课2@2x.png"; sourceTree = "<group>"; };
+		F2E501791E06E3CF00806B6B /* 多课2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "多课2@3x.png"; sourceTree = "<group>"; };
+		F2E5017A1E06E3CF00806B6B /* 完成@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "完成@2x.png"; sourceTree = "<group>"; };
+		F2E5017B1E06E3CF00806B6B /* 完成@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "完成@3x.png"; sourceTree = "<group>"; };
+		F2E5017C1E06E3CF00806B6B /* 左三角@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "左三角@2x.png"; sourceTree = "<group>"; };
+		F2E5017D1E06E3CF00806B6B /* 左三角@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "左三角@3x.png"; sourceTree = "<group>"; };
+		F2E5017E1E06E3CF00806B6B /* 提醒@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提醒@2x.png"; sourceTree = "<group>"; };
+		F2E5017F1E06E3CF00806B6B /* 提醒@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "提醒@3x.png"; sourceTree = "<group>"; };
+		F2E501801E06E3CF00806B6B /* 无事项@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无事项@2x.png"; sourceTree = "<group>"; };
+		F2E501811E06E3CF00806B6B /* 无事项@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无事项@3x.png"; sourceTree = "<group>"; };
+		F2E501821E06E3CF00806B6B /* 无考试@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无考试@2x.png"; sourceTree = "<group>"; };
+		F2E501831E06E3CF00806B6B /* 无考试@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无考试@3x.png"; sourceTree = "<group>"; };
+		F2E501841E06E3CF00806B6B /* 无课@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无课@2x.png"; sourceTree = "<group>"; };
+		F2E501851E06E3CF00806B6B /* 无课@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "无课@3x.png"; sourceTree = "<group>"; };
+		F2E501861E06E3CF00806B6B /* 时间@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时间@2x.png"; sourceTree = "<group>"; };
+		F2E501871E06E3CF00806B6B /* 时间@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时间@3x.png"; sourceTree = "<group>"; };
+		F2E501881E06E3CF00806B6B /* 椭圆@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "椭圆@2x.png"; sourceTree = "<group>"; };
+		F2E501891E06E3CF00806B6B /* 椭圆@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "椭圆@3x.png"; sourceTree = "<group>"; };
+		F2E5018A1E06E3CF00806B6B /* 箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头@2x.png"; sourceTree = "<group>"; };
+		F2E5018B1E06E3CF00806B6B /* 箭头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头@3x.png"; sourceTree = "<group>"; };
+		F2E5018C1E06E3CF00806B6B /* 类型@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "类型@2x.png"; sourceTree = "<group>"; };
+		F2E5018D1E06E3CF00806B6B /* 类型@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "类型@3x.png"; sourceTree = "<group>"; };
+		F2E5018E1E06E3CF00806B6B /* 编辑@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑@2x.png"; sourceTree = "<group>"; };
+		F2E5018F1E06E3CF00806B6B /* 编辑@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑@3x.png"; sourceTree = "<group>"; };
+		F2E501901E06E3CF00806B6B /* 编辑完成@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑完成@2x.png"; sourceTree = "<group>"; };
+		F2E501911E06E3CF00806B6B /* 编辑完成@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑完成@3x.png"; sourceTree = "<group>"; };
+		F2E501921E06E3CF00806B6B /* 编辑箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑箭头@2x.png"; sourceTree = "<group>"; };
+		F2E501931E06E3CF00806B6B /* 编辑箭头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "编辑箭头@3x.png"; sourceTree = "<group>"; };
+		F2E501941E06E3CF00806B6B /* 老师@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "老师@2x.png"; sourceTree = "<group>"; };
+		F2E501951E06E3CF00806B6B /* 老师@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "老师@3x.png"; sourceTree = "<group>"; };
+		F2E501981E06E3CF00806B6B /* 选择@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择@2x.png"; sourceTree = "<group>"; };
+		F2E501991E06E3CF00806B6B /* 选择@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择@3x.png"; sourceTree = "<group>"; };
+		F2E5019B1E06E3CF00806B6B /* ExamMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamMatter.h; sourceTree = "<group>"; };
+		F2E5019C1E06E3CF00806B6B /* ExamMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamMatter.m; sourceTree = "<group>"; };
+		F2E5019D1E06E3CF00806B6B /* LessonBtnModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonBtnModel.h; sourceTree = "<group>"; };
+		F2E5019E1E06E3CF00806B6B /* LessonBtnModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonBtnModel.m; sourceTree = "<group>"; };
+		F2E5019F1E06E3CF00806B6B /* LessonMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonMatter.h; sourceTree = "<group>"; };
+		F2E501A01E06E3CF00806B6B /* LessonMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonMatter.m; sourceTree = "<group>"; };
+		F2E501A11E06E3CF00806B6B /* RemindMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindMatter.h; sourceTree = "<group>"; };
+		F2E501A21E06E3CF00806B6B /* RemindMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindMatter.m; sourceTree = "<group>"; };
+		F2E501A41E06E3CF00806B6B /* HttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpClient.h; sourceTree = "<group>"; };
+		F2E501A51E06E3CF00806B6B /* HttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpClient.m; sourceTree = "<group>"; };
+		F2E501A71E06E3CF00806B6B /* RemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindNotification.h; sourceTree = "<group>"; };
+		F2E501A81E06E3CF00806B6B /* RemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindNotification.m; sourceTree = "<group>"; };
+		F2E501AA1E06E3CF00806B6B /* SaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveDelegate.h; sourceTree = "<group>"; };
+		F2E501AC1E06E3CF00806B6B /* ChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseButton.h; sourceTree = "<group>"; };
+		F2E501AD1E06E3CF00806B6B /* ChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseButton.m; sourceTree = "<group>"; };
+		F2E501AE1E06E3CF00806B6B /* CoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverView.h; sourceTree = "<group>"; };
+		F2E501AF1E06E3CF00806B6B /* CoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoverView.m; sourceTree = "<group>"; };
+		F2E501B01E06E3CF00806B6B /* DayLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayLabel.h; sourceTree = "<group>"; };
+		F2E501B11E06E3CF00806B6B /* DayLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayLabel.m; sourceTree = "<group>"; };
+		F2E501B21E06E3CF00806B6B /* LessonButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonButton.h; sourceTree = "<group>"; };
+		F2E501B31E06E3CF00806B6B /* LessonButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonButton.m; sourceTree = "<group>"; };
+		F2E501B41E06E3CF00806B6B /* LessonNumLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonNumLabel.h; sourceTree = "<group>"; };
+		F2E501B51E06E3CF00806B6B /* LessonNumLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonNumLabel.m; sourceTree = "<group>"; };
+		F2E501B61E06E3CF00806B6B /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		F2E501B71E06E3CF00806B6B /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		F2E501B81E06E3CF00806B6B /* TickButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickButton.h; sourceTree = "<group>"; };
+		F2E501B91E06E3CF00806B6B /* TickButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickButton.m; sourceTree = "<group>"; };
+		F2E501BA1E06E3CF00806B6B /* TimeChooseScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeChooseScrollView.h; sourceTree = "<group>"; };
+		F2E501BB1E06E3CF00806B6B /* TimeChooseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeChooseScrollView.m; sourceTree = "<group>"; };
+		F2E501BC1E06E3CF00806B6B /* WeekChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekChooseButton.h; sourceTree = "<group>"; };
+		F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekChooseButton.m; sourceTree = "<group>"; };
+		F2E501BE1E06E3CF00806B6B /* WeekScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekScrollView.h; sourceTree = "<group>"; };
+		F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekScrollView.m; sourceTree = "<group>"; };
+		F2E90CB61E0813A200EA30A9 /* LessonRemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
+		F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1033,6 +1286,7 @@
 		CE267A201BA4A9A00059C2A5 /* LuanchImage */ = {
 			isa = PBXGroup;
 			children = (
+				F2E5016F1E06E3CF00806B6B /* 启动页.jpg */,
 				CE267A211BA4A9B90059C2A5 /* splash.jpg */,
 			);
 			name = LuanchImage;
@@ -1380,6 +1634,7 @@
 		CEF61B5D1B82BE0C0014B980 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F2E501111E06E3CF00806B6B /* LZCourse */,
 				E2F0A3561D615D6F00DFF37D /* FreshMan */,
 				D909288B1CACCB3500CA97CD /* MBCommunity */,
 				E2E7DE211B94764A0081F699 /* Login */,
@@ -1433,24 +1688,7 @@
 		D909288B1CACCB3500CA97CD /* MBCommunity */ = {
 			isa = PBXGroup;
 			children = (
-				D9F1C9AF1CE428AF00F692DB /* cancel.png */,
-				E2C75D9F1CE1169100EA8FEA /* headImage.png */,
-				D9A0FE0D1CB9A29400BFD01D /* 图片1.jpg */,
-				D9A0FE0E1CB9A29400BFD01D /* 图片2.jpg */,
-				D9A0FE0F1CB9A29400BFD01D /* 图片3.jpg */,
-				D9A0FE171CBA728300BFD01D /* 图片4.jpg */,
-				D9A0FE1B1CBA729900BFD01D /* 图片5.jpg */,
-				D9A0FE191CBA729200BFD01D /* 图片6.jpg */,
-				D9A0FE1D1CBA72CC00BFD01D /* 图片7.jpg */,
-				D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */,
-				D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */,
-				D99007711CB69AB500EDAFD1 /* comment1.png */,
-				D99007721CB69AB500EDAFD1 /* support1.png */,
-				D98BE6361CDE0ABB0071DDD2 /* support.png */,
-				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
-				D9DF5EC51CD09A6100C89F6A /* add.png */,
-				D94F635A1CE1718000F91664 /* addPhoto.jpg */,
-				D94F63611CE17DFA00F91664 /* xia.png */,
+				F23773681E07D35E00B87EE4 /* Image */,
 				D9DF5E7E1CD090EE00C89F6A /* Controller */,
 				D9DF5EB21CD0915300C89F6A /* Model */,
 				D9DF5E891CD0910800C89F6A /* Cell */,
@@ -2183,6 +2421,263 @@
 			path = resource;
 			sourceTree = "<group>";
 		};
+		F23773681E07D35E00B87EE4 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				D9F1C9AF1CE428AF00F692DB /* cancel.png */,
+				E2C75D9F1CE1169100EA8FEA /* headImage.png */,
+				D9A0FE0D1CB9A29400BFD01D /* 图片1.jpg */,
+				D9A0FE0E1CB9A29400BFD01D /* 图片2.jpg */,
+				D9A0FE0F1CB9A29400BFD01D /* 图片3.jpg */,
+				D9A0FE171CBA728300BFD01D /* 图片4.jpg */,
+				D9A0FE1B1CBA729900BFD01D /* 图片5.jpg */,
+				D9A0FE191CBA729200BFD01D /* 图片6.jpg */,
+				D9A0FE1D1CBA72CC00BFD01D /* 图片7.jpg */,
+				D9F7671D1CB7AB3400DEF12A /* 智妍1.jpg */,
+				D9F7671B1CB7AB1F00DEF12A /* 熊.jpg */,
+				D99007711CB69AB500EDAFD1 /* comment1.png */,
+				D99007721CB69AB500EDAFD1 /* support1.png */,
+				D98BE6361CDE0ABB0071DDD2 /* support.png */,
+				D99007641CB684E700EDAFD1 /* 1智妍.jpg */,
+				D9DF5EC51CD09A6100C89F6A /* add.png */,
+				D94F635A1CE1718000F91664 /* addPhoto.jpg */,
+				D94F63611CE17DFA00F91664 /* xia.png */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		F2E501111E06E3CF00806B6B /* LZCourse */ = {
+			isa = PBXGroup;
+			children = (
+				F2E501121E06E3CF00806B6B /* Base */,
+				F2E501191E06E3CF00806B6B /* Categories */,
+				F2E501331E06E3CF00806B6B /* Cell */,
+				F2E5013A1E06E3CF00806B6B /* Controller */,
+				F2E501531E06E3CF00806B6B /* Handle */,
+				F2E5015A1E06E3CF00806B6B /* image */,
+				F2E5019A1E06E3CF00806B6B /* Model */,
+				F2E501A31E06E3CF00806B6B /* Network */,
+				F2E501A61E06E3CF00806B6B /* Notification */,
+				F2E501AA1E06E3CF00806B6B /* SaveDelegate.h */,
+				F2E501AB1E06E3CF00806B6B /* View */,
+			);
+			path = LZCourse;
+			sourceTree = "<group>";
+		};
+		F2E501121E06E3CF00806B6B /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				F2E501131E06E3CF00806B6B /* BaseMatter.h */,
+				F2E501141E06E3CF00806B6B /* BaseMatter.m */,
+				F2E501151E06E3CF00806B6B /* BaseTableViewController.h */,
+				F2E501161E06E3CF00806B6B /* BaseTableViewController.m */,
+				F2E501171E06E3CF00806B6B /* BaseViewController.h */,
+				F2E501181E06E3CF00806B6B /* BaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		F2E501191E06E3CF00806B6B /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				F2E5011A1E06E3CF00806B6B /* UIColor+Hex.h */,
+				F2E5011B1E06E3CF00806B6B /* UIColor+Hex.m */,
+				F2E5011C1E06E3CF00806B6B /* UIImage+Color.h */,
+				F2E5011D1E06E3CF00806B6B /* UIImage+Color.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		F2E501331E06E3CF00806B6B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F2E501341E06E3CF00806B6B /* DetailRemindTableViewCell.h */,
+				F2E501351E06E3CF00806B6B /* DetailRemindTableViewCell.m */,
+				F2E501361E06E3CF00806B6B /* DetailRemindTableViewCell.xib */,
+				F2E501371E06E3CF00806B6B /* RemindTableViewCell.h */,
+				F2E501381E06E3CF00806B6B /* RemindTableViewCell.m */,
+				F2E501391E06E3CF00806B6B /* RemindTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F2E5013A1E06E3CF00806B6B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2E5013B1E06E3CF00806B6B /* AddRemindViewController.h */,
+				F2E5013C1E06E3CF00806B6B /* AddRemindViewController.m */,
+				F2E5013D1E06E3CF00806B6B /* AddRemindViewController.xib */,
+				F2E5013E1E06E3CF00806B6B /* DetailLessonController.h */,
+				F2E5013F1E06E3CF00806B6B /* DetailLessonController.m */,
+				F2E501401E06E3CF00806B6B /* DetailLessonController.xib */,
+				F2E501411E06E3CF00806B6B /* DetailPageController.h */,
+				F2E501421E06E3CF00806B6B /* DetailPageController.m */,
+				F2E501431E06E3CF00806B6B /* DetailPageController.xib */,
+				F2E501441E06E3CF00806B6B /* DetailRemindViewController.h */,
+				F2E501451E06E3CF00806B6B /* DetailRemindViewController.m */,
+				F2E501461E06E3CF00806B6B /* DetailViewController.h */,
+				F2E501471E06E3CF00806B6B /* DetailViewController.m */,
+				F2E501481E06E3CF00806B6B /* ExamViewController.h */,
+				F2E501491E06E3CF00806B6B /* ExamViewController.m */,
+				F2E5014A1E06E3CF00806B6B /* ExamViewController.xib */,
+				F2E5014B1E06E3CF00806B6B /* LessonButtonController.h */,
+				F2E5014C1E06E3CF00806B6B /* LessonButtonController.m */,
+				F2E5014D1E06E3CF00806B6B /* LessonController.h */,
+				F2E5014E1E06E3CF00806B6B /* LessonController.m */,
+				F2E5014F1E06E3CF00806B6B /* TimeChooseViewController.h */,
+				F2E501501E06E3CF00806B6B /* TimeChooseViewController.m */,
+				F2E501511E06E3CF00806B6B /* WeekChooseViewController.h */,
+				F2E501521E06E3CF00806B6B /* WeekChooseViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F2E501531E06E3CF00806B6B /* Handle */ = {
+			isa = PBXGroup;
+			children = (
+				F2E501541E06E3CF00806B6B /* LessonHandle.h */,
+				F2E501551E06E3CF00806B6B /* LessonHandle.m */,
+				F2E501561E06E3CF00806B6B /* RemindHandle.h */,
+				F2E501571E06E3CF00806B6B /* RemindHandle.m */,
+				F2E501581E06E3CF00806B6B /* TimeHandle.h */,
+				F2E501591E06E3CF00806B6B /* TimeHandle.m */,
+			);
+			path = Handle;
+			sourceTree = "<group>";
+		};
+		F2E5015A1E06E3CF00806B6B /* image */ = {
+			isa = PBXGroup;
+			children = (
+				F204206C1E097A61003807BA /* 返回箭头@2x.png */,
+				F204206D1E097A61003807BA /* 返回箭头@3x.png */,
+				F2E5015B1E06E3CF00806B6B /* add@2x.png */,
+				F2E5015C1E06E3CF00806B6B /* add@3x.png */,
+				F2E5015D1E06E3CF00806B6B /* remind0@2x.png */,
+				F2E5015E1E06E3CF00806B6B /* remind0@3x.png */,
+				F2E5015F1E06E3CF00806B6B /* remind1@2x.png */,
+				F2E501601E06E3CF00806B6B /* remind1@3x.png */,
+				F2E501611E06E3CF00806B6B /* remind2@2x.png */,
+				F2E501621E06E3CF00806B6B /* remind2@3x.png */,
+				F2E501631E06E3CF00806B6B /* remind@2x.png */,
+				F2E501641E06E3CF00806B6B /* remind@3x.png */,
+				F2E501651E06E3CF00806B6B /* 上拉@2x.png */,
+				F2E501661E06E3CF00806B6B /* 上拉@3x.png */,
+				F2E501671E06E3CF00806B6B /* 下拉@2x.png */,
+				F2E501681E06E3CF00806B6B /* 下拉@3x.png */,
+				F2E501691E06E3CF00806B6B /* 不提醒@2x.png */,
+				F2E5016A1E06E3CF00806B6B /* 不提醒@3x.png */,
+				F2E5016B1E06E3CF00806B6B /* 书@2x.png */,
+				F2E5016C1E06E3CF00806B6B /* 书@3x.png */,
+				F2E5016D1E06E3CF00806B6B /* 删除@2x.png */,
+				F2E5016E1E06E3CF00806B6B /* 删除@3x.png */,
+				F2E501701E06E3CF00806B6B /* 周数@2x.png */,
+				F2E501711E06E3CF00806B6B /* 周数@3x.png */,
+				F2E501721E06E3CF00806B6B /* 地点@2x.png */,
+				F2E501731E06E3CF00806B6B /* 地点@3x.png */,
+				F2E501741E06E3CF00806B6B /* 多课0@2x.png */,
+				F2E501751E06E3CF00806B6B /* 多课0@3x.png */,
+				F2E501761E06E3CF00806B6B /* 多课1@2x.png */,
+				F2E501771E06E3CF00806B6B /* 多课1@3x.png */,
+				F2E501781E06E3CF00806B6B /* 多课2@2x.png */,
+				F2E501791E06E3CF00806B6B /* 多课2@3x.png */,
+				F2E5017A1E06E3CF00806B6B /* 完成@2x.png */,
+				F2E5017B1E06E3CF00806B6B /* 完成@3x.png */,
+				F2E5017C1E06E3CF00806B6B /* 左三角@2x.png */,
+				F2E5017D1E06E3CF00806B6B /* 左三角@3x.png */,
+				F2E5017E1E06E3CF00806B6B /* 提醒@2x.png */,
+				F2E5017F1E06E3CF00806B6B /* 提醒@3x.png */,
+				F2E501801E06E3CF00806B6B /* 无事项@2x.png */,
+				F2E501811E06E3CF00806B6B /* 无事项@3x.png */,
+				F2E501821E06E3CF00806B6B /* 无考试@2x.png */,
+				F2E501831E06E3CF00806B6B /* 无考试@3x.png */,
+				F2E501841E06E3CF00806B6B /* 无课@2x.png */,
+				F2E501851E06E3CF00806B6B /* 无课@3x.png */,
+				F2E501861E06E3CF00806B6B /* 时间@2x.png */,
+				F2E501871E06E3CF00806B6B /* 时间@3x.png */,
+				F2E501881E06E3CF00806B6B /* 椭圆@2x.png */,
+				F2E501891E06E3CF00806B6B /* 椭圆@3x.png */,
+				F2E5018A1E06E3CF00806B6B /* 箭头@2x.png */,
+				F2E5018B1E06E3CF00806B6B /* 箭头@3x.png */,
+				F2E5018C1E06E3CF00806B6B /* 类型@2x.png */,
+				F2E5018D1E06E3CF00806B6B /* 类型@3x.png */,
+				F2E5018E1E06E3CF00806B6B /* 编辑@2x.png */,
+				F2E5018F1E06E3CF00806B6B /* 编辑@3x.png */,
+				F2E501901E06E3CF00806B6B /* 编辑完成@2x.png */,
+				F2E501911E06E3CF00806B6B /* 编辑完成@3x.png */,
+				F2E501921E06E3CF00806B6B /* 编辑箭头@2x.png */,
+				F2E501931E06E3CF00806B6B /* 编辑箭头@3x.png */,
+				F2E501941E06E3CF00806B6B /* 老师@2x.png */,
+				F2E501951E06E3CF00806B6B /* 老师@3x.png */,
+				F2E501981E06E3CF00806B6B /* 选择@2x.png */,
+				F2E501991E06E3CF00806B6B /* 选择@3x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		F2E5019A1E06E3CF00806B6B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2E5019B1E06E3CF00806B6B /* ExamMatter.h */,
+				F2E5019C1E06E3CF00806B6B /* ExamMatter.m */,
+				F2E5019D1E06E3CF00806B6B /* LessonBtnModel.h */,
+				F2E5019E1E06E3CF00806B6B /* LessonBtnModel.m */,
+				F2E5019F1E06E3CF00806B6B /* LessonMatter.h */,
+				F2E501A01E06E3CF00806B6B /* LessonMatter.m */,
+				F2E501A11E06E3CF00806B6B /* RemindMatter.h */,
+				F2E501A21E06E3CF00806B6B /* RemindMatter.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2E501A31E06E3CF00806B6B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F2E501A41E06E3CF00806B6B /* HttpClient.h */,
+				F2E501A51E06E3CF00806B6B /* HttpClient.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F2E501A61E06E3CF00806B6B /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				F2E90CB61E0813A200EA30A9 /* LessonRemindNotification.h */,
+				F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */,
+				F2E501A71E06E3CF00806B6B /* RemindNotification.h */,
+				F2E501A81E06E3CF00806B6B /* RemindNotification.m */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		F2E501AB1E06E3CF00806B6B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2E501AC1E06E3CF00806B6B /* ChooseButton.h */,
+				F2E501AD1E06E3CF00806B6B /* ChooseButton.m */,
+				F2E501AE1E06E3CF00806B6B /* CoverView.h */,
+				F2E501AF1E06E3CF00806B6B /* CoverView.m */,
+				F2E501B01E06E3CF00806B6B /* DayLabel.h */,
+				F2E501B11E06E3CF00806B6B /* DayLabel.m */,
+				F2E501B21E06E3CF00806B6B /* LessonButton.h */,
+				F2E501B31E06E3CF00806B6B /* LessonButton.m */,
+				F2E501B41E06E3CF00806B6B /* LessonNumLabel.h */,
+				F2E501B51E06E3CF00806B6B /* LessonNumLabel.m */,
+				F2E501B61E06E3CF00806B6B /* MainView.h */,
+				F2E501B71E06E3CF00806B6B /* MainView.m */,
+				F2E501B81E06E3CF00806B6B /* TickButton.h */,
+				F2E501B91E06E3CF00806B6B /* TickButton.m */,
+				F2E501BA1E06E3CF00806B6B /* TimeChooseScrollView.h */,
+				F2E501BB1E06E3CF00806B6B /* TimeChooseScrollView.m */,
+				F2E501BC1E06E3CF00806B6B /* WeekChooseButton.h */,
+				F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */,
+				F2E501BE1E06E3CF00806B6B /* WeekScrollView.h */,
+				F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */,
+				F20420691E095CA1003807BA /* NoLoginView.h */,
+				F204206A1E095CA1003807BA /* NoLoginView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2245,7 +2740,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = HPM8HVK7C6;
+						DevelopmentTeam = JGRNKP3327;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2294,38 +2789,52 @@
 				E2F0A3BA1D6165A600DFF37D /* 寝室1.jpg in Resources */,
 				D95256481C8BC8D200CD7921 /* GQtime.png in Resources */,
 				3BBB58741B8F6EBC0099EC58 /* iconfont.ttf in Resources */,
+				F2E501F81E06E3CF00806B6B /* 启动页.jpg in Resources */,
 				CE5C7D611B87FF5E00699E3E /* 29-2.png in Resources */,
 				CEF273841B90D573009B5BA2 /* 20-2...png in Resources */,
 				D9BFE3081C94671100329170 /* emptyClass.png in Resources */,
 				E263C77C1BA35E26008488FA /* map@2x.png in Resources */,
+				F2E5021B1E06E3D000806B6B /* 编辑箭头@2x.png in Resources */,
 				D95E8E5B1BD91AC8001776D5 /* iconfont-backTag.png in Resources */,
 				D952C7591C0C75B300AA24C0 /* iconfont-status.png in Resources */,
 				CE0ADC991BDDD03E00374CDC /* 关于@2x.png in Resources */,
 				D9D7BD1A1BD0C3EC000B0EC9 /* iconfont-tag.png in Resources */,
+				F2E501F71E06E3CF00806B6B /* 删除@3x.png in Resources */,
+				F2E502171E06E3D000806B6B /* 编辑@2x.png in Resources */,
 				D98B5D1A1C08483E0010BC9E /* chuangye_new@2x.png in Resources */,
 				E2F0A3C81D6165A600DFF37D /* 龙头寺.txt in Resources */,
 				D98B5D281C0865300010BC9E /* icon_menu_selected_4@2x.png in Resources */,
 				D99007671CB684E700EDAFD1 /* 1智妍.jpg in Resources */,
 				D90928941CACCD6400CA97CD /* 我的动态@2x.png in Resources */,
 				3B1388D01BA369890011EBF2 /* new_icon_menu_2@2x.png in Resources */,
+				F204206F1E097A61003807BA /* 返回箭头@3x.png in Resources */,
 				CEF2738F1B90D573009B5BA2 /* 20-3b.png in Resources */,
 				E2F0A3B41D6165A600DFF37D /* arrow.png in Resources */,
 				E2F0A3B21D6165A600DFF37D /* OneTableViewCell.xib in Resources */,
+				F2E502121E06E3D000806B6B /* 椭圆@3x.png in Resources */,
 				E2176ACF1D61C16C00A40B6E /* MajorViewController.xib in Resources */,
 				D90928951CACCD6400CA97CD /* 夜间模式@2x.png in Resources */,
 				D99B769A1C8DBD4F00FFE538 /* emptyClassTag1.png in Resources */,
+				F2E501F61E06E3CF00806B6B /* 删除@2x.png in Resources */,
 				E20F27DB1D6203D100C5DF79 /* 大艺团.txt in Resources */,
+				F2E501F51E06E3CF00806B6B /* 书@3x.png in Resources */,
 				D94F63621CE17DFA00F91664 /* xia.png in Resources */,
 				E263C7861BA35E26008488FA /* WebViewController.xib in Resources */,
 				D99B76981C8DBC9B00FFE538 /* emptyClassTag.png in Resources */,
 				E218DCF01CD20AC200DD3C8C /* QGERestTimeCourseViewController.xib in Resources */,
 				D9B581481C9184210083DCEE /* edit.png in Resources */,
 				CE78939B1B87067B000D8B57 /* 60-2.png in Resources */,
+				F2E501F91E06E3CF00806B6B /* 周数@2x.png in Resources */,
 				D952C7561C0C75B300AA24C0 /* iconfont-clock.png in Resources */,
 				D969649D1CB51EF400B12B2E /* 智妍1.jpg in Resources */,
+				F2E5020C1E06E3D000806B6B /* 无考试@3x.png in Resources */,
+				F2E501F01E06E3CF00806B6B /* 下拉@2x.png in Resources */,
+				F2E5020E1E06E3D000806B6B /* 无课@3x.png in Resources */,
 				E20F27DD1D6203D100C5DF79 /* 科联.txt in Resources */,
 				3BC309FC1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.xib in Resources */,
 				CE5402E21BDD2DAB00488428 /* icon_menu_1@2x.png in Resources */,
+				F2E501EE1E06E3CF00806B6B /* 上拉@2x.png in Resources */,
+				F2E501E61E06E3CF00806B6B /* remind0@2x.png in Resources */,
 				CE1B36E21B9A1B6800824B96 /* new_icon_menu_3_press.png in Resources */,
 				CE5402E11BDD2DAB00488428 /* icon_menu_5@2x.png in Resources */,
 				D95256471C8BC8D200CD7921 /* GQsection.png in Resources */,
@@ -2333,42 +2842,61 @@
 				D9A0FE1A1CBA729200BFD01D /* 图片6.jpg in Resources */,
 				E263C7731BA35E26008488FA /* ChuangyeViewController.xib in Resources */,
 				D969649B1CB51EEC00B12B2E /* 智妍2.jpg in Resources */,
+				F2E501D21E06E3CF00806B6B /* RemindTableViewCell.xib in Resources */,
 				D9DF5EC61CD09A6100C89F6A /* add.png in Resources */,
+				F2E502181E06E3D000806B6B /* 编辑@3x.png in Resources */,
 				D98BE6371CDE0ABB0071DDD2 /* support.png in Resources */,
+				F2E501DC1E06E3CF00806B6B /* ExamViewController.xib in Resources */,
 				D96964971CB51ED600B12B2E /* 智妍4.jpg in Resources */,
 				E2F0A3C71D6165A600DFF37D /* 重要东西.txt in Resources */,
 				D99007741CB69AB500EDAFD1 /* support1.png in Resources */,
 				E2F0A3BF1D6165A600DFF37D /* 寝室介绍3.txt in Resources */,
 				E2F0A3B71D6165A600DFF37D /* 学生手册节选.txt in Resources */,
+				F2E501FB1E06E3CF00806B6B /* 地点@2x.png in Resources */,
 				D9F9F0321D62F44D00CA98C1 /* courseMengbi.jpg in Resources */,
 				E263C7881BA35E26008488FA /* ShakeViewController.xib in Resources */,
 				CE0ADC9D1BDDD03E00374CDC /* 空教室@2x.png in Resources */,
 				D9F7671E1CB7AB3400DEF12A /* 智妍1.jpg in Resources */,
 				E2F0A3AE1D6165A600DFF37D /* GQUCell.xib in Resources */,
+				F2E502001E06E3CF00806B6B /* 多课1@3x.png in Resources */,
 				CEF273941B90D573009B5BA2 /* 20-3exam.png in Resources */,
 				D952C75A1C0C75B300AA24C0 /* iconfont-week.png in Resources */,
+				F2E502131E06E3D000806B6B /* 箭头@2x.png in Resources */,
 				E2F0A3B61D6165A600DFF37D /* 奖学金设置.txt in Resources */,
 				CE5402E01BDD2DAB00488428 /* icon_menu_4@2x.png in Resources */,
 				CEF2738D1B90D573009B5BA2 /* 20-3.png in Resources */,
+				F2E501D41E06E3CF00806B6B /* AddRemindViewController.xib in Resources */,
+				F2E502071E06E3D000806B6B /* 提醒@2x.png in Resources */,
 				E218DCE41CD20AC200DD3C8C /* EmptyClassViewController.xib in Resources */,
 				D95256461C8BC8D200CD7921 /* GQclass.png in Resources */,
 				D952C7601C0EC44500AA24C0 /* iconfont-shop2.png in Resources */,
+				F2E502021E06E3CF00806B6B /* 多课2@3x.png in Resources */,
+				F2E501E51E06E3CF00806B6B /* add@3x.png in Resources */,
+				F2E501D61E06E3CF00806B6B /* DetailLessonController.xib in Resources */,
 				D98B5D1E1C08483E0010BC9E /* shop_new@2x.png in Resources */,
 				E218DCEE1CD20AC200DD3C8C /* QGERestDetailViewController.xib in Resources */,
+				F2E502091E06E3D000806B6B /* 无事项@2x.png in Resources */,
 				E2F0A3B81D6165A600DFF37D /* 安全须知.txt in Resources */,
+				F2E5020B1E06E3D000806B6B /* 无考试@2x.png in Resources */,
 				E2889BCE1CDF153A00E94127 /* AboutMePraiseTableViewCell.xib in Resources */,
+				F2E501FF1E06E3CF00806B6B /* 多课1@2x.png in Resources */,
 				D909287C1CACC7B700CA97CD /* icon_menu_2@2x.png in Resources */,
 				D98BFDF01C06F40000B7D53A /* icon_menu_selected_5@2x.png in Resources */,
 				E27A8D9A1C999B6D0010EBC8 /* AnnexViewController.xib in Resources */,
+				F2E502051E06E3CF00806B6B /* 左三角@2x.png in Resources */,
+				F2E501EA1E06E3CF00806B6B /* remind2@2x.png in Resources */,
 				E28D2A8F1BB3E43100490C41 /* ok.png in Resources */,
 				E263C77A1BA35E26008488FA /* cqupt2@2x.jpg in Resources */,
+				F2E5021A1E06E3D000806B6B /* 编辑完成@3x.png in Resources */,
 				E2F0A3C51D6165A600DFF37D /* 老乡群.txt in Resources */,
 				3B685C881BA44D6300E34491 /* Images.xcassets in Resources */,
 				D96964991CB51EDC00B12B2E /* 智妍3.jpg in Resources */,
 				E20F27E11D6203D100C5DF79 /* 团委.txt in Resources */,
 				D91E01151D65A3400027CDE4 /* 叉叉.png in Resources */,
 				3B1388D11BA369890011EBF2 /* new_icon_menu_5@2x.png in Resources */,
+				F2E502221E06E3D000806B6B /* 选择@3x.png in Resources */,
 				CEF273851B90D573009B5BA2 /* 20-2.png in Resources */,
+				F2E501FE1E06E3CF00806B6B /* 多课0@3x.png in Resources */,
 				CE5C7D5F1B87FF4D00699E3E /* 29-3.png in Resources */,
 				E2F0A3B51D6165A600DFF37D /* 入学须知.txt in Resources */,
 				D9A9532C1B9DA4F500D62690 /* iconfont-more.png in Resources */,
@@ -2377,40 +2905,58 @@
 				E2F0A3C21D6165A600DFF37D /* 朝天门.txt in Resources */,
 				CEF2738E1B90D573009B5BA2 /* 20-3a.png in Resources */,
 				CE0ADC9B1BDDD03E00374CDC /* 期末成绩@2x.png in Resources */,
+				F2E501E91E06E3CF00806B6B /* remind1@3x.png in Resources */,
+				F2E5020F1E06E3D000806B6B /* 时间@2x.png in Resources */,
 				3B1388B51BA353F70011EBF2 /* XBSScheduleTableViewCell.xib in Resources */,
+				F204206E1E097A61003807BA /* 返回箭头@2x.png in Resources */,
 				E2F0A3B01D6165A600DFF37D /* GuideViewController.xib in Resources */,
 				CEF273921B90D573009B5BA2 /* 20-3补考.png in Resources */,
+				F2E501F31E06E3CF00806B6B /* 不提醒@3x.png in Resources */,
 				D9F7671C1CB7AB1F00DEF12A /* 熊.jpg in Resources */,
 				E20F27E01D6203D100C5DF79 /* 社联.txt in Resources */,
 				D9A0FE121CB9A29400BFD01D /* 图片1.jpg in Resources */,
+				F2E5021C1E06E3D000806B6B /* 编辑箭头@3x.png in Resources */,
 				D9F1C9B01CE428AF00F692DB /* cancel.png in Resources */,
 				D98BFDED1C06F40000B7D53A /* icon_menu_selected_1@2x.png in Resources */,
 				CEF61B391B82BC950014B980 /* Main.storyboard in Resources */,
 				D9FAECF71BEDF5220010ED3F /* View.xib in Resources */,
 				E2F0A3CE1D6165A600DFF37D /* ThreeTableViewCell.xib in Resources */,
 				E20F27DE1D6203D100C5DF79 /* 美在重邮.txt in Resources */,
+				F2E5021D1E06E3D000806B6B /* 老师@2x.png in Resources */,
 				E2F0A3BC1D6165A600DFF37D /* 寝室3.jpg in Resources */,
+				F2E502041E06E3CF00806B6B /* 完成@3x.png in Resources */,
+				F2E5021E1E06E3D000806B6B /* 老师@3x.png in Resources */,
 				CEF2738A1B90D573009B5BA2 /* 20-2补考.png in Resources */,
+				F2E502191E06E3D000806B6B /* 编辑完成@2x.png in Resources */,
+				F2E5020A1E06E3D000806B6B /* 无事项@3x.png in Resources */,
+				F2E502151E06E3D000806B6B /* 类型@2x.png in Resources */,
 				E263C7781BA35E26008488FA /* community@2x.png in Resources */,
 				E263C78E1BA35E26008488FA /* ShopDetailViewController.xib in Resources */,
 				E2F0A3CA1D6165A600DFF37D /* SevenTableViewCell.xib in Resources */,
 				D9B501941BFC554E008E5EE0 /* logo.png in Resources */,
+				F2E502161E06E3D000806B6B /* 类型@3x.png in Resources */,
 				E263C7841BA35E26008488FA /* MapViewController.xib in Resources */,
 				D9DF5E931CD0910800C89F6A /* MBCommunityCellTableViewCell.xib in Resources */,
+				F2E501ED1E06E3CF00806B6B /* remind@3x.png in Resources */,
 				D9B5771A1B88744F005EFD18 /* iconfont-caidan-selected.png in Resources */,
+				F2E502101E06E3D000806B6B /* 时间@3x.png in Resources */,
 				CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */,
 				E238270A1B9477D80058970E /* CourseViewController.xib in Resources */,
 				D99C4A851B9AB70200BEF33C /* iconfont-meixueqi.png in Resources */,
 				CE7893991B8701BB000D8B57 /* 掌上重邮60-3.png in Resources */,
 				D9A0FE131CB9A29400BFD01D /* 图片2.jpg in Resources */,
 				E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */,
+				F2E502081E06E3D000806B6B /* 提醒@3x.png in Resources */,
+				F2E502061E06E3CF00806B6B /* 左三角@3x.png in Resources */,
 				CEE614901BEA4B9A004873AA /* MJRefresh.bundle in Resources */,
 				CE0ADC9C1BDDD03E00374CDC /* 校历@2x.png in Resources */,
 				CE0ADC9E1BDDD03E00374CDC /* 考试安排@2x.png in Resources */,
 				CEF61B3E1B82BC950014B980 /* LaunchScreen.xib in Resources */,
 				D910EE031BD66B7900EB9E89 /* iconfont-titleTag.png in Resources */,
 				CEE614931BEA4B9A004873AA /* MJRefreshExample-Info.plist in Resources */,
+				F2E501EC1E06E3CF00806B6B /* remind@2x.png in Resources */,
 				D9B5771B1B88744F005EFD18 /* iconfont-caidan.png in Resources */,
+				F2E502211E06E3D000806B6B /* 选择@2x.png in Resources */,
 				D909287F1CACC83800CA97CD /* icon_menu_selected_2@2x.png in Resources */,
 				E20F27E21D6203D100C5DF79 /* 学生会.txt in Resources */,
 				E263C7801BA35E26008488FA /* shake_match.mp3 in Resources */,
@@ -2419,6 +2965,7 @@
 				D9A0FE1E1CBA72CC00BFD01D /* 图片7.jpg in Resources */,
 				CEFDE57D1B9C4D7900E772F0 /* mobile.png in Resources */,
 				E2F0A3C61D6165A600DFF37D /* 菜园坝.txt in Resources */,
+				F2E501FA1E06E3CF00806B6B /* 周数@3x.png in Resources */,
 				D99007731CB69AB500EDAFD1 /* comment1.png in Resources */,
 				D9DF23A61BD32FF8007874D9 /* iconfont-password.png in Resources */,
 				E2F0A3BE1D6165A600DFF37D /* 寝室介绍2.txt in Resources */,
@@ -2432,21 +2979,27 @@
 				E218DCE71CD20AC200DD3C8C /* ExamGradeViewController.xib in Resources */,
 				CE5C7D5D1B87FF4400699E3E /* 40-2.png in Resources */,
 				D9DF23A51BD32FF8007874D9 /* iconfont-name.png in Resources */,
+				F2E501D01E06E3CF00806B6B /* DetailRemindTableViewCell.xib in Resources */,
+				F2E501E41E06E3CF00806B6B /* add@2x.png in Resources */,
 				E263C7821BA35E26008488FA /* shop@2x.png in Resources */,
 				E2E7DE2C1B9476730081F699 /* background.png in Resources */,
 				E218DCD81CD20AC200DD3C8C /* AboutMeViewController.xib in Resources */,
 				3B1388CD1BA364530011EBF2 /* new_icon_menu_1@2x.png in Resources */,
 				CEF273911B90D573009B5BA2 /* 20-3w.png in Resources */,
 				E2176ACB1D61C16C00A40B6E /* GraduateViewController.xib in Resources */,
+				F2E501E71E06E3CF00806B6B /* remind0@3x.png in Resources */,
 				D952C75B1C0C75B300AA24C0 /* iconfont-wodekecheng.png in Resources */,
 				E20F27DF1D6203D100C5DF79 /* 青协.txt in Resources */,
 				E20F27DC1D6203D100C5DF79 /* 红岩网校工作站简介.txt in Resources */,
+				F2E5020D1E06E3D000806B6B /* 无课@2x.png in Resources */,
 				D99C4A841B9AB70200BEF33C /* iconfont_meizhou.png in Resources */,
 				D9DF5E861CD090EE00C89F6A /* MBCommuityDetailsViewController.xib in Resources */,
+				F2E501FD1E06E3CF00806B6B /* 多课0@2x.png in Resources */,
 				E28BAE781B91B0E300EC4964 /* 20-3c.png in Resources */,
 				E2F0A3C31D6165A600DFF37D /* 江北机场.txt in Resources */,
 				D9DF5E881CD090EE00C89F6A /* MBCommunityViewController.xib in Resources */,
 				D94F635B1CE1718000F91664 /* addPhoto.jpg in Resources */,
+				F2E501EF1E06E3CF00806B6B /* 上拉@3x.png in Resources */,
 				CE267A221BA4A9B90059C2A5 /* splash.jpg in Resources */,
 				CEE6147C1BEA3F2B004873AA /* ProgressHUD.bundle in Resources */,
 				D952C75F1C0EC44500AA24C0 /* iconfont-shop1.png in Resources */,
@@ -2455,22 +3008,31 @@
 				E2F0A3BB1D6165A600DFF37D /* 寝室2.jpg in Resources */,
 				D99B769C1C8DBD7D00FFE538 /* emptyClassTag2.png in Resources */,
 				CE0ADC9A1BDDD03E00374CDC /* 反馈信息@2x.png in Resources */,
+				F2E501D81E06E3CF00806B6B /* DetailPageController.xib in Resources */,
+				F2E502031E06E3CF00806B6B /* 完成@2x.png in Resources */,
+				F2E502141E06E3D000806B6B /* 箭头@3x.png in Resources */,
 				E263C79E1BA35E60008488FA /* MeCell.xib in Resources */,
 				E263C7901BA35E26008488FA /* ShopTableViewCell.xib in Resources */,
+				F2E501F11E06E3CF00806B6B /* 下拉@3x.png in Resources */,
 				D952C7571C0C75B300AA24C0 /* iconfont-location.png in Resources */,
+				F2E502011E06E3CF00806B6B /* 多课2@2x.png in Resources */,
+				F2E501F21E06E3CF00806B6B /* 不提醒@2x.png in Resources */,
 				E263C78A1BA35E26008488FA /* loading@2x.png in Resources */,
 				CE4648751BDFB91C00C3C24B /* TitleBaseViewController.xib in Resources */,
 				D9A0FE1C1CBA729900BFD01D /* 图片5.jpg in Resources */,
 				D9DF5EC41CD096CE00C89F6A /* MBReleaseViewController.xib in Resources */,
 				CEF273871B90D573009B5BA2 /* 20-2c.png in Resources */,
+				F2E501E81E06E3CF00806B6B /* remind1@2x.png in Resources */,
 				E218DCEC1CD20AC200DD3C8C /* MyInfoViewController.xib in Resources */,
 				E2F0A3C41D6165A600DFF37D /* 细节.txt in Resources */,
+				F2E501F41E06E3CF00806B6B /* 书@2x.png in Resources */,
 				E2176AD11D61C16C00A40B6E /* SexRatioViewController.xib in Resources */,
 				CEF273931B90D573009B5BA2 /* 20-3餐厅psd.png in Resources */,
 				E218DCD41CD20AC200DD3C8C /* XBSAboutViewController.xib in Resources */,
 				E2F0A3711D6163FB00DFF37D /* 重邮风采.png in Resources */,
 				E263C79C1BA35E60008488FA /* FirstViewController.xib in Resources */,
 				CE0ADC9F1BDDD03E00374CDC /* 补考安排@2x.png in Resources */,
+				F2E501FC1E06E3CF00806B6B /* 地点@3x.png in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
 				E2C75DA01CE1169100EA8FEA /* headImage.png in Resources */,
 				D98B5D1B1C08483E0010BC9E /* community_new@2x.png in Resources */,
@@ -2484,9 +3046,11 @@
 				E263C77F1BA35E26008488FA /* shake@2x.png in Resources */,
 				E263C7751BA35E26008488FA /* CommunityViewController.xib in Resources */,
 				E2F0A3C01D6165A600DFF37D /* 寝室介绍4.txt in Resources */,
+				F2E502111E06E3D000806B6B /* 椭圆@2x.png in Resources */,
 				E218DCD61CD20AC200DD3C8C /* AboutMeTableViewCell.xib in Resources */,
 				E218DCF21CD20AC200DD3C8C /* RestTimeDetailView.xib in Resources */,
 				D9A0FE141CB9A29400BFD01D /* 图片3.jpg in Resources */,
+				F2E501EB1E06E3CF00806B6B /* remind2@3x.png in Resources */,
 				E2E7DE2D1B9476730081F699 /* icon_Logo.png in Resources */,
 				E2F0A36F1D6163FB00DFF37D /* 大数据.png in Resources */,
 			);
@@ -2569,6 +3133,7 @@
 				E2F0A3CF1D6165A600DFF37D /* ThreeViewController.m in Sources */,
 				E2C75D921CE0A82F00EA8FEA /* MBAddPhotoContainerView.m in Sources */,
 				3B1388BA1BA354930011EBF2 /* XBSConsultButtonClicker.m in Sources */,
+				F2E502311E06E3D000806B6B /* WeekChooseButton.m in Sources */,
 				E218DCF41CD20AC200DD3C8C /* ORWInputTextView.m in Sources */,
 				CEF61B331B82BC950014B980 /* AppDelegate.m in Sources */,
 				E218DCED1CD20AC200DD3C8C /* QGERestDetailViewController.m in Sources */,
@@ -2576,7 +3141,9 @@
 				E218DCEF1CD20AC200DD3C8C /* QGERestTimeCourseViewController.m in Sources */,
 				D9DF5EC91CD0DB8800C89F6A /* MBTextView.m in Sources */,
 				E2C75D8F1CE0A7F100EA8FEA /* MBReplyView.m in Sources */,
+				F2E501DF1E06E3CF00806B6B /* TimeChooseViewController.m in Sources */,
 				E263C7741BA35E26008488FA /* CommunityViewController.m in Sources */,
+				F2E501CF1E06E3CF00806B6B /* DetailRemindTableViewCell.m in Sources */,
 				E2176AD01D61C16C00A40B6E /* SexRatioViewController.m in Sources */,
 				CE4648741BDFB91C00C3C24B /* TitleBaseViewController.m in Sources */,
 				E218DCF11CD20AC200DD3C8C /* QGERestTimeDetailView.m in Sources */,
@@ -2587,44 +3154,59 @@
 				E23827081B9477D80058970E /* CourseView.m in Sources */,
 				E218DCDE1CD20AC200DD3C8C /* XBSFindClassroomViewController.m in Sources */,
 				D9DF5EA01CD0913B00C89F6A /* MBCommunityTableView.m in Sources */,
+				F2E501D91E06E3CF00806B6B /* DetailRemindViewController.m in Sources */,
 				E2F0A3CC1D6165A600DFF37D /* SixViewController.m in Sources */,
 				CEE6147D1BEA3F2B004873AA /* ProgressHUD.m in Sources */,
 				E20F27E31D6203D100C5DF79 /* BeautyCquptTableViewCell.m in Sources */,
+				F2E501D71E06E3CF00806B6B /* DetailPageController.m in Sources */,
 				3BDE162C1BA5FEED008F2DB7 /* XBSFindClassroomModel.m in Sources */,
 				D9AFFF901D649FE50048E8C5 /* MBNewsModel.m in Sources */,
 				CEE614961BEA4B9A004873AA /* UIScrollView+MJExtension.m in Sources */,
 				D9DF5EA91CD0914300C89F6A /* MBComment_ViewModel.m in Sources */,
+				F2E5022F1E06E3D000806B6B /* TickButton.m in Sources */,
 				3B1388BD1BA354BB0011EBF2 /* XBSConsultDataBundle.m in Sources */,
 				E27A8D991C999B6D0010EBC8 /* AnnexViewController.m in Sources */,
 				3B685C901BA47D7400E34491 /* XBSFindClassroomPeriodView.m in Sources */,
 				E2C75DA71CE127D300EA8FEA /* NetWork.m in Sources */,
+				F2E501E21E06E3CF00806B6B /* RemindHandle.m in Sources */,
+				F2E501C11E06E3CF00806B6B /* BaseTableViewController.m in Sources */,
 				D9DF5EA21CD0913B00C89F6A /* MBPhotoContainerView.m in Sources */,
 				CEC93BE01B9B114500AC9E00 /* LoginEntry.m in Sources */,
 				D9DF5E871CD090EE00C89F6A /* MBCommunityViewController.m in Sources */,
 				E2C75D9E1CE1004F00EA8FEA /* VerifyMyInfoViewController.m in Sources */,
+				F2E502301E06E3D000806B6B /* TimeChooseScrollView.m in Sources */,
 				3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */,
 				E2F0A3B11D6165A600DFF37D /* OneTableViewCell.m in Sources */,
+				F2E502241E06E3D000806B6B /* LessonBtnModel.m in Sources */,
 				E2889BCD1CDF153A00E94127 /* AboutMePraiseTableViewCell.m in Sources */,
 				E2C75D951CE0A85900EA8FEA /* MBAddImageView.m in Sources */,
 				E20F27E61D6203D100C5DF79 /* BeautyCreatViewController.m in Sources */,
 				E263C7891BA35E26008488FA /* DetailDishView.m in Sources */,
 				E2F0A3B31D6165A600DFF37D /* OneViewController.m in Sources */,
 				E218DCE61CD20AC200DD3C8C /* ExamGradeViewController.m in Sources */,
+				F2E501C21E06E3CF00806B6B /* BaseViewController.m in Sources */,
+				F2E5022D1E06E3D000806B6B /* LessonNumLabel.m in Sources */,
 				E263C7871BA35E26008488FA /* ShakeViewController.m in Sources */,
 				E2F0A3CD1D6165A600DFF37D /* ThreeTableViewCell.m in Sources */,
 				CEE614951BEA4B9A004873AA /* MJRefreshHeaderView.m in Sources */,
 				E20F27E91D6203D100C5DF79 /* BeautyExcellentTeacherCollectionViewCell.m in Sources */,
+				F2E502271E06E3D000806B6B /* HttpClient.m in Sources */,
 				CEE614921BEA4B9A004873AA /* MJRefreshConst.m in Sources */,
+				F2E502281E06E3D000806B6B /* RemindNotification.m in Sources */,
+				F2E5022E1E06E3D000806B6B /* MainView.m in Sources */,
 				CEE614911BEA4B9A004873AA /* MJRefreshBaseView.m in Sources */,
 				E2C75DAA1CE1AEBD00EA8FEA /* MyMessagesViewController.m in Sources */,
 				E218DCF51CD20AC200DD3C8C /* SuggestionViewController.m in Sources */,
 				E218DCEA1CD20AC200DD3C8C /* MineViewController.m in Sources */,
 				D9DF5EA31CD0913B00C89F6A /* MBSegmentedView.m in Sources */,
 				E218DCE01CD20AC200DD3C8C /* XBSGradeViewController.m in Sources */,
+				F2E5022A1E06E3D000806B6B /* CoverView.m in Sources */,
 				E20F27EA1D6203D100C5DF79 /* BeautyExcellentTeacherVeiewController.m in Sources */,
 				E20F27E41D6203D100C5DF79 /* BeautyCquptViewController.m in Sources */,
 				E263C79B1BA35E60008488FA /* FirstViewController.m in Sources */,
+				F2E501DE1E06E3CF00806B6B /* LessonController.m in Sources */,
 				E2176ACD1D61C16C00A40B6E /* LZScrollView.m in Sources */,
+				F2E502261E06E3D000806B6B /* RemindMatter.m in Sources */,
 				E2F0A35B1D615F7500DFF37D /* SegmentView.m in Sources */,
 				D9AFFF931D64C8680048E8C5 /* MBNews_ViewModel.m in Sources */,
 				E2F0A3AD1D6165A600DFF37D /* GQUCell.m in Sources */,
@@ -2632,26 +3214,37 @@
 				E2176ACA1D61C16C00A40B6E /* GraduateViewController.m in Sources */,
 				E218DCE51CD20AC200DD3C8C /* PickView.m in Sources */,
 				E263C79D1BA35E60008488FA /* MeCell.m in Sources */,
+				F2E501E01E06E3CF00806B6B /* WeekChooseViewController.m in Sources */,
 				E218DCE31CD20AC200DD3C8C /* EmptyClassViewController.m in Sources */,
 				3B1388B41BA353F70011EBF2 /* XBSScheduleTableViewCell.m in Sources */,
 				E263C78D1BA35E26008488FA /* ShopDetailViewController.m in Sources */,
 				E263C7721BA35E26008488FA /* ChuangyeViewController.m in Sources */,
 				E2F0A3AB1D6165A600DFF37D /* FourViewController.m in Sources */,
+				F2E502291E06E3D000806B6B /* ChooseButton.m in Sources */,
+				F2E501C41E06E3CF00806B6B /* UIImage+Color.m in Sources */,
+				F2E501D11E06E3CF00806B6B /* RemindTableViewCell.m in Sources */,
+				F204206B1E095CA1003807BA /* NoLoginView.m in Sources */,
+				F2E501DA1E06E3CF00806B6B /* DetailViewController.m in Sources */,
+				F2E501C31E06E3CF00806B6B /* UIColor+Hex.m in Sources */,
 				E2F0A36A1D61611300DFF37D /* FreshManMainViewController.m in Sources */,
+				F2E5022B1E06E3D000806B6B /* DayLabel.m in Sources */,
 				E263C78B1BA35E26008488FA /* MenuViewController.m in Sources */,
 				E23827091B9477D80058970E /* CourseViewController.m in Sources */,
 				E2F0A3CB1D6165A600DFF37D /* SevenViewController.m in Sources */,
 				E218DCD71CD20AC200DD3C8C /* AboutMeViewController.m in Sources */,
 				E2176ACE1D61C16C00A40B6E /* MajorViewController.m in Sources */,
 				3B37F0B71B8C4691009C1E94 /* We.m in Sources */,
+				F2E502231E06E3D000806B6B /* ExamMatter.m in Sources */,
 				D9DF5EAA1CD0914300C89F6A /* MBCommunity_ViewModel.m in Sources */,
 				E263C78F1BA35E26008488FA /* ShopTableViewCell.m in Sources */,
 				CE3FC9401B9702A6000085E5 /* ORWRequestCache.m in Sources */,
 				D9F9F0351D630AFC00CA98C1 /* BeautyCreatDetailViewController.m in Sources */,
+				F2E501D31E06E3CF00806B6B /* AddRemindViewController.m in Sources */,
 				D9DF5EA11CD0913B00C89F6A /* MBPhotoBrowser.m in Sources */,
 				E2F0A3AA1D6165A600DFF37D /* FiveViewController.m in Sources */,
 				E2F0A3D01D6165A600DFF37D /* TwoViewController.m in Sources */,
 				E2176AD31D61C16C00A40B6E /* UIImage+FillColor.m in Sources */,
+				F2E502251E06E3D000806B6B /* LessonMatter.m in Sources */,
 				CEE614971BEA4B9A004873AA /* UIScrollView+MJRefresh.m in Sources */,
 				E20F27E81D6203D100C5DF79 /* BeautyExcellentStudentViewController.m in Sources */,
 				CEE614941BEA4B9A004873AA /* MJRefreshFooterView.m in Sources */,
@@ -2659,10 +3252,13 @@
 				D9DF5ECC1CD0E1B400C89F6A /* MBInputView.m in Sources */,
 				E2F0A3641D6160E600DFF37D /* DataViewController.m in Sources */,
 				D9DF5EC31CD096CE00C89F6A /* MBReleaseViewController.m in Sources */,
+				F2E501E11E06E3CF00806B6B /* LessonHandle.m in Sources */,
 				E218DCD31CD20AC200DD3C8C /* XBSAboutViewController.m in Sources */,
 				CEE614981BEA4B9A004873AA /* UIView+MJExtension.m in Sources */,
 				E20F27E71D6203D100C5DF79 /* BeautyExcellentStudentCollectionViewCell.m in Sources */,
 				E24749551CDB4591006AEB9B /* SettingViewController.m in Sources */,
+				F2E501DB1E06E3CF00806B6B /* ExamViewController.m in Sources */,
+				F2E501E31E06E3CF00806B6B /* TimeHandle.m in Sources */,
 				E2889BD31CDF42D400E94127 /* UITextField+Custom.m in Sources */,
 				D9DF5E9F1CD0913B00C89F6A /* MBBrowserItem.m in Sources */,
 				D9DF5E851CD090EE00C89F6A /* MBCommuityDetailsViewController.m in Sources */,
@@ -2674,10 +3270,14 @@
 				E263C7851BA35E26008488FA /* WebViewController.m in Sources */,
 				CED749B01CE1A8EE00DCBF7E /* MOHImageParamModel.m in Sources */,
 				E20F27E51D6203D100C5DF79 /* BeautyCreatTableViewCell.m in Sources */,
+				F2E501DD1E06E3CF00806B6B /* LessonButtonController.m in Sources */,
 				D9DF5EB71CD0915300C89F6A /* MBCommentModel.m in Sources */,
 				D9DF5EBF1CD0915900C89F6A /* UIShortTapGestureRecognizer.m in Sources */,
+				F2E5022C1E06E3D000806B6B /* LessonButton.m in Sources */,
+				F2E502321E06E3D000806B6B /* WeekScrollView.m in Sources */,
 				E2C75DAE1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m in Sources */,
 				E218DCD51CD20AC200DD3C8C /* AboutMeTableViewCell.m in Sources */,
+				F2E90CB81E0813A200EA30A9 /* LessonRemindNotification.m in Sources */,
 				E2F0A3AC1D6165A600DFF37D /* GGCellModel.m in Sources */,
 				E2F0A3611D6160D800DFF37D /* FreshManGuideViewController.m in Sources */,
 				E2F0A3C91D6165A600DFF37D /* SevenTableViewCell.m in Sources */,
@@ -2687,7 +3287,9 @@
 				E2F0A3A91D6165A600DFF37D /* EightViewController.m in Sources */,
 				E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */,
 				E20F27EB1D6203D100C5DF79 /* BeautyOrganizationView.m in Sources */,
+				F2E501C01E06E3CF00806B6B /* BaseMatter.m in Sources */,
 				E23827071B9477D80058970E /* CourseButton.m in Sources */,
+				F2E501D51E06E3CF00806B6B /* DetailLessonController.m in Sources */,
 				E20F27EC1D6203D100C5DF79 /* BeautyOrganizationViewController.m in Sources */,
 				E218DCDD1CD20AC200DD3C8C /* CalendarViewController.m in Sources */,
 				E263C7761BA35E26008488FA /* FinderViewController.m in Sources */,
@@ -2852,6 +3454,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = JGRNKP3327;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";
@@ -2890,6 +3493,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = JGRNKP3327;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/Config/PrefixHeader.pch";

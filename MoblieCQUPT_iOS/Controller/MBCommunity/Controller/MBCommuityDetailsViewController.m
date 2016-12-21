@@ -70,9 +70,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _isLoadedComment = NO;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
     self.navigationItem.title = @"详情";
-    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.tabBarController.tabBar.hidden = YES;
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.replyView];
     [[NSNotificationCenter defaultCenter] addObserver:self

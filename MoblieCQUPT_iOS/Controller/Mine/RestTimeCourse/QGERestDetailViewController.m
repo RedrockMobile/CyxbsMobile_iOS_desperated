@@ -51,6 +51,11 @@
     [self loadAllStuCourse];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = YES;
+}
 - (void)initWeekSelectedList {
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     _weekViewShow = NO;

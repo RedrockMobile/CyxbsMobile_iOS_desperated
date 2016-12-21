@@ -13,7 +13,31 @@
 #import "UIImageView+AFNetworking.h"
 #import "NetWork.h"
 #import "ShopDetailViewController.h"
-
+/*
+ *
+ *          ┌─┐       ┌─┐
+ *       ┌──┘ ┴───────┘ ┴──┐
+ *       │                 │
+ *       │       ───       │
+ *       │  ─┬┘       └┬─  │
+ *       │                 │
+ *       │       ─┴─       │
+ *       │                 │
+ *       └───┐         ┌───┘
+ *           │         │
+ *           │         │
+ *           │         │
+ *           │         └──────────────┐
+ *           │                        │
+ *           │                        ├─┐
+ *           │                        ┌─┘
+ *           │                        │
+ *           └─┐  ┐  ┌───────┬──┐  ┌──┘
+ *             │ ─┤ ─┤       │ ─┤ ─┤
+ *             └──┴──┘       └──┴──┘
+ *                 神兽保佑
+ *                 代码无BUG!
+ */
 @interface ShakeViewController ()
 
 @property (strong, nonatomic)NSMutableArray *data;
@@ -28,9 +52,9 @@
     
     self.navigationItem.title = @"摇一摇";
     self.navigationController.navigationBarHidden = NO;
-    self.navigationController.navigationBar.barTintColor = MAIN_COLOR;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
+    self.navigationController.navigationBar.tintColor = FONT_COLOR;
+    self.tabBarController.tabBar.hidden = YES;
     
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
     [self becomeFirstResponder];
