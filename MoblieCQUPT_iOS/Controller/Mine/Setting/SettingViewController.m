@@ -142,7 +142,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:[NSNumber numberWithBool:sender.on] forKey:@"switchState"];
     LessonRemindNotification *lrNotic = [[LessonRemindNotification alloc] init];
-    UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"课前提醒" message:@"每晚十点小帮手会准时把明日课表发给你哦" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alerController = [UIAlertController alertControllerWithTitle:@"课前提醒" message:@"每晚十点 掌上重邮 会准时把明日课表发给你哦" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"知道啦" style:UIAlertActionStyleCancel handler:nil];
     [alerController addAction:okAction];
     if (sender.on) {
