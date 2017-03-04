@@ -21,7 +21,7 @@
 
 @implementation DetailLessonController
 - (void)loadLesson{
-    self.lessonLb.text = self.lesson.lesson;
+    self.lessonLb.text = self.lesson.course;
     self.teacherLb.text = self.lesson.teacher;
     self.classroomLb.text = self.lesson.classroom;
     self.timeLb.text = [self handleTime:self.lesson];

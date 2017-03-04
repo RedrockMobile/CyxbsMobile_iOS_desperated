@@ -9,12 +9,13 @@
 #import "TickButton.h"
 #import "UIColor+Hex.h"
 #import "UIImage+Color.h"
+#import "UIFont+AdaptiveFont.h"
 
 @implementation TickButton
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.titleLabel.font = [UIFont systemFontOfSize:16];
+        self.titleLabel.font = [UIFont adaptFontSize:16];
         self.titleEdgeInsets = UIEdgeInsetsMake(0, 16, 0, 0);
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         

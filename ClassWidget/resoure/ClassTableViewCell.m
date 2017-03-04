@@ -11,6 +11,7 @@
 @implementation ClassTableViewCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 

@@ -12,5 +12,7 @@
 @property NSNumber *day;
 @property NSNumber *classNum;
 @property NSArray *week;
+@property NSString *content;
+@property NSString *title;
 - (instancetype)initWithRemind:(NSDictionary *)remind;
 @end

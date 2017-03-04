@@ -21,6 +21,7 @@
 #import "NoLoginView.h"
 #import "LoginViewController.h"
 #import "RemindNotification.h"
+#import "UIFont+AdaptiveFont.h"
 #define kAPPGroupID @"group.com.redrock.mobile"
 
 @interface LessonController ()
@@ -124,7 +125,7 @@
     [self.barBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.barBtn setTitle:@"本周" forState:UIControlStateNormal];
     [self.barBtn setTitleColor:[UIColor colorWithRed:64/255.f green:64/255.f blue:64/255.f alpha:1] forState:UIControlStateNormal];
-    self.barBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.barBtn.titleLabel.font = [UIFont adaptFontSize:18];
     self.navigationItem.titleView = self.barBtn;
     //初始化点击Button
     
@@ -334,9 +335,18 @@
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
         NSMutableArray *reminds = [responseObject objectForKey:@"data"];
-        if ([reminds writeToFile:remindPath atomically:YES]) {
+        NSMutableArray *handledReminds = [NSMutableArray array];
+        for (NSDictionary *dic in reminds) {
+            NSMutableDictionary *newDic = [NSMutableDictionary dictionaryWithDictionary:dic];
+            NSString *title = [NSString stringWithFormat:@"%@",[dic objectForKey:@"title"]];
+            NSString *content = [NSString stringWithFormat:@"%@",[dic objectForKey:@"content"]];
+            [newDic setObject:title forKey:@"title"];
+            [newDic setObject:content forKey:@"content"];
+            [handledReminds addObject:newDic];
+        } 
+        if ([handledReminds writeToFile:remindPath atomically:YES]) {
             [self afterRequest];
-        }
+        }//后台数据返回不统一，做相应处理
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@",error);
     }];

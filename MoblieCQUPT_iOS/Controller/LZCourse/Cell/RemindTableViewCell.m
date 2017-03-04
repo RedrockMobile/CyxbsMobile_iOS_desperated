@@ -8,6 +8,7 @@
 
 #import "RemindTableViewCell.h"
 #import <Masonry.h>
+#import "UIFont+AdaptiveFont.h"
 @implementation RemindTableViewCell
 
 - (void)layoutSubviews
@@ -30,8 +31,8 @@
     }];
                                        
     self.tintColor = [UIColor colorWithRed:65/255.f green:163/255.f blue:255/255.f alpha:1];
-    self.titleLabel.font = [UIFont systemFontOfSize:14];
-    self.contentLabel.font = [UIFont systemFontOfSize:15];
+    self.titleLabel.font = [UIFont adaptFontSize:14];
+    self.contentLabel.font = [UIFont adaptFontSize:15];
     self.contentLabel.textAlignment = NSTextAlignmentRight;
     // Initialization code
 }

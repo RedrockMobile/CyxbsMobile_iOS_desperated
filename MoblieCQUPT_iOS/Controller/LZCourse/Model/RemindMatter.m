@@ -13,6 +13,8 @@
     self = [self init];
     if (self) {
         self.idNum = [remind objectForKey:@"id"];
+        self.content = [remind objectForKey:@"content"];
+        self.title = [remind objectForKey:@"title"];
     }
     return self;
 }

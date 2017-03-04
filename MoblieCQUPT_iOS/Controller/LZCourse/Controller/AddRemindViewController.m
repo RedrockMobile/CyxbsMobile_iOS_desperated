@@ -17,6 +17,7 @@
 #import "TickButton.h"
 #import "CoverView.h"
 #import "RemindNotification.h"
+#import "UIFont+AdaptiveFont.h"
 @interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,SaveDelegate,UITextViewDelegate>
 @property TimeChooseScrollView *remindChooseView;
 @property NSMutableArray <NSString *>*contentArray;
@@ -26,7 +27,7 @@
 @property WeekChooseViewController *weekChoose;
 @property NSMutableArray <NSNumber *>*timeArray;
 @property NSNumber *time;
-@property NSArray *weekArray;
+@property NSMutableArray *weekArray;
 @property CoverView *coverView;
 @property BOOL isEditing;
 @property NSDictionary *remind;
@@ -81,16 +82,21 @@
         self.contentArray[2] = self.selectedButton.currentTitle;
         [self.tableView reloadData];
     }
+    else{
+        NSMutableArray *weeks = [@[[[NSUserDefaults standardUserDefaults] objectForKey:@"nowWeek"] ] mutableCopy];
+        [self saveWeeks: weeks];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[RemindNotification shareInstance]creatIdentifiers];
     self.title = @"事项编辑";
+    
     self.titileTextView.delegate = self;
     self.contentTextView.delegate = self;
-    self.titileTextView.font = [UIFont systemFontOfSize:18];
-    self.contentTextView.font = [UIFont systemFontOfSize:18];
+    self.titileTextView.font = [UIFont adaptFontSize:18];
+    self.contentTextView.font = [UIFont adaptFontSize:18];
     self.titileTextView.layer.cornerRadius = 5;
     self.contentTextView.layer.cornerRadius = 5;
     self.contentTextView.layer.masksToBounds = YES;
@@ -240,7 +246,6 @@
     self.contentArray[1] = [TimeHandle handleWeeks:weekArray];
     self.weekArray = weekArray;
     [self.tableView reloadData];
-
 }
 
 - (void)saveTimes:(NSMutableArray *)timeArray{

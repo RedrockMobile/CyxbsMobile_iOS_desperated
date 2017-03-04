@@ -9,6 +9,7 @@
 #import "WeekChooseButton.h"
 #import "UIColor+Hex.h"
 #import "UIImage+Color.h"
+#import "UIFont+AdaptiveFont.h"
 @implementation WeekChooseButton
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -19,7 +20,7 @@
         [self setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#41a2ff"]] forState:UIControlStateSelected];
         [self setTitleColor:[UIColor colorWithHex:@"#595959"] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor colorWithHex:@"#ffffff"] forState:UIControlStateSelected];
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.titleLabel.font = [UIFont adaptFontSize:14];
         [self addTarget:self action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;

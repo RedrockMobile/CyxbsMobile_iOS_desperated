@@ -316,7 +316,7 @@
         }
         return cell;
     }else {
-        NSInteger se = indexPath.section;
+//        NSInteger se = indexPath.section;
         MBCommunityCellTableViewCell *communityCell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
         MBCommunity_ViewModel *viewModel = _allDataArray[indexPath.section - 2];
 //        MBCommunityModel *model = [[MBCommunityModel alloc]init];

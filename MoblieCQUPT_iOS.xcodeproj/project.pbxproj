@@ -365,6 +365,8 @@
 		F23D3E051E0B79CF00B33D04 /* shakeForShop_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F23D3DF31E0B79CF00B33D04 /* shakeForShop_new@2x.png */; };
 		F23D3E061E0B79CF00B33D04 /* shop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F23D3DF41E0B79CF00B33D04 /* shop@2x.png */; };
 		F23D3E071E0B79CF00B33D04 /* shop_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F23D3DF51E0B79CF00B33D04 /* shop_new@2x.png */; };
+		F2B30B051E6A9F2C00B7C70E /* UIFont+AdaptiveFont.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B30B041E6A9F2C00B7C70E /* UIFont+AdaptiveFont.m */; };
+		F2B30B0E1E6AACD700B7C70E /* UILabel+Adapter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B30B0D1E6AACD700B7C70E /* UILabel+Adapter.m */; };
 		F2E501C01E06E3CF00806B6B /* BaseMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501141E06E3CF00806B6B /* BaseMatter.m */; };
 		F2E501C11E06E3CF00806B6B /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501161E06E3CF00806B6B /* BaseTableViewController.m */; };
 		F2E501C21E06E3CF00806B6B /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501181E06E3CF00806B6B /* BaseViewController.m */; };
@@ -1014,6 +1016,10 @@
 		F23D3DF31E0B79CF00B33D04 /* shakeForShop_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shakeForShop_new@2x.png"; sourceTree = "<group>"; };
 		F23D3DF41E0B79CF00B33D04 /* shop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop@2x.png"; sourceTree = "<group>"; };
 		F23D3DF51E0B79CF00B33D04 /* shop_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shop_new@2x.png"; sourceTree = "<group>"; };
+		F2B30B031E6A9F2B00B7C70E /* UIFont+AdaptiveFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+AdaptiveFont.h"; sourceTree = "<group>"; };
+		F2B30B041E6A9F2C00B7C70E /* UIFont+AdaptiveFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+AdaptiveFont.m"; sourceTree = "<group>"; };
+		F2B30B0C1E6AACD700B7C70E /* UILabel+Adapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UILabel+Adapter.h"; path = "../Base/UILabel+Adapter.h"; sourceTree = "<group>"; };
+		F2B30B0D1E6AACD700B7C70E /* UILabel+Adapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UILabel+Adapter.m"; path = "../Base/UILabel+Adapter.m"; sourceTree = "<group>"; };
 		F2E501131E06E3CF00806B6B /* BaseMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMatter.h; sourceTree = "<group>"; };
 		F2E501141E06E3CF00806B6B /* BaseMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMatter.m; sourceTree = "<group>"; };
 		F2E501151E06E3CF00806B6B /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -2456,10 +2462,10 @@
 				F2E501531E06E3CF00806B6B /* Handle */,
 				F2E5015A1E06E3CF00806B6B /* image */,
 				F2E5019A1E06E3CF00806B6B /* Model */,
+				F2E501AB1E06E3CF00806B6B /* View */,
 				F2E501A31E06E3CF00806B6B /* Network */,
 				F2E501A61E06E3CF00806B6B /* Notification */,
 				F2E501AA1E06E3CF00806B6B /* SaveDelegate.h */,
-				F2E501AB1E06E3CF00806B6B /* View */,
 			);
 			path = LZCourse;
 			sourceTree = "<group>";
@@ -2480,6 +2486,10 @@
 		F2E501191E06E3CF00806B6B /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				F2B30B0C1E6AACD700B7C70E /* UILabel+Adapter.h */,
+				F2B30B0D1E6AACD700B7C70E /* UILabel+Adapter.m */,
+				F2B30B031E6A9F2B00B7C70E /* UIFont+AdaptiveFont.h */,
+				F2B30B041E6A9F2C00B7C70E /* UIFont+AdaptiveFont.m */,
 				F2E5011A1E06E3CF00806B6B /* UIColor+Hex.h */,
 				F2E5011B1E06E3CF00806B6B /* UIColor+Hex.m */,
 				F2E5011C1E06E3CF00806B6B /* UIImage+Color.h */,
@@ -3128,10 +3138,12 @@
 				3B1388B21BA353F70011EBF2 /* XBSNavigationBar.m in Sources */,
 				E2176ACC1D61C16C00A40B6E /* LZListView.m in Sources */,
 				3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */,
+				F2B30B0E1E6AACD700B7C70E /* UILabel+Adapter.m in Sources */,
 				E218DCE21CD20AC200DD3C8C /* XBSViewController.m in Sources */,
 				E218DCEB1CD20AC200DD3C8C /* MyInfoViewController.m in Sources */,
 				E2F0A3CF1D6165A600DFF37D /* ThreeViewController.m in Sources */,
 				E2C75D921CE0A82F00EA8FEA /* MBAddPhotoContainerView.m in Sources */,
+				F2B30B051E6A9F2C00B7C70E /* UIFont+AdaptiveFont.m in Sources */,
 				3B1388BA1BA354930011EBF2 /* XBSConsultButtonClicker.m in Sources */,
 				F2E502311E06E3D000806B6B /* WeekChooseButton.m in Sources */,
 				E218DCF41CD20AC200DD3C8C /* ORWInputTextView.m in Sources */,

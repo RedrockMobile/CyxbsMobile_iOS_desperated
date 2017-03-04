@@ -7,7 +7,7 @@
 //
 
 #import "DayLabel.h"
-
+#import "UIFont+AdaptiveFont.h"
 @implementation DayLabel
 
 /*
@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
-        self.font = [UIFont systemFontOfSize:14];
+        self.font = [UIFont adaptFontSize:14];
         self.textAlignment = NSTextAlignmentCenter;
         self.numberOfLines = 0;
     }
