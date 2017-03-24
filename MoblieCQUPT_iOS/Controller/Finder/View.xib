@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -187,14 +187,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aHW-4D-OHq">
                             <rect key="frame" x="29" y="25" width="68" height="81"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="community_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="Htw-jv-udY">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="电费查询.png" translatesAutoresizingMaskIntoConstraints="NO" id="Htw-jv-udY">
                                     <rect key="frame" x="9" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="4iF-cG-lq1"/>
                                         <constraint firstAttribute="width" constant="50" id="WeE-RK-42Q"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新生专题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bS1-nc-tBJ" userLabel="community">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电费查询" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bS1-nc-tBJ" userLabel="community">
                                     <rect key="frame" x="-1" y="60" width="70" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="sLa-mp-tMn"/>
@@ -233,14 +233,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0d7-ka-VWR">
                             <rect key="frame" x="29" y="25" width="68" height="81"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chuangye_new.png" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-YQ-L8N">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="失物招领.png" translatesAutoresizingMaskIntoConstraints="NO" id="OzJ-YQ-L8N">
                                     <rect key="frame" x="9" y="0.0" width="50" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="9Ac-xI-rDr"/>
                                         <constraint firstAttribute="width" constant="50" id="E0g-O1-BPt"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创业谷" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6P7-UA-2WR" userLabel="chuangye">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="失物招领" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6P7-UA-2WR" userLabel="chuangye">
                                     <rect key="frame" x="-1" y="60" width="70" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="70" id="FJ8-8e-wNO"/>
@@ -367,11 +367,11 @@
         </view>
     </objects>
     <resources>
-        <image name="chuangye_new.png" width="50" height="50"/>
-        <image name="community_new.png" width="50" height="50"/>
         <image name="map_new.png" width="50" height="50"/>
         <image name="redrock_new.png" width="50" height="50"/>
         <image name="shakeForShop_new.png" width="50" height="50"/>
         <image name="shop_new.png" width="50" height="50"/>
+        <image name="失物招领.png" width="51" height="52"/>
+        <image name="电费查询.png" width="52" height="52"/>
     </resources>
 </document>
