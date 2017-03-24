@@ -67,7 +67,7 @@
 
 - (void)downLoad
 {
-    dispatch_queue_attr_t q1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    dispatch_queue_attr_t q1 = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/WelcomeFreshman/outstandingStudent"]];
     // 2.创建一个网络请求，分别设置请求方法、请求参数
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];

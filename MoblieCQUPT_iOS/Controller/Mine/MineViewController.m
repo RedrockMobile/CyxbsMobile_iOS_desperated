@@ -40,7 +40,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H-20)];
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 15, MAIN_SCREEN_W, MAIN_SCREEN_H-20)];
     _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, 600);
     _mainScrollView.backgroundColor = [UIColor groupTableViewBackgroundColor];
     _mainScrollView.showsVerticalScrollIndicator=NO;
@@ -56,6 +56,7 @@
                          @{@"cell":@"没课约",@"img":@"校历.png",@"controller":@"QGERestTimeCourseViewController"},
                          @{@"cell":@"空教室",@"img":@"空教室.png",@"controller":@"EmptyClassViewController"},
                          @{@"cell":@"期末成绩",@"img":@"期末成绩.png",@"controller":@"ExamGradeViewController"},
+                         @{@"cell":@"考试安排",@"img":@"考试安排.png",@"controller":@"ExamScheduleViewController"},
                          @{@"cell":@"校历",@"img":@"校历.png",@"controller":@"CalendarViewController"},
                          @{@"cell":@"设置",@"img":@"关于.png",@"controller":@"SettingViewController"},
                         ]
@@ -189,7 +190,7 @@
         [cell addSubview:label];
         
 
-        NSSet *set = [NSSet setWithObjects:@2,@3,@4,@5,@6,@8,@9, nil];
+        NSSet *set = [NSSet setWithObjects:@2,@3,@4,@5,@6,@7,@8,@9, nil];
         NSSet *nowSet = [NSSet setWithObject:[NSNumber numberWithInteger:indexPath.section]];
         if ([nowSet isSubsetOfSet:set]) {
             UIView *underLine = [[UIView alloc]initWithFrame:CGRectMake(label.frame.origin.x, 0, MAIN_SCREEN_W, 0.5)];
@@ -227,7 +228,7 @@
     
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
-    NSSet *set = [NSSet setWithObjects:@0, @1, @2, @5, nil];
+    NSSet *set = [NSSet setWithObjects:@0, @1, @2, @5, @6, nil];
     NSSet *needLoginSet = [NSSet setWithObject: [NSNumber numberWithInteger:indexPath.section]];
     
     //需账户登陆
@@ -253,6 +254,8 @@
                 message = @"登录后才能查看我的动态哦";
             }else if ([needLoginSet containsObject:@5]) {
                 message = @"登录后才能查看期末成绩哦";
+            }else if ([needLoginSet containsObject:@6]) {
+                message = @"登录后才能查看考试安排哦";
             }
             
             UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:message preferredStyle:UIAlertControllerStyleAlert];

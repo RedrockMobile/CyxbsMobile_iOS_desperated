@@ -101,7 +101,7 @@
     if (imageArray.count == 1) {
         return imageArray[0];
     }
-    if (!imageArray.count == offsetArray.count) {
+    if (!(imageArray.count == offsetArray.count)) {
         return nil;
     }
     

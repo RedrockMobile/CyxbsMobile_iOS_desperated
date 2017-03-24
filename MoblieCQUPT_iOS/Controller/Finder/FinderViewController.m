@@ -9,12 +9,11 @@
 #import "FinderViewController.h"
 #import "ShopViewController.h"
 #import "WebViewController.h"
-#import "ChuangyeViewController.h"
 #import "ShakeViewController.h"
 #import "CommunityViewController.h"
 #import "MapViewController.h"
 #import "FreshManMainViewController.h"
-
+#import "LostViewController.h"
 #define kCount 3
 
 @interface FinderViewController ()<UIScrollViewDelegate>
@@ -211,7 +210,7 @@
 }
 
 - (void)enterIntroduction{
-    ChuangyeViewController *cvc = [[ChuangyeViewController alloc] init];
+    LostViewController *cvc = [[LostViewController alloc] init];
     [self.navigationController pushViewController:cvc
                                          animated:YES];
     _chuangyeView.backgroundColor = [UIColor clearColor];

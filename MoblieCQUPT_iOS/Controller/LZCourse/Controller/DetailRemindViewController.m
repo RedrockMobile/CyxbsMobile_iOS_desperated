@@ -15,6 +15,7 @@
 #import "AddRemindViewController.h"
 #import <Masonry.h>
 #import "RemindNotification.h"
+#import "UIFont+AdaptiveFont.h"
 
 @interface DetailRemindViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property NSMutableArray <RemindMatter *>* reminds;
@@ -38,6 +39,7 @@
     
     self.imageViewArray = [NSMutableArray array];
     self.isEditing = NO;
+    self.tableView.editing = NO;
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-STATUSBARHEIGHT-NVGBARHEIGHT) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -62,8 +64,9 @@
         self.editButton = sender;
     }
     sender.selected = !sender.selected;
-    self.isEditing = !self.isEditing;
-    [self.tableView setEditing:!self.tableView.editing animated:YES];
+   
+    self.isEditing = sender.selected;
+    [self.tableView setEditing:sender.selected animated:YES];
     [UIView animateWithDuration:0.5f animations:^{
         for (UIImageView * editView in self.imageViewArray) {
             if (self.isEditing) {
@@ -169,15 +172,21 @@
             break;
         }
     }
-   NSString *content = [remind objectForKey:@"content"];
-    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-56,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]} context:nil].size.height+120;
+    NSString *content = [remind objectForKey:@"content"];
+    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-56,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+120;
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleDelete;
 }
 
 - (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-    self.isEditing = NO;
+//    self.isEditing = YES;
+    
+}
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.isEditing) {
+        [self edit:self.editButton];
+    }
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{

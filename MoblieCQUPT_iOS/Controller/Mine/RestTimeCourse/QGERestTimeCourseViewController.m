@@ -39,6 +39,9 @@
     
     // Do any additional setup after loading the view from its nib.
 }
+- (void)viewWillAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = YES;
+}
 
 - (UITableView *)tableView {
     _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, _table.frame.size.width, 300) style:UITableViewStylePlain];

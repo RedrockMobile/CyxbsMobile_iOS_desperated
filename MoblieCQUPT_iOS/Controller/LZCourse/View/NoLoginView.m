@@ -9,6 +9,7 @@
 #import "NoLoginView.h"
 #import "PrefixHeader.pch"
 #import "LoginViewController.h"
+#import "UIFont+AdaptiveFont.h"
 @implementation NoLoginView
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -20,7 +21,7 @@
         btnFrame.origin.y = btnFrame.origin.y+btnFrame.size.height+20;
         btnFrame.size.height = 20;
          self.loginButton = [[UIButton alloc]initWithFrame:btnFrame];
-        [self.loginButton.titleLabel setFont:[UIFont systemFontOfSize:16]];
+        [self.loginButton.titleLabel setFont:[UIFont adaptFontSize:16]];
         [self.loginButton setTitle:@"点击登录,拯救课表菌!!!" forState: UIControlStateNormal];
         [self.loginButton setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
         [self addSubview:self.loginButton];

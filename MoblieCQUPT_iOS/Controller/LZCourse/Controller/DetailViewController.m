@@ -18,6 +18,7 @@
 @property DetailPageController *detailPageController;
 @property DetailRemindViewController *remindController;
 @property UIBarButtonItem *editItem;
+@property BOOL isFirstEnter;
 @end
 
 @implementation DetailViewController
@@ -39,6 +40,7 @@
     [self.segmentedControl setSelectedSegmentIndex:0];
     [self.remindController didMoveToParentViewController:self];
     self.navigationController.navigationBar.backItem.title = @"";
+    self.isFirstEnter = YES;
     [self showLessonView];
 }
 
@@ -105,6 +107,12 @@
         }
     } //具体周
     if (!isHaveLessson) {
+        if (self.isFirstEnter) {
+            self.segmentedControl.selectedSegmentIndex = 1;
+            [self showRemindView];
+            self.isFirstEnter = NO;
+            return;
+        }
         UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MWIDTH, SCREENHEIGHT/6+STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH-2*MWIDTH, SCREENWIDTH/2)];
         imageView.image = [UIImage imageNamed:@"无课"];
         [self.view addSubview:imageView];

@@ -157,11 +157,11 @@
  *  @param failureBlock  失败调用
  */
 + (void)uploadImageWithUrl:(NSString *)url
-      imageParams:(NSArray<MOHImageParamModel *> *)imageParamsArray
-         otherParams:(NSDictionary *)params
+               imageParams:(NSArray<MOHImageParamModel *> *)imageParamsArray
+               otherParams:(NSDictionary *)params
           imageQualityRate:(CGFloat)rate
-        successBlock:(SucessWithJson) block
-        failureBlock:(FailureFunction) failureBlock {
+              successBlock:(SucessWithJson) block
+              failureBlock:(FailureFunction) failureBlock {
     
     // 初始化请求的manager.
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];

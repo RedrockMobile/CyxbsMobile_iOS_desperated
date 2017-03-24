@@ -9,6 +9,7 @@
 #import "WeekScrollView.h"
 #import "UIImage+Color.h"
 #import "UIColor+Hex.h"
+#import "UIFont+AdaptiveFont.h"
 @implementation WeekScrollView
 
 /*
@@ -35,6 +36,7 @@
         self.showsVerticalScrollIndicator = NO;
         for (NSInteger i = 0; i<weekNum; i++) {
             UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(0, i*lbHeight, lbWidth, lbHeight)];
+            btn.titleLabel.font = [UIFont adaptFontSize:18];
             [btn setTitle:weekArray[i] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor colorWithHex:@"#343434"] forState:UIControlStateNormal];
             [btn setTitleColor:[UIColor colorWithHex:@"#ffffff"] forState:UIControlStateSelected];

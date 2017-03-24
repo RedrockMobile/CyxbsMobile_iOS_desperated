@@ -62,6 +62,7 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:now];
     for (int i = 0; i < DAY; i++) {
+        self.dayLabels[i].backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
         NSTimeInterval timeInterval = ((week-nowWeek)*7+(i-(components.weekday+5)%7))*oneDay;
         NSDate *date = [NSDate dateWithTimeInterval:timeInterval sinceDate:now];
         if (i == 0) {

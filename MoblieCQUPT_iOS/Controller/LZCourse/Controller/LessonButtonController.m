@@ -23,10 +23,6 @@
     
 }
 
-- (void)addLesson:(NSArray *)lessonArray{
-    
-}
-
 - (instancetype)initWithDay:(int)day Lesson:(int)lesson{
     self = [super init];
     if (self) {
@@ -40,8 +36,8 @@
 }
 
 - (BOOL)matterWithWeek:(NSNumber *)week{
+    [self.remindArrow removeFromSuperview];
     [self.btn setTitle:@"" forState:UIControlStateNormal];
-//    self.remindArrow = [[UIImageView alloc]init];
     if (self.beginLesson<6 && self.beginLesson >=4) {
         if (self.matter.lessonArray.count > 1) {
             [self.btn setBackgroundImage:[UIImage imageNamed:@"多课2"] forState:UIControlStateNormal];
@@ -68,39 +64,20 @@
     }
     BOOL isHaveLesson = NO;
     for (LessonMatter *lesson in self.matter.lessonArray) {
-        if([week isEqual:@0]){
-            NSMutableString *btnTitle = [[lesson.course stringByAppendingString:lesson.classroom] mutableCopy];
+        if([week isEqual:@0] || [lesson.week containsObject:week]){
+            NSMutableString *btnTitle = [NSMutableString stringWithFormat:@"%@\n%@",lesson.course,lesson.classroom];
             isHaveLesson = YES;
             if (![lesson.period isEqual:@2]) {
                 [btnTitle appendFormat:@"(%@节)",lesson.period];
             }
             [self.btn setTitle:btnTitle forState:UIControlStateNormal];
             break;
-        } //本学期
-        if ([lesson.week containsObject:week]) {
-            NSMutableString *btnTitle = [[lesson.course stringByAppendingString:lesson.classroom] mutableCopy];
-            isHaveLesson = YES;
-            if (![lesson.period isEqual:@2]) {
-                [btnTitle appendFormat:@"(%@节)",lesson.period];
-            }
-            [self.btn setTitle:btnTitle forState:UIControlStateNormal];
-            break;
-        } //具体星期
+        }
     }
     
     BOOL isHaveRemind = NO;
     for (RemindMatter *remind in self.matter.remindArray) {
-        if([week isEqual:@0]){
-            if (isHaveLesson) {
-                [self showRemindWithLesson];
-            }
-            else{
-                [self showRemindWithoutLesson];
-            }
-            isHaveRemind = YES;
-            break;
-        } //本学期
-        if ([remind.week containsObject:week]) {
+        if ([week isEqual:@0]||[remind.week containsObject:week]) {
             if (isHaveLesson) {
                 [self showRemindWithLesson];
             }
@@ -129,13 +106,19 @@
 }
 
 - (void)showRemindWithoutLesson{
+    [self.btn setTitle:self.matter.remindArray[0].title forState:UIControlStateNormal];
     if (self.beginLesson<6 && self.beginLesson>=4) {
+        [self.btn setTitleColor:[UIColor colorWithHexString:@"#79dbc4"] forState:UIControlStateNormal];
+
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind2"] forState:UIControlStateNormal];
     }
     else if(self.beginLesson <4 && self.beginLesson>= 2){
+        [self.btn setTitleColor:[UIColor colorWithHexString:@"#f9af58"] forState:UIControlStateNormal];
+
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind1"] forState:UIControlStateNormal];
     }
     else if(self.beginLesson <2 &&self.beginLesson>=0){
+        [self.btn setTitleColor:[UIColor colorWithHexString:@"#64d2f7"] forState:UIControlStateNormal];
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind0"] forState:UIControlStateNormal];
     }
 }
