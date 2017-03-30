@@ -503,6 +503,7 @@
 		F2E502311E06E3D000806B6B /* WeekChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BD1E06E3CF00806B6B /* WeekChooseButton.m */; };
 		F2E502321E06E3D000806B6B /* WeekScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */; };
 		F2E90CB81E0813A200EA30A9 /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */; };
+		F2ECA2A71E8D55060052E58C /* LostAndFoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F2ECA2A61E8D55060052E58C /* LostAndFoundButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1234,6 +1235,8 @@
 		F2E501BF1E06E3CF00806B6B /* WeekScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekScrollView.m; sourceTree = "<group>"; };
 		F2E90CB61E0813A200EA30A9 /* LessonRemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
 		F2E90CB71E0813A200EA30A9 /* LessonRemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
+		F2ECA2A51E8D55060052E58C /* LostAndFoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LostAndFoundButton.h; path = LostAndFound/LostAndFoundButton.h; sourceTree = "<group>"; };
+		F2ECA2A61E8D55060052E58C /* LostAndFoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LostAndFoundButton.m; path = LostAndFound/LostAndFoundButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2514,6 +2517,8 @@
 				F25FC0E41E763E3E00075041 /* IssueTableViewController.h */,
 				F25FC0E51E763E3E00075041 /* IssueTableViewController.m */,
 				F25FC0E61E763E3E00075041 /* IssueTableViewController.xib */,
+				F2ECA2A51E8D55060052E58C /* LostAndFoundButton.h */,
+				F2ECA2A61E8D55060052E58C /* LostAndFoundButton.m */,
 			);
 			name = LostAndFound;
 			sourceTree = "<group>";
@@ -3418,6 +3423,7 @@
 				D9F9F0351D630AFC00CA98C1 /* BeautyCreatDetailViewController.m in Sources */,
 				F2E501D31E06E3CF00806B6B /* AddRemindViewController.m in Sources */,
 				D9DF5EA11CD0913B00C89F6A /* MBPhotoBrowser.m in Sources */,
+				F2ECA2A71E8D55060052E58C /* LostAndFoundButton.m in Sources */,
 				E2F0A3AA1D6165A600DFF37D /* FiveViewController.m in Sources */,
 				E2F0A3D01D6165A600DFF37D /* TwoViewController.m in Sources */,
 				E2176AD31D61C16C00A40B6E /* UIImage+FillColor.m in Sources */,

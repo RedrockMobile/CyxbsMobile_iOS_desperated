@@ -13,43 +13,38 @@
 #import "DetailLostViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "MJRefresh.h"
-#import <Masonry.h>
-#import "IssueTableViewController.h"
-#define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api"
+#define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api/view"
 
 @interface LostTableViewController ()
 @property NSMutableArray *itemArray;
-@property UIButton *addButton;
+@property NSMutableString *APIString;
 @end
 
 @implementation LostTableViewController
-- (instancetype)initWithTitle:(NSString *)title;{
+- (instancetype)initWithTitle:(NSString *)title Theme:(NSNumber *)theme{
     self = [self init];
     if (self) {
         self.title = title;
+        self.APIString = LOSTAPI.mutableCopy;
+        if (theme.integerValue == LZLost) {
+            [self.APIString appendString:@"/lost"];
+        }
+        else{
+            [self.APIString appendString:@"/found"];
+        }
+        if(![title isEqualToString:@"全部"]){
+        [self.APIString appendString:[NSString stringWithFormat:@"/%@",title.stringByURLEncode]];
+        }
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    self.addButton = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 60, 60)];
-   // self.addButton.layer.cornerRadius = self.addButton.size.width/2;
-   // self.addButton.layer.masksToBounds = YES;
-    [self.addButton setImage:[UIImage imageNamed:@"lost_image_add"] forState:UIControlStateNormal];
-    UIWindow *window = [[UIWindow alloc]initWithFrame:self.tableView.frame];
-    [window addSubview:self.addButton];
-    [window makeKeyAndVisible];
-    [self.addButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
-   
-    
-    
     self.tableView.estimatedRowHeight = 100.f;
     NSDictionary *paramters = nil;
     self.itemArray = [NSMutableArray array];
-    [[HttpClient defaultClient] requestWithPath:[LOSTAPI stringByAppendingString:@"/view/lost"] method:HttpRequestGet parameters:paramters prepareExecute:nil progress:^(NSProgress *progress) {
+    [[HttpClient defaultClient] requestWithPath:self.APIString method:HttpRequestGet parameters:paramters prepareExecute:nil progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
     
@@ -134,14 +129,6 @@
     }];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-}
-
-- (void)addIssue{
-    IssueTableViewController *vc = [[IssueTableViewController alloc]init];
-    [self.parentViewController.navigationController pushViewController:vc animated:YES];
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -9,15 +9,31 @@
 #import "IssueTableViewController.h"
 #import "IconTableViewCell.h"
 #import <Masonry.h>
-#import "WeekChooseButton.h"
+#import "LostAndFoundButton.h"
 @interface IssueTableViewController ()
-
+@property NSMutableArray *imageArray;
+@property LostAndFoundButton *lostBtn;
+@property LostAndFoundButton *foundBtn;
 @end
 
 @implementation IssueTableViewController
 
+
+- (void)viewDidLayoutSubviews{
+    self.foundBtn.layer.cornerRadius = self.foundBtn.frame.size.width/2;
+
+    self.lostBtn.layer.cornerRadius = self.lostBtn.frame.size.width/2;
+    self.foundBtn.layer.masksToBounds = YES;
+    self.lostBtn.layer.masksToBounds = YES;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.imageArray = [NSMutableArray array];
+    NSArray *imageNameArray = @[@"lost_image_infocategory",@"lost_image_itemcategory",@"lost_image_describe",@"lost_image_time",@"lost_image_place",@"lost_image_tel",@"lost_image_QQ"];
+    for (int i = 0; i<imageNameArray.count; i++) {
+        [self.imageArray addObject:[UIImage imageNamed:imageNameArray[i]]];
+    }
+    [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 16, 0, 16)];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -43,23 +59,74 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *array = @[@"信息分类",@"物品分类",@"描        述",@"时        间",@"地        点",@"电        话",@"Q         Q"];
     NSInteger index = indexPath.row;
     UITableViewCell *cell = [[UITableViewCell alloc]init];
-    if (index < 7) {
-        cell = [[[NSBundle mainBundle]loadNibNamed:@"IconTableViewCell" owner:self options:nil] lastObject];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (index<7) {
+        IconTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"IconTableViewCell" owner:self options:nil] lastObject];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.iconImageView.image = self.imageArray[index];
+        cell.titleLabel.text = array[index];
+        if (index == 0) {
+            [cell.contentLabel removeFromSuperview];
+            self.lostBtn = [[LostAndFoundButton alloc]initWithFrame:CGRectMake(10, 10, 40, 40)];
+            [self.lostBtn setTitle:@"寻物" forState:UIControlStateNormal];
+             self.foundBtn = [[LostAndFoundButton alloc]initWithFrame:CGRectMake(20, 20, 40, 40)];
+            [self.foundBtn setTitle:@"招领" forState:UIControlStateNormal];
+            [cell addSubview:self.lostBtn];
+            [cell addSubview:self.foundBtn];
+            [self.foundBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.right.equalTo(cell).offset(-16);
+                make.top.equalTo(cell).offset(8);
+                make.bottom.equalTo(cell).offset(-8);
+                make.width.equalTo(self.foundBtn.mas_height);
+            }];
+            [self.lostBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.size.equalTo(self.foundBtn);
+                make.centerY.equalTo(self.foundBtn.mas_centerY);
+                make.right.equalTo(self.foundBtn.mas_left).with.offset(-10);
+            }];
+        }
+        if(index == 1 || index == 3){
+            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        }
+        return cell;
     }
     else{
-        WeekChooseButton *button = [[WeekChooseButton alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-        [button setTitle:@"发布信息" forState:UIControlStateNormal];
-        button.layer.cornerRadius = 0;
-        [cell addSubview:button];
-        [button mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_offset(UIEdgeInsetsMake(10, 10, 10, 10));
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(10, 10, 10, 10)];
+        btn.layer.cornerRadius = 5;
+        btn.layer.masksToBounds = YES;
+        [btn addTarget:self action:@selector(issueInfo) forControlEvents:UIControlEventTouchUpInside];
+        [btn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"#41a3ff"]] forState:UIControlStateNormal];
+        [btn setTitle:@"发布信息" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [cell addSubview:btn];
+        UIEdgeInsets padding = UIEdgeInsetsMake(16, 16, 16, 16);
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.equalTo(cell).with.insets(padding);
         }];
+        
     }
-    NSArray *array = @[@"信息分类",@"物品分类",@"描        述",@"时        间",@"地        点",@"电        话",@"Q        Q"];
-
     return cell;
+
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return self.view.height/8;
+}
+
+- (void)issueInfo{
+    
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSInteger index = indexPath.row;
+    if (index==1){
+        
+    }
+    if (index==3) {
+        
+    }
 }
 
 /*

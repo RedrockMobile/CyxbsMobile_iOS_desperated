@@ -28,7 +28,7 @@
 
 - (void)initArray{
     NSArray *imageTitleArray = @[@"lost_image_com.png",@"lost_image_time.png",@"lost_image_place.png",@"lost_image_tel.png",@"lost_image_QQ.png"];
-    self.titleArray = @[@"联系人",@"时    间",@"地    点",@"电    话",@"Q    Q"];
+    self.titleArray = @[@"联系人",@"时    间",@"地    点",@"电    话",@"Q     Q"];
     self.imageArray = [NSMutableArray arrayWithCapacity:imageTitleArray.count];
     for (int i = 0; i<imageTitleArray.count; i++) {
         self.imageArray[i] = [UIImage imageNamed:imageTitleArray[i]];
@@ -47,7 +47,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    IconTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"IconTableViewCell" owner:nil options:nil] lastObject];
+    IconTableViewCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"IconTableViewCell" owner:nil options:nil] firstObject];
     NSInteger index = indexPath.row;
     cell.iconImageView.image = self.imageArray[index];
     cell.titleLabel.text = self.titleArray[index];
