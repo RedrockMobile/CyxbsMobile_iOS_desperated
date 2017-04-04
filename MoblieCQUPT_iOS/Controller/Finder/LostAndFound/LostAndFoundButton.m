@@ -19,6 +19,7 @@
         
         [self setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateSelected];
+        self.titleLabel.font = [UIFont systemFontOfSize:15];
         [self addTarget:self action:@selector(select:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LostTableViewController : UITableViewController
-- (instancetype)initWithTitle:(NSString *)title Theme:(NSNumber *)theme;
+- (instancetype)initWithTitle:(NSString *)title Theme:(NSInteger )theme;
 typedef NS_ENUM(NSInteger,LZTheme){
     LZLost = 0,
     LZFound = 1

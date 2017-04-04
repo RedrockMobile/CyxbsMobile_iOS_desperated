@@ -55,6 +55,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回箭头"]];
+    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回箭头"]];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    backItem.title=@"";
+    self.navigationItem.backBarButtonItem = backItem;
+
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _mainScrollView.showsVerticalScrollIndicator = NO;
     if (MAIN_SCREEN_W == 320 && MAIN_SCREEN_H == 480) {

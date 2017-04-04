@@ -206,6 +206,14 @@
     }
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    if(self.isShowRemindChooseView){
+        [self remindChooseViewAnimated];
+    }
+    [self.titileTextView resignFirstResponder];
+    [self.contentTextView resignFirstResponder];
+}
+
 - (void)remindChooseViewAnimated{
     if (self.isShowRemindChooseView == YES) {
         [UIView animateWithDuration:0.3 animations:^{
@@ -274,6 +282,8 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
+
 - (void)postRemind{
     NSMutableString *idString = [NSMutableString stringWithFormat:@"%ld",(long)([[NSDate date] timeIntervalSince1970]*1000)];
     [idString appendString:[NSString stringWithFormat:@"%d",arc4random()%10000]];
@@ -406,15 +416,6 @@
             [failureRequests writeToFile:failurePath atomically:YES];
         }];
     }
-}
-
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(self.isShowRemindChooseView){
-        [self remindChooseViewAnimated];
-    }
-    [self.titileTextView resignFirstResponder];
-    [self.contentTextView resignFirstResponder];
 }
 
 

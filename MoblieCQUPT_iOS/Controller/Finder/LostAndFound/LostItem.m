@@ -21,8 +21,7 @@
         self.created_at = [dic objectForKey:@"created_at"];
         self.L_or_F_time = [dic objectForKey:@"L_or_F_time"];
         self.L_or_F_place = [dic objectForKey:@"L_or_F_place"];
-        
-//        self.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.wx_avatar]]];
+        self.connect_phone = [dic objectForKey:@"connect_phone"];
     }
     return self;
 }

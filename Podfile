@@ -11,4 +11,5 @@ target 'MoblieCQUPT_iOS' do
 	pod 'YYKit'
 	pod 'GMImagePicker'
 	pod 'Masonry'
+	pod 'MJRefresh'
 end

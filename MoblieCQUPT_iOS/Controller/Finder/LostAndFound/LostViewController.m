@@ -14,20 +14,26 @@
 #import "IssueTableViewController.h"
 #import <Masonry.h>
 #import "IssueTableViewController.h"
-@interface LostViewController ()<SegmentViewScrollerViewDelegate>
+#import "LoginViewController.h"
+@interface LostViewController ()
 @property UISegmentedControl *segmentedControl;
 @property SegmentView *lostSegmentView;
 @property SegmentView *foundSegmentView;
+@property UIButton *addBtn;
 @end
 
 @implementation LostViewController
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated{
     self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    backItem.title=@"";
+    self.navigationItem.backBarButtonItem = backItem;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"失物启事",@"招领启事"]];
@@ -41,12 +47,12 @@
     NSMutableArray *lostArray = [NSMutableArray arrayWithCapacity:array.count];
     NSMutableArray *foundArray = [NSMutableArray arrayWithCapacity:array.count];
     for (int i = 0; i<array.count; i++) {
-        LostTableViewController *vc = [[LostTableViewController alloc]initWithTitle:array[i] Theme:@(LZLost)];
+        LostTableViewController *vc = [[LostTableViewController alloc]initWithTitle:array[i] Theme:LZLost];
         [self addChildViewController:vc];
         lostArray[i] = vc;
     }
     for (int i = 0; i<array.count; i++) {
-        LostTableViewController *vc = [[LostTableViewController alloc]initWithTitle:array[i] Theme:@(LZFound)];
+        LostTableViewController *vc = [[LostTableViewController alloc]initWithTitle:array[i] Theme:LZFound];
         [self addChildViewController:vc];
         foundArray[i] = vc;
     }
@@ -55,11 +61,11 @@
     self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) withTitle:[NSArray arrayWithArray:foundArray]];
     [self.view addSubview:self.lostSegmentView];
     
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 100, 100)];
-    [btn addTarget:self action:@selector(addAction) forControlEvents:UIControlEventTouchUpInside];
-    [btn setImage:[UIImage imageNamed:@"lost_image_add"] forState:UIControlStateNormal];
-    [self.view addSubview:btn];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+    self.addBtn = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 100, 100)];
+    [self.addBtn addTarget:self action:@selector(addAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.addBtn setImage:[UIImage imageNamed:@"lost_image_add"] forState:UIControlStateNormal];
+    [self.view addSubview:self.addBtn];
+    [self.addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view.mas_right).with.offset(-10);
         make.bottom.equalTo(self.view.mas_bottom).with.offset(-10);
     }];
@@ -75,11 +81,30 @@
 
 - (void)addAction{
     IssueTableViewController *vc = [[IssueTableViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    NSString *stuNum = [[NSUserDefaults standardUserDefaults] objectForKey:@"stuNum"];
+    if (stuNum == nil) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你还未登录 不能发布信息哦" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+            LoginViewController *login = [[LoginViewController alloc]init];
+            [self.navigationController pushViewController:login animated:YES];
+            login.loginSuccessHandler = ^(BOOL success) {
+                if (success) {
+                    [self.navigationController pushViewController:vc animated:YES];
+                }
+            };
+        }];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+        [alertController addAction:action];
+        [alertController addAction:ok];
+        [self.navigationController presentViewController:alertController animated:YES completion:nil];
+    }
+    else{
+        [self.navigationController pushViewController:vc animated:YES];
+    }
 }
 
 - (void)action:(UISegmentedControl *)segment{
+    [self.addBtn removeFromSuperview];
     NSString *title = [segment titleForSegmentAtIndex:segment.selectedSegmentIndex];
     if ([title isEqualToString:@"失物启事"]) {
         [self.foundSegmentView removeFromSuperview];
@@ -89,9 +114,11 @@
         [self.lostSegmentView removeFromSuperview];
         [self.view addSubview:self.foundSegmentView];
     }
-}
-- (void)eventWhenScrollSubViewWithIndex:(NSInteger)index{
-    
+    [self.view addSubview:self.addBtn];
+    [self.addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.view.mas_right).with.offset(-10);
+        make.bottom.equalTo(self.view.mas_bottom).with.offset(-10);
+    }];
 }
 /*
 #pragma mark - Navigation

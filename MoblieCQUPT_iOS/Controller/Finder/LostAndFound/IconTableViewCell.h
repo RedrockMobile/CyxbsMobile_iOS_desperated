@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IconTableViewCell : UITableViewCell
+@interface IconTableViewCell : UITableViewCell<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *contentTextField;
+
 
 @end
