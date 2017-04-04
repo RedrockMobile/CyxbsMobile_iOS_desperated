@@ -12,59 +12,104 @@
 #import "LostItem.h"
 #import "DetailLostViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "MJRefresh.h"
-#import <Masonry.h>
-#import "IssueTableViewController.h"
+#import <MJRefresh/MJRefresh.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 #define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api"
 
 @interface LostTableViewController ()
 @property NSMutableArray *itemArray;
-@property UIButton *addButton;
+@property NSMutableString *APIString;
+@property NSMutableString *nextPageString;
+@property NSInteger theme;
+typedef NS_ENUM(NSInteger,LZPlace){
+    header = 0,
+    footer = 1
+    
+};
 @end
 
 @implementation LostTableViewController
-- (instancetype)initWithTitle:(NSString *)title;{
+- (instancetype)initWithTitle:(NSString *)title Theme:(NSInteger )theme{
     self = [self init];
     if (self) {
         self.title = title;
+        self.theme = theme;
+        self.APIString = [LOSTAPI stringByAppendingString:@"/view"].mutableCopy ;
+        if (theme == LZLost) {
+            [self.APIString appendString:@"/lost"];
+        }
+        else{
+            [self.APIString appendString:@"/found"];
+        }
+        if([title isEqualToString:@"全部"]){
+            [self.APIString appendString:@"/all"];
+        }
+        else{
+            [self.APIString appendString:[NSString stringWithFormat:@"/%@",title.stringByURLEncode]];
+
+        }
     }
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    
-    self.addButton = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 60, 60)];
-   // self.addButton.layer.cornerRadius = self.addButton.size.width/2;
-   // self.addButton.layer.masksToBounds = YES;
-    [self.addButton setImage:[UIImage imageNamed:@"lost_image_add"] forState:UIControlStateNormal];
-    UIWindow *window = [[UIWindow alloc]initWithFrame:self.tableView.frame];
-    [window addSubview:self.addButton];
-    [window makeKeyAndVisible];
-    [self.addButton addTarget:self action:@selector(addIssue) forControlEvents:UIControlEventTouchUpInside];
-   
-    
-    
-    self.tableView.estimatedRowHeight = 100.f;
-    NSDictionary *paramters = nil;
-    self.itemArray = [NSMutableArray array];
-    [[HttpClient defaultClient] requestWithPath:[LOSTAPI stringByAppendingString:@"/view/lost"] method:HttpRequestGet parameters:paramters prepareExecute:nil progress:^(NSProgress *progress) {
+- (void)networkLoadData:(NSInteger)place{
+    NSString *path;
+    if (place==header) {
+        path = self.APIString;
+    }
+    else{
+        path = self.nextPageString;
+    }
+    if (path==nil) {
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        return;
+    }
+    [[HttpClient defaultClient] requestWithPath:path method:HttpRequestGet parameters:nil prepareExecute:nil progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-    
-        for (NSDictionary *dic in [responseObject objectForKey:@"data"]) {
-           [self.itemArray addObject:[[LostItem alloc]initWithDic:dic]];
+        if (place == footer) {
+            if(self.nextPageString == nil){
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            else{
+                [self.tableView.mj_footer endRefreshing];
+            }
         }
+        else{
+            self.itemArray = [NSMutableArray array];
+            [self.tableView.mj_header endRefreshing];
+            self.tableView.mj_footer.hidden = NO;
+        }
+        for (NSDictionary *dic in [responseObject objectForKey:@"data"]) {
+            [self.itemArray addObject:[[LostItem alloc]initWithDic:dic]];
+        }
+        self.nextPageString = [responseObject objectForKey:@"next_page_url"];
         [self.tableView reloadData];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"您的网络不给力!";
+        [hud hide:YES afterDelay:1];
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
     }];
-    [self.tableView addFooterWithCallback:^{
-        NSLog(@"hah");
+}
+
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.tableView.estimatedRowHeight = 100.f;
+    self.tableView.tableFooterView = [[UIView alloc]init];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        self.tableView.mj_footer.hidden = YES;
+        [self networkLoadData:header];
     }];
-    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self networkLoadData:footer];
+    }];
+    [self.tableView.mj_header beginRefreshing];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -98,7 +143,12 @@
     }
     
     cell.contentLabel.text = item.pro_description;
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:item.wx_avatar]];
+    if (self.theme == LZFound) {
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn%@",item.wx_avatar]]];
+    }
+    else{
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:item.wx_avatar]];
+    }
     cell.timeLabel.text = item.created_at;
     cell.categoryLabel.text = item.pro_name;
     cell.nameLabel.text = item.connect_name;
@@ -112,8 +162,9 @@
     return UITableViewAutomaticDimension;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 12;
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -126,22 +177,14 @@
     } progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
+      
         LostItem *detailItem = [[LostItem alloc]initWithDic:responseObject];
         [detailLostViewController refreshWithDetailInfo:detailItem];
-
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+     
     }];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    
-}
-
-- (void)addIssue{
-    IssueTableViewController *vc = [[IssueTableViewController alloc]init];
-    [self.parentViewController.navigationController pushViewController:vc animated:YES];
-}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

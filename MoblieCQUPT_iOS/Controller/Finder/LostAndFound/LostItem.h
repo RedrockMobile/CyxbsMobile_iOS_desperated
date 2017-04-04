@@ -19,6 +19,7 @@
 @property CGFloat cellHeight;
 @property NSString *L_or_F_time;
 @property NSString *L_or_F_place;
+@property NSString *connect_phone;
 @property UIImage  *image;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
