@@ -86,7 +86,7 @@
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你还未登录 不能发布信息哦" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
             LoginViewController *login = [[LoginViewController alloc]init];
-            [self.navigationController pushViewController:login animated:YES];
+            [self.navigationController presentViewController:login animated:YES completion:nil];
             login.loginSuccessHandler = ^(BOOL success) {
                 if (success) {
                     [self.navigationController pushViewController:vc animated:YES];

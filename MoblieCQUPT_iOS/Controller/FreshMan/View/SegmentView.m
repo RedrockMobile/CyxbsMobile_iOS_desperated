@@ -94,7 +94,7 @@
     
     _mainScrollView.showsHorizontalScrollIndicator = NO;
     _mainScrollView.showsVerticalScrollIndicator = NO;
-    _mainScrollView.contentSize = CGSizeMake(_subviewControllers.count*375, 0);
+    _mainScrollView.contentSize = CGSizeMake(_subviewControllers.count*SCREEN_WIDTH, 0);
     
     _mainScrollView.pagingEnabled = YES;
     _mainScrollView.bounces = NO;

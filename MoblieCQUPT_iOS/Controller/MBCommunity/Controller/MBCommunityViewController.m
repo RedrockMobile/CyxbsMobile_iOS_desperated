@@ -106,10 +106,10 @@
     for (int i = 0; i < self.tableViewArray.count; i ++) {
         [self.tableViewArray[i] reloadData];
     }
-    self.tabBarController.tabBar.hidden = NO;
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
     self.navigationItem.rightBarButtonItem = self.addButton;
     if (_currenSelectCellOfRow) {
         NSInteger row = [self.currenSelectCellOfRow integerValue];
