@@ -172,7 +172,7 @@
         [self.view.window addSubview:self.categoryChooseView];
         self.categoryChooseView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.categoryChooseView.frame = CGRectMake(0, SCREENHEIGHT/12*6.f, SCREENWIDTH, SCREENHEIGHT/12*6);
+            self.categoryChooseView.frame = CGRectMake(0, SCREENHEIGHT/2, SCREENWIDTH, SCREENHEIGHT/2);
         }completion:^(BOOL finished) {
             
         }];

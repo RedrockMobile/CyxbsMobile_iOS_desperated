@@ -14,6 +14,7 @@
 #import "MapViewController.h"
 #import "FreshManMainViewController.h"
 #import "LostViewController.h"
+#import "QuerLoginViewController.h"
 #define kCount 3
 
 @interface FinderViewController ()<UIScrollViewDelegate>
@@ -143,7 +144,7 @@
                      action:@selector(enterIntroduction)
            forControlEvents:UIControlEventTouchUpOutside];
     [_chuangyeBtn addTarget:self
-                     action:@selector(clickChuangye)
+                     action:@selector(clickLostAndFound)
            forControlEvents:UIControlEventTouchDown];
     
     [_mapBtn addTarget:self
@@ -224,7 +225,7 @@
     _chuangyeOfView.backgroundColor = [UIColor clearColor];
 }
 
-- (void)clickChuangye {
+- (void)clickLostAndFound {
     _chuangyeView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     _chuangyeOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
 }
@@ -259,8 +260,9 @@
 //    CommunityViewController *cvc = [[CommunityViewController alloc] init];
 //    [self.navigationController pushViewController:cvc
 //                                         animated:YES];
-    FreshManMainViewController *fvc = [[FreshManMainViewController alloc]init];
-    [self.navigationController pushViewController:fvc animated:YES];
+//    FreshManMainViewController *fvc = [[FreshManMainViewController alloc]init];
+    QuerLoginViewController *vc = [[QuerLoginViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
     _communityView.backgroundColor = [UIColor clearColor];
     _communityOfView.backgroundColor = [UIColor clearColor];
 }
