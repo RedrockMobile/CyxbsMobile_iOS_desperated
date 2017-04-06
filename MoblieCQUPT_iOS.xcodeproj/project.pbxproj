@@ -1109,6 +1109,7 @@
 		F22DD55C1E7002BD00013C25 /* 电费查询@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "电费查询@3x.png"; sourceTree = "<group>"; };
 		F22DD55D1E7002BD00013C25 /* 失物招领@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失物招领@2x.png"; sourceTree = "<group>"; };
 		F22DD55E1E7002BD00013C25 /* 失物招领@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失物招领@3x.png"; sourceTree = "<group>"; };
+		F23627131E962D4300607AF8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
 		F23D3DE81E0B79CF00B33D04 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F23D3DE91E0B79CF00B33D04 /* cqupt2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt2@2x.jpg"; sourceTree = "<group>"; };
 		F23D3DEA1E0B79CF00B33D04 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
@@ -1683,6 +1684,7 @@
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
+				F23627131E962D4300607AF8 /* Today.entitlements */,
 				3B26610C1BA6E422008632F3 /* Framework */,
 				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
 				CEF273701B90CFAB009B5BA2 /* libz.dylib */,
@@ -3088,7 +3090,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -3098,7 +3100,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -3756,6 +3758,7 @@
 		CE4334531BE7C52D000C407D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -3776,6 +3779,7 @@
 		CE4334541BE7C52D000C407D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -3883,6 +3887,7 @@
 			baseConfigurationReference = 0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -3922,6 +3927,7 @@
 			baseConfigurationReference = BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;

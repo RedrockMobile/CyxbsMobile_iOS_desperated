@@ -22,7 +22,6 @@
 #import "LoginViewController.h"
 #import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
-#define kAPPGroupID @"group.com.redrock.mobile"
 
 @interface LessonController ()
 @property MainView *mainView;
