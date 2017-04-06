@@ -32,7 +32,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     self.remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
     self.failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
@@ -50,6 +49,7 @@
     if(self.reminds.count == 0){
         [self showNoRemindView];
     }
+    [[RemindNotification shareInstance] creatIdentifiers];
 }
 - (void)viewWillAppear:(BOOL)animated{
     self.editButton.selected = NO;
