@@ -50,12 +50,22 @@
     [self creatNumberLabel];
     [self creatLessonLabel];
     [self creatRoomLabel];
+    if (!self.lessonLabelArray.count) {
+        [self noClassView];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1];
     self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
+}
+
+- (void)noClassView{
+    UILabel *infoLable = [[UILabel alloc] init];
+    [self makeLabelWithText:@"今天没有课哦~" frame:CGRectMake(NumberLabelWidth * 8,4 * NumberLabelHeight, MaxWidth , 4 * NumberLabelHeight) label:infoLable color:[UIColor clearColor] courseLesson:YES];
+    infoLable.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+    [self.view addSubview:infoLable];
 }
 
 - (void)creatRoomLabel
@@ -67,9 +77,13 @@
         UILabel *infoLabel = [[UILabel alloc] init];
         CGRect labelFrame = self.lessonLabelArray[i].frame;
         
-        labelFrame.origin.x = NumberLabelWidth + LessonLabelWidth;
-        labelFrame.size.width = ClassroomLabelWidth;
-        
+        if (infoStr.length >= 14) {
+            labelFrame.origin.x = NumberLabelWidth + LessonLabelWidth - 62;
+            labelFrame.size.width = ClassroomLabelWidth + 62;
+        }else{
+            labelFrame.origin.x = NumberLabelWidth + LessonLabelWidth - 38;
+            labelFrame.size.width = ClassroomLabelWidth + 38;
+        }
         [self makeLabelWithText:infoStr frame:labelFrame label:infoLabel color:self.lessonLabelArray[i].backgroundColor courseLesson:YES];
         [self.view addSubview:infoLabel];
     }
@@ -80,10 +94,9 @@
     NSString *infoStr = [[NSString alloc] init];
     UIColor *lableColor = [[UIColor alloc] init];
     self.lessonLabelArray = [[NSMutableArray alloc] init];
-    int hashLesson,beginLesson,period;
+    int beginLesson,period;
     for (int i = 0; i < self.weekDataArray.count; i++) {
         UILabel *infoLabel = [[UILabel alloc] init];
-        hashLesson = [[NSString stringWithFormat:@"%@",self.weekDataArray[i][@"hash_lesson"]] intValue];
         beginLesson = [[NSString stringWithFormat:@"%@",self.weekDataArray[i][@"begin_lesson"]] intValue];
         period = [[NSString stringWithFormat:@"%@",self.weekDataArray[i][@"period"]]intValue];
         infoStr = [NSString stringWithFormat:@"     %@",self.weekDataArray[i][@"course"]];
@@ -96,10 +109,7 @@
         if (beginLesson<=4){
             lableColor = [UIColor colorWithRed:99/255.f green:210/255.f blue:246/255.f alpha:1];
         }
-        if (hashLesson!=0) {
-            hashLesson += period;
-        }
-        [self makeLabelWithText:infoStr frame:CGRectMake(NumberLabelWidth, hashLesson * NumberLabelHeight, LessonLabelWidth, period * NumberLabelHeight) label:infoLabel color:lableColor courseLesson:YES];
+        [self makeLabelWithText:infoStr frame:CGRectMake(NumberLabelWidth,(beginLesson - 1) * NumberLabelHeight, LessonLabelWidth, period * NumberLabelHeight) label:infoLabel color:lableColor courseLesson:YES];
         [self.lessonLabelArray addObject:infoLabel];
         [self.view addSubview:infoLabel];
     }
@@ -150,43 +160,58 @@
     }
 }
 
-
-- (NSString *)weekDayStr
-{
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    
-    [outputFormatter setDateFormat:@"EEEE"];
-    
-    NSString *newDateString = [outputFormatter stringFromDate:[NSDate date]];
-    
-    if ([newDateString isEqualToString:@"星期一"]) {
-        return @"0";
+- (NSString *)weekDayStr{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDate *now = [NSDate date];
+    calendar.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    comps = [calendar components:unitFlags fromDate:now];
+    if (comps.weekday == 1) {
+        comps.weekday = 6;
+    }else{
+        comps.weekday -= 2;
     }
-    if ([newDateString isEqualToString:@"星期二"]) {
-        
-        return @"1";
-    }
-    if ([newDateString isEqualToString:@"星期三"]) {
-        
-        return @"2";
-    }
-    if ([newDateString isEqualToString:@"星期四"]) {
-        
-        return @"3";
-    }
-    if ([newDateString isEqualToString:@"星期五"]) {
-        
-        return @"4";
-    }
-    if ([newDateString isEqualToString:@"星期六"]) {
-        
-        return @"5";
-    }
-    if ([newDateString isEqualToString:@"星期天"]) {
-        return @"6";
-    }
-    return 0;
+    NSString *nowWeek = [NSString stringWithFormat:@"%ld",(long)[comps weekday]];
+    return nowWeek;
 }
+
+//- (NSString *)weekDayStr
+//{
+//    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
+//
+//    [outputFormatter setDateFormat:@"EEEE"];
+//
+//    NSString *newDateString = [outputFormatter stringFromDate:[NSDate date]];
+//
+//    if ([newDateString isEqualToString:@"星期一"]) {
+//        return @"0";
+//    }
+//    if ([newDateString isEqualToString:@"星期二"]) {
+//
+//        return @"1";
+//    }
+//    if ([newDateString isEqualToString:@"星期三"]) {
+//
+//        return @"2";
+//    }
+//    if ([newDateString isEqualToString:@"星期四"]) {
+//
+//        return @"3";
+//    }
+//    if ([newDateString isEqualToString:@"星期五"]) {
+//
+//        return @"4";
+//    }
+//    if ([newDateString isEqualToString:@"星期六"]) {
+//
+//        return @"5";
+//    }
+//    if ([newDateString isEqualToString:@"星期日"]) {
+//        return @"6";
+//    }
+//    return 0;
+//}
 
 - (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
 {

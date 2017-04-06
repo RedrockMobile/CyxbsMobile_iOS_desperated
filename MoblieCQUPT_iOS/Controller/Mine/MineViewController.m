@@ -66,7 +66,6 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
-    self.tabBarController.tabBar.hidden = NO;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     //网络请求头像和简介
@@ -238,6 +237,7 @@
             if ((className = _cellDictionary[indexPath.section][@"controller"])) {
         
                 UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
+                viewController.hidesBottomBarWhenPushed = YES;
                 viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
                 self.navigationController.navigationBarHidden = NO;
                 [self.navigationController pushViewController:viewController animated:YES];
@@ -281,6 +281,7 @@
             NSLog(@"%ld",indexPath.section);
             UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
             viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
+            viewController.hidesBottomBarWhenPushed = YES;
             self.navigationController.navigationBarHidden = NO;
             [self.navigationController pushViewController:viewController animated:YES];
         }

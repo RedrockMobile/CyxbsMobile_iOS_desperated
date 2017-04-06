@@ -81,6 +81,7 @@
     self.textFieldArray = [NSMutableArray arrayWithCapacity:3];
     self.titleArray = @[@"信息分类",@"物品分类",@"描        述",@"时        间",@"地        点",@"电        话",@"Q         Q"];
     self.imageArray = [NSMutableArray array];
+    self.descriptionTextView = [[UITextView alloc] init];
     NSArray *imageNameArray = @[@"lost_image_infocategory",@"lost_image_itemcategory",@"lost_image_describe",@"lost_image_time",@"lost_image_place",@"lost_image_tel",@"lost_image_QQ"];
     for (int i = 0; i<imageNameArray.count; i++) {
         [self.imageArray addObject:[UIImage imageNamed:imageNameArray[i]]];
@@ -171,7 +172,7 @@
         [self.view.window addSubview:self.categoryChooseView];
         self.categoryChooseView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.categoryChooseView.frame = CGRectMake(0, SCREENHEIGHT/12*6.f, SCREENWIDTH, SCREENHEIGHT/12*6);
+            self.categoryChooseView.frame = CGRectMake(0, SCREENHEIGHT/2, SCREENWIDTH, SCREENHEIGHT/2);
         }completion:^(BOOL finished) {
             
         }];
@@ -327,7 +328,6 @@
                 cell.contentLabel.text = self.model.pickTime;
             }
             if (index==2) {
-                self.descriptionTextView = [[UITextView alloc]init];
                 [cell addSubview:self.descriptionTextView];
                 self.descriptionTextView.delegate = self;
                 [self.descriptionTextView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -341,9 +341,14 @@
         }
         if(index>=4 && index<7){
             cell = [[[NSBundle mainBundle]loadNibNamed:@"IconTableViewCell" owner:self options:nil] lastObject];
-            cell.contentTextField.text = @"";
-            cell.contentTextField.delegate = self;
+            if (self.textFieldArray.count == 3) {
+                cell.contentTextField.text = self.textFieldArray[index-4].text;
+            }
+            else{
+                cell.contentTextField.text = @"";
+            }
             self.textFieldArray[index-4] = cell.contentTextField;
+            cell.contentTextField.delegate = self;
         }
         cell.iconImageView.image = self.imageArray[index];
         cell.titleLabel.text = self.titleArray[index];
@@ -361,6 +366,7 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if(indexPath.row==2){
         return 186;

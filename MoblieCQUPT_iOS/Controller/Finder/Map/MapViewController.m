@@ -25,7 +25,6 @@
     self.navigationItem.title = @"重邮地图";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    self.tabBarController.tabBar.hidden = YES;
 }
 
 @end

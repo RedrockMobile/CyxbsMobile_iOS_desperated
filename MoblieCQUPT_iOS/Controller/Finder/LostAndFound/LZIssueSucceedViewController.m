@@ -7,7 +7,7 @@
 //
 
 #import "LZIssueSucceedViewController.h"
-
+#import "IssueTableViewController.h"
 @interface LZIssueSucceedViewController ()
 
 @end
@@ -16,12 +16,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+  
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void)viewWillAppear:(BOOL)animated{
+    NSInteger index=0;
+    NSMutableArray *array = [self.navigationController.viewControllers mutableCopy];
+    //得到当前视图控制器中的所有控制器
+    for (int i = 0; i<self.navigationController.viewControllers.count; i++) {
+        if ([self.navigationController.viewControllers[i] isKindOfClass:[IssueTableViewController class]]) {
+            index = i;
+        }
+    }
+    [array removeObjectAtIndex:index];
+    //把B从里面删除
+
+    [self.navigationController setViewControllers:[array copy] animated:YES];
+    //把删除后的控制器数组再次赋值
+
 }
 
 /*

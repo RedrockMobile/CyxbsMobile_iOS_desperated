@@ -45,11 +45,6 @@
     [self.view addSubview:self.tableView];
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
-}
-
 
 #pragma mark - 分页加载
 //集成刷新控件

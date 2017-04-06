@@ -14,6 +14,7 @@
 #import "MapViewController.h"
 #import "FreshManMainViewController.h"
 #import "LostViewController.h"
+#import "QuerLoginViewController.h"
 #define kCount 3
 
 @interface FinderViewController ()<UIScrollViewDelegate>
@@ -143,7 +144,7 @@
                      action:@selector(enterIntroduction)
            forControlEvents:UIControlEventTouchUpOutside];
     [_chuangyeBtn addTarget:self
-                     action:@selector(clickChuangye)
+                     action:@selector(clickLostAndFound)
            forControlEvents:UIControlEventTouchDown];
     
     [_mapBtn addTarget:self
@@ -182,17 +183,16 @@
     self.navigationController.navigationBar.hidden = NO;
     self.tabBarController.navigationItem.rightBarButtonItem = nil;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
-//    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)enterShop{
     ShopViewController *svc = [[ShopViewController alloc] init];
+    svc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:svc
                                          animated:YES];
     _shopView.backgroundColor = [UIColor clearColor];
@@ -205,6 +205,7 @@
 
 - (void)enterWeb{
     WebViewController *wvc = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
+    wvc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:wvc
                                          animated:YES];
     _redrockView.backgroundColor = [UIColor clearColor];
@@ -218,19 +219,21 @@
 
 - (void)enterIntroduction{
     LostViewController *cvc = [[LostViewController alloc] init];
+    cvc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:cvc
                                          animated:YES];
     _chuangyeView.backgroundColor = [UIColor clearColor];
     _chuangyeOfView.backgroundColor = [UIColor clearColor];
 }
 
-- (void)clickChuangye {
+- (void)clickLostAndFound {
     _chuangyeView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
     _chuangyeOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
 }
 
 - (void)enterMap{
     MapViewController *mvc = [[MapViewController alloc] init];
+    mvc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:mvc
                                          animated:YES];
     _mapView.backgroundColor = [UIColor clearColor];
@@ -244,6 +247,7 @@
 
 - (void)enterShake{
     ShakeViewController *svc = [[ShakeViewController alloc] init];
+    svc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:svc
                                          animated:YES];
     _shakeForShopView.backgroundColor = [UIColor clearColor];
@@ -259,8 +263,10 @@
 //    CommunityViewController *cvc = [[CommunityViewController alloc] init];
 //    [self.navigationController pushViewController:cvc
 //                                         animated:YES];
-    FreshManMainViewController *fvc = [[FreshManMainViewController alloc]init];
-    [self.navigationController pushViewController:fvc animated:YES];
+//    FreshManMainViewController *fvc = [[FreshManMainViewController alloc]init];
+    QuerLoginViewController *vc = [[QuerLoginViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
     _communityView.backgroundColor = [UIColor clearColor];
     _communityOfView.backgroundColor = [UIColor clearColor];
 }

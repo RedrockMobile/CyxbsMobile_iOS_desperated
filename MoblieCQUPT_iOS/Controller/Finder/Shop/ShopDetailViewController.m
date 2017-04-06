@@ -231,7 +231,6 @@
     [super viewDidAppear:animated];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    self.tabBarController.tabBar.hidden = YES;
 //    self.scrollView.frame = [UIScreen mainScreen].bounds;
 //    [self.scrollView setContentSize:CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H * 1.3)];
 }

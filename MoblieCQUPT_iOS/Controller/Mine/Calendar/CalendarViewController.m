@@ -67,8 +67,6 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = YES;
-}
+
 
 @end

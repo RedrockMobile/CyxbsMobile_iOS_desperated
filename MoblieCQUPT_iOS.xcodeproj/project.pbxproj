@@ -340,6 +340,33 @@
 		F204206B1E095CA1003807BA /* NoLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = F204206A1E095CA1003807BA /* NoLoginView.m */; };
 		F204206E1E097A61003807BA /* 返回箭头@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F204206C1E097A61003807BA /* 返回箭头@2x.png */; };
 		F204206F1E097A61003807BA /* 返回箭头@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F204206D1E097A61003807BA /* 返回箭头@3x.png */; };
+		F2097A351E94E80A00337EA1 /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A081E94E80A00337EA1 /* achieveImage.png */; };
+		F2097A361E94E80A00337EA1 /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A091E94E80A00337EA1 /* angleImage.png */; };
+		F2097A371E94E80A00337EA1 /* buildIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A0A1E94E80A00337EA1 /* buildIcon.png */; };
+		F2097A381E94E80A00337EA1 /* doneImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A0B1E94E80A00337EA1 /* doneImage.png */; };
+		F2097A391E94E80A00337EA1 /* InstallBuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A0D1E94E80A00337EA1 /* InstallBuildTableViewCell.m */; };
+		F2097A3A1E94E80A00337EA1 /* InstallcurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A0F1E94E80A00337EA1 /* InstallcurrentViewController.m */; };
+		F2097A3B1E94E80A00337EA1 /* InstallRoomDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A111E94E80A00337EA1 /* InstallRoomDoneViewController.m */; };
+		F2097A3C1E94E80A00337EA1 /* InstallRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A131E94E80A00337EA1 /* InstallRoomViewController.m */; };
+		F2097A3D1E94E80A00337EA1 /* IntallFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A151E94E80A00337EA1 /* IntallFailViewController.m */; };
+		F2097A3E1E94E80A00337EA1 /* querElecIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A161E94E80A00337EA1 /* querElecIcon.png */; };
+		F2097A3F1E94E80A00337EA1 /* roomIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A171E94E80A00337EA1 /* roomIcon.png */; };
+		F2097A401E94E80A00337EA1 /* buildCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A1A1E94E80A00337EA1 /* buildCircleView.m */; };
+		F2097A411E94E80A00337EA1 /* leftIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A1B1E94E80A00337EA1 /* leftIcon.png */; };
+		F2097A421E94E80A00337EA1 /* PointingCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A1D1E94E80A00337EA1 /* PointingCircleView.m */; };
+		F2097A431E94E80A00337EA1 /* QuerCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A1F1E94E80A00337EA1 /* QuerCircleView.m */; };
+		F2097A441E94E80A00337EA1 /* QuerCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A211E94E80A00337EA1 /* QuerCurveView.m */; };
+		F2097A451E94E80A00337EA1 /* QuerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A231E94E80A00337EA1 /* QuerInfo.m */; };
+		F2097A461E94E80A00337EA1 /* QuerLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A251E94E80A00337EA1 /* QuerLoginModel.m */; };
+		F2097A471E94E80A00337EA1 /* QuerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A271E94E80A00337EA1 /* QuerLoginViewController.m */; };
+		F2097A481E94E80A00337EA1 /* QuerNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A291E94E80A00337EA1 /* QuerNoteView.m */; };
+		F2097A491E94E80A00337EA1 /* QuerPullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A2B1E94E80A00337EA1 /* QuerPullTableViewCell.m */; };
+		F2097A4A1E94E80A00337EA1 /* rightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A2C1E94E80A00337EA1 /* rightIcon.png */; };
+		F2097A4B1E94E80A00337EA1 /* triangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A2E1E94E80A00337EA1 /* triangleView.m */; };
+		F2097A4C1E94E80A00337EA1 /* unitImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A2F1E94E80A00337EA1 /* unitImage.png */; };
+		F2097A4D1E94E80A00337EA1 /* QuerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2097A321E94E80A00337EA1 /* QuerRemindViewController.m */; };
+		F2097A4E1E94E80A00337EA1 /* reinstallImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A331E94E80A00337EA1 /* reinstallImage.png */; };
+		F2097A4F1E94E80A00337EA1 /* remindImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F2097A341E94E80A00337EA1 /* remindImage.png */; };
 		F22DD55A1E6FFDC900013C25 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F22DD5591E6FFDC900013C25 /* LostViewController.m */; };
 		F22DD55F1E7002BD00013C25 /* 电费查询@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F22DD55B1E7002BD00013C25 /* 电费查询@2x.png */; };
 		F22DD5601E7002BD00013C25 /* 电费查询@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F22DD55C1E7002BD00013C25 /* 电费查询@3x.png */; };
@@ -1033,12 +1060,56 @@
 		F204206A1E095CA1003807BA /* NoLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoLoginView.m; sourceTree = "<group>"; };
 		F204206C1E097A61003807BA /* 返回箭头@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回箭头@2x.png"; sourceTree = "<group>"; };
 		F204206D1E097A61003807BA /* 返回箭头@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "返回箭头@3x.png"; sourceTree = "<group>"; };
+		F2097A081E94E80A00337EA1 /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
+		F2097A091E94E80A00337EA1 /* angleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleImage.png; sourceTree = "<group>"; };
+		F2097A0A1E94E80A00337EA1 /* buildIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildIcon.png; sourceTree = "<group>"; };
+		F2097A0B1E94E80A00337EA1 /* doneImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneImage.png; sourceTree = "<group>"; };
+		F2097A0C1E94E80A00337EA1 /* InstallBuildTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallBuildTableViewCell.h; sourceTree = "<group>"; };
+		F2097A0D1E94E80A00337EA1 /* InstallBuildTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallBuildTableViewCell.m; sourceTree = "<group>"; };
+		F2097A0E1E94E80A00337EA1 /* InstallcurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallcurrentViewController.h; sourceTree = "<group>"; };
+		F2097A0F1E94E80A00337EA1 /* InstallcurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallcurrentViewController.m; sourceTree = "<group>"; };
+		F2097A101E94E80A00337EA1 /* InstallRoomDoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomDoneViewController.h; sourceTree = "<group>"; };
+		F2097A111E94E80A00337EA1 /* InstallRoomDoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomDoneViewController.m; sourceTree = "<group>"; };
+		F2097A121E94E80A00337EA1 /* InstallRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomViewController.h; sourceTree = "<group>"; };
+		F2097A131E94E80A00337EA1 /* InstallRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomViewController.m; sourceTree = "<group>"; };
+		F2097A141E94E80A00337EA1 /* IntallFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntallFailViewController.h; sourceTree = "<group>"; };
+		F2097A151E94E80A00337EA1 /* IntallFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntallFailViewController.m; sourceTree = "<group>"; };
+		F2097A161E94E80A00337EA1 /* querElecIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = querElecIcon.png; sourceTree = "<group>"; };
+		F2097A171E94E80A00337EA1 /* roomIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roomIcon.png; sourceTree = "<group>"; };
+		F2097A191E94E80A00337EA1 /* buildCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildCircleView.h; sourceTree = "<group>"; };
+		F2097A1A1E94E80A00337EA1 /* buildCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buildCircleView.m; sourceTree = "<group>"; };
+		F2097A1B1E94E80A00337EA1 /* leftIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftIcon.png; sourceTree = "<group>"; };
+		F2097A1C1E94E80A00337EA1 /* PointingCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointingCircleView.h; sourceTree = "<group>"; };
+		F2097A1D1E94E80A00337EA1 /* PointingCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointingCircleView.m; sourceTree = "<group>"; };
+		F2097A1E1E94E80A00337EA1 /* QuerCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCircleView.h; sourceTree = "<group>"; };
+		F2097A1F1E94E80A00337EA1 /* QuerCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCircleView.m; sourceTree = "<group>"; };
+		F2097A201E94E80A00337EA1 /* QuerCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCurveView.h; sourceTree = "<group>"; };
+		F2097A211E94E80A00337EA1 /* QuerCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCurveView.m; sourceTree = "<group>"; };
+		F2097A221E94E80A00337EA1 /* QuerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerInfo.h; sourceTree = "<group>"; };
+		F2097A231E94E80A00337EA1 /* QuerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerInfo.m; sourceTree = "<group>"; };
+		F2097A241E94E80A00337EA1 /* QuerLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginModel.h; sourceTree = "<group>"; };
+		F2097A251E94E80A00337EA1 /* QuerLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginModel.m; sourceTree = "<group>"; };
+		F2097A261E94E80A00337EA1 /* QuerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginViewController.h; sourceTree = "<group>"; };
+		F2097A271E94E80A00337EA1 /* QuerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginViewController.m; sourceTree = "<group>"; };
+		F2097A281E94E80A00337EA1 /* QuerNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerNoteView.h; sourceTree = "<group>"; };
+		F2097A291E94E80A00337EA1 /* QuerNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerNoteView.m; sourceTree = "<group>"; };
+		F2097A2A1E94E80A00337EA1 /* QuerPullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerPullTableViewCell.h; sourceTree = "<group>"; };
+		F2097A2B1E94E80A00337EA1 /* QuerPullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerPullTableViewCell.m; sourceTree = "<group>"; };
+		F2097A2C1E94E80A00337EA1 /* rightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightIcon.png; sourceTree = "<group>"; };
+		F2097A2D1E94E80A00337EA1 /* triangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangleView.h; sourceTree = "<group>"; };
+		F2097A2E1E94E80A00337EA1 /* triangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = triangleView.m; sourceTree = "<group>"; };
+		F2097A2F1E94E80A00337EA1 /* unitImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unitImage.png; sourceTree = "<group>"; };
+		F2097A311E94E80A00337EA1 /* QuerRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerRemindViewController.h; sourceTree = "<group>"; };
+		F2097A321E94E80A00337EA1 /* QuerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerRemindViewController.m; sourceTree = "<group>"; };
+		F2097A331E94E80A00337EA1 /* reinstallImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reinstallImage.png; sourceTree = "<group>"; };
+		F2097A341E94E80A00337EA1 /* remindImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remindImage.png; sourceTree = "<group>"; };
 		F22DD5581E6FFDC900013C25 /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LostViewController.h; path = LostAndFound/LostViewController.h; sourceTree = "<group>"; };
 		F22DD5591E6FFDC900013C25 /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LostViewController.m; path = LostAndFound/LostViewController.m; sourceTree = "<group>"; };
 		F22DD55B1E7002BD00013C25 /* 电费查询@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "电费查询@2x.png"; sourceTree = "<group>"; };
 		F22DD55C1E7002BD00013C25 /* 电费查询@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "电费查询@3x.png"; sourceTree = "<group>"; };
 		F22DD55D1E7002BD00013C25 /* 失物招领@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失物招领@2x.png"; sourceTree = "<group>"; };
 		F22DD55E1E7002BD00013C25 /* 失物招领@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失物招领@3x.png"; sourceTree = "<group>"; };
+		F23627181E963EAA00607AF8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Today.entitlements; path = ../Today.entitlements; sourceTree = "<group>"; };
 		F23D3DE81E0B79CF00B33D04 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F23D3DE91E0B79CF00B33D04 /* cqupt2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt2@2x.jpg"; sourceTree = "<group>"; };
 		F23D3DEA1E0B79CF00B33D04 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
@@ -1417,6 +1488,7 @@
 				CE922F7F1C9C49A5000B9DA0 /* Model */,
 				CE907C0A1C193B1A00B22D49 /* resoure */,
 				CE25501F1C15BD9500BCDDB8 /* ClassWidget.entitlements */,
+				F23627181E963EAA00607AF8 /* Today.entitlements */,
 				CE43344B1BE7C52D000C407D /* TodayViewController.h */,
 				CE43344C1BE7C52D000C407D /* TodayViewController.m */,
 				CE43344E1BE7C52D000C407D /* MainInterface.storyboard */,
@@ -2194,6 +2266,7 @@
 			children = (
 				F2C868811E853B8200C4AB67 /* FinderViewController.h */,
 				F2C868821E853B8200C4AB67 /* FinderViewController.m */,
+				F2097A061E94E80A00337EA1 /* Query */,
 				F22DD5571E6FFD5A00013C25 /* LostAndFound */,
 				F23D3DE31E0B79CF00B33D04 /* Resource */,
 				D9FAECF61BEDF5220010ED3F /* View.xib */,
@@ -2570,6 +2643,80 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		F2097A061E94E80A00337EA1 /* Query */ = {
+			isa = PBXGroup;
+			children = (
+				F2097A071E94E80A00337EA1 /* QuerInstall */,
+				F2097A181E94E80A00337EA1 /* QuerLogin */,
+				F2097A301E94E80A00337EA1 /* QuerRemind */,
+			);
+			path = Query;
+			sourceTree = "<group>";
+		};
+		F2097A071E94E80A00337EA1 /* QuerInstall */ = {
+			isa = PBXGroup;
+			children = (
+				F2097A081E94E80A00337EA1 /* achieveImage.png */,
+				F2097A091E94E80A00337EA1 /* angleImage.png */,
+				F2097A0A1E94E80A00337EA1 /* buildIcon.png */,
+				F2097A0B1E94E80A00337EA1 /* doneImage.png */,
+				F2097A0C1E94E80A00337EA1 /* InstallBuildTableViewCell.h */,
+				F2097A0D1E94E80A00337EA1 /* InstallBuildTableViewCell.m */,
+				F2097A0E1E94E80A00337EA1 /* InstallcurrentViewController.h */,
+				F2097A0F1E94E80A00337EA1 /* InstallcurrentViewController.m */,
+				F2097A101E94E80A00337EA1 /* InstallRoomDoneViewController.h */,
+				F2097A111E94E80A00337EA1 /* InstallRoomDoneViewController.m */,
+				F2097A121E94E80A00337EA1 /* InstallRoomViewController.h */,
+				F2097A131E94E80A00337EA1 /* InstallRoomViewController.m */,
+				F2097A141E94E80A00337EA1 /* IntallFailViewController.h */,
+				F2097A151E94E80A00337EA1 /* IntallFailViewController.m */,
+				F2097A161E94E80A00337EA1 /* querElecIcon.png */,
+				F2097A171E94E80A00337EA1 /* roomIcon.png */,
+			);
+			path = QuerInstall;
+			sourceTree = "<group>";
+		};
+		F2097A181E94E80A00337EA1 /* QuerLogin */ = {
+			isa = PBXGroup;
+			children = (
+				F2097A191E94E80A00337EA1 /* buildCircleView.h */,
+				F2097A1A1E94E80A00337EA1 /* buildCircleView.m */,
+				F2097A1C1E94E80A00337EA1 /* PointingCircleView.h */,
+				F2097A1D1E94E80A00337EA1 /* PointingCircleView.m */,
+				F2097A1E1E94E80A00337EA1 /* QuerCircleView.h */,
+				F2097A1F1E94E80A00337EA1 /* QuerCircleView.m */,
+				F2097A201E94E80A00337EA1 /* QuerCurveView.h */,
+				F2097A211E94E80A00337EA1 /* QuerCurveView.m */,
+				F2097A221E94E80A00337EA1 /* QuerInfo.h */,
+				F2097A231E94E80A00337EA1 /* QuerInfo.m */,
+				F2097A241E94E80A00337EA1 /* QuerLoginModel.h */,
+				F2097A251E94E80A00337EA1 /* QuerLoginModel.m */,
+				F2097A261E94E80A00337EA1 /* QuerLoginViewController.h */,
+				F2097A271E94E80A00337EA1 /* QuerLoginViewController.m */,
+				F2097A281E94E80A00337EA1 /* QuerNoteView.h */,
+				F2097A291E94E80A00337EA1 /* QuerNoteView.m */,
+				F2097A2A1E94E80A00337EA1 /* QuerPullTableViewCell.h */,
+				F2097A2B1E94E80A00337EA1 /* QuerPullTableViewCell.m */,
+				F2097A2C1E94E80A00337EA1 /* rightIcon.png */,
+				F2097A1B1E94E80A00337EA1 /* leftIcon.png */,
+				F2097A2D1E94E80A00337EA1 /* triangleView.h */,
+				F2097A2E1E94E80A00337EA1 /* triangleView.m */,
+				F2097A2F1E94E80A00337EA1 /* unitImage.png */,
+			);
+			path = QuerLogin;
+			sourceTree = "<group>";
+		};
+		F2097A301E94E80A00337EA1 /* QuerRemind */ = {
+			isa = PBXGroup;
+			children = (
+				F2097A311E94E80A00337EA1 /* QuerRemindViewController.h */,
+				F2097A321E94E80A00337EA1 /* QuerRemindViewController.m */,
+				F2097A331E94E80A00337EA1 /* reinstallImage.png */,
+				F2097A341E94E80A00337EA1 /* remindImage.png */,
+			);
+			path = QuerRemind;
+			sourceTree = "<group>";
+		};
 		F22DD5571E6FFD5A00013C25 /* LostAndFound */ = {
 			isa = PBXGroup;
 			children = (
@@ -2943,7 +3090,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -2953,7 +3100,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -3034,6 +3181,7 @@
 				F2E501F51E06E3CF00806B6B /* 书@3x.png in Resources */,
 				D94F63621CE17DFA00F91664 /* xia.png in Resources */,
 				E263C7861BA35E26008488FA /* WebViewController.xib in Resources */,
+				F2097A4C1E94E80A00337EA1 /* unitImage.png in Resources */,
 				D99B76981C8DBC9B00FFE538 /* emptyClassTag.png in Resources */,
 				E218DCF01CD20AC200DD3C8C /* QGERestTimeCourseViewController.xib in Resources */,
 				D9B581481C9184210083DCEE /* edit.png in Resources */,
@@ -3067,6 +3215,7 @@
 				E2F0A3BF1D6165A600DFF37D /* 寝室介绍3.txt in Resources */,
 				E2F0A3B71D6165A600DFF37D /* 学生手册节选.txt in Resources */,
 				F2E501FB1E06E3CF00806B6B /* 地点@2x.png in Resources */,
+				F2097A4A1E94E80A00337EA1 /* rightIcon.png in Resources */,
 				F2C868A41E85480C00C4AB67 /* lost_image_many@2x.png in Resources */,
 				D9F9F0321D62F44D00CA98C1 /* courseMengbi.jpg in Resources */,
 				E263C7881BA35E26008488FA /* ShakeViewController.xib in Resources */,
@@ -3081,6 +3230,7 @@
 				E2F0A3B61D6165A600DFF37D /* 奖学金设置.txt in Resources */,
 				CE5402E01BDD2DAB00488428 /* icon_menu_4@2x.png in Resources */,
 				CEF2738D1B90D573009B5BA2 /* 20-3.png in Resources */,
+				F2097A361E94E80A00337EA1 /* angleImage.png in Resources */,
 				F2E501D41E06E3CF00806B6B /* AddRemindViewController.xib in Resources */,
 				F2E502071E06E3D000806B6B /* 提醒@2x.png in Resources */,
 				F23D3E071E0B79CF00B33D04 /* shop_new@2x.png in Resources */,
@@ -3101,6 +3251,7 @@
 				F2C868991E85480C00C4AB67 /* lost_image_infocategory@3x.png in Resources */,
 				F2E5020B1E06E3D000806B6B /* 无考试@2x.png in Resources */,
 				E2889BCE1CDF153A00E94127 /* AboutMePraiseTableViewCell.xib in Resources */,
+				F2097A4E1E94E80A00337EA1 /* reinstallImage.png in Resources */,
 				F2E501FF1E06E3CF00806B6B /* 多课1@2x.png in Resources */,
 				D909287C1CACC7B700CA97CD /* icon_menu_2@2x.png in Resources */,
 				F2C868AB1E85539600C4AB67 /* lost_image_add@3x.png in Resources */,
@@ -3129,6 +3280,7 @@
 				F23D3DFF1E0B79CF00B33D04 /* ok.png in Resources */,
 				F25FC0E81E763E3E00075041 /* IssueTableViewController.xib in Resources */,
 				E2F0A3C21D6165A600DFF37D /* 朝天门.txt in Resources */,
+				F2097A3E1E94E80A00337EA1 /* querElecIcon.png in Resources */,
 				CEF2738E1B90D573009B5BA2 /* 20-3a.png in Resources */,
 				CE0ADC9B1BDDD03E00374CDC /* 期末成绩@2x.png in Resources */,
 				F2E501E91E06E3CF00806B6B /* remind1@3x.png in Resources */,
@@ -3136,6 +3288,7 @@
 				3B1388B51BA353F70011EBF2 /* XBSScheduleTableViewCell.xib in Resources */,
 				F204206E1E097A61003807BA /* 返回箭头@2x.png in Resources */,
 				E2F0A3B01D6165A600DFF37D /* GuideViewController.xib in Resources */,
+				F2097A371E94E80A00337EA1 /* buildIcon.png in Resources */,
 				F2C8687C1E853B3700C4AB67 /* lost_image_QQ@3x.png in Resources */,
 				CEF273921B90D573009B5BA2 /* 20-3补考.png in Resources */,
 				F2E501F31E06E3CF00806B6B /* 不提醒@3x.png in Resources */,
@@ -3173,6 +3326,7 @@
 				CE1B36E11B9A1B6800824B96 /* new_icon_menu_3.png in Resources */,
 				E238270A1B9477D80058970E /* CourseViewController.xib in Resources */,
 				F23D3E021E0B79CF00B33D04 /* shake@2x.png in Resources */,
+				F2097A4F1E94E80A00337EA1 /* remindImage.png in Resources */,
 				F2C8689F1E85480C00C4AB67 /* lost_image_lackplace@3x.png in Resources */,
 				F2C868981E85480C00C4AB67 /* lost_image_infocategory@2x.png in Resources */,
 				F2C8687A1E853B3700C4AB67 /* lost_image_place@3x.png in Resources */,
@@ -3181,6 +3335,7 @@
 				E2E7DE261B94764A0081F699 /* LoginViewController.xib in Resources */,
 				F2E502081E06E3D000806B6B /* 提醒@3x.png in Resources */,
 				F2E502061E06E3CF00806B6B /* 左三角@3x.png in Resources */,
+				F2097A351E94E80A00337EA1 /* achieveImage.png in Resources */,
 				CEE614901BEA4B9A004873AA /* MJRefresh.bundle in Resources */,
 				CE0ADC9C1BDDD03E00374CDC /* 校历@2x.png in Resources */,
 				CE0ADC9E1BDDD03E00374CDC /* 考试安排@2x.png in Resources */,
@@ -3223,6 +3378,7 @@
 				E20F27DC1D6203D100C5DF79 /* 红岩网校工作站简介.txt in Resources */,
 				F2E5020D1E06E3D000806B6B /* 无课@2x.png in Resources */,
 				F2014D1C1E936EB300A2CA80 /* LZIssueSucceedViewController.xib in Resources */,
+				F2097A3F1E94E80A00337EA1 /* roomIcon.png in Resources */,
 				F23D3DFC1E0B79CF00B33D04 /* cqupt3@2x.jpg in Resources */,
 				D99C4A841B9AB70200BEF33C /* iconfont_meizhou.png in Resources */,
 				D9DF5E861CD090EE00C89F6A /* MBCommuityDetailsViewController.xib in Resources */,
@@ -3232,6 +3388,7 @@
 				E2F0A3C31D6165A600DFF37D /* 江北机场.txt in Resources */,
 				D9DF5E881CD090EE00C89F6A /* MBCommunityViewController.xib in Resources */,
 				D94F635B1CE1718000F91664 /* addPhoto.jpg in Resources */,
+				F2097A411E94E80A00337EA1 /* leftIcon.png in Resources */,
 				F2E501EF1E06E3CF00806B6B /* 上拉@3x.png in Resources */,
 				CE267A221BA4A9B90059C2A5 /* splash.jpg in Resources */,
 				CEE6147C1BEA3F2B004873AA /* ProgressHUD.bundle in Resources */,
@@ -3274,6 +3431,7 @@
 				E263C79C1BA35E60008488FA /* FirstViewController.xib in Resources */,
 				CE0ADC9F1BDDD03E00374CDC /* 补考安排@2x.png in Resources */,
 				F2E501FC1E06E3CF00806B6B /* 地点@3x.png in Resources */,
+				F2097A381E94E80A00337EA1 /* doneImage.png in Resources */,
 				CEF273861B90D573009B5BA2 /* 20-2b.png in Resources */,
 				F22DD55F1E7002BD00013C25 /* 电费查询@2x.png in Resources */,
 				E2F0A3B91D6165A600DFF37D /* 寝室0.jpg in Resources */,
@@ -3357,6 +3515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2097A3A1E94E80A00337EA1 /* InstallcurrentViewController.m in Sources */,
 				E218DCE81CD20AC200DD3C8C /* GradeView.m in Sources */,
 				CEF61B361B82BC950014B980 /* ViewController.m in Sources */,
 				D9DF5EB81CD0915300C89F6A /* MBCommunityModel.m in Sources */,
@@ -3364,7 +3523,9 @@
 				E2176ACC1D61C16C00A40B6E /* LZListView.m in Sources */,
 				3BFA631B1BA1AC91005B025D /* XBSConsultConfig.m in Sources */,
 				F2B30B0E1E6AACD700B7C70E /* UILabel+Adapter.m in Sources */,
+				F2097A421E94E80A00337EA1 /* PointingCircleView.m in Sources */,
 				E218DCE21CD20AC200DD3C8C /* XBSViewController.m in Sources */,
+				F2097A4D1E94E80A00337EA1 /* QuerRemindViewController.m in Sources */,
 				E218DCEB1CD20AC200DD3C8C /* MyInfoViewController.m in Sources */,
 				E2F0A3CF1D6165A600DFF37D /* ThreeViewController.m in Sources */,
 				E2C75D921CE0A82F00EA8FEA /* MBAddPhotoContainerView.m in Sources */,
@@ -3388,6 +3549,7 @@
 				F249F9C91E92024F0005594E /* CategoryChooseView.m in Sources */,
 				E218DCF11CD20AC200DD3C8C /* QGERestTimeDetailView.m in Sources */,
 				E263C79F1BA35E60008488FA /* NewsViewController.m in Sources */,
+				F2097A491E94E80A00337EA1 /* QuerPullTableViewCell.m in Sources */,
 				3B37F0AD1B8C4644009C1E94 /* MainViewController.m in Sources */,
 				F2C868641E853B2B00C4AB67 /* DetailLostViewController.m in Sources */,
 				D94F63601CE175E200F91664 /* NSNull+Helper.m in Sources */,
@@ -3419,12 +3581,14 @@
 				3BC309FB1BA52CF7000E6FD7 /* XBSFindClassroomTableViewCell.m in Sources */,
 				E2F0A3B11D6165A600DFF37D /* OneTableViewCell.m in Sources */,
 				F2E502241E06E3D000806B6B /* LessonBtnModel.m in Sources */,
+				F2097A401E94E80A00337EA1 /* buildCircleView.m in Sources */,
 				E2889BCD1CDF153A00E94127 /* AboutMePraiseTableViewCell.m in Sources */,
 				E2C75D951CE0A85900EA8FEA /* MBAddImageView.m in Sources */,
 				E20F27E61D6203D100C5DF79 /* BeautyCreatViewController.m in Sources */,
 				E263C7891BA35E26008488FA /* DetailDishView.m in Sources */,
 				E2F0A3B31D6165A600DFF37D /* OneViewController.m in Sources */,
 				E218DCE61CD20AC200DD3C8C /* ExamGradeViewController.m in Sources */,
+				F2097A3C1E94E80A00337EA1 /* InstallRoomViewController.m in Sources */,
 				F2E501C21E06E3CF00806B6B /* BaseViewController.m in Sources */,
 				F2E5022D1E06E3D000806B6B /* LessonNumLabel.m in Sources */,
 				E263C7871BA35E26008488FA /* ShakeViewController.m in Sources */,
@@ -3445,6 +3609,7 @@
 				F2E5022A1E06E3D000806B6B /* CoverView.m in Sources */,
 				E20F27EA1D6203D100C5DF79 /* BeautyExcellentTeacherVeiewController.m in Sources */,
 				E20F27E41D6203D100C5DF79 /* BeautyCquptViewController.m in Sources */,
+				F2097A451E94E80A00337EA1 /* QuerInfo.m in Sources */,
 				F2014D1B1E936EB300A2CA80 /* LZIssueSucceedViewController.m in Sources */,
 				E263C79B1BA35E60008488FA /* FirstViewController.m in Sources */,
 				F2E501DE1E06E3CF00806B6B /* LessonController.m in Sources */,
@@ -3467,6 +3632,7 @@
 				F2E501D11E06E3CF00806B6B /* RemindTableViewCell.m in Sources */,
 				F204206B1E095CA1003807BA /* NoLoginView.m in Sources */,
 				F2E501DA1E06E3CF00806B6B /* DetailViewController.m in Sources */,
+				F2097A3D1E94E80A00337EA1 /* IntallFailViewController.m in Sources */,
 				F2E501C31E06E3CF00806B6B /* UIColor+Hex.m in Sources */,
 				E2F0A36A1D61611300DFF37D /* FreshManMainViewController.m in Sources */,
 				F25FC0E71E763E3E00075041 /* IssueTableViewController.m in Sources */,
@@ -3485,15 +3651,19 @@
 				D9F9F0351D630AFC00CA98C1 /* BeautyCreatDetailViewController.m in Sources */,
 				F2E501D31E06E3CF00806B6B /* AddRemindViewController.m in Sources */,
 				D9DF5EA11CD0913B00C89F6A /* MBPhotoBrowser.m in Sources */,
+				F2097A391E94E80A00337EA1 /* InstallBuildTableViewCell.m in Sources */,
+				F2097A481E94E80A00337EA1 /* QuerNoteView.m in Sources */,
 				F2ECA2A71E8D55060052E58C /* LostAndFoundButton.m in Sources */,
 				E2F0A3AA1D6165A600DFF37D /* FiveViewController.m in Sources */,
 				E2F0A3D01D6165A600DFF37D /* TwoViewController.m in Sources */,
+				F2097A431E94E80A00337EA1 /* QuerCircleView.m in Sources */,
 				E2176AD31D61C16C00A40B6E /* UIImage+FillColor.m in Sources */,
 				F2E502251E06E3D000806B6B /* LessonMatter.m in Sources */,
 				F2C868671E853B2B00C4AB67 /* IconTableViewCell.m in Sources */,
 				CEE614971BEA4B9A004873AA /* UIScrollView+MJRefresh.m in Sources */,
 				F2C8686A1E853B2B00C4AB67 /* LostTableViewCell.m in Sources */,
 				E20F27E81D6203D100C5DF79 /* BeautyExcellentStudentViewController.m in Sources */,
+				F2097A471E94E80A00337EA1 /* QuerLoginViewController.m in Sources */,
 				CEE614941BEA4B9A004873AA /* MJRefreshFooterView.m in Sources */,
 				E23A7D6C1E23CCC4005C2E56 /* ExamScheduleTableViewCell.m in Sources */,
 				D9DF5EB01CD0914A00C89F6A /* UIImage+Helper.m in Sources */,
@@ -3508,6 +3678,7 @@
 				E24749551CDB4591006AEB9B /* SettingViewController.m in Sources */,
 				F2E501DB1E06E3CF00806B6B /* ExamViewController.m in Sources */,
 				F2E501E31E06E3CF00806B6B /* TimeHandle.m in Sources */,
+				F2097A3B1E94E80A00337EA1 /* InstallRoomDoneViewController.m in Sources */,
 				F249F9CF1E9232AD0005594E /* LZDatePicker.m in Sources */,
 				E2889BD31CDF42D400E94127 /* UITextField+Custom.m in Sources */,
 				D9DF5E9F1CD0913B00C89F6A /* MBBrowserItem.m in Sources */,
@@ -3527,6 +3698,7 @@
 				F249F9D51E92ABDA0005594E /* LZLostRemindView.m in Sources */,
 				F2E502321E06E3D000806B6B /* WeekScrollView.m in Sources */,
 				E2C75DAE1CE1C8E300EA8FEA /* MyMessagesTableViewCell.m in Sources */,
+				F2097A4B1E94E80A00337EA1 /* triangleView.m in Sources */,
 				E218DCD51CD20AC200DD3C8C /* AboutMeTableViewCell.m in Sources */,
 				F2E90CB81E0813A200EA30A9 /* LessonRemindNotification.m in Sources */,
 				E2F0A3AC1D6165A600DFF37D /* GGCellModel.m in Sources */,
@@ -3540,6 +3712,8 @@
 				E2E7DE251B94764A0081F699 /* LoginViewController.m in Sources */,
 				E20F27EB1D6203D100C5DF79 /* BeautyOrganizationView.m in Sources */,
 				F2E501C01E06E3CF00806B6B /* BaseMatter.m in Sources */,
+				F2097A461E94E80A00337EA1 /* QuerLoginModel.m in Sources */,
+				F2097A441E94E80A00337EA1 /* QuerCurveView.m in Sources */,
 				E23827071B9477D80058970E /* CourseButton.m in Sources */,
 				F22DD55A1E6FFDC900013C25 /* LostViewController.m in Sources */,
 				F2E501D51E06E3CF00806B6B /* DetailLessonController.m in Sources */,
@@ -3584,6 +3758,7 @@
 		CE4334531BE7C52D000C407D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -3604,6 +3779,7 @@
 		CE4334541BE7C52D000C407D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -3711,6 +3887,7 @@
 			baseConfigurationReference = 0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -3750,6 +3927,7 @@
 			baseConfigurationReference = BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;

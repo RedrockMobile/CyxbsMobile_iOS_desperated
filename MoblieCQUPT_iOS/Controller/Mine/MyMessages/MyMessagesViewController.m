@@ -43,7 +43,6 @@
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = YES;
     self.automaticallyAdjustsScrollViewInsets = YES;
-    self.tabBarController.tabBar.hidden = YES;
     self.navigationItem.title = @"个人动态";
     [self.view addSubview:self.communityTableView];
     [self setupRefresh];
@@ -121,11 +120,6 @@
         _communityTableView.sectionFooterHeight = 0;
     }
     return _communityTableView;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
