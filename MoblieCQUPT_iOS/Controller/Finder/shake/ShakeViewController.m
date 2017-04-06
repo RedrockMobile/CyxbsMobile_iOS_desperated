@@ -54,7 +54,6 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    self.tabBarController.tabBar.hidden = YES;
     
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
     [self becomeFirstResponder];
@@ -98,7 +97,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
     for (int i = 1; i<= 3; i++) {
         [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
             _data = [[NSMutableArray alloc] init];

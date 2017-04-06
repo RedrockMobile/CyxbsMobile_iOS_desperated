@@ -52,9 +52,7 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-}
+
 - (void)initWeekSelectedList {
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     _weekViewShow = NO;

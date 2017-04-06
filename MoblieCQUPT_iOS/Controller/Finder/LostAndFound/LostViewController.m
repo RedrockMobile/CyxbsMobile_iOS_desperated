@@ -24,10 +24,6 @@
 
 @implementation LostViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = YES;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];

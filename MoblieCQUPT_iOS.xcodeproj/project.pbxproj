@@ -1109,7 +1109,7 @@
 		F22DD55C1E7002BD00013C25 /* 电费查询@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "电费查询@3x.png"; sourceTree = "<group>"; };
 		F22DD55D1E7002BD00013C25 /* 失物招领@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失物招领@2x.png"; sourceTree = "<group>"; };
 		F22DD55E1E7002BD00013C25 /* 失物招领@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失物招领@3x.png"; sourceTree = "<group>"; };
-		F23627131E962D4300607AF8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
+		F23627181E963EAA00607AF8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Today.entitlements; path = ../Today.entitlements; sourceTree = "<group>"; };
 		F23D3DE81E0B79CF00B33D04 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F23D3DE91E0B79CF00B33D04 /* cqupt2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt2@2x.jpg"; sourceTree = "<group>"; };
 		F23D3DEA1E0B79CF00B33D04 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
@@ -1488,6 +1488,7 @@
 				CE922F7F1C9C49A5000B9DA0 /* Model */,
 				CE907C0A1C193B1A00B22D49 /* resoure */,
 				CE25501F1C15BD9500BCDDB8 /* ClassWidget.entitlements */,
+				F23627181E963EAA00607AF8 /* Today.entitlements */,
 				CE43344B1BE7C52D000C407D /* TodayViewController.h */,
 				CE43344C1BE7C52D000C407D /* TodayViewController.m */,
 				CE43344E1BE7C52D000C407D /* MainInterface.storyboard */,
@@ -1684,7 +1685,6 @@
 		CEF61B211B82BC950014B980 = {
 			isa = PBXGroup;
 			children = (
-				F23627131E962D4300607AF8 /* Today.entitlements */,
 				3B26610C1BA6E422008632F3 /* Framework */,
 				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
 				CEF273701B90CFAB009B5BA2 /* libz.dylib */,

@@ -42,9 +42,6 @@
 @end
 
 @implementation LessonController
-- (void)viewDidAppear:(BOOL)animated{
-    self.tabBarController.tabBar.hidden = NO;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -238,14 +235,14 @@
 
 - (void)showDetail:(UIButton *)sender{
     self.detailViewController = [[DetailViewController alloc]initWithMatters:self.controllerArray[sender.tag].matter week:self.selectedWeek time:sender.tag];
+    self.detailViewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:self.detailViewController animated:YES];
-    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)addAction{
     AddRemindViewController *vc = [[AddRemindViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
-    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)clickWeek:(UIButton *)sender{

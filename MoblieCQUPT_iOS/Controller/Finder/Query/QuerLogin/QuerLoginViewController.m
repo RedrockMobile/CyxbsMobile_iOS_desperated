@@ -49,7 +49,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.tabBarController.tabBar.hidden = YES;
 
     QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0, 450, 375, 247)];
     

@@ -35,7 +35,6 @@
     [super viewDidLoad];
     [self initUI];
     [self postGradeData];
-    self.tabBarController.tabBar.hidden = YES;
     
     // Do any additional setup after loading the view from its nib.
 }

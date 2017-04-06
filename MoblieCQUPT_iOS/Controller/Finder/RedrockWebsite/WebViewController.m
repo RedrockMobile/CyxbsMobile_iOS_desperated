@@ -36,7 +36,6 @@
     self.navigationItem.title = @"红岩门户";
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{

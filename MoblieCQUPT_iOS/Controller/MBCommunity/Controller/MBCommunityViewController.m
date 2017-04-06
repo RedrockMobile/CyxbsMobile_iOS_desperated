@@ -109,7 +109,6 @@
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.tabBarController.tabBar.hidden = NO;
     self.navigationItem.rightBarButtonItem = self.addButton;
     if (_currenSelectCellOfRow) {
         NSInteger row = [self.currenSelectCellOfRow integerValue];
@@ -281,6 +280,7 @@
 
     }else if (stuNum.length != 0) {
         MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
+        releaseVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController presentViewController:releaseVC animated:YES completion:nil];
     }
 
@@ -409,7 +409,7 @@
 //点击cell的头像的代理方法
 - (void)eventWhenclickHeadImageView:(MBCommunityModel *)model {
     MyMessagesViewController *myMeVc = [[MyMessagesViewController alloc]initWithLoadType:MessagesViewLoadTypeOther withCommunityModel:model];
-    
+    myMeVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myMeVc animated:YES];
 }
 
@@ -418,6 +418,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     MBCommuityDetailsViewController *d = [[MBCommuityDetailsViewController alloc]init];
+    d.hidesBottomBarWhenPushed = YES;
     
     MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
     if (tableView.tag == 0) {
