@@ -48,7 +48,7 @@ static RemindNotification *_instance;
 - (NSMutableArray *)eventArray
 {
     if (!_eventArray) {
-        self.eventArray = [[NSMutableArray alloc] init];
+        _eventArray = [[NSMutableArray alloc] init];
     }
     return _eventArray;
 }
@@ -56,7 +56,7 @@ static RemindNotification *_instance;
 - (NSMutableDictionary *)identifierDic
 {
     if (!_identifierDic) {
-        self.identifierDic = [[NSMutableDictionary alloc] init];
+        _identifierDic = [[NSMutableDictionary alloc] init];
     }
     return _identifierDic;
 }
@@ -64,7 +64,6 @@ static RemindNotification *_instance;
 - (void)deleteAllNotification
 {
     NSMutableArray *identifiers = [[NSMutableArray alloc] init];
-    NSString *idStr = [[NSString alloc] init];
     
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [docPath stringByAppendingPathComponent:@"remind.plist"];
@@ -74,14 +73,15 @@ static RemindNotification *_instance;
     
     for (NSInteger i = 0; i < events.count; i++) {
         newDataDic = events[i];
-        idStr = [NSString stringWithFormat:@"%@",newDataDic[@"id"]];
-        identifiers = self.identifierDic[idStr];
-        [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:identifiers];
-        [self.identifierDic removeObjectForKey:idStr];
+        identifiers = self.identifierDic[newDataDic[@"id"]];
+        for (int i = 0; i < identifiers.count; i++) {
+            [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:@[identifiers[i]]];
+        }
+        [self.identifierDic removeObjectForKey:newDataDic[@"id"]];
     }
 }
 
-- (void)updateNotificationWithIdetifiers:(NSString *)newIdentifier
+- (void)updateNotificationWithIdetifiers:(id)newIdentifier
 {
     NSMutableArray *events = [[NSMutableArray alloc] init];
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
@@ -196,7 +196,6 @@ static RemindNotification *_instance;
 - (void)deleteNotificationAndIdentifiers
 {
     NSMutableArray *identifiers = [[NSMutableArray alloc] init];
-    NSString *idStr = [[NSString alloc] init];
     
     NSString *docPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *filePath = [docPath stringByAppendingPathComponent:@"remind.plist"];
@@ -204,19 +203,20 @@ static RemindNotification *_instance;
     
     NSDictionary *newDataDic = [[NSDictionary alloc] init];
     NSDictionary *oldDataDic = [[NSDictionary alloc] init];
-    
+    oldDataDic = self.eventArray[0];
     for (NSInteger i = 0; i < events.count; i++) {
         newDataDic = events[i];
-        oldDataDic = self.eventArray[i];
-        if (![newDataDic[@"id"] isEqual:oldDataDic[@"id"]])
-        {
-            idStr = [NSString stringWithFormat:@"%@",oldDataDic[@"id"]];
-            break;
+        for (NSInteger j = 0 ; j < self.eventArray.count; j++) {
+            oldDataDic = self.eventArray[j];
+            if (![newDataDic[@"id"] isEqual:oldDataDic[@"id"]])
+            {
+                goto found;
+            }
         }
     }
-    identifiers = self.identifierDic[idStr];
+    found :  identifiers = self.identifierDic[oldDataDic[@"id"]];
     [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:identifiers];
-    [self.identifierDic removeObjectForKey:idStr];
+    [self.identifierDic removeObjectForKey:oldDataDic[@"id"]];
     self.eventArray = events;
 }
 
@@ -267,8 +267,8 @@ static RemindNotification *_instance;
     
     UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:comp repeats:NO];
     
-    ////测试用trigger
-    //    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:20 repeats:NO];
+    //    //测试用trigger
+    //        UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:30 repeats:NO];
     
     NSString *requestIdentifier = identifier;
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:calendarTrigger];
@@ -318,7 +318,7 @@ static RemindNotification *_instance;
     
     NSString *dateStr = [formatter stringFromDate:intervalDate];
     
-    NSString *timeStr = [NSString stringWithFormat:@" %@",[beginTimes objectForKey:day]];
+    NSString *timeStr = [NSString stringWithFormat:@" %@",[beginTimes objectForKey:beginClass]];
     
     dateStr = [dateStr stringByAppendingString:timeStr];
     
@@ -326,42 +326,21 @@ static RemindNotification *_instance;
 }
 
 
-- (NSString *)weekDayStr
-{
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    
-    [outputFormatter setDateFormat:@"EEEE"];
-    [outputFormatter setTimeZone:[NSTimeZone systemTimeZone]];
-    
-    NSString *newDateString = [outputFormatter stringFromDate:[NSDate date]];
-    
-    if ([newDateString isEqualToString:@"星期一"]) {
-        return @"0";
+- (NSString *)weekDayStr{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDate *now = [NSDate date];
+    calendar.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    comps = [calendar components:unitFlags fromDate:now];
+    if (comps.weekday == 1) {
+        comps.weekday = 6;
+    }else{
+        comps.weekday -= 2;
     }
-    if ([newDateString isEqualToString:@"星期二"]) {
-        
-        return @"1";
-    }
-    if ([newDateString isEqualToString:@"星期三"]) {
-        
-        return @"2";
-    }
-    if ([newDateString isEqualToString:@"星期四"]) {
-        
-        return @"3";
-    }
-    if ([newDateString isEqualToString:@"星期五"]) {
-        
-        return @"4";
-    }
-    if ([newDateString isEqualToString:@"星期六"]) {
-        
-        return @"5";
-    }
-    if ([newDateString isEqualToString:@"星期天"]) {
-        return @"6";
-    }
-    return 0;
+    NSString *nowWeek = [NSString stringWithFormat:@"%ld",(long)[comps weekday]];
+    return nowWeek;
 }
+
 
 @end

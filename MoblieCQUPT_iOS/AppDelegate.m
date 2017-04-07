@@ -22,6 +22,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    _window.backgroundColor = [UIColor whiteColor];
     // Override point for customization after application launch.
     //BUGHD
     //[BugHD handleCrashWithKey:@"24f1019e4d09ab778e0b9f2780ae4de0"];
