@@ -11,6 +11,7 @@
 @implementation MeCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
 }
 
