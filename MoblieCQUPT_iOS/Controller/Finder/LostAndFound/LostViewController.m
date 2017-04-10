@@ -39,7 +39,7 @@
     [self.segmentedControl setSelectedSegmentIndex:0];
     
     
-    NSArray *array = @[@"全部",@"一卡通",@"钱包",@"钥匙",@"电子产品",@"雨伞",@"衣物",@"其他"];
+    NSArray *array = @[@"全部",@"一卡通",@"钱包",@"电子产品",@"书包",@"钥匙",@"雨伞",@"衣物",@"其他"];
     NSMutableArray *lostArray = [NSMutableArray arrayWithCapacity:array.count];
     NSMutableArray *foundArray = [NSMutableArray arrayWithCapacity:array.count];
     for (int i = 0; i<array.count; i++) {
