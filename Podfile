@@ -12,4 +12,5 @@ target 'MoblieCQUPT_iOS' do
 	pod 'GMImagePicker'
 	pod 'Masonry'
 	pod 'MJRefresh'
+	pod 'ProgressHUD'
 end

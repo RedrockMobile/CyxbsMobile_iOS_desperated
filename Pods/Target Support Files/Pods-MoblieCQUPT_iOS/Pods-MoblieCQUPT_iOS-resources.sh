@@ -92,6 +92,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "GMImagePicker/GMImagePicker/it.lproj"
   install_resource "GMImagePicker/GMImagePicker/pt.lproj"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "ProgressHUD/ProgressHUD/ProgressHUD/ProgressHUD.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GMImagePicker/GMImagePicker/GMEmptyFolder@1x.png"
@@ -109,6 +110,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GMImagePicker/GMImagePicker/it.lproj"
   install_resource "GMImagePicker/GMImagePicker/pt.lproj"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
+  install_resource "ProgressHUD/ProgressHUD/ProgressHUD/ProgressHUD.bundle"
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"

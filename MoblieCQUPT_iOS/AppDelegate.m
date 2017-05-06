@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "MineViewController.h"
-#import "XBSGradeViewController.h"
-#import "XBSFindClassroomViewController.h"
 #import "MBReleaseViewController.h"
 #import <UserNotifications/UserNotifications.h>
 
