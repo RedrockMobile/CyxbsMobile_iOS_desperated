@@ -12,38 +12,26 @@
 #import "MBSegmentedView.h"
 #import "MBCommunityTableView.h"
 #import "MBCommunityCellTableViewCell.h"
+
 #import "MBCommuityDetailsViewController.h"
 #import "MBReleaseViewController.h"
 #import "LoginViewController.h"
 #import "MyMessagesViewController.h"
 #import "MJrefresh.h"
+#import <MBProgressHUD/MBProgressHUD.h>
 
 @interface MBCommunityViewController ()<UITableViewDataSource,UITableViewDelegate,MBCommunityCellEventDelegate>
 
 @property (strong, nonatomic) MBSegmentedView *segmentView;
 
 @property (strong, nonatomic) UIBarButtonItem *addButton;
-
-@property (strong, nonatomic) NSMutableArray *dataArray;
-@property (strong, nonatomic) NSMutableArray *frameArray;
-
-@property (strong, nonatomic) NSMutableArray *hotData;
-@property (strong, nonatomic) NSMutableArray *BBDDData;
-@property (strong, nonatomic) NSMutableArray *newsData;
-
-@property (assign, nonatomic) BOOL isLoadingHotData;
-@property (assign, nonatomic) BOOL isLoadingBBDDData;
-@property (assign, nonatomic) BOOL isLoadingNewsData;
-
-@property (strong, nonatomic) NSMutableDictionary *allData;
-
+@property NSMutableArray <NSDictionary *>* dataDicArray;
 @property (strong, nonatomic) NSMutableArray<MBCommunityTableView *> *tableViewArray;
 @property (strong, nonatomic) NSMutableArray *indicatorViewArray;
+@property (strong, nonatomic) NSDictionary *tempDic;
 
-@property (copy, nonatomic) NSString *currenSelectCellOfRow;
-@property (copy, nonatomic) NSString *currenSelectCellOfTableView;
-
-//@property (strong, nonatomic) UIActivityIndicatorView *indicatorView;
+//@property (copy, nonatomic) NSString *currenSelectCellOfRow;
+//@property (copy, nonatomic) NSString *currenSelectCellOfTableView;
 
 @end
 
@@ -51,10 +39,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _isLoadingHotData = NO;
-    _isLoadingBBDDData = NO;
-    _isLoadingNewsData = NO;
-    _allData = [NSMutableDictionary dictionary];
+    self.dataDicArray = [NSMutableArray array];
+    for (int i = 0; i<3; i++) {
+        [self.dataDicArray addObject:
+                @{@"page":@0,
+                  @"viewModels":
+                    [NSMutableArray array]}];
+    }
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.tabBarController.navigationItem.rightBarButtonItem = self.addButton;
     NSArray *segments = @[@"热门动态",@"哔哔叨叨",@"官方资讯"];
@@ -63,10 +54,20 @@
     // block回调
     __weak typeof(self) weakSelf = self;
     _segmentView.clickSegmentBtnBlock = ^(UIButton *sender) {
-        
         [weakSelf segmentBtnClick:sender];
     };
-    
+   __block BOOL hasLoadingBBDD = NO;
+   __block BOOL hasLoadingNews = NO;
+    _segmentView.scrollViewBlock = ^(NSInteger index) {
+        if (!hasLoadingBBDD && index == 1) {
+            [weakSelf loadNetDataWithType:index];
+            hasLoadingBBDD = YES;
+        }
+        if (!hasLoadingNews && index==2) {
+            [weakSelf loadNetDataWithType:index];
+            hasLoadingNews = YES;
+        }
+    };
     //菊花
     _indicatorViewArray = [NSMutableArray array];
     for (int i = 0; i < segments.count; i ++) {
@@ -76,25 +77,7 @@
         [indicatorView startAnimating];
         [_indicatorViewArray addObject:indicatorView];
     }
-    
     [self loadNetDataWithType:0];
-    _isLoadingHotData = YES;
-    
-    _segmentView.scrollViewBlock = ^(NSInteger index) {
-        
-        if (index == 1 && !_isLoadingBBDDData) {
-            if (!weakSelf.BBDDData) {
-                [weakSelf loadNetDataWithType:index];
-                _isLoadingBBDDData = YES;
-            }
-        }else if (index == 2 && !_isLoadingNewsData) {
-            if (!weakSelf.newsData) {
-                [weakSelf loadNetDataWithType:index];
-                _isLoadingNewsData = YES;
-            }
-        }
-    };
-    // ******
     [self.view addSubview:_segmentView];
     
     // Do any additional setup after loading the view from its nib.
@@ -107,124 +90,82 @@
         [self.tableViewArray[i] reloadData];
     }
 }
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    self.navigationItem.rightBarButtonItem = self.addButton;
-    if (_currenSelectCellOfRow) {
-        NSInteger row = [self.currenSelectCellOfRow integerValue];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
-        MBCommunityTableView *tableView = self.tableViewArray[[self.currenSelectCellOfTableView integerValue]];
-        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-    }
-}
-
-- (NSMutableDictionary *)allData {
-    if (!_allData) {
-        _allData = [NSMutableDictionary dictionary];
-    }
-    return _allData;
+    
+//    self.navigationItem.rightBarButtonItem = self.addButton;
+//    if (_currenSelectCellOfRow) {
+//        NSInteger row = [self.currenSelectCellOfRow integerValue];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
+//        MBCommunityTableView *tableView = self.tableViewArray[[self.currenSelectCellOfTableView integerValue]];
+//        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+//    }
 }
 
 #pragma mark - 请求网络数据
 
 - (void)loadNetDataWithType:(NSInteger)type {
-    
-    NSLog(@"%ld",(long)type);
-    
-    //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"] ?: @"";
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"] ?: @"";
-    NSString *page = @"0";
-    NSString *size = @"0";
-    NSString *type_id = @"5";
+    //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询)
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
     NSString *url;
-    NSDictionary *parameter;
+    NSMutableDictionary *parameter =
+            @{@"stuNum":stuNum,
+              @"idNum":idNum,
+              @"version":@(1.0)}.mutableCopy;
+    MBCommunityTableView *tableView = self.tableViewArray[type];
+
+    NSMutableArray *viewModels;
+    [parameter setObject:self.dataDicArray[type][@"page"] forKey:@"page"];
+    viewModels = self.dataDicArray[type][@"viewModels"];
     if (type == 0) {
         url = SEARCHHOTARTICLE_API;
-        parameter = @{@"stuNum":stuNum,
-                      @"idNum":idNum,
-                      @"page":page,
-                      @"size":size};
     }else if (type == 1) {
         url = LISTARTICLE_API;
-        parameter = @{@"stuNum":stuNum,
-                      @"idNum":idNum,
-                      @"page":page,
-                      @"size":size,
-                      @"type_id":type_id};
+        [parameter setObject:@5 forKey:@"type_id"];
     }else if (type == 2) {
         url = LISTNEWS_API;
-        parameter = @{@"stuNum":stuNum,
-                      @"idNum":idNum,
-                      @"page":page,
-                      @"size":size,
-                      @"type_id":type_id};
     }
-    
-    // 请求
-    
     [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
-        NSMutableArray *dataModel = [NSMutableArray array];
-        NSMutableArray *netData = [NSMutableArray array];
+        NSNumber *page;
+        NSMutableArray *dataArray = [NSMutableArray array];
         if (type == 0) {
             for (int i = 0; i < ((NSArray *)returnValue).count; i ++) {
-                [netData addObject:returnValue[i][@"data"]];
-                [dicData setObject:returnValue[i][@"page"] forKey:@"page"];
+                [dataArray addObject:returnValue[i][@"data"]];
+                page = returnValue[i][@"page"];
             }
-        }else if (type == 1) {
-            netData = returnValue[@"data"];
-            [dicData setObject:returnValue[@"page"] forKey:@"page"];
-        }else if (type == 2) {
-            netData = returnValue[@"data"];
-            [dicData setObject:returnValue[@"page"] forKey:@"page"];
+        }else if (type == 1 || type ==2) {
+            dataArray = returnValue[@"data"];
+            page = returnValue[@"page"];
         }
-        
-        
-        [netData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            MBCommunityModel *model;
-            if (type == 0) {
-                model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeHot];
-                NSLog(@"adadwadawdwa");
-            }else if (type == 1) {
-                model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListArticle];
-            }else if (type == 2) {
-                model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListNews];
-            }
-            
-            MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
+        page = @(page.integerValue+1);
+        for (int i=0; i<dataArray.count; i++) {
+            MBCommunityModel *model = [[MBCommunityModel alloc]initWithDictionary:dataArray[i]];
+             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = model;
-            [dataModel addObject:viewModel];
-        }];
-        
-        [dicData setObject:dataModel forKey:@"data"];
-        
-        
-        if (type == 0) {
-            _hotData = dicData[@"data"];
-            [_allData setObject:dicData forKey:@"hotData"];
-        }else if (type == 1) {
-            _BBDDData = dicData[@"data"];
-            [_allData setObject:dicData forKey:@"BBDDData"];
-        }else if (type == 2) {
-            _newsData = dicData[@"data"];
-            [_allData setObject:dicData forKey:@"newsData"];
+            [viewModels addObject:viewModel];
         }
-        
+        NSDictionary *dataDic = @{@"page":page,
+                                  @"viewModels":viewModels};
+        self.dataDicArray[type] = dataDic;
         UIActivityIndicatorView *indicatorView = self.indicatorViewArray[type];
         [indicatorView stopAnimating];
-        
-        
-        MBCommunityTableView *tableView = self.tableViewArray[type];
         tableView.hidden = NO;
         [tableView reloadData];
-        
-        
+        [tableView.mj_header endRefreshing];
+        [tableView.mj_footer endRefreshing];
     } WithFailureBlock:^{
         NSLog(@"请求数据失败");
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"您的网络不给力!";
+        [hud hide:YES afterDelay:1];
+
+        self.dataDicArray[type] = self.tempDic;
+        [tableView.mj_header endRefreshing];
+        [tableView.mj_footer endRefreshing];
     }];
-    
-    
 }
 
 #pragma mark -
@@ -299,9 +240,19 @@
         tableView.tableStyle = segments[i];
         [_tableViewArray addObject:tableView];
         tableView.hidden = YES;
-        
         [_segmentView.backScrollView addSubview:tableView];
-        [self setupMJRefresh];
+        tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            self.tempDic = self.dataDicArray[i];
+            self.dataDicArray[i] =
+                        @{@"page":@0,
+                          @"viewModels":
+                        [NSMutableArray array]};
+            [self loadNetDataWithType:i];
+        }];
+        tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            self.tempDic = self.dataDicArray[i];
+            [self loadNetDataWithType:i];
+        }];
     }
 }
 
@@ -310,32 +261,13 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(MBCommunityTableView *)tableView {
-    if (tableView.tag == 0) {
-        return ((NSMutableArray *)_allData[@"hotData"][@"data"]).count;
-    }else if (tableView.tag == 1) {
-        return ((NSMutableArray *)_allData[@"BBDDData"][@"data"]).count;
-    }else if (tableView.tag == 2) {
-        return ((NSMutableArray *)_allData[@"newsData"][@"data"]).count;
-    }else {
-       return 0;
-    }
-    
+    return [self.dataDicArray[tableView.tag][@"viewModels"] count];
 }
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-    if (tableView.tag == 0) {
-        viewModel = _allData[@"hotData"][@"data"][indexPath.section];
-        return viewModel.cellHeight;
-    }else if (tableView.tag == 1) {
-        viewModel = _allData[@"BBDDData"][@"data"][indexPath.section];
-        return viewModel.cellHeight;
-    }else if (tableView.tag == 2) {
-        viewModel = _allData[@"newsData"][@"data"][indexPath.section];
-        return viewModel.cellHeight;
-    }else {
-        return 0;
-    }
+    NSInteger index = indexPath.section;
+    return [self.dataDicArray[tableView.tag][@"viewModels"][index] cellHeight];
+
     
 }
 
@@ -347,38 +279,32 @@
 }
 
 - (MBCommunityCellTableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = indexPath.section;
     MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
     cell.eventDelegate = self;
-    MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-    if (tableView.tag == 0) {
-        viewModel = _allData[@"hotData"][@"data"][indexPath.section];
-    }else if (tableView.tag == 1) {
-        viewModel = _allData[@"BBDDData"][@"data"][indexPath.section];
-    }else if (tableView.tag == 2) {
-        viewModel = _allData[@"newsData"][@"data"][indexPath.section];
-    }
+    MBCommunity_ViewModel *viewModel =self.dataDicArray[tableView.tag][@"viewModels"][index];
     if (tableView.tag == 2) {
         cell.headImageView.userInteractionEnabled = NO;
     }
-    
     __weak typeof(self) weakSelf = self;
     cell.clickSupportBtnBlock = ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel) {
         MBCommunityModel *model = viewModel.model;
         if (imageBtn.selected && labelBtn.selected) {
             NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
-            NSInteger nowSupportNum;
-            if (currentSupportNum == 0) {
-                nowSupportNum = 0;
-            }else {
-                nowSupportNum = currentSupportNum - 1;
-            }
-            [labelBtn setTitle:[NSString stringWithFormat:@"%ld",nowSupportNum] forState:UIControlStateNormal];
-            model.numOfSupport = [NSString stringWithFormat:@"%ld",nowSupportNum];
+            currentSupportNum--;
+//            NSInteger nowSupportNum;
+//            if (currentSupportNum == 0) {
+//                nowSupportNum = 0;
+//            }else {
+//                nowSupportNum = currentSupportNum - 1;
+//            }
+            [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum] forState:UIControlStateNormal];
+//            model.like_num = @(currentSupportNum);
             [weakSelf uploadSupport:viewModel withType:1];
             imageBtn.selected = !imageBtn.selected;
             labelBtn.selected = !labelBtn.selected;
-            weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
-            weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
+//            weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
+//            weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
             NSLog(@"点击取消赞");
             
         }else {
@@ -389,12 +315,12 @@
             }else {
                 NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
                 [labelBtn setTitle:[NSString stringWithFormat:@"%ld",currentSupportNum+1] forState:UIControlStateNormal];
-                model.numOfSupport = [NSString stringWithFormat:@"%ld",currentSupportNum+1];
+                model.like_num = @(currentSupportNum+1);
                 [weakSelf uploadSupport:viewModel withType:0];
                 imageBtn.selected = !imageBtn.selected;
                 labelBtn.selected = !labelBtn.selected;
-                weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
-                weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
+//                weakSelf.currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
+//                weakSelf.currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
                 NSLog(@"点击赞");
             }
             
@@ -419,221 +345,13 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     MBCommuityDetailsViewController *d = [[MBCommuityDetailsViewController alloc]init];
     d.hidesBottomBarWhenPushed = YES;
-    
-    MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-    if (tableView.tag == 0) {
-        viewModel = _allData[@"hotData"][@"data"][indexPath.section];
-        NSLog(@"%@",_allData[@"hotData"][@"page"]);
-    }else if (tableView.tag == 1) {
-        viewModel = _allData[@"BBDDData"][@"data"][indexPath.section];
-    }else if (tableView.tag == 2) {
-        viewModel = _allData[@"newsData"][@"data"][indexPath.section];
-    }
+    NSInteger index = indexPath.section;
+    MBCommunity_ViewModel *viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
     d.viewModel = viewModel;
-//    NSLog(@"%@",viewModel.model);
-    _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
-    _currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
+//    _currenSelectCellOfRow = [NSString stringWithFormat:@"%ld",indexPath.section];
+//    _currenSelectCellOfTableView = [NSString stringWithFormat:@"%ld",tableView.tag];
     [self.navigationController pushViewController:d animated:YES];
 }
-
-#pragma mark - 下拉和上拉刷新
-
-- (void)setupMJRefresh {
-    for (int i = 0; i < self.tableViewArray.count ; i++) {
-        MBCommunityTableView *tableView = self.tableViewArray[i];
-        __weak typeof(MBCommunityTableView *) weakTableView = tableView;
-        __weak typeof(self) weakSelf = self;
-        
-        __block NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"] ?: @"";
-        __block NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"] ?: @"";
-        __block NSString *page;
-        __block NSString *currentPage;
-        __block NSString *size = @"0";
-        __block NSString *type_id = @"5";
-        __block NSString *url;
-        __block NSDictionary *parameter;
-        //添加下拉刷新控件
-        tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-            page = @"0";
-            if (i == 0) {
-                url = SEARCHHOTARTICLE_API;
-                parameter = @{@"stuNum":stuNum,
-                              @"idNum":idNum,
-                              @"page":page,
-                              @"size":size};
-            }else if (i == 1) {
-                url = LISTARTICLE_API;
-                parameter = @{@"stuNum":stuNum,
-                              @"idNum":idNum,
-                              @"page":page,
-                              @"size":size,
-                              @"type_id":type_id};
-            }else if (i == 2) {
-                url = LISTNEWS_API;
-                parameter = @{@"stuNum":stuNum,
-                              @"idNum":idNum,
-                              @"page":page,
-                              @"size":size,
-                              @"type_id":type_id};
-            }
-            [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-                NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
-                NSMutableArray *dataModel = [NSMutableArray array];
-                NSMutableArray *netData = [NSMutableArray array];
-                if (i == 0) {
-                    for (int i = 0; i < ((NSArray *)returnValue).count; i ++) {
-                        [netData addObject:returnValue[i][@"data"]];
-                        [dicData setObject:returnValue[i][@"page"] forKey:@"page"];
-                    }
-                }else if (i == 1) {
-                    netData = returnValue[@"data"];
-                    [dicData setObject:returnValue[@"page"] forKey:@"page"];
-                }else if (i == 2) {
-                    netData = returnValue[@"data"];
-                    [dicData setObject:returnValue[@"page"] forKey:@"page"];
-                }
-                
-                [netData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    MBCommunityModel *model;
-                    if (i == 0) {
-                        model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeHot];
-                    }else if (i == 1) {
-                        model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListArticle];
-                    }else if (i == 2) {
-                        model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListNews];
-                    }
-                    
-                    MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-                    viewModel.model = model;
-                    [dataModel addObject:viewModel];
-                }];
-                
-                [dicData setObject:dataModel forKey:@"data"];
-                
-                
-                if (i == 0) {
-                    _hotData = dicData[@"data"];
-                    [_allData setObject:dicData forKey:@"hotData"];
-                }else if (i == 1) {
-                    _BBDDData = dicData[@"data"];
-                    [_allData setObject:dicData forKey:@"BBDDData"];
-                }else if (i == 2) {
-                    _newsData = dicData[@"data"];
-                    [_allData setObject:dicData forKey:@"newsData"];
-                }
-                [weakTableView reloadData];
-                [weakTableView.mj_header endRefreshing];
-            } WithFailureBlock:^{
-                [weakTableView.mj_header endRefreshing];
-                NSLog(@"刷新数据失败");
-            }];
-        }];
-        //添加上拉加载控件
-        tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            if (i == 0) {
-                currentPage = weakSelf.allData[@"hotData"][@"page"];
-                NSInteger nextPage = [currentPage integerValue];
-                page = [NSString stringWithFormat:@"%ld",nextPage+1];
-                url = SEARCHHOTARTICLE_API;
-                parameter = @{@"stuNum":stuNum,
-                              @"idNum":idNum,
-                              @"page":page,
-                              @"size":size};
-            }else if (i == 1) {
-                currentPage = weakSelf.allData[@"BBDDData"][@"page"];
-                NSInteger nextPage = [currentPage integerValue];
-                page = [NSString stringWithFormat:@"%ld",nextPage+1];
-                url = LISTARTICLE_API;
-                parameter = @{@"stuNum":stuNum,
-                              @"idNum":idNum,
-                              @"page":page,
-                              @"size":size,
-                              @"type_id":type_id};
-            }else if (i == 2) {
-                currentPage = weakSelf.allData[@"newsData"][@"page"];
-                NSInteger nextPage = [currentPage integerValue];
-                page = [NSString stringWithFormat:@"%ld",nextPage+1];
-                url = LISTNEWS_API;
-                parameter = @{@"stuNum":stuNum,
-                              @"idNum":idNum,
-                              @"page":page,
-                              @"size":size,
-                              @"type_id":type_id};
-            }
-            [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-                NSMutableDictionary *dicData = [NSMutableDictionary dictionary];
-                NSMutableArray *dataModel;
-                NSMutableArray *netData = [NSMutableArray array];
-                if (i == 0) {
-                    for (int i = 0; i < ((NSArray *)returnValue).count; i ++) {
-                        [netData addObject:returnValue[i][@"data"]];
-                        [dicData setObject:returnValue[i][@"page"] forKey:@"page"];
-                    }
-                    dataModel = [NSMutableArray arrayWithArray:weakSelf.hotData];
-                }else if (i == 1) {
-                    netData = returnValue[@"data"];
-                    [dicData setObject:returnValue[@"page"] forKey:@"page"];
-                    dataModel = [NSMutableArray arrayWithArray:weakSelf.BBDDData];
-                }else if (i == 2) {
-                    netData = returnValue[@"data"];
-                    [dicData setObject:returnValue[@"page"] forKey:@"page"];
-                    dataModel = [NSMutableArray arrayWithArray:weakSelf.newsData];
-                }
-                
-                if (netData.count != 0) {
-                    [netData enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                        MBCommunityModel *model;
-                        if (i == 0) {
-                            model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeHot];
-                        }else if (i == 1) {
-                            model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListArticle];
-                        }else if (i == 2) {
-                            model = [[MBCommunityModel alloc]initWithDictionary:netData[idx] withMBCommunityModelType:MBCommunityModelTypeListNews];
-                        }
-                        
-                        MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
-                        viewModel.model = model;
-                        [dataModel addObject:viewModel];
-                    }];
-                    
-                    [dicData setObject:dataModel forKey:@"data"];
-                    
-                    
-                    if (i == 0) {
-                        _hotData = dicData[@"data"];
-                        [_allData setObject:dicData forKey:@"hotData"];
-                    }else if (i == 1) {
-                        _BBDDData = dicData[@"data"];
-                        [_allData setObject:dicData forKey:@"BBDDData"];
-                    }else if (i == 2) {
-                        _newsData = dicData[@"data"];
-                        [_allData setObject:dicData forKey:@"newsData"];
-                    }
-                    [weakTableView reloadData];
-                    
-                }
-                
-                [weakTableView.mj_footer endRefreshing];
-            } WithFailureBlock:^{
-                [weakTableView.mj_footer endRefreshing];
-                NSLog(@"加载更多数据失败");
-            }];
-
-        }];
-//        ^{
-//                    };
-
-//        
-//        tableView.headerPullToRefreshText = @"下拉即可刷新";
-//        tableView.headerReleaseToRefreshText = @"松开即可刷新";
-//        tableView.headerRefreshingText = @"正在刷新中";
-//        
-//        tableView.footerPullToRefreshText = @"上拉加载更多";
-//        tableView.footerReleaseToRefreshText = @"松开加载更多";
-//        tableView.footerRefreshingText = @"玩命加载中";
-    }
-}
-
 #pragma mark - 上传点赞
 
 - (void)uploadSupport:(MBCommunity_ViewModel *)viewModel withType:(NSInteger)type {
@@ -648,10 +366,9 @@
     
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
-    NSString *article_id = model.articleID;
-    NSString *type_id = model.typeID;
+    NSNumber *article_id = model.article_id;
+    NSNumber *type_id = model.type_id;
     //如果stuNum和idNum为nil 则不能点赞 提示是否登录
-    
     if (stuNum.length == 0 && idNum.length == 0) {
         UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息呢,肯定不让你点赞呀" preferredStyle:UIAlertControllerStyleAlert];
         
@@ -674,23 +391,16 @@
         
         [self presentViewController:alertC animated:YES completion:nil];
     }else {
+//        NSInteger row = [self.currenSelectCellOfRow integerValue];
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
+//        MBCommunityTableView *tableView = self.tableViewArray[[self.currenSelectCellOfTableView integerValue]];
+//        [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
         NSDictionary *parameter = @{@"stuNum":stuNum,
                                     @"idNum":idNum,
-                                    @"article_id":article_id,
+                                @"article_id":article_id,
                                     @"type_id":type_id};
-        
-        __block MBCommunityModel *modelBlock = model;
-        __block MBCommunity_ViewModel *viewModelBlock = viewModel;
-        __weak typeof(self) weakSelf = self;
-        
         [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-            modelBlock.isMyLike = [NSString stringWithFormat:@"%d",![modelBlock.isMyLike boolValue]];
-            viewModelBlock.model = modelBlock;
-            NSInteger row = [weakSelf.currenSelectCellOfRow integerValue];
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:row];
-            MBCommunityTableView *tableView = weakSelf.tableViewArray[[weakSelf.currenSelectCellOfTableView integerValue]];
-            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
-            NSLog(@"请求 %@",modelBlock.isMyLike);
+        
         } WithFailureBlock:^{
             NSLog(@"请求赞出错");
         }];

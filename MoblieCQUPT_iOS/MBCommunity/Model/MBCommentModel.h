@@ -11,10 +11,10 @@
 @interface MBCommentModel : NSObject
 
 @property (copy, nonatomic) NSString *stuNum;
-@property (copy, nonatomic) NSString *headImageView;
-@property (copy, nonatomic) NSString *IDLabel;
-@property (copy, nonatomic) NSString *timeLabel;
-@property (copy, nonatomic) NSString *contentLabel;
+@property (copy, nonatomic) NSString *nickname;
+@property (copy, nonatomic) NSString *photo_src;
+@property (copy, nonatomic) NSString *created_time;
+@property (copy, nonatomic) NSString *content;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 

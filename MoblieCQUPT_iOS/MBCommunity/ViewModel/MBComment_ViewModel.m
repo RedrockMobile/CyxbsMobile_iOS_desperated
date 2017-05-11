@@ -27,12 +27,12 @@
     //昵称
     CGFloat nameX = CGRectGetMaxX(_headImageViewFrame) + MARGIN;
     CGFloat nameY = imageY;
-    CGSize nameSize = [_model.IDLabel sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+    CGSize nameSize = [_model.nickname sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     _IDLabelFrame = (CGRect){{nameX,nameY},nameSize};
     
     //时间
     CGFloat timeX = nameX;
-    CGSize timeSize = [_model.timeLabel sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}];
+    CGSize timeSize = [_model.created_time sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}];
     CGFloat timeY = CGRectGetMaxY(_headImageViewFrame) - timeSize.height;
     _timeLabelFrame = (CGRect){{timeX,timeY},timeSize};
     
@@ -40,7 +40,7 @@
     CGFloat contentX = CGRectGetMaxX(_headImageViewFrame) + MARGIN;
     CGFloat contentY = CGRectGetMaxY(_headImageViewFrame) + MARGIN;
     CGFloat contentW = ScreenWidth - contentX - MARGIN;
-    CGRect contentSize = [_model.contentLabel boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
+    CGRect contentSize = [_model.content boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
     _contentLabelFrame = (CGRect){{contentX,contentY},contentSize.size};
     
     self.cellHeight = CGRectGetMaxY(_contentLabelFrame) + MARGIN+5;

@@ -342,7 +342,6 @@
 		F242DED81EBCB2BC005AC411 /* headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DC581EBCB2BB005AC411 /* headImage.png */; };
 		F242DED91EBCB2BC005AC411 /* MBCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC5B1EBCB2BB005AC411 /* MBCommentModel.m */; };
 		F242DEDA1EBCB2BC005AC411 /* MBCommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC5D1EBCB2BB005AC411 /* MBCommunityModel.m */; };
-		F242DEDB1EBCB2BC005AC411 /* MBNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC5F1EBCB2BB005AC411 /* MBNewsModel.m */; };
 		F242DEDC1EBCB2BC005AC411 /* MBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC621EBCB2BB005AC411 /* MBTextView.m */; };
 		F242DEDD1EBCB2BC005AC411 /* UIShortTapGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC641EBCB2BB005AC411 /* UIShortTapGestureRecognizer.m */; };
 		F242DEDE1EBCB2BC005AC411 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DC651EBCB2BB005AC411 /* support.png */; };
@@ -983,8 +982,6 @@
 		F242DC5B1EBCB2BB005AC411 /* MBCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommentModel.m; sourceTree = "<group>"; };
 		F242DC5C1EBCB2BB005AC411 /* MBCommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunityModel.h; sourceTree = "<group>"; };
 		F242DC5D1EBCB2BB005AC411 /* MBCommunityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityModel.m; sourceTree = "<group>"; };
-		F242DC5E1EBCB2BB005AC411 /* MBNewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNewsModel.h; sourceTree = "<group>"; };
-		F242DC5F1EBCB2BB005AC411 /* MBNewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBNewsModel.m; sourceTree = "<group>"; };
 		F242DC611EBCB2BB005AC411 /* MBTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBTextView.h; sourceTree = "<group>"; };
 		F242DC621EBCB2BB005AC411 /* MBTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBTextView.m; sourceTree = "<group>"; };
 		F242DC631EBCB2BB005AC411 /* UIShortTapGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIShortTapGestureRecognizer.h; sourceTree = "<group>"; };
@@ -2086,8 +2083,6 @@
 				F242DC5B1EBCB2BB005AC411 /* MBCommentModel.m */,
 				F242DC5C1EBCB2BB005AC411 /* MBCommunityModel.h */,
 				F242DC5D1EBCB2BB005AC411 /* MBCommunityModel.m */,
-				F242DC5E1EBCB2BB005AC411 /* MBNewsModel.h */,
-				F242DC5F1EBCB2BB005AC411 /* MBNewsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3133,7 +3128,6 @@
 				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
 				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
-				F242DEDB1EBCB2BC005AC411 /* MBNewsModel.m in Sources */,
 				F242DD8B1EBCB2BB005AC411 /* CourseView.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,

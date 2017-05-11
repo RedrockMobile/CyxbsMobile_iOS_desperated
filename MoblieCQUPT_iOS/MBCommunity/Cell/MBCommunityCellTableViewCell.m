@@ -8,7 +8,6 @@
 
 #import "MBCommunityCellTableViewCell.h"
 #import "MBPhotoContainerView.h"
-//#import "SDWebImageManager.h"
 
 @interface MBCommunityCellTableViewCell ()
 
@@ -128,17 +127,16 @@
 - (void)setupData {
     _model = self.subViewFrame.model;
     UIImage *image = [UIImage imageNamed:@"headImage.png"];
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.subViewFrame.model.headImageView] placeholderImage:image];
-    _IDLabel.text = self.model.IDLabel;
-    _timeLabel.text = self.model.timeLabel;
-    _contentLabel.text = self.model.contentLabel;
-    _photoContainer.thumbnailPictureArray = self.model.thumbnailPictureArray;
-    _photoContainer.picNameArray = self.model.pictureArray;
-    
-    _supportImage.selected = [self.subViewFrame.model.isMyLike boolValue];
-    _supportBtn.selected = [self.subViewFrame.model.isMyLike boolValue];
-    [_supportBtn setTitle:self.model.numOfSupport forState:UIControlStateNormal];
-    [_commentBtn setTitle:self.model.numOfComment forState:UIControlStateNormal];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.subViewFrame.model.user_photo_src] placeholderImage:image];
+    _IDLabel.text = self.model.nickname;
+    _timeLabel.text = self.model.time;
+    _contentLabel.text = self.model.content;
+    _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;
+    _photoContainer.picNameArray = self.model.articlePictureArray;
+    _supportImage.selected = self.subViewFrame.model.is_my_like;
+    _supportBtn.selected = self.subViewFrame.model.is_my_like;
+    [_supportBtn setTitle:self.model.like_num.stringValue forState:UIControlStateNormal];
+    [_commentBtn setTitle:self.model.remark_num.stringValue forState:UIControlStateNormal];
     
 }
 - (void)setupFrame {

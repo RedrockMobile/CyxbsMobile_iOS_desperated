@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MBNewsModel.h"
+//#import "MBNewsModel.h"
+#import "MBCommunityModel.h"
 
 @interface MBNews_ViewModel : NSObject
 
-@property (strong, nonatomic) MBNewsModel *model;
+@property (strong, nonatomic)  MBCommunityModel *model;
 
 @property (assign, nonatomic) CGRect headImageViewFrame;//头像的frame
 @property (assign, nonatomic) CGRect IDLabelFrame;//昵称的frame

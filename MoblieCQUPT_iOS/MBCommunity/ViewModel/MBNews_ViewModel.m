@@ -10,7 +10,7 @@
 #define MARGIN 10
 
 @implementation MBNews_ViewModel
-- (void)setModel:(MBNewsModel *)model {
+- (void)setModel:(MBCommunityModel *)model {
     _model = model;
     
     [self setupFrame];
@@ -26,12 +26,12 @@
     //昵称
     CGFloat nameX = CGRectGetMaxX(_headImageViewFrame) + MARGIN;
     CGFloat nameY = imageY;
-    CGSize nameSize = [_model.IDLabel sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}];
+    CGSize nameSize = [_model.nickname sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}];
     _IDLabelFrame = (CGRect){{nameX,nameY},nameSize};
     
     //时间
     CGFloat timeX = nameX;
-    CGSize timeSize = [_model.date sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    CGSize timeSize = [_model.time sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
     CGFloat timeY = CGRectGetMaxY(_headImageViewFrame) - timeSize.height;
     _timeLabelFrame = (CGRect){{timeX,timeY},timeSize};
     
@@ -39,14 +39,14 @@
     CGFloat contentX = imageX;
     CGFloat contentY = CGRectGetMaxY(_headImageViewFrame) + MARGIN+5;
     CGFloat contentW = ScreenWidth - 2 * contentX;
-    CGRect contentSize = [_model.title boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
+    CGRect contentSize = [_model.content boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]} context:nil];
     _contentLabelFrame = (CGRect){{contentX,contentY},contentSize.size};
     
     
     _photoContainerViewFrame = (CGRect){{0,0},{0,0}};
     
     //评论
-    CGSize commentSize = [_model.numOfRemark sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+    CGSize commentSize = [_model.remark_num.stringValue sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     CGFloat commentX = ScreenWidth - commentSize.width - 15;
     CGFloat commentY = CGRectGetMaxY(self.contentLabelFrame) + 13;
     _numOfCommentFrame = (CGRect){{commentX,commentY},commentSize};
@@ -58,7 +58,7 @@
     _commentImageFrame = (CGRect){{commentImageX,commentImageY},{commentImageW,commentImageH}};
     
     //点赞
-    CGSize supportSize = [_model.numOfLike sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+    CGSize supportSize = [_model.like_num.stringValue sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
     CGFloat supportX = CGRectGetMinX(_commentImageFrame) - 30 - supportSize.width;
     CGFloat supportY = CGRectGetMaxY(self.contentLabelFrame) + 14;
     _numOfSupportFrame = (CGRect){{supportX,supportY},supportSize};
