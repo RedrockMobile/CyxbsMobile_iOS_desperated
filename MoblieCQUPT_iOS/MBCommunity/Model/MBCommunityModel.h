@@ -25,7 +25,8 @@ typedef NS_ENUM(NSInteger, MBCommunityModelType) {
 @property (copy, nonatomic) NSString *content;
 @property (copy, nonatomic) NSNumber *like_num;
 @property (copy, nonatomic) NSNumber *remark_num;
-@property BOOL is_my_like;
+
+@property bool is_my_like;
 @property (copy, nonatomic) NSString *nickname;
 @property (copy, nonatomic) NSString *user_photo_src;
 @property (copy, nonatomic) NSString * user_thumbnail_src;

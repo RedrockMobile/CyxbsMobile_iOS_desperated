@@ -27,7 +27,7 @@
     self.tabBar.tintColor = MAIN_COLOR;
     for (int i = 0; i<self.viewControllers.count; i++) {
         UINavigationController *nvc = self.viewControllers[i];
-        nvc.title = item[i];
+        nvc.topViewController.title = item[i];
         [nvc.tabBarItem setImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_%d.png",i+1]]];
         [nvc.tabBarItem setSelectedImage:[UIImage imageNamed:[NSString stringWithFormat:@"icon_menu_selected_%d.png",i+1]]];
         nvc.navigationBar.tintColor = FONT_COLOR;

@@ -92,13 +92,6 @@
 
 
 - (void)clickSupportBtn {
-//    if (_supportImage.selected && _supportBtn.selected) {
-//        _supportImage.selected = !_supportImage.selected;
-//        _supportBtn.selected = !_supportBtn.selected;
-//    }else {
-//        _supportImage.selected = !_supportImage.selected;
-//        _supportBtn.selected = !_supportBtn.selected;
-//    }
     if (self.clickSupportBtnBlock) {
         self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.subViewFrame);
     }

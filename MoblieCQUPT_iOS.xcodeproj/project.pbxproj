@@ -486,6 +486,7 @@
 		F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA31EBD9E2C005AC411 /* LZConfirmButton.m */; };
 		F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA51EBD9E2C005AC411 /* LZDatePicker.m */; };
 		F242DFBA1EBD9E2C005AC411 /* LZLostRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA71EBD9E2C005AC411 /* LZLostRemindView.m */; };
+		F26A5ADD1EC82B8700AC09F9 /* MBCommunityHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F26A5ADC1EC82B8700AC09F9 /* MBCommunityHandle.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1185,6 +1186,8 @@
 		F242DFA51EBD9E2C005AC411 /* LZDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZDatePicker.m; sourceTree = "<group>"; };
 		F242DFA61EBD9E2C005AC411 /* LZLostRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZLostRemindView.h; sourceTree = "<group>"; };
 		F242DFA71EBD9E2C005AC411 /* LZLostRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZLostRemindView.m; sourceTree = "<group>"; };
+		F26A5ADB1EC82B8700AC09F9 /* MBCommunityHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunityHandle.h; sourceTree = "<group>"; };
+		F26A5ADC1EC82B8700AC09F9 /* MBCommunityHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityHandle.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2072,6 +2075,8 @@
 				F242DC551EBCB2BB005AC411 /* MBReleaseViewController.h */,
 				F242DC561EBCB2BB005AC411 /* MBReleaseViewController.m */,
 				F242DC571EBCB2BB005AC411 /* MBReleaseViewController.xib */,
+				F26A5ADB1EC82B8700AC09F9 /* MBCommunityHandle.h */,
+				F26A5ADC1EC82B8700AC09F9 /* MBCommunityHandle.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -3213,6 +3218,7 @@
 				F242DDFE1EBCB2BB005AC411 /* ShopDetailViewController.m in Sources */,
 				F242DF111EBCB2BC005AC411 /* QGERestDetailViewController.m in Sources */,
 				F242DEFB1EBCB2BC005AC411 /* AboutMeTableViewCell.m in Sources */,
+				F26A5ADD1EC82B8700AC09F9 /* MBCommunityHandle.m in Sources */,
 				F242DFB31EBD9E2C005AC411 /* IconTableViewCell.m in Sources */,
 				F242DE5B1EBCB2BC005AC411 /* UIImage+Color.m in Sources */,
 				F242DEE41EBCB2BC005AC411 /* MBInputView.m in Sources */,

@@ -13,6 +13,5 @@
 @interface MBCommuityDetailsViewController : UIViewController
 
 @property (strong, nonatomic) MBCommunity_ViewModel *viewModel;
-@property (strong, nonatomic) MBComment_ViewModel *commentViewModel;
 
 @end

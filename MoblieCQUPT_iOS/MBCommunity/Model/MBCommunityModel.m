@@ -14,7 +14,7 @@
     if (self = [super init]) {        
         //type_id
         self.type_id = dic[@"type_id"];
-        self.article_id = dic[@"article_id"];
+        self.article_id = dic[@"id"];
         switch (self.type_id.integerValue) {
             case 1:
                 self.nickname = @"重邮新闻";
@@ -43,7 +43,7 @@
         self.time = dic[@"time"];
         self.like_num = dic[@"like_num"];
         self.remark_num = dic[@"remark_num"];
-        self.is_my_like = [dic[@"is_my_like"] boolValue];
+        self.is_my_like = [dic[@"is_my_Like"] boolValue];
         self.user_photo_src = dic[@"user_photo_src"];
         self.article_photo_src = dic[@"article_photo_src"];
         self.article_thumbnail_src = dic[@"article_photo_src"];
