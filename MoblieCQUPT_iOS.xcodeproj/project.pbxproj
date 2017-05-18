@@ -357,7 +357,6 @@
 		F242DEE81EBCB2BC005AC411 /* MBSegmentedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC791EBCB2BB005AC411 /* MBSegmentedView.m */; };
 		F242DEE91EBCB2BC005AC411 /* MBComment_ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC7C1EBCB2BB005AC411 /* MBComment_ViewModel.m */; };
 		F242DEEA1EBCB2BC005AC411 /* MBCommunity_ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC7E1EBCB2BB005AC411 /* MBCommunity_ViewModel.m */; };
-		F242DEEB1EBCB2BC005AC411 /* MBNews_ViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC801EBCB2BB005AC411 /* MBNews_ViewModel.m */; };
 		F242DEEC1EBCB2BC005AC411 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DC811EBCB2BB005AC411 /* xia.png */; };
 		F242DEED1EBCB2BC005AC411 /* 叉叉.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DC821EBCB2BB005AC411 /* 叉叉.png */; };
 		F242DEEE1EBCB2BC005AC411 /* 图片1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F242DC831EBCB2BB005AC411 /* 图片1.jpg */; };
@@ -1011,8 +1010,6 @@
 		F242DC7C1EBCB2BB005AC411 /* MBComment_ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBComment_ViewModel.m; sourceTree = "<group>"; };
 		F242DC7D1EBCB2BB005AC411 /* MBCommunity_ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunity_ViewModel.h; sourceTree = "<group>"; };
 		F242DC7E1EBCB2BB005AC411 /* MBCommunity_ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunity_ViewModel.m; sourceTree = "<group>"; };
-		F242DC7F1EBCB2BB005AC411 /* MBNews_ViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBNews_ViewModel.h; sourceTree = "<group>"; };
-		F242DC801EBCB2BB005AC411 /* MBNews_ViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBNews_ViewModel.m; sourceTree = "<group>"; };
 		F242DC811EBCB2BB005AC411 /* xia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xia.png; sourceTree = "<group>"; };
 		F242DC821EBCB2BB005AC411 /* 叉叉.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "叉叉.png"; sourceTree = "<group>"; };
 		F242DC831EBCB2BB005AC411 /* 图片1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "图片1.jpg"; sourceTree = "<group>"; };
@@ -2135,8 +2132,6 @@
 				F242DC7C1EBCB2BB005AC411 /* MBComment_ViewModel.m */,
 				F242DC7D1EBCB2BB005AC411 /* MBCommunity_ViewModel.h */,
 				F242DC7E1EBCB2BB005AC411 /* MBCommunity_ViewModel.m */,
-				F242DC7F1EBCB2BB005AC411 /* MBNews_ViewModel.h */,
-				F242DC801EBCB2BB005AC411 /* MBNews_ViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -3079,7 +3074,6 @@
 				F242DE281EBCB2BB005AC411 /* GQUCell.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				F242DE6E1EBCB2BC005AC411 /* LessonHandle.m in Sources */,
-				F242DEEB1EBCB2BC005AC411 /* MBNews_ViewModel.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				F242DE1D1EBCB2BB005AC411 /* MajorViewController.m in Sources */,

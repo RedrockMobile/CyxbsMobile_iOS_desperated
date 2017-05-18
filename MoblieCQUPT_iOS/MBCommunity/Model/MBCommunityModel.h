@@ -7,18 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSInteger, MBCommunityModelType) {
-    MBCommunityModelTypeHot,
-    MBCommunityModelTypeListArticle,
-    MBCommunityModelTypeListNews
-};
-
-
 @interface MBCommunityModel : NSObject
 
 @property (copy, nonatomic) NSNumber *type_id;
-
+@property (copy, nonatomic) NSString *user_id;
 @property (copy, nonatomic) NSNumber *article_id;
 @property (copy, nonatomic) NSString *time;
 @property (copy, nonatomic) NSString *detailContent;
@@ -32,7 +24,6 @@ typedef NS_ENUM(NSInteger, MBCommunityModelType) {
 @property (copy, nonatomic) NSString * user_thumbnail_src;
 @property (copy, nonatomic) NSString * article_photo_src;
 @property (copy, nonatomic) NSString * article_thumbnail_src;
-@property (assign, nonatomic) MBCommunityModelType modelType;
 @property NSMutableArray * articlePictureArray;
 @property NSMutableArray * articleThumbnailPictureArray;
 

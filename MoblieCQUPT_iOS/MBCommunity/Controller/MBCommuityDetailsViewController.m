@@ -174,7 +174,7 @@
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-            return self.viewModel.cellHeight;
+            return self.viewModel.detailCellHeight;
     }else {
         if (self.dataArray.count == 0) {
             return 200;
@@ -201,7 +201,7 @@
 - (UITableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     _headLabel.text = [NSString stringWithFormat:@"评论 %lu",(unsigned long)self.dataArray.count];
     if (indexPath.section == 0) {
-        MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
+        MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellDetail];
         cell.subViewFrame = self.viewModel;
         cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -328,7 +328,6 @@
                                 @"article_id":article_id,
                                 @"type_id":type_id,
                                 @"content":content};
-    
     NSLog(@"发送评论");
     _hud.labelText = @"正在发送评论...";
     [NetWork NetRequestPOSTWithRequestURL:POSTREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {

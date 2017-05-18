@@ -180,10 +180,8 @@ bool hasLoadedArray[3];
     }
     [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         hasLoadedArray[type] = YES;
-        NSNumber *page;
-        NSMutableArray *dataArray = [NSMutableArray array];
-        dataArray = returnValue[@"data"];
-        page = returnValue[@"page"];
+        NSMutableArray *dataArray = returnValue[@"data"];
+        NSNumber *page = returnValue[@"page"];
         page = @(page.integerValue+1);
         for (int i=0; i<dataArray.count; i++) {
             MBCommunityModel *model = [[MBCommunityModel alloc]initWithDictionary:dataArray[i]];
@@ -242,7 +240,7 @@ bool hasLoadedArray[3];
 
 - (MBCommunityCellTableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section;
-    MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView];
+    MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple];
     MBCommunity_ViewModel *viewModel =self.dataDicArray[tableView.tag][@"viewModels"][index];
     if (tableView.tag == 2) {
         cell.headImageView.userInteractionEnabled = NO;

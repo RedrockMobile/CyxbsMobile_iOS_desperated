@@ -68,12 +68,12 @@
                 _introductionTextField.text = _data[@"introduction"];
             }
             
-            if (![_data[@"qq"] isEqualToString:@""]) {
-                _qqTextField.text = _data[@"qq"];
+            if (_data[@"qq"]!=nil) {
+                _qqTextField.text = [_data[@"qq"] stringValue];
             }
             
-            if (![_data[@"phone"] isEqualToString:@""]) {
-                _phoneTextField.text = _data[@"phone"];
+            if (_data[@"phone"]!=nil) {
+                _phoneTextField.text = [_data[@"phone"] stringValue];
             }
         }
         
@@ -96,12 +96,17 @@
                              MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                              uploadProgress.mode = MBProgressHUDModeText;
                              uploadProgress.labelText = @"上传成功";
-                             [uploadProgress hide:YES afterDelay:1];
+                             [uploadProgress showAnimated:YES whileExecutingBlock:^{
+                                 
+                             } completionBlock:^{
+                                 [self.navigationController popViewControllerAnimated:YES];
+
+                             }];
                          } else if ([status isEqualToString:@"failed"]) {
-                             MBProgressHUD *uploadProgress1 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                             uploadProgress1.mode = MBProgressHUDModeText;
-                             uploadProgress1.labelText = @"非法关键字，请重新输入";
-                             [uploadProgress1 hide:YES afterDelay:1];
+                             MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                             uploadProgress.mode = MBProgressHUDModeText;
+                             uploadProgress.labelText = @"非法关键字，请重新输入";
+                             [uploadProgress hide:YES afterDelay:1];
                          }
     } WithFailureBlock:^{
     
@@ -195,7 +200,9 @@
             [cell.contentView addSubview:_phoneTextField];
         }
     }
-    
+    if(indexPath.row != 0){
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
     return cell;
 }
 

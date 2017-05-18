@@ -13,7 +13,10 @@
 #import "MBCommunityTableView.h"
 
 typedef void(^ClickSupportBtnBlock)(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel);
-
+typedef NS_ENUM(NSInteger, MBCommunityCellType) {
+    MBCommunityViewCellSimple,
+    MBCommunityViewCellDetail
+};
 
 @protocol MBCommunityCellEventDelegate <NSObject>
 
@@ -42,7 +45,7 @@ typedef void(^ClickSupportBtnBlock)(UIButton *imageBtn,UIButton *labelBtn,MBComm
 @property (strong, nonatomic) MBCommunity_ViewModel *subViewFrame;
 
 @property (copy, nonatomic) ClickSupportBtnBlock clickSupportBtnBlock;
+@property MBCommunityCellType type;
 
-
-+ (instancetype)cellWithTableView:(MBCommunityTableView *)tableView;
++ (instancetype)cellWithTableView:(MBCommunityTableView *)tableView type:(MBCommunityCellType) type;
 @end

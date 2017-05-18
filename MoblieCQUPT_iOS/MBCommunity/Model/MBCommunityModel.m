@@ -14,6 +14,8 @@
     if (self = [super init]) {        
         //type_id
         self.type_id = dic[@"type_id"];
+        self.user_id = dic[@"user_id"];
+
         self.article_id = dic[@"id"];
         switch (self.type_id.integerValue) {
             case 1:
@@ -36,9 +38,11 @@
                 break;
         }
         self.content = dic[@"content"];
+        self.detailContent = dic[@"content"];
         if(![self.type_id isEqualToNumber:@5]){
-            self.detailContent = self.content;
             self.content = dic[@"title"];
+            self.detailContent = [self removeHTML:self.detailContent];
+            
         }
         self.time = dic[@"time"];
         self.like_num = dic[@"like_num"];
@@ -63,7 +67,6 @@
     }
     return self;
 }
-
 - (NSString *)removeHTML:(NSString *)html {
     NSScanner *theScanner;
     NSString *text = nil;
@@ -83,5 +86,6 @@
     }
     return html;
 }
+
 
 @end

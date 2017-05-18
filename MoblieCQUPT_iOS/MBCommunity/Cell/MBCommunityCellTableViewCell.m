@@ -16,7 +16,6 @@
 @end
 
 @implementation MBCommunityCellTableViewCell
-
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self loadContentView];
@@ -97,7 +96,7 @@
     }
 }
 
-+ (instancetype)cellWithTableView:(MBCommunityTableView *)tableView
++ (instancetype)cellWithTableView:(MBCommunityTableView *)tableView type:(MBCommunityCellType)type
 {
     static NSString *identify = @"CommunityCell";
     MBCommunityCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
@@ -105,6 +104,7 @@
     {
         cell = [[MBCommunityCellTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identify];
     }
+    cell.type = type;
     return cell;
 }
 
@@ -123,7 +123,12 @@
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:self.subViewFrame.model.user_photo_src] placeholderImage:image];
     _IDLabel.text = self.model.nickname;
     _timeLabel.text = self.model.time;
-    _contentLabel.text = self.model.content;
+    if (self.type == MBCommunityViewCellDetail) {
+        _contentLabel.text = self.model.detailContent;
+    }
+    else{
+        _contentLabel.text = self.model.content;
+    }
     _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;
     _photoContainer.picNameArray = self.model.articlePictureArray;
     _supportImage.selected = self.subViewFrame.model.is_my_like;
@@ -136,12 +141,26 @@
     _headImageView.frame = self.subViewFrame.headImageViewFrame;
     _IDLabel.frame = self.subViewFrame.IDLabelFrame;
     _timeLabel.frame = self.subViewFrame.timeLabelFrame;
-    _contentLabel.frame = self.subViewFrame.contentLabelFrame;
-    _photoContainer.frame = self.subViewFrame.photoContainerViewFrame;
-    _supportBtn.frame = self.subViewFrame.numOfSupportFrame;
-    _supportImage.frame = self.subViewFrame.supportImageFrame;
-    _commentBtn.frame = self.subViewFrame.numOfCommentFrame;
-    _commentImage.frame = self.subViewFrame.commentImageFrame;
+    if (self.type == MBCommunityViewCellDetail) {
+        _contentLabel.frame = self.subViewFrame.detailContentLabelFrame;
+        _supportBtn.frame = self.subViewFrame.detailNumOfSupportFrame;
+        _supportImage.frame = self.subViewFrame.detailSupportImageFrame;
+        _commentBtn.frame = self.subViewFrame.detailNumOfCommentFrame;
+        _commentImage.frame = self.subViewFrame.detailCommentImageFrame;
+        _photoContainer.frame = self.subViewFrame.detailPhotoContainerViewFrame;
+
+
+
+    }
+    else{
+        _contentLabel.frame = self.subViewFrame.contentLabelFrame;
+        _supportBtn.frame = self.subViewFrame.numOfSupportFrame;
+        _supportImage.frame = self.subViewFrame.supportImageFrame;
+        _commentBtn.frame = self.subViewFrame.numOfCommentFrame;
+        _commentImage.frame = self.subViewFrame.commentImageFrame;
+        _photoContainer.frame = self.subViewFrame.photoContainerViewFrame;
+
+    }
 }
 
 - (void)clickHeadImageView:(UITapGestureRecognizer *)gesture {

@@ -17,7 +17,6 @@ typedef NS_ENUM(NSInteger, MessagesViewLoadType) {
 
 @interface MyMessagesViewController : UIViewController
 
-//@property (copy, nonatomic) NSString *headImageUrl;
 @property (strong, nonatomic) MBCommunityModel *model;
 @property (strong, nonatomic) MBCommentModel *commentModel;
 
