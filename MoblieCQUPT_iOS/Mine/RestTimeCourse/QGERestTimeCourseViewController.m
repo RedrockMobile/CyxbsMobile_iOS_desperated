@@ -51,6 +51,7 @@
     _tableView.dataSource = self;
     [_tableView setAutoresizesSubviews:NO];
     _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.userInteractionEnabled = NO;
     return _tableView;
 }
 
@@ -219,7 +220,6 @@
     q.allStuNameArray = _stuInfoArray;
     NSLog(@"%@",_stuNumArray);
     [self.navigationController pushViewController:q animated:YES];
-    [self viewDidLoad];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -255,10 +255,6 @@
     }
     [_tableView reloadData];
     _addedLabel.text = [NSString stringWithFormat:@"已添加%ld人",(unsigned long)_stuInfoArray.count];
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

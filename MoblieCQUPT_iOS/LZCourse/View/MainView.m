@@ -75,6 +75,7 @@
         self.dayLabels[i].text = [NSString stringWithFormat:@"%@\n%@",day,self.weekDay[i]];
         if (i == (components.weekday+5)%7) {
             self.dayLabels[i].textColor = [UIColor colorWithRed:138/255.0 green:179/255.0 blue:245/255.0 alpha:1];
+            [[NSUserDefaults standardUserDefaults] setObject:@(i+1) forKey:@"weekdayNum"];
         }
     }
 }

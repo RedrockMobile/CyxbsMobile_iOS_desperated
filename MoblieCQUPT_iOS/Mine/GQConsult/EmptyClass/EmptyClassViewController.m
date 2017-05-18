@@ -206,6 +206,16 @@
         _timePickView.delegate = self;
         _timePickView.dataSource = self;
         _timePickView.hidden = YES;
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        NSNumber *nowWeek  = [userDefaults objectForKey:@"nowWeek"];
+        NSNumber *weekdayNum = [userDefaults objectForKey:@"weekdayNum"];
+        
+        [_timePickView selectRow:nowWeek.integerValue inComponent:0 animated:YES];
+        [_timePickView selectRow:weekdayNum.integerValue inComponent:1 animated:YES];
+        
+        [_loadDic setObject:weekdayNum.stringValue forKey:@"weekdayNum"];
+        [_loadDic setObject:nowWeek.stringValue forKey:@"week"];
+        [self clickToolBarDone];
         
         UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 45, ScreenWidth, 1)];
         line.backgroundColor = [UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:0.5];

@@ -63,6 +63,7 @@
     _weekScrollView.contentSize = CGSizeMake(ScreenWidth, 35*19);
     _weekScrollView.backgroundColor = [UIColor whiteColor];
     _weekScrollView.bounces = NO;
+    [self hiddenWeekView];
     [_backView addSubview:_weekScrollView];
     
     _weekArray = @[@"本学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周"];
@@ -125,9 +126,10 @@
     _titleButton.center = CGPointMake(_titleView.frame.size.width/2, _titleView.frame.size.height/2);
     [_titleButton addTarget:self action:@selector(showWeekList) forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:_titleButton];
-    
+    [_titleButton setTitleColor:[UIColor colorWithRed:64/255.f green:64/255.f blue:64/255.f alpha:1] forState:UIControlStateNormal];
+
     _tagView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 13, 6)];
-    _tagView.image = [UIImage imageNamed:@"iconfont-titleTag.png"];
+    _tagView.image = [UIImage imageNamed:@"下拉.png"];
     _tagView.center = CGPointMake(_titleView.frame.size.width/2+_titleButton.frame.size.width/2+_tagView.frame.size.width/2, _titleView.frame.size.height/2);
     [_titleView addSubview:_tagView];
     
