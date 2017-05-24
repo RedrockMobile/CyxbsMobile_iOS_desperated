@@ -268,7 +268,8 @@
     NSDictionary *parameter = @{@"stuNum":stuNum,
                             @"idNum":idNum,
                                 @"article_id":article_id,
-                                @"type_id":type_id};
+                                @"type_id":type_id,
+                                @"version":@1.0};
     [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         _isLoadedComment = YES;
         _dataArray = [NSMutableArray array];

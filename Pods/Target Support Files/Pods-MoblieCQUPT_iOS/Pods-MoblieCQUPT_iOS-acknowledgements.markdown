@@ -239,6 +239,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Copyright 2011 - 2015 UMeng.com. All rights reserved.
 
 
+## UMengUShare
+
+Copyright 2011 - 2017 UMeng.com. All rights reserved.
+
+
 ## UPStackMenu
 
 The MIT License (MIT)

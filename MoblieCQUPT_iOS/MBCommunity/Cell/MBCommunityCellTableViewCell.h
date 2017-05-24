@@ -34,7 +34,8 @@ typedef NS_ENUM(NSInteger, MBCommunityCellType) {
 @property (strong, nonatomic) UIImageView *headImageView;//头像
 @property (strong, nonatomic) UILabel *IDLabel;//昵称
 @property (strong, nonatomic) UILabel *timeLabel;//发送时间
-@property (strong, nonatomic) UILabel *contentLabel;//内容
+//@property (strong, nonatomic) UILabel *contentLabel;//内容
+@property (strong, nonatomic) YYLabel *contentLabel;
 @property (strong, nonatomic) UIImageView *commentImage;//评论图标
 @property (strong, nonatomic) UIButton *supportImage;
 @property (strong, nonatomic) UIButton *supportBtn;//点赞数

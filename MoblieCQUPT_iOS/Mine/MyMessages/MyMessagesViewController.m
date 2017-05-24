@@ -20,6 +20,7 @@
 #import "MBCommuityDetailsViewController.h"
 #import "MBProgressHUD.h"
 #import "MJrefresh.h"
+#import "MBCommunityHandle.h"
 
 
 @interface MyMessagesViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -49,6 +50,10 @@
     //请求个人信息
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self.communityTableView reloadData];
+}
+
 - (void)getPersonalInfo{
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
@@ -58,7 +63,7 @@
     else{
         _stunum_other = stuNum;
     }
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other}
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
                          _myInfoData = returnValue[@"data"];
                          [self.communityTableView reloadData];
@@ -97,7 +102,9 @@
 }
 
 - (void)loadNet {
-    NSDictionary *parameter = @{@"page":@(_flag),
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSDictionary *parameter = @{@"stuNum":stuNum,
+                                @"page":@(_flag),
                                 @"size":@"15",
                                 @"stunum_other":self.stunum_other,
                                 @"version":@1.0};
@@ -186,7 +193,7 @@
     if (indexPath.section == 0) {
         //加载个人信息cell
         MyMessagesTableViewCell *cell = [MyMessagesTableViewCell cellWithTableView:tableView];
-        [cell.avatar sd_setImageWithURL:[NSURL URLWithString:_myInfoData[@"photo_thumbnail_src"]]];
+        [cell.avatar sd_setImageWithURL:[NSURL URLWithString:_myInfoData[@"photo_thumbnail_src"]] placeholderImage:[UIImage imageNamed:@"headImage.png"]];
         cell.nicknameLabel.text = _myInfoData[@"nickname"];
         cell.introductionLabel.text = _myInfoData[@"introduction"];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -221,12 +228,12 @@
         }
         return cell;
     }else {
-        MBCommunityCellTableViewCell *communityCell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellDetail];
+        MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellDetail];
         MBCommunity_ViewModel *viewModel = _allDataArray[indexPath.section - 2];
-        communityCell.subViewFrame = viewModel;
-        communityCell.headImageView.userInteractionEnabled = NO;
-        
-        return communityCell;
+        cell.subViewFrame = viewModel;
+        cell.headImageView.userInteractionEnabled = NO;
+        cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
+        return cell;
     }
 }
 
@@ -234,28 +241,10 @@
     if (indexPath.section > 1){
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     //查询文章内容
-        MBCommunityModel *model = ((MBCommunity_ViewModel *)self.allDataArray[indexPath.section - 2]).model;
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
-                            WithParameter:@{@"type_id":@5, @"article_id":model.article_id}
-                     WithReturnValeuBlock:^(id returnValue) {
-                         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
-                         [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
-                         [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
-                         [dic setObject:_myInfoData[@"nickname"] forKey:@"nickname"];
-                         [dic setObject:_myInfoData[@"photo_thumbnail_src"] forKey:@"user_thumbnail_src"];
-                         [dic setObject:_myInfoData[@"photo_src"] forKey:@"user_photo_src"];
-                         MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
-                        MBCommunity_ViewModel *community_ViewModel = self.allDataArray[indexPath.section - 2];
-                         community_ViewModel.model = communityModel;
-                         MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
-                         commuityDetailsVC.viewModel = community_ViewModel;
-                         [self.navigationController pushViewController:commuityDetailsVC animated:YES];
-                     } WithFailureBlock:^{
-                         MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                         uploadProgress.mode = MBProgressHUDModeText;
-                         uploadProgress.labelText = @"网络状况不佳";
-                         [uploadProgress hide:YES afterDelay:1];
-                     }];
+        MBCommunity_ViewModel *community_ViewModel = self.allDataArray[indexPath.section - 2];
+        MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
+        commuityDetailsVC.viewModel = community_ViewModel;
+        [self.navigationController pushViewController:commuityDetailsVC animated:YES];
     }
 }
 @end

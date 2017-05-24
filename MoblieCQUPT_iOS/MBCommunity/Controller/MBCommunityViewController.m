@@ -12,6 +12,7 @@
 #import "MBSegmentedView.h"
 #import "MBCommunityTableView.h"
 #import "MBCommunityCellTableViewCell.h"
+#import "TopicModel.h"
 
 #import "MBCommuityDetailsViewController.h"
 #import "MBReleaseViewController.h"
@@ -20,18 +21,21 @@
 #import "MJrefresh.h"
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "MBCommunityHandle.h"
+#import "BannerScrollView.h"
 
 @interface MBCommunityViewController ()<UITableViewDataSource,UITableViewDelegate,MBCommunityCellEventDelegate>
 
 @property (strong, nonatomic) MBSegmentedView *segmentView;
 
 @property (strong, nonatomic) UIBarButtonItem *addButton;
-@property NSMutableArray <NSDictionary *>* dataDicArray;
 @property (strong, nonatomic) NSMutableArray<MBCommunityTableView *> *tableViewArray;
 @property (strong, nonatomic) NSMutableArray *indicatorViewArray;
 
-@property (strong, nonatomic) NSMutableArray *parameterArray;
+@property (strong, nonatomic) NSMutableArray <NSDictionary *>* dataDicArray;
+@property (strong, nonatomic) NSMutableArray <NSDictionary *>* parameterArray;
+@property (strong, nonatomic) NSMutableArray <TopicModel *>*topicArray;
 @property LoginViewController *loginViewController;
+@property BannerScrollView *bannerScrollView;
 @end
 
 @implementation MBCommunityViewController
@@ -40,6 +44,7 @@ bool hasLoadedArray[3];
     [super viewDidLoad];
     self.dataDicArray = [NSMutableArray array];
     self.parameterArray = [NSMutableArray array];
+    self.topicArray = [NSMutableArray array];
     for (int i = 0; i<3; i++) {
         hasLoadedArray[i] = NO;
         [self.dataDicArray addObject:
@@ -73,7 +78,9 @@ bool hasLoadedArray[3];
         [_indicatorViewArray addObject:indicatorView];
     }
     [self loadNetDataWithType:0];
+    [self getTopicData];
     [self.view addSubview:_segmentView];
+    
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -128,7 +135,6 @@ bool hasLoadedArray[3];
         releaseVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController presentViewController:releaseVC animated:YES completion:nil];
     }
-
 }
 
 
@@ -213,19 +219,52 @@ bool hasLoadedArray[3];
         [tableView.mj_footer endRefreshing];
     }];
 }
-#pragma mark -
+
+- (void)getTopicData{
+    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
+    [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:@{@"stuNum":stuNum,
+                     }
+                     WithReturnValeuBlock:^(id returnValue) {
+                         NSLog(@"%@",returnValue);
+                         NSMutableArray *dataArray = returnValue[@"data"];
+                         for (NSDictionary *dic in dataArray) {
+                             TopicModel *model = [[TopicModel alloc] initWithDic:dic];
+                             [self.topicArray addObject:model];
+                         }
+                         self.bannerScrollView =[[BannerScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130) andTopics:self.topicArray];
+                         [self.tableViewArray[1] reloadData];
+                     }
+                         WithFailureBlock:^{
+
+                         }];
+}
+
+#pragma mark -UITableView
 
 - (NSInteger)tableView:(MBCommunityTableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(MBCommunityTableView *)tableView {
-    return [self.dataDicArray[tableView.tag][@"viewModels"] count];
+    if(tableView.tag==1){
+        return [self.dataDicArray[tableView.tag][@"viewModels"] count]+1;
+    }
+    else{
+        return  [self.dataDicArray[tableView.tag][@"viewModels"] count];
+    }
 }
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section;
-    return [self.dataDicArray[tableView.tag][@"viewModels"][index] cellHeight];
+    if (tableView.tag==1) {
+        if (index == 0) {
+            return self.bannerScrollView.height;
+        }
+        return [self.dataDicArray[tableView.tag][@"viewModels"][index-1] cellHeight];
+    }
+    else{
+        return [self.dataDicArray[tableView.tag][@"viewModels"][index] cellHeight];
+    }
 
     
 }
@@ -238,10 +277,22 @@ bool hasLoadedArray[3];
     return 0;
 }
 
-- (MBCommunityCellTableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section;
     MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple];
-    MBCommunity_ViewModel *viewModel =self.dataDicArray[tableView.tag][@"viewModels"][index];
+    MBCommunity_ViewModel *viewModel;
+    if (tableView.tag==1) {
+        if(index == 0){
+            UITableViewCell *cell = [[UITableViewCell alloc]initWithFrame:self.bannerScrollView.frame];
+            [cell addSubview:self.bannerScrollView];
+            return cell;
+        }
+      viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index-1];
+    }
+    else{
+        viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
+    }
+
     if (tableView.tag == 2) {
         cell.headImageView.userInteractionEnabled = NO;
     }
@@ -261,11 +312,20 @@ bool hasLoadedArray[3];
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSInteger index = indexPath.section;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     MBCommuityDetailsViewController *d = [[MBCommuityDetailsViewController alloc]init];
     d.hidesBottomBarWhenPushed = YES;
-    NSInteger index = indexPath.section;
-    MBCommunity_ViewModel *viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
+    MBCommunity_ViewModel *viewModel;
+    if (tableView.tag == 1) {
+        viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index-1];
+        if (index == 0) {
+            return;
+        }
+    }
+    else{
+        viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
+    }
     d.viewModel = viewModel;
     [self.navigationController pushViewController:d animated:YES];
 }

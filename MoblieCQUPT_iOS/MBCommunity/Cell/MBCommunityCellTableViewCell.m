@@ -8,7 +8,6 @@
 
 #import "MBCommunityCellTableViewCell.h"
 #import "MBPhotoContainerView.h"
-
 @interface MBCommunityCellTableViewCell ()
 
 //@property (strong, nonatomic) MBPhotoContainerView *photoContainerView;
@@ -47,7 +46,7 @@
     _timeLabel.font = [UIFont systemFontOfSize:12];
     _timeLabel.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
     
-    _contentLabel = [[UILabel alloc]init];
+    _contentLabel = [[YYLabel alloc]init];
     _contentLabel.font = [UIFont systemFontOfSize:16];
     _contentLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
     _contentLabel.numberOfLines = 0;
@@ -129,6 +128,25 @@
     else{
         _contentLabel.text = self.model.content;
     }
+    NSError *error;
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:self.contentLabel.text];
+    attributedStr.font = self.contentLabel.font;
+    //正则匹配#.#
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"#.+?#"                                options:0 error:&error];
+    if (regex != nil) {
+        NSTextCheckingResult *firstMatch=[regex firstMatchInString:self.contentLabel.text options:0 range:NSMakeRange(0, [self.contentLabel.text length])];
+        
+        if (firstMatch) {
+            NSRange resultRange = [firstMatch rangeAtIndex:0];
+            [attributedStr setTextHighlightRange:resultRange color:[UIColor colorWithHexString:@"41a3ff"] backgroundColor:[UIColor whiteColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+                NSLog(@"test");
+            }];
+        }
+        NSLog(@"%@",error);
+    }
+    
+    self.contentLabel.attributedText = attributedStr;
+
     _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;
     _photoContainer.picNameArray = self.model.articlePictureArray;
     _supportImage.selected = self.subViewFrame.model.is_my_like;

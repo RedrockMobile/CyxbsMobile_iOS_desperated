@@ -86,6 +86,11 @@
 //动态查询接口
 #define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
 
+//话题列表接口
+#define TOPICLIST_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/topicList"
+
+//话题文章列表接口
+#define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
 //#import "SDWebImageManager.h"
 #import "UIColor+Helper.h"
 #import <SDWebImageManager.h>
@@ -111,7 +116,6 @@
 #define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
 #define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
 #define LESSONBTNSIDE (((SCREENWIDTH)-(MWIDTH))/DAY)
-//#define LESSONBTNH (MWIDTH*2)-(LESSON-1)*SEGMENT
 #define SEGMENT 2
 #define autoSizeScaleX SCREENWIDTH/375.0
 #define autoSizeScaleY SCREENHEIGHT/667.0
