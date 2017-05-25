@@ -28,17 +28,21 @@
         for (NSInteger i = 0; i<=topics.count; i++) {
             TopicBtn *btn;
             if (i == topics.count) {
-                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH*num/2.0,0,SCREENWIDTH/2.0,frame.size.height)];
+                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH*num/2.0+16*(i+1),0,SCREENWIDTH/2.0,frame.size.height)];
             }
             else{
-                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH*num/2.0,0,SCREENWIDTH/2.0,frame.size.height)andTopic:topics[i]];
+                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH*num/2.0+16*(i+1),0,SCREENWIDTH/2.0,frame.size.height)andTopic:topics[i]];
             }
             [self.btnArray addObject:btn];
             [self addSubview:btn];
         }
-        [self.btnArray mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:16 leadSpacing:16 tailSpacing:16];
+        if (topics.count >0) {
+            [self.btnArray mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:16 leadSpacing:16 tailSpacing:16];
+        }
+        else{
+            
+        }
         [self.btnArray mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.mas_equalTo(frame.size.height-32);
             make.width.mas_equalTo(frame.size.width/2);
             make.top.mas_equalTo(16);
             make.bottom.mas_equalTo(-16);

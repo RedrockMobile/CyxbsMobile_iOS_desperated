@@ -26,6 +26,7 @@
 @property DetailBannnerView *detailBannnerView;
 @property TopicModel *topic;
 @property (nonatomic) UIBarButtonItem *shareButton;
+@property (nonatomic) UIButton *joinBtn;
 @property BOOL isRefresh;
 @property NSInteger page;
 @end
@@ -47,6 +48,7 @@
     self.page = 0;
     [self setupTableView];
     [self getArticles];
+    [self setupJoinBtn];
     self.navigationItem.rightBarButtonItem = self.shareButton;
     // Do any additional setup after loading the view from its nib.
 }
@@ -56,8 +58,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)setupJoinBtn{
+    if (self.joinBtn == nil) {
+        self.joinBtn = [[UIButton alloc]init];
+        [self.joinBtn addTarget:self action:@selector(joinAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.joinBtn setBackgroundImage:[UIImage imageNamed:@"topic_image_join"] forState:UIControlStateNormal];
+        [self.view addSubview:self.joinBtn];
+
+        [self.joinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.and.left.and.bottom.equalTo(self.view).offset(0);
+            make.height.mas_equalTo(SCREENHEIGHT*0.15);
+        }];
+    }
+}
+
+- (void)joinAction{
+    
+}
+
 - (void)setupTableView {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-SCREENHEIGHT*0.15) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.sectionHeaderHeight = 0;

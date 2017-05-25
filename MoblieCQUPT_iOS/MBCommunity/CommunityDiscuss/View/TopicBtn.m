@@ -10,6 +10,7 @@
 #import <Masonry.h>
 #import <UShareUI/UShareUI.h>
 #import "DetailTopicViewController.h"
+#import "TopicViewController.h"
 @interface TopicBtn()
 @property TopicModel *model;
 @end
@@ -17,7 +18,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        [self setBackgroundImage:[UIImage imageNamed:@"topic-image-alltopic"] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageNamed:@"topic_image_alltopic"] forState:UIControlStateNormal];
         [self addTarget:self action:@selector(touchTopic) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
@@ -54,9 +55,13 @@
 }
 - (void)touchTopic{
     if (self.model == nil) {
-        NSLog(@"test");
+        TopicViewController *vc = [[TopicViewController alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.viewController.navigationController pushViewController:vc animated:YES];
+        
     }else{
     DetailTopicViewController *vc = [[DetailTopicViewController alloc]initWithTopic:self.model];
+    vc.hidesBottomBarWhenPushed = YES;
     [self.viewController.navigationController pushViewController:vc animated:YES];
     }
 }
