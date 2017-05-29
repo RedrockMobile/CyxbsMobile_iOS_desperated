@@ -28,11 +28,23 @@ PODS:
   - Masonry (1.0.2)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.12)
+  - ProgressHUD (2.4)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
   - UIColor+BFPaperColors (1.7.6)
   - UMengAnalytics-NO-IDFA (4.2.5)
+  - UMengUShare/Core (6.4.4):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.4)
+  - UMengUShare/Social/ReducedQQ (6.4.4):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.4):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.4):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.4.4):
+    - UMengUShare/Core
   - UPStackMenu (1.0.0)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
@@ -46,9 +58,14 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh
+  - ProgressHUD
   - SDWebImage
   - UIColor+BFPaperColors
   - UMengAnalytics-NO-IDFA
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/UI
   - UPStackMenu
   - YYKit
 
@@ -60,12 +77,14 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  ProgressHUD: 4b66b0df0e08519c5c7283a198fd2867a114c95a
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UIColor+BFPaperColors: 37e7b48fa86b29ff2e97a11208ab9cb5ab0b883d
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  UMengUShare: cd54ae52958426b79aa9193a7b02058d6a6d9aa0
   UPStackMenu: 4e834206f76451c1d78a6cacee46e47ecf83b174
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 51452b6fa98e9415e74448e8e4e320e33d9d2f34
+PODFILE CHECKSUM: 8fb31151fa7a47675722cdf4e4b1068153d30c68
 
 COCOAPODS: 1.2.0.beta.1

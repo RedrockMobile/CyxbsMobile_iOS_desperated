@@ -1,0 +1,126 @@
+//
+//  PrefixHeader.pch
+//  MoblieCQUPT_iOS
+//
+//  Created by user on 15/8/18.
+//  Copyright (c) 2015年 Orange-W. All rights reserved.
+//
+
+#ifndef MoblieCQUPT_iOS_PrefixHeader_pch
+#define MoblieCQUPT_iOS_PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+#if DEBUG
+    #define DDLog(xx, ...)  NSLog(@"%s(%d): " xx, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+    #define NSLog(format, ...) do {                                                                          \
+    fprintf(stderr, "<%s : %d> | %s\n",                                           \
+    [[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String],  \
+    __LINE__, __func__);                                                        \
+    (NSLog)((format), ##__VA_ARGS__);                                           \
+    fprintf(stderr, "-------\n");                                               \
+    } while (0)
+#else
+    #define DDLog(xx, ...)     ;
+    //#define NSLog(format, ...) ;
+#endif
+
+#define MAIN_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
+#define FONT_COLOR  [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]
+//#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
+#define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
+#define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
+#define kBarTintColor MAIN_COLOR
+#define kItemTintColor [UIColor blackColor]
+#define kFont [UIFont fontWithName:@"Arial" size:15]
+#define kTextColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
+#define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
+
+//#import <AFNetworking.h>
+#import <AFNetworking.h>
+#import "NetWork.h"
+//#import <MobClick.h>
+#import <YYKit.h>
+//#import "MobClick.h"
+
+#pragma Group共享
+#define kAPPGroupID @"group.com.redrock.mobile"
+#define kAppGroupShareNowDay @"nowDay"
+#define kAppGroupShareThisWeekArray @"thisWeekArray"
+
+#define kAPPUserDefaultLoginName @"name"
+#define kAPPUserDefaultStudentID @"stuNum"
+
+#define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define kWidthGrid  (ScreenWidth/7.5)
+#define RGBColor(r,g,b,a) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
+
+#define ColorArray [[NSMutableArray alloc]initWithObjects:@"254,145,103",@"120,201,252",@"111,219,188",@"191,161,233",nil]
+
+#define kPhotoImageViewW (ScreenWidth - 2 * 10 - 4) / 3
+
+//gege
+#define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
+//哔哔叨叨列表
+#define LISTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
+//热门动态列表
+#define SEARCHHOTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
+//获取评论列表
+#define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
+//官方咨询列表
+#define LISTNEWS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
+//评论接口
+#define POSTREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
+//赞接口
+#define ADDSUPPORT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/addone"
+//取消赞接口
+#define CANCELSUPPOTRT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+//发布动态接口
+#define ADDARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/addArticle"
+//发布话题文章接口
+#define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
+//查询个人信息接口
+#define SEARCH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+//上传图片接口
+#define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
+
+//动态查询接口
+#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
+
+//话题列表接口
+#define TOPICLIST_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/topicList"
+
+//话题文章列表接口
+#define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+//#import "SDWebImageManager.h"
+#import "UIColor+Helper.h"
+#import <SDWebImageManager.h>
+#import <UIImageView+WebCache.h>
+#import <YYImage.h>
+#import "LoginEntry.h"
+
+#define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
+#define NVGBARHEIGHT self.navigationController.navigationBar.frame.size.height
+#define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
+#define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+#define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
+#define MHEIGHT (1.6*MWIDTH) //monthLabel的高度
+#define DAY 7
+#define LESSON 12
+#define WEEK 20
+#define LONGLESSON (LESSON/2)
+#define kebiaoAPI @"http://hongyan.cqupt.edu.cn/redapi2/api/kebiao"
+#define ADDREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
+#define GETREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
+#define EDITREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
+#define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
+#define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
+#define LESSONBTNSIDE (((SCREENWIDTH)-(MWIDTH))/DAY)
+#define SEGMENT 2
+#define autoSizeScaleX SCREENWIDTH/375.0
+#define autoSizeScaleY SCREENHEIGHT/667.0
+#define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
+
+#endif
