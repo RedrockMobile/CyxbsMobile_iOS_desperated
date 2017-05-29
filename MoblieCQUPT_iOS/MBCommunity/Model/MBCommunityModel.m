@@ -40,7 +40,9 @@
         self.content = dic[@"content"];
         self.detailContent = dic[@"content"];
         if(![self.type_id isEqualToNumber:@5]){
-            self.content = dic[@"title"];
+            if (![self.type_id isEqualToNumber:@7]) {
+                self.content = dic[@"title"];
+            }
             self.detailContent = [self removeHTML:self.detailContent];
             
         }
@@ -59,10 +61,14 @@
         }
 
         for(int i = 0;i<self.articlePictureArray.count;i++){
-            self.articlePictureArray[i] = [PHOTOURL stringByAppendingString:self.articlePictureArray[i]];
+            if (![self.articlePictureArray[i] hasPrefix:PHOTOURL]) {
+                self.articlePictureArray[i] = [PHOTOURL stringByAppendingString:self.articlePictureArray[i]];
+            }
         }
         for (int i=0; i<self.articleThumbnailPictureArray.count; i++) {
-            self.articleThumbnailPictureArray[i] =  [PHOTOURL stringByAppendingString:self.articleThumbnailPictureArray[i]];
+            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL]) {
+                self.articleThumbnailPictureArray[i] =  [PHOTOURL stringByAppendingString:self.articleThumbnailPictureArray[i]];
+            }
         }
     }
     return self;

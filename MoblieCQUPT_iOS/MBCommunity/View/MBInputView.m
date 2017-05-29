@@ -19,12 +19,23 @@
 - (instancetype)initWithFrame:(CGRect)frame withInptuViewStyle:(MBInputViewStyle)style {
     self = [super initWithFrame:frame];
     if (self) {
-        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(12, 12, 60, 20)];
-        [btn setTitle:@"添加话题 #" forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor colorWithHexString:@"41a3ff"] forState:UIControlStateNormal];
-        [btn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-        [self addSubview:btn];
-        [btn addTarget:self action:@selector(addTopic) forControlEvents:UIControlEventTouchUpInside];
+        self.addBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 12, 90, 20)];
+        self.addBtn .titleLabel.textAlignment = NSTextAlignmentCenter;
+        [self.addBtn  setTitle:@"添加话题 #" forState:UIControlStateNormal];
+        [self.addBtn  setTitleColor:[UIColor colorWithHexString:@"41a3ff"] forState:UIControlStateNormal];
+        [self.addBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        [self addSubview:self.addBtn];
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.addBtn.bounds
+             byRoundingCorners:UIRectCornerBottomRight |UIRectCornerTopRight
+               cornerRadii:CGSizeMake(8, 8)];
+        CAShapeLayer *maskLayer = [CAShapeLayer layer];
+        maskLayer.fillColor = [UIColor clearColor].CGColor;
+        maskLayer.lineWidth = 1;
+        maskLayer.strokeColor = [UIColor colorWithRGB:0xe3e3e5 alpha:1].CGColor;
+        maskLayer.path = maskPath.CGPath;
+        maskLayer.frame = self.addBtn.bounds;
+        [self.addBtn.layer addSublayer:maskLayer];
+      
         if (style == MBInputViewStyleDefault) {
             _textView = [[MBTextView alloc]initWithFrame:CGRectMake(12, 37, ScreenWidth - 24, frame.size.height - 20)];
             [self addSubview:self.textView];
@@ -44,9 +55,7 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, CGRectGetMaxY(self.container.frame) + 10);
 }
 
-- (void)addTopic{
-    
-}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

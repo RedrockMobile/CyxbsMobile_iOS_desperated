@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class DetailTopicViewController;
 
 @interface TopicSearchViewController : UIViewController
 
@@ -14,7 +15,7 @@
 
 @property (nonatomic, strong) NSString *searchText;
 
-//@property (nonatomic, strong) void(^pushBlk)(*这里填要传入的控制器*);
+@property (nonatomic, strong) void(^pushBlk)(DetailTopicViewController *);
 
 - (void)searchDataRefresh;
 

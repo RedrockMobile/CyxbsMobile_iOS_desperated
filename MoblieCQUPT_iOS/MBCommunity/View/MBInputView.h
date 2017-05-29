@@ -18,6 +18,8 @@ typedef NS_ENUM(NSInteger, MBInputViewStyle) {
 
 @interface MBInputView : UIView
 
+@property (strong, nonatomic) UIButton *addBtn;
+
 @property (strong, nonatomic) MBTextView *textView;
 
 @property (strong, nonatomic) MBAddPhotoContainerView *container;

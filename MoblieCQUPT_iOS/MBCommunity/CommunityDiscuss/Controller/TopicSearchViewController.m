@@ -10,11 +10,11 @@
 #import "TopicSearchCollectionViewCell.h"
 #import "TopicRequest.h"
 #import "MJRefresh.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "DetailTopicViewController.h"
+#import "TopicModel.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
-#define autoSizeScaleX [UIScreen mainScreen].bounds.size.width/375.0
-#define autoSizeScaleY [UIScreen mainScreen].bounds.size.height/667.0
 
 CG_INLINE CGRect
 CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
@@ -62,7 +62,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         
         _collectionView = [[UICollectionView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 667) collectionViewLayout:flowLayout];
-
+        
         flowLayout.itemSize = CGSizeMake(165 * autoSizeScaleX, 138 * autoSizeScaleY);
         
         flowLayout.sectionInset = UIEdgeInsetsMake(12.5, 12.5, 12.5, 12.5);
@@ -88,12 +88,12 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)startTimer{
     NSTimer *timer = [NSTimer timerWithTimeInterval:5 target:self selector:@selector(
-                      endRefresh) userInfo:nil repeats:YES];
+                                                                                     endRefresh) userInfo:nil repeats:YES];
     [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
 }
 
 - (void)endRefresh{
-    [self.collectionView.mj_footer endRefreshing];
+    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
     [self.collectionView.mj_header endRefreshing];
 }
 
@@ -101,24 +101,27 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self startTimer];
     TopicRequest *tReq = [[TopicRequest alloc] init];
     if (self.isMyJoin) {
-        if (self.searchText.length) {
-            [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:@"2015212247" idNum:@"273918" searchText:self.searchText];
-            tReq.myJoinBlk = ^(NSDictionary *dic){
-                [_data removeAllObjects];
-                [_data addObjectsFromArray:dic[@"data"]];
-                _oldDataCount = _data.count;
-                [_collectionView reloadData];
-                [_collectionView.mj_header endRefreshing];
-            };
-        }else{
-            [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:@"2015212247" idNum:@"273918" searchText:nil];
-            tReq.myJoinBlk = ^(NSDictionary *dic){
-                _data = [[NSMutableArray alloc] init];
-                [_data addObjectsFromArray:dic[@"data"]];
-                _oldDataCount = _data.count;
-                [_collectionView reloadData];
-                [_collectionView.mj_header endRefreshing];
-            };
+        NSUserDefaults *userDefautl = [NSUserDefaults standardUserDefaults];
+        if ([userDefautl objectForKey:@"username"]) {
+            if (self.searchText.length) {
+                [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:[userDefautl objectForKey:@"stuNum"] idNum:[userDefautl objectForKey:@"idNum"] searchText:self.searchText];
+                tReq.myJoinBlk = ^(NSDictionary *dic){
+                    [_data removeAllObjects];
+                    [_data addObjectsFromArray:dic[@"data"]];
+                    _oldDataCount = _data.count;
+                    [_collectionView reloadData];
+                    [_collectionView.mj_header endRefreshing];
+                };
+            }else{
+                [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:[userDefautl objectForKey:@"stuNum"] idNum:[userDefautl objectForKey:@"idNum"] searchText:nil];
+                tReq.myJoinBlk = ^(NSDictionary *dic){
+                    _data = [[NSMutableArray alloc] init];
+                    [_data addObjectsFromArray:dic[@"data"]];
+                    _oldDataCount = _data.count;
+                    [_collectionView reloadData];
+                    [_collectionView.mj_header endRefreshing];
+                };
+            }
         }
     }else{
         if (self.searchText.length) {
@@ -142,7 +145,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         }
     }
     _pageCount = 0;
-//    [_collectionView.mj_header endRefreshing];
+    //    [_collectionView.mj_header endRefreshing];
 }
 
 - (void)footerrefreshing{
@@ -151,27 +154,33 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     TopicRequest *tReq = [[TopicRequest alloc] init];
     if (self.isMyJoin) {
         if (self.searchText.length) {
-            [tReq requestMyJoinTopicDataWithSize:@"10" page:[NSString stringWithFormat:@"%ld",(long)_pageCount] stuNum:@"2015212247" idNum:@"273918" searchText:self.searchText];
-            tReq.myJoinBlk = ^(NSDictionary *dic){
-                [_data addObjectsFromArray:dic[@"data"]];
-                [self.collectionView reloadData];
-                if (_data.count==_oldDataCount) {
-                    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
-                }else{
-                    [self.collectionView.mj_footer endRefreshing];
-                }
-            };
+            NSUserDefaults *userDefautl = [NSUserDefaults standardUserDefaults];
+            if ([userDefautl objectForKey:@"stuNum"]){
+                [tReq requestMyJoinTopicDataWithSize:@"10" page:[NSString stringWithFormat:@"%ld",(long)_pageCount] stuNum:[userDefautl objectForKey:@"stuNum"] idNum:[userDefautl objectForKey:@"idNum"] searchText:self.searchText];
+                tReq.myJoinBlk = ^(NSDictionary *dic){
+                    [_data addObjectsFromArray:dic[@"data"]];
+                    [self.collectionView reloadData];
+                    if (_data.count==_oldDataCount) {
+                        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+                    }else{
+                        [self.collectionView.mj_footer endRefreshing];
+                    }
+                };
+            }
         }else{
-            [tReq requestMyJoinTopicDataWithSize:@"10" page:[NSString stringWithFormat:@"%ld",(long)_pageCount] stuNum:@"2015212247" idNum:@"273918" searchText:nil];
-            tReq.myJoinBlk = ^(NSDictionary *dic){
-                [_data addObjectsFromArray:dic[@"data"]];
-                [self.collectionView reloadData];
-                if (_data.count==_oldDataCount) {
-                    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
-                }else{
-                    [self.collectionView.mj_footer endRefreshing];
-                }
-            };
+            NSUserDefaults *userDefautl = [NSUserDefaults standardUserDefaults];
+            if ([userDefautl objectForKey:@"stuNum"]){
+                [tReq requestMyJoinTopicDataWithSize:@"10" page:[NSString stringWithFormat:@"%ld",(long)_pageCount] stuNum:[userDefautl objectForKey:@"stuNum"] idNum:[userDefautl objectForKey:@"idNum"] searchText:nil];
+                tReq.myJoinBlk = ^(NSDictionary *dic){
+                    [_data addObjectsFromArray:dic[@"data"]];
+                    [self.collectionView reloadData];
+                    if (_data.count==_oldDataCount) {
+                        [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+                    }else{
+                        [self.collectionView.mj_footer endRefreshing];
+                    }
+                };
+            }
         }
     }else{
         if (self.searchText.length) {
@@ -199,25 +208,28 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
             };
         }
     }
-//    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    //    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
 }
 
 - (void)searchDataRefresh{
     TopicRequest *tReq = [[TopicRequest alloc] init];
     [[self.collectionView.subviews lastObject] removeFromSuperview];
     if (self.isMyJoin) {
-        [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:@"2015212247" idNum:@"273918" searchText:self.searchText];
-        tReq.myJoinBlk = ^(NSDictionary *dic){
-            [_data removeAllObjects];
-            [_data addObjectsFromArray:dic[@"data"]];
-            _oldDataCount = _data.count;
-            [_collectionView reloadData];
-            if (_data.count==0) {
-                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"noTopicIcon.png"]];
-                imageView.frame = CHANGE_CGRectMake(50, 100, 467,379);
-                [self.collectionView addSubview:imageView];
-            }
-        };
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if ([userDefault objectForKey:@"stuNum"]){
+            [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:[userDefault objectForKey:@"stuNum"] idNum:[userDefault objectForKey:@"idNum"] searchText:self.searchText];
+            tReq.myJoinBlk = ^(NSDictionary *dic){
+                [_data removeAllObjects];
+                [_data addObjectsFromArray:dic[@"data"]];
+                _oldDataCount = _data.count;
+                [_collectionView reloadData];
+                if (_data.count==0) {
+                    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"noTopicIcon.png"]];
+                    imageView.frame = CHANGE_CGRectMake(20, 100, 335,272);
+                    [self.collectionView addSubview:imageView];
+                }
+            };
+        }
     }else{
         [tReq requestTopicDataWithSize:@"10" page:@"0" searchText:self.searchText];
         tReq.topicBlk = ^(NSDictionary *dic){
@@ -226,8 +238,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
             _oldDataCount = _data.count;
             [_collectionView reloadData];
             if (_data.count==0) {
-                  UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"noTopicIcon.png"]];
-                imageView.frame = CHANGE_CGRectMake(50, 100, 467,379);
+                UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"noTopicIcon.png"]];
+                imageView.frame = CHANGE_CGRectMake(20, 100, 335,272);
                 [self.collectionView addSubview:imageView];
             }
         };
@@ -238,13 +250,16 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (void)dataRefresh{
     TopicRequest *tReq = [[TopicRequest alloc] init];
     if (self.isMyJoin) {
-        [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:@"2015212247" idNum:@"273918" searchText:nil];
-        tReq.myJoinBlk = ^(NSDictionary *dic){
-            _data = [[NSMutableArray alloc] init];
-            [_data addObjectsFromArray:dic[@"data"]];
-            _oldDataCount = _data.count;
-            [_collectionView reloadData];
-        };
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        if ([userDefault objectForKey:@"stuNum"]) {
+            [tReq requestMyJoinTopicDataWithSize:@"10" page:@"0" stuNum:[userDefault objectForKey:@"stuNum"] idNum:[userDefault objectForKey:@"idNum"] searchText:nil];
+            tReq.myJoinBlk = ^(NSDictionary *dic){
+                _data = [[NSMutableArray alloc] init];
+                [_data addObjectsFromArray:dic[@"data"]];
+                _oldDataCount = _data.count;
+                [_collectionView reloadData];
+            };
+        }
     }else{
         [tReq requestTopicDataWithSize:@"10" page:@"0" searchText:nil];
         tReq.topicBlk = ^(NSDictionary *dic){
@@ -259,7 +274,11 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 #pragma mark - collectionView相关
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-   //在这里设置好控制器后调用block
+    TopicModel *tModel = [[TopicModel alloc] initWithDic:_data[indexPath.item]];
+    DetailTopicViewController *dtVC = [[DetailTopicViewController alloc] initWithTopic:tModel];
+    if (self.pushBlk) {
+        self.pushBlk(dtVC);
+    }
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -272,10 +291,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    TopicRequest *tReq = [[TopicRequest alloc] init];
     static NSString *identify = @"cell";
     TopicSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    [tReq requestImageForImageView:cell.bgImageView withUrlStr:_data[indexPath.item][@"img_small_src"]];
+    [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.item][@"img"][@"img_small_src"]]];
     cell.titleLabel.text = [NSString stringWithFormat:@"#%@#",_data[indexPath.item][@"keyword"]];
     cell.attendNumLabel.text = [NSString stringWithFormat:@"%@人参与",_data[indexPath.item][@"join_num"]];
     return cell;
@@ -289,13 +307,13 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

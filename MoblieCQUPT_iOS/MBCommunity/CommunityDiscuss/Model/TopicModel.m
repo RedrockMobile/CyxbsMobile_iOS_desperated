@@ -7,6 +7,7 @@
 //
 
 #import "TopicModel.h"
+#define PHOTOURL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"
 
 @implementation TopicModel
 - (instancetype)initWithDic:(NSDictionary *)dic{
@@ -31,6 +32,22 @@
         self.is_my_join = dic[@"is_my_join"];
         self.img_small_src = dic[@"img"][@"img_small_src"];
         self.img_src = dic[@"img"][@"img_src"];
+        if (![self.img_src isEqualToString:@""]) {
+            self.imgArray = [self.img_src componentsSeparatedByString:@","].mutableCopy;
+        }
+        if (![self.img_small_src isEqualToString:@""]) {
+            self.thumbnailImgArray = [self.img_small_src componentsSeparatedByString:@","].mutableCopy;
+        }
+        for(int i = 0;i<self.imgArray.count;i++){
+            if (![self.imgArray[i] hasPrefix:PHOTOURL]) {
+                self.imgArray[i] = [PHOTOURL stringByAppendingString:self.imgArray[i]];
+            }
+        }
+        for (int i=0; i<self.thumbnailImgArray.count; i++) {
+            if (![self.thumbnailImgArray[i] hasPrefix:PHOTOURL]) {
+                self.thumbnailImgArray[i] =  [PHOTOURL stringByAppendingString:self.thumbnailImgArray[i]];
+            }
+        }
     }
     return self;
 }

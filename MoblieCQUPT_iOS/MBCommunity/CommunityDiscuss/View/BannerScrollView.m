@@ -8,7 +8,7 @@
 
 #import "BannerScrollView.h"
 #import <Masonry.h>
-@interface BannerScrollView()
+@interface BannerScrollView()<UIScrollViewDelegate>
 @property NSMutableArray <TopicBtn *> *btnArray;
 @end
 @implementation BannerScrollView
@@ -18,6 +18,7 @@
         self.btnArray  = [NSMutableArray array];
         self.showsVerticalScrollIndicator = NO;
         self.showsHorizontalScrollIndicator = NO;
+        self.delegate = self;
     }
     return self;
 }
@@ -39,11 +40,9 @@
         if (topics.count >0) {
             [self.btnArray mas_distributeViewsAlongAxis:MASAxisTypeHorizontal withFixedSpacing:16 leadSpacing:16 tailSpacing:16];
         }
-        else{
-            
-        }
         [self.btnArray mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(frame.size.width/2);
+            make.height.mas_equalTo(frame.size.height-32);
             make.top.mas_equalTo(16);
             make.bottom.mas_equalTo(-16);
         }];

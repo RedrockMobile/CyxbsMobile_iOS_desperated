@@ -24,5 +24,7 @@
 @property NSString *img_small_src;
 @property NSString *img_src;
 @property BOOL is_my_join;
+@property NSMutableArray *thumbnailImgArray;
+@property NSMutableArray *imgArray;
 - (instancetype)initWithDic:(NSDictionary *)dic;
 @end

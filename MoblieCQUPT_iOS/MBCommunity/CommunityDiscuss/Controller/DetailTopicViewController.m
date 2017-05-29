@@ -20,6 +20,9 @@
 #import "BannerScrollView.h"
 #import "DetailBannnerView.h"
 #import <Masonry.h>
+#import <UShareUI/UShareUI.h>
+#import "UIImage+Helper.h"
+
 @interface DetailTopicViewController ()<UITableViewDelegate,UITableViewDataSource,MBCommunityCellEventDelegate>
 @property UITableView *tableView;
 @property NSMutableArray *viewModels;
@@ -39,12 +42,19 @@
         self.topic = topic;
         self.viewModels = [NSMutableArray array];
         self.isRefresh = YES;
+        self.navigationItem.title = topic.keyword;
+        [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+        UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+        backItem.title=@"";
+        self.navigationItem.backBarButtonItem = backItem;
+      
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden = NO;
     self.page = 0;
     [self setupTableView];
     [self getArticles];
@@ -63,21 +73,33 @@
         self.joinBtn = [[UIButton alloc]init];
         [self.joinBtn addTarget:self action:@selector(joinAction) forControlEvents:UIControlEventTouchUpInside];
         [self.joinBtn setBackgroundImage:[UIImage imageNamed:@"topic_image_join"] forState:UIControlStateNormal];
+        self.joinBtn.layer.cornerRadius = 5;
+        self.joinBtn.layer.shadowOffset =  CGSizeMake(1, 1);
+        self.joinBtn.layer.shadowOpacity = 0.8;
+        self.joinBtn.layer.shadowColor =  [UIColor grayColor].CGColor;
         [self.view addSubview:self.joinBtn];
 
         [self.joinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.and.left.and.bottom.equalTo(self.view).offset(0);
-            make.height.mas_equalTo(SCREENHEIGHT*0.15);
+            make.height.mas_equalTo(SCREENHEIGHT*50/667);
         }];
     }
 }
 
 - (void)joinAction{
     
+    MBReleaseViewController *vc = [[MBReleaseViewController alloc]initWithTopic:self.topic];
+    vc.updateBlock = ^{
+        [self.tableView.mj_header beginRefreshing];
+    };
+    UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+    [self.navigationController presentViewController:nvc animated:YES completion:^{
+        
+    }];
 }
 
 - (void)setupTableView {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-SCREENHEIGHT*0.15) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-SCREENHEIGHT*50/667) style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.sectionHeaderHeight = 0;
@@ -90,6 +112,7 @@
     }];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         self.isRefresh = NO;
+        self.tableView.mj_footer.hidden = YES;
         [self getArticles];
     }];
 }
@@ -125,6 +148,7 @@
         }
         self.tableView.hidden = NO;
         [self.tableView reloadData];
+        self.tableView.mj_footer.hidden= NO;
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
         NSLog(@"%@",returnValue);
@@ -217,83 +241,83 @@
     UIBarButtonItem *shareBtn;
     if (!_shareButton) {
         shareBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(clickShareButton)];
-        
     }
     return shareBtn;
 }
 
 - (void)clickShareButton{
 //    //显示分享面板
-//    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession)]];
-//    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-//        [self shareTextToPlatformType:platformType];
-//        // 根据获取的platformType确定所选平台进行下一步操作
-//    }];
-        NSString *textToShare = @"要分享的文本内容";
+    [UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession),@(UMSocialPlatformType_WechatTimeLine),@(UMSocialPlatformType_Qzone),@(UMSocialPlatformType_Sina)]];
     
-        UIImage *imageToShare = [UIImage imageNamed:@"智妍1.jpg"];
-    
-        NSURL *urlToShare = [NSURL URLWithString:@"http://www.baidu.com"];
-    
-        NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
-    
-    
-        UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
-        activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
-        [self.navigationController presentViewController:   activityVC animated:YES completion:nil];
+    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+        [self shareWebPageToPlatformType:platformType];
+        // 根据获取的platformType确定所选平台进行下一步操作
+    }];
+//        NSString *textToShare = @"要分享的文本内容";
+//    
+//        UIImage *imageToShare = [UIImage imageNamed:@"智妍1.jpg"];
+//    
+//        NSURL *urlToShare = [NSURL URLWithString:@"http://www.baidu.com"];
+//    
+//        NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
+//    
+//    
+//        UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
+//        activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
+//        [self.navigationController presentViewController:   activityVC animated:YES completion:nil];
 }
 
-//- (void)shareTextToPlatformType:(UMSocialPlatformType)platformType
-//{
-//    //创建分享消息对象
-//    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-//    //设置文本
-//    messageObject.text = @"社会化组件UShare将各大社交平台接入您的应用，快速武装App。";
-//
-//    //调用分享接口
-//    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-//        if (error) {
-//            NSLog(@"************Share fail with error %@*********",error);
-//        }else{
-//            NSLog(@"response data is %@",data);
-//        }
-//    }];
-//}
-//- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
-//{
-//    //创建分享消息对象
-//    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-//
-//    //创建网页内容对象
-//    NSString* thumbURL =  @"https://mobile.umeng.com/images/pic/home/social/img-1.png";
-//    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"欢迎使用【友盟+】社会化组件U-Share" descr:@"欢迎使用【友盟+】社会化组件U-Share，SDK包最小，集成成本最低，助力您的产品开发、运营与推广！" thumImage:thumbURL];
-//    //设置网页地址
-//    shareObject.webpageUrl = @"http://mobile.umeng.com/social";
-//
-//    //分享消息对象设置分享内容对象
-//    messageObject.shareObject = shareObject;
-//
-//    //调用分享接口
-//    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
-//        if (error) {
-//            UMSocialLogInfo(@"************Share fail with error %@*********",error);
-//        }else{
-//            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
-//                UMSocialShareResponse *resp = data;
-//                //分享结果消息
-//                UMSocialLogInfo(@"response message is %@",resp.message);
-//                //第三方原始返回的数据
-//                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
-//
-//            }else{
-//                UMSocialLogInfo(@"response data is %@",data);
-//            }
-//        }
-//        //        [self alertWithError:error];
-//    }];
-//}
-//
-//
+- (void)shareTextToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    //设置文本
+    messageObject.text = @"社会化组件UShare将各大社交平台接入您的应用，快速武装App。";
+
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            NSLog(@"************Share fail with error %@*********",error);
+        }else{
+            NSLog(@"response data is %@",data);
+        }
+    }];
+}
+
+- (void)shareWebPageToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+
+    //创建网页内容对象
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"掌上重邮" descr:@"掌上重邮话题，等你参加" thumImage:    [UIImage captureWithView:self.tableView]];
+    //设置网页地址
+    shareObject.webpageUrl = @"https://itunes.apple.com/cn/app/zhang-shang-zhong-you/id974026615";
+
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            UMSocialLogInfo(@"************Share fail with error %@*********",error);
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+            }
+        }
+        //        [self alertWithError:error];
+    }];
+}
+
+
 
 /*
 #pragma mark - Navigation

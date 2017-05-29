@@ -21,6 +21,9 @@
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF273701B90CFAB009B5BA2 /* libz.dylib */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
+		F21A8FA91ED9679F0093FBC4 /* noTopicIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F21A8FA61ED9679F0093FBC4 /* noTopicIcon.png */; };
+		F21A8FAA1ED9679F0093FBC4 /* arrowIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F21A8FA71ED9679F0093FBC4 /* arrowIcon.png */; };
+		F21A8FAB1ED9679F0093FBC4 /* aNumIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F21A8FA81ED9679F0093FBC4 /* aNumIcon.png */; };
 		F21DA5CB1ED17A9C003EE411 /* TopicBtn.m in Sources */ = {isa = PBXBuildFile; fileRef = F21DA5CA1ED17A9C003EE411 /* TopicBtn.m */; };
 		F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA571EBCB2BB005AC411 /* AppDelegate.m */; };
 		F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */; };
@@ -495,6 +498,11 @@
 		F289CFBB1ED71F6800373595 /* TopicRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = F289CFB91ED71F6800373595 /* TopicRequest.m */; };
 		F289CFC01ED71F6F00373595 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F289CFBC1ED71F6F00373595 /* TopicViewController.m */; };
 		F289CFC11ED71F6F00373595 /* TopicSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F289CFBE1ED71F6F00373595 /* TopicSearchViewController.m */; };
+		F2BE9C1A1EDAEC7D00569A2B /* topic_image_join@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BE9C181EDAEC7D00569A2B /* topic_image_join@3x.png */; };
+		F2BE9C1B1EDAEC7D00569A2B /* topic_image_join@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BE9C191EDAEC7D00569A2B /* topic_image_join@2x.png */; };
+		F2BE9C251EDB047200569A2B /* topic_image_ frame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BE9C231EDB047200569A2B /* topic_image_ frame@2x.png */; };
+		F2BE9C261EDB047200569A2B /* topic_image_frame@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2BE9C241EDB047200569A2B /* topic_image_frame@3x.png */; };
+		F2BE9C291EDB064F00569A2B /* CAShapeLayer+ViewMask.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BE9C281EDB064F00569A2B /* CAShapeLayer+ViewMask.m */; };
 		F2DA60C21ECF0CF80049E681 /* BannerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DA60C11ECF0CF80049E681 /* BannerScrollView.m */; };
 		F2DA60C51ED033E40049E681 /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DA60C41ED033E40049E681 /* TopicModel.m */; };
 		F2DA60C91ED03A5F0049E681 /* DetailTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DA60C71ED03A5F0049E681 /* DetailTopicViewController.m */; };
@@ -550,6 +558,9 @@
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		F21A8FA61ED9679F0093FBC4 /* noTopicIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noTopicIcon.png; sourceTree = "<group>"; };
+		F21A8FA71ED9679F0093FBC4 /* arrowIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrowIcon.png; sourceTree = "<group>"; };
+		F21A8FA81ED9679F0093FBC4 /* aNumIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aNumIcon.png; sourceTree = "<group>"; };
 		F21DA5C91ED17A9C003EE411 /* TopicBtn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicBtn.h; sourceTree = "<group>"; };
 		F21DA5CA1ED17A9C003EE411 /* TopicBtn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicBtn.m; sourceTree = "<group>"; };
 		F23627181E963EAA00607AF8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Today.entitlements; path = ../Today.entitlements; sourceTree = "<group>"; };
@@ -1214,6 +1225,12 @@
 		F289CFBD1ED71F6F00373595 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
 		F289CFBE1ED71F6F00373595 /* TopicSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSearchViewController.m; sourceTree = "<group>"; };
 		F289CFBF1ED71F6F00373595 /* TopicSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSearchViewController.h; sourceTree = "<group>"; };
+		F2BE9C181EDAEC7D00569A2B /* topic_image_join@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topic_image_join@3x.png"; sourceTree = "<group>"; };
+		F2BE9C191EDAEC7D00569A2B /* topic_image_join@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topic_image_join@2x.png"; sourceTree = "<group>"; };
+		F2BE9C231EDB047200569A2B /* topic_image_ frame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topic_image_ frame@2x.png"; sourceTree = "<group>"; };
+		F2BE9C241EDB047200569A2B /* topic_image_frame@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topic_image_frame@3x.png"; sourceTree = "<group>"; };
+		F2BE9C271EDB064F00569A2B /* CAShapeLayer+ViewMask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CAShapeLayer+ViewMask.h"; sourceTree = "<group>"; };
+		F2BE9C281EDB064F00569A2B /* CAShapeLayer+ViewMask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CAShapeLayer+ViewMask.m"; sourceTree = "<group>"; };
 		F2DA60C01ECF0CF80049E681 /* BannerScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerScrollView.h; sourceTree = "<group>"; };
 		F2DA60C11ECF0CF80049E681 /* BannerScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BannerScrollView.m; sourceTree = "<group>"; };
 		F2DA60C31ED033E40049E681 /* TopicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicModel.h; sourceTree = "<group>"; };
@@ -2080,6 +2097,8 @@
 				F242DC431EBCB2BB005AC411 /* UIImage+Helper.m */,
 				F242DC441EBCB2BB005AC411 /* UIImage+ImageEffects.h */,
 				F242DC451EBCB2BB005AC411 /* UIImage+ImageEffects.m */,
+				F2BE9C271EDB064F00569A2B /* CAShapeLayer+ViewMask.h */,
+				F2BE9C281EDB064F00569A2B /* CAShapeLayer+ViewMask.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2522,6 +2541,13 @@
 		F242DF811EBCB5E7005AC411 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				F2BE9C231EDB047200569A2B /* topic_image_ frame@2x.png */,
+				F2BE9C241EDB047200569A2B /* topic_image_frame@3x.png */,
+				F2BE9C181EDAEC7D00569A2B /* topic_image_join@3x.png */,
+				F2BE9C191EDAEC7D00569A2B /* topic_image_join@2x.png */,
+				F21A8FA61ED9679F0093FBC4 /* noTopicIcon.png */,
+				F21A8FA71ED9679F0093FBC4 /* arrowIcon.png */,
+				F21A8FA81ED9679F0093FBC4 /* aNumIcon.png */,
 				F289CF901ED6E20D00373595 /* topic_image_alltopic@3x.png */,
 				F289CF911ED6E20D00373595 /* topic_image_alltopic@2x.png */,
 				F242DC381EBCB2BB005AC411 /* 1智妍.jpg */,
@@ -2636,8 +2662,8 @@
 			children = (
 				F289CFBD1ED71F6F00373595 /* TopicViewController.h */,
 				F289CFBC1ED71F6F00373595 /* TopicViewController.m */,
-				F289CFBE1ED71F6F00373595 /* TopicSearchViewController.m */,
 				F289CFBF1ED71F6F00373595 /* TopicSearchViewController.h */,
+				F289CFBE1ED71F6F00373595 /* TopicSearchViewController.m */,
 				F2DA60C61ED03A5F0049E681 /* DetailTopicViewController.h */,
 				F2DA60C71ED03A5F0049E681 /* DetailTopicViewController.m */,
 				F2DA60C81ED03A5F0049E681 /* DetailTopicViewController.xib */,
@@ -2659,10 +2685,10 @@
 		F2DA60BF1ECF0C320049E681 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F289CFB31ED71F6200373595 /* TopicSearchCollectionViewCell.m */,
 				F289CFB41ED71F6200373595 /* TopicSearchCollectionViewCell.h */,
-				F289CFB51ED71F6200373595 /* SegementView.m */,
+				F289CFB31ED71F6200373595 /* TopicSearchCollectionViewCell.m */,
 				F289CFB61ED71F6200373595 /* SegementView.h */,
+				F289CFB51ED71F6200373595 /* SegementView.m */,
 				F21DA5C91ED17A9C003EE411 /* TopicBtn.h */,
 				F21DA5CA1ED17A9C003EE411 /* TopicBtn.m */,
 				F2DA60C01ECF0CF80049E681 /* BannerScrollView.h */,
@@ -2891,6 +2917,7 @@
 				F242DF251EBCB2BC005AC411 /* courseMengbi.jpg in Resources */,
 				F242DE901EBCB2BC005AC411 /* 完成@2x.png in Resources */,
 				F242DF471EBCB2BC005AC411 /* icon_menu_selected_2@2x.png in Resources */,
+				F21A8FA91ED9679F0093FBC4 /* noTopicIcon.png in Resources */,
 				F242DF201EBCB2BC005AC411 /* calendar.png in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				F242DE351EBCB2BC005AC411 /* 寝室2.jpg in Resources */,
@@ -2978,6 +3005,7 @@
 				F242DF1C1EBCB2BC005AC411 /* 29-3.png in Resources */,
 				F242DE891EBCB2BC005AC411 /* 地点@3x.png in Resources */,
 				F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */,
+				F2BE9C251EDB047200569A2B /* topic_image_ frame@2x.png in Resources */,
 				F242DECE1EBCB2BC005AC411 /* MBCommentCell.xib in Resources */,
 				F242DDED1EBCB2BB005AC411 /* redrock_new@2x.png in Resources */,
 				F242DF391EBCB2BC005AC411 /* 关于@2x.png in Resources */,
@@ -3000,6 +3028,7 @@
 				F242DDF51EBCB2BB005AC411 /* 失物招领@3x.png in Resources */,
 				F242DE841EBCB2BC005AC411 /* 删除@3x.png in Resources */,
 				F242DDC61EBCB2BB005AC411 /* cqupt1@2x.jpg in Resources */,
+				F2BE9C261EDB047200569A2B /* topic_image_frame@3x.png in Resources */,
 				F242DF331EBCB2BC005AC411 /* emptyClassTag1.png in Resources */,
 				F242DF291EBCB2BC005AC411 /* iconfont-tag.png in Resources */,
 				F242DE7F1EBCB2BC005AC411 /* 不提醒@2x.png in Resources */,
@@ -3037,17 +3066,21 @@
 				F242DE7E1EBCB2BC005AC411 /* 下拉@3x.png in Resources */,
 				F242DED31EBCB2BC005AC411 /* MBCommuityDetailsViewController.xib in Resources */,
 				F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */,
+				F21A8FAA1ED9679F0093FBC4 /* arrowIcon.png in Resources */,
 				F242DF3A1EBCB2BC005AC411 /* 反馈信息@2x.png in Resources */,
+				F21A8FAB1ED9679F0093FBC4 /* aNumIcon.png in Resources */,
 				F242DDE11EBCB2BB005AC411 /* lost_image_QQ@2x.png in Resources */,
 				F242DDA81EBCB2BB005AC411 /* MapViewController.xib in Resources */,
 				F242DE721EBCB2BC005AC411 /* add@3x.png in Resources */,
 				F242DE751EBCB2BC005AC411 /* remind1@2x.png in Resources */,
 				F242DE8D1EBCB2BC005AC411 /* 多课1@3x.png in Resources */,
+				F2BE9C1B1EDAEC7D00569A2B /* topic_image_join@2x.png in Resources */,
 				F242DDDF1EBCB2BB005AC411 /* lost_image_place@2x.png in Resources */,
 				F242DDD41EBCB2BB005AC411 /* lost_image_itemcategory@3x.png in Resources */,
 				F242DF421EBCB2BC005AC411 /* icon_menu_1@2x.png in Resources */,
 				F289CF941ED6E20D00373595 /* topic_image_alltopic@3x.png in Resources */,
 				F242DED01EBCB2BC005AC411 /* MBCommunityCellTableViewCell.xib in Resources */,
+				F2BE9C1A1EDAEC7D00569A2B /* topic_image_join@3x.png in Resources */,
 				F242DE861EBCB2BC005AC411 /* 周数@2x.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
 				F242DDF61EBCB2BB005AC411 /* 电费查询@2x.png in Resources */,
@@ -3179,6 +3212,7 @@
 				F242DE1F1EBCB2BB005AC411 /* SexRatioViewController.m in Sources */,
 				F242DEB41EBCB2BC005AC411 /* HttpClient.m in Sources */,
 				F242DECC1EBCB2BC005AC411 /* UIImage+ImageEffects.m in Sources */,
+				F2BE9C291EDB064F00569A2B /* CAShapeLayer+ViewMask.m in Sources */,
 				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				F242DE021EBCB2BB005AC411 /* ShopViewController.m in Sources */,
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,

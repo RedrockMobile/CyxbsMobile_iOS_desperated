@@ -13,6 +13,8 @@
 #import "TopicViewController.h"
 @interface TopicBtn()
 @property TopicModel *model;
+@property UILabel *hotLabel;
+@property CALayer *colorLayer;
 @end
 @implementation TopicBtn
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -24,32 +26,47 @@
     return self;
 }
 - (instancetype)initWithFrame:(CGRect)frame andTopic:(TopicModel *)topic{
-    self.model = topic;
     self = [self initWithFrame:frame];
+    self.model = topic;
     if (self) {
-        [self setBackgroundImageWithURL:[NSURL URLWithString:topic.img_src] forState:UIControlStateNormal placeholder:[UIImage imageNamed:@""]];
+        self.colorLayer = [CALayer layer]
+        ;
+        self.colorLayer.backgroundColor = [UIColor colorWithRGB:0x212121 alpha:0.5].CGColor;
+        self.colorLayer.frame = self.bounds;
+        [self.layer addSublayer:self.colorLayer];
+    
+    
+        [self setBackgroundImageWithURL:[NSURL URLWithString:[topic.imgArray firstObject]] forState:UIControlStateNormal placeholder:[UIImage imageWithColor:[UIColor colorWithRed:arc4random_uniform(255)/255.0 green:arc4random_uniform(255)/255.0 blue:arc4random_uniform(255)/255.0 alpha:1]]];
         UILabel *label = [[UILabel alloc]initWithFrame:frame];
         label.text = topic.keyword;
         label.textAlignment = NSTextAlignmentCenter;
+        label.font = [UIFont systemFontOfSize:15];
+        [label setTextColor:[UIColor colorWithHexString:@"ffffff"]];
+        label.numberOfLines = 0;
         [self addSubview:label];
-        label.alpha = 0.5;
-        [label setTextColor:[UIColor colorWithHexString:@"000000"]];
-        UIEdgeInsets padding = UIEdgeInsetsMake(25, 25, 25, 25);
+        UIEdgeInsets padding = UIEdgeInsetsMake(25, 0, 25, 0);
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self).with.insets(padding);
+            
         }];
-        UILabel *hotLabel = [[UILabel alloc]initWithFrame:frame];
-        [hotLabel setFont:[UIFont systemFontOfSize:11]];
-        [hotLabel setTextColor:[UIColor colorWithHexString:@"000000"]];
-        hotLabel.text = @"热门话题";
-        [self addSubview:hotLabel];
-        [hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        
+        self.hotLabel = [[UILabel alloc]initWithFrame:frame];
+        self.hotLabel.font = [UIFont systemFontOfSize:11];
+        self.hotLabel.textColor = [UIColor colorWithHexString:@"ffffff"];
+        self.hotLabel.backgroundColor = [UIColor colorWithRGB:0x000000 alpha:0.5];
+        self.hotLabel.text = @"热门话题";
+        self.hotLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:self.hotLabel];
+        [self.hotLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(frame.size.width/3);
-            make.height.mas_equalTo(self.width/3);
+            make.height.mas_equalTo(frame.size.width/9);
             make.top.mas_equalTo(5);
             make.left.mas_equalTo(0);
+
         }];
     
+
     }
     return self;
 }
@@ -60,11 +77,26 @@
         [self.viewController.navigationController pushViewController:vc animated:YES];
         
     }else{
-    DetailTopicViewController *vc = [[DetailTopicViewController alloc]initWithTopic:self.model];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.viewController.navigationController pushViewController:vc animated:YES];
+        DetailTopicViewController *vc = [[DetailTopicViewController alloc]initWithTopic:self.model];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.viewController.navigationController pushViewController:vc animated:YES];
     }
 }
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.hotLabel.bounds
+           byRoundingCorners:UIRectCornerBottomRight | UIRectCornerTopRight
+       cornerRadii:CGSizeMake(8, 8)];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.path = maskPath.CGPath;
+    maskLayer.frame = self.hotLabel.bounds;
+    self.hotLabel.layer.mask = maskLayer;
+    
+    self.colorLayer.frame = self.bounds;
+
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.

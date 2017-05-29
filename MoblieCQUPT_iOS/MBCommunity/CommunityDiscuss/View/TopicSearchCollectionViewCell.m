@@ -41,10 +41,20 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)addUI{
+    
     self.bgImageView = [[UIImageView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 165, 138)];
     self.bgImageView.backgroundColor = [UIColor clearColor];
     self.bgImageView.contentMode = UIViewContentModeScaleToFill;
     [self.contentView addSubview:self.bgImageView];
+    
+    CALayer *colorLayer = [CALayer layer]
+    ;
+    colorLayer.backgroundColor = [UIColor colorWithRGB:0x212121 alpha:0.5].CGColor;
+    colorLayer.frame = self.bounds;
+    [self.contentView.layer addSublayer:colorLayer];
+//    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 165, 138)];
+//    bgView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1];
+//    [self.contentView addSubview:bgView];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(0, 35, 165, 36)];
     self.titleLabel.textColor = [UIColor whiteColor];

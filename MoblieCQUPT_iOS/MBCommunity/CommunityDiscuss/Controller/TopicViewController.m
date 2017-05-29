@@ -9,6 +9,7 @@
 #import "TopicViewController.h"
 #import "TopicSearchViewController.h"
 #import "SegementView.h"
+#import "DetailTopicViewController.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 CG_INLINE CGRect
@@ -27,8 +28,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
-@property (nonatomic, strong) UIButton *popBtn;
-
 @property (nonatomic, strong) TopicSearchViewController *joinVC;
 
 @property (nonatomic, strong) TopicSearchViewController *allVC;
@@ -39,16 +38,10 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
-    
-    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(cancleSearch)]];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self addSearchBar];
     [self addSegemenView];
-}
-
-- (void)cancleSearch{
-    [self.searchDisplayController setActive:NO animated:YES];
 }
 
 - (void)addSearchBar{
@@ -56,46 +49,42 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     bgView.backgroundColor = [UIColor whiteColor];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CHANGE_CGRectMake(50, 30, 300, 30)];
-    UIImage* searchBarBg = [self GetImageWithColor:[UIColor clearColor] andHeight:32.0f];
+    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
 
-    [self.searchBar setBackgroundImage:searchBarBg];
-
-//    [self.searchBar setBackgroundColor:[UIColor clearColor]];
-    [self.searchBar setTintColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]];
-
-//    [self.searchBar setSearchFieldBackgroundImage:searchBarBg forState:UIControlStateNormal];
+    self.searchBar.tintColor = [UIColor blueColor];
     self.searchBar.placeholder = @"搜索更多话题";
     self.searchBar.delegate = self;
-
-    self.popBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(10, 35, 20, 20)];
-    self.popBtn.adjustsImageWhenHighlighted = NO;
-    self.popBtn.backgroundColor = [UIColor clearColor];
-    [self.popBtn setBackgroundImage:[UIImage imageNamed:@"arrowIcon.png"] forState:UIControlStateNormal];
-    [self.popBtn addTarget:self action:@selector(popVC) forControlEvents:UIControlEventTouchDown];
     
-    [bgView addSubview:self.searchBar];
-    [bgView addSubview:self.popBtn];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    backItem.title=@"";
+    self.navigationItem.backBarButtonItem = backItem;
+    
+    self.navigationItem.titleView = self.searchBar;
+    
+//    [bgView addSubview:self.searchBar];
     
     [self.view addSubview:bgView];
 }
 
-- (void)popVC{
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)addSegemenView{
-    TopicSearchViewController *joinVC = [[TopicSearchViewController alloc] init];
-    joinVC.isMyJoin = YES;
-    joinVC.title = @"我参与的";
-//进行push操作
-//    joinVC.pushBlk
+    self.joinVC = [[TopicSearchViewController alloc] init];
+    self.joinVC.isMyJoin = YES;
+    self.joinVC.title = @"我参与的";
+    __weak typeof(self) weakSelf = self;
+    self.joinVC.pushBlk = ^(DetailTopicViewController *dtVC){
+        [weakSelf.navigationController pushViewController:dtVC animated:YES];
+    };
     
-    TopicSearchViewController *allVC = [[TopicSearchViewController alloc] init];
-    allVC.isMyJoin = NO;
-    allVC.title = @"全部话题";
-//    allVC.pushBlk
+    self.allVC = [[TopicSearchViewController alloc] init];
+    self.allVC.isMyJoin = NO;
+    self.allVC.title = @"全部话题";
+    self.allVC.pushBlk = ^(DetailTopicViewController *dtVC){
+        [weakSelf.navigationController pushViewController:dtVC animated:YES];
+    };
     
-    self.segementView = [[SegementView alloc] initWithFrame:CHANGE_CGRectMake(0, 64, 375, 667) withTitle:@[joinVC,allVC]];
+    self.segementView = [[SegementView alloc] initWithFrame:CHANGE_CGRectMake(0, 64, 375, 667) withTitle:@[self.joinVC,self.allVC]];
     
     [self.view addSubview:self.segementView];
 }
@@ -109,6 +98,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         self.allVC.searchText = searchBar.text;
         [self.allVC searchDataRefresh];
     }
+    [self hideKeyBoard];
 }
 
 
@@ -127,19 +117,23 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     return img;
 }
 
+- (void)hideKeyBoard{
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

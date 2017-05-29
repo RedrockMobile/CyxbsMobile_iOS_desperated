@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MBInputView.h"
+#import "TopicModel.h"
 
 @interface MBReleaseViewController : UIViewController
-
+- (instancetype)initWithTopic:(TopicModel *)topic;
+@property (nonatomic, strong) void(^updateBlock)();
 @end

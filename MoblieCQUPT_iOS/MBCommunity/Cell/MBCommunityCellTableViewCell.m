@@ -131,7 +131,7 @@
     NSError *error;
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:self.contentLabel.text];
     attributedStr.font = self.contentLabel.font;
-    //正则匹配#.#
+    //正则匹配
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"#.+?#"                                options:0 error:&error];
     if (regex != nil) {
         NSTextCheckingResult *firstMatch=[regex firstMatchInString:self.contentLabel.text options:0 range:NSMakeRange(0, [self.contentLabel.text length])];

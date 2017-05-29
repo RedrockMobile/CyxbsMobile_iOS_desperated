@@ -40,11 +40,13 @@
 
 @implementation MBCommunityViewController
 bool hasLoadedArray[3];
+bool hasLoadedTopic;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataDicArray = [NSMutableArray array];
     self.parameterArray = [NSMutableArray array];
     self.topicArray = [NSMutableArray array];
+    hasLoadedTopic = NO;
     for (int i = 0; i<3; i++) {
         hasLoadedArray[i] = NO;
         [self.dataDicArray addObject:
@@ -78,10 +80,17 @@ bool hasLoadedArray[3];
         [_indicatorViewArray addObject:indicatorView];
     }
     [self loadNetDataWithType:0];
-    [self getTopicData];
     [self.view addSubview:_segmentView];
     
     
+    
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回箭头"]];
+    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回箭头"]];
+    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
+    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
+    backItem.title=@"";
+    self.navigationItem.backBarButtonItem = backItem;
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -132,8 +141,9 @@ bool hasLoadedArray[3];
         [MBCommunityHandle noLogin:self];
     }else{
         MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
+        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:releaseVC];
         releaseVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController presentViewController:releaseVC animated:YES completion:nil];
+        [self.navigationController presentViewController:nvc animated:YES completion:nil];
     }
 }
 
@@ -168,6 +178,9 @@ bool hasLoadedArray[3];
 
 - (void)loadNetDataWithType:(NSInteger)type {
     //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询)
+    if (type == 1 && !hasLoadedTopic) {
+        [self getTopicData];
+    }
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
     NSMutableDictionary *parameter =
@@ -226,6 +239,8 @@ bool hasLoadedArray[3];
                      }
                      WithReturnValeuBlock:^(id returnValue) {
                          NSLog(@"%@",returnValue);
+                         hasLoadedTopic = YES;
+                         self.topicArray = [NSMutableArray array];
                          NSMutableArray *dataArray = returnValue[@"data"];
                          for (NSDictionary *dic in dataArray) {
                              TopicModel *model = [[TopicModel alloc] initWithDic:dic];

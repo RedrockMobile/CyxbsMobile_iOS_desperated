@@ -10,4 +10,5 @@
 #import "TopicModel.h"
 @interface DetailTopicViewController : UIViewController
 - (instancetype)initWithTopic:(TopicModel *) topic;
+
 @end
