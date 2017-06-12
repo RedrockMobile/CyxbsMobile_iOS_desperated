@@ -521,6 +521,12 @@
 		F2DA60C51ED033E40049E681 /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DA60C41ED033E40049E681 /* TopicModel.m */; };
 		F2DA60C91ED03A5F0049E681 /* DetailTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DA60C71ED03A5F0049E681 /* DetailTopicViewController.m */; };
 		F2DA60CA1ED03A5F0049E681 /* DetailTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2DA60C81ED03A5F0049E681 /* DetailTopicViewController.xib */; };
+		F2DC2AD81EEEDC8000389A85 /* appIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DC2AD21EEEDC8000389A85 /* appIcon@3x.png */; };
+		F2DC2AD91EEEDC8000389A85 /* appIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DC2AD31EEEDC8000389A85 /* appIcon@2x.png */; };
+		F2DC2ADA1EEEDC8000389A85 /* settingIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DC2AD41EEEDC8000389A85 /* settingIcon@2x.png */; };
+		F2DC2ADB1EEEDC8000389A85 /* settingIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DC2AD51EEEDC8000389A85 /* settingIcon@3x.png */; };
+		F2DC2ADC1EEEDC8000389A85 /* searchIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DC2AD61EEEDC8000389A85 /* searchIcon@3x.png */; };
+		F2DC2ADD1EEEDC8000389A85 /* searchIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2DC2AD71EEEDC8000389A85 /* searchIcon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1269,6 +1275,12 @@
 		F2DA60C61ED03A5F0049E681 /* DetailTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTopicViewController.h; sourceTree = "<group>"; };
 		F2DA60C71ED03A5F0049E681 /* DetailTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTopicViewController.m; sourceTree = "<group>"; };
 		F2DA60C81ED03A5F0049E681 /* DetailTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTopicViewController.xib; sourceTree = "<group>"; };
+		F2DC2AD21EEEDC8000389A85 /* appIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@3x.png"; sourceTree = "<group>"; };
+		F2DC2AD31EEEDC8000389A85 /* appIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "appIcon@2x.png"; sourceTree = "<group>"; };
+		F2DC2AD41EEEDC8000389A85 /* settingIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingIcon@2x.png"; sourceTree = "<group>"; };
+		F2DC2AD51EEEDC8000389A85 /* settingIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingIcon@3x.png"; sourceTree = "<group>"; };
+		F2DC2AD61EEEDC8000389A85 /* searchIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIcon@3x.png"; sourceTree = "<group>"; };
+		F2DC2AD71EEEDC8000389A85 /* searchIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchIcon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2446,6 +2458,12 @@
 				F242DCDD1EBCB2BB005AC411 /* 40-2.png */,
 				F242DCDE1EBCB2BB005AC411 /* 40-3.png */,
 				F242DCDF1EBCB2BB005AC411 /* 60-2.png */,
+				F2DC2AD21EEEDC8000389A85 /* appIcon@3x.png */,
+				F2DC2AD31EEEDC8000389A85 /* appIcon@2x.png */,
+				F2DC2AD41EEEDC8000389A85 /* settingIcon@2x.png */,
+				F2DC2AD51EEEDC8000389A85 /* settingIcon@3x.png */,
+				F2DC2AD61EEEDC8000389A85 /* searchIcon@3x.png */,
+				F2DC2AD71EEEDC8000389A85 /* searchIcon@2x.png */,
 				F242DCE01EBCB2BB005AC411 /* calendar.png */,
 				F242DCE11EBCB2BB005AC411 /* Community */,
 				F242DCE61EBCB2BB005AC411 /* CourseIcon */,
@@ -2884,6 +2902,7 @@
 				F242DE971EBCB2BC005AC411 /* 无事项@3x.png in Resources */,
 				F242DDAB1EBCB2BB005AC411 /* buildIcon.png in Resources */,
 				F242DE8C1EBCB2BC005AC411 /* 多课1@2x.png in Resources */,
+				F2DC2ADA1EEEDC8000389A85 /* settingIcon@2x.png in Resources */,
 				F242DE2F1EBCB2BB005AC411 /* 入学须知.txt in Resources */,
 				F242DEEC1EBCB2BC005AC411 /* xia.png in Resources */,
 				F242DF411EBCB2BC005AC411 /* 补考安排@2x.png in Resources */,
@@ -2917,6 +2936,7 @@
 				F242DE371EBCB2BC005AC411 /* 寝室介绍1.txt in Resources */,
 				F242DDCC1EBCB2BB005AC411 /* lost_image_add@3x.png in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
+				F2DC2ADC1EEEDC8000389A85 /* searchIcon@3x.png in Resources */,
 				F242DDC51EBCB2BB005AC411 /* WebViewController.xib in Resources */,
 				F242DE441EBCB2BC005AC411 /* SevenTableViewCell.xib in Resources */,
 				F242DF3E1EBCB2BC005AC411 /* 校历@2x.png in Resources */,
@@ -2962,6 +2982,7 @@
 				F242DDEF1EBCB2BB005AC411 /* shake_match.mp3 in Resources */,
 				F242DE031EBCB2BB005AC411 /* View.xib in Resources */,
 				F242DF141EBCB2BC005AC411 /* QGERestTimeCourseViewController.xib in Resources */,
+				F2DC2ADB1EEEDC8000389A85 /* settingIcon@3x.png in Resources */,
 				F242DDC31EBCB2BB005AC411 /* remindImage.png in Resources */,
 				F242DE1A1EBCB2BB005AC411 /* GraduateViewController.xib in Resources */,
 				F242DE921EBCB2BC005AC411 /* 左三角@2x.png in Resources */,
@@ -2976,6 +2997,7 @@
 				F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */,
 				F242DF251EBCB2BC005AC411 /* courseMengbi.jpg in Resources */,
 				F242DE901EBCB2BC005AC411 /* 完成@2x.png in Resources */,
+				F2DC2AD81EEEDC8000389A85 /* appIcon@3x.png in Resources */,
 				F242DF471EBCB2BC005AC411 /* icon_menu_selected_2@2x.png in Resources */,
 				F21A8FA91ED9679F0093FBC4 /* noTopicIcon.png in Resources */,
 				F242DF201EBCB2BC005AC411 /* calendar.png in Resources */,
@@ -2997,6 +3019,7 @@
 				F242DF0D1EBCB2BC005AC411 /* MyInfoViewController.xib in Resources */,
 				F242DE981EBCB2BC005AC411 /* 无考试@2x.png in Resources */,
 				F242DF351EBCB2BC005AC411 /* GQclass.png in Resources */,
+				F2DC2ADD1EEEDC8000389A85 /* searchIcon@2x.png in Resources */,
 				F242DE3A1EBCB2BC005AC411 /* 寝室介绍4.txt in Resources */,
 				F242DEC41EBCB2BC005AC411 /* 1智妍.jpg in Resources */,
 				F242DEAF1EBCB2BC005AC411 /* 选择@3x.png in Resources */,
@@ -3028,6 +3051,7 @@
 				F242DEA61EBCB2BC005AC411 /* 编辑完成@2x.png in Resources */,
 				F242DF231EBCB2BC005AC411 /* 智妍3.jpg in Resources */,
 				F242DDDB1EBCB2BB005AC411 /* lost_image_little@2x.png in Resources */,
+				F2DC2AD91EEEDC8000389A85 /* appIcon@2x.png in Resources */,
 				F242DE151EBCB2BB005AC411 /* 红岩网校工作站简介.txt in Resources */,
 				F242DEA41EBCB2BC005AC411 /* 编辑@2x.png in Resources */,
 				F242DE3F1EBCB2BC005AC411 /* 老乡群.txt in Resources */,
