@@ -9,21 +9,14 @@
 #import <UIKit/UIKit.h>
 
 typedef void(^ClickSegmentBtnBlock) (UIButton *sender);
-typedef void(^ScrollViewBlock) (NSInteger index);
+//typedef void(^ScrollViewBlock) (NSInteger index);
 
 @interface MBSegmentedView : UIView
 
-@property (strong, nonatomic) UIButton *segmentBtn;
-@property (strong, nonatomic) UIView *underLine;
+@property (copy, nonatomic) ClickSegmentBtnBlock clickSegmentBtnBlock;
 @property (strong, nonatomic) UIScrollView *backScrollView;
 
-@property (strong, nonatomic) UIButton *currentSelectBtn;
-@property (assign, nonatomic) NSInteger currentBtnIndex;
-
-@property (strong, nonatomic) NSMutableArray *segmentBtnArray;
-
-@property (copy, nonatomic) ClickSegmentBtnBlock clickSegmentBtnBlock;
-@property (copy, nonatomic) ScrollViewBlock scrollViewBlock;
+//@property (copy, nonatomic) ScrollViewBlock scrollViewBlock;
 
 //@property (weak, nonatomic) id delegate;
 

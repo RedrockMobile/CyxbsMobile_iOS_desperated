@@ -82,6 +82,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (void)setupRefresh{
     _collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRefreshing)];
     _collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerrefreshing)];
+    _collectionView.mj_footer.hidden = YES;
 }
 
 #pragma mark - 网络请求相关
@@ -93,8 +94,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)endRefresh{
-    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
-    [self.collectionView.mj_header endRefreshing];
+    //    [self.collectionView.mj_footer endRefreshingWithNoMoreData];
+    //    [self.collectionView.mj_header endRefreshing];
 }
 
 - (void)headerRefreshing{
@@ -212,6 +213,12 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)searchDataRefresh{
+    _collectionView.hidden = NO;
+    for (id imageView in self.view.subviews) {
+        if ([imageView isKindOfClass:[UIImageView class]]) {
+            [imageView removeFromSuperview];
+        }
+    }
     TopicRequest *tReq = [[TopicRequest alloc] init];
     [[self.collectionView.subviews lastObject] removeFromSuperview];
     if (self.isMyJoin) {
@@ -225,8 +232,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
                 [_collectionView reloadData];
                 if (_data.count==0) {
                     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"noTopicIcon.png"]];
-                    imageView.frame = CHANGE_CGRectMake(20, 100, 335,272);
-                    [self.collectionView addSubview:imageView];
+                    imageView.frame = CHANGE_CGRectMake(60, 120, 250,203);
+                    [self.view addSubview:imageView];
+                    _collectionView.hidden = YES;
                 }
             };
         }
@@ -239,8 +247,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
             [_collectionView reloadData];
             if (_data.count==0) {
                 UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"noTopicIcon.png"]];
-                imageView.frame = CHANGE_CGRectMake(20, 100, 335,272);
-                [self.collectionView addSubview:imageView];
+                imageView.frame = CHANGE_CGRectMake(60, 120, 250,203);
+                [self.view addSubview:imageView];
+                _collectionView.hidden = YES;
             }
         };
     }
@@ -257,6 +266,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
                 _data = [[NSMutableArray alloc] init];
                 [_data addObjectsFromArray:dic[@"data"]];
                 _oldDataCount = _data.count;
+                if (_data.count==0) {
+                    _collectionView.hidden = YES;
+                }
                 [_collectionView reloadData];
             };
         }
@@ -266,6 +278,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
             _data  =[[NSMutableArray alloc] init];
             [_data addObjectsFromArray:dic[@"data"]];
             _oldDataCount = _data.count;
+            if (_data.count==0) {
+                _collectionView.hidden = YES;
+            }
             [_collectionView reloadData];
         };
     }
@@ -293,7 +308,12 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identify = @"cell";
     TopicSearchCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identify forIndexPath:indexPath];
-    [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.item][@"img"][@"img_small_src"]]];
+    if (!self.isMyJoin) {
+        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.item][@"img"][@"img_small_src"]]];
+    }else{
+        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@",[_data[indexPath.item][@"img"][@"img_small_src"] substringWithRange:NSMakeRange(0, 24)]]]];
+    }
+    
     cell.titleLabel.text = [NSString stringWithFormat:@"#%@#",_data[indexPath.item][@"keyword"]];
     cell.attendNumLabel.text = [NSString stringWithFormat:@"%@人参与",_data[indexPath.item][@"join_num"]];
     return cell;

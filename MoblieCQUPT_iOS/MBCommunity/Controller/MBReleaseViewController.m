@@ -182,14 +182,14 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (GMImagePickerController *)pickView{
     if (self && !_pickView) {
@@ -215,7 +215,7 @@
         _pickView.navigationBarTextColor = [UIColor colorWithRGB:0x212121];
         _pickView.mediaTypes = @[@(PHAssetMediaTypeImage)];
     }
-
+    
     return _pickView;
 }
 
@@ -294,13 +294,13 @@
     }
     NSString *API;
     NSMutableDictionary *parameter = @{@"stuNum":stuNum,
-                                @"idNum":idNum,
-                                @"title":title,
-                                @"user_id":user_id,
-                                @"content":content,
-                                @"photo_src":photo_src,
-                                @"thumbnail_src":thumbnail_src,
-                                }.mutableCopy;
+                                       @"idNum":idNum,
+                                       @"title":title,
+                                       @"user_id":user_id,
+                                       @"content":content,
+                                       @"photo_src":photo_src,
+                                       @"thumbnail_src":thumbnail_src,
+                                       }.mutableCopy;
     if (self.isTopic) {
         [parameter setObject:@7 forKey:@"type_id"];
         API = ADDTOPICARTICLE_API;
@@ -323,7 +323,7 @@
     } WithFailureBlock:^{
         weakSelf.hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
         weakSelf.hud.mode = MBProgressHUDModeText;
-        weakSelf.hud.labelText = @"发布成功";
+        weakSelf.hud.labelText = @"网络错误";
         [weakSelf.hud hide:YES afterDelay:1.5];
     }];
     
@@ -405,20 +405,22 @@
         }
         NSLog(@"%@",error);
     }
-    NSString *lang = [[[UITextInputMode activeInputModes] firstObject] primaryLanguage];//当前的输入模式
-    if ([lang isEqualToString:@"zh-Hans"])
+    //    NSString *lang = [[[UITextInputMode activeInputModes] firstObject] primaryLanguage];//当前的输入模式
+    //    if ([lang isEqualToString:@"zh-Hans"])
+    //    {
+    //        如果输入有中文，且没有出现文字备选框就对文字更新
+    //        出现了备选框就暂不更新
+    UITextRange *range = [textView markedTextRange];
+    
+    UITextPosition *position = [textView positionFromPosition:range.start offset:0];
+    if (!position)
     {
-        //        如果输入有中文，且没有出现文字备选框就对文字更新
-        //        出现了备选框就暂不更新
-        UITextRange *range = [textView markedTextRange];
+        NSRange oldRange = textView.selectedRange;
+        textView.attributedText = attributedStr;
+        textView.selectedRange = oldRange;
         
-        UITextPosition *position = [textView positionFromPosition:range.start offset:0];
-        if (!position)
-        {
-            textView.attributedText = attributedStr;
-
-        }
     }
+    //    }
 }
 
 

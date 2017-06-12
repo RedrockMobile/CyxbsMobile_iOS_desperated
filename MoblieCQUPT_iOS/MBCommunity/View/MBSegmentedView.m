@@ -12,7 +12,13 @@
 #define FONT_COLOR_GRAY [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
 
 @interface MBSegmentedView () <UIScrollViewDelegate>
+@property (strong, nonatomic) UIButton *segmentBtn;
+@property (strong, nonatomic) UIView *underLine;
 
+@property (strong, nonatomic) UIButton *currentSelectBtn;
+@property (assign, nonatomic) NSInteger currentBtnIndex;
+
+@property (strong, nonatomic) NSMutableArray *segmentBtnArray;
 
 @property (strong, nonatomic) UIView *superView;
 @end
@@ -23,7 +29,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         //.........
-        
         [self setupBaseView:segments];
         [self setupScrollView:segments];
     }
@@ -91,29 +96,30 @@
         _currentSelectBtn.selected = NO;
         _currentSelectBtn = self.segmentBtnArray[self.currentBtnIndex];
         _currentSelectBtn.selected = YES;
+        if (self.clickSegmentBtnBlock) {
+            self.clickSegmentBtnBlock(self.currentSelectBtn);
+        }
         [UIView animateWithDuration:0.1 animations:^{
             _underLine.frame = CGRectMake(self.currentSelectBtn.frame.origin.x, self.underLine.frame.origin.y, self.underLine.frame.size.width, self.underLine.frame.size.height);
         } completion:nil];
-    }
-    if (self.scrollViewBlock) {
-        self.scrollViewBlock(self.currentBtnIndex);
     }
 }
 
 #pragma mark -
 
 - (void)clickSegmentBtn:(UIButton *)sender {
-    if (self.clickSegmentBtnBlock) {
-        self.clickSegmentBtnBlock(sender);
-    }
+    self.backScrollView.contentOffset = CGPointMake(sender.tag*ScreenWidth, 0);
+    [UIView animateWithDuration:0.1 animations:^{
+        self.underLine.frame = CGRectMake(sender.frame.origin.x, self.underLine.frame.origin.y, self.underLine.frame.size.width, self.underLine.frame.size.height);
+    } completion:nil];
 }
 
 /*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
 
 @end

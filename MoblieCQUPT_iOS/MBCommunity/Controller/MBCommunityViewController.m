@@ -34,25 +34,23 @@
 @property (strong, nonatomic) NSMutableArray <NSDictionary *>* dataDicArray;
 @property (strong, nonatomic) NSMutableArray <NSDictionary *>* parameterArray;
 @property (strong, nonatomic) NSMutableArray <TopicModel *>*topicArray;
+@property BOOL hasLoadedTopic;
+@property BOOL hasLoadedDiscuss;
 @property LoginViewController *loginViewController;
 @property BannerScrollView *bannerScrollView;
 @end
 
 @implementation MBCommunityViewController
-bool hasLoadedArray[3];
-bool hasLoadedTopic;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataDicArray = [NSMutableArray array];
     self.parameterArray = [NSMutableArray array];
     self.topicArray = [NSMutableArray array];
-    hasLoadedTopic = NO;
     for (int i = 0; i<3; i++) {
-        hasLoadedArray[i] = NO;
         [self.dataDicArray addObject:
-                @{@"page":@0,
-                  @"viewModels":
-                    [NSMutableArray array]}];
+         @{@"page":@0,
+           @"viewModels":
+               [NSMutableArray array]}];
         self.parameterArray[i] = self.dataDicArray[i].copy;
     }
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
@@ -63,11 +61,9 @@ bool hasLoadedTopic;
     // block回调
     __weak typeof(self) weakSelf = self;
     _segmentView.clickSegmentBtnBlock = ^(UIButton *sender) {
-        [weakSelf segmentBtnClick:sender];
-    };
-    _segmentView.scrollViewBlock = ^(NSInteger index) {
-        if (!hasLoadedArray[index]){
-            [weakSelf loadNetDataWithType:index];
+        if(weakSelf.tableViewArray[sender.tag].hidden){
+            NSLog(@"%ld正在请求数据\n",(long)sender.tag);
+            [weakSelf request:sender.tag];
         }
     };
     //菊花
@@ -79,7 +75,7 @@ bool hasLoadedTopic;
         [indicatorView startAnimating];
         [_indicatorViewArray addObject:indicatorView];
     }
-    [self loadNetDataWithType:0];
+    [self request:0];
     [self.view addSubview:_segmentView];
     
     
@@ -90,7 +86,7 @@ bool hasLoadedTopic;
     UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
     backItem.title=@"";
     self.navigationItem.backBarButtonItem = backItem;
-
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -103,18 +99,6 @@ bool hasLoadedTopic;
 }
 
 #pragma mark -
-
-- (void)segmentBtnClick:(UIButton *)sender {
-    if (_segmentView.currentSelectBtn != sender) {
-        sender.selected = YES;
-        _segmentView.currentSelectBtn.selected = NO;
-        _segmentView.currentSelectBtn = sender;
-    }
-    _segmentView.backScrollView.contentOffset = CGPointMake(sender.tag*ScreenWidth, 0);
-    [UIView animateWithDuration:0.1 animations:^{
-        self.segmentView.underLine.frame = CGRectMake(sender.frame.origin.x, self.segmentView.underLine.frame.origin.y, self.segmentView.underLine.frame.size.width, self.segmentView.underLine.frame.size.height);
-    } completion:nil];
-}
 
 - (UIBarButtonItem *)addButton {
     if (!_addButton) {
@@ -132,13 +116,11 @@ bool hasLoadedTopic;
 - (void)clickAddButton:(UIButton *) sender{
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
     if (stuNum == nil) {
-        __weak typeof(self) weakSelf = self;
-        self.loginViewController.loginSuccessHandler = ^(BOOL success) {
+        [MBCommunityHandle noLogin:self handler:^(BOOL success) {
             if (success) {
-                [weakSelf clickAddButton:sender];
+                [self clickAddButton:sender];
             }
-        };
-        [MBCommunityHandle noLogin:self];
+        }];
     }else{
         MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
         UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:releaseVC];
@@ -149,6 +131,8 @@ bool hasLoadedTopic;
 
 
 - (void)setupTableView:(NSArray *)segments {
+    self.hasLoadedTopic = NO;
+    self.hasLoadedDiscuss = NO;
     _tableViewArray = [NSMutableArray<MBCommunityTableView *> array];
     for (int i = 0; i < segments.count; i ++) {
         MBCommunityTableView *tableView = [[MBCommunityTableView alloc]initWithFrame:CGRectMake(i*ScreenWidth, 0, ScreenWidth, _segmentView.backScrollView.frame.size.height) style:UITableViewStyleGrouped];
@@ -163,31 +147,69 @@ bool hasLoadedTopic;
         [_segmentView.backScrollView addSubview:tableView];
         tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
             self.parameterArray[i] =
-                        @{@"page":@0,
-                          @"viewModels":
-                        [NSMutableArray array]};
-            [self loadNetDataWithType:i];
+            @{@"page":@0,
+              @"viewModels":
+                  [NSMutableArray array]};
+            [self request:i];
         }];
         tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-            [self loadNetDataWithType:i];
+            [self request:i];
         }];
     }
 }
 
 #pragma mark - 请求网络数据
 
-- (void)loadNetDataWithType:(NSInteger)type {
-    //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询)
-    if (type == 1 && !hasLoadedTopic) {
-        [self getTopicData];
+- (void)request:(NSInteger)type{
+    dispatch_group_t group = dispatch_group_create();
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self loadNetDataWithType:type];
+        //        NSLog(@"Request_1");
+    });
+    if (type==1) {
+        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            //请求2
+            [self getTopicData];
+            //            NSLog(@"Request_2");
+        });
     }
+    dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+        //界面刷新
+        if (type == 1) {
+            if (self.hasLoadedTopic &&self.hasLoadedDiscuss) {
+                UIActivityIndicatorView *indicatorView = self.indicatorViewArray[type];
+                [indicatorView stopAnimating];
+                self.tableViewArray[type].hidden = NO;
+                
+                [self.tableViewArray[type] reloadData];
+                [self.tableViewArray[type].mj_header endRefreshing];
+                [self.tableViewArray[type].mj_footer endRefreshing];
+            }
+        }
+        else{
+            if (!self.tableViewArray[type].hidden) {
+                UIActivityIndicatorView *indicatorView = self.indicatorViewArray[type];
+                [indicatorView stopAnimating];
+                self.tableViewArray[type].hidden = NO;
+                
+                [self.tableViewArray[type] reloadData];
+                [self.tableViewArray[type].mj_header endRefreshing];
+                [self.tableViewArray[type].mj_footer endRefreshing];
+            }
+        }
+     
+    });
+}
+
+- (void)loadNetDataWithType:(NSInteger)type {
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询)
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
     NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
     NSMutableDictionary *parameter =
     @{@"stuNum":stuNum,
       @"idNum":idNum,
       @"version":@(1.0)}.mutableCopy;
-    MBCommunityTableView *tableView = self.tableViewArray[type];
     [parameter setObject:self.parameterArray[type][@"page"] forKey:@"page"];
     NSMutableArray *viewModels = self.parameterArray[type][@"viewModels"];
     NSString *url = SEARCHHOTARTICLE_API;
@@ -198,7 +220,8 @@ bool hasLoadedTopic;
         url = LISTNEWS_API;
     }
     [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        hasLoadedArray[type] = YES;
+        dispatch_semaphore_signal(sema);
+        self.hasLoadedDiscuss = YES;
         NSMutableArray *dataArray = returnValue[@"data"];
         NSNumber *page = returnValue[@"page"];
         page = @(page.integerValue+1);
@@ -212,34 +235,34 @@ bool hasLoadedTopic;
                                   @"viewModels":viewModels};
         self.dataDicArray[type] = dataDic;
         self.parameterArray[type] = dataDic.copy;
-        UIActivityIndicatorView *indicatorView = self.indicatorViewArray[type];
-        [indicatorView stopAnimating];
-        tableView.hidden = NO;
-        [tableView reloadData];
-        [tableView.mj_header endRefreshing];
-        [tableView.mj_footer endRefreshing];
-        
+        if (type!=1) {
+            self.tableViewArray[type].hidden = NO;
+        }
     } WithFailureBlock:^{
         NSLog(@"请求数据失败");
-        if(hasLoadedArray[type]){
+        dispatch_semaphore_signal(sema);
+        self.parameterArray[type] = self.dataDicArray[type].copy;
+        if (!self.tableViewArray[type].hidden) {
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
             hud.mode = MBProgressHUDModeText;
             hud.labelText = @"您的网络不给力!";
             [hud hide:YES afterDelay:1];
         }
-        self.parameterArray[type] = self.dataDicArray[type].copy;
-        [tableView.mj_header endRefreshing];
-        [tableView.mj_footer endRefreshing];
     }];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+    
 }
 
 - (void)getTopicData{
+    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    
     NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
     [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:@{@"stuNum":stuNum,
-                     }
+                                                                        }
                      WithReturnValeuBlock:^(id returnValue) {
                          NSLog(@"%@",returnValue);
-                         hasLoadedTopic = YES;
+                         dispatch_semaphore_signal(sema);
+                         self.hasLoadedTopic = YES;
                          self.topicArray = [NSMutableArray array];
                          NSMutableArray *dataArray = returnValue[@"data"];
                          for (NSDictionary *dic in dataArray) {
@@ -247,11 +270,17 @@ bool hasLoadedTopic;
                              [self.topicArray addObject:model];
                          }
                          self.bannerScrollView =[[BannerScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130) andTopics:self.topicArray];
-                         [self.tableViewArray[1] reloadData];
                      }
                          WithFailureBlock:^{
-
+                             dispatch_semaphore_signal(sema);
+                             if (!self.tableViewArray[1].hidden) {
+                                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                                 hud.mode = MBProgressHUDModeText;
+                                 hud.labelText = @"您的网络不给力!";
+                                 [hud hide:YES afterDelay:1];
+                             }
                          }];
+    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
 
 #pragma mark -UITableView
@@ -280,7 +309,7 @@ bool hasLoadedTopic;
     else{
         return [self.dataDicArray[tableView.tag][@"viewModels"][index] cellHeight];
     }
-
+    
     
 }
 
@@ -302,12 +331,12 @@ bool hasLoadedTopic;
             [cell addSubview:self.bannerScrollView];
             return cell;
         }
-      viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index-1];
+        viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index-1];
     }
     else{
         viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
     }
-
+    
     if (tableView.tag == 2) {
         cell.headImageView.userInteractionEnabled = NO;
     }
@@ -351,13 +380,13 @@ bool hasLoadedTopic;
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

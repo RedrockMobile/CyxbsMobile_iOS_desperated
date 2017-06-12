@@ -20,7 +20,6 @@
 
 @property (weak,nonatomic) id<SegmentViewScrollerViewDelegate> eventDelegate;
 
-- (instancetype)initWithFrame:(CGRect)frame withTitle:(NSArray *)subviewControllers;
-
+- (instancetype)initWithFrame:(CGRect)frame andControllers:(NSArray <UIViewController *> *)controllers;
 
 @end

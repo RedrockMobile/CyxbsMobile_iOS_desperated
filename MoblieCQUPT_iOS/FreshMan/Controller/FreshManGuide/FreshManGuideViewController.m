@@ -63,7 +63,7 @@
     
     NSArray *vcs = @[one,two,_three,four,five,_six,_seven,_eight];
     
-    SegmentView *segment = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) withTitle:vcs];
+    SegmentView *segment = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) andControllers:vcs];
     segment.eventDelegate = self;
     [self.view addSubview:segment];
     

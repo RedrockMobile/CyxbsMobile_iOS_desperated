@@ -52,7 +52,7 @@
     _isLoadView4 = NO;
     
     NSArray *array = @[one,_two,_three,_four,_five];
-    SegmentView *segment = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) withTitle:array];
+    SegmentView *segment = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64) andControllers:array];
     segment.eventDelegate = self;
     [self.view addSubview:segment];
     

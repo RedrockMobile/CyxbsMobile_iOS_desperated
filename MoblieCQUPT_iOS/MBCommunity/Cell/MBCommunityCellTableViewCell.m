@@ -60,8 +60,8 @@
     _supportBtn.tag = 1;
     [_supportBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
     
-//    _supportImage = [[UIImageView alloc]init];
-//    _supportImage.image = [UIImage imageNamed:@"support1.png"];
+    //    _supportImage = [[UIImageView alloc]init];
+    //    _supportImage.image = [UIImage imageNamed:@"support1.png"];
     _supportImage = [UIButton buttonWithType:UIButtonTypeCustom];
     [_supportImage setImage:[UIImage imageNamed:@"support1.png"] forState:UIControlStateNormal];
     [_supportImage setImage:[UIImage imageNamed:@"support.png"] forState:UIControlStateSelected];
@@ -71,7 +71,7 @@
     _commentBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [_commentBtn setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
     _commentBtn.tag = 2;
-//    [_commentBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
+    //    [_commentBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
     
     _commentImage = [[UIImageView alloc]init];
     _commentImage.image = [UIImage imageNamed:@"comment1.png"];
@@ -139,14 +139,14 @@
         if (firstMatch) {
             NSRange resultRange = [firstMatch rangeAtIndex:0];
             [attributedStr setTextHighlightRange:resultRange color:[UIColor colorWithHexString:@"41a3ff"] backgroundColor:[UIColor whiteColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-                NSLog(@"test");
+                //                NSLog(@"test");
             }];
         }
-        NSLog(@"%@",error);
+        //        NSLog(@"%@",error);
     }
     
     self.contentLabel.attributedText = attributedStr;
-
+    
     _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;
     _photoContainer.picNameArray = self.model.articlePictureArray;
     _supportImage.selected = self.subViewFrame.model.is_my_like;
@@ -166,9 +166,9 @@
         _commentBtn.frame = self.subViewFrame.detailNumOfCommentFrame;
         _commentImage.frame = self.subViewFrame.detailCommentImageFrame;
         _photoContainer.frame = self.subViewFrame.detailPhotoContainerViewFrame;
-
-
-
+        
+        
+        
     }
     else{
         _contentLabel.frame = self.subViewFrame.contentLabelFrame;
@@ -177,7 +177,7 @@
         _commentBtn.frame = self.subViewFrame.numOfCommentFrame;
         _commentImage.frame = self.subViewFrame.commentImageFrame;
         _photoContainer.frame = self.subViewFrame.photoContainerViewFrame;
-
+        
     }
 }
 
@@ -195,7 +195,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

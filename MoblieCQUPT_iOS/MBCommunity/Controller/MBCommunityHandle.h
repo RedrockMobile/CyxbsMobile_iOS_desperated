@@ -12,5 +12,5 @@
 #import "MBCommunityCellTableViewCell.h"
 @interface MBCommunityHandle : NSObject
 + (ClickSupportBtnBlock)clickSupportBtn:(UIViewController *)viewController;
-+ (void) noLogin:(UIViewController *)viewController;
++ (void) noLogin:(UIViewController *)viewController handler:(LoginSuccessHandler)handler;
 @end

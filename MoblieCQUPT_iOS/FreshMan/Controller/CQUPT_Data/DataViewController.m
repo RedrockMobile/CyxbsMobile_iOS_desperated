@@ -28,7 +28,7 @@
     sexRatioVC.title = @"男女比例";
     majorVC.title = @"最难科目";
     graduateVC.title = @"毕业去向";
-    SegmentView *segmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64) withTitle:@[sexRatioVC,majorVC,graduateVC]];
+    SegmentView *segmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64) andControllers:@[sexRatioVC,majorVC,graduateVC]];
     [self.view addSubview:segmentView];
 }
 

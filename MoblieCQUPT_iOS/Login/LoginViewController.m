@@ -191,11 +191,11 @@
 //            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
 //            [self presentViewController:view animated:YES completion:nil];
                [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
             if (weakSelf.loginSuccessHandler) {
                 weakSelf.loginSuccessHandler(YES);
              
             }
-            [weakSelf dismissViewControllerAnimated:YES completion:nil];
             
         }else {
             //没有完善信息,跳转到完善个人的界面

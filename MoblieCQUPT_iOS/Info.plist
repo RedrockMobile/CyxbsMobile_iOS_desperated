@@ -21,11 +21,13 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.redrock.mobile</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>cyxbs</string>
+				<string>cyxbsmobile</string>
 			</array>
 		</dict>
 		<dict>
@@ -57,7 +59,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wb</string>
+				<string>wb3019710850</string>
 			</array>
 		</dict>
 	</array>

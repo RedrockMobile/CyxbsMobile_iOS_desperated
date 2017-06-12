@@ -70,7 +70,8 @@
 //            make.top.and.right.mas_equalTo(10);
 //        }];
         
-        [self.backGroundImageView setImageWithURL:[NSURL URLWithString:topic.imgArray[0]] placeholderImage:[UIImage imageWithColor:[UIColor whiteColor]]];
+//        [self.backGroundImageView setImageWithURL:[NSURL URLWithString:topic.imgArray[0]] placeholderImage:[UIImage imageWithColor:[UIColor whiteColor]]];
+        [self.backGroundImageView sd_setImageWithURL:[NSURL URLWithString:[topic.imgArray firstObject]] placeholderImage:[UIImage imageWithColor:[UIColor whiteColor]]];
         self.titleLabel.text = self.topic.keyword;
         self.titleLabel.font = [UIFont systemFontOfSize:18];
         self.titleLabel.textColor = [UIColor colorWithRGB:0x212121 alpha:1];

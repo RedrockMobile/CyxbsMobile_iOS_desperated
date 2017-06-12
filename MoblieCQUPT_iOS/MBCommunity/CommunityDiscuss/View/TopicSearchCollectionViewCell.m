@@ -9,8 +9,6 @@
 #import "TopicSearchCollectionViewCell.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
-#define autoSizeScaleX [UIScreen mainScreen].bounds.size.width/375.0
-#define autoSizeScaleY [UIScreen mainScreen].bounds.size.height/667.0
 
 CG_INLINE CGRect
 CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
@@ -52,9 +50,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     colorLayer.backgroundColor = [UIColor colorWithRGB:0x212121 alpha:0.5].CGColor;
     colorLayer.frame = self.bounds;
     [self.contentView.layer addSublayer:colorLayer];
-//    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 165, 138)];
-//    bgView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1];
-//    [self.contentView addSubview:bgView];
+    //    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 165, 138)];
+    //    bgView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.1];
+    //    [self.contentView addSubview:bgView];
     
     self.titleLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(0, 35, 165, 36)];
     self.titleLabel.textColor = [UIColor whiteColor];

@@ -18,7 +18,8 @@
         NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
         NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
         if (stuNum==nil) {
-            [self noLogin:viewController];
+//            [self noLogin:viewController];
+            [self noLogin:viewController handler:nil];
         }
         else{
             if (imageBtn.selected && labelBtn.selected) {
@@ -63,12 +64,13 @@
     }];
 }
 
-+ (void) noLogin:(UIViewController *)viewController{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息呢,肯定不让你点赞呀" preferredStyle:UIAlertControllerStyleAlert];
++ (void) noLogin:(UIViewController *)viewController handler:(LoginSuccessHandler)handler{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息呢,无法完成相应操作" preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         LoginViewController *LVC = [[LoginViewController alloc] init];
+        LVC.loginSuccessHandler = handler;
         [viewController presentViewController:LVC animated:YES completion:nil];
     }];
     [alertC addAction:cancel];

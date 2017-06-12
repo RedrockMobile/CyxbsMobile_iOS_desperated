@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "MineViewController.h"
 #import "MBReleaseViewController.h"
+#import "DetailTopicViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
 @interface AppDelegate ()
@@ -28,7 +29,7 @@
     [self configUSharePlatforms];
     
     [self confitUShareSettings];
-
+    
     
     // Override point for customization after application launch.
     //BUGHD
@@ -40,45 +41,45 @@
     }
     
     //友盟统计
-//    [MobClick startWithAppkey:@"573183a5e0f55a59c9000694" reportPolicy:BATCH   channelId:@""];
-//    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-//    [MobClick setAppVersion:version];
-//    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
-//    [MobClick setAppVersion:@"V2.3.0"];
-
+    //    [MobClick startWithAppkey:@"573183a5e0f55a59c9000694" reportPolicy:BATCH   channelId:@""];
+    //    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    //    [MobClick setAppVersion:version];
+    //    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
+    //    [MobClick setAppVersion:@"V2.3.0"];
     
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
-//        NSDate *currentTime = [NSDate date];
-//        NSDate *dataTime = [userDefault objectForKey:@"time"];
-        //选择是跳转到mainViewController还是loginViewController
-//        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
-//            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-//            self.window.rootViewController = view;
-//            NSLog(@"%@,%@,%@",[userDefault objectForKey:@"user_id"],[userDefault objectForKey:@"nickname"],[userDefault objectForKey:@"photo_src"]);
-//        }else {
-//            [userDefault removeObjectForKey:@"stuNum"];
-//            [userDefault removeObjectForKey:@"idNum"];
-//            [userDefault removeObjectForKey:@"dataArray"];
-//            [userDefault removeObjectForKey:@"time"];
-//            [userDefault removeObjectForKey:@"user_id"];
-//            [userDefault removeObjectForKey:@"nickname"];
-//            [userDefault removeObjectForKey:@"photo_src"];
-//            [userDefault synchronize];
-//            LoginViewController *login = [[LoginViewController alloc]init];
-//            self.window.rootViewController = login;
-//        }
-//    }else {
-//        LoginViewController *login = [[LoginViewController alloc]init];
-//        self.window.rootViewController = login;
-//    }
+    
+    //    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    //    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
+    //        NSDate *currentTime = [NSDate date];
+    //        NSDate *dataTime = [userDefault objectForKey:@"time"];
+    //选择是跳转到mainViewController还是loginViewController
+    //        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
+    //            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
+    //            self.window.rootViewController = view;
+    //            NSLog(@"%@,%@,%@",[userDefault objectForKey:@"user_id"],[userDefault objectForKey:@"nickname"],[userDefault objectForKey:@"photo_src"]);
+    //        }else {
+    //            [userDefault removeObjectForKey:@"stuNum"];
+    //            [userDefault removeObjectForKey:@"idNum"];
+    //            [userDefault removeObjectForKey:@"dataArray"];
+    //            [userDefault removeObjectForKey:@"time"];
+    //            [userDefault removeObjectForKey:@"user_id"];
+    //            [userDefault removeObjectForKey:@"nickname"];
+    //            [userDefault removeObjectForKey:@"photo_src"];
+    //            [userDefault synchronize];
+    //            LoginViewController *login = [[LoginViewController alloc]init];
+    //            self.window.rootViewController = login;
+    //        }
+    //    }else {
+    //        LoginViewController *login = [[LoginViewController alloc]init];
+    //        self.window.rootViewController = login;
+    //    }
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     UITabBarController *tbc = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
     self.window.rootViewController = tbc;
-
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    
+    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter]; //请求获取通知权限
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
@@ -92,14 +93,40 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
+    NSLog(@"%@",url);
     BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
     if (!result) {
+        UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+        [tbc setSelectedIndex:1];
+        NSString *topic_id = [url lastPathComponent];
+        [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:nil WithReturnValeuBlock:^(id returnValue) {
+            TopicModel *topic;
+            NSArray *dataArray = returnValue[@"data"];
+            for (NSDictionary *dic in dataArray) {
+                if ([[dic[@"topic_id"] stringValue] isEqualToString:topic_id]) {
+                    topic = [[TopicModel alloc]initWithDic:dic];
+                    break;
+                }
+            }
+            DetailTopicViewController *detailVC = [[DetailTopicViewController alloc]initWithTopic:topic];
+            detailVC.hidesBottomBarWhenPushed = YES;
+            [tbc.selectedViewController pushViewController:detailVC animated:YES];
+            
+            
+        } WithFailureBlock:^{
+            
+        }];
+//        [[tbc.viewControllers firstObject].navigationController pushViewController:vc animated:YES];
         // 其他如支付等SDK的回调
     }
     return result;
 }
 
+//- (void)applicationDidFinishLaunching:(UIApplication *)application{
+//    
+//}
 
+#pragma mark - 友盟分享
 - (void)confitUShareSettings
 {
     /*
@@ -134,7 +161,7 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106178038"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     
     /* 设置新浪的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3019710850"  appSecret:@"1542ea8cd042a11d8f16c615d9d82453" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
 }
 
 

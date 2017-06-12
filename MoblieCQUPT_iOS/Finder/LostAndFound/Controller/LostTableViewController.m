@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger,LZPlace){
     self = [self init];
     if (self) {
         self.title = title;
+        
         self.theme = theme;
         self.APIString = [LOSTAPI stringByAppendingString:@"/view"].mutableCopy ;
         if (theme == LZLost) {
@@ -67,15 +68,8 @@ typedef NS_ENUM(NSInteger,LZPlace){
     [[HttpClient defaultClient] requestWithPath:path method:HttpRequestGet parameters:nil prepareExecute:nil progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (place == footer) {
-            if(self.nextPageString == nil){
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
-            }
-            else{
-                [self.tableView.mj_footer endRefreshing];
-            }
-        }
-        else{
+
+        if (place == header) {
             self.itemArray = [NSMutableArray array];
             [self.tableView.mj_header endRefreshing];
             self.tableView.mj_footer.hidden = NO;
@@ -84,6 +78,12 @@ typedef NS_ENUM(NSInteger,LZPlace){
             [self.itemArray addObject:[[LostItem alloc]initWithDic:dic]];
         }
         self.nextPageString = [responseObject objectForKey:@"next_page_url"];
+        if (self.nextPageString == nil) {
+            [self.tableView.mj_footer endRefreshingWithNoMoreData];
+        }
+        else{
+            [self.tableView.mj_footer endRefreshing];
+        }
         [self.tableView reloadData];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

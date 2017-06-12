@@ -53,8 +53,8 @@
         foundArray[i] = vc;
     }
     
-    self.lostSegmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) withTitle:[NSArray arrayWithArray:lostArray]];
-    self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) withTitle:[NSArray arrayWithArray:foundArray]];
+    self.lostSegmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) andControllers:[NSArray arrayWithArray:lostArray]];
+    self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) andControllers:[NSArray arrayWithArray:foundArray]];
     [self.view addSubview:self.lostSegmentView];
     
     self.addBtn = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 100, 100)];
@@ -80,7 +80,7 @@
     NSString *stuNum = [[NSUserDefaults standardUserDefaults] objectForKey:@"stuNum"];
     if (stuNum == nil) {
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提醒" message:@"你还未登录 不能发布信息哦" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             LoginViewController *login = [[LoginViewController alloc]init];
             [self.navigationController presentViewController:login animated:YES completion:nil];
             login.loginSuccessHandler = ^(BOOL success) {
