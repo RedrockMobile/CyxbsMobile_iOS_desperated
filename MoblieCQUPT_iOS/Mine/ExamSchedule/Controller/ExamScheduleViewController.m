@@ -98,8 +98,11 @@
     cell.examLocation.text = examLocationLableText;
     NSString *examTimeLableText = [_data[indexPath.row][@"begin_time"] stringByAppendingFormat:@" - %@", _data[indexPath.row][@"end_time"]];
     cell.examTime.text = examTimeLableText;
-    NSString *examDateLableText = [_data[indexPath.row][@"week"] stringByAppendingFormat:@"周 周%@", _data[indexPath.row][@"weekday"]];
-    cell.examDate.text = examDateLableText;
+    NSArray *dateArray = @[@"零",@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
+    
+    int dateIndex = [_data[indexPath.row][@"weekday"] intValue];
+    NSString *examDateLabelText = [_data[indexPath.row][@"week"] stringByAppendingFormat:@"周 周%@",dateArray[dateIndex]];
+    cell.examDate.text = examDateLabelText;
     
     return cell;
 }

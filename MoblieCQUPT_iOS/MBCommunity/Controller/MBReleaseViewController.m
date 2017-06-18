@@ -172,7 +172,8 @@
 }
 
 - (void)clickCancel:(UIButton *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)clickDeleteImageViewWithTag:(NSInteger)tag {

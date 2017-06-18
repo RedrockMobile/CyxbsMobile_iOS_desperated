@@ -123,7 +123,7 @@
 
 - (void)loginButton:(UIButton *)sender {
     _loadHub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _loadHub.labelText = @"正在登陆";
+    _loadHub.labelText = @"正在登录";
     [_loadHub showAnimated:NO whileExecutingBlock:^{
         [UIView animateWithDuration:1.5 animations:^{
             [sender setTitle:@"登录中" forState:UIControlStateNormal];

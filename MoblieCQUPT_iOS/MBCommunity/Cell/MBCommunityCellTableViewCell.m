@@ -130,7 +130,6 @@
     }
     NSError *error;
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:self.contentLabel.text];
-    attributedStr.font = self.contentLabel.font;
     //正则匹配
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"#.+?#"                                options:0 error:&error];
     if (regex != nil) {
@@ -144,7 +143,8 @@
         }
         //        NSLog(@"%@",error);
     }
-    
+//    attributedStr.font = self.contentLabel.font;
+    [attributedStr setFont:[UIFont systemFontOfSize:16]];
     self.contentLabel.attributedText = attributedStr;
     
     _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;
@@ -166,9 +166,6 @@
         _commentBtn.frame = self.subViewFrame.detailNumOfCommentFrame;
         _commentImage.frame = self.subViewFrame.detailCommentImageFrame;
         _photoContainer.frame = self.subViewFrame.detailPhotoContainerViewFrame;
-        
-        
-        
     }
     else{
         _contentLabel.frame = self.subViewFrame.contentLabelFrame;
@@ -177,8 +174,7 @@
         _commentBtn.frame = self.subViewFrame.numOfCommentFrame;
         _commentImage.frame = self.subViewFrame.commentImageFrame;
         _photoContainer.frame = self.subViewFrame.photoContainerViewFrame;
-        
-    }
+        }
 }
 
 - (void)clickHeadImageView:(UITapGestureRecognizer *)gesture {
