@@ -102,10 +102,11 @@
         vc.updateBlock = ^{
             [self.tableView.mj_header beginRefreshing];
         };
-        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
-        [self.navigationController presentViewController:nvc animated:YES completion:^{
-            
-        }];
+        [self.navigationController pushViewController:vc animated:YES];
+//        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
+//        [self.navigationController presentViewController:nvc animated:YES completion:^{
+//            
+//        }];
     }
 }
 

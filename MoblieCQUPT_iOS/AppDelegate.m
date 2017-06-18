@@ -11,6 +11,8 @@
 #import "MineViewController.h"
 #import "MBReleaseViewController.h"
 #import "DetailTopicViewController.h"
+#import "ExamScheduleViewController.h"
+#import "MBReleaseViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
 @interface AppDelegate ()
@@ -182,52 +184,56 @@
 }
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler{
-    if ([shortcutItem.type isEqualToString:@"course"]) {
-        [self launchViewController:0 withChoose:0];
-    }else if ([shortcutItem.type isEqualToString:@"news"]){
-        [self launchViewController:1 withChoose:0];
-    }else if ([shortcutItem.type isEqualToString:@"exam"]){
-        [self launchViewController:3 withChoose:1];
-    }else if ([shortcutItem.type isEqualToString:@"release"]){
-        [self launchViewController:1 withChoose:2];
+    UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
+//    UIViewController *vc;
+    if (![LoginEntry getByUserdefaultWithKey:@"stuNum"]) {
+        LoginViewController *login = [[LoginViewController alloc] init];
+        login.loginSuccessHandler = ^(BOOL success) {
+            if (success) {
+                [self application:application performActionForShortcutItem:shortcutItem completionHandler:completionHandler];
+            }
+        };
+        if (tbc.presentedViewController) {
+            //要先dismiss结束后才能重新present否则会出现Warning: Attempt to present <UINavigationController: 0x7fdd22262800> on <UITabBarController: 0x7fdd21c33a60> whose view is not in the window hierarchy!就会present不出来登录页面
+            [tbc.presentedViewController dismissViewControllerAnimated:NO completion:^{
+                [tbc presentViewController:login animated:YES completion:nil];
+            }];
+        }else {
+            [tbc presentViewController:login animated:NO completion:nil];
+        }
+    
+//        [tbc.selectedViewController presentViewController:login animated:YES completion:^{
+//            
+//        }];
     }
+    else{
+        if ([shortcutItem.type isEqualToString:@"course"]) {
+            [tbc setSelectedIndex:0];
+        }else if ([shortcutItem.type isEqualToString:@"news"]){
+            [tbc setSelectedIndex:1];
+        }else if ([shortcutItem.type isEqualToString:@"exam"]){
+            [tbc setSelectedIndex:3];
+          ExamScheduleViewController *vc = [[ExamScheduleViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [tbc.selectedViewController pushViewController:vc animated:YES];
+        }else if ([shortcutItem.type isEqualToString:@"release"]){
+            
+            [tbc setSelectedIndex:1];
+            MBReleaseViewController *vc = [[MBReleaseViewController alloc]init];
+            vc.hidesBottomBarWhenPushed = YES;
+            [tbc.selectedViewController pushViewController:vc animated:YES];
+//            [tbc.selectedViewController presentViewController:vc animated:YES completion:^{
+//                
+//            }];
+        }
+      
+
+    }
+//    vc.hidesBottomBarWhenPushed = YES;
+//    [tbc.selectedViewController pushViewController:vc animated:YES];
     
 }
 
-- (void)launchViewController:(NSInteger) selectIndex withChoose:(NSInteger) secondChooseIndex {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    if ([userDefault objectForKey:@"time"] != nil) {
-        NSDate *currentTime = [NSDate date];
-        NSDate *dataTime = [userDefault objectForKey:@"time"];
-        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UINavigationController *mainNavigationVC = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-            UITabBarController *tab = (UITabBarController *)mainNavigationVC.viewControllers[0];
-            
-            if (secondChooseIndex == 0) {
-                tab.selectedIndex = selectIndex;
-                self.window.rootViewController = mainNavigationVC;
-            }else if (secondChooseIndex == 1) {
-                tab.selectedIndex = selectIndex;
-                self.window.rootViewController = mainNavigationVC;
-            }else if (secondChooseIndex == 2) {
-                tab.selectedIndex = selectIndex;
-                self.window.rootViewController = mainNavigationVC;
-            }
-        }else {
-            [userDefault removeObjectForKey:@"stuNum"];
-            [userDefault removeObjectForKey:@"idNum"];
-            [userDefault removeObjectForKey:@"dataArray"];
-            [userDefault removeObjectForKey:@"time"];
-            [userDefault synchronize];
-            LoginViewController *login = [[LoginViewController alloc]init];
-            self.window.rootViewController = login;
-        }
-    }else {
-        LoginViewController *login = [[LoginViewController alloc]init];
-        self.window.rootViewController = login;
-    }
-}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

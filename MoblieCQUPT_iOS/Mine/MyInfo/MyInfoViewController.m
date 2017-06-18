@@ -69,11 +69,11 @@
             }
             
             if (_data[@"qq"]!=nil) {
-                _qqTextField.text = [_data[@"qq"] stringValue];
+                _qqTextField.text = _data[@"qq"];
             }
             
             if (_data[@"phone"]!=nil) {
-                _phoneTextField.text = [_data[@"phone"] stringValue];
+                _phoneTextField.text = _data[@"phone"];
             }
         }
         

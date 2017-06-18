@@ -123,9 +123,10 @@
         }];
     }else{
         MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
-        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:releaseVC];
+//        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:releaseVC];
         releaseVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController presentViewController:nvc animated:YES completion:nil];
+        [self.navigationController pushViewController:releaseVC animated:YES];
+//        [self.navigationController presentViewController:nvc animated:YES completion:nil];
     }
 }
 
