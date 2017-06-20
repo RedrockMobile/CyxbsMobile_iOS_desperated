@@ -108,10 +108,7 @@
 #pragma mark -
 
 - (void)clickSegmentBtn:(UIButton *)sender {
-    self.backScrollView.contentOffset = CGPointMake(sender.tag*ScreenWidth, 0);
-    [UIView animateWithDuration:0.1 animations:^{
-        self.underLine.frame = CGRectMake(sender.frame.origin.x, self.underLine.frame.origin.y, self.underLine.frame.size.width, self.underLine.frame.size.height);
-    } completion:nil];
+    [self.backScrollView setContentOffset:CGPointMake(sender.tag*ScreenWidth, 0) animated:YES];
 }
 
 /*

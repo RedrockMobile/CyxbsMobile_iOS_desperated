@@ -222,7 +222,6 @@
 		F242DE4E1EBCB2BC005AC411 /* 重邮风采.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DB861EBCB2BB005AC411 /* 重邮风采.png */; };
 		F242DE4F1EBCB2BC005AC411 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB891EBCB2BB005AC411 /* SegmentView.m */; };
 		F242DE501EBCB2BC005AC411 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F242DB8A1EBCB2BB005AC411 /* Images.xcassets */; };
-		F242DE511EBCB2BC005AC411 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F242DB8B1EBCB2BB005AC411 /* Info.plist */; };
 		F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB8E1EBCB2BB005AC411 /* LoginViewController.m */; };
 		F242DE531EBCB2BC005AC411 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DB8F1EBCB2BB005AC411 /* LoginViewController.xib */; };
 		F242DE541EBCB2BC005AC411 /* VerifyMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB911EBCB2BB005AC411 /* VerifyMyInfoViewController.m */; };
@@ -2821,7 +2820,7 @@
 		CEF61B221B82BC950014B980 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Orange-W";
 				TargetAttributes = {
 					CE4334431BE7C52D000C407D = {
@@ -3103,7 +3102,6 @@
 				F242DF431EBCB2BC005AC411 /* icon_menu_2@2x.png in Resources */,
 				F242DDD91EBCB2BB005AC411 /* lost_image_lacktel@2x.png in Resources */,
 				F242DE871EBCB2BC005AC411 /* 周数@3x.png in Resources */,
-				F242DE511EBCB2BC005AC411 /* Info.plist in Resources */,
 				F242DE111EBCB2BB005AC411 /* 大艺团.txt in Resources */,
 				F242DE361EBCB2BC005AC411 /* 寝室3.jpg in Resources */,
 				F242DF2A1EBCB2BC005AC411 /* iconfont-titleTag.png in Resources */,
