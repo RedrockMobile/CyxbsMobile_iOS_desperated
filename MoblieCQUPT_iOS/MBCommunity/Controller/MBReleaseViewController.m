@@ -319,7 +319,7 @@
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"发布成功";
         [weakSelf.hud hide:YES afterDelay:1.5];
-        [weakSelf performSelector:@selector(delayMethod) withObject:nil afterDelay:1.5f];
+        [weakSelf performSelector:@selector(delayMethod) withObject:nil afterDelay:0.5f];
         
     } WithFailureBlock:^{
         weakSelf.hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
@@ -331,7 +331,8 @@
 }
 
 - (void)delayMethod {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self dismissViewControllerAnimated:YES completion:nil];
     self.updateBlock();
     
 }

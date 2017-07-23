@@ -124,6 +124,9 @@
     }else{
         MBReleaseViewController *releaseVC = [[MBReleaseViewController alloc]init];
 //        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:releaseVC];
+        releaseVC.updateBlock = ^{
+            [self.tableViewArray[1].mj_header beginRefreshing];
+        };
         releaseVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:releaseVC animated:YES];
 //        [self.navigationController presentViewController:nvc animated:YES completion:nil];
