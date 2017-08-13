@@ -58,10 +58,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]};
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1];
-    
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneImage.png"]];
     imageView.frame = CHANGE_CGRectMake(91.5, 187, 194, 208);
     imageView.contentMode = UIViewContentModeScaleToFill;

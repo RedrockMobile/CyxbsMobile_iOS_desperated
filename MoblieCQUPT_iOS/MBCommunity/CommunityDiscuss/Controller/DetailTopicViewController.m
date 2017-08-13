@@ -45,10 +45,6 @@
         self.viewModels = [NSMutableArray array];
         self.isRefresh = YES;
         self.navigationItem.title = topic.keyword;
-        [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-        UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-        backItem.title=@"";
-        self.navigationItem.backBarButtonItem = backItem;
         self.loginVC = [[LoginViewController alloc]init];
     }
     return self;
@@ -56,7 +52,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.hidden = NO;
+//    self.navigationController.navigationBar.hidden = NO;
     self.page = 0;
     [self setupTableView];
     [self getArticles];
@@ -89,7 +85,7 @@
 }
 
 - (void)joinAction{
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     if (stuNum == nil) {
         [MBCommunityHandle noLogin:self handler:^(BOOL success) {
             if (success) {
@@ -133,7 +129,7 @@
 #pragma mark - 请求网络数据
 
 - (void)getArticles{
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
+    NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
     NSMutableDictionary *parameter =
     @{@"stuNum":stuNum,
       @"topic_id":self.topic.topic_id,

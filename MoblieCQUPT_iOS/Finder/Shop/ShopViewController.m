@@ -32,8 +32,6 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     self.navigationItem.title = @"周边美食";
     _flag = 1;
     
@@ -41,13 +39,6 @@
     [self.view addSubview:self.tableView];
     //注册Peek和Pop方法
     [self registerForPreviewingWithDelegate:self sourceView:self.view];
-}
-
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
 }
 
 /**

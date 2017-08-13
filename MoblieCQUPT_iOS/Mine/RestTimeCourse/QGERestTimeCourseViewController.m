@@ -33,9 +33,7 @@
     self.view.backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
     [self initView];
     _stuNumArray = [NSMutableArray array];
-    _stuInfoArray = [NSMutableArray array];
-//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
+    _stuInfoArray = [NSMutableArray array];    
     
     // Do any additional setup after loading the view from its nib.
 }

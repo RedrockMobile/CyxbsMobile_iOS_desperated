@@ -10,7 +10,7 @@
 
 typedef void(^LoginSuccessHandler)(BOOL success);
 
-@interface LoginViewController : UIViewController<UITextFieldDelegate>
+@interface LoginViewController : UIViewController
 
 @property (copy, nonatomic) LoginSuccessHandler loginSuccessHandler;
 

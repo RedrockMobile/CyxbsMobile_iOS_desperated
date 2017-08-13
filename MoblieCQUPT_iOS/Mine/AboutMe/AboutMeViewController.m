@@ -8,7 +8,6 @@
 
 #import "AboutMeViewController.h"
 #import "MJRefresh.h"
-#import "LoginEntry.h"
 #import "AboutMeTableViewCell.h"
 #import "AboutMePraiseTableViewCell.h"
 #import "ShopDetailViewController.h"
@@ -32,8 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.backgroundColor = [UIColor clearColor];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
     _flag = 0;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
@@ -52,8 +49,8 @@
 
 - (void)headerRereshing{
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
@@ -76,8 +73,8 @@
 - (void)footerRereshing{
     _flag += 1;
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
 
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -117,8 +114,8 @@
 
 - (void)dataFlash{
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme"
                             WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,
                                 @"version":@1.0}
@@ -176,8 +173,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
     
     //查询文章内容
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
                             WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":_articleIdArray[indexPath.section],@"version":@1.0}
@@ -187,8 +184,8 @@
                          [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
                          [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
                          MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
-                         communityModel.nickname = [LoginEntry getByUserdefaultWithKey:@"nickname"];
-                         communityModel.user_photo_src = [LoginEntry getByUserdefaultWithKey:@"photo_src"];
+                         communityModel.nickname = [UserDefaultTool valueWithKey:@"nickname"];
+                         communityModel.user_photo_src = [UserDefaultTool valueWithKey:@"photo_src"];
                          
                          MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
                          community_ViewModel.model = communityModel;

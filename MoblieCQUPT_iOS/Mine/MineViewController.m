@@ -7,7 +7,7 @@
 //
 
 #define kHeadImage @"defaultImageNSUrl"
-#define kPersonalImage [kHeadImage stringByAppendingString: [LoginEntry getByUserdefaultWithKey:@"stuNum"]]
+#define kPersonalImage [kHeadImage stringByAppendingString: [UserDefaultTool getStuNum]]
 
 #import "MineViewController.h"
 #import "XBSAboutViewController.h"
@@ -15,7 +15,6 @@
 #import "QGERestTimeCourseViewController.h"
 #import "ExamGradeViewController.h"
 #import "EmptyClassViewController.h"
-#import "LoginEntry.h"
 #import "AboutMeViewController.h"
 #import "SettingViewController.h"
 #import "UIImageView+AFNetworking.h"
@@ -55,14 +54,10 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.tabBarController.navigationItem.rightBarButtonItem = nil;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
     //网络请求头像和简介
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
+    NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
+    NSString *idNum = [UserDefaultTool getIdNum]?:@"";
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"请求");
         if ([returnValue objectForKey:@"data"]) {
@@ -235,7 +230,6 @@
                 UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
                 viewController.hidesBottomBarWhenPushed = YES;
                 viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
-                self.navigationController.navigationBarHidden = NO;
                 [self.navigationController pushViewController:viewController animated:YES];
             }
             
@@ -278,7 +272,6 @@
             UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
             viewController.navigationItem.title = _cellDictionary[indexPath.section][@"cell"];
             viewController.hidesBottomBarWhenPushed = YES;
-            self.navigationController.navigationBarHidden = NO;
             [self.navigationController pushViewController:viewController animated:YES];
         }
         

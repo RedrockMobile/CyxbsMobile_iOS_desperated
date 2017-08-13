@@ -22,10 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"详细信息";
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
     [self initArray];
     self.footTableView.delegate = self;
     self.footTableView.dataSource = self;

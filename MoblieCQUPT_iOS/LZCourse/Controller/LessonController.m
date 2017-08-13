@@ -110,17 +110,10 @@
 }
 
 - (void)initNavigationBar{
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回箭头"]];
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回箭头"]];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-
     self.barBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, NVGBARHEIGHT*2, NVGBARHEIGHT)];
     [self.barBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
     [self.barBtn setTitle:@"本周" forState:UIControlStateNormal];
-    [self.barBtn setTitleColor:[UIColor colorWithRed:64/255.f green:64/255.f blue:64/255.f alpha:1] forState:UIControlStateNormal];
+    [self.barBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.barBtn.titleLabel.font = [UIFont adaptFontSize:18];
     self.navigationItem.titleView = self.barBtn;
     //初始化点击Button
@@ -128,7 +121,7 @@
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [addBtn addTarget:self action:@selector(addAction) forControlEvents:UIControlEventTouchUpInside];
     addBtn.frame = CGRectMake(0, 0, NVGBARHEIGHT/2, NVGBARHEIGHT/2);
-    [addBtn setBackgroundImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [addBtn setBackgroundImage:[UIImage imageNamed:@"timetable_image_add"] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:addBtn];
     //初始化右边添加button
     [self initPullImageView];//初始化下拉箭头
@@ -208,7 +201,7 @@
 }
 
 - (void)initPullImageView{
-    self.pullImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"下拉"]];
+    self.pullImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"timetable_image_pull"]];
     [self.barBtn addSubview:self.pullImageView];
     [self.pullImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.barBtn.titleLabel.mas_right).offset(5);
@@ -263,9 +256,9 @@
 
 - (void)clickBtn{
     if (self.weekScrollView.showWeekScrollView) {
-        self.pullImageView.image = [UIImage imageNamed:@"下拉"];
         [UIView animateWithDuration:0.3 animations:^{
             self.weekScrollView.frame = CGRectMake(0, 0, SCREENWIDTH, 1);
+            self.pullImageView.transform = CGAffineTransformMakeScale(1.0,1.0);
         }completion:^(BOOL finished) {
             [self.weekScrollView removeFromSuperview];
             [self.coverView removeFromSuperview];
@@ -273,7 +266,6 @@
         }];
     }
     else{
-        self.pullImageView.image = [UIImage imageNamed:@"上拉"];
         NSInteger initial = (self.selectedWeek-4)>0?(self.selectedWeek-4):0;
         [self.weekScrollView setContentOffset:CGPointMake(0, initial*self.weekScrollView.btnArray[self.selectedWeek].frame.size.height)];
         // 选中button居中
@@ -281,6 +273,7 @@
         [self.view addSubview:self.weekScrollView];
         
         [UIView animateWithDuration:0.3 animations:^{
+            self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
             self.weekScrollView.frame = CGRectMake(0, NVGBARHEIGHT+STATUSBARHEIGHT, SCREENWIDTH, SCREENHEIGHT/2.5);
         }completion:^(BOOL finished) {
             self.weekScrollView.showWeekScrollView = YES;

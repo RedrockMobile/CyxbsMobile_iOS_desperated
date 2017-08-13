@@ -51,21 +51,11 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"摇一摇";
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    
     [[UIApplication sharedApplication] setApplicationSupportsShakeToEdit:YES];
     [self becomeFirstResponder];
+    [self request];
 }
 
--(void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-
-}
-
--(void)motionCancelled:(UIEventSubtype)motion withEvent:(UIEvent *)event{
-
-}
 
 -(void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     
@@ -95,8 +85,7 @@
 }
 
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
+- (void)request{
     for (int i = 1; i<= 3; i++) {
         [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
             _data = [[NSMutableArray alloc] init];

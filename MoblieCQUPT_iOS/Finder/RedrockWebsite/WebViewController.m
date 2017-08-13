@@ -30,13 +30,6 @@
     _webView.scalesPageToFit = YES;
 }
 
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-    self.navigationItem.title = @"红岩门户";
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
-}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [_indicatorView stopAnimating];

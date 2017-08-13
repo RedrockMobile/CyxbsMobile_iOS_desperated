@@ -56,13 +56,12 @@
         [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [btn setTitleColor:MAIN_COLOR forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
-        if (i == 0) {
-            btn.selected = YES;
-            _currentIndex = 0;
-        }
         [_titleScrollView addSubview:btn];
         [_btnArray addObject:btn];
     }
+    _currentIndex = 0;
+    [_btnArray firstObject].selected = YES;
+    
     _sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, kTitleHeight-2, self.titleBtnWidth, 2)];
     _sliderView.backgroundColor = MAIN_COLOR;
     
@@ -93,11 +92,12 @@
 }
 
 - (void)clickBtn:(UIButton *)sender {
+//    [self.backScrollView setContentOffset:CGPointMake(sender.tag*ScreenWidth, 0) animated:YES];
+    [self.mainScrollView setContentOffset:CGPointMake(sender.tag * self.width, 0) animated:YES];
     
-    [UIView animateWithDuration:0.2f animations:^{
-        _mainScrollView.contentOffset = CGPointMake(sender.tag * self.width, 0);
-        _sliderView.frame = CGRectMake(sender.tag * _titleBtnWidth, kTitleHeight - 2, _titleBtnWidth, 2);
-    } completion:nil];
+//    [UIView animateWithDuration:0.2f animations:^{
+//        _mainScrollView.contentOffset = CGPointMake(sender.tag * self.width, 0);
+//    } completion:nil];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -105,23 +105,24 @@
     NSInteger currentIndex = round(_mainScrollView.contentOffset.x / self.width);
     
     if (currentIndex != self.currentIndex) {
+        self.btnArray[self.currentIndex].selected = NO;
         [UIView animateWithDuration:0.2f animations:^{
-            if ([self.eventDelegate respondsToSelector:@selector(eventWhenScrollSubViewWithIndex:)]) {
-                [self.eventDelegate eventWhenScrollSubViewWithIndex:currentIndex];
-            }
-            self.btnArray[self.currentIndex].selected = NO;
-            self.currentIndex = currentIndex;
-            self.btnArray[self.currentIndex].selected = YES;
-            _sliderView.frame = CGRectMake(self.currentIndex * _titleBtnWidth, kTitleHeight - 2, _titleBtnWidth, 2);
-            CGPoint contentOffset = self.titleScrollView.contentOffset;
-            if (self.btnArray[self.currentIndex].frame.origin.x < self.width/2) {
-                [_titleScrollView setContentOffset:CGPointMake(0, contentOffset.y) animated:YES];
-            } else if (self.titleScrollView.contentSize.width - self.btnArray[self.currentIndex].frame.origin.x <= self.width/2) {
-                [_titleScrollView setContentOffset:CGPointMake(self.controllers.count*_titleBtnWidth-self.width, contentOffset.y) animated:YES];
+            _sliderView.frame = CGRectMake(currentIndex * _titleBtnWidth, kTitleHeight - 2, _titleBtnWidth, 2);
+//            CGPoint contentOffset = self.titleScrollView.contentOffset;
+            if (self.btnArray[currentIndex].frame.origin.x < self.width/2) {
+                [_titleScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+            } else if (self.titleScrollView.contentSize.width - self.btnArray[currentIndex].frame.origin.x <= self.width/2) {
+                [_titleScrollView setContentOffset:CGPointMake(self.controllers.count*_titleBtnWidth-self.width, 0) animated:YES];
             } else {
-                [_titleScrollView setContentOffset:CGPointMake(self.btnArray[self.currentIndex].frame.origin.x-self.width/2+self.titleBtnWidth/2, contentOffset.y) animated:YES];
+                [_titleScrollView setContentOffset:CGPointMake(self.btnArray[currentIndex].frame.origin.x-self.width/2+self.titleBtnWidth/2, 0) animated:YES];
             }
+            
         } completion:nil];
+        if ([self.eventDelegate respondsToSelector:@selector(eventWhenScrollSubViewWithIndex:)]) {
+            [self.eventDelegate eventWhenScrollSubViewWithIndex:currentIndex];
+        }
+        self.currentIndex = currentIndex;
+        self.btnArray[self.currentIndex].selected = YES;
     }
     
 }

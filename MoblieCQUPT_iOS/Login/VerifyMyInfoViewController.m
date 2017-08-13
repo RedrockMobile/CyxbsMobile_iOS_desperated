@@ -7,11 +7,9 @@
 //
 
 #import "VerifyMyInfoViewController.h"
-
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+AFNetworking.h"
 #import "UITextField+Custom.h"
-#import "LoginEntry.h"
 #import "MBProgressHUD.h"
 #import "MyInfoModel.h"
 
@@ -60,10 +58,9 @@
 //更新数据，上传服务器
 - (void)refreshMyInfo {
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"
-                            WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text}
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text}
                      WithReturnValeuBlock:^(id returnValue) {
                          NSString *status = [returnValue objectForKey:@"info"];
                          if ([status isEqualToString:@"success"]) {
@@ -87,8 +84,8 @@
 }
 
 - (void)setUserId {
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum,@"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
@@ -97,15 +94,8 @@
             uploadProgress1.mode = MBProgressHUDModeText;
             uploadProgress1.labelText = @"上传成功";
             [uploadProgress1 hide:YES afterDelay:1];
-            sleep(1);
             //完善个人信息 把id 作为user_id 存在本地 以便发布内容时使用
-            NSString *user_id = returnValue[@"data"][@"id"] ?: @"";
-            NSString *nickname = returnValue[@"data"][@"nickname"] ?: @"";
-            NSString *photo_src = returnValue[@"data"][@"photo_src"] ?: @"";
-            [LoginEntry saveByUserdefaultWithUserID:user_id];
-            [LoginEntry saveByUserdefaultWithNickname:nickname];
-            [LoginEntry saveByUserdefaultWithPhoto_src:photo_src];
-//            NSLog(@"%@,%@,%@",user_id,nickname,photo_src);
+            [UserDefaultTool saveParameter:returnValue[@"data"]];
             if (weakSelf.verifySuccessHandler) {
                 weakSelf.verifySuccessHandler(YES);
             }
@@ -246,7 +236,7 @@
     _avatar.image = image;
     
     //上传头像
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
     model.paramName = @"fold";
     model.uploadImage = image;

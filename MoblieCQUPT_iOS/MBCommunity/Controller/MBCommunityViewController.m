@@ -53,7 +53,6 @@
                [NSMutableArray array]}];
         self.parameterArray[i] = self.dataDicArray[i].copy;
     }
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     self.navigationItem.rightBarButtonItem = self.addButton;
     NSArray *segments = @[@"热门动态",@"哔哔叨叨",@"官方资讯"];
     _segmentView = [[MBSegmentedView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-49) withSegments:segments];
@@ -77,16 +76,6 @@
     }
     [self request:0];
     [self.view addSubview:_segmentView];
-    
-    
-    
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回箭头"]];
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回箭头"]];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -114,7 +103,7 @@
 }
 
 - (void)clickAddButton:(UIButton *) sender{
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     if (stuNum == nil) {
         [MBCommunityHandle noLogin:self handler:^(BOOL success) {
             if (success) {
@@ -208,8 +197,8 @@
 - (void)loadNetDataWithType:(NSInteger)type {
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     //type 0 = 热门, 1 = 哔哔叨叨, 2 = 官方咨询)
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
+    NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
+    NSString *idNum = [UserDefaultTool getIdNum]?:@"";
     NSMutableDictionary *parameter =
     @{@"stuNum":stuNum,
       @"idNum":idNum,
@@ -260,7 +249,7 @@
 - (void)getTopicData{
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
+    NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
     [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:@{@"stuNum":stuNum,
                                                                         }
                      WithReturnValeuBlock:^(id returnValue) {

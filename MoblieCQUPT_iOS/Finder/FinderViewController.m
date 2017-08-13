@@ -56,13 +56,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"返回箭头"]];
-    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"返回箭头"]];
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
     _mainScrollView.showsVerticalScrollIndicator = NO;
     if (MAIN_SCREEN_W == 320 && MAIN_SCREEN_H == 480) {
@@ -178,17 +171,6 @@
             forControlEvents:UIControlEventTouchDown];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-    self.tabBarController.navigationItem.rightBarButtonItem = nil;
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBar.hidden = NO;
-}
 
 - (void)enterShop{
     ShopViewController *svc = [[ShopViewController alloc] init];

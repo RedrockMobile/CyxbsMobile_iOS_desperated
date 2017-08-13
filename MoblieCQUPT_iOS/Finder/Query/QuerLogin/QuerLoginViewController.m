@@ -132,9 +132,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]};
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1];
-    
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStylePlain target:self action:@selector(showMinTableView)];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(0, 435, 375, 10)];

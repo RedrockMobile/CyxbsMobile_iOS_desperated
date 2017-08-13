@@ -29,17 +29,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view from its nib.
     
-    
-    UIBarButtonItem *item = [[UIBarButtonItem alloc]init];
-    item.title = @"";
-    self.navigationItem.backBarButtonItem = item;
-    
     self.navigationItem.titleView = self.segmentedControl;
-    self.segmentedControl.tintColor = [UIColor colorWithRed:65/255.f green:163/255.f blue:255/255.f alpha:1];
     [self.segmentedControl addTarget:self action:@selector(action:) forControlEvents:UIControlEventValueChanged];
     [self.segmentedControl setSelectedSegmentIndex:0];
     [self.remindController didMoveToParentViewController:self];
-    self.navigationController.navigationBar.backItem.title = @"";
     self.isFirstEnter = YES;
     [self showLessonView];
 }

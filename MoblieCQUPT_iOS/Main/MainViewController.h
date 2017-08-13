@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AFNetworking.h>
 
 @interface MainViewController : UITabBarController
+
 @end

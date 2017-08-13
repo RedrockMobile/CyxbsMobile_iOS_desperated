@@ -20,6 +20,6 @@ typedef void(^ClickSegmentBtnBlock) (UIButton *sender);
 
 //@property (weak, nonatomic) id delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame withSegments:(NSArray *)segments;
+- (instancetype)initWithFrame:(CGRect)frame withSegments:(NSArray <NSString *> *)segments;
 @end
 

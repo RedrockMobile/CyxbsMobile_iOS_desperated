@@ -36,12 +36,9 @@
 #define kTextColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
 #define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
 
-//#import <AFNetworking.h>
 #import <AFNetworking.h>
 #import "NetWork.h"
-//#import <MobClick.h>
 #import <YYKit.h>
-//#import "MobClick.h"
 
 #pragma Group共享
 #define kAPPGroupID @"group.com.redrock.mobile"
@@ -98,7 +95,7 @@
 #import <SDWebImageManager.h>
 #import <UIImageView+WebCache.h>
 #import <YYImage.h>
-#import "LoginEntry.h"
+#import "UserDefaultTool.h"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)

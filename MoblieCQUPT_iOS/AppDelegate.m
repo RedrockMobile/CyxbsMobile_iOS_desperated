@@ -12,7 +12,6 @@
 #import "MBReleaseViewController.h"
 #import "DetailTopicViewController.h"
 #import "ExamScheduleViewController.h"
-#import "MBReleaseViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
 @interface AppDelegate ()
@@ -23,70 +22,26 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    _window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager]setUmSocialAppkey:@""];
-    
     [self configUSharePlatforms];
-    
     [self confitUShareSettings];
-    
-    
-    // Override point for customization after application launch.
-    //BUGHD
-    //[BugHD handleCrashWithKey:@"24f1019e4d09ab778e0b9f2780ae4de0"];
     
     //3D-Touch
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [self creatShortCutItemWithIcon];
     }
     
-    //友盟统计
-    //    [MobClick startWithAppkey:@"573183a5e0f55a59c9000694" reportPolicy:BATCH   channelId:@""];
-    //    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
-    //    [MobClick setAppVersion:version];
-    //    [MobClick startWithAppkey:@"55dc094a67e58e92f30048eb" reportPolicy:BATCH   channelId:@"Web"];
-    //    [MobClick setAppVersion:@"V2.3.0"];
-    
-    
-    //    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    //    if ([userDefault objectForKey:@"time"] != nil && [userDefault objectForKey:@"user_id"] != nil && ![[userDefault objectForKey:@"user_id"] isEqualToString:@""]) {
-    //        NSDate *currentTime = [NSDate date];
-    //        NSDate *dataTime = [userDefault objectForKey:@"time"];
-    //选择是跳转到mainViewController还是loginViewController
-    //        if ([dataTime timeIntervalSinceDate:currentTime] > 0) {
-    //            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //            id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainNavigation"];
-    //            self.window.rootViewController = view;
-    //            NSLog(@"%@,%@,%@",[userDefault objectForKey:@"user_id"],[userDefault objectForKey:@"nickname"],[userDefault objectForKey:@"photo_src"]);
-    //        }else {
-    //            [userDefault removeObjectForKey:@"stuNum"];
-    //            [userDefault removeObjectForKey:@"idNum"];
-    //            [userDefault removeObjectForKey:@"dataArray"];
-    //            [userDefault removeObjectForKey:@"time"];
-    //            [userDefault removeObjectForKey:@"user_id"];
-    //            [userDefault removeObjectForKey:@"nickname"];
-    //            [userDefault removeObjectForKey:@"photo_src"];
-    //            [userDefault synchronize];
-    //            LoginViewController *login = [[LoginViewController alloc]init];
-    //            self.window.rootViewController = login;
-    //        }
-    //    }else {
-    //        LoginViewController *login = [[LoginViewController alloc]init];
-    //        self.window.rootViewController = login;
-    //    }
-    
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    UITabBarController *tbc = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    self.window.rootViewController = tbc;
-    
-    //    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter]; //请求获取通知权限
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
         //获取用户是否同意开启通知
-        NSLog(@"request authorization successed!");
+        if (granted) {
+            NSLog(@"request authorization successed!");
+        }
     }];
     
     return YES;
@@ -185,8 +140,7 @@
 
 - (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler{
     UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
-//    UIViewController *vc;
-    if (![LoginEntry getByUserdefaultWithKey:@"stuNum"]) {
+    if (![UserDefaultTool getStuNum]) {
         LoginViewController *login = [[LoginViewController alloc] init];
         login.loginSuccessHandler = ^(BOOL success) {
             if (success) {
@@ -202,9 +156,6 @@
             [tbc presentViewController:login animated:NO completion:nil];
         }
     
-//        [tbc.selectedViewController presentViewController:login animated:YES completion:^{
-//            
-//        }];
     }
     else{
         if ([shortcutItem.type isEqualToString:@"course"]) {
@@ -222,16 +173,9 @@
             MBReleaseViewController *vc = [[MBReleaseViewController alloc]init];
             vc.hidesBottomBarWhenPushed = YES;
             [tbc.selectedViewController pushViewController:vc animated:YES];
-//            [tbc.selectedViewController presentViewController:vc animated:YES completion:^{
-//                
-//            }];
         }
-      
 
     }
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [tbc.selectedViewController pushViewController:vc animated:YES];
-    
 }
 
 

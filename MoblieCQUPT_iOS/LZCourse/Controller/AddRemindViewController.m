@@ -122,10 +122,6 @@
     saveItem.tintColor = [UIColor blackColor];
     self.navigationItem.rightBarButtonItem = saveItem;
     
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
     self.remindChooseView = [[TimeChooseScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5.f)];
     for (int i = 0; i<self.remindChooseView.btnArray.count; i++) {
         [self.remindChooseView.btnArray[i] addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];

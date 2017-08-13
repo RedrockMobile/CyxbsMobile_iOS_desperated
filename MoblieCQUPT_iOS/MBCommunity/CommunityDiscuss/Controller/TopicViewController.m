@@ -39,7 +39,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
     [self addSearchBar];
     [self addSegemenView];
 }
@@ -54,12 +53,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.searchBar.tintColor = [UIColor blueColor];
     self.searchBar.placeholder = @"搜索更多话题";
     self.searchBar.delegate = self;
-    
-    [self.navigationController.navigationBar setTintColor:[UIColor blackColor]];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
     self.navigationItem.titleView = self.searchBar;
     
 //    [bgView addSubview:self.searchBar];

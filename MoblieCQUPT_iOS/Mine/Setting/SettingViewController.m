@@ -116,7 +116,6 @@
         NSString *className =  _cellArray[indexPath.row][@"controller"];
         UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
         viewController.navigationItem.title = _cellArray[indexPath.row][@"cell"];
-        self.navigationController.navigationBarHidden = NO;
         [self.navigationController pushViewController:viewController animated:YES];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登出帐号"
@@ -160,7 +159,8 @@
     //    LoginViewController *login = [[LoginViewController alloc]init];
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
-    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq",@"switchState"]];
+    [LoginEntry loginOut];
+//    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq",@"switchState"]];
     NSFileManager *manager=[NSFileManager defaultManager];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];

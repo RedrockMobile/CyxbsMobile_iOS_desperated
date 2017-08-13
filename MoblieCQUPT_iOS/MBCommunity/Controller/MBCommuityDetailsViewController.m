@@ -67,9 +67,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _isLoadedComment = NO;
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
-    self.navigationItem.title = @"详情";
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:FONT_COLOR};
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.replyView];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -261,8 +258,8 @@
 #pragma mark - 请求网络数据
 
 - (void)loadNetWorkData {
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"]?:@"";
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"]?:@"";
+    NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
+    NSString *idNum = [UserDefaultTool getIdNum]?:@"";
     NSNumber *article_id = self.viewModel.model.article_id;
     NSNumber *type_id = self.viewModel.model.type_id;
     NSDictionary *parameter = @{@"stuNum":stuNum,
@@ -320,8 +317,8 @@
 #pragma mark - 评论上传
 
 - (void)upLoadCommentWithContent:(NSString *)content {
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     NSNumber *article_id = self.viewModel.model.article_id;
     NSNumber *type_id = self.viewModel.model.type_id;
     NSDictionary *parameter = @{@"stuNum":stuNum,

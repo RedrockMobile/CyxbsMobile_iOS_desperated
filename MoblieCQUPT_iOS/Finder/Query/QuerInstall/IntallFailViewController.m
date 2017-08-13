@@ -30,12 +30,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]};
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1];
-    
     [self addTitleView];
     [self addDormitoryLabel];
     [self addInfoLabel];

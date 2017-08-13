@@ -40,8 +40,8 @@
 
     //网络请求头像和简介
         //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
         if ([returnValue objectForKey:@"data"]) {
@@ -86,8 +86,8 @@
 //更新数据，上传服务器
 - (void)refreshMyInfo {
     //获取已登录用户的账户信息
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"
                             WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text}
                      WithReturnValeuBlock:^(id returnValue) {
@@ -241,7 +241,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
     _avatar.image = image;
     //上传头像
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
     model.paramName = @"fold";
     model.uploadImage = image;

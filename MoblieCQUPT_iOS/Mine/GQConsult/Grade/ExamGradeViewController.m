@@ -93,7 +93,7 @@
 }
 
 - (void)postGradeData {
-    NSString *stuNum = [NSString stringWithFormat:@"%@",[LoginEntry getByUserdefaultWithKey:@"stuNum"]];
+    NSString *stuNum = [NSString stringWithFormat:@"%@",[UserDefaultTool getStuNum]];
     
     _hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hub.labelText = @"正在加载...";

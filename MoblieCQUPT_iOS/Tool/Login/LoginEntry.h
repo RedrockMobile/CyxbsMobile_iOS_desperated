@@ -7,20 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-
 @interface LoginEntry : NSObject
+//+ (void)loginWithStuNum:(NSString *)stuNum
+//                  idNum:(NSString *)idNum
+//        dictionaryParam:(NSDictionary *)paramDictionary;
 
-+ (BOOL)loginWithId:(NSString *)stuentId
-          passworld:(NSString *)passworld
-withDictionaryParam:(NSDictionary *)paramDictionary;
+//+ (void)loginoutWithParamArrayString:(NSArray *) paramArray;
 
-+ (BOOL)loginoutWithParamArrayString:(NSArray *) paramArray;
++ (void)loginWithParamter:(NSDictionary *)paramter;
 
-+ (BOOL)saveByUserdefaultWithDictionary:(NSDictionary *)paramDictionary;
-
-+ (BOOL)saveByUserdefaultWithUserID:(NSString *)userID;
-+ (BOOL)saveByUserdefaultWithNickname:(NSString *)nickname;
-+ (BOOL)saveByUserdefaultWithPhoto_src:(NSString *)photo_src;
-+ (id)getByUserdefaultWithKey:(NSString *)key;
-
++ (void)loginOut;
 @end

@@ -26,15 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    self.navigationItem.backBarButtonItem = backItem;
-    
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.segmentedControl = [[UISegmentedControl alloc]initWithItems:@[@"失物启事",@"招领启事"]];
     self.navigationItem.titleView = self.segmentedControl;
-    self.segmentedControl.tintColor = [UIColor colorWithRed:65/255.f green:163/255.f blue:255/255.f alpha:1];
+//    self.segmentedControl.tintColor = [UIColor colorWithRed:65/255.f green:163/255.f blue:255/255.f alpha:1];
+    self.segmentedControl.tintColor = [UIColor whiteColor];
     [self.segmentedControl addTarget:self action:@selector(action:) forControlEvents:UIControlEventValueChanged];
     [self.segmentedControl setSelectedSegmentIndex:0];
     

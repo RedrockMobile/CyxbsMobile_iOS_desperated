@@ -9,7 +9,6 @@
 #import "MyMessagesViewController.h"
 #import "MBCommunityCellTableViewCell.h"
 #import "MBCommunityTableView.h"
-#import "LoginEntry.h"
 #import "MBCommunityModel.h"
 #import "MBCommunity_ViewModel.h"
 #import "MyMessagesTableViewCell.h"
@@ -55,8 +54,8 @@
 }
 
 - (void)getPersonalInfo{
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     if (self.loadType == MessagesViewLoadTypeOther) {
         _stunum_other = self.commentModel.stuNum?:self.model.user_id;
     }
@@ -102,7 +101,7 @@
 }
 
 - (void)loadNet {
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     NSDictionary *parameter = @{@"stuNum":stuNum,
                                 @"page":@(_flag),
                                 @"size":@"15",

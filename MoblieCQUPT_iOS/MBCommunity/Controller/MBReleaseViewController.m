@@ -39,7 +39,6 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.tintColor = FONT_COLOR;
     [self.view addSubview:self.inputView];
     [self initBar];
     self.view.backgroundColor = BACK_GRAY_COLOR;
@@ -271,9 +270,9 @@
 - (void)releaseNewArticle {
     NSLog(@"请求发布");
     NSString *title = @"iOS title";
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
-    NSString *user_id = [LoginEntry getByUserdefaultWithKey:@"user_id"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
+    NSString *user_id = [UserDefaultTool valueWithKey:@"user_id"];
     NSString *content = self.inputView.textView.text;
     NSString *thumbnail_src = @"";
     NSString *photo_src = @"";
@@ -341,7 +340,7 @@
     _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hud.labelText = [NSString stringWithFormat:@"正在上传第%ld张图片...",flag+1];
     NSLog(@"请求第%ld",flag+1);
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     __weak typeof(self) weakSelf = self;
     __block NSInteger flagBlock = flag;
     [NetWork uploadImageWithUrl:UPLOADARTICLE_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {

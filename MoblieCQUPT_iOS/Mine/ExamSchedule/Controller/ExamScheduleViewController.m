@@ -42,7 +42,8 @@
 }
 
 - (void)fetchData {
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    
     
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/examSchedule"
                             WithParameter:@{@"stuNum": stuNum}

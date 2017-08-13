@@ -15,7 +15,7 @@
     __weak typeof(self) weakSelf = self;
     return ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel) {
         MBCommunityModel *model = viewModel.model;
-        NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
+        NSString *stuNum = [UserDefaultTool getStuNum];
         NSInteger currentSupportNum = [labelBtn.titleLabel.text integerValue];
         if (stuNum==nil) {
 //            [self noLogin:viewController];
@@ -48,8 +48,8 @@
     if (type == 1) {
         url = CANCELSUPPOTRT_API;
     }
-    NSString *stuNum = [LoginEntry getByUserdefaultWithKey:@"stuNum"];
-    NSString *idNum = [LoginEntry getByUserdefaultWithKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     NSNumber *article_id = model.article_id;
     NSNumber *type_id = model.type_id;
     NSDictionary *parameter = @{@"stuNum":stuNum,
