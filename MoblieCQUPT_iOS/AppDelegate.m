@@ -22,13 +22,17 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+//    [MobClick setLogEnabled:YES];
     self.window.backgroundColor = [UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager]setUmSocialAppkey:@""];
     [self configUSharePlatforms];
     [self confitUShareSettings];
-    
+    UMConfigInstance.appKey = @"573183a5e0f55a59c9000694";
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+   [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     //3D-Touch
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [self creatShortCutItemWithIcon];

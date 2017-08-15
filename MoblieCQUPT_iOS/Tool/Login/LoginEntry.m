@@ -8,7 +8,6 @@
 
 #import "LoginEntry.h"
 #import "UserDefaultTool.h"
-
 @implementation LoginEntry
 + (void)loginWithParamter:(NSDictionary *)parameter{
     [UserDefaultTool saveParameter:parameter];
@@ -36,6 +35,7 @@
 //}
 
 + (void)loginOut{
+    [MobClick profileSignOff];
     [UserDefaultTool removeALLData];
 }
 @end

@@ -12,6 +12,7 @@
 #import "VerifyMyInfoViewController.h"
 #import "UserDefaultTool.h"
 #import <MBProgressHUD.h>
+#import <UMMobClick/MobClick.h>
 
 
 #define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
@@ -69,6 +70,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
                                  //个人消息验证
                                  [self verifyUserInfo];
                              }
+                             [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
                          } WithFailureBlock:^{
                              [self alertAnimation:LZNetWrong];
                              NSLog(@"请求失败");

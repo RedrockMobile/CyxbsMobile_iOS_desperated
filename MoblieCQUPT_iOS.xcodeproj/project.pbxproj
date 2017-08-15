@@ -17,9 +17,7 @@
 		CE43344D1BE7C52D000C407D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43344C1BE7C52D000C407D /* TodayViewController.m */; };
 		CE43344F1BE7C52D000C407D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE43344E1BE7C52D000C407D /* MainInterface.storyboard */; };
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8159691B96A829002CF7B2 /* libsqlite3.dylib */; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
-		CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CEF273701B90CFAB009B5BA2 /* libz.dylib */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
 		F20026DB1F4020FA00360991 /* mine_image_-calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_-calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_-calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_-calendar@3x.png */; };
@@ -80,6 +78,7 @@
 		F20027451F43256200360991 /* 空教室@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20027331F43256200360991 /* 空教室@2x.png */; };
 		F20027461F43256200360991 /* 考试安排@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20027341F43256200360991 /* 考试安排@2x.png */; };
 		F20027471F43256200360991 /* 补考安排@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20027351F43256200360991 /* 补考安排@2x.png */; };
+		F20027491F4354AC00360991 /* libz.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F20027481F4354AC00360991 /* libz.1.dylib */; };
 		F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6421F3D911200FEB179 /* navbar_image_back@2x.png */; };
 		F238C6451F3D911200FEB179 /* navbar_image_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6431F3D911200FEB179 /* navbar_image_back@3x.png */; };
 		F238C64F1F3DA29700FEB179 /* tabbar_image_community@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6491F3DA29700FEB179 /* tabbar_image_community@2x.png */; };
@@ -555,9 +554,7 @@
 		CE43344B1BE7C52D000C407D /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
 		CE43344C1BE7C52D000C407D /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
 		CE43344E1BE7C52D000C407D /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
-		CE8159691B96A829002CF7B2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		CEF273701B90CFAB009B5BA2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		CEF61B2A1B82BC950014B980 /* 掌上重邮.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上重邮.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B481B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
@@ -625,6 +622,7 @@
 		F20027331F43256200360991 /* 空教室@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空教室@2x.png"; sourceTree = "<group>"; };
 		F20027341F43256200360991 /* 考试安排@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "考试安排@2x.png"; sourceTree = "<group>"; };
 		F20027351F43256200360991 /* 补考安排@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "补考安排@2x.png"; sourceTree = "<group>"; };
+		F20027481F4354AC00360991 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 		F23627181E963EAA00607AF8 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Today.entitlements; path = ../Today.entitlements; sourceTree = "<group>"; };
 		F238C6421F3D911200FEB179 /* navbar_image_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_image_back@2x.png"; sourceTree = "<group>"; };
 		F238C6431F3D911200FEB179 /* navbar_image_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_image_back@3x.png"; sourceTree = "<group>"; };
@@ -1271,13 +1269,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F20027491F4354AC00360991 /* libz.1.dylib in Frameworks */,
 				3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */,
 				3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */,
 				3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */,
 				3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */,
 				CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */,
-				CE81596A1B96A829002CF7B2 /* libsqlite3.dylib in Frameworks */,
-				CEF273711B90CFAC009B5BA2 /* libz.dylib in Frameworks */,
 				E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */,
 				463E0067C92960DB7BB5B9B7 /* libPods-MoblieCQUPT_iOS.a in Frameworks */,
 			);
@@ -1311,6 +1308,7 @@
 		CE4334451BE7C52D000C407D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F20027481F4354AC00360991 /* libz.1.dylib */,
 				E2594C621C9058EF00E612FE /* libxml2.2.tbd */,
 				CE4334461BE7C52D000C407D /* NotificationCenter.framework */,
 				DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */,
@@ -1345,8 +1343,6 @@
 			isa = PBXGroup;
 			children = (
 				3B26610C1BA6E422008632F3 /* Framework */,
-				CE8159691B96A829002CF7B2 /* libsqlite3.dylib */,
-				CEF273701B90CFAB009B5BA2 /* libz.dylib */,
 				F242DA551EBCB2BB005AC411 /* MoblieCQUPT_iOS */,
 				CEF61B461B82BC950014B980 /* MoblieCQUPT_iOSTests */,
 				CE4334481BE7C52D000C407D /* ClassWidget */,
