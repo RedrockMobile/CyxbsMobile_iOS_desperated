@@ -55,7 +55,7 @@
     }
     self.navigationItem.rightBarButtonItem = self.addButton;
     NSArray *segments = @[@"热门动态",@"哔哔叨叨",@"官方资讯"];
-    _segmentView = [[MBSegmentedView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-49) withSegments:segments];
+    _segmentView = [[MBSegmentedView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, ScreenWidth, ScreenHeight-HEADERHEIGHT-TABBARHEIGHT) withSegments:segments];
     [self setupTableView:segments];
     // block回调
     __weak typeof(self) weakSelf = self;
@@ -91,12 +91,12 @@
 
 - (UIBarButtonItem *)addButton {
     if (!_addButton) {
-        UIButton *add = [UIButton buttonWithType:UIButtonTypeCustom];
-        [add setImage:[UIImage imageNamed:@"add.png"] forState:UIControlStateNormal];
-        add.frame = CGRectMake(0, 0, NVGBARHEIGHT/2, NVGBARHEIGHT/2);
-        [add addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
-        
-        _addButton = [[UIBarButtonItem alloc]initWithCustomView:add];
+        UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [addBtn addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
+        addBtn.frame = CGRectMake(0, 0, NVGBARHEIGHT/2, NVGBARHEIGHT/2);
+        [addBtn setBackgroundImage:[UIImage imageNamed:@"timetable_image_add"] forState:UIControlStateNormal];
+        _addButton = [[UIBarButtonItem alloc]initWithCustomView:addBtn];
+
     }
     
     return _addButton;

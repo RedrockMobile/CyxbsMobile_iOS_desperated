@@ -8,12 +8,9 @@
 
 #import "DetailRemindViewController.h"
 #import "DetailRemindTableViewCell.h"
-#import "PrefixHeader.pch"
 #import "TimeHandle.h"
 #import "UIColor+Hex.h"
-#import "HttpClient.h"
 #import "AddRemindViewController.h"
-#import <Masonry.h>
 #import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
 

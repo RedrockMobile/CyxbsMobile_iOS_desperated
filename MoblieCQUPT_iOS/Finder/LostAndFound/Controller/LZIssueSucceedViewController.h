@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LZIssueSucceedViewController : UIViewController
+@interface LZIssueSucceedViewController : BaseViewController
 
 @end

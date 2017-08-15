@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface OneViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface OneViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 
 

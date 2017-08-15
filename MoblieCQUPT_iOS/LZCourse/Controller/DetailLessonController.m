@@ -8,7 +8,6 @@
 
 #import "DetailLessonController.h"
 #import "LessonMatter.h"
-#import "PrefixHeader.pch"
 @interface DetailLessonController ()
 @property LessonMatter *lesson;
 @property (weak, nonatomic) IBOutlet UILabel *lessonLb;

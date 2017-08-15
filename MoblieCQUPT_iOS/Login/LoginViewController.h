@@ -10,7 +10,7 @@
 
 typedef void(^LoginSuccessHandler)(BOOL success);
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : BaseViewController
 
 @property (copy, nonatomic) LoginSuccessHandler loginSuccessHandler;
 

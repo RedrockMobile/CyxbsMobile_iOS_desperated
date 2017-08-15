@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AboutMeViewController : UIViewController
+@interface AboutMeViewController : BaseViewController
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LostViewController : UIViewController
+@interface LostViewController : BaseViewController
 
 @end

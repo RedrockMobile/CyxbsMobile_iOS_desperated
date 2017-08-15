@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QGERestDetailViewController : UIViewController
+@interface QGERestDetailViewController : BaseViewController
 
 @property (strong, nonatomic) NSMutableArray *allStuNumArray;
 @property (strong, nonatomic) NSMutableArray *allStuNameArray;

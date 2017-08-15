@@ -77,13 +77,7 @@
 }
 
 - (void)initBar{
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectZero];
-    titleLabel.text = @"哔哔叨叨";
-    titleLabel.textColor = FONT_COLOR;
-    titleLabel.font = [UIFont systemFontOfSize:17];
-    [titleLabel sizeToFit];
-    titleLabel.center = CGPointMake(ScreenWidth/2, 42);
-    self.navigationItem.titleView = titleLabel;
+    self.navigationItem.title = @"逼逼叨叨";
     
     UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -91,11 +85,11 @@
     [doneBtn setTitle:@"完成" forState:UIControlStateNormal];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     
-    [doneBtn setTitleColor:FONT_COLOR forState:UIControlStateNormal];
-    [cancelBtn setTitleColor:FONT_COLOR forState:UIControlStateNormal];
-    
-    [doneBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
-    [cancelBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
+//    [doneBtn setTitleColor:FONT_COLOR forState:UIControlStateNormal];
+//    [cancelBtn setTitleColor:FONT_COLOR forState:UIControlStateNormal];
+//    
+//    [doneBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
+//    [cancelBtn setTitleColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5] forState:UIControlStateHighlighted];
     
     doneBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     cancelBtn.titleLabel.font = [UIFont systemFontOfSize:16];

@@ -20,8 +20,9 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.font = [UIFont adaptFontSize:15];
-        self.textColor = [UIColor colorWithRed:102/255.f green:102/255.f blue:102/255.f alpha:1];
+        self.font = [UIFont adaptFontSize:12];
+        self.textColor = [UIColor colorWithHexString:@"#7097FA"];
+        self.backgroundColor = [UIColor colorWithHexString:@"#EEF6FD"];
         self.textAlignment = NSTextAlignmentCenter;
         self.numberOfLines = 0;
     }

@@ -11,8 +11,6 @@
 #import "TimeChooseViewController.h"
 #import "WeekChooseViewController.h"
 #import "TimeChooseScrollView.h"
-#import "PrefixHeader.pch"
-#import "HttpClient.h"
 #import "TimeHandle.h"
 #import "TickButton.h"
 #import "CoverView.h"
@@ -118,8 +116,7 @@
     self.tableView.dataSource = self;
     self.tableView.scrollEnabled = NO;
     
-    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"编辑完成"] style:UIBarButtonItemStyleDone target:self action:@selector(saveRemind)];
-    saveItem.tintColor = [UIColor blackColor];
+    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"remind_image_confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(saveRemind)];
     self.navigationItem.rightBarButtonItem = saveItem;
     
     self.remindChooseView = [[TimeChooseScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5.f)];

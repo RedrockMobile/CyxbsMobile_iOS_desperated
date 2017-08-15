@@ -92,7 +92,7 @@
 
 - (MBCommunityTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight -50) style:UITableViewStylePlain];
+        _tableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-50) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.sectionHeaderHeight = 0;

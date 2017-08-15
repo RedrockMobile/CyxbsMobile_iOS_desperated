@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExamViewController : UIViewController
+@interface ExamViewController : BaseViewController
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LessonBtnModel.h"
-@interface DetailViewController : UIViewController
+@interface DetailViewController : BaseViewController
 - (instancetype)initWithMatters:(LessonBtnModel *)matters week:(NSInteger)week time:(NSInteger)time;
 - (void)reloadMatters:(LessonBtnModel *)matters;
 @property NSInteger time;

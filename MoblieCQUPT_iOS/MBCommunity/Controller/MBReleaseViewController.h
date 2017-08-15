@@ -10,7 +10,7 @@
 #import "MBInputView.h"
 #import "TopicModel.h"
 
-@interface MBReleaseViewController : UIViewController
+@interface MBReleaseViewController : BaseViewController
 - (instancetype)initWithTopic:(TopicModel *)topic;
 @property (nonatomic, strong) void(^updateBlock)();
 @end

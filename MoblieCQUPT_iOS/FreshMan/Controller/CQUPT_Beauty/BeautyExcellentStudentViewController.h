@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeautyExcellentStudentViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface BeautyExcellentStudentViewController : BaseViewController<UICollectionViewDataSource,UICollectionViewDelegate>
 - (void)downLoad;
 @end

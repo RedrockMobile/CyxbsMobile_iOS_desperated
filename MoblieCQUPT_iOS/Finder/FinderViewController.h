@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FinderViewController : UIViewController
+@interface FinderViewController : BaseViewController
 
 @end

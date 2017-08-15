@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CommunityViewController : UIViewController
+@interface CommunityViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *communityWebView;
 

@@ -8,11 +8,9 @@
 
 #import "LostViewController.h"
 #import "SegmentView.h"
-#import "PrefixHeader.pch"
 #import "LostTableViewController.h"
 #import "GraduateViewController.h"
 #import "IssueTableViewController.h"
-#import <Masonry.h>
 #import "IssueTableViewController.h"
 #import "LoginViewController.h"
 @interface LostViewController ()

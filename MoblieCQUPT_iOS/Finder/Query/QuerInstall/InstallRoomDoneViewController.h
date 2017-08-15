@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InstallRoomDoneViewController : UIViewController
+@interface InstallRoomDoneViewController : BaseViewController
 
 @end

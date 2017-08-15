@@ -11,5 +11,5 @@
 #import <UPStackMenu.h>
 
 
-@interface CourseViewController : UIViewController<UITabBarControllerDelegate>
+@interface CourseViewController : BaseViewController<UITabBarControllerDelegate>
 @end

@@ -7,6 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface SexRatioViewController : UIViewController
+@interface SexRatioViewController : BaseViewController
 
 @end

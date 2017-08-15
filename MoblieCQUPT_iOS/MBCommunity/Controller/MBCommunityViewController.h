@@ -7,6 +7,6 @@
 //
 
 #import "ViewController.h"
-@interface MBCommunityViewController : ViewController
+@interface MBCommunityViewController : BaseViewController
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QGERestTimeCourseViewController : UIViewController
+@interface QGERestTimeCourseViewController : BaseViewController
 
 @end

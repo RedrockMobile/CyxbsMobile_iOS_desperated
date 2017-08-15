@@ -37,8 +37,10 @@
 #define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
 
 #import <AFNetworking.h>
-#import "NetWork.h"
 #import <YYKit.h>
+#import <Masonry.h>
+#import "NetWork.h"
+#import "HttpClient.h"
 
 #pragma Group共享
 #define kAPPGroupID @"group.com.redrock.mobile"
@@ -96,12 +98,14 @@
 #import <UIImageView+WebCache.h>
 #import <YYImage.h>
 #import "UserDefaultTool.h"
+#import "BaseViewController.h"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
 #define NVGBARHEIGHT self.navigationController.navigationBar.frame.size.height
 #define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+#define HEADERHEIGHT 64
 #define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
 #define MHEIGHT (1.6*MWIDTH) //monthLabel的高度
 #define DAY 7

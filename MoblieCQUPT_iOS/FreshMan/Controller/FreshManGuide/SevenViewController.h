@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SevenViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface SevenViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 
 - (void)download;

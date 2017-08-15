@@ -7,7 +7,6 @@
 //
 
 #import "MainView.h"
-#import "PrefixHeader.pch"
 @interface MainView()
 @property NSArray *weekDay;
 
@@ -25,7 +24,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.weekDay = @[@"一", @"二", @"三", @"四", @"五", @"六",@"日"];
+        self.weekDay = @[@"周一", @"周二", @"周三", @"周四", @"周五", @"周六",@"周日"];
         [self initDayLb];
         [self initMainScrollView];
         [self initLessonLb];
@@ -37,6 +36,7 @@
 
 - (void)initDayLb{
     self.monthLabel = [[DayLabel alloc]initWithFrame:CGRectMake(0, 0, MWIDTH, MHEIGHT)];
+    self.monthLabel.textColor = [UIColor colorWithHexString:@"#7097FA"];
     [self addSubview:self.monthLabel];
     
     CGFloat dayLbHeight = MHEIGHT;
@@ -62,19 +62,18 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
     NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:now];
     for (int i = 0; i < DAY; i++) {
-        self.dayLabels[i].backgroundColor = [UIColor colorWithRed:247/255.0 green:247/255.0 blue:247/255.0 alpha:1];
         NSTimeInterval timeInterval = ((week-nowWeek)*7+(i-(components.weekday+5)%7))*oneDay;
         NSDate *date = [NSDate dateWithTimeInterval:timeInterval sinceDate:now];
         if (i == 0) {
-            self.monthLabel.text = [[monthFormatter stringFromDate:date] stringByAppendingString:@"\n月"];
+            self.monthLabel.text = [[monthFormatter stringFromDate:date] stringByAppendingString:@"月"];
         }
         NSString *day = [dayFormatter stringFromDate:date];
         if (i != 0 && [day isEqualToString:@"01"]) {
             day = [[monthFormatter stringFromDate:date] stringByAppendingString:@"月"];
         }
-        self.dayLabels[i].text = [NSString stringWithFormat:@"%@\n%@",day,self.weekDay[i]];
+        self.dayLabels[i].text = [NSString stringWithFormat:@"%@\n%@",self.weekDay[i],day];
         if (i == (components.weekday+5)%7) {
-            self.dayLabels[i].textColor = [UIColor colorWithRed:138/255.0 green:179/255.0 blue:245/255.0 alpha:1];
+            self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#7097FA"];
             [[NSUserDefaults standardUserDefaults] setObject:@(i+1) forKey:@"weekdayNum"];
         }
     }

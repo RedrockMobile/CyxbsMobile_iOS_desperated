@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface BeautyCreatViewController : UIViewController
+@interface BeautyCreatViewController : BaseViewController
 - (void)downLoad;
 @end

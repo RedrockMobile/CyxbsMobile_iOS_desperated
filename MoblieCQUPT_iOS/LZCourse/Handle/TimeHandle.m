@@ -7,7 +7,6 @@
 //
 
 #import "TimeHandle.h"
-#import "PrefixHeader.pch"
 @implementation TimeHandle
 + (NSString *)handleTimes:(NSArray *)times{
     NSArray *dayArray = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];

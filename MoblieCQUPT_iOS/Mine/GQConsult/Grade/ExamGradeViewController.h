@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExamGradeViewController : UIViewController
+@interface ExamGradeViewController : BaseViewController
 
 @end

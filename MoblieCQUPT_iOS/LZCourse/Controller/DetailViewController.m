@@ -7,10 +7,8 @@
 //
 
 #import "DetailViewController.h"
-#import "PrefixHeader.pch"
 #import "DetailPageController.h"
 #import "DetailRemindViewController.h"
-#import <Masonry.h>
 @interface DetailViewController ()<UIScrollViewDelegate>
 @property UISegmentedControl *segmentedControl;
 @property LessonBtnModel *matters;
@@ -140,10 +138,9 @@
     [self addChildViewController:self.remindController];
     [self.view addSubview:self.remindController.view];
 
-    UIImageView *imageView= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"编辑"]];
-    UIButton *btn = [[UIButton alloc]initWithFrame:imageView.frame];
-    [btn setBackgroundImage:imageView.image forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"编辑完成"] forState:UIControlStateSelected];
+    UIButton *btn = [[UIButton alloc]init];
+//    [btn setBackgroundImage:imageView.image forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:@"remind_image_confirm"] forState:UIControlStateSelected];
     [btn addTarget:self.remindController action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
     self.editItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     if (ishaveRemind) {

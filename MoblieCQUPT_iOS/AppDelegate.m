@@ -24,7 +24,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor = [UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager]setUmSocialAppkey:@""];
     [self configUSharePlatforms];

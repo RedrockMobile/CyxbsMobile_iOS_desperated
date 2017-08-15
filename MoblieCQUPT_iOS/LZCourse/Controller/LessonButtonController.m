@@ -8,9 +8,7 @@
 
 #import "LessonButtonController.h"
 #import "LessonHandle.h"
-#import "PrefixHeader.pch"
 #import "UIImage+Color.h"
-#import <Masonry.h>
 @interface LessonButtonController ()
 @property int beginLesson;
 @property UIImageView *remindArrow;

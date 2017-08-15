@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FreshManGuideViewController : UIViewController
+@interface FreshManGuideViewController : BaseViewController
 
 @end

@@ -78,6 +78,7 @@
     formatter.dateFormat = @"yyyy-MM-dd";
     self.model = [[LostModel alloc]init];
     self.model.pickTime = [formatter stringFromDate:[NSDate date]];
+    self.model.property = @"寻物启事";
     self.textFieldArray = [NSMutableArray arrayWithCapacity:3];
     self.titleArray = @[@"信息分类",@"物品分类",@"描        述",@"时        间",@"地        点",@"电        话",@"Q         Q"];
     self.imageArray = [NSMutableArray array];
@@ -191,6 +192,12 @@
     }
     else{
         self.lostBtn.selected = !btn.selected;
+    }
+    if(self.foundBtn.selected){
+        self.model.property = @"失物招领";
+    }
+    else{
+        self.model.property = @"寻物启事";
     }
 }
 
@@ -306,7 +313,13 @@
                 [cell addSubview:self.foundBtn];
                 [self.foundBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
                 [self.lostBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-                self.lostBtn.selected = YES;
+//                self.lostBtn.selected = YES;
+                if ([self.model.property isEqualToString: @"失物招领"]) {
+                    self.foundBtn.selected = YES;
+                }
+                else{
+                    self.lostBtn.selected = YES;
+                }
                 [self.foundBtn mas_makeConstraints:^(MASConstraintMaker *make) {
                     make.right.equalTo(cell).offset(-16);
                     make.top.equalTo(cell).offset(8);

@@ -6,7 +6,6 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import "BaseViewController.h"
 #import "LessonBtnModel.h"
 #import "LessonButton.h"
 @interface LessonButtonController : BaseViewController

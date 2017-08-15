@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DetailDishView.h"
 
-@interface ShopDetailViewController : UIViewController
+@interface ShopDetailViewController : BaseViewController
 
 @property (strong, nonatomic) NSMutableDictionary *detailData;
 @property (strong, nonatomic) NSMutableDictionary *shopInfoData;

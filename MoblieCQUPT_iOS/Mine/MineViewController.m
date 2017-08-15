@@ -220,7 +220,6 @@
     
     NSSet *set = [NSSet setWithObjects:@0, @1, @2, @5, @6, nil];
     NSSet *needLoginSet = [NSSet setWithObject: [NSNumber numberWithInteger:indexPath.section]];
-    
     //需账户登录
     if ([needLoginSet isSubsetOfSet:set]) {
         if ([userDefaults objectForKey:@"user_id"]) {

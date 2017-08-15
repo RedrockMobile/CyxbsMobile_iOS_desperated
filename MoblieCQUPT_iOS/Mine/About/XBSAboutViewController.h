@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface XBSAboutViewController : UIViewController
+@interface XBSAboutViewController : BaseViewController
 
 @end

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GraduateViewController : UIViewController
+@interface GraduateViewController : BaseViewController
 
 @end

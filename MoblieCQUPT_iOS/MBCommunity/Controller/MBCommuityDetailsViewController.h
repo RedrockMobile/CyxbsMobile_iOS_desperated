@@ -10,7 +10,7 @@
 #import "MBCommunity_ViewModel.h"
 #import "MBComment_ViewModel.h"
 
-@interface MBCommuityDetailsViewController : UIViewController
+@interface MBCommuityDetailsViewController : BaseViewController
 
 @property (strong, nonatomic) MBCommunity_ViewModel *viewModel;
 

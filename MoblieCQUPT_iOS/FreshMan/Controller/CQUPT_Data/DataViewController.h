@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DataViewController : UIViewController
+@interface DataViewController : BaseViewController
 
 @end

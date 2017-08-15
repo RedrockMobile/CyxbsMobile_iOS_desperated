@@ -8,7 +8,6 @@
 
 #import "DetailPageController.h"
 #import "DetailLessonController.h"
-#import "PrefixHeader.pch"
 @interface DetailPageController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;

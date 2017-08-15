@@ -30,7 +30,6 @@
 @implementation ShopViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
     self.navigationItem.title = @"周边美食";
     _flag = 1;

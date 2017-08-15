@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TopicViewController : UIViewController
+@interface TopicViewController : BaseViewController
 
 @end

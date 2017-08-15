@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddRemindViewController : UIViewController
+@interface AddRemindViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITextView *titileTextView;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;

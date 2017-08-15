@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MapViewController : UIViewController
+@interface MapViewController : BaseViewController
 
 @property (weak, nonatomic) IBOutlet UIWebView *mapWebView;
 

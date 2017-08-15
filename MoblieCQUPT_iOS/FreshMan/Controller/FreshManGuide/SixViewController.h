@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SixViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface SixViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 
 - (void)download;

@@ -16,6 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.extendedLayoutIncludesOpaqueBars = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }

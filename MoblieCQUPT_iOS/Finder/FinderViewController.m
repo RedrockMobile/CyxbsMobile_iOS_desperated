@@ -64,7 +64,6 @@
         _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H);
     }
     [self.view addSubview:_mainScrollView];
-    
     //图片轮播
     self.automaticallyAdjustsScrollViewInsets = NO;//防止出现20或64的下移
     self.view.backgroundColor = [UIColor whiteColor];

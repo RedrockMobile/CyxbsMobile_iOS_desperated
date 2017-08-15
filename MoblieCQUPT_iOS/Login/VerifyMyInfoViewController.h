@@ -10,7 +10,7 @@
 
 typedef void(^VerifySuccessHandler)(BOOL success);
 
-@interface VerifyMyInfoViewController : UIViewController
+@interface VerifyMyInfoViewController : BaseViewController
 
 @property (copy, nonatomic) VerifySuccessHandler verifySuccessHandler;
 

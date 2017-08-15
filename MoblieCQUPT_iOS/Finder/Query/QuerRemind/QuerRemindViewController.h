@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuerRemindViewController : UIViewController
+@interface QuerRemindViewController : BaseViewController
 
 @end

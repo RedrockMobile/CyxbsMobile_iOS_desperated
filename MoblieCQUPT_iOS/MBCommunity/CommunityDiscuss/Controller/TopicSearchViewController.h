@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class DetailTopicViewController;
 
-@interface TopicSearchViewController : UIViewController
+@interface TopicSearchViewController : BaseViewController
 
 @property (nonatomic, assign) BOOL isMyJoin;
 

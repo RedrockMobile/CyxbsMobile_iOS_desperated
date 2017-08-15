@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TitleBaseViewController : UIViewController
+@interface TitleBaseViewController : BaseViewController
 
 @property (strong, nonatomic)UILabel *titleLabel;
 

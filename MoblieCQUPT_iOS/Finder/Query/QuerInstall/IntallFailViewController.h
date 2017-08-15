@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface IntallFailViewController : UIViewController
+@interface IntallFailViewController : BaseViewController
 
 @end

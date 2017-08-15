@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeautyCreatDetailViewController : UIViewController
+@interface BeautyCreatDetailViewController : BaseViewController
 
 @property (copy, nonatomic) NSString *videoUrlStr;
 

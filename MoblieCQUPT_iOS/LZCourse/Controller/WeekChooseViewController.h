@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SaveDelegate.h"
-@interface WeekChooseViewController : UIViewController
+@interface WeekChooseViewController : BaseViewController
 @property id <SaveDelegate>delegate;
 - (instancetype)initWithTimeArray:(NSArray *)weekArray;
 @end

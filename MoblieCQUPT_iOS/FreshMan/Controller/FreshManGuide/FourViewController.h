@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FourViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface FourViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 
 

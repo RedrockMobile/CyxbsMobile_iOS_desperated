@@ -6,9 +6,9 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 #import "SaveDelegate.h"
-@interface TimeChooseViewController : UIViewController
+@interface TimeChooseViewController : BaseViewController
 @property id <SaveDelegate>delegate;
 - (instancetype)initWithTimeArray:(NSArray *)timeArray;
 @end

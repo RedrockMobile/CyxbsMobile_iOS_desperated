@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EmptyClassViewController : UIViewController
+@interface EmptyClassViewController : BaseViewController
 
 @end

@@ -7,17 +7,14 @@
 //
 
 #import "LessonController.h"
-#import "PrefixHeader.pch"
 #import "MainView.h"
 #import "WeekScrollView.h"
 #import "LessonButtonController.h"
-#import "HttpClient.h"
 #import "LessonHandle.h"
 #import "DetailViewController.h"
 #import "DetailRemindViewController.h"
 #import "AddRemindViewController.h"
 #import "CoverView.h"
-#import <Masonry.h>
 #import "NoLoginView.h"
 #import "LoginViewController.h"
 #import "RemindNotification.h"
@@ -45,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [self addNotification];
     self.view.backgroundColor = [UIColor whiteColor];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -143,7 +141,7 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     self.nowWeek = [userDefaults objectForKey:@"nowWeek"];
     self.weekScrollView = [[WeekScrollView alloc]initWithFrame:CGRectMake(0, NVGBARHEIGHT+STATUSBARHEIGHT, SCREENWIDTH, SCREENHEIGHT/2.5)];
-    self.weekScrollView.frame = CGRectMake(0, 0, SCREENWIDTH, 1);
+    self.weekScrollView.frame = CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, 1);
     self.weekScrollView.backgroundColor = [UIColor whiteColor];
     self.weekScrollView.showWeekScrollView = NO;
     //初始化下拉周列表
@@ -158,7 +156,7 @@
     self.weekScrollView.btnArray[self.selectedWeek].selected = YES;
     //初始化列表中的button
     
-    self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, NVGBARHEIGHT+STATUSBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-(NVGBARHEIGHT+STATUSBARHEIGHT))];
+    self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
     __weak LessonController *weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
         [weakSelf touchesBegan:touches withEvent:event];
@@ -257,7 +255,7 @@
 - (void)clickBtn{
     if (self.weekScrollView.showWeekScrollView) {
         [UIView animateWithDuration:0.3 animations:^{
-            self.weekScrollView.frame = CGRectMake(0, 0, SCREENWIDTH, 1);
+            self.weekScrollView.frame = CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, 1);
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,1.0);
         }completion:^(BOOL finished) {
             [self.weekScrollView removeFromSuperview];
@@ -269,8 +267,8 @@
         NSInteger initial = (self.selectedWeek-4)>0?(self.selectedWeek-4):0;
         [self.weekScrollView setContentOffset:CGPointMake(0, initial*self.weekScrollView.btnArray[self.selectedWeek].frame.size.height)];
         // 选中button居中
-        [self.view addSubview:self.coverView];
-        [self.view addSubview:self.weekScrollView];
+        [self.view.window addSubview:self.coverView];
+        [self.view.window addSubview:self.weekScrollView];
         
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);

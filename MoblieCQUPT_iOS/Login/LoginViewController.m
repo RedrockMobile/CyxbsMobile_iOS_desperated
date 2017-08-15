@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 }
 
 - (void)verifyUserInfo {
-    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":[UserDefaultTool getStuNum]} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":[UserDefaultTool getStuNum],@"idNum":[UserDefaultTool getIdNum]} WithReturnValeuBlock:^(id returnValue) {
         if (![returnValue[@"data"] isKindOfClass:[NSNull class]]) {
             [UserDefaultTool saveParameter:returnValue[@"data"]];
             [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];

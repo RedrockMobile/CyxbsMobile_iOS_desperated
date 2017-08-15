@@ -55,8 +55,8 @@
 //    self.navigationController.navigationBar.hidden = NO;
     self.page = 0;
     [self setupTableView];
-    [self getArticles];
     [self setupJoinBtn];
+    [self getArticles];
     self.navigationItem.rightBarButtonItem = self.shareButton;
     // Do any additional setup after loading the view from its nib.
 }

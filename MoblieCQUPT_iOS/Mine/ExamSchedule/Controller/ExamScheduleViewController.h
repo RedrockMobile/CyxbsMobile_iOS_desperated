@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ExamScheduleViewController : UIViewController
+@interface ExamScheduleViewController : BaseViewController
 
 @end

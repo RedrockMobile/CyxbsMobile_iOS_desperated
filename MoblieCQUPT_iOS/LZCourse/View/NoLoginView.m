@@ -7,7 +7,6 @@
 //
 
 #import "NoLoginView.h"
-#import "PrefixHeader.pch"
 #import "LoginViewController.h"
 #import "UIFont+AdaptiveFont.h"
 @implementation NoLoginView

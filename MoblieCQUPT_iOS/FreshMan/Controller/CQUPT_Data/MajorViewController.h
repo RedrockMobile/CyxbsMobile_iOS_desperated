@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MajorViewController : UIViewController
+@interface MajorViewController : BaseViewController
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ThreeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface ThreeViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 - (void)dwonload;
 

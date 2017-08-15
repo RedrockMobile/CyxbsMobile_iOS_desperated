@@ -7,7 +7,6 @@
 //
 
 #import "WeekChooseViewController.h"
-#import "PrefixHeader.pch"
 #import "WeekChooseButton.h"
 @interface WeekChooseViewController ()
 @property NSMutableArray *weekArray;
@@ -33,8 +32,7 @@
             [self.view addSubview:btn];
         }
     }
-    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"完成"] style:UIBarButtonItemStyleDone target:self action:@selector(save)];
-    saveItem.tintColor = [UIColor blackColor];
+    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"remind_image_confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(save)];
     self.navigationItem.rightBarButtonItem = saveItem;
    
     // Do any additional setup after loading the view.

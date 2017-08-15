@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InstallcurrentViewController : UIViewController
+@interface InstallcurrentViewController : BaseViewController
 
 @end

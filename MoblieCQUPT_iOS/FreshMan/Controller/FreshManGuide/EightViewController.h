@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EightViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface EightViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 
 - (void)download;

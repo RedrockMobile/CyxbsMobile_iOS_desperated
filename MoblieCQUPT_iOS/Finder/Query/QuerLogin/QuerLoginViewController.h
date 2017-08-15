@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuerLoginViewController : UIViewController
+@interface QuerLoginViewController : BaseViewController
 
 @end

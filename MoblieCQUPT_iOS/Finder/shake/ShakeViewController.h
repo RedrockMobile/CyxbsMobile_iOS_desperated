@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ShakeViewController : UIViewController
+@interface ShakeViewController : BaseViewController
 
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RemindMatter.h"
-@interface DetailRemindViewController : UIViewController
+@interface DetailRemindViewController : BaseViewController
 - (instancetype)initWithRemindMatters:(NSArray *)reminds;
 - (void)edit:(UIButton *)sender;
 - (void)reloadWithRemindMatters:(NSArray *)reminds;

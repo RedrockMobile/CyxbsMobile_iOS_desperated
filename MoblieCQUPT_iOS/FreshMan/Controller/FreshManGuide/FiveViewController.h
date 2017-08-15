@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FiveViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>{
+@interface FiveViewController : BaseViewController<UITableViewDataSource,UITableViewDelegate>{
 }
 
 
