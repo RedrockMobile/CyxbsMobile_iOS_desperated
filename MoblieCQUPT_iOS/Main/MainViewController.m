@@ -36,8 +36,8 @@
         UIImage *image = [UIImage imageNamed:@"all_image_background"];
         NSLog(@"%@",image);
         [nvc.navigationBar setBackgroundImage:image  forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
-//        [nvc.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_image_back"]];
-//        [nvc.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_image_back"]];
+        [nvc.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_image_back"]];
+        [nvc.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_image_back"]];
         [nvc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
 
     }
@@ -47,5 +47,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

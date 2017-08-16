@@ -8,7 +8,6 @@
 
 #import "ImageWithLabels.h"
 #import "Masonry.h"
-#import "UIImageView+WebCache.h"
 
 @interface ImageWithLabels ()
 

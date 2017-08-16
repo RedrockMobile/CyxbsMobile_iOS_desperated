@@ -10,8 +10,9 @@
 #import "CQUPTStudentsCell.h"
 #import "UIImage+Circle.h"
 #import "AppearView.h"
-#import "UIImageView+WebCache.h"
 #import "AFNetWorking.h"
+
+
 
 #define url @"http://hongyan.cqupt.edu.cn/welcome/2017/api/apiForText.php"
 

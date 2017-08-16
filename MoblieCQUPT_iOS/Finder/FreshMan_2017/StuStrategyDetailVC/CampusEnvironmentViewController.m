@@ -29,7 +29,6 @@
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0;
         _tableView.sectionFooterHeight = 0;
-        _tableView.bounces = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -45,7 +44,6 @@
     self.descriptionArray = [[NSMutableArray alloc] init];
     self.urlStrArray = [[NSMutableArray alloc] init];
     
-    [self getData];
     [self.view addSubview:self.tableView];
 }
 
@@ -85,14 +83,23 @@
     
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:nil options:nil] lastObject];
+        cell.secondNameLabel.hidden = YES;
+        cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.layer.cornerRadius = 3;
+        cell.myImageView.layer.masksToBounds = YES;
+        
+        cell.nameLabel.font = [UIFont systemFontOfSize:15];
+        
+        cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
+        cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     }
     
-    NSString* encodedString = @"";
     if (self.urlStrArray) {
-        encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+       NSString* encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
     }
-    [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
-    
     if (self.nameArray) {
         cell.nameLabel.text = self.nameArray[indexPath.row];
     }
@@ -100,20 +107,6 @@
     if (self.descriptionArray) {
         cell.descriptionLabel.text = self.descriptionArray[indexPath.row];
     }
-    cell.secondNameLabel.hidden = YES;
-    cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.myImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.myImageView.layer.cornerRadius = 3;
-    cell.myImageView.layer.masksToBounds = YES;
-    
-    cell.nameLabel.font = [UIFont systemFontOfSize:15];
-
-    cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
-    cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    
-    
-    
     return cell;
 }
 

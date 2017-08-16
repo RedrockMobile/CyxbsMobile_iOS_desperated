@@ -8,7 +8,6 @@
 
 #import "BeautyTableViewCell.h"
 #import "FoodViewController.h"
-
 @interface FoodViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -30,7 +29,6 @@
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0;
         _tableView.sectionFooterHeight = 0;
-        _tableView.bounces = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -48,7 +46,6 @@
     self.positionArray = [[NSMutableArray alloc] init];
     self.commentArray = [[NSMutableArray alloc] init];
     
-    [self getData];
     [self.view addSubview:self.tableView];
 }
 
@@ -79,34 +76,46 @@
     BeautyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"BeautyTableViewCell" owner:nil options:nil] lastObject];;
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"BeautyTableViewCell" owner:nil options:nil] lastObject];
+        cell.bottomGrayView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.nameLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+        cell.viewLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+        cell.positionLabel.textColor = [UIColor colorWithRed:101/255.0 green:178/255.0 blue:255/255.0 alpha:0.6];
+        cell.nameImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.nameImageView.image = [UIImage imageNamed:@"freshman_image_comment"];
+        
+        cell.positionImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.positionImageView.image = [UIImage imageNamed:@"定位"];
+        cell.positionImageView.alpha = 0.2;
+        
+        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.layer.cornerRadius = 2;
+        cell.myImageView.layer.masksToBounds = YES;
     }
-    
-    NSString* encodedString = @"";
+    [[SDImageCache sharedImageCache] clearMemory];
     if (self.urlStrArray) {
-        cell.nameLabel.text = self.nameArray[indexPath.row];
-        cell.positionLabel.text = self.positionArray[indexPath.row];
-        cell.viewLabel.text = self.commentArray[indexPath.row];
-        encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        @autoreleasepool {
+            cell.nameLabel.text = self.nameArray[indexPath.row];
+            cell.positionLabel.text = self.positionArray[indexPath.row];
+            cell.viewLabel.text = self.commentArray[indexPath.row];
+            NSString *encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+            [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
+//            [[SDImageCache sharedImageCache] clearMemory];
+
+//            [SDWebImageDownloader sharedDownloader].shouldDecompressImages = NO;
+        }
+        
+       
     }
-    cell.bottomGrayView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    cell.nameLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
-    cell.viewLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-    cell.positionLabel.textColor = [UIColor colorWithRed:101/255.0 green:178/255.0 blue:255/255.0 alpha:0.6];
-    cell.nameImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.nameImageView.image = [UIImage imageNamed:@"freshman_image_comment"];
-    
-    cell.positionImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.positionImageView.image = [UIImage imageNamed:@"定位"];
-    cell.positionImageView.alpha = 0.2;
-    
-    cell.myImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.myImageView.layer.cornerRadius = 2;
-    cell.myImageView.layer.masksToBounds = YES;
-    [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
-    
+//    CGSize size = CGSizeMake(32, 32);
+//    UIGraphicsBeginImageContext(size);
+//    [yourImage drawInRect:CGRectMake(0, 0, 32, 32)];
+//    yourImage = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+
     return cell;
 }
 
@@ -125,8 +134,27 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+
     // Dispose of any resources that can be recreated.
 }
+
+//- (void)viewWillAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    NSLog(@"%d",[SDImageCache sharedImageCache].config.shouldDecompressImages);
+//    [SDImageCache sharedImageCache].config.shouldDecompressImages = NO;
+//    [[SDWebImageDownloader sharedDownloader] setShouldDecompressImages:NO];
+//    
+//}
+//
+//- (void)viewWillDisappear:(BOOL)animated{
+//    [super viewWillDisappear:animated];
+//    [SDImageCache sharedImageCache].config.shouldDecompressImages = YES;
+//    [[SDWebImageDownloader sharedDownloader] setShouldDecompressImages:YES];
+//}
+//- (void)dealloc{
+//    [SDImageCache sharedImageCache].config.shouldDecompressImages = YES;
+//    [[SDWebImageDownloader sharedDownloader] setShouldDecompressImages:YES];
+//}
 
 /*
  #pragma mark - Navigation

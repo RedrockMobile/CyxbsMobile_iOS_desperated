@@ -8,7 +8,6 @@
 
 #import "MBBrowserItem.h"
 #import "SDWebImageManager.h"
-#import "UIImageView+WebCache.h"
 #import "UIShortTapGestureRecognizer.h"
 #import "UIImage+Helper.h"
 

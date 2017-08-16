@@ -8,7 +8,6 @@
 
 #import "OriginalViewController.h"
 #import "OriginalVideoController.h"
-#import "UIImageView+WebCache.h"
 #import "Masonry.h"
 
 #define url @"http://hongyan.cqupt.edu.cn/welcome/2017/api/apiForText.php"

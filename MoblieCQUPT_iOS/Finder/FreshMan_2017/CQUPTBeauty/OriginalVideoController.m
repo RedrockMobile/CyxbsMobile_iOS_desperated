@@ -21,8 +21,8 @@
 }
 
 - (void)setVideoView{
-    UIView *back =[[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
-    back.backgroundColor = MAIN_COLOR;
+    UIImageView *back =[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 64)];
+    back.image = [UIImage imageNamed:@"all_image_background"];
     
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelBtn setTitle:@"返回" forState:UIControlStateNormal];

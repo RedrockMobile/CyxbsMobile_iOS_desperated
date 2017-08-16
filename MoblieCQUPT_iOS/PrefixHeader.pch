@@ -63,10 +63,15 @@
 
 
 #import <AFNetworking.h>
+#import <UIImageView+WebCache.h>
 #import <YYKit.h>
 #import <Masonry.h>
+#import <UMMobClick/MobClick.h>
 #import "NetWork.h"
 #import "HttpClient.h"
+#import "UIColor+Helper.h"
+#import "UserDefaultTool.h"
+#import "BaseViewController.h"
 
 #pragma Group共享
 #define kAPPGroupID @"group.com.redrock.mobile"
@@ -118,14 +123,7 @@
 
 //话题文章列表接口
 #define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
-//#import "SDWebImageManager.h"
-#import "UIColor+Helper.h"
-#import <SDWebImageManager.h>
-#import <UIImageView+WebCache.h>
-#import <YYImage.h>
-#import "UserDefaultTool.h"
-#import "BaseViewController.h"
-#import <UMMobClick/MobClick.h>
+
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)

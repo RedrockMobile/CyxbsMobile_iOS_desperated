@@ -24,12 +24,14 @@
 @property (strong, nonatomic) NSArray *songersArray;
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) UIView *blackView;
+@property (strong, nonatomic) NSMutableArray *videosPhotosUrlStrArray;
+@property (strong, nonatomic) NSMutableArray *videosUrlStrArray;
 
 @end
 
 @implementation MilitaryTrainingVideoViewController
 
-- (void)getData {
+- (void)getPhotosData {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -49,6 +51,26 @@
     
 }
 
+- (void)getVideosData {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", nil];
+    
+    [manager GET:@"http://hongyan.cqupt.edu.cn/welcome/2017/api/apiForGuide.php?RequestType=MilitaryTrainingVideo" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseobject) {
+        NSDictionary *dic = responseobject;
+        for (int i = 0; i < [dic[@"Data"] count]; i++) {
+            self.videosPhotosUrlStrArray[i] = dic[@"Data"][i][@"cover"];
+            self.videosUrlStrArray[i] = dic[@"Data"][i][@"url"];
+        }
+        [self layoutVideos];
+        
+    }failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
+        NSLog(@"请求失败,error:%@", error);
+    }];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -57,6 +79,8 @@
     self.songersArray = @[@"阎维文", @"刘斌",@"霍勇", @"小曾", @"小曾", @"阎维文", @"小曾", @"阎维文", @"屠洪刚", @"小曾", @"瞿弦和", @"张穆庭"];
     self.photoUrlStrArray = [[NSMutableArray alloc] init];
     self.photosTitleArray = [[NSMutableArray alloc] init];
+    self.videosUrlStrArray = [[NSMutableArray alloc] init];
+    self.videosPhotosUrlStrArray = [[NSMutableArray alloc] init];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
     if ([UIScreen mainScreen].bounds.size.width <= 330) {
@@ -69,8 +93,9 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.scrollView];
-    [self getData];
-    [self layoutVideos];
+    [self getPhotosData];
+    [self getVideosData];
+//    [self layoutVideos];
     [self layoutSongs];
 }
 - (void)layoutPhotos {
@@ -175,17 +200,36 @@
     [videosRootView addSubview:titleLabel];
     
     UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(14, 52, 375/2.0-3-14, 106/667.0 * KHEIGHT)];
-    imageView1.image = [UIImage imageNamed:@"MT1"];
+    NSString *encodeString = [self.videosPhotosUrlStrArray[0] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    [imageView1 sd_setImageWithURL:[NSURL URLWithString:encodeString] placeholderImage:[UIImage imageNamed:@"占位图"]];
     imageView1.userInteractionEnabled = YES;
     imageView1.tag = 1;
     [videosRootView addSubview:imageView1];
+    UIImageView *pauseImageView1 = [[UIImageView alloc] init];
+    [imageView1 addSubview:pauseImageView1];
+    pauseImageView1.image = [UIImage imageNamed:@"pause"];
+    [pauseImageView1 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(imageView1.mas_left).offset((KWIDTH/2.0 -3 - 14) / 2.0 - 15);
+        make.top.equalTo(imageView1.mas_top).offset(106/667.0*KHEIGHT/2.0 - 15);
+        make.width.mas_equalTo(30);
+        make.height.mas_equalTo(30);
+    }];
     
     UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(14 + 375/2.0-3-14 + 6, 52, 375/2.0-3-14, 106/667.0 * KHEIGHT)];
-    imageView2.image = [UIImage imageNamed:@"MT2"];
+    NSString *encodeString2 = [self.videosPhotosUrlStrArray[1] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    [imageView2 sd_setImageWithURL:[NSURL URLWithString:encodeString2] placeholderImage:[UIImage imageNamed:@"占位图"]];
     imageView2.userInteractionEnabled = YES;
     imageView2.tag = 2;
     [videosRootView addSubview:imageView2];
-    
+    UIImageView *pauseImageView2 = [[UIImageView alloc] init];
+    [imageView2 addSubview:pauseImageView2];
+    pauseImageView2.image = [UIImage imageNamed:@"pause"];
+    [pauseImageView2 mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(imageView2.mas_left).offset((KWIDTH/2.0 -3 - 14) / 2.0 - 15);
+        make.top.equalTo(imageView2.mas_top).offset(106/667.0*KHEIGHT/2.0 - 15);
+        make.width.mas_equalTo(30);
+        make.height.mas_equalTo(30);
+    }];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(14, 52 + 106/667.0 * KHEIGHT + 8, 150, 13)];
     nameLabel.centerX = imageView1.centerX;
@@ -356,9 +400,9 @@
 
 - (void)loadVideo:(UITapGestureRecognizer *)sender {
     if (sender.view.tag == 1) {
-        [self.view.superview.viewController.navigationController pushViewController:[[MTVideo1 alloc] init]  animated:YES];
+        [self.view.superview.viewController.navigationController pushViewController:[[MTVideo1 alloc] initWithVideoUrlStr:self.videosUrlStrArray[0]] animated:YES];
     } else if (sender.view.tag == 2) {
-        [self.view.superview.viewController.navigationController pushViewController:[[MTVideo2 alloc] init]  animated:YES];
+        [self.view.superview.viewController.navigationController pushViewController:[[MTVideo1 alloc] initWithVideoUrlStr:self.videosUrlStrArray[0]] animated:YES];
     }
 }
 

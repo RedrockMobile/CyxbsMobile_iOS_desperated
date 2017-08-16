@@ -8,7 +8,6 @@
 
 #import "CQUPTTeacherView.h"
 #import "CQUPTTecherCell.h"
-#import "UIImageView+WebCache.h"
 #define url @"http://hongyan.cqupt.edu.cn/welcome/2017/api/apiForText.php"
 @interface CQUPTTeacherView ()<UITableViewDelegate, UITableViewDataSource>
 @property(strong, nonatomic) NSMutableArray *dataArray;

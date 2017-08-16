@@ -30,7 +30,6 @@
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0;
         _tableView.sectionFooterHeight = 0;
-        _tableView.bounces = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -48,7 +47,6 @@
     self.positionArray = [[NSMutableArray alloc] init];
     self.commentArray = [[NSMutableArray alloc] init];
     
-    [self getData];
     [self.view addSubview:self.tableView];
 }
 
@@ -79,33 +77,32 @@
     BeautyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
     
     if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"BeautyTableViewCell" owner:nil options:nil] lastObject];;
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"BeautyTableViewCell" owner:nil options:nil] lastObject];
+        cell.bottomGrayView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.nameLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+        cell.viewLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+        cell.positionLabel.textColor = [UIColor colorWithRed:101/255.0 green:178/255.0 blue:255/255.0 alpha:0.6];
+        cell.nameImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.nameImageView.image = [UIImage imageNamed:@"freshman_image_comment"];
+        
+        cell.positionImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.positionImageView.image = [UIImage imageNamed:@"定位"];
+        cell.positionImageView.alpha = 0.2;
+        
+        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.layer.cornerRadius = 2;
+        cell.myImageView.layer.masksToBounds = YES;
     }
     
-    NSString* encodedString = @"";
     if (self.urlStrArray) {
         cell.nameLabel.text = self.nameArray[indexPath.row];
         cell.positionLabel.text = self.positionArray[indexPath.row];
         cell.viewLabel.text = self.commentArray[indexPath.row];
-        encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+       NSString *encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
     }
-    cell.bottomGrayView.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.nameLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
-    cell.viewLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-    cell.positionLabel.textColor = [UIColor colorWithRed:101/255.0 green:178/255.0 blue:255/255.0 alpha:0.6];
-    cell.nameImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.nameImageView.image = [UIImage imageNamed:@"freshman_image_comment"];
-    
-    cell.positionImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.positionImageView.image = [UIImage imageNamed:@"定位"];
-    cell.positionImageView.alpha = 0.2;
-    
-    cell.myImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.myImageView.layer.cornerRadius = 2;
-    cell.myImageView.layer.masksToBounds = YES;
-    [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
     
     return cell;
 }

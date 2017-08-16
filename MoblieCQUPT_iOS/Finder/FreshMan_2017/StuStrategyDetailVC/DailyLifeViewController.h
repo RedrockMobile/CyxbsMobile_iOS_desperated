@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface DailyLifeViewController : BaseViewController
+- (void)getData;
+
 @end

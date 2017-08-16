@@ -32,7 +32,6 @@
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0;
         _tableView.sectionFooterHeight = 0;
-        _tableView.bounces = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -54,7 +53,6 @@
     }
     NSLog(@"-----------> %ld", self.urlStrArray.count);
     self.descriptionArray = [NSMutableArray array];
-    [self getData];
     [self.view addSubview:self.tableView];
 }
 
@@ -85,31 +83,18 @@
     MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:nil options:nil] lastObject];;
-    }
-    NSString* encodedString = @"";
-    if (self.descriptionArray) {
-        cell.nameLabel.text = self.nameArray[indexPath.row];
-        cell.secondNameLabel.text = self.secondNameArray[indexPath.row];
-
-        cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
-        cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-        cell.descriptionLabel.text = self.descriptionArray[indexPath.row];
-    
-        encodedString = [self.urlStrArray[indexPath.row][0] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
-    }
-    [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
-    cell.myImageView.contentMode = UIViewContentModeScaleToFill;
-    cell.myImageView.layer.cornerRadius = 3;
-    cell.myImageView.layer.masksToBounds = YES;
-    cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.nameLabel.font = [UIFont systemFontOfSize:15];
-    
-    cell.secondNameLabel.font = [UIFont systemFontOfSize:13];
-    cell.secondNameLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:self options:nil] lastObject];;
+        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.layer.cornerRadius = 3;
+        cell.myImageView.layer.masksToBounds = YES;
+        cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        cell.nameLabel.font = [UIFont systemFontOfSize:15];
+        
+        cell.secondNameLabel.font = [UIFont systemFontOfSize:13];
+        cell.secondNameLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+          }
     UIView *view = [[UIView alloc] init];
     view.tag = 222;
     view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
@@ -122,18 +107,27 @@
         make.height.mas_equalTo(19);
     }];
     
-    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addUIscrollView:)];
+    [cell.myImageView addGestureRecognizer:tapGesture];
+    cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
+    cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     UIImageView *numberOfPhotos = [[UIImageView alloc] initWithFrame:CGRectMake(7, 3.5, 40, 12)];
     numberOfPhotos.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     numberOfPhotos.image = [UIImage imageNamed:@"图3"];
     [view addSubview:numberOfPhotos];
+
+    if (self.descriptionArray) {
+        cell.nameLabel.text = self.nameArray[indexPath.row];
+        cell.secondNameLabel.text = self.secondNameArray[indexPath.row];
+        cell.descriptionLabel.text = self.descriptionArray[indexPath.row];
     
-    cell.myImageView.userInteractionEnabled = YES;
-    cell.myImageView.tag = indexPath.row;
+        NSString *encodedString = [self.urlStrArray[indexPath.row][0] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
+        
+        cell.myImageView.userInteractionEnabled = YES;
+        cell.myImageView.tag = indexPath.row;
 
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addUIscrollView:)];
-    [cell.myImageView addGestureRecognizer:tapGesture];
-
+    }
     return cell;
 }
 

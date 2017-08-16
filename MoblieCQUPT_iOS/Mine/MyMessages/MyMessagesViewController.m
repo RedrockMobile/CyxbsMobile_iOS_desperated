@@ -22,6 +22,8 @@
 #import "MBCommunityHandle.h"
 
 
+
+
 @interface MyMessagesViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (copy, nonatomic) NSString *stunum_other;//请求动态的学号

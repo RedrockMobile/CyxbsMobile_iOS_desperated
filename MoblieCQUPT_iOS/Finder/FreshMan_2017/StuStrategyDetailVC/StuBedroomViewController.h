@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface StuBedroomViewController : BaseViewController
+- (void)getData;
+
 @end

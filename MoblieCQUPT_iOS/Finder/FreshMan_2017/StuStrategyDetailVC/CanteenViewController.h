@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CanteenViewController : BaseViewController
+- (void)getData;
 @end

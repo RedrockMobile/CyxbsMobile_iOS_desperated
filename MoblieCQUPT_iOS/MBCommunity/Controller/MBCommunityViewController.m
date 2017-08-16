@@ -94,7 +94,7 @@
         UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [addBtn addTarget:self action:@selector(clickAddButton:) forControlEvents:UIControlEventTouchUpInside];
         addBtn.frame = CGRectMake(0, 0, NVGBARHEIGHT/2, NVGBARHEIGHT/2);
-        [addBtn setBackgroundImage:[UIImage imageNamed:@"timetable_image_add"] forState:UIControlStateNormal];
+        [addBtn setBackgroundImage:[UIImage imageNamed:@"timeTable_image_add"] forState:UIControlStateNormal];
         _addButton = [[UIBarButtonItem alloc]initWithCustomView:addBtn];
 
     }

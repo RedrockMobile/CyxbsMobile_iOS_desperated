@@ -61,18 +61,18 @@
     [firstBtn addTarget:self action:@selector(tapFirstBtn) forControlEvents:UIControlEventTouchUpInside];
 
     
-    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:18];
+    NSLayoutConstraint *leftConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10];
     [self.view addConstraint:leftConstraint];
     
     
-    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-18];
+    NSLayoutConstraint *rightConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-26];
     [self.view addConstraint:rightConstraint];
 
     
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:84];
     [self.view addConstraint:topConstraint];
     
-        double width = [UIScreen mainScreen].bounds.size.width - 36.0;
+//        double width = [UIScreen mainScreen].bounds.size.width - 36.0;
     
 //        double heigth = 121/340.0 * width;
 //    NSLayoutConstraint *heigthConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:heigth];
@@ -123,11 +123,11 @@
     
     [thirdBtn addTarget:self action:@selector(tapThirdBtn) forControlEvents:UIControlEventTouchUpInside];
     
-    NSLayoutConstraint *leftConstraint2 = [NSLayoutConstraint constraintWithItem:thirdBtn attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:18];
+    NSLayoutConstraint *leftConstraint2 = [NSLayoutConstraint constraintWithItem:thirdBtn attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:10];
     [self.view addConstraint:leftConstraint2];
     
     
-    NSLayoutConstraint *rightConstraint2 = [NSLayoutConstraint constraintWithItem:thirdBtn attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-18];
+    NSLayoutConstraint *rightConstraint2 = [NSLayoutConstraint constraintWithItem:thirdBtn attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:-26];
     [self.view addConstraint:rightConstraint2];
     
     

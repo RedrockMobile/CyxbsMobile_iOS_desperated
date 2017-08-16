@@ -119,7 +119,7 @@
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [addBtn addTarget:self action:@selector(addAction) forControlEvents:UIControlEventTouchUpInside];
     addBtn.frame = CGRectMake(0, 0, NVGBARHEIGHT/2, NVGBARHEIGHT/2);
-    [addBtn setBackgroundImage:[UIImage imageNamed:@"timetable_image_add"] forState:UIControlStateNormal];
+    [addBtn setBackgroundImage:[UIImage imageNamed:@"timeTable_image_add"] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:addBtn];
     //初始化右边添加button
     [self initPullImageView];//初始化下拉箭头
@@ -199,7 +199,7 @@
 }
 
 - (void)initPullImageView{
-    self.pullImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"timetable_image_pull"]];
+    self.pullImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"timeTable_image_pull"]];
     [self.barBtn addSubview:self.pullImageView];
     [self.pullImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.barBtn.titleLabel.mas_right).offset(5);

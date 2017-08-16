@@ -8,7 +8,6 @@
 
 #import "MyTableViewCell.h"
 #import "CanteenViewController.h"
-
 @interface CanteenViewController ()<UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
@@ -21,7 +20,6 @@
 
 @implementation CanteenViewController
 
-
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, [UIScreen mainScreen].bounds.size.height - (SCREENHEIGHT-64)*50/667 - 64) style:UITableViewStylePlain];
@@ -29,7 +27,6 @@
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0;
         _tableView.sectionFooterHeight = 0;
-        _tableView.bounces = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.showsHorizontalScrollIndicator = NO;
         _tableView.showsVerticalScrollIndicator = NO;
@@ -45,7 +42,6 @@
     self.nameArray = [[NSMutableArray alloc] init];
     self.urlStrArray = [[NSMutableArray alloc] init];
     self.descriptionArray = [[NSMutableArray alloc] init];
-    [self getData];
     [self.view addSubview:self.tableView];
 }
 
@@ -79,40 +75,37 @@
     MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (!cell) {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:nil options:nil] lastObject];;
-    }
-    cell.myImageView.userInteractionEnabled = NO;
-    NSString* encodedString = @"";
-    if (self.urlStrArray) {
-        encodedString = [self.urlStrArray[indexPath.row][0]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:self options:nil] lastObject];;
+        cell.secondNameLabel.hidden = YES;
+        cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
+        cell.nameLabel.font = [UIFont systemFontOfSize:15];
+        
+        cell.secondNameLabel.font = [UIFont systemFontOfSize:13];
+        cell.secondNameLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+        
+        cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
+        cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+        
+        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.userInteractionEnabled = NO;
+        cell.myImageView.layer.cornerRadius = 3;
+        cell.myImageView.layer.masksToBounds = YES;
+        cell.myImageView.userInteractionEnabled = NO;
+    }
+    if (self.urlStrArray) {
+       NSString *encodedString = [self.urlStrArray[indexPath.row][0]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
         cell.nameLabel.text = self.nameArray[indexPath.row];
         cell.descriptionLabel.text = self.descriptionArray[indexPath.row];
+        [cell.myImageView setImageWithURL:[NSURL URLWithString:encodedString] placeholder:[UIImage imageNamed:@"占位图"]];
+        if ([self.urlStrArray[indexPath.row] count] >= 2) {
+            cell.myImageView.userInteractionEnabled = YES;
+            cell.myImageView.tag = indexPath.row;
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addUIScrollView:)];
+            [cell.myImageView addGestureRecognizer:tapGesture];
+        }
     }
-    [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
-    cell.myImageView.layer.cornerRadius = 3;
-    cell.myImageView.layer.masksToBounds = YES;
-    
-    if ([self.urlStrArray[indexPath.row] count] >= 2) {
-        cell.myImageView.userInteractionEnabled = YES;
-        cell.myImageView.tag = indexPath.row;
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addUIScrollView:)];
-        [cell.myImageView addGestureRecognizer:tapGesture];
-    }
-    
-    cell.secondNameLabel.hidden = YES;
-    cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    cell.nameLabel.font = [UIFont systemFontOfSize:15];
-    
-    cell.secondNameLabel.font = [UIFont systemFontOfSize:13];
-    cell.secondNameLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    
-    cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
-    cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    
-    cell.myImageView.contentMode = UIViewContentModeScaleToFill;
     
     return cell;
 }

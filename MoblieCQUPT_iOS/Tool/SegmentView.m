@@ -63,7 +63,7 @@
     [_btnArray firstObject].selected = YES;
     
     _sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, kTitleHeight-2, self.titleBtnWidth, 2)];
-    _sliderView.backgroundColor = MAIN_COLOR;
+    _sliderView.backgroundColor = [UIColor colorWithHexString:@"65b2ff"];
     
     [_titleScrollView addSubview:cuttingLine];
     [_titleScrollView addSubview:self.sliderView];

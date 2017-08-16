@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface Originazition : BaseViewController@property (strong, nonatomic) NSArray *namesArray;
+@interface Originazition : BaseViewController
+@property (strong, nonatomic) NSArray *namesArray;
 @property (strong, nonatomic) NSArray *detailArray;
 @property NSInteger i;
 @end

@@ -8,7 +8,6 @@
 
 #import "CQUPTStudentsCell.h"
 #import "Masonry.h"
-#import "UIImageView+WebCache.h"
 @implementation CQUPTStudentsCell
 
 - (void)awakeFromNib {

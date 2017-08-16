@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CampusEnvironmentViewController : BaseViewController
+- (void)getData;
 @end

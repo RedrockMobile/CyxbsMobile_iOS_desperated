@@ -20,12 +20,16 @@
 #import "BeautyViewController.h"
 
 @interface StuStrategyRootViewController ()<SegmentViewScrollerViewDelegate>
-
+@property NSArray *VCArray;
 @end
 
 @implementation StuStrategyRootViewController
+bool array[8];
 
 - (void)viewDidLoad {
+    for (int i = 1; i<8; i++){
+        array[i] = false;
+    }
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -46,14 +50,16 @@
     BeautyViewController *VC8 = [[BeautyViewController alloc] init];
     VC8.title = @"周边美景";
 
-    NSArray *VCArray = [[NSArray alloc] initWithObjects:VC1, VC2, VC3, VC4, VC5, VC6, VC7, VC8, nil];
+     self.VCArray = [[NSArray alloc] initWithObjects:VC1, VC2, VC3, VC4, VC5, VC6, VC7, VC8, nil];
     
 //    TopTabView *topTabView = [[TopTabView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) withTitle:VCArray];
 //    
 //    [self.view addSubview:topTabView];
     
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - 20) andControllers:VCArray];
+    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - 20) andControllers:self.VCArray];
     segmentView.eventDelegate = self;
+    [self.VCArray[0] getData];
+    array[0] = true;
     [self.view addSubview:segmentView];
 }
 
@@ -64,7 +70,14 @@
 
 - (void)eventWhenScrollSubViewWithIndex:(NSInteger)index{
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-
+    [self.VCArray[index] viewWillAppear:YES];
+    if (!array[index]) {
+        if ([self.VCArray[index] respondsToSelector:@selector(getData)]) {
+            [self.VCArray[index] getData];
+        }
+        array[index] = true;
+    }
+    
 }
 
 /*

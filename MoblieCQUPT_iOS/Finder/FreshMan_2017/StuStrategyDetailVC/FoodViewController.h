@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FoodViewController : BaseViewController
+- (void)getData;
+
 @end

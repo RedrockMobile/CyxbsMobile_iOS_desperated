@@ -9,4 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MTVideo1 : BaseViewController
+
+- (instancetype)initWithVideoUrlStr:(NSString *)urlStr;
 @end

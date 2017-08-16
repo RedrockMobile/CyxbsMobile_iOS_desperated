@@ -14,16 +14,24 @@
 
 @implementation MTVideo1
 
+- (instancetype)initWithVideoUrlStr:(NSString *)urlStr {
+    self = [super init];
+    
+    if (self) {
+        self.view.backgroundColor = [UIColor whiteColor];
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+        NSURL *url = [NSURL URLWithString:urlStr];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        [webView loadRequest:request];
+        
+        [self.view addSubview:webView];
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-    NSURL *url = [NSURL URLWithString:@"https://v.qq.com/x/page/f0526oi2zyx.html"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
-    
-    [self.view addSubview:webView];
 }
 
 - (void)didReceiveMemoryWarning {
