@@ -9,7 +9,6 @@
 #import "LostViewController.h"
 #import "SegmentView.h"
 #import "LostTableViewController.h"
-#import "GraduateViewController.h"
 #import "IssueTableViewController.h"
 #import "IssueTableViewController.h"
 #import "LoginViewController.h"

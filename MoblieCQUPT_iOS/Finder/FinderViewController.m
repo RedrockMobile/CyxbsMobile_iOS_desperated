@@ -12,7 +12,7 @@
 #import "ShakeViewController.h"
 #import "CommunityViewController.h"
 #import "MapViewController.h"
-#import "FreshManMainViewController.h"
+#import "HomePageViewController.h"
 #import "LostViewController.h"
 #import "QuerLoginViewController.h"
 #define kCount 3
@@ -227,7 +227,8 @@
 }
 
 - (void)enterShake{
-    ShakeViewController *svc = [[ShakeViewController alloc] init];
+//    ShakeViewController *svc = [[ShakeViewController alloc] init];
+    HomePageViewController *svc = [[HomePageViewController alloc]init];
     svc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:svc
                                          animated:YES];

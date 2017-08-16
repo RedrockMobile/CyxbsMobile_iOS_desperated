@@ -13,6 +13,7 @@ target 'MoblieCQUPT_iOS' do
 	pod 'Masonry'
 	pod 'MJRefresh'
 	pod 'ProgressHUD'
+	pod 'pop'
 	pod 'UMengAnalytics-NO-IDFA'
 	# U-Share SDK UI模块（分享面板，建议添加）
     	pod 'UMengUShare/UI'
