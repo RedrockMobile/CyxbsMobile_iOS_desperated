@@ -526,6 +526,8 @@
 		F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AA1F3C45540063B024 /* login_image_account@3x.png */; };
 		F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AB1F3C45540063B024 /* login_image_password@3x.png */; };
 		F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AC1F3C45540063B024 /* login_image_password@2x.png */; };
+		F2770B3A1F4534BB00BB6186 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2770B381F4534BB00BB6186 /* camera@2x.png */; };
+		F2770B3B1F4534BB00BB6186 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2770B391F4534BB00BB6186 /* camera@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1287,6 +1289,8 @@
 		F26D96AA1F3C45540063B024 /* login_image_account@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_image_account@3x.png"; sourceTree = "<group>"; };
 		F26D96AB1F3C45540063B024 /* login_image_password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_image_password@3x.png"; sourceTree = "<group>"; };
 		F26D96AC1F3C45540063B024 /* login_image_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_image_password@2x.png"; sourceTree = "<group>"; };
+		F2770B381F4534BB00BB6186 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		F2770B391F4534BB00BB6186 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3046,7 +3050,7 @@
 				F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */,
 				F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */,
 				F2509C8F1F440D980091F678 /* freshman_image_comment@3x.png in Resources */,
-				82F977A71F44B94100971E98 /* camera@3x.png in Resources */,
+				F2770B3B1F4534BB00BB6186 /* camera@3x.png in Resources */,
 				F242DDD61EBCB2BB005AC411 /* lost_image_lackcate@3x.png in Resources */,
 				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
 				F242DDF01EBCB2BB005AC411 /* shakeForShop@2x.png in Resources */,
@@ -3077,7 +3081,7 @@
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
 				F242DE891EBCB2BC005AC411 /* 地点@3x.png in Resources */,
 				F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */,
-				82F977A61F44B94100971E98 /* camera@2x.png in Resources */,
+				F2770B3A1F4534BB00BB6186 /* camera@2x.png in Resources */,
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				F2509CA91F440D980091F678 /* 蓝色@3x.png in Resources */,

@@ -43,7 +43,7 @@
             self.photosTitleArray[i] = dic[@"Data"][@"title"][i];
         }
         [self layoutPhotos];
-
+        
     }failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
         NSLog(@"请求失败,error:%@", error);
     }];
@@ -72,7 +72,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.videoTitleArray = @[@"重邮2016级学生军训回顾", @"重邮2016级学生军训纪实"];
     self.songsArray = @[@"强军战歌", @"咱当兵的人", @"团结就是力量", @"军中绿花", @"战友还记得吗", @"一二三四歌", @"75厘米", @"打靶归来", @"精忠报国", @"我的老班长", @"保卫黄河", @"国际歌"];
     self.songersArray = @[@"阎维文", @"刘斌",@"霍勇", @"小曾", @"小曾", @"阎维文", @"小曾", @"阎维文", @"屠洪刚", @"小曾", @"瞿弦和", @"张穆庭"];
@@ -94,7 +94,7 @@
     [self.view addSubview:self.scrollView];
     [self getPhotosData];
     [self getVideosData];
-//    [self layoutVideos];
+    //    [self layoutVideos];
     [self layoutSongs];
 }
 - (void)layoutPhotos {
@@ -296,22 +296,22 @@
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(imageView1);
         make.bottom.equalTo(videosRootView.mas_bottom).offset(-10);
-         make.height.equalTo(@13);
+        make.height.equalTo(@13);
     }];
     
     [nameLabe2 mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(imageView2);
         make.height.equalTo(@13);
-
+        
         make.bottom.equalTo(videosRootView.mas_bottom).offset(-10);
     }];
     
-
+    
     
 }
 
 - (void)layoutSongs {
-//    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 177 / 667.0 * KHEIGHT + 194 / 667.0 * KHEIGHT, KWIDTH, KHEIGHT - (177 / 667.0 * KHEIGHT + 194 / 667.0 * KHEIGHT) - 47 - 64)];
+    //    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 177 / 667.0 * KHEIGHT + 194 / 667.0 * KHEIGHT, KWIDTH, KHEIGHT - (177 / 667.0 * KHEIGHT + 194 / 667.0 * KHEIGHT) - 47 - 64)];
     UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 177 / 667.0 * KHEIGHT + 194 / 667.0 * KHEIGHT, KWIDTH, 600)];
     self.tableView = tableView;
     _tableView.scrollEnabled = NO;
@@ -447,7 +447,7 @@
     
     [self scrollViewDidScroll:scrollView];
     
-//返回手势
+    //返回手势
     UITapGestureRecognizer *tapToBackGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToBack)];
     [view addGestureRecognizer:tapToBackGesture];
 }
@@ -470,13 +470,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

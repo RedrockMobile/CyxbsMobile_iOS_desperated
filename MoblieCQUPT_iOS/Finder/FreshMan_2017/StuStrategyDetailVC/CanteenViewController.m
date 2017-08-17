@@ -96,7 +96,7 @@
     }
     if (self.urlStrArray) {
         cell.myImageView.userInteractionEnabled = NO;
-       NSString *encodedString = [self.urlStrArray[indexPath.row][0]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+        NSString *encodedString = [self.urlStrArray[indexPath.row][0]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
         cell.nameLabel.text = self.nameArray[indexPath.row];
         cell.descriptionLabel.text = self.descriptionArray[indexPath.row];
         [cell.myImageView setImageWithURL:[NSURL URLWithString:encodedString] placeholder:[UIImage imageNamed:@"占位图"]];
@@ -124,9 +124,9 @@
         UILabel *numberOfPhotos = [[UILabel alloc] initWithFrame:CGRectMake(22, 0, 28, 19)];
         numberOfPhotos.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         if (indexPath.row == 2) {
-            numberOfPhotos.text = @"三张";
+            numberOfPhotos.text = @" 3张";
         } else {
-            numberOfPhotos.text = @"两张";
+            numberOfPhotos.text = @" 2张";
         }
         numberOfPhotos.textColor = [UIColor whiteColor];
         numberOfPhotos.font = [UIFont systemFontOfSize:12];
@@ -160,7 +160,7 @@
 
 - (void)addUIScrollView:(UIGestureRecognizer *)sender {
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
-//    self.blackView = view;
+    //    self.blackView = view;
     view.tag = 518;
     view.backgroundColor = [UIColor blackColor];
     self.blackView = view;
@@ -185,7 +185,7 @@
     scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * a[sender.view.tag], 251);
     [view addSubview:scrollView];
     
-
+    
     for (int i = 0; i < a[sender.view.tag]; i++) {
         NSLog(@"1");
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i * [UIScreen mainScreen].bounds.size.width, 0, [UIScreen mainScreen].bounds.size.width, 251)];
