@@ -102,7 +102,6 @@
         UITapGestureRecognizer *tapToBackGesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToBack1)];
         [scrollView addGestureRecognizer:tapToBackGesture1];
         [self.scrollView addSubview:scrollView];
-        
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(28, 32 + 17 + (33/341.0 * ([UIScreen mainScreen].bounds.size.width - 36)), 200, 13)];
         label.text = @"搜索结果";
         label.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
@@ -129,8 +128,7 @@
             make.top.equalTo(label.mas_bottom).offset(16);
             make.width.mas_equalTo(200);
             make.height.mas_equalTo(20);
-        }];
-        
+        }];        
         //展示搜索结果
         self.contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(28, 32 + 17 + (33/341.0 * ([UIScreen mainScreen].bounds.size.width - 36)) + 13 + 16, [UIScreen mainScreen].bounds.size.width - 28 - 48, 1000)];
         _contentLabel.numberOfLines = 0;
