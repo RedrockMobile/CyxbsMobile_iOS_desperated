@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -43,14 +44,113 @@
                     <view key="view" contentMode="scaleToFill" id="cWk-Vf-fqs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r32-xj-rWu">
+                                <rect key="frame" x="0.0" y="72" width="375" height="217"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LiX-UC-fSd" customClass="FinderCollectionViewFlowLayout">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-lW-I7d">
+                                <rect key="frame" x="0.0" y="299" width="375" height="90.5"/>
+                                <state key="normal" backgroundImage="find_image_freshman.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="1Yo-dz-BH6"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oF7-Er-ytu">
+                                <rect key="frame" x="8" y="389.5" width="133" height="109.5"/>
+                                <state key="normal" backgroundImage="find_image_hongyan.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="Ytk-ka-UZV"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr4-pl-liD">
+                                <rect key="frame" x="121" y="389.5" width="133.5" height="109.5"/>
+                                <state key="normal" backgroundImage="find_image_map.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="Rq9-Mn-UWl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijW-q5-fff">
+                                <rect key="frame" x="234.5" y="389.5" width="132.5" height="109.5"/>
+                                <state key="normal" backgroundImage="find_image_food.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="4lO-B3-o5l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-kd-Zpm">
+                                <rect key="frame" x="8" y="479" width="133" height="109"/>
+                                <state key="normal" backgroundImage="find_image_query.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="tY7-lk-gEb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-5l-d5B">
+                                <rect key="frame" x="121" y="479" width="133.5" height="109"/>
+                                <state key="normal" backgroundImage="find_image_lostAndFound.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="UgK-oi-9q8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKD-Qn-8pd">
+                                <rect key="frame" x="234.5" y="479" width="132.5" height="109"/>
+                                <state key="normal" backgroundImage="find_image_shake.png"/>
+                                <connections>
+                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="6qR-aP-bG2"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ijW-q5-fff" firstAttribute="leading" secondItem="Wr4-pl-liD" secondAttribute="trailing" constant="-20" id="2TQ-F6-A7I"/>
+                            <constraint firstItem="w1B-5l-d5B" firstAttribute="centerY" secondItem="IMd-kd-Zpm" secondAttribute="centerY" id="2oI-HZ-uAT"/>
+                            <constraint firstItem="wKD-Qn-8pd" firstAttribute="width" secondItem="oF7-Er-ytu" secondAttribute="width" id="53V-Bc-08C"/>
+                            <constraint firstItem="w1B-5l-d5B" firstAttribute="width" secondItem="oF7-Er-ytu" secondAttribute="width" id="6Yz-yq-zcB"/>
+                            <constraint firstAttribute="trailing" secondItem="r32-xj-rWu" secondAttribute="trailing" id="FAV-rV-deT"/>
+                            <constraint firstAttribute="trailing" secondItem="oLG-lW-I7d" secondAttribute="trailing" id="G0G-oW-X9V"/>
+                            <constraint firstItem="IMd-kd-Zpm" firstAttribute="height" secondItem="oF7-Er-ytu" secondAttribute="height" id="HwZ-jt-hSY"/>
+                            <constraint firstItem="oLG-lW-I7d" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" id="IlZ-2h-W8d"/>
+                            <constraint firstItem="wKD-Qn-8pd" firstAttribute="height" secondItem="oF7-Er-ytu" secondAttribute="height" id="JPk-Br-Qcq"/>
+                            <constraint firstItem="r32-xj-rWu" firstAttribute="height" secondItem="oLG-lW-I7d" secondAttribute="height" multiplier="2.4:1" id="KB4-Wa-DcP"/>
+                            <constraint firstAttribute="trailing" secondItem="wKD-Qn-8pd" secondAttribute="trailing" constant="8" id="PBh-qA-lsd"/>
+                            <constraint firstItem="IMd-kd-Zpm" firstAttribute="width" secondItem="oF7-Er-ytu" secondAttribute="width" id="PeI-Qy-wWt"/>
+                            <constraint firstItem="oLG-lW-I7d" firstAttribute="top" secondItem="r32-xj-rWu" secondAttribute="bottom" constant="10" id="Qx0-WU-0do"/>
+                            <constraint firstItem="IMd-kd-Zpm" firstAttribute="top" secondItem="oF7-Er-ytu" secondAttribute="bottom" constant="-20" id="T3i-iW-z7U"/>
+                            <constraint firstItem="oF7-Er-ytu" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="8" id="XvV-7o-Kvy"/>
+                            <constraint firstItem="w1B-5l-d5B" firstAttribute="leading" secondItem="IMd-kd-Zpm" secondAttribute="trailing" constant="-20" id="Y0e-0C-n1j"/>
+                            <constraint firstItem="r32-xj-rWu" firstAttribute="top" secondItem="nAj-8a-kt5" secondAttribute="bottom" constant="8" id="ZbT-Bn-7bi"/>
+                            <constraint firstItem="r32-xj-rWu" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" id="bWV-I3-mlZ"/>
+                            <constraint firstItem="wKD-Qn-8pd" firstAttribute="centerY" secondItem="IMd-kd-Zpm" secondAttribute="centerY" id="ba2-f9-g0C"/>
+                            <constraint firstItem="kPD-Ri-GDN" firstAttribute="top" secondItem="IMd-kd-Zpm" secondAttribute="bottom" constant="30" id="cCm-dd-6eE"/>
+                            <constraint firstItem="IMd-kd-Zpm" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="8" id="fwT-Wy-wyS"/>
+                            <constraint firstItem="ijW-q5-fff" firstAttribute="centerY" secondItem="oF7-Er-ytu" secondAttribute="centerY" id="g7S-MV-o19"/>
+                            <constraint firstItem="ijW-q5-fff" firstAttribute="width" secondItem="oF7-Er-ytu" secondAttribute="width" id="gag-k5-kI4"/>
+                            <constraint firstItem="w1B-5l-d5B" firstAttribute="height" secondItem="oF7-Er-ytu" secondAttribute="height" id="h5V-Qs-Eug"/>
+                            <constraint firstItem="Wr4-pl-liD" firstAttribute="centerY" secondItem="oF7-Er-ytu" secondAttribute="centerY" id="idV-PE-1H6"/>
+                            <constraint firstItem="Wr4-pl-liD" firstAttribute="leading" secondItem="oF7-Er-ytu" secondAttribute="trailing" constant="-20" id="kyy-Se-r0v"/>
+                            <constraint firstItem="ijW-q5-fff" firstAttribute="height" secondItem="oF7-Er-ytu" secondAttribute="height" id="mzN-VI-00D"/>
+                            <constraint firstItem="oF7-Er-ytu" firstAttribute="top" secondItem="oLG-lW-I7d" secondAttribute="bottom" id="pRc-Ns-FT8"/>
+                            <constraint firstAttribute="trailing" secondItem="ijW-q5-fff" secondAttribute="trailing" constant="8" id="rLd-Dh-UkI"/>
+                            <constraint firstItem="Wr4-pl-liD" firstAttribute="width" secondItem="oF7-Er-ytu" secondAttribute="width" id="vxq-a7-vr2"/>
+                            <constraint firstItem="wKD-Qn-8pd" firstAttribute="leading" secondItem="w1B-5l-d5B" secondAttribute="trailing" constant="-20" id="xgd-kq-CCB"/>
+                            <constraint firstItem="Wr4-pl-liD" firstAttribute="height" secondItem="oF7-Er-ytu" secondAttribute="height" id="y2K-Is-rrJ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Cg0-7l-lGF"/>
                     <navigationItem key="navigationItem" id="AmP-68-mUd"/>
+                    <connections>
+                        <outlet property="collectionView" destination="r32-xj-rWu" id="xZk-WL-CQX"/>
+                        <outlet property="layout" destination="LiX-UC-fSd" id="aPB-WM-bPx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Of-rr-lAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="44" y="1052"/>
+            <point key="canvasLocation" x="44" y="1051.1244377811095"/>
         </scene>
         <!--Item-->
         <scene sceneID="8zX-II-lL6">
@@ -105,10 +205,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Yu9-kc-lBC"/>
                     <navigationItem key="navigationItem" id="bNY-Qo-5l1"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6vU-7j-ce1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1906" y="1487"/>
+            <point key="canvasLocation" x="-1612" y="1487"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Orl-H6-RQQ">
@@ -170,7 +271,7 @@
             <objects>
                 <navigationController id="hW7-C8-2Ue" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="qw3-Im-FYO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iy4-mu-ceT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iy4-mu-ceT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -200,4 +301,13 @@
             <point key="canvasLocation" x="-2810" y="1487"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="find_image_food.png" width="136" height="109"/>
+        <image name="find_image_freshman.png" width="368" height="92"/>
+        <image name="find_image_hongyan.png" width="136" height="109"/>
+        <image name="find_image_lostAndFound.png" width="136" height="109"/>
+        <image name="find_image_map.png" width="136" height="109"/>
+        <image name="find_image_query.png" width="136" height="109"/>
+        <image name="find_image_shake.png" width="136" height="109"/>
+    </resources>
 </document>
