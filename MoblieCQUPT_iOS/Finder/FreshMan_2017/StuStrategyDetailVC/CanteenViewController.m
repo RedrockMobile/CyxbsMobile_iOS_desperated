@@ -95,6 +95,7 @@
         cell.myImageView.userInteractionEnabled = NO;
     }
     if (self.urlStrArray) {
+        cell.myImageView.userInteractionEnabled = NO;
        NSString *encodedString = [self.urlStrArray[indexPath.row][0]stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
         cell.nameLabel.text = self.nameArray[indexPath.row];
         cell.descriptionLabel.text = self.descriptionArray[indexPath.row];
@@ -105,6 +106,36 @@
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(addUIScrollView:)];
             [cell.myImageView addGestureRecognizer:tapGesture];
         }
+    }
+    
+    if (indexPath.row == 2 || indexPath.row == 3) {
+        UIView *view = [[UIView alloc] init];
+        view.tag = 222;
+        view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+        view.layer.cornerRadius = 3;
+        [cell.myImageView addSubview:view];
+        [view mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(cell.myImageView.mas_right).offset(-10);
+            make.bottom.equalTo(cell.myImageView.mas_bottom).offset(-8);
+            make.width.mas_equalTo(53);
+            make.height.mas_equalTo(19);
+        }];
+        
+        UILabel *numberOfPhotos = [[UILabel alloc] initWithFrame:CGRectMake(22, 0, 28, 19)];
+        numberOfPhotos.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        if (indexPath.row == 2) {
+            numberOfPhotos.text = @"三张";
+        } else {
+            numberOfPhotos.text = @"两张";
+        }
+        numberOfPhotos.textColor = [UIColor whiteColor];
+        numberOfPhotos.font = [UIFont systemFontOfSize:12];
+        [view addSubview:numberOfPhotos];
+        
+        UIImageView *cameraImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 4, 12, 12)];
+        cameraImageView.image = [UIImage imageNamed:@"camera"];
+        cameraImageView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+        [view addSubview:cameraImageView];
     }
     
     return cell;
@@ -143,7 +174,7 @@
     [view addGestureRecognizer:tapToBackGesture];
     
     //scrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - 251)/2.0, [UIScreen mainScreen].bounds.size.width, 251)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - 251)/2.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - (([UIScreen mainScreen].bounds.size.height - 251)/2.0))];
     scrollView.tag = sender.view.tag;
     scrollView.bounces = NO;
     scrollView.pagingEnabled = YES;
@@ -177,6 +208,12 @@
         numberOfPhotos.text = @"1/2";
     }
     [view addSubview:numberOfPhotos];
+}
+
+- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIView *view = [cell viewWithTag:222];
+    NSLog(@"remove");
+    [view removeFromSuperview];
 }
 
 - (void)tapToBack {

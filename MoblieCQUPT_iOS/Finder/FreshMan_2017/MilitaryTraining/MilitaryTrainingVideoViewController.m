@@ -9,7 +9,6 @@
 #import "MilitaryTrainingVideoViewController.h"
 #import "MilitarySongCell.h"
 #import "MTVideo1.h"
-#import "MTVideo2.h"
 #import <Masonry.h>
 #define KWIDTH [UIScreen mainScreen].bounds.size.width
 #define KHEIGHT [UIScreen mainScreen].bounds.size.height
@@ -402,7 +401,7 @@
     if (sender.view.tag == 1) {
         [self.view.superview.viewController.navigationController pushViewController:[[MTVideo1 alloc] initWithVideoUrlStr:self.videosUrlStrArray[0]] animated:YES];
     } else if (sender.view.tag == 2) {
-        [self.view.superview.viewController.navigationController pushViewController:[[MTVideo1 alloc] initWithVideoUrlStr:self.videosUrlStrArray[0]] animated:YES];
+        [self.view.superview.viewController.navigationController pushViewController:[[MTVideo1 alloc] initWithVideoUrlStr:self.videosUrlStrArray[1]] animated:YES];
     }
 }
 
@@ -414,7 +413,7 @@
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     [window addSubview:view];
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height / 2.0 - 251/667.0 * [UIScreen mainScreen].bounds.size.height / 2.0, [UIScreen mainScreen].bounds.size.width, 251/667.0 * [UIScreen mainScreen].bounds.size.height + 80)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height / 2.0 - 251/667.0 * [UIScreen mainScreen].bounds.size.height / 2.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - ([UIScreen mainScreen].bounds.size.height / 2.0 - 251/667.0 * [UIScreen mainScreen].bounds.size.height / 2.0))];
     scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width * 6, 251/667.0 * [UIScreen mainScreen].bounds.size.height + 80);
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
@@ -444,7 +443,6 @@
     numberOfPhotos.textColor = [UIColor whiteColor];
     numberOfPhotos.tag = 111;
     numberOfPhotos.font = [UIFont systemFontOfSize:17];
-//    numberOfPhotos.text = [NSString stringWithFormat:@"1/6"];
     [view addSubview:numberOfPhotos];
     
     [self scrollViewDidScroll:scrollView];

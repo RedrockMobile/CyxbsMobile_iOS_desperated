@@ -7,8 +7,9 @@
 //
 
 #import "QQGroupViewController.h"
+#import <Masonry.h>
 
-@interface QQGroupViewController ()<UITextFieldDelegate>
+@interface QQGroupViewController ()<UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *scrollView;
 @property (strong, nonatomic) NSArray *collegeArray;
@@ -16,7 +17,7 @@
 @property (strong, nonatomic) UITextField *textField2;
 @property (strong, nonatomic) NSMutableArray *resultArray;
 @property (strong, nonatomic) UILabel *contentLabel;
-
+@property BOOL displayHintLabel;
 
 @end
 
@@ -28,6 +29,7 @@
         _scrollView.bounces = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.delegate = self;
         if ([UIScreen mainScreen].bounds.size.width <= 330) {
             _scrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, 2364 + 40 - 110);
         }
@@ -58,12 +60,10 @@
 }
 
 - (void)tapToBack {
-    NSLog(@"1111");
     [self.textField1 resignFirstResponder];
 }
 
 - (void)tapToBack1 {
-    NSLog(@"1111");
     [self.textField2 resignFirstResponder];
 }
 
@@ -83,14 +83,16 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    self.displayHintLabel = YES;
     if ([self.textField1.text isEqualToString:@""] || [self.textField2.text isEqualToString:@""]) {
-        NSLog(@"输入学院或地区");
+        NSLog(@"显示");
         return NO;
     }
     self.scrollView.scrollEnabled = NO;
     
     if (textField.tag == 1) {
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 6, [UIScreen mainScreen].bounds.size.width, self.view.bounds.size.height - 6)];
+        scrollView.delegate = self;
         scrollView.backgroundColor = [UIColor whiteColor];
         scrollView.tag = 1997;
         scrollView.scrollEnabled = NO;
@@ -100,7 +102,6 @@
         UITapGestureRecognizer *tapToBackGesture1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToBack1)];
         [scrollView addGestureRecognizer:tapToBackGesture1];
         [self.scrollView addSubview:scrollView];
-    
     
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(28, 32 + 17 + (33/341.0 * ([UIScreen mainScreen].bounds.size.width - 36)), 200, 13)];
         label.text = @"搜索结果";
@@ -113,6 +114,22 @@
                 [self.resultArray addObject:self.collegeArray[i]];
             }
         }
+        
+        UILabel *hintLabel = [[UILabel alloc] init];
+        hintLabel.hidden = YES;
+        hintLabel.tag = 1234;
+        [scrollView addSubview:hintLabel];
+        hintLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+        hintLabel.backgroundColor = [UIColor clearColor];
+        hintLabel.font = [UIFont systemFontOfSize:14];
+        hintLabel.textAlignment = NSTextAlignmentLeft;
+        hintLabel.text = @"暂无搜索结果";
+        [hintLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(scrollView.mas_left).offset(28);
+            make.top.equalTo(label.mas_bottom).offset(16);
+            make.width.mas_equalTo(200);
+            make.height.mas_equalTo(20);
+        }];
     
 //展示搜索结果
         self.contentLabel = [[UILabel alloc]initWithFrame:CGRectMake(28, 32 + 17 + (33/341.0 * ([UIScreen mainScreen].bounds.size.width - 36)) + 13 + 16, [UIScreen mainScreen].bounds.size.width - 28 - 48, 1000)];
@@ -127,6 +144,7 @@
         NSMutableString *resultStr = [[NSMutableString alloc] init];
     
         for (int i = 0; i < self.resultArray.count; i++) {
+            self.displayHintLabel = NO;
             [resultStr appendString:self.resultArray[i]];
             if (i != self.resultArray.count - 1) {
                 [resultStr appendString:@"\n"];
@@ -173,6 +191,7 @@
     }
     else if (textField.tag == 2) {
         UIScrollView *scrollView = [self.scrollView viewWithTag:1997];
+        scrollView.delegate = self;
         if ((scrollView.scrollEnabled = YES)) {
             scrollView.scrollEnabled = NO;
         }
@@ -191,6 +210,7 @@
         
         NSMutableString *resultStr = [[NSMutableString alloc] init];
         for (int i = 0; i < self.resultArray.count; i++) {
+            self.displayHintLabel = NO;
             [resultStr appendString:self.resultArray[i]];
             if (i != self.resultArray.count - 1) {
                 [resultStr appendString:@"\n"];
@@ -210,6 +230,19 @@
         [_contentLabel sizeToFit];
     }
     
+    if (self.displayHintLabel == YES) {
+        //拿到第二个scrollView
+        UIView *scrollview = [self.scrollView viewWithTag:1997];
+        //拿到hintLabel
+        UIView *hintLabel = [scrollview viewWithTag:1234];
+        hintLabel.hidden = NO;
+    }
+    else {
+        UIView *scrollview = [self.scrollView viewWithTag:1997];
+        UIView *hintLabel = [scrollview viewWithTag:1234];
+        hintLabel.hidden = YES;
+    }
+    
     [self.resultArray removeAllObjects];
     [textField resignFirstResponder];
     return YES;
@@ -227,6 +260,7 @@
     
     self.collegeArray = [[NSArray alloc] initWithObjects:@"重庆邮电大学总群：636208141",@"通信与信息工程学院：498167991",@"计算机与科学技术学院：638612170",@"自动化学院：574872113",@"光电工程学院/国际半导体学院：636449199",@"外国语学院：333094013",@"传媒艺术学院：527468298",@"生物信息学院：637402699",@"经济管理学院信息管理与信息系统专业：362192309",@"经济管理学院： 545772871",@"经济管理学院工程管理专业：552540368",@"软件工程学院：482656306",@"网络空间安全与信息法学院：162240404",@"理学院：575159267",@"体育学院：649510732",@"国际学院：17443276",@"先进制造工程学院：563565394",@"贵州：601631814",@"河北：548535234",@"安徽：562487104",@"辽宁：134489031",@"河南老乡群1：310222276",@"河南老乡群2：251311309",@"河南安阳：116198098",@"山东：384043802",@"江苏：123736116",@"黑龙江：316348915",@"潮汕：4958681",@"江西：3889855",@"江西上饶：476426072",@"浙江：247010642",@"广西贵港：5819894",@"广西南宁：16026851",@"广西：9651531",@"广西柳州：7045893",@"广东：113179139",@"广东韶关：66484867",@"广东惠州：213337022 ",@"山西：119738941",@"海南：9334029",@"福建：173210510",@"吉林：118060379",@"云南宣威：211910023",@"云南玉溪：256581906",@"云南曲靖：117499346",@"云南：548640416",@"云南官方群：42052111",@"天津：8690505",@"湖北恩施：179765240",@"湖北：33861584",@"湖北黄冈：181704337",@"湖南：204491110",@"重庆梁平：85423833",@"重庆忠县：115637967",@"重庆铜梁：198472776",@"重庆大足：462534986",@"重庆开县：5657168",@"重庆荣昌：149452192",@"重庆永川：467050041",@"重庆丰都：343292119",@"重庆涪陵：199748999",@"重庆云阳：118971621",@"重庆璧山：112571803",@"重庆石柱：289615375",@"重庆彭水：283978475",@"重庆南川：423494314",@"重庆垫江：307233230",@"重庆合川：226325326",@"重庆荣昌：149452192",@"重庆綦江：109665788",@"重庆奉节：50078959",@"重庆铜梁：198472776",@"重庆黔江：102897346",@"重庆万州：469527984",@"重庆巫溪：143884210",@"重庆巫山：129440237",@"四川大群：142604890",@"四川成都：298299346",@"四川自贡：444020511",@"四川绵阳：191653502",@"陕西：193388613",@"新疆：248052400",@"青海：282597612",@"北京：143833720",@"甘肃美术：578076400",@"甘肃：155724412", nil];
     self.resultArray = [[NSMutableArray alloc] init];
+    self.displayHintLabel = NO;
     [self layoutLabel];
     [self.view addSubview:self.scrollView];
 }
@@ -281,9 +315,11 @@
     [contentLabel2 setAttributedText:attributedString2];
     [contentLabel2 sizeToFit];
     [self.scrollView addSubview:contentLabel2];
-    
-    double a = CGRectGetMaxY(contentLabel2.frame);
-    NSLog(@"%lf", a);
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.textField1 resignFirstResponder];
+    [self.textField2 resignFirstResponder];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
