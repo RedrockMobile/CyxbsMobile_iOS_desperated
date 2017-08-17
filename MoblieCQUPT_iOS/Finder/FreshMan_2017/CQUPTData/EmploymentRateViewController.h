@@ -9,4 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface EmploymentRateViewController : BaseViewController
+
+- (void)getData;
+
 @end
