@@ -111,11 +111,19 @@
     [cell.myImageView addGestureRecognizer:tapGesture];
     cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
     cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-    UIImageView *numberOfPhotos = [[UIImageView alloc] initWithFrame:CGRectMake(7, 3.5, 40, 12)];
+    
+    UILabel *numberOfPhotos = [[UILabel alloc] initWithFrame:CGRectMake(22, 0, 28, 19)];
     numberOfPhotos.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    numberOfPhotos.image = [UIImage imageNamed:@"图3"];
+    numberOfPhotos.text = @"四张";
+    numberOfPhotos.textColor = [UIColor whiteColor];
+    numberOfPhotos.font = [UIFont systemFontOfSize:12];
     [view addSubview:numberOfPhotos];
-
+    
+    UIImageView *cameraImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 4, 12, 12)];
+    cameraImageView.image = [UIImage imageNamed:@"camera"];
+    cameraImageView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    [view addSubview:cameraImageView];
+    
     if (self.descriptionArray) {
         cell.nameLabel.text = self.nameArray[indexPath.row];
         cell.secondNameLabel.text = self.secondNameArray[indexPath.row];
@@ -166,7 +174,7 @@
     [view addGestureRecognizer:tapToBackGesture];
     
 //scrollView
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - 251)/2.0, [UIScreen mainScreen].bounds.size.width, 251)];
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, ([UIScreen mainScreen].bounds.size.height - 251)/2.0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - ([UIScreen mainScreen].bounds.size.height - 251)/2.0)];
     scrollView.bounces = NO;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
