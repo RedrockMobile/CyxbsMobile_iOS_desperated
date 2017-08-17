@@ -389,7 +389,6 @@
 		F2509C751F440D980091F678 /* MilitaryTrainingTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509C081F440D970091F678 /* MilitaryTrainingTipsViewController.m */; };
 		F2509C761F440D980091F678 /* MilitaryTrainingVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509C0A1F440D970091F678 /* MilitaryTrainingVideoViewController.m */; };
 		F2509C771F440D980091F678 /* MTVideo1.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509C0C1F440D970091F678 /* MTVideo1.m */; };
-		F2509C781F440D980091F678 /* MTVideo2.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509C0E1F440D970091F678 /* MTVideo2.m */; };
 		F2509C7D1F440D980091F678 /* BeautyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509C151F440D970091F678 /* BeautyTableViewCell.m */; };
 		F2509C7E1F440D980091F678 /* BeautyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2509C161F440D970091F678 /* BeautyTableViewCell.xib */; };
 		F2509C7F1F440D980091F678 /* BeautyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509C181F440D970091F678 /* BeautyViewController.m */; };
@@ -525,6 +524,8 @@
 		F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AA1F3C45540063B024 /* login_image_account@3x.png */; };
 		F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AB1F3C45540063B024 /* login_image_password@3x.png */; };
 		F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AC1F3C45540063B024 /* login_image_password@2x.png */; };
+		F2770B3A1F4534BB00BB6186 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2770B381F4534BB00BB6186 /* camera@2x.png */; };
+		F2770B3B1F4534BB00BB6186 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2770B391F4534BB00BB6186 /* camera@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1098,8 +1099,6 @@
 		F2509C0A1F440D970091F678 /* MilitaryTrainingVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitaryTrainingVideoViewController.m; sourceTree = "<group>"; };
 		F2509C0B1F440D970091F678 /* MTVideo1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideo1.h; sourceTree = "<group>"; };
 		F2509C0C1F440D970091F678 /* MTVideo1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideo1.m; sourceTree = "<group>"; };
-		F2509C0D1F440D970091F678 /* MTVideo2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideo2.h; sourceTree = "<group>"; };
-		F2509C0E1F440D970091F678 /* MTVideo2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideo2.m; sourceTree = "<group>"; };
 		F2509C141F440D970091F678 /* BeautyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeautyTableViewCell.h; sourceTree = "<group>"; };
 		F2509C151F440D970091F678 /* BeautyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeautyTableViewCell.m; sourceTree = "<group>"; };
 		F2509C161F440D970091F678 /* BeautyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeautyTableViewCell.xib; sourceTree = "<group>"; };
@@ -1286,6 +1285,8 @@
 		F26D96AA1F3C45540063B024 /* login_image_account@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_image_account@3x.png"; sourceTree = "<group>"; };
 		F26D96AB1F3C45540063B024 /* login_image_password@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_image_password@3x.png"; sourceTree = "<group>"; };
 		F26D96AC1F3C45540063B024 /* login_image_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_image_password@2x.png"; sourceTree = "<group>"; };
+		F2770B381F4534BB00BB6186 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
+		F2770B391F4534BB00BB6186 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2418,8 +2419,6 @@
 				F2509C0A1F440D970091F678 /* MilitaryTrainingVideoViewController.m */,
 				F2509C0B1F440D970091F678 /* MTVideo1.h */,
 				F2509C0C1F440D970091F678 /* MTVideo1.m */,
-				F2509C0D1F440D970091F678 /* MTVideo2.h */,
-				F2509C0E1F440D970091F678 /* MTVideo2.m */,
 			);
 			path = MilitaryTraining;
 			sourceTree = "<group>";
@@ -2461,6 +2460,8 @@
 		F2509C2F1F440D970091F678 /* 图标 */ = {
 			isa = PBXGroup;
 			children = (
+				F2770B381F4534BB00BB6186 /* camera@2x.png */,
+				F2770B391F4534BB00BB6186 /* camera@3x.png */,
 				F210F0F41F44A29E003BDF6A /* pause@2x.png */,
 				F210F0F51F44A29E003BDF6A /* pause@3x.png */,
 				F2509C301F440D970091F678 /* close@2x.png */,
@@ -3046,6 +3047,7 @@
 				F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */,
 				F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */,
 				F2509C8F1F440D980091F678 /* freshman_image_comment@3x.png in Resources */,
+				F2770B3B1F4534BB00BB6186 /* camera@3x.png in Resources */,
 				F242DDD61EBCB2BB005AC411 /* lost_image_lackcate@3x.png in Resources */,
 				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
 				F242DDF01EBCB2BB005AC411 /* shakeForShop@2x.png in Resources */,
@@ -3076,6 +3078,7 @@
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
 				F242DE891EBCB2BC005AC411 /* 地点@3x.png in Resources */,
 				F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */,
+				F2770B3A1F4534BB00BB6186 /* camera@2x.png in Resources */,
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				F2509CA91F440D980091F678 /* 蓝色@3x.png in Resources */,
@@ -3404,7 +3407,6 @@
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
-				F2509C781F440D980091F678 /* MTVideo2.m in Sources */,
 				F2509C6A1F440D970091F678 /* CQUPTDataRootViewController.m in Sources */,
 				F26D96591F3C400F0063B024 /* UIImage+Helper.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
