@@ -19,26 +19,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"新生专题";
     self.view.backgroundColor = [UIColor whiteColor];
     [self layoutButton];
 }
 
 
 - (void)tapFirstBtn {
-    StuStrategyRootViewController *stuVC = [[StuStrategyRootViewController alloc] init];    
+    StuStrategyRootViewController *stuVC = [[StuStrategyRootViewController alloc] init];
+    stuVC.navigationItem.title = @"邮子攻略";
     [self.navigationController pushViewController:stuVC animated:YES];
 }
 - (void)tapSecondBtn{
     StuRootViewController *BeautyVC = [[StuRootViewController alloc]init];
+    BeautyVC.navigationItem.title = @"重邮风采";
     [self.navigationController pushViewController:BeautyVC animated:YES];
     
 }
 - (void)tapThirdBtn {
      CQUPTDataRootViewController *CQUPTDataVC = [[CQUPTDataRootViewController alloc] init];
+    CQUPTDataVC.navigationItem.title = @"重邮数据";
     [self.navigationController pushViewController:CQUPTDataVC animated:YES];
 }
 - (void)tapFourthBtn {
     MilitaryTrainingRootViewController *MTVC = [[MilitaryTrainingRootViewController alloc] init];
+    MTVC.navigationItem.title = @"军训特辑";
     [self.navigationController pushViewController:MTVC animated:YES];
 }
 

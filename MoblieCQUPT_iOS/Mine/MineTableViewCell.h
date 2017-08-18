@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface MineTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *cellImageView;
+@property (weak, nonatomic) IBOutlet UILabel *cellLabel;
+
 
 @end

@@ -29,6 +29,10 @@
     _suggestTextView.delegate = self;
     [_suggestTextView setContentInset:UIEdgeInsetsMake(0, 10, 0, 5)];//设置UITextView的内边距
     [self.view addSubview:_suggestTextView];
+    self.navigationItem.rightBarButtonItem = self.send;
+    self.navigationItem.title = @"意见反馈";
+    self.send.enabled   = NO;
+    self.send.tintColor = [UIColor whiteColor];
 
 }
 
@@ -47,16 +51,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationItem.rightBarButtonItem = nil;
-    self.navigationItem.title = @"意见反馈";
-    self.navigationItem.rightBarButtonItem = self.send;
-    self.send.enabled   = NO;
-    self.send.tintColor = [UIColor blackColor];
-    
-}
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [_suggestTextView resignFirstResponder];
 }
@@ -66,7 +60,6 @@
         [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
     }else if(_suggestTextView.text.length>0 && _suggestTextView.text.length<=5){
         self.send.enabled   = NO;
-        self.send.tintColor = [UIColor clearColor];
         [_suggestTextView setPlaceHolder:@""];
     }else{
         self.send.enabled   = YES;
@@ -80,7 +73,6 @@
         [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
     }else if(_suggestTextView.text.length>0 && _suggestTextView.text.length<=5){
         self.send.enabled   = NO;
-        self.send.tintColor = [UIColor clearColor];
         [_suggestTextView setPlaceHolder:@""];
     }else{
         self.send.enabled   = YES;

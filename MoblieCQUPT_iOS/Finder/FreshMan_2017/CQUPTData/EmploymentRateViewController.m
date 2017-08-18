@@ -18,17 +18,12 @@
 @property (strong, nonatomic) NSArray *companyArray;
 @property (strong, nonatomic) NSArray *numberOfPeopleArray;
 @property (strong, nonatomic) NSArray *animateViewWidthArray;
-
 @end
 
 @implementation EmploymentRateViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 6)];
-    [self.view addSubview:grayView];
-    grayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.05];
 
     self.companyArray = [[NSArray alloc] initWithObjects:@"腾讯", @"华为", @"烽火", @"中国铁塔", @"海信", @"猪八戒", @"中国联通", @"深信服", @"中国移动", @"中国电信", nil];
     self.animateViewWidthArray = [[NSArray alloc] initWithObjects:@(26), @(43), @(44), @(71), @(58), @(74), @(142), @(46), @(138), @(99), nil];
@@ -36,6 +31,12 @@
 }
 
 - (void)getData {
+    for (UIView *view in self.view.subviews) {
+        [view removeFromSuperview];
+    }
+    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 6)];
+    [self.view addSubview:grayView];
+    grayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.05];
     for (int i = 0; i < 10; i++) {
         if ([UIScreen mainScreen].bounds.size.width <= 330) {
             UILabel *companyLabel = [[UILabel alloc] init];
