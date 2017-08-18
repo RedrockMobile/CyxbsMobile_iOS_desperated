@@ -31,12 +31,13 @@
     
     _detailLabel = [[UILabel alloc] init];
     _detailLabel.font =[UIFont systemFontOfSize:15*SCREENWIDTH/375];
-    _detailLabel.textColor = COLOR_NONEED;
+    _detailLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.67];
     _detailLabel.numberOfLines = 0;
     [self.contentView addSubview:_detailLabel];
     
     _cutLine = [[UIView alloc]init];
-    _cutLine.backgroundColor = COLOR_NONEED;
+    _cutLine.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
+    _cutLine.width = 2;
     [self addSubview:_cutLine];
     
     [_namesLabel mas_makeConstraints:^(MASConstraintMaker *make) {

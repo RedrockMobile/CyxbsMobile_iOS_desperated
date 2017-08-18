@@ -91,17 +91,25 @@
         cell.positionImageView.image = [UIImage imageNamed:@"定位"];
         cell.positionImageView.alpha = 0.2;
         
-        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.myImageView.layer.cornerRadius = 2;
         cell.myImageView.layer.masksToBounds = YES;
     }
     
     if (self.urlStrArray) {
         cell.nameLabel.text = self.nameArray[indexPath.row];
-        cell.positionLabel.text = self.positionArray[indexPath.row];
+//        cell.positionLabel.text = self.positionArray[indexPath.row];
         cell.viewLabel.text = self.commentArray[indexPath.row];
        NSString *encodedString = [self.urlStrArray[indexPath.row] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
         [cell.myImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"占位图"]];
+        
+        NSString *str1 = self.positionArray[indexPath.row];
+        NSMutableAttributedString * attributedString1 = [[NSMutableAttributedString alloc] initWithString:str1];
+        NSMutableParagraphStyle * paragraphStyle1 = [[NSMutableParagraphStyle alloc] init];
+        [paragraphStyle1 setLineSpacing:5];
+        [attributedString1 addAttribute:NSParagraphStyleAttributeName value:paragraphStyle1 range:NSMakeRange(0, [str1 length])];
+        [cell.positionLabel setAttributedText:attributedString1];
+        [cell.positionLabel sizeToFit];
     }
     
     return cell;

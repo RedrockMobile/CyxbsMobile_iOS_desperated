@@ -84,7 +84,7 @@
     
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"MyTableViewCell" owner:self options:nil] lastObject];;
-        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.myImageView.layer.cornerRadius = 3;
         cell.myImageView.layer.masksToBounds = YES;
         cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
@@ -114,7 +114,7 @@
     
     UILabel *numberOfPhotos = [[UILabel alloc] initWithFrame:CGRectMake(22, 0, 28, 19)];
     numberOfPhotos.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
-    numberOfPhotos.text = @"四张";
+    numberOfPhotos.text = @" 4张";
     numberOfPhotos.textColor = [UIColor whiteColor];
     numberOfPhotos.font = [UIFont systemFontOfSize:12];
     [view addSubview:numberOfPhotos];

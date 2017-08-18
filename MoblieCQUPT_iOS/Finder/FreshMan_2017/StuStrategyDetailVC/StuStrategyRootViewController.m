@@ -69,7 +69,10 @@ bool array[8];
 }
 
 - (void)eventWhenScrollSubViewWithIndex:(NSInteger)index{
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    if (index != 4) {
+        [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    }
+    
     [self.VCArray[index] viewWillAppear:YES];
     if (!array[index]) {
         if ([self.VCArray[index] respondsToSelector:@selector(getData)]) {

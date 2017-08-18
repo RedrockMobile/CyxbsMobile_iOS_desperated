@@ -88,7 +88,7 @@
         cell.descriptionLabel.font = [UIFont systemFontOfSize:13];
         cell.descriptionLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
         
-        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.myImageView.userInteractionEnabled = NO;
         cell.myImageView.layer.cornerRadius = 3;
         cell.myImageView.layer.masksToBounds = YES;
@@ -108,7 +108,7 @@
         }
     }
     
-    if (indexPath.row == 2 || indexPath.row == 3) {
+    if (1) {
         UIView *view = [[UIView alloc] init];
         view.tag = 222;
         view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
@@ -125,8 +125,10 @@
         numberOfPhotos.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
         if (indexPath.row == 2) {
             numberOfPhotos.text = @" 3张";
-        } else {
+        } else if (indexPath.row == 3){
             numberOfPhotos.text = @" 2张";
+        } else {
+            numberOfPhotos.text = @" 1张";
         }
         numberOfPhotos.textColor = [UIColor whiteColor];
         numberOfPhotos.font = [UIFont systemFontOfSize:12];
