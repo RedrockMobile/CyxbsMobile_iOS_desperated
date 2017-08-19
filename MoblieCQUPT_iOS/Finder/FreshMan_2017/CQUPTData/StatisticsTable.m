@@ -86,7 +86,7 @@
         [shape addAnimation:checkAnimation forKey:@"checkAnimation"];
         [sideshape addAnimation:checkAnimation forKey:@"checkAnimation"];
        
-        UILabel *detailLable = [self newLable:CGRectMake(self.frame.size.width/2 - 28 ,_lineWidth+ (_lineWidth+_blankWidth)*i - 2, 22, 18) WithContext:[self turnFloat: context[i][@"score"]] WithColor:color[i][0]];
+        UILabel *detailLable = [self newLable:CGRectMake(self.frame.size.width/2 - 36 ,_lineWidth+ (_lineWidth+_blankWidth)*i - 2, 22, 18) WithContext:[self turnFloat: context[i][@"score"]] WithColor:color[i][0]];
         [self addSubview:detailLable];
         
         UILabel *lables = [self detailLable:CGRectMake(SCREENWIDTH / 2 - self.size.width / 2 + 5,self.frame.size.width + 50 * i * SCREENWIDTH /375, self.size.width, 25* SCREENWIDTH /375) WithContext:context[i] With:color[i]];

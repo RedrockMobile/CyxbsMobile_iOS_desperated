@@ -50,6 +50,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.bounces = NO;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage)];
+    [self.headImageView addGestureRecognizer:gesture];
+    self.headImageView.userInteractionEnabled = YES;
 }
 
 - (void)viewDidLayoutSubviews{
@@ -93,7 +96,7 @@
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        if (indexPath.row == 2 || indexPath.row == 3) {
+        if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3) {
             if (![UserDefaultTool getStuNum]) {
                 [self tint:vc];
                 return;
@@ -143,6 +146,17 @@
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
+- (void)touchImage{
+    UIViewController *vc = [[MyInfoViewController alloc]init];
+    vc.navigationItem.title = @"修改信息";
+    if (![UserDefaultTool getStuNum]) {
+        [self tint:vc];
+        return;
+    }
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
 
 @end
 

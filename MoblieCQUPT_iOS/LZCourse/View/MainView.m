@@ -40,7 +40,7 @@
     [self addSubview:self.monthLabel];
     
     CGFloat dayLbHeight = MHEIGHT;
-    CGFloat dayLbWidth = (self.frame.size.width-MWIDTH)/DAY;
+    CGFloat dayLbWidth = floor(self.frame.size.width-MWIDTH)/DAY;
     self.dayLabels = [NSMutableArray arrayWithCapacity:DAY];
     for (int i = 0; i < DAY; i++) {
         self.dayLabels[i] = [[DayLabel alloc]initWithFrame:CGRectMake(MWIDTH+i*dayLbWidth, 0,dayLbWidth, dayLbHeight)];
@@ -97,7 +97,7 @@
 
 - (void)initLessonLb{
     for (int i = 1; i <= LESSON; i++) {
-        LessonNumLabel *lessonLb = [[LessonNumLabel alloc]initWithFrame:CGRectMake(0, (LESSONBTNSIDE)*(i-1), MWIDTH, LESSONBTNSIDE)];
+        LessonNumLabel *lessonLb = [[LessonNumLabel alloc]initWithFrame:CGRectMake(0, floor(LESSONBTNSIDE)*(i-1), MWIDTH, floor(LESSONBTNSIDE))];
         lessonLb.text = [NSString stringWithFormat:@"%d",i];
         [self.scrollView addSubview:lessonLb];
     }
