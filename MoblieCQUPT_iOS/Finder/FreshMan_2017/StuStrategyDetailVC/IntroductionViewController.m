@@ -171,24 +171,24 @@
     NSArray *array11 = [[NSArray alloc] initWithObjects:str11, str22, str33, str44, str55, str66, str77, nil];
     
     
-    NSMutableAttributedString *str111 = [[NSMutableAttributedString alloc] initWithString:@"迎新接站：报道期间，我校将在重庆火车北站南、北广场设新生接待站，有同学负责引导新生到指定地点乘车。"];
-    NSRange range111 = [[str111 string] rangeOfString:@"迎新接站："];
+    NSMutableAttributedString *str111 = [[NSMutableAttributedString alloc] initWithString:@"方案一：迎新接站：报道期间，我校将在重庆火车北站南、北广场设新生接待站，有同学负责引导新生到指定地点乘车。"];
+    NSRange range111 = [[str111 string] rangeOfString:@"方案一："];
     [str111 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:101/255.0 green:178/255.0 blue:1 alpha:1] range:range111];
     
-    NSMutableAttributedString *str222 = [[NSMutableAttributedString alloc] initWithString:@"重庆江北机场（距离学校约40公里）：可乘机场大巴至上清寺后转乘108路公交车至南坪，再转乘346或347路公交车到学校；或乘轻轨三号线到南坪，再转乘346或347路公交车到学校；直接打车到校费用约为70元；"];
-    NSRange range222 = [[str222 string] rangeOfString:@"重庆江北机场（距离学校约40公里）："];
+    NSMutableAttributedString *str222 = [[NSMutableAttributedString alloc] initWithString:@"方案二：重庆江北机场（距离学校约40公里）：可乘机场大巴至上清寺后转乘108路公交车至南坪，再转乘346或347路公交车到学校；或乘轻轨三号线到南坪，再转乘346或347路公交车到学校；直接打车到校费用约为70元；"];
+    NSRange range222 = [[str222 string] rangeOfString:@"方案二："];
     [str222 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:101/255.0 green:178/255.0 blue:1 alpha:1] range:range222];
     
-    NSMutableAttributedString *str333 = [[NSMutableAttributedString alloc] initWithString:@"龙头寺火车站、重庆北站（距离学校约20公里）：乘323路或168路公交车至南坪，转乘346或347路公交车至学校：或乘轻轨三号线到南坪，再转乘346或347路公交车到学校；直接打车到校费用约40元；"];
-    NSRange range333 = [[str333 string] rangeOfString:@"龙头寺火车站、重庆北站（距离学校约20公里）："];
+    NSMutableAttributedString *str333 = [[NSMutableAttributedString alloc] initWithString:@"方案三：龙头寺火车站、重庆北站（距离学校约20公里）：乘323路或168路公交车至南坪，转乘346或347路公交车至学校：或乘轻轨三号线到南坪，再转乘346或347路公交车到学校；直接打车到校费用约40元；"];
+    NSRange range333 = [[str333 string] rangeOfString:@"方案三："];
     [str333 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:101/255.0 green:178/255.0 blue:1 alpha:1] range:range333];
     
-    NSMutableAttributedString *str444 = [[NSMutableAttributedString alloc] initWithString:@"菜园坝火车站、汽车站（距离学校约12公里）：可在菜园坝广场乘347路公交车至学校；直接打车到校费用约为25元；"];
-    NSRange range444 = [[str444 string] rangeOfString:@"菜园坝火车站、汽车站（距离学校约12公里）："];
+    NSMutableAttributedString *str444 = [[NSMutableAttributedString alloc] initWithString:@"方案四：菜园坝火车站、汽车站（距离学校约12公里）：可在菜园坝广场乘347路公交车至学校；直接打车到校费用约为25元；"];
+    NSRange range444 = [[str444 string] rangeOfString:@"方案四："];
     [str444 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:101/255.0 green:178/255.0 blue:1 alpha:1] range:range444];
     
-    NSMutableAttributedString *str555 = [[NSMutableAttributedString alloc] initWithString:@"朝天门码头（距离学校约9公里）：可乘车至南坪后转乘346或347路公交车至学校；直接打车到校费用约为20元。"];
-    NSRange range555 = [[str555 string] rangeOfString:@"朝天门码头（距离学校约9公里）："];
+    NSMutableAttributedString *str555 = [[NSMutableAttributedString alloc] initWithString:@"方案五：朝天门码头（距离学校约9公里）：可乘车至南坪后转乘346或347路公交车至学校；直接打车到校费用约为20元。"];
+    NSRange range555 = [[str555 string] rangeOfString:@"方案五："];
     [str555 addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithRed:101/255.0 green:178/255.0 blue:1 alpha:1] range:range555];
     NSArray *array111 = [[NSArray alloc] initWithObjects:str111, str222, str333, str444, str555, nil];
     

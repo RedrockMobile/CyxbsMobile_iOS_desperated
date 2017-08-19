@@ -86,7 +86,7 @@
         cell.secondNameLabel.hidden = YES;
         cell.SeparatorView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.myImageView.contentMode = UIViewContentModeScaleToFill;
+        cell.myImageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.myImageView.layer.cornerRadius = 3;
         cell.myImageView.layer.masksToBounds = YES;
         
