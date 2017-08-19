@@ -36,6 +36,7 @@
 - (BOOL)matterWithWeek:(NSNumber *)week{
     [self.remindArrow removeFromSuperview];
     [self.btn setTitle:@"" forState:UIControlStateNormal];
+    [self.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if (self.beginLesson<6 && self.beginLesson >=4) {
         if (self.matter.lessonArray.count > 1) {
             [self.btn setBackgroundImage:[UIImage imageNamed:@"多课2"] forState:UIControlStateNormal];
@@ -96,6 +97,7 @@
 
 - (void)showRemindWithLesson{
     self.remindArrow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"remind"]];
+    [self.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.btn addSubview:self.remindArrow];
     [self.remindArrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.btn).offset(-2);

@@ -186,7 +186,7 @@
             
             if (_stuInfoArray.count > 0) {
                 for (int i=0; i<_stuInfoArray.count; i++) {
-                    if ([returnValue[@"data"][@"name"] isEqualToString:_stuInfoArray[i][@"name"]]) {
+                    if ([returnValue[@"data"][@"stunum"] isEqualToString:_stuInfoArray[i][@"stunum"]]) {
                         isHaveSameName = YES;
                     }
                 }

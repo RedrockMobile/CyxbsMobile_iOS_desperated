@@ -16,7 +16,7 @@
 #import "CoverView.h"
 #import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
-@interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,SaveDelegate,UITextViewDelegate>
+@interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,SaveDelegate,UITextFieldDelegate>
 @property TimeChooseScrollView *remindChooseView;
 @property NSMutableArray <NSString *>*contentArray;
 @property BOOL isShowRemindChooseView;
@@ -29,14 +29,18 @@
 @property CoverView *coverView;
 @property BOOL isEditing;
 @property NSDictionary *remind;
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITextField *contentTextField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property NSNumber *idNum;
+@property NSArray *titleArray;
+@property NSArray *imageArray;
 @end
 
 @implementation AddRemindViewController
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-    [textView becomeFirstResponder];
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [textField becomeFirstResponder];
 }
-
 
 - (instancetype)initWithRemind:(NSDictionary *)remind{
     self = [self init];
@@ -51,8 +55,8 @@
     if (remind != nil) {
         self.isEditing = YES;
         self.idNum = [remind objectForKey:@"id"];
-        self.titileTextView.text = [remind objectForKey:@"title"];
-        self.contentTextView.text = [remind objectForKey:@"content"];
+        self.titleTextField.text = [remind objectForKey:@"title"];
+        self.contentTextField.text = [remind objectForKey:@"content"];
         NSArray *dateArray = [remind objectForKey:@"date"];
         self.timeArray = [NSMutableArray array];
         for (int i = 0; i<dateArray.count; i++) {
@@ -88,34 +92,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     self.imageArray = @[@"remind_image_week",@"remind_image_time",@"remind_image_remind"];
+    self.titleArray = @[@"周数",@"时间",@"提醒"];
+    
     [[RemindNotification shareInstance]creatIdentifiers];
     self.title = @"事项编辑";
-    
-    self.titileTextView.delegate = self;
-    self.contentTextView.delegate = self;
-    self.titileTextView.font = [UIFont adaptFontSize:18];
-    self.contentTextView.font = [UIFont adaptFontSize:18];
-    self.titileTextView.layer.cornerRadius = 5;
-    self.contentTextView.layer.cornerRadius = 5;
-    self.contentTextView.layer.masksToBounds = YES;
-    
+    self.titleTextField.delegate = self;
+    self.contentTextField.delegate = self;
     self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-    
     __weak AddRemindViewController *weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
         [weakSelf touchesBegan:touches withEvent:event];
     };
-    
     self.contentArray = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
-    self.titileTextView.backgroundColor = [UIColor colorWithRed:238/255.f green:238/255.f blue:238/255.f alpha:1];
-    self.contentTextView.backgroundColor = [UIColor colorWithRed:238/255.f green:238/255.f blue:238/255.f alpha:1];
-
-    
     self.tableView.tableFooterView = [[UIView alloc]init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.scrollEnabled = NO;
-    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"remind_image_confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(saveRemind)];
     self.navigationItem.rightBarButtonItem = saveItem;
     
@@ -149,37 +143,40 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RemindTableViewCell *cell = [[NSBundle mainBundle] loadNibNamed:@"RemindTableViewCell" owner:self options:nil][0];
-    [cell layoutIfNeeded];
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.titleLabel.text = @"时间";
-            cell.contentLabel.text = self.contentArray[0];
-            break;
-        case 1:
-            cell.titleLabel.text = @"周数";
-            cell.contentLabel.text = self.contentArray[1];
-            break;
-        case 2:
-            cell.titleLabel.text = @"提醒";
-            cell.contentLabel.text = self.contentArray[2];
-            cell.preservesSuperviewLayoutMargins = NO;
-            cell.layoutMargins = UIEdgeInsetsZero;
-            cell.separatorInset = UIEdgeInsetsMake(0, SCREENWIDTH, 0, 0); //去除最后一条分割线
-            break;
-        default:
-            break;
-    }
+//    [cell layoutIfNeeded];
+    NSInteger index = indexPath.row;
+    cell.titleLabel.text = self.titleArray[index];
+    cell.contentLabel.text = self.contentArray[index];
+    cell.cellImageView.image = [UIImage imageNamed:self.imageArray[index]];
+//    switch (indexPath.row) {
+//        case 0:
+//            cell.titleLabel.text = @"时间";
+//            cell.contentLabel.text = self.contentArray[0];
+//            break;
+//        case 1:
+//            cell.titleLabel.text = @"周数";
+//            cell.contentLabel.text = self.contentArray[1];
+//            break;
+//        case 2:
+//            cell.titleLabel.text = @"提醒";
+//            cell.contentLabel.text = self.contentArray[2];
+//            cell.preservesSuperviewLayoutMargins = NO;
+//            cell.layoutMargins = UIEdgeInsetsZero;
+//            cell.separatorInset = UIEdgeInsetsMake(0, SCREENWIDTH, 0, 0); //去除最后一条分割线
+//            break;
+//        default:
+//            break;
+//    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return tableView.height/self.contentArray.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.titileTextView resignFirstResponder];
-    [self.contentTextView resignFirstResponder];
+    [self.titleTextField resignFirstResponder];
+    [self.contentTextField resignFirstResponder];
     switch (indexPath.row) {
         case 0:
             self.timeChoose = [[TimeChooseViewController alloc]initWithTimeArray:self.timeArray];
@@ -203,8 +200,8 @@
     if(self.isShowRemindChooseView){
         [self remindChooseViewAnimated];
     }
-    [self.titileTextView resignFirstResponder];
-    [self.contentTextView resignFirstResponder];
+    [self.titleTextField resignFirstResponder];
+    [self.contentTextField resignFirstResponder];
 }
 
 - (void)remindChooseViewAnimated{
@@ -266,7 +263,7 @@
             return;
         }
     }
-    if([self.titileTextView isEqual:@""] ||[self.time isEqual:nil] || self.weekArray.count == 0){
+    if([self.titleTextField isEqual:@""] ||[self.time isEqual:nil] || self.weekArray.count == 0){
         [self presentViewController: alertController animated:YES completion:nil];
         return;
     }
@@ -316,8 +313,8 @@
     NSMutableDictionary *remind = [@{
                                      @"stuNum":stuNum,
                                      @"idNum":idNum,
-                                     @"title":self.titileTextView.text,
-                                     @"content":self.contentTextView.text,
+                                     @"title":self.titleTextField.text,
+                                     @"content":self.contentTextField.text,
                                      @"date":date,
                                      } mutableCopy];
     if (![self.time isEqual:@0]) {
@@ -330,8 +327,8 @@
                                          @"idNum":idNum,
                                          @"date":dateArray,
                                          @"time":self.time,
-                                         @"title":self.titileTextView.text,
-                                         @"content":self.contentTextView.text,
+                                         @"title":self.titleTextField.text,
+                                         @"content":self.contentTextField.text,
                                          } mutableCopy];
     
     NSError *error;
@@ -342,8 +339,8 @@
                                          @"idNum":idNum,
                                          @"date":jsonString,
                                          @"time":self.time,
-                                         @"title":self.titileTextView.text,
-                                         @"content":self.contentTextView.text,
+                                         @"title":self.titleTextField.text,
+                                         @"content":self.contentTextField.text,
                                          } mutableCopy];
     NSLog(@"%@",jsonParameters);
     HttpClient *client = [HttpClient defaultClient];

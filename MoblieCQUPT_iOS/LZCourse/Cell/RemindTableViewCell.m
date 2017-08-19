@@ -11,29 +11,28 @@
 #import "UIFont+AdaptiveFont.h"
 @implementation RemindTableViewCell
 
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    [self.contentView layoutIfNeeded];
-    self.contentLabel.preferredMaxLayoutWidth = self.contentLabel.frame.size.width;
-}
+//- (void)layoutSubviews
+//{
+//    [super layoutSubviews];
+//    [self.contentView layoutIfNeeded];
+//    self.contentLabel.preferredMaxLayoutWidth = self.contentLabel.frame.size.width;
+//}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.contentLabel.numberOfLines = 0;
+//    self.contentLabel.numberOfLines = 0;
     self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.accessoryView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"箭头"]];
-    __weak typeof (self) weakSelf = self;
-    [self addSubview:self.accessoryView];
-    [self.accessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(weakSelf);
-        make.centerY.equalTo(self.contentLabel);
-    }];
-                                       
+//    self.accessoryView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"箭头"]];
+//    [self addSubview:self.accessoryView];
+//    [self.accessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.right.equalTo(self);
+//        make.centerY.equalTo(self.contentLabel);
+//    }];
+    
     self.tintColor = [UIColor colorWithRed:65/255.f green:163/255.f blue:255/255.f alpha:1];
     self.titleLabel.font = [UIFont adaptFontSize:14];
-    self.contentLabel.font = [UIFont adaptFontSize:15];
-    self.contentLabel.textAlignment = NSTextAlignmentRight;
+    self.contentLabel.font = [UIFont adaptFontSize:14];
+//    self.contentLabel.textAlignment = NSTextAlignmentRight;
     // Initialization code
 }
 

@@ -43,7 +43,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
-        
+        [UserDefaultTool saveParameter:returnValue];
         if ([returnValue objectForKey:@"data"]) {
             if (!_data) {
                 _data = [[NSMutableDictionary alloc] init];
@@ -88,11 +88,12 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"
-                            WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text}
+    NSDictionary *parameter = @{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text};
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo" WithParameter:parameter
                      WithReturnValeuBlock:^(id returnValue) {
                          NSString *status = [returnValue objectForKey:@"info"];
                          if ([status isEqualToString:@"success"]) {
+                             [UserDefaultTool saveParameter:parameter];
                              MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                              uploadProgress.mode = MBProgressHUDModeText;
                              uploadProgress.labelText = @"上传成功";
@@ -212,7 +213,7 @@
     _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(MAIN_SCREEN_W-50-40, 18, 50, 50)];
     _avatar.userInteractionEnabled = YES;
     [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
-    [_avatar addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeHeaderImage)]];
+//    [_avatar addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeHeaderImage)]];
     _avatar.layer.masksToBounds = YES;
     _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
     
@@ -235,6 +236,7 @@
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.allowsEditing = YES;
     controller.delegate = self;
+//    controller.navigationBar.backIndicatorImage = [UIImage imageNamed:@"all_image_background"];
     [self presentViewController:controller animated:YES completion:nil];
 }
 
@@ -258,7 +260,12 @@
 }
 
 #pragma mark - TextFieldDelegate
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self changeHeaderImage];
+    }
+}
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return YES;

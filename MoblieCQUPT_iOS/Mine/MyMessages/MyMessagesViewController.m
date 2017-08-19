@@ -40,8 +40,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = YES;
-    self.automaticallyAdjustsScrollViewInsets = YES;
+//    self.navigationController.navigationBar.translucent = YES;
+//    self.automaticallyAdjustsScrollViewInsets = YES;
     self.navigationItem.title = @"个人动态";
     [self.view addSubview:self.communityTableView];
     [self setupRefresh];
@@ -56,8 +56,8 @@
 }
 
 - (void)getPersonalInfo{
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
+    NSString *stuNum = [UserDefaultTool getStuNum] ?:@"";
+    NSString *idNum = [UserDefaultTool getIdNum]?:@"";
     if (self.loadType == MessagesViewLoadTypeOther) {
         _stunum_other = self.commentModel.stuNum?:self.model.user_id;
     }
@@ -103,7 +103,7 @@
 }
 
 - (void)loadNet {
-    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *stuNum = [UserDefaultTool getStuNum] ?:@"";
     NSDictionary *parameter = @{@"stuNum":stuNum,
                                 @"page":@(_flag),
                                 @"size":@"15",
@@ -115,10 +115,12 @@
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
             [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
-            [dic setObject:_myInfoData[@"nickname"] forKey:@"nickname"];
-            [dic setObject:_myInfoData[@"photo_thumbnail_src"] forKey:@"user_thumbnail_src"];
-            [dic setObject:_myInfoData[@"photo_src"] forKey:@"user_photo_src"];
-            [dic setObject:_myInfoData[@"photo_thumbnail_src"] forKey:@"photo_thumbnail_src"];
+            if([UserDefaultTool getStuNum]){
+                [dic setObject:_myInfoData[@"nickname"] forKey:@"nickname"];
+                [dic setObject:_myInfoData[@"photo_thumbnail_src"] forKey:@"user_thumbnail_src"];
+                [dic setObject:_myInfoData[@"photo_src"] forKey:@"user_photo_src"];
+                [dic setObject:_myInfoData[@"photo_thumbnail_src"] forKey:@"photo_thumbnail_src"];
+            }
             MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
             MBCommunity_ViewModel *viewModel = [[MBCommunity_ViewModel alloc]init];
             viewModel.model = communityModel;

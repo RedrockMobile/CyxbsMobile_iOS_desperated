@@ -77,12 +77,10 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, self.picture.frame.origin.y+self.picture.frame.size.height, MAIN_SCREEN_W, MAIN_SCREEN_H - self.picture.frame.size.height) style:UITableViewStyleGrouped];
-        _tableView.scrollEnabled = NO;
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.sectionHeaderHeight = 0;
         _tableView.sectionFooterHeight = 0;
-        [_tableView setAutoresizesSubviews:NO];
         [_tableView setSeparatorColor:[UIColor colorWithRed:187/255.0 green:187/255.0 blue:187/255.0 alpha:0.5]];
 //        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     }

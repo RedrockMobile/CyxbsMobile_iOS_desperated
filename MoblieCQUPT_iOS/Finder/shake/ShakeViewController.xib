@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShakeViewController">
@@ -15,26 +20,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake.png" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-If-CLh">
-                    <rect key="frame" x="87" y="224" width="200" height="220"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shake_image_shake.png" translatesAutoresizingMaskIntoConstraints="NO" id="AUC-If-CLh">
+                    <rect key="frame" x="40" y="142" width="295" height="383"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="AUC-If-CLh" secondAttribute="height" multiplier="325:358" id="59B-ef-20A"/>
-                        <constraint firstAttribute="height" constant="220" id="5eD-y9-4XA"/>
-                        <constraint firstAttribute="width" constant="200" id="nZU-0R-kZi"/>
+                        <constraint firstAttribute="width" secondItem="AUC-If-CLh" secondAttribute="height" multiplier="287:373" id="Xc0-cV-PCO"/>
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="AUC-If-CLh" secondAttribute="centerY" constant="-0.5" id="2Ug-yQ-PVP"/>
-                <constraint firstAttribute="trailing" secondItem="AUC-If-CLh" secondAttribute="trailing" constant="88" id="S6c-pM-Vze"/>
-                <constraint firstItem="AUC-If-CLh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="87" id="cwL-Cu-Ivx"/>
+                <constraint firstAttribute="trailing" secondItem="AUC-If-CLh" secondAttribute="trailing" constant="40" id="S6c-pM-Vze"/>
+                <constraint firstItem="AUC-If-CLh" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UMm-DF-MFb"/>
+                <constraint firstItem="AUC-If-CLh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="40" id="cwL-Cu-Ivx"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="333.5" y="292.5"/>
         </view>
     </objects>
     <resources>
-        <image name="shake.png" width="162" height="179"/>
+        <image name="shake_image_shake.png" width="312" height="373"/>
     </resources>
 </document>

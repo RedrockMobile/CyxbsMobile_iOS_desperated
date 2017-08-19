@@ -8,9 +8,9 @@
 #import "MineViewController.h"
 #import "LoginViewController.h"
 #import "MineTableViewCell.h"
-#import "XBSAboutViewController.h"
-#import "AboutMeViewController.h"
 #import "MyInfoViewController.h"
+#import "AboutMeViewController.h"
+#import "MyMessagesViewController.h"
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray *cellDicArray;
@@ -132,7 +132,7 @@
             vc.navigationItem.title = @"与我相关";
             break;
         case 2:
-            vc = [[XBSAboutViewController alloc]init];
+            vc = [[MyMessagesViewController alloc]init];
             vc.navigationItem.title = @"我的动态";
             break;
     }

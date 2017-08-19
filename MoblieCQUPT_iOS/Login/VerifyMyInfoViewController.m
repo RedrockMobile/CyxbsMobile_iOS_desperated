@@ -60,10 +60,12 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text}
+    NSDictionary *parameter =@{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text};
+    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"WithParameter:parameter
                      WithReturnValeuBlock:^(id returnValue) {
                          NSString *status = [returnValue objectForKey:@"info"];
                          if ([status isEqualToString:@"success"]) {
+                             [UserDefaultTool saveParameter:parameter];
                              [self setUserId];
                          } else if ([status isEqualToString:@"failed"]) {
                              MBProgressHUD *uploadProgress1 = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
