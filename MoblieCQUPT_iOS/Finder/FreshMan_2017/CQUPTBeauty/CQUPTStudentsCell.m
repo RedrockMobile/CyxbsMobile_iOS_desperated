@@ -35,13 +35,13 @@
         [self.contentView addSubview:_idLabel];
         
         _contextLabel = [[UILabel alloc]init];
-        _contextLabel.textColor = COLOR_NONEED;
+        _contextLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.45];
         _contextLabel.font = [UIFont systemFontOfSize:13* SCREENWIDTH / 375];
         [self.contentView addSubview:_contextLabel];
         
         UILabel *award = [[UILabel alloc] init];
         award.text = @"颁奖词:";
-        award.textColor = COLOR_NONEED;
+        award.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
         award.font = [UIFont systemFontOfSize:13* SCREENWIDTH / 375];
         [self.contextLabel addSubview:award];
         
@@ -50,7 +50,8 @@
         [self addSubview:lab];
         
         _cutline = [[UILabel alloc] init];
-        _cutline.backgroundColor = COLOR_NONEED;
+        _cutline.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
+        _cutline.width = 2;
         [self.contentView addSubview:_cutline];
         
         [_imagesView mas_makeConstraints:^(MASConstraintMaker *maker){

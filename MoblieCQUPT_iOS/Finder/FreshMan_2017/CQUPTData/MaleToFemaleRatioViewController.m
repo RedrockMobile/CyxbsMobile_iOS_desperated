@@ -41,6 +41,8 @@
     [self layoutAnimateView];
     [self layoutPickerView];
     [self layoutCollegeButton];
+    [self getRatioDataWithCollege:@"全校"];
+    [self.collegeBtn setTitle:@"全校" forState:UIControlStateNormal];
 }
 
 - (void)getRatioDataWithCollege: (NSString *)college {

@@ -31,7 +31,7 @@
         _contextsLabel = [[UILabel alloc] init];
         _contextsLabel.numberOfLines = 0;
         _contextsLabel.font = [UIFont systemFontOfSize:13];
-        _contextsLabel.textColor = COLOR_NONEED;
+        _contextsLabel.textColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.67];
         [self.contentView addSubview:_contextsLabel];
         
         [_imagesView mas_makeConstraints:^(MASConstraintMaker *make) {
