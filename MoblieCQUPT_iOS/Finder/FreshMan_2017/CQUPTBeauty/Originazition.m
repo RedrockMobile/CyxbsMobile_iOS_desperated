@@ -28,7 +28,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     _height = 0;
-    _tablesView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.frame.size.height - [UIScreen mainScreen].bounds.size.height*50/667*2 -50) style:UITableViewStylePlain];
+    _tablesView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.frame.size.height - [UIScreen mainScreen].bounds.size.height*50/667*2 -68) style:UITableViewStylePlain];
     _tablesView.delegate = self;
     _tablesView.dataSource = self;
     self.tablesView.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
@@ -74,8 +74,8 @@
             _cell.detailLabel.text = _resumeT;
         }
         else{
-        _cell.namesLabel.text = _dataArray[indexPath.row - 1][@"name"];
-        _cell.detailLabel.text =_dataArray[indexPath.row -1][@"resume"];
+            _cell.namesLabel.text = _dataArray[indexPath.row - 1][@"name"];
+        _cell.detailLabel.text =_dataArray[indexPath.row - 1][@"resume"];
 
         }
         if (indexPath.row == _dataArray.count ) {
@@ -97,11 +97,18 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGSize size;
-    if (indexPath.row == 0) {
+    if (_i == 0) {
         size = [_dataArray[indexPath.row][@"resume"] boundingRectWithSize:CGSizeMake(SCREENWIDTH - 50, MAXFLOAT) options: NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*SCREENWIDTH/375] }context:nil].size;
+
     }
     else{
-        size = [_dataArray[indexPath.row -1][@"resume"] boundingRectWithSize:CGSizeMake(SCREENWIDTH - 50, MAXFLOAT) options: NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*SCREENWIDTH/375] }context:nil].size;
+        if (indexPath.row == 0) {
+            size = [_resumeT boundingRectWithSize:CGSizeMake(SCREENWIDTH - 50, MAXFLOAT) options: NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*SCREENWIDTH/375] }context:nil].size;
+            
+        }
+        else{
+            size = [_dataArray[indexPath.row - 1][@"resume"] boundingRectWithSize:CGSizeMake(SCREENWIDTH - 50, MAXFLOAT) options: NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*SCREENWIDTH/375] }context:nil].size;
+        }
     }
     return size.height + 80;
 }

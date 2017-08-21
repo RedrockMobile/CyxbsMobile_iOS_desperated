@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:240/255.0 blue:242/255.0 alpha:1];
-    _scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 8, ScreenWidth, SCREENHEIGHT - 58)];
+    _scroll = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 8, ScreenWidth, SCREENHEIGHT - 75)];
     _scroll.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT + 150);
     _scroll.backgroundColor = [UIColor whiteColor];
 //    _scroll.showsHorizontalScrollIndicator = NO;
