@@ -51,7 +51,6 @@
 }
 - (void)drawLinesWithDetail:(NSArray<NSDictionary*>*) context With:(NSArray<NSArray *> *) color {
     for (int i = 0; i < context.count; i ++) {
-//        [self removeFromSuperview];
         UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width/2, self.frame.size.width/2) radius:self.frame.size.width/2 - (_lineWidth+_blankWidth) * (i+1)   startAngle:-M_PI/2-0.07 endAngle:M_PI * 2 * [context[i][@"score"]  floatValue] - 0.07 - M_PI/2 clockwise:YES];
         CAShapeLayer *sideshape = [CAShapeLayer layer];
         CAShapeLayer *shape = [CAShapeLayer layer];
@@ -86,10 +85,10 @@
         [shape addAnimation:checkAnimation forKey:@"checkAnimation"];
         [sideshape addAnimation:checkAnimation forKey:@"checkAnimation"];
        
-        UILabel *detailLable = [self newLable:CGRectMake(self.frame.size.width/2 - 36 ,_lineWidth+ (_lineWidth+_blankWidth)*i - 2, 22, 18) WithContext:[self turnFloat: context[i][@"score"]] WithColor:color[i][0]];
+        UILabel *detailLable = [self newLable:CGRectMake(self.frame.size.width/2 - 36 *SCREENWIDTH /375 ,_lineWidth+ (_lineWidth+_blankWidth)*i - 2, 22, 18) WithContext:[self turnFloat: context[i][@"score"]] WithColor:color[i][0]];
         [self addSubview:detailLable];
         
-        UILabel *lables = [self detailLable:CGRectMake(SCREENWIDTH / 2 - self.size.width / 2 + 5,self.frame.size.width + 50 * i * SCREENWIDTH /375, self.size.width, 25* SCREENWIDTH /375) WithContext:context[i] With:color[i]];
+        UILabel *lables = [self detailLable:CGRectMake( self.frame.origin.x + 27,self.frame.size.width + 50 * i * SCREENWIDTH /375, self.size.width, 25* SCREENWIDTH /375) WithContext:context[i] With:color[i]];
         [self addSubview:lables];
         
     }
