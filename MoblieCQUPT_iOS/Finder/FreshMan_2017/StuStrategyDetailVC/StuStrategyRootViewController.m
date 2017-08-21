@@ -19,7 +19,7 @@
 #import "FoodViewController.h"
 #import "BeautyViewController.h"
 
-@interface StuStrategyRootViewController ()<SegmentViewScrollerViewDelegate>
+@interface StuStrategyRootViewController ()<SegmentViewDelegate>
 @property NSArray *VCArray;
 @end
 

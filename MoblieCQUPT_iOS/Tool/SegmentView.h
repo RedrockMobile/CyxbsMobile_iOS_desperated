@@ -8,18 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol SegmentViewScrollerViewDelegate <NSObject>
-    
-    @required
-    
+@protocol SegmentViewDelegate <NSObject>
+
+@required
+
 - (void)eventWhenScrollSubViewWithIndex:(NSInteger)index;
-    
-    @end
+
+@end
 
 @interface SegmentView : UIView
-    
-    @property (weak,nonatomic) id<SegmentViewScrollerViewDelegate> eventDelegate;
-    
+
+@property (weak,nonatomic) id<SegmentViewDelegate> eventDelegate;
+
 - (instancetype)initWithFrame:(CGRect)frame andControllers:(NSArray <UIViewController *> *)controllers;
-    
-    @end
+
+@end

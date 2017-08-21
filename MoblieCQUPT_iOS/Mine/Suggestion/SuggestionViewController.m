@@ -25,14 +25,13 @@
     self.view.backgroundColor = RGBColor(243, 244, 245, 1);
     
     _suggestTextView = [[ORWInputTextView alloc] initWithFrame:CGRectMake(-1, 74, MAIN_SCREEN_W+2, 250)];
-    [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
+    [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
     _suggestTextView.delegate = self;
     [_suggestTextView setContentInset:UIEdgeInsetsMake(0, 10, 0, 5)];//设置UITextView的内边距
     [self.view addSubview:_suggestTextView];
     self.navigationItem.rightBarButtonItem = self.send;
     self.navigationItem.title = @"意见反馈";
     self.send.enabled   = NO;
-    self.send.tintColor = [UIColor whiteColor];
 
 }
 
@@ -57,37 +56,25 @@
 
 - (void)textViewDidChange:(UITextView *)textView{
     if (_suggestTextView.text.length <= 0) {
-        [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
-    }else if(_suggestTextView.text.length>0 && _suggestTextView.text.length<=5){
+        [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
         self.send.enabled   = NO;
-        [_suggestTextView setPlaceHolder:@""];
     }else{
         self.send.enabled   = YES;
-        self.send.tintColor = [UIColor whiteColor];
+        [_suggestTextView setPlaceHolder:@""];
     }
 }
 
 - (BOOL)textView:(UITextView *)textView didChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    
     if (_suggestTextView.text.length <= 0) {
-        [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。"];
-    }else if(_suggestTextView.text.length>0 && _suggestTextView.text.length<=5){
+        [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
         self.send.enabled   = NO;
-        [_suggestTextView setPlaceHolder:@""];
-    }else{
-        self.send.enabled   = YES;
-        self.send.tintColor = [UIColor whiteColor];
     }
-    
-    
-
+    else{
+        self.send.enabled   = YES;
+        [_suggestTextView setPlaceHolder:@""];
+    }
     return YES;
 }
-
-//- (void)textViewDidChange:(UITextView *)textView{
-//    
-//}
-
 
 -(void)sendSuggest{
     NSString *deviceInfo = [NSString stringWithFormat:@"iOS:%@+H:%f+W:%f",[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"],MAIN_SCREEN_H,MAIN_SCREEN_W];
@@ -99,7 +86,6 @@
     [ProgressHUD show:@"反馈中..."];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion" WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
         [ProgressHUD showSuccess:@"反馈成功"];
-//        NSLog(@"%@",returnValue);
         _suggestTextView.text = @"";
     } WithFailureBlock:^{
         [ProgressHUD showError:@"网络故障!"];

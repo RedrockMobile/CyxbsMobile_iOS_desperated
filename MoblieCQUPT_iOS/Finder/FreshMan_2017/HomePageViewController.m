@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"新生专题";
+    self.navigationItem.title = @"2017迎新网";
     self.view.backgroundColor = [UIColor whiteColor];
     [self layoutButton];
 }
@@ -38,7 +38,7 @@
 }
 - (void)tapThirdBtn {
      CQUPTDataRootViewController *CQUPTDataVC = [[CQUPTDataRootViewController alloc] init];
-    CQUPTDataVC.navigationItem.title = @"重邮数据";
+    CQUPTDataVC.navigationItem.title = @"数据揭秘";
     [self.navigationController pushViewController:CQUPTDataVC animated:YES];
 }
 - (void)tapFourthBtn {
