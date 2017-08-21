@@ -128,7 +128,7 @@
 
 - (void)initMainView{
     [self.mainView removeFromSuperview];
-    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-STATUSBARHEIGHT-NVGBARHEIGHT-TABBARHEIGHT)];
+    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT-TABBARHEIGHT)];
     [self.view addSubview:self.mainView]; //初始化主界面
     [self initBtnController];
     [self showMatterWithWeek:@(self.selectedWeek)];

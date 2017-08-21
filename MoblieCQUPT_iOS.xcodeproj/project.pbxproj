@@ -531,6 +531,8 @@
 		F2770B691F45789100BB6186 /* cqupt1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2770B661F45789100BB6186 /* cqupt1@2x.jpg */; };
 		F2770B6A1F45789100BB6186 /* cqupt2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2770B671F45789100BB6186 /* cqupt2@2x.jpg */; };
 		F2770B6B1F45789100BB6186 /* cqupt3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2770B681F45789100BB6186 /* cqupt3@2x.jpg */; };
+		F27A932F1F4AA314009860C3 /* mine_image_calendar1.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A932D1F4AA314009860C3 /* mine_image_calendar1.png */; };
+		F27A93301F4AA314009860C3 /* mine_image_calendar2.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A932E1F4AA314009860C3 /* mine_image_calendar2.png */; };
 		F2C29EDD1F47FB2900150546 /* addPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2C29EDC1F47FB2900150546 /* addPhoto.jpg */; };
 		F2C29EE01F481D1900150546 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C29EDE1F481D1900150546 /* camera@2x.png */; };
 		F2C29EE11F481D1900150546 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C29EDF1F481D1900150546 /* camera@3x.png */; };
@@ -1304,6 +1306,8 @@
 		F2770B661F45789100BB6186 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F2770B671F45789100BB6186 /* cqupt2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt2@2x.jpg"; sourceTree = "<group>"; };
 		F2770B681F45789100BB6186 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
+		F27A932D1F4AA314009860C3 /* mine_image_calendar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_image_calendar1.png; sourceTree = "<group>"; };
+		F27A932E1F4AA314009860C3 /* mine_image_calendar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_image_calendar2.png; sourceTree = "<group>"; };
 		F2C29EDC1F47FB2900150546 /* addPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addPhoto.jpg; sourceTree = "<group>"; };
 		F2C29EDE1F481D1900150546 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		F2C29EDF1F481D1900150546 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
@@ -1437,6 +1441,8 @@
 		F20026CC1F4020FA00360991 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				F27A932D1F4AA314009860C3 /* mine_image_calendar1.png */,
+				F27A932E1F4AA314009860C3 /* mine_image_calendar2.png */,
 				F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */,
 				F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */,
 				F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */,
@@ -2907,6 +2913,7 @@
 				F20027391F43256200360991 /* emptyClassTag1.png in Resources */,
 				F26D965C1F3C400F0063B024 /* MBCommentCell.xib in Resources */,
 				F242DDE01EBCB2BB005AC411 /* lost_image_place@3x.png in Resources */,
+				F27A93301F4AA314009860C3 /* mine_image_calendar2.png in Resources */,
 				F242DDE71EBCB2BB005AC411 /* lost_image_time@2x.png in Resources */,
 				F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
@@ -2934,6 +2941,7 @@
 				F26D96791F3C400F0063B024 /* comment1.png in Resources */,
 				F2509C9D1F440D980091F678 /* 圆角矩形@2x.png in Resources */,
 				F20027191F405B8500360991 /* remind_image_content@3x.png in Resources */,
+				F27A932F1F4AA314009860C3 /* mine_image_calendar1.png in Resources */,
 				F242DDD31EBCB2BB005AC411 /* lost_image_itemcategory@2x.png in Resources */,
 				F238C6521F3DA29700FEB179 /* tabbar_image_find@3x.png in Resources */,
 				F2509CA71F440D980091F678 /* 绿色@3x.png in Resources */,
