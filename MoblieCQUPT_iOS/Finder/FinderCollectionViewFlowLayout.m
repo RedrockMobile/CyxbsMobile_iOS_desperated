@@ -24,13 +24,13 @@
 //    }
 //    return layoutAtts;
 //}
-- (void)prepareLayout
-{
-    [super prepareLayout];
-    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    self.minimumInteritemSpacing = 0;
-    self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-}
+//- (void)prepareLayout
+//{
+//    [super prepareLayout];
+//    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+//    self.minimumInteritemSpacing = 0;
+//    self.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+//}
 
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
@@ -38,7 +38,7 @@
     CGFloat contentOffsetX = self.collectionView.contentOffset.x;
     CGFloat collectionViewCenterX = self.collectionView.frame.size.width * 0.5;
     for (UICollectionViewLayoutAttributes *attr in attrs) {
-        CGFloat scale = 1 - 0.1*fabs(attr.center.x - contentOffsetX - collectionViewCenterX) /self.collectionView.bounds.size.width;
+        CGFloat scale = 1 - 0.16*fabs(attr.center.x - contentOffsetX - collectionViewCenterX) /self.collectionView.bounds.size.width;
         attr.transform = CGAffineTransformMakeScale(scale, scale);
     }
     return attrs;

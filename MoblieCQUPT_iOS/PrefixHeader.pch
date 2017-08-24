@@ -112,6 +112,8 @@
 #define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
 //查询个人信息接口
 #define SEARCH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+//
+#define SETINFO_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"
 //上传图片接口
 #define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
 

@@ -184,7 +184,6 @@
 		F242DE501EBCB2BC005AC411 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F242DB8A1EBCB2BB005AC411 /* Images.xcassets */; };
 		F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB8E1EBCB2BB005AC411 /* LoginViewController.m */; };
 		F242DE531EBCB2BC005AC411 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DB8F1EBCB2BB005AC411 /* LoginViewController.xib */; };
-		F242DE541EBCB2BC005AC411 /* VerifyMyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB911EBCB2BB005AC411 /* VerifyMyInfoViewController.m */; };
 		F242DE551EBCB2BC005AC411 /* BaseMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB951EBCB2BB005AC411 /* BaseMatter.m */; };
 		F242DE561EBCB2BC005AC411 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB971EBCB2BB005AC411 /* BaseTableViewController.m */; };
 		F242DE571EBCB2BC005AC411 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB991EBCB2BB005AC411 /* BaseViewController.m */; };
@@ -302,7 +301,6 @@
 		F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */; };
 		F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB31EBCB2BB005AC411 /* GradeView.m */; };
 		F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB51EBCB2BB005AC411 /* MineViewController.m */; };
-		F242DF0B1EBCB2BC005AC411 /* MyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB91EBCB2BB005AC411 /* MyInfoModel.m */; };
 		F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */; };
 		F242DF0D1EBCB2BC005AC411 /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCBC1EBCB2BB005AC411 /* MyInfoViewController.xib */; };
 		F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */; };
@@ -318,7 +316,6 @@
 		F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCD41EBCB2BB005AC411 /* ORWInputTextView.m */; };
 		F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCD61EBCB2BB005AC411 /* SuggestionViewController.m */; };
 		F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */ = {isa = PBXBuildFile; fileRef = F242DD171EBCB2BB005AC411 /* Mobile_CQUPT_iOS.db */; };
-		F242DF7B1EBCB2BC005AC411 /* LoginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7A1EBCB2BB005AC411 /* LoginEntry.m */; };
 		F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7D1EBCB2BB005AC411 /* HCHttp.m */; };
 		F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7F1EBCB2BB005AC411 /* MOHImageParamModel.m */; };
 		F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD811EBCB2BB005AC411 /* NetWork.m */; };
@@ -541,6 +538,8 @@
 		F2C29EDD1F47FB2900150546 /* addPhoto.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2C29EDC1F47FB2900150546 /* addPhoto.jpg */; };
 		F2C29EE01F481D1900150546 /* camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C29EDE1F481D1900150546 /* camera@2x.png */; };
 		F2C29EE11F481D1900150546 /* camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C29EDF1F481D1900150546 /* camera@3x.png */; };
+		F2C862C91F4E9F08005C887E /* MyInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C862C81F4E9F08005C887E /* MyInfoModel.m */; };
+		F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C862CB1F4EFDB0005C887E /* LoginEntry.m */; };
 		F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */; };
 		F2CC3AA01F46BE1B00B031BD /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */; };
 		F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */; };
@@ -797,8 +796,6 @@
 		F242DB8D1EBCB2BB005AC411 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F242DB8E1EBCB2BB005AC411 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		F242DB8F1EBCB2BB005AC411 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		F242DB901EBCB2BB005AC411 /* VerifyMyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyMyInfoViewController.h; sourceTree = "<group>"; };
-		F242DB911EBCB2BB005AC411 /* VerifyMyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyMyInfoViewController.m; sourceTree = "<group>"; };
 		F242DB941EBCB2BB005AC411 /* BaseMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMatter.h; sourceTree = "<group>"; };
 		F242DB951EBCB2BB005AC411 /* BaseMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMatter.m; sourceTree = "<group>"; };
 		F242DB961EBCB2BB005AC411 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -970,8 +967,6 @@
 		F242DCB31EBCB2BB005AC411 /* GradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeView.m; sourceTree = "<group>"; };
 		F242DCB41EBCB2BB005AC411 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		F242DCB51EBCB2BB005AC411 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
-		F242DCB81EBCB2BB005AC411 /* MyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoModel.h; sourceTree = "<group>"; };
-		F242DCB91EBCB2BB005AC411 /* MyInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoModel.m; sourceTree = "<group>"; };
 		F242DCBA1EBCB2BB005AC411 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
 		F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
 		F242DCBC1EBCB2BB005AC411 /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
@@ -998,8 +993,6 @@
 		F242DCD61EBCB2BB005AC411 /* SuggestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionViewController.m; sourceTree = "<group>"; };
 		F242DCD71EBCB2BB005AC411 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F242DD171EBCB2BB005AC411 /* Mobile_CQUPT_iOS.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Mobile_CQUPT_iOS.db; sourceTree = "<group>"; };
-		F242DD791EBCB2BB005AC411 /* LoginEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginEntry.h; sourceTree = "<group>"; };
-		F242DD7A1EBCB2BB005AC411 /* LoginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginEntry.m; sourceTree = "<group>"; };
 		F242DD7C1EBCB2BB005AC411 /* HCHttp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCHttp.h; sourceTree = "<group>"; };
 		F242DD7D1EBCB2BB005AC411 /* HCHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCHttp.m; sourceTree = "<group>"; };
 		F242DD7E1EBCB2BB005AC411 /* MOHImageParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHImageParamModel.h; sourceTree = "<group>"; };
@@ -1326,6 +1319,10 @@
 		F2C29EDC1F47FB2900150546 /* addPhoto.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = addPhoto.jpg; sourceTree = "<group>"; };
 		F2C29EDE1F481D1900150546 /* camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@2x.png"; sourceTree = "<group>"; };
 		F2C29EDF1F481D1900150546 /* camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera@3x.png"; sourceTree = "<group>"; };
+		F2C862C71F4E9F08005C887E /* MyInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoModel.h; sourceTree = "<group>"; };
+		F2C862C81F4E9F08005C887E /* MyInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoModel.m; sourceTree = "<group>"; };
+		F2C862CA1F4EFDB0005C887E /* LoginEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginEntry.h; sourceTree = "<group>"; };
+		F2C862CB1F4EFDB0005C887E /* LoginEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginEntry.m; sourceTree = "<group>"; };
 		F2CC3A9C1F46BE1B00B031BD /* MineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
 		F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
 		F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
@@ -1801,11 +1798,11 @@
 			isa = PBXGroup;
 			children = (
 				F26D96A01F3C41130063B024 /* Image */,
+				F2C862CA1F4EFDB0005C887E /* LoginEntry.h */,
+				F2C862CB1F4EFDB0005C887E /* LoginEntry.m */,
 				F242DB8D1EBCB2BB005AC411 /* LoginViewController.h */,
 				F242DB8E1EBCB2BB005AC411 /* LoginViewController.m */,
 				F242DB8F1EBCB2BB005AC411 /* LoginViewController.xib */,
-				F242DB901EBCB2BB005AC411 /* VerifyMyInfoViewController.h */,
-				F242DB911EBCB2BB005AC411 /* VerifyMyInfoViewController.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2207,7 +2204,7 @@
 		F242DCB61EBCB2BB005AC411 /* MyInfo */ = {
 			isa = PBXGroup;
 			children = (
-				F242DCB71EBCB2BB005AC411 /* MyInfoModel */,
+				F2C862C61F4E9F08005C887E /* MyInfoModel */,
 				F242DCBA1EBCB2BB005AC411 /* MyInfoViewController.h */,
 				F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */,
 				F242DCBC1EBCB2BB005AC411 /* MyInfoViewController.xib */,
@@ -2215,15 +2212,6 @@
 				F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */,
 			);
 			path = MyInfo;
-			sourceTree = "<group>";
-		};
-		F242DCB71EBCB2BB005AC411 /* MyInfoModel */ = {
-			isa = PBXGroup;
-			children = (
-				F242DCB81EBCB2BB005AC411 /* MyInfoModel.h */,
-				F242DCB91EBCB2BB005AC411 /* MyInfoModel.m */,
-			);
-			path = MyInfoModel;
 			sourceTree = "<group>";
 		};
 		F242DCBF1EBCB2BB005AC411 /* MyMessages */ = {
@@ -2294,7 +2282,6 @@
 		F242DD771EBCB2BB005AC411 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
-				F242DD781EBCB2BB005AC411 /* Login */,
 				F242DD7B1EBCB2BB005AC411 /* NetWork */,
 				F2509BCC1F440D7D0091F678 /* SegmentView.h */,
 				F2509BCD1F440D7D0091F678 /* SegmentView.m */,
@@ -2302,15 +2289,6 @@
 				F238C65A1F3DC87900FEB179 /* UserDefaultTool.m */,
 			);
 			path = Tool;
-			sourceTree = "<group>";
-		};
-		F242DD781EBCB2BB005AC411 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				F242DD791EBCB2BB005AC411 /* LoginEntry.h */,
-				F242DD7A1EBCB2BB005AC411 /* LoginEntry.m */,
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 		F242DD7B1EBCB2BB005AC411 /* NetWork */ = {
@@ -2839,6 +2817,15 @@
 				F2E95B601F4B1AC2000A136E /* LZSearchView.m */,
 			);
 			path = NOCourseDate;
+			sourceTree = "<group>";
+		};
+		F2C862C61F4E9F08005C887E /* MyInfoModel */ = {
+			isa = PBXGroup;
+			children = (
+				F2C862C71F4E9F08005C887E /* MyInfoModel.h */,
+				F2C862C81F4E9F08005C887E /* MyInfoModel.m */,
+			);
+			path = MyInfoModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3409,6 +3396,7 @@
 				F2509C5D1F440D970091F678 /* CQUPTBeautyViewController.m in Sources */,
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
+				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				F2509C5B1F440D970091F678 /* BigView.m in Sources */,
 				F26D965A1F3C400F0063B024 /* UIImage+ImageEffects.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
@@ -3469,11 +3457,9 @@
 				F2509C671F440D970091F678 /* StuRootViewController.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
-				F242DF0B1EBCB2BC005AC411 /* MyInfoModel.m in Sources */,
 				F242DD8C1EBCB2BB005AC411 /* CourseViewController.m in Sources */,
 				F242DF041EBCB2BC005AC411 /* EmptyClassViewController.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
-				F242DE541EBCB2BC005AC411 /* VerifyMyInfoViewController.m in Sources */,
 				F242DE571EBCB2BC005AC411 /* BaseViewController.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
 				F242DE001EBCB2BB005AC411 /* ShopTableViewCell.m in Sources */,
@@ -3499,6 +3485,7 @@
 				F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */,
 				F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */,
 				F242DD8F1EBCB2BB005AC411 /* TitleBaseViewController.m in Sources */,
+				F2C862C91F4E9F08005C887E /* MyInfoModel.m in Sources */,
 				F26D969B1F3C400F0063B024 /* MBPhotoContainerView.m in Sources */,
 				F242DE581EBCB2BC005AC411 /* UILabel+Adapter.m in Sources */,
 				F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */,
@@ -3516,7 +3503,6 @@
 				F2509C631F440D970091F678 /* OriginalViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				F2509C8A1F440D980091F678 /* StuBedroomViewController.m in Sources */,
-				F242DF7B1EBCB2BC005AC411 /* LoginEntry.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
 				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,

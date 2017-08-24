@@ -9,11 +9,11 @@
 #import "LoginViewController.h"
 #import "NetWork.h"
 #import "LoginEntry.h"
-#import "VerifyMyInfoViewController.h"
 #import "UserDefaultTool.h"
 #import <MBProgressHUD.h>
 #import <UMMobClick/MobClick.h>
-
+#import "MyInfoViewController.h"
+#import "MyInfoModel.h"
 
 #define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 
@@ -35,9 +35,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 };
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.whiteView.layer.cornerRadius = 3;
-  
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,9 +63,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
                              if (![returnValue[@"info"] isEqualToString:@"success"]) {
                                  [self alertAnimation:LZAccountOrPasswordWrong];
                              }else {
-                                 //账号信息存本地
                                  [LoginEntry loginWithParamter:returnValue[@"data"]];
-                                 //个人消息验证
                                  [self verifyUserInfo];
                              }
                              [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
@@ -81,7 +77,10 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 - (void)verifyUserInfo {
     [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":[UserDefaultTool getStuNum],@"idNum":[UserDefaultTool getIdNum]} WithReturnValeuBlock:^(id returnValue) {
         if (![returnValue[@"data"] isKindOfClass:[NSNull class]]) {
-            [UserDefaultTool saveParameter:returnValue[@"data"]];
+            MyInfoModel *model = [[MyInfoModel alloc]initWithDic:returnValue[@"data"]];
+            NSData *modelData = [NSKeyedArchiver archivedDataWithRootObject:model];
+            [UserDefaultTool saveValue:modelData forKey:@"myInfo"];
+
             [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
             [self dismissViewControllerAnimated:YES completion:nil];
             if (self.loginSuccessHandler) {
@@ -89,13 +88,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
             }
         }else {
             //没有完善信息,跳转到完善个人的界面
-            VerifyMyInfoViewController *verifyMyInfoVC = [[VerifyMyInfoViewController alloc] init];
-            verifyMyInfoVC.verifySuccessHandler = ^(BOOL success) {
-                if (self.loginSuccessHandler) {
-                    self.loginSuccessHandler(success);
-                }
-            
-            };
+            MyInfoViewController *verifyMyInfoVC = [[MyInfoViewController alloc] init];
             [self presentViewController:verifyMyInfoVC animated:YES completion:nil];
         }
         

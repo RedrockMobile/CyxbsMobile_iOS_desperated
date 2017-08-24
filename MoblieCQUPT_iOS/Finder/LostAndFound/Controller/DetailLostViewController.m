@@ -56,10 +56,10 @@
 }
 - (void)refreshWithDetailInfo:(LostItem *)info{
     if([info.wx_avatar rangeOfString:@"http"].location != NSNotFound){
-        self.headImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:info.wx_avatar]]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:info.wx_avatar]];
     }
     else{
-        self.headImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn%@",info.wx_avatar]]]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn%@",info.wx_avatar]]];
     }
     self.categoryLabel.text = info.pro_name;
     self.contentLabel.text = info.pro_description;

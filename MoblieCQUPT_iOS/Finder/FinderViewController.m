@@ -34,7 +34,7 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.layout.itemSize = CGSizeMake(self.collectionView.width-80, self.collectionView.height);
+    self.layout.itemSize = CGSizeMake(self.collectionView.width-100, self.collectionView.height);
     [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.array.count*N/2 inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 
 }
