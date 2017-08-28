@@ -7,22 +7,15 @@
 //
 
 #import "LoginViewController.h"
-#import "NetWork.h"
 #import "LoginEntry.h"
-#import "UserDefaultTool.h"
-#import <MBProgressHUD.h>
 #import <UMMobClick/MobClick.h>
 #import "MyInfoViewController.h"
 #import "MyInfoModel.h"
-
-#define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
-
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIView *whiteView;
-
 @property (strong, nonatomic) MBProgressHUD *loadHud;
 @end
 
@@ -80,24 +73,22 @@ typedef NS_ENUM(NSInteger,LZLoginState){
             MyInfoModel *model = [[MyInfoModel alloc]initWithDic:returnValue[@"data"]];
             NSData *modelData = [NSKeyedArchiver archivedDataWithRootObject:model];
             [UserDefaultTool saveValue:modelData forKey:@"myInfo"];
-
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
             [self dismissViewControllerAnimated:YES completion:nil];
-            if (self.loginSuccessHandler) {
-                self.loginSuccessHandler(YES);
-            }
         }else {
             //没有完善信息,跳转到完善个人的界面
             MyInfoViewController *verifyMyInfoVC = [[MyInfoViewController alloc] init];
             [self presentViewController:verifyMyInfoVC animated:YES completion:nil];
         }
-        
+        if (self.loginSuccessHandler) {
+            self.loginSuccessHandler(YES);
+        }
     } WithFailureBlock:^{
-        
+        [self alertAnimation:LZNetWrong];
+        NSLog(@"请求失败");
     }];
 }
 
-             
+
 - (void)alertAnimation:(LZLoginState)state {
     [_loadHud hide:YES];
     _loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

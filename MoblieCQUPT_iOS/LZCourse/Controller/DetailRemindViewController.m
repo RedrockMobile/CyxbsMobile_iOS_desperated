@@ -9,10 +9,10 @@
 #import "DetailRemindViewController.h"
 #import "DetailRemindTableViewCell.h"
 #import "TimeHandle.h"
-#import "UIColor+Hex.h"
 #import "AddRemindViewController.h"
 #import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
+#import "RemindMatter.h"
 
 @interface DetailRemindViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property NSMutableArray <RemindMatter *>* reminds;
@@ -32,7 +32,6 @@
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     self.remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
     self.failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
-    
     self.imageViewArray = [NSMutableArray array];
     self.isEditing = NO;
     self.tableView.editing = NO;
@@ -41,7 +40,7 @@
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = NO;
     self.tableView.allowsSelectionDuringEditing = YES;
-    self.tableView.backgroundColor = [UIColor colorWithHex:@"#f5f5f5"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
     [self.view addSubview:self.tableView];
     if(self.reminds.count == 0){
         [self showNoRemindView];
@@ -108,7 +107,7 @@
     DetailRemindTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier] ;
     if (!cell)
     {
-        cell = [[NSBundle mainBundle]loadNibNamed:@"DetailRemindTableViewCell" owner:self options:nil][0];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"DetailRemindTableViewCell" owner:self options:nil] firstObject];
     }
     [self.imageViewArray addObject:cell.editView];
     NSInteger index = indexPath.section;
@@ -176,10 +175,6 @@
     return UITableViewCellEditingStyleDelete;
 }
 
-- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-//    self.isEditing = YES;
-    
-}
 - (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.isEditing) {
         [self edit:self.editButton];

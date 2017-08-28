@@ -51,6 +51,12 @@
 }
 
 - (void)loadDayLbTimeWithWeek:(NSInteger)week nowWeek:(NSInteger)nowWeek{
+    if (week == 0) {
+        [self removeDayLbTime];
+        return;
+    }
+    
+    
     NSDate *now = [NSDate date];
     NSDateFormatter *monthFormatter = [[NSDateFormatter alloc]init];
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc]init];

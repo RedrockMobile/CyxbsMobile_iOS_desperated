@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface AddRemindViewController : BaseViewController
-
 - (instancetype)initWithRemind:(NSDictionary *)remind;
 @end

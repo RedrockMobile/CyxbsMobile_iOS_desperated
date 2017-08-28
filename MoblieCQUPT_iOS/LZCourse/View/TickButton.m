@@ -7,7 +7,6 @@
 //
 
 #import "TickButton.h"
-#import "UIColor+Hex.h"
 #import "UIImage+Color.h"
 #import "UIFont+AdaptiveFont.h"
 
@@ -19,13 +18,13 @@
         self.titleEdgeInsets = UIEdgeInsetsMake(0, 16, 0, 0);
         self.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         
-        [self setTitleColor:[UIColor colorWithHex:@"#464646"] forState:UIControlStateNormal];
-        [self setTitleColor:[UIColor colorWithHex:@"#e9f3fd"] forState:UIControlStateSelected];
-        [self setTitleColor:[UIColor colorWithHex:@"#e9f3fd"] forState:UIControlStateHighlighted];
-        [self setTitleColor:[UIColor colorWithHex:@"#e9f3fd"] forState:UIControlStateSelected|UIControlStateHighlighted];
+        [self setTitleColor:[UIColor colorWithHexString:@"#464646"] forState:UIControlStateNormal];
+        [self setTitleColor:[UIColor colorWithHexString:@"#e9f3fd"] forState:UIControlStateSelected];
+        [self setTitleColor:[UIColor colorWithHexString:@"#e9f3fd"] forState:UIControlStateHighlighted];
+        [self setTitleColor:[UIColor colorWithHexString:@"#e9f3fd"] forState:UIControlStateSelected|UIControlStateHighlighted];
 
 
-        [self setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#fbfbfb"]] forState:UIControlStateNormal];
+        [self setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"#fbfbfb"]] forState:UIControlStateNormal];
         [self setBackgroundImage:[UIImage imageNamed:@"选择"] forState:UIControlStateSelected];
         [self setBackgroundImage:[UIImage imageNamed:@"选择"] forState:UIControlStateHighlighted];
         [self setBackgroundImage:[UIImage imageNamed:@"选择"] forState:(UIControlStateSelected|UIControlStateHighlighted)];

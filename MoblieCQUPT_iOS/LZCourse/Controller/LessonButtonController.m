@@ -7,8 +7,11 @@
 //
 
 #import "LessonButtonController.h"
-#import "LessonHandle.h"
 #import "UIImage+Color.h"
+#import "LessonBtnModel.h"
+#import "LessonButton.h"
+#import "LessonMatter.h"
+#import "RemindMatter.h"
 @interface LessonButtonController ()
 @property int beginLesson;
 @property UIImageView *remindArrow;
