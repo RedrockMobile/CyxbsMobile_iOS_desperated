@@ -16,6 +16,7 @@
 #import "CoverView.h"
 #import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
+#import "ORWInputTextView.h"
 @interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,SaveDelegate,UITextFieldDelegate,UITextViewDelegate>
 @property TimeChooseScrollView *remindChooseView;
 @property NSMutableArray <NSString *>*contentArray;
@@ -34,7 +35,7 @@
 @property BOOL isShowRemindChooseView;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet ORWInputTextView *contentTextView;
 @end
 
 @implementation AddRemindViewController
@@ -43,6 +44,25 @@
 }
 - (void)textViewDidBeginEditing:(UITextView *)textView{
     [textView becomeFirstResponder];
+}
+
+- (void)textViewDidChange:(UITextView *)textView{
+    if (textView.text.length <= 0) {
+        self.contentTextView.placeHolder = @"请编辑内容……";
+    }
+    else{
+        self.contentTextView.placeHolder = @"";
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView didChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (text.length <= 0) {
+        self.contentTextView.placeHolder = @"请编辑内容……";
+    }
+    else{
+        self.contentTextView.placeHolder = @"";
+    }
+    return YES;
 }
 
 - (instancetype)initWithRemind:(NSDictionary *)remind{
@@ -102,6 +122,7 @@
     self.title = @"事项编辑";
     self.titleTextField.delegate = self;
     self.contentTextView.delegate = self;
+    self.contentTextView.placeHolder = @"请编辑内容……";
     self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
     __weak AddRemindViewController *weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
