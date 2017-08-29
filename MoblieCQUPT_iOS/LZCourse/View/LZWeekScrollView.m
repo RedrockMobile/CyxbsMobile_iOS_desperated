@@ -69,6 +69,7 @@
     NSInteger currentIndex = sender.tag;
     if (currentIndex != self.currentIndex) {
         self.btnArray[self.currentIndex].selected = NO;
+        self.currentIndex = currentIndex;
         [UIView animateWithDuration:0.2f animations:^{
             _sliderView.frame = CGRectMake(currentIndex * _titleBtnWidth, self.height - 2, _titleBtnWidth, 2);
             if (self.btnArray[currentIndex].frame.origin.x < self.width/2) {
@@ -83,7 +84,6 @@
         if ([self.eventDelegate respondsToSelector:@selector(eventWhenTapAtIndex:)]) {
             [self.eventDelegate eventWhenTapAtIndex:currentIndex];
         }
-        self.currentIndex = currentIndex;
         self.btnArray[self.currentIndex].selected = YES;
     }
     

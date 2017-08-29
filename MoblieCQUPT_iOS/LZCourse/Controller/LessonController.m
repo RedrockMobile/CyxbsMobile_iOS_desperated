@@ -222,6 +222,7 @@
         self.noLessonImageView.frame = CGRectMake(2*MWIDTH, SCREENHEIGHT/6, SCREENWIDTH-3*MWIDTH, SCREENWIDTH/2);
         [self.mainView.scrollView addSubview:self.noLessonImageView];
     }
+    [self.mainView loadDayLbTimeWithWeek:week.integerValue nowWeek:self.nowWeek];
 }
 
 - (void)showDetail:(UIButton *)sender{
@@ -239,9 +240,7 @@
 
 
 - (void)eventWhenTapAtIndex:(NSInteger)index{
-    NSNumber *nowWeek = [UserDefaultTool valueWithKey:@"nowWeek"];
     [self.barBtn setTitle:self.weekScrollView.titles[index] forState:UIControlStateNormal];
-    [self.mainView loadDayLbTimeWithWeek:index nowWeek:nowWeek.integerValue];
     [self showMatterWithWeek:@(index)];
     [self clickBtn];
 }
@@ -261,7 +260,8 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
             self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_kWeekScrollViewHeight, SCREENHEIGHT, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT));
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_kWeekScrollViewHeight, SCREENHEIGHT, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_kWeekScrollViewHeight));
+            
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = NO;
         }];

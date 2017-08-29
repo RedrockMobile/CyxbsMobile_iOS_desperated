@@ -94,6 +94,26 @@
     }
 }
 
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    CGFloat width = 100;
+    for (UIView *view in self.scrollView.subviews) {
+        if ([view isMemberOfClass:[UIView class]]) {
+            width = view.frame.size.width;
+            break;
+        }
+    }
+    self.scrollView.frame = CGRectMake(0, MHEIGHT, self.frame.size.width, self.frame.size.height-MHEIGHT);
+    for (UIView *view in self.scrollView.subviews){
+        if ([view isMemberOfClass:[UIView class]]) {
+            CGRect frame = view.frame;
+            frame.size.width = width;
+            view.frame = frame;
+        }
+    } // 改变scrollView的frame后 view的frame会变化  为了保持frame不变化
+    
+}
+
 - (void)initMainScrollView{
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, MHEIGHT, self.frame.size.width, self.frame.size.height-MHEIGHT)];
     self.scrollView.contentSize = CGSizeMake(self.frame.size.width, LESSONBTNSIDE*LESSON);
