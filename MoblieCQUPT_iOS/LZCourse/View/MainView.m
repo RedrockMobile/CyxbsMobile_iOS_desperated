@@ -56,7 +56,6 @@
         return;
     }
     
-    
     NSDate *now = [NSDate date];
     NSDateFormatter *monthFormatter = [[NSDateFormatter alloc]init];
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc]init];

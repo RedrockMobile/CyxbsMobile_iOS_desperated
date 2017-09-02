@@ -30,7 +30,7 @@
 @property UIImageView *noLessonImageView;
 @property UIImageView *pullImageView;
 @property NoLoginView *noLoginView;
-@property NSInteger nowWeek;
+@property NSInteger nowWeek; //防止数组越界使用的nowWeek(0~20),与Userdefault中的数值不同
 @property CGFloat kWeekScrollViewHeight;
 @property DetailViewController *detailViewController;
 @property NSInteger currentSelectIndex;
@@ -45,6 +45,11 @@
     self.isNetWorkSuccess = YES;
     self.kWeekScrollViewHeight = SCREENHEIGHT*0.06;
     self.nowWeek = [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue];
+    if (self.nowWeek <0 ) {
+        self.nowWeek = 0;
+    }else if(self.nowWeek > 20){
+        self.nowWeek = 20;
+    }
     self.currentSelectIndex = 0;
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
@@ -132,7 +137,9 @@
 - (void)initWeekScrollView{
     [self.weekScrollView removeFromSuperview];
     NSMutableArray *weekArray = @[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周"].mutableCopy;
-    weekArray[self.nowWeek] = @"本周";
+    if ([[UserDefaultTool valueWithKey:@"nowWeek"] integerValue] >0 && [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue]<=20) {
+        weekArray[self.nowWeek] = @"本周";
+    }
     self.weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight) andTitles:weekArray];
     self.weekScrollView.eventDelegate = self;
     [self.weekScrollView scrollToIndex:self.nowWeek];
@@ -143,7 +150,7 @@
 - (void)initNavigationBar{
     self.barBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, NVGBARHEIGHT*2, NVGBARHEIGHT)];
     [self.barBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
-    [self.barBtn setTitle:@"本周" forState:UIControlStateNormal];
+    [self.barBtn setTitle:self.weekScrollView.titles[self.currentSelectIndex] forState:UIControlStateNormal];
     [self.barBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.barBtn.titleLabel.font = [UIFont adaptFontSize:18];
     self.navigationItem.titleView = self.barBtn;
@@ -222,7 +229,7 @@
         self.noLessonImageView.frame = CGRectMake(2*MWIDTH, SCREENHEIGHT/6, SCREENWIDTH-3*MWIDTH, SCREENWIDTH/2);
         [self.mainView.scrollView addSubview:self.noLessonImageView];
     }
-    [self.mainView loadDayLbTimeWithWeek:week.integerValue nowWeek:self.nowWeek];
+    [self.mainView loadDayLbTimeWithWeek:week.integerValue nowWeek:[[UserDefaultTool valueWithKey:@"nowWeek"] integerValue]];
 }
 
 - (void)showDetail:(UIButton *)sender{
@@ -278,11 +285,13 @@
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject);
-        NSNumber *nowWeek = [responseObject objectForKey:@"nowWeek"];
-        if (nowWeek.integerValue > 20) {
-            nowWeek = @20;
-        }
+        NSNumber *nowWeek = responseObject[@"nowWeek"];
         self.nowWeek = nowWeek.integerValue;
+        if (self.nowWeek <0 ) {
+            self.nowWeek = 0;
+        }else if(self.nowWeek > 20){
+            self.nowWeek = 20;
+        }
         [defaults setObject:nowWeek forKey:@"nowWeek"];
         [defaults setObject:responseObject forKey:@"lessonResponse"];
     
