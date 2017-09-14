@@ -30,7 +30,8 @@
 @property UIImageView *noLessonImageView;
 @property UIImageView *pullImageView;
 @property NoLoginView *noLoginView;
-@property NSInteger nowWeek; //防止数组越界使用的nowWeek(0~20),与Userdefault中的数值不同
+@property NSInteger nowWeek;
+//防止数组越界使用的nowWeek(0~20),与Userdefault中的数值不同
 @property CGFloat kWeekScrollViewHeight;
 @property DetailViewController *detailViewController;
 @property NSInteger currentSelectIndex;
@@ -50,7 +51,7 @@
     }else if(self.nowWeek > 20){
         self.nowWeek = 20;
     }
-    self.currentSelectIndex = 0;
+    self.currentSelectIndex = self.nowWeek;
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     [self addNotification];
@@ -80,6 +81,7 @@
 - (void)reloadView{
     [self initMainView];
     [self.detailViewController reloadMatters:self.controllerArray[_currentSelectIndex].matter];
+    //感觉有更好的写法 这样的写的话感觉耦合程度较高
 }
 
 - (void)clickLoginBtn{
@@ -280,11 +282,11 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
     HttpClient *client = [HttpClient defaultClient];
-    NSDictionary *parameter = @{@"stuNum":stuNum};
+    NSDictionary *parameter = @{@"stuNum":stuNum,@"forceFetch":@"true"};
     [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
+        //NSLog(@"%@",responseObject);
         NSNumber *nowWeek = responseObject[@"nowWeek"];
         self.nowWeek = nowWeek.integerValue;
         if (self.nowWeek <0 ) {
@@ -320,7 +322,6 @@
     } progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSLog(@"%@",responseObject);
         NSMutableArray *reminds = [responseObject objectForKey:@"data"];
         NSMutableArray *handledReminds = [NSMutableArray array];
         for (NSDictionary *dic in reminds) {
@@ -382,7 +383,9 @@
             NSLog(@"%@",responseObject);
             [failureRequests removeObject:failure];
             if ([failureRequests writeToFile:failurePath atomically:YES]) {
-                [self reTryRequest];
+                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                     [self reTryRequest];
+                 });
             }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"%@",error);

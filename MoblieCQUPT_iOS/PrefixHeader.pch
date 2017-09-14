@@ -126,6 +126,8 @@
 #define TOPICLIST_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 //话题文章列表接口
 #define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+//首页图接口
+#define SPLASH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
 
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
