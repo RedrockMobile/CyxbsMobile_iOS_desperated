@@ -36,7 +36,9 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.model = [NSKeyedUnarchiver unarchiveObjectWithData:[UserDefaultTool valueWithKey:@"myInfo"]];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    self.model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
@@ -77,7 +79,10 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
         self.model.qq = _introductionTextField.text;
         self.model.phone = _phoneTextField.text;
         self.model.photo_thumbnail_src = self.image;
-        [UserDefaultTool saveValue:[NSKeyedArchiver archivedDataWithRootObject:self.model] forKey:@"myInfo"];
+        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+        [NSKeyedArchiver archiveRootObject:self.model toFile:infoFilePath];
+//        [UserDefaultTool saveValue:[NSKeyedArchiver archivedDataWithRootObject:self.model] forKey:@"myInfo"];
         [self.navigationController popViewControllerAnimated:YES];
     });
 }
@@ -117,7 +122,7 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
     [NetWork uploadImageWithUrl:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/photo/upload"
                     imageParams:@[model]
                     otherParams:@{@"stunum":stuNum}
-               imageQualityRate:0.5
+               imageQualityRate:1
                    successBlock:^(id returnValue) {
                        self.imageUploadStatus = XBSSuccess;
                        dispatch_semaphore_signal(sema);

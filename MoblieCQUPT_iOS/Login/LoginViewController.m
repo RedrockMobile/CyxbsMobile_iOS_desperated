@@ -16,19 +16,24 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIView *whiteView;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (strong, nonatomic) MBProgressHUD *loadHud;
-@end
 
-@implementation LoginViewController
 typedef NS_ENUM(NSInteger,LZLoginState){
     LZLackPassword,
     LZLackAccount,
     LZAccountOrPasswordWrong,
     LZNetWrong
 };
+@end
+
+@implementation LoginViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.whiteView.layer.cornerRadius = 3;
+    self.loginBtn.layer.cornerRadius = 3;
+    self.loginBtn.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,9 +62,9 @@ typedef NS_ENUM(NSInteger,LZLoginState){
                                  [self alertAnimation:LZAccountOrPasswordWrong];
                              }else {
                                  [LoginEntry loginWithParamter:returnValue[@"data"]];
-                                 [self verifyUserInfo];
+                                [self verifyUserInfo];
+                                [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
                              }
-                             [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
                          } WithFailureBlock:^{
                              [self alertAnimation:LZNetWrong];
                              NSLog(@"请求失败");
@@ -72,7 +77,9 @@ typedef NS_ENUM(NSInteger,LZLoginState){
         if (![returnValue[@"data"] isKindOfClass:[NSNull class]]) {
             MyInfoModel *model = [[MyInfoModel alloc]initWithDic:returnValue[@"data"]];
             NSData *modelData = [NSKeyedArchiver archivedDataWithRootObject:model];
-            [UserDefaultTool saveValue:modelData forKey:@"myInfo"];
+            NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+            NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+            [modelData writeToFile:infoFilePath atomically:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
         }else {
             //没有完善信息,跳转到完善个人的界面
@@ -111,6 +118,9 @@ typedef NS_ENUM(NSInteger,LZLoginState){
             break;
     }
     [_loadHud hide:YES afterDelay:1.5];
+    if (self.loginSuccessHandler) {
+        self.loginSuccessHandler(NO);
+    }
 }
 
 

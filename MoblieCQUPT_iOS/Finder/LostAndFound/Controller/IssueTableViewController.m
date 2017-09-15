@@ -17,7 +17,7 @@
 #import "LZConfirmButton.h"
 #import "LZLostRemindView.h"
 #import "LZIssueSucceedViewController.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "TickButton.h"
 @interface IssueTableViewController ()<LZDatePickerDelegate,UITextViewDelegate,UITextFieldDelegate>
 @property NSMutableArray *imageArray;
 @property LostAndFoundButton *lostBtn;

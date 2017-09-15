@@ -37,7 +37,8 @@
         self.nickname = dic[@"nickname"];
         self.gender = dic[@"gender"];
 //        self.photo_thumbnail_src = dic[@"photo_thumbnail_src"];
-        self.photo_thumbnail_src = [UIImage imageNamed:dic[@"photo_thumbnail_src"]];
+//        self.photo_thumbnail_src = [UIImage imageNamed:dic[@"photo_thumbnail_src"]];
+        self.photo_thumbnail_src = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:dic[@"photo_src"]]]];
         self.photo_src = dic[@"photo_src"];
         self.qq = dic[@"qq"];
         self.phone = dic[@"phone"];

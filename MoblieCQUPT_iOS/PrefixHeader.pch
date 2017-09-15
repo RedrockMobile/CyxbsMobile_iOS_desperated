@@ -92,10 +92,10 @@
 
 #define kPhotoImageViewW (ScreenWidth - 2 * 10 - 4) / 3
 
-//登录
-#define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
+//登录
+#define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
 //哔哔叨叨列表
 #define LISTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
 //热门动态列表
@@ -128,7 +128,12 @@
 #define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
 //首页图接口
 #define SPLASH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
-
+#define kebiaoAPI @"http://hongyan.cqupt.edu.cn/redapi2/api/kebiao"
+#define ADDREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
+#define GETREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
+#define EDITREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
+#define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
+#define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
@@ -142,12 +147,7 @@
 #define LESSON 12
 #define WEEK 20
 #define LONGLESSON (LESSON/2)
-#define kebiaoAPI @"http://hongyan.cqupt.edu.cn/redapi2/api/kebiao"
-#define ADDREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
-#define GETREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
-#define EDITREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
-#define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
-#define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
+
 #define LESSONBTNSIDE (((SCREENWIDTH)-(MWIDTH))/DAY)
 #define SEGMENT 2
 #define autoSizeScaleX SCREENWIDTH/375.0

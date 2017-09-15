@@ -7,6 +7,7 @@
 //
 
 #import "CategoryChooseView.h"
+#import "TickButton.h"
 @interface CategoryChooseView()
 @property TickButton *selectedBtn;
 @end

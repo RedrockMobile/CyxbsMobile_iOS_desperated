@@ -27,7 +27,9 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     NSException *exception;
-    MyInfoModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:[UserDefaultTool valueWithKey:@"myInfo"] exception:&exception];
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    MyInfoModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath] exception:&exception];
     NSLog(@"%@",exception);
     self.headImageView.image = model.photo_thumbnail_src;
     self.nameLabel.text = model.nickname;

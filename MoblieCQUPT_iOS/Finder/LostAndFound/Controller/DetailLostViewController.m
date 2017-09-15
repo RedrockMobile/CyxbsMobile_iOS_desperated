@@ -8,7 +8,8 @@
 
 #import "DetailLostViewController.h"
 #import "IconTableViewCell.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "LostItem.h"
+
 @interface DetailLostViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property NSMutableArray *imageArray;
 @property NSArray *titleArray;
