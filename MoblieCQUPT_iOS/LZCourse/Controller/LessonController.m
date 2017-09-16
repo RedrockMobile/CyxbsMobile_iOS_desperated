@@ -187,7 +187,7 @@
     self.lessonArray = [[userDefaults objectForKey:@"lessonResponse"] objectForKey:@"data"];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-    NSLog(@"%@",remindPath);
+//    NSLog(@"%@",remindPath);
     self.remindArray = [NSMutableArray arrayWithContentsOfFile:remindPath];
     // 获取数据
     self.controllerArray = [[NSMutableArray alloc]initWithCapacity:(LONGLESSON*DAY)];
@@ -269,7 +269,7 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
             self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_kWeekScrollViewHeight, SCREENHEIGHT, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_kWeekScrollViewHeight));
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_kWeekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_kWeekScrollViewHeight));
             
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = NO;

@@ -122,6 +122,8 @@
     self.title = @"事项编辑";
     self.titleTextField.delegate = self;
     self.contentTextView.delegate = self;
+    self.titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+    //防止文字输入后下移
     self.contentTextView.placeHolder = @"请编辑内容……";
     self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
     __weak AddRemindViewController *weakSelf = self;

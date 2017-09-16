@@ -24,6 +24,10 @@
     // Drawing code
 }
 */
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    self.contentOffset = CGPointZero;
+}
 
 - (void)scrollToIndex:(NSInteger)index{
     [self clickBtn:self.btnArray[index]];

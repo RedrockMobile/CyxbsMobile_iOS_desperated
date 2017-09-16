@@ -95,10 +95,10 @@
 
 - (void)setFrame:(CGRect)frame{
     [super setFrame:frame];
-    CGFloat width = 100;
+    CGSize size = CGSizeZero;
     for (UIView *view in self.scrollView.subviews) {
         if ([view isMemberOfClass:[UIView class]]) {
-            width = view.frame.size.width;
+            size = view.frame.size;
             break;
         }
     }
@@ -106,11 +106,11 @@
     for (UIView *view in self.scrollView.subviews){
         if ([view isMemberOfClass:[UIView class]]) {
             CGRect frame = view.frame;
-            frame.size.width = width;
+            frame.size = size;
             view.frame = frame;
         }
-    } // 改变scrollView的frame后 view的frame会变化  为了保持frame不变化
-    
+    }
+    // 改变scrollView的frame后 view的frame会变化  为了保持frame不变化
 }
 
 - (void)initMainScrollView{

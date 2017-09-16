@@ -169,7 +169,7 @@
         }
     }
     NSString *content = [remind objectForKey:@"content"];
-    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-56,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+120;
+    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-80,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+100;
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleDelete;
