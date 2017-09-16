@@ -138,10 +138,10 @@
     [self addChildViewController:self.remindController];
     [self.view addSubview:self.remindController.view];
     
-    UIImageView *imageView= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"编辑"]];
+    UIImageView *imageView= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"remind_image_editing"]];
     UIButton *btn = [[UIButton alloc]initWithFrame:imageView.frame];
     [btn setBackgroundImage:imageView.image forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"编辑完成"] forState:UIControlStateSelected];
+    [btn setBackgroundImage:[UIImage imageNamed:@"remind_image_edit"] forState:UIControlStateSelected];
     [btn addTarget:self.remindController action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
     self.editItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     if (ishaveRemind) {

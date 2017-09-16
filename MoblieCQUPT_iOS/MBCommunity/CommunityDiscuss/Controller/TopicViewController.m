@@ -8,7 +8,7 @@
 
 #import "TopicViewController.h"
 #import "TopicSearchViewController.h"
-#import "SegementView.h"
+#import "SegmentView.h"
 #import "DetailTopicViewController.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
@@ -22,9 +22,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     return rect;
 }
 
-@interface TopicViewController ()<UISearchBarDelegate>
+@interface TopicViewController ()<UISearchBarDelegate,SegmentViewDelegate,UIGestureRecognizerDelegate>
 
-@property (nonatomic, strong) SegementView *segementView;
+@property (nonatomic, strong) SegmentView *segementView;
 
 @property (nonatomic, strong) UISearchBar *searchBar;
 
@@ -32,6 +32,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 @property (nonatomic, strong) TopicSearchViewController *allVC;
 
+@property NSInteger currentIndex;
 @end
 
 @implementation TopicViewController
@@ -41,6 +42,11 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.view.backgroundColor = [UIColor whiteColor];
     [self addSearchBar];
     [self addSegemenView];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
+        [self hideKeyBoard];
+    }];
+    tap.delegate = self;
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)addSearchBar{
@@ -48,13 +54,12 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     bgView.backgroundColor = [UIColor whiteColor];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CHANGE_CGRectMake(50, 30, 300, 30)];
-    self.searchBar.searchBarStyle = UISearchBarStyleMinimal;
+    self.searchBar.searchBarStyle = UISearchBarStyleProminent;
 
-    self.searchBar.tintColor = [UIColor blueColor];
+    self.searchBar.tintColor = [UIColor whiteColor];
     self.searchBar.placeholder = @"搜索更多话题";
     self.searchBar.delegate = self;
     self.navigationItem.titleView = self.searchBar;
-    
 //    [bgView addSubview:self.searchBar];
     
     [self.view addSubview:bgView];
@@ -77,17 +82,23 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         [weakSelf.navigationController pushViewController:dtVC animated:YES];
     };
     
-    self.segementView = [[SegementView alloc] initWithFrame:CHANGE_CGRectMake(0, 64, 375, 667) withTitle:@[self.joinVC,self.allVC]];
-    
+    self.segementView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT) andControllers:@[self.joinVC,self.allVC]];
+    self.segementView.eventDelegate = self;
+    self.currentIndex = 0;
     [self.view addSubview:self.segementView];
 }
 
+- (void)eventWhenScrollSubViewWithIndex:(NSInteger)index{
+    [self hideKeyBoard];
+    self.currentIndex = index;
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    if (self.segementView.currentIndex==0) {
+    if (self.currentIndex==0) {
         self.joinVC.searchText = searchBar.text;
         [self.joinVC searchDataRefresh];
     }
-    if (self.segementView.currentIndex==1) {
+    if (self.currentIndex==1) {
         self.allVC.searchText = searchBar.text;
         [self.allVC searchDataRefresh];
     }
@@ -111,12 +122,24 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)hideKeyBoard{
-    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    [self.searchBar resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
+    if ([touch.view isKindOfClass:[UISearchBar class]])
+    {
+        return NO;
+    }
+    // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件
+    if ([NSStringFromClass([touch.view class]) isEqualToString:@"UIView"]) {
+        return NO;
+    }
+    return YES;
 }
 
 /*

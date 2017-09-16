@@ -55,7 +55,8 @@
             }
             
             //更新信息
-            if ([_data[@"photo_thumbnail_src"] isEqualToString:@""]) {
+            if ([_data[@"photo_thumbnail_src"]
+                 isEqualToString:@""]) {
                 [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
             } else {
                 [_avatar sd_setImageWithURL:[NSURL URLWithString:_data[@"photo_thumbnail_src"]]];
