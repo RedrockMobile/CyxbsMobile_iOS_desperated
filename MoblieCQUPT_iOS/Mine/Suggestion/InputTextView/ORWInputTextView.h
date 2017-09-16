@@ -10,7 +10,6 @@
 
 @interface ORWInputTextView : UITextView
 
-@property (strong, nonatomic) UILabel *placeHolderLabel;
 @property (copy, nonatomic) NSString *placeHolder;
 
 - (void)setPlaceHolder:(NSString *)placeHolder;

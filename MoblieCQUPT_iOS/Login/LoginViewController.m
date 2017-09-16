@@ -7,37 +7,33 @@
 //
 
 #import "LoginViewController.h"
-#import "NetWork.h"
 #import "LoginEntry.h"
-#import "VerifyMyInfoViewController.h"
-#import "UserDefaultTool.h"
-#import <MBProgressHUD.h>
 #import <UMMobClick/MobClick.h>
-
-
-#define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
-
+#import "MyInfoViewController.h"
+#import "MyInfoModel.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UIView *whiteView;
-
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 @property (strong, nonatomic) MBProgressHUD *loadHud;
-@end
 
-@implementation LoginViewController
 typedef NS_ENUM(NSInteger,LZLoginState){
     LZLackPassword,
     LZLackAccount,
     LZAccountOrPasswordWrong,
     LZNetWrong
 };
+@end
+
+@implementation LoginViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.whiteView.layer.cornerRadius = 3;
-  
+    self.loginBtn.layer.cornerRadius = 3;
+    self.loginBtn.layer.masksToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,12 +61,10 @@ typedef NS_ENUM(NSInteger,LZLoginState){
                              if (![returnValue[@"info"] isEqualToString:@"success"]) {
                                  [self alertAnimation:LZAccountOrPasswordWrong];
                              }else {
-                                 //账号信息存本地
                                  [LoginEntry loginWithParamter:returnValue[@"data"]];
-                                 //个人消息验证
-                                 [self verifyUserInfo];
+                                [self verifyUserInfo];
+                                [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
                              }
-                             [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
                          } WithFailureBlock:^{
                              [self alertAnimation:LZNetWrong];
                              NSLog(@"请求失败");
@@ -81,30 +75,27 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 - (void)verifyUserInfo {
     [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":[UserDefaultTool getStuNum],@"idNum":[UserDefaultTool getIdNum]} WithReturnValeuBlock:^(id returnValue) {
         if (![returnValue[@"data"] isKindOfClass:[NSNull class]]) {
-            [UserDefaultTool saveParameter:returnValue[@"data"]];
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
+            MyInfoModel *model = [[MyInfoModel alloc]initWithDic:returnValue[@"data"]];
+            NSData *modelData = [NSKeyedArchiver archivedDataWithRootObject:model];
+            NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+            NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+            [modelData writeToFile:infoFilePath atomically:YES];
             [self dismissViewControllerAnimated:YES completion:nil];
-            if (self.loginSuccessHandler) {
-                self.loginSuccessHandler(YES);
-            }
         }else {
             //没有完善信息,跳转到完善个人的界面
-            VerifyMyInfoViewController *verifyMyInfoVC = [[VerifyMyInfoViewController alloc] init];
-            verifyMyInfoVC.verifySuccessHandler = ^(BOOL success) {
-                if (self.loginSuccessHandler) {
-                    self.loginSuccessHandler(success);
-                }
-            
-            };
+            MyInfoViewController *verifyMyInfoVC = [[MyInfoViewController alloc] init];
             [self presentViewController:verifyMyInfoVC animated:YES completion:nil];
         }
-        
+        if (self.loginSuccessHandler) {
+            self.loginSuccessHandler(YES);
+        }
     } WithFailureBlock:^{
-        
+        [self alertAnimation:LZNetWrong];
+        NSLog(@"请求失败");
     }];
 }
 
-             
+
 - (void)alertAnimation:(LZLoginState)state {
     [_loadHud hide:YES];
     _loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -127,6 +118,9 @@ typedef NS_ENUM(NSInteger,LZLoginState){
             break;
     }
     [_loadHud hide:YES afterDelay:1.5];
+    if (self.loginSuccessHandler) {
+        self.loginSuccessHandler(NO);
+    }
 }
 
 

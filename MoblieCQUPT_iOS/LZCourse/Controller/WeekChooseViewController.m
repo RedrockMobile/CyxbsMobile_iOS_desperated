@@ -21,8 +21,8 @@
     NSArray *weekNameArray = @[@"第1周",@"第2周",@"第3周",@"第4周",@"第5周",@"第6周",@"第7周",@"第8周",@"第9周",@"第10周",@"第11周",@"第12周",@"第13周",@"第14周",@"第15周",@"第16周",@"第17周",@"第18周",@"第19周",@"第20周"];
     for (int i = 0; i<5; i++) {
         for (int j = 0; j<4; j++) {
-            CGFloat blankWidth = (SCREENWIDTH-34-200)/3;
-            WeekChooseButton *btn = [[WeekChooseButton alloc]initWithFrame:CGRectMake(17+j*(blankWidth+50), 16+STATUSBARHEIGHT+NVGBARHEIGHT+(50+25)*i, 50, 50)];
+            CGFloat blankWidth = (SCREENWIDTH-34-240)/3;
+            WeekChooseButton *btn = [[WeekChooseButton alloc]initWithFrame:CGRectMake(17+j*(blankWidth+60), 16+STATUSBARHEIGHT+NVGBARHEIGHT+(60+25)*i, 60, 60)];
             //瞎jb算的,后面看到的人饶命= =
             btn.tag = i*4+j+1;
             [btn setTitle:weekNameArray[i*4+j] forState:UIControlStateNormal];

@@ -7,12 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "LessonMatter.h"
-#import "ExamMatter.h"
-#import "RemindMatter.h"
+@class RemindMatter;
+@class LessonMatter;
+
 @interface LessonBtnModel : NSObject
 @property NSMutableArray <RemindMatter *> *remindArray;
 @property NSMutableArray <LessonMatter *> *lessonArray;
-@property NSMutableArray <ExamMatter *>   *examArray;
-@property NSInteger longLesson;
 @end

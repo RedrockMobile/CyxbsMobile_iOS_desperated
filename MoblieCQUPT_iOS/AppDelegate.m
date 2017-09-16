@@ -14,25 +14,30 @@
 #import "ExamScheduleViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
+#import "SplashModel.h"
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [MobClick setLogEnabled:YES];
     self.window.backgroundColor = [UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    if ([NSData dataWithContentsOfFile:imageFilePath]) {
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"LaunchScreenViewController"];
+    }
+    [self downloadImage];
     [[UMSocialManager defaultManager] openLog:YES];
-    [[UMSocialManager defaultManager]setUmSocialAppkey:@""];
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@""];
     [self configUSharePlatforms];
     [self confitUShareSettings];
     UMConfigInstance.appKey = @"573183a5e0f55a59c9000694";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
-   [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
     //3D-Touch
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [self creatShortCutItemWithIcon];
@@ -48,6 +53,38 @@
     }];
     
     return YES;
+}
+
+- (void)downloadImage{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:SPLASH_API method:HttpRequestGet parameters:nil prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (NSDictionary *dic in responseObject[@"data"]) {
+            SplashModel *model = [[SplashModel alloc]initWithDic:dic];
+            if ([NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.photo_src]] scale:1];
+                    [UIImagePNGRepresentation(image) writeToFile:imageFilePath atomically:YES];
+                });
+                return;
+            }
+        }
+        NSError *error;
+        if([NSData dataWithContentsOfFile:imageFilePath]){
+            [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error];
+            if (error) {
+                NSLog(@"%@",error);
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation

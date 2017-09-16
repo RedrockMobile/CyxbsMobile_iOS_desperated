@@ -7,8 +7,7 @@
 //
 
 #import "LZLostRemindView.h"
-#import <Masonry.h>
-
+#import "LZConfirmButton.h"
 
 @implementation LZLostRemindView
 - (instancetype)initWithFrame:(CGRect)frame{
