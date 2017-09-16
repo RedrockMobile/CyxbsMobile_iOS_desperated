@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LessonMatter.h"
+@class LessonMatter;
+
 @interface DetailLessonController : BaseViewController
 - (instancetype)initWithLesson:(LessonMatter *)lesson;
 - (void)loadLesson;

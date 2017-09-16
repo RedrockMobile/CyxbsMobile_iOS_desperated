@@ -19,6 +19,22 @@
 @end
 
 @implementation DetailLessonController
+
+- (instancetype)initWithLesson:(LessonMatter *)lesson{
+    self = [self init];
+    if (self) {
+        self.lesson = lesson;
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+//    self.view.userInteractionEnabled = NO;
+    // Do any additional setup after loading the view from its nib.
+}
+
+
 - (void)loadLesson{
     self.lessonLb.text = self.lesson.course;
     self.teacherLb.text = self.lesson.teacher;
@@ -43,21 +59,6 @@
     NSString *time = [NSString stringWithFormat:@"%@ %d-%d %@-%@",lesson.day,begin,end,beginTimes[begin-1],endTimes[end-1]];
     return time;
 }
-
-- (instancetype)initWithLesson:(LessonMatter *)lesson{
-    self = [self init];
-    if (self) {
-        self.lesson = lesson;
-    }
-    return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.userInteractionEnabled = NO;
-    // Do any additional setup after loading the view from its nib.
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

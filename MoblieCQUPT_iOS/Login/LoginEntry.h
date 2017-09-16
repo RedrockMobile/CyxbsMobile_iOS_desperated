@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 @interface LoginEntry : NSObject
-//+ (void)loginWithStuNum:(NSString *)stuNum
-//                  idNum:(NSString *)idNum
-//        dictionaryParam:(NSDictionary *)paramDictionary;
-
-//+ (void)loginoutWithParamArrayString:(NSArray *) paramArray;
-
 + (void)loginWithParamter:(NSDictionary *)paramter;
 
 + (void)loginOut;

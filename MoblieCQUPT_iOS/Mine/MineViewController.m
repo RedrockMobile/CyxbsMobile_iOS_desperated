@@ -11,7 +11,7 @@
 #import "MyInfoViewController.h"
 #import "AboutMeViewController.h"
 #import "MyMessagesViewController.h"
-
+#import "MyInfoModel.h"
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray *cellDicArray;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -26,10 +26,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    NSURL *url = [NSURL URLWithString:[UserDefaultTool valueWithKey:@"photo_thumbnail_src"]];
-    [self.headImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-    self.nameLabel.text = [UserDefaultTool valueWithKey:@"nickname"];
-    self.introductionLabel.text = [UserDefaultTool valueWithKey:@"introduction"];
+    NSException *exception;
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    MyInfoModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath] exception:&exception];
+    NSLog(@"%@",exception);
+    self.headImageView.image = model.photo_thumbnail_src;
+    self.nameLabel.text = model.nickname;
+    self.introductionLabel.text = model.introduction;
 }
 
 - (void)viewWillDisappear:(BOOL)animated{

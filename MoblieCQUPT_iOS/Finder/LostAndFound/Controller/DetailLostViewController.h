@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LostItem.h"
+@class LostItem;
 @interface DetailLostViewController : BaseViewController
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;

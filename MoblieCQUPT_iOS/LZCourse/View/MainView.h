@@ -17,6 +17,5 @@
 @property NSMutableArray<LessonButton *> *lessonBtns;
 @property NSMutableArray<LessonNumLabel *> *lessonsLabel;
 - (instancetype)initWithFrame:(CGRect)frame;
-- (void) removeDayLbTime;
 - (void)loadDayLbTimeWithWeek:(NSInteger)week nowWeek:(NSInteger)nowWeek;
 @end
