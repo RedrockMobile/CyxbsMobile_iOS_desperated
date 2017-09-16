@@ -34,12 +34,13 @@
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    
+    _tableView.backgroundColor = BACKCOLOR;
+    _tableView.separatorInset = UIEdgeInsetsMake(0,0, 0, 0);
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(refreshMyInfo)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
 
     //网络请求头像和简介
-        //获取已登录用户的账户信息
+    //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
@@ -117,23 +118,30 @@
 #pragma mark - TableViewDataSource
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
     } else {
-        return 2;
+        return 4;
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.1;
+        return 0.01f;
+
+
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-        return 15.0;
+    if (section == 0) {
+        return 0.01f;
+    }
+    else{
+        return 15.f;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -174,7 +182,9 @@
         textLabel.frame = CGRectMake(20, 15, 0, 0);
         [textLabel sizeToFit];
         [cell.contentView addSubview:textLabel];
-        
+        UIImageView *point = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backPoint"]];
+        point.frame = CGRectMake(SCREENWIDTH - 20, cell.size.height / 2 - textLabel.size.height / 2, textLabel.size.height / 2, textLabel.size.height);
+        [cell.contentView addSubview:point];
         if (indexPath.row == 0) {
             _nicknameTextField = [[UITextField alloc] initWithPlaceholder:@"请输入昵称" andCell:cell];
             _nicknameTextField.delegate = self;
@@ -184,14 +194,7 @@
             _introductionTextField.delegate = self;
             [cell.contentView addSubview:_introductionTextField];
         }
-        
-    } else if (indexPath.section == 2) {
-        textLabel.text = titles[indexPath.row+3];
-        textLabel.frame = CGRectMake(20, 15, 0, 0);
-        [textLabel sizeToFit];
-        [cell.contentView addSubview:textLabel];
-        
-        if (indexPath.row == 0) {
+        else if (indexPath.row == 2) {
             _qqTextField = [[UITextField alloc] initWithPlaceholder:@"写下QQ,方便交流" andCell:cell];
             _qqTextField.delegate = self;
             [cell.contentView addSubview:_qqTextField];
