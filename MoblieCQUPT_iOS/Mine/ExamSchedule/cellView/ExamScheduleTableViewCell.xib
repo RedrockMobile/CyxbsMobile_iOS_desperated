@@ -69,17 +69,17 @@
                         <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soB-Yo-72g" userLabel="day">
-                        <rect key="frame" x="11" y="23" width="27" height="28"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="27" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soB-Yo-72g" userLabel="day">
+                        <rect key="frame" x="10" y="23" width="30" height="28"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="28" id="FBY-p1-Xxa"/>
-                            <constraint firstAttribute="width" constant="27" id="dUs-F6-23o"/>
+                            <constraint firstAttribute="width" constant="30" id="dUs-F6-23o"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-ba-6QT" userLabel="month">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-ba-6QT" userLabel="month">
                         <rect key="frame" x="11" y="52" width="29" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="29" id="SiI-mK-TCY"/>
@@ -110,15 +110,14 @@
                     <constraint firstItem="kEw-4Z-Bjo" firstAttribute="centerY" secondItem="EcN-mt-X3k" secondAttribute="centerY" id="1U8-0t-fpB"/>
                     <constraint firstItem="kEw-4Z-Bjo" firstAttribute="leading" secondItem="EcN-mt-X3k" secondAttribute="trailing" constant="8" id="2hn-fr-9sg"/>
                     <constraint firstItem="aVd-ba-6QT" firstAttribute="top" secondItem="soB-Yo-72g" secondAttribute="bottom" constant="1" id="61l-xE-sLM"/>
-                    <constraint firstItem="qnl-Sk-A90" firstAttribute="leading" secondItem="soB-Yo-72g" secondAttribute="trailing" constant="16" id="7a8-JT-ia4"/>
                     <constraint firstItem="IOr-DI-WQC" firstAttribute="centerX" secondItem="qnl-Sk-A90" secondAttribute="centerX" id="BTv-FJ-1Pv"/>
                     <constraint firstItem="aVd-ba-6QT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="Buf-ma-wrI"/>
+                    <constraint firstItem="soB-Yo-72g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="DU6-HT-nSx"/>
                     <constraint firstAttribute="bottom" secondItem="IOr-DI-WQC" secondAttribute="bottom" id="Dhm-uG-Itm"/>
                     <constraint firstItem="EcN-mt-X3k" firstAttribute="leading" secondItem="IOr-DI-WQC" secondAttribute="trailing" constant="20" id="EbQ-n7-FEP"/>
                     <constraint firstItem="Tkr-M5-fJX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="K2x-Xh-igG"/>
                     <constraint firstItem="IOr-DI-WQC" firstAttribute="leading" secondItem="aVd-ba-6QT" secondAttribute="trailing" constant="20" id="KGF-pc-35i"/>
                     <constraint firstItem="RKD-bO-9tx" firstAttribute="leading" secondItem="KWV-RQ-4tM" secondAttribute="trailing" constant="10" id="Kod-rE-C6B"/>
-                    <constraint firstItem="soB-Yo-72g" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="3" id="NOZ-I4-vKZ"/>
                     <constraint firstItem="kEw-4Z-Bjo" firstAttribute="top" secondItem="eMD-O4-RXt" secondAttribute="bottom" constant="11" id="OaH-5p-ZOi"/>
                     <constraint firstAttribute="bottomMargin" secondItem="kEw-4Z-Bjo" secondAttribute="bottom" constant="19" id="Oxl-24-FUM"/>
                     <constraint firstItem="qnl-Sk-A90" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="18" id="PTC-IF-fxf"/>
@@ -132,6 +131,7 @@
                     <constraint firstItem="RKD-bO-9tx" firstAttribute="centerY" secondItem="KWV-RQ-4tM" secondAttribute="centerY" id="dkv-Cl-zIu"/>
                     <constraint firstItem="eMD-O4-RXt" firstAttribute="centerY" secondItem="RKD-bO-9tx" secondAttribute="centerY" id="doy-r8-6op"/>
                     <constraint firstAttribute="bottomMargin" secondItem="qnl-Sk-A90" secondAttribute="bottom" constant="70" id="epl-8T-xNB"/>
+                    <constraint firstItem="qnl-Sk-A90" firstAttribute="leading" secondItem="soB-Yo-72g" secondAttribute="trailing" constant="14" id="fzN-Mu-zq9"/>
                     <constraint firstAttribute="bottomMargin" secondItem="EcN-mt-X3k" secondAttribute="bottom" constant="20" id="k1e-oS-ZmL"/>
                     <constraint firstItem="aVd-ba-6QT" firstAttribute="top" secondItem="soB-Yo-72g" secondAttribute="bottom" constant="1" id="lBZ-U1-qba"/>
                     <constraint firstItem="KWV-RQ-4tM" firstAttribute="top" secondItem="oj6-uE-YjJ" secondAttribute="bottom" constant="11" id="rHd-8g-aGe"/>
