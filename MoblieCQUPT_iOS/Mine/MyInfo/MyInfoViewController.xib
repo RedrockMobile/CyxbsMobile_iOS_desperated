@@ -24,6 +24,7 @@
         <pickerView contentMode="scaleToFill" id="3S1-0V-1q7">
             <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <point key="canvasLocation" x="226" y="-159"/>
         </pickerView>
     </objects>
 </document>

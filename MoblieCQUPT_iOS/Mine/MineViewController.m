@@ -45,10 +45,11 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"QGERestTimeCourseViewController"},
-                          @{@"title":@"空教室",@"img":@"mine_image_classroom",@"controller":@"EmptyClassViewController"},
-                          @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamGradeViewController"},
-                          @{@"title":@"期末安排",@"img":@"mine_image_calendar",@"controller":@"ExamScheduleViewController"},
-                          @{@"title":@"校历",@"img":@"mine_image_remind",@"controller":@"CalendarViewController"}];
+                          @{@"title":@"空教室",@"img":@"mine_image_classroom",@"controller":@"EmptyRoomViewController"},
+                          @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamTotalViewController"},
+                          @{@"title":@"校历",@"img":@"mine_image_calendar",@"controller":@"CalendarViewController"},
+                          @{@"title":@"课前提醒",@"img":@"mine_image_remind",@"controller":@"BeforeClassViewController"}];
+    
     NSArray *array2 = @[@{@"title":@"设置",@"img":@"mine_image_setting",@"controller":@"SettingViewController"}];
     self.cellDicArray = @[array1,array2];
     self.tableView.delegate = self;

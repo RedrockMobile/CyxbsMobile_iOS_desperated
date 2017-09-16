@@ -12,6 +12,16 @@
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
 		3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B26610A1BA6E417008632F3 /* UIKit.framework */; };
 		463E0067C92960DB7BB5B9B7 /* libPods-MoblieCQUPT_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */; };
+		6E1205901F5FD81B00E5020E /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12058F1F5FD81B00E5020E /* ExamPickView.m */; };
+		6E1205931F612BB300E5020E /* UITextField+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205921F612BB300E5020E /* UITextField+Empty.m */; };
+		6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */; };
+		6E1205A41F64139E00E5020E /* XGEmptyRoomModels.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205A31F64139E00E5020E /* XGEmptyRoomModels.m */; };
+		6E1205AA1F658F7E00E5020E /* EmptyRoomTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205A91F658F7E00E5020E /* EmptyRoomTableViewController.m */; };
+		6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205B31F6614E100E5020E /* BeforeClassViewController.m */; };
+		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
+		6E175E371F5BEF9000C0BE60 /* EmptyRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E361F5BEF9000C0BE60 /* EmptyRoomViewController.m */; };
+		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
+		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
 		CE41EE121C1FE1A2004C873A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41EE111C1FE1A2004C873A /* ViewController.m */; };
 		CE4334471BE7C52D000C407D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4334461BE7C52D000C407D /* NotificationCenter.framework */; };
 		CE43344D1BE7C52D000C407D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43344C1BE7C52D000C407D /* TodayViewController.m */; };
@@ -258,9 +268,6 @@
 		F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCA21EBCB2BB005AC411 /* ExamScheduleTableViewCell.xib */; };
 		F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */; };
 		F242DF031EBCB2BC005AC411 /* ExamScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCA61EBCB2BB005AC411 /* ExamScheduleViewController.xib */; };
-		F242DF041EBCB2BC005AC411 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCAA1EBCB2BB005AC411 /* EmptyClassViewController.m */; };
-		F242DF051EBCB2BC005AC411 /* EmptyClassViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCAB1EBCB2BB005AC411 /* EmptyClassViewController.xib */; };
-		F242DF061EBCB2BC005AC411 /* PickView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCAD1EBCB2BB005AC411 /* PickView.m */; };
 		F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */; };
 		F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */; };
 		F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB31EBCB2BB005AC411 /* GradeView.m */; };
@@ -550,6 +557,26 @@
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3B26610A1BA6E417008632F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6E12058E1F5FD81B00E5020E /* ExamPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
+		6E12058F1F5FD81B00E5020E /* ExamPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
+		6E1205911F612BB300E5020E /* UITextField+Empty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Empty.h"; sourceTree = "<group>"; };
+		6E1205921F612BB300E5020E /* UITextField+Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Empty.m"; sourceTree = "<group>"; };
+		6E12059C1F637F0F00E5020E /* MakeUpExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeUpExamViewController.h; sourceTree = "<group>"; };
+		6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeUpExamViewController.m; sourceTree = "<group>"; };
+		6E1205A21F64139E00E5020E /* XGEmptyRoomModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGEmptyRoomModels.h; sourceTree = "<group>"; };
+		6E1205A31F64139E00E5020E /* XGEmptyRoomModels.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XGEmptyRoomModels.m; sourceTree = "<group>"; };
+		6E1205A81F658F7E00E5020E /* EmptyRoomTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyRoomTableViewController.h; sourceTree = "<group>"; };
+		6E1205A91F658F7E00E5020E /* EmptyRoomTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyRoomTableViewController.m; sourceTree = "<group>"; };
+		6E1205B21F6614E100E5020E /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
+		6E1205B31F6614E100E5020E /* BeforeClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassViewController.m; sourceTree = "<group>"; };
+		6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassCell.m; sourceTree = "<group>"; };
+		6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassCell.h; sourceTree = "<group>"; };
+		6E175E351F5BEF9000C0BE60 /* EmptyRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyRoomViewController.h; sourceTree = "<group>"; };
+		6E175E361F5BEF9000C0BE60 /* EmptyRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyRoomViewController.m; sourceTree = "<group>"; };
+		6E175E4E1F5E82EC00C0BE60 /* ExamTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTotalViewController.h; sourceTree = "<group>"; };
+		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
+		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
+		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
 		BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CE41EE101C1FE1A2004C873A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CE41EE111C1FE1A2004C873A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -876,11 +903,6 @@
 		F242DCA41EBCB2BB005AC411 /* ExamScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamScheduleViewController.h; sourceTree = "<group>"; };
 		F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamScheduleViewController.m; sourceTree = "<group>"; };
 		F242DCA61EBCB2BB005AC411 /* ExamScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamScheduleViewController.xib; sourceTree = "<group>"; };
-		F242DCA91EBCB2BB005AC411 /* EmptyClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
-		F242DCAA1EBCB2BB005AC411 /* EmptyClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
-		F242DCAB1EBCB2BB005AC411 /* EmptyClassViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmptyClassViewController.xib; sourceTree = "<group>"; };
-		F242DCAC1EBCB2BB005AC411 /* PickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickView.h; sourceTree = "<group>"; };
-		F242DCAD1EBCB2BB005AC411 /* PickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickView.m; sourceTree = "<group>"; };
 		F242DCAF1EBCB2BB005AC411 /* ExamGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamGradeViewController.h; sourceTree = "<group>"; };
 		F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamGradeViewController.m; sourceTree = "<group>"; };
 		F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamGradeViewController.xib; sourceTree = "<group>"; };
@@ -1310,6 +1332,26 @@
 				D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */,
 			);
 			name = Framework;
+			sourceTree = "<group>";
+		};
+		6E1205B11F6614BF00E5020E /* BeforeClass */ = {
+			isa = PBXGroup;
+			children = (
+				6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */,
+				6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */,
+				6E1205B21F6614E100E5020E /* BeforeClassViewController.h */,
+				6E1205B31F6614E100E5020E /* BeforeClassViewController.m */,
+			);
+			name = BeforeClass;
+			sourceTree = "<group>";
+		};
+		6E175E541F5FD4A900C0BE60 /* MakeUpExam */ = {
+			isa = PBXGroup;
+			children = (
+				6E12059C1F637F0F00E5020E /* MakeUpExamViewController.h */,
+				6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */,
+			);
+			name = MakeUpExam;
 			sourceTree = "<group>";
 		};
 		C66265BA2143171179039C97 /* Pods */ = {
@@ -1938,10 +1980,11 @@
 				F242DC911EBCB2BB005AC411 /* AboutMe */,
 				F242DC9B1EBCB2BB005AC411 /* Calendar */,
 				F242DC9E1EBCB2BB005AC411 /* ExamSchedule */,
-				F242DCA71EBCB2BB005AC411 /* GQConsult */,
+				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
 				F242DCB61EBCB2BB005AC411 /* MyInfo */,
 				F242DCBF1EBCB2BB005AC411 /* MyMessages */,
 				F242DCC41EBCB2BB005AC411 /* RestTimeCourse */,
+				6E1205B11F6614BF00E5020E /* BeforeClass */,
 				F242DCCE1EBCB2BB005AC411 /* Setting */,
 				F242DCD11EBCB2BB005AC411 /* Suggestion */,
 			);
@@ -1986,8 +2029,13 @@
 		F242DC9E1EBCB2BB005AC411 /* ExamSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				F242DC9F1EBCB2BB005AC411 /* cellView */,
-				F242DCA31EBCB2BB005AC411 /* Controller */,
+				F242DCAE1EBCB2BB005AC411 /* Grade */,
+				F242DCA31EBCB2BB005AC411 /* ExamClass */,
+				6E175E541F5FD4A900C0BE60 /* MakeUpExam */,
+				6E175E4E1F5E82EC00C0BE60 /* ExamTotalViewController.h */,
+				6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */,
+				6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */,
+				6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */,
 			);
 			path = ExamSchedule;
 			sourceTree = "<group>";
@@ -1999,38 +2047,38 @@
 				F242DCA11EBCB2BB005AC411 /* ExamScheduleTableViewCell.m */,
 				F242DCA21EBCB2BB005AC411 /* ExamScheduleTableViewCell.xib */,
 			);
-			path = cellView;
+			name = cellView;
+			path = ../cellView;
 			sourceTree = "<group>";
 		};
-		F242DCA31EBCB2BB005AC411 /* Controller */ = {
+		F242DCA31EBCB2BB005AC411 /* ExamClass */ = {
 			isa = PBXGroup;
 			children = (
+				F242DC9F1EBCB2BB005AC411 /* cellView */,
 				F242DCA41EBCB2BB005AC411 /* ExamScheduleViewController.h */,
 				F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */,
 				F242DCA61EBCB2BB005AC411 /* ExamScheduleViewController.xib */,
 			);
+			name = ExamClass;
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		F242DCA71EBCB2BB005AC411 /* GQConsult */ = {
-			isa = PBXGroup;
-			children = (
-				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
-				F242DCAE1EBCB2BB005AC411 /* Grade */,
-			);
-			path = GQConsult;
 			sourceTree = "<group>";
 		};
 		F242DCA81EBCB2BB005AC411 /* EmptyClass */ = {
 			isa = PBXGroup;
 			children = (
-				F242DCA91EBCB2BB005AC411 /* EmptyClassViewController.h */,
-				F242DCAA1EBCB2BB005AC411 /* EmptyClassViewController.m */,
-				F242DCAB1EBCB2BB005AC411 /* EmptyClassViewController.xib */,
-				F242DCAC1EBCB2BB005AC411 /* PickView.h */,
-				F242DCAD1EBCB2BB005AC411 /* PickView.m */,
+				6E175E351F5BEF9000C0BE60 /* EmptyRoomViewController.h */,
+				6E175E361F5BEF9000C0BE60 /* EmptyRoomViewController.m */,
+				6E1205A21F64139E00E5020E /* XGEmptyRoomModels.h */,
+				6E1205A31F64139E00E5020E /* XGEmptyRoomModels.m */,
+				6E1205911F612BB300E5020E /* UITextField+Empty.h */,
+				6E1205921F612BB300E5020E /* UITextField+Empty.m */,
+				6E12058E1F5FD81B00E5020E /* ExamPickView.h */,
+				6E12058F1F5FD81B00E5020E /* ExamPickView.m */,
+				6E1205A81F658F7E00E5020E /* EmptyRoomTableViewController.h */,
+				6E1205A91F658F7E00E5020E /* EmptyRoomTableViewController.m */,
 			);
-			path = EmptyClass;
+			name = EmptyClass;
+			path = GQConsult/EmptyClass;
 			sourceTree = "<group>";
 		};
 		F242DCAE1EBCB2BB005AC411 /* Grade */ = {
@@ -2042,7 +2090,8 @@
 				F242DCB21EBCB2BB005AC411 /* GradeView.h */,
 				F242DCB31EBCB2BB005AC411 /* GradeView.m */,
 			);
-			path = Grade;
+			name = Grade;
+			path = ../GQConsult/Grade;
 			sourceTree = "<group>";
 		};
 		F242DCB61EBCB2BB005AC411 /* MyInfo */ = {
@@ -2925,7 +2974,6 @@
 				F20026E31F4020FA00360991 /* mine_image_exam@2x.png in Resources */,
 				F26D968F1F3C400F0063B024 /* xia.png in Resources */,
 				F2509CAE1F440D980091F678 /* 邮子攻略@2x.png in Resources */,
-				F242DF051EBCB2BC005AC411 /* EmptyClassViewController.xib in Resources */,
 				F242DEA21EBCB2BC005AC411 /* 类型@2x.png in Resources */,
 				F26D967C1F3C400F0063B024 /* icon_share_more@3x.png in Resources */,
 				F2770B691F45789100BB6186 /* cqupt1@2x.jpg in Resources */,
@@ -3179,6 +3227,7 @@
 				F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */,
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
 				F242DE671EBCB2BC005AC411 /* DetailViewController.m in Sources */,
+				6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
 				F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */,
@@ -3234,6 +3283,7 @@
 				F2509C841F440D980091F678 /* IntroductionTableViewCell.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
 				F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */,
+				6E1205931F612BB300E5020E /* UITextField+Empty.m in Sources */,
 				F242DD8A1EBCB2BB005AC411 /* CourseButton.m in Sources */,
 				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
 				F2F194751F68395D0034A3BB /* SplashModel.m in Sources */,
@@ -3256,6 +3306,7 @@
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2509C8B1F440D980091F678 /* StuStrategyRootViewController.m in Sources */,
 				F2509C891F440D980091F678 /* QQGroupViewController.m in Sources */,
+				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				F242DF801EBCB2BC005AC411 /* ViewController.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
@@ -3283,8 +3334,8 @@
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */,
+				6E1205901F5FD81B00E5020E /* ExamPickView.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
-				F242DF061EBCB2BC005AC411 /* PickView.m in Sources */,
 				F2509C6D1F440D970091F678 /* MostDifficultSubjectsViewController.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,
@@ -3299,7 +3350,6 @@
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
 				F242DD8C1EBCB2BB005AC411 /* CourseViewController.m in Sources */,
-				F242DF041EBCB2BC005AC411 /* EmptyClassViewController.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
 				F242DE001EBCB2BB005AC411 /* ShopTableViewCell.m in Sources */,
@@ -3332,12 +3382,15 @@
 				F26D96691F3C400F0063B024 /* ImageWithLabels.m in Sources */,
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
+				6E1205A41F64139E00E5020E /* XGEmptyRoomModels.m in Sources */,
 				F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
+				6E175E371F5BEF9000C0BE60 /* EmptyRoomViewController.m in Sources */,
 				F2509C6A1F440D970091F678 /* CQUPTDataRootViewController.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
 				F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
+				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F2509C631F440D970091F678 /* OriginalViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				F2509C8A1F440D980091F678 /* StuBedroomViewController.m in Sources */,
@@ -3345,9 +3398,11 @@
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
 				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,
+				6E1205AA1F658F7E00E5020E /* EmptyRoomTableViewController.m in Sources */,
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
 				F242DF131EBCB2BC005AC411 /* QGERestTimeCourseViewController.m in Sources */,
 				F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */,
+				6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */,
 				F2509C601F440D970091F678 /* CQUPTTeacherView.m in Sources */,
 				F242DDFE1EBCB2BB005AC411 /* ShopDetailViewController.m in Sources */,
 				F26D966B1F3C400F0063B024 /* TopicBtn.m in Sources */,
@@ -3358,6 +3413,7 @@
 				F26D96971F3C400F0063B024 /* MBBrowserItem.m in Sources */,
 				F242DFB31EBD9E2C005AC411 /* IconTableViewCell.m in Sources */,
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
+				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
 				F2A92CE21F52E8BE00B4CEEF /* BaseMatter.m in Sources */,

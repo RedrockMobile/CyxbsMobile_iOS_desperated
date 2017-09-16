@@ -24,7 +24,7 @@
     #define DDLog(xx, ...)     ;
     //#define NSLog(format, ...) ;
 #endif
-
+#define BACKCOLOR [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define MAIN_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define FONT_COLOR  [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]
 //#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
@@ -32,9 +32,9 @@
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kBarTintColor MAIN_COLOR
 #define kItemTintColor [UIColor blackColor]
-#define kFont [UIFont fontWithName:@"Arial" size:15]
+#define kFont [UIFont fontWithName:@"Arial" size:14]
 #define kTextColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
-#define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
+#define kDetailTextColor [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:0.7]
 
 #define COLOR_NEED [UIColor colorWithRed:101/255.0 green:178/255.0 blue:255/255.0 alpha:1]
 #define COLOR_NONEED [UIColor colorWithRed:148/255.0 green:148/255.0 blue:148/255.0 alpha:0.6]

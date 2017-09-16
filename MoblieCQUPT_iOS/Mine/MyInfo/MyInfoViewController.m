@@ -43,8 +43,8 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+
     self.image = self.model.photo_thumbnail_src;
-    
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(uploadData)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
 }
@@ -136,19 +136,24 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
 #pragma mark - TableViewDataSource
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
     } else {
-        return 2;
+        return 4;
     }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-        return 15.0;
+    if (section == 0) {
+        return 0.01f;
+    }
+    else{
+        return 15.f;
+    }
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -188,7 +193,9 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
         textLabel.frame = CGRectMake(20, 15, 0, 0);
         [textLabel sizeToFit];
         [cell.contentView addSubview:textLabel];
-        
+        UIImageView *point = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backPoint"]];
+        point.frame = CGRectMake(SCREENWIDTH - 20, cell.size.height / 2 - textLabel.size.height / 2, textLabel.size.height / 2, textLabel.size.height);
+        [cell.contentView addSubview:point];
         if (indexPath.row == 0) {
             _nicknameTextField = [[UITextField alloc] initWithPlaceholder:@"请输入昵称" andCell:cell];
             _nicknameTextField.delegate = self;
@@ -200,14 +207,7 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
             _introductionTextField.text = self.model.introduction;
             [cell.contentView addSubview:_introductionTextField];
         }
-        
-    } else if (indexPath.section == 2) {
-        textLabel.text = titles[indexPath.row+3];
-        textLabel.frame = CGRectMake(20, 15, 0, 0);
-        [textLabel sizeToFit];
-        [cell.contentView addSubview:textLabel];
-        
-        if (indexPath.row == 0) {
+        else if (indexPath.row == 2) {
             _qqTextField = [[UITextField alloc] initWithPlaceholder:@"写下QQ,方便交流" andCell:cell];
             _qqTextField.delegate = self;
             _qqTextField.text = self.model.qq;

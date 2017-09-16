@@ -12,8 +12,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
         titileWithDic:(NSDictionary *)dic
-             fontSize:(CGFloat)fontSiz
-           gradeFrame:(CGRect)gradeFrame
-            typeFrame:(CGRect)typeFrame;
+             fontSize:(CGFloat)fontSiz;
 
 @end
