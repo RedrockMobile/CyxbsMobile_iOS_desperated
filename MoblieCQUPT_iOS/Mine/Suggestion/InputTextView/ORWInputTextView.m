@@ -7,15 +7,19 @@
 //
 
 #import "ORWInputTextView.h"
+@interface ORWInputTextView()
+@property (strong, nonatomic) UILabel *placeHolderLabel;
+
+@end
 
 @implementation ORWInputTextView
 
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
-    self.layer.borderWidth =1;
-    self.layer.borderColor = RGBColor(202, 202, 202, 1).CGColor;
-    self.layer.cornerRadius = 1;
+//    self.layer.borderWidth =1;
+//    self.layer.borderColor = RGBColor(202, 202, 202, 1).CGColor;
+//    self.layer.cornerRadius = 1;
     [self addSubview:self.placeHolderLabel];
     
     NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
@@ -28,10 +32,9 @@
     style.paragraphSpacing = 10;//段落后面的间距
     //    style.paragraphSpacingBefore = 20;//段落之前的间距
     self.typingAttributes = @{NSParagraphStyleAttributeName:style};
-    _placeHolderLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
-    self.font = [UIFont fontWithName:@"Helvetica" size:16];
-    self.scrollEnabled = NO;//不可滚动
-
+    _placeHolderLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+    self.font = [UIFont fontWithName:@"Helvetica" size:14];
+//    self.scrollEnabled = NO;//不可滚动
 }
 
 
@@ -42,10 +45,9 @@
     [self.placeHolderLabel setText:@""];
     _placeHolderLabel.text = [placeHolder copy];
     _placeHolder = placeHolder;
-    
     CGSize maximumSize = CGSizeMake(self.frame.size.width-16, self.frame.size.height-16);
 
-    CGRect stringRect= [_placeHolder boundingRectWithSize:maximumSize options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:16]} context:nil];
+    CGRect stringRect= [_placeHolder boundingRectWithSize:maximumSize options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica" size:14]} context:nil];
     CGRect finalFrame = CGRectMake(8, 8,  stringRect.size.width, stringRect.size.height);
     _placeHolderLabel.frame = finalFrame;
 }

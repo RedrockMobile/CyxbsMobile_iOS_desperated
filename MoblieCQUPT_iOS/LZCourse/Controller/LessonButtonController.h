@@ -6,12 +6,15 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import "LessonBtnModel.h"
-#import "LessonButton.h"
+
+@class LessonBtnModel;
+@class LessonButton;
+
 @interface LessonButtonController : BaseViewController
 @property LessonBtnModel *matter;
-- (instancetype)initWithDay:(int)day Lesson:(int)lesson;
 @property LessonButton *btn;
+
+- (instancetype)initWithDay:(int)day Lesson:(int)lesson;
 - (BOOL)matterWithWeek:(NSNumber *)week;
-//- (BOOL)remindWithWeek:(NSNumber *)week;
+
 @end

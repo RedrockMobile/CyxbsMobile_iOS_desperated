@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
                 <outlet property="accountField" destination="Aeg-82-sDY" id="BPt-01-teb"/>
+                <outlet property="loginBtn" destination="CBT-Ct-4OS" id="ErG-9W-Qdc"/>
                 <outlet property="passwordField" destination="Cbb-IW-JMm" id="woW-b9-shQ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="whiteView" destination="cKQ-Wr-dlZ" id="vd7-WA-IjZ"/>
@@ -25,18 +26,18 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-s2-vIK">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="301.66666666666669"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="302"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKQ-Wr-dlZ">
-                    <rect key="frame" x="26" y="261.66666666666669" width="361" height="249"/>
+                    <rect key="frame" x="26" y="262" width="361" height="249"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aeg-82-sDY">
-                            <rect key="frame" x="55" y="29.666666666666629" width="276" height="18"/>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入学号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aeg-82-sDY">
+                            <rect key="frame" x="55" y="30" width="276" height="18"/>
                             <color key="textColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cbb-IW-JMm">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入身份证后6位" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cbb-IW-JMm">
                             <rect key="frame" x="55" y="91" width="276" height="18"/>
                             <nil key="textColor"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -70,7 +71,7 @@
                             <color key="tintColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                             <state key="normal" title="登    录" backgroundImage="all_image_background.png"/>
                             <connections>
-                                <action selector="login:" destination="-1" eventType="touchUpInside" id="rBA-kl-avl"/>
+                                <action selector="login:" destination="-1" eventType="touchUpInside" id="MK5-Oq-GMe"/>
                             </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image_account.png" translatesAutoresizingMaskIntoConstraints="NO" id="afN-aY-egF">
@@ -107,14 +108,14 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJG-qF-Pfh">
-                    <rect key="frame" x="18" y="33.666666666666664" width="11" height="22"/>
+                    <rect key="frame" x="18" y="34" width="11" height="22"/>
                     <state key="normal" backgroundImage="navbar_image_back.png"/>
                     <connections>
                         <action selector="dismissAction:" destination="-1" eventType="touchUpInside" id="xH6-ey-ltH"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-cL-KNq">
-                    <rect key="frame" x="189" y="34" width="35" height="20.666666666666664"/>
+                    <rect key="frame" x="189" y="34" width="35" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -138,7 +139,7 @@
         </view>
     </objects>
     <resources>
-        <image name="all_image_background.png" width="375" height="64"/>
+        <image name="all_image_background.png" width="414" height="71"/>
         <image name="login_image_account.png" width="15" height="18"/>
         <image name="login_image_background.png" width="375" height="284"/>
         <image name="login_image_password.png" width="14" height="18"/>

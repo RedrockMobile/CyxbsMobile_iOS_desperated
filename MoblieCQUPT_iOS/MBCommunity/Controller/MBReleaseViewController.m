@@ -77,7 +77,7 @@
 }
 
 - (void)initBar{
-    self.navigationItem.title = @"逼逼叨叨";
+    self.navigationItem.title = @"哔哔叨叨";
     
     UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -8,14 +8,14 @@
 #import "SegmentView.h"
 #define kTitleHeight (self.height*50/667)
 @interface SegmentView()<UIScrollViewDelegate>
-    @property NSArray <UIViewController *> *controllers;
-    @property UIScrollView *mainScrollView;
-    @property UIScrollView *titleScrollView;
-    @property UIView *sliderView;
-    @property NSInteger currentIndex;
-    @property CGFloat titleBtnWidth;
-    @property NSMutableArray <UIButton *> *btnArray;
-    @end
+@property NSArray <UIViewController *> *controllers;
+@property UIScrollView *mainScrollView;
+@property UIScrollView *titleScrollView;
+@property UIView *sliderView;
+@property NSInteger currentIndex;
+@property CGFloat titleBtnWidth;
+@property NSMutableArray <UIButton *> *btnArray;
+@end
 
 @implementation SegmentView
 - (instancetype)initWithFrame:(CGRect)frame andControllers:(NSArray <UIViewController *> *)controllers{
@@ -34,7 +34,7 @@
     return self;
     
 }
-    
+
 - (void)initWithTitleView {
     _titleScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.width, kTitleHeight)];
     _titleScrollView.contentSize = CGSizeMake(self.titleBtnWidth * self.controllers.count,kTitleHeight);
@@ -69,7 +69,7 @@
     [_titleScrollView addSubview:self.sliderView];
     [self addSubview:self.titleScrollView];
 }
-    
+
 - (void)initWithMainView {
     _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, kTitleHeight, self.width, self.height-kTitleHeight)];
     
@@ -90,7 +90,7 @@
     [self addSubview:self.mainScrollView];
     
 }
-    
+
 - (void)clickBtn:(UIButton *)sender {
     //    [self.backScrollView setContentOffset:CGPointMake(sender.tag*ScreenWidth, 0) animated:YES];
     [self.mainScrollView setContentOffset:CGPointMake(sender.tag * self.width, 0) animated:YES];
@@ -99,7 +99,7 @@
     //        _mainScrollView.contentOffset = CGPointMake(sender.tag * self.width, 0);
     //    } completion:nil];
 }
-    
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     NSInteger currentIndex = round(_mainScrollView.contentOffset.x / self.width);
@@ -126,14 +126,13 @@
     }
     
 }
-    
-    
-    /*
-     // Only override drawRect: if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     - (void)drawRect:(CGRect)rect {
-     // Drawing code
-     }
-     */
-    
-    @end
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect {
+ // Drawing code
+ }
+ */
+
+@end

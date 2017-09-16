@@ -192,6 +192,9 @@
     } failure:^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
         NSData *d = operation.responseData;
         NSString* aStr = [[NSString alloc] initWithData:d   encoding:NSASCIIStringEncoding];
+        if (failureBlock) {
+            failureBlock();
+        }
         
         NSLog(@"%@--",aStr);
     }];

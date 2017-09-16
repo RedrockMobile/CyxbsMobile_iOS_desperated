@@ -17,7 +17,7 @@
 #import "MostDifficultSubjectsViewController.h"
 #import "EmploymentRateViewController.h"
 
-@interface CQUPTDataRootViewController ()<SegmentViewScrollerViewDelegate>
+@interface CQUPTDataRootViewController ()<SegmentViewDelegate>
 
 @property (strong, nonatomic) NSArray *VCArray;
 

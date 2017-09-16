@@ -32,10 +32,7 @@
         nvc.navigationBar.tintColor = [UIColor whiteColor];
         nvc.navigationBar.backgroundColor = [UIColor clearColor];
         [nvc.tabBarItem setImage:[UIImage imageNamed:image[i]]];
-//        [nvc.navigationBar setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forBarMetrics:UIBarMetricsDefault];
-        UIImage *image = [UIImage imageNamed:@"all_image_background"];
-        NSLog(@"%@",image);
-        [nvc.navigationBar setBackgroundImage:image  forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+        [nvc.navigationBar setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forBarMetrics:UIBarMetricsDefault];
         [nvc.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_image_back"]];
         [nvc.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_image_back"]];
         [nvc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
