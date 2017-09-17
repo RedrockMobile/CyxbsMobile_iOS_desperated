@@ -1,5 +1,5 @@
 //
-//  LZSearchView.h
+//  LZTextField.h
 //  MoblieCQUPT_iOS
 //
 //  Created by 李展 on 2017/9/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LZSearchView : UIView
+@interface LZTextField : UITextField
 
 @end
