@@ -8,6 +8,7 @@
 
 #import "BeforeClassViewController.h"
 #import "BeforeClassCell.h"
+#import "ExamPickView.h"
 
 @interface BeforeClassViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic)UITableView *beforClassTableView;
@@ -26,6 +27,7 @@
     _beforClassTableView.dataSource =self;
     [self.view addSubview:_beforClassTableView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getState:) name:@"state" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:@"value" object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -34,8 +36,26 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)getState:(NSNotification *)notificatio{
+
     if ([notificatio.object isEqualToString:@"remindMeBeforeTime"]) {
+        _cell1.style = @"remindMeBeforeTime";
         _cell1.state = !_cell1.state;
+ 
+    }
+    else{
+        _cell2.style = @"remindMeTime";
+        _cell2.state = !_cell2.state;
+    }
+}
+- (void)getValue:(NSNotification *)notificatio{
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    if ([[notificatio.object substringWithRange:NSMakeRange(2, 2)] isEqualToString:@"分钟"]) {
+        _cell1.detailString = [NSString stringWithFormat:@"提前%@",notificatio.object];
+        [userDefault setObject:[notificatio.object substringWithRange:NSMakeRange(0, 2)] forKey:@"remindMeBeforeTime"];
+    }
+    else{
+        _cell2.detailString = notificatio.object;
+        [userDefault setObject:notificatio.object forKey:@"remindMeTime"];
     }
 }
 - (UIView *)tableView:(UITableView *)tableView
@@ -76,22 +96,40 @@ viewForHeaderInSection:(NSInteger)section{
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    if ((indexPath.row == 1) &&(indexPath.section == 0||indexPath.section == 1)) {
+        ExamPickView *views = [[ExamPickView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT + 250)];
+        if (indexPath.section == 0) {
+            NSArray * beforeArray = @[@"10分钟", @"20分钟", @"30分钟", @"40分钟"];
+            views.nameArray = beforeArray;
+        }
+        else{
+            NSArray *timeArray = @[@"19:00", @"20:00", @"21:00", @"22:00"];
+            views.nameArray = timeArray;
+        }
+        [views show];
+       
+    }
+
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     BeforeClassCell *cell;
+    cell.userInteractionEnabled = NO;
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell = [BeforeClassCell cellWithTableView:tableView AndStyle:@"remindMeBeforeTime"];
             cell.nameString = @"每课推送";
             cell.detailString = @"每节课前将收到通知提醒";
-
             return cell;
         }
         else{
+            
             _cell1 = [BeforeClassCell cellWithTableView:tableView AndStyle:@"extra"];
+            _cell1.style = @"remindMeBeforeTime";
             _cell1.nameString = @"提前时间";
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
             NSString *time = [NSString stringWithFormat:@"提前%@分钟",[userDefault objectForKey:@"remindMeBeforeTime"]];
+            _cell1.state = [[userDefault objectForKey:@"remindMeBeforeTimeBOOL"] intValue];
             _cell1.detailString = time;
             return _cell1;
         }
@@ -99,15 +137,18 @@ viewForHeaderInSection:(NSInteger)section{
       else{
           if (indexPath.row == 0) {
               cell = [BeforeClassCell cellWithTableView:tableView AndStyle:@"remindMeTime"];
-              cell.nameString = @"每课推送";
-              cell.detailString = @"每节课前将收到通知提醒";
+              cell.nameString = @"每日推送";
+              cell.detailString = @"每天会在约定的时间发送明天的课表";
               return cell;
           }
           else{
+              
               _cell2 = [BeforeClassCell cellWithTableView:tableView AndStyle:@"extra"];
-              _cell2.nameString = @"提前时间";
+              _cell2.style = @"remindMeTime";
+              _cell2.nameString = @"通知时间";
               NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-              NSString *time = [NSString stringWithFormat:@"提前%@分钟",[userDefault objectForKey:@"remindMetime"]];
+              NSString *time = [NSString stringWithFormat:@"%@",[userDefault objectForKey:@"remindMeTime"]];
+              _cell2.state = [[userDefault objectForKey:@"remindMeTimeBOOL"] intValue];
               _cell2.detailString = time;
               return _cell2;
           }

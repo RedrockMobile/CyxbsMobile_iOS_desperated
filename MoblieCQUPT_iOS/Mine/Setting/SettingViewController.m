@@ -174,6 +174,11 @@
 - (void)displayCode{
     _codeView = [[UIView alloc]initWithFrame:self.view.frame];
     _codeView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
+    UIImageView *codeImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"QRcode"]];
+    codeImage.contentMode = UIViewContentModeScaleAspectFit;
+    codeImage.size = CGSizeMake(SCREENWIDTH - 50, SCREENHEIGHT - 300);
+    codeImage.center = _codeView.center;
+    [_codeView addSubview:codeImage];
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     _codeView.userInteractionEnabled = YES;
     [_codeView addGestureRecognizer:tapRecognizer];
