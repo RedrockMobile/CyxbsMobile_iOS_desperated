@@ -11,7 +11,8 @@
 #import "PickView.h"
 #import "MBProgressHUD.h"
 
-#define EmptyClassApi @"http://hongyan.cqupt.edu.cn/api/roomEmpty"
+//#define EmptyClassApi @"http://hongyan.cqupt.edu.cn/api/roomEmpty"
+#define EmptyClassApi @"http://hongyan.cqupt.edu.cn/app/api/emptyRoom.php"
 
 @interface EmptyClassViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDelegate,UIPickerViewDataSource>
 
@@ -550,6 +551,10 @@
     if (isOk) {
         _HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         _HUD.labelText = @"正在查询...";
+//原来课程参数为1-6，改为0-5
+        NSNumber *sectionNum = _loadDic[@"sectionNum"];
+        NSNumber *finallyNum = [NSNumber numberWithInt:([sectionNum intValue] - 1)];
+        _loadDic[@"sectionNum"] = finallyNum;
         [self loadNetData];
     }
     

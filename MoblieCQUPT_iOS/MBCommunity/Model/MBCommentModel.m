@@ -22,8 +22,8 @@
         }
         //头像
         self.photo_src = dic[@"photo_src"];
-        
-        self.created_time = dic[@"created_time"];
+        NSString *time = dic[@"created_time"];
+        self.created_time = [time substringToIndex:10];
         self.content = dic[@"content"];
     }
     return self;

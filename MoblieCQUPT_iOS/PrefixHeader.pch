@@ -130,7 +130,7 @@
 #define NVGBARHEIGHT self.navigationController.navigationBar.frame.size.height
 #define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
-#define HEADERHEIGHT 64
+#define HEADERHEIGHT NVGBARHEIGHT+STATUSBARHEIGHT
 #define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
 #define MHEIGHT (1.6*MWIDTH) //monthLabel的高度
 #define DAY 7
