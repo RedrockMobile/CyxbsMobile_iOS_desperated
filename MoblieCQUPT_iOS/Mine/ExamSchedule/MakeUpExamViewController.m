@@ -31,13 +31,12 @@
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:MakeApi WithParameter:@{@"stuNum": stuNum} WithReturnValeuBlock:^(id returnValue) {
-        if (![returnValue[@"info"] isEqualToString:@"success"]) {
+        if (returnValue[@"data"]) {
             [self initFailViewWithDetail:@"暂无补考消息~"];
         }
         else{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             _data = returnValue[@"data"];
-            NSLog(@"%@", _data);
             [self setUpTableView];
         }
     } WithFailureBlock:^{
