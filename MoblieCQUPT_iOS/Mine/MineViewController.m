@@ -26,6 +26,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    //适配iphone X状态栏
+    UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, STATUSBARHEIGHT)];
+    statusBarView.backgroundColor=[UIColor colorWithRed:137/255.0 green:165/255.0 blue:249/255.0 alpha:1];
+    [self.view addSubview:statusBarView];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    
     NSURL *url = [NSURL URLWithString:[UserDefaultTool valueWithKey:@"photo_thumbnail_src"]];
     [self.headImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
     self.nameLabel.text = [UserDefaultTool valueWithKey:@"nickname"];

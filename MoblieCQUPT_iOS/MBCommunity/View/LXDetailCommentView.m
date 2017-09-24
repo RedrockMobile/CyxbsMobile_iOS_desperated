@@ -24,7 +24,7 @@
     if (self) {
         self.hidden = YES;
         
-        UIToolbar *toolBarView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 48/667.0 * SCREENHEIGHT)];
+        UIView *toolBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 48/667.0 * SCREENHEIGHT)];
         toolBarView.backgroundColor = [UIColor whiteColor];
         [self addSubview:toolBarView];
         

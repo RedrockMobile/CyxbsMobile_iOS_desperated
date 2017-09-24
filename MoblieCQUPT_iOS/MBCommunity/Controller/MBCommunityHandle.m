@@ -53,9 +53,9 @@
     if (stuNum==nil) {
         [self noLogin:viewController handler:^(BOOL success) {
             //some problems
-            
-            [self clickUpvoteBtn:viewController currentUpvoteNum:currentUpvoteNum upvoteIsSelect:upvoteIsSelect viewModel:viewModel];
-            
+            if (success == YES) {
+                [self clickUpvoteBtn:viewController currentUpvoteNum:currentUpvoteNum upvoteIsSelect:upvoteIsSelect viewModel:viewModel];
+            }
         }];
     }
     else {
