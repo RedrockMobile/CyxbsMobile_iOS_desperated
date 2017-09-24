@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LZNoCourseViewController : UIViewController
-
+@interface LZNoCourseViewController : BaseViewController
+ 
 @end

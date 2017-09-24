@@ -16,5 +16,6 @@ typedef void (^touchBlock)(void);
 @property (nonatomic, strong) UIColor *addBtnTextColor;
 @property (nonatomic, strong) UIColor *textFieldTextColor;
 @property (nonatomic, copy) NSString *placeHolder;
+@property (nonatomic, readonly)NSString *text;
 //@property (nonatomic, strong) UIColor *plcaeHolderTextColor;
 @end

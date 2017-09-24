@@ -27,7 +27,9 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    self.passTap(touches,event);
+    if(self.passTap){
+        self.passTap(touches,event);
+    }
     
 }
 @end

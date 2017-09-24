@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LZTextField : UITextField
-- (void)clickDelete;
+
 @end

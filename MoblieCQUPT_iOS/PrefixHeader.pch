@@ -134,13 +134,15 @@
 #define EDITREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
 #define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
 #define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
+#define SEARCHPEOPLEAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
+
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
 #define NVGBARHEIGHT self.navigationController.navigationBar.frame.size.height
 #define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
-#define HEADERHEIGHT 64
+#define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)
 #define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
 #define MHEIGHT (1.6*MWIDTH) //monthLabel的高度
 #define DAY 7

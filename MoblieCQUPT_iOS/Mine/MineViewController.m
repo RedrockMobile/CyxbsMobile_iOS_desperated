@@ -44,7 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
-    NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"QGERestTimeCourseViewController"},
+    NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"LZNoCourseViewController"},
                           @{@"title":@"空教室",@"img":@"mine_image_classroom",@"controller":@"EmptyRoomViewController"},
                           @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamTotalViewController"},
                           @{@"title":@"校历",@"img":@"mine_image_calendar",@"controller":@"CalendarViewController"},
