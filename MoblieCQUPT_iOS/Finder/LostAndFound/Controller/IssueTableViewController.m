@@ -8,7 +8,6 @@
 
 #import "IssueTableViewController.h"
 #import "IconTableViewCell.h"
-#import <Masonry.h>
 #import "LostAndFoundButton.h"
 #import "CategoryChooseView.h"
 #import "CoverView.h"
@@ -18,7 +17,7 @@
 #import "LZConfirmButton.h"
 #import "LZLostRemindView.h"
 #import "LZIssueSucceedViewController.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "TickButton.h"
 @interface IssueTableViewController ()<LZDatePickerDelegate,UITextViewDelegate,UITextFieldDelegate>
 @property NSMutableArray *imageArray;
 @property LostAndFoundButton *lostBtn;
@@ -26,8 +25,6 @@
 @property CategoryChooseView *categoryChooseView;
 @property CoverView *coverView;
 @property LZDatePicker *datePicker;
-//@property BOOL isShowPicker;
-//@property BOOL isShowChooseView;
 @property LostModel *model;
 @property NSArray *titleArray;
 @property UITextView *descriptionTextView;

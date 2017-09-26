@@ -51,6 +51,11 @@
 }
 
 - (void)loadDayLbTimeWithWeek:(NSInteger)week nowWeek:(NSInteger)nowWeek{
+    if (week == 0) {
+        [self removeDayLbTime];
+        return;
+    }
+    
     NSDate *now = [NSDate date];
     NSDateFormatter *monthFormatter = [[NSDateFormatter alloc]init];
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc]init];
@@ -86,6 +91,26 @@
         self.dayLabels[i].text = self.weekDay[i];
 //        self.dayLabels[i].textColor = [UIColor blackColor];
     }
+}
+
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    CGSize size = CGSizeZero;
+    for (UIView *view in self.scrollView.subviews) {
+        if ([view isMemberOfClass:[UIView class]]) {
+            size = view.frame.size;
+            break;
+        }
+    }
+    self.scrollView.frame = CGRectMake(0, MHEIGHT, self.frame.size.width, self.frame.size.height-MHEIGHT);
+    for (UIView *view in self.scrollView.subviews){
+        if ([view isMemberOfClass:[UIView class]]) {
+            CGRect frame = view.frame;
+            frame.size = size;
+            view.frame = frame;
+        }
+    }
+    // 改变scrollView的frame后 view的frame会变化  为了保持frame不变化
 }
 
 - (void)initMainScrollView{

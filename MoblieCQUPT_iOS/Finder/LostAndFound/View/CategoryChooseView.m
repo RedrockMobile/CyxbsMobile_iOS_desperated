@@ -7,7 +7,7 @@
 //
 
 #import "CategoryChooseView.h"
-#import "UIColor+Hex.h"
+#import "TickButton.h"
 @interface CategoryChooseView()
 @property TickButton *selectedBtn;
 @end
@@ -16,7 +16,7 @@
     NSArray *categoryArray = @[@"一卡通",@"钱包",@"电子产品",@"书包",@"钥匙",@"雨伞",@"衣物",@"其它"];
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor colorWithHex:@"#fbfbfb"];
+        self.backgroundColor = [UIColor colorWithHexString:@"#fbfbfb"];
         self.btnArray = [NSMutableArray array];
         NSInteger count = categoryArray.count;
         CGFloat lbHeight = frame.size.height/count;
@@ -28,7 +28,7 @@
         for (NSInteger i = 0; i<count; i++) {
             TickButton *btn = [[TickButton alloc] initWithFrame:CGRectMake(0, i*lbHeight, lbWidth, lbHeight-1)];
             UIView *assitView = [[UIView alloc]initWithFrame:CGRectMake(16, (i+1)*lbHeight-1, lbWidth-32, 1)];
-            assitView.backgroundColor = [UIColor colorWithHex:@"#e3e3e3"];
+            assitView.backgroundColor = [UIColor colorWithHexString:@"#e3e3e3"];
             [btn setTitle:categoryArray[i] forState:UIControlStateNormal];
             [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:btn];

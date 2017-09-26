@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"关于";
     self.tapNum = 0;
     [self.appName setTextColor:[UIColor paperColorGray500]];
     [self.appVersion setTextColor:[UIColor paperColorGray500]];
@@ -67,9 +68,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    self.navigationItem.title = @"关于";
-}
 
 //- (void)clickToCopyRight {
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"使用条款"

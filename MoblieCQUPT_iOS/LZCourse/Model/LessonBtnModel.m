@@ -7,13 +7,13 @@
 //
 
 #import "LessonBtnModel.h"
-
+#import "LessonMatter.h"
+#import "RemindMatter.h"
 @implementation LessonBtnModel
 - (instancetype)init{
     self = [super init];
     if (self) {
         self.lessonArray = [NSMutableArray array];
-        self.examArray = [NSMutableArray array];
         self.remindArray = [NSMutableArray array];
     }
     return self;

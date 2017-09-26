@@ -22,7 +22,7 @@
 +(void)print;
 
 +(NSString *)getStuNum;
-//+(void)saveStuNum:(NSString *)stuNum;
+
 +(NSString *)getIdNum;
 
 +(void)removeALLData;
