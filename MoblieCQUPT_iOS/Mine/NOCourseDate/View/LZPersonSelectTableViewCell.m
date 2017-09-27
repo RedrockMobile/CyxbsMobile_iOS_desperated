@@ -12,12 +12,17 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.nameLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+    self.majorLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    self.stuNumLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    self.nameLabel.font = [UIFont systemFontOfSize:15];
+    self.majorLabel.font = [UIFont systemFontOfSize:13];
+    self.stuNumLabel.font = [UIFont systemFontOfSize:13];
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class LessonMatter;
 @interface LZPersonModel : NSObject
 @property (nonatomic, copy) NSString *stuNum;
 @property (nonatomic, copy) NSString *name;
@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSString *major;
 @property (nonatomic, copy) NSString *depart;
 @property (nonatomic, copy) NSString *grade;
+
+@property (nonatomic, copy) NSArray <LessonMatter *> *lessons;
 
 - (instancetype)initWithData:(NSDictionary *)data;
 

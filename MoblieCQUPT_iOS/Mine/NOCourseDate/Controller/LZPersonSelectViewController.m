@@ -40,6 +40,9 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.tableFooterView = [[UIView alloc]init];
+        _tableView.tableFooterView.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
+        _tableView.allowsSelection = NO;
     }
     return _tableView;
 }
@@ -72,6 +75,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 667/SCREENHEIGHT*100;
+}
 
 /*
 #pragma mark - Navigation

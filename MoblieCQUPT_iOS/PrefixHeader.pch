@@ -149,7 +149,6 @@
 #define LESSON 12
 #define WEEK 20
 #define LONGLESSON (LESSON/2)
-
 #define LESSONBTNSIDE (((SCREENWIDTH)-(MWIDTH))/DAY)
 #define SEGMENT 2
 #define autoSizeScaleX SCREENWIDTH/375.0

@@ -8,19 +8,20 @@
 
 #import "LZNoCourseViewController.h"
 #import "LZSearchView.h"
-#import "LessonController.h"
 #import "CoverView.h"
 #import "LZPersonModel.h"
 #import "LZPersonSelectViewController.h"
 #import "LZPersonAddView.h"
+#import "LZNoCourseDateDetailViewController.h"
 
 @interface LZNoCourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) LZSearchView *searchView;
 @property (nonatomic, strong) UIButton *queryBtn;
-@property (nonatomic, strong) NSMutableArray<LZPersonModel *> *personArray;
 @property (nonatomic, strong) CoverView *coverView;
 @property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) NSMutableArray<LZPersonModel *> *personArray;
+
 
 @end
 
@@ -74,6 +75,8 @@
         [_queryBtn setTitle:@"查询" forState:UIControlStateNormal];
         [_queryBtn setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forState:UIControlStateNormal];
         [_queryBtn addTarget:self action:@selector(query) forControlEvents:UIControlEventTouchUpInside];
+        _queryBtn.layer.cornerRadius = 2;
+        _queryBtn.layer.masksToBounds = YES;
     }
     return _queryBtn;
 }
@@ -155,11 +158,19 @@
 }
 
 - (void)query{
-    LessonController *vc = [[LessonController alloc]init];
+    LZNoCourseDateDetailViewController *vc = [[LZNoCourseDateDetailViewController alloc]initWithPersons:self.personArray];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)addAction{
+    if(self.personArray.count >= 12){
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        self.hud.labelText = @"人数超过限制";
+        [self.hud hide:YES afterDelay:1];
+        return;
+    }
+    
     [self.view.window addSubview:self.coverView];
     [self.view.window addSubview:self.searchView];
     [_searchView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -177,7 +188,6 @@
     HttpClient *client = [HttpClient defaultClient];
     NSDictionary *parameters = @{@"stu":self.searchView.text};
     [client requestWithPath:SEARCHPEOPLEAPI method:HttpRequestGet parameters:parameters prepareExecute:^{
-
         
     } progress:^(NSProgress *progress) {
      
