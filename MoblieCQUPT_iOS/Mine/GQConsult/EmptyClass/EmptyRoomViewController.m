@@ -30,18 +30,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BACKCOLOR;
-    _textField1 = [[UITextField alloc]initWithPlaceHolder:@"     请选择教学楼" andFrame:CGRectMake(0, 64, SCREENWIDTH, 50)];
+    _textField1 = [[UITextField alloc]initWithPlaceHolder:@"     请选择教学楼" andFrame:CGRectMake(0, [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height, SCREENWIDTH, 50)];
     _textField1.tag = 1;
     _textField1.delegate = self;
     [self.view addSubview:_textField1];
-    _textField2 = [[UITextField alloc]initWithPlaceHolder:@"     请选择时间" andFrame:CGRectMake(0, 115, SCREENWIDTH, 50)];
+    _textField2 = [[UITextField alloc]initWithPlaceHolder:@"     请选择时间" andFrame:CGRectMake(0, _textField1.bottom + 2, SCREENWIDTH, 50)];
     _textField2.tag = 2;
     _textField2.delegate = self;
     [self.view addSubview:_textField2];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:@"value" object:nil];
     
     _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _confirmBtn.frame = CGRectMake(15, _textField2.frame.origin.y + _textField1.frame.size.height + 20, SCREENWIDTH - 30, 50);
+    _confirmBtn.frame = CGRectMake(15, _textField2.bottom + (20 * SCREENWIDTH / 375), SCREENWIDTH - 30 * SCREENWIDTH / 375, 50 * SCREENWIDTH / 375);
     [_confirmBtn addTarget:self action:@selector(confirmThing) forControlEvents:UIControlEventTouchUpInside];
     [_confirmBtn setImage:[UIImage imageNamed:@"findBtn"] forState:UIControlStateNormal];
     [self.view addSubview:_confirmBtn];

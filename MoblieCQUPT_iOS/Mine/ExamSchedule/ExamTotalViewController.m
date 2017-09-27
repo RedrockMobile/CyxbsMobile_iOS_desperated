@@ -28,7 +28,7 @@
     MakeUpExamViewController *view3 = [[MakeUpExamViewController alloc] init];
     view3.title = @"补考安排";
     NSArray *viewArray = @[view1,view2,view3];
-    ExamSegementView *semgent = [[ExamSegementView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT - 64) andControllers:viewArray];
+    ExamSegementView *semgent = [[ExamSegementView alloc] initWithFrame:CGRectMake(0, [[UIApplication sharedApplication] statusBarFrame].size.height + self.navigationController.navigationBar.frame.size.height, SCREENWIDTH, SCREENHEIGHT - 64) andControllers:viewArray];
     [self.view addSubview:semgent];
     // Do any additional setup after loading the view.
 }

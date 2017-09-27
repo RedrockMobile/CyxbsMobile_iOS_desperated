@@ -29,6 +29,9 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getState:) name:@"state" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:@"value" object:nil];
     // Do any additional setup after loading the view.
+//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+//    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[userDefault objectForKey:@"lessonResponse"][@"data"]];
+//    NSLog(@"   %@",array[0]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -81,7 +84,7 @@ viewForHeaderInSection:(NSInteger)section{
         footViewLab.textColor = kDetailTextColor;
         footViewLab.font = [UIFont fontWithName:@"Arial" size:12];
         footViewLab.numberOfLines = 0;
-        footViewLab.text = @"注意：如果遇到不能正常提醒，请在安全软件或系统管理中添加账上重邮到白名单。使用了对齐唤醒技术，所以不要担心影响续航";
+        footViewLab.text = @"";
         [footView addSubview:footViewLab];
         return footView;
     }
