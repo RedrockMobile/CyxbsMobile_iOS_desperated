@@ -25,14 +25,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
-    
     UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.tableView.contentInset
+    = UIEdgeInsetsMake(-35,0,0,0);
     [quitBtn setImage:[UIImage imageNamed:@"backColor"] forState:UIControlStateNormal];
-    quitBtn.frame = CGRectMake(self.view.centerX - (SCREENWIDTH - 40) / 2, SCREENHEIGHT - 356, SCREENWIDTH - 40, 45);
+    quitBtn.frame = CGRectMake(self.view.centerX - (SCREENWIDTH - 40) / 2, self.view.centerY - 40, SCREENWIDTH - 40, 50  * SCREENWIDTH / 375);
     [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:quitBtn];
     _cellArray = @[@{@"cell":@"在课表上没课的地方显示备忘内容"},
@@ -174,6 +176,11 @@
 - (void)displayCode{
     _codeView = [[UIView alloc]initWithFrame:self.view.frame];
     _codeView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
+    UIImageView *codeImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"QRcode"]];
+    codeImage.contentMode = UIViewContentModeScaleAspectFit;
+    codeImage.size = CGSizeMake(SCREENWIDTH - 50, SCREENHEIGHT - 300);
+    codeImage.center = _codeView.center;
+    [_codeView addSubview:codeImage];
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
     _codeView.userInteractionEnabled = YES;
     [_codeView addGestureRecognizer:tapRecognizer];

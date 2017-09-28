@@ -12,6 +12,7 @@
 #import "AboutMeViewController.h"
 #import "MyMessagesViewController.h"
 #import "MyInfoModel.h"
+#import <sys/utsname.h>
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray *cellDicArray;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -26,6 +27,20 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
+    UIView *statusBarView = [[UIView alloc]  init];
+    //判读机型
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString* code = [NSString stringWithCString:systemInfo.machine
+        encoding:NSUTF8StringEncoding];
+    statusBarView.backgroundColor = [UIColor colorWithRed:139/255.0 green:165/255.0 blue:248/255.0 alpha:1.0];
+    if ([code isEqualToString:@"iphoneX"]) {
+        statusBarView.frame = CGRectMake(0, 0,    self.view.bounds.size.width, 44);
+    }
+    else{
+        statusBarView.frame = CGRectMake(0, 0,    self.view.bounds.size.width, 20);
+    }
+    [self.view addSubview:statusBarView];
     NSException *exception;
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];

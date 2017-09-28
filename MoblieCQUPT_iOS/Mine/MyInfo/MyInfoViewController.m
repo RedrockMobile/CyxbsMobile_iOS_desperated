@@ -41,6 +41,8 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
     self.model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
     [self.view addSubview:_tableView];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.tableView.contentInset = UIEdgeInsetsMake(-35,0,0,0);
     _tableView.delegate = self;
     _tableView.dataSource = self;
 
