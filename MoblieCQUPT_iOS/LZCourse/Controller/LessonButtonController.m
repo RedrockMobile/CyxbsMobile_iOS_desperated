@@ -30,7 +30,7 @@
         self.beginLesson = lesson;
         self.matter = [[LessonBtnModel alloc]init];
         self.view.frame = CGRectMake(MWIDTH+day*LESSONBTNSIDE+SEGMENT/2, lesson*LESSONBTNSIDE*2+SEGMENT/2, LESSONBTNSIDE-SEGMENT, LESSONBTNSIDE*2-SEGMENT);
-        self.btn = [[LessonButton alloc]initWithFrame:self.view.frame];
+        self.btn = [[LessonButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         self.btn.tag = day*LONGLESSON+lesson;
     }
     return self;
@@ -112,12 +112,10 @@
     [self.btn setTitle:remind.title forState:UIControlStateNormal];
     if (self.beginLesson<6 && self.beginLesson>=4) {
         [self.btn setTitleColor:[UIColor colorWithHexString:@"#79dbc4"] forState:UIControlStateNormal];
-
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind2"] forState:UIControlStateNormal];
     }
     else if(self.beginLesson <4 && self.beginLesson>= 2){
         [self.btn setTitleColor:[UIColor colorWithHexString:@"#f9af58"] forState:UIControlStateNormal];
-
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind1"] forState:UIControlStateNormal];
     }
     else if(self.beginLesson <2 &&self.beginLesson>=0){

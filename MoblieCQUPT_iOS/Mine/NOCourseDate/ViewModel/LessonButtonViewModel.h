@@ -11,6 +11,7 @@
 @interface LessonButtonViewModel : NSObject
 @property (nonatomic, assign) BOOL isHidden;
 @property (nonatomic, copy) NSString *titles;
-- (instancetype)initWithPersons:(NSArray <LZPersonModel *>*)person andBeginLesson:(NSInteger) beginLesson;
+@property (nonatomic, copy) NSString *color;
+- (instancetype)initWithPersons:(NSArray <LZPersonModel *>*)person day:(NSInteger)day andBeginLesson:(NSInteger) beginLesson;
 - (void)handleTitlesWithWeek:(NSInteger)week;
 @end

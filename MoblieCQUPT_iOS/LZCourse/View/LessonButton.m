@@ -14,14 +14,12 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         self.titleLabel.font = [UIFont adaptFontSize:11.0];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.numberOfLines = 0;
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.mas_top).offset(0);
             make.bottom.equalTo(self.mas_bottom).offset(0);
-            
         }];
     }
     return self;

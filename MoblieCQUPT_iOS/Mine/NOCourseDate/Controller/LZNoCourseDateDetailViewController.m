@@ -14,14 +14,14 @@
 #import "LZWeekScrollView.h"
 #import "UIFont+AdaptiveFont.h"
 #import "LessonButtonViewModel.h"
-#import "LessonButtonController.h"
+
 @interface LZNoCourseDateDetailViewController ()<LZWeekScrollViewDelegate>
 @property (nonatomic, strong) MainView *mainView;
 @property (nonatomic, strong) LZWeekScrollView *weekScrollView;
-@property (nonatomic, strong) NSMutableArray <LZPersonModel *>*persons;
 @property (nonatomic, strong) UIButton *barBtn;
 @property (nonatomic, strong) UIImageView *pullImageView;
 @property (nonatomic, assign) CGFloat kWeekScrollViewHeight;
+@property (nonatomic, strong) NSMutableArray <LZPersonModel *>*persons;
 @property (nonatomic, copy) NSArray <LessonButton *>* lessonBtns;
 @property (nonatomic, copy) NSArray <LessonButtonViewModel *> *btnModels;
 @property (nonatomic, strong) MBProgressHUD *hud;
@@ -36,6 +36,7 @@
     self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.hud.labelText=@"loading";
     self.isNetWorkSuccess = YES;
+    self.nowWeek = 0;
     self.kWeekScrollViewHeight = SCREENHEIGHT*0.06;
     [self getLessonsData];
     [self initNavigationBar];
@@ -64,8 +65,8 @@
         for (int lesson = 0; lesson<LONGLESSON; lesson++) {
             LessonButton *btn = [[LessonButton alloc]initWithFrame:CGRectMake(MWIDTH+day*LESSONBTNSIDE+SEGMENT/2, lesson*LESSONBTNSIDE*2+SEGMENT/2, LESSONBTNSIDE-SEGMENT, LESSONBTNSIDE*2-SEGMENT)];
             [btns addObject:btn];
+            [self.mainView.scrollView addSubview:btn];
             btn.hidden = YES;
-            [self.view addSubview:btn];
         }
     }
     self.lessonBtns = btns;
@@ -74,71 +75,20 @@
 - (MainView *)mainView{
     if (_mainView == nil) {
         _mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
+        [self initBtns];
     }
     return _mainView;
-}
-
-
-- (void)getLessonsData{
-    HttpClient *client = [HttpClient defaultClient];
-    dispatch_group_t group = dispatch_group_create();
-    for (LZPersonModel *person in self.persons) {
-        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-            [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:@{@"stuNum":person.stuNum} prepareExecute:^{
-                
-            } progress:^(NSProgress *progress) {
-                
-            } success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSMutableArray *lessons = [NSMutableArray array];
-                for (NSDictionary *dic in responseObject[@"data"]) {
-                    LessonMatter *lesson = [[LessonMatter alloc] initWithLesson:dic];
-                    [lessons addObject:lesson];
-                }
-                person.lessons = lessons;
-                dispatch_semaphore_signal(semaphore);
-
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                self.isNetWorkSuccess = NO;
-                dispatch_semaphore_signal(semaphore);
-            }];
-            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
-        });
-    }
-    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSLog(@"%@",self.persons);
-        if (!self.isNetWorkSuccess) {
-            self.hud.mode = MBProgressHUDModeText;
-            self.hud.labelText = @"网络错误";
-            [self.hud hide:YES afterDelay:1];
-        }
-        else{
-            NSMutableArray *viewModels = [NSMutableArray array];
-            for (int day = 0; day<DAY; day++) {
-                for (int lesson = 0; lesson<LONGLESSON; lesson++) {
-                    LessonButtonViewModel *viewModel = [[LessonButtonViewModel alloc]initWithPersons:self.persons andBeginLesson:day*LONGLESSON+day];
-                    [viewModels addObject:viewModel];
-                }
-            }
-            self.btnModels = viewModels;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.hud hide:YES];
-                [self showMatterWithWeek:_nowWeek];
-            });
-        }
-    });
 }
 
 - (LZWeekScrollView *)weekScrollView{
     if (_weekScrollView == nil) {
         NSMutableArray *weekArray = @[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周"].mutableCopy;
-        _nowWeek = [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue];
+        _nowWeek = [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue] ?:_nowWeek;
         if (_nowWeek >0 && _nowWeek<=20) {
             weekArray[_nowWeek] = @"本周";
         }
         _weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight) andTitles:weekArray];
         _weekScrollView.eventDelegate = self;
-        [_weekScrollView scrollToIndex:_nowWeek];
     }
     return _weekScrollView;
 }
@@ -146,7 +96,7 @@
 - (void)initNavigationBar{
     self.barBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, NVGBARHEIGHT*2, NVGBARHEIGHT)];
     [self.barBtn addTarget:self action:@selector(clickBtn) forControlEvents:UIControlEventTouchUpInside];
-//    [self.barBtn setTitle:self.weekScrollView.currentIndexTitle forState:UIControlStateNormal];
+    [self.barBtn setTitle:self.weekScrollView.currentIndexTitle forState:UIControlStateNormal];
     [self.barBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.barBtn.titleLabel.font = [UIFont adaptFontSize:18];
     self.navigationItem.titleView = self.barBtn;
@@ -189,13 +139,68 @@
     [self clickBtn];
 }
 
-- (void)showMatterWithWeek:(NSInteger )week{
+- (void)showMatterWithWeek:(NSInteger)week{
     [self.mainView loadDayLbTimeWithWeek:week nowWeek:self.nowWeek];
     for (int i = 0; i < self.lessonBtns.count; i++) {
         [self.btnModels[i] handleTitlesWithWeek:week];
-        self.lessonBtns[i].titleLabel.text = self.btnModels[i].titles;
+        [self.lessonBtns[i] setTitle:self.btnModels[i].titles forState:UIControlStateNormal];
+        [self.lessonBtns[i] setBackgroundColor:[UIColor colorWithHexString:self.btnModels[i].color]];
         self.lessonBtns[i].hidden = self.btnModels[i].isHidden;
     }
+}
+
+- (void)getLessonsData{
+    HttpClient *client = [HttpClient defaultClient];
+    dispatch_group_t group = dispatch_group_create();
+    for (LZPersonModel *person in self.persons) {
+        dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+            [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:@{@"stuNum":person.stuNum} prepareExecute:^{
+                
+            } progress:^(NSProgress *progress) {
+                
+            } success:^(NSURLSessionDataTask *task, id responseObject) {
+                self.nowWeek = [responseObject[@"nowWeek"] integerValue];
+                NSMutableArray *lessons = [NSMutableArray array];
+                for (NSDictionary *dic in responseObject[@"data"]) {
+                    LessonMatter *lesson = [[LessonMatter alloc] initWithLesson:dic];
+                    [lessons addObject:lesson];
+                }
+                person.lessons = lessons;
+                dispatch_semaphore_signal(semaphore);
+                
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                self.isNetWorkSuccess = NO;
+                dispatch_semaphore_signal(semaphore);
+            }];
+            dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+        });
+    }
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSLog(@"%@",self.persons);
+        if (!self.isNetWorkSuccess) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.hud.mode = MBProgressHUDModeText;
+                self.hud.labelText = @"网络错误";
+                [self.hud hide:YES afterDelay:1];
+            });
+        }
+        else{
+            NSMutableArray *viewModels = [NSMutableArray array];
+            for (int day = 0; day<DAY; day++) {
+                for (int lesson = 0; lesson<LONGLESSON; lesson++) {
+                    LessonButtonViewModel *viewModel = [[LessonButtonViewModel alloc]initWithPersons:self.persons day:day andBeginLesson:lesson];
+                    [viewModels addObject:viewModel];
+                }
+            }
+            self.btnModels = viewModels;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.hud hide:YES];
+                [self.weekScrollView scrollToIndex:_nowWeek];
+                [self showMatterWithWeek:_nowWeek];
+            });
+        }
+    });
 }
 /*
 #pragma mark - Navigation
