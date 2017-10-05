@@ -14,13 +14,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MJRefresh/MJRefresh.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api"
 
 @interface LostTableViewController ()
-@property NSMutableArray *itemArray;
-@property NSMutableString *APIString;
-@property NSMutableString *nextPageString;
-@property NSInteger theme;
+@property (nonatomic, strong) NSMutableArray *itemArray;
+@property (nonatomic, strong) NSMutableString *APIString;
+@property (nonatomic, strong) NSMutableString *nextPageString;
+@property (nonatomic, assign) NSInteger theme;
 typedef NS_ENUM(NSInteger,LZPlace){
     header = 0,
     footer = 1

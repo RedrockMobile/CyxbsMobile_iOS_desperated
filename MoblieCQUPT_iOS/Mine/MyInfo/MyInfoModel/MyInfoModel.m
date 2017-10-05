@@ -31,6 +31,7 @@
     }
     return self;
 }
+
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [self init];
     if (self) {

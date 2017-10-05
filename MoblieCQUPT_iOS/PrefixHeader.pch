@@ -135,6 +135,10 @@
 #define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
 #define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
 #define SEARCHPEOPLEAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
+#define PHOTOURL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"
+#define BASE_URL @"http://hongyan.cqupt.edu.cn"
+#define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api"
+#define UPLOAD_IMAGE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/photo/upload"
 
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)

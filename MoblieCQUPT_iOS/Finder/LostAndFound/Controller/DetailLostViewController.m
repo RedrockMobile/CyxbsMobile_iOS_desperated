@@ -11,11 +11,11 @@
 #import "LostItem.h"
 
 @interface DetailLostViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property NSMutableArray *imageArray;
-@property NSArray *titleArray;
-@property NSMutableArray *contentArray;
-@property MBProgressHUD *hud;
-@property UIView *whiteView;
+@property (nonatomic, strong) NSMutableArray *imageArray;
+@property (nonatomic, copy) NSArray *titleArray;
+@property (nonatomic, strong) NSMutableArray *contentArray;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIView *whiteView;
 @end
 
 @implementation DetailLostViewController
@@ -60,7 +60,7 @@
         [self.headImageView sd_setImageWithURL:[NSURL URLWithString:info.wx_avatar]];
     }
     else{
-        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn%@",info.wx_avatar]]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BASE_URL,info.wx_avatar]]];
     }
     self.categoryLabel.text = info.pro_name;
     self.contentLabel.text = info.pro_description;

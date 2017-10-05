@@ -268,7 +268,6 @@
 		F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB31EBCB2BB005AC411 /* GradeView.m */; };
 		F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB51EBCB2BB005AC411 /* MineViewController.m */; };
 		F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */; };
-		F242DF0D1EBCB2BC005AC411 /* MyInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCBC1EBCB2BB005AC411 /* MyInfoViewController.xib */; };
 		F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */; };
 		F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCC11EBCB2BB005AC411 /* MyMessagesTableViewCell.m */; };
 		F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCC31EBCB2BB005AC411 /* MyMessagesViewController.m */; };
@@ -495,7 +494,6 @@
 		F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6E6731F6E8FE100A663B4 /* LZNoCourseViewController.m */; };
 		F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6E67A1F6E8FE100A663B4 /* LZSearchView.m */; };
 		F2A6E6811F6E8FE100A663B4 /* LZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6E67C1F6E8FE100A663B4 /* LZTextField.m */; };
-		F2A92CE21F52E8BE00B4CEEF /* BaseMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CD91F52E8BE00B4CEEF /* BaseMatter.m */; };
 		F2A92CE31F52E8BE00B4CEEF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CDB1F52E8BE00B4CEEF /* BaseNavigationController.m */; };
 		F2A92CE41F52E8BE00B4CEEF /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CDD1F52E8BE00B4CEEF /* BaseTableViewController.m */; };
 		F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CDF1F52E8BE00B4CEEF /* BaseViewController.m */; };
@@ -899,7 +897,6 @@
 		F242DCB51EBCB2BB005AC411 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		F242DCBA1EBCB2BB005AC411 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
 		F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInfoViewController.m; sourceTree = "<group>"; };
-		F242DCBC1EBCB2BB005AC411 /* MyInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyInfoViewController.xib; sourceTree = "<group>"; };
 		F242DCBD1EBCB2BB005AC411 /* UITextField+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Custom.h"; sourceTree = "<group>"; };
 		F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Custom.m"; sourceTree = "<group>"; };
 		F242DCC01EBCB2BB005AC411 /* MyMessagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessagesTableViewCell.h; sourceTree = "<group>"; };
@@ -1239,8 +1236,6 @@
 		F2A6E67A1F6E8FE100A663B4 /* LZSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZSearchView.m; sourceTree = "<group>"; };
 		F2A6E67B1F6E8FE100A663B4 /* LZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZTextField.h; sourceTree = "<group>"; };
 		F2A6E67C1F6E8FE100A663B4 /* LZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZTextField.m; sourceTree = "<group>"; };
-		F2A92CD81F52E8BE00B4CEEF /* BaseMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMatter.h; sourceTree = "<group>"; };
-		F2A92CD91F52E8BE00B4CEEF /* BaseMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMatter.m; sourceTree = "<group>"; };
 		F2A92CDA1F52E8BE00B4CEEF /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		F2A92CDB1F52E8BE00B4CEEF /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		F2A92CDC1F52E8BE00B4CEEF /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
@@ -1901,12 +1896,12 @@
 		F242DC331EBCB2BB005AC411 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
+				F242DC351EBCB2BB005AC411 /* MainViewController.m */,
 				F28EA5DC1F6AC0E2002351EF /* LaunchScreenViewController.h */,
 				F28EA5DD1F6AC0E2002351EF /* LaunchScreenViewController.m */,
 				F2F194731F68395D0034A3BB /* SplashModel.h */,
 				F2F194741F68395D0034A3BB /* SplashModel.m */,
-				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
-				F242DC351EBCB2BB005AC411 /* MainViewController.m */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -2059,7 +2054,6 @@
 				F2C862C61F4E9F08005C887E /* MyInfoModel */,
 				F242DCBA1EBCB2BB005AC411 /* MyInfoViewController.h */,
 				F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */,
-				F242DCBC1EBCB2BB005AC411 /* MyInfoViewController.xib */,
 				F242DCBD1EBCB2BB005AC411 /* UITextField+Custom.h */,
 				F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */,
 			);
@@ -2687,8 +2681,6 @@
 		F2A92CD71F52E8BE00B4CEEF /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				F2A92CD81F52E8BE00B4CEEF /* BaseMatter.h */,
-				F2A92CD91F52E8BE00B4CEEF /* BaseMatter.m */,
 				F2A92CDA1F52E8BE00B4CEEF /* BaseNavigationController.h */,
 				F2A92CDB1F52E8BE00B4CEEF /* BaseNavigationController.m */,
 				F2A92CDC1F52E8BE00B4CEEF /* BaseTableViewController.h */,
@@ -2794,7 +2786,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = HPM8HVK7C6;
+						DevelopmentTeam = JGRNKP3327;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -2966,7 +2958,6 @@
 				F26D967C1F3C400F0063B024 /* icon_share_more@3x.png in Resources */,
 				F2770B691F45789100BB6186 /* cqupt1@2x.jpg in Resources */,
 				F242DE7A1EBCB2BC005AC411 /* remind@3x.png in Resources */,
-				F242DF0D1EBCB2BC005AC411 /* MyInfoViewController.xib in Resources */,
 				F20026E81F4020FA00360991 /* mine_image_date@3x.png in Resources */,
 				F2509C991F440D980091F678 /* 图3.png in Resources */,
 				F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */,
@@ -3400,7 +3391,6 @@
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
-				F2A92CE21F52E8BE00B4CEEF /* BaseMatter.m in Sources */,
 				F242DFB21EBD9E2C005AC411 /* CategoryChooseView.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				F2509C831F440D980091F678 /* FoodViewController.m in Sources */,
@@ -3585,7 +3575,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = JGRNKP3327;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -3625,7 +3615,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = JGRNKP3327;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";

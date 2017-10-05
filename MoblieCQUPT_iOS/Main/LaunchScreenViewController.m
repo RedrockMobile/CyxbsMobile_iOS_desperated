@@ -25,27 +25,27 @@
 }
 
 - (void)loadImage{
-    UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
     UIImage *image = [UIImage imageWithContentsOfFile:imageFilePath];
-       if (image) {
-           UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
-           launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-           UIImageView *splashView = [launchScreen.subviews lastObject];
-           [launchScreen addSubview:splashView];
-           splashView.contentMode = UIViewContentModeScaleAspectFill;
-           splashView.image = image;
-           splashView.frame = splashView.bounds;
-           [self.view addSubview:launchScreen];
-           [self.view.window bringSubviewToFront:launchScreen];
-           [UIView animateWithDuration:2 animations:^{
-               splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
-               splashView.alpha = 0;
-           } completion:^(BOOL finished) {
-               [launchScreen removeFromSuperview];
-               self.view.window.rootViewController = vc;
-           }];
+    if (image) {
+        UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
+        UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
+        launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        UIImageView *splashView = [launchScreen.subviews lastObject];
+        [launchScreen addSubview:splashView];
+        splashView.contentMode = UIViewContentModeScaleAspectFill;
+        splashView.image = image;
+        splashView.frame = splashView.bounds;
+        [self.view addSubview:launchScreen];
+        [self.view.window bringSubviewToFront:launchScreen];
+        [UIView animateWithDuration:2 animations:^{
+            splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
+            splashView.alpha = 0;
+        } completion:^(BOOL finished) {
+            [launchScreen removeFromSuperview];
+            self.view.window.rootViewController = vc;
+        }];
     }
 }
 /*

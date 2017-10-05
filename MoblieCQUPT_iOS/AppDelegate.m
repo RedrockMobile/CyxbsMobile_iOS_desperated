@@ -173,6 +173,8 @@
 //        return @"6";
 //    }
 //}
+#pragma mark - 闪屏图下载
+
 - (void)downloadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
@@ -205,6 +207,7 @@
     }];
 }
 
+#pragma mark - 分享url跳转
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
@@ -214,9 +217,14 @@
         UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
         [tbc setSelectedIndex:1];
         NSString *topic_id = [url lastPathComponent];
-        [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:nil WithReturnValeuBlock:^(id returnValue) {
+        HttpClient *client = [HttpClient defaultClient];
+        [client requestWithPath:TOPICLIST_API method:HttpRequestGet parameters:nil prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
             TopicModel *topic;
-            NSArray *dataArray = returnValue[@"data"];
+            NSArray *dataArray = responseObject[@"data"];
             for (NSDictionary *dic in dataArray) {
                 if ([[dic[@"topic_id"] stringValue] isEqualToString:topic_id]) {
                     topic = [[TopicModel alloc]initWithDic:dic];
@@ -226,9 +234,7 @@
             DetailTopicViewController *detailVC = [[DetailTopicViewController alloc]initWithTopic:topic];
             detailVC.hidesBottomBarWhenPushed = YES;
             [tbc.selectedViewController pushViewController:detailVC animated:YES];
-            
-            
-        } WithFailureBlock:^{
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
 //        [[tbc.viewControllers firstObject].navigationController pushViewController:vc animated:YES];

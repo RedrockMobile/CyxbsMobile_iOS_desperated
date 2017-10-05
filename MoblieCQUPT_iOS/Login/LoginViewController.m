@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 #import "LoginEntry.h"
-#import <UMMobClick/MobClick.h>
 #import "MyInfoViewController.h"
 #import "MyInfoModel.h"
 
@@ -20,10 +19,10 @@
 @property (strong, nonatomic) MBProgressHUD *loadHud;
 
 typedef NS_ENUM(NSInteger,LZLoginState){
-    LZLackPassword,
-    LZLackAccount,
-    LZAccountOrPasswordWrong,
-    LZNetWrong
+    LZLoginStateLackPassword,
+    LZLoginStateLackAccount,
+    LZLoginStateAccountOrPasswordWrong,
+    LZLoginStateNetWorkWrong
 };
 @end
 
@@ -46,36 +45,45 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 }
 
 - (IBAction)login:(UIButton *)sender {
-    _loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _loadHud.labelText = @"正在登录";
-    if (_passwordField.text.length == 0) {
-        [self alertAnimation:LZLackAccount];
-    }else if (_accountField.text.length == 0) {
-        [self alertAnimation:LZLackPassword];
+    self.loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loadHud.labelText = @"正在登录";
+    if (self.accountField.text.length == 0) {
+        [self alertAnimation:LZLoginStateLackAccount];
+    }else if (self.passwordField.text.length == 0) {
+        [self alertAnimation:LZLoginStateLackPassword];
     }
     else{
         NSDictionary *parameter = @{@"stuNum":_accountField.text,@"idNum":_passwordField.text};
-        [NetWork NetRequestPOSTWithRequestURL:Base_Login
-                                WithParameter:parameter
-                         WithReturnValeuBlock:^(id returnValue){
-                             if (![returnValue[@"info"] isEqualToString:@"success"]) {
-                                 [self alertAnimation:LZAccountOrPasswordWrong];
-                             }else {
-                                 [LoginEntry loginWithParamter:returnValue[@"data"]];
-                                [self verifyUserInfo];
-                                [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
-                             }
-                         } WithFailureBlock:^{
-                             [self alertAnimation:LZNetWrong];
-                             NSLog(@"请求失败");
-                         }];
+        HttpClient *client = [HttpClient defaultClient];
+        [client requestWithPath:Base_Login method:HttpRequestPost parameters:parameter prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
+            if (![responseObject[@"info"] isEqualToString:@"success"]) {
+                [self alertAnimation:LZLoginStateAccountOrPasswordWrong];
+            }else {
+                [LoginEntry loginWithParamter:responseObject[@"data"]];
+                [self verifyUserInfo];
+                [MobClick profileSignInWithPUID:[UserDefaultTool getStuNum]];
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [self alertAnimation:LZLoginStateNetWorkWrong];
+            NSLog(@"请求失败");
+        }];
     }
 }
 
 - (void)verifyUserInfo {
-    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":[UserDefaultTool getStuNum],@"idNum":[UserDefaultTool getIdNum]} WithReturnValeuBlock:^(id returnValue) {
-        if (![returnValue[@"data"] isKindOfClass:[NSNull class]]) {
-            MyInfoModel *model = [[MyInfoModel alloc]initWithDic:returnValue[@"data"]];
+    HttpClient *client = [HttpClient defaultClient];
+    NSDictionary *parameters = @{@"stuNum":[UserDefaultTool getStuNum],@"idNum":[UserDefaultTool getIdNum]};
+    [client requestWithPath:SEARCH_API method:HttpRequestPost parameters:parameters prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (![responseObject[@"data"] isKindOfClass:[NSNull class]]) {
+            MyInfoModel *model = [[MyInfoModel alloc]initWithDic:responseObject[@"data"]];
             NSData *modelData = [NSKeyedArchiver archivedDataWithRootObject:model];
             NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
             NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
@@ -89,44 +97,40 @@ typedef NS_ENUM(NSInteger,LZLoginState){
         if (self.loginSuccessHandler) {
             self.loginSuccessHandler(YES);
         }
-    } WithFailureBlock:^{
-        [self alertAnimation:LZNetWrong];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self alertAnimation:LZLoginStateNetWorkWrong];
         NSLog(@"请求失败");
     }];
 }
 
-
 - (void)alertAnimation:(LZLoginState)state {
-    [_loadHud hide:YES];
-    _loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    _loadHud.mode = MBProgressHUDModeText;
+    self.loadHud.mode = MBProgressHUDModeText;
     switch (state) {
-        case LZAccountOrPasswordWrong:
-            _loadHud.labelText = @"请检查账号密码输入是否正确";
+        case LZLoginStateAccountOrPasswordWrong:
+            self.loadHud.labelText = @"请检查账号密码输入是否正确";
             break;
-        case LZLackAccount:
-            _loadHud.labelText = @"请输入账号";
+        case LZLoginStateLackAccount:
+            self.loadHud.labelText = @"请输入账号";
             break;
-        case LZLackPassword:
-            _loadHud.labelText = @"请输入密码";
+        case LZLoginStateLackPassword:
+            self.loadHud.labelText = @"请输入密码";
             break;
-        case LZNetWrong:
-            _loadHud.labelText = @"网络连接失败,请检查网络";
+        case LZLoginStateNetWorkWrong:
+            self.loadHud.labelText = @"网络连接失败,请检查网络";
             break;
         default:
-            _loadHud.labelText = @"未知情况 请反馈给开发人员";
+            self.loadHud.labelText = @"未知情况 请反馈给开发人员";
             break;
     }
-    [_loadHud hide:YES afterDelay:1.5];
+    [self.loadHud hide:YES afterDelay:1.5];
     if (self.loginSuccessHandler) {
         self.loginSuccessHandler(NO);
     }
 }
 
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [_accountField resignFirstResponder];
-    [_passwordField resignFirstResponder];
+    [self.accountField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
 }
 
 @end
