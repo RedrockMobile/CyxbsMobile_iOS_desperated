@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CoverView : UIView
-typedef void(^passTap)(id,id);
+typedef void(^passTap)(NSSet<UITouch *> *touches, UIEvent *event);
+
 @property passTap passTap;
 @end

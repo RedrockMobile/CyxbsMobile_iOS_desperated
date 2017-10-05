@@ -18,7 +18,8 @@
 @interface LZWeekScrollView : UIScrollView
 @property (weak,nonatomic) id<LZWeekScrollViewDelegate> eventDelegate;
 @property NSArray <NSString *> *titles;
-@property (readonly) NSInteger currentIndex;
+@property (nonatomic, readonly) NSInteger currentIndex;
+@property (nonatomic, readonly) NSString *currentIndexTitle;
 
 - (instancetype)initWithFrame:(CGRect)frame andTitles:(NSArray <NSString *> *)titles;
 

@@ -72,6 +72,8 @@
 		F210F0BC1F441CF7003BDF6A /* all_image_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F210F0BB1F441CF7003BDF6A /* all_image_background@3x.png */; };
 		F210F0F61F44A29E003BDF6A /* pause@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F210F0F41F44A29E003BDF6A /* pause@2x.png */; };
 		F210F0F71F44A29E003BDF6A /* pause@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F210F0F51F44A29E003BDF6A /* pause@3x.png */; };
+		F23078DE1F73EF4C0079E187 /* date_image_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F23078DD1F73E3F80079E187 /* date_image_add@2x.png */; };
+		F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F23078DC1F73E3F80079E187 /* date_image_add@3x.png */; };
 		F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6421F3D911200FEB179 /* navbar_image_back@2x.png */; };
 		F238C6451F3D911200FEB179 /* navbar_image_back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6431F3D911200FEB179 /* navbar_image_back@3x.png */; };
 		F238C64F1F3DA29700FEB179 /* tabbar_image_community@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6491F3DA29700FEB179 /* tabbar_image_community@2x.png */; };
@@ -90,13 +92,6 @@
 		F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA571EBCB2BB005AC411 /* AppDelegate.m */; };
 		F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */; };
 		F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F242DA5A1EBCB2BB005AC411 /* Main.storyboard */; };
-		F242DD8A1EBCB2BB005AC411 /* CourseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA5E1EBCB2BB005AC411 /* CourseButton.m */; };
-		F242DD8B1EBCB2BB005AC411 /* CourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA601EBCB2BB005AC411 /* CourseView.m */; };
-		F242DD8C1EBCB2BB005AC411 /* CourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA621EBCB2BB005AC411 /* CourseViewController.m */; };
-		F242DD8D1EBCB2BB005AC411 /* CourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA631EBCB2BB005AC411 /* CourseViewController.xib */; };
-		F242DD8E1EBCB2BB005AC411 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA661EBCB2BB005AC411 /* Course.m */; };
-		F242DD8F1EBCB2BB005AC411 /* TitleBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA691EBCB2BB005AC411 /* TitleBaseViewController.m */; };
-		F242DD901EBCB2BB005AC411 /* TitleBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA6A1EBCB2BB005AC411 /* TitleBaseViewController.xib */; };
 		F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA711EBCB2BB005AC411 /* FinderViewController.m */; };
 		F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9A1EBCB2BB005AC411 /* achieveImage.png */; };
 		F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9B1EBCB2BB005AC411 /* angleImage.png */; };
@@ -277,12 +272,6 @@
 		F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */; };
 		F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCC11EBCB2BB005AC411 /* MyMessagesTableViewCell.m */; };
 		F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCC31EBCB2BB005AC411 /* MyMessagesViewController.m */; };
-		F242DF111EBCB2BC005AC411 /* QGERestDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCC61EBCB2BB005AC411 /* QGERestDetailViewController.m */; };
-		F242DF121EBCB2BC005AC411 /* QGERestDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCC71EBCB2BB005AC411 /* QGERestDetailViewController.xib */; };
-		F242DF131EBCB2BC005AC411 /* QGERestTimeCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCC91EBCB2BB005AC411 /* QGERestTimeCourseViewController.m */; };
-		F242DF141EBCB2BC005AC411 /* QGERestTimeCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCCA1EBCB2BB005AC411 /* QGERestTimeCourseViewController.xib */; };
-		F242DF151EBCB2BC005AC411 /* QGERestTimeDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCCC1EBCB2BB005AC411 /* QGERestTimeDetailView.m */; };
-		F242DF161EBCB2BC005AC411 /* RestTimeDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCCD1EBCB2BB005AC411 /* RestTimeDetailView.xib */; };
 		F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCD01EBCB2BB005AC411 /* SettingViewController.m */; };
 		F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCD41EBCB2BB005AC411 /* ORWInputTextView.m */; };
 		F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCD61EBCB2BB005AC411 /* SuggestionViewController.m */; };
@@ -493,14 +482,19 @@
 		F2770B691F45789100BB6186 /* cqupt1@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2770B661F45789100BB6186 /* cqupt1@2x.jpg */; };
 		F2770B6A1F45789100BB6186 /* cqupt2@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2770B671F45789100BB6186 /* cqupt2@2x.jpg */; };
 		F2770B6B1F45789100BB6186 /* cqupt3@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F2770B681F45789100BB6186 /* cqupt3@2x.jpg */; };
-		F27A93351F4AA877009860C3 /* LZNoCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F27A93331F4AA877009860C3 /* LZNoCourseViewController.m */; };
-		F27A93361F4AA877009860C3 /* LZNoCourseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F27A93341F4AA877009860C3 /* LZNoCourseViewController.xib */; };
-		F27A93391F4AB464009860C3 /* LZPersonAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = F27A93381F4AB464009860C3 /* LZPersonAddView.m */; };
 		F27A93411F4ABC32009860C3 /* remind_image_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933D1F4ABC32009860C3 /* remind_image_edit@2x.png */; };
 		F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933E1F4ABC32009860C3 /* remind_image_edit@3x.png */; };
 		F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933F1F4ABC32009860C3 /* remind_image_editing@2x.png */; };
 		F27A93441F4ABC32009860C3 /* remind_image_editing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A93401F4ABC32009860C3 /* remind_image_editing@3x.png */; };
 		F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28EA5DD1F6AC0E2002351EF /* LaunchScreenViewController.m */; };
+		F29245641F7A942E001A8788 /* LessonButtonViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F29245631F7A942E001A8788 /* LessonButtonViewModel.m */; };
+		F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A43EC91F74B3AD00D1B2BD /* LZPersonModel.m */; };
+		F2A43ECD1F74FEC200D1B2BD /* LZPersonSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A43ECC1F74FEC200D1B2BD /* LZPersonSelectViewController.m */; };
+		F2A43ED11F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A43ECF1F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m */; };
+		F2A43ED21F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A43ED01F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib */; };
+		F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6E6731F6E8FE100A663B4 /* LZNoCourseViewController.m */; };
+		F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6E67A1F6E8FE100A663B4 /* LZSearchView.m */; };
+		F2A6E6811F6E8FE100A663B4 /* LZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A6E67C1F6E8FE100A663B4 /* LZTextField.m */; };
 		F2A92CE21F52E8BE00B4CEEF /* BaseMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CD91F52E8BE00B4CEEF /* BaseMatter.m */; };
 		F2A92CE31F52E8BE00B4CEEF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CDB1F52E8BE00B4CEEF /* BaseNavigationController.m */; };
 		F2A92CE41F52E8BE00B4CEEF /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2A92CDD1F52E8BE00B4CEEF /* BaseTableViewController.m */; };
@@ -521,9 +515,12 @@
 		F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = F2C862CB1F4EFDB0005C887E /* LoginEntry.m */; };
 		F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */; };
 		F2CC3AA01F46BE1B00B031BD /* MineTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */; };
+		F2DD71A41F777B24009556BE /* LZPersonAddView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DD71A31F777B24009556BE /* LZPersonAddView.m */; };
+		F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */; };
+		F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */; };
+		F2DD71A91F77DB70009556BE /* LZNoCourseDateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DD71A81F77DB70009556BE /* LZNoCourseDateDetailViewController.m */; };
 		F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */; };
 		F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */; };
-		F2E95B611F4B1AC2000A136E /* LZSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E95B601F4B1AC2000A136E /* LZSearchView.m */; };
 		F2F194751F68395D0034A3BB /* SplashModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F194741F68395D0034A3BB /* SplashModel.m */; };
 /* End PBXBuildFile section */
 
@@ -637,6 +634,8 @@
 		F210F0BB1F441CF7003BDF6A /* all_image_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_image_background@3x.png"; sourceTree = "<group>"; };
 		F210F0F41F44A29E003BDF6A /* pause@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@2x.png"; sourceTree = "<group>"; };
 		F210F0F51F44A29E003BDF6A /* pause@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pause@3x.png"; sourceTree = "<group>"; };
+		F23078DC1F73E3F80079E187 /* date_image_add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_add@3x.png"; sourceTree = "<group>"; };
+		F23078DD1F73E3F80079E187 /* date_image_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_add@2x.png"; sourceTree = "<group>"; };
 		F238C6421F3D911200FEB179 /* navbar_image_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_image_back@2x.png"; sourceTree = "<group>"; };
 		F238C6431F3D911200FEB179 /* navbar_image_back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_image_back@3x.png"; sourceTree = "<group>"; };
 		F238C6491F3DA29700FEB179 /* tabbar_image_community@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_community@2x.png"; sourceTree = "<group>"; };
@@ -658,18 +657,6 @@
 		F242DA571EBCB2BB005AC411 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F242DA591EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F242DA5B1EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F242DA5D1EBCB2BB005AC411 /* CourseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseButton.h; sourceTree = "<group>"; };
-		F242DA5E1EBCB2BB005AC411 /* CourseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseButton.m; sourceTree = "<group>"; };
-		F242DA5F1EBCB2BB005AC411 /* CourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseView.h; sourceTree = "<group>"; };
-		F242DA601EBCB2BB005AC411 /* CourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseView.m; sourceTree = "<group>"; };
-		F242DA611EBCB2BB005AC411 /* CourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseViewController.h; sourceTree = "<group>"; };
-		F242DA621EBCB2BB005AC411 /* CourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseViewController.m; sourceTree = "<group>"; };
-		F242DA631EBCB2BB005AC411 /* CourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseViewController.xib; sourceTree = "<group>"; };
-		F242DA651EBCB2BB005AC411 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
-		F242DA661EBCB2BB005AC411 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
-		F242DA681EBCB2BB005AC411 /* TitleBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleBaseViewController.h; sourceTree = "<group>"; };
-		F242DA691EBCB2BB005AC411 /* TitleBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleBaseViewController.m; sourceTree = "<group>"; };
-		F242DA6A1EBCB2BB005AC411 /* TitleBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleBaseViewController.xib; sourceTree = "<group>"; };
 		F242DA701EBCB2BB005AC411 /* FinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderViewController.h; sourceTree = "<group>"; };
 		F242DA711EBCB2BB005AC411 /* FinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderViewController.m; sourceTree = "<group>"; };
 		F242DA9A1EBCB2BB005AC411 /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
@@ -919,15 +906,6 @@
 		F242DCC11EBCB2BB005AC411 /* MyMessagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessagesTableViewCell.m; sourceTree = "<group>"; };
 		F242DCC21EBCB2BB005AC411 /* MyMessagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyMessagesViewController.h; sourceTree = "<group>"; };
 		F242DCC31EBCB2BB005AC411 /* MyMessagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyMessagesViewController.m; sourceTree = "<group>"; };
-		F242DCC51EBCB2BB005AC411 /* QGERestDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGERestDetailViewController.h; sourceTree = "<group>"; };
-		F242DCC61EBCB2BB005AC411 /* QGERestDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGERestDetailViewController.m; sourceTree = "<group>"; };
-		F242DCC71EBCB2BB005AC411 /* QGERestDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QGERestDetailViewController.xib; sourceTree = "<group>"; };
-		F242DCC81EBCB2BB005AC411 /* QGERestTimeCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGERestTimeCourseViewController.h; sourceTree = "<group>"; };
-		F242DCC91EBCB2BB005AC411 /* QGERestTimeCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGERestTimeCourseViewController.m; sourceTree = "<group>"; };
-		F242DCCA1EBCB2BB005AC411 /* QGERestTimeCourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QGERestTimeCourseViewController.xib; sourceTree = "<group>"; };
-		F242DCCB1EBCB2BB005AC411 /* QGERestTimeDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QGERestTimeDetailView.h; sourceTree = "<group>"; };
-		F242DCCC1EBCB2BB005AC411 /* QGERestTimeDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QGERestTimeDetailView.m; sourceTree = "<group>"; };
-		F242DCCD1EBCB2BB005AC411 /* RestTimeDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RestTimeDetailView.xib; sourceTree = "<group>"; };
 		F242DCCF1EBCB2BB005AC411 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		F242DCD01EBCB2BB005AC411 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		F242DCD31EBCB2BB005AC411 /* ORWInputTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORWInputTextView.h; sourceTree = "<group>"; };
@@ -1238,17 +1216,29 @@
 		F2770B661F45789100BB6186 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F2770B671F45789100BB6186 /* cqupt2@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt2@2x.jpg"; sourceTree = "<group>"; };
 		F2770B681F45789100BB6186 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
-		F27A93321F4AA877009860C3 /* LZNoCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZNoCourseViewController.h; sourceTree = "<group>"; };
-		F27A93331F4AA877009860C3 /* LZNoCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZNoCourseViewController.m; sourceTree = "<group>"; };
-		F27A93341F4AA877009860C3 /* LZNoCourseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LZNoCourseViewController.xib; sourceTree = "<group>"; };
-		F27A93371F4AB464009860C3 /* LZPersonAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZPersonAddView.h; sourceTree = "<group>"; };
-		F27A93381F4AB464009860C3 /* LZPersonAddView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZPersonAddView.m; sourceTree = "<group>"; };
 		F27A933D1F4ABC32009860C3 /* remind_image_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_edit@2x.png"; sourceTree = "<group>"; };
 		F27A933E1F4ABC32009860C3 /* remind_image_edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_edit@3x.png"; sourceTree = "<group>"; };
 		F27A933F1F4ABC32009860C3 /* remind_image_editing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_editing@2x.png"; sourceTree = "<group>"; };
 		F27A93401F4ABC32009860C3 /* remind_image_editing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_editing@3x.png"; sourceTree = "<group>"; };
 		F28EA5DC1F6AC0E2002351EF /* LaunchScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchScreenViewController.h; sourceTree = "<group>"; };
 		F28EA5DD1F6AC0E2002351EF /* LaunchScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchScreenViewController.m; sourceTree = "<group>"; };
+		F29245621F7A942E001A8788 /* LessonButtonViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonButtonViewModel.h; sourceTree = "<group>"; };
+		F29245631F7A942E001A8788 /* LessonButtonViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonButtonViewModel.m; sourceTree = "<group>"; };
+		F2A43EC81F74B3AD00D1B2BD /* LZPersonModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZPersonModel.h; sourceTree = "<group>"; };
+		F2A43EC91F74B3AD00D1B2BD /* LZPersonModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPersonModel.m; sourceTree = "<group>"; };
+		F2A43ECB1F74FEC200D1B2BD /* LZPersonSelectViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZPersonSelectViewController.h; sourceTree = "<group>"; };
+		F2A43ECC1F74FEC200D1B2BD /* LZPersonSelectViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPersonSelectViewController.m; sourceTree = "<group>"; };
+		F2A43ECE1F74FF0000D1B2BD /* LZPersonSelectTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZPersonSelectTableViewCell.h; sourceTree = "<group>"; };
+		F2A43ECF1F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPersonSelectTableViewCell.m; sourceTree = "<group>"; };
+		F2A43ED01F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZPersonSelectTableViewCell.xib; sourceTree = "<group>"; };
+		F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_addBtn@3x.png"; sourceTree = "<group>"; };
+		F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_addBtn@2x.png"; sourceTree = "<group>"; };
+		F2A6E6721F6E8FE100A663B4 /* LZNoCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZNoCourseViewController.h; sourceTree = "<group>"; };
+		F2A6E6731F6E8FE100A663B4 /* LZNoCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZNoCourseViewController.m; sourceTree = "<group>"; };
+		F2A6E6791F6E8FE100A663B4 /* LZSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZSearchView.h; sourceTree = "<group>"; };
+		F2A6E67A1F6E8FE100A663B4 /* LZSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZSearchView.m; sourceTree = "<group>"; };
+		F2A6E67B1F6E8FE100A663B4 /* LZTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZTextField.h; sourceTree = "<group>"; };
+		F2A6E67C1F6E8FE100A663B4 /* LZTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZTextField.m; sourceTree = "<group>"; };
 		F2A92CD81F52E8BE00B4CEEF /* BaseMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseMatter.h; sourceTree = "<group>"; };
 		F2A92CD91F52E8BE00B4CEEF /* BaseMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseMatter.m; sourceTree = "<group>"; };
 		F2A92CDA1F52E8BE00B4CEEF /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
@@ -1285,11 +1275,13 @@
 		F2CC3A9C1F46BE1B00B031BD /* MineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
 		F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
 		F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
+		F2DD71A21F777B24009556BE /* LZPersonAddView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZPersonAddView.h; sourceTree = "<group>"; };
+		F2DD71A31F777B24009556BE /* LZPersonAddView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPersonAddView.m; sourceTree = "<group>"; };
+		F2DD71A71F77DB70009556BE /* LZNoCourseDateDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZNoCourseDateDetailViewController.h; sourceTree = "<group>"; };
+		F2DD71A81F77DB70009556BE /* LZNoCourseDateDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZNoCourseDateDetailViewController.m; sourceTree = "<group>"; };
 		F2E14D831F6CC7D900443157 /* Today.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
 		F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_cancel@2x.png"; sourceTree = "<group>"; };
 		F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_cancel@3x.png"; sourceTree = "<group>"; };
-		F2E95B5F1F4B1AC2000A136E /* LZSearchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZSearchView.h; sourceTree = "<group>"; };
-		F2E95B601F4B1AC2000A136E /* LZSearchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZSearchView.m; sourceTree = "<group>"; };
 		F2F194731F68395D0034A3BB /* SplashModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashModel.h; sourceTree = "<group>"; };
 		F2F194741F68395D0034A3BB /* SplashModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1438,6 +1430,10 @@
 		F20026CC1F4020FA00360991 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */,
+				F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */,
+				F23078DD1F73E3F80079E187 /* date_image_add@2x.png */,
+				F23078DC1F73E3F80079E187 /* date_image_add@3x.png */,
 				F273B4EA1F4B6CEF0004261C /* mine_image_calendar1@2x.png */,
 				F273B4EB1F4B6CEF0004261C /* mine_image_calendar1@3x.png */,
 				F273B4EC1F4B6CEF0004261C /* mine_image_calendar2@2x.png */,
@@ -1478,7 +1474,6 @@
 				F2A92CD71F52E8BE00B4CEEF /* Base */,
 				F242DC331EBCB2BB005AC411 /* Main */,
 				F242DB8C1EBCB2BB005AC411 /* Login */,
-				F242DA5C1EBCB2BB005AC411 /* Course */,
 				F242DB921EBCB2BB005AC411 /* LZCourse */,
 				F242DC371EBCB2BB005AC411 /* MBCommunity */,
 				F242DA6B1EBCB2BB005AC411 /* Finder */,
@@ -1500,41 +1495,6 @@
 			);
 			path = MoblieCQUPT_iOS;
 			sourceTree = SOURCE_ROOT;
-		};
-		F242DA5C1EBCB2BB005AC411 /* Course */ = {
-			isa = PBXGroup;
-			children = (
-				F242DA5D1EBCB2BB005AC411 /* CourseButton.h */,
-				F242DA5E1EBCB2BB005AC411 /* CourseButton.m */,
-				F242DA5F1EBCB2BB005AC411 /* CourseView.h */,
-				F242DA601EBCB2BB005AC411 /* CourseView.m */,
-				F242DA611EBCB2BB005AC411 /* CourseViewController.h */,
-				F242DA621EBCB2BB005AC411 /* CourseViewController.m */,
-				F242DA631EBCB2BB005AC411 /* CourseViewController.xib */,
-				F242DA641EBCB2BB005AC411 /* Model */,
-				F242DA671EBCB2BB005AC411 /* TitleBase */,
-			);
-			path = Course;
-			sourceTree = "<group>";
-		};
-		F242DA641EBCB2BB005AC411 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F242DA651EBCB2BB005AC411 /* Course.h */,
-				F242DA661EBCB2BB005AC411 /* Course.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F242DA671EBCB2BB005AC411 /* TitleBase */ = {
-			isa = PBXGroup;
-			children = (
-				F242DA681EBCB2BB005AC411 /* TitleBaseViewController.h */,
-				F242DA691EBCB2BB005AC411 /* TitleBaseViewController.m */,
-				F242DA6A1EBCB2BB005AC411 /* TitleBaseViewController.xib */,
-			);
-			path = TitleBase;
-			sourceTree = "<group>";
 		};
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
@@ -1976,16 +1936,15 @@
 				F2CC3A9C1F46BE1B00B031BD /* MineTableViewCell.h */,
 				F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */,
 				F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */,
-				F242DC8D1EBCB2BB005AC411 /* About */,
+				F242DCB61EBCB2BB005AC411 /* MyInfo */,
 				F242DC911EBCB2BB005AC411 /* AboutMe */,
+				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
 				F242DC9B1EBCB2BB005AC411 /* Calendar */,
 				F242DC9E1EBCB2BB005AC411 /* ExamSchedule */,
-				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
-				F242DCB61EBCB2BB005AC411 /* MyInfo */,
 				F242DCBF1EBCB2BB005AC411 /* MyMessages */,
-				F242DCC41EBCB2BB005AC411 /* RestTimeCourse */,
 				6E1205B11F6614BF00E5020E /* BeforeClass */,
 				F242DCCE1EBCB2BB005AC411 /* Setting */,
+				F242DC8D1EBCB2BB005AC411 /* About */,
 				F242DCD11EBCB2BB005AC411 /* Suggestion */,
 			);
 			path = Mine;
@@ -2116,22 +2075,6 @@
 				F242DCC31EBCB2BB005AC411 /* MyMessagesViewController.m */,
 			);
 			path = MyMessages;
-			sourceTree = "<group>";
-		};
-		F242DCC41EBCB2BB005AC411 /* RestTimeCourse */ = {
-			isa = PBXGroup;
-			children = (
-				F242DCC51EBCB2BB005AC411 /* QGERestDetailViewController.h */,
-				F242DCC61EBCB2BB005AC411 /* QGERestDetailViewController.m */,
-				F242DCC71EBCB2BB005AC411 /* QGERestDetailViewController.xib */,
-				F242DCC81EBCB2BB005AC411 /* QGERestTimeCourseViewController.h */,
-				F242DCC91EBCB2BB005AC411 /* QGERestTimeCourseViewController.m */,
-				F242DCCA1EBCB2BB005AC411 /* QGERestTimeCourseViewController.xib */,
-				F242DCCB1EBCB2BB005AC411 /* QGERestTimeDetailView.h */,
-				F242DCCC1EBCB2BB005AC411 /* QGERestTimeDetailView.m */,
-				F242DCCD1EBCB2BB005AC411 /* RestTimeDetailView.xib */,
-			);
-			path = RestTimeCourse;
 			sourceTree = "<group>";
 		};
 		F242DCCE1EBCB2BB005AC411 /* Setting */ = {
@@ -2686,15 +2629,59 @@
 		F27A93311F4AA65A009860C3 /* NOCourseDate */ = {
 			isa = PBXGroup;
 			children = (
-				F27A93371F4AB464009860C3 /* LZPersonAddView.h */,
-				F27A93381F4AB464009860C3 /* LZPersonAddView.m */,
-				F27A93321F4AA877009860C3 /* LZNoCourseViewController.h */,
-				F27A93331F4AA877009860C3 /* LZNoCourseViewController.m */,
-				F27A93341F4AA877009860C3 /* LZNoCourseViewController.xib */,
-				F2E95B5F1F4B1AC2000A136E /* LZSearchView.h */,
-				F2E95B601F4B1AC2000A136E /* LZSearchView.m */,
+				F29245611F7A9419001A8788 /* ViewModel */,
+				F2A6E6711F6E8FE100A663B4 /* Controller */,
+				F2A6E6751F6E8FE100A663B4 /* Model */,
+				F2A6E6761F6E8FE100A663B4 /* View */,
 			);
 			path = NOCourseDate;
+			sourceTree = "<group>";
+		};
+		F29245611F7A9419001A8788 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F29245621F7A942E001A8788 /* LessonButtonViewModel.h */,
+				F29245631F7A942E001A8788 /* LessonButtonViewModel.m */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F2A6E6711F6E8FE100A663B4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F2A6E6721F6E8FE100A663B4 /* LZNoCourseViewController.h */,
+				F2A6E6731F6E8FE100A663B4 /* LZNoCourseViewController.m */,
+				F2A43ECB1F74FEC200D1B2BD /* LZPersonSelectViewController.h */,
+				F2A43ECC1F74FEC200D1B2BD /* LZPersonSelectViewController.m */,
+				F2DD71A71F77DB70009556BE /* LZNoCourseDateDetailViewController.h */,
+				F2DD71A81F77DB70009556BE /* LZNoCourseDateDetailViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F2A6E6751F6E8FE100A663B4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F2A43EC81F74B3AD00D1B2BD /* LZPersonModel.h */,
+				F2A43EC91F74B3AD00D1B2BD /* LZPersonModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F2A6E6761F6E8FE100A663B4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F2A6E6791F6E8FE100A663B4 /* LZSearchView.h */,
+				F2A6E67A1F6E8FE100A663B4 /* LZSearchView.m */,
+				F2A6E67B1F6E8FE100A663B4 /* LZTextField.h */,
+				F2A6E67C1F6E8FE100A663B4 /* LZTextField.m */,
+				F2A43ECE1F74FF0000D1B2BD /* LZPersonSelectTableViewCell.h */,
+				F2A43ECF1F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m */,
+				F2A43ED01F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib */,
+				F2DD71A21F777B24009556BE /* LZPersonAddView.h */,
+				F2DD71A31F777B24009556BE /* LZPersonAddView.m */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		F2A92CD71F52E8BE00B4CEEF /* Base */ = {
@@ -2792,7 +2779,7 @@
 		CEF61B221B82BC950014B980 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Orange-W";
 				TargetAttributes = {
 					CE4334431BE7C52D000C407D = {
@@ -2886,7 +2873,6 @@
 				F242DE8A1EBCB2BC005AC411 /* 多课0@2x.png in Resources */,
 				F242DDFF1EBCB2BB005AC411 /* ShopDetailViewController.xib in Resources */,
 				F26D967F1F3C400F0063B024 /* icon_share_qzone@3x.png in Resources */,
-				F242DF121EBCB2BC005AC411 /* QGERestDetailViewController.xib in Resources */,
 				F242DDCD1EBCB2BB005AC411 /* lost_image_com@2x.png in Resources */,
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
 				F2509CB31F440D980091F678 /* 重邮风采@3x.png in Resources */,
@@ -2902,6 +2888,7 @@
 				F2509C8E1F440D980091F678 /* freshman_image_comment@2x.png in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
 				F2509CAF1F440D980091F678 /* 邮子攻略@3x.png in Resources */,
+				F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */,
 				F20026E01F4020FA00360991 /* mine_image_classroom@3x.png in Resources */,
 				F26D96901F3C400F0063B024 /* 叉叉.png in Resources */,
 				F20026FC1F40372100360991 /* settingIcon@3x.png in Resources */,
@@ -2930,6 +2917,7 @@
 				F2509C971F440D980091F678 /* 叉@2x.png in Resources */,
 				F238C6501F3DA29700FEB179 /* tabbar_image_community@3x.png in Resources */,
 				F238C6531F3DA29700FEB179 /* tabbar_image_mine@2x.png in Resources */,
+				F23078DE1F73EF4C0079E187 /* date_image_add@2x.png in Resources */,
 				F242DDAC1EBCB2BB005AC411 /* doneImage.png in Resources */,
 				F2509CAB1F440D980091F678 /* 评论@3x.png in Resources */,
 				F242DE501EBCB2BC005AC411 /* Images.xcassets in Resources */,
@@ -2955,7 +2943,7 @@
 				F2CC3AA01F46BE1B00B031BD /* MineTableViewCell.xib in Resources */,
 				F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */,
 				F242DDEF1EBCB2BB005AC411 /* shake_match.mp3 in Resources */,
-				F242DF141EBCB2BC005AC411 /* QGERestTimeCourseViewController.xib in Resources */,
+				F2A43ED21F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib in Resources */,
 				F242DDC31EBCB2BB005AC411 /* remindImage.png in Resources */,
 				F238C6571F3DA3C400FEB179 /* tabbar_image_timetable@2x.png in Resources */,
 				F242DE921EBCB2BC005AC411 /* 左三角@2x.png in Resources */,
@@ -2981,6 +2969,7 @@
 				F242DF0D1EBCB2BC005AC411 /* MyInfoViewController.xib in Resources */,
 				F20026E81F4020FA00360991 /* mine_image_date@3x.png in Resources */,
 				F2509C991F440D980091F678 /* 图3.png in Resources */,
+				F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */,
 				F20027211F405B8500360991 /* remind_image_week@3x.png in Resources */,
 				F242DEAF1EBCB2BC005AC411 /* 选择@3x.png in Resources */,
 				F242DDFD1EBCB2BB005AC411 /* MenuViewController.xib in Resources */,
@@ -2993,7 +2982,6 @@
 				F20026F81F40372100360991 /* appIcon@3x.png in Resources */,
 				F242DE961EBCB2BC005AC411 /* 无事项@2x.png in Resources */,
 				F242DE831EBCB2BC005AC411 /* 删除@2x.png in Resources */,
-				F242DD901EBCB2BB005AC411 /* TitleBaseViewController.xib in Resources */,
 				F2770B631F4570E600BB6186 /* find_image_query@3x.png in Resources */,
 				F242DDF91EBCB2BB005AC411 /* ShakeViewController.xib in Resources */,
 				F242DDCF1EBCB2BB005AC411 /* lost_image_describe@2x.png in Resources */,
@@ -3008,7 +2996,6 @@
 				F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */,
 				F242DDE51EBCB2BB005AC411 /* lost_image_tel@2x.png in Resources */,
 				F2509C931F440D980091F678 /* 军训特辑@2x.png in Resources */,
-				F242DD8D1EBCB2BB005AC411 /* CourseViewController.xib in Resources */,
 				F2509C851F440D980091F678 /* IntroductionTableViewCell.xib in Resources */,
 				F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */,
 				F242DE791EBCB2BC005AC411 /* remind@2x.png in Resources */,
@@ -3038,9 +3025,9 @@
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				F242DDCA1EBCB2BB005AC411 /* iconfont-shop2.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
+				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
 				F242DDDC1EBCB2BB005AC411 /* lost_image_little@3x.png in Resources */,
 				F210F0F61F44A29E003BDF6A /* pause@2x.png in Resources */,
-				F27A93361F4AA877009860C3 /* LZNoCourseViewController.xib in Resources */,
 				F20026E71F4020FA00360991 /* mine_image_date@2x.png in Resources */,
 				F20027081F404BE100360991 /* timeTable_image_pull@2x.png in Resources */,
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
@@ -3094,7 +3081,6 @@
 				F20026FB1F40372100360991 /* settingIcon@2x.png in Resources */,
 				F2509C711F440D980091F678 /* MilitarySongCell.xib in Resources */,
 				F20026EE1F40336E00360991 /* MapViewController.xib in Resources */,
-				F242DF161EBCB2BC005AC411 /* RestTimeDetailView.xib in Resources */,
 				F242DEAB1EBCB2BC005AC411 /* 老师@3x.png in Resources */,
 				F2770B621F4570E600BB6186 /* find_image_query@2x.png in Resources */,
 				F2770B5A1F4570E600BB6186 /* find_image_freshman@2x.png in Resources */,
@@ -3217,13 +3203,12 @@
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
 				F2A92CE31F52E8BE00B4CEEF /* BaseNavigationController.m in Sources */,
+				F2DD71A91F77DB70009556BE /* LZNoCourseDateDetailViewController.m in Sources */,
 				F242DDAD1EBCB2BB005AC411 /* InstallBuildTableViewCell.m in Sources */,
-				F27A93351F4AA877009860C3 /* LZNoCourseViewController.m in Sources */,
 				F242DDFC1EBCB2BB005AC411 /* MenuViewController.m in Sources */,
 				F2A92CFB1F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m in Sources */,
 				F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */,
 				F2509C6E1F440D970091F678 /* StatisticsTable.m in Sources */,
-				F242DF151EBCB2BC005AC411 /* QGERestTimeDetailView.m in Sources */,
 				F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */,
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
 				F242DE671EBCB2BC005AC411 /* DetailViewController.m in Sources */,
@@ -3234,7 +3219,6 @@
 				F26D969E1F3C400F0063B024 /* MBComment_ViewModel.m in Sources */,
 				F2509BCE1F440D7D0091F678 /* SegmentView.m in Sources */,
 				F2509C641F440D970091F678 /* Originazition.m in Sources */,
-				F242DD8E1EBCB2BB005AC411 /* Course.m in Sources */,
 				F2509C871F440D980091F678 /* MyTableViewCell.m in Sources */,
 				F2509C771F440D980091F678 /* MTVideo1.m in Sources */,
 				F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */,
@@ -3248,7 +3232,6 @@
 				F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */,
 				F242DDB91EBCB2BB005AC411 /* QuerInfo.m in Sources */,
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
-				F27A93391F4AB464009860C3 /* LZPersonAddView.m in Sources */,
 				F2509C701F440D980091F678 /* MilitarySongCell.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
 				F2509C5E1F440D970091F678 /* CQUPTStudentsCell.m in Sources */,
@@ -3259,6 +3242,7 @@
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
+				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F2509C7D1F440D980091F678 /* BeautyTableViewCell.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
@@ -3281,10 +3265,10 @@
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
 				F2509C841F440D980091F678 /* IntroductionTableViewCell.m in Sources */,
+				F2A43ECD1F74FEC200D1B2BD /* LZPersonSelectViewController.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
 				F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */,
 				6E1205931F612BB300E5020E /* UITextField+Empty.m in Sources */,
-				F242DD8A1EBCB2BB005AC411 /* CourseButton.m in Sources */,
 				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
 				F2F194751F68395D0034A3BB /* SplashModel.m in Sources */,
 				F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */,
@@ -3306,6 +3290,7 @@
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2509C8B1F440D980091F678 /* StuStrategyRootViewController.m in Sources */,
 				F2509C891F440D980091F678 /* QQGroupViewController.m in Sources */,
+				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				F242DF801EBCB2BC005AC411 /* ViewController.m in Sources */,
@@ -3322,7 +3307,6 @@
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				F2509C681F440D970091F678 /* SubSegementView.m in Sources */,
 				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
-				F242DD8B1EBCB2BB005AC411 /* CourseView.m in Sources */,
 				F2509C761F440D980091F678 /* MilitaryTrainingVideoViewController.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
@@ -3330,6 +3314,7 @@
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				F2509C721F440D980091F678 /* MilitaryTrainingCell.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
+				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
 				F242DDFA1EBCB2BB005AC411 /* DetailDishView.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
@@ -3349,7 +3334,6 @@
 				F2509C671F440D970091F678 /* StuRootViewController.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
-				F242DD8C1EBCB2BB005AC411 /* CourseViewController.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
 				F242DE001EBCB2BB005AC411 /* ShopTableViewCell.m in Sources */,
@@ -3367,14 +3351,13 @@
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
-				F2E95B611F4B1AC2000A136E /* LZSearchView.m in Sources */,
+				F2A43ED11F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m in Sources */,
 				F26D96661F3C400F0063B024 /* DetailBannnerView.m in Sources */,
 				F242DFAD1EBD9E2C005AC411 /* LostViewController.m in Sources */,
 				F26D96701F3C400F0063B024 /* MBCommunityViewController.m in Sources */,
 				F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */,
 				F2A92CEF1F52E8F900B4CEEF /* UIImage+Color.m in Sources */,
 				F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */,
-				F242DD8F1EBCB2BB005AC411 /* TitleBaseViewController.m in Sources */,
 				F2C862C91F4E9F08005C887E /* MyInfoModel.m in Sources */,
 				F26D969B1F3C400F0063B024 /* MBPhotoContainerView.m in Sources */,
 				F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */,
@@ -3383,6 +3366,7 @@
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				6E1205A41F64139E00E5020E /* XGEmptyRoomModels.m in Sources */,
+				F2A6E6811F6E8FE100A663B4 /* LZTextField.m in Sources */,
 				F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
 				6E175E371F5BEF9000C0BE60 /* EmptyRoomViewController.m in Sources */,
@@ -3390,23 +3374,23 @@
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
 				F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
+				F29245641F7A942E001A8788 /* LessonButtonViewModel.m in Sources */,
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F2509C631F440D970091F678 /* OriginalViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				F2509C8A1F440D980091F678 /* StuBedroomViewController.m in Sources */,
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
+				F2DD71A41F777B24009556BE /* LZPersonAddView.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
 				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,
 				6E1205AA1F658F7E00E5020E /* EmptyRoomTableViewController.m in Sources */,
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
-				F242DF131EBCB2BC005AC411 /* QGERestTimeCourseViewController.m in Sources */,
 				F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */,
 				6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */,
 				F2509C601F440D970091F678 /* CQUPTTeacherView.m in Sources */,
 				F242DDFE1EBCB2BB005AC411 /* ShopDetailViewController.m in Sources */,
 				F26D966B1F3C400F0063B024 /* TopicBtn.m in Sources */,
-				F242DF111EBCB2BC005AC411 /* QGERestDetailViewController.m in Sources */,
 				F26D96651F3C400F0063B024 /* BannerScrollView.m in Sources */,
 				F242DEFB1EBCB2BC005AC411 /* AboutMeTableViewCell.m in Sources */,
 				F2509C5A1F440D970091F678 /* AppearView.m in Sources */,
@@ -3500,14 +3484,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3548,14 +3538,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
