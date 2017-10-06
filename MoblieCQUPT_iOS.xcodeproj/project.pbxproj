@@ -279,7 +279,6 @@
 		F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7F1EBCB2BB005AC411 /* MOHImageParamModel.m */; };
 		F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD811EBCB2BB005AC411 /* NetWork.m */; };
 		F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */; };
-		F242DF801EBCB2BC005AC411 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD851EBCB2BB005AC411 /* ViewController.m */; };
 		F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF861EBD9E2C005AC411 /* DetailLostViewController.m */; };
 		F242DFA91EBD9E2C005AC411 /* DetailLostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DF871EBD9E2C005AC411 /* DetailLostViewController.xib */; };
 		F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF891EBD9E2C005AC411 /* IssueTableViewController.m */; };
@@ -391,7 +390,6 @@
 		F26D965D1F3C400F0063B024 /* MBCommunityCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D95E81F3C400E0063B024 /* MBCommunityCellTableViewCell.m */; };
 		F26D965E1F3C400F0063B024 /* MBCommunityCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26D95E91F3C400E0063B024 /* MBCommunityCellTableViewCell.xib */; };
 		F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D95ED1F3C400E0063B024 /* DetailTopicViewController.m */; };
-		F26D96601F3C400F0063B024 /* DetailTopicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26D95EE1F3C400E0063B024 /* DetailTopicViewController.xib */; };
 		F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D95F01F3C400E0063B024 /* TopicSearchViewController.m */; };
 		F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D95F21F3C400E0063B024 /* TopicViewController.m */; };
 		F26D96631F3C400F0063B024 /* TopicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D95F51F3C400E0063B024 /* TopicModel.m */; };
@@ -919,8 +917,6 @@
 		F242DD811EBCB2BB005AC411 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		F242DD821EBCB2BB005AC411 /* ORWRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORWRequestCache.h; sourceTree = "<group>"; };
 		F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORWRequestCache.m; sourceTree = "<group>"; };
-		F242DD841EBCB2BB005AC411 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F242DD851EBCB2BB005AC411 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F242DD861EBCB2BB005AC411 /* 掌上重邮.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "掌上重邮.entitlements"; sourceTree = "<group>"; };
 		F242DF851EBD9E2C005AC411 /* DetailLostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLostViewController.h; sourceTree = "<group>"; };
 		F242DF861EBD9E2C005AC411 /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
@@ -1091,7 +1087,6 @@
 		F26D95E91F3C400E0063B024 /* MBCommunityCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBCommunityCellTableViewCell.xib; sourceTree = "<group>"; };
 		F26D95EC1F3C400E0063B024 /* DetailTopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailTopicViewController.h; sourceTree = "<group>"; };
 		F26D95ED1F3C400E0063B024 /* DetailTopicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailTopicViewController.m; sourceTree = "<group>"; };
-		F26D95EE1F3C400E0063B024 /* DetailTopicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailTopicViewController.xib; sourceTree = "<group>"; };
 		F26D95EF1F3C400E0063B024 /* TopicSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicSearchViewController.h; sourceTree = "<group>"; };
 		F26D95F01F3C400E0063B024 /* TopicSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopicSearchViewController.m; sourceTree = "<group>"; };
 		F26D95F11F3C400E0063B024 /* TopicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopicViewController.h; sourceTree = "<group>"; };
@@ -1480,8 +1475,6 @@
 				F242DA571EBCB2BB005AC411 /* AppDelegate.m */,
 				F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */,
 				F242DA5A1EBCB2BB005AC411 /* Main.storyboard */,
-				F242DD841EBCB2BB005AC411 /* ViewController.h */,
-				F242DD851EBCB2BB005AC411 /* ViewController.m */,
 				F242DB8A1EBCB2BB005AC411 /* Images.xcassets */,
 				F242DB8B1EBCB2BB005AC411 /* Info.plist */,
 				F242DC361EBCB2BB005AC411 /* main.m */,
@@ -2449,7 +2442,6 @@
 			children = (
 				F26D95EC1F3C400E0063B024 /* DetailTopicViewController.h */,
 				F26D95ED1F3C400E0063B024 /* DetailTopicViewController.m */,
-				F26D95EE1F3C400E0063B024 /* DetailTopicViewController.xib */,
 				F26D95EF1F3C400E0063B024 /* TopicSearchViewController.h */,
 				F26D95F01F3C400E0063B024 /* TopicSearchViewController.m */,
 				F26D95F11F3C400E0063B024 /* TopicViewController.h */,
@@ -3038,7 +3030,6 @@
 				F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */,
 				F200271B1F405B8500360991 /* remind_image_remind@3x.png in Resources */,
 				F20026E21F4020FA00360991 /* mine_image_edit@3x.png in Resources */,
-				F26D96601F3C400F0063B024 /* DetailTopicViewController.xib in Resources */,
 				F242DDD01EBCB2BB005AC411 /* lost_image_describe@3x.png in Resources */,
 				F2509CAD1F440D980091F678 /* 返回@3x.png in Resources */,
 				F242DDD91EBCB2BB005AC411 /* lost_image_lacktel@2x.png in Resources */,
@@ -3284,7 +3275,6 @@
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
-				F242DF801EBCB2BC005AC411 /* ViewController.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,

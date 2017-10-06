@@ -10,9 +10,6 @@
 #import "GradeView.h"
 #import "LoginEntry.h"
 #import "MBProgressHUD.h"
-
-#define GRADEAPI @"http://hongyan.cqupt.edu.cn/api/examGrade"
-
 @interface ExamGradeViewController ()
 
 @property (assign, nonatomic) CGFloat kHeight;

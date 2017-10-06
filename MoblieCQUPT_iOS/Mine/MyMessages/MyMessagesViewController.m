@@ -64,7 +64,7 @@
     else{
         _stunum_other = stuNum;
     }
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search" WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
+    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
                          _myInfoData = returnValue[@"data"];
                          [self.communityTableView reloadData];

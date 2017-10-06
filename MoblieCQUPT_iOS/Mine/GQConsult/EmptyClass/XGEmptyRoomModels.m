@@ -7,7 +7,6 @@
 //
 
 #import "XGEmptyRoomModels.h"
-#define EmptyClassApi @"http://hongyan.cqupt.edu.cn/api/roomEmpty"
 @implementation XGEmptyRoomModels
 - (void)loadEmptyData{
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;

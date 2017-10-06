@@ -61,8 +61,8 @@
 #define COLOR_YELLOW3 [UIColor colorWithRed:253/255.0 green:250/255.0 blue:235/255.0 alpha:1]
 #define COLOR_YELLOW4 [UIColor colorWithRed:255/255.0 green:255/255.0 blue:251/255.0 alpha:1]
 
-
 #import <AFNetworking.h>
+#import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 #import <YYKit.h>
 #import <Masonry.h>
@@ -95,51 +95,57 @@
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
 //登录
-#define Base_Login @"http://hongyan.cqupt.edu.cn/api/verify"
+#define Base_Login @"https://redrock.team/api/verify"
 //哔哔叨叨列表
-#define LISTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
+#define LISTARTICLE_API @"https://redrock.team/cyxbsMobile/index.php/Home/NewArticle/listArticle"
 //热门动态列表
-#define SEARCHHOTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
+#define SEARCHHOTARTICLE_API @"https://redrock.team/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
 //获取评论列表
-#define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
+#define GETREMARK_API @"https://redrock.team/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
 //官方咨询列表
-#define LISTNEWS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
+#define LISTNEWS_API @"https://redrock.team/cyxbsMobile/index.php/Home/NewArticle/listNews"
 //评论接口
-#define POSTREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
+#define POSTREMARK_API @"https://redrock.team/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
 //赞接口
-#define ADDSUPPORT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/addone"
+#define ADDSUPPORT_API @"https://redrock.team/cyxbsMobile/index.php/Home/Praise/addone"
 //取消赞接口
-#define CANCELSUPPOTRT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+#define CANCELSUPPOTRT_API @"https://redrock.team/cyxbsMobile/index.php/Home/Praise/cancel"
 //发布动态接口
-#define ADDARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/addArticle"
+#define ADDARTICLE_API @"https://redrock.team/cyxbsMobile/index.php/Home/Article/addArticle"
 //发布话题文章接口
-#define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
+#define ADDTOPICARTICLE_API @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
 //查询个人信息接口
-#define SEARCH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+#define SEARCH_API @"https://redrock.team/cyxbsMobile/index.php/Home/Person/search"
 //
-#define SETINFO_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/setInfo"
+#define SETINFO_API @"https://redrock.team/cyxbsMobile/index.php/Home/Person/setInfo"
 //上传图片接口
-#define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
+#define UPLOADARTICLE_API @"https://redrock.team/cyxbsMobile/index.php/Home/Photo/uploadArticle"
 //动态查询接口
-#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
+#define SEARCHTREBDS_API @"https://redrock.team/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
 //话题列表接口
-#define TOPICLIST_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/topicList"
+#define TOPICLIST_API @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/topicList"
 //话题文章列表接口
-#define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+#define TOPICARTICLE_API @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
 //首页图接口
-#define SPLASH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
-#define kebiaoAPI @"http://hongyan.cqupt.edu.cn/redapi2/api/kebiao"
-#define ADDREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
-#define GETREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
-#define EDITREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
-#define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
-#define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
-#define SEARCHPEOPLEAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
-#define PHOTOURL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"
-#define BASE_URL @"http://hongyan.cqupt.edu.cn"
-#define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api"
-#define UPLOAD_IMAGE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/photo/upload"
-
+#define SPLASH_API @"https://redrock.team/cyxbsMobile/index.php/Home/Photo/showPicture"
+#define kebiaoAPI @"https://redrock.team/redapi2/api/kebiao"
+#define ADDREMINDAPI @"https://redrock.team/cyxbsMobile/index.php/Home/Person/addTransaction"
+#define GETREMINDAPI @"https://redrock.team/cyxbsMobile/index.php/Home/Person/getTransaction"
+#define EDITREMINDAPI @"https://redrock.team/cyxbsMobile/index.php/Home/Person/editTransaction"
+#define DELETEREMINDAPI @"https://redrock.team/cyxbsMobile/index.php/Home/Person/deleteTransaction"
+#define EXAMAPI @"https://redrock.team/api/examSchedule"
+#define SEARCHPEOPLEAPI @"https://redrock.team/cyxbsMobile/index.php/home/searchPeople/peoplelist"
+#define PHOTOURL @"https://redrock.team/cyxbsMobile/Public/photo/"
+#define BASE_URL @"https://redrock.team"
+#define LOSTAPI @"https://redrock.team/laf/api"
+#define UPLOAD_IMAGE_API @"https://redrock.team/cyxbsMobile/index.php/home/photo/upload"
+#define SUGGESTION_API @"https://redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion"
+#define GRADEAPI @"https://redrock.team/api/examGrade"
+#define MakeApi @"https://redrock.team/api/examReexam"
+#define EXAM_SCHEDULE_API @"https://redrock.team/api/examSchedule"
+#define EmptyClassApi @"https://redrock.team/api/roomEmpty"
+#define TOPIC_URL @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/topicList"
+#define MYJOINTOPIC_URL @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)

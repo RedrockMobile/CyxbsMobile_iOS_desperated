@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopicModel.h"
+@class TopicModel;
 @interface DetailBannnerView : UIView
 - (instancetype)initWithFrame:(CGRect)frame andTopic:(TopicModel *)topic;
 - (void)extend;

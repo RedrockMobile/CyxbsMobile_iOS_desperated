@@ -47,7 +47,7 @@
 
 - (void)fetchData {
     NSString *stuNum = [UserDefaultTool getStuNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/api/examSchedule"
+    [NetWork NetRequestPOSTWithRequestURL:EXAM_SCHEDULE_API
                             WithParameter:@{@"stuNum": stuNum}
                      WithReturnValeuBlock:^(id returnValue) {
                          [MBProgressHUD hideHUDForView:self.view animated:YES];

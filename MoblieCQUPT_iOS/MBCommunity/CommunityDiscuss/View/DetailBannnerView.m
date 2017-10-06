@@ -7,18 +7,18 @@
 //
 
 #import "DetailBannnerView.h"
-#import <Masonry.h>
 #import "CAShapeLayer+ViewMask.h"
+#import "TopicModel.h"
 @interface DetailBannnerView()
-@property UIImageView *backGroundImageView;
-@property UILabel *titleLabel;
-@property UILabel *contentLabel;
-@property YYLabel *numLabel;
-@property TopicModel *topic;
-@property bool isExtend;
-@property CGFloat initialHeight;
-@property CALayer *colorLayer;
-@property CAShapeLayer *labelLayer;
+@property (nonatomic, strong) UIImageView *backGroundImageView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) YYLabel *numLabel;
+@property (nonatomic, strong) TopicModel *topic;
+@property (nonatomic, assign) BOOL isExtend;
+@property (nonatomic, assign) CGFloat initialHeight;
+@property (nonatomic, strong) CALayer *colorLayer;
+@property (nonatomic, strong) CAShapeLayer *labelLayer;
 @end
 @implementation DetailBannnerView
 - (instancetype)initWithFrame:(CGRect)frame andTopic:(TopicModel *)topic{
@@ -125,7 +125,6 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     self.colorLayer.frame = self.backGroundImageView.bounds;
-    
     self.labelLayer = [CAShapeLayer createMaskLayerWithView:self.numLabel];
     self.numLabel.layer.mask = self.labelLayer;
 }

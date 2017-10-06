@@ -339,8 +339,8 @@
     __block NSInteger flagBlock = flag;
     [NetWork uploadImageWithUrl:UPLOADARTICLE_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {
         [weakSelf.hud hide:YES];
-        NSRange range = [returnValue[@"data"][@"photosrc"] rangeOfString:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"];
-        NSRange range1 = [returnValue[@"data"][@"thumbnail_src"] rangeOfString:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/thumbnail/"];
+        NSRange range = [returnValue[@"data"][@"photosrc"] rangeOfString:@"https://redrock.team/cyxbsMobile/Public/photo/"];
+        NSRange range1 = [returnValue[@"data"][@"thumbnail_src"] rangeOfString:@"https://redrock.team/cyxbsMobile/Public/photo/thumbnail/"];
         NSString *photoUrlString = [returnValue[@"data"][@"photosrc"] substringFromIndex:range.length];
         NSString *thumbnailUrlString = [returnValue[@"data"][@"thumbnail_src"] substringFromIndex:range1.length];
         

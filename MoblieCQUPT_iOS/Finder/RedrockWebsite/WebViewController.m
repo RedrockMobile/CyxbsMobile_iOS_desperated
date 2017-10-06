@@ -26,7 +26,7 @@
     [self.view addSubview:_indicatorView];
     [_indicatorView startAnimating];
     
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://hongyan.cqupt.edu.cn/aboutus/"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://redrock.team/aboutus/"]]];
     
     _webView.scalesPageToFit = YES;
 }

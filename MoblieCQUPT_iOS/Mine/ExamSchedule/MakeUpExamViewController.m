@@ -9,7 +9,6 @@
 #import "MakeUpExamViewController.h"
 #import <MBProgressHUD.h>
 #import "ExamScheduleTableViewCell.h"
-#define MakeApi @"http://hongyan.cqupt.edu.cn/api/examReexam"
 @interface MakeUpExamViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) NSArray *data;

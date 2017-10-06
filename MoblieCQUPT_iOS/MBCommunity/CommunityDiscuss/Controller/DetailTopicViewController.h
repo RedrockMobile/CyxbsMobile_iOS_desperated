@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopicModel.h"
+@class TopicModel;
 @interface DetailTopicViewController : BaseViewController
 - (instancetype)initWithTopic:(TopicModel *) topic;
 

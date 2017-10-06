@@ -50,7 +50,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)addSearchBar{
-    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 64)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, HEADERHEIGHT)];
     bgView.backgroundColor = [UIColor whiteColor];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CHANGE_CGRectMake(50, 30, 300, 30)];
@@ -82,7 +82,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         [weakSelf.navigationController pushViewController:dtVC animated:YES];
     };
     
-    self.segementView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT) andControllers:@[self.joinVC,self.allVC]];
+    self.segementView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) andControllers:@[self.joinVC,self.allVC]];
     self.segementView.eventDelegate = self;
     self.currentIndex = 0;
     [self.view addSubview:self.segementView];
