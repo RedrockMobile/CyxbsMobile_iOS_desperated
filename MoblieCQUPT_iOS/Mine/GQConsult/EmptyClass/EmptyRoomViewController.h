@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Orange-W. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "BaseViewController.h"
 
-@interface EmptyRoomViewController : ViewController
+@interface EmptyRoomViewController : BaseViewController
 
 @end

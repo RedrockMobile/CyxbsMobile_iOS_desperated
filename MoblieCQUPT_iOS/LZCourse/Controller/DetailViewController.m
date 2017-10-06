@@ -13,13 +13,13 @@
 #import "RemindMatter.h"
 #import "LessonMatter.h"
 @interface DetailViewController ()<UIScrollViewDelegate>
-@property UISegmentedControl *segmentedControl;
-@property LessonBtnModel *matters;
-@property NSInteger week;
-@property DetailPageController *detailPageController;
-@property DetailRemindViewController *remindController;
-@property UIBarButtonItem *editItem;
-@property BOOL isFirstEnter;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) LessonBtnModel *matters;
+@property (nonatomic, assign) NSInteger week;
+@property (nonatomic, strong) DetailPageController *detailPageController;
+@property (nonatomic, strong) DetailRemindViewController *remindController;
+@property (nonatomic, strong) UIBarButtonItem *editItem;
+@property (nonatomic, assign) BOOL isFirstEnter;
 @end
 
 @implementation DetailViewController

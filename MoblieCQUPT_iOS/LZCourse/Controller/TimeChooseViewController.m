@@ -12,9 +12,9 @@
 
 
 @interface TimeChooseViewController ()
-@property NSMutableArray *dataArray;
-@property MainView *mainView;
-@property NSMutableArray *buttonArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) MainView *mainView;
+@property (nonatomic, strong) NSMutableArray *buttonArray;
 @end
 
 @implementation TimeChooseViewController

@@ -11,6 +11,11 @@
 #import "LostItem.h"
 
 @interface DetailLostViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UITableView *footTableView;
 @property (nonatomic, strong) NSMutableArray *imageArray;
 @property (nonatomic, copy) NSArray *titleArray;
 @property (nonatomic, strong) NSMutableArray *contentArray;

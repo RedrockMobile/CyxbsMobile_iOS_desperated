@@ -15,9 +15,9 @@
 #import "RemindMatter.h"
 
 @interface DetailRemindViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property NSMutableArray <RemindMatter *>* reminds;
-@property UITableView *tableView;
-@property BOOL isEditing;
+@property (nonatomic, strong) NSMutableArray <RemindMatter *>* reminds;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) BOOL isEditing;
 @property NSString *remindPath;
 @property NSString *failurePath;
 @property NSMutableArray *imageViewArray;

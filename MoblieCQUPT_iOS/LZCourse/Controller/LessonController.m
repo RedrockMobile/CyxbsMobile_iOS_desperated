@@ -21,21 +21,21 @@
 #import "LessonBtnModel.h"
 
 @interface LessonController ()<LZWeekScrollViewDelegate>
-@property MainView *mainView;
+@property (nonatomic, strong) MainView *mainView;
 @property (nonatomic, strong) LZWeekScrollView *weekScrollView;
-@property UIButton *barBtn;
-@property NSMutableArray *lessonArray;
-@property NSMutableArray *remindArray;
-@property NSMutableArray <LessonButtonController *> *controllerArray;
-@property UIImageView *noLessonImageView;
-@property UIImageView *pullImageView;
-@property NoLoginView *noLoginView;
-@property NSInteger nowWeek;
+@property (nonatomic, strong) UIButton *barBtn;
+@property (nonatomic, strong) NSMutableArray *lessonArray;
+@property (nonatomic, strong) NSMutableArray *remindArray;
+@property (nonatomic, strong) NSMutableArray <LessonButtonController *> *controllerArray;
+@property (nonatomic, strong) UIImageView *noLessonImageView;
+@property (nonatomic, strong) UIImageView *pullImageView;
+@property (nonatomic, strong) NoLoginView *noLoginView;
+@property (nonatomic, assign) NSInteger nowWeek;
 //防止数组越界使用的nowWeek(0~20),与Userdefault中的数值不同
-@property CGFloat kWeekScrollViewHeight;
-@property DetailViewController *detailViewController;
-@property NSInteger currentSelectIndex;
-@property BOOL isNetWorkSuccess;
+@property (nonatomic, assign) CGFloat kWeekScrollViewHeight;
+@property (nonatomic ,strong) DetailViewController *detailViewController;
+@property (nonatomic, assign) NSInteger currentSelectIndex;
+@property (nonatomic, assign) BOOL isNetWorkSuccess;
 
 @end
 

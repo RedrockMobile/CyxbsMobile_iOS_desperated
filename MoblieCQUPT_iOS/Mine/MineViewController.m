@@ -95,7 +95,6 @@
 #pragma mark - TableView 代理
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MineTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"MineTableViewCell" owner:nil options:nil] lastObject];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
     cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
     return cell;

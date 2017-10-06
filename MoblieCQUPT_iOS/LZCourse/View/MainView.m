@@ -8,7 +8,7 @@
 
 #import "MainView.h"
 @interface MainView()
-@property NSArray *weekDay;
+@property (nonatomic, copy) NSArray *weekDay;
 
 @end
 

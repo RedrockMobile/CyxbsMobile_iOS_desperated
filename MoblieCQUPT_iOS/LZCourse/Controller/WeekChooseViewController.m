@@ -9,7 +9,7 @@
 #import "WeekChooseViewController.h"
 #import "WeekChooseButton.h"
 @interface WeekChooseViewController ()
-@property NSMutableArray *weekArray;
+@property (nonatomic, strong) NSMutableArray *weekArray;
 @end
 
 @implementation WeekChooseViewController

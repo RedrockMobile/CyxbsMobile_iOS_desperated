@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     // Initialization code
 }
 

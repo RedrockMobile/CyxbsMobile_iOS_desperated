@@ -10,6 +10,6 @@
 #import "TickButton.h"
 
 @interface TimeChooseScrollView : UIScrollView
-@property NSMutableArray<TickButton *> *btnArray;
-@property BOOL showWeekScrollView;
+@property (nonatomic, strong) NSMutableArray<TickButton *> *btnArray;
+@property (nonatomic, assign) BOOL showWeekScrollView;
 @end

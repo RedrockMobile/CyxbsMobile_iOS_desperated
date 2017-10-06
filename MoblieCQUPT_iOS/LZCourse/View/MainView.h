@@ -11,11 +11,11 @@
 #import "LessonButton.h"
 #import "LessonNumLabel.h"
 @interface MainView : UIView
-@property UIScrollView *scrollView;
-@property DayLabel *monthLabel;
-@property NSMutableArray<DayLabel *> *dayLabels;
-@property NSMutableArray<LessonButton *> *lessonBtns;
-@property NSMutableArray<LessonNumLabel *> *lessonsLabel;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) DayLabel *monthLabel;
+@property (nonatomic, strong) NSMutableArray<DayLabel *> *dayLabels;
+@property (nonatomic, strong) NSMutableArray<LessonButton *> *lessonBtns;
+@property (nonatomic, strong) NSMutableArray<LessonNumLabel *> *lessonsLabel;
 - (instancetype)initWithFrame:(CGRect)frame;
 - (void)loadDayLbTimeWithWeek:(NSInteger)week nowWeek:(NSInteger)nowWeek;
 @end

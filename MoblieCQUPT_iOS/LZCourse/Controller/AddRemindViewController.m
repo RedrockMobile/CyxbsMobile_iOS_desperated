@@ -18,21 +18,21 @@
 #import "UIFont+AdaptiveFont.h"
 #import "ORWInputTextView.h"
 @interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,SaveDelegate,UITextFieldDelegate,UITextViewDelegate>
-@property TimeChooseScrollView *remindChooseView;
-@property NSMutableArray <NSString *>*contentArray;
-@property TickButton *selectedButton;
-@property TimeChooseViewController *timeChoose;
-@property WeekChooseViewController *weekChoose;
-@property NSNumber *time;
-@property CoverView *coverView;
-@property NSDictionary *remind;
-@property NSNumber *idNum;
-@property NSArray *titleArray;
-@property NSArray *imageArray;
-@property NSMutableArray *weekArray;
-@property NSMutableArray <NSNumber *>*timeArray;
-@property BOOL isEditing;
-@property BOOL isShowRemindChooseView;
+@property (nonatomic, strong) TimeChooseScrollView *remindChooseView;
+@property (nonatomic, strong) NSMutableArray <NSString *>*contentArray;
+@property (nonatomic, strong) TickButton *selectedButton;
+@property (nonatomic, strong) TimeChooseViewController *timeChoose;
+@property (nonatomic, strong) WeekChooseViewController *weekChoose;
+@property (nonatomic, strong) NSNumber *time;
+@property (nonatomic, strong) CoverView *coverView;
+@property (nonatomic, copy) NSDictionary *remind;
+@property (nonatomic, strong) NSNumber *idNum;
+@property (nonatomic, copy) NSArray *titleArray;
+@property (nonatomic, copy) NSArray *imageArray;
+@property (nonatomic, strong) NSMutableArray *weekArray;
+@property (nonatomic, strong) NSMutableArray <NSNumber *>*timeArray;
+@property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, assign) BOOL isShowRemindChooseView;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet ORWInputTextView *contentTextView;
