@@ -26,13 +26,6 @@
         backItem.title=@"";
         nvc.topViewController.navigationItem.backBarButtonItem = backItem;
         nvc.tabBarItem.image = [UIImage imageNamed:images[i]];
-        nvc.navigationBar.translucent = NO;
-        nvc.navigationBar.tintColor = [UIColor whiteColor];
-        nvc.navigationBar.backgroundColor = [UIColor clearColor];
-        [nvc.navigationBar setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forBarMetrics:UIBarMetricsDefault];
-        [nvc.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_image_back"]];
-        [nvc.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_image_back"]];
-        [nvc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     }
 }
 

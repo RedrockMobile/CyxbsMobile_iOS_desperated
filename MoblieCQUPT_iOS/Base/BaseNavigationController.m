@@ -16,6 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationBar.translucent = NO;
+    self.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationBar.backgroundColor = [UIColor clearColor];
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_image_back"]];
+    [self.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_image_back"]];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     // Do any additional setup after loading the view.
 }
 
