@@ -7,7 +7,7 @@
 //
 
 #import "EmptyRoomTableViewController.h"
-
+#import <Masonry.h>
 @interface EmptyRoomTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UIImageView *pointImageView;
 //@property (strong, nonatomic) UILabel *floorLabel;
@@ -53,7 +53,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *numberOfRoom = _EmptyData[[NSString stringWithFormat:@"%ld",(long)indexPath.row + 1]];
-    return 45 + numberOfRoom.count / 5 * 11;
+    return 50 + numberOfRoom.count / 5 * 11;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifler = @"cell";
@@ -64,21 +64,21 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _pointImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:_pointArray[indexPath.row % 3]]];
-    _pointImageView.frame = CGRectMake(10, cell.centerY - 5, 10, 10);
+    _pointImageView.frame = CGRectMake(10, cell.centerY , 10, 10);
     [cell.contentView addSubview:_pointImageView];
     
     
     _topView = [[UIView alloc]init];
-    _topView.frame = CGRectMake(_pointImageView.centerX - 1, 0, 2, cell.height / 2 - 5);
+    _topView.frame = CGRectMake(_pointImageView.centerX - 1, 0, 2, cell.height / 2 );
     _bottomView = [[UIView alloc]init];
-    _bottomView.frame = CGRectMake(_pointImageView.centerX - 1, cell.height / 2 + 5, 2, cell.height / 2 - 5);
+    _bottomView.frame = CGRectMake(_pointImageView.centerX - 1, cell.height / 2 + 10, 2, cell.height / 2 );
     if (indexPath.row == 0) {
         _topView.backgroundColor = [UIColor clearColor];
         _bottomView.backgroundColor = [UIColor colorWithHexString:@"E9E9E9"];
         
     }
-    else if (indexPath.row == _EmptyData.count){
-        _topView.backgroundColor = [UIColor clearColor];
+    else if (indexPath.row == _EmptyData.count - 1){
+        _bottomView.backgroundColor = [UIColor clearColor];
         _topView.backgroundColor = [UIColor colorWithHexString:@"E9E9E9"];
     }
     else{
@@ -102,7 +102,12 @@
         floorLabel.font = kFont;
         floorLabel.text = thing;
         [floorLabel sizeToFit];
-        floorLabel.frame = CGRectMake(floorNameLabel.centerX + 35 + (j % 5) * 45, 15 + (j / 5) * 16, 33, 11);
+        if (j / 5 == 0) {
+            floorLabel.frame = CGRectMake(floorNameLabel.centerX + 35 + (j % 5) * 45, cell.centerY, 33, 11);
+        }
+        else{
+            floorLabel.frame = CGRectMake(floorNameLabel.centerX + 35 + (j % 5) * 45, 15 + (j / 5) * 16, 33, 11);
+        }
         [cell.contentView addSubview:floorLabel];
         j ++;
     }

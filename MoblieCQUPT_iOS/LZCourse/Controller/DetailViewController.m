@@ -76,12 +76,16 @@
         }
     } //整学期
     else{
+        NSMutableArray *lessonArray = [NSMutableArray array];
         for (LessonMatter *lesson in self.matters.lessonArray) {
             if([lesson.week containsObject:@(self.week)]){
-                self.detailPageController = [[DetailPageController alloc]initWithLessonMatters:@[lesson]];
+                [lessonArray addObject:lesson];
                 isHaveLessson = YES;
-                break;
+//                break;
             }
+        }
+        if(lessonArray.count >0){
+            self.detailPageController = [[DetailPageController alloc]initWithLessonMatters:lessonArray];
         }
     } //具体周
     if (!isHaveLessson) {

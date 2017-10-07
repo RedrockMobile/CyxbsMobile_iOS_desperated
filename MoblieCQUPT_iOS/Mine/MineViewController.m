@@ -12,6 +12,7 @@
 #import "AboutMeViewController.h"
 #import "MyMessagesViewController.h"
 #import "MyInfoModel.h"
+#import <sys/utsname.h>
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray *cellDicArray;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -30,8 +31,7 @@
     UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, STATUSBARHEIGHT)];
     statusBarView.backgroundColor=[UIColor colorWithRed:137/255.0 green:165/255.0 blue:249/255.0 alpha:1];
     [self.view addSubview:statusBarView];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
-    
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];    
     NSURL *url = [NSURL URLWithString:[UserDefaultTool valueWithKey:@"photo_thumbnail_src"]];
     [self.headImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
     self.nameLabel.text = [UserDefaultTool valueWithKey:@"nickname"];
@@ -54,7 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
-    NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"QGERestTimeCourseViewController"},
+    NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"LZNoCourseViewController"},
                           @{@"title":@"空教室",@"img":@"mine_image_classroom",@"controller":@"EmptyRoomViewController"},
                           @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamTotalViewController"},
                           @{@"title":@"校历",@"img":@"mine_image_calendar",@"controller":@"CalendarViewController"},

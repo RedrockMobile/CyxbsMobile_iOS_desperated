@@ -11,6 +11,7 @@
 @interface BeforeClassCell : UITableViewCell
 @property (strong, nonatomic)NSString *nameString;
 @property (strong, nonatomic)NSString *detailString;
+@property (strong, nonatomic)NSString *style;
 @property (assign, nonatomic)BOOL state;
 + (instancetype)cellWithTableView:(UITableView *)tableView AndStyle:(NSString *)style;
 @end
