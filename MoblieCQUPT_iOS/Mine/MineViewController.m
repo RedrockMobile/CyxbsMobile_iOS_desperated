@@ -27,20 +27,15 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    UIView *statusBarView = [[UIView alloc]  init];
-    //判读机型
-    struct utsname systemInfo;
-    uname(&systemInfo);
-    NSString* code = [NSString stringWithCString:systemInfo.machine
-        encoding:NSUTF8StringEncoding];
-    statusBarView.backgroundColor = [UIColor colorWithRed:139/255.0 green:165/255.0 blue:248/255.0 alpha:1.0];
-    if ([code isEqualToString:@"iphoneX"]) {
-        statusBarView.frame = CGRectMake(0, 0,    self.view.bounds.size.width, 44);
-    }
-    else{
-        statusBarView.frame = CGRectMake(0, 0,    self.view.bounds.size.width, 20);
-    }
+    //适配iphone X状态栏
+    UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, STATUSBARHEIGHT)];
+    statusBarView.backgroundColor=[UIColor colorWithRed:137/255.0 green:165/255.0 blue:249/255.0 alpha:1];
     [self.view addSubview:statusBarView];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];    
+    NSURL *url = [NSURL URLWithString:[UserDefaultTool valueWithKey:@"photo_thumbnail_src"]];
+    [self.headImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
+    self.nameLabel.text = [UserDefaultTool valueWithKey:@"nickname"];
+    self.introductionLabel.text = [UserDefaultTool valueWithKey:@"introduction"];
     NSException *exception;
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];

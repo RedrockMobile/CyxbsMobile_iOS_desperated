@@ -74,7 +74,7 @@
     [self.view addConstraint:rightConstraint];
 
     
-    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:84];
+    NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:firstBtn attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:20 + HEADERHEIGHT];
     [self.view addConstraint:topConstraint];
     
 //        double width = [UIScreen mainScreen].bounds.size.width - 36.0;

@@ -43,7 +43,7 @@
     NSArray *VCArray = [[NSArray alloc] initWithObjects:VC1, VC2, VC3, nil];
     self.VCArray = VCArray;
     
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - 20) andControllers:VCArray];
+    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEADERHEIGHT) andControllers:VCArray];
     segmentView.eventDelegate = self;
     [self.view addSubview:segmentView];
 }
