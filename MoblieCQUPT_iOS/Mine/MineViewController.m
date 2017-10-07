@@ -27,26 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-//    UIView *statusBarView = [[UIView alloc]  init];
-//    //判读机型
-//    struct utsname systemInfo;
-//    uname(&systemInfo);
-//    NSString* code = [NSString stringWithCString:systemInfo.machine
-//        encoding:NSUTF8StringEncoding];
-//    statusBarView.backgroundColor = [UIColor colorWithRed:139/255.0 green:165/255.0 blue:248/255.0 alpha:1.0];
-//    if ([code isEqualToString:@"iphoneX"]) {
-//        statusBarView.frame = CGRectMake(0, 0,    self.view.bounds.size.width, 44);
-//    }
-//    else{
-//        statusBarView.frame = CGRectMake(0, 0,    self.view.bounds.size.width, 20);
-//    }
-//    [self.view addSubview:statusBarView];
-    
-    NSException *exception;
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-    MyInfoModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath] exception:&exception];
-    NSLog(@"%@",exception);
+    MyInfoModel *model = [MyInfoModel getMyInfo];
     self.headImageView.image = model.photo_thumbnail_src;
     self.nameLabel.text = model.nickname;
     self.introductionLabel.text = model.introduction;
@@ -127,7 +108,7 @@
 }
 
 - (void)touchImage{
-    UIViewController *vc = [[MyInfoViewController alloc]init];
+    MyInfoViewController *vc = [[MyInfoViewController alloc]init];
     vc.navigationItem.title = @"修改信息";
     vc.hidesBottomBarWhenPushed = YES;
     if (![UserDefaultTool getStuNum]) {

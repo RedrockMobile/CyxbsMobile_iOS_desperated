@@ -84,10 +84,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         if (![responseObject[@"data"] isKindOfClass:[NSNull class]]) {
             MyInfoModel *model = [[MyInfoModel alloc]initWithDic:responseObject[@"data"]];
-            NSData *modelData = [NSKeyedArchiver archivedDataWithRootObject:model];
-            NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-            NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-            [modelData writeToFile:infoFilePath atomically:YES];
+            [model saveMyInfo];
             [self dismissViewControllerAnimated:YES completion:nil];
         }else {
             //没有完善信息,跳转到完善个人的界面

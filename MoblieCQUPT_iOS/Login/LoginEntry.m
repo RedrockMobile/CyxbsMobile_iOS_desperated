@@ -7,6 +7,7 @@
 //
 
 #import "LoginEntry.h"
+#import "MyInfoModel.h"
 @implementation LoginEntry
 + (void)loginWithParamter:(NSDictionary *)parameter{
     [UserDefaultTool saveParameter:parameter];
@@ -14,14 +15,7 @@
 
 + (void)loginOut{
     [MobClick profileSignOff];
-    NSError *error;
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];    if([NSData dataWithContentsOfFile:infoFilePath]){
-        [[NSFileManager defaultManager] removeItemAtPath:infoFilePath error:&error];
-        if (error) {
-            NSLog(@"%@",error);
-        }
-    }
+    [MyInfoModel deleteMyInfo];
     [UserDefaultTool removeALLData];
 }
 @end

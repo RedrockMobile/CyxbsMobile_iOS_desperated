@@ -10,7 +10,7 @@
 #import "ExamPickView.h"
 @implementation UITextField(Empty)
 - (UITextField *)initWithPlaceHolder:(NSString *)string andFrame:(CGRect)frame{
-       self = [[UITextField alloc]initWithFrame:frame];
+    self = [[UITextField alloc]initWithFrame:frame];
     self.backgroundColor = [UIColor whiteColor];
 
     self.placeholder = string;

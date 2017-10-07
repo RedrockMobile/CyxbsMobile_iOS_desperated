@@ -35,9 +35,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-    self.model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
+    self.model = [MyInfoModel getMyInfo];
     self.image = self.model.photo_thumbnail_src;
     [self.view addSubview:self.tableView];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -53,6 +51,17 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         _tableView.dataSource = self;
     }
     return _tableView;
+}
+
+- (UIImageView *)avatar {
+    if (!_avatar) {
+        _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(MAIN_SCREEN_W-50-40, 18, 50, 50)];
+        _avatar.userInteractionEnabled = YES;
+        //    [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
+        _avatar.layer.masksToBounds = YES;
+        _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
+    }
+    return _avatar;
 }
 
 - (void)uploadData{
@@ -74,7 +83,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         if (self.imageUploadState == XBSUploadStateNetWorkWrong || self.infoUploadState == XBSUploadStateNetWorkWrong) {
             uploadProgress.labelText = @"网络错误";
             [uploadProgress hide:YES afterDelay:1];
-            return ;
+            return;
         }
         if (self.infoUploadState == XBSUploadStateParameterWrong) {
             uploadProgress.labelText = @"参数错误";
@@ -87,9 +96,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         self.model.qq = self.qqTextField.text;
         self.model.phone = self.phoneTextField.text;
         self.model.photo_thumbnail_src = self.image;
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-        [NSKeyedArchiver archiveRootObject:self.model toFile:infoFilePath];
+        [self.model saveMyInfo];
         [self.navigationController popViewControllerAnimated:YES];
     });
 }
@@ -170,21 +177,17 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     //设置每个cell的名字
     UILabel *textLabel = [[UILabel alloc] init];
     textLabel.font = kFont;
     textLabel.textColor = kDetailTextColor;
-    
     NSArray *titles = @[@"头像", @"昵称", @"简介", @"QQ", @"电话"];
-    
     static NSString *const identifer = @"cell";
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:identifer];
     }
-    
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userinfo"];
         [cell.contentView addSubview:self.avatar];
@@ -193,7 +196,6 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         textLabel.frame = CGRectMake(20, 35, 0, 0);
         [textLabel sizeToFit];
         [cell.contentView addSubview:textLabel];
-        
     } else if (indexPath.section == 1) {
         textLabel.text = titles[indexPath.row+1];
         textLabel.frame = CGRectMake(20, 15, 0, 0);
@@ -227,18 +229,6 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
-}
-
-//初始化头像
-- (UIImageView *)avatar {
-    if (!_avatar) {
-        _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(MAIN_SCREEN_W-50-40, 18, 50, 50)];
-        _avatar.userInteractionEnabled = YES;
-        //    [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
-        _avatar.layer.masksToBounds = YES;
-        _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
-    }
-    return _avatar;
 }
 
 #pragma mark - 更改头像

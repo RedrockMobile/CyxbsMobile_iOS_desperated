@@ -29,7 +29,7 @@
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
     UIImage *image = [UIImage imageWithContentsOfFile:imageFilePath];
     if (image) {
-        UIViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
+        UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
         UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
         launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
         UIImageView *splashView = [launchScreen.subviews lastObject];
@@ -44,7 +44,7 @@
             splashView.alpha = 0;
         } completion:^(BOOL finished) {
             [launchScreen removeFromSuperview];
-            self.view.window.rootViewController = vc;
+            self.view.window.rootViewController = mainVC;
         }];
     }
 }

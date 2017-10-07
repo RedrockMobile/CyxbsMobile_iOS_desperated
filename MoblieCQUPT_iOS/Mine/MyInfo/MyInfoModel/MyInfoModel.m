@@ -46,4 +46,29 @@
     return self;
 }
 
+- (BOOL) saveMyInfo{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    return [NSKeyedArchiver archiveRootObject:self toFile:infoFilePath];
+}
+
++ (MyInfoModel *) getMyInfo{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
+}
+
++ (BOOL)deleteMyInfo{
+    NSError *error;
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    if([NSData dataWithContentsOfFile:infoFilePath]){
+        [[NSFileManager defaultManager] removeItemAtPath:infoFilePath error:&error];
+        if (error) {
+            NSLog(@"%@",error);
+            return NO;
+        }
+    }
+    return YES;
+}
 @end

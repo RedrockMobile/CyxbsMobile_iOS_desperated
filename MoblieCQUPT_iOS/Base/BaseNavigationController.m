@@ -7,7 +7,7 @@
 //
 
 #import "BaseNavigationController.h"
-
+#import "UIFont+AdaptiveFont.h"
 @interface BaseNavigationController ()
 
 @end
@@ -22,7 +22,7 @@
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"navbar_image_back"]];
     [self.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"navbar_image_back"]];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont adaptFontSize:17]}];
     // Do any additional setup after loading the view.
 }
 
