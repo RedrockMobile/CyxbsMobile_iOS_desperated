@@ -1,0 +1,217 @@
+//
+//  EmptyClassViewController.m
+//  MoblieCQUPT_iOS
+//
+//  Created by xiaogou134 on 2017/10/5.
+//  Copyright © 2017年 Orange-W. All rights reserved.
+//
+
+#import "EmptyClassViewController.h"
+#import "EmptyClassView.h"
+@interface EmptyClassViewController ()
+@property (strong, nonatomic) EmptyClassView *views;
+@property (strong, nonatomic) NSDictionary *FinalData;
+@property (strong, nonatomic) NSArray *sameArray;
+@property (strong, nonatomic) NSMutableArray<UIView *> *viewArry;
+@end
+
+@implementation EmptyClassViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    _views = [[EmptyClassView alloc] initWithFrame:CGRectMake(0,0, SCREENWIDTH, 181)];
+    [self.view addSubview:_views];
+    
+    [self.views.handleBtn addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(readyToLoad:) name:@"checkReady" object:nil];
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"selected"]&&object == _views.handleBtn) {
+        [self moveTheView:_views.handleBtn.selected];
+    }
+
+}
+-(void)readyToLoad:(NSNotification *)notification{
+    NSDictionary *dataDic = notification.object;
+    NSArray *dataArry = dataDic[@"sectionNum"];
+    if (dataArry.count == 0) {
+        for (UIView *view in _viewArry) {
+            [view removeAllSubviews];
+        }
+        _viewArry = nil;
+        _viewArry = [NSMutableArray array];
+    }
+    else{
+        if(!_viewArry){
+            _viewArry = [NSMutableArray array];
+        }
+        else{
+            for (UIView *view in _viewArry) {
+                [view removeAllSubviews];
+            }
+            _viewArry = nil;
+            _viewArry = [NSMutableArray array];
+        }
+        if (dataArry.count > 1) {
+            [self loadSameData:(NSDictionary *)dataDic];
+            
+        }
+        else{
+            [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:dataDic WithReturnValeuBlock:^(id returnValue) {
+                _FinalData = [self handleData:returnValue[@"data"]];
+                [self setUpDataView:_FinalData];
+            } WithFailureBlock:^{
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"data" object:nil];
+            }];
+        }
+  }
+}
+-(void)loadSameData:(NSDictionary *)dic{
+    NSArray *dataArry = [NSArray array];
+    _sameArray = [NSArray array];
+    dataArry = dic[@"sectionNum"];
+    for (int i = 0; i < dataArry.count; i ++) {
+        NSMutableDictionary *dataDic = dic.mutableCopy;
+        dataDic[@"sectionNum"] = dataArry[i];
+        [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:dataDic WithReturnValeuBlock:^(id returnValue) {
+            [self settingSameArray:returnValue[@"data"]];
+            if (i == dataArry.count - 1) {
+                _FinalData = [self handleData:_sameArray];
+                [self setUpDataView:_FinalData];
+            }
+        } WithFailureBlock:^{
+
+        }];
+
+    }
+}
+-(void)settingSameArray:(NSArray *)sameArray{
+    if(_sameArray.count == 0){
+        _sameArray = sameArray;
+    }
+    else{
+        NSMutableSet *set1 = [NSMutableSet setWithArray:sameArray];
+        NSMutableSet *set2 = [NSMutableSet setWithArray:_sameArray];
+        [set1 intersectSet:set2];
+        NSArray *sortDesc = @[[[NSSortDescriptor alloc] initWithKey:nil ascending:YES]];
+        _sameArray = [set1 sortedArrayUsingDescriptors:sortDesc];
+    }
+}
+- (void)setUpDataView:(NSDictionary *)dic{
+    NSMutableArray * allkeys = [dic allKeys].mutableCopy;
+    [allkeys sortUsingSelector:@selector(compare:)];
+    for (int i = 0; i < allkeys.count; i++)
+    {
+        NSString * key = [allkeys objectAtIndex:i];
+        UIView *dataView;
+        NSArray *dicArry = dic[key];
+        if (dicArry.count != 0) {
+            dataView = [self dataView:dic[key] With:key];
+        }
+        else{
+            continue;
+        }
+        [_viewArry addObject:dataView];
+        if (i == 0) {
+            dataView.frame = CGRectMake(0, _views.bottom + 15, SCREENWIDTH, 100);
+        }
+        else{
+            dataView.frame = CGRectMake(0, _viewArry[i - 1].bottom, SCREENWIDTH, 100);
+        }
+        
+        [self.view addSubview:dataView];
+    }
+}
+- (UIView *)dataView:(NSArray *)arry With:(NSString *)key{
+    UIView *dataView = [[UIView alloc]init];
+    NSArray *floorArry = @[@"一楼",@"二楼",@"三楼",@"四楼",@"五楼"];
+    UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31, 2, 13)];
+    besidesView.image = [UIImage imageNamed:@"ImageBesidesTheEmptyClass"];
+    [dataView addSubview:besidesView];
+    UILabel *floorLab = [[UILabel alloc]initWithFrame:CGRectMake(besidesView.right + 8, 31, 29, 17)];
+    floorLab.font = [UIFont fontWithName:@"Arail" size:14];
+    floorLab.text = floorArry[key.intValue - 1];
+    [floorLab sizeToFit];
+    [dataView addSubview:floorLab];
+    NSMutableArray<UILabel *> *labArry = [NSMutableArray array];
+    for (int i = 0; i < arry.count ; i++) {
+        CGRect rect;
+        if (i % 4 == 0) {
+            if (i == 0){
+                rect = CGRectMake(floorLab.right + 29, 31, 0, 0);
+            }
+            else{
+                rect = CGRectMake(floorLab.right + 29, 31 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+            }
+        }
+        else{
+            rect =  CGRectMake(labArry[i % 4 - 1].right + 29, 31 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+        }
+        UILabel *lab = [[UILabel alloc]init];
+        lab.font = [UIFont fontWithName:@"Arail" size:14];
+        lab.frame = rect;
+        lab.text = arry[i];
+        NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:arry[i]];
+
+        NSRange range = NSMakeRange(2, 2);
+        [noteStr addAttribute:NSForegroundColorAttributeName value: [UIColor colorWithRed:97/255.0 green:151/255.0 blue:248/255.0 alpha:1/1.0] range:range];
+       
+        [lab setAttributedText:noteStr];
+        [lab sizeToFit];
+        [labArry addObject:lab];
+        [dataView addSubview:lab];
+    }
+    return dataView;
+}
+- (void)moveTheView:(BOOL)selected{
+    if (selected == NO) {
+        [UIView animateWithDuration:0.5 animations:^{
+            CGPoint point = self.view.center;
+            point.y -=  181;
+            self.view.center = point;
+            
+        }];
+    }
+    else{
+        [UIView animateWithDuration:0.5 animations:^{
+            CGPoint point = self.view.center;
+            point.y +=  181;
+            self.view.center = point;
+            
+        }];
+    }
+    
+}
+- (NSDictionary *)handleData:(NSArray *)array {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    NSArray *array1 = @[@"1",@"2",@"3",@"4",@"5"];
+    for (int i = 0; i < array1.count; i ++) {
+        NSMutableArray *newArray = [NSMutableArray array];
+        for (int j = 0; j < array.count; j++) {
+            NSString *string = [array[j] substringWithRange:NSMakeRange(1, 1)];
+            if ([string isEqualToString:array1[i]]) {
+                [newArray addObject:array[j]];
+            }
+        }
+        [dic setObject:newArray forKey:array1[i]];
+    }
+    return dic;
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
