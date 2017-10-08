@@ -135,8 +135,7 @@
 #define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
 #define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
 #define SEARCHPEOPLEAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
-//空教室接口
-#define EMPTYCLASSAPI @"https://redrock.team/api/roomEmpty"
+
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
