@@ -56,7 +56,7 @@ bool array[8];
 //    
 //    [self.view addSubview:topTabView];
     
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - 20) andControllers:self.VCArray];
+    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEADERHEIGHT) andControllers:self.VCArray];
     segmentView.eventDelegate = self;
     [self.VCArray[0] getData];
     array[0] = true;

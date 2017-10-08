@@ -11,7 +11,8 @@
 @implementation MBCommunityModel
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic{
-    if (self = [super init]) {        
+    if (self = [super init]) {
+        self.cellIsOpen = NO;
         //type_id
         self.type_id = dic[@"type_id"];
         self.user_id = dic[@"user_id"]?:dic[@"stunum"];
@@ -46,7 +47,8 @@
             self.detailContent = [self removeHTML:self.detailContent];
             
         }
-        self.time = dic[@"time"]?:dic[@"created_time"];
+        NSString *time = dic[@"time"]?:dic[@"created_time"];
+        self.time = [time substringToIndex:10];
         self.like_num = dic[@"like_num"];
         self.remark_num = dic[@"remark_num"];
         self.is_my_like = [dic[@"is_my_like"] boolValue];
