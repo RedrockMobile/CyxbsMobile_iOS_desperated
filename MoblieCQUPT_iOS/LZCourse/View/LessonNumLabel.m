@@ -23,10 +23,7 @@
         self.font = [UIFont adaptFontSize:12];
         self.textColor = [UIColor colorWithHexString:@"#7097FA"];
         self.backgroundColor = [UIColor colorWithHexString:@"#EEF6FD"];
-        self.layer.borderColor = [UIColor colorWithHexString:@"eef6fd"].CGColor;
-        self.layer.borderWidth = 0;
         self.textAlignment = NSTextAlignmentCenter;
-        self.numberOfLines = 0;
     }
     return self;
 }

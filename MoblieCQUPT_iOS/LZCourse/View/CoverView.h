@@ -11,5 +11,5 @@
 @interface CoverView : UIView
 typedef void(^passTap)(NSSet<UITouch *> *touches, UIEvent *event);
 
-@property passTap passTap;
+@property (nonatomic, copy) passTap passTap;
 @end

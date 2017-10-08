@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TickButton.h"
+@protocol TimeChooseScrollViewDelegate <NSObject>
+- (void)eventWhenTapAtIndex:(NSInteger)index;
+@end
 
 @interface TimeChooseScrollView : UIScrollView
-@property (nonatomic, strong) NSMutableArray<TickButton *> *btnArray;
-@property (nonatomic, assign) BOOL showWeekScrollView;
+@property (nonatomic, strong) NSMutableArray<NSString *> *titles;
+@property (nonatomic, weak) id<TimeChooseScrollViewDelegate> chooseDelegate;
+@property (nonatomic, readonly) NSString *currenSelectedTitle;
+//@property (nonatomic, assign) BOOL showWeekScrollView;
+- (void)tapAtIndex:(NSInteger)index;
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray <NSString *>*)titles;
 @end

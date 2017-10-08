@@ -842,7 +842,6 @@
 		F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 		F242DC191EBCB2BB005AC411 /* RemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindNotification.h; sourceTree = "<group>"; };
 		F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindNotification.m; sourceTree = "<group>"; };
-		F242DC1B1EBCB2BB005AC411 /* SaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveDelegate.h; sourceTree = "<group>"; };
 		F242DC1D1EBCB2BB005AC411 /* ChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseButton.h; sourceTree = "<group>"; };
 		F242DC1E1EBCB2BB005AC411 /* ChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseButton.m; sourceTree = "<group>"; };
 		F242DC1F1EBCB2BB005AC411 /* CoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoverView.h; sourceTree = "<group>"; };
@@ -1265,6 +1264,7 @@
 		F2CC3A9C1F46BE1B00B031BD /* MineTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTableViewCell.h; sourceTree = "<group>"; };
 		F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineTableViewCell.m; sourceTree = "<group>"; };
 		F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MineTableViewCell.xib; sourceTree = "<group>"; };
+		F2D550EC1F89D9060067005E /* SaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveDelegate.h; sourceTree = "<group>"; };
 		F2DD71A21F777B24009556BE /* LZPersonAddView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZPersonAddView.h; sourceTree = "<group>"; };
 		F2DD71A31F777B24009556BE /* LZPersonAddView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPersonAddView.m; sourceTree = "<group>"; };
 		F2DD71A71F77DB70009556BE /* LZNoCourseDateDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZNoCourseDateDetailViewController.h; sourceTree = "<group>"; };
@@ -1697,7 +1697,8 @@
 		F242DB921EBCB2BB005AC411 /* LZCourse */ = {
 			isa = PBXGroup;
 			children = (
-				F242DF821EBCB61E005AC411 /* Delegate */,
+				F2D550EB1F89D9060067005E /* Delegate */,
+				F293EAF11F88B33F004BD69C /* ViewModel */,
 				F242DBA31EBCB2BB005AC411 /* Cell */,
 				F242DBAA1EBCB2BB005AC411 /* Controller */,
 				F242DBC31EBCB2BB005AC411 /* Handle */,
@@ -1731,14 +1732,14 @@
 				F242DBBC1EBCB2BB005AC411 /* LessonButtonController.m */,
 				F242DBB61EBCB2BB005AC411 /* DetailViewController.h */,
 				F242DBB71EBCB2BB005AC411 /* DetailViewController.m */,
-				F242DBB41EBCB2BB005AC411 /* DetailRemindViewController.h */,
-				F242DBB51EBCB2BB005AC411 /* DetailRemindViewController.m */,
 				F242DBB11EBCB2BB005AC411 /* DetailPageController.h */,
 				F242DBB21EBCB2BB005AC411 /* DetailPageController.m */,
 				F242DBB31EBCB2BB005AC411 /* DetailPageController.xib */,
 				F242DBAE1EBCB2BB005AC411 /* DetailLessonController.h */,
 				F242DBAF1EBCB2BB005AC411 /* DetailLessonController.m */,
 				F242DBB01EBCB2BB005AC411 /* DetailLessonController.xib */,
+				F242DBB41EBCB2BB005AC411 /* DetailRemindViewController.h */,
+				F242DBB51EBCB2BB005AC411 /* DetailRemindViewController.m */,
 				F242DBAB1EBCB2BB005AC411 /* AddRemindViewController.h */,
 				F242DBAC1EBCB2BB005AC411 /* AddRemindViewController.m */,
 				F242DBAD1EBCB2BB005AC411 /* AddRemindViewController.xib */,
@@ -1860,28 +1861,28 @@
 		F242DC1C1EBCB2BB005AC411 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F242DC1D1EBCB2BB005AC411 /* ChooseButton.h */,
-				F242DC1E1EBCB2BB005AC411 /* ChooseButton.m */,
 				F242DC1F1EBCB2BB005AC411 /* CoverView.h */,
 				F242DC201EBCB2BB005AC411 /* CoverView.m */,
 				F242DC211EBCB2BB005AC411 /* DayLabel.h */,
 				F242DC221EBCB2BB005AC411 /* DayLabel.m */,
-				F242DC231EBCB2BB005AC411 /* LessonButton.h */,
-				F242DC241EBCB2BB005AC411 /* LessonButton.m */,
 				F242DC251EBCB2BB005AC411 /* LessonNumLabel.h */,
 				F242DC261EBCB2BB005AC411 /* LessonNumLabel.m */,
-				F242DC271EBCB2BB005AC411 /* MainView.h */,
-				F242DC281EBCB2BB005AC411 /* MainView.m */,
+				F242DC231EBCB2BB005AC411 /* LessonButton.h */,
+				F242DC241EBCB2BB005AC411 /* LessonButton.m */,
 				F242DC291EBCB2BB005AC411 /* NoLoginView.h */,
 				F242DC2A1EBCB2BB005AC411 /* NoLoginView.m */,
+				F242DC271EBCB2BB005AC411 /* MainView.h */,
+				F242DC281EBCB2BB005AC411 /* MainView.m */,
 				F242DC2B1EBCB2BB005AC411 /* TickButton.h */,
 				F242DC2C1EBCB2BB005AC411 /* TickButton.m */,
 				F242DC2D1EBCB2BB005AC411 /* TimeChooseScrollView.h */,
 				F242DC2E1EBCB2BB005AC411 /* TimeChooseScrollView.m */,
-				F242DC2F1EBCB2BB005AC411 /* WeekChooseButton.h */,
-				F242DC301EBCB2BB005AC411 /* WeekChooseButton.m */,
 				F23BB4861F50538800DA62ED /* LZWeekScrollView.h */,
 				F23BB4871F50538800DA62ED /* LZWeekScrollView.m */,
+				F242DC1D1EBCB2BB005AC411 /* ChooseButton.h */,
+				F242DC1E1EBCB2BB005AC411 /* ChooseButton.m */,
+				F242DC2F1EBCB2BB005AC411 /* WeekChooseButton.h */,
+				F242DC301EBCB2BB005AC411 /* WeekChooseButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2129,14 +2130,6 @@
 				F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */,
 			);
 			path = NetWork;
-			sourceTree = "<group>";
-		};
-		F242DF821EBCB61E005AC411 /* Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				F242DC1B1EBCB2BB005AC411 /* SaveDelegate.h */,
-			);
-			name = Delegate;
 			sourceTree = "<group>";
 		};
 		F242DF831EBD9E2C005AC411 /* LostAndFound */ = {
@@ -2632,6 +2625,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		F293EAF11F88B33F004BD69C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		F2A6E6711F6E8FE100A663B4 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -2713,6 +2713,14 @@
 				F2C862C81F4E9F08005C887E /* MyInfoModel.m */,
 			);
 			path = MyInfoModel;
+			sourceTree = "<group>";
+		};
+		F2D550EB1F89D9060067005E /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				F2D550EC1F89D9060067005E /* SaveDelegate.h */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

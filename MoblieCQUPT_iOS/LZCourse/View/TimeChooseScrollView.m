@@ -7,14 +7,20 @@
 //
 
 #import "TimeChooseScrollView.h"
+#import "TickButton.h"
+@interface TimeChooseScrollView()
+@property (nonatomic, strong) NSMutableArray <TickButton *> *btnArray;
+@property (nonatomic, strong) UIButton *selectedBtn;
+@end
+
 @implementation TimeChooseScrollView
-- (instancetype)initWithFrame:(CGRect)frame{
-    NSArray *timeArray = @[@"不提醒",@"提前五分钟",@"提前十分钟",@"提前二十分钟",@"提前半小时",@"提前一小时"];
+- (instancetype)initWithFrame:(CGRect)frame titles:(NSArray <NSString *>*) titles{
+    self.titles = titles.mutableCopy;
+    self.btnArray = [NSMutableArray array];
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor colorWithHexString:@"#fbfbfb"];
-        self.btnArray = [NSMutableArray array];
-        NSInteger count = timeArray.count;
+        NSInteger count = self.titles.count;
         CGFloat lbHeight = frame.size.height/count;
         CGFloat lbWidth = frame.size.width;
         
@@ -25,15 +31,34 @@
             TickButton *btn = [[TickButton alloc] initWithFrame:CGRectMake(0, i*lbHeight, lbWidth, lbHeight-1)];
             UIView *assitView = [[UIView alloc]initWithFrame:CGRectMake(16, (i+1)*lbHeight-1, lbWidth-32, 1)];
             assitView.backgroundColor = [UIColor colorWithHexString:@"#e3e3e3"];
-            [btn setTitle:timeArray[i] forState:UIControlStateNormal];
+            [btn setTitle:self.titles[i] forState:UIControlStateNormal];
+            [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+            btn.tag = i;
+            [self.btnArray addObject:btn];
             [self addSubview:btn];
             [self addSubview:assitView];
-            [self.btnArray addObject:btn];
-            btn.tag = i;
         }
     }
     return self;
 }
+
+- (void)clickBtn:(TickButton *)sender{
+    self.selectedBtn.selected = NO;
+    self.selectedBtn = sender;
+    sender.selected = YES;
+    if ([self.chooseDelegate respondsToSelector:@selector(eventWhenTapAtIndex:)]) {
+        [self.chooseDelegate eventWhenTapAtIndex:sender.tag];
+    }
+
+}
+- (void)tapAtIndex:(NSInteger)index{
+    [self clickBtn:self.btnArray[index]];
+}
+
+- (NSString *)currenSelectedTitle{
+    return self.selectedBtn.currentTitle;
+}
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

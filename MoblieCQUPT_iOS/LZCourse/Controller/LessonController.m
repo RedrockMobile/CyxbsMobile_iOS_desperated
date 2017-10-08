@@ -19,6 +19,7 @@
 #import "LessonMatter.h"
 #import "RemindMatter.h"
 #import "LessonBtnModel.h"
+#import "LessonButton.h"
 
 @interface LessonController ()<LZWeekScrollViewDelegate>
 @property (nonatomic, strong) MainView *mainView;
@@ -32,10 +33,10 @@
 @property (nonatomic, strong) NoLoginView *noLoginView;
 @property (nonatomic, assign) NSInteger nowWeek;
 //防止数组越界使用的nowWeek(0~20),与Userdefault中的数值不同
-@property (nonatomic, assign) CGFloat kWeekScrollViewHeight;
-@property (nonatomic ,strong) DetailViewController *detailViewController;
+@property (nonatomic, strong) DetailViewController *detailViewController;
 @property (nonatomic, assign) NSInteger currentSelectIndex;
 @property (nonatomic, assign) BOOL isNetWorkSuccess;
+@property (nonatomic, assign) CGFloat weekScrollViewHeight;
 
 @end
 
@@ -43,8 +44,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.weekScrollViewHeight = 0.06*SCREENHEIGHT;
     self.isNetWorkSuccess = YES;
-    self.kWeekScrollViewHeight = SCREENHEIGHT*0.06;
     self.nowWeek = [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue];
     if (self.nowWeek <0 ) {
         self.nowWeek = 0;
@@ -54,7 +55,6 @@
     self.currentSelectIndex = self.nowWeek;
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [self addNotification];
     if (stuNum == nil || idNum == nil) {
          self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
         [self.view addSubview:self.noLoginView];
@@ -63,6 +63,7 @@
     else{
         [self afterLogin];
     }
+    [self addNotification];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -139,10 +140,10 @@
 - (void)initWeekScrollView{
     [self.weekScrollView removeFromSuperview];
     NSMutableArray *weekArray = @[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周"].mutableCopy;
-    if ([[UserDefaultTool valueWithKey:@"nowWeek"] integerValue] >0 && [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue]<=20) {
+    if (self.nowWeek>0 && self.nowWeek <=20) {
         weekArray[self.nowWeek] = @"本周";
     }
-    self.weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight) andTitles:weekArray];
+    self.weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight) andTitles:weekArray];
     self.weekScrollView.eventDelegate = self;
     [self.weekScrollView scrollToIndex:self.nowWeek];
     [self.view addSubview:self.weekScrollView];
@@ -183,18 +184,16 @@
 }
 
 - (void)initBtnController{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    self.lessonArray = [[userDefaults objectForKey:@"lessonResponse"] objectForKey:@"data"];
+    self.lessonArray = [UserDefaultTool valueWithKey:@"lessonResponse"][@"data"];
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-//    NSLog(@"%@",remindPath);
     self.remindArray = [NSMutableArray arrayWithContentsOfFile:remindPath];
     // 获取数据
     self.controllerArray = [[NSMutableArray alloc]initWithCapacity:(LONGLESSON*DAY)];
     for (int i = 0; i<DAY; i++) {
         for (int j = 0; j<LONGLESSON; j++) {
             self.controllerArray[i*LONGLESSON+j] = [[LessonButtonController alloc]initWithDay:i Lesson:j];
-            [self.controllerArray[i*LONGLESSON+j].btn addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
+         [self.controllerArray[i*LONGLESSON+j].btn addTarget:self action:@selector(showDetail:) forControlEvents:UIControlEventTouchUpInside];
         }
     }
     for (NSDictionary *lessonDic in self.lessonArray) {
@@ -204,11 +203,11 @@
     }
     
     for (NSDictionary *remind in self.remindArray) {
-        for (NSDictionary *date in [remind objectForKey:@"date"]) {
+        for (NSDictionary *date in remind[@"date"]) {
             RemindMatter *remindMatter = [[RemindMatter alloc]initWithRemind:remind];
-            remindMatter.week = [date objectForKey:@"week"];
-            remindMatter.classNum = [date objectForKey:@"class"];
-            remindMatter.day = [date objectForKey:@"day"];
+            remindMatter.week = date[@"week"];
+            remindMatter.classNum = date[@"class"];
+            remindMatter.day = date[@"day"];
             NSInteger index = remindMatter.day.integerValue*LONGLESSON+remindMatter.classNum.integerValue;
             [self.controllerArray[index].matter.remindArray addObject:remindMatter];
         }
@@ -268,8 +267,8 @@
     else{
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
-            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_kWeekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_kWeekScrollViewHeight));
+            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight);
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_weekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_weekScrollViewHeight));
             
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = NO;
@@ -323,16 +322,16 @@
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSMutableArray *reminds = [responseObject objectForKey:@"data"];
-        NSMutableArray *handledReminds = [NSMutableArray array];
-        for (NSDictionary *dic in reminds) {
-            NSMutableDictionary *newDic = dic.mutableCopy;
-            NSString *title = dic[@"title"];
-            NSString *content = dic[@"content"];
-            [newDic setObject:title forKey:@"title"];
-            [newDic setObject:content forKey:@"content"];
-            [handledReminds addObject:newDic];
-        }
-        [handledReminds writeToFile:remindPath atomically:YES];
+//        NSMutableArray *handledReminds = [NSMutableArray array];
+//        for (NSDictionary *dic in reminds) {
+//            NSMutableDictionary *newDic = dic.mutableCopy;
+//            NSString *title = dic[@"title"];
+//            NSString *content = dic[@"content"];
+//            [newDic setObject:title forKey:@"title"];
+//            [newDic setObject:content forKey:@"content"];
+//            [handledReminds addObject:newDic];
+//        }
+        [reminds writeToFile:remindPath atomically:YES];
         dispatch_semaphore_signal(sema);
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         dispatch_semaphore_signal(sema);

@@ -7,8 +7,6 @@
 //
 
 #import "LessonButton.h"
-#import "DetailViewController.h"
-#import <Masonry.h>
 #import "UIFont+AdaptiveFont.h"
 @implementation LessonButton
 - (instancetype)initWithFrame:(CGRect)frame{

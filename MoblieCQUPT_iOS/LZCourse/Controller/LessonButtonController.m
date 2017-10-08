@@ -13,7 +13,7 @@
 #import "LessonMatter.h"
 #import "RemindMatter.h"
 @interface LessonButtonController ()
-@property (nonatomic, assign) int beginLesson;
+@property (nonatomic, assign) NSInteger beginLesson;
 @property (nonatomic, strong) UIImageView *remindArrow;
 @end
 

@@ -7,9 +7,14 @@
 //
 
 #import "MainView.h"
+#import "DayLabel.h"
+#import "LessonButton.h"
+#import "LessonNumLabel.h"
 @interface MainView()
 @property (nonatomic, copy) NSArray *weekDay;
-
+@property (nonatomic, strong) DayLabel *monthLabel;
+@property (nonatomic, strong) NSMutableArray<DayLabel *> *dayLabels;
+@property (nonatomic, strong) NSMutableArray<LessonNumLabel *> *lessonsLabel;
 @end
 
 @implementation MainView

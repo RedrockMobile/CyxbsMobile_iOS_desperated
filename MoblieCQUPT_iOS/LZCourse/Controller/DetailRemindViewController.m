@@ -18,10 +18,10 @@
 @property (nonatomic, strong) NSMutableArray <RemindMatter *>* reminds;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) BOOL isEditing;
-@property NSString *remindPath;
-@property NSString *failurePath;
-@property NSMutableArray *imageViewArray;
-@property UIButton *editButton;
+@property (nonatomic, copy) NSString *remindPath;
+@property (nonatomic, copy) NSString *failurePath;
+@property (nonatomic, strong) NSMutableArray *imageViewArray;
+@property (nonatomic, strong) UIButton *editButton;
 
 @end
 
@@ -35,7 +35,7 @@
     self.imageViewArray = [NSMutableArray array];
     self.isEditing = NO;
     self.tableView.editing = NO;
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-STATUSBARHEIGHT-NVGBARHEIGHT) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = NO;

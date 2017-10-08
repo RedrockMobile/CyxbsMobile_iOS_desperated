@@ -37,6 +37,6 @@
     if (![content isEqualToString:@""]) {
         [content appendString:@"周"];
     }
-    return content;
+    return content.copy;
 }
 @end
