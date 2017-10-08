@@ -8,7 +8,9 @@
 
 #import "EmptyClassViewController.h"
 #import "EmptyClassView.h"
-@interface EmptyClassViewController ()
+#import "BaseViewController.h"
+
+@interface EmptyClassViewController ()<UIScrollViewDelegate>
 //选择栏
 @property (strong, nonatomic) EmptyClassView *views;
 //数据项
@@ -17,6 +19,7 @@
 @property (strong, nonatomic) NSMutableArray<UIView *>
  *viewArry;
 @property (strong, nonatomic) NSDictionary *dataDic;
+@property (strong, nonatomic) UIScrollView *scrollView;
 @end
 
 @implementation EmptyClassViewController
@@ -24,10 +27,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _views = [[EmptyClassView alloc] initWithFrame:CGRectMake(0,0, SCREENWIDTH, 181)];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:_views];
     [self.views.handleBtn addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
     //选择项完成收到通知
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, _views.bottom + 10, SCREENWIDTH, SCREENHEIGHT)];
+    _scrollView.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT + _views.height);
+    _scrollView.delegate = self;
+    _scrollView.showsVerticalScrollIndicator = NO;
+    _scrollView.showsHorizontalScrollIndicator = NO;
+    _scrollView.bounces = NO;
+    _scrollView.decelerationRate = 0.1;
+    [_scrollView flashScrollIndicators];
+    [self.view addSubview:_scrollView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(readyToLoad:) name:@"checkReady" object:nil];
+    UISwipeGestureRecognizer * recognizer;
+    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionUp)];
+    [self.view addGestureRecognizer:recognizer];
+    recognizer = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(handleSwipeFrom:)];
+    [recognizer setDirection:(UISwipeGestureRecognizerDirectionDown)];
+    [self.view addGestureRecognizer:recognizer];
+  
 }
 //滑动监听
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -38,14 +59,14 @@
 //滑动动画
 - (void)moveTheView:(BOOL)selected{
     if (selected == NO) {
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             CGPoint point = self.view.center;
             point.y -=  181;
             self.view.center = point;
         }];
     }
     else{
-        [UIView animateWithDuration:0.5 animations:^{
+        [UIView animateWithDuration:0.2 animations:^{
             CGPoint point = self.view.center;
             point.y +=  181;
             self.view.center = point;
@@ -137,13 +158,13 @@
             continue;
         }
         if (_viewArry.count == 0) {
-            dataView.frame = CGRectMake(0, _views.bottom + 15, SCREENWIDTH, highOfView);
+            dataView.frame = CGRectMake(0, 31, SCREENWIDTH, highOfView);
         }
         else{
             dataView.frame = CGRectMake(0, _viewArry[_viewArry.count - 1].bottom, SCREENWIDTH, highOfView);
         }
         [_viewArry addObject:dataView];
-        [self.view addSubview:dataView];
+        [self.scrollView addSubview:dataView];
     }
 }
 
@@ -219,6 +240,25 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer *)recognizer{
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionUp&&_views.handleBtn.selected) {
+        _views.handleBtn.selected = !_views.handleBtn.selected;
+    }
+    if(recognizer.direction == UISwipeGestureRecognizerDirectionDown&&!_views.handleBtn.selected) {
+        _views.handleBtn.selected = !_views.handleBtn.selected;
+    }
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"%f", scrollView.contentOffset.y);
+    if (scrollView.contentOffset.y > 0&&_views.handleBtn.selected) {
+        _views.handleBtn.selected = !_views.handleBtn.selected;
+    }
+    else if (scrollView.contentOffset.y < 50&&!_views.handleBtn.selected) {
+        _views.handleBtn.selected = !_views.handleBtn.selected;
+    }
+
+}
+
 -(void)dealloc{
     [self.views.handleBtn removeObserver:self forKeyPath:@"selected" context:nil];
 }

@@ -184,7 +184,7 @@
             
         }
         else{
-            btn.frame = CGRectMake(22 + classArray[i - 1].right, 10, 0, 0);
+            btn.frame = CGRectMake(20 + classArray[i - 1].right, 10, 0, 0);
         }
         [btn sizeToFit];
         UIImageView *img = [[UIImageView alloc]init];

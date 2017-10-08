@@ -133,7 +133,9 @@
     NSString *examDateLabelText = [_data[indexPath.row][@"week"] stringByAppendingFormat:@"周 周%@",dateArray[dateIndex]];
     cell.examDate.text = examDateLabelText;
     cell.month.text = [NSString stringWithFormat:@"%@月",[[dateFormatter stringFromDate:newDate] substringWithRange:NSMakeRange(6, 1)]];
+    [cell.month sizeToFit];
     cell.day.text = [[dateFormatter stringFromDate:newDate] substringWithRange:NSMakeRange(8, 2)];
+    [cell.day sizeToFit];
     return cell;
 }
 
