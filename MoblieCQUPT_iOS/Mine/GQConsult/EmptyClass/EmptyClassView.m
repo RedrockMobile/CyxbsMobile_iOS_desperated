@@ -57,7 +57,7 @@
     weekScrollView.backgroundColor = [UIColor whiteColor];
     [self addSubview:weekScrollView];
     UIView *sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, weekScrollView.bottom, SCREENWIDTH, 5)];
-    sliderView.backgroundColor = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.05514039855072464/1.0];
+    sliderView.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0/1.0];
     [self addSubview:sliderView];
  
     NSArray *weekday = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];
@@ -89,15 +89,13 @@
 //周数的滑动栏
 -(UIScrollView *)setUpScrollView{
     //初始化时停在本周的位置上
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    CGFloat nowWeeks = [[defaults objectForKey:@"nowWeek"] floatValue];
     UIScrollView *weekScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.size.width, self.size.height / 4)];
     weekScrollView.contentSize = CGSizeMake(65 * 19, 45);
     weekScrollView.showsVerticalScrollIndicator = NO;
     weekScrollView.showsHorizontalScrollIndicator = NO;
     [weekScrollView flashScrollIndicators];
     weekArray = [NSMutableArray array];
-    for (int i = 0; i < 19; i ++) {
+    for (int i = 1; i <= 19; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [weekArray addObject:btn];
         [btn setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.8300000000000001/1.0] forState:UIControlStateNormal];
@@ -108,16 +106,14 @@
 
         btn.frame = CGRectMake((i - 1) * 45 + i * 22, 13, 45, 17);
         
-        if (i == nowWeeks) {
-             btn.selected = YES;
-            _weeks =  i;
-            ///
+        if (i == 1) {
+            btn.selected = YES;
             [_emptyClassData setObject:[NSString stringWithFormat:@"%d",i] forKey:@"week"];
             _imageForeWeek = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"imageForeWeek"]];
-            _imageForeWeek.frame = CGRectMake(btn.left - 7, 9, 60, 32);
+            _imageForeWeek.frame = CGRectMake(btn.centerX - 28, 9, 56, 27);
             [weekScrollView addSubview:_imageForeWeek];
             [weekScrollView setContentOffset:CGPointMake((i -1) * 15, 0) animated:YES];
-            currentIndexInWeek = i - 1;
+            currentIndexInWeek = i;
         }
         [weekScrollView addSubview:btn];
     }
@@ -134,7 +130,7 @@
         [_emptyClassData setObject:@"0" forKey:@"weekdayNum"];
         weekdayArray = [NSMutableArray array];
         _imageForeWeekday = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ImageForeWeekday"]];
-        _imageForeWeekday.frame = CGRectMake(15, 10, 50, 28);
+        _imageForeWeekday.frame = CGRectMake(15, 10, 45, 27);
         [btnView addSubview:_imageForeWeekday];
     }
     else
@@ -144,11 +140,10 @@
         [_emptyClassData setObject:@"0" forKey:@"buildNum"];
         buildArray = [NSMutableArray array];
         _imageForeBuild = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ImageForeWeekday"]];
-        _imageForeBuild.frame = CGRectMake(15, 10, 50, 28);
+        _imageForeBuild.frame = CGRectMake(15, 10, 45, 27);
         [btnView addSubview:_imageForeBuild];
     }
     for (int i = 0; i < array.count; i ++) {
-       
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.8300000000000001/1.0] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1/1.0] forState:UIControlStateSelected];
@@ -157,16 +152,9 @@
         [btn setTitle:array[i] forState:UIControlStateNormal];
         if (i == 0) {
             btn.selected = YES;
-            if (key == 1) {
-                _weekdays = 0;
-            }
-            else{
-                _build =  0;
-            }
         }
         if (key == 1) {
             [weekdayArray addObject:btn];
-            
             btn.frame = CGRectMake((i  + 1 ) * 23 + i * 29, 13, 29, 17);
         }
         else{
@@ -185,12 +173,11 @@
     classArray = [NSMutableArray array];
     imageForeClassArray = [NSMutableArray array];
     for (int i = 0; i < class.count; i ++) {
-    
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setTitleColor:[UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.8300000000000001/1.0] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:1/1.0] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(changeSelected:)  forControlEvents:UIControlEventTouchUpInside];
-        btn.titleLabel.font = [UIFont fontWithName:@"Arial" size:14];
+        btn.titleLabel.font = [UIFont systemFontOfSize:14];
         [btn setTitle:class[i] forState:UIControlStateNormal];
         if (i == 0) {
             btn.frame = CGRectMake(23, 10, 0, 0);
@@ -202,9 +189,8 @@
         [btn sizeToFit];
         UIImageView *img = [[UIImageView alloc]init];
         img.size = CGSizeMake(62, 33);
-        img.centerX = btn.centerX;
+        img.centerX = btn.centerX - 1;
         img.centerY = btn.centerY + 2;
-
         img.image = [UIImage imageNamed:@"ImageForeClass"];
         img.hidden = YES;
         [imageForeClassArray addObject:img];
@@ -216,16 +202,13 @@
 }
 //周数的点击事件
 - (void)changeWeek:(UIButton *)btn{
-
-    if (![weekArray[currentIndexInWeek] isEqual: btn]) {
-        weekArray[currentIndexInWeek].selected = NO;
+    if (![weekArray[currentIndexInWeek - 1] isEqual: btn]) {
+        weekArray[currentIndexInWeek - 1].selected = NO;
         for (int i = 0; i < weekArray.count; i ++) {
             if([weekArray[i] isEqual: btn]){
-                currentIndexInWeek = i;
+                currentIndexInWeek = i + 1;
             }
         }
-        _weeks = currentIndexInWeek;
-        ///
         [_emptyClassData setObject:[NSString stringWithFormat:@"%ld",currentIndexInWeek] forKey:@"week"];
         [self checkUpTheDic:_emptyClassData];
         btn.selected = YES;
@@ -235,14 +218,16 @@
         [UIView setAnimationDelegate:_imageForeWeek];
         [UIView setAnimationRepeatCount:1];
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-        _imageForeWeek.frame = CGRectMake(btn.left - 7, 9, 56, 27);
+        _imageForeWeek.frame = CGRectMake(btn.centerX - 28, 9, 56, 27);
         [UIView commitAnimations];
-        if (currentIndexInWeek ==  0)
-        {
+        if (currentIndexInWeek ==  1){
             [weekScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
-        else if (currentIndexInWeek < 15) {
+        else if (currentIndexInWeek < 16) {
             [weekScrollView setContentOffset:CGPointMake(btn.left - 50, 0) animated:YES];
+        }
+        else{
+            [weekScrollView setContentOffset:CGPointMake(14 * 65, 0) animated:YES];
         }
 
     }
@@ -256,9 +241,9 @@
         for (int i = 0; i < weekdayArray.count; i ++) {
             if([weekdayArray[i] isEqual: btn]){
                 currentIndexInWeekday = i;
-                _weekdays = currentIndexInWeekday;
                 btn.selected = YES;
                 [_emptyClassData setObject:[NSString stringWithFormat:@"%d",i] forKey:@"weekdayNum"];
+                [self checkUpTheDic:_emptyClassData];
             }
         }
         nowImageView = _imageForeWeekday;
@@ -268,8 +253,8 @@
         for (int i = 0; i < buildArray.count; i ++) {
             if([buildArray[i] isEqual: btn]){
                 currentIndexInbuild = i;
-                _build = currentIndexInbuild;
                 [_emptyClassData setObject:[NSString stringWithFormat:@"%d",i] forKey:@"buildNum"];
+                [self checkUpTheDic:_emptyClassData];
                 btn.selected = YES;
             }
         }
@@ -280,18 +265,16 @@
     [UIView setAnimationDelegate:nowImageView];
     [UIView setAnimationRepeatCount:1];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    nowImageView.frame = CGRectMake(btn.left - 7, nowImageView.frame.origin.y, nowImageView.frame.size.width, nowImageView.frame.size.height);
+    nowImageView.frame = CGRectMake(btn.centerX - 22.5, nowImageView.frame.origin.y, nowImageView.frame.size.width, nowImageView.frame.size.height);
     [UIView commitAnimations];
 }
 -(void)changeSelected:(UIButton *)btn{
     btn.selected = !btn.selected;
-   
     if (btn.selected) {
         for (int i = 0; i < classArray.count; i ++) {
             if([classArray[i] isEqual: btn]){
                 [_time addObject:[NSString stringWithFormat:@"%d", i]];
                 btn.selected = YES;
-                ///
                 [_emptyClassData setObject:_time forKey:@"sectionNum"];
                 [self checkUpTheDic:_emptyClassData];
                 imageForeClassArray[i].hidden = NO;
@@ -303,7 +286,6 @@
         for (int i = 0; i < classArray.count; i ++) {
             if([classArray[i] isEqual: btn]){
                 [_time removeObject:[NSString stringWithFormat:@"%d", i]];
-                ///
                 [_emptyClassData setObject:_time forKey:@"section"];
                 [self checkUpTheDic:_emptyClassData];
                 btn.selected = NO;
@@ -322,6 +304,7 @@
         return NO;
     }
 }
+
 - (void)checkUpTheDic:(NSDictionary *)dic{
 
     if (_emptyClassData[@"week"] && _emptyClassData[@"weekdayNum"] && _emptyClassData[@"buildNum"] &&
@@ -329,13 +312,14 @@
         [[NSNotificationCenter defaultCenter]postNotificationName:@"checkReady" object:[self changeTheDic:self.emptyClassData]];
     }
 }
+//数据处理
 - (NSDictionary *)changeTheDic:(NSDictionary *)dic{
     NSString *week = [[NSString alloc]initWithString:dic[@"week"]];
     NSString *weekdayNum = [[NSString alloc]initWithString:dic[@"weekdayNum"]];
     NSString *buildNum = [[NSString alloc]initWithString:dic[@"buildNum"]];
     NSArray *sectionNum = [[NSArray alloc] initWithArray:dic[@"sectionNum"]];
     NSMutableDictionary *newDic = [[NSMutableDictionary alloc]init];
-    [newDic setObject:[[NSString alloc] initWithFormat:@"%d",week.intValue + 1] forKey:@"week"];
+    [newDic setObject:week forKey:@"week"];
     [newDic setObject:[[NSString alloc] initWithFormat:@"%d",weekdayNum.intValue + 1] forKey:@"weekdayNum"];
     if ([buildNum isEqualToString:@"4"]) {
         buildNum = @"8";
