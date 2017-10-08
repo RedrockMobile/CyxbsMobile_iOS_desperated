@@ -137,6 +137,13 @@
 #define SEARCHPEOPLEAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
 //空教室接口
 #define EMPTYCLASSAPI @"https://redrock.team/api/roomEmpty"
+//成绩接口
+#define GRADEAPI @"http://hongyan.cqupt.edu.cn/api/examGrade"
+//考试教室接口
+#define GRADECLASSAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
+//补考接口
+#define MAKEAPI @"http://hongyan.cqupt.edu.cn/api/examReexam"
+
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)

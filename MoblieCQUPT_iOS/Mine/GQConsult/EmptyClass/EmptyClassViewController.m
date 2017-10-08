@@ -9,33 +9,54 @@
 #import "EmptyClassViewController.h"
 #import "EmptyClassView.h"
 @interface EmptyClassViewController ()
+//选择栏
 @property (strong, nonatomic) EmptyClassView *views;
+//数据项
 @property (strong, nonatomic) NSDictionary *FinalData;
 @property (strong, nonatomic) NSArray *sameArray;
-@property (strong, nonatomic) NSMutableArray<UIView *> *viewArry;
+@property (strong, nonatomic) NSMutableArray<UIView *>
+ *viewArry;
+@property (strong, nonatomic) NSDictionary *dataDic;
 @end
 
 @implementation EmptyClassViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     _views = [[EmptyClassView alloc] initWithFrame:CGRectMake(0,0, SCREENWIDTH, 181)];
     [self.view addSubview:_views];
-    
     [self.views.handleBtn addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
-    
+    //选择项完成收到通知
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(readyToLoad:) name:@"checkReady" object:nil];
 }
+//滑动监听
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([keyPath isEqualToString:@"selected"]&&object == _views.handleBtn) {
         [self moveTheView:_views.handleBtn.selected];
     }
-
 }
+//滑动动画
+- (void)moveTheView:(BOOL)selected{
+    if (selected == NO) {
+        [UIView animateWithDuration:0.5 animations:^{
+            CGPoint point = self.view.center;
+            point.y -=  181;
+            self.view.center = point;
+        }];
+    }
+    else{
+        [UIView animateWithDuration:0.5 animations:^{
+            CGPoint point = self.view.center;
+            point.y +=  181;
+            self.view.center = point;
+        }];
+    }
+}
+#pragma marks 数据处理
+//开始处理数据
 -(void)readyToLoad:(NSNotification *)notification{
-    NSDictionary *dataDic = notification.object;
-    NSArray *dataArry = dataDic[@"sectionNum"];
+    _dataDic = notification.object;
+    NSArray *dataArry = _dataDic[@"sectionNum"];
     if (dataArry.count == 0) {
         for (UIView *view in _viewArry) {
             [view removeAllSubviews];
@@ -49,17 +70,16 @@
         }
         else{
             for (UIView *view in _viewArry) {
-                [view removeAllSubviews];
+                [view removeFromSuperview];
             }
             _viewArry = nil;
             _viewArry = [NSMutableArray array];
         }
         if (dataArry.count > 1) {
-            [self loadSameData:(NSDictionary *)dataDic];
-            
+            [self loadSameData:(NSDictionary *)_dataDic];
         }
         else{
-            [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:dataDic WithReturnValeuBlock:^(id returnValue) {
+            [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:_dataDic WithReturnValeuBlock:^(id returnValue) {
                 _FinalData = [self handleData:returnValue[@"data"]];
                 [self setUpDataView:_FinalData];
             } WithFailureBlock:^{
@@ -68,6 +88,7 @@
         }
   }
 }
+//多个选择时
 -(void)loadSameData:(NSDictionary *)dic{
     NSArray *dataArry = [NSArray array];
     _sameArray = [NSArray array];
@@ -99,6 +120,7 @@
         _sameArray = [set1 sortedArrayUsingDescriptors:sortDesc];
     }
 }
+//加载View
 - (void)setUpDataView:(NSDictionary *)dic{
     NSMutableArray * allkeys = [dic allKeys].mutableCopy;
     [allkeys sortUsingSelector:@selector(compare:)];
@@ -107,32 +129,40 @@
         NSString * key = [allkeys objectAtIndex:i];
         UIView *dataView;
         NSArray *dicArry = dic[key];
+        CGFloat highOfView = (dicArry.count / 4 ) * 30 + 58;
         if (dicArry.count != 0) {
             dataView = [self dataView:dic[key] With:key];
         }
         else{
             continue;
         }
-        [_viewArry addObject:dataView];
-        if (i == 0) {
-            dataView.frame = CGRectMake(0, _views.bottom + 15, SCREENWIDTH, 100);
+        if (_viewArry.count == 0) {
+            dataView.frame = CGRectMake(0, _views.bottom + 15, SCREENWIDTH, highOfView);
         }
         else{
-            dataView.frame = CGRectMake(0, _viewArry[i - 1].bottom, SCREENWIDTH, 100);
+            dataView.frame = CGRectMake(0, _viewArry[_viewArry.count - 1].bottom, SCREENWIDTH, highOfView);
         }
-        
+        [_viewArry addObject:dataView];
         [self.view addSubview:dataView];
     }
 }
+
+#pragma marks 数据处理
 - (UIView *)dataView:(NSArray *)arry With:(NSString *)key{
     UIView *dataView = [[UIView alloc]init];
     NSArray *floorArry = @[@"一楼",@"二楼",@"三楼",@"四楼",@"五楼"];
+    NSArray *eightFloorArry = @[@"一栋",@"二栋",@"三栋",@"四东",@"五栋"];
     UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31, 2, 13)];
     besidesView.image = [UIImage imageNamed:@"ImageBesidesTheEmptyClass"];
     [dataView addSubview:besidesView];
-    UILabel *floorLab = [[UILabel alloc]initWithFrame:CGRectMake(besidesView.right + 8, 31, 29, 17)];
-    floorLab.font = [UIFont fontWithName:@"Arail" size:14];
-    floorLab.text = floorArry[key.intValue - 1];
+    UILabel *floorLab = [[UILabel alloc]initWithFrame:CGRectMake(besidesView.right + 8, besidesView.centerY - 8.5, 29, 17)];
+    floorLab.font = [UIFont systemFontOfSize:14];
+    if([_dataDic[@"buildNum"] isEqualToString:@"8"]){
+         floorLab.text = eightFloorArry[key.intValue - 1];
+    }
+    else{
+        floorLab.text = floorArry[key.intValue - 1];
+    }
     [floorLab sizeToFit];
     [dataView addSubview:floorLab];
     NSMutableArray<UILabel *> *labArry = [NSMutableArray array];
@@ -140,24 +170,28 @@
         CGRect rect;
         if (i % 4 == 0) {
             if (i == 0){
-                rect = CGRectMake(floorLab.right + 29, 31, 0, 0);
+                rect = CGRectMake(floorLab.right + 29, besidesView.centerY - 8.5, 0, 0);
             }
             else{
-                rect = CGRectMake(floorLab.right + 29, 31 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+                rect = CGRectMake(floorLab.right + 29, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
             }
         }
         else{
-            rect =  CGRectMake(labArry[i % 4 - 1].right + 29, 31 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+            rect =  CGRectMake(labArry[i % 4 - 1].right + 29, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
         }
         UILabel *lab = [[UILabel alloc]init];
-        lab.font = [UIFont fontWithName:@"Arail" size:14];
+        lab.font = [UIFont fontWithName:@"Helvetica"  size:16];
         lab.frame = rect;
         lab.text = arry[i];
         NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:arry[i]];
-
-        NSRange range = NSMakeRange(2, 2);
+        NSRange range;
+        if([_dataDic[@"buildNum"] isEqualToString:@"8"]){
+            range = NSMakeRange(3, 1);
+        }
+        else{
+            range = NSMakeRange(2, 2);
+        }
         [noteStr addAttribute:NSForegroundColorAttributeName value: [UIColor colorWithRed:97/255.0 green:151/255.0 blue:248/255.0 alpha:1/1.0] range:range];
-       
         [lab setAttributedText:noteStr];
         [lab sizeToFit];
         [labArry addObject:lab];
@@ -165,25 +199,7 @@
     }
     return dataView;
 }
-- (void)moveTheView:(BOOL)selected{
-    if (selected == NO) {
-        [UIView animateWithDuration:0.5 animations:^{
-            CGPoint point = self.view.center;
-            point.y -=  181;
-            self.view.center = point;
-            
-        }];
-    }
-    else{
-        [UIView animateWithDuration:0.5 animations:^{
-            CGPoint point = self.view.center;
-            point.y +=  181;
-            self.view.center = point;
-            
-        }];
-    }
-    
-}
+
 - (NSDictionary *)handleData:(NSArray *)array {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     NSArray *array1 = @[@"1",@"2",@"3",@"4",@"5"];
@@ -203,7 +219,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)dealloc{
+    [self.views.handleBtn removeObserver:self forKeyPath:@"selected" context:nil];
+}
 /*
 #pragma mark - Navigation
 

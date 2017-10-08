@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface EmptyClassView : UIView
-@property (assign, nonatomic) NSInteger weeks;
-@property (assign, nonatomic) NSInteger weekdays;
-@property (assign, nonatomic) NSInteger build;
 @property (strong, nonatomic) NSMutableArray *time;
 @property (strong, nonatomic) UIButton *handleBtn;
 @end
