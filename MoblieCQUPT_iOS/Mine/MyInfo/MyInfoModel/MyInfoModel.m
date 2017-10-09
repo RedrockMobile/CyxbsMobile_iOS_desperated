@@ -37,7 +37,11 @@
     if (self) {
         self.nickname = dic[@"nickname"];
         self.gender = dic[@"gender"];
-        self.photo_thumbnail_src = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:dic[@"photo_src"]]]];
+        NSString *str = dic[@"photo_thumbnail_src"];
+        NSURL *url = [NSURL URLWithString:[str stringByReplacingOccurrencesOfString:@"http" withString:@"https"]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        self.photo_thumbnail_src = image;
         self.photo_src = dic[@"photo_src"];
         self.qq = dic[@"qq"];
         self.phone = dic[@"phone"];

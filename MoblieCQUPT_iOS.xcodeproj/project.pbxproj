@@ -518,6 +518,7 @@
 		F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */; };
 		F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */; };
 		F2F194751F68395D0034A3BB /* SplashModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F194741F68395D0034A3BB /* SplashModel.m */; };
+		F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F7409F1F8B6D0700140B25 /* LZCarouselModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1274,6 +1275,8 @@
 		F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_cancel@3x.png"; sourceTree = "<group>"; };
 		F2F194731F68395D0034A3BB /* SplashModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashModel.h; sourceTree = "<group>"; };
 		F2F194741F68395D0034A3BB /* SplashModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashModel.m; sourceTree = "<group>"; };
+		F2F7409E1F8B6D0700140B25 /* LZCarouselModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LZCarouselModel.h; path = MoblieCQUPT_iOS/Finder/LZCarouselModel.h; sourceTree = SOURCE_ROOT; };
+		F2F7409F1F8B6D0700140B25 /* LZCarouselModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LZCarouselModel.m; path = MoblieCQUPT_iOS/Finder/LZCarouselModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1497,6 +1500,8 @@
 				F242DB021EBCB2BB005AC411 /* Shop */,
 				F2770B3E1F453CF700BB6186 /* FinderCollectionViewFlowLayout.h */,
 				F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */,
+				F2F7409E1F8B6D0700140B25 /* LZCarouselModel.h */,
+				F2F7409F1F8B6D0700140B25 /* LZCarouselModel.m */,
 				F242DA701EBCB2BB005AC411 /* FinderViewController.h */,
 				F242DA711EBCB2BB005AC411 /* FinderViewController.m */,
 				F2770B411F4543BF00BB6186 /* FinderCollectionViewCell.h */,
@@ -2786,7 +2791,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = JGRNKP3327;
+						DevelopmentTeam = HPM8HVK7C6;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3233,6 +3238,7 @@
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
+				F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F2509C7D1F440D980091F678 /* BeautyTableViewCell.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
@@ -3573,7 +3579,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = JGRNKP3327;
+				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -3613,7 +3619,7 @@
 				CODE_SIGN_ENTITLEMENTS = "MoblieCQUPT_iOS/掌上重邮.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = JGRNKP3327;
+				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";

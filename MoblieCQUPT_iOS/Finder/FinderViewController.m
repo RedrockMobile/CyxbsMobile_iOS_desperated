@@ -9,16 +9,17 @@
 #import "FinderViewController.h"
 #import "FinderCollectionViewFlowLayout.h"
 #import "FinderCollectionViewCell.h"
+#import "LZCarouselModel.h"
 
 @interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-@property (weak, nonatomic) IBOutlet FinderCollectionViewFlowLayout *layout;
-@property (strong, nonatomic) NSTimer *timer;
-@property NSArray *array;
-@property NSInteger selectedIndex;
-@property BOOL firstLoad;
-#define N 1000
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet FinderCollectionViewFlowLayout *layout;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, copy) NSArray <LZCarouselModel *> *array;
+@property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) BOOL firstLoad;
+#define N 100000
 @end
 
 @implementation FinderViewController
@@ -26,6 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.firstLoad = YES;
+    NSArray *placeholderImageArray = @[@"cqupt1.jpg",@"cqupt2.jpg",@"cqupt3.jpg"];
+    NSMutableArray *models = [NSMutableArray array];
+    for (NSString *str in placeholderImageArray) {
+        LZCarouselModel *model = [[LZCarouselModel alloc]init];
+        model.picture = [UIImage imageNamed:str];
+        [models addObject:model];
+    }
+    self.array = [self getCarouselModels]?:models;
+    [self getNetWorkData];
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -41,7 +51,6 @@
     // 产品的要求 一次滑动只能移动一个
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
-    self.array = @[@"cqupt1.jpg",@"cqupt2.jpg",@"cqupt3.jpg"];
     self.selectedIndex = self.array.count*N/2;
     
 }
@@ -54,7 +63,55 @@
     [self removeTimer];
 }
 
+- (void)getNetWorkData{
+    HttpClient *client = [HttpClient defaultClient];
+    
+    [client requestWithPath:Carousel_API method:HttpRequestPost parameters:@{@"pic_num": @"3"} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *array = [NSMutableArray array];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            for (NSDictionary *data in responseObject[@"data"]) {
+                LZCarouselModel *model = [[LZCarouselModel alloc]initWithData:data];
+                [array addObject:model];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.array = array.copy;
+                [self saveCarouselModels:self.array];
+                [self.collectionView reloadData];
+            });
+        });
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
+    }];
+}
+
+- (BOOL)saveCarouselModels:(NSArray *)array{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPicture"];
+    return [NSKeyedArchiver archiveRootObject:array toFile:infoFilePath];
+}
+
+- (NSArray *)getCarouselModels{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPicture"];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    LZCarouselModel *model = self.array[indexPath.row%self.array.count];
+    if (!model.picture_goto_url) {
+        return;
+    }
+    BaseViewController *vc = [[BaseViewController alloc]init];
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.picture_goto_url]]];
+    [vc.view addSubview:webView];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
     NSLog(@"%ld",(long)indexPath.row);
 }
 
@@ -109,7 +166,7 @@
 
 - (FinderCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     FinderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FinderCollectionViewCell" forIndexPath:indexPath];
-    cell.contentImageView.image = [UIImage imageNamed:self.array[indexPath.row%self.array.count]];
+    cell.contentImageView.image = self.array[indexPath.row%self.array.count].picture;
     return cell;
 }
 

@@ -36,6 +36,7 @@
     // 处理服务器返回null
 //    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager setResponseSerializer:serializer];
+    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromSet:[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain",@"application/atom+xml",@"application/xml",@"text/xml",nil]];
     switch (method) {
         case HttpRequestGet:
 //            [manager GET:url parameters:parameters progress:progress success:success failure:failure];

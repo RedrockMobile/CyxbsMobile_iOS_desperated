@@ -146,6 +146,7 @@
 #define EmptyClassApi @"https://redrock.team/api/roomEmpty"
 #define TOPIC_URL @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/topicList"
 #define MYJOINTOPIC_URL @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
+#define Carousel_API @"https://redrock.team/app/api/pictureCarousel.php"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
