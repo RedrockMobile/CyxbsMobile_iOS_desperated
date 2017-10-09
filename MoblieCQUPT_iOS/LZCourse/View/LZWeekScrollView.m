@@ -8,10 +8,10 @@
 
 #import "LZWeekScrollView.h"
 @interface LZWeekScrollView()
-@property NSMutableArray <UIButton *> *btnArray;
-@property UIView *sliderView;
-@property CGFloat titleBtnWidth;
-@property NSInteger currentIndex;
+@property (nonatomic, strong) NSMutableArray <UIButton *> *btnArray;
+@property (nonatomic, strong) UIView *sliderView;
+@property (nonatomic, assign) CGFloat titleBtnWidth;
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 
 

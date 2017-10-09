@@ -20,7 +20,7 @@
     dic[@"place"] = self.place;
     dic[@"phone"] = self.phone;
     dic[@"qq"] = self.qq;
-    return dic;
+    return dic.copy;
 }
 - (instancetype)init{
     self = [super init];

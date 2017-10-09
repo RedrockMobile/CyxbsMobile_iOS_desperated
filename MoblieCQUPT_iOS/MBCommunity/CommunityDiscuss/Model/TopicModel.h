@@ -9,22 +9,22 @@
 #import <Foundation/Foundation.h>
 
 @interface TopicModel : NSObject
-@property NSNumber *topic_id;
-@property NSDictionary *contentDic;
-@property NSString *content;
-@property NSString *keyword;
-@property NSNumber *join_num;
-@property NSNumber *like_num;
-@property NSNumber *remark_num;
-@property NSNumber *read_num;
-@property NSNumber *article_num;
-@property NSString *user_id;
-@property NSString *nickname;
-@property NSString *user_photo;
-@property NSString *img_small_src;
-@property NSString *img_src;
-@property BOOL is_my_join;
-@property NSMutableArray *thumbnailImgArray;
-@property NSMutableArray *imgArray;
+@property (nonatomic, strong) NSNumber *topic_id;
+@property (nonatomic, copy) NSDictionary *contentDic;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *keyword;
+@property (nonatomic, strong) NSNumber *join_num;
+@property (nonatomic, strong) NSNumber *like_num;
+@property (nonatomic, strong) NSNumber *remark_num;
+@property (nonatomic, strong) NSNumber *read_num;
+@property (nonatomic, strong) NSNumber *article_num;
+@property (nonatomic, copy) NSString *user_id;
+@property (nonatomic, copy) NSString *nickname;
+@property (nonatomic, copy) NSString *user_photo;
+@property (nonatomic, copy) NSString *img_small_src;
+@property (nonatomic, copy) NSString *img_src;
+@property (nonatomic, assign) BOOL is_my_join;
+@property (nonatomic, strong) NSMutableArray *thumbnailImgArray;
+@property (nonatomic, strong) NSMutableArray *imgArray;
 - (instancetype)initWithDic:(NSDictionary *)dic;
 @end

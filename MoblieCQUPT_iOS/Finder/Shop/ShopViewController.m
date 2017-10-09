@@ -52,7 +52,7 @@
 
 #pragma mark 开始进入刷新状态
 - (void)headerRereshing{
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -74,7 +74,7 @@
 - (void)footerRereshing{
     _flag ++;
     if (_flag <= 3) {
-        [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
+        [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
             [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
             // 刷新表格
             [self.tableView reloadData];
@@ -110,7 +110,7 @@
 }
 
 - (void)dataFlash{
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
 
         _data = [[NSMutableArray alloc] init];
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];

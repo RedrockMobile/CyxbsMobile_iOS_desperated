@@ -13,10 +13,8 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
- 
         [self setBackgroundColor:[UIColor colorWithHexString:@"#d9d9d9"]];
         [self setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHexString:@"#41a3ff"]] forState:UIControlStateSelected];
-        
         [self setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateNormal];
         [self setTitleColor:[UIColor colorWithHexString:@"#ffffff"] forState:UIControlStateSelected];
         self.titleLabel.font = [UIFont systemFontOfSize:15];

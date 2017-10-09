@@ -6,23 +6,23 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import "BaseMatter.h"
+#import <Foundation/Foundation.h>
 
-@interface LessonMatter : BaseMatter
-@property (strong, nonatomic)NSNumber *hash_day; //
-@property (strong, nonatomic)NSNumber *hash_lesson; //
-@property (strong, nonatomic)NSNumber *begin_lesson;//课程从第几节开始
-@property (strong, nonatomic)NSString *day;//星期几
-@property (strong, nonatomic)NSString *lesson;//课程节数
-@property (strong, nonatomic)NSString *course;//课程名称
-@property (strong, nonatomic)NSString *teacher;//老师
-@property (strong, nonatomic)NSString *classroom;//教室
-@property (strong, nonatomic)NSString *rawWeek;//课程周期 eg：1-16
-@property (strong, nonatomic)NSString *weekModel;
+@interface LessonMatter : NSObject
+@property (strong, nonatomic)NSNumber *hash_day; //课程从第几天 从0开始
+@property (strong, nonatomic)NSNumber *hash_lesson; //课程从第几大节开始(两小节) 从0开始
+@property (strong, nonatomic)NSNumber *begin_lesson;//课程从第几节开始 1开始
 @property (strong, nonatomic)NSNumber *weekBegin;//课程开始的周
 @property (strong, nonatomic)NSNumber *weekEnd;//课程结束的周
-@property (strong, nonatomic)NSString *type;//必修 选修 重修
 @property (strong, nonatomic)NSNumber *period;//课程长度
-@property (strong, nonatomic)NSArray *week;//课程的周数组
+@property (copy, nonatomic)NSArray *week;//课程的周数组
+@property (copy, nonatomic)NSString *day;//星期几
+@property (copy, nonatomic)NSString *lesson;//课程节数
+@property (copy, nonatomic)NSString *course;//课程名称
+@property (copy, nonatomic)NSString *teacher;//老师
+@property (copy, nonatomic)NSString *classroom;//教室
+@property (copy, nonatomic)NSString *rawWeek;//课程周期 eg：1-16
+@property (copy, nonatomic)NSString *weekModel;
+@property (copy, nonatomic)NSString *type;//必修 选修 重修
 - (instancetype)initWithLesson:(NSDictionary *)lesson;
 @end

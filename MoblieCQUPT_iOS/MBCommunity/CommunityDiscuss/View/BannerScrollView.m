@@ -7,7 +7,8 @@
 //
 
 #import "BannerScrollView.h"
-#import <Masonry.h>
+#import "TopicBtn.h"
+
 @interface BannerScrollView()<UIScrollViewDelegate>
 @property NSMutableArray <TopicBtn *> *btnArray;
 @end

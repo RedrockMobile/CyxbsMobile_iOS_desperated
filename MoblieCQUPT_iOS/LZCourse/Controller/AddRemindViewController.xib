@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -100,7 +101,6 @@
                 <constraint firstItem="HyG-tU-OEF" firstAttribute="centerY" secondItem="Eed-aw-OMo" secondAttribute="centerY" id="7cP-1V-s3M"/>
                 <constraint firstAttribute="trailing" secondItem="HyG-tU-OEF" secondAttribute="trailing" constant="18" id="Fd0-vY-qpW"/>
                 <constraint firstItem="vdA-m9-5de" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="IgZ-BF-LCg"/>
-                <constraint firstItem="gbC-OK-d2m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="92" id="IzQ-oZ-d0S"/>
                 <constraint firstItem="wec-wY-BW3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LMM-ws-MXU"/>
                 <constraint firstAttribute="trailing" secondItem="vdA-m9-5de" secondAttribute="trailing" id="N0l-L3-CRk"/>
                 <constraint firstItem="bVy-j5-tys" firstAttribute="top" secondItem="nja-yD-w76" secondAttribute="bottom" id="Nai-Be-DYy"/>
@@ -111,6 +111,7 @@
                 <constraint firstItem="gbC-OK-d2m" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="bZg-Zb-Rjv"/>
                 <constraint firstItem="K9U-pu-DIa" firstAttribute="top" secondItem="vdA-m9-5de" secondAttribute="bottom" constant="26" id="d2a-7Y-mu1"/>
                 <constraint firstItem="K9U-pu-DIa" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="dxj-fV-2Lc"/>
+                <constraint firstItem="gbC-OK-d2m" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="topMargin" constant="28" id="eiE-xI-WwD"/>
                 <constraint firstItem="wec-wY-BW3" firstAttribute="top" secondItem="Itx-Tt-C2R" secondAttribute="bottom" id="jp2-Dh-PeX"/>
                 <constraint firstAttribute="trailing" secondItem="wec-wY-BW3" secondAttribute="trailing" id="nwA-Xo-Pzy"/>
                 <constraint firstItem="nja-yD-w76" firstAttribute="leading" secondItem="n7N-QQ-q8g" secondAttribute="trailing" constant="10" id="qHC-98-SGX"/>
@@ -120,6 +121,7 @@
                 <constraint firstItem="Eed-aw-OMo" firstAttribute="leading" secondItem="gbC-OK-d2m" secondAttribute="trailing" constant="22" id="wgK-Mn-sGz"/>
                 <constraint firstItem="HyG-tU-OEF" firstAttribute="height" secondItem="Eed-aw-OMo" secondAttribute="height" id="yp2-5e-8vG"/>
             </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <point key="canvasLocation" x="-809" y="-182"/>
         </view>
     </objects>

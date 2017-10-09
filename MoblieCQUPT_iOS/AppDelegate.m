@@ -55,124 +55,9 @@
 //    }
     return YES;
 }
-//#pragma marks 回调
-//- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler {
-//    [self setNotificaiton];
-//
-//}
-////设置一个提醒
-//- (void)setNotificaiton{
-//
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    NSInteger nowWeek = [[NSString stringWithString:[defaults objectForKey:@"nowWeek"]] intValue];
-//    NSArray *classArray = [[NSArray alloc] initWithArray:[defaults objectForKey:@"lessonResponse"][@"data"]];
-//    NSDictionary *nextDic = [[NSDictionary alloc]init];
-////    for (int i = 0; i < classArray.count; i ++) {
-////        NSLog(@"%@ *%@ *%ld",classArray[i][@"weekBegin"],classArray[i][@"weekEnd"], (long)nowWeek);
-////        if([classArray[i][@"weekBegin"] intValue] <= nowWeek &&
-////           [classArray[i][@"weekEnd"] intValue] >= nowWeek){
-////            for (NSString *weeks in [[NSArray alloc]initWithArray:classArray[i][@"week"]]) {
-////                NSLog(@"%@", weeks);
-////                if ([weeks intValue] == nowWeek) {
-////                    nextDic = [self searchTheNextClass:classArray[i]];
-////                        break;
-////                }
-////            }
-////            if (![nextDic[@"course"] isEqualToString:@"NONE"]) {
-////                  break;
-////          }
-////        }
-////
-////    }
-//    //提醒内容设置
-//    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-//    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc]init];
-//    content.title = nextDic[@"course"];
-//    content.body = nextDic[@"classroom"];
-//    content.sound = [UNNotificationSound defaultSound];
-//
-////    NSTimeInterval timeInterval = [self updateClass:nextDic];
-//    NSString *beforeTime = [defaults objectForKey:@"remindMeBeforeTime"];
-//    UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:10 repeats:NO];
-//    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"classRemind" content:content trigger:trigger];
-//    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"本地通知" message:@"成功添加推送" preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-//        [alert addAction:cancelAction];
-//        [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:alert animated:YES completion:nil];
-//    }];
-//}
-////提取合适的课
-//- (NSDictionary *)searchTheNextClass:(NSDictionary *)class{
-//    //获取当前时间
-//    NSDictionary *nextClass = [[NSDictionary alloc]init];
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"HH:mm"];
-//    NSDate *datenow = [NSDate date];
-//
-//    NSString *weekday = [[NSString alloc]initWithString:[self weekday]];
-//    if (![weekday isEqualToString:[[NSString alloc]initWithString:class[@"hash_day"]]] ) {
-//        nextClass = @{@"course":@"NONE"};
-//        return nextClass;
-//    }
-//
-//    NSDictionary *beginTimes = @{@"1":@"8:00",@"3":@"10:15",@"5":@"14:00",@"7":@"16:05",@"9":@"19:00",@"10":@"20:50"};
-//    NSDateFormatter *dateformater = [[NSDateFormatter alloc] init];
-//    [dateformater setDateFormat:@"HH:mm"];
-//    NSDate *classDate = [[NSDate alloc] init];
-//    classDate = [dateformater dateFromString:[beginTimes objectForKey:class[@"begin_lesson"]]];
-//    if ([datenow compare:classDate] == NSOrderedAscending) {
-//        return class;
-//    }
-//    nextClass = @{@"course":@"NONE"};
-//    return nextClass;
-//}
-////计算提醒的时间差
-//- (NSTimeInterval)updateClass:(NSDictionary *)class{
-//
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"HH:mm"];
-//    NSDate *datenow = [NSDate date];
-//    NSDictionary *beginTimes = @{@"1":@"8:00",@"3":@"10:15",@"5":@"14:00",@"7":@"16:05",@"9":@"19:00",@"10":@"20:50"};
-//    NSString *nextTime = [[NSString alloc]initWithString:[beginTimes objectForKey:class[@"begin_lesson"]]];
-//    NSDate *classTime = [formatter dateFromString:nextTime];
-//    NSTimeInterval timeInterval = [classTime timeIntervalSinceDate:datenow];
-//    return timeInterval;
-//}
-//- (NSString *)weekday{
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"MM-dd HH:mm"];
-//    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-//    [outputFormatter setDateFormat:@"EEEE"];
-//
-//    NSString *newDateString = [outputFormatter stringFromDate:[NSDate date]];
-//    if ([newDateString isEqualToString:@"星期一"]) {
-//        return @"0";
-//    }
-//    else if ([newDateString isEqualToString:@"星期二"]) {
-//
-//        return @"1";
-//    }
-//    else if ([newDateString isEqualToString:@"星期三"]) {
-//
-//        return @"2";
-//    }
-//    else if ([newDateString isEqualToString:@"星期四"]) {
-//
-//        return @"3";
-//    }
-//    else if ([newDateString isEqualToString:@"星期五"]) {
-//
-//        return @"4";
-//    }
-//    else if ([newDateString isEqualToString:@"星期六"]) {
-//
-//        return @"5";
-//    }
-//    else {
-//        return @"6";
-//    }
-//}
+
+#pragma mark - 闪屏图下载
+
 - (void)downloadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
@@ -205,6 +90,7 @@
     }];
 }
 
+#pragma mark - 分享url跳转
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
@@ -214,9 +100,14 @@
         UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
         [tbc setSelectedIndex:1];
         NSString *topic_id = [url lastPathComponent];
-        [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:nil WithReturnValeuBlock:^(id returnValue) {
+        HttpClient *client = [HttpClient defaultClient];
+        [client requestWithPath:TOPICLIST_API method:HttpRequestGet parameters:nil prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
             TopicModel *topic;
-            NSArray *dataArray = returnValue[@"data"];
+            NSArray *dataArray = responseObject[@"data"];
             for (NSDictionary *dic in dataArray) {
                 if ([[dic[@"topic_id"] stringValue] isEqualToString:topic_id]) {
                     topic = [[TopicModel alloc]initWithDic:dic];
@@ -226,9 +117,7 @@
             DetailTopicViewController *detailVC = [[DetailTopicViewController alloc]initWithTopic:topic];
             detailVC.hidesBottomBarWhenPushed = YES;
             [tbc.selectedViewController pushViewController:detailVC animated:YES];
-            
-            
-        } WithFailureBlock:^{
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
 //        [[tbc.viewControllers firstObject].navigationController pushViewController:vc animated:YES];

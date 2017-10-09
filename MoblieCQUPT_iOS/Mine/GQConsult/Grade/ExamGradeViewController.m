@@ -10,7 +10,6 @@
 #import "GradeView.h"
 #import "LoginEntry.h"
 #import "MBProgressHUD.h"
-
 @interface ExamGradeViewController ()
 
 @property (assign, nonatomic) CGFloat kHeight;

@@ -84,7 +84,7 @@
                         @"content":_suggestTextView.text,
                         };
     [ProgressHUD show:@"反馈中..."];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion" WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:SUGGESTION_API WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
         [ProgressHUD showSuccess:@"反馈成功"];
         _suggestTextView.text = @"";
     } WithFailureBlock:^{

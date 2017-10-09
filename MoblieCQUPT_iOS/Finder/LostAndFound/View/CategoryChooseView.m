@@ -9,7 +9,7 @@
 #import "CategoryChooseView.h"
 #import "TickButton.h"
 @interface CategoryChooseView()
-@property TickButton *selectedBtn;
+@property (nonatomic, strong) TickButton *selectedBtn;
 @end
 @implementation CategoryChooseView
 - (instancetype)initWithFrame:(CGRect)frame{

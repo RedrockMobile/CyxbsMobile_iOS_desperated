@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -66,7 +65,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r32-xj-rWu">
-                                <rect key="frame" x="0.0" y="72" width="414" height="248"/>
+                                <rect key="frame" x="0.0" y="72" width="414" height="248.33333333333331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LiX-UC-fSd" customClass="FinderCollectionViewFlowLayout">
                                     <size key="itemSize" width="50" height="50"/>
@@ -76,7 +75,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-lW-I7d">
-                                <rect key="frame" x="0.0" y="328" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="328.33333333333331" width="414" height="99.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oLG-lW-I7d" secondAttribute="height" multiplier="375:90" id="YwA-gk-flj"/>
                                 </constraints>
@@ -86,42 +85,42 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oF7-Er-ytu">
-                                <rect key="frame" x="8" y="428" width="146" height="129"/>
+                                <rect key="frame" x="8" y="427.66666666666663" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_hongyan.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="Ytk-ka-UZV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr4-pl-liD">
-                                <rect key="frame" x="134" y="428" width="146" height="129"/>
+                                <rect key="frame" x="134" y="427.66666666666663" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_map.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="Rq9-Mn-UWl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijW-q5-fff">
-                                <rect key="frame" x="260" y="428" width="146" height="129"/>
+                                <rect key="frame" x="260" y="427.66666666666663" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_food.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="4lO-B3-o5l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-kd-Zpm">
-                                <rect key="frame" x="8" y="541" width="146" height="130"/>
+                                <rect key="frame" x="8" y="541.33333333333348" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_query.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="tY7-lk-gEb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-5l-d5B">
-                                <rect key="frame" x="134" y="541" width="146" height="130"/>
+                                <rect key="frame" x="134" y="541.33333333333348" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_lostAndFound.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="UgK-oi-9q8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKD-Qn-8pd">
-                                <rect key="frame" x="260" y="541" width="146" height="130"/>
+                                <rect key="frame" x="260" y="541.33333333333348" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_shake.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="6qR-aP-bG2"/>
@@ -181,7 +180,6 @@
                 <navigationController id="AYe-yW-OTd" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="fuo-wL-K4A"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Pk3-dc-YOM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -298,7 +296,6 @@
                                     <constraint firstItem="i2t-zY-RaS" firstAttribute="centerX" secondItem="TqP-nX-3UM" secondAttribute="centerX" id="RKk-hy-ulc"/>
                                     <constraint firstItem="zxy-FF-Gfn" firstAttribute="leading" secondItem="XXr-if-Bal" secondAttribute="trailing" id="TPe-Eh-Acu"/>
                                     <constraint firstItem="8FO-VE-ekc" firstAttribute="centerX" secondItem="TqP-nX-3UM" secondAttribute="centerX" id="To9-wm-xQW"/>
-                                    <constraint firstItem="PCa-ch-VCV" firstAttribute="top" secondItem="TqP-nX-3UM" secondAttribute="top" constant="32" id="Z2m-Vg-OpG"/>
                                     <constraint firstItem="XXr-if-Bal" firstAttribute="height" secondItem="TqP-nX-3UM" secondAttribute="height" multiplier="0.21" id="eSw-kq-LgV"/>
                                     <constraint firstAttribute="bottom" secondItem="XXr-if-Bal" secondAttribute="bottom" id="j0F-m7-9hs"/>
                                     <constraint firstItem="dFD-aV-Moh" firstAttribute="height" secondItem="KUK-MQ-bDF" secondAttribute="height" id="jFf-Ls-ozu"/>
@@ -329,11 +326,12 @@
                             <constraint firstItem="TqP-nX-3UM" firstAttribute="leading" secondItem="YsC-YH-sbF" secondAttribute="leading" id="Vcz-0Z-hry"/>
                             <constraint firstItem="TqP-nX-3UM" firstAttribute="height" secondItem="Asz-Tj-mLX" secondAttribute="height" multiplier="9:10" id="Y8d-hK-LIU"/>
                             <constraint firstItem="Asz-Tj-mLX" firstAttribute="top" secondItem="TqP-nX-3UM" secondAttribute="bottom" id="cbr-Fy-djn"/>
-                            <constraint firstItem="TqP-nX-3UM" firstAttribute="top" secondItem="YsC-YH-sbF" secondAttribute="topMargin" id="dMe-os-6VB"/>
+                            <constraint firstItem="TqP-nX-3UM" firstAttribute="top" secondItem="YsC-YH-sbF" secondAttribute="top" id="dMe-os-6VB"/>
                             <constraint firstAttribute="trailing" secondItem="TqP-nX-3UM" secondAttribute="trailing" id="g3a-qf-E4K"/>
                             <constraint firstItem="bKp-RR-Rsp" firstAttribute="centerY" secondItem="XXr-if-Bal" secondAttribute="centerY" id="i67-KT-1mi"/>
                             <constraint firstItem="Asz-Tj-mLX" firstAttribute="centerX" secondItem="TqP-nX-3UM" secondAttribute="centerX" id="lF9-vf-wuc"/>
                             <constraint firstItem="Asz-Tj-mLX" firstAttribute="leading" secondItem="YsC-YH-sbF" secondAttribute="leading" id="sUi-03-9Kw"/>
+                            <constraint firstItem="PCa-ch-VCV" firstAttribute="top" secondItem="yIf-6Y-05R" secondAttribute="bottom" constant="12" id="wJH-u1-4ua"/>
                             <constraint firstItem="bKp-RR-Rsp" firstAttribute="height" secondItem="XXr-if-Bal" secondAttribute="height" multiplier="0.56" id="wzG-72-pjQ"/>
                         </constraints>
                     </view>
@@ -395,7 +393,6 @@
                 <navigationController id="TEN-fD-It4" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Byd-fF-mOT"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="g4N-fJ-hJK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -412,7 +409,6 @@
                 <navigationController id="hW7-C8-2Ue" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="qw3-Im-FYO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iy4-mu-ceT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -429,7 +425,6 @@
                 <navigationController id="xhd-xC-Mg4" customClass="BaseNavigationController" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="OXr-Kk-6ho"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pY9-1n-meM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

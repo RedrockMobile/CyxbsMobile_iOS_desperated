@@ -8,9 +8,9 @@
 
 #import "LZDatePicker.h"
 @interface LZDatePicker()
-@property UIDatePicker *datePicker;
-@property UIButton *cancelBtn;
-@property UIButton *saveBtn;
+@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIButton *cancelBtn;
+@property (nonatomic, strong) UIButton *saveBtn;
 @end
 @implementation LZDatePicker
 - (instancetype)initWithFrame:(CGRect)frame{

@@ -14,13 +14,12 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <MJRefresh/MJRefresh.h>
 #import <MBProgressHUD/MBProgressHUD.h>
-#define LOSTAPI @"http://hongyan.cqupt.edu.cn/laf/api"
 
 @interface LostTableViewController ()
-@property NSMutableArray *itemArray;
-@property NSMutableString *APIString;
-@property NSMutableString *nextPageString;
-@property NSInteger theme;
+@property (nonatomic, strong) NSMutableArray *itemArray;
+@property (nonatomic, strong) NSMutableString *APIString;
+@property (nonatomic, strong) NSMutableString *nextPageString;
+@property (nonatomic, assign) NSInteger theme;
 typedef NS_ENUM(NSInteger,LZPlace){
     header = 0,
     footer = 1
@@ -144,7 +143,7 @@ typedef NS_ENUM(NSInteger,LZPlace){
     
     cell.contentLabel.text = item.pro_description;
     if (self.theme == LZFound) {
-        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn%@",item.wx_avatar]]];
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redrock.team%@",item.wx_avatar]]];
     }
     else{
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:item.wx_avatar]];

@@ -6,13 +6,12 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-
 @class LessonBtnModel;
 @class LessonButton;
 
 @interface LessonButtonController : BaseViewController
-@property LessonBtnModel *matter;
-@property LessonButton *btn;
+@property (nonatomic, strong) LessonBtnModel *matter;
+@property (nonatomic, strong) LessonButton *btn;
 
 - (instancetype)initWithDay:(int)day Lesson:(int)lesson;
 - (BOOL)matterWithWeek:(NSNumber *)week;

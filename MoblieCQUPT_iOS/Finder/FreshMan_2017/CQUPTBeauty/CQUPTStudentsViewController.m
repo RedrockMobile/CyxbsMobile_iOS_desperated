@@ -14,7 +14,7 @@
 
 
 
-#define url @"http://hongyan.cqupt.edu.cn/welcome/2017/api/apiForText.php"
+#define url @"https://redrock.team/welcome/2017/api/apiForText.php"
 
 @interface CQUPTStudentsViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic)UITableView *tableView;

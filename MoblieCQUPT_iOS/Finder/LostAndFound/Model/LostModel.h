@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 @interface LostModel : NSObject
-@property NSString *stu_num;
-@property NSString *idNum;
-@property NSString *property;
-@property NSString *category;
-@property NSString *detail;
-@property NSString *pickTime;
-@property NSString *place;
-@property NSString *phone;
-@property NSString *qq;
+@property (nonatomic, copy) NSString *stu_num;
+@property (nonatomic, copy) NSString *idNum;
+@property (nonatomic, copy) NSString *property;
+@property (nonatomic, copy) NSString *category;
+@property (nonatomic, copy) NSString *detail;
+@property (nonatomic, copy) NSString *pickTime;
+@property (nonatomic, copy) NSString *place;
+@property (nonatomic, copy) NSString *phone;
+@property (nonatomic, copy) NSString *qq;
 - (NSDictionary *)packToParamtersDic;
 @end

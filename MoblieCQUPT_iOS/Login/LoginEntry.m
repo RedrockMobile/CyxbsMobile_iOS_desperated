@@ -7,7 +7,7 @@
 //
 
 #import "LoginEntry.h"
-#import "UserDefaultTool.h"
+#import "MyInfoModel.h"
 @implementation LoginEntry
 + (void)loginWithParamter:(NSDictionary *)parameter{
     [UserDefaultTool saveParameter:parameter];
@@ -15,6 +15,7 @@
 
 + (void)loginOut{
     [MobClick profileSignOff];
+    [MyInfoModel deleteMyInfo];
     [UserDefaultTool removeALLData];
 }
 @end

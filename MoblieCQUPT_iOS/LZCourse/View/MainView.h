@@ -7,15 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DayLabel.h"
-#import "LessonButton.h"
-#import "LessonNumLabel.h"
+
+@class LessonButton;
+@class LessonNumLabel;
 @interface MainView : UIView
-@property UIScrollView *scrollView;
-@property DayLabel *monthLabel;
-@property NSMutableArray<DayLabel *> *dayLabels;
-@property NSMutableArray<LessonButton *> *lessonBtns;
-@property NSMutableArray<LessonNumLabel *> *lessonsLabel;
+@property (nonatomic, strong) NSMutableArray<LessonButton *> *lessonBtns;
+@property (nonatomic, strong) UIScrollView *scrollView;
+
 - (instancetype)initWithFrame:(CGRect)frame;
 - (void)loadDayLbTimeWithWeek:(NSInteger)week nowWeek:(NSInteger)nowWeek;
 @end

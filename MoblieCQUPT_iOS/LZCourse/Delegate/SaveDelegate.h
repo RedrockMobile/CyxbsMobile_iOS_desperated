@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @protocol SaveDelegate <NSObject>
-- (void)saveWeeks:(NSMutableArray *)weekArray;
-- (void)saveTimes:(NSMutableArray *)timeArray;
+- (void)saveWeeks:(NSArray *)weekArray;
+- (void)saveTimes:(NSArray *)timeArray;
 //- (void)saveAndPostRemind:(NSDictionary *)remindDic;
 @end

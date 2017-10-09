@@ -14,7 +14,7 @@
 #import "MyInfoModel.h"
 #import <sys/utsname.h>
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) NSArray *cellDicArray;
+@property (strong, nonatomic) NSArray <NSArray *> *cellDicArray;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *introductionLabel;
@@ -27,20 +27,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
-    //适配iphone X状态栏
-    UIView *statusBarView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, STATUSBARHEIGHT)];
-    statusBarView.backgroundColor=[UIColor colorWithRed:137/255.0 green:165/255.0 blue:249/255.0 alpha:1];
-    [self.view addSubview:statusBarView];
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];    
-    NSURL *url = [NSURL URLWithString:[UserDefaultTool valueWithKey:@"photo_thumbnail_src"]];
-    [self.headImageView sd_setImageWithURL:url placeholderImage:[UIImage imageNamed:@""]];
-    self.nameLabel.text = [UserDefaultTool valueWithKey:@"nickname"];
-    self.introductionLabel.text = [UserDefaultTool valueWithKey:@"introduction"];
-    NSException *exception;
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-    MyInfoModel *model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath] exception:&exception];
-    NSLog(@"%@",exception);
+    MyInfoModel *model = [MyInfoModel getMyInfo];
     self.headImageView.image = model.photo_thumbnail_src;
     self.nameLabel.text = model.nickname;
     self.introductionLabel.text = model.introduction;
@@ -78,10 +65,10 @@
     self.headImageView.layer.masksToBounds = YES;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return [self.cellDicArray[section] count];
+    return self.cellDicArray[section].count;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.cellDicArray.count;
 }
@@ -89,10 +76,8 @@
 #pragma mark - TableView 代理
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MineTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"MineTableViewCell" owner:nil options:nil] lastObject];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
-        cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
-    
+    cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
+    cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
     return cell;
 }
 
@@ -105,38 +90,51 @@
     return (self.tableView.size.height-20)/6;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    vc.hidesBottomBarWhenPushed = YES;
+    vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
     if (indexPath.section == 0) {
-        if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3) {
+        if (indexPath.row != 0) {
             if (![UserDefaultTool getStuNum]) {
                 [self tint:vc];
                 return;
             }
         }
     }
-    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
-    vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+}
+
+- (void)touchImage{
+    MyInfoViewController *vc = [[MyInfoViewController alloc]init];
+    vc.navigationItem.title = @"修改信息";
+    vc.hidesBottomBarWhenPushed = YES;
+    if (![UserDefaultTool getStuNum]) {
+        [self tint:vc];
+        return;
+    }
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)tint:(UIViewController *)controller{
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
-    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
     __weak typeof(self) weakSelf = self;
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         LoginViewController *LVC = [[LoginViewController alloc] init];
+        LVC.loginSuccessHandler = ^(BOOL success) {
+            if (success) {
+                [self.navigationController pushViewController:controller animated:YES];
+            }
+        };
         [weakSelf presentViewController:LVC animated:YES completion:nil];
     }];
     [alertC addAction:cancel];
     [alertC addAction:confirm];
     [self presentViewController:alertC animated:YES completion:nil];
 }
-
 
 - (IBAction)clickBtn:(UIButton *)sender {
     UIViewController *vc;
@@ -161,17 +159,6 @@
     }
     [self.navigationController pushViewController:vc animated:YES];
 }
-- (void)touchImage{
-    UIViewController *vc = [[MyInfoViewController alloc]init];
-    vc.navigationItem.title = @"修改信息";
-    if (![UserDefaultTool getStuNum]) {
-        [self tint:vc];
-        return;
-    }
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
-
 
 @end
 

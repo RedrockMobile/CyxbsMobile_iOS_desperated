@@ -23,4 +23,7 @@
 @property (strong, nonatomic)NSString *phone;
 //@property (strong, nonatomic)NSString *updated_time;
 - (instancetype)initWithDic:(NSDictionary *)dic;
+- (BOOL) saveMyInfo;
++ (MyInfoModel *) getMyInfo;
++ (BOOL) deleteMyInfo;
 @end
