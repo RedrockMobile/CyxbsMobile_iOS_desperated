@@ -138,12 +138,11 @@
 //空教室接口
 #define EMPTYCLASSAPI @"https://redrock.team/api/roomEmpty"
 //成绩接口
-#define GRADEAPI @"http://hongyan.cqupt.edu.cn/api/examGrade"
+#define GRADEAPI @"https://redrock.team/api/examGrade"
 //考试教室接口
-#define GRADECLASSAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
+#define GRADECLASSAPI @"https://redrock.team/api/examSchedule"
 //补考接口
-#define MAKEAPI @"http://hongyan.cqupt.edu.cn/api/examReexam"
-
+#define MAKEAPI @"https://redrock.team/api/examReexam"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
