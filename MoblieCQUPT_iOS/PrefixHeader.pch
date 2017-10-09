@@ -147,6 +147,14 @@
 #define TOPIC_URL @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/topicList"
 #define MYJOINTOPIC_URL @"https://redrock.team/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
 #define Carousel_API @"https://redrock.team/app/api/pictureCarousel.php"
+//空教室接口
+#define EMPTYCLASSAPI @"https://redrock.team/api/roomEmpty"
+//成绩接口
+#define GRADEAPI @"https://redrock.team/api/examGrade"
+//考试教室接口
+#define GRADECLASSAPI @"https://redrock.team/api/examSchedule"
+//补考接口
+#define MAKEAPI @"https://redrock.team/api/examReexam"
 
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)

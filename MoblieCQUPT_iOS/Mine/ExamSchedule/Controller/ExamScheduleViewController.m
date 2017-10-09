@@ -37,7 +37,6 @@
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
         UINib *nib = [UINib nibWithNibName:@"ExamScheduleTableViewCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"cell"];
     }
@@ -47,7 +46,7 @@
 
 - (void)fetchData {
     NSString *stuNum = [UserDefaultTool getStuNum];
-    [NetWork NetRequestPOSTWithRequestURL:EXAM_SCHEDULE_API
+    [NetWork NetRequestPOSTWithRequestURL:GRADECLASSAPI
                             WithParameter:@{@"stuNum": stuNum}
                      WithReturnValeuBlock:^(id returnValue) {
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -107,7 +106,6 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *myDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@-%@-12", [NSString stringWithFormat:@"0%@", [schoolData substringWithRange:NSMakeRange(0, 4)]], [schoolData substringWithRange:NSMakeRange(4, 1)]]];
     NSDate *newDate = [myDate dateByAddingTimeInterval:60 * 60 * 24 * ([_data[indexPath.row][@"weekday"] intValue] + [_data[indexPath.row][@"week"] intValue] * 7)];
-    NSLog(@"%@ %@",[dateFormatter stringFromDate:newDate], _data[indexPath.row][@"weekday"]);
     //横杆
     if (indexPath.row == 0) {
         cell.upView.backgroundColor = [UIColor clearColor];
@@ -135,7 +133,9 @@
     NSString *examDateLabelText = [_data[indexPath.row][@"week"] stringByAppendingFormat:@"周 周%@",dateArray[dateIndex]];
     cell.examDate.text = examDateLabelText;
     cell.month.text = [NSString stringWithFormat:@"%@月",[[dateFormatter stringFromDate:newDate] substringWithRange:NSMakeRange(6, 1)]];
+    [cell.month sizeToFit];
     cell.day.text = [[dateFormatter stringFromDate:newDate] substringWithRange:NSMakeRange(8, 2)];
+    [cell.day sizeToFit];
     return cell;
 }
 

@@ -40,7 +40,7 @@
     vc5.title = @"优秀学生";
     NSArray *vcArray = @[vc1,vc2,vc3,vc4,vc5];
     
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, self.navigationController.navigationBar.frame.size.height + 20, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - self.navigationController.navigationBar.bounds.size.height - 20) andControllers:vcArray];
+    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEADERHEIGHT) andControllers:vcArray];
     [self addChildViewController:vc2];
     [self.view addSubview:segmentView];
 

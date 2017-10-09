@@ -209,7 +209,7 @@
 
 - (UITableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section;
-    MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple];
+    MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple row:(int)indexPath.row];
     MBCommunity_ViewModel *viewModel;
     if(index == 0){
         UITableViewCell *cell = [[UITableViewCell alloc]initWithFrame:self.detailBannnerView.frame];
@@ -223,7 +223,7 @@
     }
     viewModel = self.viewModels[index-1];
     cell.eventDelegate = self;
-    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
+//    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
     cell.subViewFrame = viewModel;
     return cell;
 }

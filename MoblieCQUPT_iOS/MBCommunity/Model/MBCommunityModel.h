@@ -27,6 +27,8 @@
 @property NSMutableArray * articlePictureArray;
 @property NSMutableArray * articleThumbnailPictureArray;
 
+@property bool cellIsOpen;
+
 - (instancetype)initWithDictionary:(NSDictionary *)dic;
 
 @end

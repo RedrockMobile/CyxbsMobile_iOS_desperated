@@ -38,11 +38,15 @@
 @property BOOL hasLoadedDiscuss;
 @property LoginViewController *loginViewController;
 @property BannerScrollView *bannerScrollView;
+@property int numOfItem;
+
+@property (strong, nonatomic) NSMutableArray *viewModelsArray;
 @end
 
 @implementation MBCommunityViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.viewModelsArray = [NSMutableArray array];
     self.dataDicArray = [NSMutableArray array];
     self.parameterArray = [NSMutableArray array];
     self.topicArray = [NSMutableArray array];
@@ -54,7 +58,7 @@
         self.parameterArray[i] = self.dataDicArray[i].copy;
     }
     self.navigationItem.rightBarButtonItem = self.addButton;
-    NSArray *segments = @[@"热门动态",@"哔哔叨叨",@"官方资讯"];
+    NSArray *segments = @[@"热门",@"动态",@"资讯"];
     _segmentView = [[MBSegmentedView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, ScreenWidth, ScreenHeight-HEADERHEIGHT-TABBARHEIGHT) withSegments:segments];
     [self setupTableView:segments];
     // block回调
@@ -177,6 +181,10 @@
                 [self.tableViewArray[type] reloadData];
                 [self.tableViewArray[type].mj_header endRefreshing];
                 [self.tableViewArray[type].mj_footer endRefreshing];
+                
+                if (_numOfItem < 15) {
+                    [self.tableViewArray[0].mj_footer endRefreshingWithNoMoreData];
+                }
             }
         }
         else{
@@ -188,9 +196,14 @@
                 [self.tableViewArray[type] reloadData];
                 [self.tableViewArray[type].mj_header endRefreshing];
                 [self.tableViewArray[type].mj_footer endRefreshing];
+                
+                
+                if (_numOfItem < 15) {
+                    [self.tableViewArray[0].mj_footer endRefreshingWithNoMoreData];
+                }
+                
             }
         }
-     
     });
 }
 
@@ -202,7 +215,8 @@
     NSMutableDictionary *parameter =
     @{@"stuNum":stuNum,
       @"idNum":idNum,
-      @"version":@(1.0)}.mutableCopy;
+      @"version":@(1.0),
+      @"size":@(15)}.mutableCopy;
     [parameter setObject:self.parameterArray[type][@"page"] forKey:@"page"];
     NSMutableArray *viewModels = self.parameterArray[type][@"viewModels"];
     NSString *url = SEARCHHOTARTICLE_API;
@@ -224,8 +238,15 @@
             viewModel.model = model;
             [viewModels addObject:viewModel];
         }
+        /**位置
+        if ([returnValue[@"data"] count] < 6 && type == 0) {
+            [self.tableViewArray[0].mj_footer endRefreshingWithNoMoreData];
+        }
+         */
+        _numOfItem = (int)[returnValue[@"data"] count];
         NSDictionary *dataDic = @{@"page":page,
                                   @"viewModels":viewModels};
+        
         self.dataDicArray[type] = dataDic;
         self.parameterArray[type] = dataDic.copy;
         if (type!=1) {
@@ -297,12 +318,15 @@
         if (index == 0) {
             return self.bannerScrollView.height;
         }
-        return [self.dataDicArray[tableView.tag][@"viewModels"][index-1] cellHeight];
+//        return [self.dataDicArray[tableView.tag][@"viewModels"][index-1] cellHeight];
+        MBCommunity_ViewModel *viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index - 1];
+        return viewModel.model.cellIsOpen == NO ? viewModel.cellHeight : viewModel.extend_cellHeight;
     }
     else{
-        return [self.dataDicArray[tableView.tag][@"viewModels"][index] cellHeight];
+        NSLog(@"%ld %lf",(long)index,[self.dataDicArray[tableView.tag][@"viewModels"][index] cellHeight]);
+        MBCommunity_ViewModel *viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
+        return viewModel.model.cellIsOpen == NO ? viewModel.cellHeight : viewModel.extend_cellHeight;
     }
-    
     
 }
 
@@ -316,9 +340,13 @@
 
 - (UITableViewCell *)tableView:(MBCommunityTableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section;
-    MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple];
+    
+    MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple row:index];
     MBCommunity_ViewModel *viewModel;
     if (tableView.tag==1) {
+        cell.extendLabel.tag = indexPath.section;
+        UITapGestureRecognizer *tapExtend1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtendLabel1:)];
+        [cell.extendLabel addGestureRecognizer:tapExtend1];
         if(index == 0){
             UITableViewCell *cell = [[UITableViewCell alloc]initWithFrame:self.bannerScrollView.frame];
             [cell addSubview:self.bannerScrollView];
@@ -327,17 +355,44 @@
         viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index-1];
     }
     else{
+        cell.extendLabel.tag = indexPath.section;
+        UITapGestureRecognizer *tapExtend0 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtendLabel0:)];
+        [cell.extendLabel addGestureRecognizer:tapExtend0];
         viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index];
     }
     
     if (tableView.tag == 2) {
         cell.headImageView.userInteractionEnabled = NO;
+        cell.extendLabel.tag = indexPath.section;
+        UITapGestureRecognizer *tapExtend2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtendLabel2:)];
+        [cell.extendLabel addGestureRecognizer:tapExtend2];
     }
     cell.eventDelegate = self;
-    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
+//    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
     cell.subViewFrame = viewModel;
+//    [self.viewModelsArray addObject:viewModel];
+    
     return cell;
 }
+
+- (void)tapExtendLabel0:(UITapGestureRecognizer *)sender {
+    MBCommunity_ViewModel *view_model = self.dataDicArray[0][@"viewModels"][sender.view.tag];
+    view_model.model.cellIsOpen = !view_model.model.cellIsOpen;
+    [self.tableViewArray[0] reloadRow:0 inSection:sender.view.tag withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)tapExtendLabel1:(UITapGestureRecognizer *)sender {
+    MBCommunity_ViewModel *view_model = self.dataDicArray[1][@"viewModels"][sender.view.tag - 1];
+    view_model.model.cellIsOpen = !view_model.model.cellIsOpen;
+    [self.tableViewArray[1] reloadRow:0 inSection:sender.view.tag withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)tapExtendLabel2:(UITapGestureRecognizer *)sender {
+    MBCommunity_ViewModel *view_model = self.dataDicArray[2][@"viewModels"][sender.view.tag];
+    view_model.model.cellIsOpen = !view_model.model.cellIsOpen;
+    [self.tableViewArray[2] reloadRow:0 inSection:sender.view.tag withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 
 //点击cell的头像的代理方法
 - (void)eventWhenclickHeadImageView:(MBCommunityModel *)model {
@@ -345,7 +400,6 @@
     myMeVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myMeVc animated:YES];
 }
-
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

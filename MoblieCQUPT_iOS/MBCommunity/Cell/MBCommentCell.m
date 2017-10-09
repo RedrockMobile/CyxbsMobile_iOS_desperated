@@ -42,16 +42,16 @@
     [_headImageView addGestureRecognizer:tap];
     
     _IDLabel = [[UILabel alloc]init];
-    _IDLabel.font = [UIFont systemFontOfSize:13];
-    _IDLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
+    _IDLabel.font = [UIFont systemFontOfSize:14];
+    _IDLabel.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
     
     _timeLabel = [[UILabel alloc]init];
-    _timeLabel.font = [UIFont systemFontOfSize:11];
-    _timeLabel.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
+    _timeLabel.font = [UIFont systemFontOfSize:12];
+    _timeLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     
     _contentLabel = [[UILabel alloc]init];
-    _contentLabel.font = [UIFont systemFontOfSize:14];
-    _contentLabel.textColor = [UIColor colorWithRed:54/255.0 green:54/255.0 blue:54/255.0 alpha:1];
+    _contentLabel.font = [UIFont systemFontOfSize:13];
+    _contentLabel.textColor = [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1];
     _contentLabel.numberOfLines = 0;
     
     _underLine = [[UIView alloc]init];

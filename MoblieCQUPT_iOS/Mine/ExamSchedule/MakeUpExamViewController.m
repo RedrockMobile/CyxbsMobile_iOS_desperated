@@ -29,7 +29,7 @@
 - (void)loadData{
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    [NetWork NetRequestPOSTWithRequestURL:MakeApi WithParameter:@{@"stuNum": stuNum} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:MAKEAPI WithParameter:@{@"stuNum": stuNum} WithReturnValeuBlock:^(id returnValue) {
         if (returnValue[@"data"]) {
             [self initFailViewWithDetail:@"暂无补考消息~"];
         }

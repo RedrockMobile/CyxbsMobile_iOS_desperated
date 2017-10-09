@@ -231,11 +231,11 @@
         }
         return cell;
     }else {
-        MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellDetail];
+        MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellSimple row:(int)indexPath.row];
         MBCommunity_ViewModel *viewModel = _allDataArray[indexPath.section - 2];
         cell.subViewFrame = viewModel;
         cell.headImageView.userInteractionEnabled = NO;
-        cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
+//        cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
         return cell;
     }
 }
