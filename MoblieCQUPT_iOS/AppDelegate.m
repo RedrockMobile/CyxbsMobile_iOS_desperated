@@ -79,13 +79,16 @@
                 return;
             }
         }
-        NSError *error;
-        if([NSData dataWithContentsOfFile:imageFilePath]){
-            [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error];
-            if (error) {
-                NSLog(@"%@",error);
-            }
+        NSError *error1,*error2;
+        [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error1];
+        if (error1) {
+            NSLog(@"%@",error1);
         }
+        [[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error2];
+        if (error2) {
+            NSLog(@"%@",error2);
+        }
+
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
