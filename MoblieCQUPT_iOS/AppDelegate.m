@@ -60,6 +60,7 @@
 
 - (void)downloadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:SPLASH_API method:HttpRequestGet parameters:nil prepareExecute:^{
@@ -73,17 +74,21 @@
                 dispatch_async(dispatch_get_global_queue(0, 0), ^{
                     UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.photo_src]] scale:1];
                     [UIImagePNGRepresentation(image) writeToFile:imageFilePath atomically:YES];
+                    [dic writeToFile:dataPath atomically:YES];
                 });
                 return;
             }
         }
-        NSError *error;
-        if([NSData dataWithContentsOfFile:imageFilePath]){
-            [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error];
-            if (error) {
-                NSLog(@"%@",error);
-            }
+        NSError *error1,*error2;
+        [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error1];
+        if (error1) {
+            NSLog(@"%@",error1);
         }
+        [[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error2];
+        if (error2) {
+            NSLog(@"%@",error2);
+        }
+
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

@@ -7,8 +7,11 @@
 //
 
 #import "LaunchScreenViewController.h"
+#import "SplashModel.h"
+#import "MainViewController.h"
 @interface LaunchScreenViewController ()
-
+@property (nonatomic, strong) SplashModel *model;
+@property (nonatomic, strong) MainViewController *mainVC;
 @end
 
 @implementation LaunchScreenViewController
@@ -27,25 +30,52 @@
 - (void)loadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
+    NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
+    self.model = [[SplashModel alloc]initWithDic:data];
     UIImage *image = [UIImage imageWithContentsOfFile:imageFilePath];
-    if (image) {
-        UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
+    if (image && self.model) {
+         self.mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
         UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
         launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
         UIImageView *splashView = [launchScreen.subviews lastObject];
+        splashView.userInteractionEnabled = YES;
         [launchScreen addSubview:splashView];
         splashView.contentMode = UIViewContentModeScaleAspectFill;
         splashView.image = image;
         splashView.frame = splashView.bounds;
+        UIButton *skipBtn = [[UIButton alloc]init];
+        [splashView addSubview:skipBtn];
+        [skipBtn setTitle:@"跳过" forState:UIControlStateNormal];
+        [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(splashView).offset(-20);
+            make.top.equalTo(splashView).offset(20);
+        }];
+        [skipBtn addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
+        
+        
         [self.view addSubview:launchScreen];
         [self.view.window bringSubviewToFront:launchScreen];
-        [UIView animateWithDuration:2 animations:^{
-            splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
-            splashView.alpha = 0;
-        } completion:^(BOOL finished) {
-            [launchScreen removeFromSuperview];
-            self.view.window.rootViewController = mainVC;
-        }];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.view.window.rootViewController = self.mainVC;
+        });
+//        [UIView animateWithDuration:3 animations:^{
+//            splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
+//            splashView.alpha = 0;
+//        } completion:^(BOOL finished) {
+//            [launchScreen removeFromSuperview];
+//            self.view.window.rootViewController = mainVC;
+//        }];
+    }
+}
+- (void)skip{
+    self.view.window.rootViewController = self.mainVC;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (![self.model.target_url isEqualToString:@""]) {
+        self.view.window.rootViewController = self.mainVC;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"touchSplash" object:self.model.target_url];
     }
 }
 /*

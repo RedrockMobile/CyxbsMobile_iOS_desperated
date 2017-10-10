@@ -44,7 +44,7 @@
     }];
 }
 - (void)setUpTableView{
-    _MakeUpExamTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStyleGrouped];
+    _MakeUpExamTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-self.view.height*58/667-HEADERHEIGHT) style:UITableViewStylePlain];
     _MakeUpExamTableView.delegate = self;
     _MakeUpExamTableView.dataSource = self;
     _MakeUpExamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
