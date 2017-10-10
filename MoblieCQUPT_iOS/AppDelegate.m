@@ -103,7 +103,7 @@
     }
     else{
         NSString *time = [userDefaults objectForKey:@"remindMeTime"];
-        [remindNotification addTomorrowNotificationWithMinute:@"22" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
+        [remindNotification addTomorrowNotificationWithMinute:@"00" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
     }
 }
 
