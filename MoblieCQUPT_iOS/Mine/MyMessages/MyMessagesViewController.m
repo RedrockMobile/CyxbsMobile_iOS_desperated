@@ -127,7 +127,11 @@
             [self.allDataArray addObject:viewModel];
         }
         [self.communityTableView reloadData];
-        [self.communityTableView.mj_footer endRefreshing];
+        if (dataArray.count < 15) {
+            [self.communityTableView.mj_footer endRefreshingWithNoMoreData];
+        } else {
+            [self.communityTableView.mj_footer endRefreshing];
+        }
         [self.communityTableView.mj_header endRefreshing];
     } WithFailureBlock:^{
         NSLog(@"请求失败");
