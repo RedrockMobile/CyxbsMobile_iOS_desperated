@@ -15,6 +15,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "SplashModel.h"
+#import "LessonRemindNotification.h"
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @end
 
@@ -30,6 +31,7 @@
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"LaunchScreenViewController"];
     }
     [self downloadImage];
+    [self checkUpTheNotifacation];
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@""];
     [self configUSharePlatforms];
@@ -49,12 +51,10 @@
             NSLog(@"request authorization successed!");
         }
     }];
-//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//    if ([defaults objectForKey:@"remindMeBeforeTime"]) {
-//        [self setNotificaiton];
-//    }
+
     return YES;
 }
+
 
 #pragma mark - 闪屏图下载
 
@@ -93,6 +93,18 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+}
+- (void)checkUpTheNotifacation{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
+    if (![userDefaults objectForKey:@"remindMeTimeBOOL"]) {
+        [userDefaults setBool:NO forKey:@"remindMeTimeBOOL"];
+        [remindNotification deleteNotification];
+    }
+    else{
+        NSString *time = [userDefaults objectForKey:@"remindMeTime"];
+        [remindNotification addTomorrowNotificationWithMinute:@"22" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
+    }
 }
 
 #pragma mark - 分享url跳转

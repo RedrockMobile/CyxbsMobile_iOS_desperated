@@ -134,16 +134,7 @@
 
 - (void)switchValueChanged:(UISwitch *)sender
 {
-//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-//    [userDefaults setObject:[NSNumber numberWithBool:sender.on] forKey:@"switchState"];
-//    LessonRemindNotification *lrNotic = [[LessonRemindNotification alloc] init];
-//    if (sender.on) {
-//        [lrNotic notificationBody];
-//        [lrNotic addTomorrowNotification];
-//        [lrNotic setGcdTimer];
-//    }else{
-//        [lrNotic deleteNotification];
-//    }
+
 }
 
 - (void)logOut {

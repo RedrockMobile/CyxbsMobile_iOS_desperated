@@ -17,6 +17,7 @@
 		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
 		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
+		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
 		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
 		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
 		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
@@ -264,7 +265,6 @@
 		F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC0E1EBCB2BB005AC411 /* LessonBtnModel.m */; };
 		F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC101EBCB2BB005AC411 /* LessonMatter.m */; };
 		F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC121EBCB2BB005AC411 /* RemindMatter.m */; };
-		F242DEB51EBCB2BC005AC411 /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */; };
 		F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */; };
 		F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC1E1EBCB2BB005AC411 /* ChooseButton.m */; };
 		F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC201EBCB2BB005AC411 /* CoverView.m */; };
@@ -587,6 +587,8 @@
 		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
 		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
 		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
+		6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
+		6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
 		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
 		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
 		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
@@ -893,8 +895,6 @@
 		F242DC101EBCB2BB005AC411 /* LessonMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonMatter.m; sourceTree = "<group>"; };
 		F242DC111EBCB2BB005AC411 /* RemindMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindMatter.h; sourceTree = "<group>"; };
 		F242DC121EBCB2BB005AC411 /* RemindMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindMatter.m; sourceTree = "<group>"; };
-		F242DC171EBCB2BB005AC411 /* LessonRemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
-		F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 		F242DC191EBCB2BB005AC411 /* RemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindNotification.h; sourceTree = "<group>"; };
 		F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindNotification.m; sourceTree = "<group>"; };
 		F242DC1D1EBCB2BB005AC411 /* ChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseButton.h; sourceTree = "<group>"; };
@@ -1909,8 +1909,8 @@
 		F242DC161EBCB2BB005AC411 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				F242DC171EBCB2BB005AC411 /* LessonRemindNotification.h */,
-				F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */,
+				6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */,
+				6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */,
 				F242DC191EBCB2BB005AC411 /* RemindNotification.h */,
 				F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */,
 			);
@@ -3422,6 +3422,7 @@
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				F2509C6D1F440D970091F678 /* MostDifficultSubjectsViewController.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
+				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
 				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,
 				F2509C821F440D980091F678 /* DailyLifeViewController.m in Sources */,
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
@@ -3440,7 +3441,6 @@
 				F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				F2509C741F440D980091F678 /* MilitaryTrainingRootViewController.m in Sources */,
-				F242DEB51EBCB2BC005AC411 /* LessonRemindNotification.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
