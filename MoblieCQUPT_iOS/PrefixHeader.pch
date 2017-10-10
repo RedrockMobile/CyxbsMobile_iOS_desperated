@@ -156,9 +156,10 @@
 //补考接口
 #define MAKEAPI @"https://redrock.team/api/examReexam"
 
+#define kSegmentViewTitleHeight (SCREENHEIGHT*50/667)
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
-#define NVGBARHEIGHT self.navigationController.navigationBar.frame.size.height
+#define NVGBARHEIGHT (44)
 #define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
 #define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)

@@ -290,7 +290,6 @@
 		F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCA11EBCB2BB005AC411 /* ExamScheduleTableViewCell.m */; };
 		F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCA21EBCB2BB005AC411 /* ExamScheduleTableViewCell.xib */; };
 		F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */; };
-		F242DF031EBCB2BC005AC411 /* ExamScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCA61EBCB2BB005AC411 /* ExamScheduleViewController.xib */; };
 		F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */; };
 		F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */; };
 		F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB31EBCB2BB005AC411 /* GradeView.m */; };
@@ -940,7 +939,6 @@
 		F242DCA21EBCB2BB005AC411 /* ExamScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		F242DCA41EBCB2BB005AC411 /* ExamScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamScheduleViewController.h; sourceTree = "<group>"; };
 		F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamScheduleViewController.m; sourceTree = "<group>"; };
-		F242DCA61EBCB2BB005AC411 /* ExamScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamScheduleViewController.xib; sourceTree = "<group>"; };
 		F242DCAF1EBCB2BB005AC411 /* ExamGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamGradeViewController.h; sourceTree = "<group>"; };
 		F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamGradeViewController.m; sourceTree = "<group>"; };
 		F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamGradeViewController.xib; sourceTree = "<group>"; };
@@ -2066,7 +2064,6 @@
 				F242DC9F1EBCB2BB005AC411 /* cellView */,
 				F242DCA41EBCB2BB005AC411 /* ExamScheduleViewController.h */,
 				F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */,
-				F242DCA61EBCB2BB005AC411 /* ExamScheduleViewController.xib */,
 			);
 			name = ExamClass;
 			path = Controller;
@@ -3013,7 +3010,6 @@
 				F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */,
 				F242DDFB1EBCB2BB005AC411 /* loading@2x.png in Resources */,
 				82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */,
-				F242DF031EBCB2BC005AC411 /* ExamScheduleViewController.xib in Resources */,
 				F26D968A1F3C400F0063B024 /* topic_image_alltopic@2x.png in Resources */,
 				F2509CB01F440D980091F678 /* 重邮数据@2x.png in Resources */,
 				F2770B5F1F4570E600BB6186 /* find_image_lostAndFound@3x.png in Resources */,

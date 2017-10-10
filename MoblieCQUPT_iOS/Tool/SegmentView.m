@@ -6,7 +6,6 @@
 //  Copyright © 2016年 GegeChen. All rights reserved.
 //
 #import "SegmentView.h"
-#define kTitleHeight (self.height*50/667)
 @interface SegmentView()<UIScrollViewDelegate>
 @property NSArray <UIViewController *> *controllers;
 @property UIScrollView *mainScrollView;
@@ -36,20 +35,20 @@
 }
 
 - (void)initWithTitleView {
-    _titleScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.width, kTitleHeight)];
-    _titleScrollView.contentSize = CGSizeMake(self.titleBtnWidth * self.controllers.count,kTitleHeight);
+    _titleScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.width, kSegmentViewTitleHeight)];
+    _titleScrollView.contentSize = CGSizeMake(self.titleBtnWidth * self.controllers.count,kSegmentViewTitleHeight);
     _titleScrollView.bounces = NO;
     _titleScrollView.showsHorizontalScrollIndicator = NO;
     _titleScrollView.showsVerticalScrollIndicator = NO;
     [_titleScrollView flashScrollIndicators];
     
-    UIView *cuttingLine = [[UIView alloc]initWithFrame:CGRectMake(0, kTitleHeight-1, _titleScrollView.contentSize.width, 1)];
+    UIView *cuttingLine = [[UIView alloc]initWithFrame:CGRectMake(0, kSegmentViewTitleHeight-1, _titleScrollView.contentSize.width, 1)];
     cuttingLine.backgroundColor = [UIColor colorWithRed:226/255.0 green:227/255.0 blue:229/255.0 alpha:1];
     
     _btnArray = [NSMutableArray<UIButton *> array];
     for (int i = 0; i < self.controllers.count; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(i*self.titleBtnWidth, 0, self.titleBtnWidth, kTitleHeight);
+        btn.frame = CGRectMake(i*self.titleBtnWidth, 0, self.titleBtnWidth, kSegmentViewTitleHeight);
         [btn setTitle:self.controllers[i].title forState:UIControlStateNormal];
         btn.tag = i;
         btn.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -62,7 +61,7 @@
     _currentIndex = 0;
     [_btnArray firstObject].selected = YES;
     
-    _sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, kTitleHeight-2, self.titleBtnWidth, 2)];
+    _sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, kSegmentViewTitleHeight-2, self.titleBtnWidth, 2)];
     _sliderView.backgroundColor = [UIColor colorWithHexString:@"65b2ff"];
     
     [_titleScrollView addSubview:cuttingLine];
@@ -71,7 +70,7 @@
 }
 
 - (void)initWithMainView {
-    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, kTitleHeight, self.width, self.height-kTitleHeight)];
+    _mainScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, kSegmentViewTitleHeight, self.width, self.height-kSegmentViewTitleHeight)];
     
     _mainScrollView.showsHorizontalScrollIndicator = NO;
     _mainScrollView.showsVerticalScrollIndicator = NO;
@@ -83,7 +82,7 @@
     
     for (int i = 0; i < _controllers.count; i++) {
         UIView *view = self.controllers[i].view;
-        view.frame = CGRectMake(i * self.width, 0, self.width, self.height-kTitleHeight);
+        view.frame = CGRectMake(i * self.width, 0, self.width, self.height-kSegmentViewTitleHeight);
         [_mainScrollView addSubview:view];
     }
     
@@ -107,7 +106,7 @@
     if (currentIndex != self.currentIndex) {
         self.btnArray[self.currentIndex].selected = NO;
         [UIView animateWithDuration:0.2f animations:^{
-            _sliderView.frame = CGRectMake(currentIndex * _titleBtnWidth, kTitleHeight - 2, _titleBtnWidth, 2);
+            _sliderView.frame = CGRectMake(currentIndex * _titleBtnWidth, kSegmentViewTitleHeight - 2, _titleBtnWidth, 2);
             //            CGPoint contentOffset = self.titleScrollView.contentOffset;
             if (self.btnArray[currentIndex].frame.origin.x < self.width/2) {
                 [_titleScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
