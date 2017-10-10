@@ -43,6 +43,7 @@
     [self.view addSubview:self.mainView];
     [self.view addSubview:self.weekScrollView];
 
+
     // Do any additional setup after loading the view.
 }
 
@@ -89,6 +90,8 @@
         }
         _weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight) andTitles:weekArray];
         _weekScrollView.eventDelegate = self;
+        [self clickBtn];
+        
     }
     return _weekScrollView;
 }
@@ -197,7 +200,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.hud hide:YES];
                 [self.weekScrollView scrollToIndex:_nowWeek];
-                [self showMatterWithWeek:_nowWeek];
+                
             });
         }
     });
