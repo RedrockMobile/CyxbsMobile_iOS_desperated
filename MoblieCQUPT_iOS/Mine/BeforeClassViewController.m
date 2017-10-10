@@ -28,10 +28,7 @@
     [self.view addSubview:_beforClassTableView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getState:) name:@"state" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getValue:) name:@"value" object:nil];
-    // Do any additional setup after loading the view.
-//    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-//    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[userDefault objectForKey:@"lessonResponse"][@"data"]];
-//    NSLog(@"   %@",array[0]);
+ 
 }
 
 - (void)didReceiveMemoryWarning {
@@ -126,7 +123,6 @@ viewForHeaderInSection:(NSInteger)section{
             return cell;
         }
         else{
-            
             _cell1 = [BeforeClassCell cellWithTableView:tableView AndStyle:@"extra"];
             _cell1.style = @"remindMeBeforeTime";
             _cell1.nameString = @"提前时间";
@@ -145,7 +141,6 @@ viewForHeaderInSection:(NSInteger)section{
               return cell;
           }
           else{
-              
               _cell2 = [BeforeClassCell cellWithTableView:tableView AndStyle:@"extra"];
               _cell2.style = @"remindMeTime";
               _cell2.nameString = @"通知时间";

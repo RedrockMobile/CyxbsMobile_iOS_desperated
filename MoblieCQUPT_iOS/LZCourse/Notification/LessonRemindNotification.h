@@ -10,9 +10,7 @@
 
 @interface LessonRemindNotification : NSObject
 
-- (void)addTomorrowNotification;
+- (void)addTomorrowNotificationWithMinute:(NSString *)minute AndHour:(NSString *)hour;
 - (void)deleteNotification;
-- (void)notificationBody;
-- (void)setGcdTimer;
 
 @end

@@ -12,6 +12,15 @@
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
 		3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B26610A1BA6E417008632F3 /* UIKit.framework */; };
 		463E0067C92960DB7BB5B9B7 /* libPods-MoblieCQUPT_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */; };
+		6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */; };
+		6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205B31F6614E100E5020E /* BeforeClassViewController.m */; };
+		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
+		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
+		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
+		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
+		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
+		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
+		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
 		82280CA91F60169B00A5921E /* LXReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CA81F60169B00A5921E /* LXReplyView.m */; };
 		82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CAA1F601AFD00A5921E /* icon_comment_inside@2x.png */; };
 		82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CAB1F601AFD00A5921E /* icon_comment_inside@3x.png */; };
@@ -42,16 +51,6 @@
 		82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685691F6E4F4B004A5C7D /* icon_up@3x.png */; };
 		82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856E1F6E701F004A5C7D /* headImage@2x.png */; };
 		82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856F1F6E701F004A5C7D /* headImage@3x.png */; };
-		6E1205901F5FD81B00E5020E /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12058F1F5FD81B00E5020E /* ExamPickView.m */; };
-		6E1205931F612BB300E5020E /* UITextField+Empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205921F612BB300E5020E /* UITextField+Empty.m */; };
-		6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */; };
-		6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205B31F6614E100E5020E /* BeforeClassViewController.m */; };
-		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
-		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
-		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
-		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
-		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
-		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
 		CE41EE121C1FE1A2004C873A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE41EE111C1FE1A2004C873A /* ViewController.m */; };
 		CE4334471BE7C52D000C407D /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4334461BE7C52D000C407D /* NotificationCenter.framework */; };
 		CE43344D1BE7C52D000C407D /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE43344C1BE7C52D000C407D /* TodayViewController.m */; };
@@ -266,7 +265,6 @@
 		F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC0E1EBCB2BB005AC411 /* LessonBtnModel.m */; };
 		F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC101EBCB2BB005AC411 /* LessonMatter.m */; };
 		F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC121EBCB2BB005AC411 /* RemindMatter.m */; };
-		F242DEB51EBCB2BC005AC411 /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */; };
 		F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */; };
 		F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC1E1EBCB2BB005AC411 /* ChooseButton.m */; };
 		F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC201EBCB2BB005AC411 /* CoverView.m */; };
@@ -583,6 +581,24 @@
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		3B26610A1BA6E417008632F3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6E12059C1F637F0F00E5020E /* MakeUpExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeUpExamViewController.h; sourceTree = "<group>"; };
+		6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeUpExamViewController.m; sourceTree = "<group>"; };
+		6E1205B21F6614E100E5020E /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
+		6E1205B31F6614E100E5020E /* BeforeClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassViewController.m; sourceTree = "<group>"; };
+		6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassCell.m; sourceTree = "<group>"; };
+		6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassCell.h; sourceTree = "<group>"; };
+		6E175E4E1F5E82EC00C0BE60 /* ExamTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTotalViewController.h; sourceTree = "<group>"; };
+		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
+		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
+		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
+		6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
+		6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
+		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
+		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
+		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
+		6E7167281F85D70D00C46038 /* EmptyClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassView.m; sourceTree = "<group>"; };
+		6EF302D41F8A0B42009B7A66 /* ExamPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
+		6EF302D51F8A0B42009B7A66 /* ExamPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
 		82280CA71F60169B00A5921E /* LXReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReplyView.h; sourceTree = "<group>"; };
 		82280CA81F60169B00A5921E /* LXReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReplyView.m; sourceTree = "<group>"; };
 		82280CAA1F601AFD00A5921E /* icon_comment_inside@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_comment_inside@2x.png"; sourceTree = "<group>"; };
@@ -615,26 +631,6 @@
 		82D685691F6E4F4B004A5C7D /* icon_up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_up@3x.png"; sourceTree = "<group>"; };
 		82D6856E1F6E701F004A5C7D /* headImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@2x.png"; sourceTree = "<group>"; };
 		82D6856F1F6E701F004A5C7D /* headImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@3x.png"; sourceTree = "<group>"; };
-		6E12058E1F5FD81B00E5020E /* ExamPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
-		6E12058F1F5FD81B00E5020E /* ExamPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
-		6E1205911F612BB300E5020E /* UITextField+Empty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+Empty.h"; sourceTree = "<group>"; };
-		6E1205921F612BB300E5020E /* UITextField+Empty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Empty.m"; sourceTree = "<group>"; };
-		6E12059C1F637F0F00E5020E /* MakeUpExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeUpExamViewController.h; sourceTree = "<group>"; };
-		6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeUpExamViewController.m; sourceTree = "<group>"; };
-		6E1205B21F6614E100E5020E /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
-		6E1205B31F6614E100E5020E /* BeforeClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassViewController.m; sourceTree = "<group>"; };
-		6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassCell.m; sourceTree = "<group>"; };
-		6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassCell.h; sourceTree = "<group>"; };
-		6E175E4E1F5E82EC00C0BE60 /* ExamTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTotalViewController.h; sourceTree = "<group>"; };
-		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
-		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
-		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
-		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
-		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
-		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
-		6E7167281F85D70D00C46038 /* EmptyClassView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassView.m; sourceTree = "<group>"; };
-		6EF302D41F8A0B42009B7A66 /* ExamPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
-		6EF302D51F8A0B42009B7A66 /* ExamPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
 		BA10D639E65F33ACE628A0EB /* Pods-MoblieCQUPT_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		CE41EE101C1FE1A2004C873A /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CE41EE111C1FE1A2004C873A /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
@@ -903,8 +899,6 @@
 		F242DC101EBCB2BB005AC411 /* LessonMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonMatter.m; sourceTree = "<group>"; };
 		F242DC111EBCB2BB005AC411 /* RemindMatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindMatter.h; sourceTree = "<group>"; };
 		F242DC121EBCB2BB005AC411 /* RemindMatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindMatter.m; sourceTree = "<group>"; };
-		F242DC171EBCB2BB005AC411 /* LessonRemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
-		F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 		F242DC191EBCB2BB005AC411 /* RemindNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindNotification.h; sourceTree = "<group>"; };
 		F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindNotification.m; sourceTree = "<group>"; };
 		F242DC1B1EBCB2BB005AC411 /* SaveDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveDelegate.h; sourceTree = "<group>"; };
@@ -1923,8 +1917,8 @@
 		F242DC161EBCB2BB005AC411 /* Notification */ = {
 			isa = PBXGroup;
 			children = (
-				F242DC171EBCB2BB005AC411 /* LessonRemindNotification.h */,
-				F242DC181EBCB2BB005AC411 /* LessonRemindNotification.m */,
+				6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */,
+				6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */,
 				F242DC191EBCB2BB005AC411 /* RemindNotification.h */,
 				F242DC1A1EBCB2BB005AC411 /* RemindNotification.m */,
 			);
@@ -2925,14 +2919,12 @@
 			files = (
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
-				F20027391F43256200360991 /* emptyClassTag1.png in Resources */,
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
 				F26D965C1F3C400F0063B024 /* MBCommentCell.xib in Resources */,
 				F242DDE01EBCB2BB005AC411 /* lost_image_place@3x.png in Resources */,
 				F242DDE71EBCB2BB005AC411 /* lost_image_time@2x.png in Resources */,
 				F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
-				F20027381F43256200360991 /* emptyClassTag.png in Resources */,
 				82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */,
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
 				F242DDD81EBCB2BB005AC411 /* lost_image_lackplace@3x.png in Resources */,
@@ -2964,7 +2956,6 @@
 				F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */,
 				F242DE8A1EBCB2BC005AC411 /* 多课0@2x.png in Resources */,
 				F242DDFF1EBCB2BB005AC411 /* ShopDetailViewController.xib in Resources */,
-				F200273B1F43256200360991 /* GQclass.png in Resources */,
 				82D685651F6AC381004A5C7D /* extend@3x.png in Resources */,
 				F26D967F1F3C400F0063B024 /* icon_share_qzone@3x.png in Resources */,
 				F242DDCD1EBCB2BB005AC411 /* lost_image_com@2x.png in Resources */,
@@ -3177,7 +3168,6 @@
 				F242DFB41EBD9E2C005AC411 /* IconTableViewCell.xib in Resources */,
 				F239927E1F47034C00FCE137 /* shake_image_shake@2x.png in Resources */,
 				82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */,
-				F200273E1F43256200360991 /* 与我相关@2x.png in Resources */,
 				F2509C941F440D980091F678 /* 军训特辑@3x.png in Resources */,
 				F26D96841F3C400F0063B024 /* icon_share_weibo@2x.png in Resources */,
 				F242DDBE1EBCB2BB005AC411 /* rightIcon.png in Resources */,
@@ -3186,7 +3176,6 @@
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
 				F242DDCE1EBCB2BB005AC411 /* lost_image_com@3x.png in Resources */,
 				F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */,
-				F20027451F43256200360991 /* 空教室@2x.png in Resources */,
 				823D41651F6407D300C99D9B /* icon_comment_outside2x.png in Resources */,
 				F20026DE1F4020FA00360991 /* mine_image_setting@3x.png in Resources */,
 				F20026FB1F40372100360991 /* settingIcon@2x.png in Resources */,
@@ -3356,7 +3345,6 @@
 				F2509C5E1F440D970091F678 /* CQUPTStudentsCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
-				F242DE6E1EBCB2BC005AC411 /* LessonHandle.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				F2509C861F440D980091F678 /* IntroductionViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
@@ -3443,11 +3431,11 @@
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				F2509C6D1F440D970091F678 /* MostDifficultSubjectsViewController.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
+				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
 				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,
 				F2509C821F440D980091F678 /* DailyLifeViewController.m in Sources */,
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				F2509C801F440D980091F678 /* CampusEnvironmentViewController.m in Sources */,
-				F26D96561F3C400F0063B024 /* CAShapeLayer+ViewMask.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
@@ -3462,7 +3450,6 @@
 				F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				F2509C741F440D980091F678 /* MilitaryTrainingRootViewController.m in Sources */,
-				F242DEB51EBCB2BC005AC411 /* LessonRemindNotification.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
