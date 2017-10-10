@@ -195,8 +195,8 @@
     if (index == 0) {
         return self.detailBannnerView.extendHeight;
     }
-    return [self.viewModels[index-1] cellHeight];
-    
+    MBCommunity_ViewModel *viewModel = self.viewModels[index-1];
+    return viewModel.model.cellIsOpen == NO ? viewModel.cellHeight : viewModel.extend_cellHeight;
 }
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -221,11 +221,20 @@
         }];
         return cell;
     }
+    cell.extendLabel.tag = indexPath.section;
+    UITapGestureRecognizer *tapExtend = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtendLabel:)];
+    [cell.extendLabel addGestureRecognizer:tapExtend];
     viewModel = self.viewModels[index-1];
     cell.eventDelegate = self;
 //    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
     cell.subViewFrame = viewModel;
     return cell;
+}
+
+- (void)tapExtendLabel:(UIGestureRecognizer *)sender {
+    MBCommunity_ViewModel *view_model = self.viewModels[sender.view.tag - 1];
+    view_model.model.cellIsOpen = !view_model.model.cellIsOpen;
+    [self.tableView reloadRow:0 inSection:sender.view.tag withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 //点击cell的头像的代理方法

@@ -102,6 +102,9 @@
         [self dataFlash];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        //sention间距
+        _tableView.sectionHeaderHeight = 10;
+        _tableView.sectionFooterHeight = 10;
         
         UINib *nib2 = [UINib nibWithNibName:@"AboutMePraiseTableViewCell" bundle:nil];
         [_tableView registerNib:nib2 forCellReuseIdentifier:@"praiseCell"];

@@ -117,7 +117,7 @@
     }];
      */    
     [UIView beginAnimations:@"riseAnimate" context:nil];
-    [UIView setAnimationDuration:0.25];
+    [UIView setAnimationDuration:0.05];
     self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - height - self.detailCommentView.frame.size.height, SCREENWIDTH, self.detailCommentView.frame.size.height);
     self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - height - self.detailCommentView.frame.size.height);
     [UIView commitAnimations];
@@ -226,7 +226,7 @@
         
         [self.window addSubview:self.coverGrayView];
         [UIView beginAnimations:@"apperAnimate" context:nil];
-        [UIView setAnimationDuration:0.25];
+        [UIView setAnimationDuration:0.05];
         self.detailCommentView.frame = self.replyViewOriginalRect;
         self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - self.replyViewOriginalRect.size.height);
         [UIView commitAnimations];
@@ -259,7 +259,7 @@
 
 - (void)tapCancelBtn {
     [UIView beginAnimations:@"downAnimate" context:nil];
-    [UIView setAnimationDuration:0.25];
+    [UIView setAnimationDuration:0.05];
     self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENHEIGHT, 0);
     self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
     [UIView commitAnimations];
@@ -276,7 +276,7 @@
     }
 
     [UIView beginAnimations:@"send" context:nil];
-    [UIView setAnimationDuration:0.25];
+    [UIView setAnimationDuration:0.05];
     self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
     [UIView commitAnimations];
     
@@ -409,9 +409,11 @@
             if (self.detailCommentView.hidden == YES) {
                 self.detailCommentView.hidden = NO;
             }
+            [self.window addSubview:self.coverGrayView];
             [UIView beginAnimations:@"apperAnimate" context:nil];
-            [UIView setAnimationDuration:0.25];
+            [UIView setAnimationDuration:0.05];
             self.detailCommentView.frame = self.replyViewOriginalRect;
+            self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - self.replyViewOriginalRect.size.height);
             [UIView commitAnimations];
             
             NSString *nickName = viewModel.model.nickname;
