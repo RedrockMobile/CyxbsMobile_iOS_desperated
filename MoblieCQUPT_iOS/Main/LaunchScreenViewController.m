@@ -7,8 +7,10 @@
 //
 
 #import "LaunchScreenViewController.h"
+#import "SplashModel.h"
+#import "MainViewController.h"
 @interface LaunchScreenViewController ()
-
+@property (nonatomic, strong) SplashModel *model;
 @end
 
 @implementation LaunchScreenViewController
@@ -27,9 +29,12 @@
 - (void)loadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
+    NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
+    self.model = [[SplashModel alloc]initWithDic:data];
     UIImage *image = [UIImage imageWithContentsOfFile:imageFilePath];
-    if (image) {
-        UIViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
+    if (image && self.model) {
+        MainViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
         UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
         launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
         UIImageView *splashView = [launchScreen.subviews lastObject];
@@ -39,13 +44,23 @@
         splashView.frame = splashView.bounds;
         [self.view addSubview:launchScreen];
         [self.view.window bringSubviewToFront:launchScreen];
-        [UIView animateWithDuration:2 animations:^{
-            splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
-            splashView.alpha = 0;
-        } completion:^(BOOL finished) {
-            [launchScreen removeFromSuperview];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.view.window.rootViewController = mainVC;
-        }];
+        });
+//        [UIView animateWithDuration:3 animations:^{
+//            splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
+//            splashView.alpha = 0;
+//        } completion:^(BOOL finished) {
+//            [launchScreen removeFromSuperview];
+//            self.view.window.rootViewController = mainVC;
+//        }];
+    }
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    if (![self.model.target_url isEqualToString:@""]) {
+        MainViewController *mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
+        self.view.window.rootViewController = mainVC;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"touchSplash" object:self.model.target_url];
     }
 }
 /*

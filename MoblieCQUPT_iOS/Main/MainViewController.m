@@ -27,11 +27,24 @@
         nvc.topViewController.navigationItem.backBarButtonItem = backItem;
         nvc.tabBarItem.image = [UIImage imageNamed:images[i]];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchSplash:) name:@"touchSplash" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)touchSplash:(NSNotification *)notification{
+    NSString *target_url = notification.object;
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:target_url]]];
+    BaseViewController *vc = [[BaseViewController alloc]init];
+    [vc.view addSubview:webView];
+    vc.hidesBottomBarWhenPushed = YES;
+    BaseNavigationController *nvc = [self.viewControllers firstObject];
+    [nvc pushViewController:vc animated:YES];
 }
 
 @end
