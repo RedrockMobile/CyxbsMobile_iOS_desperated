@@ -11,7 +11,7 @@
 #import "OriginazitionCell.h"
 #import "PrefixHeader.pch"
 
-#define url @"https://redrock.team/welcome/2017/api/apiForText.php"
+#define url @"https://wx.idsbllp.cn/welcome/2017/api/apiForText.php"
 
 @interface Originazition ()<UITableViewDelegate,UITableViewDataSource>
 @property(strong, nonatomic) NSString *titleA;

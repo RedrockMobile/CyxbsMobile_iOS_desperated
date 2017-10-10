@@ -62,7 +62,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", nil];
     
-    [manager GET:@"https://redrock.team/welcome/2017/api/apiForGuide.php?RequestType=Dormitory" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseobject) {
+    [manager GET:@"https://wx.idsbllp.cn/welcome/2017/api/apiForGuide.php?RequestType=Dormitory" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseobject) {
         NSDictionary *dic = responseobject;
         for (int i = 0; i < self.urlStrArray.count; i++) {
             self.descriptionArray[i] = dic[@"Data"][i][@"resume"];
