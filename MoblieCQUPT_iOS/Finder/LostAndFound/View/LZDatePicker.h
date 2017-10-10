@@ -14,7 +14,7 @@
 @end
 
 @interface LZDatePicker : UIView
-@property id <LZDatePickerDelegate> delegate;
-@property NSDate *date;
+@property (nonatomic, weak) id <LZDatePickerDelegate> delegate;
+@property (nonatomic, strong) NSDate *date;
 
 @end

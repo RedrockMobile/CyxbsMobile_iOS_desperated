@@ -10,7 +10,7 @@
 #import "OriginalVideoController.h"
 #import "Masonry.h"
 
-#define url @"http://hongyan.cqupt.edu.cn/welcome/2017/api/apiForText.php"
+#define url @"https://redrock.team/welcome/2017/api/apiForText.php"
 @interface OriginalViewController ()
 @property(strong, nonatomic) NSMutableArray *dataArray;
 @property(strong, nonatomic) NSArray *videoUrl;

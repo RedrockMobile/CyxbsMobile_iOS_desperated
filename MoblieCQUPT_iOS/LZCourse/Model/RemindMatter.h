@@ -6,13 +6,13 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import "BaseMatter.h"
-@interface RemindMatter : BaseMatter
-@property NSNumber *idNum;
-@property NSNumber *day;
-@property NSNumber *classNum;
-@property NSArray *week;
-@property NSString *content;
-@property NSString *title;
+#import <Foundation/Foundation.h>
+@interface RemindMatter : NSObject
+@property (nonatomic, strong) NSNumber *idNum;
+@property (nonatomic, strong) NSNumber *day;
+@property (nonatomic, strong) NSNumber *classNum;
+@property (nonatomic, copy) NSArray *week;
+@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *title;
 - (instancetype)initWithRemind:(NSDictionary *)remind;
 @end

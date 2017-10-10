@@ -12,7 +12,7 @@
 #import "XBSAboutViewController.h"
 #import "LoginEntry.h"
 #import "LoginViewController.h"
-#import "LessonRemindNotification.h"
+//#import "LessonRemindNotification.h"
 
 @interface SettingViewController()<UITableViewDelegate, UITableViewDataSource>
 
@@ -134,6 +134,7 @@
 
 - (void)switchValueChanged:(UISwitch *)sender
 {
+
 }
 
 - (void)logOut {
@@ -143,17 +144,17 @@
     id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
     [LoginEntry loginOut];
 //    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq",@"switchState"]];
-    NSFileManager *manager=[NSFileManager defaultManager];
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-    NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
-    NSError *error;
-    if ([manager removeItemAtPath:remindPath error:&error]) {
-        NSLog(@"%@",error);
-    }
-    if ([manager removeItemAtPath:failurePath error:&error]) {
-        NSLog(@"%@",error);
-    }
+//    NSFileManager *manager=[NSFileManager defaultManager];
+//    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+//    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+//    NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
+//    NSError *error;
+//    if ([manager removeItemAtPath:remindPath error:&error]) {
+//        NSLog(@"%@",error);
+//    }
+//    if ([manager removeItemAtPath:failurePath error:&error]) {
+//        NSLog(@"%@",error);
+//    }
     [self.navigationController presentViewController:view animated:YES completion:nil];
     //    [self dismissViewControllerAnimated:YES completion:^{
     //

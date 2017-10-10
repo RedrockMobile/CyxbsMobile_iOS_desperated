@@ -31,12 +31,17 @@
     }
     return self;
 }
+
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [self init];
     if (self) {
         self.nickname = dic[@"nickname"];
         self.gender = dic[@"gender"];
-        self.photo_thumbnail_src = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:dic[@"photo_src"]]]];
+        NSString *str = dic[@"photo_thumbnail_src"];
+        NSURL *url = [NSURL URLWithString:[str stringByReplacingOccurrencesOfString:@"http" withString:@"https"]];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *image = [UIImage imageWithData:data];
+        self.photo_thumbnail_src = image;
         self.photo_src = dic[@"photo_src"];
         self.qq = dic[@"qq"];
         self.phone = dic[@"phone"];
@@ -45,4 +50,29 @@
     return self;
 }
 
+- (BOOL) saveMyInfo{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    return [NSKeyedArchiver archiveRootObject:self toFile:infoFilePath];
+}
+
++ (MyInfoModel *) getMyInfo{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
+}
+
++ (BOOL)deleteMyInfo{
+    NSError *error;
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
+    if([NSData dataWithContentsOfFile:infoFilePath]){
+        [[NSFileManager defaultManager] removeItemAtPath:infoFilePath error:&error];
+        if (error) {
+            NSLog(@"%@",error);
+            return NO;
+        }
+    }
+    return YES;
+}
 @end

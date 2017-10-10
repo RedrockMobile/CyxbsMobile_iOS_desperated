@@ -262,7 +262,7 @@
     
     NSDictionary *parameters = [self.model packToParamtersDic];
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:@"http://hongyan.cqupt.edu.cn/laf/api/create" method:HttpRequestPost parameters:parameters prepareExecute:^{
+    [client requestWithPath:@"https://redrock.team/laf/api/create" method:HttpRequestPost parameters:parameters prepareExecute:^{
     } progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {

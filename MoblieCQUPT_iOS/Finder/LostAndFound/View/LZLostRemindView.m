@@ -33,7 +33,6 @@
     [self.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.mas_top).offset(self.height*0.14);
         make.bottom.equalTo(self.label.mas_top).offset(-self.height*0.06);
-        
         make.left.equalTo(self.mas_left).offset(self.width*0.13);
         make.right.equalTo(self.mas_right).offset(-self.width*0.13);
         make.height.mas_equalTo(self.imageView.mas_width).multipliedBy(0.75);
@@ -48,7 +47,6 @@
     }];
     [self.btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.mas_bottom).offset(-self.height*0.09);
-        
         make.left.equalTo(self.mas_left).offset(16);
         make.right.equalTo(self.mas_right).offset(-16);
         make.height.mas_equalTo(self.btn.mas_width).multipliedBy(0.15);

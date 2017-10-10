@@ -57,7 +57,7 @@
         return;
     }
     
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/menuList" WithParameter:@{@"shop_id":_shopId} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/menuList" WithParameter:@{@"shop_id":_shopId} WithReturnValeuBlock:^(id returnValue) {
         
         if (returnValue) {
             [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];

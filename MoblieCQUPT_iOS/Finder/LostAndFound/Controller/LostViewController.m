@@ -13,10 +13,10 @@
 #import "IssueTableViewController.h"
 #import "LoginViewController.h"
 @interface LostViewController ()
-@property UISegmentedControl *segmentedControl;
-@property SegmentView *lostSegmentView;
-@property SegmentView *foundSegmentView;
-@property UIButton *addBtn;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) SegmentView *lostSegmentView;
+@property (nonatomic, strong) SegmentView *foundSegmentView;
+@property (nonatomic, strong) UIButton *addBtn;
 @end
 
 @implementation LostViewController
@@ -47,8 +47,8 @@
         foundArray[i] = vc;
     }
     
-    self.lostSegmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) andControllers:[NSArray arrayWithArray:lostArray]];
-    self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, ScreenHeight-64) andControllers:[NSArray arrayWithArray:foundArray]];
+    self.lostSegmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, ScreenHeight-HEADERHEIGHT) andControllers:[NSArray arrayWithArray:lostArray]];
+    self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, ScreenHeight-HEADERHEIGHT) andControllers:[NSArray arrayWithArray:foundArray]];
     [self.view addSubview:self.lostSegmentView];
     
     self.addBtn = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 100, 100)];

@@ -8,7 +8,6 @@
 
 #import "MyInfoViewController.h"
 #import "UITextField+Custom.h"
-#import "MBProgressHUD.h"
 #import "MyInfoModel.h"
 
 @interface MyInfoViewController ()<UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate>
@@ -21,14 +20,14 @@
 @property (strong, nonatomic) UITextField *phoneTextField;
 @property (strong, nonatomic) MyInfoModel *model;
 @property (strong, nonatomic) UIImage *image;
-typedef NS_ENUM(NSInteger,XBSUploadStatus){
-    XBSSuccess,
-    XBSNetWorkWrong,
-    XBSParameterWrong,
+@property (copy, nonatomic) NSDictionary *parameters;
+typedef NS_ENUM(NSInteger,XBSUploadState){
+    XBSUploadStateSuccess,
+    XBSUploadStateNetWorkWrong,
+    XBSUploadStateParameterWrong,
 };
-@property XBSUploadStatus imageUploadStatus;
-@property XBSUploadStatus infoUploadStatus;
-
+@property XBSUploadState imageUploadState;
+@property XBSUploadState infoUploadState;
 
 @end
 
@@ -36,23 +35,40 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-    self.model = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
-    [self.view addSubview:_tableView];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.tableView.contentInset = UIEdgeInsetsMake(-35,0,0,0);
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-
+    self.model = [MyInfoModel getMyInfo];
     self.image = self.model.photo_thumbnail_src;
+    [self.view addSubview:self.tableView];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(uploadData)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
 }
 
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
+        _tableView.contentInset = UIEdgeInsetsMake(-35,0,0,0);
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    return _tableView;
+}
+
+- (UIImageView *)avatar {
+    if (!_avatar) {
+        _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(MAIN_SCREEN_W-50-40, 18, 50, 50)];
+        _avatar.userInteractionEnabled = YES;
+        //    [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
+        _avatar.layer.masksToBounds = YES;
+        _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
+    }
+    return _avatar;
+}
+
 - (void)uploadData{
     dispatch_group_t group = dispatch_group_create();
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
+    self.parameters = @{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text};
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self refreshMyInfo];
     });
@@ -64,27 +80,23 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         uploadProgress.mode = MBProgressHUDModeText;
-        if (self.imageUploadStatus == XBSNetWorkWrong || self.infoUploadStatus == XBSNetWorkWrong) {
+        if (self.imageUploadState == XBSUploadStateNetWorkWrong || self.infoUploadState == XBSUploadStateNetWorkWrong) {
             uploadProgress.labelText = @"网络错误";
             [uploadProgress hide:YES afterDelay:1];
-            return ;
+            return;
         }
-        if (self.infoUploadStatus == XBSParameterWrong) {
+        if (self.infoUploadState == XBSUploadStateParameterWrong) {
             uploadProgress.labelText = @"参数错误";
-            [uploadProgress hide:YES
-                      afterDelay:1];
+            [uploadProgress hide:YES afterDelay:1];
             return;
         }
         uploadProgress.labelText = @"上传成功";
-        self.model.nickname = _nicknameTextField.text;
-        self.model.introduction = _introductionTextField.text;
-        self.model.qq = _introductionTextField.text;
-        self.model.phone = _phoneTextField.text;
+        self.model.nickname = self.nicknameTextField.text;
+        self.model.introduction = self.introductionTextField.text;
+        self.model.qq = self.qqTextField.text;
+        self.model.phone = self.phoneTextField.text;
         self.model.photo_thumbnail_src = self.image;
-        NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *infoFilePath = [path stringByAppendingPathComponent:@"myinfo"];
-        [NSKeyedArchiver archiveRootObject:self.model toFile:infoFilePath];
-//        [UserDefaultTool saveValue:[NSKeyedArchiver archivedDataWithRootObject:self.model] forKey:@"myInfo"];
+        [self.model saveMyInfo];
         [self.navigationController popViewControllerAnimated:YES];
     });
 }
@@ -93,24 +105,23 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
 
 //更新数据，上传服务器
 - (void)refreshMyInfo {
-    //获取已登录用户的账户信息
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
-    NSDictionary *parameter = @{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text};
-    [NetWork NetRequestPOSTWithRequestURL:SETINFO_API WithParameter:parameter
-                     WithReturnValeuBlock:^(id returnValue) {
-                         NSString *status = returnValue[@"info"];
-                         if ([status isEqualToString:@"success"]) {
-                             self.infoUploadStatus = XBSSuccess;
-                         } else if ([status isEqualToString:@"failed"]) {
-                             self.infoUploadStatus = XBSParameterWrong;
-                         }
-                         dispatch_semaphore_signal(sema);
-    } WithFailureBlock:^{
-        self.infoUploadStatus = XBSNetWorkWrong;
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:SETINFO_API method:HttpRequestPost parameters:self.parameters prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *status = responseObject[@"info"];
+        if ([status isEqualToString:@"success"]) {
+            self.infoUploadState = XBSUploadStateSuccess;
+        } else if ([status isEqualToString:@"failed"]) {
+            self.infoUploadState = XBSUploadStateParameterWrong;
+        }
         dispatch_semaphore_signal(sema);
-
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        self.infoUploadState = XBSUploadStateNetWorkWrong;
+        dispatch_semaphore_signal(sema);
     }];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
@@ -121,15 +132,15 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
     MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
     model.paramName = @"fold";
     model.uploadImage = self.image;
-    [NetWork uploadImageWithUrl:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/home/photo/upload"
+    [NetWork uploadImageWithUrl:UPLOAD_IMAGE_API
                     imageParams:@[model]
                     otherParams:@{@"stunum":stuNum}
                imageQualityRate:1
                    successBlock:^(id returnValue) {
-                       self.imageUploadStatus = XBSSuccess;
+                       self.imageUploadState = XBSUploadStateSuccess;
                        dispatch_semaphore_signal(sema);
                    } failureBlock:^{
-                       self.imageUploadStatus = XBSNetWorkWrong;
+                       self.imageUploadState = XBSUploadStateNetWorkWrong;
                        dispatch_semaphore_signal(sema);
                    }];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
@@ -160,36 +171,31 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 83;
+        return 83.f/667*SCREENHEIGHT;
     }
-    return 43;
+    return 43.f/667*SCREENHEIGHT;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     //设置每个cell的名字
     UILabel *textLabel = [[UILabel alloc] init];
     textLabel.font = kFont;
     textLabel.textColor = kDetailTextColor;
-    
     NSArray *titles = @[@"头像", @"昵称", @"简介", @"QQ", @"电话"];
-    
     static NSString *const identifer = @"cell";
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:identifer];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
                                       reuseIdentifier:identifer];
     }
-    
     if (indexPath.section == 0) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"userinfo"];
         [cell.contentView addSubview:self.avatar];
-        _avatar.image = self.model.photo_thumbnail_src;
+        self.avatar.image = self.model.photo_thumbnail_src;
         textLabel.text = titles[indexPath.section];
         textLabel.frame = CGRectMake(20, 35, 0, 0);
         [textLabel sizeToFit];
         [cell.contentView addSubview:textLabel];
-        
     } else if (indexPath.section == 1) {
         textLabel.text = titles[indexPath.row+1];
         textLabel.frame = CGRectMake(20, 15, 0, 0);
@@ -199,9 +205,9 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
         point.frame = CGRectMake(SCREENWIDTH - 20, cell.size.height / 2 - textLabel.size.height / 2, textLabel.size.height / 2, textLabel.size.height);
         [cell.contentView addSubview:point];
         if (indexPath.row == 0) {
-            _nicknameTextField = [[UITextField alloc] initWithPlaceholder:@"请输入昵称" andCell:cell];
-            _nicknameTextField.delegate = self;
-            _nicknameTextField.text = self.model.nickname;
+            self.nicknameTextField = [[UITextField alloc] initWithPlaceholder:@"请输入昵称" andCell:cell];
+            self.nicknameTextField.delegate = self;
+            self.nicknameTextField.text = self.model.nickname;
             [cell.contentView addSubview:_nicknameTextField];
         } else if (indexPath.row == 1) {
             _introductionTextField = [[UITextField alloc] initWithPlaceholder:@"请输入个性签名" andCell:cell];
@@ -220,21 +226,9 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
             _phoneTextField.text = self.model.phone;
             [cell.contentView addSubview:_phoneTextField];
         }
-    }
-    if(indexPath.row != 0){
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
-}
-
-//初始化头像
-- (UIImageView *)avatar {
-    _avatar = [[UIImageView alloc] initWithFrame:CGRectMake(MAIN_SCREEN_W-50-40, 18, 50, 50)];
-    _avatar.userInteractionEnabled = YES;
-//    [_avatar setImage:[UIImage imageNamed:@"headImage.png"]];
-    _avatar.layer.masksToBounds = YES;
-    _avatar.layer.cornerRadius = _avatar.frame.size.width/2;
-    return _avatar;
 }
 
 #pragma mark - 更改头像
@@ -248,7 +242,7 @@ typedef NS_ENUM(NSInteger,XBSUploadStatus){
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     if ([image isKindOfClass:[UIImage class]]) {
-        _avatar.image = image;
+        self.avatar.image = image;
         self.image = image;
     }
     else{

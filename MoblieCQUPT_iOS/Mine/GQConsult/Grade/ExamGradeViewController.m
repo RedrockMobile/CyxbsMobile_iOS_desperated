@@ -10,7 +10,6 @@
 #import "GradeView.h"
 #import "LoginEntry.h"
 #import "MBProgressHUD.h"
-
 @interface ExamGradeViewController ()
 
 @property (assign, nonatomic) CGFloat kHeight;
@@ -49,7 +48,7 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         NSMutableArray *dataArray = returnValue[@"data"];
-        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 64 - 50)];
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - HEADERHEIGHT - 50)];
         _scrollView.contentSize = CGSizeMake(ScreenWidth, (dataArray.count)*_kHeight);
         _scrollView.showsVerticalScrollIndicator = NO;
         [_scrollView flashScrollIndicators];

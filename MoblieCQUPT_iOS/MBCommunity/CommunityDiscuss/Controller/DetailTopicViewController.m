@@ -13,27 +13,23 @@
 #import "MBCommunityHandle.h"
 #import "MBReleaseViewController.h"
 #import "LoginViewController.h"
-#import <MJRefresh.h>
-#import <MBProgressHUD.h>
 #import "MyMessagesViewController.h"
 #import "MBCommuityDetailsViewController.h"
-#import "BannerScrollView.h"
 #import "DetailBannnerView.h"
-#import <Masonry.h>
 #import <UShareUI/UShareUI.h>
-#import "UIImage+Helper.h"
 #import "HZLShareView.h"
+#import "TopicModel.h"
 
 @interface DetailTopicViewController ()<UITableViewDelegate,UITableViewDataSource,MBCommunityCellEventDelegate>
-@property UITableView *tableView;
-@property NSMutableArray <MBCommunity_ViewModel *>*viewModels;
-@property DetailBannnerView *detailBannnerView;
-@property TopicModel *topic;
-@property (nonatomic) UIBarButtonItem *shareButton;
-@property (nonatomic) UIButton *joinBtn;
-@property BOOL isRefresh;
-@property NSInteger page;
-@property LoginViewController *loginVC;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray <MBCommunity_ViewModel *>*viewModels;
+@property (nonatomic, strong) DetailBannnerView *detailBannnerView;
+@property (nonatomic, strong) TopicModel *topic;
+@property (nonatomic, strong) UIBarButtonItem *shareButton;
+@property (nonatomic, strong) UIButton *joinBtn;
+@property (nonatomic, assign) BOOL isRefresh;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, strong) LoginViewController *loginVC;
 @end
 
 @implementation DetailTopicViewController
@@ -52,12 +48,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.navigationController.navigationBar.hidden = NO;
     self.page = 0;
-    [self setupTableView];
-    [self setupJoinBtn];
-    [self getArticles];
+    self.detailBannnerView =[[DetailBannnerView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 230) andTopic:self.topic];
+    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.joinBtn];
+    [self.joinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.and.left.and.bottom.equalTo(self.view).offset(0);
+        make.height.mas_equalTo(SCREENHEIGHT*50/667);
+    }];
     self.navigationItem.rightBarButtonItem = self.shareButton;
+    [self getArticles];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -66,22 +66,45 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setupJoinBtn{
-    if (self.joinBtn == nil) {
-        self.joinBtn = [[UIButton alloc]init];
-        [self.joinBtn addTarget:self action:@selector(joinAction) forControlEvents:UIControlEventTouchUpInside];
-        [self.joinBtn setBackgroundImage:[UIImage imageNamed:@"topic_image_join"] forState:UIControlStateNormal];
-        self.joinBtn.layer.cornerRadius = 5;
-        self.joinBtn.layer.shadowOffset =  CGSizeMake(1, 1);
-        self.joinBtn.layer.shadowOpacity = 0.8;
-        self.joinBtn.layer.shadowColor =  [UIColor grayColor].CGColor;
-        [self.view addSubview:self.joinBtn];
-        
-        [self.joinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.and.left.and.bottom.equalTo(self.view).offset(0);
-            make.height.mas_equalTo(SCREENHEIGHT*50/667);
-        }];
+- (UIButton *)joinBtn{
+    if (!_joinBtn) {
+        _joinBtn = [[UIButton alloc]init];
+        [_joinBtn addTarget:self action:@selector(joinAction) forControlEvents:UIControlEventTouchUpInside];
+        [_joinBtn setBackgroundImage:[UIImage imageNamed:@"topic_image_join"] forState:UIControlStateNormal];
+        _joinBtn.layer.cornerRadius = 5;
+        _joinBtn.layer.shadowOffset =  CGSizeMake(1, 1);
+        _joinBtn.layer.shadowOpacity = 0.8;
+        _joinBtn.layer.shadowColor =  [UIColor grayColor].CGColor;
     }
+    return _joinBtn;
+}
+
+- (UIBarButtonItem *)shareButton {
+    if (!_shareButton) {
+        _shareButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(clickShareButton)];
+    }
+    return _shareButton;
+}
+
+- (UITableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT-SCREENHEIGHT*50/667) style:UITableViewStyleGrouped];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        _tableView.sectionHeaderHeight = 0;
+        _tableView.sectionFooterHeight = 0;
+        _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+            self.isRefresh = YES;
+            [self getArticles];
+        }];
+        _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            self.isRefresh = NO;
+            //        self.tableView.mj_footer.hidden = YES;
+            [self getArticles];
+        }];
+        _tableView.mj_footer.hidden = YES;
+    }
+    return _tableView;
 }
 
 - (void)joinAction{
@@ -99,31 +122,7 @@
             [self.tableView.mj_header beginRefreshing];
         };
         [self.navigationController pushViewController:vc animated:YES];
-//        UINavigationController *nvc = [[UINavigationController alloc]initWithRootViewController:vc];
-//        [self.navigationController presentViewController:nvc animated:YES completion:^{
-//            
-//        }];
     }
-}
-
-- (void)setupTableView {
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight-64-SCREENHEIGHT*50/667) style:UITableViewStyleGrouped];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    self.tableView.sectionHeaderHeight = 0;
-    self.tableView.sectionFooterHeight = 0;
-    [self.view addSubview:self.tableView];
-    self.detailBannnerView =[[DetailBannnerView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 230) andTopic:self.topic];
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        self.isRefresh = YES;
-        [self getArticles];
-    }];
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        self.isRefresh = NO;
-//        self.tableView.mj_footer.hidden = YES;
-        [self getArticles];
-    }];
-    self.tableView.mj_footer.hidden = YES;
 }
 
 #pragma mark - 请求网络数据
@@ -135,14 +134,18 @@
       @"topic_id":self.topic.topic_id,
       @"size":@15}.mutableCopy;
     if (self.isRefresh) {
-        [parameter setObject:@0 forKey:@"page"];
+        parameter[@"page"] = @0;
     }
     else{
-        [parameter setObject:@(self.page+1) forKey:@"page"];
+        parameter[@"page"] = @(self.page+1);
     }
-    
-    [NetWork NetRequestPOSTWithRequestURL:TOPICARTICLE_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        NSMutableArray *dataArray = returnValue[@"data"][@"articles"];
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:TOPICARTICLE_API method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *dataArray = responseObject[@"data"][@"articles"];
         if (self.isRefresh) {
             self.page = 0;
             self.viewModels = [NSMutableArray array];
@@ -166,8 +169,7 @@
             [self.tableView.mj_footer endRefreshing];
         }
         [self.tableView.mj_header endRefreshing];
-        NSLog(@"%@",returnValue);
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"请求数据失败");
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
         hud.mode = MBProgressHUDModeText;
@@ -177,7 +179,6 @@
         [self.tableView.mj_footer endRefreshing];
     }];
 }
-
 
 #pragma mark -UITableView
 
@@ -194,8 +195,8 @@
     if (index == 0) {
         return self.detailBannnerView.extendHeight;
     }
-    return [self.viewModels[index-1] cellHeight];
-    
+    MBCommunity_ViewModel *viewModel = self.viewModels[index-1];
+    return viewModel.model.cellIsOpen == NO ? viewModel.cellHeight : viewModel.extend_cellHeight;
 }
 
 - (CGFloat)tableView:(MBCommunityTableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -220,11 +221,20 @@
         }];
         return cell;
     }
+    cell.extendLabel.tag = indexPath.section;
+    UITapGestureRecognizer *tapExtend = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtendLabel:)];
+    [cell.extendLabel addGestureRecognizer:tapExtend];
     viewModel = self.viewModels[index-1];
     cell.eventDelegate = self;
 //    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
     cell.subViewFrame = viewModel;
     return cell;
+}
+
+- (void)tapExtendLabel:(UIGestureRecognizer *)sender {
+    MBCommunity_ViewModel *view_model = self.viewModels[sender.view.tag - 1];
+    view_model.model.cellIsOpen = !view_model.model.cellIsOpen;
+    [self.tableView reloadRow:0 inSection:sender.view.tag withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 //点击cell的头像的代理方法
@@ -233,8 +243,6 @@
     myMeVc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:myMeVc animated:YES];
 }
-
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger index = indexPath.section;
@@ -252,24 +260,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-- (UIBarButtonItem *)shareButton {
-    UIBarButtonItem *shareBtn;
-    if (!_shareButton) {
-        shareBtn = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(clickShareButton)];
-    }
-    return shareBtn;
-}
-
 - (void)clickShareButton{
-    NSMutableArray *titleArray = [NSMutableArray arrayWithCapacity:5];
-    NSMutableArray *imageArray = [NSMutableArray arrayWithCapacity:5];
-    
-    int starIndex = 0;
-    
-    [titleArray
-     addObjectsFromArray:@[@"QQ好友", @"微信好友",@"朋友圈",@"QQ空间",@"新浪微博",@"更多"]];
-    [imageArray addObjectsFromArray:@[@"icon_share_qq",@"icon_share_wechat",@"icon_share_wechatTimeLine",@"icon_share_qzone",@"icon_share_weibo",@"icon_share_more"]];
-    
+    NSMutableArray *titleArray = @[@"QQ好友", @"微信好友",@"朋友圈",@"QQ空间",@"新浪微博",@"更多"].mutableCopy;
+    NSMutableArray *imageArray = @[@"icon_share_qq",@"icon_share_wechat",@"icon_share_wechatTimeLine",@"icon_share_qzone",@"icon_share_weibo",@"icon_share_more"].mutableCopy;
     NSString* strUrl = [self.topic.imgArray firstObject];
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     NSString* key = [manager cacheKeyForURL:[NSURL URLWithString:strUrl]];
@@ -279,53 +272,41 @@
 
     HZLShareView *shareView = [[HZLShareView alloc] initWithShareHeadOprationWith:titleArray andImageArray:imageArray andTopic:self.topic.keyword andImage:image];
     shareView.shareClick = ^(NSInteger btnTag){
-        switch (btnTag + starIndex) {
+        switch (btnTag) {
             case 0: {
                 // QQ好友
                 [self shareWebPageToPlatformType:UMSocialPlatformType_QQ];
-                
             }
                 break;
             case 1: {
                 // 微信好友
                 [self shareWebPageToPlatformType:UMSocialPlatformType_WechatSession];
-                
             }
                 break;
             case 2: {
                 // 朋友圈
                 [self shareWebPageToPlatformType:UMSocialPlatformType_WechatTimeLine];
-                
             }
                 break;
             case 3: {
                 // QQ空间
                 [self shareWebPageToPlatformType:UMSocialPlatformType_Qzone];
-                
             }
                 break;
             case 4: {
                 //新浪微博
                 [self shareWebPageToPlatformType:UMSocialPlatformType_Sina];
-                
             }
             case 5: {
                 //更多
-                
                 NSString *textToShare = self.topic.keyword;
-                
 //                UIImage *imageToShare = [UIImage captureWithView:self.tableView];
                 UIImage *imageToShare = image;
-                
-                NSURL *urlToShare = [NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id]];
-                
+                NSURL *urlToShare = [NSURL URLWithString:[NSString stringWithFormat:@"https://redrock.team/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id]];
                 NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
-                
-                
                 UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
 //                activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
                 [self.navigationController presentViewController:   activityVC animated:YES completion:nil];
-                
             }
                 break;
             default:
@@ -351,7 +332,7 @@
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.topic.keyword descr:self.topic.content thumImage:image];
     //设置网页地址
-    shareObject.webpageUrl = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id];
+    shareObject.webpageUrl = [NSString stringWithFormat:@"https://redrock.team/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id];
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

@@ -54,7 +54,7 @@
 }
 
 - (void)loadNetData {
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopInfo" WithParameter:@{@"id":_detailData[@"id"]} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopInfo" WithParameter:@{@"id":_detailData[@"id"]} WithReturnValeuBlock:^(id returnValue) {
         _shopInfoData = [NSMutableDictionary dictionaryWithCapacity:10];
         [_shopInfoData setObject:returnValue[@"data"] forKey:@"infoData"];
         [self.scrollView addSubview:self.tableView];

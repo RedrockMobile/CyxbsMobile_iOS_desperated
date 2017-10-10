@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface NoLoginView : UIView
-@property UIButton *loginButton;
+@property (nonatomic, strong) UIButton *loginButton;
 @end

@@ -20,7 +20,7 @@
 @property (nonatomic, strong) LZWeekScrollView *weekScrollView;
 @property (nonatomic, strong) UIButton *barBtn;
 @property (nonatomic, strong) UIImageView *pullImageView;
-@property (nonatomic, assign) CGFloat kWeekScrollViewHeight;
+@property (nonatomic, assign) CGFloat weekScrollViewHeight;
 @property (nonatomic, strong) NSMutableArray <LZPersonModel *>*persons;
 @property (nonatomic, copy) NSArray <LessonButton *>* lessonBtns;
 @property (nonatomic, copy) NSArray <LessonButtonViewModel *> *btnModels;
@@ -37,11 +37,12 @@
     self.hud.labelText=@"loading";
     self.isNetWorkSuccess = YES;
     self.nowWeek = 0;
-    self.kWeekScrollViewHeight = SCREENHEIGHT*0.06;
+    self.weekScrollViewHeight = SCREENHEIGHT*0.06;
     [self getLessonsData];
     [self initNavigationBar];
     [self.view addSubview:self.mainView];
     [self.view addSubview:self.weekScrollView];
+
 
     // Do any additional setup after loading the view.
 }
@@ -87,8 +88,10 @@
         if (_nowWeek >0 && _nowWeek<=20) {
             weekArray[_nowWeek] = @"本周";
         }
-        _weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight) andTitles:weekArray];
+        _weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight) andTitles:weekArray];
         _weekScrollView.eventDelegate = self;
+        [self clickBtn];
+        
     }
     return _weekScrollView;
 }
@@ -124,8 +127,8 @@
     else{
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
-            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _kWeekScrollViewHeight);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_kWeekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+_kWeekScrollViewHeight));
+            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight);
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_weekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+_weekScrollViewHeight));
             
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = NO;
@@ -197,7 +200,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.hud hide:YES];
                 [self.weekScrollView scrollToIndex:_nowWeek];
-                [self showMatterWithWeek:_nowWeek];
+                
             });
         }
     });

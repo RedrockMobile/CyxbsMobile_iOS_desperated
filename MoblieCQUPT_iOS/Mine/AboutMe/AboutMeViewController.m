@@ -52,7 +52,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -76,7 +76,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
 
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         // 刷新表格
@@ -102,6 +102,9 @@
         [self dataFlash];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        //sention间距
+        _tableView.sectionHeaderHeight = 10;
+        _tableView.sectionFooterHeight = 10;
         
         UINib *nib2 = [UINib nibWithNibName:@"AboutMePraiseTableViewCell" bundle:nil];
         [_tableView registerNib:nib2 forCellReuseIdentifier:@"praiseCell"];
@@ -117,7 +120,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme"
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbsMobile/index.php/Home/Article/aboutme"
                             WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,
                                 @"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
@@ -177,7 +180,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
+    [NetWork NetRequestPOSTWithRequestURL:@"https://redrock.team/cyxbsMobile/index.php/Home/NewArticle/searchContent"
                             WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":_articleIdArray[indexPath.section],@"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
                          NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
@@ -231,7 +234,7 @@
         if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
             NSString *imageString1 = _data[indexPath.section][@"article_photo_src"];
             NSArray *imageNameArray1 = [imageString1 componentsSeparatedByString:@","];
-            NSString *imageUrl1 = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
+            NSString *imageUrl1 = [NSString stringWithFormat:@"https://redrock.team/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
             [remarkCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             remarkCell.articlePhotoWidth.constant = 0.1;
@@ -264,7 +267,7 @@
         if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
             NSString *imageString2 = _data[indexPath.section][@"article_photo_src"];
             NSArray *imageNameArray2 = [imageString2 componentsSeparatedByString:@","];
-            NSString *imageUrl2 = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
+            NSString *imageUrl2 = [NSString stringWithFormat:@"https://redrock.team/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
             [praiseCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             praiseCell.articlePhotoWidth.constant = 0.1;
