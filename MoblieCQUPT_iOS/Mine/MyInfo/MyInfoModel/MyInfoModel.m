@@ -38,7 +38,8 @@
         self.nickname = dic[@"nickname"];
         self.gender = dic[@"gender"];
         NSString *str = dic[@"photo_thumbnail_src"];
-        NSURL *url = [NSURL URLWithString:[str stringByReplacingOccurrencesOfString:@"http" withString:@"https"]];
+//        NSURL *url = [NSURL URLWithString:[str stringByReplacingOccurrencesOfString:@"http" withString:@"https"]];
+        NSURL *url = [NSURL URLWithString:str];
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage *image = [UIImage imageWithData:data];
         self.photo_thumbnail_src = image;

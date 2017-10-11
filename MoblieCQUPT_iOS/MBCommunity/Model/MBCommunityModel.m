@@ -7,7 +7,7 @@
 //
 
 #import "MBCommunityModel.h"
-#define PHOTOURL @"https://redrock.team/cyxbsMobile/Public/photo/"
+#define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
 @implementation MBCommunityModel
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic{

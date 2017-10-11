@@ -55,7 +55,7 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain", nil];
     
-    [manager GET:@"https://redrock.team/welcome/2017/api/apiForGuide.php?RequestType=BeautyInNear" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseobject) {
+    [manager GET:@"https://wx.idsbllp.cn/welcome/2017/api/apiForGuide.php?RequestType=BeautyInNear" parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id _Nullable responseobject) {
         NSDictionary *dic = responseobject;
         for (int i = 0; i < [dic[@"Data"] count]; i++) {
             self.nameArray[i] = dic[@"Data"][i][@"name"];

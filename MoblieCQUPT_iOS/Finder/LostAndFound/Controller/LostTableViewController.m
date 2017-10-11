@@ -143,7 +143,7 @@ typedef NS_ENUM(NSInteger,LZPlace){
     
     cell.contentLabel.text = item.pro_description;
     if (self.theme == LZFound) {
-        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redrock.team%@",item.wx_avatar]]];
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://wx.idsbllp.cn%@",item.wx_avatar]]];
     }
     else{
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:item.wx_avatar]];

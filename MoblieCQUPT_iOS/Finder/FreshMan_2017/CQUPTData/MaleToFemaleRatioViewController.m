@@ -50,7 +50,7 @@
                                  @"RequestType":@"SexRatio"
                                  };
     
-    NSString *url = @"https://redrock.team/welcome/2017/api/apiRatio.php";
+    NSString *url = @"https://wx.idsbllp.cn/welcome/2017/api/apiRatio.php";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
