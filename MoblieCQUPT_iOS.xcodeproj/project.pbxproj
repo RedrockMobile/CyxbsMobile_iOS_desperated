@@ -17,7 +17,10 @@
 		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
 		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
+<<<<<<< HEAD
 		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
+=======
+>>>>>>> RedrockMobile/master
 		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
 		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
 		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
@@ -587,8 +590,11 @@
 		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
 		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
 		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 		6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
+=======
+>>>>>>> RedrockMobile/master
 		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
 		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
 		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
