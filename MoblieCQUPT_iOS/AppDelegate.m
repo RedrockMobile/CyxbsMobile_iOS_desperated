@@ -58,8 +58,6 @@
 
 #pragma mark - 闪屏图下载
 
-#pragma mark - 闪屏图下载
-
 - (void)downloadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
@@ -107,14 +105,9 @@
         NSString *time = [userDefaults objectForKey:@"remindMeTime"];
         [remindNotification addTomorrowNotificationWithMinute:@"00" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
     }
-
 }
 
 #pragma mark - 分享url跳转
-
-}
-#pragma mark - 分享url跳转
-
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
