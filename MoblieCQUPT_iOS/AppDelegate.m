@@ -97,7 +97,7 @@
 - (void)checkUpTheNotifacation{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
-    if (![userDefaults objectForKey:@"remindMeTimeBOOL"]) {
+    if (![userDefaults boolForKey:@"remindMeTimeBOOL"]) {
         [userDefaults setBool:NO forKey:@"remindMeTimeBOOL"];
         [remindNotification deleteNotification];
     }

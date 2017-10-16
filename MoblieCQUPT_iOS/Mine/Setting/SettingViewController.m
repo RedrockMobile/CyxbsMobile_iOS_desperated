@@ -29,8 +29,9 @@
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.estimatedSectionHeaderHeight = 0;
+    _tableView.estimatedSectionFooterHeight = 0;
     UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     [quitBtn setImage:[UIImage imageNamed:@"backColor"] forState:UIControlStateNormal];
     quitBtn.frame = CGRectMake(self.view.centerX - (SCREENWIDTH - 40) / 2, self.view.centerY - 40, SCREENWIDTH - 40, 50  * SCREENWIDTH / 375);
     [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];

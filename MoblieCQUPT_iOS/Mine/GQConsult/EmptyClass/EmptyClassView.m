@@ -89,8 +89,8 @@
 //周数的滑动栏
 -(UIScrollView *)setUpScrollView{
     //初始化时停在本周的位置上
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *nowWeek = [[NSString alloc]initWithString:[userDefault objectForKey:@"nowWeek"]];
+    NSNumber *num = [UserDefaultTool valueWithKey:@"nowWeek"];
+    NSString *nowWeek = [num stringValue];
     UIScrollView *weekScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.size.width, self.size.height / 4)];
     weekScrollView.contentSize = CGSizeMake(65 * 19, 45);
     weekScrollView.showsVerticalScrollIndicator = NO;
