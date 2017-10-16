@@ -20,6 +20,8 @@
  *viewArry;
 @property (strong, nonatomic) NSDictionary *dataDic;
 @property (strong, nonatomic) UIScrollView *scrollView;
+//记录scrollview位置
+@property (nonatomic, assign) NSInteger lastcontentOffset;
 @end
 
 @implementation EmptyClassViewController
@@ -37,7 +39,7 @@
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.bounces = NO;
-    _scrollView.decelerationRate = 0.1;
+    _scrollView.decelerationRate = 0;
     [_scrollView flashScrollIndicators];
     [self.view addSubview:_scrollView];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(readyToLoad:) name:@"checkReady" object:nil];
@@ -248,15 +250,28 @@
         _views.handleBtn.selected = !_views.handleBtn.selected;
     }
 }
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    if(targetContentOffset->y > 20&&scrollView.contentOffset.y <20){
+        [UIView animateWithDuration:1 animations:^{
+            targetContentOffset->y = 20;
+        }];
+    }
+    else{
+        [UIView animateWithDuration:1 animations:^{
+            targetContentOffset->y = (targetContentOffset->y - scrollView.contentOffset.y) / 5 + scrollView.contentOffset.y;
+        }];
+    }
+}
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%f", scrollView.contentOffset.y);
-    if (scrollView.contentOffset.y > 0&&_views.handleBtn.selected) {
+    CGFloat contentOffset = scrollView.contentOffset.y;
+    CGFloat offset = contentOffset - self.lastcontentOffset;
+    self.lastcontentOffset = contentOffset;
+    if (offset > 0 && contentOffset > 0&&_views.handleBtn.selected) {
         _views.handleBtn.selected = !_views.handleBtn.selected;
     }
-    else if (scrollView.contentOffset.y < 50&&!_views.handleBtn.selected) {
-        _views.handleBtn.selected = !_views.handleBtn.selected;
+    if (contentOffset == 0&&!_views.handleBtn.selected) {
+         _views.handleBtn.selected = !_views.handleBtn.selected;
     }
-
 }
 
 -(void)dealloc{

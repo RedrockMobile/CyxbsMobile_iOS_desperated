@@ -20,14 +20,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = RGBColor(243, 244, 245, 1);
     
-    _suggestTextView = [[ORWInputTextView alloc] initWithFrame:CGRectMake(-1, 74, MAIN_SCREEN_W+2, 250)];
+    _suggestTextView = [[ORWInputTextView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT+10, MAIN_SCREEN_W, 250)];
+    _suggestTextView.contentSize = CGSizeMake(0, _suggestTextView.contentSize.height);
     [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
     _suggestTextView.delegate = self;
-    [_suggestTextView setContentInset:UIEdgeInsetsMake(0, 10, 0, 5)];//设置UITextView的内边距
     [self.view addSubview:_suggestTextView];
     self.navigationItem.rightBarButtonItem = self.send;
     self.navigationItem.title = @"意见反馈";

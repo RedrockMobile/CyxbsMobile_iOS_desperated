@@ -26,13 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:_tableView];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.estimatedSectionHeaderHeight = 0;
+    _tableView.estimatedSectionFooterHeight = 0;
     UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.tableView.contentInset
-    = UIEdgeInsetsMake(-35,0,0,0);
     [quitBtn setImage:[UIImage imageNamed:@"backColor"] forState:UIControlStateNormal];
     quitBtn.frame = CGRectMake(self.view.centerX - (SCREENWIDTH - 40) / 2, self.view.centerY - 40, SCREENWIDTH - 40, 50  * SCREENWIDTH / 375);
     [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
