@@ -18,15 +18,13 @@
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, copy) NSArray <LZCarouselModel *> *array;
 @property (nonatomic, assign) NSInteger selectedIndex;
-@property (nonatomic, assign) BOOL firstLoad;
-#define N 100000
+#define N 10000
 @end
 
 @implementation FinderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.firstLoad = YES;
     NSArray *placeholderImageArray = @[@"cqupt1.jpg",@"cqupt2.jpg",@"cqupt3.jpg"];
     NSMutableArray *models = [NSMutableArray array];
     for (NSString *str in placeholderImageArray) {
@@ -36,12 +34,13 @@
     }
     self.array = [self getCarouselModels]?:models;
     [self getNetWorkData];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.scrollEnabled = NO;
+    self.collectionView.collectionViewLayout = [[FinderCollectionViewFlowLayout alloc]init];
     UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
     leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
     UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
@@ -51,8 +50,9 @@
     // 产品的要求 一次滑动只能移动一个
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
-    self.selectedIndex = self.array.count*N/2;
     
+    self.selectedIndex = self.array.count*N/2;
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -128,18 +128,6 @@
     [self.timer invalidate];
     self.timer = nil;
 }
-
-
-- (void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    if (self.firstLoad) {
-        self.layout.itemSize = CGSizeMake(self.collectionView.width-100, self.collectionView.height);
-        self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-        self.firstLoad = NO;
-    }
-}
-
 
 - (void)swipe:(UISwipeGestureRecognizer *)getsure{
     [self removeTimer];
