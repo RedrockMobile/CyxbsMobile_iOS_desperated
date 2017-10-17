@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"事项编辑";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.cellDicArray = @[@{@"title":@"周数",@"img":@"remind_image_week",@"content":@""}.mutableCopy,
                           @{@"title":@"时间",@"img":@"remind_image_time",@"content":@""}.mutableCopy,
                           @{@"title":@"提醒",@"img":@"remind_image_remind",@"content":@""}.mutableCopy]
@@ -54,7 +55,6 @@
     self.titleTextField.delegate = self;
     self.titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;    //防止文字输入后下移
     self.contentTextView.delegate = self;
-    self.contentTextView.placeHolder = @"请编辑内容……";
     self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
     __weak typeof(self) weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
@@ -113,6 +113,7 @@
         [self.tableView reloadData];
     }
     else{
+        self.contentTextView.placeHolder = @"请编辑内容……";
         NSArray *weeks = @[[UserDefaultTool valueWithKey:@"nowWeek"]].mutableCopy;
         [self saveWeeks:weeks];
     }
