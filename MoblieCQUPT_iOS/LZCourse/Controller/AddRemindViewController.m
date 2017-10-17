@@ -107,8 +107,8 @@
                 }
             }
         }
-        self.cellDicArray[0][@"content"] = [TimeHandle handleTimes:self.timeArray];
-        self.cellDicArray[1][@"content"] = [TimeHandle handleWeeks:self.weekArray];
+        self.cellDicArray[0][@"content"] = [TimeHandle handleWeeks:self.weekArray];
+        self.cellDicArray[1][@"content"] = [TimeHandle handleTimes:self.timeArray];
         self.cellDicArray[2][@"content"] = self.remindTimeChooseView.currenSelectedTitle;
         [self.tableView reloadData];
     }
@@ -178,14 +178,14 @@
     [self.contentTextView resignFirstResponder];
     switch (indexPath.row) {
         case 0:
-            self.timeChooseVC = [[TimeChooseViewController alloc] initWithTimeArray:self.timeArray];
-            self.timeChooseVC.delegate = self;
-            [self.navigationController pushViewController:self.timeChooseVC animated:YES];
-            break;
-        case 1:
             self.weekChooseVC = [[WeekChooseViewController alloc]initWithTimeArray:self.weekArray];
             self.weekChooseVC.delegate = self;
             [self.navigationController pushViewController:self.weekChooseVC animated:YES];
+            break;
+        case 1:
+            self.timeChooseVC = [[TimeChooseViewController alloc] initWithTimeArray:self.timeArray];
+            self.timeChooseVC.delegate = self;
+            [self.navigationController pushViewController:self.timeChooseVC animated:YES];
             break;
         case 2:
             [self remindChooseViewAnimated];
@@ -236,14 +236,14 @@
 }
 
 - (void)saveWeeks:(NSArray *)weekArray{
-    self.cellDicArray[1][@"content"] = [TimeHandle handleWeeks:weekArray];
+    self.cellDicArray[0][@"content"] = [TimeHandle handleWeeks:weekArray];
     self.weekArray = weekArray;
     [self.tableView reloadData];
 }
 
 - (void)saveTimes:(NSArray *)timeArray{
     self.timeArray = timeArray.mutableCopy;
-    self.cellDicArray[0][@"content"] = [TimeHandle handleTimes:timeArray];
+    self.cellDicArray[1][@"content"] = [TimeHandle handleTimes:timeArray];
     [self.tableView reloadData];
 }
 
@@ -275,7 +275,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     
-    NSMutableString *weekString = [[self.cellDicArray[1][@"content"] stringByReplacingOccurrencesOfString:@"周" withString:@""] mutableCopy];
+    NSMutableString *weekString = [[self.cellDicArray[0][@"content"] stringByReplacingOccurrencesOfString:@"周" withString:@""] mutableCopy];
     weekString = [[weekString stringByReplacingOccurrencesOfString:@"、" withString:@","] mutableCopy];
     
     NSMutableArray *dateArray = [NSMutableArray array];
