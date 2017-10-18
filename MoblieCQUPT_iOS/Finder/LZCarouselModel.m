@@ -15,8 +15,8 @@
         self.picture_url = data[@"picture_url"];
         self.picture_goto_url = data[@"picture_goto_url"];
         self.keyword = data[@"keyword"];
-        self.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.picture_url]];
-        self.picture = [UIImage imageWithData:self.imageData];
+//        self.imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.picture_url]];
+//        self.picture = [UIImage imageWithData:self.imageData];
     }
     return self;
 }
