@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - BFPaperCheckbox (2.1.0)
+  - Bugly (2.4.8)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -54,6 +55,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - BFPaperCheckbox
+  - Bugly
   - FMDB
   - GMImagePicker
   - Masonry
@@ -74,6 +76,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   BFPaperCheckbox: 447570b82c15e16e8cf427a83ef1ad04ae1dc6c7
+  Bugly: da3c02408c14838d498429320545a8e439392978
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   GMImagePicker: 6438a6764d6280b1dbf19b59140313f5a73daeeb
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -88,6 +91,6 @@ SPEC CHECKSUMS:
   UPStackMenu: 4e834206f76451c1d78a6cacee46e47ecf83b174
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 4d3fb13a43485f09ca401d7b5c1f474699e3190d
+PODFILE CHECKSUM: 88929bbcfda405c5e8591b28ab6f22a49b3f3b6f
 
 COCOAPODS: 1.2.0.beta.1

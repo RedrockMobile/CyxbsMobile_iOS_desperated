@@ -16,6 +16,7 @@
 #import <UMSocialCore/UMSocialCore.h>
 #import "SplashModel.h"
 #import "LessonRemindNotification.h"
+#import <Bugly/Bugly.h>
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @end
 
@@ -39,7 +40,14 @@
     UMConfigInstance.appKey = @"573183a5e0f55a59c9000694";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
-    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    [MobClick startWithConfigure:UMConfigInstance];
+    //配置以上参数后调用此方法初始化SDK！
+
+    [Bugly startWithAppId:@"97fdc8c6c0"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    if (stuNum) {
+        [Bugly setUserIdentifier:stuNum];
+    } //Bugly
     //3D-Touch
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [self creatShortCutItemWithIcon];
@@ -51,6 +59,7 @@
             NSLog(@"request authorization successed!");
         }
     }];
+
 
     return YES;
 }
