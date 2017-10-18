@@ -58,7 +58,7 @@
      */
     coverContentY = CGRectGetMaxY(_headImageViewFrame) + MARGIN + 5;
     CGFloat coverContentW = ScreenWidth - 2 * contentX;
-    CGFloat coverContentH = [UIFont systemFontOfSize:14].lineHeight * 2;
+    CGFloat coverContentH = [UIFont systemFontOfSize:15].lineHeight * 2;
     CGRect coverContentRect = CGRectMake(coverContentX, coverContentY, coverContentW, coverContentH);
     _coverContentLabelFrame = coverContentRect;
     
