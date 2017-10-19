@@ -11,7 +11,6 @@
 #import "UIImage+AFNetworking.h"
 #import "WebViewController.h"
 #import "NetWork.h"
-#import "ProgressHUD.h"
 #import "MenuViewController.h"
 
 @interface ShopDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
