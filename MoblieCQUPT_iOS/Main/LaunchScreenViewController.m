@@ -16,6 +16,14 @@
 
 @implementation LaunchScreenViewController
 
+- (instancetype)initWithSplashModel:(SplashModel *)splashModel{
+    self = [self init];
+    if (self) {
+        self.model = splashModel;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadImage];
@@ -30,12 +38,9 @@
 - (void)loadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
-    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
-    NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
-    self.model = [[SplashModel alloc]initWithDic:data];
     UIImage *image = [UIImage imageWithContentsOfFile:imageFilePath];
     if (image && self.model) {
-         self.mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
+        self.mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
         UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
         launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
         UIImageView *splashView = [launchScreen.subviews lastObject];
@@ -53,7 +58,6 @@
         }];
         [skipBtn addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
         
-        
         [self.view addSubview:launchScreen];
         [self.view.window bringSubviewToFront:launchScreen];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -68,6 +72,7 @@
 //        }];
     }
 }
+
 - (void)skip{
     self.view.window.rootViewController = self.mainVC;
 }
