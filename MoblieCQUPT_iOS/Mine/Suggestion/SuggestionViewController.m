@@ -7,7 +7,6 @@
 //
 
 #import "SuggestionViewController.h"
-#import "ProgressHUD.h"
 #import "ORWInputTextView.h"
 
 @interface SuggestionViewController ()<UITextViewDelegate>
@@ -83,12 +82,18 @@
                         @"deviceInfo":deviceInfo,
                         @"content":_suggestTextView.text,
                         };
-    [ProgressHUD show:@"反馈中..."];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"反馈中";
     [NetWork NetRequestPOSTWithRequestURL:SUGGESTION_API WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
-        [ProgressHUD showSuccess:@"反馈成功"];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"反馈成功";
+        [hud hide:YES afterDelay:1];
         _suggestTextView.text = @"";
+        [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
     } WithFailureBlock:^{
-        [ProgressHUD showError:@"网络故障!"];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"网络故障";
+        [hud hide:YES afterDelay:1];
     }];
 
 }
