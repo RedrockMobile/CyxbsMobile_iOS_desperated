@@ -289,7 +289,7 @@
             self.numOfCommentLabel.frame = self.subViewFrame.numOfCommentFrame;
             self.extendLabel.frame = self.subViewFrame.extendLabelFrame;
             _photoContainer.frame = self.subViewFrame.photoContainerViewFrame;
-            _extendBtnImageView.frame = CGRectMake(CGRectGetMaxX(_extendLabel.frame)-8, (self.extendLabel.height - 5) / 2.0, 12, 5);
+            _extendBtnImageView.frame = CGRectMake(CGRectGetMaxX(_extendLabel.frame)-20, (self.extendLabel.height - 5) / 2.0, 12, 5);
             self.dottedLineImageView.frame = self.subViewFrame.dottedLineImageViewFrame;
             
         } else {
@@ -301,7 +301,7 @@
             _numOfCommentLabel.frame = self.subViewFrame.extend_numOfCommentFrame;
             _extendLabel.frame = self.subViewFrame.extend_extendLabelFrame;
             _photoContainer.frame = self.subViewFrame.extend_photoContainerViewFrame;
-            _extendBtnImageView.frame = CGRectMake(CGRectGetMaxX(_extendLabel.frame)-8, (self.extendLabel.height - 5) / 2.0, 12, 5);
+            _extendBtnImageView.frame = CGRectMake(CGRectGetMaxX(_extendLabel.frame)-20, (self.extendLabel.height - 5) / 2.0, 12, 5);
             _dottedLineImageView.frame = self.subViewFrame.extend_dottedLineImageViewFrame;
         }
 

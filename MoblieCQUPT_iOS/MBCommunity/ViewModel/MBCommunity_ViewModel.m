@@ -68,7 +68,7 @@
     
     //展开按钮
     if (height > twoLinesHeight) {
-        self.extendLabelFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(_coverContentLabelFrame) + 12, 32, 18);
+        self.extendLabelFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(_coverContentLabelFrame) + 12, 45, 25);
     } else {
         self.extendLabelFrame = _contentLabelFrame;
     }
@@ -206,7 +206,7 @@
 
 //点击展开后的一套frame
     self.extend_contentLabelFrame = CGRectMake(_coverContentLabelFrame.origin.x, _coverContentLabelFrame.origin.y, self.contentLabelFrame.size.width, self.contentLabelFrame.size.height);
-    self.extend_extendLabelFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(_extend_contentLabelFrame) + 12, 32, 18);
+    self.extend_extendLabelFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(_extend_contentLabelFrame) + 12, 45, 25);
     
     if (picCount != 0) {
         self.extend_photoContainerViewFrame = CGRectMake(self.photoContainerViewFrame.origin.x, CGRectGetMaxY(self.extend_extendLabelFrame) + MARGIN + 5, self.photoContainerViewFrame.size.width, self.photoContainerViewFrame.size.height);
