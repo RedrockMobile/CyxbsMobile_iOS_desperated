@@ -311,7 +311,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     if (!self.isMyJoin) {
         [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.item][@"img"][@"img_small_src"]]];
     }else{
-        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@",[_data[indexPath.item][@"img"][@"img_small_src"] substringWithRange:NSMakeRange(0, 24)]]]];
+        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@",_data[indexPath.item][@"img"][@"img_small_src"]]]];
     }
     
     cell.titleLabel.text = [NSString stringWithFormat:@"#%@#",_data[indexPath.item][@"keyword"]];

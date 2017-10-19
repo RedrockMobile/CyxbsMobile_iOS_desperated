@@ -67,8 +67,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 //    searchBgView.backgroundColor = [UIColor clearColor];
     
     self.searchBar = [[UISearchBar alloc] initWithFrame:CHANGE_CGRectMake(60, 5, 300, 30)];
-    self.searchBar.searchBarStyle = UISearchBarStyleProminent;
-    self.searchBar.tintColor = [UIColor whiteColor];
+//    self.searchBar.searchBarStyle = UISearchBarStyleProminent;
+//    self.searchBar.tintColor = [UIColor whiteColor];
+    self.searchBar.tintColor = [UIColor grayColor];
     self.searchBar.placeholder = @"搜索更多话题";
     self.searchBar.delegate = self;
 //    [searchBgView addSubview:self.searchBar];
