@@ -110,7 +110,9 @@
 		<true/>
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>允许之后获取使用照片相关功能</string>
+	<string>允许之后获取访问本地相册图片权限</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>允许之后获取图片存储本地相册权限</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>iconfont.ttf</string>
