@@ -27,7 +27,6 @@
         nvc.topViewController.navigationItem.backBarButtonItem = backItem;
         nvc.tabBarItem.image = [UIImage imageNamed:images[i]];
     }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchSplash:) name:@"touchSplash" object:nil];
 }
 

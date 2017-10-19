@@ -226,6 +226,8 @@
     }
     NSError *error;
     NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc]initWithString:self.contentLabel.text];
+    [attributedStr setFont:[UIFont systemFontOfSize:14]];
+    [attributedStr setColor:[UIColor colorWithRed:68/255.0 green:68/255.0 blue:68/255.0 alpha:1]];
     //正则匹配
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"#.+?#"                                options:0 error:&error];
     if (regex != nil) {
@@ -242,7 +244,6 @@
         //        NSLog(@"%@",error);
     }
 //    attributedStr.font = self.contentLabel.font;
-    [attributedStr setFont:[UIFont systemFontOfSize:14]];
     self.contentLabel.attributedText = attributedStr;
     
     _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;

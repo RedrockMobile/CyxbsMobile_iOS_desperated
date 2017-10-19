@@ -65,4 +65,9 @@
     return arrM;
 }
 
+- (void)prepareLayout{
+    self.itemSize = CGSizeMake(self.collectionView.width-100, self.collectionView.height);
+    self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+}
+
 @end

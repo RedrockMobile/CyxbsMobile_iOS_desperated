@@ -19,7 +19,8 @@
 @property (nonatomic, copy) NSArray <LZCarouselModel *> *array;
 @property (nonatomic, assign) NSInteger selectedIndex;
 @property (nonatomic, assign) BOOL firstLoad;
-#define N 100000
+@property (nonatomic, assign) BOOL allDownload;
+#define N 10000
 @end
 
 @implementation FinderViewController
@@ -36,23 +37,22 @@
     }
     self.array = [self getCarouselModels]?:models;
     [self getNetWorkData];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.scrollEnabled = NO;
+//    self.collectionView.collectionViewLayout = [[FinderCollectionViewFlowLayout alloc]init];
     UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
     leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
     UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
     rightSwipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
     [self.collectionView addGestureRecognizer:leftSwipeGesture];
     [self.collectionView addGestureRecognizer:rightSwipeGesture];
-    // 产品的要求 一次滑动只能移动一个
-    
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
+    // 产品的要求 一次滑动只能移动一个
     self.selectedIndex = self.array.count*N/2;
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -63,6 +63,13 @@
     [self removeTimer];
 }
 
+- (void)viewDidLayoutSubviews{
+    if (self.firstLoad) {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+        self.firstLoad = NO;
+    }
+}
+
 - (void)getNetWorkData{
     HttpClient *client = [HttpClient defaultClient];
     
@@ -71,22 +78,50 @@
     } progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSMutableArray *array = [NSMutableArray array];
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            for (NSDictionary *data in responseObject[@"data"]) {
-                LZCarouselModel *model = [[LZCarouselModel alloc]initWithData:data];
-                [array addObject:model];
-            }
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.array = array.copy;
-                [self saveCarouselModels:self.array];
-                [self.collectionView reloadData];
+        NSArray *dataArray = responseObject[@"data"];
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:dataArray.count];
+        dispatch_group_t group = dispatch_group_create();
+        self.allDownload = YES;
+        for (int i = 0; i<dataArray.count ; i++) {
+            array[i] = @"";
+            NSDictionary *data = dataArray[i];
+            dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+                LZCarouselModel *model = [[LZCarouselModel alloc] initWithData:data];
+                dispatch_queue_t asynchronousQueue = dispatch_queue_create("imageDownloadQueue", NULL);
+                dispatch_async(asynchronousQueue, ^{
+                    NSError *error;
+                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.picture_url]];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        if (imageData) {
+                            model.imageData = imageData;
+                            model.picture = [UIImage imageWithData:model.imageData];
+                            array[i] = model;
+                        }
+                        if (error) {
+                            NSLog(@"%@",error);
+                            self.allDownload = NO;
+                        }
+                        dispatch_semaphore_signal(sema);
+                    });
+                });
+                dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
             });
+        }
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            if (self.allDownload) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.array = array.copy;
+                    [self saveCarouselModels:self.array];
+                    [self.collectionView reloadData];
+                });
+            }
         });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         
     }];
+    
 }
 
 - (BOOL)saveCarouselModels:(NSArray *)array{
@@ -129,18 +164,6 @@
     self.timer = nil;
 }
 
-
-- (void)viewDidLayoutSubviews{
-    [super viewDidLayoutSubviews];
-    if (self.firstLoad) {
-        self.layout.itemSize = CGSizeMake(self.collectionView.width-100, self.collectionView.height);
-        self.layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
-        self.firstLoad = NO;
-    }
-}
-
-
 - (void)swipe:(UISwipeGestureRecognizer *)getsure{
     [self removeTimer];
     if (getsure.direction == UISwipeGestureRecognizerDirectionLeft) {
@@ -157,8 +180,6 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.array.count*N;
 }
-
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;

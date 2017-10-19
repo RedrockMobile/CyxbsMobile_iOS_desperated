@@ -46,6 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"事项编辑";
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.cellDicArray = @[@{@"title":@"周数",@"img":@"remind_image_week",@"content":@""}.mutableCopy,
                           @{@"title":@"时间",@"img":@"remind_image_time",@"content":@""}.mutableCopy,
                           @{@"title":@"提醒",@"img":@"remind_image_remind",@"content":@""}.mutableCopy]
@@ -54,7 +55,6 @@
     self.titleTextField.delegate = self;
     self.titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;    //防止文字输入后下移
     self.contentTextView.delegate = self;
-    self.contentTextView.placeHolder = @"请编辑内容……";
     self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
     __weak typeof(self) weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
@@ -107,12 +107,13 @@
                 }
             }
         }
-        self.cellDicArray[0][@"content"] = [TimeHandle handleTimes:self.timeArray];
-        self.cellDicArray[1][@"content"] = [TimeHandle handleWeeks:self.weekArray];
+        self.cellDicArray[0][@"content"] = [TimeHandle handleWeeks:self.weekArray];
+        self.cellDicArray[1][@"content"] = [TimeHandle handleTimes:self.timeArray];
         self.cellDicArray[2][@"content"] = self.remindTimeChooseView.currenSelectedTitle;
         [self.tableView reloadData];
     }
     else{
+        self.contentTextView.placeHolder = @"请编辑内容……";
         NSArray *weeks = @[[UserDefaultTool valueWithKey:@"nowWeek"]].mutableCopy;
         [self saveWeeks:weeks];
     }
@@ -177,14 +178,14 @@
     [self.contentTextView resignFirstResponder];
     switch (indexPath.row) {
         case 0:
-            self.timeChooseVC = [[TimeChooseViewController alloc] initWithTimeArray:self.timeArray];
-            self.timeChooseVC.delegate = self;
-            [self.navigationController pushViewController:self.timeChooseVC animated:YES];
-            break;
-        case 1:
             self.weekChooseVC = [[WeekChooseViewController alloc]initWithTimeArray:self.weekArray];
             self.weekChooseVC.delegate = self;
             [self.navigationController pushViewController:self.weekChooseVC animated:YES];
+            break;
+        case 1:
+            self.timeChooseVC = [[TimeChooseViewController alloc] initWithTimeArray:self.timeArray];
+            self.timeChooseVC.delegate = self;
+            [self.navigationController pushViewController:self.timeChooseVC animated:YES];
             break;
         case 2:
             [self remindChooseViewAnimated];
@@ -235,14 +236,14 @@
 }
 
 - (void)saveWeeks:(NSArray *)weekArray{
-    self.cellDicArray[1][@"content"] = [TimeHandle handleWeeks:weekArray];
+    self.cellDicArray[0][@"content"] = [TimeHandle handleWeeks:weekArray];
     self.weekArray = weekArray;
     [self.tableView reloadData];
 }
 
 - (void)saveTimes:(NSArray *)timeArray{
     self.timeArray = timeArray.mutableCopy;
-    self.cellDicArray[0][@"content"] = [TimeHandle handleTimes:timeArray];
+    self.cellDicArray[1][@"content"] = [TimeHandle handleTimes:timeArray];
     [self.tableView reloadData];
 }
 
@@ -274,7 +275,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     
-    NSMutableString *weekString = [[self.cellDicArray[1][@"content"] stringByReplacingOccurrencesOfString:@"周" withString:@""] mutableCopy];
+    NSMutableString *weekString = [[self.cellDicArray[0][@"content"] stringByReplacingOccurrencesOfString:@"周" withString:@""] mutableCopy];
     weekString = [[weekString stringByReplacingOccurrencesOfString:@"、" withString:@","] mutableCopy];
     
     NSMutableArray *dateArray = [NSMutableArray array];

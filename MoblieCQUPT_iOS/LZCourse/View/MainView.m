@@ -83,8 +83,13 @@
         }
         self.dayLabels[i].text = [NSString stringWithFormat:@"%@\n%@",self.weekDay[i],day];
         if (i == (components.weekday+5)%7) {
-            self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#7097FA"];
-            [[NSUserDefaults standardUserDefaults] setObject:@(i+1) forKey:@"weekdayNum"];
+            if (nowWeek == week) {
+                self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#7097FA"];
+            }
+            else{
+                self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#8395A4"];
+            }
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",i] forKey:@"weekdayNum"];
         }
     }
 }

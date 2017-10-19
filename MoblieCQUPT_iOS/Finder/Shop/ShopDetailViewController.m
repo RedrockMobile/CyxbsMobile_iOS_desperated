@@ -11,7 +11,6 @@
 #import "UIImage+AFNetworking.h"
 #import "WebViewController.h"
 #import "NetWork.h"
-#import "ProgressHUD.h"
 #import "MenuViewController.h"
 
 @interface ShopDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -220,6 +219,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section == 2) {
         [self displayDetailDish];
     }

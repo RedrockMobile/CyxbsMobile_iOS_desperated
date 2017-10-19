@@ -19,6 +19,8 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *cellArray;
 @property (strong, nonatomic) UIView *codeView;
+@property (nonatomic, strong) UIImageView *codeImageView;
+@property (nonatomic, strong) UIWindow *alertWindow;
 @end
 
 @implementation SettingViewController
@@ -164,19 +166,59 @@
     
 }
 - (void)displayCode{
-    _codeView = [[UIView alloc]initWithFrame:self.view.frame];
-    _codeView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
-    UIImageView *codeImage = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"QRcode"]];
-    codeImage.contentMode = UIViewContentModeScaleAspectFit;
-    codeImage.size = CGSizeMake(SCREENWIDTH - 50, SCREENHEIGHT - 300);
-    codeImage.center = _codeView.center;
-    [_codeView addSubview:codeImage];
+    self.codeView = [[UIView alloc]initWithFrame:self.view.frame];
+    self.codeView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
+    self.codeImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"QRcode"]];
+    self.codeImageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.codeImageView.size = CGSizeMake(SCREENWIDTH - 50, SCREENHEIGHT - 300);
+    self.codeImageView.center = self.codeView.center;
+    [self.codeView addSubview:self.codeImageView];
     UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tap)];
-    _codeView.userInteractionEnabled = YES;
-    [_codeView addGestureRecognizer:tapRecognizer];
-    [self.view.window addSubview:_codeView];
+    UILongPressGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(longPressAction:)];
+    self.codeView.userInteractionEnabled = YES;
+    self.codeImageView.userInteractionEnabled = YES;
+    [self.codeView addGestureRecognizer:tapRecognizer];
+    [self.codeImageView addGestureRecognizer:longPressGestureRecognizer];
+    [self.view.window addSubview:self.codeView];
 }
+
+
 - (void)tap{
     [_codeView removeFromSuperview];
 }
+
+- (void)longPressAction:(UILongPressGestureRecognizer *)longPress{
+    // 手势的状态
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"保存图片" message:@"您要保存当前图片到相册中吗？" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"保存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIImageWriteToSavedPhotosAlbum(self.codeImageView.image, self, @selector(image:didFinshSavingWithError:contextInfo:), nil);
+        [alertController dismissViewControllerAnimated:YES completion:^{
+        }];
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:^{
+        }];
+    }];
+    [alertController addAction:okAction];
+    [alertController addAction:cancelAction];
+    if (longPress.state == UIGestureRecognizerStateBegan) {
+        [self.codeView removeFromSuperview];
+        [self presentViewController:alertController animated:YES completion:nil];
+     }
+}
+                               
+- (void) image:(UIImage *)image didFinshSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    NSString *mes = nil;
+    if (error != nil) {
+        mes = @"保存图片失败";
+    } else {
+        mes = @"保存图片成功";
+    }
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.labelText = mes;
+    [hud hide:YES afterDelay:1];
+    
+}
+
 @end
