@@ -266,7 +266,7 @@
     NSString *title = @"iOS title";
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    NSString *user_id = [UserDefaultTool valueWithKey:@"user_id"];
+//    NSString *user_id = [UserDefaultTool valueWithKey:@"user_id"];
     NSString *content = self.inputView.textView.text;
     NSString *thumbnail_src = @"";
     NSString *photo_src = @"";
@@ -290,7 +290,6 @@
     NSMutableDictionary *parameter = @{@"stuNum":stuNum,
                                        @"idNum":idNum,
                                        @"title":title,
-                                       @"user_id":user_id,
                                        @"content":content,
                                        @"photo_src":photo_src,
                                        @"thumbnail_src":thumbnail_src,

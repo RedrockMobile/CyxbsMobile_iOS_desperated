@@ -15,6 +15,7 @@
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
 #import "SplashModel.h"
+#import "LaunchScreenViewController.h"
 #import "LessonRemindNotification.h"
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @end
@@ -25,21 +26,21 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window.backgroundColor = [UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
-    if ([NSData dataWithContentsOfFile:imageFilePath]) {
-        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]]instantiateViewControllerWithIdentifier:@"LaunchScreenViewController"];
-    }
+    [self showImage];
     [self downloadImage];
+    
     [self checkUpTheNotifacation];
+    
     [[UMSocialManager defaultManager] openLog:YES];
     [[UMSocialManager defaultManager] setUmSocialAppkey:@""];
     [self configUSharePlatforms];
     [self confitUShareSettings];
+    
     UMConfigInstance.appKey = @"573183a5e0f55a59c9000694";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
     [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    
     //3D-Touch
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [self creatShortCutItemWithIcon];
@@ -56,7 +57,29 @@
 }
 
 
-#pragma mark - 闪屏图下载
+#pragma mark - 闪屏图
+
+- (void)showImage{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
+    NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
+    SplashModel *model = [[SplashModel alloc]initWithDic:data];
+    if ([NSData dataWithContentsOfFile:imageFilePath] && [NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
+        LaunchScreenViewController *launchScreenVC = [[LaunchScreenViewController alloc]initWithSplashModel:model];
+        self.window.rootViewController = launchScreenVC;
+    }
+    else{
+        NSError *error;
+        NSFileManager *manager=[NSFileManager defaultManager];
+        if(![manager removeItemAtPath:imageFilePath error:&error]){
+            NSLog(@"%@",error);
+        }
+        if(![manager removeItemAtPath:dataPath error:&error]){
+            NSLog(@"%@",error);
+        }
+    }
+}
 
 - (void)downloadImage{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -88,12 +111,14 @@
         if (error2) {
             NSLog(@"%@",error2);
         }
-
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
 }
+
+#pragma mark - 课前提醒
+
 - (void)checkUpTheNotifacation{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
@@ -142,10 +167,6 @@
     }
     return result;
 }
-
-//- (void)applicationDidFinishLaunching:(UIApplication *)application{
-//    
-//}
 
 #pragma mark - 友盟分享
 - (void)confitUShareSettings

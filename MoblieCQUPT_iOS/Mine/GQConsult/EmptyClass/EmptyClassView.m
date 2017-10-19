@@ -131,12 +131,7 @@
 //各个按钮栏
 - (UIView *)setUpWeekdayBtn:(NSArray *)array{
     UIView *btnView = [[UIView alloc] init];
-    NSDate *  nowdate=[NSDate date];
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"EEE"];
-    NSString *  weekString = [dateFormatter stringFromDate:nowdate];
-    NSArray *weekday = @[@"Mon",@"Tue",@"Wed",@"Thu",@"Fri",@"Sat",@"Sun"];
-    NSString *index = [[NSString alloc]initWithFormat:@"%lu",(unsigned long)[weekday indexOfObject:weekString]];
+    NSString *index = [[NSString alloc]initWithFormat:@"%@",[UserDefaultTool valueWithKey:@"weekdayNum"]];
     [_emptyClassData setObject:index forKey:@"weekdayNum"];
     currentIndexInWeekday = index.intValue;
     weekdayArray = [NSMutableArray array];

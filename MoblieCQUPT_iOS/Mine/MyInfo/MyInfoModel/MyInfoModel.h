@@ -11,9 +11,9 @@
 @interface MyInfoModel : NSObject<NSCoding>
 
 @property (strong, nonatomic)NSString *stuNum;
-@property (strong, nonatomic)NSString *idNum;
+//@property (strong, nonatomic)NSString *idNum;
 @property (strong, nonatomic)NSString *introduction;
-//@property (strong, nonatomic)NSString *username;
+@property (strong, nonatomic)NSString *username;
 @property (strong, nonatomic)NSString *nickname;
 @property (strong, nonatomic)NSString *gender;
 @property (strong, nonatomic)UIImage *photo_thumbnail_src;

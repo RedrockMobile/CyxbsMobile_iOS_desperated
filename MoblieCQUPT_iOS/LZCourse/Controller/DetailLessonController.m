@@ -46,7 +46,7 @@
 }
 
 - (NSString *)handleTime:(LessonMatter *)lesson{
-    NSArray *beginTimes = @[@"8:00",@"8:55",@"10:05",@"11:00",@"14:00",@"14:55",@"16:05",@"17:00",@"19:00",@"19:55",@"20:50",@"21:45"];
+    NSArray *beginTimes = @[@"8:00",@"8:55",@"10:15",@"11:10",@"14:00",@"14:55",@"16:15",@"17:10",@"19:00",@"19:55",@"20:50",@"21:45"];
     NSMutableArray *endTimes = [NSMutableArray array];
     for (NSString *timeString in beginTimes) {
         NSArray *tempArray = [timeString componentsSeparatedByString:@":"];

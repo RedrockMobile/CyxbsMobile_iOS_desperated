@@ -10,7 +10,9 @@
 @implementation MyInfoModel
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.stuNum forKey:@"stunum"];
     [aCoder encodeObject:self.nickname forKey:@"nickname"];
+    [aCoder encodeObject:self.username forKey:@"username"];
     [aCoder encodeObject:self.gender forKey:@"gender"];
     [aCoder encodeObject:self.photo_thumbnail_src forKey:@"photo_thumbnail_src"];
     [aCoder encodeObject:self.photo_src forKey:@"photo_src"];
@@ -21,7 +23,9 @@
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
+        self.stuNum = [aDecoder decodeObjectForKey:@"stunum"];
         self.nickname = [aDecoder decodeObjectForKey:@"nickname"];
+        self.username = [aDecoder decodeObjectForKey:@"username"];
         self.gender = [aDecoder decodeObjectForKey:@"gender"];
         self.photo_thumbnail_src = [aDecoder decodeObjectForKey:@"photo_thumbnail_src"];
         self.photo_src = [aDecoder decodeObjectForKey:@"photo_src"];
@@ -35,8 +39,10 @@
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [self init];
     if (self) {
+        self.stuNum = dic[@"stunum"];
         self.nickname = dic[@"nickname"];
         self.gender = dic[@"gender"];
+        self.username = dic[@"username"];
         NSString *str = dic[@"photo_thumbnail_src"];
 //        NSURL *url = [NSURL URLWithString:[str stringByReplacingOccurrencesOfString:@"http" withString:@"https"]];
         NSURL *url = [NSURL URLWithString:str];

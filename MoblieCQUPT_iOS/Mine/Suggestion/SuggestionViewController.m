@@ -27,10 +27,11 @@
     _suggestTextView.contentSize = CGSizeMake(0, _suggestTextView.contentSize.height);
     [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
     _suggestTextView.delegate = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:_suggestTextView];
     self.navigationItem.rightBarButtonItem = self.send;
     self.navigationItem.title = @"意见反馈";
-    self.send.enabled   = NO;
+    self.send.enabled = NO;
 
 }
 
