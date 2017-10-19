@@ -175,11 +175,12 @@
     UIView *dataView = [[UIView alloc]init];
     NSArray *floorArry = @[@"一楼",@"二楼",@"三楼",@"四楼",@"五楼"];
     NSArray *eightFloorArry = @[@"一栋",@"二栋",@"三栋",@"四东",@"五栋"];
-    UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31, 2, 13)];
+    UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31 * SCREENWIDTH / 375, 2, 13)];
     besidesView.image = [UIImage imageNamed:@"ImageBesidesTheEmptyClass"];
     [dataView addSubview:besidesView];
-    UILabel *floorLab = [[UILabel alloc]initWithFrame:CGRectMake(besidesView.right + 8, besidesView.centerY - 8.5, 29, 17)];
-    floorLab.font = [UIFont systemFontOfSize:14];
+    UILabel *floorLab = [[UILabel alloc]initWithFrame:CGRectMake(besidesView.right + 8, besidesView.centerY - 8.5, 0, 0)];
+    floorLab.font = [UIFont systemFontOfSize:14 *SCREENWIDTH / 350];
+    [floorLab sizeToFit];
     if([_dataDic[@"buildNum"] isEqualToString:@"8"]){
          floorLab.text = eightFloorArry[key.intValue - 1];
     }
@@ -193,17 +194,17 @@
         CGRect rect;
         if (i % 4 == 0) {
             if (i == 0){
-                rect = CGRectMake(floorLab.right + 29, besidesView.centerY - 8.5, 0, 0);
+                rect = CGRectMake(floorLab.right + 29 *  SCREENWIDTH / 350, besidesView.centerY - 8.5, 0, 0);
             }
             else{
-                rect = CGRectMake(floorLab.right + 29, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+                rect = CGRectMake(floorLab.right + 29 *  SCREENWIDTH / 350, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
             }
         }
         else{
-            rect =  CGRectMake(labArry[i % 4 - 1].right + 29, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+            rect =  CGRectMake(labArry[i % 4 - 1].right + 29 *  SCREENWIDTH / 350, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
         }
         UILabel *lab = [[UILabel alloc]init];
-        lab.font = [UIFont fontWithName:@"Helvetica"  size:16];
+        lab.font = [UIFont fontWithName:@"Helvetica"  size:16 *  SCREENWIDTH / 350];
         lab.frame = rect;
         lab.text = arry[i];
         NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:arry[i]];
