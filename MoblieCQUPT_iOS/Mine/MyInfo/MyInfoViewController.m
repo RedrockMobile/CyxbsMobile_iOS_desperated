@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
     self.model = [MyInfoModel getMyInfo];
     self.image = self.model.photo_thumbnail_src;
     [self.view addSubview:self.tableView];
-    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(uploadData)];
     self.navigationItem.rightBarButtonItem = rightBarButton;
 }
