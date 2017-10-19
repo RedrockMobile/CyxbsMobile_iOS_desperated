@@ -7,6 +7,7 @@
 //
 
 #import "LZPersonModel.h"
+#import "MyInfoModel.h"
 
 @implementation LZPersonModel
 - (instancetype)initWithData:(NSDictionary *)data{
@@ -19,6 +20,17 @@
         _major = data[@"major"];
         _depart = data[@"depart"];
         _grade = data[@"grade"];
+    }
+    return self;
+}
+
+- (instancetype)initWithMyInfo:(MyInfoModel *)myInfo{
+    self = [super init];
+    if (self) {
+        self.stuNum = myInfo.stuNum;
+        self.name = myInfo.username;
+//        self.gender = myInfo.gender;
+//        self.classnum = myInfo.className;
     }
     return self;
 }

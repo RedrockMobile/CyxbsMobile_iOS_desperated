@@ -13,6 +13,7 @@
 #import "LZPersonSelectViewController.h"
 #import "LZPersonAddView.h"
 #import "LZNoCourseDateDetailViewController.h"
+#import "MyInfoModel.h"
 
 @interface LZNoCourseViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -46,7 +47,11 @@
         make.top.mas_equalTo(self.collectionView.mas_bottom).offset(20);
         make.height.mas_equalTo(self.view.height*0.075);
     }];
-    
+    MyInfoModel *myInfo = [MyInfoModel getMyInfo];
+    if (myInfo) {
+        LZPersonModel *person = [[LZPersonModel alloc]initWithMyInfo:myInfo];
+        [self.personArray addObject:person];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
