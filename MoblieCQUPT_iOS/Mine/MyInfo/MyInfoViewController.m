@@ -48,6 +48,9 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H) style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.estimatedSectionHeaderHeight = 0;
+        _tableView.estimatedSectionFooterHeight = 0;
+//        _tableView.tableFooterView = [[UIView alloc]init];
     }
     return _tableView;
 }
@@ -160,12 +163,14 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (section == 0) {
-        return 0.01f;
-    }
-    else{
+    if (section != 0) {
         return 15.f;
     }
+    return 0.01;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 0.01;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

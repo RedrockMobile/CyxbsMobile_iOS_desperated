@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 @class LessonMatter;
+@class MyInfoModel;
+
 @interface LZPersonModel : NSObject
 @property (nonatomic, copy) NSString *stuNum;
 @property (nonatomic, copy) NSString *name;
@@ -20,5 +22,6 @@
 @property (nonatomic, copy) NSArray <LessonMatter *> *lessons;
 
 - (instancetype)initWithData:(NSDictionary *)data;
+- (instancetype)initWithMyInfo:(MyInfoModel *)myInfo;
 
 @end

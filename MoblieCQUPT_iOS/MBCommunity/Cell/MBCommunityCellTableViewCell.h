@@ -50,6 +50,7 @@ typedef NS_ENUM(NSInteger, MBCommunityCellType) {
 
 //展开以下的
 @property (strong, nonatomic) UILabel *extendLabel;
+//@property (strong, nonatomic) UIButton *extendBtn;
 @property (strong, nonatomic) UIImageView *dottedLineImageView;
 @property (strong, nonatomic) UIButton *upvoteBtn;
 @property (strong, nonatomic) UILabel *numOfUpvoteLabel;

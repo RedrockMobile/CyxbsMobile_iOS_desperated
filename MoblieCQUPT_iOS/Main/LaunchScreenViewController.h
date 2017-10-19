@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+@class SplashModel;
 @interface LaunchScreenViewController : BaseViewController
-
+- (instancetype)initWithSplashModel:(SplashModel *)splashModel;
 @end

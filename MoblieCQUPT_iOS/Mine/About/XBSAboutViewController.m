@@ -7,7 +7,6 @@
 //
 
 #import "XBSAboutViewController.h"
-#import "UIColor+BFPaperColors.h"
 
 @interface XBSAboutViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *appName;
@@ -21,8 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"关于";
-    [self.appName setTextColor:[UIColor paperColorGray500]];
-    [self.appVersion setTextColor:[UIColor paperColorGray500]];
+    [self.appName setTextColor:[UIColor colorWithHexString:@"0x9E9E9E"]];
+    [self.appVersion setTextColor:[UIColor colorWithHexString:@"0x9E9E9E"]];
     // Do any additional setup after loading the view from its nib.
 }
 

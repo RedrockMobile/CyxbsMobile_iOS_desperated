@@ -40,7 +40,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self addSearchBar];
+//    [self addSearchBar];
     [self addSegemenView];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithActionBlock:^(id  _Nonnull sender) {
         [self hideKeyBoard];
@@ -50,19 +50,33 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)addSearchBar{
-    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, HEADERHEIGHT)];
-    bgView.backgroundColor = [UIColor whiteColor];
-    UIView *searchBgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 667, 44)];
-    searchBgView.backgroundColor = [UIColor clearColor];
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CHANGE_CGRectMake(30, 5, 300, 30)];
-    self.searchBar.searchBarStyle = UISearchBarStyleProminent;
-    self.searchBar.tintColor = [UIColor whiteColor];
+//    UIView *bgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 44)];
+    UIView *bgView = [[UIView alloc]init];
+    [self.view addSubview:bgView];
+    
+    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left).offset(0);
+        make.top.equalTo(self.view.mas_top).offset(0);
+        make.width.mas_equalTo(@(375 * autoSizeScaleX));
+        make.height.mas_equalTo(@(44 * autoSizeScaleY));
+    }];
+    
+//    bgView.backgroundColor = [UIColor whiteColor];
+//    UIView *searchBgView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 667, 44)];
+//    self.navigationItem.titleView = searchBgView;
+//    searchBgView.backgroundColor = [UIColor clearColor];
+    
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CHANGE_CGRectMake(60, 5, 300, 30)];
+//    self.searchBar.searchBarStyle = UISearchBarStyleProminent;
+//    self.searchBar.tintColor = [UIColor whiteColor];
+    self.searchBar.tintColor = [UIColor grayColor];
     self.searchBar.placeholder = @"搜索更多话题";
     self.searchBar.delegate = self;
-    [searchBgView addSubview:self.searchBar];
-    self.navigationItem.titleView = searchBgView;
+//    [searchBgView addSubview:self.searchBar];
+    [self.navigationController.navigationBar addSubview:self.searchBar];
+
+
     //    [bgView addSubview:self.searchBar];
-    [self.view addSubview:bgView];
 }
 
 
@@ -142,6 +156,14 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     return YES;
 }
 
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.searchBar removeFromSuperview];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self addSearchBar];
+}
 /*
  #pragma mark - Navigation
  
