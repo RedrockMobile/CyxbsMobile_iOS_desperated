@@ -240,8 +240,18 @@
         cell.subViewFrame = viewModel;
         cell.headImageView.userInteractionEnabled = NO;
 //        cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
+        
+        cell.extendLabel.tag = indexPath.section;
+        UITapGestureRecognizer *tapExtend = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtend:)];
+        [cell.extendLabel addGestureRecognizer:tapExtend];
         return cell;
     }
+}
+
+- (void) tapExtend:(UIGestureRecognizer *)sender {
+    MBCommunity_ViewModel *view_model = _allDataArray[sender.view.tag - 2];
+    view_model.model.cellIsOpen = !view_model.model.cellIsOpen;
+    [self.communityTableView reloadRow:0 inSection:sender.view.tag withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
