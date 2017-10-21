@@ -2837,7 +2837,7 @@
 				CE4334561BE7C52D000C407D /* Embed App Extensions */,
 				EE81DFEAA2E9482E22C8C20D /* [CP] Embed Pods Frameworks */,
 				08A429D9F7D3BA74685ED5B2 /* [CP] Copy Pods Resources */,
-				F207ADD21F9B117F00691948 /* ShellScript */,
+				F207ADD41F9B574400691948 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -3282,7 +3282,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F207ADD21F9B117F00691948 /* ShellScript */ = {
+		F207ADD41F9B574400691948 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

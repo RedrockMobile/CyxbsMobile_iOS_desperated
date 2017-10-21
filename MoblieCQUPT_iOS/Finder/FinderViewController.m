@@ -85,36 +85,45 @@
         for (int i = 0; i<dataArray.count ; i++) {
             array[i] = @"";
             NSDictionary *data = dataArray[i];
-            dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-                LZCarouselModel *model = [[LZCarouselModel alloc] initWithData:data];
-                dispatch_queue_t asynchronousQueue = dispatch_queue_create("imageDownloadQueue", NULL);
-                dispatch_async(asynchronousQueue, ^{
-                    NSError *error;
-                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.picture_url]];
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (imageData) {
-                            model.imageData = imageData;
-                            model.picture = [UIImage imageWithData:model.imageData];
-                            array[i] = model;
-                        }
-                        if (error) {
-                            NSLog(@"%@",error);
-                            self.allDownload = NO;
-                        }
-                        dispatch_semaphore_signal(sema);
+            if(self.allDownload){
+                dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+                    LZCarouselModel *model = [[LZCarouselModel alloc] initWithData:data];
+                    dispatch_queue_t asynchronousQueue = dispatch_queue_create("imageDownloadQueue", NULL);
+                    dispatch_async(asynchronousQueue, ^{
+                        NSError *error;
+                        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.picture_url]];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (imageData) {
+                                model.imageData = imageData;
+                                model.picture = [UIImage imageWithData:model.imageData];
+                                array[i] = model;
+                            }
+                            if (error) {
+                                NSLog(@"%@",error);
+                                self.allDownload = NO;
+                            }
+                            dispatch_semaphore_signal(sema);
+                        });
                     });
+                    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
                 });
-                dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-            });
+            }
         }
         dispatch_group_notify(group, dispatch_get_main_queue(), ^{
             if (self.allDownload) {
-                dispatch_async(dispatch_get_main_queue(), ^{
+                BOOL success = YES; //避免数组中的model未被初始化
+                for(LZCarouselModel *model in array){
+                    if([model isEqual:@""]){
+                        success = NO;
+                        break;
+                    }
+                }
+                if(success){
                     self.array = array.copy;
-                    [self saveCarouselModels:self.array];
+                    [self saveCarouselModels:array.copy];
                     [self.collectionView reloadData];
-                });
+                }
             }
         });
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
