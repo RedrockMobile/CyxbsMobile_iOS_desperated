@@ -300,7 +300,7 @@ static RemindNotification *_instance;
 
 - (NSString *)calculateLessonDateWithWeek:(NSString *)week nowWeek:(NSString *)nowWeek day:(NSString *)day class:(NSString *)beginClass
 {
-    NSDictionary *beginTimes = @{@"0":@"8:00",@"1":@"10:05",@"2":@"14:00",@"3":@"16:05",@"4":@"19:00",@"5":@"20:50"};
+    NSDictionary *beginTimes = @{@"0":@"8:00",@"1":@"10:15",@"2":@"14:00",@"3":@"16:05",@"4":@"19:00",@"5":@"20:50"};
     
     double oneDay = 24 * 60 * 60;
     
