@@ -24,68 +24,55 @@
 
 
 @implementation QueryLoginViewController
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
 - (void)viewDidLoad {
    [super viewDidLoad];
    self.navigationController.navigationBar.hidden = YES;
    [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
    self.navigationController.navigationBar.shadowImage = [[UIImage alloc]init];
    self.navigationItem.title =@"完善信息";
-     __weak typeof (self) weakSelf = self;
-   UIView *bgView = [[UIView alloc]init];
-   bgView.backgroundColor = [UIColor redColor];
-   [self.view addSubview:bgView];
-   [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-      make.center.equalTo(weakSelf.view);
-      make.size.mas_equalTo(CGSizeMake(200, 200));
-   }];
-   UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
    imageView.image = [UIImage imageNamed:@"志愿时长"];
    [self.view addSubview:imageView];
    //设置返回按钮
-   UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake(16,37,10,16)];
+   UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,(37.f/667)*MAIN_SCREEN_H,(11.f/375)*MAIN_SCREEN_W,(16.f/667)*MAIN_SCREEN_H)];
    [back addTarget:self action:@selector(buttonAction1) forControlEvents:UIControlEventTouchUpInside];
    [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
    [self.view addSubview:back];
    //设置bartitle
-   int padding1 = 150;
-   UILabel *tilte = [[UILabel alloc]initWithFrame:CGRectMake(padding1, 35, MAIN_SCREEN_W-2*padding1, 18)];
+    int padding1 = (145.f/375)*MAIN_SCREEN_W;
+   UILabel *tilte = [[UILabel alloc]initWithFrame:CGRectMake(padding1, (35.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-2*padding1, (20.f/667)*MAIN_SCREEN_H)];
    tilte.text = @"完善信息";
    tilte.font = [UIFont systemFontOfSize:18];
    tilte.textAlignment = NSTextAlignmentCenter;
    tilte.textColor = [UIColor whiteColor];
    [self.view addSubview:tilte];
 
+    int padding = (35.f/375)*MAIN_SCREEN_W;
    //设置保存按钮
-   UIButton *save = [[UIButton alloc]init];
+   UIButton *save = [[UIButton alloc]initWithFrame:CGRectMake(padding, (483.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-2*padding, (40.f/667)*MAIN_SCREEN_H)];
    [save addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
    [save setBackgroundImage:[UIImage imageNamed:@"login_icon"] forState:UIControlStateNormal];
    [save setTitle:@"保 存" forState:UIControlStateNormal];
    save.titleEdgeInsets = UIEdgeInsetsMake(0, save.imageView.frame.size.width, 0, 0);
    [save setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-   [self.view addSubview:save];
-   [save mas_makeConstraints:^(MASConstraintMaker *make){
-      make.size.mas_equalTo(CGSizeMake(330, 40));
-      make.centerX.equalTo(weakSelf.view);
-      make.top.height.offset(480);
-   }];
-   
+    [self.view addSubview:save];
    //设置textfield
-   int padding = 40;
-   self.accountField=[self createTextFielfFrame:CGRectMake(76, 335, MAIN_SCREEN_W-padding*2-36, 30) font:[UIFont systemFontOfSize:15] placeholder:@"请输入暖青汇账号"];
-   //user.text=@"13419693608";
+   self.accountField=[self createTextFielfFrame:CGRectMake((76.f/375)*MAIN_SCREEN_W, (335.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-padding*2-36, (30.f/667)*MAIN_SCREEN_H) font:[UIFont systemFontOfSize:15] placeholder:@"请输入暖青汇账号"];
    self.accountField.keyboardType=UIKeyboardTypeNumberPad;
    self.accountField.clearButtonMode = UITextFieldViewModeWhileEditing;
-   UIView *accountLine = [[UIView alloc]initWithFrame:CGRectMake(padding, 367, MAIN_SCREEN_W-padding*2, 2)];
+   UIView *accountLine = [[UIView alloc]initWithFrame:CGRectMake(padding, (367.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-padding*2, (2.f/667)*MAIN_SCREEN_H)];
    accountLine.backgroundColor = [UIColor grayColor];
    accountLine.alpha = 0.2;
    [self.view addSubview:accountLine];
 
-   
-   self.passwordField=[self createTextFielfFrame:CGRectMake(76, 395, MAIN_SCREEN_W-padding*2-36, 30) font:[UIFont systemFontOfSize:15] placeholder:@"请输入密码" ];
+   self.passwordField=[self createTextFielfFrame:CGRectMake((76.f/375)*MAIN_SCREEN_W, (395.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-padding*2-36, (30.f/667)*MAIN_SCREEN_H) font:[UIFont systemFontOfSize:15] placeholder:@"请输入密码" ];
    self.passwordField.clearButtonMode = UITextFieldViewModeWhileEditing;
    self.passwordField.secureTextEntry=YES;
-   UIView *passwordLine = [[UIView alloc]initWithFrame:CGRectMake(36, 428, MAIN_SCREEN_W-padding*2, 2)];
+   UIView *passwordLine = [[UIView alloc]initWithFrame:CGRectMake(padding, (428.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-padding*2, (2.f/667)*MAIN_SCREEN_H)];
    passwordLine.backgroundColor = [UIColor grayColor];
    passwordLine.alpha = 0.2;
    [self.view addSubview:passwordLine];
@@ -93,13 +80,13 @@
    //设置图标的imageview
    UIImage *accountImage = [UIImage imageNamed:@"login_number"];
    self.accountImageView = [[UIImageView alloc]initWithImage:accountImage];
-   self.accountImageView.frame = CGRectMake(padding, 339, 19, 20);
+   self.accountImageView.frame = CGRectMake((42.f/375)*MAIN_SCREEN_W, (339.f/667)*MAIN_SCREEN_H, (19.f/375)*MAIN_SCREEN_W, (20.f/667)*MAIN_SCREEN_H);
    //accountImageView.contentMode = UIViewContentModeScaleToFill;
    
    
    UIImage *passwordImage = [UIImage imageNamed:@"login_password"];
    self.passwordImageView = [[UIImageView alloc]initWithImage:passwordImage];
-   self.passwordImageView.frame = CGRectMake(padding, 399, 19, 20);
+   self.passwordImageView.frame = CGRectMake((42.f/375)*MAIN_SCREEN_W, (399.f/667)*MAIN_SCREEN_H, (19.f/375)*MAIN_SCREEN_W, (20.f/667)*MAIN_SCREEN_H);
    //passwordImageView.contentMode = UIViewContentModeScaleToFill;
 
    

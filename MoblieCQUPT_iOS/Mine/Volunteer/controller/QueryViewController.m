@@ -92,14 +92,14 @@
     [self.view addSubview:toolBarImageView];
     self.selectedIndex = 0;
 
-    
-    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake(16,37,10,16)];
+    int heightH = (STATUSBARHEIGHT+HEADERHEIGHT/2)-(18.f/667)*MAIN_SCREEN_H;
+    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,heightH,(10.f/375)*MAIN_SCREEN_W,(16.f/667)*MAIN_SCREEN_H)];
     [back addTarget:self action:@selector(buttonAction1) forControlEvents:UIControlEventTouchUpInside];
     [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
     [self.view addSubview:back];
     
-    int padding = 165;
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(padding, 33, MAIN_SCREEN_W-padding*2, 18)];
+    int padding = (155.f/375)*MAIN_SCREEN_W;
+    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(padding, heightH, MAIN_SCREEN_W-padding*2, (19.f/667)*MAIN_SCREEN_H)];
     title.text = @"全部";
     title.textAlignment = NSTextAlignmentCenter;
     title.font = [UIFont systemFontOfSize:18];
@@ -107,15 +107,16 @@
     [self.view addSubview:title];
     
     //解除绑定button
-    UIButton *removeBind = [[UIButton alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W-80,34,62,18)];
+    UIButton *removeBind = [[UIButton alloc]initWithFrame:CGRectMake((280.f/375)*MAIN_SCREEN_W,heightH,(84.f/375)*MAIN_SCREEN_W,(18.f/667)*MAIN_SCREEN_H)];
     [removeBind addTarget:self action:@selector(buttonActionRemove) forControlEvents:UIControlEventTouchUpInside];
     [removeBind setBackgroundColor:[UIColor clearColor]];
     [removeBind setTitle:@"解绑账号" forState:UIControlStateNormal];
     removeBind.titleLabel.font = [UIFont systemFontOfSize:14];
+    removeBind.titleLabel.textAlignment = NSTextAlignmentCenter;
     [removeBind setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:removeBind];
     //全部展开button
-    self.allYears = [[UIButton alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W/2+(MAIN_SCREEN_W-padding*2)/2,38,15,8)];
+    self.allYears = [[UIButton alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W/2+(MAIN_SCREEN_W-padding*2)/2,heightH+6,(15.f/375)*MAIN_SCREEN_W,(8.f/667)*MAIN_SCREEN_H)];
     [self.allYears addTarget:self action:@selector(buttonActionUnfold) forControlEvents:UIControlEventTouchUpInside];
     [self.allYears setBackgroundImage:[UIImage imageNamed:@"展开后"] forState:UIControlStateNormal];
     [self.view addSubview:self.allYears];

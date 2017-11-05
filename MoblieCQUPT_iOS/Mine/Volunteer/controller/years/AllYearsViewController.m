@@ -111,6 +111,7 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
         NSUserDefaults *hourDefault = [NSUserDefaults standardUserDefaults];
         NSString *hour = [[hourDefault objectForKey:@"totalhour"] stringValue];
         cell.backgroundLabel3.text = hour;
+        cell.userInteractionEnabled = NO;
         cell.selected = false;
         return cell;
     }
@@ -118,6 +119,7 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
        HeaderTableViewCell *cell = [[HeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reUsedStr[indexPath.section]];
         UIColor *myColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
         cell.backgroundColor = myColor;
+        cell.userInteractionEnabled = NO;
         cell.selected = false;
         return cell;
     }
@@ -207,7 +209,7 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat rowHeight = 0;
     if(indexPath.section == 0){
-        rowHeight = 200;
+        rowHeight = (200.f/667)*MAIN_SCREEN_H;
     }
     if (indexPath.section == 1) {
         rowHeight = 20;

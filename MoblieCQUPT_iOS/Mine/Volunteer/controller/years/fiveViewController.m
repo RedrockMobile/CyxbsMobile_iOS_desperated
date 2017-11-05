@@ -95,6 +95,7 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
         NSString *hour = [NSString stringWithFormat:@"%.1f",perHour];
         cell.backgroundLabel3.text = hour;
         cell.selected = false;
+        cell.userInteractionEnabled = NO;
         return cell;
     }
     else if (indexPath.section == 1 ){
@@ -102,6 +103,7 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
         UIColor *myColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
         cell.backgroundColor = myColor;
         cell.selected = false;
+        cell.userInteractionEnabled = NO;
         return cell;
     }
     QueryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reUsedStr[indexPath.section]];
@@ -186,7 +188,7 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     CGFloat rowHeight = 0;
     if(indexPath.section == 0){
-        rowHeight = 200;
+        rowHeight = (200.f/667)*MAIN_SCREEN_H;
     }
     if (indexPath.section == 1) {
         rowHeight = 20;

@@ -44,7 +44,7 @@
         self.hoursImageView = hoursImageView;
         [self.contentView addSubview:hoursImageView];
         
-        UILabel *cellContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(65, 47, 300, 15)];
+        UILabel *cellContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(65, 47,(260.f/375)*MAIN_SCREEN_W, 15)];
         cellContentLabel.font = [UIFont systemFontOfSize:14];
         cellContentLabel.textColor = [UIColor colorWithRed:28/255.0 green:27/255.0 blue:27/255.0 alpha:1];
         self.cellContentLabel = cellContentLabel;
@@ -57,7 +57,7 @@
         self.cellTimeLabel = cellTimeLabel;
         [self.contentView addSubview:cellTimeLabel];
         
-        UILabel *cellAddressLabel = [[UILabel alloc]initWithFrame:CGRectMake(84, 78, 230, 14)];
+        UILabel *cellAddressLabel = [[UILabel alloc]initWithFrame:CGRectMake(84, 78,(190.f/375)*MAIN_SCREEN_W, 14)];
         cellAddressLabel.font = [UIFont systemFontOfSize:13];
         cellAddressLabel.textColor = [UIColor colorWithRed:28/255.0 green:27/255.0 blue:27/255.0 alpha:1];
         self.cellAddressLabel = cellAddressLabel;
