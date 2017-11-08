@@ -77,7 +77,8 @@
             }
         }
         for (int i=0; i<self.articleThumbnailPictureArray.count; i++) {
-            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL] && ![self.articlePictureArray[i] hasPrefix:PHOTOURL2]) {
+            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL] && ![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL2]) {
+                [preStr stringByAppendingString:@"thumbnail/"];
                 self.articleThumbnailPictureArray[i] =  [preStr stringByAppendingString:self.articleThumbnailPictureArray[i]];
             }
         }
