@@ -11,7 +11,6 @@
 #import "MBCommunityTableView.h"
 #import "MBCommentCell.h"
 #import "MBReleaseViewController.h"
-//#import "MBReplyView.h"
 #import "MBProgressHUD.h"
 #import "LoginViewController.h"
 #import "MyMessagesViewController.h"
@@ -60,14 +59,11 @@
 
 @property (assign, nonatomic) BOOL isLoadedComment;
 
-//@property (strong, nonatomic) MBReplyView *replyView;
 @property (strong, nonatomic) LXReplyView *replyView;
 
 @property (strong, nonatomic) MBProgressHUD *hud;
 
 @property (strong, nonatomic) LXDetailCommentView *detailCommentView;
-
-@property CGRect replyViewOriginalRect;
 
 @property (strong, nonatomic) MBCommunityHandle *handle;
 
@@ -83,14 +79,7 @@
     [super viewDidLoad];
     _isLoadedComment = NO;
     [self.view addSubview:self.tableView];
-    /*格格的
     [self.view addSubview:self.replyView];
-    */
-    [self.view addSubview:self.replyView];
-    [self.view addSubview:self.detailCommentView];
-    
-    _coverGrayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 0)];
-    _coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     
      [[NSNotificationCenter defaultCenter] addObserver:self
         selector:@selector(keyboardWillShow:)
@@ -98,9 +87,8 @@
         object:nil];
     
     self.window = [UIApplication sharedApplication].keyWindow;
-//    [self.view addSubview:self.coverGrayView];
-    // Do any additional setup after loading the view from its nib.
 }
+
 
 - (void)keyboardWillShow:(NSNotification *)aNotification {
     NSDictionary *userInfo = [aNotification userInfo];
@@ -108,29 +96,11 @@
     CGRect keyboardRect = [aValue CGRectValue];
     int height = keyboardRect.size.height;
     
-    /*
-    _replyView.cancel.transform = CGAffineTransformMakeRotation(0);
-    [UIView animateWithDuration:0.3 animations:^{
-        _replyView.frame = CGRectMake(0, ScreenHeight - height - self.replyView.frame.size.height, self.replyView.frame.size.width, self.replyView.frame.size.height);
-    } completion:^(BOOL finished) {
-        
-    }];
-     */    
     [UIView beginAnimations:@"riseAnimate" context:nil];
-    [UIView setAnimationDuration:0.05];
+    [UIView setAnimationDuration:0.275];
     self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - height - self.detailCommentView.frame.size.height, SCREENWIDTH, self.detailCommentView.frame.size.height);
-    self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - height - self.detailCommentView.frame.size.height);
     [UIView commitAnimations];
 }
-
-//- (UIView *)coverGrayView {
-//    if (!_coverGrayView) {
-//        _coverGrayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 0)];
-//        _coverGrayView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:0.3];
-//    }
-//    
-//    return _coverGrayView;
-//}
 
 - (MBCommunityTableView *)tableView {
     if (!_tableView) {
@@ -185,18 +155,6 @@
     return _headView;
 }
 
-/*
-//评论框
-- (MBReplyView *)replyView {
-    if (!_replyView) {
-        _replyView = [[MBReplyView alloc]init];
-        _replyView.textView.returnKeyType = UIReturnKeySend;
-        _replyView.textView.delegate = self;
-    }
-    
-    return _replyView;
-}
- */
 
 //新版评论框
 - (LXReplyView *)replyView {
@@ -215,21 +173,28 @@
     return _replyView;
 }
 
-- (void)tapCommentBtn {
-    if (self.detailCommentView.hidden == YES) {
-        self.detailCommentView.hidden = NO;
+- (UIView *)coverGrayView {
+    if (!_coverGrayView) {
+        _coverGrayView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _coverGrayView.backgroundColor = [UIColor clearColor];
     }
-    self.detailCommentView.placeholder.text = @"说点什么吧...";
+    
+    return _coverGrayView;
+}
+
+- (void)tapCommentBtn {
     NSString *stuNum = [UserDefaultTool getStuNum];
     
     if (stuNum) {
-        
         [self.window addSubview:self.coverGrayView];
-        [UIView beginAnimations:@"apperAnimate" context:nil];
-        [UIView setAnimationDuration:0.05];
-        self.detailCommentView.frame = self.replyViewOriginalRect;
-        self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - self.replyViewOriginalRect.size.height);
-        [UIView commitAnimations];
+        [self.coverGrayView addSubview:self.detailCommentView];
+        self.detailCommentView.backgroundColor = [UIColor whiteColor];
+        self.detailCommentView.placeholder.text = @"说点什么吧...";
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+            self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - (271/667.0) * SCREENHEIGHT, SCREENWIDTH, (271/667.0) * SCREENHEIGHT);
+        }];
     } else {
         [MBCommunityHandle noLogin:self handler:^(BOOL success) {
             [self tapCommentBtn];
@@ -241,13 +206,7 @@
 - (UIView *)detailCommentView {
     if (!_detailCommentView) {
         _detailCommentView = [[LXDetailCommentView alloc] init];
-        [self.view addSubview:_detailCommentView];
-        [_detailCommentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.view.mas_left).offset(0);
-            make.right.equalTo(self.view.mas_right).offset(0);
-            make.bottom.equalTo(self.view.mas_bottom).offset(0);
-            make.height.mas_equalTo(@(271/667.0 * SCREENHEIGHT));
-        }];
+        _detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
         [_detailCommentView.cancelBtn addTarget:self action:@selector(tapCancelBtn) forControlEvents:UIControlEventTouchDown];
         [_detailCommentView.sendBtn addTarget:self action:@selector(tapSendBtn) forControlEvents:UIControlEventTouchDown];
         
@@ -259,9 +218,9 @@
 
 - (void)tapCancelBtn {
     [UIView beginAnimations:@"downAnimate" context:nil];
-    [UIView setAnimationDuration:0.05];
+    [UIView setAnimationDuration:0.1];
     self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENHEIGHT, 0);
-    self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, 0);
+    self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [UIView commitAnimations];
     [self.detailCommentView.commentTextView resignFirstResponder];
     [self.coverGrayView removeFromSuperview];
@@ -274,11 +233,6 @@
         NSString *content = [NSString stringWithFormat:@"%@%@",self.detailCommentView.placeholder.text,self.detailCommentView.commentTextView.text];
         [self upLoadCommentWithContent:content];
     }
-
-    [UIView beginAnimations:@"send" context:nil];
-    [UIView setAnimationDuration:0.05];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
-    [UIView commitAnimations];
     
     [self tapCancelBtn];
 }
@@ -355,9 +309,6 @@
     if (indexPath.section == 0) {
         MBCommunityCellTableViewCell *cell = [MBCommunityCellTableViewCell cellWithTableView:tableView type:MBCommunityViewCellDetail row:(int)indexPath.row];
         cell.subViewFrame = self.viewModel;
-        /*点赞
-        cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
-         */
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else {
@@ -403,26 +354,19 @@
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         if (self.dataArray.count != 0) {
             MBComment_ViewModel *viewModel = self.dataArray[indexPath.row];
-            /*
-            [_replyView.textView becomeFirstResponder];
-             */
+
             if (self.detailCommentView.hidden == YES) {
                 self.detailCommentView.hidden = NO;
             }
             [self.window addSubview:self.coverGrayView];
             [UIView beginAnimations:@"apperAnimate" context:nil];
             [UIView setAnimationDuration:0.05];
-            self.detailCommentView.frame = self.replyViewOriginalRect;
-            self.coverGrayView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT - self.replyViewOriginalRect.size.height);
             [UIView commitAnimations];
             
             NSString *nickName = viewModel.model.nickname;
             NSString *placeholder = [NSString stringWithFormat:@"回复 %@ : ",nickName];
-            /*
-            _replyView.textView.placeholder = placeholder;
-             */
+
             self.detailCommentView.placeholder.text = placeholder;
-//            _replyView.cancel.transform = CGAffineTransformMakeRotation(0);
         }
     }
 }
@@ -469,48 +413,6 @@
 }
 
 
-#pragma mark -
-
-/*
- **键盘“发送” 卒
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
-    if ([text isEqualToString:@"\n"]) {
-        /*
-        if ([_replyView.textView.placeholder isEqualToString:@"评论"]) {
-            [self upLoadCommentWithContent:self.replyView.textView.text];
-        }else {
-            NSString *content = [NSString stringWithFormat:@"%@%@",_replyView.textView.placeholder,_replyView.textView.text];
-            [self upLoadCommentWithContent:content];
-        }
-        [_replyView.textView resignFirstResponder];
-        [UIView animateWithDuration:0.25 animations:^{
-            _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
-        } completion:^(BOOL finished) {
-        
-        }];
-         * /
-        
-        if ([self.detailCommentView.placeholder.text isEqualToString:@"说点什么吧..."]) {
-            [self upLoadCommentWithContent:self.detailCommentView.commentTextView.text];
-        }else {
-            NSString *content = [NSString stringWithFormat:@"%@%@",self.detailCommentView.placeholder.text,self.detailCommentView.commentTextView.text];
-            [self upLoadCommentWithContent:content];
-        }
-        [self.detailCommentView.commentTextView resignFirstResponder];
-        [UIView animateWithDuration:0.25 animations:^{
-            _replyView.frame = CGRectMake(0, ScreenHeight - _replyView.frame.size.height, _replyView.frame.size.width, _replyView.frame.size.height);
-        } completion:^(BOOL finished) {
-            self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
-        }];
-    }
-    / *
-    _replyView.cancel.transform = CGAffineTransformMakeRotation(M_PI);
-    * /
-    
-    return YES;
-}
-*/
-
 #pragma mark - 评论上传
 
 - (void)upLoadCommentWithContent:(NSString *)content {
@@ -529,32 +431,22 @@
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
-        self.hud.labelText = @"评论成功";
+        if ([content isEqualToString:@""]) {
+            self.hud.labelText = @"请输入评论";
+        } else {
+            self.hud.labelText = @"评论成功";
+        }
         [self.hud hide:YES afterDelay:1.5];
         [self loadNetWorkData];
-        /*
-        self.replyView.textView.placeholder = @"评论";
-        self.replyView.textView.text = @"";
-         */
         self.detailCommentView.commentTextView.text = @"";
     } WithFailureBlock:^{
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
         self.hud.labelText = @"网络错误";
         [self.hud hide:YES afterDelay:1.5];
-        /*
-        [self.replyView.textView becomeFirstResponder];
-         */
     }];
 }
 
-/*
- 布局完后获取被约束控件的frame
- */
-- (void)viewDidLayoutSubviews {
-    self.replyViewOriginalRect = self.detailCommentView.frame;
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
-}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

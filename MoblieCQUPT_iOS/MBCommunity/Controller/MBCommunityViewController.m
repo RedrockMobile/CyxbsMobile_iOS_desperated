@@ -318,7 +318,6 @@
         if (index == 0) {
             return self.bannerScrollView.height;
         }
-//        return [self.dataDicArray[tableView.tag][@"viewModels"][index-1] cellHeight];
         MBCommunity_ViewModel *viewModel = self.dataDicArray[tableView.tag][@"viewModels"][index - 1];
         return viewModel.model.cellIsOpen == NO ? viewModel.cellHeight : viewModel.extend_cellHeight;
     }
@@ -368,9 +367,7 @@
         [cell.extendLabel addGestureRecognizer:tapExtend2];
     }
     cell.eventDelegate = self;
-//    cell.clickSupportBtnBlock = [MBCommunityHandle clickSupportBtn:self];
     cell.subViewFrame = viewModel;
-//    [self.viewModelsArray addObject:viewModel];
     
     return cell;
 }

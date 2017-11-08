@@ -33,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _flag = 0;
+
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     [self setupRefresh];
@@ -46,6 +47,7 @@
 {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
+    self.tableView.mj_footer.hidden = YES;
 }
 
 - (void)headerRereshing{
@@ -57,9 +59,10 @@
         
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         // 刷新表格
+        self.tableView.mj_footer.hidden = NO;
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView.mj_header endRefreshing];
+//        [self.tableView.mj_header endRefreshing];
     } WithFailureBlock:^{
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
@@ -82,6 +85,8 @@
         // 刷新表格
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        self.tableView.mj_footer.hidden = NO;
+
         [self.tableView.mj_footer endRefreshing];
         
     } WithFailureBlock:^{
@@ -139,6 +144,7 @@
          for (NSDictionary *dic2 in _data) {
              [_nickname addObject:dic2[@"nickname"]];
          }
+             self.tableView.mj_footer.hidden = NO;
                          
         [_tableView reloadData];
         
