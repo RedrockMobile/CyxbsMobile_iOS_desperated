@@ -127,6 +127,7 @@
             [self.allDataArray addObject:viewModel];
         }
         [self.communityTableView reloadData];
+        self.communityTableView.mj_footer.hidden = NO;
         if (dataArray.count < 15) {
             [self.communityTableView.mj_footer endRefreshingWithNoMoreData];
         } else {
@@ -139,6 +140,7 @@
         uploadProgress.mode = MBProgressHUDModeText;
         uploadProgress.labelText = @"网络状况不佳";
         [uploadProgress hide:YES afterDelay:1];
+        self.communityTableView.mj_footer.hidden = NO;
         [self.communityTableView.mj_footer endRefreshing];
         [self.communityTableView.mj_header endRefreshing];
     }];
@@ -151,6 +153,7 @@
 {
     self.communityTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
     self.communityTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
+    self.communityTableView.mj_footer.hidden = YES;
 
 }
 
