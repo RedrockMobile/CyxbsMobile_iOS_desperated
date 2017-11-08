@@ -77,6 +77,8 @@
     [center addObserver:self selector:@selector(reloadView) name:@"deleteRemind" object:nil];
     [center addObserver:self selector:@selector(reloadView) name:@"addRemind" object:nil];
     [center addObserver:self selector:@selector(reloadView) name:@"editRemind" object:nil];
+    [center addObserver:self selector:@selector(afterLogin) name:@"loginSuccess" object:nil];
+
 }
 
 - (void)reloadView{
@@ -92,7 +94,7 @@
         LoginViewController *loginViewController = [[LoginViewController alloc]init];
         loginViewController.loginSuccessHandler = ^(BOOL success) {
             if (success) {
-                [self afterLogin];
+//                [self afterLogin];
             }
         };
         [self.navigationController presentViewController:loginViewController animated:YES completion:nil];

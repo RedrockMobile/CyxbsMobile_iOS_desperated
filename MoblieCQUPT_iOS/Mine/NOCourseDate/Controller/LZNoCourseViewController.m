@@ -50,7 +50,10 @@
     MyInfoModel *myInfo = [MyInfoModel getMyInfo];
     if (myInfo) {
         LZPersonModel *person = [[LZPersonModel alloc]initWithMyInfo:myInfo];
-        [self.personArray addObject:person];
+        if(person.name){
+            [self.personArray addObject:person];
+        }
+        // 因为之前没有将名字存在本地，所以加层判断 避免崩溃
     }
     // Do any additional setup after loading the view from its nib.
 }

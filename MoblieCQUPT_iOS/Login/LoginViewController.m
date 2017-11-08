@@ -91,6 +91,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
             MyInfoViewController *verifyMyInfoVC = [[MyInfoViewController alloc] init];
             [self presentViewController:verifyMyInfoVC animated:YES completion:nil];
         }
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"loginSuccess" object:nil];
         if (self.loginSuccessHandler) {
             self.loginSuccessHandler(YES);
         }

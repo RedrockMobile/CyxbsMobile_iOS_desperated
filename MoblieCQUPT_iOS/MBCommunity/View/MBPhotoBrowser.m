@@ -201,6 +201,9 @@
 
 - (CGRect)calculateDestinationFrameWithSize:(CGSize)size
                                       index:(NSInteger)index {
+    if (size.width == 0) {
+        return CGRectZero;
+    }
     CGRect rect = CGRectMake(kImageBrowserWidth * index,
                              (ScreenHeight - size.height * ScreenWidth / size.width)/2,
                              ScreenWidth,

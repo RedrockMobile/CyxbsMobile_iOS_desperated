@@ -17,7 +17,9 @@
 
 @end
 
-@implementation LessonRemindNotification
+@implementation LessonRemindNotification{
+    NSArray *_bigMonthArray;
+}
 
 - (NSMutableArray *)identifierArray{
     if (!_identifierArray) {
@@ -41,6 +43,7 @@
     return _weekDateArray;
 }
 
+
 - (void)deleteNotification
 {
     NSUserDefaults *userDefautl = [NSUserDefaults standardUserDefaults];
@@ -48,10 +51,11 @@
     [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:noticeArray];
 }
 
+
 - (void)notificationBody
 {
     [self newWeekDataArray];
-   UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
+    UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = @"明天的课有:";
     NSString *appendStr = [[NSString alloc] init];
     
@@ -59,7 +63,7 @@
     
     for (int i = 0; i < self.weekDateArray.count; i++) {
         
-       array = self.weekDateArray[i];
+        array = self.weekDateArray[i];
         
         for (int j = 0; j < array.count; j++ ) {
             appendStr = [appendStr stringByAppendingString:[self tomorrowLessonInfoWithArray:array][j]];
@@ -74,7 +78,7 @@
         }
         
         [self.contentArray addObject:[content mutableCopy]];
-            
+        
         appendStr = @"";
     }
 }
@@ -84,12 +88,11 @@
 {
     [self notificationBody];
     
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    components.day = [self weekDayStr].integerValue;
+    NSDateComponents *components = [self calculateNotificationComponents];
     components.hour = hour.integerValue;
     components.minute = minute.integerValue;
     
-//    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
+    //    UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];
     
     
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
@@ -98,7 +101,7 @@
         
         UNCalendarNotificationTrigger *calendarTrigger = [UNCalendarNotificationTrigger triggerWithDateMatchingComponents:components repeats:NO];
         
-        NSString *requestIdentifier = [NSString stringWithFormat:@"tomorrowRequestWithIdentifier%@%ld",content.body,components.day];
+        NSString *requestIdentifier = [NSString stringWithFormat:@"tomorrowRequestWithIdentifier%@%ld%ld",content.body,components.month,components.day];
         
         if (![self.identifierArray containsObject:requestIdentifier]) {
             [self.identifierArray addObject:requestIdentifier];
@@ -116,13 +119,15 @@
             NSLog(@"Error:%@",error);
         }];
         
-        if (components.day == 7) {
+        if (([_bigMonthArray containsObject:[NSString stringWithFormat:@"%ld",components.month]]&&components.month==31)
+            || (![_bigMonthArray containsObject:[NSString stringWithFormat:@"%ld",components.month]]&&components.month==30)){
             components.day = 0;
         }
+        NSLog(@"------%@-------",components);
         components.day += 1;
     }
-    
 }
+
 
 - (void)newWeekDataArray
 {
@@ -144,7 +149,7 @@
         
         for (int j = 0; j < array.count; j++) {
             
-             hashDay = [NSString stringWithFormat:@"%@",array[j][@"hash_day"]];
+            hashDay = [NSString stringWithFormat:@"%@",array[j][@"hash_day"]];
             
             if ([hashDay isEqualToString:hashDate]&&[array[j][@"week"] containsObject:[NSNumber numberWithInteger:[nowWeek integerValue]]]) {
                 [dayArray addObject:array[j]];
@@ -157,6 +162,7 @@
     }
 }
 
+
 - (NSMutableArray *)tomorrowClassInfoWithArray:(NSMutableArray *)array
 {
     NSString *classInfo = [[NSString alloc] init];
@@ -168,6 +174,7 @@
     return classInfos;
 }
 
+
 - (NSMutableArray *)tomorrowLessonInfoWithArray:(NSMutableArray *)array
 {
     NSString *lessonInfo = [[NSString alloc] init];
@@ -178,6 +185,7 @@
     }
     return lessonInfos;
 }
+
 
 - (NSMutableArray *)tomorrowLessonTimeInfoWithArray:(NSMutableArray *)array
 {
@@ -206,4 +214,24 @@
     NSString *nowWeek = [NSString stringWithFormat:@"%ld",(long)[comps weekday]];
     return nowWeek;
 }
+
+
+-(NSDateComponents *)calculateNotificationComponents
+{
+    _bigMonthArray = [NSArray arrayWithObjects:@"1",@"3",@"5",@"7",@"8",@"10",@"12",nil];
+    
+    NSDate *now = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM-dd"];
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    
+    NSUInteger unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay;
+    
+    NSDateComponents *comp = [gregorian components:unitFlags fromDate:now];
+    
+    return comp;
+}
+
 @end
+
