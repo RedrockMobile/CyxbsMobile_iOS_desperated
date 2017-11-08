@@ -11,6 +11,8 @@
 #import "MyInfoViewController.h"
 #import "AboutMeViewController.h"
 #import "MyMessagesViewController.h"
+#import "QueryViewController.h"
+#import "QueryLoginViewController.h"
 #import "MyInfoModel.h"
 #import <sys/utsname.h>
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -43,7 +45,7 @@
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"LZNoCourseViewController"},
                           @{@"title":@"空教室",@"img":@"mine_image_classroom",@"controller":@"EmptyClassViewController"},
-                          @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamTotalViewController"},
+                          @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamTotalViewController"},@{@"title":@"志愿时长查询",@"img":@"volunteer_time_icon.png",@"controller":@"QueryLoginViewController"},
                           @{@"title":@"校历",@"img":@"mine_image_calendar",@"controller":@"CalendarViewController"},
                           @{@"title":@"课前提醒",@"img":@"mine_image_remind",@"controller":@"BeforeClassViewController"}];
     
@@ -91,20 +93,27 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        if (indexPath.row != 0) {
+        if (indexPath.row == 2 ) {
             if (![UserDefaultTool getStuNum]) {
                 [self tint:vc];
                 return;
             }
         }
+        if(indexPath.row == 3){
+            if (![[NSUserDefaults standardUserDefaults] valueForKey:@"uid"]) {
+                vc = [[QueryLoginViewController alloc]init];
+            }else{
+                vc = [[QueryViewController alloc]init];
+            }
+        }
     }
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+    vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
 }
 
 - (void)touchImage{
