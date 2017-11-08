@@ -103,7 +103,6 @@
 		9630E4BB1FAF07D200874EB9 /* 年份圆圈@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4711FAF07D200874EB9 /* 年份圆圈@3x.png */; };
 		9630E4BC1FAF07D200874EB9 /* 志愿时长@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4721FAF07D200874EB9 /* 志愿时长@2x.png */; };
 		9630E4BD1FAF07D200874EB9 /* 志愿时长@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4731FAF07D200874EB9 /* 志愿时长@3x.png */; };
-		9630E4BE1FAF07D200874EB9 /* 志愿服务.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4741FAF07D200874EB9 /* 志愿服务.png */; };
 		9630E4BF1FAF07D200874EB9 /* 时长加号.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4751FAF07D200874EB9 /* 时长加号.png */; };
 		9630E4C01FAF07D200874EB9 /* 时长加号@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4761FAF07D200874EB9 /* 时长加号@3x.png */; };
 		9630E4C11FAF07D300874EB9 /* 月日标签.png in Resources */ = {isa = PBXBuildFile; fileRef = 9630E4771FAF07D200874EB9 /* 月日标签.png */; };
@@ -757,7 +756,6 @@
 		9630E4711FAF07D200874EB9 /* 年份圆圈@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "年份圆圈@3x.png"; sourceTree = "<group>"; };
 		9630E4721FAF07D200874EB9 /* 志愿时长@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "志愿时长@2x.png"; sourceTree = "<group>"; };
 		9630E4731FAF07D200874EB9 /* 志愿时长@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "志愿时长@3x.png"; sourceTree = "<group>"; };
-		9630E4741FAF07D200874EB9 /* 志愿服务.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "志愿服务.png"; sourceTree = "<group>"; };
 		9630E4751FAF07D200874EB9 /* 时长加号.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时长加号.png"; sourceTree = "<group>"; };
 		9630E4761FAF07D200874EB9 /* 时长加号@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "时长加号@3x.png"; sourceTree = "<group>"; };
 		9630E4771FAF07D200874EB9 /* 月日标签.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "月日标签.png"; sourceTree = "<group>"; };
@@ -1642,7 +1640,6 @@
 				9630E4711FAF07D200874EB9 /* 年份圆圈@3x.png */,
 				9630E4721FAF07D200874EB9 /* 志愿时长@2x.png */,
 				9630E4731FAF07D200874EB9 /* 志愿时长@3x.png */,
-				9630E4741FAF07D200874EB9 /* 志愿服务.png */,
 				9630E4751FAF07D200874EB9 /* 时长加号.png */,
 				9630E4761FAF07D200874EB9 /* 时长加号@3x.png */,
 				9630E4771FAF07D200874EB9 /* 月日标签.png */,
@@ -3437,7 +3434,6 @@
 				F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */,
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
-				9630E4BE1FAF07D200874EB9 /* 志愿服务.png in Resources */,
 				F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */,
 				9630E4991FAF07D200874EB9 /* 2@3x.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,

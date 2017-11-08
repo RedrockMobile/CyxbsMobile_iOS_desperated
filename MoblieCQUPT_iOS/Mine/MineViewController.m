@@ -97,7 +97,7 @@
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        if (indexPath.row != 6) {
+        if (indexPath.row == 1 || indexPath.row == 2 ||indexPath.row==5) {
             if (![UserDefaultTool getStuNum]) {
                 [self tint:vc];
                 return;
@@ -135,7 +135,7 @@
         LoginViewController *LVC = [[LoginViewController alloc] init];
         LVC.loginSuccessHandler = ^(BOOL success) {
             if (success) {
-                [self.navigationController pushViewController:controller animated:YES];
+//                [self.navigationController pushViewController:controller animated:YES];
             }
         };
         [weakSelf presentViewController:LVC animated:YES completion:nil];

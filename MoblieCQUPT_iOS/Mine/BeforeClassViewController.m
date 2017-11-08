@@ -70,8 +70,10 @@
 #pragma mark 通知更改
 - (void)XIGAddRemindNotification:(NSString *)time{
     LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
-    [remindNotification addTomorrowNotificationWithMinute:@"00" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
+    NSArray *array = [time componentsSeparatedByString:@":"];
+    [remindNotification addTomorrowNotificationWithMinute:[array lastObject] AndHour:[array firstObject]];
 }
+
 - (void)XIGDeleteRemindNotification{
     LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
     [remindNotification deleteNotification];

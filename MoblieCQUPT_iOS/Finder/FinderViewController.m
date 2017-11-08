@@ -142,6 +142,12 @@
 - (NSArray *)getCarouselModels{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPhoto"];
+    NSString *picFilePath = [path stringByAppendingPathComponent:@"CarouselPicture"];
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:picFilePath error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    } // 删除原来错误的轮播
     return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
 }
 
