@@ -1757,7 +1757,6 @@
 			isa = PBXGroup;
 			children = (
 				F2D550EB1F89D9060067005E /* Delegate */,
-				F293EAF11F88B33F004BD69C /* ViewModel */,
 				F242DBA31EBCB2BB005AC411 /* Cell */,
 				F242DBAA1EBCB2BB005AC411 /* Controller */,
 				F242DBC31EBCB2BB005AC411 /* Handle */,
@@ -2704,13 +2703,6 @@
 			children = (
 				F29245621F7A942E001A8788 /* LessonButtonViewModel.h */,
 				F29245631F7A942E001A8788 /* LessonButtonViewModel.m */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		F293EAF11F88B33F004BD69C /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
