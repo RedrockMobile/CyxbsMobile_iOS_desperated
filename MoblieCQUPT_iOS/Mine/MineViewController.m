@@ -97,7 +97,7 @@
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        if (indexPath.row == 2 ) {
+        if (indexPath.row != 6) {
             if (![UserDefaultTool getStuNum]) {
                 [self tint:vc];
                 return;

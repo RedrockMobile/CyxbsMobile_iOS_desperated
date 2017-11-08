@@ -81,6 +81,7 @@
 }
 - (void)switchValueChanged{
     [[NSNotificationCenter defaultCenter]postNotificationName:@"state" object:_style];
+    
 }
 - (void)loadExtraView{
     if (_state == YES) {

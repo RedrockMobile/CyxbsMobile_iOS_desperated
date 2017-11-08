@@ -9,6 +9,7 @@
 #import "BeforeClassViewController.h"
 #import "BeforeClassCell.h"
 #import "ExamPickView.h"
+#import "LessonRemindNotification.h"
 
 @interface BeforeClassViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic)UITableView *beforClassTableView;
@@ -36,7 +37,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (void)getState:(NSNotification *)notificatio{
-
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     if ([notificatio.object isEqualToString:@"remindMeBeforeTime"]) {
         _cell1.style = @"remindMeBeforeTime";
         _cell1.state = !_cell1.state;
@@ -45,6 +46,12 @@
     else{
         _cell2.style = @"remindMeTime";
         _cell2.state = !_cell2.state;
+        if (_cell2.state) {
+            [self XIGAddRemindNotification:[userDefault getAssociatedValueForKey:@"remindMeTime"]];
+        }
+        else{
+            [self XIGDeleteRemindNotification];
+        }
     }
 }
 - (void)getValue:(NSNotification *)notificatio{
@@ -56,8 +63,20 @@
     else{
         _cell2.detailString = notificatio.object;
         [userDefault setObject:notificatio.object forKey:@"remindMeTime"];
+        [self XIGDeleteRemindNotification];
+        [self XIGAddRemindNotification:notificatio.object];
     }
 }
+#pragma mark 通知更改
+- (void)XIGAddRemindNotification:(NSString *)time{
+    LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
+    [remindNotification addTomorrowNotificationWithMinute:@"00" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
+}
+- (void)XIGDeleteRemindNotification{
+    LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
+    [remindNotification deleteNotification];
+}
+#pragma mark tableView协议
 - (UIView *)tableView:(UITableView *)tableView
 viewForHeaderInSection:(NSInteger)section{
     UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 30)];
