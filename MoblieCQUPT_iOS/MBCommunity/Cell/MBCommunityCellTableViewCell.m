@@ -61,8 +61,6 @@
     _extendLabel = [[UILabel alloc] init];
     _extendLabel.userInteractionEnabled = YES;
     _extendLabel.hidden = YES;
-//    UITapGestureRecognizer *tapExtendLabel = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapExtendLabel:)];
-//    [_extendLabel addGestureRecognizer:tapExtendLabel];
     
     _dottedLineImageView = [[UIImageView alloc] init];
     
@@ -81,36 +79,7 @@
     
     _extendBtnImageView = [[UIImageView alloc] init];
     
-    /*
-    _supportBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _supportBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [_supportBtn setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
-    [_supportBtn setTitleColor:[UIColor colorWithRed:225/255.0 green:65/255.0 blue:35/255.0 alpha:1] forState:UIControlStateSelected];
-    _supportBtn.tag = 1;
-    [_supportBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
-    */
     
-    //    _supportImage = [[UIImageView alloc]init];
-    //    _supportImage.image = [UIImage imageNamed:@"support1.png"];
-    /*
-    _supportImage = [UIButton buttonWithType:UIButtonTypeCustom];
-    [_supportImage setImage:[UIImage imageNamed:@"support1.png"] forState:UIControlStateNormal];
-    [_supportImage setImage:[UIImage imageNamed:@"support.png"] forState:UIControlStateSelected];
-    [_supportImage addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
-    */
-    
-    /*
-    _commentBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _commentBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    [_commentBtn setTitleColor:[UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1] forState:UIControlStateNormal];
-    _commentBtn.tag = 2;
-    */
-    
-    //    [_commentBtn addTarget:self action:@selector(clickSupportBtn) forControlEvents:UIControlEventTouchUpInside];
-    /*
-    _commentImage = [[UIImageView alloc]init];
-    _commentImage.image = [UIImage imageNamed:@"comment1.png"];
-    */
     [self.contentView addSubview:self.headImageView];
     [self.contentView addSubview:self.IDLabel];
     [self.contentView addSubview:self.timeLabel];
@@ -123,15 +92,8 @@
     [self.contentView addSubview:self.commentImageView];
     [self.contentView addSubview:self.numOfCommentLabel];
     [self.extendLabel addSubview:self.extendBtnImageView];
-//    [self.contentView addSubview:self.supportBtn];
-    //[self.contentView addSubview:self.supportImage];
-//    [self.contentView addSubview:self.commentBtn];
-    //[self.contentView addSubview:self.commentImage];
 }
 
-//- (void)tapExtendLabel:(UITapGestureRecognizer *)sender {
-//    self.model.cellIsOpen = !self.model.cellIsOpen;
-//}
 
 - (void)tapUpvoteBtn  {
     self.numOfUpvoteLabel.text = [MBCommunityHandle clickUpvoteBtn:self.superview.viewController currentUpvoteNum:[self.numOfUpvoteLabel.text intValue]  upvoteIsSelect:self.subViewFrame.model.is_my_like viewModel:self.subViewFrame];
@@ -142,17 +104,9 @@
         [self.upvoteBtn setImage:[UIImage imageNamed:@"icon_upvote_outside_selected"] forState:UIControlStateNormal];
         self.numOfUpvoteLabel.textColor = [UIColor colorWithRed:120/255.0 green:142/255.0 blue:250/255.0 alpha:1];
     }
-//    [self setupData];
-//    [self setupFrame];
+
 }
 
-/*
-- (void)clickSupportBtn {
-    if (self.clickSupportBtnBlock) {
-        self.clickSupportBtnBlock(self.supportImage,self.supportBtn,self.subViewFrame);
-    }
-}
-*/
 
 + (instancetype)cellWithTableView:(MBCommunityTableView *)tableView type:(MBCommunityCellType)type row:(NSInteger)row
 {
@@ -237,23 +191,14 @@
             NSRange resultRange = [firstMatch rangeAtIndex:0];
             
             [attributedStr setTextHighlightRange:resultRange color:[UIColor colorWithHexString:@"41a3ff"] backgroundColor:[UIColor whiteColor] tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
-                //                NSLog(@"test");
             }];
             
         }
-        //        NSLog(@"%@",error);
     }
-//    attributedStr.font = self.contentLabel.font;
     self.contentLabel.attributedText = attributedStr;
     
     _photoContainer.thumbnailPictureArray = self.model.articleThumbnailPictureArray;
     _photoContainer.picNameArray = self.model.articlePictureArray;
-//    _supportImage.selected = self.subViewFrame.model.is_my_like;
-    /*
-    _supportBtn.selected = self.subViewFrame.model.is_my_like;
-    [_supportBtn setTitle:self.model.like_num.stringValue forState:UIControlStateNormal];
-    [_commentBtn setTitle:self.model.remark_num.stringValue forState:UIControlStateNormal];
-    */
 }
 - (void)setupFrame {
     _headImageView.frame = self.subViewFrame.headImageViewFrame;
@@ -261,14 +206,6 @@
     _timeLabel.frame = self.subViewFrame.timeLabelFrame;
     if (self.type == MBCommunityViewCellDetail) {
         _contentLabel.frame = self.subViewFrame.detailContentLabelFrame;
-        /*
-        _supportBtn.frame = self.subViewFrame.detailNumOfSupportFrame;
-         */
-//        _supportImage.frame = self.subViewFrame.detailSupportImageFrame;
-        /*
-        _commentBtn.frame = self.subViewFrame.detailNumOfCommentFrame;
-         */
-//        _commentImage.frame = self.subViewFrame.detailCommentImageFrame;
         _photoContainer.frame = self.subViewFrame.detailPhotoContainerViewFrame;
     }
     else{
@@ -305,15 +242,7 @@
             _extendBtnImageView.frame = CGRectMake(CGRectGetMaxX(_extendLabel.frame)-20, (self.extendLabel.height - 5) / 2.0, 12, 5);
             _dottedLineImageView.frame = self.subViewFrame.extend_dottedLineImageViewFrame;
         }
-
-        /*
-        _supportBtn.frame = self.subViewFrame.numOfSupportFrame;
-         */
-//        _supportImage.frame = self.subViewFrame.supportImageFrame;
-        /*
-        _commentBtn.frame = self.subViewFrame.numOfCommentFrame;
-         */
-//        _commentImage.frame = self.subViewFrame.commentImageFrame;
+        
         }
 }
 
