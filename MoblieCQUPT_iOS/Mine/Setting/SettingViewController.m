@@ -104,21 +104,28 @@
     return cell;
 }
 - (void)quit{
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *stuNum = [userDefault objectForKey:@"stuNum"];
+    if(stuNum.length == 0){
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"你还没有登录呢。。。" message:@"快去登录" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"好的", nil];
+        [alertview show];
+    }
+    else{
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"登出帐号"
-                                                                   message:@"所有的个人信息将清除,你确定要登出此帐号吗?"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
+                         message:@"所有的个人信息将清除,你确定要登出此帐号吗?"
+                  preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"确定"
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * _Nonnull action) {
-                                                              [self logOut];
-                                                          }];
+                  style:UIAlertActionStyleDefault
+                handler:^(UIAlertAction * _Nonnull action) {
+                   [self logOut];
+                                                            }];
     [alert addAction:defaultAction];
-    
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消"
-                                                           style:UIAlertActionStyleCancel
-                                                         handler:nil];
+                  style:UIAlertActionStyleCancel
+                handler:nil];
     [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:nil];
+    }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
