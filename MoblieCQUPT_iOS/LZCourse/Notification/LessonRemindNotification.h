@@ -11,6 +11,8 @@
 @interface LessonRemindNotification : NSObject
 
 - (void)addTomorrowNotificationWithMinute:(NSString *)minute AndHour:(NSString *)hour;
+
 - (void)deleteNotification;
 
 @end
+
