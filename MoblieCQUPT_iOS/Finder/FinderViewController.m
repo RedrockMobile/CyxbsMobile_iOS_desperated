@@ -135,13 +135,13 @@
 
 - (BOOL)saveCarouselModels:(NSArray *)array{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPicture"];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPhoto"];
     return [NSKeyedArchiver archiveRootObject:array toFile:infoFilePath];
 }
 
 - (NSArray *)getCarouselModels{
     NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPicture"];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPhoto"];
     return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
 }
 
