@@ -182,9 +182,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    NSString *idNum = [defaults objectForKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool valueWithKey:@"stuNum"];
+    NSString *idNum = [UserDefaultTool valueWithKey:@"idNum"];
     NSInteger index = indexPath.section;
     NSNumber *identifier = self.reminds[index].idNum;
     NSMutableArray *reminds = [NSMutableArray arrayWithContentsOfFile:self.remindPath];

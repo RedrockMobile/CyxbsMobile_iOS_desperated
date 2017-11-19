@@ -11,12 +11,38 @@
 @implementation UserDefaultTool
 +(void)saveValue:(id) value forKey:(NSString *)key{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([key isEqualToString:@"nowWeek"]) {
+        NSInteger nowWeek = [value integerValue];
+        NSTimeInterval oneDay = 24*60*60;
+        NSDate *nowDate = [NSDate date];
+        NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
+        NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:nowDate];
+        NSInteger weekDay = (components.weekday+5)%7;
+        NSTimeInterval timeInterval = nowDate.timeIntervalSince1970-((nowWeek-1)*7+weekDay)*oneDay;
+        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+        [formatter setDateFormat:@"YYYY-MM-dd"];
+        NSDate *beginDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+        NSString *beginString = [formatter stringFromDate:beginDate];
+        beginDate =  [formatter dateFromString:beginString];
+        [userDefaults setObject:beginDate forKey:@"beginDate"];
+        
+    }
     [userDefaults setObject:value forKey:key];
     [userDefaults synchronize];
 }
 
 +(id)valueWithKey:(NSString *)key{
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if ([key isEqualToString:@"nowWeek"]) {
+        NSDate *beginDate = [self valueWithKey:@"beginDate"];
+        if (beginDate) {
+            NSDate *nowDate = [NSDate date];
+            NSTimeInterval oneDay = 24*60*60;
+            NSInteger nowWeek = (NSInteger )((nowDate.timeIntervalSince1970-beginDate.timeIntervalSince1970)/oneDay/7+1);
+//            NSNumber *nowWeek = @((int)(nowDate.timeIntervalSince1970-beginDate.timeIntervalSince1970)/oneDay/7+1);
+            [userDefaults setObject:@(nowWeek) forKey:@"nowWeek"];
+        }
+    }
     return [userDefaults objectForKey:key];
 }
 
@@ -40,6 +66,21 @@
     [paramterDic enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         if([key isEqualToString:@"id"]){
             key = @"user_id";
+        }
+        if ([key isEqualToString:@"nowWeek"]) {
+            NSInteger nowWeek = [obj integerValue];
+            NSTimeInterval oneDay = 24*60*60;
+            NSDate *nowDate = [NSDate date];
+            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
+            NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:nowDate];
+            NSInteger weekDay = (components.weekday+5)%7;
+            NSTimeInterval timeInterval = nowDate.timeIntervalSince1970-((nowWeek-1)*7+weekDay)*oneDay;
+            NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+            [formatter setDateFormat:@"YYYY-MM-dd"];
+            NSDate *beginDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+            NSString *beginString = [formatter stringFromDate:beginDate];
+            beginDate =  [formatter dateFromString:beginString];
+            [userDefaults setObject:beginDate forKey:@"beginDate"];
         }
         [userDefaults setObject:obj forKey:key];
     }];

@@ -46,8 +46,7 @@
 
 - (void)deleteNotification
 {
-    NSUserDefaults *userDefautl = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *noticeArray = [userDefautl objectForKey:@"lessonNotification"];
+    NSMutableArray *noticeArray = [UserDefaultTool valueWithKey:@"lessonNotification"];
     [[UNUserNotificationCenter currentNotificationCenter] removePendingNotificationRequestsWithIdentifiers:noticeArray];
 }
 
@@ -107,10 +106,9 @@
             [self.identifierArray addObject:requestIdentifier];
         }
         
-        NSUserDefaults *userDefautl = [NSUserDefaults standardUserDefaults];
-        NSMutableArray *noticeArray = [userDefautl objectForKey:@"lessonNotification"];
+        NSMutableArray *noticeArray = [UserDefaultTool valueWithKey:@"lessonNotification"];
         [noticeArray addObjectsFromArray:self.identifierArray];
-        [userDefautl setObject:noticeArray forKey:@"lessonNotification"];
+        [UserDefaultTool saveValue:noticeArray forKey:@"lessonNotification"];
         
         UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:self.contentArray[i] trigger:calendarTrigger];
         
@@ -131,13 +129,12 @@
 
 - (void)newWeekDataArray
 {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *hashDate = [[NSString alloc] init];
     NSString *hashDay = [[NSString alloc] init];
     hashDate = [self weekDayStr];
     
-    NSString *nowWeek = [[NSString alloc] initWithFormat:@"%@",[userDefault objectForKey:@"nowWeek"]];
-    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[userDefault objectForKey:@"lessonResponse"][@"data"]];
+    NSString *nowWeek = [[NSString alloc] initWithFormat:@"%@",[UserDefaultTool valueWithKey:@"nowWeek"]];
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:[UserDefaultTool valueWithKey:@"lessonResponse"][@"data"]];
     NSMutableArray *dayArray = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < 6; i++) {
