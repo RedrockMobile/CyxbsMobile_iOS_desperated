@@ -10,7 +10,6 @@
 #import "MJRefresh.h"
 #import "AboutMeTableViewCell.h"
 #import "AboutMePraiseTableViewCell.h"
-#import "ShopDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+AFNetworking.h"
 #import "MBCommuityDetailsViewController.h"
