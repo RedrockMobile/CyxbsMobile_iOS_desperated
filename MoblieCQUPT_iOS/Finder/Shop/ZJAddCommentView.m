@@ -36,10 +36,7 @@
         [_addCommentsView addSubview:closeBtn];
         
         UIButton *send = [[UIButton alloc]initWithFrame:CGRectMake(_addCommentsView.frame.size.width-20-30, 15, 25, 25)];
-        [send setTitle:@"发送" forState:UIControlStateNormal];
-        [send setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        send.tintColor = [UIColor colorWithRed:102/255 green:102/255 blue:102/255 alpha:1.0];
-        send.titleLabel.font = [UIFont systemFontOfSize:12];
+        [send setImage:[UIImage imageNamed:@"send-comment"] forState:UIControlStateNormal];     
         [send addTarget:self action:@selector(loadData) forControlEvents:UIControlEventTouchUpInside];
         [_addCommentsView addSubview:send];
         

@@ -75,7 +75,7 @@
 //添加评论
 -(void)addCommentData:(NSString *)content{
     
-    NSString *strURL = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/addCom"];
+    NSString *strURL = [NSString stringWithFormat:@"http://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/addCom"];
 //    NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *stuName = [UserDefaultTool valueWithKey:@"name"];
    
