@@ -28,10 +28,9 @@
     self.navigationItem.title = @"周边美食";
     _arrayData = [[NSMutableArray alloc]init];
     _page = 1;
+    [self getInformation];
     [self setupRefresh];
-    
-    [self.view addSubview:self.tableView];
-    
+
 }
 
 //设置刷新控件+
@@ -56,6 +55,7 @@
 - (void) getInformation{
     [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
 //        _arrayData = [[NSMutableArray alloc]init];
+        [self.view addSubview:self.tableView];
        
         [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
         [_tableView reloadData];
@@ -74,6 +74,7 @@
 #pragma mark 开始进入刷新状态
 //头部刷新
 - (void)headerRefresh{
+    _page = 1;
     [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
         [_arrayData removeAllObjects];
         [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -94,7 +95,7 @@
 
 //尾部刷新
 - (void)footerRefresh{
-    _page = 1;
+    _page += 1;
     if (_page <= 3) {
         [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_page]} WithReturnValeuBlock:^(id returnValue) {
             [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
