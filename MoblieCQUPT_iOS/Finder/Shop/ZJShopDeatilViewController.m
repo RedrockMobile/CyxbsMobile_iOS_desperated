@@ -10,14 +10,16 @@
 #import "MJRefresh.h"
 #import "ZJshopTableViewCell.h"
 #import "ZJAddCommentView.h"
+#import "LoginViewController.h"
 #define   UIWidth   [UIScreen mainScreen].bounds.size.width/375
 
 @interface ZJShopDeatilViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (strong,nonatomic) UITableView *shopDetailTableView;
+@property (strong, nonatomic ) UITableView *shopDetailTableView;
 @property (strong, nonatomic) NSMutableDictionary *shopInfo;
 @property (assign,nonatomic) NSInteger flag;
 @property (strong, nonatomic) NSMutableArray *commentArray;
 @property (copy, nonatomic) NSString *content;
+
 
 @end
 
@@ -40,6 +42,20 @@
 }
 - (void)addComment{
     ZJAddCommentView *shopAddComment = [[ZJAddCommentView alloc]init];
+    NSString *stuName = [UserDefaultTool valueWithKey:@"name"];
+    NSLog(@"%@123456789",stuName);
+    if (stuName == nil) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"没有完善信息呢，无法完成相应操作" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            LoginViewController *LVC = [[LoginViewController alloc]init];
+            [self presentViewController:LVC animated:YES completion:nil];
+        }];
+        [alert addAction:cancel];
+        [alert addAction:confirm];
+        [self presentViewController:alert animated:YES completion:nil];
+    }
+    else{
     shopAddComment.markBlock = ^(int markView){
         if (markView == 0) {
             self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -53,14 +69,16 @@
     shopAddComment.AddCommentBlock = ^(NSString *str){
         [weakSelf addCommentData:str];
         
-    };
+    };}
 }
 
 //添加评论
 -(void)addCommentData:(NSString *)content{
+    
     NSString *strURL = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/addCom"];
 //    NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *stuName = [UserDefaultTool valueWithKey:@"name"];
+   
 //    NSString *idNUM  = [UserDefaultTool getIdNum];
     NSDictionary *parameter = @{
                                 @"shop_id":_detailData[@"id"],

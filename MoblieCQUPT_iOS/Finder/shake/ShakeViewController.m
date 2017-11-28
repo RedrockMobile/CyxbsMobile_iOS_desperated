@@ -8,6 +8,7 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "ShakeViewController.h"
+#import "ZJShopDeatilViewController.h"
 #import "ShopDetailViewController.h"
 #import "UIImage+AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
@@ -41,7 +42,7 @@
 @interface ShakeViewController ()
 
 @property (strong, nonatomic)NSMutableArray *data;
-@property (strong, nonatomic)ShopDetailViewController *detailViewController;
+@property (strong, nonatomic)ZJShopDeatilViewController *detailViewController;
 
 @end
 
@@ -75,7 +76,7 @@
     // 根据ID播放自定义系统声音
     AudioServicesPlaySystemSound(ID);
     
-    _detailViewController = [[ShopDetailViewController alloc] init];
+    _detailViewController = [[ZJShopDeatilViewController alloc] init];
     if (_data) {
         NSInteger randomNum = arc4random() % [_data count];
         _detailViewController.detailData = _data[randomNum];
