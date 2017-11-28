@@ -9,11 +9,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ShakeViewController.h"
 #import "ZJShopDeatilViewController.h"
-#import "ShopDetailViewController.h"
+
 #import "UIImage+AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "NetWork.h"
-#import "ShopDetailViewController.h"
+
 /*
  *
  *          ┌─┐       ┌─┐
