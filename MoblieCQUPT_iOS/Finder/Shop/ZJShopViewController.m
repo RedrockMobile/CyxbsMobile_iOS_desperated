@@ -26,7 +26,7 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"周边美食";
-    _arrayData = [[NSMutableArray alloc]init];
+//    _arrayData = [[NSMutableArray alloc]init];
     _page = 1;
     [self getInformation];
     [self setupRefresh];
@@ -54,9 +54,8 @@
 
 - (void) getInformation{
     [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
-//        _arrayData = [[NSMutableArray alloc]init];
+        _arrayData = [[NSMutableArray alloc]init];
         [self.view addSubview:self.tableView];
-       
         [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
         [_tableView reloadData];
     } WithFailureBlock:^{
@@ -95,7 +94,7 @@
 
 //尾部刷新
 - (void)footerRefresh{
-    _page += 1;
+    _page++ ;
     if (_page <= 3) {
         [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_page]} WithReturnValeuBlock:^(id returnValue) {
             [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -113,7 +112,7 @@
             [_tableView removeFromSuperview];
         }];
     }else if (_page >= 4 ){
-        [self.tableView.mj_footer endRefreshing];
+        [self.tableView.mj_footer endRefreshingWithNoMoreData];
     }
 }
 

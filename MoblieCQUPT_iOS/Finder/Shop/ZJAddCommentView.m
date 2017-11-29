@@ -10,7 +10,7 @@
 
 #define UIHeight [UIScreen mainScreen].bounds.size.height
 #define UIWidth  [UIScreen mainScreen].bounds.size.width
-#define addCommentsViewHeight 300
+#define addCommentsViewHeight 250
 @interface ZJAddCommentView()
 @property(nonatomic, strong) UITextView *textView;
 @property(copy, nonatomic) NSString *text;
