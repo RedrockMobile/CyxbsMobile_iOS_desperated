@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -47,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r32-xj-rWu">
-                                <rect key="frame" x="0.0" y="72" width="414" height="248.33333333333331"/>
+                                <rect key="frame" x="0.0" y="72.000000000000014" width="414" height="248.33333333333337"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LiX-UC-fSd" customClass="FinderCollectionViewFlowLayout">
                                     <size key="itemSize" width="50" height="50"/>
@@ -57,7 +57,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLG-lW-I7d">
-                                <rect key="frame" x="0.0" y="328.33333333333331" width="414" height="99.333333333333371"/>
+                                <rect key="frame" x="0.0" y="328.33333333333331" width="414" height="99.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oLG-lW-I7d" secondAttribute="height" multiplier="375:90" id="YwA-gk-flj"/>
                                 </constraints>
@@ -67,42 +67,42 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oF7-Er-ytu">
-                                <rect key="frame" x="8" y="427.66666666666663" width="146" height="129.66666666666663"/>
+                                <rect key="frame" x="8" y="427.66666666666669" width="146" height="129.66666666666669"/>
                                 <state key="normal" backgroundImage="find_image_hongyan.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="Ytk-ka-UZV"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wr4-pl-liD">
-                                <rect key="frame" x="134" y="427.66666666666663" width="146" height="129.66666666666663"/>
+                                <rect key="frame" x="134" y="427.66666666666669" width="146" height="129.66666666666669"/>
                                 <state key="normal" backgroundImage="find_image_map.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="Rq9-Mn-UWl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijW-q5-fff">
-                                <rect key="frame" x="260" y="427.66666666666663" width="146" height="129.66666666666663"/>
+                                <rect key="frame" x="260" y="427.66666666666669" width="146" height="129.66666666666669"/>
                                 <state key="normal" backgroundImage="find_image_food.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="4lO-B3-o5l"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMd-kd-Zpm">
-                                <rect key="frame" x="8" y="541.33333333333348" width="146" height="129.66666666666663"/>
+                                <rect key="frame" x="8" y="541.33333333333337" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_query.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="tY7-lk-gEb"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-5l-d5B">
-                                <rect key="frame" x="134" y="541.33333333333348" width="146" height="129.66666666666663"/>
+                                <rect key="frame" x="134" y="541.33333333333337" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_lostAndFound.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="UgK-oi-9q8"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKD-Qn-8pd">
-                                <rect key="frame" x="260" y="541.33333333333348" width="146" height="129.66666666666663"/>
+                                <rect key="frame" x="260" y="541.33333333333337" width="146" height="129.66666666666663"/>
                                 <state key="normal" backgroundImage="find_image_shake.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="6qR-aP-bG2"/>

@@ -17,6 +17,7 @@
 		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
 		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
+		6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */; };
 		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
 		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
 		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
@@ -654,6 +655,8 @@
 		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
 		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
 		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
+		6E6171281FDAED1D00FD2DDF /* NSDate+schoolDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+schoolDate.h"; sourceTree = "<group>"; };
+		6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+schoolDate.m"; sourceTree = "<group>"; };
 		6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 		6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
 		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
@@ -1065,7 +1068,7 @@
 		F242DC2E1EBCB2BB005AC411 /* TimeChooseScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeChooseScrollView.m; sourceTree = "<group>"; };
 		F242DC2F1EBCB2BB005AC411 /* WeekChooseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeekChooseButton.h; sourceTree = "<group>"; };
 		F242DC301EBCB2BB005AC411 /* WeekChooseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeekChooseButton.m; sourceTree = "<group>"; };
-		F242DC341EBCB2BB005AC411 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		F242DC341EBCB2BB005AC411 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "\bMainViewController.h"; sourceTree = "<group>"; };
 		F242DC351EBCB2BB005AC411 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F242DC361EBCB2BB005AC411 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F242DC8E1EBCB2BB005AC411 /* XBSAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XBSAboutViewController.h; sourceTree = "<group>"; };
@@ -2232,7 +2235,7 @@
 		F242DC331EBCB2BB005AC411 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
+				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
 				F242DC351EBCB2BB005AC411 /* MainViewController.m */,
 				F28EA5DC1F6AC0E2002351EF /* LaunchScreenViewController.h */,
 				F28EA5DD1F6AC0E2002351EF /* LaunchScreenViewController.m */,
@@ -3062,6 +3065,8 @@
 				F2A92CEB1F52E8F900B4CEEF /* UIImage+Color.m */,
 				F2A92CEC1F52E8F900B4CEEF /* UILabel+Adapter.h */,
 				F2A92CED1F52E8F900B4CEEF /* UILabel+Adapter.m */,
+				6E6171281FDAED1D00FD2DDF /* NSDate+schoolDate.h */,
+				6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -3860,6 +3865,7 @@
 				F242DFB21EBD9E2C005AC411 /* CategoryChooseView.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				F2509C831F440D980091F678 /* FoodViewController.m in Sources */,
+				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
 				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
