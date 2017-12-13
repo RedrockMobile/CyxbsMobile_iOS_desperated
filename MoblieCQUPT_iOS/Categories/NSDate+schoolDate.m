@@ -21,9 +21,9 @@
     NSDateComponents*comps;
     comps =[calendar components:NSCalendarUnitWeekday
                        fromDate:nowDate];
-    NSArray *weekdays = @[@"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六", @"星期天"];
+    NSArray *weekdays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MM-dd-EEEE";
+    formatter.dateFormat = @"EEEE";
     NSString *string = [formatter stringFromDate:nowDate];
     NSInteger day = 7;
     for (NSString *str in weekdays) {
