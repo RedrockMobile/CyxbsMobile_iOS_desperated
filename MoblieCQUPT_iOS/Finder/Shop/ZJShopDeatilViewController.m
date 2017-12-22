@@ -141,7 +141,7 @@
     _flag = 1;
     [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
         _commentArray = [[NSMutableArray alloc]init];
-        if ([returnValue isEqual:[NSNull null]]) {
+        if ([returnValue isEqual:[NSNull null]] || [returnValue[@"data"] isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
         self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
             return ;
@@ -172,12 +172,12 @@
             self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
             return ;
         }
-        [_commentArray addObjectsFromArray:[returnValue objectForKey:@"data"]];
         if ([[returnValue objectForKey:@"data"]isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
             self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
             return ;
         }
+        [_commentArray addObjectsFromArray:[returnValue objectForKey:@"data"]];
         [_shopDetailTableView reloadData];
         if (_commentArray.count < 5 * _flag) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData ];
