@@ -8,7 +8,7 @@
 
 #import "LaunchScreenViewController.h"
 #import "SplashModel.h"
-#import "MainViewController.h"
+#import "MainViewController.h"
 @interface LaunchScreenViewController ()
 @property (nonatomic, strong) SplashModel *model;
 @property (nonatomic, strong) MainViewController *mainVC;
