@@ -10,13 +10,14 @@
 #import "ExamScheduleTableViewCell.h"
 #import <sys/socket.h>
 #import <MBProgressHUD.h>
-
+#import "NSDate+schoolDate.h"
 @interface ExamScheduleViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *data;
 @property (strong, nonatomic) NSArray *pointArray;
 @property (strong, nonatomic) MBProgressHUD *hub;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
 @end
 
 @implementation ExamScheduleViewController
@@ -40,7 +41,7 @@
         UINib *nib = [UINib nibWithNibName:@"ExamScheduleTableViewCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"cell"];
     }
-    
+//    [self loadRefreshView];
     return _tableView;
 }
 
@@ -97,15 +98,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ExamScheduleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    
     if (!cell) {
         cell = [[ExamScheduleTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    NSString *schoolData = [NSString stringWithString:_data[indexPath.row][@"term"]];
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    NSDate *myDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@-%@-12", [NSString stringWithFormat:@"0%@", [schoolData substringWithRange:NSMakeRange(0, 4)]], [schoolData substringWithRange:NSMakeRange(4, 1)]]];
-    NSDate *newDate = [myDate dateByAddingTimeInterval:60 * 60 * 24 * ([_data[indexPath.row][@"weekday"] intValue] + [_data[indexPath.row][@"week"] intValue] * 7)];
+//    NSString *schoolData = [NSString stringWithString:_data[indexPath.row][@"term"]];
+//    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    NSDate *myDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@-%@-12", [NSString stringWithFormat:@"0%@", [schoolData substringWithRange:NSMakeRange(0, 4)]], [schoolData substringWithRange:NSMakeRange(4, 1)]]];
+    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MM-dd";
+    NSString *examDate = [formatter stringFromDate:newDate];
     //横杆
     if (indexPath.row == 0) {
         cell.upView.backgroundColor = [UIColor clearColor];
@@ -132,13 +135,43 @@
     int dateIndex = [_data[indexPath.row][@"weekday"] intValue];
     NSString *examDateLabelText = [_data[indexPath.row][@"week"] stringByAppendingFormat:@"周 周%@",dateArray[dateIndex]];
     cell.examDate.text = examDateLabelText;
-    cell.month.text = [NSString stringWithFormat:@"%@月",[[dateFormatter stringFromDate:newDate] substringWithRange:NSMakeRange(6, 1)]];
+    cell.month.text = [NSString stringWithFormat:@"%@月" ,[examDate substringWithRange:NSMakeRange(0, 2)]];
     [cell.month sizeToFit];
-    cell.day.text = [[dateFormatter stringFromDate:newDate] substringWithRange:NSMakeRange(8, 2)];
+    cell.day.text = [examDate substringWithRange:NSMakeRange(3, 2)];
     [cell.day sizeToFit];
     return cell;
 }
+//- (void) loadRefreshView
+//{
+//    // 下拉刷新
+//    _refreshControl = [[UIRefreshControl alloc] init];
+//    _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+//    [_refreshControl addTarget:self action:@selector(reloadData) forControlEvents:UIControlEventValueChanged];
+//    [self.tableView addSubview:_refreshControl];
+//    [self.tableView sendSubviewToBack:_refreshControl];
+//}
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+//{
+//    decelerate = YES;
+//    if (scrollView.contentOffset.y < -40) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"正在刷新"];
+//        });
+//        [_refreshControl beginRefreshing];
+//        [self fetchData];
+//    }
+//    else if(scrollView.contentOffset.y > SCREENHEIGHT - 50){
+//    }
+//}
 
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    if (scrollView.contentOffset.y >= _tableView.height + 20) {
+//        _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+//    }
+//    else if (!scrollView.decelerating) {
+//        _refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"松开刷新"];
+//    }
+//}
 
 /*
 #pragma mark - Navigation

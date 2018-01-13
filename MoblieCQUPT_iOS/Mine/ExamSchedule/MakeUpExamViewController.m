@@ -9,6 +9,7 @@
 #import "MakeUpExamViewController.h"
 #import <MBProgressHUD.h>
 #import "ExamScheduleTableViewCell.h"
+#import "NSDate+schoolDate.h"
 @interface MakeUpExamViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) NSArray *data;
@@ -110,31 +111,16 @@
     int dateIndex = [_data[indexPath.row][@"weekday"] intValue];
     NSString *examDateLabelText = [NSString stringWithFormat:@"%@周 周%@",_data[indexPath.row][@"week"],dateArray[dateIndex]];
     cell.examDate.text = examDateLabelText;
-    
-    NSString *dateString = [NSString stringWithString:_data[indexPath.row][@"date"]];
-    NSMutableString *monthString = [[NSMutableString alloc]init];
-    NSMutableString *dayString = [[NSMutableString alloc]init];
-    NSString *string;
-    int k = 0;
-    for(int i =0; i < [dateString length] - 1; i++)
-    {
-        string = [dateString substringWithRange:NSMakeRange(i, 1)];
-        if ([string isEqualToString:@"月"]) {
-            k ++;
-        }
-        else{
-            if (k == 0) {
-                [monthString appendString:string];
-            }
-            else{
-                [dayString appendString:string];
-            }
-        }
-        
-    }
-    cell.month.text = [NSString stringWithFormat:@"%@月", monthString];
-    cell.day.text = dayString;
-    
+    //日期
+    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"MM-dd";
+    NSString *examDate = [formatter stringFromDate:newDate];
+
+    cell.month.text = [NSString stringWithFormat:@"%@月" ,[examDate substringWithRange:NSMakeRange(0, 2)]];
+    [cell.month sizeToFit];
+    cell.day.text = [examDate substringWithRange:NSMakeRange(3, 2)];
+    [cell.day sizeToFit];
     return cell;
 
 }

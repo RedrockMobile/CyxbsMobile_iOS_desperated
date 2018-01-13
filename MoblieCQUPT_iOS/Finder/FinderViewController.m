@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, weak) IBOutlet FinderCollectionViewFlowLayout *layout;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, copy) NSArray <LZCarouselModel *> *array;
 @property (nonatomic, assign) NSInteger selectedIndex;
@@ -27,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];    
     self.firstLoad = YES;
     NSArray *placeholderImageArray = @[@"cqupt1.jpg",@"cqupt2.jpg",@"cqupt3.jpg"];
     NSMutableArray *models = [NSMutableArray array];
@@ -36,7 +38,11 @@
         [models addObject:model];
     }
     self.array = [self getCarouselModels]?:models;
+    self.selectedIndex = self.array.count*N/2;
+    self.pageControl.numberOfPages = self.array.count;
+    self.pageControl.currentPage = self.selectedIndex%self.array.count;
     [self getNetWorkData];
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
@@ -52,7 +58,14 @@
     [self.collectionView addGestureRecognizer:rightSwipeGesture];
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
     // 产品的要求 一次滑动只能移动一个
-    self.selectedIndex = self.array.count*N/2;
+
+    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"selectedIndex"]) {
+    self.pageControl.currentPage = [change[NSKeyValueChangeNewKey] integerValue]%self.pageControl.numberOfPages;
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
@@ -123,6 +136,10 @@
                     self.array = array.copy;
                     [self saveCarouselModels:array.copy];
                     [self.collectionView reloadData];
+                    self.selectedIndex = self.array.count*N/2;
+                    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+                    self.pageControl.numberOfPages = self.array.count;
+                    self.pageControl.currentPage = self.selectedIndex%self.array.count;
                 }
             }
         });
@@ -157,10 +174,10 @@
         return;
     }
     BaseViewController *vc = [[BaseViewController alloc]init];
-    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    vc.hidesBottomBarWhenPushed = YES;
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.picture_goto_url]]];
     [vc.view addSubview:webView];
-    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     NSLog(@"%ld",(long)indexPath.row);
 }
@@ -213,6 +230,9 @@
     UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:viewController animated:YES];
+}
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"selectedIndex"];
 }
 
 @end
