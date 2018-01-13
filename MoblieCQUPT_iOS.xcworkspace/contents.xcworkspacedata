@@ -1,6 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "group:MoblieCQUPT_iOS/Finder/Resource"
+      name = "Resource">
+      <FileRef
+         location = "group:cqupt1@2x.jpg">
+      </FileRef>
+      <FileRef
+         location = "group:cqupt2@2x.jpg">
+      </FileRef>
+      <FileRef
+         location = "group:cqupt3@2x.jpg">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_food@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_food@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_freshman@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_freshman@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_hongyan@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_hongyan@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_lostAndFound@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_lostAndFound@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_map@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_map@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_query@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_query@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_shake@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:find_image_shake@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:iconfont-shop1.png">
+      </FileRef>
+      <FileRef
+         location = "group:iconfont-shop2.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_add@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_add@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_com@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_com@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_describe@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_describe@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_infocategory@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_infocategory@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_itemcategory@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_itemcategory@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_lackcate@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_lackcate@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_lackplace@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_lackplace@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_lacktel@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_lacktel@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_little@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_little@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_many@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_many@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_place@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_place@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_QQ@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_QQ@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_success@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_success@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_tel@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_tel@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_time@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:lost_image_time@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:ok.png">
+      </FileRef>
+      <FileRef
+         location = "group:shake_image_shake@2x.png">
+      </FileRef>
+      <FileRef
+         location = "group:shake_image_shake@3x.png">
+      </FileRef>
+      <FileRef
+         location = "group:shake_match.mp3">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:MoblieCQUPT_iOS.xcodeproj">
    </FileRef>

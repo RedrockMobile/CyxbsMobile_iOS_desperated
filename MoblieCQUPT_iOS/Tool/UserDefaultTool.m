@@ -79,7 +79,7 @@
             [formatter setDateFormat:@"YYYY-MM-dd"];
             NSDate *beginDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
             NSString *beginString = [formatter stringFromDate:beginDate];
-            beginDate =  [formatter dateFromString:beginString];
+            beginDate = [formatter dateFromString:beginString];
             [userDefaults setObject:beginDate forKey:@"beginDate"];
         }
         [userDefaults setObject:obj forKey:key];
