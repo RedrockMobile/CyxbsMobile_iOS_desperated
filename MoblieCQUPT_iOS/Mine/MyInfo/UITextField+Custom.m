@@ -10,16 +10,15 @@
 
 @implementation UITextField (Custom)
 
-- (UITextField *) initWithPlaceholder:(NSString *)text andCell:(UITableViewCell *)cell {
-    self = [[UITextField alloc] init];
-    self.placeholder = text;
-    [self sizeToFit];
-    self.frame = CGRectMake(60, 15, MAIN_SCREEN_W-60-40, 30);
-    self.font = [UIFont fontWithName:@"Arial" size:13];
-    self.textAlignment = NSTextAlignmentRight;
-    self.textColor = kDetailTextColor;
-    self.center = CGPointMake(self.center.x, cell.center.y);
-    return self;
++ (UITextField *) initWithPlaceholder:(NSString *)text andCell:(UITableViewCell *)cell {
+    UITextField *custom = [[UITextField alloc] init];
+    custom.placeholder = text;
+    [custom sizeToFit];
+    custom.frame = CGRectMake(60, 15, MAIN_SCREEN_W-60-40, 30);
+    custom.font = [UIFont fontWithName:@"Arial" size:13];
+    custom.textAlignment = NSTextAlignmentRight;
+    custom.textColor = kDetailTextColor;
+    custom.center = CGPointMake(custom.center.x, cell.center.y);
+    return custom;
 }
-
 @end

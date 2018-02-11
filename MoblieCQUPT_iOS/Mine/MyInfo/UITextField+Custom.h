@@ -10,6 +10,6 @@
 
 @interface UITextField (Custom)
 
-- (UITextField *) initWithPlaceholder:(NSString *)text andCell:(UITableViewCell *)cell;
++ (UITextField *) initWithPlaceholder:(NSString *)text andCell:(UITableViewCell *)cell;
 
 @end
