@@ -22,8 +22,6 @@
     self = [super init];
     
     if (self) {
-        self.hidden = YES;
-        
         UIView *toolBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 48/667.0 * SCREENHEIGHT)];
         toolBarView.backgroundColor = [UIColor whiteColor];
         [self addSubview:toolBarView];
@@ -40,7 +38,7 @@
         [toolBarView addSubview:self.cancelBtn];
         [self.cancelBtn setImage:[UIImage imageNamed:@"灰色叉叉"] forState:UIControlStateNormal];
         
-        _commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(26, 48/667.0 * SCREENHEIGHT + 14, SCREENWIDTH - 26*2, 271/667.0 * SCREENHEIGHT - 47/667.0 * SCREENHEIGHT)];
+        _commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(26, 47/667.0 * SCREENHEIGHT, SCREENWIDTH - 26*2, 271/667.0 * SCREENHEIGHT - 47/667.0 * SCREENHEIGHT)];
         [self addSubview:_commentTextView];
         _commentTextView.font = [UIFont systemFontOfSize:13];
         

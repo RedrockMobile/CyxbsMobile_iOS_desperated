@@ -34,14 +34,11 @@
 @end
 
 @implementation QueryViewController
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-}
 
 -(void)viewWillAppear:(BOOL)animated{
     
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
     if (self.index) {
         [self changeScrollview:self.index];
         }
@@ -160,6 +157,14 @@
         }
     }else{
         [self.navigationController popViewControllerAnimated:true];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        if ([controller isKindOfClass:[QueryLoginViewController class]]) {
+            self.navigationController.viewControllers=@[self.navigationController.viewControllers[0],self];
+        }
     }
 }
 
@@ -297,7 +302,7 @@
             NSUserDefaults *default2 = [NSUserDefaults standardUserDefaults];
             NSString *account = [default1 objectForKey:@"account"];
             NSString *password = [default2 objectForKey:@"password"];
-            NSString *urlString = @"https://redrock.team/servicerecord/login";
+            NSString *urlString = @"https://wx.idsbllp.cn/servicerecord/login";
             NSDictionary *parameters = @{@"account":account,@"password":password};
             HttpClient *client = [HttpClient defaultClient];
             [client requestWithPath:urlString method:HttpRequestPost parameters:parameters prepareExecute:^{

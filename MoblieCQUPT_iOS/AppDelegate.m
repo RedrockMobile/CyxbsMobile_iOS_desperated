@@ -138,7 +138,8 @@
     }
     else{
         NSString *time = [userDefaults objectForKey:@"remindMeTime"];
-        [remindNotification addTomorrowNotificationWithMinute:@"00" AndHour:[time substringWithRange:NSMakeRange(0, 2)]];
+        NSArray *array = [time componentsSeparatedByString:@":"];
+        [remindNotification addTomorrowNotificationWithMinute:[array lastObject] AndHour:[array firstObject]];
     }
 }
 

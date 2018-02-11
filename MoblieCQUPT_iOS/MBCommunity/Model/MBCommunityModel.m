@@ -8,6 +8,7 @@
 
 #import "MBCommunityModel.h"
 #define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
+#define PHOTOURL2 @"http://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
 @implementation MBCommunityModel
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic{
@@ -61,15 +62,24 @@
         if (![self.article_thumbnail_src isEqualToString:@""]) {
             self.articleThumbnailPictureArray = [self.article_thumbnail_src componentsSeparatedByString:@","].mutableCopy;
         }
+        
+        //通过用户头像URL判断http／https
+        NSString *preStr = [[NSString alloc] init];
+        if ([self.user_photo_src hasPrefix:@"https"]) {
+            preStr = PHOTOURL;
+        } else {
+            preStr = PHOTOURL2;
+        }
 
         for(int i = 0;i<self.articlePictureArray.count;i++){
-            if (![self.articlePictureArray[i] hasPrefix:PHOTOURL]) {
-                self.articlePictureArray[i] = [PHOTOURL stringByAppendingString:self.articlePictureArray[i]];
+            if (![self.articlePictureArray[i] hasPrefix:PHOTOURL] && ![self.articlePictureArray[i] hasPrefix:PHOTOURL2]) {
+                self.articlePictureArray[i] = [preStr stringByAppendingString:self.articlePictureArray[i]];
             }
         }
         for (int i=0; i<self.articleThumbnailPictureArray.count; i++) {
-            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL]) {
-                self.articleThumbnailPictureArray[i] =  [PHOTOURL stringByAppendingString:self.articleThumbnailPictureArray[i]];
+            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL] && ![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL2]) {
+                [preStr stringByAppendingString:@"thumbnail/"];
+                self.articleThumbnailPictureArray[i] =  [preStr stringByAppendingString:self.articleThumbnailPictureArray[i]];
             }
         }
     }

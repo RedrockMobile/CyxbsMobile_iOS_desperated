@@ -77,6 +77,8 @@
     [center addObserver:self selector:@selector(reloadView) name:@"deleteRemind" object:nil];
     [center addObserver:self selector:@selector(reloadView) name:@"addRemind" object:nil];
     [center addObserver:self selector:@selector(reloadView) name:@"editRemind" object:nil];
+    [center addObserver:self selector:@selector(afterLogin) name:@"loginSuccess" object:nil];
+
 }
 
 - (void)reloadView{
@@ -92,7 +94,7 @@
         LoginViewController *loginViewController = [[LoginViewController alloc]init];
         loginViewController.loginSuccessHandler = ^(BOOL success) {
             if (success) {
-                [self afterLogin];
+//                [self afterLogin];
             }
         };
         [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
@@ -129,8 +131,8 @@
 }
 
 - (void)afterRequest{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"nowWeek"]!=nil && [defaults objectForKey:@"lessonResponse"]!=nil) {
+   
+    if ([UserDefaultTool valueWithKey:@"nowWeek"]!=nil && [UserDefaultTool valueWithKey:@"lessonResponse"]!=nil) {
         [[RemindNotification shareInstance] addNotifictaion];
         [self initWeekScrollView];
         [self initMainView];
@@ -278,8 +280,7 @@
 
 - (void)getLessonData{
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [defaults objectForKey:@"stuNum"];
+    NSString *stuNum = [UserDefaultTool valueWithKey:@"stuNum"];
     HttpClient *client = [HttpClient defaultClient];
     NSDictionary *parameter = @{@"stuNum":stuNum,@"forceFetch":@"true"};
     [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
@@ -293,8 +294,8 @@
         }else if(self.nowWeek > 20){
             self.nowWeek = 20;
         }
-        [defaults setObject:nowWeek forKey:@"nowWeek"];
-        [defaults setObject:responseObject forKey:@"lessonResponse"];
+        [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
+        [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
     
         // 共享数据
         NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];

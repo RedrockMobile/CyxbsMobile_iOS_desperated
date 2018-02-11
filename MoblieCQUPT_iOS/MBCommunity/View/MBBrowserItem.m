@@ -89,6 +89,7 @@ const CGFloat kDuration = 0.18f;
 }
 
 - (CGRect)calculateDestinationFrameWithSize:(CGSize)size{
+    if(size.width==0) return CGRectZero;
     CGRect rect = CGRectMake(0.0f,
                              (ScreenHeight - size.height * ScreenWidth/size.width)/2,
                              ScreenWidth,

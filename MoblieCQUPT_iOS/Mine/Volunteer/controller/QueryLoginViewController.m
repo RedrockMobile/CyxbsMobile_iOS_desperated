@@ -24,8 +24,8 @@
 
 
 @implementation QueryLoginViewController
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
 }
 - (void)viewDidLoad {
@@ -116,7 +116,7 @@
    NSString *account = self.accountField.text;
    NSString *password = self.passwordField.text;
    NSDictionary *parameters = @{@"account":account,@"password":password};
-   NSString *urlString = @"https://redrock.team/servicerecord/login";
+   NSString *urlString = @"https://wx.idsbllp.cn/servicerecord/login";
    HttpClient *client = [HttpClient defaultClient];
    [client requestWithPath:urlString method:HttpRequestPost parameters:parameters prepareExecute:^{
       
