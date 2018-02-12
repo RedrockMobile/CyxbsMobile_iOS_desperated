@@ -93,7 +93,6 @@
             cell.accessoryView = switchview;
         }
     }
-    
         textLabel.text = _cellArray[indexPath.row][@"cell"];
         textLabel.frame = CGRectMake(16, 16, 0, 0);
         textLabel.font = kFont;

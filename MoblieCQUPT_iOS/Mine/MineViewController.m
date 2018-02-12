@@ -49,7 +49,7 @@
                           @{@"title":@"校历",@"img":@"mine_image_calendar",@"controller":@"CalendarViewController"},
                           @{@"title":@"课前提醒",@"img":@"mine_image_remind",@"controller":@"BeforeClassViewController"}];
     
-    NSArray *array2 = @[@{@"title":@"设置",@"img":@"mine_image_setting",@"controller":@"SettingViewController"}];
+    NSArray *array2 = @[@{@"title":@"设置",@"img":@"mine_image_setting",@"controller":@"ReportViewController"}];
     self.cellDicArray = @[array1,array2];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

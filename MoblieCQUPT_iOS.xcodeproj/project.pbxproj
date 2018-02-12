@@ -82,6 +82,10 @@
 		4A3A084B1FCD990A00A50393 /* tel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3A083F1FCD990A00A50393 /* tel@2x.png */; };
 		4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */; };
 		4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */; };
+		6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F69232030299200BB5EF3 /* ReportViewController.m */; };
+		6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F6926203038B400BB5EF3 /* ReportSortButton.m */; };
+		6E0F69292030712700BB5EF3 /* ReportImage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0F69282030712700BB5EF3 /* ReportImage.xcassets */; };
+		6E0F692F20309BE000BB5EF3 /* ReportTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F692E20309BE000BB5EF3 /* ReportTextView.m */; };
 		6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */; };
 		6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205B31F6614E100E5020E /* BeforeClassViewController.m */; };
 		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
@@ -640,6 +644,13 @@
 		4A3A083F1FCD990A00A50393 /* tel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tel@2x.png"; sourceTree = "<group>"; };
 		4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-comment@2x.png"; sourceTree = "<group>"; };
 		4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-comment@3x.png"; sourceTree = "<group>"; };
+		6E0F69222030299200BB5EF3 /* ReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		6E0F69232030299200BB5EF3 /* ReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		6E0F6925203038B400BB5EF3 /* ReportSortButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportSortButton.h; sourceTree = "<group>"; };
+		6E0F6926203038B400BB5EF3 /* ReportSortButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportSortButton.m; sourceTree = "<group>"; };
+		6E0F69282030712700BB5EF3 /* ReportImage.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ReportImage.xcassets; sourceTree = "<group>"; };
+		6E0F692D20309BE000BB5EF3 /* ReportTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportTextView.h; sourceTree = "<group>"; };
+		6E0F692E20309BE000BB5EF3 /* ReportTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportTextView.m; sourceTree = "<group>"; };
 		6E12059C1F637F0F00E5020E /* MakeUpExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeUpExamViewController.h; sourceTree = "<group>"; };
 		6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeUpExamViewController.m; sourceTree = "<group>"; };
 		6E1205B21F6614E100E5020E /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
@@ -2230,6 +2241,13 @@
 			children = (
 				F242DCCF1EBCB2BB005AC411 /* SettingViewController.h */,
 				F242DCD01EBCB2BB005AC411 /* SettingViewController.m */,
+				6E0F69222030299200BB5EF3 /* ReportViewController.h */,
+				6E0F69232030299200BB5EF3 /* ReportViewController.m */,
+				6E0F692D20309BE000BB5EF3 /* ReportTextView.h */,
+				6E0F692E20309BE000BB5EF3 /* ReportTextView.m */,
+				6E0F6925203038B400BB5EF3 /* ReportSortButton.h */,
+				6E0F6926203038B400BB5EF3 /* ReportSortButton.m */,
+				6E0F69282030712700BB5EF3 /* ReportImage.xcassets */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -3126,6 +3144,7 @@
 				4A3A07D41FCC0EC700A50393 /* find_image_hongyan@2x.png in Resources */,
 				F242DFB41EBD9E2C005AC411 /* IconTableViewCell.xib in Resources */,
 				82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */,
+				6E0F69292030712700BB5EF3 /* ReportImage.xcassets in Resources */,
 				F26D96841F3C400F0063B024 /* icon_share_weibo@2x.png in Resources */,
 				F242DDBE1EBCB2BB005AC411 /* rightIcon.png in Resources */,
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
@@ -3393,8 +3412,10 @@
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
 				F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */,
+				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
+				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
@@ -3433,6 +3454,7 @@
 				F29245641F7A942E001A8788 /* LessonButtonViewModel.m in Sources */,
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
+				6E0F692F20309BE000BB5EF3 /* ReportTextView.m in Sources */,
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
 				9630E4CD1FAF07D300874EB9 /* HeaderGifRefresh.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
