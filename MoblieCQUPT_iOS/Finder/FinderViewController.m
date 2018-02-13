@@ -25,6 +25,21 @@
 @end
 
 @implementation FinderViewController
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,6 +54,7 @@
     }
     self.array = [self getCarouselModels]?:models;
     self.selectedIndex = self.array.count*N/2;
+
     self.pageControl.numberOfPages = self.array.count;
     self.pageControl.currentPage = self.selectedIndex%self.array.count;
     [self getNetWorkData];
@@ -59,7 +75,6 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
     // 产品的要求 一次滑动只能移动一个
 
-    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
@@ -231,6 +246,7 @@
     viewController.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:viewController animated:YES];
 }
+
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"selectedIndex"];
 }
