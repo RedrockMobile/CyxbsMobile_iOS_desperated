@@ -9,7 +9,6 @@
 #import "ReportViewController.h"
 #import "ReportSortButton.h"
 #import "ReportTextView.h"
-
 @interface ReportViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *reportTableView;
 @property (strong, nonatomic) NSMutableArray *btnArray;
@@ -102,6 +101,7 @@
     }
     return cell;
 }
+
 - (UIView *)tableView:(UITableView *)tableView
 viewForHeaderInSection:(NSInteger)section{
     UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 30)];
