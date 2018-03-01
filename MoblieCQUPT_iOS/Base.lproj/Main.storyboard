@@ -353,7 +353,7 @@
         <!--Community-->
         <scene sceneID="8J0-Lf-0pd">
             <objects>
-                <viewController title="Community" id="kc5-RX-Tv2" customClass="YouWenSortViewController" sceneMemberID="viewController">
+                <viewController title="Community" id="kc5-RX-Tv2" customClass="YouWenViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NwE-Kv-Ihl"/>
                         <viewControllerLayoutGuide type="bottom" id="N55-kP-x07"/>

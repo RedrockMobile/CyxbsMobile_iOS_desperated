@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YouWenSortViewController : UIViewController
-
+@interface YouWenSortViewController : BaseViewController
+- (instancetype)initViewStyle:(NSString *)style;
 @end
