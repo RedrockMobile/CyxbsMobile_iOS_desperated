@@ -10,6 +10,8 @@
 #import "YouWenTableViewCell.h"
 #import "YouWenSortViewController.h"
 #import "SegmentView.h"
+#import "YouWenAddViewController.h"
+
 @interface YouWenViewController ()
 @property (strong, nonatomic) UIButton *askBtn;
 @end
@@ -38,7 +40,9 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
 }
 - (void)setNewQuestion{
-    
+    YouWenAddViewController *addView = [[YouWenAddViewController alloc]init];
+     [self.navigationController pushViewController:addView animated:YES];
+    self.tabBarController.tabBar.hidden = YES;
 }
 /*
 #pragma mark - Navigation
