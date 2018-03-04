@@ -209,23 +209,23 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         point.frame = CGRectMake(SCREENWIDTH - 20, cell.size.height / 2 - textLabel.size.height / 2, textLabel.size.height / 2, textLabel.size.height);
         [cell.contentView addSubview:point];
         if (indexPath.row == 0) {
-            self.nicknameTextField = [[UITextField alloc] initWithPlaceholder:@"请输入昵称" andCell:cell];
+            self.nicknameTextField = [UITextField initWithPlaceholder:@"请输入昵称" andCell:cell];
             self.nicknameTextField.delegate = self;
             self.nicknameTextField.text = self.model.nickname;
             [cell.contentView addSubview:_nicknameTextField];
         } else if (indexPath.row == 1) {
-            _introductionTextField = [[UITextField alloc] initWithPlaceholder:@"请输入个性签名" andCell:cell];
+            _introductionTextField = [UITextField initWithPlaceholder:@"请输入个性签名" andCell:cell];
             _introductionTextField.delegate = self;
             _introductionTextField.text = self.model.introduction;
             [cell.contentView addSubview:_introductionTextField];
         }
         else if (indexPath.row == 2) {
-            _qqTextField = [[UITextField alloc] initWithPlaceholder:@"写下QQ,方便交流" andCell:cell];
+            _qqTextField = [UITextField initWithPlaceholder:@"写下QQ,方便交流" andCell:cell];
             _qqTextField.delegate = self;
             _qqTextField.text = self.model.qq;
             [cell.contentView addSubview:_qqTextField];
         } else {
-            _phoneTextField = [[UITextField alloc] initWithPlaceholder:@"留下电话，交个朋友" andCell:cell];
+            _phoneTextField = [UITextField initWithPlaceholder:@"留下电话，交个朋友" andCell:cell];
             _phoneTextField.delegate = self;
             _phoneTextField.text = self.model.phone;
             [cell.contentView addSubview:_phoneTextField];
