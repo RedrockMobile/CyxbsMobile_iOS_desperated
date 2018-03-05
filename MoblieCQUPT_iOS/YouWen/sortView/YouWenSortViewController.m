@@ -10,6 +10,11 @@
 #import "YouWenTableViewCell.h"
 #import "YouWenDataModel.h"
 #import <MJRefresh.h>
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...)
+#endif
 @interface YouWenSortViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tab;
 @property (strong, nonatomic) NSMutableArray *cellArray;
@@ -38,7 +43,7 @@
     _tab = [[UITableView alloc] init];
     _cellArray = [NSMutableArray array];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData) name:@"DataLoading" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData:) name:@"DataLoading" object:nil];
     _tab.delegate = self;
     _tab.dataSource = self;
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -49,6 +54,8 @@
     _tab.mj_header = header;
     MJRefreshAutoNormalFooter* footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getNewPageData)];
     footer.stateLabel.textColor = [UIColor blackColor];
+    //这是个坑，不关会多次刷新
+    footer.automaticallyRefresh = NO;
     _tab.mj_footer = footer;
     [self.view addSubview:_tab];
     [_tab mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -64,9 +71,10 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:nil];
 }
 
-- (void)refreshTableData{
+- (void)refreshTableData:(NSNotification *)notification{
+    NSString *str = notification.userInfo[@"state"];
     if (_tab.mj_header.state == MJRefreshStateRefreshing) {
-        if (_dataModel.YWdataArray.count) {
+        if ([str isEqualToString:@"YES"]) {
             if (!_dataArray.count) {
                 _dataArray = _dataModel.YWdataArray.mutableCopy;
             }
@@ -86,7 +94,7 @@
         }
     }
     else{
-        if (_dataModel.YWdataArray.count) {
+        if ([str isEqualToString:@"YES"]) {
             [_dataArray addObjectsFromArray:_dataModel.YWdataArray.mutableCopy];
             [_tab reloadData];
             [_tab.mj_footer endRefreshing];
@@ -96,6 +104,7 @@
         }
     }
 }
+
 - (void)getNewData{
     [_dataModel newYWDate];
 }
@@ -105,14 +114,12 @@
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSDictionary *dic = _dataArray[indexPath.row];
     YouWenTableViewCell *cell = [YouWenTableViewCell cellWithTableView:tableView andDic:dic];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSValue *value = [NSValue valueWithCGRect:cell.cellSize];
-    _cellArray[indexPath.row] =  value;
     return cell;
 }
 
@@ -121,9 +128,14 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSValue *value = _cellArray[indexPath.row];
-    CGRect cellSize = [value CGRectValue];
-    return cellSize.size.height;
+    //这个方法不太对，但其他方法有坑
+    CGSize size = CGSizeMake(ScreenWidth - 30, 300);
+    UIFont* font = [UIFont fontWithName:@"Arial" size:15];
+    NSDictionary *dic = @{NSFontAttributeName:font};
+    NSString *string = _dataArray[indexPath.row][@"description"];
+    CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
+        attributes:dic context:nil].size.height;
+    return height + 98;
 }
 /*
 #pragma mark - Navigation
