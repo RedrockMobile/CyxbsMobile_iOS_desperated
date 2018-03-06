@@ -17,7 +17,6 @@ typedef NS_ENUM(NSInteger, wordNumState) {
 };
 @property (strong, nonatomic) UILabel *wordNum;
 @property (strong, nonatomic) UILabel *placeHolder;
-@property (copy, nonatomic) NSString *placeHolderWord;
 @property (assign, nonatomic) NSInteger limitNum;
 - (UITextView *)initWithFrame:(CGRect)frame andState:(wordNumState)state;
 @end

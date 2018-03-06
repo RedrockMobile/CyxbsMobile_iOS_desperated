@@ -41,8 +41,8 @@
 }
 - (void)setNewQuestion{
     YouWenAddViewController *addView = [[YouWenAddViewController alloc]init];
+    addView.hidesBottomBarWhenPushed = YES;
      [self.navigationController pushViewController:addView animated:YES];
-    self.tabBarController.tabBar.hidden = YES;
 }
 /*
 #pragma mark - Navigation
