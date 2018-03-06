@@ -36,13 +36,15 @@
 }
 
 - (void)setWriteView{
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight / 3 * 2 - 64)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, (ScreenHeight - 64) / 3 * 2)];
     whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:whiteView];
     _titleTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth - 20, 30) andState:OnlyWordNum];
     _titleTextView.limitNum = 20;
+    _titleTextView.placeHolder.text = @"请输入标题";
     _detailTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(10, 40, ScreenWidth - 20, whiteView.height - _titleTextView.bottom - 10) andState:OnlyWordNum];
     _detailTextView.limitNum = 200;
+    _detailTextView.placeHolder.text = @"详细描述你的问题和需求，表达越清楚，越容易获得帮助哦！";
     UIView *blackLine = [[UIView alloc] initWithFrame:CGRectMake(10, _titleTextView.bottom, ScreenWidth - 20, 1)];
     blackLine.backgroundColor = [UIColor blackColor];
 
@@ -52,8 +54,8 @@
 }
 
 - (void)setImageView{
-    UIScrollView *imageView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, ScreenHeight / 3 * 2 - 64 + 10, ScreenWidth, ScreenHeight / 3 - 64 - 10)];
-    imageView.contentSize = CGSizeMake(ScreenWidth, _imageArray.count / 3 * PHOTOSIZE + (ScreenHeight / 3 - 64 - 10));
+    UIScrollView *imageView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, (ScreenHeight - 64) / 3 * 2 + 5, ScreenWidth, (ScreenHeight - 64) / 3  - 30)];
+    imageView.contentSize = CGSizeMake(ScreenWidth, _imageArray.count / 3 * PHOTOSIZE + ((ScreenHeight - 64) / 3 - 10));
     imageView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:imageView];
     CGRect final;
