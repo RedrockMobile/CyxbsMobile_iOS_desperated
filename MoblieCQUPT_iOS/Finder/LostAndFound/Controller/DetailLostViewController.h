@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LostItem.h"
+@class LostItem;
 @interface DetailLostViewController : BaseViewController
-@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UITableView *footTableView;
+
 - (void)refreshWithDetailInfo:(LostItem *)info;
 @end

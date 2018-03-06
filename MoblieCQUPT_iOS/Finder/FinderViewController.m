@@ -7,330 +7,232 @@
 //
 
 #import "FinderViewController.h"
-#import "ShopViewController.h"
-#import "WebViewController.h"
-#import "ShakeViewController.h"
-#import "CommunityViewController.h"
-#import "MapViewController.h"
-#import "HomePageViewController.h"
-#import "LostViewController.h"
-#import "QuerLoginViewController.h"
-#define kCount 3
+#import "FinderCollectionViewFlowLayout.h"
+#import "FinderCollectionViewCell.h"
+#import "LZCarouselModel.h"
 
-@interface FinderViewController ()<UIScrollViewDelegate>
+@interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
-@property (strong, nonatomic) UIScrollView *mainScrollView;
-@property (strong, nonatomic) UIScrollView *scrollView;
-@property (strong, nonatomic) UIPageControl *pageControl;
-@property (strong, nonatomic) NSTimer *timer;
-
-@property (strong, nonatomic) UIView *buttonsView;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *width;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *height;
-
-
-@property (weak, nonatomic) IBOutlet UIButton *redrockBtn;
-@property (weak, nonatomic) IBOutlet UIButton *mapBtn;
-@property (weak, nonatomic) IBOutlet UIButton *shakeForShopBtn;
-@property (weak, nonatomic) IBOutlet UIButton *communityBtn;
-@property (weak, nonatomic) IBOutlet UIButton *chuangyeBtn;
-@property (weak, nonatomic) IBOutlet UIButton *shopBtn;
-
-@property (weak, nonatomic) IBOutlet UIView *redrockView;
-@property (weak, nonatomic) IBOutlet UIView *mapView;
-@property (weak, nonatomic) IBOutlet UIView *shakeForShopView;
-@property (weak, nonatomic) IBOutlet UIView *communityView;
-@property (weak, nonatomic) IBOutlet UIView *chuangyeView;
-@property (weak, nonatomic) IBOutlet UIView *shopView;
-@property (weak, nonatomic) IBOutlet UIView *shopOfView;
-@property (weak, nonatomic) IBOutlet UIView *chuangyeOfView;
-@property (weak, nonatomic) IBOutlet UIView *communityOfView;
-@property (weak, nonatomic) IBOutlet UIView *shakeForShopOfView;
-@property (weak, nonatomic) IBOutlet UIView *mapOfView;
-@property (weak, nonatomic) IBOutlet UIView *redrockOfView;
-
+@property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, weak) IBOutlet FinderCollectionViewFlowLayout *layout;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic, copy) NSArray <LZCarouselModel *> *array;
+@property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, assign) BOOL firstLoad;
+@property (nonatomic, assign) BOOL allDownload;
+#define N 10000
 @end
 
 @implementation FinderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
-    _mainScrollView.showsVerticalScrollIndicator = NO;
-    if (MAIN_SCREEN_W == 320 && MAIN_SCREEN_H == 480) {
-        _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H*1.2);
-    }else{
-        _mainScrollView.contentSize = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_H);
+    self.view.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];    
+    self.firstLoad = YES;
+    NSArray *placeholderImageArray = @[@"cqupt1.jpg",@"cqupt2.jpg",@"cqupt3.jpg"];
+    NSMutableArray *models = [NSMutableArray array];
+    for (NSString *str in placeholderImageArray) {
+        LZCarouselModel *model = [[LZCarouselModel alloc]init];
+        model.picture = [UIImage imageNamed:str];
+        [models addObject:model];
     }
-    [self.view addSubview:_mainScrollView];
-    //图片轮播
-    self.automaticallyAdjustsScrollViewInsets = NO;//防止出现20或64的下移
-    self.view.backgroundColor = [UIColor whiteColor];
-
+    self.array = [self getCarouselModels]?:models;
+    self.selectedIndex = self.array.count*N/2;
+    self.pageControl.numberOfPages = self.array.count;
+    self.pageControl.currentPage = self.selectedIndex%self.array.count;
+    [self getNetWorkData];
     
-    //设置图片
-    for(int i=0;i<kCount;i++){
-        NSString *imageName=[NSString stringWithFormat:@"cqupt%d.jpg",i+1];
-        UIImage *image=[UIImage imageNamed:imageName];
-        
-        UIImageView *imageView=[[UIImageView alloc] initWithFrame:self.scrollView.bounds];
-        imageView.image=image;
-        [self.scrollView addSubview:imageView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    self.collectionView.showsVerticalScrollIndicator = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    self.collectionView.scrollEnabled = NO;
+//    self.collectionView.collectionViewLayout = [[FinderCollectionViewFlowLayout alloc]init];
+    UISwipeGestureRecognizer *leftSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
+    leftSwipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
+    rightSwipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.collectionView addGestureRecognizer:leftSwipeGesture];
+    [self.collectionView addGestureRecognizer:rightSwipeGesture];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
+    // 产品的要求 一次滑动只能移动一个
+
+    [self addObserver:self forKeyPath:@"selectedIndex" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"selectedIndex"]) {
+    self.pageControl.currentPage = [change[NSKeyValueChangeNewKey] integerValue]%self.pageControl.numberOfPages;
     }
-    //设置每个imageView的位置
-    [self.scrollView.subviews enumerateObjectsUsingBlock:^(UIImageView *imageView, NSUInteger idx, BOOL *stop) {
-        CGRect frame=imageView.frame;
-        frame.origin.x=idx*frame.size.width;
-        imageView.frame=frame;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self addTimer];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [self removeTimer];
+}
+
+- (void)viewDidLayoutSubviews{
+    if (self.firstLoad) {
+        [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+        self.firstLoad = NO;
+    }
+}
+
+- (void)getNetWorkData{
+    HttpClient *client = [HttpClient defaultClient];
+    
+    [client requestWithPath:Carousel_API method:HttpRequestPost parameters:@{@"pic_num": @"3"} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *dataArray = responseObject[@"data"];
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:dataArray.count];
+        dispatch_group_t group = dispatch_group_create();
+        self.allDownload = YES;
+        for (int i = 0; i<dataArray.count ; i++) {
+            array[i] = @"";
+            NSDictionary *data = dataArray[i];
+            if(self.allDownload){
+                dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+                    LZCarouselModel *model = [[LZCarouselModel alloc] initWithData:data];
+                    dispatch_queue_t asynchronousQueue = dispatch_queue_create("imageDownloadQueue", NULL);
+                    dispatch_async(asynchronousQueue, ^{
+                        NSError *error;
+                        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.picture_url]];
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            if (imageData) {
+                                model.imageData = imageData;
+                                model.picture = [UIImage imageWithData:model.imageData];
+                                array[i] = model;
+                            }
+                            if (error) {
+                                NSLog(@"%@",error);
+                                self.allDownload = NO;
+                            }
+                            dispatch_semaphore_signal(sema);
+                        });
+                    });
+                    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+                });
+            }
+        }
+        dispatch_group_notify(group, dispatch_get_main_queue(), ^{
+            if (self.allDownload) {
+                BOOL success = YES; //避免数组中的model未被初始化
+                for(LZCarouselModel *model in array){
+                    if([model isEqual:@""]){
+                        success = NO;
+                        break;
+                    }
+                }
+                if(success){
+                    self.array = array.copy;
+                    [self saveCarouselModels:array.copy];
+                    [self.collectionView reloadData];
+                    self.selectedIndex = self.array.count*N/2;
+                    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:NO];
+                    self.pageControl.numberOfPages = self.array.count;
+                    self.pageControl.currentPage = self.selectedIndex%self.array.count;
+                }
+            }
+        });
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        
     }];
     
-    self.pageControl.currentPage=0;
-    //时钟开始
-    [self startTime];
-    
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"View" owner:self options:nil];
-    _buttonsView = [nib objectAtIndex:0];
-    _buttonsView.frame = CGRectMake(0, _scrollView.frame.size.height+64 , MAIN_SCREEN_W, MAIN_SCREEN_W/3*2);
-    [self.mainScrollView addSubview:_buttonsView];
-    
-    UIView *line1 = [[UIView alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W/3, 0, 1, _buttonsView.frame.size.height)];
-    UIView *line2 = [[UIView alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W/3*2, 0, 1, _buttonsView.frame.size.height)];
-    UIView *line3 = [[UIView alloc]initWithFrame:CGRectMake(0, _buttonsView.frame.size.height/2, MAIN_SCREEN_W, 1)];
-    UIView *line4 = [[UIView alloc]initWithFrame:CGRectMake(0, _buttonsView.frame.size.height, MAIN_SCREEN_W, 1)];
-    
-    line1.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    line2.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    line3.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    line4.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-    
-    [_buttonsView addSubview:line1];
-    [_buttonsView addSubview:line2];
-    [_buttonsView addSubview:line3];
-    [_buttonsView addSubview:line4];
-    
-    [_shopBtn addTarget:self
-                 action:@selector(enterShop)
-       forControlEvents:UIControlEventTouchUpInside];
-    [_shopBtn addTarget:self
-                 action:@selector(enterShop)
-       forControlEvents:UIControlEventTouchUpOutside];
-    [_shopBtn addTarget:self
-                 action:@selector(clickShop)
-       forControlEvents:UIControlEventTouchDown];
-    
-    [_redrockBtn addTarget:self
-                    action:@selector(enterWeb)
-          forControlEvents:UIControlEventTouchUpInside];
-    [_redrockBtn addTarget:self
-                    action:@selector(enterWeb)
-          forControlEvents:UIControlEventTouchUpOutside];
-    [_redrockBtn addTarget:self
-                    action:@selector(clickRedrock)
-          forControlEvents:UIControlEventTouchDown];
-    
-    [_chuangyeBtn addTarget:self
-                     action:@selector(enterIntroduction)
-           forControlEvents:UIControlEventTouchUpInside];
-    [_chuangyeBtn addTarget:self
-                     action:@selector(enterIntroduction)
-           forControlEvents:UIControlEventTouchUpOutside];
-    [_chuangyeBtn addTarget:self
-                     action:@selector(clickLostAndFound)
-           forControlEvents:UIControlEventTouchDown];
-    
-    [_mapBtn addTarget:self
-                action:@selector(enterMap)
-      forControlEvents:UIControlEventTouchUpInside];
-    [_mapBtn addTarget:self
-                action:@selector(enterMap)
-      forControlEvents:UIControlEventTouchUpOutside];
-    [_mapBtn addTarget:self
-                action:@selector(clickMap)
-      forControlEvents:UIControlEventTouchDown];
-    
-    [_shakeForShopBtn addTarget:self
-                         action:@selector(enterShake)
-               forControlEvents:UIControlEventTouchUpInside];
-    [_shakeForShopBtn addTarget:self
-                         action:@selector(enterShake)
-               forControlEvents:UIControlEventTouchUpOutside];
-    [_shakeForShopBtn addTarget:self
-                         action:@selector(clickShake)
-               forControlEvents:UIControlEventTouchDown];
-    
-    [_communityBtn addTarget:self
-                      action:@selector(enterCommunity)
-            forControlEvents:UIControlEventTouchUpInside];
-    [_communityBtn addTarget:self
-                      action:@selector(enterCommunity)
-            forControlEvents:UIControlEventTouchUpOutside];
-    [_communityBtn addTarget:self
-                      action:@selector(clickCommunity)
-            forControlEvents:UIControlEventTouchDown];
 }
 
-
-- (void)enterShop{
-    ShopViewController *svc = [[ShopViewController alloc] init];
-    svc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:svc
-                                         animated:YES];
-    _shopView.backgroundColor = [UIColor clearColor];
-    _shopOfView.backgroundColor = [UIColor clearColor];
-}
-- (void)clickShop {
-    _shopView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _shopOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+- (BOOL)saveCarouselModels:(NSArray *)array{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPhoto"];
+    return [NSKeyedArchiver archiveRootObject:array toFile:infoFilePath];
 }
 
-- (void)enterWeb{
-    WebViewController *wvc = [[WebViewController alloc] initWithNibName:@"WebViewController" bundle:nil];
-    wvc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:wvc
-                                         animated:YES];
-    _redrockView.backgroundColor = [UIColor clearColor];
-    _redrockOfView.backgroundColor = [UIColor clearColor];
+- (NSArray *)getCarouselModels{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *infoFilePath = [path stringByAppendingPathComponent:@"CarouselPhoto"];
+    NSString *picFilePath = [path stringByAppendingPathComponent:@"CarouselPicture"];
+    NSError *error;
+    [[NSFileManager defaultManager] removeItemAtPath:picFilePath error:&error];
+    if (error) {
+        NSLog(@"%@",error);
+    } // 删除原来错误的轮播
+    return [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:infoFilePath]];
 }
 
-- (void)clickRedrock {
-    _redrockView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _redrockOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-}
-
-- (void)enterIntroduction{
-    LostViewController *cvc = [[LostViewController alloc] init];
-    cvc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:cvc
-                                         animated:YES];
-    _chuangyeView.backgroundColor = [UIColor clearColor];
-    _chuangyeOfView.backgroundColor = [UIColor clearColor];
-}
-
-- (void)clickLostAndFound {
-    _chuangyeView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _chuangyeOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-}
-
-- (void)enterMap{
-    MapViewController *mvc = [[MapViewController alloc] init];
-    mvc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:mvc
-                                         animated:YES];
-    _mapView.backgroundColor = [UIColor clearColor];
-    _mapOfView.backgroundColor = [UIColor clearColor];
-}
-
-- (void)clickMap {
-    _mapView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _mapOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-}
-
-- (void)enterShake{
-//    ShakeViewController *svc = [[ShakeViewController alloc] init];
-    HomePageViewController *svc = [[HomePageViewController alloc]init];
-    svc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:svc
-                                         animated:YES];
-    _shakeForShopView.backgroundColor = [UIColor clearColor];
-    _shakeForShopOfView.backgroundColor = [UIColor clearColor];
-}
-
-- (void)clickShake {
-    _shakeForShopView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _shakeForShopOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-}
-
-- (void)enterCommunity{
-//    CommunityViewController *cvc = [[CommunityViewController alloc] init];
-//    [self.navigationController pushViewController:cvc
-//                                         animated:YES];
-//    FreshManMainViewController *fvc = [[FreshManMainViewController alloc]init];
-    QuerLoginViewController *vc = [[QuerLoginViewController alloc]init];
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    LZCarouselModel *model = self.array[indexPath.row%self.array.count];
+    if (!model.picture_goto_url) {
+        return;
+    }
+    BaseViewController *vc = [[BaseViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
+    UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.picture_goto_url]]];
+    [vc.view addSubview:webView];
     [self.navigationController pushViewController:vc animated:YES];
-    _communityView.backgroundColor = [UIColor clearColor];
-    _communityOfView.backgroundColor = [UIColor clearColor];
+    NSLog(@"%ld",(long)indexPath.row);
 }
 
-- (void)clickCommunity {
-    _communityView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
-    _communityOfView.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1];
+-(void)addTimer{
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(changeImage) userInfo:nil repeats:YES];
 }
 
-#pragma mark - 图片轮播
--(UIScrollView *)scrollView
-{
-    if(_scrollView==nil){
-        //初始化scrollView
-        _scrollView=[[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, MAIN_SCREEN_W, MAIN_SCREEN_W*0.56)];
-        _scrollView.backgroundColor=[UIColor clearColor];
-        [self.mainScrollView addSubview:_scrollView];
-        //设置scrollView的相关属性
-        _scrollView.contentSize=CGSizeMake(kCount*_scrollView.bounds.size.width, 0);
-        _scrollView.bounces = NO;
-        _scrollView.pagingEnabled = YES;
-        _scrollView.showsVerticalScrollIndicator = NO;
-        _scrollView.showsHorizontalScrollIndicator = NO;
-        //添加代理方法
-        _scrollView.delegate=self;
-    }
-    return _scrollView;
-}
--(UIPageControl *)pageControl
-{
-    if(_pageControl==nil){
-        _pageControl=[[UIPageControl alloc] init];
-        //分页数
-        _pageControl.numberOfPages=kCount;
-        //控件的尺寸
-        CGSize size=[_pageControl sizeForNumberOfPages:kCount];
-        _pageControl.bounds=CGRectMake(0, 0, size.width, size.height);
-        _pageControl.center=CGPointMake(MAIN_SCREEN_W - 50,  MAIN_SCREEN_W/1.4 - 10);
-        //相关的属性
-        _pageControl.pageIndicatorTintColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.4];
-        _pageControl.currentPageIndicatorTintColor = [UIColor colorWithRed:25/255.0 green:170/255.0 blue:254/255.0 alpha:1];
-        //添加控件
-        [self.mainScrollView addSubview:_pageControl];
-        //添加事件
-        [_pageControl addTarget:self action:@selector(valueChange:) forControlEvents:UIControlEventValueChanged];
-    }
-    return _pageControl;
-}
--(void) valueChange:(UIPageControl *)page
-{
-    CGFloat x=page.currentPage*self.scrollView.bounds.size.width;
-    [_scrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+- (void)changeImage{
+    self.selectedIndex = (++self.selectedIndex)%(self.array.count*N);
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
 }
 
--(void) startTime
-{
-    self.timer=[NSTimer timerWithTimeInterval:2.5 target:self selector:@selector(updateTime) userInfo:nil repeats:YES];
-    //添加到运行循环
-    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-}
-//时钟所需要做的事情
--(void) updateTime
-{
-    int page=(self.pageControl.currentPage+1)%kCount;
-    self.pageControl.currentPage=page;
-    [self valueChange:self.pageControl];
-}
-//拖拽的时候时钟停止
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
+-(void)removeTimer{
     [self.timer invalidate];
+    self.timer = nil;
+}
+
+- (void)swipe:(UISwipeGestureRecognizer *)getsure{
+    [self removeTimer];
+    if (getsure.direction == UISwipeGestureRecognizerDirectionLeft) {
+        self.selectedIndex = (++self.selectedIndex)%(self.array.count*N);
+    }
+    else if(getsure.direction == UISwipeGestureRecognizerDirectionRight){
+        self.selectedIndex = (--self.selectedIndex)%(self.array.count*N);
+    }
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:self.selectedIndex inSection:0] atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+    [self addTimer];
+    
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.array.count*N;
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+- (FinderCollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    FinderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"FinderCollectionViewCell" forIndexPath:indexPath];
+    cell.contentImageView.image = self.array[indexPath.row%self.array.count].picture;
+    return cell;
 }
 
 
-//停止拖拽的时候时钟开始
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
-    [self startTime];
-    int distance = _scrollView.frame.size.width;
-    int num = floor((_scrollView.contentOffset.x+0.5*distance)/distance);
-    _pageControl.currentPage = num;
-    
+- (IBAction)clickBtn:(UIButton *)sender {
+    NSArray *array = @[@"WebViewController",@"MapViewController",@"ZJShopViewController",@"QuerLoginViewController",@"LostViewController",@"ShakeViewController"];
+    NSString *className = array[sender.tag];
+    UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
+    viewController.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
+- (void)dealloc {
+    [self removeObserver:self forKeyPath:@"selectedIndex"];
 }
 
 @end

@@ -10,7 +10,6 @@
 #import "MJRefresh.h"
 #import "AboutMeTableViewCell.h"
 #import "AboutMePraiseTableViewCell.h"
-#import "ShopDetailViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIImage+AFNetworking.h"
 #import "MBCommuityDetailsViewController.h"
@@ -33,6 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _flag = 0;
+
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     [self setupRefresh];
@@ -46,20 +46,22 @@
 {
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(headerRereshing)];
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(footerRereshing)];
+    self.tableView.mj_footer.hidden = YES;
 }
 
 - (void)headerRereshing{
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         // 刷新表格
+        self.tableView.mj_footer.hidden = NO;
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-        [self.tableView.mj_header endRefreshing];
+//        [self.tableView.mj_header endRefreshing];
     } WithFailureBlock:^{
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
@@ -76,12 +78,14 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
 
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         // 刷新表格
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+        self.tableView.mj_footer.hidden = NO;
+
         [self.tableView.mj_footer endRefreshing];
         
     } WithFailureBlock:^{
@@ -102,6 +106,9 @@
         [self dataFlash];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        //sention间距
+        _tableView.sectionHeaderHeight = 10;
+        _tableView.sectionFooterHeight = 10;
         
         UINib *nib2 = [UINib nibWithNibName:@"AboutMePraiseTableViewCell" bundle:nil];
         [_tableView registerNib:nib2 forCellReuseIdentifier:@"praiseCell"];
@@ -117,7 +124,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/aboutme"
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme"
                             WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,
                                 @"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
@@ -136,6 +143,7 @@
          for (NSDictionary *dic2 in _data) {
              [_nickname addObject:dic2[@"nickname"]];
          }
+             self.tableView.mj_footer.hidden = NO;
                          
         [_tableView reloadData];
         
@@ -177,7 +185,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
                             WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":_articleIdArray[indexPath.section],@"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
                          NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
@@ -231,7 +239,7 @@
         if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
             NSString *imageString1 = _data[indexPath.section][@"article_photo_src"];
             NSArray *imageNameArray1 = [imageString1 componentsSeparatedByString:@","];
-            NSString *imageUrl1 = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
+            NSString *imageUrl1 = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
             [remarkCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             remarkCell.articlePhotoWidth.constant = 0.1;
@@ -264,7 +272,7 @@
         if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
             NSString *imageString2 = _data[indexPath.section][@"article_photo_src"];
             NSArray *imageNameArray2 = [imageString2 componentsSeparatedByString:@","];
-            NSString *imageUrl2 = [NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
+            NSString *imageUrl2 = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
             [praiseCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             praiseCell.articlePhotoWidth.constant = 0.1;

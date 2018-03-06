@@ -11,6 +11,7 @@
 @implementation MBCommunityHandle
 #pragma mark - 上传点赞
 
+/*
 + (ClickSupportBtnBlock)clickSupportBtn:(UIViewController *)viewController{
     __weak typeof(self) weakSelf = self;
     return ^(UIButton *imageBtn,UIButton *labelBtn,MBCommunity_ViewModel *viewModel) {
@@ -40,6 +41,40 @@
         }
     };
 }
+*/
+
+
++ (NSString *)clickUpvoteBtn:(UIViewController *)viewController currentUpvoteNum:(NSInteger)currentUpvoteNum upvoteIsSelect:(BOOL)upvoteIsSelect viewModel:(MBCommunity_ViewModel *)viewModel{
+    __weak typeof(self) weakSelf = self;
+    
+    MBCommunityModel *model = viewModel.model;
+    
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    if (stuNum==nil) {
+        [self noLogin:viewController handler:^(BOOL success) {
+            //some problems
+            if (success == YES) {
+                [self clickUpvoteBtn:viewController currentUpvoteNum:currentUpvoteNum upvoteIsSelect:upvoteIsSelect viewModel:viewModel];
+            }
+        }];
+    }
+    else {
+        if (upvoteIsSelect == YES) {
+            currentUpvoteNum--;
+            [weakSelf uploadSupport:viewModel withType:1];
+            NSLog(@"点击取消赞");
+        } else {
+            currentUpvoteNum++;
+            [weakSelf uploadSupport:viewModel withType:0];
+            NSLog(@"点击赞");
+        }
+        model.is_my_like = !model.is_my_like;
+        model.like_num = @(currentUpvoteNum);
+    }
+    
+    return [NSString stringWithFormat:@"%ld", currentUpvoteNum];
+}
+
 
 + (void)uploadSupport:(MBCommunity_ViewModel *)viewModel withType:(NSInteger)type {
     //type == 0 赞 , type == 1 取消赞
@@ -55,7 +90,8 @@
     NSDictionary *parameter = @{@"stuNum":stuNum,
                                 @"idNum":idNum,
                                 @"article_id":article_id,
-                                @"type_id":type_id};
+                                @"type_id":type_id,
+                                @"size":@(15)};
     [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         

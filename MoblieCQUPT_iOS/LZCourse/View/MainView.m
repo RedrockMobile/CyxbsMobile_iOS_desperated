@@ -7,9 +7,14 @@
 //
 
 #import "MainView.h"
+#import "DayLabel.h"
+#import "LessonButton.h"
+#import "LessonNumLabel.h"
 @interface MainView()
-@property NSArray *weekDay;
-
+@property (nonatomic, copy) NSArray *weekDay;
+@property (nonatomic, strong) DayLabel *monthLabel;
+@property (nonatomic, strong) NSMutableArray<DayLabel *> *dayLabels;
+@property (nonatomic, strong) NSMutableArray<LessonNumLabel *> *lessonsLabel;
 @end
 
 @implementation MainView
@@ -40,7 +45,7 @@
     [self addSubview:self.monthLabel];
     
     CGFloat dayLbHeight = MHEIGHT;
-    CGFloat dayLbWidth = (self.frame.size.width-MWIDTH)/DAY;
+    CGFloat dayLbWidth = floor(self.frame.size.width-MWIDTH)/DAY;
     self.dayLabels = [NSMutableArray arrayWithCapacity:DAY];
     for (int i = 0; i < DAY; i++) {
         self.dayLabels[i] = [[DayLabel alloc]initWithFrame:CGRectMake(MWIDTH+i*dayLbWidth, 0,dayLbWidth, dayLbHeight)];
@@ -51,6 +56,11 @@
 }
 
 - (void)loadDayLbTimeWithWeek:(NSInteger)week nowWeek:(NSInteger)nowWeek{
+    if (week == 0) {
+        [self removeDayLbTime];
+        return;
+    }
+    
     NSDate *now = [NSDate date];
     NSDateFormatter *monthFormatter = [[NSDateFormatter alloc]init];
     NSDateFormatter *dayFormatter = [[NSDateFormatter alloc]init];
@@ -73,8 +83,13 @@
         }
         self.dayLabels[i].text = [NSString stringWithFormat:@"%@\n%@",self.weekDay[i],day];
         if (i == (components.weekday+5)%7) {
-            self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#7097FA"];
-            [[NSUserDefaults standardUserDefaults] setObject:@(i+1) forKey:@"weekdayNum"];
+            if (nowWeek == week) {
+                self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#7097FA"];
+            }
+            else{
+                self.dayLabels[i].textColor = [UIColor colorWithHexString:@"#8395A4"];
+            }
+            [UserDefaultTool saveValue:[NSString stringWithFormat:@"%d",i] forKey:@"weekdayNum"];
         }
     }
 }
@@ -88,6 +103,26 @@
     }
 }
 
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    CGSize size = CGSizeZero;
+    for (UIView *view in self.scrollView.subviews) {
+        if ([view isMemberOfClass:[UIView class]]) {
+            size = view.frame.size;
+            break;
+        }
+    }
+    self.scrollView.frame = CGRectMake(0, MHEIGHT, self.frame.size.width, self.frame.size.height-MHEIGHT);
+    for (UIView *view in self.scrollView.subviews){
+        if ([view isMemberOfClass:[UIView class]]) {
+            CGRect frame = view.frame;
+            frame.size = size;
+            view.frame = frame;
+        }
+    }
+    // 改变scrollView的frame后 view的frame会变化  为了保持frame不变化
+}
+
 - (void)initMainScrollView{
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, MHEIGHT, self.frame.size.width, self.frame.size.height-MHEIGHT)];
     self.scrollView.contentSize = CGSizeMake(self.frame.size.width, LESSONBTNSIDE*LESSON);
@@ -97,7 +132,7 @@
 
 - (void)initLessonLb{
     for (int i = 1; i <= LESSON; i++) {
-        LessonNumLabel *lessonLb = [[LessonNumLabel alloc]initWithFrame:CGRectMake(0, (LESSONBTNSIDE)*(i-1), MWIDTH, LESSONBTNSIDE)];
+        LessonNumLabel *lessonLb = [[LessonNumLabel alloc]initWithFrame:CGRectMake(0, floor(LESSONBTNSIDE)*(i-1), MWIDTH, floor(LESSONBTNSIDE))];
         lessonLb.text = [NSString stringWithFormat:@"%d",i];
         [self.scrollView addSubview:lessonLb];
     }

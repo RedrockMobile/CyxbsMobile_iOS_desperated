@@ -7,11 +7,14 @@
 //
 
 #import "LessonButtonController.h"
-#import "LessonHandle.h"
 #import "UIImage+Color.h"
+#import "LessonBtnModel.h"
+#import "LessonButton.h"
+#import "LessonMatter.h"
+#import "RemindMatter.h"
 @interface LessonButtonController ()
-@property int beginLesson;
-@property UIImageView *remindArrow;
+@property (nonatomic, assign) NSInteger beginLesson;
+@property (nonatomic, strong) UIImageView *remindArrow;
 @end
 
 @implementation LessonButtonController
@@ -27,7 +30,7 @@
         self.beginLesson = lesson;
         self.matter = [[LessonBtnModel alloc]init];
         self.view.frame = CGRectMake(MWIDTH+day*LESSONBTNSIDE+SEGMENT/2, lesson*LESSONBTNSIDE*2+SEGMENT/2, LESSONBTNSIDE-SEGMENT, LESSONBTNSIDE*2-SEGMENT);
-        self.btn = [[LessonButton alloc]initWithFrame:self.view.frame];
+        self.btn = [[LessonButton alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         self.btn.tag = day*LONGLESSON+lesson;
     }
     return self;
@@ -36,6 +39,7 @@
 - (BOOL)matterWithWeek:(NSNumber *)week{
     [self.remindArrow removeFromSuperview];
     [self.btn setTitle:@"" forState:UIControlStateNormal];
+    [self.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     if (self.beginLesson<6 && self.beginLesson >=4) {
         if (self.matter.lessonArray.count > 1) {
             [self.btn setBackgroundImage:[UIImage imageNamed:@"多课2"] forState:UIControlStateNormal];
@@ -96,6 +100,7 @@
 
 - (void)showRemindWithLesson{
     self.remindArrow = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"remind"]];
+    [self.btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.btn addSubview:self.remindArrow];
     [self.remindArrow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.btn).offset(-2);
@@ -107,12 +112,10 @@
     [self.btn setTitle:remind.title forState:UIControlStateNormal];
     if (self.beginLesson<6 && self.beginLesson>=4) {
         [self.btn setTitleColor:[UIColor colorWithHexString:@"#79dbc4"] forState:UIControlStateNormal];
-
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind2"] forState:UIControlStateNormal];
     }
     else if(self.beginLesson <4 && self.beginLesson>= 2){
         [self.btn setTitleColor:[UIColor colorWithHexString:@"#f9af58"] forState:UIControlStateNormal];
-
         [self.btn setBackgroundImage:[UIImage imageNamed:@"remind1"] forState:UIControlStateNormal];
     }
     else if(self.beginLesson <2 &&self.beginLesson>=0){

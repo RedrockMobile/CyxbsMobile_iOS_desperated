@@ -9,19 +9,19 @@
 #import "DetailRemindViewController.h"
 #import "DetailRemindTableViewCell.h"
 #import "TimeHandle.h"
-#import "UIColor+Hex.h"
 #import "AddRemindViewController.h"
 #import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
+#import "RemindMatter.h"
 
 @interface DetailRemindViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property NSMutableArray <RemindMatter *>* reminds;
-@property UITableView *tableView;
-@property BOOL isEditing;
-@property NSString *remindPath;
-@property NSString *failurePath;
-@property NSMutableArray *imageViewArray;
-@property UIButton *editButton;
+@property (nonatomic, strong) NSMutableArray <RemindMatter *>* reminds;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) BOOL isEditing;
+@property (nonatomic, copy) NSString *remindPath;
+@property (nonatomic, copy) NSString *failurePath;
+@property (nonatomic, strong) NSMutableArray *imageViewArray;
+@property (nonatomic, strong) UIButton *editButton;
 
 @end
 
@@ -32,16 +32,15 @@
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     self.remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
     self.failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
-    
     self.imageViewArray = [NSMutableArray array];
     self.isEditing = NO;
     self.tableView.editing = NO;
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-STATUSBARHEIGHT-NVGBARHEIGHT) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = NO;
     self.tableView.allowsSelectionDuringEditing = YES;
-    self.tableView.backgroundColor = [UIColor colorWithHex:@"#f5f5f5"];
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"#f5f5f5"];
     [self.view addSubview:self.tableView];
     if(self.reminds.count == 0){
         [self showNoRemindView];
@@ -108,7 +107,7 @@
     DetailRemindTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier] ;
     if (!cell)
     {
-        cell = [[NSBundle mainBundle]loadNibNamed:@"DetailRemindTableViewCell" owner:self options:nil][0];
+        cell = [[[NSBundle mainBundle]loadNibNamed:@"DetailRemindTableViewCell" owner:self options:nil] firstObject];
     }
     [self.imageViewArray addObject:cell.editView];
     NSInteger index = indexPath.section;
@@ -170,16 +169,12 @@
         }
     }
     NSString *content = [remind objectForKey:@"content"];
-    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-56,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+120;
+    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-80,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+100;
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleDelete;
 }
 
-- (void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath{
-//    self.isEditing = YES;
-    
-}
 - (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.isEditing) {
         [self edit:self.editButton];
@@ -187,9 +182,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    NSString *idNum = [defaults objectForKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool valueWithKey:@"stuNum"];
+    NSString *idNum = [UserDefaultTool valueWithKey:@"idNum"];
     NSInteger index = indexPath.section;
     NSNumber *identifier = self.reminds[index].idNum;
     NSMutableArray *reminds = [NSMutableArray arrayWithContentsOfFile:self.remindPath];

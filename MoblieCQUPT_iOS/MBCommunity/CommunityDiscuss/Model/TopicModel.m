@@ -7,7 +7,6 @@
 //
 
 #import "TopicModel.h"
-#define PHOTOURL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"
 
 @implementation TopicModel
 - (instancetype)initWithDic:(NSDictionary *)dic{

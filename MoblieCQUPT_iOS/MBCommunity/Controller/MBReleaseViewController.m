@@ -77,7 +77,7 @@
 }
 
 - (void)initBar{
-    self.navigationItem.title = @"逼逼叨叨";
+    self.navigationItem.title = @"哔哔叨叨";
     
     UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -266,7 +266,7 @@
     NSString *title = @"iOS title";
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    NSString *user_id = [UserDefaultTool valueWithKey:@"user_id"];
+//    NSString *user_id = [UserDefaultTool valueWithKey:@"user_id"];
     NSString *content = self.inputView.textView.text;
     NSString *thumbnail_src = @"";
     NSString *photo_src = @"";
@@ -290,7 +290,6 @@
     NSMutableDictionary *parameter = @{@"stuNum":stuNum,
                                        @"idNum":idNum,
                                        @"title":title,
-                                       @"user_id":user_id,
                                        @"content":content,
                                        @"photo_src":photo_src,
                                        @"thumbnail_src":thumbnail_src,
@@ -339,8 +338,8 @@
     __block NSInteger flagBlock = flag;
     [NetWork uploadImageWithUrl:UPLOADARTICLE_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {
         [weakSelf.hud hide:YES];
-        NSRange range = [returnValue[@"data"][@"photosrc"] rangeOfString:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"];
-        NSRange range1 = [returnValue[@"data"][@"thumbnail_src"] rangeOfString:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/thumbnail/"];
+        NSRange range = [returnValue[@"data"][@"photosrc"] rangeOfString:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"];
+        NSRange range1 = [returnValue[@"data"][@"thumbnail_src"] rangeOfString:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/thumbnail/"];
         NSString *photoUrlString = [returnValue[@"data"][@"photosrc"] substringFromIndex:range.length];
         NSString *thumbnailUrlString = [returnValue[@"data"][@"thumbnail_src"] substringFromIndex:range1.length];
         

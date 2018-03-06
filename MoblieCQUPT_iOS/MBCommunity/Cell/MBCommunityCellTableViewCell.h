@@ -36,10 +36,10 @@ typedef NS_ENUM(NSInteger, MBCommunityCellType) {
 @property (strong, nonatomic) UILabel *timeLabel;//发送时间
 //@property (strong, nonatomic) UILabel *contentLabel;//内容
 @property (strong, nonatomic) YYLabel *contentLabel;
-@property (strong, nonatomic) UIImageView *commentImage;//评论图标
-@property (strong, nonatomic) UIButton *supportImage;
-@property (strong, nonatomic) UIButton *supportBtn;//点赞数
-@property (strong, nonatomic) UIButton *commentBtn;//评论数
+//@property (strong, nonatomic) UIImageView *commentImage;//评论图标
+//@property (strong, nonatomic) UIButton *supportImage;
+//@property (strong, nonatomic) UIButton *supportBtn;//点赞数
+//@property (strong, nonatomic) UIButton *commentBtn;//评论数
 
 @property (strong, nonatomic) MBPhotoContainerView *photoContainer;
 
@@ -48,5 +48,14 @@ typedef NS_ENUM(NSInteger, MBCommunityCellType) {
 @property (copy, nonatomic) ClickSupportBtnBlock clickSupportBtnBlock;
 @property MBCommunityCellType type;
 
-+ (instancetype)cellWithTableView:(MBCommunityTableView *)tableView type:(MBCommunityCellType) type;
+//展开以下的
+@property (strong, nonatomic) UILabel *extendLabel;
+//@property (strong, nonatomic) UIButton *extendBtn;
+@property (strong, nonatomic) UIImageView *dottedLineImageView;
+@property (strong, nonatomic) UIButton *upvoteBtn;
+@property (strong, nonatomic) UILabel *numOfUpvoteLabel;
+@property (strong, nonatomic) UIImageView *commentImageView;
+@property (strong, nonatomic) UILabel *numOfCommentLabel;
+
++ (instancetype)cellWithTableView:(MBCommunityTableView *)tableView type:(MBCommunityCellType) type row:(NSInteger)row;
 @end

@@ -24,7 +24,6 @@
         self.textColor = [UIColor colorWithHexString:@"#7097FA"];
         self.backgroundColor = [UIColor colorWithHexString:@"#EEF6FD"];
         self.textAlignment = NSTextAlignmentCenter;
-        self.numberOfLines = 0;
     }
     return self;
 }

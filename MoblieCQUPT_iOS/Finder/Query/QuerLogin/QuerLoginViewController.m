@@ -19,7 +19,7 @@
 #import "AppDelegate.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
-#define ELECTROLYSIS_URL @"http://hongyan.cqupt.edu.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
+#define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
 
 CG_INLINE CGRect
 CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){

@@ -19,6 +19,22 @@
 @end
 
 @implementation DetailLessonController
+
+- (instancetype)initWithLesson:(LessonMatter *)lesson{
+    self = [self init];
+    if (self) {
+        self.lesson = lesson;
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+//    self.view.userInteractionEnabled = NO;
+    // Do any additional setup after loading the view from its nib.
+}
+
+
 - (void)loadLesson{
     self.lessonLb.text = self.lesson.course;
     self.teacherLb.text = self.lesson.teacher;
@@ -30,7 +46,7 @@
 }
 
 - (NSString *)handleTime:(LessonMatter *)lesson{
-    NSArray *beginTimes = @[@"8:00",@"8:55",@"10:05",@"11:00",@"14:00",@"14:55",@"16:05",@"17:00",@"19:00",@"19:55",@"20:50",@"21:45"];
+    NSArray *beginTimes = @[@"8:00",@"8:55",@"10:15",@"11:10",@"14:00",@"14:55",@"16:15",@"17:10",@"19:00",@"19:55",@"20:50",@"21:45"];
     NSMutableArray *endTimes = [NSMutableArray array];
     for (NSString *timeString in beginTimes) {
         NSArray *tempArray = [timeString componentsSeparatedByString:@":"];
@@ -43,21 +59,6 @@
     NSString *time = [NSString stringWithFormat:@"%@ %d-%d %@-%@",lesson.day,begin,end,beginTimes[begin-1],endTimes[end-1]];
     return time;
 }
-
-- (instancetype)initWithLesson:(LessonMatter *)lesson{
-    self = [self init];
-    if (self) {
-        self.lesson = lesson;
-    }
-    return self;
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.userInteractionEnabled = NO;
-    // Do any additional setup after loading the view from its nib.
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

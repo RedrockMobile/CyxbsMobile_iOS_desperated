@@ -26,14 +26,14 @@
     
     //昵称
     CGFloat nameX = CGRectGetMaxX(_headImageViewFrame) + MARGIN;
-    CGFloat nameY = imageY;
-    CGSize nameSize = [_model.nickname sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
+    CGSize nameSize = [_model.nickname sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]}];
+    CGFloat nameY = imageY + (30 - nameSize.height)/2.0;
     _IDLabelFrame = (CGRect){{nameX,nameY},nameSize};
     
     //时间
-    CGFloat timeX = nameX;
-    CGSize timeSize = [_model.created_time sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]}];
-    CGFloat timeY = CGRectGetMaxY(_headImageViewFrame) - timeSize.height;
+    CGSize timeSize = [_model.created_time sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    CGFloat timeX = SCREENWIDTH - timeSize.width - 17;
+    CGFloat timeY = CGRectGetMinY(_IDLabelFrame) + (_IDLabelFrame.size.height - timeSize.height) / 2.0;
     _timeLabelFrame = (CGRect){{timeX,timeY},timeSize};
     
     //内容

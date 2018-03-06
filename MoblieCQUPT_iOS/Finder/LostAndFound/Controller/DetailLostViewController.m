@@ -8,13 +8,19 @@
 
 #import "DetailLostViewController.h"
 #import "IconTableViewCell.h"
-#import <MBProgressHUD/MBProgressHUD.h>
+#import "LostItem.h"
+
 @interface DetailLostViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property NSMutableArray *imageArray;
-@property NSArray *titleArray;
-@property NSMutableArray *contentArray;
-@property MBProgressHUD *hud;
-@property UIView *whiteView;
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UITableView *footTableView;
+@property (nonatomic, strong) NSMutableArray *imageArray;
+@property (nonatomic, copy) NSArray *titleArray;
+@property (nonatomic, strong) NSMutableArray *contentArray;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) UIView *whiteView;
 @end
 
 @implementation DetailLostViewController
@@ -56,10 +62,10 @@
 }
 - (void)refreshWithDetailInfo:(LostItem *)info{
     if([info.wx_avatar rangeOfString:@"http"].location != NSNotFound){
-        self.headImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:info.wx_avatar]]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:info.wx_avatar]];
     }
     else{
-        self.headImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn%@",info.wx_avatar]]]];
+        [self.headImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",BASE_URL,info.wx_avatar]]];
     }
     self.categoryLabel.text = info.pro_name;
     self.contentLabel.text = info.pro_description;

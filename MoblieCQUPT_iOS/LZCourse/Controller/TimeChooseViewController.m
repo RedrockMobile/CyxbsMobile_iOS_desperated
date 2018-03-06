@@ -12,9 +12,9 @@
 
 
 @interface TimeChooseViewController ()
-@property NSMutableArray *dataArray;
-@property MainView *mainView;
-@property NSMutableArray *buttonArray;
+@property (nonatomic, strong) NSMutableArray *timeArray;
+@property (nonatomic, strong) MainView *mainView;
+@property (nonatomic, strong) NSMutableArray <ChooseButton *> *buttonArray;
 @end
 
 @implementation TimeChooseViewController
@@ -22,16 +22,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"时间编辑";
-    self.view.backgroundColor = [UIColor whiteColor];
     self.buttonArray = [NSMutableArray array];
-    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-STATUSBARHEIGHT-NVGBARHEIGHT)];
+    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
     [self.view addSubview:self.mainView];
     self.mainView.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1];
     for (int i = 0; i<DAY; i++) {
         for (int j = 0; j<LONGLESSON; j++) {
             ChooseButton *btn = [[ChooseButton alloc]initWithFrame:CGRectMake(MWIDTH+i*LESSONBTNSIDE+SEGMENT/2, j*LESSONBTNSIDE*2+SEGMENT/2, LESSONBTNSIDE-SEGMENT, LESSONBTNSIDE*2-SEGMENT)];
             btn.tag = i*LONGLESSON+j;
-            if ([self.dataArray containsObject:@(btn.tag)]) {
+            if ([self.timeArray containsObject:@(btn.tag)]) {
                 btn.selected = YES;
             }
             [self.buttonArray addObject:btn];
@@ -47,7 +46,7 @@
 - (instancetype)initWithTimeArray:(NSArray *)timeArray{
     self = [self init];
     if (self) {
-        self.dataArray = [timeArray mutableCopy];
+        self.timeArray = timeArray.mutableCopy;
     }
     return self;
 }
@@ -58,14 +57,14 @@
 }
 
 - (void)save{
-    self.dataArray = [NSMutableArray array];
+    self.timeArray = [NSMutableArray array];
     for (ChooseButton *btn in self.buttonArray) {
         if (btn.selected == YES) {
-            [self.dataArray addObject:@(btn.tag)];
+            [self.timeArray addObject:@(btn.tag)];
         }
     }
     if ([self.delegate respondsToSelector:@selector(saveTimes:)]) {
-        [self.delegate saveTimes:self.dataArray];
+        [self.delegate saveTimes:self.timeArray.copy];
     }
     [self.navigationController popViewControllerAnimated:YES];
 }

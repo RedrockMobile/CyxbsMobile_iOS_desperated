@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LZConfirmButton.h"
+@class LZConfirmButton;
 @interface LZLostRemindView : UIView
-@property UIImageView *imageView;
-@property LZConfirmButton *btn;
-@property UILabel  *label;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) LZConfirmButton *btn;
+@property (nonatomic, strong) UILabel *label;
 @end

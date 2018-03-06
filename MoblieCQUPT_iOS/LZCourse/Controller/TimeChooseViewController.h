@@ -9,6 +9,6 @@
 #import "BaseViewController.h"
 #import "SaveDelegate.h"
 @interface TimeChooseViewController : BaseViewController
-@property id <SaveDelegate>delegate;
+@property (nonatomic, weak) id <SaveDelegate>delegate;
 - (instancetype)initWithTimeArray:(NSArray *)timeArray;
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TopicBtn.h"
 @interface BannerScrollView : UIScrollView
 - (instancetype)initWithFrame:(CGRect)frame andTopics:(NSMutableArray *) topics;
 @end

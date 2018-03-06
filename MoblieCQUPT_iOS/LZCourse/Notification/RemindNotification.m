@@ -84,7 +84,6 @@ static RemindNotification *_instance;
 - (void)updateNotificationWithIdetifiers:(id)newIdentifier
 {
     NSMutableArray *events = [[NSMutableArray alloc] init];
-    NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     NSDictionary *updateDic = [[NSDictionary alloc] init];
     NSString *lessonDateStr = [[NSString alloc] init];
     NSMutableArray *weekArray = [[NSMutableArray alloc] init];
@@ -119,8 +118,8 @@ static RemindNotification *_instance;
             identifier = [identifier stringByAppendingString:[NSString stringWithFormat:@"%@",dateDic[@"class"]]];
             [identifierArray addObject:identifier];
             
-            if ([[userDefault objectForKey:@"nowWeek"] intValue] - [weekArray[j] intValue] <= 0&&updateDic[@"time"]!=nil) {
-                lessonDateStr = [self calculateLessonDateWithWeek:weekArray[j] nowWeek:[NSString stringWithFormat:@"%@",[userDefault objectForKey:@"nowWeek"]] day:[NSString stringWithFormat:@"%@",dateDic[@"day"]] class:[NSString  stringWithFormat:@"%@",dateDic[@"class"]]];
+            if ([[UserDefaultTool valueWithKey:@"nowWeek"] intValue] - [weekArray[j] intValue] <= 0&&updateDic[@"time"]!=nil) {
+                lessonDateStr = [self calculateLessonDateWithWeek:weekArray[j] nowWeek:[NSString stringWithFormat:@"%@",[UserDefaultTool valueWithKey:@"nowWeek"]] day:[NSString stringWithFormat:@"%@",dateDic[@"day"]] class:[NSString  stringWithFormat:@"%@",dateDic[@"class"]]];
                 
                 comp = [self calculateNotificationTimeWithIntervalTime:[NSString stringWithFormat:@"%@",updateDic[@"time"]] LessonDate:lessonDateStr];
                 
@@ -136,7 +135,6 @@ static RemindNotification *_instance;
 - (void)addNotifictaion
 {
     NSInteger identifierCount = 0;
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
     NSString *nowWeekStr = [[NSString alloc] init];
     NSString *identifierStr = [[NSString alloc] init];
@@ -155,7 +153,7 @@ static RemindNotification *_instance;
     NSMutableArray *identifiers = [[NSMutableArray alloc] init];
     NSDateComponents *comp = [[NSDateComponents alloc] init];
     
-    nowWeekStr = [NSString stringWithFormat:@"%@",[userDefault objectForKey:@"nowWeek"]];
+    nowWeekStr = [NSString stringWithFormat:@"%@",[UserDefaultTool valueWithKey:@"nowWeek"]];
     [self creatIdentifiers];
     
     for (NSInteger i = 0; i < self.newEventCount; i++) {
@@ -300,7 +298,7 @@ static RemindNotification *_instance;
 
 - (NSString *)calculateLessonDateWithWeek:(NSString *)week nowWeek:(NSString *)nowWeek day:(NSString *)day class:(NSString *)beginClass
 {
-    NSDictionary *beginTimes = @{@"0":@"8:00",@"1":@"10:05",@"2":@"14:00",@"3":@"16:05",@"4":@"19:00",@"5":@"20:50"};
+    NSDictionary *beginTimes = @{@"0":@"8:00",@"1":@"10:15",@"2":@"14:00",@"3":@"16:15",@"4":@"19:00",@"5":@"20:50"};
     
     double oneDay = 24 * 60 * 60;
     

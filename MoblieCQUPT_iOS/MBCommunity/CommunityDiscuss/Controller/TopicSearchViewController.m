@@ -311,14 +311,13 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     if (!self.isMyJoin) {
         [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.item][@"img"][@"img_small_src"]]];
     }else{
-        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/%@",[_data[indexPath.item][@"img"][@"img_small_src"] substringWithRange:NSMakeRange(0, 24)]]]];
+        [cell.bgImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@",_data[indexPath.item][@"img"][@"img_small_src"]]]];
     }
     
     cell.titleLabel.text = [NSString stringWithFormat:@"#%@#",_data[indexPath.item][@"keyword"]];
     cell.attendNumLabel.text = [NSString stringWithFormat:@"%@人参与",_data[indexPath.item][@"join_num"]];
     return cell;
 }
-
 
 
 - (void)didReceiveMemoryWarning {

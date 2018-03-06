@@ -11,8 +11,8 @@
 @interface DetailPageController ()<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property NSMutableArray *viewControllers;
-@property NSArray *lessons;
+@property (nonatomic, strong) NSMutableArray *viewControllers;
+@property (nonatomic, copy) NSArray *lessons;
 
 @end
 

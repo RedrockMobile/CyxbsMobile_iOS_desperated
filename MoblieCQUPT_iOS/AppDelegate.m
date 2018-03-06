@@ -14,31 +14,46 @@
 #import "ExamScheduleViewController.h"
 #import <UserNotifications/UserNotifications.h>
 #import <UMSocialCore/UMSocialCore.h>
-@interface AppDelegate ()
-
+#import "SplashModel.h"
+#import "LaunchScreenViewController.h"
+#import "LessonRemindNotification.h"
+#import <Bugly/Bugly.h>
+@interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-//    [MobClick setLogEnabled:YES];
     self.window.backgroundColor = [UIColor whiteColor];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self showImage];
+    [self downloadImage];
+    
+    [self checkUpTheNotifacation];
+    
     [[UMSocialManager defaultManager] openLog:YES];
-    [[UMSocialManager defaultManager]setUmSocialAppkey:@""];
+    [[UMSocialManager defaultManager] setUmSocialAppkey:@""];
     [self configUSharePlatforms];
     [self confitUShareSettings];
+    
     UMConfigInstance.appKey = @"573183a5e0f55a59c9000694";
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
-   [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    [MobClick startWithConfigure:UMConfigInstance];
+    //配置以上参数后调用此方法初始化SDK！
+
+    [Bugly startWithAppId:@"97fdc8c6c0"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    if (stuNum) {
+        [Bugly setUserIdentifier:stuNum];
+    } //Bugly
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+  
     //3D-Touch
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
         [self creatShortCutItemWithIcon];
     }
-    
-    
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter]; //请求获取通知权限
     [center requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {
         //获取用户是否同意开启通知
@@ -46,10 +61,89 @@
             NSLog(@"request authorization successed!");
         }
     }];
-    
+
+
     return YES;
 }
 
+
+#pragma mark - 闪屏图
+
+- (void)showImage{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
+    NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
+    SplashModel *model = [[SplashModel alloc]initWithDic:data];
+    if ([NSData dataWithContentsOfFile:imageFilePath] && [NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
+        LaunchScreenViewController *launchScreenVC = [[LaunchScreenViewController alloc]initWithSplashModel:model];
+        self.window.rootViewController = launchScreenVC;
+    }
+    else{
+        NSError *error;
+        NSFileManager *manager=[NSFileManager defaultManager];
+        if(![manager removeItemAtPath:imageFilePath error:&error]){
+            NSLog(@"%@",error);
+        }
+        if(![manager removeItemAtPath:dataPath error:&error]){
+            NSLog(@"%@",error);
+        }
+    }
+}
+
+- (void)downloadImage{
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
+    NSString *imageFilePath = [path stringByAppendingPathComponent:@"splash.png"];
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:SPLASH_API method:HttpRequestGet parameters:nil prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        for (NSDictionary *dic in responseObject[@"data"]) {
+            SplashModel *model = [[SplashModel alloc]initWithDic:dic];
+            if ([NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.photo_src]] scale:1];
+                    [UIImagePNGRepresentation(image) writeToFile:imageFilePath atomically:YES];
+                    [dic writeToFile:dataPath atomically:YES];
+                });
+                return;
+            }
+        }
+        NSError *error1,*error2;
+        [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error1];
+        if (error1) {
+            NSLog(@"%@",error1);
+        }
+        [[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error2];
+        if (error2) {
+            NSLog(@"%@",error2);
+        }
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
+}
+
+#pragma mark - 课前提醒
+
+- (void)checkUpTheNotifacation{
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
+    if (![userDefaults boolForKey:@"remindMeTimeBOOL"]) {
+        [userDefaults setBool:NO forKey:@"remindMeTimeBOOL"];
+        [remindNotification deleteNotification];
+    }
+    else{
+        NSString *time = [userDefaults objectForKey:@"remindMeTime"];
+        NSArray *array = [time componentsSeparatedByString:@":"];
+        [remindNotification addTomorrowNotificationWithMinute:[array lastObject] AndHour:[array firstObject]];
+    }
+}
+
+#pragma mark - 分享url跳转
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
     //6.3的新的API调用，是为了兼容国外平台(例如:新版facebookSDK,VK等)的调用[如果用6.2的api调用会没有回调],对国内平台没有影响
@@ -59,9 +153,14 @@
         UITabBarController *tbc = (UITabBarController *)self.window.rootViewController;
         [tbc setSelectedIndex:1];
         NSString *topic_id = [url lastPathComponent];
-        [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:nil WithReturnValeuBlock:^(id returnValue) {
+        HttpClient *client = [HttpClient defaultClient];
+        [client requestWithPath:TOPICLIST_API method:HttpRequestGet parameters:nil prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
             TopicModel *topic;
-            NSArray *dataArray = returnValue[@"data"];
+            NSArray *dataArray = responseObject[@"data"];
             for (NSDictionary *dic in dataArray) {
                 if ([[dic[@"topic_id"] stringValue] isEqualToString:topic_id]) {
                     topic = [[TopicModel alloc]initWithDic:dic];
@@ -71,9 +170,7 @@
             DetailTopicViewController *detailVC = [[DetailTopicViewController alloc]initWithTopic:topic];
             detailVC.hidesBottomBarWhenPushed = YES;
             [tbc.selectedViewController pushViewController:detailVC animated:YES];
-            
-            
-        } WithFailureBlock:^{
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
 //        [[tbc.viewControllers firstObject].navigationController pushViewController:vc animated:YES];
@@ -81,10 +178,6 @@
     }
     return result;
 }
-
-//- (void)applicationDidFinishLaunching:(UIApplication *)application{
-//    
-//}
 
 #pragma mark - 友盟分享
 - (void)confitUShareSettings

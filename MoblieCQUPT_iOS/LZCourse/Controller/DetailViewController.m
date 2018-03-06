@@ -9,14 +9,17 @@
 #import "DetailViewController.h"
 #import "DetailPageController.h"
 #import "DetailRemindViewController.h"
+#import "LessonBtnModel.h"
+#import "RemindMatter.h"
+#import "LessonMatter.h"
 @interface DetailViewController ()<UIScrollViewDelegate>
-@property UISegmentedControl *segmentedControl;
-@property LessonBtnModel *matters;
-@property NSInteger week;
-@property DetailPageController *detailPageController;
-@property DetailRemindViewController *remindController;
-@property UIBarButtonItem *editItem;
-@property BOOL isFirstEnter;
+@property (nonatomic, strong) UISegmentedControl *segmentedControl;
+@property (nonatomic, strong) LessonBtnModel *matters;
+@property (nonatomic, assign) NSInteger week;
+@property (nonatomic, strong) DetailPageController *detailPageController;
+@property (nonatomic, strong) DetailRemindViewController *remindController;
+@property (nonatomic, strong) UIBarButtonItem *editItem;
+@property (nonatomic, assign) BOOL isFirstEnter;
 @end
 
 @implementation DetailViewController
@@ -24,9 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.view.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view from its nib.
-    
     self.navigationItem.titleView = self.segmentedControl;
     [self.segmentedControl addTarget:self action:@selector(action:) forControlEvents:UIControlEventValueChanged];
     [self.segmentedControl setSelectedSegmentIndex:0];
@@ -35,22 +35,13 @@
     [self showLessonView];
 }
 
-- (instancetype)initWithMatters:(LessonBtnModel *)matters week:(NSInteger)week time:(NSInteger)time{
+- (instancetype)initWithMatters:(LessonBtnModel *)matters week:(NSInteger)week{
     self = [self init];
-    if (self) {
+    if(self){
         self.week = week;
         self.matters = matters;
-        self.time = time;
-        NSArray *array = [NSArray array];
-        if (week == 0) {
-            array = @[@"课程",@"事项",@"考试"];
-        }
-        else if(matters.examArray.count>0){
-            array = @[@"考试",@"事项"];
-        }
-        else{
-            array = @[@"课程",@"事项"];
-        }
+        //        self.time = time;
+        NSArray *array = @[@"课程",@"事项"];
         self.segmentedControl = [[UISegmentedControl alloc]initWithItems:array];
     }
     return self;
@@ -65,15 +56,11 @@
 - (void)action:(UISegmentedControl *)segement{
     NSString *string = [segement titleForSegmentAtIndex:segement.selectedSegmentIndex];
     self.navigationItem.rightBarButtonItem = nil;
-//    [self.detailPageController removeFromParentViewController];
     for (UIView *view in self.view.subviews) {
         [view removeFromSuperview];
     }
     if ([string isEqualToString:@"课程"]) {
         [self showLessonView];
-    }
-    else if([string isEqualToString:@"考试"]){
-        [self showExamView];
     }
     else if([string isEqualToString:@"事项"]){
         [self showRemindView];
@@ -89,12 +76,16 @@
         }
     } //整学期
     else{
+        NSMutableArray *lessonArray = [NSMutableArray array];
         for (LessonMatter *lesson in self.matters.lessonArray) {
             if([lesson.week containsObject:@(self.week)]){
-                self.detailPageController = [[DetailPageController alloc]initWithLessonMatters:@[lesson]];
+                [lessonArray addObject:lesson];
                 isHaveLessson = YES;
-                break;
+//                break;
             }
+        }
+        if(lessonArray.count >0){
+            self.detailPageController = [[DetailPageController alloc]initWithLessonMatters:lessonArray];
         }
     } //具体周
     if (!isHaveLessson) {
@@ -137,10 +128,11 @@
     }
     [self addChildViewController:self.remindController];
     [self.view addSubview:self.remindController.view];
-
-    UIButton *btn = [[UIButton alloc]init];
-//    [btn setBackgroundImage:imageView.image forState:UIControlStateNormal];
-    [btn setBackgroundImage:[UIImage imageNamed:@"remind_image_confirm"] forState:UIControlStateSelected];
+    
+    UIImageView *imageView= [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"remind_image_editing"]];
+    UIButton *btn = [[UIButton alloc]initWithFrame:imageView.frame];
+    [btn setBackgroundImage:imageView.image forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage imageNamed:@"remind_image_edit"] forState:UIControlStateSelected];
     [btn addTarget:self.remindController action:@selector(edit:) forControlEvents:UIControlEventTouchUpInside];
     self.editItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
     if (ishaveRemind) {
@@ -164,13 +156,5 @@
         [self.remindController reloadWithRemindMatters:remindArray];
     }
 }
-
-- (void)showExamView{
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MWIDTH, SCREENHEIGHT/6+STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH-2*MWIDTH, SCREENWIDTH/2)];
-    imageView.image = [UIImage imageNamed:@"无考试"];
-    [self.view addSubview:imageView];
-}
-
-
 
 @end

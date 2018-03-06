@@ -8,11 +8,12 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "ShakeViewController.h"
-#import "ShopDetailViewController.h"
+#import "ZJShopDeatilViewController.h"
+
 #import "UIImage+AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 #import "NetWork.h"
-#import "ShopDetailViewController.h"
+
 /*
  *
  *          ┌─┐       ┌─┐
@@ -41,7 +42,7 @@
 @interface ShakeViewController ()
 
 @property (strong, nonatomic)NSMutableArray *data;
-@property (strong, nonatomic)ShopDetailViewController *detailViewController;
+@property (strong, nonatomic)ZJShopDeatilViewController *detailViewController;
 
 @end
 
@@ -75,7 +76,7 @@
     // 根据ID播放自定义系统声音
     AudioServicesPlaySystemSound(ID);
     
-    _detailViewController = [[ShopDetailViewController alloc] init];
+    _detailViewController = [[ZJShopDeatilViewController alloc] init];
     if (_data) {
         NSInteger randomNum = arc4random() % [_data count];
         _detailViewController.detailData = _data[randomNum];
@@ -87,7 +88,7 @@
 
 - (void)request{
     for (int i = 1; i<= 3; i++) {
-        [NetWork NetRequestPOSTWithRequestURL:@"http://hongyan.cqupt.edu.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
+        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
             _data = [[NSMutableArray alloc] init];
             [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         } WithFailureBlock:^{

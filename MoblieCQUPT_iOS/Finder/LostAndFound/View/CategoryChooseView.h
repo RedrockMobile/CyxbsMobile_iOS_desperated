@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TickButton.h"
-
+@class TickButton;
 @interface CategoryChooseView : UIScrollView
 @property NSMutableArray<TickButton *> *btnArray;
 

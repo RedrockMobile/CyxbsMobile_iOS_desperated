@@ -11,13 +11,19 @@
 @interface MyInfoModel : NSObject<NSCoding>
 
 @property (strong, nonatomic)NSString *stuNum;
-@property (strong, nonatomic)NSString *idNum;
-@property (strong, nonatomic)NSMutableString *nickname;
+//@property (strong, nonatomic)NSString *idNum;
+@property (strong, nonatomic)NSString *introduction;
+@property (strong, nonatomic)NSString *username;
+@property (strong, nonatomic)NSString *nickname;
 @property (strong, nonatomic)NSString *gender;
-@property (strong, nonatomic)UIImageView *thumbnailAvatar;
-@property (strong, nonatomic)UIImageView *avatar;
-@property (strong, nonatomic)NSMutableString *qq;
-@property (strong, nonatomic)NSMutableString *phone;
-@property (strong, nonatomic)NSMutableString *introduction;
-
+@property (strong, nonatomic)UIImage *photo_thumbnail_src;
+//@property (strong, nonatomic)NSString *photo_thumbnail_src;
+@property (strong, nonatomic)NSString *photo_src;
+@property (strong, nonatomic)NSString *qq;
+@property (strong, nonatomic)NSString *phone;
+//@property (strong, nonatomic)NSString *updated_time;
+- (instancetype)initWithDic:(NSDictionary *)dic;
+- (BOOL) saveMyInfo;
++ (MyInfoModel *) getMyInfo;
++ (BOOL) deleteMyInfo;
 @end

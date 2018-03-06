@@ -7,14 +7,13 @@
 //
 
 #import "TopicBtn.h"
-#import <Masonry.h>
 #import <UShareUI/UShareUI.h>
 #import "DetailTopicViewController.h"
 #import "TopicViewController.h"
 @interface TopicBtn()
-@property TopicModel *model;
-@property UILabel *hotLabel;
-@property CALayer *colorLayer;
+@property (nonatomic, strong) TopicModel *model;
+@property (nonatomic, strong) UILabel *hotLabel;
+@property (nonatomic, strong) CALayer *colorLayer;
 @end
 @implementation TopicBtn
 - (instancetype)initWithFrame:(CGRect)frame{

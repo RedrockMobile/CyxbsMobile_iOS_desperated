@@ -7,11 +7,13 @@
 //
 
 #import "MBCommunityModel.h"
-#define PHOTOURL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/Public/photo/"
+#define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
+#define PHOTOURL2 @"http://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
 @implementation MBCommunityModel
 
 - (instancetype)initWithDictionary:(NSDictionary *)dic{
-    if (self = [super init]) {        
+    if (self = [super init]) {
+        self.cellIsOpen = NO;
         //type_id
         self.type_id = dic[@"type_id"];
         self.user_id = dic[@"user_id"]?:dic[@"stunum"];
@@ -46,7 +48,8 @@
             self.detailContent = [self removeHTML:self.detailContent];
             
         }
-        self.time = dic[@"time"]?:dic[@"created_time"];
+        NSString *time = dic[@"time"]?:dic[@"created_time"];
+        self.time = [time substringToIndex:10];
         self.like_num = dic[@"like_num"];
         self.remark_num = dic[@"remark_num"];
         self.is_my_like = [dic[@"is_my_like"] boolValue];
@@ -59,15 +62,24 @@
         if (![self.article_thumbnail_src isEqualToString:@""]) {
             self.articleThumbnailPictureArray = [self.article_thumbnail_src componentsSeparatedByString:@","].mutableCopy;
         }
+        
+        //通过用户头像URL判断http／https
+        NSString *preStr = [[NSString alloc] init];
+        if ([self.user_photo_src hasPrefix:@"https"]) {
+            preStr = PHOTOURL;
+        } else {
+            preStr = PHOTOURL2;
+        }
 
         for(int i = 0;i<self.articlePictureArray.count;i++){
-            if (![self.articlePictureArray[i] hasPrefix:PHOTOURL]) {
-                self.articlePictureArray[i] = [PHOTOURL stringByAppendingString:self.articlePictureArray[i]];
+            if (![self.articlePictureArray[i] hasPrefix:PHOTOURL] && ![self.articlePictureArray[i] hasPrefix:PHOTOURL2]) {
+                self.articlePictureArray[i] = [preStr stringByAppendingString:self.articlePictureArray[i]];
             }
         }
         for (int i=0; i<self.articleThumbnailPictureArray.count; i++) {
-            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL]) {
-                self.articleThumbnailPictureArray[i] =  [PHOTOURL stringByAppendingString:self.articleThumbnailPictureArray[i]];
+            if (![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL] && ![self.articleThumbnailPictureArray[i] hasPrefix:PHOTOURL2]) {
+                [preStr stringByAppendingString:@"thumbnail/"];
+                self.articleThumbnailPictureArray[i] =  [preStr stringByAppendingString:self.articleThumbnailPictureArray[i]];
             }
         }
     }

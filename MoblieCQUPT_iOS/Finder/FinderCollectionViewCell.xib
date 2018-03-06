@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="FinderCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="333" height="89"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="333" height="89"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bO5-1o-2Y6">
+                        <rect key="frame" x="0.0" y="0.0" width="333" height="89"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="bO5-1o-2Y6" secondAttribute="trailing" id="LMP-E2-KRd"/>
+                <constraint firstItem="bO5-1o-2Y6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="b5P-Ds-Gvq"/>
+                <constraint firstAttribute="bottom" secondItem="bO5-1o-2Y6" secondAttribute="bottom" id="mWi-ca-2Al"/>
+                <constraint firstItem="bO5-1o-2Y6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="nM6-SL-BKA"/>
+            </constraints>
+            <size key="customSize" width="333" height="89"/>
+            <connections>
+                <outlet property="contentImageView" destination="bO5-1o-2Y6" id="stY-He-GD6"/>
+            </connections>
+            <point key="canvasLocation" x="175.5" y="126.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

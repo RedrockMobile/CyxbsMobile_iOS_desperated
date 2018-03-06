@@ -10,10 +10,6 @@
 #import "AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
 
-#define TOPIC_URL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/topicList"
-
-#define MYJOINTOPIC_URL @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
-
 @implementation TopicRequest
 
 - (void)requestImageForImageView:(UIImageView *)imageView withUrlStr:(NSString *)urlStr{

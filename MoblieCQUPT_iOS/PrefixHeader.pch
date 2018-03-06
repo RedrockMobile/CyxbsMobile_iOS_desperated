@@ -24,7 +24,7 @@
     #define DDLog(xx, ...)     ;
     //#define NSLog(format, ...) ;
 #endif
-
+#define BACKCOLOR [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define MAIN_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define FONT_COLOR  [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]
 //#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
@@ -32,9 +32,9 @@
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kBarTintColor MAIN_COLOR
 #define kItemTintColor [UIColor blackColor]
-#define kFont [UIFont fontWithName:@"Arial" size:15]
+#define kFont [UIFont fontWithName:@"Arial" size:14]
 #define kTextColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
-#define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
+#define kDetailTextColor [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:0.7]
 
 #define COLOR_NEED [UIColor colorWithRed:101/255.0 green:178/255.0 blue:255/255.0 alpha:1]
 #define COLOR_NONEED [UIColor colorWithRed:148/255.0 green:148/255.0 blue:148/255.0 alpha:0.6]
@@ -61,11 +61,12 @@
 #define COLOR_YELLOW3 [UIColor colorWithRed:253/255.0 green:250/255.0 blue:235/255.0 alpha:1]
 #define COLOR_YELLOW4 [UIColor colorWithRed:255/255.0 green:255/255.0 blue:251/255.0 alpha:1]
 
-
 #import <AFNetworking.h>
+#import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 #import <YYKit.h>
 #import <Masonry.h>
+#import <MBProgressHUD.h>
 #import <UMMobClick/MobClick.h>
 #import "NetWork.h"
 #import "HttpClient.h"
@@ -81,6 +82,7 @@
 #define kAPPUserDefaultLoginName @"name"
 #define kAPPUserDefaultStudentID @"stuNum"
 
+
 #define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define kWidthGrid  (ScreenWidth/7.5)
@@ -92,57 +94,81 @@
 
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
+//登录
+#define Base_Login @"https://wx.idsbllp.cn/api/verify"
 //哔哔叨叨列表
-#define LISTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
+#define LISTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
 //热门动态列表
-#define SEARCHHOTARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
+#define SEARCHHOTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
 //获取评论列表
-#define GETREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
+#define GETREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
 //官方咨询列表
-#define LISTNEWS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
+#define LISTNEWS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
 //评论接口
-#define POSTREMARK_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
+#define POSTREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
 //赞接口
-#define ADDSUPPORT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/addone"
+#define ADDSUPPORT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/addone"
 //取消赞接口
-#define CANCELSUPPOTRT_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+#define CANCELSUPPOTRT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/cancel"
 //发布动态接口
-#define ADDARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Article/addArticle"
+#define ADDARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/addArticle"
 //发布话题文章接口
-#define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
+#define ADDTOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
 //查询个人信息接口
-#define SEARCH_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/search"
+#define SEARCH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/search"
+//
+#define SETINFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
 //上传图片接口
-#define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
-
+#define UPLOADARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
 //动态查询接口
-#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
-
+#define SEARCHTREBDS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
 //话题列表接口
-#define TOPICLIST_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/topicList"
-
+#define TOPICLIST_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 //话题文章列表接口
-#define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+#define TOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+//首页图接口
+#define SPLASH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
+#define kebiaoAPI @"https://wx.idsbllp.cn/redapi2/api/kebiao"
+#define ADDREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
+#define GETREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
+#define EDITREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
+#define DELETEREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
+#define EXAMAPI @"https://wx.idsbllp.cn/api/examSchedule"
+#define SEARCHPEOPLEAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
+#define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
+#define BASE_URL @"https://wx.idsbllp.cn"
+#define LOSTAPI @"https://wx.idsbllp.cn/laf/api"
+#define UPLOAD_IMAGE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/home/photo/upload"
+#define SUGGESTION_API @"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion"
+#define GRADEAPI @"https://wx.idsbllp.cn/api/examGrade"
+#define MakeApi @"https://wx.idsbllp.cn/api/examReexam"
+#define EXAM_SCHEDULE_API @"https://wx.idsbllp.cn/api/examSchedule"
+#define EmptyClassApi @"https://wx.idsbllp.cn/api/roomEmpty"
+#define TOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
+#define MYJOINTOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
+#define Carousel_API @"https://wx.idsbllp.cn/app/api/pictureCarousel.php"
+//空教室接口
+#define EMPTYCLASSAPI @"https://wx.idsbllp.cn/api/roomEmpty"
+//成绩接口
+#define GRADEAPI @"https://wx.idsbllp.cn/api/examGrade"
+//考试教室接口
+#define GRADECLASSAPI @"https://wx.idsbllp.cn/api/examSchedule"
+//补考接口
+#define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
 
-
+#define kSegmentViewTitleHeight (SCREENHEIGHT*50/667)
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
-#define NVGBARHEIGHT self.navigationController.navigationBar.frame.size.height
+#define NVGBARHEIGHT (44)
 #define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
-#define HEADERHEIGHT 64
+#define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)
 #define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
 #define MHEIGHT (1.6*MWIDTH) //monthLabel的高度
 #define DAY 7
 #define LESSON 12
 #define WEEK 20
 #define LONGLESSON (LESSON/2)
-#define kebiaoAPI @"http://hongyan.cqupt.edu.cn/redapi2/api/kebiao"
-#define ADDREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
-#define GETREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
-#define EDITREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
-#define DELETEREMINDAPI @"http://hongyan.cqupt.edu.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
-#define EXAMAPI @"http://hongyan.cqupt.edu.cn/api/examSchedule"
 #define LESSONBTNSIDE (((SCREENWIDTH)-(MWIDTH))/DAY)
 #define SEGMENT 2
 #define autoSizeScaleX SCREENWIDTH/375.0

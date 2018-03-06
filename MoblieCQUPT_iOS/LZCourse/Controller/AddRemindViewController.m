@@ -12,32 +12,28 @@
 #import "WeekChooseViewController.h"
 #import "TimeChooseScrollView.h"
 #import "TimeHandle.h"
-#import "TickButton.h"
 #import "CoverView.h"
+#import "ORWInputTextView.h"
 #import "RemindNotification.h"
-#import "UIFont+AdaptiveFont.h"
-@interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,SaveDelegate,UITextViewDelegate>
-@property TimeChooseScrollView *remindChooseView;
-@property NSMutableArray <NSString *>*contentArray;
-@property BOOL isShowRemindChooseView;
-@property TickButton *selectedButton;
-@property TimeChooseViewController *timeChoose;
-@property WeekChooseViewController *weekChoose;
-@property NSMutableArray <NSNumber *>*timeArray;
-@property NSNumber *time;
-@property NSMutableArray *weekArray;
-@property CoverView *coverView;
-@property BOOL isEditing;
-@property NSDictionary *remind;
-@property NSNumber *idNum;
+@interface AddRemindViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate,TimeChooseScrollViewDelegate,SaveDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *titleTextField;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet ORWInputTextView *contentTextView;
+@property (nonatomic, strong) TimeChooseScrollView *remindTimeChooseView;
+@property (nonatomic, strong) CoverView *coverView;
+@property (nonatomic, strong) NSNumber *time;
+@property (nonatomic, strong) NSNumber *idNum;
+@property (nonatomic, strong) NSArray <NSNumber *> *weekArray;
+@property (nonatomic, strong) NSMutableArray <NSNumber *> *timeArray;
+@property (nonatomic, strong) NSMutableArray <NSMutableDictionary *> *cellDicArray;
+@property (nonatomic, strong) TimeChooseViewController *timeChooseVC;
+@property (nonatomic, strong) WeekChooseViewController *weekChooseVC;
+@property (nonatomic, copy) NSDictionary *remind;
+@property (nonatomic, assign) BOOL isEditing;
+
 @end
 
 @implementation AddRemindViewController
-- (void)textViewDidBeginEditing:(UITextView *)textView{
-    [textView becomeFirstResponder];
-}
-
-
 - (instancetype)initWithRemind:(NSDictionary *)remind{
     self = [self init];
     if (self) {
@@ -47,98 +43,115 @@
     return self;
 }
 
-- (void)loadViewWithRemind:(NSDictionary *)remind{
-    if (remind != nil) {
-        self.isEditing = YES;
-        self.idNum = [remind objectForKey:@"id"];
-        self.titileTextView.text = [remind objectForKey:@"title"];
-        self.contentTextView.text = [remind objectForKey:@"content"];
-        NSArray *dateArray = [remind objectForKey:@"date"];
-        self.timeArray = [NSMutableArray array];
-        for (int i = 0; i<dateArray.count; i++) {
-            self.weekArray = [dateArray[i] objectForKey:@"week"];
-            NSInteger timeCount = [[dateArray[i] objectForKey:@"day"] integerValue]*LONGLESSON+[[dateArray[i] objectForKey:@"class"] integerValue];
-            [self.timeArray addObject:@(timeCount)];
-        }
-        self.time = [remind objectForKey:@"time"];
-        NSArray *array = @[@0,@5,@10,@20,@30,@60];
-        if (self.time == nil) {
-            self.time = array[0];
-            self.selectedButton = self.remindChooseView.btnArray[0];
-        }
-        else {
-            for (int i = 1;i<array.count;i++) {
-                if ([array[i] isEqual:self.time]) {
-                    self.selectedButton = self.remindChooseView.btnArray[i];
-                    break;
-                }
-            }
-        }
-        self.selectedButton.selected = YES;
-        self.contentArray[0] = [TimeHandle handleTimes:self.timeArray];
-        self.contentArray[1] = [TimeHandle handleWeeks:self.weekArray];
-        self.contentArray[2] = self.selectedButton.currentTitle;
-        [self.tableView reloadData];
-    }
-    else{
-        NSMutableArray *weeks = [@[[[NSUserDefaults standardUserDefaults] objectForKey:@"nowWeek"] ] mutableCopy];
-        [self saveWeeks: weeks];
-    }
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[RemindNotification shareInstance]creatIdentifiers];
     self.title = @"事项编辑";
-    
-    self.titileTextView.delegate = self;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.cellDicArray = @[@{@"title":@"周数",@"img":@"remind_image_week",@"content":@""}.mutableCopy,
+                          @{@"title":@"时间",@"img":@"remind_image_time",@"content":@""}.mutableCopy,
+                          @{@"title":@"提醒",@"img":@"remind_image_remind",@"content":@""}.mutableCopy]
+                            .mutableCopy;
+    [[RemindNotification shareInstance] creatIdentifiers];
+    self.titleTextField.delegate = self;
+    self.titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;    //防止文字输入后下移
     self.contentTextView.delegate = self;
-    self.titileTextView.font = [UIFont adaptFontSize:18];
-    self.contentTextView.font = [UIFont adaptFontSize:18];
-    self.titileTextView.layer.cornerRadius = 5;
-    self.contentTextView.layer.cornerRadius = 5;
-    self.contentTextView.layer.masksToBounds = YES;
-    
     self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-    
-    __weak AddRemindViewController *weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
         [weakSelf touchesBegan:touches withEvent:event];
     };
-    
-    self.contentArray = [NSMutableArray arrayWithArray:@[@"",@"",@""]];
-    self.titileTextView.backgroundColor = [UIColor colorWithRed:238/255.f green:238/255.f blue:238/255.f alpha:1];
-    self.contentTextView.backgroundColor = [UIColor colorWithRed:238/255.f green:238/255.f blue:238/255.f alpha:1];
-
-    
     self.tableView.tableFooterView = [[UIView alloc]init];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.scrollEnabled = NO;
-    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"remind_image_confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(saveRemind)];
     self.navigationItem.rightBarButtonItem = saveItem;
     
-    self.remindChooseView = [[TimeChooseScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5.f)];
-    for (int i = 0; i<self.remindChooseView.btnArray.count; i++) {
-        [self.remindChooseView.btnArray[i] addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-    CGRect frame = self.remindChooseView.frame;
+    self.remindTimeChooseView = [[TimeChooseScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5.f)titles:@[@"不提醒",@"提前五分钟",@"提前十分钟",@"提前二十分钟",@"提前半小时",@"提前一小时"]];
+    self.remindTimeChooseView.chooseDelegate = self;
+    CGRect frame = self.remindTimeChooseView.frame;
     frame.origin.y = SCREENHEIGHT;
     frame.size.height = 1;
-    self.remindChooseView.frame = frame;
-    self.isShowRemindChooseView = NO;
+    self.remindTimeChooseView.frame = frame;
+    self.remindTimeChooseView.hidden = YES;
     self.isEditing = NO;
-    
     [self loadViewWithRemind:self.remind];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)loadViewWithRemind:(NSDictionary *)remind{
+    if (remind != nil) {
+        self.isEditing = YES;
+        self.idNum = remind[@"id"];
+        self.titleTextField.text = remind[@"title"];
+        self.contentTextView.text = remind[@"content"];
+        NSArray *dateArray = remind[@"date"];
+        self.timeArray = [NSMutableArray array];
+        for (int i = 0; i<dateArray.count; i++) {
+            self.weekArray = dateArray[i][@"week"];
+            NSInteger timeCount = [dateArray[i][@"day"] integerValue]*LONGLESSON+[dateArray[i][@"class"] integerValue];
+            [self.timeArray addObject:@(timeCount)];
+        }
+        self.time = remind[@"time"];
+        NSArray *array = @[@0,@5,@10,@20,@30,@60];
+        if (self.time == nil) {
+            self.time = array[0];
+            [self.remindTimeChooseView tapAtIndex:0];
+        }
+        else {
+            for (int i = 0;i<array.count;i++) {
+                if ([array[i] isEqual:self.time]) {
+                    [self.remindTimeChooseView tapAtIndex:i];
+                    break;
+                }
+            }
+        }
+        self.cellDicArray[0][@"content"] = [TimeHandle handleWeeks:self.weekArray];
+        self.cellDicArray[1][@"content"] = [TimeHandle handleTimes:self.timeArray];
+        self.cellDicArray[2][@"content"] = self.remindTimeChooseView.currenSelectedTitle;
+        [self.tableView reloadData];
+    }
+    else{
+        self.contentTextView.placeHolder = @"请编辑内容……";
+        NSArray *weeks = @[[UserDefaultTool valueWithKey:@"nowWeek"]].mutableCopy;
+        [self saveWeeks:weeks];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark - textView设置
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [textField becomeFirstResponder];
+}
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    [textView becomeFirstResponder];
+}
+
+- (void)textViewDidChange:(UITextView *)textView{
+    if (textView.text.length <= 0) {
+        self.contentTextView.placeHolder = @"请编辑内容……";
+    }
+    else{
+        self.contentTextView.placeHolder = @"";
+    }
+}
+
+- (BOOL)textView:(UITextView *)textView didChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (text.length <= 0) {
+        self.contentTextView.placeHolder = @"请编辑内容……";
+    }
+    else{
+        self.contentTextView.placeHolder = @"";
+    }
+    return YES;
+}
+
+#pragma mark - tableView
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -149,124 +162,102 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     RemindTableViewCell *cell = [[NSBundle mainBundle] loadNibNamed:@"RemindTableViewCell" owner:self options:nil][0];
-    [cell layoutIfNeeded];
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.titleLabel.text = @"时间";
-            cell.contentLabel.text = self.contentArray[0];
-            break;
-        case 1:
-            cell.titleLabel.text = @"周数";
-            cell.contentLabel.text = self.contentArray[1];
-            break;
-        case 2:
-            cell.titleLabel.text = @"提醒";
-            cell.contentLabel.text = self.contentArray[2];
-            cell.preservesSuperviewLayoutMargins = NO;
-            cell.layoutMargins = UIEdgeInsetsZero;
-            cell.separatorInset = UIEdgeInsetsMake(0, SCREENWIDTH, 0, 0); //去除最后一条分割线
-            break;
-        default:
-            break;
-    }
+    NSInteger index = indexPath.row;
+    cell.titleLabel.text = self.cellDicArray[index][@"title"];
+    cell.contentLabel.text = self.cellDicArray[index][@"content"];
+    cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[index][@"img"]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 80;
+    return tableView.height/self.cellDicArray.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.titileTextView resignFirstResponder];
+    [self.titleTextField resignFirstResponder];
     [self.contentTextView resignFirstResponder];
     switch (indexPath.row) {
         case 0:
-            self.timeChoose = [[TimeChooseViewController alloc]initWithTimeArray:self.timeArray];
-            self.timeChoose.delegate = self;
-            [self.navigationController pushViewController:self.timeChoose animated:YES];
+            self.weekChooseVC = [[WeekChooseViewController alloc]initWithTimeArray:self.weekArray];
+            self.weekChooseVC.delegate = self;
+            [self.navigationController pushViewController:self.weekChooseVC animated:YES];
             break;
         case 1:
-            self.weekChoose = [[WeekChooseViewController alloc]initWithTimeArray:self.weekArray];
-            self.weekChoose.delegate = self;
-            [self.navigationController pushViewController:self.weekChoose animated:YES];
+            self.timeChooseVC = [[TimeChooseViewController alloc] initWithTimeArray:self.timeArray];
+            self.timeChooseVC.delegate = self;
+            [self.navigationController pushViewController:self.timeChooseVC animated:YES];
             break;
         case 2:
             [self remindChooseViewAnimated];
-            break;
-        default:
             break;
     }
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    if(self.isShowRemindChooseView){
+    if(!self.remindTimeChooseView.hidden){
         [self remindChooseViewAnimated];
     }
-    [self.titileTextView resignFirstResponder];
+    [self.titleTextField resignFirstResponder];
     [self.contentTextView resignFirstResponder];
 }
 
 - (void)remindChooseViewAnimated{
-    if (self.isShowRemindChooseView == YES) {
+    if (!self.remindTimeChooseView.hidden) {
         [UIView animateWithDuration:0.3 animations:^{
-            CGRect frame = self.remindChooseView.frame;
+            CGRect frame = self.remindTimeChooseView.frame;
             frame.origin.y = SCREENHEIGHT;
             frame.size.height = 1;
-            self.remindChooseView.frame = frame;
+            self.remindTimeChooseView.frame = frame;
         }completion:^(BOOL finished) {
-            self.isShowRemindChooseView = NO;
-            [self.remindChooseView removeFromSuperview];
+            self.remindTimeChooseView.hidden = YES;
+            [self.remindTimeChooseView removeFromSuperview];
             [self.coverView removeFromSuperview];
         }];
     }
     else{
         [self.view.window addSubview:self.coverView];
-        [self.view.window addSubview:self.remindChooseView];
+        [self.view.window addSubview:self.remindTimeChooseView];
+        self.remindTimeChooseView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.remindChooseView.frame = CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5);
+            self.remindTimeChooseView.frame = CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5);
         }completion:^(BOOL finished) {
-            self.isShowRemindChooseView = YES;
+            
         }];
     }
 
 }
-- (void)click:(TickButton *)sender{
+
+- (void)eventWhenTapAtIndex:(NSInteger)index{
     NSArray *array = @[@0,@5,@10,@20,@30,@60];
-    if (![sender isEqual:self.selectedButton]) {
-        self.selectedButton.selected = NO;
-    }
-    self.selectedButton = sender;
-    self.time = array[sender.tag];
-    self.contentArray[2] = sender.currentTitle;
+    self.time = array[index];
+    self.cellDicArray[2][@"content"] = self.remindTimeChooseView.currenSelectedTitle;
     [self remindChooseViewAnimated];
     [self.tableView reloadData];
 }
 
-- (void)saveWeeks:(NSMutableArray *)weekArray{
-    self.contentArray[1] = [TimeHandle handleWeeks:weekArray];
+- (void)saveWeeks:(NSArray *)weekArray{
+    self.cellDicArray[0][@"content"] = [TimeHandle handleWeeks:weekArray];
     self.weekArray = weekArray;
     [self.tableView reloadData];
 }
 
-- (void)saveTimes:(NSMutableArray *)timeArray{
-    self.timeArray = timeArray;
-    self.contentArray[0] = [TimeHandle handleTimes:timeArray];
+- (void)saveTimes:(NSArray *)timeArray{
+    self.timeArray = timeArray.mutableCopy;
+    self.cellDicArray[1][@"content"] = [TimeHandle handleTimes:timeArray];
     [self.tableView reloadData];
 }
-
 
 - (void)saveRemind{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"哎呀" message:@"你漏了点信息哦" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alertController addAction:action];
-    for (int i = 0; i<self.contentArray.count; i++) {
-        if ([self.contentArray[i] isEqualToString:@""]) {
+    for (int i = 0; i<self.cellDicArray.count; i++) {
+        if ([self.cellDicArray[i][@"content"] isEqualToString:@""]) {
             [self presentViewController:alertController animated:YES completion:nil];
             return;
         }
     }
-    if([self.titileTextView isEqual:@""] ||[self.time isEqual:nil] || self.weekArray.count == 0){
+    if([self.titleTextField.text isEqualToString:@""] || self.time == nil || self.weekArray.count == 0){
         [self presentViewController: alertController animated:YES completion:nil];
         return;
     }
@@ -276,17 +267,15 @@
     }
 }
 
-
 - (void)postRemind{
     NSMutableString *idString = [NSMutableString stringWithFormat:@"%ld",(long)([[NSDate date] timeIntervalSince1970]*1000)];
     [idString appendString:[NSString stringWithFormat:@"%d",arc4random()%10000]];
-    NSNumber *identifier = [NSNumber numberWithInteger:idString.integerValue];
+    NSNumber *identifier = [NSNumber numberWithString:idString];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    NSString *idNum = [defaults objectForKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
     
-    NSMutableString *weekString = [[self.contentArray[1] stringByReplacingOccurrencesOfString:@"周" withString:@""] mutableCopy];
+    NSMutableString *weekString = [[self.cellDicArray[0][@"content"] stringByReplacingOccurrencesOfString:@"周" withString:@""] mutableCopy];
     weekString = [[weekString stringByReplacingOccurrencesOfString:@"、" withString:@","] mutableCopy];
     
     NSMutableArray *dateArray = [NSMutableArray array];
@@ -301,10 +290,7 @@
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
     NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
-    NSMutableArray *reminds = [NSMutableArray arrayWithContentsOfFile:remindPath];
-    if(reminds == nil){
-        reminds = [NSMutableArray array];
-    }
+    NSMutableArray *reminds = [NSMutableArray arrayWithContentsOfFile:remindPath]?:[NSMutableArray array];
     NSMutableArray *date = [NSMutableArray array];
     for (int i = 0; i < self.timeArray.count; i++) {
         NSNumber *classNum = @(self.timeArray[i].integerValue%(LONGLESSON));
@@ -316,13 +302,13 @@
     NSMutableDictionary *remind = [@{
                                      @"stuNum":stuNum,
                                      @"idNum":idNum,
-                                     @"title":self.titileTextView.text,
+                                     @"title":self.titleTextField.text,
                                      @"content":self.contentTextView.text,
                                      @"date":date,
                                      } mutableCopy];
     if (![self.time isEqual:@0]) {
         [remind setObject:self.time forKey:@"time"];
-    }
+    } // 如果时间为0，后台返回的为null
     
     
     NSMutableDictionary *parameters = [@{
@@ -330,19 +316,19 @@
                                          @"idNum":idNum,
                                          @"date":dateArray,
                                          @"time":self.time,
-                                         @"title":self.titileTextView.text,
+                                         @"title":self.titleTextField.text,
                                          @"content":self.contentTextView.text,
                                          } mutableCopy];
     
     NSError *error;
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dateArray options:NSJSONWritingPrettyPrinted error:&error];
-    NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];//需要转换数组才能上传
     NSMutableDictionary *jsonParameters = [@{
                                          @"stuNum":stuNum,
                                          @"idNum":idNum,
                                          @"date":jsonString,
                                          @"time":self.time,
-                                         @"title":self.titileTextView.text,
+                                         @"title":self.titleTextField.text,
                                          @"content":self.contentTextView.text,
                                          } mutableCopy];
     NSLog(@"%@",jsonParameters);
@@ -350,12 +336,12 @@
     if (!_isEditing) {
         [parameters setValue:identifier forKey:@"id"];
         [jsonParameters setValue:identifier forKey:@"id"];
-        [remind setValue:identifier forKey:@"id"];
+        [remind setValue:identifier forKey:@"id"]; //不是正在编辑的上传新的时间戳id
         [reminds addObject:remind];
         if([reminds writeToFile:remindPath atomically:YES]){
             NSNotificationCenter *center= [NSNotificationCenter defaultCenter];
             [center postNotificationName:@"addRemind" object:identifier];
-            [[RemindNotification shareInstance]addNotifictaion];
+            [[RemindNotification shareInstance] addNotifictaion];
         }
         [client requestWithPath:ADDREMINDAPI method:HttpRequestPost parameters:jsonParameters prepareExecute:^{
             
@@ -373,11 +359,11 @@
             [dic setObject:parameters forKey:@"parameters"];
             [dic setObject:@"add" forKey:@"type"];
             [failureRequests addObject:dic];
-            [failureRequests writeToFile:failurePath atomically:YES];
+            [failureRequests writeToFile:failurePath atomically:YES]; //为了服务器与客户端同步，请求失败的存下等待下次重新请求
         }];
     }
     else{
-        [parameters setValue:self.idNum forKey:@"id"];
+        [parameters setValue:self.idNum forKey:@"id"]; //正在编辑的上传之前存在的时间戳
         [jsonParameters setValue:self.idNum forKey:@"id"];
         [remind setValue:self.idNum forKey:@"id"];
         for (NSDictionary *remindDic in reminds) {
@@ -389,7 +375,7 @@
         [reminds addObject:remind];
         if([reminds writeToFile:remindPath atomically:YES]){
             [[NSNotificationCenter defaultCenter] postNotificationName:@"editRemind" object:self.idNum];
-             [[RemindNotification shareInstance]updateNotificationWithIdetifiers:self.idNum.stringValue];
+             [[RemindNotification shareInstance] updateNotificationWithIdetifiers:self.idNum.stringValue];
         }
         [client requestWithPath:EDITREMINDAPI method:HttpRequestPost parameters:jsonParameters prepareExecute:^{
             
