@@ -29,6 +29,9 @@
     YouWenSortViewController *allView = [[YouWenSortViewController alloc] initViewStyle:@"全部"];
     allView.title = @"全部";
     NSArray *views = @[emtionView, otherView, learningView, allView];
+    for (YouWenSortViewController *view in views) {
+        view.superController = self;
+    }
     SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 48) andControllers:views];
     [self.view addSubview:segView];
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];

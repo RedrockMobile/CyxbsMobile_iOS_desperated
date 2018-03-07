@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface YouWenSortViewController : BaseViewController
+@property (strong, nonatomic) UIViewController *superController;
 - (instancetype)initViewStyle:(NSString *)style;
 @end

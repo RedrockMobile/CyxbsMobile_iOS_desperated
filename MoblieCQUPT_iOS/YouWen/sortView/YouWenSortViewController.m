@@ -10,11 +10,7 @@
 #import "YouWenTableViewCell.h"
 #import "YouWenDataModel.h"
 #import <MJRefresh.h>
-#ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,"%s:%d\t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(...)
-#endif
+#import "ReportViewController.h"
 @interface YouWenSortViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tab;
 @property (strong, nonatomic) NSMutableArray *cellArray;
@@ -136,6 +132,9 @@
     CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
         attributes:dic context:nil].size.height;
     return height + 98;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
 }
 /*
 #pragma mark - Navigation
