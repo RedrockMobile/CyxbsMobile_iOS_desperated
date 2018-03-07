@@ -7,8 +7,9 @@
 //
 
 #import "ReportTextView.h"
-#define SCREEN_RATE (320/[UIScreen mainScreen].bounds.size.width)
+#define SCREEN_RATE (375/[UIScreen mainScreen].bounds.size.width)
 #define ZOOM(x) x / SCREEN_RATE
+#define WORDNUMWIDTH self.width / 5
 @interface ReportTextView()<UITextViewDelegate>
 
 @property (assign, nonatomic) wordNumState wnState;
@@ -36,7 +37,8 @@
 -(UILabel *)wordNum{
     if (!_wordNum) {
         int wordNumHeight = (self.height > 20)?20:self.height;
-        self.wordNum = [[UILabel alloc] initWithFrame:[self zoomFrame:CGRectMake(self.frame.size.width - 40, self.size.height - 30, 30, wordNumHeight)]];
+        self.wordNum = [[UILabel alloc] initWithFrame:CGRectMake(self.width - WORDNUMWIDTH - 10, self.height - wordNumHeight , WORDNUMWIDTH, wordNumHeight)];
+        self.wordNum.textAlignment = NSTextAlignmentJustified    ;
         switch (_wnState) {
             case 0:
                 self.wordNum.hidden = YES;
@@ -57,9 +59,10 @@
 
 - (UILabel *)placeHolder{
     if (!_placeHolder) {
-        self.placeHolder = [[UILabel alloc] initWithFrame:[self zoomFrame:CGRectMake(10, 10, 100, 30)]];
+        self.placeHolder = [[UILabel alloc] initWithFrame: CGRectMake(10, 10, self.size.width - 20, self.size.height / 2)];
         self.placeHolder.textColor = [UIColor grayColor];
-        self.placeHolder.text = _placeHolderWord;
+        self.placeHolder.numberOfLines = 0;
+        self.placeHolder.textAlignment = NSTextAlignmentLeft;
     }
     return _placeHolder;
 }

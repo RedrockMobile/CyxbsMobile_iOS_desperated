@@ -46,8 +46,10 @@
     [self.view addSubview:whiteView];
     _titleTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(10, 10, ScreenWidth - 20, 30) andState:OnlyWordNum];
     _titleTextView.limitNum = 20;
+    _titleTextView.placeHolder.text = @"请输入标题";
     _detailTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(10, 40, ScreenWidth - 20, whiteView.height - _titleTextView.bottom - 10) andState:OnlyWordNum];
     _detailTextView.limitNum = 200;
+    _detailTextView.placeHolder.text = @"详细描述你的问题和需求，表达越清楚，越容易获得帮助哦！";
     UIView *blackLine = [[UIView alloc] initWithFrame:CGRectMake(10, _titleTextView.bottom, ScreenWidth - 20, 1)];
     blackLine.backgroundColor = [UIColor blackColor];
 
