@@ -11,7 +11,7 @@
 #import "YouWenSortViewController.h"
 #import "SegmentView.h"
 #import "YouWenAddViewController.h"
-
+#import "YouWenTopicView.h"
 @interface YouWenViewController ()
 @property (strong, nonatomic) UIButton *askBtn;
 @end
@@ -43,9 +43,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
 }
 - (void)setNewQuestion{
-    YouWenAddViewController *addView = [[YouWenAddViewController alloc]init];
-    addView.hidesBottomBarWhenPushed = YES;
-     [self.navigationController pushViewController:addView animated:YES];
+    YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:300];
+    [topicView addDetail];
+//    addView.hidesBottomBarWhenPushed = YES;
+    [[UIApplication sharedApplication].keyWindow addSubview:topicView];
+//     [self.navigationController pushViewController:addView animated:YES];
 }
 /*
 #pragma mark - Navigation

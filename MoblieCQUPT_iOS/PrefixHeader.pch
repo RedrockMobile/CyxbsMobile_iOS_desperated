@@ -28,6 +28,7 @@
 #define MAIN_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define FONT_COLOR  [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]
 //#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
+#define rectStartsBar [UIApplication sharedApplication].statusBarFrame.size.height
 #define MAIN_SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define MAIN_SCREEN_W [UIScreen mainScreen].bounds.size.width
 #define kBarTintColor MAIN_COLOR

@@ -38,7 +38,7 @@
     if (!_wordNum) {
         int wordNumHeight = (self.height > 20)?20:self.height;
         self.wordNum = [[UILabel alloc] initWithFrame:CGRectMake(self.width - WORDNUMWIDTH - 10, self.height - wordNumHeight , WORDNUMWIDTH, wordNumHeight)];
-        self.wordNum.textAlignment = NSTextAlignmentJustified    ;
+        self.wordNum.textAlignment = NSTextAlignmentRight;
         switch (_wnState) {
             case 0:
                 self.wordNum.hidden = YES;
@@ -69,7 +69,8 @@
 
 - (void)textViewDidChange:(UITextView *)textView{
     NSUInteger Num = textView.text.length;
-    if (Num <= _limitNum) {
+    self.placeHolder.hidden = YES;
+    if (Num <= _limitNum && Num > 0) {
         if (_wnState == OnlyWordNum){
             self.wordNum.text = [NSString stringWithFormat:@"%lu", (unsigned long)Num];
         }

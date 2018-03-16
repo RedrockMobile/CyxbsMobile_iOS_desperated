@@ -9,14 +9,22 @@
 #import "YouWenAddViewController.h"
 #import "ReportTextView.h"
 #import <Masonry.h>
+#import "YouWenTimeView.h"
+#import "YouWenSoreView.h"
+#import "YouWenResultView.h"
+#import "TransparentView.h"
 #define PHOTOSIZE (ScreenWidth - 30) / 3
 
-@interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation>
 @property (copy, nonatomic) NSMutableArray *imageArray;
 @property (strong, nonatomic) ReportTextView *titleTextView;
 @property (strong, nonatomic) ReportTextView *detailTextView;
 @property (strong, nonatomic) UIButton *addImageButton;
 @property (strong, nonatomic) UIScrollView *imageView;
+@property (strong, nonatomic) NSMutableArray *anotherInf;
+@property (copy, nonatomic) NSString *time;
+@property (copy, nonatomic) NSString *sore;
+@property (strong, nonatomic) TransparentView *photoView;
 @end
 
 @implementation YouWenAddViewController
@@ -25,9 +33,13 @@
     [super viewDidLoad];
     [self setView];
     _imageArray = [NSArray array].mutableCopy;
+    _time = [[NSString alloc] init];
+    _sore = [[NSString alloc] init];
     self.navigationItem.title = @"求助";
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:nil];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(nextView)];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeArrive:) name:@"timeNotifi" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(soreArrive:) name:@"soreNotifi" object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [self.view removeAllSubviews];
@@ -96,7 +108,7 @@
     
     UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [photoButton setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-    [photoButton addTarget:self action:@selector(Unknown)
+    [photoButton addTarget:self action:@selector(selectImage)
           forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:photoButton];
     
@@ -141,19 +153,95 @@
     }
     return _addImageButton;
 }
-
+- (void)nextView{
+    _anotherInf = [NSMutableArray array];
+    _anotherInf = [NSMutableArray array];
+    if (!_time.length){
+        YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:300];
+        [nextView addDetail];
+        [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+    }
+    else{
+        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:300];
+        [nextView addDetail];
+        [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+    }
+}
+- (void)timeArrive:(NSNotification *)noti{
+    _time = noti.object[@"time"];
+    YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:300];
+    [nextView addDetail];
+    [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+}
+- (void)soreArrive:(NSNotification *)noti{
+    _sore = noti.object[@"sore"];
+    YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:300];
+    resultView.time = _time;
+    resultView.sore = _sore;
+    [resultView addDetail];
+    [[UIApplication sharedApplication].keyWindow addSubview:resultView];
+}
+//照片
 - (void)selectImage{
+    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:100];
+    UIButton *pictureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [pictureBtn setTitle:@"从相册中选择" forState:UIControlStateNormal];
+    [pictureBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [pictureBtn addTarget:self action:@selector(selectPicture) forControlEvents:UIControlEventTouchUpInside];
+    pictureBtn.frame = CGRectMake(0, 0, ScreenWidth, 50);
+    [_photoView.whiteView addSubview:pictureBtn];
+    
+    UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [photoBtn setTitle:@"拍照" forState:UIControlStateNormal];
+    [photoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [photoBtn addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
+    photoBtn.frame = CGRectMake(0, 50, ScreenWidth, 50);
+    [_photoView.whiteView addSubview:photoBtn];
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:_photoView];
+
+}
+- (void)selectPicture{
+    [_photoView removeFromSuperview];
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     picker.delegate = self;
     picker.allowsEditing = YES;
     [self presentViewController:picker animated:YES completion:nil];
 }
-
+- (void)takePhoto{
+    [_photoView removeFromSuperview];
+    
+    if ([UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera]) {
+        UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.delegate = self;
+        picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureModePhoto;
+        [self presentViewController:picker animated:YES completion:nil];
+    }
+    else {
+        NSLog(@"当前设备不支持拍照");
+        UIAlertController * alertController = [UIAlertController
+      alertControllerWithTitle:@"温馨提示"
+                       message:@"当前设备不支持拍照"
+                preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定"
+                         style:UIAlertActionStyleDefault
+                      handler:nil]];
+        [self presentViewController:alertController
+                           animated:YES
+                         completion:nil];
+    }
+}
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    UIImage *image = info[UIImagePickerControllerOriginalImage];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.imageArray appendObject: image];
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        if ([info[UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
+            [self.imageArray appendObject:info[UIImagePickerControllerOriginalImage]];
+        }
+    }else if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary){
+        [self.imageArray appendObject: info[UIImagePickerControllerEditedImage]];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];  
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
