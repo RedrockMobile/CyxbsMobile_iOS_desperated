@@ -90,6 +90,12 @@
 		6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */; };
 		6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205B31F6614E100E5020E /* BeforeClassViewController.m */; };
 		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
+		6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A32B20518F9C00D07606 /* TransparentView.m */; };
+		6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A32E2053904D00D07606 /* YouWenNextView.m */; };
+		6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A3312053A31700D07606 /* YouWenTimeView.m */; };
+		6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A3352053D93400D07606 /* YouWenSoreView.m */; };
+		6E12A339205532A300D07606 /* YouWenResultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A338205532A300D07606 /* YouWenResultView.m */; };
+		6E12A33C20569A7800D07606 /* YouWenTopicView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A33B20569A7800D07606 /* YouWenTopicView.m */; };
 		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
 		6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */; };
@@ -99,7 +105,6 @@
 		6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */; };
 		6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */; };
 		6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */; };
-		6E7C98652046E499000BAA16 /* UILabel+check.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C98642046E499000BAA16 /* UILabel+check.m */; };
 		6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */; };
 		6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA4BC22034737200AA264E /* YouWenViewController.m */; };
 		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
@@ -666,6 +671,18 @@
 		6E1205B31F6614E100E5020E /* BeforeClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassViewController.m; sourceTree = "<group>"; };
 		6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassCell.m; sourceTree = "<group>"; };
 		6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassCell.h; sourceTree = "<group>"; };
+		6E12A32A20518F9C00D07606 /* TransparentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
+		6E12A32B20518F9C00D07606 /* TransparentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
+		6E12A32D2053904D00D07606 /* YouWenNextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenNextView.h; sourceTree = "<group>"; };
+		6E12A32E2053904D00D07606 /* YouWenNextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenNextView.m; sourceTree = "<group>"; };
+		6E12A3302053A31700D07606 /* YouWenTimeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenTimeView.h; sourceTree = "<group>"; };
+		6E12A3312053A31700D07606 /* YouWenTimeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenTimeView.m; sourceTree = "<group>"; };
+		6E12A3342053D93400D07606 /* YouWenSoreView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenSoreView.h; sourceTree = "<group>"; };
+		6E12A3352053D93400D07606 /* YouWenSoreView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenSoreView.m; sourceTree = "<group>"; };
+		6E12A337205532A300D07606 /* YouWenResultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenResultView.h; sourceTree = "<group>"; };
+		6E12A338205532A300D07606 /* YouWenResultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenResultView.m; sourceTree = "<group>"; };
+		6E12A33A20569A7800D07606 /* YouWenTopicView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenTopicView.h; sourceTree = "<group>"; };
+		6E12A33B20569A7800D07606 /* YouWenTopicView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenTopicView.m; sourceTree = "<group>"; };
 		6E175E4E1F5E82EC00C0BE60 /* ExamTotalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamTotalViewController.h; sourceTree = "<group>"; };
 		6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamTotalViewController.m; sourceTree = "<group>"; };
 		6E175E511F5FCFD400C0BE60 /* ExamSegementView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExamSegementView.h; path = Controller/ExamSegementView.h; sourceTree = "<group>"; };
@@ -683,8 +700,6 @@
 		6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenSortViewController.m; sourceTree = "<group>"; };
 		6E7C985F2041B5D5000BAA16 /* YouWenDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenDataModel.h; sourceTree = "<group>"; };
 		6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenDataModel.m; sourceTree = "<group>"; };
-		6E7C98632046E499000BAA16 /* UILabel+check.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+check.h"; sourceTree = "<group>"; };
-		6E7C98642046E499000BAA16 /* UILabel+check.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+check.m"; sourceTree = "<group>"; };
 		6E7C986A20482ECA000BAA16 /* YouWenAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenAddViewController.h; sourceTree = "<group>"; };
 		6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddViewController.m; sourceTree = "<group>"; };
 		6EDA4BC12034737200AA264E /* YouWenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenViewController.h; sourceTree = "<group>"; };
@@ -1460,8 +1475,6 @@
 			children = (
 				6E0F69222030299200BB5EF3 /* ReportViewController.h */,
 				6E0F69232030299200BB5EF3 /* ReportViewController.m */,
-				6E0F692D20309BE000BB5EF3 /* ReportTextView.h */,
-				6E0F692E20309BE000BB5EF3 /* ReportTextView.m */,
 				6E0F6925203038B400BB5EF3 /* ReportSortButton.h */,
 				6E0F6926203038B400BB5EF3 /* ReportSortButton.m */,
 				6E0F69282030712700BB5EF3 /* ReportImage.xcassets */,
@@ -1472,12 +1485,12 @@
 		6E0F69312033424500BB5EF3 /* YouWen */ = {
 			isa = PBXGroup;
 			children = (
+				6E12A32920518F5600D07606 /* Tool */,
 				6E0F69302031E30200BB5EF3 /* ReportView */,
 				6E7C98662047F1C6000BAA16 /* addView */,
 				6E7C98622044601A000BAA16 /* sortView */,
 				6EDA4BC12034737200AA264E /* YouWenViewController.h */,
 				6EDA4BC22034737200AA264E /* YouWenViewController.m */,
-				6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */,
 			);
 			path = YouWen;
 			sourceTree = "<group>";
@@ -1493,6 +1506,35 @@
 				6EF302D41F8A0B42009B7A66 /* ExamPickView.m */,
 			);
 			name = BeforeClass;
+			sourceTree = "<group>";
+		};
+		6E12A32920518F5600D07606 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				6E0F692D20309BE000BB5EF3 /* ReportTextView.h */,
+				6E0F692E20309BE000BB5EF3 /* ReportTextView.m */,
+				6E12A32A20518F9C00D07606 /* TransparentView.h */,
+				6E12A32B20518F9C00D07606 /* TransparentView.m */,
+				6E12A32D2053904D00D07606 /* YouWenNextView.h */,
+				6E12A32E2053904D00D07606 /* YouWenNextView.m */,
+				6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		6E12A3332053C11000D07606 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6E12A3302053A31700D07606 /* YouWenTimeView.h */,
+				6E12A3312053A31700D07606 /* YouWenTimeView.m */,
+				6E12A3342053D93400D07606 /* YouWenSoreView.h */,
+				6E12A3352053D93400D07606 /* YouWenSoreView.m */,
+				6E12A337205532A300D07606 /* YouWenResultView.h */,
+				6E12A338205532A300D07606 /* YouWenResultView.m */,
+				6E12A33A20569A7800D07606 /* YouWenTopicView.h */,
+				6E12A33B20569A7800D07606 /* YouWenTopicView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		6E175E541F5FD4A900C0BE60 /* MakeUpExam */ = {
@@ -1513,8 +1555,6 @@
 				6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */,
 				6E7C985F2041B5D5000BAA16 /* YouWenDataModel.h */,
 				6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */,
-				6E7C98632046E499000BAA16 /* UILabel+check.h */,
-				6E7C98642046E499000BAA16 /* UILabel+check.m */,
 			);
 			path = sortView;
 			sourceTree = "<group>";
@@ -1522,6 +1562,7 @@
 		6E7C98662047F1C6000BAA16 /* addView */ = {
 			isa = PBXGroup;
 			children = (
+				6E12A3332053C11000D07606 /* view */,
 				6E7C986A20482ECA000BAA16 /* YouWenAddViewController.h */,
 				6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */,
 			);
@@ -3411,10 +3452,12 @@
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
 				F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */,
+				6E12A33C20569A7800D07606 /* YouWenTopicView.m in Sources */,
 				F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */,
 				4A3A07921FCC0E7700A50393 /* ZJAddCommentView.m in Sources */,
 				F26D965D1F3C400F0063B024 /* MBCommunityCellTableViewCell.m in Sources */,
 				4A3A07941FCC0E7700A50393 /* ZJshopTableViewCell.m in Sources */,
+				6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */,
 				9630E4CA1FAF07D300874EB9 /* QueryDataModel.m in Sources */,
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
@@ -3452,6 +3495,7 @@
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
 				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
+				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,
 				9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
@@ -3494,6 +3538,8 @@
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
+				6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */,
+				6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
 				9630E4941FAF07D200874EB9 /* sevenViewController.m in Sources */,
 				6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */,
@@ -3528,6 +3574,7 @@
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
 				9630E4CD1FAF07D300874EB9 /* HeaderGifRefresh.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
+				6E12A339205532A300D07606 /* YouWenResultView.m in Sources */,
 				F2DD71A41F777B24009556BE /* LZPersonAddView.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
 				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,
@@ -3544,7 +3591,6 @@
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
-				6E7C98652046E499000BAA16 /* UILabel+check.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
 				F242DFB21EBD9E2C005AC411 /* CategoryChooseView.m in Sources */,
 				6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */,
