@@ -102,11 +102,16 @@
             [self loadSameData:(NSDictionary *)_dataDic];
         }
         else{
-            [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:_dataDic WithReturnValeuBlock:^(id returnValue) {
-                _FinalData = [self handleData:returnValue[@"data"]];
+            [HttpClient requestWithPath:EMPTYCLASSAPI method:HttpRequestPost parameters:_dataDic prepareExecute:^{
+                
+            } progress:^(NSProgress *progress) {
+                
+            } success:^(NSURLSessionDataTask *task, id responseObject) {
+                _FinalData = [self handleData:responseObject[@"data"]];
                 [self setUpDataView:_FinalData];
-            } WithFailureBlock:^{
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
                 [[NSNotificationCenter defaultCenter]postNotificationName:@"data" object:nil];
+
             }];
         }
   }
@@ -119,16 +124,19 @@
     for (int i = 0; i < dataArry.count; i ++) {
         NSMutableDictionary *dataDic = dic.mutableCopy;
         dataDic[@"sectionNum"] = dataArry[i];
-        [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:dataDic WithReturnValeuBlock:^(id returnValue) {
-            [self settingSameArray:returnValue[@"data"]];
+        [HttpClient requestWithPath:EMPTYCLASSAPI method:HttpRequestPost parameters:dataDic prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
+            [self settingSameArray:responseObject[@"data"]];
             if (i == dataArry.count - 1) {
                 _FinalData = [self handleData:_sameArray];
                 [self setUpDataView:_FinalData];
             }
-        } WithFailureBlock:^{
-
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
         }];
-
     }
 }
 -(void)settingSameArray:(NSArray *)sameArray{

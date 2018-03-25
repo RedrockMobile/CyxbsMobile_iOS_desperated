@@ -53,16 +53,21 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" method:HttpRequestPost parameters:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         [_data removeAllObjects];
         
-        [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
         // 刷新表格
         self.tableView.mj_footer.hidden = NO;
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
-//        [self.tableView.mj_header endRefreshing];
-    } WithFailureBlock:^{
+        //        [self.tableView.mj_header endRefreshing];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
         faileLable.textColor = [UIColor blackColor];
@@ -78,17 +83,21 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
-
-        [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" method:HttpRequestPost parameters:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
         // 刷新表格
         [self.tableView reloadData];
         // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
         self.tableView.mj_footer.hidden = NO;
-
-        [self.tableView.mj_footer endRefreshing];
         
-    } WithFailureBlock:^{
+        [self.tableView.mj_footer endRefreshing];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
         faileLable.textColor = [UIColor blackColor];
@@ -124,38 +133,40 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme"
-                            WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,
-                                @"version":@1.0}
-                     WithReturnValeuBlock:^(id returnValue) {
-        
-        _data = [[NSMutableArray alloc] init];
-        [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-         
-        //按顺序保存article_id
-         _articleIdArray = [[NSMutableArray alloc] init];
-         for (NSDictionary *dic1 in _data) {
-             [_articleIdArray addObject:dic1[@"article_id"]];
-         }
-        
-        //按顺序保存nickname
-         _nickname = [[NSMutableArray alloc] init];
-         for (NSDictionary *dic2 in _data) {
-             [_nickname addObject:dic2[@"nickname"]];
-         }
-             self.tableView.mj_footer.hidden = NO;
-                         
-        [_tableView reloadData];
-        
-    } WithFailureBlock:^{
-        UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
-        failLabel.text = @"哎呀！网络开小差了 T^T";
-        failLabel.textColor = [UIColor blackColor];
-        failLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
-        failLabel.textAlignment = NSTextAlignmentCenter;
-        [self.view addSubview:failLabel];
-        [_tableView removeFromSuperview];
-    }];
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" method:HttpRequestPost parameters:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,
+                                                                                                            @"version":@1.0} prepareExecute:^{
+                                                                                                                
+                                                                                                                                    } progress:^(NSProgress *progress) {
+                                                                                                                                        
+                                                                                                                                    } success:^(NSURLSessionDataTask *task, id responseObject) {
+                                                                                                                                        _data = [[NSMutableArray alloc] init];
+                                                                                                                                        [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
+                                                                                                                                        
+                                                                                                                                        //按顺序保存article_id
+                                                                                                                                        _articleIdArray = [[NSMutableArray alloc] init];
+                                                                                                                                        for (NSDictionary *dic1 in _data) {
+                                                                                                                                            [_articleIdArray addObject:dic1[@"article_id"]];
+                                                                                                                                        }
+                                                                                                                                        
+                                                                                                                                        //按顺序保存nickname
+                                                                                                                                        _nickname = [[NSMutableArray alloc] init];
+                                                                                                                                        for (NSDictionary *dic2 in _data) {
+                                                                                                                                            [_nickname addObject:dic2[@"nickname"]];
+                                                                                                                                        }
+                                                                                                                                        self.tableView.mj_footer.hidden = NO;
+                                                                                                                                        
+                                                                                                                                        [_tableView reloadData];
+                                                                                                                                    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                                                                                                                                        UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
+                                                                                                                                        failLabel.text = @"哎呀！网络开小差了 T^T";
+                                                                                                                                        failLabel.textColor = [UIColor blackColor];
+                                                                                                                                        failLabel.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1];
+                                                                                                                                        failLabel.textAlignment = NSTextAlignmentCenter;
+                                                                                                                                        [self.view addSubview:failLabel];
+                                                                                                                                        [_tableView removeFromSuperview];
+                                                                                                                                        
+                                                                                                                                    }];
 }
 
 #pragma mark - TableView delegate
@@ -185,29 +196,32 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
-                            WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":_articleIdArray[indexPath.section],@"version":@1.0}
-                     WithReturnValeuBlock:^(id returnValue) {
-                         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
-                         [dic setObject:_nickname[indexPath.section] forKey:@"nickname"];
-                         [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
-                         [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
-                         MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
-                         communityModel.nickname = [UserDefaultTool valueWithKey:@"nickname"];
-                         communityModel.user_photo_src = [UserDefaultTool valueWithKey:@"photo_src"];
-                         
-                         MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
-                         community_ViewModel.model = communityModel;
-                         MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
-                         commuityDetailsVC.viewModel = community_ViewModel;
-                         
-                         [weakSelf.navigationController pushViewController:commuityDetailsVC animated:YES];
-                     } WithFailureBlock:^{
-                         MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                         uploadProgress.mode = MBProgressHUDModeText;
-                         uploadProgress.labelText = @"网络状况不佳";
-                         [uploadProgress hide:YES afterDelay:1];
-                            }];
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent" method:HttpRequestPost parameters:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":_articleIdArray[indexPath.section],@"version":@1.0} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[responseObject objectForKey:@"data"][0]];
+        [dic setObject:_nickname[indexPath.section] forKey:@"nickname"];
+        [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
+        [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
+        MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
+        communityModel.nickname = [UserDefaultTool valueWithKey:@"nickname"];
+        communityModel.user_photo_src = [UserDefaultTool valueWithKey:@"photo_src"];
+        
+        MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
+        community_ViewModel.model = communityModel;
+        MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
+        commuityDetailsVC.viewModel = community_ViewModel;
+        
+        [weakSelf.navigationController pushViewController:commuityDetailsVC animated:YES];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        uploadProgress.mode = MBProgressHUDModeText;
+        uploadProgress.labelText = @"网络状况不佳";
+        [uploadProgress hide:YES afterDelay:1];
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

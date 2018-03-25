@@ -20,6 +20,51 @@
     return instance;
 }
 
++ (void)requestWithPath:(NSString *)url
+                 method:(NSInteger)method
+             parameters:(id)parameters
+         prepareExecute:(PrepareExecuteBlock) prepare
+               progress:(void (^)(NSProgress * progress))progress
+                success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    //    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    // 以json格式向服务器发送请求
+    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
+    [serializer setRemovesKeysWithNullValues:YES];
+    // 处理服务器返回null
+    //    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager setResponseSerializer:serializer];
+    manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromSet:[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain",@"application/atom+xml",@"application/xml",@"text/xml",nil]];
+    switch (method) {
+        case HttpRequestGet:
+            [manager GET:url parameters:parameters progress:progress success:success failure:failure];
+            break;
+        case HttpRequestPost:
+            [manager POST:url parameters:parameters progress:progress success:success failure:failure];
+            break;
+        case HttpRequestPut:
+            [manager PUT:url parameters:parameters success:success failure:failure];
+            break;
+        case HttpRequestDelete:
+            [manager DELETE:url parameters:parameters success:success failure:failure];
+            break;
+        default:
+            break;
+    }
+    
+}
+
+
++ (void)requestWithPathInHEAD:(NSString *)url
+                   parameters:(NSDictionary *)parameters
+                      success:(void (^)(NSURLSessionDataTask *task))success
+                      failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure{
+    AFHTTPSessionManager *manger = [AFHTTPSessionManager manager];
+    [manger HEAD:url parameters:parameters success:success failure:failure];
+}
+
 - (void)requestWithPath:(NSString *)url
                  method:(NSInteger)method
              parameters:(id)parameters
@@ -39,12 +84,10 @@
     manager.responseSerializer.acceptableContentTypes =  [manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromSet:[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain",@"application/atom+xml",@"application/xml",@"text/xml",nil]];
     switch (method) {
         case HttpRequestGet:
-//            [manager GET:url parameters:parameters progress:progress success:success failure:failure];
-            [manager GET:url parameters:parameters success:success failure:failure];
+            [manager GET:url parameters:parameters progress:progress success:success failure:failure];
             break;
         case HttpRequestPost:
-            [manager POST:url parameters:parameters success:success failure:failure];
-//            [manager POST:url parameters:parameters progress:progress success:success failure:failure];
+            [manager POST:url parameters:parameters progress:progress success:success failure:failure];
             break;
         case HttpRequestPut:
             [manager PUT:url parameters:parameters success:success failure:failure];

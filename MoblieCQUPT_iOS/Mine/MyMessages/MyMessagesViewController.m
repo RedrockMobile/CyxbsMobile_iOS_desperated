@@ -64,14 +64,17 @@
     else{
         _stunum_other = stuNum;
     }
-    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
-                     WithReturnValeuBlock:^(id returnValue) {
-                         _myInfoData = returnValue[@"data"];
-                         [self.communityTableView reloadData];
-                         [self loadNet];
-                     } WithFailureBlock:^{
-                         
-                     }];
+    [HttpClient requestWithPath:SEARCH_API method:HttpRequestPost parameters:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        _myInfoData = responseObject[@"data"];
+        [self.communityTableView reloadData];
+        [self loadNet];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 - (instancetype)initWithLoadType:(MessagesViewLoadType)loadType withCommunityModel:(MBCommunityModel *)model {
@@ -109,8 +112,12 @@
                                 @"size":@"15",
                                 @"stunum_other":self.stunum_other,
                                 @"version":@1.0};
-    [NetWork NetRequestPOSTWithRequestURL:SEARCHTREBDS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        NSArray *dataArray = returnValue[@"data"];
+    [HttpClient requestWithPath:SEARCHTREBDS_API method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSArray *dataArray = responseObject[@"data"];
         for (int i = 0; i < dataArray.count; i++) {
             NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:dataArray[i]];
             [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
@@ -134,7 +141,7 @@
             [self.communityTableView.mj_footer endRefreshing];
         }
         [self.communityTableView.mj_header endRefreshing];
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"请求失败");
         MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         uploadProgress.mode = MBProgressHUDModeText;
@@ -144,7 +151,6 @@
         [self.communityTableView.mj_footer endRefreshing];
         [self.communityTableView.mj_header endRefreshing];
     }];
-
 }
 
 #pragma mark - 分页加载

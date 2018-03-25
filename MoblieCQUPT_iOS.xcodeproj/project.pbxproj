@@ -406,7 +406,6 @@
 		F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */ = {isa = PBXBuildFile; fileRef = F242DD171EBCB2BB005AC411 /* Mobile_CQUPT_iOS.db */; };
 		F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7D1EBCB2BB005AC411 /* HCHttp.m */; };
 		F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7F1EBCB2BB005AC411 /* MOHImageParamModel.m */; };
-		F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD811EBCB2BB005AC411 /* NetWork.m */; };
 		F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */; };
 		F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF861EBD9E2C005AC411 /* DetailLostViewController.m */; };
 		F242DFA91EBD9E2C005AC411 /* DetailLostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DF871EBD9E2C005AC411 /* DetailLostViewController.xib */; };
@@ -538,6 +537,7 @@
 		F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */; };
 		F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */; };
 		F2DD71A91F77DB70009556BE /* LZNoCourseDateDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2DD71A81F77DB70009556BE /* LZNoCourseDateDetailViewController.m */; };
+		F2E04A3F2067E2A200ADDB16 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F2E04A3D2067E2A200ADDB16 /* NetWork.m */; };
 		F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */; };
 		F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */; };
 		F2F194751F68395D0034A3BB /* SplashModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F194741F68395D0034A3BB /* SplashModel.m */; };
@@ -1091,8 +1091,6 @@
 		F242DD7D1EBCB2BB005AC411 /* HCHttp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCHttp.m; sourceTree = "<group>"; };
 		F242DD7E1EBCB2BB005AC411 /* MOHImageParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOHImageParamModel.h; sourceTree = "<group>"; };
 		F242DD7F1EBCB2BB005AC411 /* MOHImageParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOHImageParamModel.m; sourceTree = "<group>"; };
-		F242DD801EBCB2BB005AC411 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
-		F242DD811EBCB2BB005AC411 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
 		F242DD821EBCB2BB005AC411 /* ORWRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORWRequestCache.h; sourceTree = "<group>"; };
 		F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORWRequestCache.m; sourceTree = "<group>"; };
 		F242DD861EBCB2BB005AC411 /* 掌上重邮.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "掌上重邮.entitlements"; sourceTree = "<group>"; };
@@ -1315,6 +1313,8 @@
 		F2DD71A31F777B24009556BE /* LZPersonAddView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPersonAddView.m; sourceTree = "<group>"; };
 		F2DD71A71F77DB70009556BE /* LZNoCourseDateDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZNoCourseDateDetailViewController.h; sourceTree = "<group>"; };
 		F2DD71A81F77DB70009556BE /* LZNoCourseDateDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZNoCourseDateDetailViewController.m; sourceTree = "<group>"; };
+		F2E04A3D2067E2A200ADDB16 /* NetWork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWork.m; sourceTree = "<group>"; };
+		F2E04A3E2067E2A200ADDB16 /* NetWork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		F2E14D831F6CC7D900443157 /* Today.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
 		F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_cancel@2x.png"; sourceTree = "<group>"; };
 		F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date_image_cancel@3x.png"; sourceTree = "<group>"; };
@@ -2361,14 +2361,14 @@
 		F242DD7B1EBCB2BB005AC411 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				F2E04A3E2067E2A200ADDB16 /* NetWork.h */,
+				F2E04A3D2067E2A200ADDB16 /* NetWork.m */,
 				F2A92D001F52EBBC00B4CEEF /* HttpClient.h */,
 				F2A92D011F52EBBC00B4CEEF /* HttpClient.m */,
 				F242DD7C1EBCB2BB005AC411 /* HCHttp.h */,
 				F242DD7D1EBCB2BB005AC411 /* HCHttp.m */,
 				F242DD7E1EBCB2BB005AC411 /* MOHImageParamModel.h */,
 				F242DD7F1EBCB2BB005AC411 /* MOHImageParamModel.m */,
-				F242DD801EBCB2BB005AC411 /* NetWork.h */,
-				F242DD811EBCB2BB005AC411 /* NetWork.m */,
 				F242DD821EBCB2BB005AC411 /* ORWRequestCache.h */,
 				F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */,
 			);
@@ -3444,7 +3444,6 @@
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
-				F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				9630E4951FAF07D200874EB9 /* sixViewController.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
@@ -3531,6 +3530,7 @@
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
 				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
+				F2E04A3F2067E2A200ADDB16 /* NetWork.m in Sources */,
 				9630E48D1FAF07D200874EB9 /* QueryLoginViewController.m in Sources */,
 				4A3A07961FCC0E7700A50393 /* ZJShopViewController.m in Sources */,
 				F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */,

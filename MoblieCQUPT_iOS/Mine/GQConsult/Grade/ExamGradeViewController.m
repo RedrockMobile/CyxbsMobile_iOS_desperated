@@ -44,10 +44,14 @@
     NSString *stuNum = [NSString stringWithFormat:@"%@",[UserDefaultTool getStuNum]];
     _hub = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     _hub.labelText = @"正在加载...";
-    [NetWork NetRequestPOSTWithRequestURL:GRADEAPI WithParameter:@{@"stuNum":stuNum} WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:GRADEAPI method:HttpRequestPost parameters:@{@"stuNum":stuNum} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-        NSMutableArray *dataArray = returnValue[@"data"];
+        NSMutableArray *dataArray = responseObject[@"data"];
         _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - HEADERHEIGHT - 50)];
         _scrollView.contentSize = CGSizeMake(ScreenWidth, (dataArray.count)*_kHeight);
         _scrollView.showsVerticalScrollIndicator = NO;
@@ -57,13 +61,13 @@
         for (int i = 0; i < dataArray.count; i ++) {
             NSDictionary *dic = dataArray[i];
             GradeView *view = [[GradeView alloc]initWithFrame:CGRectMake(0, i*_kHeight, ScreenWidth, _kHeight - 1) titileWithDic:dic fontSize:_fontSize];
-                view.backgroundColor = [UIColor whiteColor];
-
+            view.backgroundColor = [UIColor whiteColor];
+            
             [_scrollView addSubview:view];
         }
-        
-    } WithFailureBlock:^{
-       [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
+
     }];
 }
 - (void)initFailViewWithDetail:(NSString *)string{

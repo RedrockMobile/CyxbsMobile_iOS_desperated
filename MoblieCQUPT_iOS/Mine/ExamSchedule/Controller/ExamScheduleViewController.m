@@ -47,20 +47,21 @@
 
 - (void)fetchData {
     NSString *stuNum = [UserDefaultTool getStuNum];
-    [NetWork NetRequestPOSTWithRequestURL:GRADECLASSAPI
-                            WithParameter:@{@"stuNum": stuNum}
-                     WithReturnValeuBlock:^(id returnValue) {
-                         [MBProgressHUD hideHUDForView:self.view animated:YES];
-                         _data = [[NSMutableArray alloc] init];
-                         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-                         [_data reverse];
-                         
-                         [_tableView reloadData];
-                         
-                     } WithFailureBlock:^{
-                         
-                         [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
-                     }];
+    [HttpClient requestWithPath:GRADECLASSAPI method:HttpRequestPost parameters:@{@"stuNum": stuNum} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        _data = [[NSMutableArray alloc] init];
+        [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
+        [_data reverse];
+        
+        [_tableView reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+          [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

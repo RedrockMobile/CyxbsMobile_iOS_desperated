@@ -85,9 +85,13 @@
                                 @"comment_author_name":stuName,
                                 @"comment_content":content
                                 };
-    [NetWork NetRequestPOSTWithRequestURL:strURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:strURL method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         [self loadCommentData];
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel* failLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         failLabel.text=@"哎呀，网坏了!";
         failLabel.textColor=[UIColor blackColor];
@@ -97,7 +101,6 @@
         [self.view addSubview:failLabel];
         [_shopDetailTableView removeFromSuperview];
     }];
-    
 }
 
 //懒加载店面细节tableView
@@ -120,12 +123,15 @@
 }
 //获取店铺信息，第一个section
 -(void)loadShopData{
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopInfo" WithParameter:@{@"id":_detailData[@"id"]} WithReturnValeuBlock:^(id returnValue) {
-        _shopInfo = [NSMutableDictionary dictionaryWithCapacity:10];
-        [_shopInfo setObject:returnValue[@"data"] forKey:@"infoData"];
-        [self.shopDetailTableView reloadData];
+    [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopInfo" method:HttpRequestPost parameters:@{@"id":_detailData[@"id"]} prepareExecute:^{
         
-    } WithFailureBlock:^{
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        _shopInfo = [NSMutableDictionary dictionaryWithCapacity:10];
+        [_shopInfo setObject:responseObject[@"data"] forKey:@"infoData"];
+        [self.shopDetailTableView reloadData];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel* failLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
         failLabel.text = @"哎呀，网坏了!";
         failLabel.textColor=[UIColor blackColor];
@@ -139,21 +145,25 @@
 //加载评论数据，第二个section
 -(void)loadCommentData{
     _flag = 1;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" method:HttpRequestPost parameters:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         _commentArray = [[NSMutableArray alloc]init];
-        if ([returnValue isEqual:[NSNull null]] || [returnValue[@"data"] isEqual:[NSNull null]]) {
+        if ([responseObject isEqual:[NSNull null]] || [responseObject[@"data"] isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
-        self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
+            self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
             return ;
         }
-        [_commentArray addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        [_commentArray addObjectsFromArray:[responseObject objectForKey:@"data"]];
         [_shopDetailTableView reloadData];
         if (_commentArray.count < 5) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
-        self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
+            self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
         }
         
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
         faileLable.textColor = [UIColor blackColor];
@@ -163,21 +173,26 @@
         [_shopDetailTableView removeFromSuperview];
     }];
 }
+     
 //尾部评论刷新
 -(void)footerRefresh{
     _flag += 1;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
-        if ([returnValue isEqual:[NSNull null]]) {
+    [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" method:HttpRequestPost parameters:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
             self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
             return ;
         }
-        if ([[returnValue objectForKey:@"data"]isEqual:[NSNull null]]) {
+        if ([[responseObject objectForKey:@"data"]isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
             self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];
             return ;
         }
-        [_commentArray addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        [_commentArray addObjectsFromArray:[responseObject objectForKey:@"data"]];
         [_shopDetailTableView reloadData];
         if (_commentArray.count < 5 * _flag) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData ];
@@ -187,8 +202,7 @@
         else{
             [self.shopDetailTableView.mj_footer endRefreshing];
         }
-        
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
         faileLable.textColor = [UIColor blackColor];

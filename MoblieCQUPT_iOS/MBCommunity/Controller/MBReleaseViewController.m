@@ -11,7 +11,7 @@
 #import <GMImagePickerController.h>
 #import "MBProgressHUD.h"
 #import "TopicViewController.h"
-
+#import "MOHImageParamModel.h"
 @interface MBReleaseViewController ()<MBAddPhotoContainerViewAddEventDelegate,GMImagePickerControllerDelegate,UITextViewDelegate>
 
 @property (strong, nonatomic) GMImagePickerController *pickView;
@@ -305,21 +305,23 @@
     }
     _hud.labelText = @"正在发布...";
     __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:API method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         [weakSelf.hud hide:YES];
         weakSelf.hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"发布成功";
         [weakSelf.hud hide:YES afterDelay:1.5];
         [weakSelf performSelector:@selector(delayMethod) withObject:nil afterDelay:0.5f];
-        
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         weakSelf.hud = [MBProgressHUD showHUDAddedTo:weakSelf.view animated:YES];
         weakSelf.hud.mode = MBProgressHUDModeText;
         weakSelf.hud.labelText = @"网络错误";
         [weakSelf.hud hide:YES afterDelay:1.5];
     }];
-    
 }
 
 - (void)delayMethod {

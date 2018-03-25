@@ -1,7 +1,7 @@
 platform :ios,'8.0'
 target 'MoblieCQUPT_iOS' do
 	pod 'SDWebImage'
-	pod 'AFNetworking','~> 2.6.3'
+	pod 'AFNetworking'
 	pod 'FMDB'
 	pod 'UMengAnalytics-NO-IDFA'
 	pod 'MBProgressHUD', '~> 0.9.2'

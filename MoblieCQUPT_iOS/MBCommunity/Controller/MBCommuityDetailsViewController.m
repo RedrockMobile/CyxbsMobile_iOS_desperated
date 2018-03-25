@@ -384,11 +384,16 @@
                                 @"type_id":type_id,
                                 @"version":@1.0,
                                 @"size":@(15)};
-    [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:GETREMARK_API method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         _isLoadedComment = YES;
         _dataArray = [NSMutableArray array];
-        NSArray *array = returnValue[@"data"];
-        for (NSDictionary *dic in returnValue[@"data"]) {
+        NSArray *array = responseObject[@"data"];
+        for (NSDictionary *dic in responseObject[@"data"]) {
             MBCommentModel *commentModel = [[MBCommentModel alloc]initWithDictionary:dic];
             MBComment_ViewModel *comment_ViewModel = [[MBComment_ViewModel alloc]init];
             comment_ViewModel.model = commentModel;
@@ -401,7 +406,7 @@
             [self.tableView.mj_footer endRefreshingWithNoMoreData];
         }
         [self.tableView.mj_header endRefreshing];
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.tableView.mj_header endRefreshing];
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -427,8 +432,13 @@
                                 @"content":content};
     NSLog(@"发送评论");
     _hud.labelText = @"正在发送评论...";
-    [NetWork NetRequestPOSTWithRequestURL:POSTREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        NSLog(@"%@",returnValue);
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:POSTREMARK_API method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
         if ([content isEqualToString:@""]) {
@@ -439,7 +449,7 @@
         [self.hud hide:YES afterDelay:1.5];
         [self loadNetWorkData];
         self.detailCommentView.commentTextView.text = @"";
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
         self.hud.labelText = @"网络错误";

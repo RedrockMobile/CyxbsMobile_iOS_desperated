@@ -53,12 +53,16 @@
 }
 
 - (void) getInformation{
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" method:HttpRequestPost parameters:@{@"pid":@1} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         _arrayData = [[NSMutableArray alloc]init];
         [self.view addSubview:self.tableView];
-        [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        [_arrayData addObjectsFromArray:[responseObject objectForKey:@"data"]];
         [_tableView reloadData];
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         failLabel.text = @"哎呀！网络开小差了 T^T";
         failLabel.textColor = [UIColor blackColor];
@@ -74,14 +78,17 @@
 //头部刷新
 - (void)headerRefresh{
     _page = 1;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" method:HttpRequestPost parameters:@{@"pid":@1} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         [_arrayData removeAllObjects];
-        [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        [_arrayData addObjectsFromArray:[responseObject objectForKey:@"data"]];
         //刷新表格
         [self.tableView.mj_header endRefreshing];
         [self.tableView reloadData];
-        
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
         faileLable.text = @"哎呀！网络开小差了 T^T";
         faileLable.textColor = [UIColor blackColor];
@@ -96,13 +103,17 @@
 - (void)footerRefresh{
     _page++ ;
     if (_page <= 3) {
-        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_page]} WithReturnValeuBlock:^(id returnValue) {
-            [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" method:HttpRequestPost parameters:@{@"pid":[NSNumber numberWithInteger:_page]} prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
+            [_arrayData addObjectsFromArray:[responseObject objectForKey:@"data"]];
             //刷新表格
             [self.tableView reloadData];
             
             [self.tableView.mj_footer endRefreshing];
-        } WithFailureBlock:^{
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             UILabel *faileLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
             faileLable.text = @"哎呀！网络开小差了 T^T";
             faileLable.textColor = [UIColor blackColor];

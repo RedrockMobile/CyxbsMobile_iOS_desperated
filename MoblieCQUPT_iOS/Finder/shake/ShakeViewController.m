@@ -12,7 +12,6 @@
 
 #import "UIImage+AFNetworking.h"
 #import "UIImageView+AFNetworking.h"
-#import "NetWork.h"
 
 /*
  *
@@ -88,10 +87,14 @@
 
 - (void)request{
     for (int i = 1; i<= 3; i++) {
-        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
+        [HttpClient requestWithPath:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" method:HttpRequestPost parameters:@{@"pid":[NSNumber numberWithInt:i]}  prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
             _data = [[NSMutableArray alloc] init];
-            [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-        } WithFailureBlock:^{
+            [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
             failLabel.text = @"哎呀！网络开小差了 T^T";
             failLabel.textColor = [UIColor blackColor];

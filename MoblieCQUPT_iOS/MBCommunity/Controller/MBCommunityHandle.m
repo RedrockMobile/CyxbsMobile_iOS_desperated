@@ -92,11 +92,16 @@
                                 @"article_id":article_id,
                                 @"type_id":type_id,
                                 @"size":@(15)};
-    [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
-        NSLog(@"%@",returnValue);
+    [HttpClient requestWithPath:url method:HttpRequestPost parameters:parameter prepareExecute:^{
         
-    } WithFailureBlock:^{
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"请求赞出错");
+
     }];
 }
 

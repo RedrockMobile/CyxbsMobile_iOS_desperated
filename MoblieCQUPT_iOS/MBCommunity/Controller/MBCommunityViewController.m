@@ -226,11 +226,15 @@
     }else if (type == 2) {
         url = LISTNEWS_API;
     }
-    [NetWork NetRequestPOSTWithRequestURL:url WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:url method:HttpRequestPost parameters:parameter prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         dispatch_semaphore_signal(sema);
         self.hasLoadedDiscuss = YES;
-        NSMutableArray *dataArray = returnValue[@"data"];
-        NSNumber *page = returnValue[@"page"];
+        NSMutableArray *dataArray = responseObject[@"data"];
+        NSNumber *page = responseObject[@"page"];
         page = @(page.integerValue+1);
         for (int i=0; i<dataArray.count; i++) {
             MBCommunityModel *model = [[MBCommunityModel alloc]initWithDictionary:dataArray[i]];
@@ -239,11 +243,11 @@
             [viewModels addObject:viewModel];
         }
         /**位置
-        if ([returnValue[@"data"] count] < 6 && type == 0) {
-            [self.tableViewArray[0].mj_footer endRefreshingWithNoMoreData];
-        }
+         if ([returnValue[@"data"] count] < 6 && type == 0) {
+         [self.tableViewArray[0].mj_footer endRefreshingWithNoMoreData];
+         }
          */
-        _numOfItem = (int)[returnValue[@"data"] count];
+        _numOfItem = (int)[responseObject[@"data"] count];
         NSDictionary *dataDic = @{@"page":page,
                                   @"viewModels":viewModels};
         
@@ -252,7 +256,7 @@
         if (type!=1) {
             self.tableViewArray[type].hidden = NO;
         }
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"请求数据失败");
         dispatch_semaphore_signal(sema);
         self.parameterArray[type] = self.dataDicArray[type].copy;
@@ -271,29 +275,30 @@
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
     NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
-    [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:@{@"stuNum":stuNum,
-                                                                        }
-                     WithReturnValeuBlock:^(id returnValue) {
-                         NSLog(@"%@",returnValue);
-                         dispatch_semaphore_signal(sema);
-                         self.hasLoadedTopic = YES;
-                         self.topicArray = [NSMutableArray array];
-                         NSMutableArray *dataArray = returnValue[@"data"];
-                         for (NSDictionary *dic in dataArray) {
-                             TopicModel *model = [[TopicModel alloc] initWithDic:dic];
-                             [self.topicArray addObject:model];
-                         }
-                         self.bannerScrollView =[[BannerScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130) andTopics:self.topicArray];
-                     }
-                         WithFailureBlock:^{
-                             dispatch_semaphore_signal(sema);
-                             if (!self.tableViewArray[1].hidden) {
-                                 MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                                 hud.mode = MBProgressHUDModeText;
-                                 hud.labelText = @"您的网络不给力!";
-                                 [hud hide:YES afterDelay:1];
-                             }
-                         }];
+    [HttpClient requestWithPath:TOPICLIST_API method:HttpRequestPost parameters:@{@"stuNum":stuNum} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject);
+        dispatch_semaphore_signal(sema);
+        self.hasLoadedTopic = YES;
+        self.topicArray = [NSMutableArray array];
+        NSMutableArray *dataArray = responseObject[@"data"];
+        for (NSDictionary *dic in dataArray) {
+            TopicModel *model = [[TopicModel alloc] initWithDic:dic];
+            [self.topicArray addObject:model];
+        }
+        self.bannerScrollView =[[BannerScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 130) andTopics:self.topicArray];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        dispatch_semaphore_signal(sema);
+        if (!self.tableViewArray[1].hidden) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"您的网络不给力!";
+            [hud hide:YES afterDelay:1];
+        }
+    }];
     dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
 }
 

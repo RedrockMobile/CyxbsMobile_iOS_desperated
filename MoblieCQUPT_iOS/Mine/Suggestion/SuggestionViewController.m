@@ -84,18 +84,21 @@
                         };
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.labelText = @"反馈中";
-    [NetWork NetRequestPOSTWithRequestURL:SUGGESTION_API WithParameter:dic WithReturnValeuBlock:^(id returnValue) {
+    [HttpClient requestWithPath:SUGGESTION_API method:HttpRequestPost parameters:dic prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"反馈成功";
         [hud hide:YES afterDelay:1];
         _suggestTextView.text = @"";
         [_suggestTextView setPlaceHolder:@"请描述一下您所遇到的程序错误,非常感谢您对掌上重邮成长的帮助。您还可以加入掌上重邮反馈群: 570919844进行反馈哦~"];
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         hud.mode = MBProgressHUDModeText;
         hud.labelText = @"网络故障";
         [hud hide:YES afterDelay:1];
     }];
-
 }
 
 @end

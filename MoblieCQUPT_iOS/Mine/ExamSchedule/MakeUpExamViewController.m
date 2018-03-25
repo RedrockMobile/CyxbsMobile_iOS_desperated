@@ -30,16 +30,20 @@
 - (void)loadData{
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    [NetWork NetRequestPOSTWithRequestURL:MAKEAPI WithParameter:@{@"stuNum": stuNum} WithReturnValeuBlock:^(id returnValue) {
-        if (returnValue[@"data"]) {
+    [HttpClient requestWithPath:MAKEAPI method:HttpRequestPost parameters:@{@"stuNum": stuNum} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        if (responseObject[@"data"]) {
             [self initFailViewWithDetail:@"暂无补考消息~"];
         }
         else{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            _data = returnValue[@"data"];
+            _data = responseObject[@"data"];
             [self setUpTableView];
         }
-    } WithFailureBlock:^{
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
 
     }];
