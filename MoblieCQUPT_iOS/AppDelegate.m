@@ -33,7 +33,7 @@
     [self checkUpTheNotifacation];
     
     [[UMSocialManager defaultManager] openLog:YES];
-    [[UMSocialManager defaultManager] setUmSocialAppkey:@""];
+//    [[UMSocialManager defaultManager] setUmSocialAppkey:@""];
     [self configUSharePlatforms];
     [self confitUShareSettings];
     
