@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 @interface YouWenAddViewController : UIViewController
-
+-(instancetype)initWithStyle:(NSString *)style;
 @end

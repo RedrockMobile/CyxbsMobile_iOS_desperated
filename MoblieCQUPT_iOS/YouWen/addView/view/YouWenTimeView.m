@@ -11,6 +11,7 @@
 @property (copy, nonatomic) NSString *day;
 @property (copy, nonatomic) NSString *hour;
 @property (copy, nonatomic) NSString *minite;
+@property (copy, nonatomic) NSString *nowday;
 @end
 @implementation YouWenTimeView
 -(NSArray *)timeData
@@ -27,7 +28,8 @@
         NSDate *now = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = @"yyyy年MM月dd日";
-        NSTimeInterval interval = 60 * 60;
+        _nowday = [formatter stringFromDate:now].copy;
+        NSTimeInterval interval = 60 * 60 * 24;
         NSMutableArray *day = [NSMutableArray array];
         [day appendObject:@"今天"];
         for (int i = 1; i <= 2; i ++){
@@ -41,18 +43,19 @@
     return _timeData;
 }
 - (void)confirm{
-    [self removeFromSuperview];
     NSNotification *notification = [[NSNotification alloc] initWithName:@"timeNotifi" object:@{@"time":self.inf} userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
+    [self removeFromSuperview];
 }
 - (void)addDetail{
     [super addDetail];
     _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.blackView.bottom, ScreenWidth, self.whiteView.height - self.blackView.bottom)];
     _pickView.delegate = self;
     _pickView.dataSource = self;
-    _day = @"今日";
-    _hour = @"21时";
-    _minite = @"0分";
+//    _day = @"今日";
+//    _hour = @"21时";
+//    _minite = @"0分";
+//    self.inf = [NSString stringWithFormat:@"%@ %@ %@", _day, _hour, _minite].mutableCopy;
     [self.whiteView addSubview:_pickView];
     self.pickViewArray = self.timeData.mutableCopy;
 }
@@ -62,8 +65,8 @@
         pickerLabel = [[UILabel alloc] init];
         pickerLabel.adjustsFontSizeToFitWidth = YES;
         pickerLabel.textAlignment = NSTextAlignmentCenter;
-        pickerLabel.font = [UIFont boldSystemFontOfSize:15];
-        pickerLabel.textColor = [UIColor grayColor];
+        pickerLabel.font = [UIFont boldSystemFontOfSize:ZOOM(15)];
+        pickerLabel.textColor =  [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     }
     pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
@@ -97,10 +100,15 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     UILabel *piketLabel =  (UILabel *)[pickerView viewForRow:row forComponent:component];
-    piketLabel.textColor = [UIColor blueColor];
+    piketLabel.textColor = [UIColor colorWithHexString:@"7195FA"];
     NSMutableArray *items = self.pickViewArray[component];
     if (component == 0) {
-        _day = items[row];
+        if (row == 0) {
+            _day = _nowday;
+        }
+        else{
+            _day = items[row];
+        }
     }
     else if (component == 1){
         _hour = items[row];

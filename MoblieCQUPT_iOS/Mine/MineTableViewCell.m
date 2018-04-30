@@ -12,8 +12,11 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.accessoryType = UITableViewCellAccessoryNone;
     // Initialization code
+    self.backgroundColor = [UIColor clearColor];
+    self.backgroudImage.image = [UIImage imageNamed:@"topBotton"];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

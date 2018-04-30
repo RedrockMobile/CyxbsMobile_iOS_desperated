@@ -27,4 +27,5 @@
  */
 @property (copy, nonatomic) NSDictionary *dataDic;
 @property (assign, nonatomic) CGRect cellSize;
+@property (strong, nonatomic) NSString *qusId;
 @end

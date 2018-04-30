@@ -7,7 +7,12 @@
 //
 
 #import "YouWenNextView.h"
-
+//求助类型
+@protocol whatTopic <NSObject>
+@optional
+- (void)topicStyle:(NSString *)style;
+@end
 @interface YouWenTopicView : YouWenNextView
-
+@property (copy, nonatomic) NSMutableString *style;
+@property (weak, nonatomic) id <whatTopic> topicDelegate;
 @end
