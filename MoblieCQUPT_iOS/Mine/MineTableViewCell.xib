@@ -40,8 +40,16 @@
                         <rect key="frame" x="142" y="19" width="16" height="16"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="into" translatesAutoresizingMaskIntoConstraints="NO" id="X93-kJ-Jrg">
+                        <rect key="frame" x="384" y="32" width="11" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="OqK-hb-JUx"/>
+                            <constraint firstAttribute="width" constant="11" id="cxV-Wz-h0J"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="X93-kJ-Jrg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="2II-Op-BMb"/>
                     <constraint firstItem="2cl-i0-3Kp" firstAttribute="leading" secondItem="FCI-AT-QAh" secondAttribute="trailing" constant="16" id="4uS-dR-TY2"/>
                     <constraint firstItem="Fak-K1-Ke8" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="DAU-JO-BOT"/>
                     <constraint firstItem="FCI-AT-QAh" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="G9L-9f-kmH"/>
@@ -49,6 +57,7 @@
                     <constraint firstItem="Fak-K1-Ke8" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SfN-Z0-A5m"/>
                     <constraint firstAttribute="trailing" secondItem="Fak-K1-Ke8" secondAttribute="trailing" id="XQX-iK-j0E"/>
                     <constraint firstAttribute="trailingMargin" secondItem="2cl-i0-3Kp" secondAttribute="trailing" id="Y2X-Rz-3sT"/>
+                    <constraint firstItem="X93-kJ-Jrg" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="eoD-wh-vgj"/>
                     <constraint firstAttribute="bottom" secondItem="Fak-K1-Ke8" secondAttribute="bottom" id="tMm-sW-yzu"/>
                     <constraint firstItem="2cl-i0-3Kp" firstAttribute="centerY" secondItem="FCI-AT-QAh" secondAttribute="centerY" id="tlw-Kx-0lo"/>
                 </constraints>
@@ -57,8 +66,12 @@
                 <outlet property="backgroudImage" destination="Fak-K1-Ke8" id="ZMf-20-ofU"/>
                 <outlet property="cellImageView" destination="FCI-AT-QAh" id="BC9-rr-srz"/>
                 <outlet property="cellLabel" destination="2cl-i0-3Kp" id="zXg-ff-Dxz"/>
+                <outlet property="redPoint" destination="Zzb-a3-Ms6" id="Vdr-yB-nBV"/>
             </connections>
             <point key="canvasLocation" x="81.5" y="56"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="into" width="10" height="19"/>
+    </resources>
 </document>

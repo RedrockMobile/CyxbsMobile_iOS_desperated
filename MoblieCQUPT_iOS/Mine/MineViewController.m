@@ -30,9 +30,24 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     MyInfoModel *model = [MyInfoModel getMyInfo];
-    self.headImageView.image = model.photo_thumbnail_src;
-    self.nameLabel.text = model.nickname;
-    self.introductionLabel.text = model.introduction;
+    if (model.photo_thumbnail_src == nil){
+        self.headImageView.image = [UIImage imageNamed:@"headImage"];
+    }
+    else {
+        self.headImageView.image = model.photo_thumbnail_src;
+    }
+    if (model.nickname.length == 0) {
+        self.nameLabel.text = @"请填写用户名";
+    }
+    else {
+        self.nameLabel.text = model.nickname;
+    }
+    if (model.introduction.length == 0) {
+        self.introductionLabel.text = @"写下你想对世界说的话，就现在";
+    }
+    else {
+        self.introductionLabel.text = model.introduction;
+    }
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
@@ -57,11 +72,10 @@
                 @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingController"}];
     self.cellDicArray = @[array1, array2, array3, array4];
     
-//    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.top - 20, SCREENWIDTH, self.tableView.height - 20)];
-//    whiteView.backgroundColor = [UIColor whiteColor];
-//    
-//    [self.view addSubview:whiteView];
-//    [self.view sendSubviewToBack:whiteView];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.top - 20, SCREENWIDTH, SCREENHEIGHT - self.tableView.top - 20)];
+    whiteView.backgroundColor = RGBColor(246, 246, 246, 1);;
+    [self.view addSubview:whiteView];
+    [self.view sendSubviewToBack:whiteView];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -92,25 +106,40 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-    view.tintColor = [UIColor clearColor];
-}
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MineTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"MineTableViewCell" owner:nil options:nil] lastObject];
     cell.selectionStyle = UITableViewCellSelectionStyleNone; 
     cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
     cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.backgroudImage.image = [UIImage imageNamed:@"middle_t"];
+        }
+        else if (indexPath.row == 1 || indexPath.row == 2) {
+            cell.backgroudImage.image = [UIImage imageNamed:@"middle_m"];
+        }
+        else {
+            cell.backgroudImage.image = [UIImage imageNamed:@"middle_b"];
+        }
+    }
+    else {
+        cell.backgroudImage.image = [UIImage imageNamed:@"topBotton"];
+    }
     return cell;
 }
 
 #pragma mark 分割tableview设置
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 15;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return (self.tableView.size.height-75)/7;
+    return (self.tableView.size.height - 23)/7;
+    
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    view.tintColor = RGBColor(246, 246, 246, 1);;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
