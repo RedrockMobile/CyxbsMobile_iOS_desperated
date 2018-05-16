@@ -13,6 +13,7 @@
     if (self = [super initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]) {
         [self setSelf];
         [self setUpWhiteView:height];
+
     }
     return self;
 }
@@ -56,6 +57,8 @@
         return hitView;
     }
 }
+
+
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

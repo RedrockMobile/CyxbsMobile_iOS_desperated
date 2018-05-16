@@ -24,12 +24,14 @@
     if (self = [super init]) {
         _dataModel = [[YouWenDataModel alloc]initWithStyle:style];
         _YWpage = 0;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData:) name:[NSString stringWithFormat:@"%@DataLoading", style]object:nil];
     }
     return self;
 }
 - (NSMutableArray *)dataArray{
     if (_dataArray) {
         _dataArray = [NSArray array].mutableCopy;
+        
     }
     return _dataArray;
 }
@@ -39,7 +41,7 @@
     _tab = [[UITableView alloc] init];
     _cellArray = [NSMutableArray array];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData:) name:@"DataLoading" object:nil];
+
     _tab.delegate = self;
     _tab.dataSource = self;
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -88,6 +90,9 @@
             [_tab reloadData];
             [_tab.mj_header endRefreshing];
         }
+        else {
+            [_tab.mj_header endRefreshing];
+        }
     }
     else{
         if ([str isEqualToString:@"YES"]) {
@@ -131,7 +136,7 @@
     NSString *string = _dataArray[indexPath.row][@"description"];
     CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
         attributes:dic context:nil].size.height;
-    return height + 98;
+    return height + 122;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 

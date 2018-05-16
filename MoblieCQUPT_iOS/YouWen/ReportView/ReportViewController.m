@@ -15,9 +15,17 @@
 @property (strong, nonatomic) ReportTextView *textView;
 @property (strong, nonatomic) UIButton *commitBtn;
 @property (strong, nonatomic) NSMutableDictionary *selectedDic;
+@property (strong, nonatomic) NSString *id;
 @end
 
 @implementation ReportViewController
+
+- (instancetype)initWithId:(NSString *)qusId{
+    if (self = [super init]) {
+        qusId = [[NSString alloc] initWithString:qusId];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
