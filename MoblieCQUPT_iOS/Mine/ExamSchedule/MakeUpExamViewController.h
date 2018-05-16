@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MakeUpExamViewController : UIViewController
+@interface MakeUpExamViewController : BaseViewController
 
 @end

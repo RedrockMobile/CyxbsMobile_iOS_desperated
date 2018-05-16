@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface sevenViewController : UIViewController
+@interface sevenViewController : BaseViewController
 @property (nonatomic, copy) NSArray *mutableArray;
 @property (strong, nonatomic) UITableView *tableView;
 

@@ -8,5 +8,5 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QueryLoginViewController :BaseViewController
+@interface QueryLoginViewController :UIViewController
 @end

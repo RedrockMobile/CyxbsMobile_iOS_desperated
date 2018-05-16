@@ -6,7 +6,7 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "UIViewController.h"
 
 @interface LessonController : BaseViewController
 

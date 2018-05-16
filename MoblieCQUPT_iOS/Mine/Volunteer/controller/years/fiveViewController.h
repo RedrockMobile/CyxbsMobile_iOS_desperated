@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface fiveViewController : UIViewController
+@interface fiveViewController : BaseViewController
 @property (nonatomic, copy) NSArray *mutableArray;
 @property (strong, nonatomic) UITableView *tableView;
 

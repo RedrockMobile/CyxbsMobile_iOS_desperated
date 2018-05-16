@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Orange-W. All rights reserved.
 //
 
-#import "BaseViewController.h"
+
 @class LZPersonModel;
 @interface LZPersonSelectViewController : BaseViewController
 typedef void(^selectPersonBlock)(LZPersonModel *model);
