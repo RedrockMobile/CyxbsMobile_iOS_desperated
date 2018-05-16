@@ -110,6 +110,8 @@
 		6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */; };
 		6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */; };
 		6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */; };
+		6EAECCA920A859C800B30CBE /* dailyAttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAECCA820A859C800B30CBE /* dailyAttendanceViewController.m */; };
+		6EAECCAC20A86E2B00B30CBE /* dailyAttendanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAECCAB20A86E2B00B30CBE /* dailyAttendanceModel.m */; };
 		6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA4BC22034737200AA264E /* YouWenViewController.m */; };
 		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
 		82280CA91F60169B00A5921E /* LXReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CA81F60169B00A5921E /* LXReplyView.m */; };
@@ -714,6 +716,10 @@
 		6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenDataModel.m; sourceTree = "<group>"; };
 		6E7C986A20482ECA000BAA16 /* YouWenAddViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenAddViewController.h; sourceTree = "<group>"; };
 		6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddViewController.m; sourceTree = "<group>"; };
+		6EAECCA720A859C800B30CBE /* dailyAttendanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dailyAttendanceViewController.h; sourceTree = "<group>"; };
+		6EAECCA820A859C800B30CBE /* dailyAttendanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dailyAttendanceViewController.m; sourceTree = "<group>"; };
+		6EAECCAA20A86E2B00B30CBE /* dailyAttendanceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dailyAttendanceModel.h; sourceTree = "<group>"; };
+		6EAECCAB20A86E2B00B30CBE /* dailyAttendanceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dailyAttendanceModel.m; sourceTree = "<group>"; };
 		6EDA4BC12034737200AA264E /* YouWenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenViewController.h; sourceTree = "<group>"; };
 		6EDA4BC22034737200AA264E /* YouWenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenViewController.m; sourceTree = "<group>"; };
 		6EF302D41F8A0B42009B7A66 /* ExamPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
@@ -1580,13 +1586,24 @@
 		6E7C98662047F1C6000BAA16 /* addView */ = {
 			isa = PBXGroup;
 			children = (
-				6E12A3332053C11000D07606 /* view */,
 				6E7C986A20482ECA000BAA16 /* YouWenAddViewController.h */,
+				6E12A3332053C11000D07606 /* view */,
 				6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */,
 				6E31E40A2081DA0E00649463 /* YouWenAddModel.h */,
 				6E31E40B2081DA0E00649463 /* YouWenAddModel.m */,
 			);
 			path = addView;
+			sourceTree = "<group>";
+		};
+		6EAECCA620A8598600B30CBE /* dailyAttendance */ = {
+			isa = PBXGroup;
+			children = (
+				6EAECCA720A859C800B30CBE /* dailyAttendanceViewController.h */,
+				6EAECCA820A859C800B30CBE /* dailyAttendanceViewController.m */,
+				6EAECCAA20A86E2B00B30CBE /* dailyAttendanceModel.h */,
+				6EAECCAB20A86E2B00B30CBE /* dailyAttendanceModel.m */,
+			);
+			path = dailyAttendance;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -2228,6 +2245,7 @@
 		F242DC8C1EBCB2BB005AC411 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				6EAECCA620A8598600B30CBE /* dailyAttendance */,
 				9630E4311FAF07D200874EB9 /* Volunteer */,
 				F27A93311F4AA65A009860C3 /* NOCourseDate */,
 				F20026CC1F4020FA00360991 /* Image */,
@@ -3499,12 +3517,14 @@
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
+				6EAECCAC20A86E2B00B30CBE /* dailyAttendanceModel.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
+				6EAECCA920A859C800B30CBE /* dailyAttendanceViewController.m in Sources */,
 				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,

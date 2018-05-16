@@ -60,7 +60,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     NSArray *array1 =   @[
-                @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"LZNoCourseViewController"}];
+                @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
     NSArray *array2 = @[
                 @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"EmptyClassViewController"},
                 @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"ExamTotalViewController"},
