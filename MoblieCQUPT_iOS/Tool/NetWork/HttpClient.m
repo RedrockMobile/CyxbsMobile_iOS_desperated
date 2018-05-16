@@ -7,7 +7,6 @@
 //
 
 #import "HttpClient.h"
-
 @implementation HttpClient
 
 + (HttpClient *)defaultClient

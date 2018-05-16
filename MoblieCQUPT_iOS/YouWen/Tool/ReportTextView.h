@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "myUILabel.h"
 
 @interface ReportTextView : UITextView
 
@@ -16,7 +17,9 @@ typedef NS_ENUM(NSInteger, wordNumState) {
     CountWordNum,
 };
 @property (strong, nonatomic) UILabel *wordNum;
-@property (strong, nonatomic) UILabel *placeHolder;
+@property (strong, nonatomic) myUILabel *placeHolder;
 @property (assign, nonatomic) NSInteger limitNum;
 - (UITextView *)initWithFrame:(CGRect)frame andState:(wordNumState)state;
+- (void)addTopic:(NSString *)topic;
+
 @end

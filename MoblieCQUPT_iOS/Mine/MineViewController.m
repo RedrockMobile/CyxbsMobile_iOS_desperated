@@ -30,9 +30,25 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = YES;
     MyInfoModel *model = [MyInfoModel getMyInfo];
-    self.headImageView.image = model.photo_thumbnail_src;
-    self.nameLabel.text = model.nickname;
-    self.introductionLabel.text = model.introduction;
+    if (model.photo_thumbnail_src == nil){
+        self.headImageView.image = [UIImage imageNamed:@"headImage"];
+    }
+    else {
+        self.headImageView.image = model.photo_thumbnail_src;
+    }
+    if (model.nickname.length == 0) {
+        self.nameLabel.text = @"请填写用户名";
+    }
+    else {
+        self.nameLabel.text = model.nickname;
+    }
+    if (model.introduction.length == 0) {
+        self.introductionLabel.text = @"写下你想对世界说的话，就现在";
+    }
+    else {
+        self.introductionLabel.text = model.introduction;
+    }
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -43,17 +59,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
-    NSArray *array1 =   @[@{@"title":@"没课约",@"img":@"mine_image_date",@"controller":@"LZNoCourseViewController"},
-                          @{@"title":@"空教室",@"img":@"mine_image_classroom",@"controller":@"EmptyClassViewController"},
-                          @{@"title":@"考试成绩",@"img":@"mine_image_exam",@"controller":@"ExamTotalViewController"},@{@"title":@"志愿时长查询",@"img":@"volunteer_time_icon.png",@"controller":@"QueryLoginViewController"},
-                          @{@"title":@"校历",@"img":@"mine_image_calendar",@"controller":@"CalendarViewController"},
-                          @{@"title":@"课前提醒",@"img":@"mine_image_remind",@"controller":@"BeforeClassViewController"}];
+    NSArray *array1 =   @[
+                @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"LZNoCourseViewController"}];
+    NSArray *array2 = @[
+                @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"EmptyClassViewController"},
+                @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"ExamTotalViewController"},
+                @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"QueryLoginViewController"},
+                @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"CalendarViewController"}];
+    NSArray *array3 = @[
+                @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"BeforeClassViewController"}];
+    NSArray *array4 = @[
+                @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingController"}];
+    self.cellDicArray = @[array1, array2, array3, array4];
     
-    NSArray *array2 = @[@{@"title":@"设置",@"img":@"mine_image_setting",@"controller":@"SettingController"}];
-    self.cellDicArray = @[array1,array2];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.top - 20, SCREENWIDTH, SCREENHEIGHT - self.tableView.top - 20)];
+    whiteView.backgroundColor = RGBColor(246, 246, 246, 1);;
+    [self.view addSubview:whiteView];
+    [self.view sendSubviewToBack:whiteView];
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.bounces = NO;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.showsVerticalScrollIndicator = NO;
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage)];
     [self.headImageView addGestureRecognizer:gesture];
     self.headImageView.userInteractionEnabled = YES;
@@ -67,6 +96,7 @@
     self.headImageView.layer.masksToBounds = YES;
 }
 
+#pragma mark - TableView 代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.cellDicArray[section].count;
 }
@@ -75,23 +105,42 @@
     return self.cellDicArray.count;
 }
 
-#pragma mark - TableView 代理
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     MineTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"MineTableViewCell" owner:nil options:nil] lastObject];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone; 
     cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
     cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.backgroudImage.image = [UIImage imageNamed:@"middle_t"];
+        }
+        else if (indexPath.row == 1 || indexPath.row == 2) {
+            cell.backgroudImage.image = [UIImage imageNamed:@"middle_m"];
+        }
+        else {
+            cell.backgroudImage.image = [UIImage imageNamed:@"middle_b"];
+        }
+    }
+    else {
+        cell.backgroudImage.image = [UIImage imageNamed:@"topBotton"];
+    }
     return cell;
 }
 
 #pragma mark 分割tableview设置
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 10;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return (self.tableView.size.height-20)/6;
+    return (self.tableView.size.height - 23)/7;
+    
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
+    view.tintColor = RGBColor(246, 246, 246, 1);;
+}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
     UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];

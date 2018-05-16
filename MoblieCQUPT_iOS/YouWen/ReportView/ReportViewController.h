@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ReportViewController : BaseViewController
-
+- (instancetype)initWithId:(NSString *)qusId;
 @end

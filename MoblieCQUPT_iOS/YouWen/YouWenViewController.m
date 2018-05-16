@@ -12,7 +12,8 @@
 #import "SegmentView.h"
 #import "YouWenAddViewController.h"
 #import "YouWenTopicView.h"
-@interface YouWenViewController ()
+#import "ReportViewController.h"
+@interface YouWenViewController ()<whatTopic>
 @property (strong, nonatomic) UIButton *askBtn;
 @end
 
@@ -36,18 +37,28 @@
     [self.view addSubview:segView];
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
-    _askBtn.frame = CGRectMake(ScreenWidth - 80, segView.height - 80, 50, 50);
+    _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, ScreenHeight - TABBARHEIGHT - NVGBARHEIGHT - 18, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"inform"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
 }
 - (void)setNewQuestion{
-    YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:300];
+    YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
     [topicView addDetail];
-//    addView.hidesBottomBarWhenPushed = YES;
+    topicView.topicDelegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:topicView];
-//     [self.navigationController pushViewController:addView animated:YES];
+    
+}
+- (void)topicStyle:(NSString *)style{
+    YouWenAddViewController *addView = [[YouWenAddViewController alloc] initWithStyle:style];
+    addView.hidesBottomBarWhenPushed = YES;
+     [self.navigationController pushViewController:addView animated:YES];
+}
+- (void)sdf{
+    ReportViewController *reportView =  [[ReportViewController alloc] init];
+    reportView.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:reportView animated:YES];
 }
 /*
 #pragma mark - Navigation

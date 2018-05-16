@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 @interface YouWenAddViewController : BaseViewController
 
+-(instancetype)initWithStyle:(NSString *)style;
 @end
