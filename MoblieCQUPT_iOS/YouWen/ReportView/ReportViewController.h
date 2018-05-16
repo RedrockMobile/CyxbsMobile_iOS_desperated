@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ReportViewController : UIViewController
+@interface ReportViewController : BaseViewController
 - (instancetype)initWithId:(NSString *)qusId;
 @end

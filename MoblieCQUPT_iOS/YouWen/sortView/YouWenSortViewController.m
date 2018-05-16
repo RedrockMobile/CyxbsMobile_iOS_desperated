@@ -9,6 +9,8 @@
 #import "YouWenSortViewController.h"
 #import "YouWenTableViewCell.h"
 #import "YouWenDataModel.h"
+#import "YouWenDetailViewController.h"
+#import "YouWenAddViewController.h"
 #import <MJRefresh.h>
 #import "ReportViewController.h"
 @interface YouWenSortViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -139,7 +141,9 @@
     return height + 122;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-
+    YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
+    detailVC.hidesBottomBarWhenPushed = YES;
+    [self.superController.navigationController pushViewController:detailVC animated:YES];
 }
 /*
 #pragma mark - Navigation
