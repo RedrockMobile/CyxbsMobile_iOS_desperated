@@ -8,7 +8,7 @@
 
 #import "EmptyClassViewController.h"
 #import "EmptyClassView.h"
-#import "BaseViewController.h"
+//#import "UIViewController.h"
 
 @interface EmptyClassViewController ()<UIScrollViewDelegate>
 //选择栏

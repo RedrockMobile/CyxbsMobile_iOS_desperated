@@ -6,7 +6,7 @@
 //  Copyright © 2017年 Orange-W. All rights reserved.
 //
 
-#import "BaseViewController.h"
+//#import "UIViewController.h"
 @class SplashModel;
 @interface LaunchScreenViewController : BaseViewController
 - (instancetype)initWithSplashModel:(SplashModel *)splashModel;

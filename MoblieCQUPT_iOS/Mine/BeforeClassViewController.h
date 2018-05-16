@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BeforeClassViewController : UIViewController
+@interface BeforeClassViewController : BaseViewController
 
 @end

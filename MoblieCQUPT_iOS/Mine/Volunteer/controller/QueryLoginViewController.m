@@ -7,7 +7,7 @@
 //
 
 #import "QueryLoginViewController.h"
-#import "BaseViewController.h"
+//#import "UIViewController.h"
 #import "QueryViewController.h"
 #import "QueryModel.h"
 #import "QueryDataModel.h"

@@ -7,6 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface YouWenAddViewController : UIViewController
+@interface YouWenAddViewController : BaseViewController
 
 @end

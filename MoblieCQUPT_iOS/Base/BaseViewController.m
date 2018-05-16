@@ -1,5 +1,5 @@
 //
-//  BaseViewController.m
+//  UIViewController.m
 //  Demo
 //
 //  Created by 李展 on 2016/11/3.
@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface BaseViewController ()
+@interface UIViewController ()
 
 @end
 

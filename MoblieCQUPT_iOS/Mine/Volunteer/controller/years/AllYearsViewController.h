@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AllYearsViewController : UIViewController
+@interface AllYearsViewController : BaseViewController
 @property (nonatomic, copy) NSArray *mutableArray;
 @property (strong, nonatomic) UITableView *tableView;
 @end

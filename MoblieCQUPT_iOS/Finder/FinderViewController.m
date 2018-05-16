@@ -173,7 +173,7 @@
     if (!model.picture_goto_url) {
         return;
     }
-    BaseViewController *vc = [[BaseViewController alloc]init];
+    UIViewController *vc = [[UIViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     UIWebView *webView = [[UIWebView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:model.picture_goto_url]]];

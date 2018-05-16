@@ -6,7 +6,7 @@
 //  Copyright © 2016年 zhanlee. All rights reserved.
 //
 
-#import "BaseViewController.h"
+
 
 @interface DetailPageController : BaseViewController
 - (instancetype)initWithLessonMatters:(NSArray *)lessons;

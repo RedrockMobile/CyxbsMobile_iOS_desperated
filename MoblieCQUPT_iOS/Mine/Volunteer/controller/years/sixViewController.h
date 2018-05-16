@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface sixViewController : UIViewController
+@interface sixViewController : BaseViewController
 @property (nonatomic, copy) NSArray *mutableArray;
 @property (strong, nonatomic) UITableView *tableView;
 

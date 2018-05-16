@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface fourViewController : UIViewController
+@interface fourViewController : BaseViewController
 @property (nonatomic, copy) NSArray *mutableArray;
 @property (strong, nonatomic) UITableView *tableView;
 
