@@ -100,6 +100,39 @@
 		6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E4F1F5E82EC00C0BE60 /* ExamTotalViewController.m */; };
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
 		6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E31E40B2081DA0E00649463 /* YouWenAddModel.m */; };
+		6E3AB63520AD76A3003A65F5 /* AnswerDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */; };
+		6E3AB63620AD76A3003A65F5 /* AnswerDetailTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB60A20AD76A2003A65F5 /* AnswerDetailTableHeaderView.xib */; };
+		6E3AB63720AD76A3003A65F5 /* AnswerCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB60D20AD76A2003A65F5 /* AnswerCommentModel.m */; };
+		6E3AB63820AD76A3003A65F5 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB60E20AD76A2003A65F5 /* AnswerDetailViewController.m */; };
+		6E3AB63920AD76A3003A65F5 /* AnswerDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB60F20AD76A2003A65F5 /* AnswerDetailTableViewCell.m */; };
+		6E3AB63A20AD76A3003A65F5 /* AnswerDetailTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB61020AD76A2003A65F5 /* AnswerDetailTableHeaderView.m */; };
+		6E3AB63B20AD76A3003A65F5 /* 女@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61220AD76A2003A65F5 /* 女@2x.png */; };
+		6E3AB63C20AD76A3003A65F5 /* 女@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61320AD76A2003A65F5 /* 女@3x.png */; };
+		6E3AB63D20AD76A3003A65F5 /* 加号@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61620AD76A2003A65F5 /* 加号@3x.png */; };
+		6E3AB63E20AD76A3003A65F5 /* 已点赞图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61820AD76A2003A65F5 /* 已点赞图标@2x.png */; };
+		6E3AB63F20AD76A3003A65F5 /* YouWenDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61920AD76A2003A65F5 /* YouWenDetailCell.xib */; };
+		6E3AB64020AD76A3003A65F5 /* 未点赞图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61A20AD76A2003A65F5 /* 未点赞图标@2x.png */; };
+		6E3AB64120AD76A3003A65F5 /* 未点赞图标@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61B20AD76A2003A65F5 /* 未点赞图标@3x.png */; };
+		6E3AB64220AD76A3003A65F5 /* YouWenDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB61D20AD76A2003A65F5 /* YouWenDetailHeadView.m */; };
+		6E3AB64320AD76A3003A65F5 /* 已点赞图标@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB61F20AD76A2003A65F5 /* 已点赞图标@3x.png */; };
+		6E3AB64420AD76A3003A65F5 /* 加号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62020AD76A2003A65F5 /* 加号@2x.png */; };
+		6E3AB64520AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.m */; };
+		6E3AB64620AD76A3003A65F5 /* YouWenBottomButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62220AD76A2003A65F5 /* YouWenBottomButtonView.m */; };
+		6E3AB64720AD76A3003A65F5 /* 已采纳@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62320AD76A2003A65F5 /* 已采纳@3x.png */; };
+		6E3AB64820AD76A3003A65F5 /* 积分按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62420AD76A2003A65F5 /* 积分按钮@2x.png */; };
+		6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */; };
+		6E3AB64A20AD76A3003A65F5 /* YouWenAnswerDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */; };
+		6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */; };
+		6E3AB64C20AD76A3003A65F5 /* 积分按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62820AD76A2003A65F5 /* 积分按钮@3x.png */; };
+		6E3AB64D20AD76A3003A65F5 /* 已采纳@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62920AD76A2003A65F5 /* 已采纳@2x.png */; };
+		6E3AB64E20AD76A3003A65F5 /* 评论@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62A20AD76A2003A65F5 /* 评论@3x.png */; };
+		6E3AB64F20AD76A3003A65F5 /* 男@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62B20AD76A2003A65F5 /* 男@3x.png */; };
+		6E3AB65020AD76A3003A65F5 /* YouWenDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */; };
+		6E3AB65120AD76A3003A65F5 /* 男@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62F20AD76A2003A65F5 /* 男@2x.png */; };
+		6E3AB65220AD76A3003A65F5 /* 评论@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB63020AD76A2003A65F5 /* 评论@2x.png */; };
+		6E3AB65320AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */; };
+		6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB63220AD76A2003A65F5 /* YouWenDetailCell.m */; };
+		6E3AB65520AD76A3003A65F5 /* YouWenWriteAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB63320AD76A2003A65F5 /* YouWenWriteAnswerViewController.m */; };
 		6E5C09FD205EA5D800A73F64 /* YouWenSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C09FC205EA5D800A73F64 /* YouWenSubjectView.m */; };
 		6E5C0AB420690E1200A73F64 /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C0AB320690E1200A73F64 /* myUILabel.m */; };
 		6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */; };
@@ -110,8 +143,6 @@
 		6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */; };
 		6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */; };
 		6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */; };
-		6EAECCA920A859C800B30CBE /* dailyAttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAECCA820A859C800B30CBE /* dailyAttendanceViewController.m */; };
-		6EAECCAC20A86E2B00B30CBE /* dailyAttendanceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EAECCAB20A86E2B00B30CBE /* dailyAttendanceModel.m */; };
 		6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA4BC22034737200AA264E /* YouWenViewController.m */; };
 		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
 		82280CA91F60169B00A5921E /* LXReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CA81F60169B00A5921E /* LXReplyView.m */; };
@@ -124,7 +155,6 @@
 		82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CB81F612A2300A5921E /* 灰色叉叉@2x.png */; };
 		82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CB91F612A2300A5921E /* 灰色叉叉@3x.png */; };
 		82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CC01F613D8800A5921E /* LXDetailCommentView.m */; };
-		823D12132078A73900449A44 /* YouWenWriteAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 823D12122078A73900449A44 /* YouWenWriteAnswerViewController.m */; };
 		823D41641F6407D300C99D9B /* icon_comment_outside@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D415E1F6407D300C99D9B /* icon_comment_outside@3x.png */; };
 		823D41651F6407D300C99D9B /* icon_comment_outside2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D415F1F6407D300C99D9B /* icon_comment_outside2x.png */; };
 		823D41661F6407D300C99D9B /* icon_upvote_outside_notselect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D41601F6407D300C99D9B /* icon_upvote_outside_notselect@2x.png */; };
@@ -135,38 +165,6 @@
 		823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */; };
 		823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */; };
 		823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */; };
-		824454D32060EB7D006D09BF /* YouWenAnswerDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 824454D22060EB7D006D09BF /* YouWenAnswerDetailModel.m */; };
-		8257BF77205BE14D005BD4F2 /* YouWenDeatilHeadViewBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8257BF6D205BE14B005BD4F2 /* YouWenDeatilHeadViewBottomView.xib */; };
-		8257BF78205BE14D005BD4F2 /* YouWenQuestionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257BF6F205BE14B005BD4F2 /* YouWenQuestionDetailModel.m */; };
-		8257BF79205BE14D005BD4F2 /* YouWenDetailHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257BF70205BE14B005BD4F2 /* YouWenDetailHeadView.m */; };
-		8257BF7A205BE14D005BD4F2 /* YouWenDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257BF72205BE14C005BD4F2 /* YouWenDetailViewController.m */; };
-		8257BF7B205BE14D005BD4F2 /* YouWenDeatilHeadViewBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257BF73205BE14C005BD4F2 /* YouWenDeatilHeadViewBottomView.m */; };
-		8257BF7C205BE14D005BD4F2 /* YouWenDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8257BF74205BE14C005BD4F2 /* YouWenDetailCell.xib */; };
-		8257BF7D205BE14D005BD4F2 /* YouWenDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8257BF76205BE14C005BD4F2 /* YouWenDetailCell.m */; };
-		8283DA852073ADF800673EB4 /* AnswerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8283DA842073ADF800673EB4 /* AnswerDetailViewController.m */; };
-		8283DA892073AE4C00673EB4 /* AnswerDetailTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8283DA882073AE4C00673EB4 /* AnswerDetailTableHeaderView.m */; };
-		8283DA8B2073AE5C00673EB4 /* AnswerDetailTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8283DA8A2073AE5C00673EB4 /* AnswerDetailTableHeaderView.xib */; };
-		8283DA8F2075F7C200673EB4 /* AnswerDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8283DA8D2075F7C200673EB4 /* AnswerDetailTableViewCell.m */; };
-		8283DA902075F7C200673EB4 /* AnswerDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8283DA8E2075F7C200673EB4 /* AnswerDetailTableViewCell.xib */; };
-		8283DA932076393C00673EB4 /* AnswerCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8283DA922076393C00673EB4 /* AnswerCommentModel.m */; };
-		8283DA962077489800673EB4 /* YouWenBottomButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8283DA952077489800673EB4 /* YouWenBottomButtonView.m */; };
-		8283DA98207749BF00673EB4 /* YouWenBottomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8283DA97207749BF00673EB4 /* YouWenBottomButtonView.xib */; };
-		829C2985207F9BC0006FAA35 /* 积分按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2979207F955E006FAA35 /* 积分按钮@2x.png */; };
-		829C2986207F9BC3006FAA35 /* 积分按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C297A207F955F006FAA35 /* 积分按钮@3x.png */; };
-		829C2987207F9BC6006FAA35 /* 女@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2978207F955E006FAA35 /* 女@2x.png */; };
-		829C2988207F9BC9006FAA35 /* 女@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2977207F955E006FAA35 /* 女@3x.png */; };
-		829C2989207F9BD4006FAA35 /* 已采纳@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C297B207F955F006FAA35 /* 已采纳@2x.png */; };
-		829C298A207F9BD4006FAA35 /* 已采纳@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C297C207F955F006FAA35 /* 已采纳@3x.png */; };
-		829C298B207F9BD4006FAA35 /* 男@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2982207F96C7006FAA35 /* 男@2x.png */; };
-		829C298C207F9BD4006FAA35 /* 男@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2980207F96C7006FAA35 /* 男@3x.png */; };
-		829C298D207F9BD4006FAA35 /* 未点赞图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C297E207F96C7006FAA35 /* 未点赞图标@2x.png */; };
-		829C298E207F9BD4006FAA35 /* 未点赞图标@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2981207F96C7006FAA35 /* 未点赞图标@3x.png */; };
-		829C298F207F9BD4006FAA35 /* 已点赞图标@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C297F207F96C7006FAA35 /* 已点赞图标@2x.png */; };
-		829C2990207F9BD4006FAA35 /* 已点赞图标@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C297D207F96C6006FAA35 /* 已点赞图标@3x.png */; };
-		829C2991207F9BD4006FAA35 /* 评论@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2983207F96DB006FAA35 /* 评论@2x.png */; };
-		829C2992207F9BD4006FAA35 /* 评论@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2984207F96DC006FAA35 /* 评论@3x.png */; };
-		829C2995207FA074006FAA35 /* 加号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2994207FA06E006FAA35 /* 加号@2x.png */; };
-		829C2996207FA074006FAA35 /* 加号@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C2993207FA06E006FAA35 /* 加号@3x.png */; };
 		82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */; };
 		82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */; };
 		82D685641F6AC381004A5C7D /* extend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685621F6AC381004A5C7D /* extend@2x.png */; };
@@ -730,6 +728,51 @@
 		6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExamSegementView.m; path = Controller/ExamSegementView.m; sourceTree = "<group>"; };
 		6E31E40A2081DA0E00649463 /* YouWenAddModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenAddModel.h; sourceTree = "<group>"; };
 		6E31E40B2081DA0E00649463 /* YouWenAddModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddModel.m; sourceTree = "<group>"; };
+		6E3AB60720AD76A2003A65F5 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
+		6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerDetailTableViewCell.xib; sourceTree = "<group>"; };
+		6E3AB60920AD76A2003A65F5 /* AnswerCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerCommentModel.h; sourceTree = "<group>"; };
+		6E3AB60A20AD76A2003A65F5 /* AnswerDetailTableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerDetailTableHeaderView.xib; sourceTree = "<group>"; };
+		6E3AB60B20AD76A2003A65F5 /* AnswerDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailTableViewCell.h; sourceTree = "<group>"; };
+		6E3AB60C20AD76A2003A65F5 /* AnswerDetailTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailTableHeaderView.h; sourceTree = "<group>"; };
+		6E3AB60D20AD76A2003A65F5 /* AnswerCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerCommentModel.m; sourceTree = "<group>"; };
+		6E3AB60E20AD76A2003A65F5 /* AnswerDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerDetailViewController.m; sourceTree = "<group>"; };
+		6E3AB60F20AD76A2003A65F5 /* AnswerDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerDetailTableViewCell.m; sourceTree = "<group>"; };
+		6E3AB61020AD76A2003A65F5 /* AnswerDetailTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerDetailTableHeaderView.m; sourceTree = "<group>"; };
+		6E3AB61220AD76A2003A65F5 /* 女@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "女@2x.png"; sourceTree = "<group>"; };
+		6E3AB61320AD76A2003A65F5 /* 女@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "女@3x.png"; sourceTree = "<group>"; };
+		6E3AB61420AD76A2003A65F5 /* YouWenAnswerDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenAnswerDetailModel.h; sourceTree = "<group>"; };
+		6E3AB61520AD76A2003A65F5 /* YouWenQuestionDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenQuestionDetailModel.h; sourceTree = "<group>"; };
+		6E3AB61620AD76A2003A65F5 /* 加号@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号@3x.png"; sourceTree = "<group>"; };
+		6E3AB61720AD76A2003A65F5 /* YouWenDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenDetailViewController.h; sourceTree = "<group>"; };
+		6E3AB61820AD76A2003A65F5 /* 已点赞图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已点赞图标@2x.png"; sourceTree = "<group>"; };
+		6E3AB61920AD76A2003A65F5 /* YouWenDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouWenDetailCell.xib; sourceTree = "<group>"; };
+		6E3AB61A20AD76A2003A65F5 /* 未点赞图标@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点赞图标@2x.png"; sourceTree = "<group>"; };
+		6E3AB61B20AD76A2003A65F5 /* 未点赞图标@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "未点赞图标@3x.png"; sourceTree = "<group>"; };
+		6E3AB61C20AD76A2003A65F5 /* YouWenWriteAnswerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenWriteAnswerViewController.h; sourceTree = "<group>"; };
+		6E3AB61D20AD76A2003A65F5 /* YouWenDetailHeadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenDetailHeadView.m; sourceTree = "<group>"; };
+		6E3AB61E20AD76A2003A65F5 /* YouWenDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenDetailCell.h; sourceTree = "<group>"; };
+		6E3AB61F20AD76A2003A65F5 /* 已点赞图标@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已点赞图标@3x.png"; sourceTree = "<group>"; };
+		6E3AB62020AD76A2003A65F5 /* 加号@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "加号@2x.png"; sourceTree = "<group>"; };
+		6E3AB62120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenDeatilHeadViewBottomView.m; sourceTree = "<group>"; };
+		6E3AB62220AD76A2003A65F5 /* YouWenBottomButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenBottomButtonView.m; sourceTree = "<group>"; };
+		6E3AB62320AD76A2003A65F5 /* 已采纳@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已采纳@3x.png"; sourceTree = "<group>"; };
+		6E3AB62420AD76A2003A65F5 /* 积分按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "积分按钮@2x.png"; sourceTree = "<group>"; };
+		6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenQuestionDetailModel.m; sourceTree = "<group>"; };
+		6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenAnswerDetailModel.m; sourceTree = "<group>"; };
+		6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouWenBottomButtonView.xib; sourceTree = "<group>"; };
+		6E3AB62820AD76A2003A65F5 /* 积分按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "积分按钮@3x.png"; sourceTree = "<group>"; };
+		6E3AB62920AD76A2003A65F5 /* 已采纳@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已采纳@2x.png"; sourceTree = "<group>"; };
+		6E3AB62A20AD76A2003A65F5 /* 评论@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论@3x.png"; sourceTree = "<group>"; };
+		6E3AB62B20AD76A2003A65F5 /* 男@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "男@3x.png"; sourceTree = "<group>"; };
+		6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenDetailViewController.m; sourceTree = "<group>"; };
+		6E3AB62D20AD76A2003A65F5 /* YouWenBottomButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenBottomButtonView.h; sourceTree = "<group>"; };
+		6E3AB62E20AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenDeatilHeadViewBottomView.h; sourceTree = "<group>"; };
+		6E3AB62F20AD76A2003A65F5 /* 男@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "男@2x.png"; sourceTree = "<group>"; };
+		6E3AB63020AD76A2003A65F5 /* 评论@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "评论@2x.png"; sourceTree = "<group>"; };
+		6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouWenDeatilHeadViewBottomView.xib; sourceTree = "<group>"; };
+		6E3AB63220AD76A2003A65F5 /* YouWenDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenDetailCell.m; sourceTree = "<group>"; };
+		6E3AB63320AD76A2003A65F5 /* YouWenWriteAnswerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenWriteAnswerViewController.m; sourceTree = "<group>"; };
+		6E3AB63420AD76A2003A65F5 /* YouWenDetailHeadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenDetailHeadView.h; sourceTree = "<group>"; };
 		6E5C09FB205EA5D800A73F64 /* YouWenSubjectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenSubjectView.h; sourceTree = "<group>"; };
 		6E5C09FC205EA5D800A73F64 /* YouWenSubjectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenSubjectView.m; sourceTree = "<group>"; };
 		6E5C0AB220690E1200A73F64 /* myUILabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
@@ -1648,17 +1691,76 @@
 			name = MakeUpExam;
 			sourceTree = "<group>";
 		};
+		6E3AB60620AD76A2003A65F5 /* answerDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6E3AB60720AD76A2003A65F5 /* AnswerDetailViewController.h */,
+				6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */,
+				6E3AB60920AD76A2003A65F5 /* AnswerCommentModel.h */,
+				6E3AB60A20AD76A2003A65F5 /* AnswerDetailTableHeaderView.xib */,
+				6E3AB60B20AD76A2003A65F5 /* AnswerDetailTableViewCell.h */,
+				6E3AB60C20AD76A2003A65F5 /* AnswerDetailTableHeaderView.h */,
+				6E3AB60D20AD76A2003A65F5 /* AnswerCommentModel.m */,
+				6E3AB60E20AD76A2003A65F5 /* AnswerDetailViewController.m */,
+				6E3AB60F20AD76A2003A65F5 /* AnswerDetailTableViewCell.m */,
+				6E3AB61020AD76A2003A65F5 /* AnswerDetailTableHeaderView.m */,
+			);
+			path = answerDetail;
+			sourceTree = "<group>";
+		};
+		6E3AB61120AD76A2003A65F5 /* questionDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6E3AB61220AD76A2003A65F5 /* 女@2x.png */,
+				6E3AB61320AD76A2003A65F5 /* 女@3x.png */,
+				6E3AB61420AD76A2003A65F5 /* YouWenAnswerDetailModel.h */,
+				6E3AB61520AD76A2003A65F5 /* YouWenQuestionDetailModel.h */,
+				6E3AB61620AD76A2003A65F5 /* 加号@3x.png */,
+				6E3AB61720AD76A2003A65F5 /* YouWenDetailViewController.h */,
+				6E3AB61820AD76A2003A65F5 /* 已点赞图标@2x.png */,
+				6E3AB61920AD76A2003A65F5 /* YouWenDetailCell.xib */,
+				6E3AB61A20AD76A2003A65F5 /* 未点赞图标@2x.png */,
+				6E3AB61B20AD76A2003A65F5 /* 未点赞图标@3x.png */,
+				6E3AB61C20AD76A2003A65F5 /* YouWenWriteAnswerViewController.h */,
+				6E3AB61D20AD76A2003A65F5 /* YouWenDetailHeadView.m */,
+				6E3AB61E20AD76A2003A65F5 /* YouWenDetailCell.h */,
+				6E3AB61F20AD76A2003A65F5 /* 已点赞图标@3x.png */,
+				6E3AB62020AD76A2003A65F5 /* 加号@2x.png */,
+				6E3AB62120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.m */,
+				6E3AB62220AD76A2003A65F5 /* YouWenBottomButtonView.m */,
+				6E3AB62320AD76A2003A65F5 /* 已采纳@3x.png */,
+				6E3AB62420AD76A2003A65F5 /* 积分按钮@2x.png */,
+				6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */,
+				6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */,
+				6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */,
+				6E3AB62820AD76A2003A65F5 /* 积分按钮@3x.png */,
+				6E3AB62920AD76A2003A65F5 /* 已采纳@2x.png */,
+				6E3AB62A20AD76A2003A65F5 /* 评论@3x.png */,
+				6E3AB62B20AD76A2003A65F5 /* 男@3x.png */,
+				6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */,
+				6E3AB62D20AD76A2003A65F5 /* YouWenBottomButtonView.h */,
+				6E3AB62E20AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.h */,
+				6E3AB62F20AD76A2003A65F5 /* 男@2x.png */,
+				6E3AB63020AD76A2003A65F5 /* 评论@2x.png */,
+				6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */,
+				6E3AB63220AD76A2003A65F5 /* YouWenDetailCell.m */,
+				6E3AB63320AD76A2003A65F5 /* YouWenWriteAnswerViewController.m */,
+				6E3AB63420AD76A2003A65F5 /* YouWenDetailHeadView.h */,
+			);
+			path = questionDetail;
+			sourceTree = "<group>";
+		};
 		6E7C98622044601A000BAA16 /* sortView */ = {
 			isa = PBXGroup;
 			children = (
-				8283DA822073ADCA00673EB4 /* questionDetail */,
+				6E3AB60620AD76A2003A65F5 /* answerDetail */,
+				6E3AB61120AD76A2003A65F5 /* questionDetail */,
 				6E0F6932203342E800BB5EF3 /* YouWenTableViewCell.h */,
 				6E0F6933203342E800BB5EF3 /* YouWenTableViewCell.m */,
 				6E7C985C204182EE000BAA16 /* YouWenSortViewController.h */,
 				6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */,
 				6E7C985F2041B5D5000BAA16 /* YouWenDataModel.h */,
 				6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */,
-				8283DA862073ADFC00673EB4 /* answerDetail */,
 			);
 			path = sortView;
 			sourceTree = "<group>";
@@ -1675,14 +1777,13 @@
 			path = addView;
 			sourceTree = "<group>";
 		};
-		6EAECCA620A8598600B30CBE /* dailyAttendance */ = {
+		6EAECCA620A8598600B30CBE /* images */ = {
 			isa = PBXGroup;
 			children = (
 				6EAECCA720A859C800B30CBE /* dailyAttendanceViewController.h */,
 				6EAECCA820A859C800B30CBE /* dailyAttendanceViewController.m */,
 				6EAECCAA20A86E2B00B30CBE /* dailyAttendanceModel.h */,
 				6EAECCAB20A86E2B00B30CBE /* dailyAttendanceModel.m */,
-				829C2976207F951A006FAA35 /* images */,
 				8257BF6B205BE14A005BD4F2 /* YouWenDeatilHeadViewBottomView.h */,
 				8257BF73205BE14C005BD4F2 /* YouWenDeatilHeadViewBottomView.m */,
 				8257BF6D205BE14B005BD4F2 /* YouWenDeatilHeadViewBottomView.xib */,
@@ -2371,7 +2472,7 @@
 		F242DC8C1EBCB2BB005AC411 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				6EAECCA620A8598600B30CBE /* dailyAttendance */,
+				6EAECCA620A8598600B30CBE /* images */,
 				9630E4311FAF07D200874EB9 /* Volunteer */,
 				F27A93311F4AA65A009860C3 /* NOCourseDate */,
 				F20026CC1F4020FA00360991 /* Image */,
@@ -3152,19 +3253,15 @@
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
 				F26D965C1F3C400F0063B024 /* MBCommentCell.xib in Resources */,
 				F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */,
-				829C2989207F9BD4006FAA35 /* 已采纳@2x.png in Resources */,
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
 				82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */,
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
 				9630E4B21FAF07D200874EB9 /* toolbar_background.png in Resources */,
-				8283DA98207749BF00673EB4 /* YouWenBottomButtonView.xib in Resources */,
 				F242DE9E1EBCB2BC005AC411 /* 椭圆@2x.png in Resources */,
 				4A3A07E71FCC0EC700A50393 /* lost_image_infocategory@3x.png in Resources */,
-				8257BF77205BE14D005BD4F2 /* YouWenDeatilHeadViewBottomView.xib in Resources */,
 				4A3A07F51FCC0EC700A50393 /* lost_image_place@3x.png in Resources */,
 				F26D96731F3C400F0063B024 /* MBReleaseViewController.xib in Resources */,
 				9630E4BB1FAF07D200874EB9 /* 年份圆圈@3x.png in Resources */,
-				829C298A207F9BD4006FAA35 /* 已采纳@3x.png in Resources */,
 				4A3A07DD1FCC0EC700A50393 /* find_image_shake@3x.png in Resources */,
 				9630E4C21FAF07D300874EB9 /* 月日标签@3x.png in Resources */,
 				F242DE731EBCB2BC005AC411 /* remind0@2x.png in Resources */,
@@ -3174,7 +3271,6 @@
 				F200271F1F405B8500360991 /* remind_image_title@3x.png in Resources */,
 				F26D967D1F3C400F0063B024 /* icon_share_qq@2x.png in Resources */,
 				F242DE971EBCB2BC005AC411 /* 无事项@3x.png in Resources */,
-				829C298F207F9BD4006FAA35 /* 已点赞图标@2x.png in Resources */,
 				6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */,
 				4A3A08451FCD990A00A50393 /* Address@2x.png in Resources */,
 				4A3A07E11FCC0EC700A50393 /* lost_image_add@3x.png in Resources */,
@@ -3204,8 +3300,10 @@
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
 				F242DEFA1EBCB2BC005AC411 /* AboutMePraiseTableViewCell.xib in Resources */,
 				F242DFAB1EBD9E2C005AC411 /* IssueTableViewController.xib in Resources */,
+				6E3AB64E20AD76A3003A65F5 /* 评论@3x.png in Resources */,
 				9630E49B1FAF07D200874EB9 /* 3@3x.png in Resources */,
 				9630E4A31FAF07D200874EB9 /* 7@3x.png in Resources */,
+				6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */,
 				F26D96771F3C400F0063B024 /* arrowIcon.png in Resources */,
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
 				9630E4BC1FAF07D200874EB9 /* 志愿时长@2x.png in Resources */,
@@ -3214,6 +3312,7 @@
 				82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */,
 				F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */,
 				F20026E01F4020FA00360991 /* mine_image_classroom@3x.png in Resources */,
+				6E3AB63D20AD76A3003A65F5 /* 加号@3x.png in Resources */,
 				F26D96901F3C400F0063B024 /* 叉叉.png in Resources */,
 				82D6856A1F6E4F4B004A5C7D /* icon_down@2x.png in Resources */,
 				F20026FC1F40372100360991 /* settingIcon@3x.png in Resources */,
@@ -3224,6 +3323,8 @@
 				4A3A07FD1FCC0EC700A50393 /* lost_image_time@3x.png in Resources */,
 				4A3A07F41FCC0EC700A50393 /* lost_image_place@2x.png in Resources */,
 				F242DDC51EBCB2BB005AC411 /* WebViewController.xib in Resources */,
+				6E3AB65120AD76A3003A65F5 /* 男@2x.png in Resources */,
+				6E3AB63E20AD76A3003A65F5 /* 已点赞图标@2x.png in Resources */,
 				F242DE9F1EBCB2BC005AC411 /* 椭圆@3x.png in Resources */,
 				9630E4A71FAF07D200874EB9 /* login_icon.png in Resources */,
 				F242DE9D1EBCB2BC005AC411 /* 时间@3x.png in Resources */,
@@ -3232,7 +3333,10 @@
 				F242DE951EBCB2BC005AC411 /* 提醒@3x.png in Resources */,
 				4A3A07E51FCC0EC700A50393 /* lost_image_describe@3x.png in Resources */,
 				F238C6451F3D911200FEB179 /* navbar_image_back@3x.png in Resources */,
+				6E3AB65320AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.xib in Resources */,
 				4A3A07DF1FCC0EC700A50393 /* iconfont-shop2.png in Resources */,
+				6E3AB64C20AD76A3003A65F5 /* 积分按钮@3x.png in Resources */,
+				6E3AB64420AD76A3003A65F5 /* 加号@2x.png in Resources */,
 				F26D968D1F3C400F0063B024 /* topic_image_join@2x.png in Resources */,
 				F242DE821EBCB2BC005AC411 /* 书@3x.png in Resources */,
 				F242DE9C1EBCB2BC005AC411 /* 时间@2x.png in Resources */,
@@ -3245,6 +3349,7 @@
 				4A3A07EF1FCC0EC700A50393 /* lost_image_lacktel@3x.png in Resources */,
 				4A3A07F61FCC0EC700A50393 /* lost_image_QQ@2x.png in Resources */,
 				F238C6501F3DA29700FEB179 /* tabbar_image_community@3x.png in Resources */,
+				6E3AB65220AD76A3003A65F5 /* 评论@2x.png in Resources */,
 				F238C6531F3DA29700FEB179 /* tabbar_image_mine@2x.png in Resources */,
 				F23078DE1F73EF4C0079E187 /* date_image_add@2x.png in Resources */,
 				F242DDAC1EBCB2BB005AC411 /* doneImage.png in Resources */,
@@ -3254,7 +3359,6 @@
 				4A3A07E61FCC0EC700A50393 /* lost_image_infocategory@2x.png in Resources */,
 				4A3A07D81FCC0EC700A50393 /* find_image_map@2x.png in Resources */,
 				F242DEFE1EBCB2BC005AC411 /* AboutMeViewController.xib in Resources */,
-				829C2987207F9BC6006FAA35 /* 女@2x.png in Resources */,
 				F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */,
 				82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */,
 				4A3A07CD1FCC0EC700A50393 /* cqupt1@2x.jpg in Resources */,
@@ -3264,7 +3368,6 @@
 				4A3A08471FCD990A00A50393 /* tel@3x.png in Resources */,
 				F242DE881EBCB2BC005AC411 /* 地点@2x.png in Resources */,
 				F20026E41F4020FA00360991 /* mine_image_exam@3x.png in Resources */,
-				829C2996207FA074006FAA35 /* 加号@3x.png in Resources */,
 				F20026F71F40372100360991 /* appIcon@2x.png in Resources */,
 				9630E4C81FAF07D300874EB9 /* 背景板@2x.png in Resources */,
 				F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */,
@@ -3272,7 +3375,6 @@
 				9630E4AC1FAF07D200874EB9 /* login_number@3x.png in Resources */,
 				F26D96801F3C400F0063B024 /* icon_share_wechat@2x.png in Resources */,
 				4A3A07F11FCC0EC700A50393 /* lost_image_little@3x.png in Resources */,
-				829C298C207F9BD4006FAA35 /* 男@3x.png in Resources */,
 				F2CC3AA01F46BE1B00B031BD /* MineTableViewCell.xib in Resources */,
 				F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */,
 				F2A43ED21F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib in Resources */,
@@ -3282,17 +3384,18 @@
 				F20026E61F4020FA00360991 /* mine_image_remind@3x.png in Resources */,
 				F273B4F01F4B6CEF0004261C /* mine_image_calendar2@2x.png in Resources */,
 				4A3A07E91FCC0EC700A50393 /* lost_image_itemcategory@3x.png in Resources */,
+				6E3AB64120AD76A3003A65F5 /* 未点赞图标@3x.png in Resources */,
 				F242DE8B1EBCB2BC005AC411 /* 多课0@3x.png in Resources */,
 				F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */,
 				F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */,
 				F26D96AD1F3C45540063B024 /* login_image_account@2x.png in Resources */,
-				829C2988207F9BC9006FAA35 /* 女@3x.png in Resources */,
 				F238C64F1F3DA29700FEB179 /* tabbar_image_community@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
 				4A3A07D11FCC0EC700A50393 /* find_image_food@3x.png in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
 				F242DE611EBCB2BC005AC411 /* AddRemindViewController.xib in Resources */,
+				6E3AB63620AD76A3003A65F5 /* AnswerDetailTableHeaderView.xib in Resources */,
 				4A3A07E21FCC0EC700A50393 /* lost_image_com@2x.png in Resources */,
 				F20026E31F4020FA00360991 /* mine_image_exam@2x.png in Resources */,
 				F26D968F1F3C400F0063B024 /* xia.png in Resources */,
@@ -3301,6 +3404,7 @@
 				9630E4B91FAF07D200874EB9 /* 展开后@3x.png in Resources */,
 				F26D967C1F3C400F0063B024 /* icon_share_more@3x.png in Resources */,
 				F242DE7A1EBCB2BC005AC411 /* remind@3x.png in Resources */,
+				6E3AB64820AD76A3003A65F5 /* 积分按钮@2x.png in Resources */,
 				F20026E81F4020FA00360991 /* mine_image_date@3x.png in Resources */,
 				4A3A07EB1FCC0EC700A50393 /* lost_image_lackcate@3x.png in Resources */,
 				F242DE7A1EBCB2BC005AC411 /* remind@3x.png in Resources */,
@@ -3314,12 +3418,14 @@
 				F26D965E1F3C400F0063B024 /* MBCommunityCellTableViewCell.xib in Resources */,
 				F20026E11F4020FA00360991 /* mine_image_edit@2x.png in Resources */,
 				9630E4961FAF07D200874EB9 /* 1@2x.png in Resources */,
+				6E3AB63B20AD76A3003A65F5 /* 女@2x.png in Resources */,
 				F242DE741EBCB2BC005AC411 /* remind0@3x.png in Resources */,
 				4A3A07ED1FCC0EC700A50393 /* lost_image_lackplace@3x.png in Resources */,
 				4A3A084A1FCD990A00A50393 /* Address@3x.png in Resources */,
 				F242DE781EBCB2BC005AC411 /* remind2@3x.png in Resources */,
 				4A3A08011FCC0EC700A50393 /* shake_match.mp3 in Resources */,
 				4A3A08461FCD990A00A50393 /* close@3x.png in Resources */,
+				6E3AB63520AD76A3003A65F5 /* AnswerDetailTableViewCell.xib in Resources */,
 				4A3A07CE1FCC0EC700A50393 /* cqupt2@2x.jpg in Resources */,
 				F20026F81F40372100360991 /* appIcon@3x.png in Resources */,
 				F242DE961EBCB2BC005AC411 /* 无事项@2x.png in Resources */,
@@ -3352,22 +3458,22 @@
 				F242DEA81EBCB2BC005AC411 /* 编辑箭头@2x.png in Resources */,
 				F200271D1F405B8500360991 /* remind_image_time@3x.png in Resources */,
 				82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */,
-				8257BF7C205BE14D005BD4F2 /* YouWenDetailCell.xib in Resources */,
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
 				F242DEA31EBCB2BC005AC411 /* 类型@3x.png in Resources */,
+				6E3AB63F20AD76A3003A65F5 /* YouWenDetailCell.xib in Resources */,
 				9630E4AF1FAF07D200874EB9 /* login_password@3x.png in Resources */,
 				9630E4C41FAF07D300874EB9 /* 标签矩形@2x.png in Resources */,
 				9630E4AA1FAF07D200874EB9 /* login_number.png in Resources */,
 				F242DEA11EBCB2BC005AC411 /* 箭头@3x.png in Resources */,
 				F273B4EE1F4B6CEF0004261C /* mine_image_calendar1@2x.png in Resources */,
+				6E3AB64720AD76A3003A65F5 /* 已采纳@3x.png in Resources */,
 				9630E49F1FAF07D200874EB9 /* 5@3x.png in Resources */,
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				9630E4B51FAF07D200874EB9 /* 地点坐标@3x.png in Resources */,
 				4A3A07F91FCC0EC700A50393 /* lost_image_success@3x.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
-				829C2992207F9BD4006FAA35 /* 评论@3x.png in Resources */,
 				4A3A08431FCD990A00A50393 /* rectangle@2x.png in Resources */,
 				4A3A07DA1FCC0EC700A50393 /* find_image_query@2x.png in Resources */,
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
@@ -3399,8 +3505,6 @@
 				4A3A07DB1FCC0EC700A50393 /* find_image_query@3x.png in Resources */,
 				F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */,
 				F200271B1F405B8500360991 /* remind_image_remind@3x.png in Resources */,
-				829C2990207F9BD4006FAA35 /* 已点赞图标@3x.png in Resources */,
-				829C2985207F9BC0006FAA35 /* 积分按钮@2x.png in Resources */,
 				F20026E21F4020FA00360991 /* mine_image_edit@3x.png in Resources */,
 				823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */,
 				4A3A07EC1FCC0EC700A50393 /* lost_image_lackplace@2x.png in Resources */,
@@ -3410,12 +3514,12 @@
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
 				F242DDC21EBCB2BB005AC411 /* reinstallImage.png in Resources */,
 				F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */,
-				829C298D207F9BD4006FAA35 /* 未点赞图标@2x.png in Resources */,
 				4A3A08411FCD990A00A50393 /* shop_headImage@3x.png in Resources */,
 				4A3A07FB1FCC0EC700A50393 /* lost_image_tel@3x.png in Resources */,
 				82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */,
 				9630E4971FAF07D200874EB9 /* 1@3x.png in Resources */,
 				F242DE841EBCB2BC005AC411 /* 删除@3x.png in Resources */,
+				6E3AB64D20AD76A3003A65F5 /* 已采纳@2x.png in Resources */,
 				F26D96711F3C400F0063B024 /* MBCommunityViewController.xib in Resources */,
 				F242DE7F1EBCB2BC005AC411 /* 不提醒@2x.png in Resources */,
 				F26D96781F3C400F0063B024 /* cancel.png in Resources */,
@@ -3435,10 +3539,9 @@
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
-				829C298E207F9BD4006FAA35 /* 未点赞图标@3x.png in Resources */,
 				9630E4C71FAF07D300874EB9 /* 没有记录@3x.png in Resources */,
+				6E3AB64F20AD76A3003A65F5 /* 男@3x.png in Resources */,
 				F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */,
-				829C298B207F9BD4006FAA35 /* 男@2x.png in Resources */,
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
 				F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */,
 				4A3A07F21FCC0EC700A50393 /* lost_image_many@2x.png in Resources */,
@@ -3448,16 +3551,18 @@
 				9630E4A01FAF07D200874EB9 /* 6@2x.png in Resources */,
 				F20026EE1F40336E00360991 /* MapViewController.xib in Resources */,
 				F242DEAB1EBCB2BC005AC411 /* 老师@3x.png in Resources */,
+				6E3AB64320AD76A3003A65F5 /* 已点赞图标@3x.png in Resources */,
 				F27A93441F4ABC32009860C3 /* remind_image_editing@3x.png in Resources */,
-				829C2986207F9BC3006FAA35 /* 积分按钮@3x.png in Resources */,
 				F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */,
 				823D41681F6407D300C99D9B /* icon_upvote_outside_selected@2x.png in Resources */,
 				4A3A08421FCD990A00A50393 /* yuan@2x.png in Resources */,
+				6E3AB64020AD76A3003A65F5 /* 未点赞图标@2x.png in Resources */,
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
 				F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */,
 				4A3A07CF1FCC0EC700A50393 /* cqupt3@2x.jpg in Resources */,
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
+				6E3AB63C20AD76A3003A65F5 /* 女@3x.png in Resources */,
 				4A3A08481FCD990A00A50393 /* close@2x.png in Resources */,
 				F242DE751EBCB2BC005AC411 /* remind1@2x.png in Resources */,
 				82D6856B1F6E4F4B004A5C7D /* icon_down@3x.png in Resources */,
@@ -3465,7 +3570,6 @@
 				F200271C1F405B8500360991 /* remind_image_time@2x.png in Resources */,
 				9630E49D1FAF07D200874EB9 /* 4@3x.png in Resources */,
 				F242DE8D1EBCB2BC005AC411 /* 多课1@3x.png in Resources */,
-				829C2995207FA074006FAA35 /* 加号@2x.png in Resources */,
 				4A3A08491FCD990A00A50393 /* yuan@3x.png in Resources */,
 				9630E4BF1FAF07D200874EB9 /* 时长加号.png in Resources */,
 				F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */,
@@ -3480,7 +3584,6 @@
 				82D685641F6AC381004A5C7D /* extend@2x.png in Resources */,
 				F238C6541F3DA29700FEB179 /* tabbar_image_mine@3x.png in Resources */,
 				4A3A07DC1FCC0EC700A50393 /* find_image_shake@2x.png in Resources */,
-				829C2991207F9BD4006FAA35 /* 评论@2x.png in Resources */,
 				F26D96831F3C400F0063B024 /* icon_share_wechatTimeLine@3x.png in Resources */,
 				F242DEA01EBCB2BC005AC411 /* 箭头@2x.png in Resources */,
 				F242DE5F1EBCB2BC005AC411 /* RemindTableViewCell.xib in Resources */,
@@ -3496,11 +3599,9 @@
 				F242DDB31EBCB2BB005AC411 /* roomIcon.png in Resources */,
 				F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */,
 				F20027161F405B8500360991 /* remind_image_confirm@2x.png in Resources */,
-				8283DA902075F7C200673EB4 /* AnswerDetailTableViewCell.xib in Resources */,
 				F242DE801EBCB2BC005AC411 /* 不提醒@3x.png in Resources */,
 				F26D96861F3C400F0063B024 /* noTopicIcon.png in Resources */,
 				F26D95D71F3C3FF70063B024 /* iconfont.ttf in Resources */,
-				8283DA8B2073AE5C00673EB4 /* AnswerDetailTableHeaderView.xib in Resources */,
 				4A3A07E01FCC0EC700A50393 /* lost_image_add@2x.png in Resources */,
 				F20026F91F40372100360991 /* searchIcon@2x.png in Resources */,
 				F2C29EDD1F47FB2900150546 /* addPhoto.jpg in Resources */,
@@ -3603,6 +3704,7 @@
 				F242DE671EBCB2BC005AC411 /* DetailViewController.m in Sources */,
 				6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
+				6E3AB65520AD76A3003A65F5 /* YouWenWriteAnswerViewController.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
 				F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */,
 				F26D969E1F3C400F0063B024 /* MBComment_ViewModel.m in Sources */,
@@ -3614,18 +3716,18 @@
 				F242DFBA1EBD9E2C005AC411 /* LZLostRemindView.m in Sources */,
 				F23BB4881F50538800DA62ED /* LZWeekScrollView.m in Sources */,
 				F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */,
+				6E3AB63720AD76A3003A65F5 /* AnswerCommentModel.m in Sources */,
 				F242DDB91EBCB2BB005AC411 /* QuerInfo.m in Sources */,
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
+				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
-				8257BF7A205BE14D005BD4F2 /* YouWenDetailViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
-				8257BF7B205BE14D005BD4F2 /* YouWenDeatilHeadViewBottomView.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
 				F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */,
@@ -3639,11 +3741,10 @@
 				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
-				8283DA852073ADF800673EB4 /* AnswerDetailViewController.m in Sources */,
 				F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */,
 				6E12A33C20569A7800D07606 /* YouWenTopicView.m in Sources */,
-				8283DA892073AE4C00673EB4 /* AnswerDetailTableHeaderView.m in Sources */,
 				F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */,
+				6E3AB63A20AD76A3003A65F5 /* AnswerDetailTableHeaderView.m in Sources */,
 				4A3A07921FCC0E7700A50393 /* ZJAddCommentView.m in Sources */,
 				F26D965D1F3C400F0063B024 /* MBCommunityCellTableViewCell.m in Sources */,
 				4A3A07941FCC0E7700A50393 /* ZJshopTableViewCell.m in Sources */,
@@ -3662,21 +3763,20 @@
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
 				F20026ED1F40336E00360991 /* MapViewController.m in Sources */,
-				824454D32060EB7D006D09BF /* YouWenAnswerDetailModel.m in Sources */,
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
-				6EAECCAC20A86E2B00B30CBE /* dailyAttendanceModel.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
+				6E3AB64220AD76A3003A65F5 /* YouWenDetailHeadView.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
+				6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
-				6EAECCA920A859C800B30CBE /* dailyAttendanceViewController.m in Sources */,
 				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
@@ -3688,15 +3788,12 @@
 				9630E4951FAF07D200874EB9 /* sixViewController.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
-				8283DA8F2075F7C200673EB4 /* AnswerDetailTableViewCell.m in Sources */,
 				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
 				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,
 				9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
-				8257BF79205BE14D005BD4F2 /* YouWenDetailHeadView.m in Sources */,
-				8257BF78205BE14D005BD4F2 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
@@ -3716,26 +3813,29 @@
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
+				6E3AB64A20AD76A3003A65F5 /* YouWenAnswerDetailModel.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
 				F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */,
-				8257BF7D205BE14D005BD4F2 /* YouWenDetailCell.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
+				6E3AB63920AD76A3003A65F5 /* AnswerDetailTableViewCell.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
 				F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */,
 				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
+				6E3AB64520AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
-				8283DA962077489800673EB4 /* YouWenBottomButtonView.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
+				6E3AB64620AD76A3003A65F5 /* YouWenBottomButtonView.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */,
 				F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
+				6E3AB63820AD76A3003A65F5 /* AnswerDetailViewController.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */,
@@ -3761,13 +3861,13 @@
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				F2A6E6811F6E8FE100A663B4 /* LZTextField.m in Sources */,
-				8283DA932076393C00673EB4 /* AnswerCommentModel.m in Sources */,
 				9630E48B1FAF07D200874EB9 /* HeaderTableViewCell.m in Sources */,
 				F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
 				F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
+				6E3AB65020AD76A3003A65F5 /* YouWenDetailViewController.m in Sources */,
 				F29245641F7A942E001A8788 /* LessonButtonViewModel.m in Sources */,
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
@@ -3778,7 +3878,6 @@
 				6E12A339205532A300D07606 /* YouWenResultView.m in Sources */,
 				F2DD71A41F777B24009556BE /* LZPersonAddView.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
-				823D12132078A73900449A44 /* YouWenWriteAnswerViewController.m in Sources */,
 				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
 				9630E48D1FAF07D200874EB9 /* QueryLoginViewController.m in Sources */,
