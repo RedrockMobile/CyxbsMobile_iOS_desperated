@@ -14,6 +14,8 @@
 #import <UIImageView+WebCache.h>
 #import "YouWenQuestionDetailModel.h"
 #import "YouWenBottomButtonView.h"
+
+
 #define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
 #define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
 #define ADDCOMMENTURL
@@ -35,6 +37,8 @@
     self.tableHeaderView = [[AnswerDetailTableHeaderView alloc] initWithModel:self.model];
     self.tableview.tableHeaderView = self.tableHeaderView;
     self.answerCommentModelArr = [NSMutableArray array];
+    
+    
 }
 
 #pragma mark - bottomButtonView
@@ -220,10 +224,6 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 /*
 #pragma mark - Navigation
