@@ -17,11 +17,13 @@
 #import "YouWenBottomButtonView.h"
 #import <Masonry.h>
 #import "YouWenWriteAnswerViewController.h"
+#import "TransparentView.h"
+#import "ReportViewController.h"
 
 #define UPVOTEURL @"https://hongyan.cqupt.edu.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
 #define CANCELUPVOTEURL @"https://hongyan.cqupt.edu.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
 
-@interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic) YouWenQuestionDetailModel *detailQuestionModel;
@@ -40,6 +42,7 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     [self addBottomView];
     [self.view addSubview:self.tableView];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
 }
 
 - (YouWenBottomButtonView *)bottomView {
@@ -338,6 +341,23 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     }];
 
 }
+
+- (void)newView:(UIButton *)btn{
+    UIViewController *view;
+    if (btn.tag == 0) {
+        view = [[ReportViewController alloc] initWithId:_detailQuestionModel.questionID];
+    }
+    else {
+    }
+    
+    [self.navigationController pushViewController:view animated:YES];
+}
+- (void)moreInfor{
+    TransparentView *view = [[TransparentView alloc] initWithNews:@[@"report",@"share",@"举报",@"分享"]];
+    view.delegate = self;
+    [[UIApplication sharedApplication].keyWindow addSubview:view];
+}
+
 
 /*
 #pragma mark - Navigation

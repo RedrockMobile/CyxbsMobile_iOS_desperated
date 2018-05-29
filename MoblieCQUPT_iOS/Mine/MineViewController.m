@@ -14,6 +14,8 @@
 #import "QueryViewController.h"
 #import "QueryLoginViewController.h"
 #import "MyInfoModel.h"
+#import "draftsViewController.h"
+#import "SettingViewController.h"
 #import <sys/utsname.h>
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray <NSArray *> *cellDicArray;
@@ -62,12 +64,12 @@
     NSArray *array1 =   @[
                 @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
     NSArray *array2 = @[
-                @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"EmptyClassViewController"},
+                @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
                 @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"ExamTotalViewController"},
                 @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"QueryLoginViewController"},
-                @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"CalendarViewController"}];
+                @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"draftsViewController"}];
     NSArray *array3 = @[
-                @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"BeforeClassViewController"}];
+                @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeViewController"}];
     NSArray *array4 = @[
                 @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingController"}];
     self.cellDicArray = @[array1, array2, array3, array4];
