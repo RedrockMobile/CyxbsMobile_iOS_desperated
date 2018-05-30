@@ -8,10 +8,11 @@
 
 #import "countdayView.h"
 @interface countdayView()
-@property (weak, nonatomic) IBOutletCollection (UIImageView) NSArray<UIImageView *> *bluePoint;
-@property (weak, nonatomic) IBOutletCollection (UILabel) NSArray<UILabel  *> *dayLabel;
-@property (weak, nonatomic)
-IBOutletCollection(UILabel) NSArray<UILabel *> *soreLabel;
+
+@property (strong, nonatomic) IBOutletCollection (UIImageView) NSArray *bluePoint;
+@property (strong, nonatomic) IBOutletCollection (UILabel) NSArray *dayLabel;
+@property (strong, nonatomic)
+    IBOutletCollection(UILabel) NSArray *soreLabel;
 @end
 @implementation countdayView
 - (id)initWithFrame:(CGRect)frame AndDay:(NSString *)day{
@@ -23,17 +24,33 @@ IBOutletCollection(UILabel) NSArray<UILabel *> *soreLabel;
     return self;
 }
 - (void)selectDay:(NSString *)day{
-    NSUInteger num = [day integerValue];
+    NSUInteger num = [day integerValue] - 2;
     for (int i = 0; i <= 4;  i++ ) {
-        _bluePoint[i].hidden = YES;
-        _dayLabel[i].textColor = [UIColor blackColor];
-        _soreLabel[i].textColor = [UIColor blackColor];
+        UIImageView *imgV = _bluePoint[i];
+        UILabel *dayL = _dayLabel[i];
+        UILabel *soreL = _soreLabel[i];
+        
+        
+        if (imgV.tag < num){
+            imgV.hidden = NO;
+        }
+        else {
+            imgV.hidden = YES;
+        }
+        if (dayL.tag < num){
+            dayL.textColor = [UIColor blackColor];
+        }
+        else {
+            dayL.textColor = [UIColor grayColor];
+        }
+        if (soreL.tag < num){
+            soreL.textColor = [UIColor blackColor];
+        }
+        else {
+            soreL.textColor = [UIColor grayColor];
+        }
     }
-    for (int i = 0; i < num;  i++ ) {
-        _bluePoint[i].hidden = NO;
-    }
-    _dayLabel[num].textColor = [UIColor blackColor];
-    _soreLabel[num].textColor = [UIColor blackColor];
+
 }
 /*
 // Only override drawRect: if you perform custom drawing.

@@ -7,10 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-@protocol getSoreDelegate <NSObject>
+@protocol dailyAttendanceDelegate <NSObject>
 - (void)getSore:(NSString *)sore;
+- (void)getSerialDay:(NSString *)day AndCheck:(NSString *)check;
 @end
 @interface dailyAttendanceModel : NSObject
-@property (nonatomic, weak) id<getSoreDelegate> delegate;
+@property (nonatomic, weak) id<dailyAttendanceDelegate> delegate;
 - (void)requestNewScore;
+- (void)requestContinueDay;
 @end
