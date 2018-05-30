@@ -7,7 +7,10 @@
 //
 
 #import "YouWenWriteAnswerViewController.h"
+#import <AFNetworking.h>
 #import <Masonry.h>
+
+#define ANSWERQUESTION @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/add"
 
 @interface YouWenWriteAnswerViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -150,10 +153,10 @@
 
 //上传二进制流数据
 - (void)commitComment {
-    NSData *imageData = UIImageJPEGRepresentation(self.imageView1.image, 0.5);
+//    NSData *imageData = UIImageJPEGRepresentation(self.imageView1.image, 0.5);
 //    NSString *hex = [[NSString alloc] initWithData:hexData encoding:NSUTF8StringEncoding];
 
-    NSString *encodedString = [imageData base64EncodedString];
+//    NSString *encodedString = [imageData base64EncodedString];
 //    //16进制转2进制
 //    NSMutableData *data = [NSMutableData dataWithCapacity:hex.length / 2];
 //    unsigned char whole_byte;
@@ -167,6 +170,24 @@
 //    }
 //
 //    NSLog(@"%@", data);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    NSDictionary *parameters = @{
+                                 @"stuNum":[UserDefaultTool getStuNum],
+                                 @"idNum":[UserDefaultTool getIdNum],
+                                 @"content":self.textView.text,
+                                 @"question":self.question_id
+                                 };
+    [manager POST:ANSWERQUESTION parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        //返回前一个界面，刷新，弹出提示框
+        NSLog(@"发送成功");
+        [self.delegate reload];
+        [self.navigationController popViewControllerAnimated:YES];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"Error:%@", error);
+    }];
+    
 }
 
 #pragma mark - textView

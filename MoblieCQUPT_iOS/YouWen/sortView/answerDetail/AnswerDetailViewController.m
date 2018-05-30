@@ -12,19 +12,25 @@
 #import "AnswerCommentModel.h"
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
-#import "YouWenQuestionDetailModel.h"
+//#import "YouWenQuestionDetailModel.h"
+#import "YouWenAnswerDetailModel.h"
 #import "YouWenBottomButtonView.h"
-
+#import "LXDetailCommentView.h"
+#import "MBCommunityHandle.h"
 
 #define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
 #define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
-#define ADDCOMMENTURL
+#define COMMENTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/remark"
 @interface AnswerDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
 @property (nonatomic, strong) AnswerDetailTableHeaderView *tableHeaderView;
 @property (nonatomic) NSMutableArray<AnswerCommentModel *> *answerCommentModelArr;
 @property (nonatomic, strong) YouWenBottomButtonView *bottomView;
+@property (nonatomic, strong) LXDetailCommentView *detailCommentView;
+@property (nonatomic, strong) UIWindow *window;
+@property (strong, nonatomic) UIView *coverGrayView;
+@property (strong, nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation AnswerDetailViewController
@@ -38,23 +44,39 @@
     self.tableview.tableHeaderView = self.tableHeaderView;
     self.answerCommentModelArr = [NSMutableArray array];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
     
+    self.window = [UIApplication sharedApplication].keyWindow;
 }
 
 #pragma mark - bottomButtonView
 - (YouWenBottomButtonView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[YouWenBottomButtonView alloc] init];
+        //是自己的问题
         if ([self.isSelf integerValue]) {
             _bottomView.label1.text = @"点赞";
             _bottomView.label2.text = @"评论";
             [_bottomView.btn1 addTarget:self action:@selector(upvote) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView.btn2 addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
+            if (self.is_upvote) {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+            } else {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+            }
         } else {
             _bottomView.label1.text = @"点赞";
             _bottomView.label2.text = @"评论";
             [_bottomView.btn1 addTarget:self action:@selector(upvote) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView.btn2 addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
+            if (self.is_upvote) {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+            } else {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+            }
         }
     }
     
@@ -70,13 +92,8 @@
 }
 
 - (void)upvote {
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [user objectForKey:@"stuNum"];
-    NSString *idNum = [user objectForKey:@"idNum"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    NSString *upvoteUrl  = UPVOTEURL;
-//    NSString *cancelUpvoteUrl = CANCELUPVOTEURL;
     NSString *url = [NSString string];
     if (self.is_upvote) {
         url = CANCELUPVOTEURL;
@@ -84,43 +101,153 @@
         url = UPVOTEURL;
     }
     NSDictionary *parameters = @{
-                                 @"stuNum":stuNum,
-                                 @"idNum":idNum,
+                                 @"stuNum":[UserDefaultTool getStuNum],
+                                 @"idNum":[UserDefaultTool getIdNum],
                                  @"answer_id":self.answer_id
                                  };
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        //更改点赞图片
-//        if (self.is_upvote) {
-//            self.bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
-//        } else {
-//            self.bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
-//        }
+       //更改点赞图片
+        if (self.is_upvote) {
+            self.bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+        } else {
+            self.bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+        }
+        self.is_upvote = !self.is_upvote;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
     }];
 }
 
+
+- (UIView *)coverGrayView {
+    if (!_coverGrayView) {
+        _coverGrayView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _coverGrayView.backgroundColor = [UIColor clearColor];
+    }
+    
+    return _coverGrayView;
+}
+
+
+- (void)keyboardWillShow:(NSNotification *)aNotification {
+    NSDictionary *userInfo = [aNotification userInfo];
+    NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+    CGRect keyboardRect = [aValue CGRectValue];
+    int height = keyboardRect.size.height;
+    
+    [UIView beginAnimations:@"riseAnimate" context:nil];
+    [UIView setAnimationDuration:0.275];
+    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - height - self.detailCommentView.frame.size.height, SCREENWIDTH, self.detailCommentView.frame.size.height);
+    [UIView commitAnimations];
+}
+
+//点击评论btn弹出的框框
+- (UIView *)detailCommentView {
+    if (!_detailCommentView) {
+        _detailCommentView = [[LXDetailCommentView alloc] init];
+        _detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
+        [_detailCommentView.cancelBtn addTarget:self action:@selector(tapCancelBtn) forControlEvents:UIControlEventTouchDown];
+        [_detailCommentView.sendBtn addTarget:self action:@selector(tapSendBtn) forControlEvents:UIControlEventTouchDown];
+        
+        _detailCommentView.commentTextView.delegate = self;
+    }
+    
+    return _detailCommentView;
+}
+
+- (void)tapCancelBtn {
+    [UIView beginAnimations:@"downAnimate" context:nil];
+    [UIView setAnimationDuration:0.1];
+    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENHEIGHT, 0);
+    self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
+    [UIView commitAnimations];
+    [self.detailCommentView.commentTextView resignFirstResponder];
+    [self.coverGrayView removeFromSuperview];
+}
+
+- (void)tapSendBtn {
+    if ([self.detailCommentView.placeholder.text isEqualToString:@"说点什么吧..."]) {
+        [self upLoadCommentWithContent:self.detailCommentView.commentTextView.text];
+    }else {
+        NSString *content = [NSString stringWithFormat:@"%@%@",self.detailCommentView.placeholder.text,self.detailCommentView.commentTextView.text];
+        [self upLoadCommentWithContent:content];
+    }
+    
+    [self tapCancelBtn];
+}
+
+
+
 - (void)addComment {
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [user objectForKey:@"stuNum"];
-    NSString *idNum = [user objectForKey:@"idNum"];
+    NSString *stuNum = [UserDefaultTool getStuNum];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *urlStr  = UPVOTEURL;
-    NSDictionary *parameters = @{
-                                 @"stuNum":stuNum,
-                                 @"idNum":idNum,
-                                 @"answer_id":self.answer_id
-                                 };
-    
-    [manager POST:urlStr parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        //评论数目+1
-        ;
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+    if (stuNum) {
+        [self.window addSubview:self.coverGrayView];
+        [self.coverGrayView addSubview:self.detailCommentView];
+        self.detailCommentView.backgroundColor = [UIColor whiteColor];
+        self.detailCommentView.placeholder.text = @"说点什么吧...";
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+            self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - (271/667.0) * SCREENHEIGHT, SCREENWIDTH, (271/667.0) * SCREENHEIGHT);
+        }];
+    } else {
+        [MBCommunityHandle noLogin:self handler:^(BOOL success) {
+            [self addComment];
+        }];
+    }
+}
+
+
+
+#pragma mark - 评论上传
+
+- (void)upLoadCommentWithContent:(NSString *)content {
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum = [UserDefaultTool getIdNum];
+    NSDictionary *parameter = @{@"stuNum":stuNum,
+                                @"idNum":idNum,
+                                @"answer_id":self.answer_id,
+                                @"content":content};
+    NSLog(@"发送评论");
+    _hud.labelText = @"正在发送评论...";
+    [NetWork NetRequestPOSTWithRequestURL:COMMENTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        NSLog(@"%@",returnValue);
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        if ([content isEqualToString:@""]) {
+            self.hud.labelText = @"请输入评论";
+        } else {
+            self.hud.labelText = @"评论成功";
+        }
+        [self.hud hide:YES afterDelay:1.5];
+        //刷新界面
+        [self.tableview reloadData];
+        self.detailCommentView.commentTextView.text = @"";
+    } WithFailureBlock:^{
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        self.hud.labelText = @"网络错误";
+        [self.hud hide:YES afterDelay:1.5];
     }];
 }
+
+
+
+#pragma mark - textView delegate methods
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView {
+    return YES;
+}
+
+- (void)textViewDidChange:(UITextView *)textView {
+    if ([self.detailCommentView.commentTextView.text isEqualToString:@""]) {
+        self.detailCommentView.placeholder.hidden = NO;
+    } else {
+        self.detailCommentView.placeholder.hidden = YES;
+    }
+}
+
 
 - (void)getData {
     NSString *urlStr = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/getRemarkList";
@@ -180,6 +307,8 @@
             cell.nickname.text = self.answerCommentModelArr[row].nickname;
             cell.avatarImageView.contentMode = UIViewContentModeScaleToFill;
             [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.answerCommentModelArr[row].avatarUrlStr]];
+            cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2.0;
+            cell.imageView.clipsToBounds = YES;
             cell.dateLabel.text = self.answerCommentModelArr[row].date;
             cell.contentLabel.text = self.answerCommentModelArr[row].content;
             

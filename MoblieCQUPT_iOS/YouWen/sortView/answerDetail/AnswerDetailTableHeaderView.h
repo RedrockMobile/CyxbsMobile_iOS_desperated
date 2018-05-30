@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class YouWenQuestionDetailModel;
+@class YouWenAnswerDetailModel;
 
 @interface AnswerDetailTableHeaderView : UIView
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -19,6 +19,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView2;
 @property (weak, nonatomic) IBOutlet UIView *bottomGrayView;
 
-- (instancetype) initWithModel:(YouWenQuestionDetailModel *)model;
+- (instancetype) initWithModel:(YouWenAnswerDetailModel *)model;
 
 @end
