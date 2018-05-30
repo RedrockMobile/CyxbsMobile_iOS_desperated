@@ -20,6 +20,7 @@
     return self;
 }
 
+
 - (void)setData:(NSDictionary *)dic {
     self.avatarUrl = dic[@"photo_thumbnail_src"];
     self.nickname = dic[@"nickname"];

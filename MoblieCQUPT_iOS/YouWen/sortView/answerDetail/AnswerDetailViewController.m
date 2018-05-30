@@ -12,7 +12,8 @@
 #import "AnswerCommentModel.h"
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
-#import "YouWenQuestionDetailModel.h"
+//#import "YouWenQuestionDetailModel.h"
+#import "YouWenAnswerDetailModel.h"
 #import "YouWenBottomButtonView.h"
 #import "LXDetailCommentView.h"
 #import "MBCommunityHandle.h"
@@ -55,16 +56,27 @@
 - (YouWenBottomButtonView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[YouWenBottomButtonView alloc] init];
+        //是自己的问题
         if ([self.isSelf integerValue]) {
             _bottomView.label1.text = @"点赞";
             _bottomView.label2.text = @"评论";
             [_bottomView.btn1 addTarget:self action:@selector(upvote) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView.btn2 addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
+            if (self.is_upvote) {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+            } else {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+            }
         } else {
             _bottomView.label1.text = @"点赞";
             _bottomView.label2.text = @"评论";
             [_bottomView.btn1 addTarget:self action:@selector(upvote) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView.btn2 addTarget:self action:@selector(addComment) forControlEvents:UIControlEventTouchUpInside];
+            if (self.is_upvote) {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+            } else {
+                _bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+            }
         }
     }
     
@@ -80,13 +92,8 @@
 }
 
 - (void)upvote {
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *stuNum = [user objectForKey:@"stuNum"];
-    NSString *idNum = [user objectForKey:@"idNum"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    NSString *upvoteUrl  = UPVOTEURL;
-//    NSString *cancelUpvoteUrl = CANCELUPVOTEURL;
     NSString *url = [NSString string];
     if (self.is_upvote) {
         url = CANCELUPVOTEURL;
@@ -94,18 +101,19 @@
         url = UPVOTEURL;
     }
     NSDictionary *parameters = @{
-                                 @"stuNum":stuNum,
-                                 @"idNum":idNum,
+                                 @"stuNum":[UserDefaultTool getStuNum],
+                                 @"idNum":[UserDefaultTool getIdNum],
                                  @"answer_id":self.answer_id
                                  };
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        //更改点赞图片
-//        if (self.is_upvote) {
-//            self.bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
-//        } else {
-//            self.bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
-//        }
+       //更改点赞图片
+        if (self.is_upvote) {
+            self.bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+        } else {
+            self.bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+        }
+        self.is_upvote = !self.is_upvote;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
     }];
@@ -299,6 +307,8 @@
             cell.nickname.text = self.answerCommentModelArr[row].nickname;
             cell.avatarImageView.contentMode = UIViewContentModeScaleToFill;
             [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.answerCommentModelArr[row].avatarUrlStr]];
+            cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2.0;
+            cell.imageView.clipsToBounds = YES;
             cell.dateLabel.text = self.answerCommentModelArr[row].date;
             cell.contentLabel.text = self.answerCommentModelArr[row].content;
             

@@ -20,20 +20,21 @@
 #import "TransparentView.h"
 #import "ReportViewController.h"
 
-#define UPVOTEURL @"https://hongyan.cqupt.edu.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
-#define CANCELUPVOTEURL @"https://hongyan.cqupt.edu.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
+#define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
+#define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
+#define QUESTIONSINFO @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getDetailedInfo"
 
-@interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView>
+@interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic) YouWenQuestionDetailModel *detailQuestionModel;
-@property (nonatomic, strong) NSMutableArray <YouWenAnswerDetailModel *>*answerModelArr;
+@property (nonatomic, strong) NSMutableArray <YouWenAnswerDetailModel *> *answerModelArr;
 @property (nonatomic, strong) YouWenDetailHeadView *headView;
 @property (nonatomic, strong) YouWenBottomButtonView * bottomView;
 
+
 @end
 
-static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getDetailedInfo";
 
 @implementation YouWenDetailViewController
 - (void)viewDidLoad {
@@ -64,10 +65,6 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     return _bottomView;
 }
 
-- (void)reply {
-    YouWenWriteAnswerViewController *VC = [[YouWenWriteAnswerViewController alloc] init];
-    [self.navigationController pushViewController:VC animated:YES];
-}
 
 - (void)addBottomView {
     [self.view addSubview:self.bottomView];
@@ -87,6 +84,7 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
+
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     
@@ -97,72 +95,63 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *identify = @"YouWenDetailCell";
     
-    YouWenDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-    
-        cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
-        if (self.answerModelArr.count > 0) {
-            NSInteger index = indexPath.row;
-            [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
-            cell.avatar.contentMode = UIViewContentModeScaleAspectFill;
-            cell.avatar.layer.cornerRadius = cell.avatar.layer.bounds.size.width/2.5;
-            cell.avatar.layer.masksToBounds = YES;
+//    YouWenDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
+//
+//        cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
+    YouWenDetailCell *cell;
+    if (self.answerModelArr.count > 0) {
+        NSInteger index = indexPath.row;
+        
+        //有图的cell
+        if (self.answerModelArr[index].photoUrlArr.count > 0) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"YouWenDetailCellFirst"];
             
-            if ([self.answerModelArr[index].gender isEqualToString:@"女"]) {
-                cell.genderImageView.image = [UIImage imageNamed:@"女"];
-            } else {
-                cell.genderImageView.image = [UIImage imageNamed:@"男"];
+            if (!cell) {
+                cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YouWenDetailCellFirst"];
             }
-            cell.commentImageView.image = [UIImage imageNamed:@"评论"];
-            if (self.answerModelArr[index].is_adopted) {
-                cell.upvoteImageView.image = [UIImage imageNamed:@"已点赞图标"];
-            } else {
-                cell.upvoteImageView.image = [UIImage imageNamed:@"未点赞图标"];
-            }
-            cell.upvoteImageView.userInteractionEnabled = YES;
-            cell.upvoteImageView.tag = [self.answerModelArr[index].answer_id integerValue];
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(upvote:)];
-            [cell.upvoteImageView addGestureRecognizer:tap];
             
-            cell.nickname.text = self.answerModelArr[index].nickname;
-            cell.descriptionLabel.text = self.answerModelArr[index].content;
-            cell.timeLabel.text = self.answerModelArr[index].timeStr;
-            cell.upvoteNumLabel.text = self.answerModelArr[index].upvoteNum;
-            cell.commentNumLabel.text = self.answerModelArr[index].commentNum;
-            
-            if (self.answerModelArr[index].photoUrlArr == nil) {
-                cell.imageView1.hidden = YES;
-                cell.imageView2.hidden = YES;
-//                cell.imageView2.height = 0;
-//                cell.imageView1.height = 0;
-                [cell.imageView1 mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.height.mas_equalTo(@0);
-                }];
-                [cell.imageView2 mas_updateConstraints:^(MASConstraintMaker *make) {
-                    make.height.mas_equalTo(@0);
-                }];
-                
-                //问题
-//                [cell.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//                    make.bottom.equalTo(cell.timeLabel.mas_bottom).offset(20);
-//                }];
-//                [cell.contentView updateConstraintsIfNeeded];
-                [cell.imageView1 updateConstraintsIfNeeded];
-                [cell.imageView2 updateConstraintsIfNeeded];
-            } else {
             NSArray *picArr = [NSArray arrayWithObjects:cell.imageView1, cell.imageView2, nil];
-                for (int i = 0; i < self.answerModelArr[index].photoUrlArr.count; i++) {
-                    UIImageView *temp = picArr[i];
-                    [temp sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].photoUrlArr[i]] placeholderImage:nil];
-                }
-                
-                [cell mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.bottom.equalTo(cell.imageView1.mas_bottom).offset(20);
-                }];
-                [cell updateConstraintsIfNeeded];
+            for (int i = 0; i < self.answerModelArr[index].photoUrlArr.count; i++) {
+                UIImageView *temp = picArr[i];
+                [temp sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].photoUrlArr[i]] placeholderImage:nil];
             }
+        } else {
+            //没图的cell
+            cell = [tableView dequeueReusableCellWithIdentifier:@"YouWenDetailCellSecond"];
             
-            
+            if (!cell) {
+                cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YouWenDetailCellSecond"];
+            }
         }
+        
+        [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
+        cell.avatar.contentMode = UIViewContentModeScaleAspectFill;
+        cell.avatar.layer.cornerRadius = cell.avatar.layer.bounds.size.width/2.0;
+        cell.avatar.layer.masksToBounds = YES;
+        
+        if ([self.answerModelArr[index].gender isEqualToString:@"女"]) {
+            cell.genderImageView.image = [UIImage imageNamed:@"女"];
+        } else {
+            cell.genderImageView.image = [UIImage imageNamed:@"男"];
+        }
+        cell.commentImageView.image = [UIImage imageNamed:@"评论"];
+        if (self.answerModelArr[index].is_adopted) {
+            cell.upvoteImageView.image = [UIImage imageNamed:@"已点赞图标"];
+        } else {
+            cell.upvoteImageView.image = [UIImage imageNamed:@"未点赞图标"];
+        }
+        cell.upvoteImageView.userInteractionEnabled = YES;
+        cell.upvoteImageView.tag = [self.answerModelArr[index].answer_id integerValue];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(upvote:)];
+        [cell.upvoteImageView addGestureRecognizer:tap];
+        
+        cell.nickname.text = self.answerModelArr[index].nickname;
+        cell.descriptionLabel.text = self.answerModelArr[index].content;
+        cell.timeLabel.text = self.answerModelArr[index].timeStr;
+        cell.upvoteNumLabel.text = self.answerModelArr[index].upvoteNum;
+        cell.commentNumLabel.text = self.answerModelArr[index].commentNum;
+
+    }
         
     
     return cell;
@@ -193,7 +182,8 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     AnswerDetailViewController *vc = [[AnswerDetailViewController alloc] init];
     vc.answer_id = self.answerModelArr[indexPath.row].answer_id;
-    vc.model = self.detailQuestionModel;
+    vc.model = self.answerModelArr[indexPath.row];
+    vc.questionTitle = self.questionTitle;
     vc.isSelf = self.detailQuestionModel.isSelf;
     vc.is_upvote = self.answerModelArr[indexPath.row].is_adopted;
     [self.navigationController pushViewController:vc animated:YES];
@@ -281,11 +271,11 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     NSDictionary *parameters = @{
                                  @"stuNum":[UserDefaultTool getStuNum],
                                  @"idNum":[UserDefaultTool getIdNum],
-                                 @"question_id":@"7"
+                                 @"question_id":self.question_id
                                  };
     
 
-    [manager POST:netUrl parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager POST:QUESTIONSINFO parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if (responseObject) {
             self.detailQuestionModel = [[YouWenQuestionDetailModel alloc] initWithDic:responseObject[@"data"]];
             
@@ -303,6 +293,13 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     }];
 }
 
+
+- (void)reply {
+    YouWenWriteAnswerViewController *VC = [[YouWenWriteAnswerViewController alloc] init];
+    VC.delegate = self;
+    VC.question_id = self.question_id;
+    [self.navigationController pushViewController:VC animated:YES];
+}
 
 
 - (void)upvote:(UITapGestureRecognizer *)sender{
@@ -358,7 +355,9 @@ static const NSString *netUrl = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/i
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
 
-
+- (void)reload {
+    [self.tableView reloadData];
+}
 /*
 #pragma mark - Navigation
 

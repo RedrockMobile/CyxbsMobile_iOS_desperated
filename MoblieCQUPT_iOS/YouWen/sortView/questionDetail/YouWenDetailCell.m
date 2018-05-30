@@ -19,7 +19,11 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil] firstObject];
+        if ([reuseIdentifier isEqualToString:@"YouWenDetailCellFirst"]) {
+            self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil] firstObject];
+        } else {
+            self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil] lastObject];
+        }
         self.genderImageView.contentMode = UIViewContentModeScaleAspectFit;
         self.upvoteImageView.contentMode = UIViewContentModeScaleAspectFit;;
         self.commentImageView.contentMode = UIViewContentModeScaleAspectFit;

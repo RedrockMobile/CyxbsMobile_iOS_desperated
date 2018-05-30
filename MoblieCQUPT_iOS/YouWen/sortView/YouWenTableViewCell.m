@@ -39,7 +39,7 @@
 - (instancetype) initWithReuseIdentifier:(NSString *)identify WithDic:(NSDictionary *)dic{
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify]){
         self.dataDic = dic;
-        _qusId = [[NSString alloc] initWithString:dic[@"id"]];
+        _qusId = [[NSString alloc] initWithFormat:@"%@", dic[@"id"]];
         [self workOutSize];
         [self setUpCell];
         self.frame = CGRectMake(0, 0, SCREENWIDTH, 350);

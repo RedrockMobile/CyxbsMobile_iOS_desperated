@@ -10,4 +10,7 @@
 
 @interface YouWenDetailViewController : BaseViewController
 
+@property (nonatomic, strong) NSString *question_id;
+@property (copy, nonatomic) NSString *questionTitle;
+
 @end

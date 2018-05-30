@@ -142,6 +142,9 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
+    YouWenTableViewCell *cell = (YouWenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
+    detailVC.question_id = cell.qusId;
+//    detailVC.questionTitle = self.dataArray[indexPath.row][@"titile"];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.superController.navigationController pushViewController:detailVC animated:YES];
 }

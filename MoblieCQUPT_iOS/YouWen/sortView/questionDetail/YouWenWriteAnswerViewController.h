@@ -8,5 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+//刷新父VC，弹出提示框
+@protocol YouWenWriteAnswerDelegate <NSObject>
+- (void)reload;
+@end
+
 @interface YouWenWriteAnswerViewController : UIViewController
+
+@property (copy, nonatomic) NSString *question_id;
+@property (nonatomic, strong) id <YouWenWriteAnswerDelegate> delegate;
 @end
