@@ -408,7 +408,7 @@
 - (void)newView:(UIButton *)btn{
     UIViewController *view;
     if (btn.tag == 0) {
-        view = [[ReportViewController alloc] initWithId:_detailQuestionModel.questionID];
+        view = [[ReportViewController alloc] initWithId:_question_id];
     }
     else {
     }

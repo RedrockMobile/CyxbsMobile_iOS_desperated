@@ -11,6 +11,7 @@
 #import "UserDefaultTool.h"
 
 #define URL @"http://hongyan.cqupt.edu.cn/springtest/cyxbsMobile/index.php/QA/Integral/getDiscountBalance"
+#define CONTINUEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/getCheckInStatus"
 @implementation dailyAttendanceModel
 - (void)requestNewScore{
     HttpClient * client = [HttpClient defaultClient];
@@ -20,5 +21,16 @@
         [self.delegate getSore:str];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
     }];
+}
+- (void)requestContinueDay{
+    HttpClient * client = [HttpClient defaultClient];
+    [client requestWithPath:CONTINUEURL method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *data = responseObject[@"data"];
+        NSString *str = data[@"serialDays"];
+        NSNumber *che = data[@"checked"];
+        [self.delegate getSerialDay:str AndCheck:[che stringValue]];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    }];
+
 }
 @end

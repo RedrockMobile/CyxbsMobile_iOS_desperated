@@ -13,15 +13,16 @@
 #import "countdayView.h"
 #import "TransparentView.h"
 #import "attendanceMoreViewController.h"
+#import <UserNotifications/UserNotifications.h>
 
-@interface dailyAttendanceViewController ()<getSoreDelegate, getNewView>
+@interface dailyAttendanceViewController ()<dailyAttendanceDelegate, getNewView>
 @property (nonatomic, strong) UIView *mainView;
 @property (nonatomic, strong) UILabel *attendanceSoreLabel;
 @property (nonatomic, strong) rotaryCountView *continueView;
 @property (nonatomic, strong) UIButton *detailSoreBtn;
 @property (nonatomic, strong) UIButton *attendanceBotton;
 @property (nonatomic, strong) countdayView *lineView;
-
+@property (nonatomic, strong) NSString *check;
 @property (nonatomic, strong) UIView *cellView;
 @property (nonatomic, strong) UISwitch *remindMeSwitch;
 @end
@@ -30,9 +31,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     [self setUpMainView];
     [self setUpSwitch];
+    _check = [NSString string];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
 }
@@ -65,8 +68,10 @@
     [_mainView addSubview:headImageView];
     
     dailyAttendanceModel *dataModel = [[dailyAttendanceModel alloc] init];
-    [dataModel requestNewScore];
     dataModel.delegate = self;
+    [dataModel requestNewScore];
+    [dataModel requestContinueDay];
+    
     _attendanceSoreLabel = [[UILabel alloc] initWithFrame:CGRectMake(headImageView.right + 14, 32, 200, 14)];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:@"我的积分数："];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 6)];
@@ -118,12 +123,8 @@
         make.width.mas_offset(15);
         make.height.mas_offset(15);
     }];
-    
-    _lineView = [[countdayView alloc] initWithFrame:CGRectMake(0, _mainView.centerY, 305, 0.22 * 305)AndDay:@"2"];
-    _lineView.centerX = _mainView.width / 2;
-    [_mainView addSubview:_lineView];
-    
-    
+}
+- (void)setUpBotton{
     _attendanceBotton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_attendanceBotton setBackgroundImage:[UIImage imageNamed:@"AttendanceBotton"] forState:UIControlStateNormal];
     [_attendanceBotton addTarget:self action:@selector(attendance) forControlEvents:UIControlEventTouchUpInside];
@@ -131,14 +132,30 @@
     
     [_attendanceBotton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(_mainView);
-        make.top.mas_equalTo(_lineView.mas_bottom)
-        .mas_offset(30);
+        make.bottom.mas_equalTo(_mainView.mas_bottom)
+        .mas_offset(-50);
         make.width.mas_offset(190);
         make.height.mas_offset(50);
     }];
-    
-    
 }
+
+- (void)setUpLab{
+    UILabel *lab = [[UILabel alloc] init];
+    lab.text = @"今天打卡任务已完成，你还要忙着可爱";
+    lab.textColor = [UIColor grayColor];
+    lab.font = [UIFont fontWithName:@"Arial" size:13];
+    lab.textAlignment = NSTextAlignmentCenter;
+    [_mainView addSubview:lab];
+    
+    [lab mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.mas_equalTo(_mainView);
+        make.bottom.mas_equalTo(_mainView.mas_bottom)
+        .mas_offset(-50);
+        make.width.mas_offset(240);
+        make.height.mas_offset(15);
+    }];
+}
+
 
 - (void)setUpSwitch{
     _cellView = [[UIView alloc] initWithFrame:CGRectMake(18, _mainView.bottom + 14, SCREENWIDTH - 36, 56)];
@@ -159,8 +176,10 @@
     [_cellView addSubview:wordLabel];
     
     _remindMeSwitch = [[UISwitch alloc] init];
-    [_remindMeSwitch addTarget:self action:@selector(switchAction) forControlEvents:UIControlEventValueChanged];
+    [_remindMeSwitch addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
     _remindMeSwitch.onTintColor = [UIColor colorWithHexString:@"6D86E8"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _remindMeSwitch.on = [defaults boolForKey:@"checkInReminder"];
     [_cellView addSubview: _remindMeSwitch];
     
     [_remindMeSwitch mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -170,6 +189,14 @@
         make.height.mas_offset(20);
     }];
 }
+- (void)checkUp{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults boolForKey:@"checkInReminder"] && [_check isEqualToString:@"0"]) {
+        [self addNotification];
+    }
+    
+}
+//Model的协议
 - (void)getSore:(NSString *)sore{
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"我的积分数：%@", sore]];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 6)];
@@ -177,8 +204,48 @@
     _attendanceSoreLabel.attributedText = attributedString;
 }
 
-- (void)switchAction{
+- (void)getSerialDay:(NSString *)day AndCheck:(NSString *)check{
+    [_continueView selectNum:day];
+    _lineView = [[countdayView alloc] initWithFrame:CGRectMake(0, _mainView.centerY, 305, 0.22 * 305)AndDay:@"2"];
+    _lineView.centerX = _mainView.width / 2;
+    [_mainView addSubview:_lineView];
+    _check = check;
+    if ([check isEqualToString:@"0"]) {
+        [self setUpBotton];
+    }
+    else {
+        [self setUpLab];
+    }
+    [self checkUp];
+}
+
+- (void)switchAction:(UISwitch *)swi{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setBool:swi.on forKey:@"checkInReminder"];
+    if (swi.on){
+        [self addNotification];
+    }
+}
+
+- (void)addNotification{
+    UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
+    content.title = [NSString localizedUserNotificationStringForKey:@"签到" arguments:nil];
+    content.body = [NSString localizedUserNotificationStringForKey:@"记得签到哦"
+        arguments:nil];
     
+    content.sound = [UNNotificationSound defaultSound];
+
+    UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
+        triggerWithTimeInterval:24 * 60 * 60
+                        repeats:NO];
+    
+    UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
+                      content:content
+                      trigger:trigger];
+    
+    // Schedule the notification.
+    UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
+    [center addNotificationRequest:request withCompletionHandler:nil];
 }
 - (void)newView:(UIButton *)btn{
     attendanceMoreViewController *view;
@@ -198,9 +265,17 @@
     view.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
+
 - (void)attendance{
-    [_continueView selectNum:@"2"];
+    HttpClient * client = [HttpClient defaultClient];
+    [client requestWithPath:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/checkIn" method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        _attendanceBotton.hidden = YES;
+        [self setUpLab];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+    }];
+    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
