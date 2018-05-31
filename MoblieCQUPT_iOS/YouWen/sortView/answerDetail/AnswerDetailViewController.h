@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-//@class YouWenQuestionDetailModel;
 @class YouWenAnswerDetailModel;
 
 @interface AnswerDetailViewController : BaseViewController
+@property (nonatomic, strong) NSString *question_id;
 @property (nonatomic, strong) NSString *answer_id;
 @property (nonatomic, strong) NSString *isSelf;
 @property (nonatomic, strong) YouWenAnswerDetailModel *model;

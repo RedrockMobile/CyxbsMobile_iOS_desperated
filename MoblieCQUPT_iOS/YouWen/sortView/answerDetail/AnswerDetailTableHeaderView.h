@@ -18,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView1;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView2;
 @property (weak, nonatomic) IBOutlet UIView *bottomGrayView;
-
+@property (weak, nonatomic) IBOutlet UIButton *adoptBtn;
 - (instancetype) initWithModel:(YouWenAnswerDetailModel *)model;
 
 @end
