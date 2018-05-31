@@ -20,6 +20,7 @@
 #import "TransparentView.h"
 #import "ReportViewController.h"
 #import "YouWenAdoptFrame.h"
+#import "commitSuccessFrameView.h"
 
 #define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
 #define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) YouWenAdoptFrame *adoptFrame;
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSString *tempAnswerID;
+@property (nonatomic, strong) commitSuccessFrameView *commitSuccessFrame;
 
 @end
 
@@ -428,8 +430,24 @@
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
 
+
+#pragma mark - WriteAnswerVC Delegate
 - (void)reload {
+    self.commitSuccessFrame = [[commitSuccessFrameView alloc] init];
+    [self.commitSuccessFrame.confirmBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
+    [self.commitSuccessFrame show];
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
+    
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [self.commitSuccessFrame free];
+    });
     [self.tableView reloadData];
+}
+
+- (void) confirm {
+    if (self.commitSuccessFrame) {
+        [self.commitSuccessFrame free];
+    }
 }
 /*
 #pragma mark - Navigation

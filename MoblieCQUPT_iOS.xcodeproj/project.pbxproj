@@ -173,6 +173,8 @@
 		823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */; };
 		823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */; };
 		823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */; };
+		825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825186E120C071850022B5D3 /* commitSuccessFrameView.m */; };
+		825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */; };
 		82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A56320BEC93200BD628E /* YouWenAdoptFrame.m */; };
 		82A0A56620BEC94D00BD628E /* YouWenAdoptFrame.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A0A56520BEC94D00BD628E /* YouWenAdoptFrame.xib */; };
 		82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A56920BEFCF200BD628E /* LXAskViewController.m */; };
@@ -848,6 +850,9 @@
 		823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_notselect@3x.png"; sourceTree = "<group>"; };
 		823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@2x.png"; sourceTree = "<group>"; };
 		823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@3x.png"; sourceTree = "<group>"; };
+		825186E020C071850022B5D3 /* commitSuccessFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = commitSuccessFrameView.h; sourceTree = "<group>"; };
+		825186E120C071850022B5D3 /* commitSuccessFrameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = commitSuccessFrameView.m; sourceTree = "<group>"; };
+		825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commitSuccessFrameView.xib; sourceTree = "<group>"; };
 		82A0A56220BEC93200BD628E /* YouWenAdoptFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenAdoptFrame.h; sourceTree = "<group>"; };
 		82A0A56320BEC93200BD628E /* YouWenAdoptFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAdoptFrame.m; sourceTree = "<group>"; };
 		82A0A56520BEC94D00BD628E /* YouWenAdoptFrame.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouWenAdoptFrame.xib; sourceTree = "<group>"; };
@@ -1760,6 +1765,9 @@
 				6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */,
 				6E3AB62F20AD76A2003A65F5 /* 男@2x.png */,
 				6E3AB63020AD76A2003A65F5 /* 评论@2x.png */,
+				825186E020C071850022B5D3 /* commitSuccessFrameView.h */,
+				825186E120C071850022B5D3 /* commitSuccessFrameView.m */,
+				825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */,
 			);
 			path = questionDetail;
 			sourceTree = "<group>";
@@ -3412,6 +3420,7 @@
 				F238C64F1F3DA29700FEB179 /* tabbar_image_community@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
 				4A3A07D11FCC0EC700A50393 /* find_image_food@3x.png in Resources */,
+				825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
 				F242DE611EBCB2BC005AC411 /* AddRemindViewController.xib in Resources */,
@@ -3759,6 +3768,7 @@
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
+				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
 				F242DFB11EBD9E2C005AC411 /* LostModel.m in Sources */,
 				F26D96991F3C400F0063B024 /* MBInputView.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
