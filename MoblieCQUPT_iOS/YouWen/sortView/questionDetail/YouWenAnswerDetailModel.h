@@ -20,6 +20,7 @@
 @property (copy, nonatomic)  NSString *gender;
 @property (copy, nonatomic) NSString *answer_id;
 @property (copy, nonatomic) NSString *is_adopted;
+@property int is_praised;
 - (instancetype) initWithDic:(NSDictionary *)dic;
 
 @end

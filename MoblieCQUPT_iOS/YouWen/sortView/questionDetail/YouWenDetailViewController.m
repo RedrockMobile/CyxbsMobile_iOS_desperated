@@ -153,7 +153,7 @@
             cell.genderImageView.image = [UIImage imageNamed:@"男"];
         }
         cell.commentImageView.image = [UIImage imageNamed:@"评论"];
-        if ([self.answerModelArr[index].is_adopted intValue]) {
+        if (self.answerModelArr[index].is_praised) {
             cell.upvoteImageView.image = [UIImage imageNamed:@"已点赞图标"];
         } else {
             cell.upvoteImageView.image = [UIImage imageNamed:@"未点赞图标"];
@@ -204,7 +204,7 @@
     vc.questionTitle = self.questionTitle;
     vc.question_id = self.question_id;
     vc.isSelf = self.detailQuestionModel.isSelf;
-    vc.is_upvote = [self.answerModelArr[indexPath.row].is_adopted intValue];;
+    vc.is_upvote = self.answerModelArr[indexPath.row].is_praised;
     vc.isAdopt = self.answerModelArr[indexPath.row].is_adopted;
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -382,7 +382,7 @@
     YouWenAnswerDetailModel *model = [[YouWenAnswerDetailModel alloc] init];
     model = self.answerModelArr[indexpath.row];
 
-    if ([model.is_adopted intValue]) {
+    if (model.is_praised) {
         url = CANCELUPVOTEURL;
     } else {
         url = UPVOTEURL;
@@ -398,11 +398,7 @@
                                  };
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        if ([model.is_adopted intValue] == 0) {
-            model.is_adopted = @"1";
-        } else {
-            model.is_adopted = @"0";
-        }
+        model.is_praised = !model.is_praised;
         if ([url isEqualToString:UPVOTEURL]) {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] + 1];
         } else {
