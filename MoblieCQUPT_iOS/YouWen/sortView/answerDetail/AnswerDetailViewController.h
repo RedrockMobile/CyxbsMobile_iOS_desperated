@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSString *question_id;
 @property (nonatomic, strong) NSString *answer_id;
 @property (nonatomic, strong) NSString *isSelf;
+@property (nonatomic, strong) NSString *isAdopt;
 @property (nonatomic, strong) YouWenAnswerDetailModel *model;
 @property (copy, nonatomic) NSString *questionTitle;
 @property (nonatomic) int is_upvote;

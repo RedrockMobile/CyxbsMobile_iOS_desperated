@@ -131,7 +131,12 @@
         if (self.isSelf) {
             cell.adoptBtn.hidden = NO;
             self.tempAnswerID = self.answerModelArr[indexPath.row].answer_id;
-            [cell.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
+            if ([self.answerModelArr[indexPath.row].is_adopted isEqualToString:@"0"]) {
+                [cell.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                [cell.adoptBtn setTitle:@"已解决" forState:UIControlStateNormal];
+            }
+            
         } else {
             cell.adoptBtn.hidden = YES;
         }
@@ -148,7 +153,7 @@
             cell.genderImageView.image = [UIImage imageNamed:@"男"];
         }
         cell.commentImageView.image = [UIImage imageNamed:@"评论"];
-        if (self.answerModelArr[index].is_adopted) {
+        if ([self.answerModelArr[index].is_adopted intValue]) {
             cell.upvoteImageView.image = [UIImage imageNamed:@"已点赞图标"];
         } else {
             cell.upvoteImageView.image = [UIImage imageNamed:@"未点赞图标"];
@@ -199,7 +204,8 @@
     vc.questionTitle = self.questionTitle;
     vc.question_id = self.question_id;
     vc.isSelf = self.detailQuestionModel.isSelf;
-    vc.is_upvote = self.answerModelArr[indexPath.row].is_adopted;
+    vc.is_upvote = [self.answerModelArr[indexPath.row].is_adopted intValue];;
+    vc.isAdopt = self.answerModelArr[indexPath.row].is_adopted;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -296,6 +302,7 @@
         [self.hud hide:YES afterDelay:1.5];
         
         [self.adoptFrame free];
+        [self.tableView reloadData];
     } WithFailureBlock:^{
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -375,7 +382,7 @@
     YouWenAnswerDetailModel *model = [[YouWenAnswerDetailModel alloc] init];
     model = self.answerModelArr[indexpath.row];
 
-    if (model.is_adopted) {
+    if ([model.is_adopted intValue]) {
         url = CANCELUPVOTEURL;
     } else {
         url = UPVOTEURL;
@@ -391,7 +398,11 @@
                                  };
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        model.is_adopted = !model.is_adopted;
+        if ([model.is_adopted intValue] == 0) {
+            model.is_adopted = @"1";
+        } else {
+            model.is_adopted = @"0";
+        }
         if ([url isEqualToString:UPVOTEURL]) {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] + 1];
         } else {

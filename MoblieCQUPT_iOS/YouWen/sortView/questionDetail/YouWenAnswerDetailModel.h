@@ -19,7 +19,7 @@
 @property (copy, nonatomic)  NSString *upvoteNum;
 @property (copy, nonatomic)  NSString *gender;
 @property (copy, nonatomic) NSString *answer_id;
-@property int is_adopted;
+@property (copy, nonatomic) NSString *is_adopted;
 - (instancetype) initWithDic:(NSDictionary *)dic;
 
 @end

@@ -166,8 +166,10 @@
        //更改点赞图片
         if (self.is_upvote) {
             self.bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+            self.bottomView.label2.text = @"点赞";
         } else {
             self.bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+            self.bottomView.label1.text = @"已点赞";
         }
         self.is_upvote = !self.is_upvote;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

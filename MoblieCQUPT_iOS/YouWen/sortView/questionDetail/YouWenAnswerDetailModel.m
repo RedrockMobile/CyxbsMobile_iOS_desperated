@@ -29,7 +29,7 @@
     self.upvoteNum = dic[@"praise_num"];
     self.commentNum = dic[@"comment_num"];
     self.answer_id = dic[@"id"];
-    self.is_adopted = [dic[@"is_adopted"] intValue];
+    self.is_adopted = dic[@"is_adopted"];
     
     if ([dic[@"photo_url"] count] != 0) {
         self.photoUrlArr = [NSMutableArray array];
