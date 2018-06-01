@@ -10,6 +10,6 @@
 
 @interface LXAskViewController : BaseViewController
 
-@property BOOL *isAsk;
+@property BOOL isAsk;
 
 @end

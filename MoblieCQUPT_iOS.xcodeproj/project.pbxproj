@@ -1827,13 +1827,12 @@
 		82A0A56720BEFCD300BD628E /* AskAndHelp */ = {
 			isa = PBXGroup;
 			children = (
-				82A0A57820BF111D00BD628E /* Help */,
-				82A0A57720BF111200BD628E /* Ask */,
+				82A0A57720BF111200BD628E /* AskAndHelp */,
 			);
 			path = AskAndHelp;
 			sourceTree = "<group>";
 		};
-		82A0A57720BF111200BD628E /* Ask */ = {
+		82A0A57720BF111200BD628E /* AskAndHelp */ = {
 			isa = PBXGroup;
 			children = (
 				82A0A56820BEFCF200BD628E /* LXAskViewController.h */,
@@ -1846,14 +1845,7 @@
 				82A0A57220BEFFC800BD628E /* LXAskTableViewCell.m */,
 				82A0A57320BEFFC800BD628E /* LXAskTableViewCell.xib */,
 			);
-			path = Ask;
-			sourceTree = "<group>";
-		};
-		82A0A57820BF111D00BD628E /* Help */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Help;
+			path = AskAndHelp;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
