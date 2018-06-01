@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *upvoteImageView;
 @property (weak, nonatomic) IBOutlet UILabel *upvoteNumLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
+@property (weak, nonatomic) IBOutlet UIButton *adoptBtn;
 
 @end

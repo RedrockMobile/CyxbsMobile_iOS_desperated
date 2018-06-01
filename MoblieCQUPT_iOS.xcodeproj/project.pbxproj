@@ -176,6 +176,15 @@
 		823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */; };
 		823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */; };
 		823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */; };
+		825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */ = {isa = PBXBuildFile; fileRef = 825186E120C071850022B5D3 /* commitSuccessFrameView.m */; };
+		825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */; };
+		82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A56320BEC93200BD628E /* YouWenAdoptFrame.m */; };
+		82A0A56620BEC94D00BD628E /* YouWenAdoptFrame.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A0A56520BEC94D00BD628E /* YouWenAdoptFrame.xib */; };
+		82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A56920BEFCF200BD628E /* LXAskViewController.m */; };
+		82A0A56D20BEFD7700BD628E /* LXAskDeatilViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A56C20BEFD7700BD628E /* LXAskDeatilViewController.m */; };
+		82A0A57020BEFF2000BD628E /* LXAskDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A56F20BEFF2000BD628E /* LXAskDetailModel.m */; };
+		82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82A0A57220BEFFC800BD628E /* LXAskTableViewCell.m */; };
+		82A0A57520BEFFC800BD628E /* LXAskTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A0A57320BEFFC800BD628E /* LXAskTableViewCell.xib */; };
 		82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */; };
 		82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */; };
 		82D685641F6AC381004A5C7D /* extend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685621F6AC381004A5C7D /* extend@2x.png */; };
@@ -849,6 +858,21 @@
 		823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_notselect@3x.png"; sourceTree = "<group>"; };
 		823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@2x.png"; sourceTree = "<group>"; };
 		823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@3x.png"; sourceTree = "<group>"; };
+		825186E020C071850022B5D3 /* commitSuccessFrameView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = commitSuccessFrameView.h; sourceTree = "<group>"; };
+		825186E120C071850022B5D3 /* commitSuccessFrameView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = commitSuccessFrameView.m; sourceTree = "<group>"; };
+		825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = commitSuccessFrameView.xib; sourceTree = "<group>"; };
+		82A0A56220BEC93200BD628E /* YouWenAdoptFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenAdoptFrame.h; sourceTree = "<group>"; };
+		82A0A56320BEC93200BD628E /* YouWenAdoptFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAdoptFrame.m; sourceTree = "<group>"; };
+		82A0A56520BEC94D00BD628E /* YouWenAdoptFrame.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YouWenAdoptFrame.xib; sourceTree = "<group>"; };
+		82A0A56820BEFCF200BD628E /* LXAskViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXAskViewController.h; sourceTree = "<group>"; };
+		82A0A56920BEFCF200BD628E /* LXAskViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXAskViewController.m; sourceTree = "<group>"; };
+		82A0A56B20BEFD7700BD628E /* LXAskDeatilViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXAskDeatilViewController.h; sourceTree = "<group>"; };
+		82A0A56C20BEFD7700BD628E /* LXAskDeatilViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXAskDeatilViewController.m; sourceTree = "<group>"; };
+		82A0A56E20BEFF2000BD628E /* LXAskDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXAskDetailModel.h; sourceTree = "<group>"; };
+		82A0A56F20BEFF2000BD628E /* LXAskDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXAskDetailModel.m; sourceTree = "<group>"; };
+		82A0A57120BEFFC800BD628E /* LXAskTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXAskTableViewCell.h; sourceTree = "<group>"; };
+		82A0A57220BEFFC800BD628E /* LXAskTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXAskTableViewCell.m; sourceTree = "<group>"; };
+		82A0A57320BEFFC800BD628E /* LXAskTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LXAskTableViewCell.xib; sourceTree = "<group>"; };
 		82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
 		82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@3x.png"; sourceTree = "<group>"; };
 		82D685621F6AC381004A5C7D /* extend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extend@2x.png"; sourceTree = "<group>"; };
@@ -1704,6 +1728,9 @@
 				6E3AB60B20AD76A2003A65F5 /* AnswerDetailTableViewCell.h */,
 				6E3AB60F20AD76A2003A65F5 /* AnswerDetailTableViewCell.m */,
 				6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */,
+				82A0A56220BEC93200BD628E /* YouWenAdoptFrame.h */,
+				82A0A56320BEC93200BD628E /* YouWenAdoptFrame.m */,
+				82A0A56520BEC94D00BD628E /* YouWenAdoptFrame.xib */,
 			);
 			path = answerDetail;
 			sourceTree = "<group>";
@@ -1746,6 +1773,9 @@
 				6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */,
 				6E3AB62F20AD76A2003A65F5 /* 男@2x.png */,
 				6E3AB63020AD76A2003A65F5 /* 评论@2x.png */,
+				825186E020C071850022B5D3 /* commitSuccessFrameView.h */,
+				825186E120C071850022B5D3 /* commitSuccessFrameView.m */,
+				825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */,
 			);
 			path = questionDetail;
 			sourceTree = "<group>";
@@ -1805,6 +1835,38 @@
 			children = (
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		82A0A56720BEFCD300BD628E /* AskAndHelp */ = {
+			isa = PBXGroup;
+			children = (
+				82A0A57820BF111D00BD628E /* Help */,
+				82A0A57720BF111200BD628E /* Ask */,
+			);
+			path = AskAndHelp;
+			sourceTree = "<group>";
+		};
+		82A0A57720BF111200BD628E /* Ask */ = {
+			isa = PBXGroup;
+			children = (
+				82A0A56820BEFCF200BD628E /* LXAskViewController.h */,
+				82A0A56920BEFCF200BD628E /* LXAskViewController.m */,
+				82A0A56B20BEFD7700BD628E /* LXAskDeatilViewController.h */,
+				82A0A56C20BEFD7700BD628E /* LXAskDeatilViewController.m */,
+				82A0A56E20BEFF2000BD628E /* LXAskDetailModel.h */,
+				82A0A56F20BEFF2000BD628E /* LXAskDetailModel.m */,
+				82A0A57120BEFFC800BD628E /* LXAskTableViewCell.h */,
+				82A0A57220BEFFC800BD628E /* LXAskTableViewCell.m */,
+				82A0A57320BEFFC800BD628E /* LXAskTableViewCell.xib */,
+			);
+			path = Ask;
+			sourceTree = "<group>";
+		};
+		82A0A57820BF111D00BD628E /* Help */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -2446,6 +2508,7 @@
 		F242DC8C1EBCB2BB005AC411 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				82A0A56720BEFCD300BD628E /* AskAndHelp */,
 				6E1A3A3920B72199002D62FC /* shop */,
 				6E1A3A3520B71DE6002D62FC /* drafts */,
 				6E3AB65620AED319003A65F5 /* dailyAttendance */,
@@ -3370,6 +3433,7 @@
 				F238C64F1F3DA29700FEB179 /* tabbar_image_community@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
 				4A3A07D11FCC0EC700A50393 /* find_image_food@3x.png in Resources */,
+				825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
 				F242DE611EBCB2BC005AC411 /* AddRemindViewController.xib in Resources */,
@@ -3431,6 +3495,7 @@
 				9630E4AB1FAF07D200874EB9 /* login_number@2x.png in Resources */,
 				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
 				F26D96821F3C400F0063B024 /* icon_share_wechatTimeLine@2x.png in Resources */,
+				82A0A56620BEC94D00BD628E /* YouWenAdoptFrame.xib in Resources */,
 				F26D967E1F3C400F0063B024 /* icon_share_qq@3x.png in Resources */,
 				F200271A1F405B8500360991 /* remind_image_remind@2x.png in Resources */,
 				F242DEA81EBCB2BC005AC411 /* 编辑箭头@2x.png in Resources */,
@@ -3485,6 +3550,7 @@
 				F200271B1F405B8500360991 /* remind_image_remind@3x.png in Resources */,
 				F20026E21F4020FA00360991 /* mine_image_edit@3x.png in Resources */,
 				823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */,
+				82A0A57520BEFFC800BD628E /* LXAskTableViewCell.xib in Resources */,
 				4A3A07EC1FCC0EC700A50393 /* lost_image_lackplace@2x.png in Resources */,
 				9630E4A51FAF07D200874EB9 /* login_back@2x.png in Resources */,
 				F242DE871EBCB2BC005AC411 /* 周数@3x.png in Resources */,
@@ -3677,6 +3743,7 @@
 				F242DDAD1EBCB2BB005AC411 /* InstallBuildTableViewCell.m in Sources */,
 				F2A92CFB1F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m in Sources */,
 				F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */,
+				82A0A57020BEFF2000BD628E /* LXAskDetailModel.m in Sources */,
 				F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */,
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
 				6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */,
@@ -3700,6 +3767,7 @@
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
+				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
@@ -3714,6 +3782,7 @@
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
+				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
 				F242DFB11EBD9E2C005AC411 /* LostModel.m in Sources */,
 				F26D96991F3C400F0063B024 /* MBInputView.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
@@ -3745,18 +3814,24 @@
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
+<<<<<<< HEAD
 				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
+=======
+				82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */,
+>>>>>>> RedrockMobile/develop
 				F20026ED1F40336E00360991 /* MapViewController.m in Sources */,
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
+				82A0A56D20BEFD7700BD628E /* LXAskDeatilViewController.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
+				82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */,
 				6E3AB64220AD76A3003A65F5 /* YouWenDetailHeadView.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */,

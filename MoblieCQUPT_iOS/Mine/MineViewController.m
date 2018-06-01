@@ -16,7 +16,9 @@
 #import "MyInfoModel.h"
 #import "draftsViewController.h"
 #import "SettingViewController.h"
+#import "LXAskViewController.h"
 #import <sys/utsname.h>
+
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) NSArray <NSArray *> *cellDicArray;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
@@ -65,7 +67,7 @@
                 @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
     NSArray *array2 = @[
                 @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
-                @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"ExamTotalViewController"},
+                @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"LXAskViewController"},
                 @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"QueryLoginViewController"},
                 @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"draftsViewController"}];
     NSArray *array3 = @[
