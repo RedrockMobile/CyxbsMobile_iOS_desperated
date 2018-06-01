@@ -24,7 +24,7 @@
     return self;
 }
 - (void)selectDay:(NSString *)day{
-    NSUInteger num = [day integerValue] - 2;
+    NSInteger num = [day integerValue] - 2;
     for (int i = 0; i <= 4;  i++ ) {
         UIImageView *imgV = _bluePoint[i];
         UILabel *dayL = _dayLabel[i];
