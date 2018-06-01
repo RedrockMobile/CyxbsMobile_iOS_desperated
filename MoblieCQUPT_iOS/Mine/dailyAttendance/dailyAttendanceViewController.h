@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface dailyAttendanceViewController : UIViewController
+@interface dailyAttendanceViewController : BaseViewController
 
 @end

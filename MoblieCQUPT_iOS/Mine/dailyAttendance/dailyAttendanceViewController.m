@@ -14,6 +14,7 @@
 #import "TransparentView.h"
 #import "attendanceMoreViewController.h"
 #import <UserNotifications/UserNotifications.h>
+#import "dailyAttendanceDetailViewController.h"
 
 @interface dailyAttendanceViewController ()<dailyAttendanceDelegate, getNewView>
 @property (nonatomic, strong) UIView *mainView;
@@ -22,17 +23,20 @@
 @property (nonatomic, strong) UIButton *detailSoreBtn;
 @property (nonatomic, strong) UIButton *attendanceBotton;
 @property (nonatomic, strong) countdayView *lineView;
-@property (nonatomic, strong) NSString *check;
 @property (nonatomic, strong) UIView *cellView;
+@property (nonatomic, strong) UIImage *headImage;
 @property (nonatomic, strong) UISwitch *remindMeSwitch;
+@property (nonatomic, strong) NSString *sore;
+@property (nonatomic, strong) NSString *check;
+@property (nonatomic, assign) NSInteger continueday;
 @end
 
 @implementation dailyAttendanceViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     [self setUpMainView];
     [self setUpSwitch];
     _check = [NSString string];
@@ -61,9 +65,11 @@
     MyInfoModel *model = [MyInfoModel getMyInfo];
     if (model.photo_thumbnail_src == nil){
         headImageView.image = [UIImage imageNamed:@"headImage"];
+        _headImage = [UIImage imageNamed:@"headImage"];
     }
     else {
         headImageView.image = model.photo_thumbnail_src;
+        _headImage = model.photo_thumbnail_src;
     }
     [_mainView addSubview:headImageView];
     
@@ -82,7 +88,7 @@
     [_detailSoreBtn setTitle:@"积分明细" forState:UIControlStateNormal];
     _detailSoreBtn.titleLabel.font = [UIFont fontWithName:@"Arial" size:14];
     [_detailSoreBtn setTitleColor:[UIColor colorWithHexString:@"6D86E8"] forState:UIControlStateNormal];
-    [_detailSoreBtn addTarget:self action:@selector(detailSoreBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_detailSoreBtn addTarget:self action:@selector(detailSore) forControlEvents:UIControlEventTouchUpInside];
     [_mainView addSubview:_detailSoreBtn];
     [_detailSoreBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top
@@ -198,6 +204,7 @@
 }
 //Model的协议
 - (void)getSore:(NSString *)sore{
+    _sore = sore;
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"我的积分数：%@", sore]];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor blackColor] range:NSMakeRange(0, 6)];
     [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"6D86E8"] range:NSMakeRange(6, sore.length)];
@@ -206,7 +213,8 @@
 
 - (void)getSerialDay:(NSString *)day AndCheck:(NSString *)check{
     [_continueView selectNum:day];
-    _lineView = [[countdayView alloc] initWithFrame:CGRectMake(0, _mainView.centerY, 305, 0.22 * 305)AndDay:@"2"];
+    _lineView = [[countdayView alloc] initWithFrame:CGRectMake(0, _mainView.centerY, 305, 0.22 * 305)AndDay:day];
+    _continueday = [day intValue];
     _lineView.centerX = _mainView.width / 2;
     [_mainView addSubview:_lineView];
     _check = check;
@@ -217,6 +225,11 @@
         [self setUpLab];
     }
     [self checkUp];
+}
+
+- (void)detailSore{
+    dailyAttendanceDetailViewController *view = [[dailyAttendanceDetailViewController alloc] initWithImage:_headImage AndSore:_sore];
+    [self.navigationController pushViewController:view animated:YES];
 }
 
 - (void)switchAction:(UISwitch *)swi{
@@ -271,6 +284,8 @@
     [client requestWithPath:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/checkIn" method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         _attendanceBotton.hidden = YES;
         [self setUpLab];
+        _continueday ++;
+        [_lineView selectDay: [NSString stringWithFormat:@"%ld", (long)_continueday]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
     }];
     

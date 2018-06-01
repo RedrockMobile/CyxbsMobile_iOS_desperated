@@ -17,6 +17,7 @@
 
 - (id)initWithStr:(NSString *)str{
     if (self = [super init]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
         _textStr = [[NSString alloc] initWithString:str];
         self.view.backgroundColor = RGBColor(246, 246, 246, 1);
     }

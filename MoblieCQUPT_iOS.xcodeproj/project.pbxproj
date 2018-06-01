@@ -101,6 +101,9 @@
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
 		6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A3A3720B71E0B002D62FC /* draftsViewController.m */; };
 		6E1A3A3C20B721B4002D62FC /* shopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A3A3B20B721B4002D62FC /* shopViewController.m */; };
+		6E1F465E20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1F465D20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m */; };
+		6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1F466320C1557000B0F36F /* dailyAttendanceCell.m */; };
+		6E1F466620C1557000B0F36F /* dailyAttendanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */; };
 		6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E31E40B2081DA0E00649463 /* YouWenAddModel.m */; };
 		6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E339D9D20B55EF4006F3999 /* attendanceMoreViewController.m */; };
 		6E3AB63520AD76A3003A65F5 /* AnswerDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */; };
@@ -747,6 +750,11 @@
 		6E1A3A3720B71E0B002D62FC /* draftsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = draftsViewController.m; sourceTree = "<group>"; };
 		6E1A3A3A20B721B4002D62FC /* shopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shopViewController.h; sourceTree = "<group>"; };
 		6E1A3A3B20B721B4002D62FC /* shopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shopViewController.m; sourceTree = "<group>"; };
+		6E1F465C20C13F1D00B0F36F /* dailyAttendanceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dailyAttendanceDetailViewController.h; sourceTree = "<group>"; };
+		6E1F465D20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dailyAttendanceDetailViewController.m; sourceTree = "<group>"; };
+		6E1F466220C1557000B0F36F /* dailyAttendanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dailyAttendanceCell.h; sourceTree = "<group>"; };
+		6E1F466320C1557000B0F36F /* dailyAttendanceCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dailyAttendanceCell.m; sourceTree = "<group>"; };
+		6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = dailyAttendanceCell.xib; sourceTree = "<group>"; };
 		6E31E40A2081DA0E00649463 /* YouWenAddModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenAddModel.h; sourceTree = "<group>"; };
 		6E31E40B2081DA0E00649463 /* YouWenAddModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddModel.m; sourceTree = "<group>"; };
 		6E339D9C20B55EF4006F3999 /* attendanceMoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = attendanceMoreViewController.h; sourceTree = "<group>"; };
@@ -1786,6 +1794,11 @@
 				6E3AB66D20B068DB003A65F5 /* countdayView.xib */,
 				6E339D9C20B55EF4006F3999 /* attendanceMoreViewController.h */,
 				6E339D9D20B55EF4006F3999 /* attendanceMoreViewController.m */,
+				6E1F465C20C13F1D00B0F36F /* dailyAttendanceDetailViewController.h */,
+				6E1F465D20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m */,
+				6E1F466220C1557000B0F36F /* dailyAttendanceCell.h */,
+				6E1F466320C1557000B0F36F /* dailyAttendanceCell.m */,
+				6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */,
 			);
 			path = dailyAttendance;
 			sourceTree = "<group>";
@@ -3583,6 +3596,7 @@
 				F20026EE1F40336E00360991 /* MapViewController.xib in Resources */,
 				F242DEAB1EBCB2BC005AC411 /* 老师@3x.png in Resources */,
 				6E3AB64320AD76A3003A65F5 /* 已点赞图标@3x.png in Resources */,
+				6E1F466620C1557000B0F36F /* dailyAttendanceCell.xib in Resources */,
 				F27A93441F4ABC32009860C3 /* remind_image_editing@3x.png in Resources */,
 				F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */,
 				823D41681F6407D300C99D9B /* icon_upvote_outside_selected@2x.png in Resources */,
@@ -3775,6 +3789,7 @@
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
 				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				6E3AB65B20AED319003A65F5 /* dailyAttendanceModel.m in Sources */,
+				6E1F465E20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m in Sources */,
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
 				F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */,
@@ -3799,6 +3814,7 @@
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
+				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
 				82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */,
 				F20026ED1F40336E00360991 /* MapViewController.m in Sources */,
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
@@ -4145,7 +4161,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
+					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
 				);
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
@@ -4186,7 +4202,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/MoblieCQUPT_iOS/SDK/UMAnalytics_Sdk_3.5.10",
+					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
 				);
 				New_Setting = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
