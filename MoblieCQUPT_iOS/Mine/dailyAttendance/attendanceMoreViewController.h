@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface attendanceMoreViewController : UIViewController
+@interface attendanceMoreViewController : BaseViewController
 - (id)initWithStr:(NSString *)str;
 @end
