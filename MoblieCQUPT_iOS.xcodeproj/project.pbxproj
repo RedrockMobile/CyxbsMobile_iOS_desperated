@@ -3814,11 +3814,10 @@
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
-<<<<<<< HEAD
 				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
-=======
 				82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */,
->>>>>>> RedrockMobile/develop
+				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
+				82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */,
 				F20026ED1F40336E00360991 /* MapViewController.m in Sources */,
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
