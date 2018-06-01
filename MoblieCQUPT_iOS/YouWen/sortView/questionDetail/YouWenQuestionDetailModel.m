@@ -28,7 +28,7 @@
     self.nickName = dic[@"questioner_nickname"];
     self.avatar = dic[@"questioner_photo_thumbnail_src"];
     self.gender = dic[@"questioner_gender"];
-    self.isSelf = dic[@"is_self"];
+    self.isSelf = [NSString stringWithFormat:@"%@", dic[@"is_self"]];
     for (NSString *url in dic[@"photo_urls"]) {
         [self.picArr addObject:url];
     }

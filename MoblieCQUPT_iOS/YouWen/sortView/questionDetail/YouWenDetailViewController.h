@@ -12,5 +12,6 @@
 
 @property (nonatomic, strong) NSString *question_id;
 @property (copy, nonatomic) NSString *questionTitle;
+@property (copy, nonatomic) NSString *isSelf;
 
 @end

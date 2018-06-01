@@ -12,15 +12,16 @@
 #import "AnswerCommentModel.h"
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
-//#import "YouWenQuestionDetailModel.h"
 #import "YouWenAnswerDetailModel.h"
 #import "YouWenBottomButtonView.h"
 #import "LXDetailCommentView.h"
 #import "MBCommunityHandle.h"
+#import "YouWenAdoptFrame.h"
 
 #define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
 #define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
 #define COMMENTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/remark"
+#define ADOPTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/adopt"
 @interface AnswerDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -31,9 +32,11 @@
 @property (nonatomic, strong) UIWindow *window;
 @property (strong, nonatomic) UIView *coverGrayView;
 @property (strong, nonatomic) MBProgressHUD *hud;
+@property (strong, nonatomic) YouWenAdoptFrame *adoptFrame;
 @end
 
 @implementation AnswerDetailViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,7 +44,15 @@
     [self addBottomView];
     [self.view addSubview:self.tableview];
     self.tableHeaderView = [[AnswerDetailTableHeaderView alloc] initWithModel:self.model];
+    self.tableHeaderView.titleLabel.text = self.questionTitle;
+    if ([_isSelf isEqualToString:@"0"]) {
+        self.tableHeaderView.adoptBtn.hidden = YES;
+    } else {
+        [self.tableHeaderView.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
+    }
+    [self.tableview.tableHeaderView layoutIfNeeded];
     self.tableview.tableHeaderView = self.tableHeaderView;
+    
     self.answerCommentModelArr = [NSMutableArray array];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -67,6 +78,8 @@
             } else {
                 _bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
             }
+            
+            
         } else {
             _bottomView.label1.text = @"点赞";
             _bottomView.label2.text = @"评论";
@@ -77,11 +90,55 @@
             } else {
                 _bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
             }
+            
         }
     }
     
     return _bottomView;
 }
+
+
+//采纳答案
+- (void)adopt {
+    //弹出提示框
+    self.adoptFrame = [YouWenAdoptFrame init];
+    [self.adoptFrame show];
+    [self.adoptFrame.confirmBtn addTarget:self action:@selector(confirmAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+    [self.adoptFrame.cancelBtn addTarget:self action:@selector(cancelAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+- (void)confirmAdoptAnswer {
+    NSDictionary *parameter = @{
+                               @"stuNum":[UserDefaultTool getStuNum],
+                               @"idNum":[UserDefaultTool getIdNum],
+                               @"answer_id":self.answer_id,
+                               @"question_id":self.question_id
+                               };
+    
+    _hud.labelText = @"...";
+    [NetWork NetRequestPOSTWithRequestURL:ADOPTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        NSLog(@"%@",returnValue);
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        self.hud.labelText = @"采纳成功";
+        [self.hud hide:YES afterDelay:1.5];
+        
+        [self.adoptFrame free];
+    } WithFailureBlock:^{
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        self.hud.labelText = @"网络错误";
+        [self.hud hide:YES afterDelay:1.5];
+    }];
+    
+}
+
+
+- (void)cancelAdoptAnswer {
+    [self.adoptFrame free];
+}
+
 
 - (void)addBottomView {
     [self.view addSubview:self.bottomView];
@@ -92,7 +149,6 @@
 }
 
 - (void)upvote {
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = [NSString string];
     if (self.is_upvote) {
@@ -110,8 +166,10 @@
        //更改点赞图片
         if (self.is_upvote) {
             self.bottomView.imageView1.image = [UIImage imageNamed:@"未点赞图标"];
+            self.bottomView.label2.text = @"点赞";
         } else {
             self.bottomView.imageView1.image = [UIImage imageNamed:@"已点赞图标"];
+            self.bottomView.label1.text = @"已点赞";
         }
         self.is_upvote = !self.is_upvote;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -265,6 +323,16 @@
             [self.answerCommentModelArr addObject:model];
         }
         
+        if (self.answerCommentModelArr.count == 0) {
+            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+            label.text = @"快来成为第一个帮助者吧～";
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [UIFont systemFontOfSize:14.0];
+            label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
+            [footerView addSubview:label];
+            _tableview.tableFooterView = footerView;
+        }
         [self.tableview reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);
@@ -282,14 +350,18 @@
         _tableview.delegate = self;
         _tableview.showsHorizontalScrollIndicator = NO;
         _tableview.showsVerticalScrollIndicator = NO;
+//        _tableview.estimatedRowHeight = 100;
+//        _tableview.estimatedSectionHeaderHeight = 100;
+//        _tableview.rowHeight = UITableViewAutomaticDimension;
+//        _tableview.sectionHeaderHeight = UITableViewAutomaticDimension;
+//        _tableview.tableHeaderView.height = UITableViewAutomaticDimension;
     }
     
     return _tableview;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    return 0.01f;
+    return 100;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -297,7 +369,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static const NSString *identify = @"AnswerDetailTableViewCell";
+    NSString *identify = @"AnswerDetailTableViewCell";
     AnswerDetailTableViewCell *cell = [self.tableview dequeueReusableCellWithIdentifier:identify];
     
     if (!cell) {
@@ -317,6 +389,10 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ;
 }
 
 
@@ -344,13 +420,9 @@
 //        label.textColor = [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1];
 //        return view;
 //    }
-//    
+//
 //    return 0;
 //}
-
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
-}
 
 
 

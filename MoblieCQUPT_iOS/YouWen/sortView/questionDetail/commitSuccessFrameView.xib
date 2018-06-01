@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="commitSuccessFrameView">
+            <rect key="frame" x="0.0" y="0.0" width="495" height="318"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提交成功！如果被采纳，会及时通知的。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OO7-7r-fE3">
+                    <rect key="frame" x="53" y="36" width="389" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.81996468321917804" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVY-t3-0a7">
+                    <rect key="frame" x="60" y="78" width="375" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="确定"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OO7-7r-fE3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="BVb-pZ-ATw"/>
+                <constraint firstItem="rVY-t3-0a7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="60" id="aq4-an-5dj"/>
+                <constraint firstAttribute="trailing" secondItem="OO7-7r-fE3" secondAttribute="trailing" constant="53" id="dgd-mg-Ei3"/>
+                <constraint firstItem="rVY-t3-0a7" firstAttribute="top" secondItem="OO7-7r-fE3" secondAttribute="bottom" constant="24" id="fuY-AM-opl"/>
+                <constraint firstAttribute="trailing" secondItem="rVY-t3-0a7" secondAttribute="trailing" constant="60" id="l9q-pS-rqb"/>
+                <constraint firstItem="OO7-7r-fE3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="53" id="yvu-q6-SWp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="confirmBtn" destination="rVY-t3-0a7" id="OKr-Qz-3v7"/>
+                <outlet property="contentLabel" destination="OO7-7r-fE3" id="Hba-Sb-tav"/>
+            </connections>
+            <point key="canvasLocation" x="93.5" y="80"/>
+        </view>
+    </objects>
+</document>

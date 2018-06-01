@@ -144,6 +144,8 @@
     YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
     YouWenTableViewCell *cell = (YouWenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     detailVC.question_id = cell.qusId;
+    //  小苟给我来一个isSelf string 和questionTitle string
+//    detailVC.isSelf =
 //    detailVC.questionTitle = self.dataArray[indexPath.row][@"titile"];
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.superController.navigationController pushViewController:detailVC animated:YES];

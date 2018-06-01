@@ -19,10 +19,13 @@
 #import "YouWenWriteAnswerViewController.h"
 #import "TransparentView.h"
 #import "ReportViewController.h"
+#import "YouWenAdoptFrame.h"
+#import "commitSuccessFrameView.h"
 
 #define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
 #define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
 #define QUESTIONSINFO @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getDetailedInfo"
+#define ADOPTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/adopt"
 
 @interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate>
 
@@ -31,7 +34,10 @@
 @property (nonatomic, strong) NSMutableArray <YouWenAnswerDetailModel *> *answerModelArr;
 @property (nonatomic, strong) YouWenDetailHeadView *headView;
 @property (nonatomic, strong) YouWenBottomButtonView * bottomView;
-
+@property (nonatomic, strong) YouWenAdoptFrame *adoptFrame;
+@property (nonatomic, strong) MBProgressHUD *hud;
+@property (nonatomic, strong) NSString *tempAnswerID;
+@property (nonatomic, strong) commitSuccessFrameView *commitSuccessFrame;
 
 @end
 
@@ -124,6 +130,20 @@
             }
         }
         
+        if (self.isSelf) {
+            cell.adoptBtn.hidden = NO;
+            self.tempAnswerID = self.answerModelArr[indexPath.row].answer_id;
+            if ([self.answerModelArr[indexPath.row].is_adopted isEqualToString:@"0"]) {
+                [cell.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                [cell.adoptBtn setTitle:@"已解决" forState:UIControlStateNormal];
+            }
+            
+        } else {
+            cell.adoptBtn.hidden = YES;
+        }
+        
+        [cell.extendBtn addTarget:self action:@selector(extend) forControlEvents:UIControlEventTouchUpInside];
         [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
         cell.avatar.contentMode = UIViewContentModeScaleAspectFill;
         cell.avatar.layer.cornerRadius = cell.avatar.layer.bounds.size.width/2.0;
@@ -135,7 +155,7 @@
             cell.genderImageView.image = [UIImage imageNamed:@"男"];
         }
         cell.commentImageView.image = [UIImage imageNamed:@"评论"];
-        if (self.answerModelArr[index].is_adopted) {
+        if (self.answerModelArr[index].is_praised) {
             cell.upvoteImageView.image = [UIImage imageNamed:@"已点赞图标"];
         } else {
             cell.upvoteImageView.image = [UIImage imageNamed:@"未点赞图标"];
@@ -184,8 +204,10 @@
     vc.answer_id = self.answerModelArr[indexPath.row].answer_id;
     vc.model = self.answerModelArr[indexPath.row];
     vc.questionTitle = self.questionTitle;
+    vc.question_id = self.question_id;
     vc.isSelf = self.detailQuestionModel.isSelf;
-    vc.is_upvote = self.answerModelArr[indexPath.row].is_adopted;
+    vc.is_upvote = self.answerModelArr[indexPath.row].is_praised;
+    vc.isAdopt = self.answerModelArr[indexPath.row].is_adopted;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -255,6 +277,48 @@
 
 
 #pragma mark - other
+//采纳答案
+- (void)adopt {
+    //弹出提示框
+    self.adoptFrame = [YouWenAdoptFrame init];
+    [self.adoptFrame show];
+    [self.adoptFrame.confirmBtn addTarget:self action:@selector(confirmAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+    [self.adoptFrame.cancelBtn addTarget:self action:@selector(cancelAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+}
+
+
+- (void)confirmAdoptAnswer {
+    NSDictionary *parameter = @{
+                                @"stuNum":[UserDefaultTool getStuNum],
+                                @"idNum":[UserDefaultTool getIdNum],
+                                @"answer_id":self.tempAnswerID,
+                                @"question_id":self.question_id
+                                };
+    
+    _hud.labelText = @"...";
+    [NetWork NetRequestPOSTWithRequestURL:ADOPTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+        NSLog(@"%@",returnValue);
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        self.hud.labelText = @"采纳成功";
+        [self.hud hide:YES afterDelay:1.5];
+        
+        [self.adoptFrame free];
+        [self.tableView reloadData];
+    } WithFailureBlock:^{
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.mode = MBProgressHUDModeText;
+        self.hud.labelText = @"网络错误";
+        [self.hud hide:YES afterDelay:1.5];
+    }];
+    
+}
+
+
+- (void)cancelAdoptAnswer {
+    [self.adoptFrame free];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -286,6 +350,16 @@
                 [self.answerModelArr addObject:model];
             }
             
+            if (self.answerModelArr.count == 0) {
+                UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+                label.text = @"快来成为第一个帮助者吧～";
+                label.textAlignment = NSTextAlignmentCenter;
+                label.font = [UIFont systemFontOfSize:14.0];
+                label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
+                [footerView addSubview:label];
+                _tableView.tableFooterView = footerView;
+            }
             [self.tableView reloadData];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -297,7 +371,8 @@
 - (void)reply {
     YouWenWriteAnswerViewController *VC = [[YouWenWriteAnswerViewController alloc] init];
     VC.delegate = self;
-    VC.question_id = self.question_id;
+    VC.question_id = @"183";
+//    VC.question_id = self.question_id;
     [self.navigationController pushViewController:VC animated:YES];
 }
 
@@ -309,7 +384,7 @@
     YouWenAnswerDetailModel *model = [[YouWenAnswerDetailModel alloc] init];
     model = self.answerModelArr[indexpath.row];
 
-    if (model.is_adopted) {
+    if (model.is_praised) {
         url = CANCELUPVOTEURL;
     } else {
         url = UPVOTEURL;
@@ -325,7 +400,7 @@
                                  };
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        model.is_adopted = !model.is_adopted;
+        model.is_praised = !model.is_praised;
         if ([url isEqualToString:UPVOTEURL]) {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] + 1];
         } else {
@@ -355,8 +430,24 @@
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
 
+
+#pragma mark - WriteAnswerVC Delegate
 - (void)reload {
+    self.commitSuccessFrame = [[commitSuccessFrameView alloc] init];
+    [self.commitSuccessFrame.confirmBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
+    [self.commitSuccessFrame show];
+    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
+    
+    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+        [self.commitSuccessFrame free];
+    });
     [self.tableView reloadData];
+}
+
+- (void) confirm {
+    if (self.commitSuccessFrame) {
+        [self.commitSuccessFrame free];
+    }
 }
 /*
 #pragma mark - Navigation
