@@ -32,8 +32,8 @@
         VC1.isAsk = YES;
         VC2.isAsk = YES;
     } else {
-        VC1.solvedProblem = @"adoptedAnswers";
-        VC2.solvedProblem = @"notAdoptedAnswers";
+        VC1.adoptedAnswers = @"adoptedAnswers";
+        VC2.adoptedAnswers = @"notAdoptedAnswers";
         VC1.title = @"已采纳";
         VC2.title = @"未采纳";
         VC1.isAsk = NO;
