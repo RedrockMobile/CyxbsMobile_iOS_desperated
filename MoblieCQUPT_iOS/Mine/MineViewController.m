@@ -145,6 +145,7 @@
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
     view.tintColor = RGBColor(246, 246, 246, 1);;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
     

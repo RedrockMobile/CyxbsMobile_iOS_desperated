@@ -18,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.draftTableView.backgroundColor = RGBColor(241, 241, 241, 1);
+    
     self.edgesForExtendedLayout = UIRectEdgeNone;
 //    UIImageView *emptyImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"drafts"]];
 //    emptyImage.contentMode = UIViewContentModeScaleAspectFit;
@@ -31,6 +31,7 @@
     _dataArray = [NSMutableArray array];
     
     _draftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+    _draftTableView.backgroundColor = RGBColor(241, 241, 241, 1);
     _draftTableView.delegate = self;
     _draftTableView.dataSource = self;
 //    _draftTableView.contentInset = UIEdgeInsetsMake(10, 10, 10, 10);
@@ -72,6 +73,20 @@
         //        删除单元格的某一行时，在用动画效果实现删除过程
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+}
+
+-(UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath API_AVAILABLE(ios(11.0)){
+    //删除
+    UIContextualAction *deleteRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
+//        [self.dataArray removeObjectAtIndex:indexPath.row];
+        completionHandler (YES);
+    }];
+    //所以图片在这个环境里都会变成白色，折中的办法
+    deleteRowAction.image = [UIImage imageNamed:@"draftDrop"];
+    deleteRowAction.backgroundColor = RGBColor(176, 176, 176, 1);
+    
+    UISwipeActionsConfiguration *config = [UISwipeActionsConfiguration configurationWithActions:@[deleteRowAction]];
+    return config;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
