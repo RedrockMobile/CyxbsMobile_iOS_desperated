@@ -36,6 +36,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (void)getState:(NSNotification *)notificatio{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     if ([notificatio.object isEqualToString:@"remindMeBeforeTime"]) {
@@ -54,6 +55,7 @@
         }
     }
 }
+
 - (void)getValue:(NSNotification *)notificatio{
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     if ([[notificatio.object substringWithRange:NSMakeRange(2, 2)] isEqualToString:@"分钟"]) {
@@ -67,6 +69,7 @@
         [self XIGAddRemindNotification:notificatio.object];
     }
 }
+
 #pragma mark 通知更改
 - (void)XIGAddRemindNotification:(NSString *)time{
     LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
@@ -78,6 +81,7 @@
     LessonRemindNotification *remindNotification = [[LessonRemindNotification alloc]init];
     [remindNotification deleteNotification];
 }
+
 #pragma mark tableView协议
 - (UIView *)tableView:(UITableView *)tableView
 viewForHeaderInSection:(NSInteger)section{
@@ -108,13 +112,16 @@ viewForHeaderInSection:(NSInteger)section{
     }
     return 0;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 2;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 2;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if ((indexPath.row == 1) &&(indexPath.section == 0||indexPath.section == 1)) {
@@ -174,6 +181,7 @@ viewForHeaderInSection:(NSInteger)section{
       }
 
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 72;
 }
