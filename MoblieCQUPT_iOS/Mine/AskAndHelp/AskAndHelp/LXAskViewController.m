@@ -21,12 +21,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    
     LXAskDeatilViewController *VC1 = [[LXAskDeatilViewController alloc] init];
     LXAskDeatilViewController *VC2 = [[LXAskDeatilViewController alloc] init];
-    VC1.solvedProblem = @"solvedProblem";
-    VC2.solvedProblem = @"notSolvedProblem";
-    VC1.title = @"已解决";
-    VC2.title = @"未解决";
+    if (self.isAsk) {
+        VC1.solvedProblem = @"solvedProblem";
+        VC2.solvedProblem = @"notSolvedProblem";
+        VC1.title = @"已解决";
+        VC2.title = @"未解决";
+        VC1.isAsk = YES;
+        VC2.isAsk = YES;
+    } else {
+        VC1.solvedProblem = @"adoptedAnswers";
+        VC2.solvedProblem = @"notAdoptedAnswers";
+        VC1.title = @"已采纳";
+        VC2.title = @"未采纳";
+        VC1.isAsk = NO;
+        VC2.isAsk = NO;
+    }
     NSArray *VCArray = @[VC1, VC2];
     self.segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) andControllers:VCArray];
     self.segmentView.eventDelegate = self;

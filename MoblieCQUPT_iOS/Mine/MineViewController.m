@@ -68,7 +68,7 @@
     NSArray *array2 = @[
                 @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
                 @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"LXAskViewController"},
-                @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"QueryLoginViewController"},
+                @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"LXHelpViewController"},
                 @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"draftsViewController"}];
     NSArray *array3 = @[
                 @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeViewController"}];
@@ -147,7 +147,11 @@
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
-    UIViewController *vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
+    
+    UIViewController *vc;
+    vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
+
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         if (indexPath.row == 1 || indexPath.row == 2 ||indexPath.row==5) {
@@ -164,6 +168,21 @@
             }
         }
     }
+    if ([className isEqualToString:@"LXAskViewController"]) {
+        LXAskViewController *vc = [[LXAskViewController alloc] init];
+        vc.isAsk = YES;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+        return;
+        } else if ([className isEqualToString:@"LXHelpViewController"]) {
+            LXAskViewController *vc = (LXAskViewController *)[[LXAskViewController alloc] init];
+            vc.isAsk = NO;
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+            vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+            return;
+        }
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];

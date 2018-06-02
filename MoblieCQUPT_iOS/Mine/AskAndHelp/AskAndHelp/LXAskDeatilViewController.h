@@ -10,6 +10,8 @@
 
 @interface LXAskDeatilViewController : BaseViewController
 
+@property BOOL isAsk;
 @property (copy, nonatomic) NSString *solvedProblem;
+@property (copy, nonatomic) NSString *adoptedAnswers;
 
 @end
