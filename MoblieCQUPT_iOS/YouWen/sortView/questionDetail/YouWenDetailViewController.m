@@ -38,6 +38,7 @@
 @property (nonatomic, strong) MBProgressHUD *hud;
 @property (nonatomic, strong) NSString *tempAnswerID;
 @property (nonatomic, strong) commitSuccessFrameView *commitSuccessFrame;
+@property (nonatomic, copy) NSString *isAdopted;
 
 @end
 
@@ -136,7 +137,7 @@
             if ([self.answerModelArr[indexPath.row].is_adopted isEqualToString:@"0"]) {
                 [cell.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
             } else {
-                [cell.adoptBtn setTitle:@"已解决" forState:UIControlStateNormal];
+                [cell.adoptBtn setTitle:@"已采纳" forState:UIControlStateNormal];
             }
             
         } else {
@@ -279,11 +280,15 @@
 #pragma mark - other
 //采纳答案
 - (void)adopt {
+    if ([self.isAdopted isEqualToString:@"1"]) {
+        return;
+    } else {
     //弹出提示框
-    self.adoptFrame = [YouWenAdoptFrame init];
-    [self.adoptFrame show];
-    [self.adoptFrame.confirmBtn addTarget:self action:@selector(confirmAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
-    [self.adoptFrame.cancelBtn addTarget:self action:@selector(cancelAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+        self.adoptFrame = [YouWenAdoptFrame init];
+        [self.adoptFrame show];
+        [self.adoptFrame.confirmBtn addTarget:self action:@selector(confirmAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+        [self.adoptFrame.cancelBtn addTarget:self action:@selector(cancelAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 
@@ -348,6 +353,9 @@
             for (NSDictionary *dic in responseObject[@"data"][@"answers"]) {
                 YouWenAnswerDetailModel *model = [[YouWenAnswerDetailModel alloc] initWithDic:dic];
                 [self.answerModelArr addObject:model];
+                if ([model.is_adopted isEqualToString:@"1"]) {
+                    self.isAdopted = @"1";
+                }
             }
             
             if (self.answerModelArr.count == 0) {
@@ -369,11 +377,16 @@
 
 
 - (void)reply {
-    YouWenWriteAnswerViewController *VC = [[YouWenWriteAnswerViewController alloc] init];
-    VC.delegate = self;
-    VC.question_id = @"183";
-//    VC.question_id = self.question_id;
-    [self.navigationController pushViewController:VC animated:YES];
+    if (self.isSelf) {
+        NSLog(@"是自己的问题 自己不能回答");
+        return;
+    } else {
+        YouWenWriteAnswerViewController *VC = [[YouWenWriteAnswerViewController alloc] init];
+        VC.delegate = self;
+//        VC.question_id = @"183";
+        VC.question_id = self.question_id;
+        [self.navigationController pushViewController:VC animated:YES];
+    }
 }
 
 

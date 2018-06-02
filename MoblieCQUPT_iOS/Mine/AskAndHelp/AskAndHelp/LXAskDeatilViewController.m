@@ -9,6 +9,7 @@
 #import "LXAskDeatilViewController.h"
 #import "LXAskTableViewCell.h"
 #import "LXAskDetailModel.h"
+#import "YouWenDetailViewController.h"
 #import <AFNetworking.h>
 
 #define ASKURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/ask"
@@ -37,7 +38,7 @@
             self.type = @"1";
         }
     } else {
-        if ([self.adoptedAnswers isEqualToString:@"adoptAnswer"]) {
+        if ([self.adoptedAnswers isEqualToString:@"adoptedAnswers"]) {
             //1是已采纳
             self.type = @"1";
         } else {
@@ -139,8 +140,12 @@
         _tableview = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
         _tableview.delegate = self;
         _tableview.dataSource = self;
+        _tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableview.showsVerticalScrollIndicator = NO;
         _tableview.showsHorizontalScrollIndicator = NO;
+//        UIView *footerView = [[UIView alloc] init];
+//        _tableview.tableFooterView = footerView;
+        _tableview.backgroundColor = [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1];
     }
     
     return _tableview;
@@ -154,7 +159,15 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 110/692.0 * ScreenHeight;
+    if (self.isAsk) {
+        if ([self.solvedProblem isEqualToString:@"solvedProblem"]) {
+            return 110/692.0 * ScreenHeight;
+        } else {
+            return 88/692.0 * ScreenHeight;
+        }
+    } else {
+        return 110/692.0 * ScreenHeight;
+    }
 }
 
 
@@ -164,9 +177,50 @@
     
     if (!cell) {
         cell = [[LXAskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        
+        if (self.isAsk) {
+            cell.quesLabel.text = self.askDetailModelArr[indexPath.row].askQuesStr;
+            cell.ansLabel.text = self.askDetailModelArr[indexPath.row].ansStr;
+            if ([self.solvedProblem isEqualToString:@"solvedProblem"]) {
+                //问一问已解决
+                cell.timeLabel.text = [NSString stringWithFormat:@"解决时间：%@", self.askDetailModelArr[indexPath.row].updatedTimeStr];
+            } else {
+                //未解决
+                cell.timeLabel.text = [NSString stringWithFormat:@"发布时间：%@", self.askDetailModelArr[indexPath.row].createdTimeStr];
+            }
+            
+        } else {
+            cell.quesLabel.text = self.askDetailModelArr[indexPath.row].helptitle;
+            cell.ansLabel.text = self.askDetailModelArr[indexPath.row].helpContent;
+            if ([self.adoptedAnswers isEqualToString:@"adoptedAnswers"]) {
+                //帮一帮已采纳
+                cell.timeLabel.text = [NSString stringWithFormat:@"采纳时间：%@", self.askDetailModelArr[indexPath.row].updatedTimeStr];
+            } else {
+                //未采纳
+                cell.timeLabel.text = [NSString stringWithFormat:@"发布时间：%@", self.askDetailModelArr[indexPath.row].createdTimeStr];
+            }
+        }
+        
     }
     
     return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+//    if (self.isAsk) {
+        YouWenDetailViewController *vc = [[YouWenDetailViewController alloc] init];
+        vc.question_id = self.askDetailModelArr[indexPath.row].quesID;
+        vc.isSelf = @"1";
+        vc.questionTitle = self.askDetailModelArr[indexPath.row].askQuesStr;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self presentViewController:vc animated:YES completion:^{
+            ;
+        }];
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
 }
 
 

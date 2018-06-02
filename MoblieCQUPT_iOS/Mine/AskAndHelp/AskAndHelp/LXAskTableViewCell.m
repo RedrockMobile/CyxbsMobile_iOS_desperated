@@ -19,6 +19,8 @@
     
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil] firstObject];
+        self.whiteBackgroundView.clipsToBounds = YES;
+        self.whiteBackgroundView.layer.cornerRadius = 6;
     }
     
     return self;

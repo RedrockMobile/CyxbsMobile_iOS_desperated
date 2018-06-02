@@ -10,10 +10,20 @@
 
 @interface LXAskDetailModel : NSObject
 
-@property (copy, nonatomic) NSString *quesStr;
+/*..
+ .有时间改成这种
+ .@property (copy, nonatomic) NSString *title;
+ .@property (copy, nonatomic) NSString *content;
+ .
+ .
+ */
+@property (copy, nonatomic) NSString *askQuesStr;
 @property (copy, nonatomic) NSString *ansStr;
-@property (copy, nonatomic) NSString *solveTimeStr;
+@property (copy, nonatomic) NSString *createdTimeStr;
 @property (copy, nonatomic) NSString *disapperTimeStr;
+@property (copy, nonatomic) NSString *updatedTimeStr;
+@property (copy, nonatomic) NSString *helpContent;
+@property (copy, nonatomic) NSString *helptitle;
 @property (copy, nonatomic) NSString *quesID;
 
 - (instancetype) initWithDic:(NSDictionary *)dic;
