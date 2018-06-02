@@ -176,14 +176,14 @@
         [self.navigationController pushViewController:vc animated:YES];
         vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
         return;
-        } else if ([className isEqualToString:@"LXHelpViewController"]) {
-            LXAskViewController *vc = (LXAskViewController *)[[LXAskViewController alloc] init];
-            vc.isAsk = NO;
-            vc.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:vc animated:YES];
-            vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
-            return;
-        }
+    } else if ([className isEqualToString:@"LXHelpViewController"]) {
+        LXAskViewController *vc = (LXAskViewController *)[[LXAskViewController alloc] init];
+        vc.isAsk = NO;
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+        vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
+        return;
+    }
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];

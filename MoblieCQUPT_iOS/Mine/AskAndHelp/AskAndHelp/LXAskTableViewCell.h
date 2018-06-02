@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *quesLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ansLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UIView *whiteBackgroundView;
 
 @end

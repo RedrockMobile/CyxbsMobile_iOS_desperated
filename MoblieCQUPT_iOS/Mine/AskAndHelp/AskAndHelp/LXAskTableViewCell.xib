@@ -78,6 +78,7 @@
                 <outlet property="ansLabel" destination="xTN-db-LwL" id="JrF-Lt-Ynb"/>
                 <outlet property="quesLabel" destination="6W9-7d-Ffr" id="mpt-Gc-Qqd"/>
                 <outlet property="timeLabel" destination="SGt-6z-VxR" id="2qr-l7-ztK"/>
+                <outlet property="whiteBackgroundView" destination="ELU-86-sJV" id="SJK-kZ-Q0j"/>
             </connections>
             <point key="canvasLocation" x="99.5" y="10.5"/>
         </tableViewCell>
