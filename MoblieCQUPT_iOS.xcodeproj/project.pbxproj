@@ -144,6 +144,7 @@
 		6E3AB65F20AFD7EE003A65F5 /* rotaryCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB65E20AFD7EE003A65F5 /* rotaryCountView.m */; };
 		6E3AB66520B06741003A65F5 /* countdayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB66420B06741003A65F5 /* countdayView.m */; };
 		6E3AB66E20B068DB003A65F5 /* countdayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB66D20B068DB003A65F5 /* countdayView.xib */; };
+		6E50123020C2523600613B13 /* draftsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E50122F20C2523600613B13 /* draftsTableViewCell.m */; };
 		6E5C09FD205EA5D800A73F64 /* YouWenSubjectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C09FC205EA5D800A73F64 /* YouWenSubjectView.m */; };
 		6E5C0AB420690E1200A73F64 /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C0AB320690E1200A73F64 /* myUILabel.m */; };
 		6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */; };
@@ -813,6 +814,8 @@
 		6E3AB66320B06741003A65F5 /* countdayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = countdayView.h; sourceTree = "<group>"; };
 		6E3AB66420B06741003A65F5 /* countdayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = countdayView.m; sourceTree = "<group>"; };
 		6E3AB66D20B068DB003A65F5 /* countdayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = countdayView.xib; sourceTree = "<group>"; };
+		6E50122E20C2523600613B13 /* draftsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = draftsTableViewCell.h; sourceTree = "<group>"; };
+		6E50122F20C2523600613B13 /* draftsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = draftsTableViewCell.m; sourceTree = "<group>"; };
 		6E5C09FB205EA5D800A73F64 /* YouWenSubjectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenSubjectView.h; sourceTree = "<group>"; };
 		6E5C09FC205EA5D800A73F64 /* YouWenSubjectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenSubjectView.m; sourceTree = "<group>"; };
 		6E5C0AB220690E1200A73F64 /* myUILabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myUILabel.h; sourceTree = "<group>"; };
@@ -1702,6 +1705,8 @@
 			children = (
 				6E1A3A3620B71E0B002D62FC /* draftsViewController.h */,
 				6E1A3A3720B71E0B002D62FC /* draftsViewController.m */,
+				6E50122E20C2523600613B13 /* draftsTableViewCell.h */,
+				6E50122F20C2523600613B13 /* draftsTableViewCell.m */,
 			);
 			path = drafts;
 			sourceTree = "<group>";
@@ -3816,8 +3821,6 @@
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
 				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
 				82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */,
-				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
-				82A0A56A20BEFCF200BD628E /* LXAskViewController.m in Sources */,
 				F20026ED1F40336E00360991 /* MapViewController.m in Sources */,
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
@@ -3849,6 +3852,7 @@
 				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
 				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,
+				6E50123020C2523600613B13 /* draftsTableViewCell.m in Sources */,
 				9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
