@@ -13,5 +13,6 @@
 @property BOOL isAsk;
 @property (copy, nonatomic) NSString *solvedProblem;
 @property (copy, nonatomic) NSString *adoptedAnswers;
+@property (strong, nonatomic) UINavigationController *parentVC;
 
 @end

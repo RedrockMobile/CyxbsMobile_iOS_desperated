@@ -24,6 +24,8 @@
     
     LXAskDeatilViewController *VC1 = [[LXAskDeatilViewController alloc] init];
     LXAskDeatilViewController *VC2 = [[LXAskDeatilViewController alloc] init];
+    [self addChildViewController:VC1];
+    [self addChildViewController:VC2];
     if (self.isAsk) {
         VC1.solvedProblem = @"solvedProblem";
         VC2.solvedProblem = @"notSolvedProblem";

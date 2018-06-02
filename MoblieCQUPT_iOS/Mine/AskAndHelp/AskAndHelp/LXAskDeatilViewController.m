@@ -210,17 +210,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-//    if (self.isAsk) {
-        YouWenDetailViewController *vc = [[YouWenDetailViewController alloc] init];
-        vc.question_id = self.askDetailModelArr[indexPath.row].quesID;
-        vc.isSelf = @"1";
-        vc.questionTitle = self.askDetailModelArr[indexPath.row].askQuesStr;
-        vc.hidesBottomBarWhenPushed = YES;
-        [self presentViewController:vc animated:YES completion:^{
-            ;
-        }];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+    YouWenDetailViewController *vc = [[YouWenDetailViewController alloc] init];
+    vc.question_id = self.askDetailModelArr[indexPath.row].quesID;
+    vc.isSelf = @"1";
+    vc.questionTitle = self.askDetailModelArr[indexPath.row].askQuesStr;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.parentViewController.navigationController pushViewController:vc animated:YES];
 }
 
 
