@@ -34,8 +34,6 @@
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.backgroundColor = [UIColor whiteColor];
         self.layer.cornerRadius = 5;
-        self.layer.borderWidth = 1;
-        self.layer.borderColor = [UIColor whiteColor].CGColor;
         self.layer.masksToBounds = YES;
         [self setUpLab:whether];
     }

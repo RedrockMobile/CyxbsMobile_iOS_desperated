@@ -285,6 +285,7 @@
         _attendanceBotton.hidden = YES;
         [self setUpLab];
         _continueday ++;
+        [_continueView selectNum:[NSString stringWithFormat:@"%ld", (long)_continueday]];
         [_lineView selectDay: [NSString stringWithFormat:@"%ld", (long)_continueday]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
     }];
