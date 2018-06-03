@@ -31,19 +31,19 @@
         UILabel *soreL = _soreLabel[i];
         
         
-        if (imgV.tag < num){
+        if (imgV.tag <= num){
             imgV.hidden = NO;
         }
         else {
             imgV.hidden = YES;
         }
-        if (dayL.tag < num){
+        if (dayL.tag <= num){
             dayL.textColor = [UIColor blackColor];
         }
         else {
             dayL.textColor = [UIColor grayColor];
         }
-        if (soreL.tag < num){
+        if (soreL.tag <= num){
             soreL.textColor = [UIColor blackColor];
         }
         else {

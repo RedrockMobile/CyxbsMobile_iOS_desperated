@@ -40,12 +40,15 @@
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify]){
         self.dataDic = dic;
         _qusId = [[NSString alloc] initWithFormat:@"%@", dic[@"id"]];
+        _title = [[NSString alloc] initWithFormat:@"%@", dic[@"title"]];
         [self workOutSize];
         [self setUpCell];
         self.frame = CGRectMake(0, 0, SCREENWIDTH, 350);
     }
     return self;
 }
+
+
 
 - (void)workOutSize{
     CGSize size = CGSizeMake(ScreenWidth - 50, 300);

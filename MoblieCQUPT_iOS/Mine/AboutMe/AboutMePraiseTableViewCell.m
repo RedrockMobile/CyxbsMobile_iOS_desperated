@@ -15,6 +15,13 @@
     // Initialization code
 }
 
+- (void)setFrame:(CGRect)frame{
+    frame.origin.x += 10;
+    frame.origin.y += 10;
+    frame.size.height -= 10;
+    frame.size.width -= 20;
+    [super setFrame:frame];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

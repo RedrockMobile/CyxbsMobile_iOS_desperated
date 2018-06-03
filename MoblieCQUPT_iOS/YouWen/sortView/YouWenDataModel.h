@@ -12,5 +12,6 @@
 - (instancetype)initWithStyle:(NSString *)style;
 - (void)newPage:(NSString *)page;
 - (void)newYWDate;
+
 @property (copy, nonatomic) NSArray *YWdataArray;
 @end
