@@ -11,6 +11,7 @@
 @implementation LXAskDetailModel
 
 - (instancetype) initWithDic:(NSDictionary *)dic {
+
     if (dic[@"title"]) {
         //问一问
         self.ansStr = dic[@"answer_content"];
