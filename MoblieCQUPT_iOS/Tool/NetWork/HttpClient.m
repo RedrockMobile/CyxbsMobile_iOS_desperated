@@ -54,7 +54,8 @@
         default:
             break;
     }
-
+    //超时时间30s
+    manager.requestSerializer.timeoutInterval = 30.0;
 }
 
 

@@ -13,6 +13,9 @@
 #import "YouWenAddViewController.h"
 #import "YouWenTopicView.h"
 #import "ReportViewController.h"
+#define  IPHONEX (ScreenWidth == 375.f && ScreenHeight == 812.f ? YES : NO)
+#define  TabbarSafeBottomMargin (IPHONEX ? 34.f : 0.f)
+
 @interface YouWenViewController ()<whatTopic>
 @property (strong, nonatomic) UIButton *askBtn;
 @end
@@ -21,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
     YouWenSortViewController *otherView = [[YouWenSortViewController alloc] initViewStyle:@"其他"];
@@ -33,11 +37,12 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 64, ScreenWidth, ScreenHeight - 64 - 48) andControllers:views];
+    SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) andControllers:views];
     [self.view addSubview:segView];
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
-    _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, ScreenHeight - TABBARHEIGHT - NVGBARHEIGHT - 18, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
+    _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
+    
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"inform"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];

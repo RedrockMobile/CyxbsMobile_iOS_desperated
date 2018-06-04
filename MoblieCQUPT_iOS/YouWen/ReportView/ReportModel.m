@@ -14,9 +14,9 @@
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString *userId = [userDefaults objectForKey:@"stuNum"];
     [client requestWithPath:REPORTURL method:HttpRequestPost parameters:@{@"type":_type, @"content":_content, @"user_id": userId,@"question_id":_qusId} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        
+        [self.delegate report:YES];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        [self.delegate report:NO];
     }];
 }
 @end
