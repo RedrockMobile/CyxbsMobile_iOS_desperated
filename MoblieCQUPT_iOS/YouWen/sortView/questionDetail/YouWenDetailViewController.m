@@ -144,7 +144,8 @@
             cell.adoptBtn.hidden = YES;
         }
         
-        [cell.extendBtn addTarget:self action:@selector(extend) forControlEvents:UIControlEventTouchUpInside];
+        objc_setAssociatedObject(cell.extendBtn, @"myBtn", indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [cell.extendBtn addTarget:self action:@selector(extendCell:) forControlEvents:UIControlEventTouchUpInside];
         [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
         cell.avatar.contentMode = UIViewContentModeScaleAspectFill;
         cell.avatar.layer.cornerRadius = cell.avatar.layer.bounds.size.width/2.0;
@@ -289,6 +290,12 @@
         [self.adoptFrame.confirmBtn addTarget:self action:@selector(confirmAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
         [self.adoptFrame.cancelBtn addTarget:self action:@selector(cancelAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
     }
+}
+
+
+- (void)extendCell:(UIButton *)sender {
+    NSIndexPath *indexPath = objc_getAssociatedObject(sender, @"myBtn");
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 

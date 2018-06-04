@@ -113,7 +113,7 @@
             self.askQuestionBtn = [[UIButton alloc] initWithFrame:CGRectMake((SCREENWIDTH-147)/2.0, 390, 147, 40)];
             if (self.isAsk) {
                 [self.askQuestionBtn setTitle:@"去提问" forState:UIControlStateNormal];
-                [self.askQuestionBtn addTarget:self action:@selector(askQuestion) forControlEvents:UIControlEventTouchUpInside];
+                [self.askQuestionBtn addTarget:self action:@selector(replyQuestion) forControlEvents:UIControlEventTouchUpInside];
             } else {
                 [self.askQuestionBtn setTitle:@"去回答" forState:UIControlStateNormal];
                 [self.askQuestionBtn addTarget:self action:@selector(askQuestion) forControlEvents:UIControlEventTouchUpInside];
@@ -132,6 +132,10 @@
 
 
 - (void) askQuestion {
+    ;
+}
+
+- (void) replyQuestion {
     ;
 }
 
