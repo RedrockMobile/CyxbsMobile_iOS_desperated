@@ -33,10 +33,21 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier AndLab:(BOOL)whether{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         self.backgroundColor = [UIColor whiteColor];
+        self.layer.cornerRadius = 5;
+        self.layer.masksToBounds = YES;
         [self setUpLab:whether];
     }
     
     return self;
+}
+
+
+- (void)setFrame:(CGRect)frame{
+    frame.origin.x += 10;
+    frame.origin.y += 10;
+    frame.size.height -= 10;
+    frame.size.width -= 20;
+    [super setFrame:frame];
 }
 
 - (void)setUpLab:(BOOL)whether{

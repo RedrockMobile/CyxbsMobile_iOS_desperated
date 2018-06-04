@@ -181,7 +181,6 @@
     
     if (!cell) {
         cell = [[LXAskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-        
         if (self.isAsk) {
             cell.quesLabel.text = self.askDetailModelArr[indexPath.row].askQuesStr;
             cell.ansLabel.text = self.askDetailModelArr[indexPath.row].ansStr;
@@ -204,7 +203,6 @@
                 cell.timeLabel.text = [NSString stringWithFormat:@"发布时间：%@", self.askDetailModelArr[indexPath.row].createdTimeStr];
             }
         }
-        
     }
     
     return cell;
@@ -221,7 +219,6 @@
     vc.hidesBottomBarWhenPushed = YES;
     [self.parentViewController.navigationController pushViewController:vc animated:YES];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

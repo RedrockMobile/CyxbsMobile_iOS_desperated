@@ -53,14 +53,6 @@
         NSNotification *notification =[NSNotification notificationWithName:[NSString stringWithFormat: @"%@DataLoading", _modelStyle] object:nil userInfo:@{@"state":@"FAIL"}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }];
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    [manager POST:URL parameters:_YWPostDic success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        _YWdataArray = responseObject[@"data"];
-//        NSNotification *notification =[NSNotification notificationWithName:@"DataLoading" object:nil userInfo:@{@"state":@"YES"}];
-//        [[NSNotificationCenter defaultCenter] postNotification:notification ];
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSNotification *notification =[NSNotification notificationWithName:@"DataLoading" object:nil userInfo:@{@"state":@"NO"}];
-//        [[NSNotificationCenter defaultCenter] postNotification:notification ];
-//    }];
+
 }
 @end

@@ -10,6 +10,7 @@
 
 @interface LXAskDetailModel : NSObject
 
+
 /*..
  .有时间改成这种
  .@property (copy, nonatomic) NSString *title;
