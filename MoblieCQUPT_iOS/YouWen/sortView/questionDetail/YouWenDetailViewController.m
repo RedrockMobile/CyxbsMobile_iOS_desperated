@@ -144,6 +144,7 @@
             cell.adoptBtn.hidden = YES;
         }
         
+        //动态运行时绑定数据(传参数indexPath）
         objc_setAssociatedObject(cell.extendBtn, @"myBtn", indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [cell.extendBtn addTarget:self action:@selector(extendCell:) forControlEvents:UIControlEventTouchUpInside];
         [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
