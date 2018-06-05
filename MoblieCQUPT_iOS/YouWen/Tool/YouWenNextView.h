@@ -13,7 +13,7 @@
 - (void)sendInformation:(NSString *)inf;
 @end
 @interface YouWenNextView : TransparentView
-@property (nonatomic, weak) id <getInformation> delegate;
+@property (nonatomic, weak) id<getInformation> delegate;
 @property (nonatomic, strong) NSMutableString *inf;
 @property (nonatomic, strong) UIView *blackView;
 @property (nonatomic, strong) UIButton *confirBtn;

@@ -7,11 +7,14 @@
 //
 
 #import "YouWenTimeView.h"
+
+
 @interface YouWenTimeView ()<UIPickerViewDelegate, UIPickerViewDataSource>
 @property (copy, nonatomic) NSString *day;
 @property (copy, nonatomic) NSString *hour;
 @property (copy, nonatomic) NSString *minite;
 @property (copy, nonatomic) NSString *nowday;
+@property (strong, nonatomic) NSArray *nowtimeData;
 @end
 @implementation YouWenTimeView
 -(NSArray *)timeData
@@ -36,12 +39,23 @@
             NSString *nextDay = [formatter stringFromDate:[now initWithTimeInterval:interval * i sinceDate:now]];
             [day appendObject:nextDay];
         }
-        if (_timeData == nil) {
-            _timeData = @[day, hour, minute];
+        
+        NSMutableArray *nowHour = [NSMutableArray array];
+        formatter.dateFormat = @"HH时";
+        _nowday = [formatter stringFromDate:now].copy;
+        for (int i = 1; ; i ++){
+            NSString *nextHour = [formatter stringFromDate:[now initWithTimeInterval:60 * 60 * i sinceDate:now]];
+            if ([nextHour isEqualToString:@"00时"]) {
+                break;
+            }
+            [nowHour appendObject:nextHour];
         }
+        _timeData = @[day, nowHour, minute];
+        
     }
     return _timeData;
 }
+
 - (void)confirm{
     NSNotification *notification = [[NSNotification alloc] initWithName:@"timeNotifi" object:@{@"time":self.inf} userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
@@ -59,6 +73,7 @@
     [self.whiteView addSubview:_pickView];
     self.pickViewArray = self.timeData.mutableCopy;
 }
+
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view{
     UILabel* pickerLabel = (UILabel*)view;
     if (!pickerLabel){
@@ -105,6 +120,7 @@
     if (component == 0) {
         if (row == 0) {
             _day = _nowday;
+            
         }
         else{
             _day = items[row];

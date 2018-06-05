@@ -7,39 +7,60 @@
 //
 
 #import "YouWenSoreView.h"
-@interface YouWenSoreView()
+#import "dailyAttendanceModel.h"
+
+@interface YouWenSoreView()<dailyAttendanceDelegate>
 @property (strong, nonatomic) UILabel *soreLab;
 @property (strong, nonatomic) NSMutableArray *btnArray;
 @property (copy, nonatomic) NSString *sore;
+@property (strong, nonatomic) UILabel *restSore;
+@property (strong, nonatomic) UILabel *loadingLab;
+//这里用了签到请求的积分，懒
+@property (strong, nonatomic) dailyAttendanceModel *soreData;
 @end
 @implementation YouWenSoreView
 
 - (void)addDetail{
     [super addDetail];
     _btnArray = [NSMutableArray array];
-    UILabel *restSore = [[UILabel alloc] init];
-    restSore.textColor = [UIColor grayColor];
-    restSore.text = [NSString stringWithFormat:@"积分剩余:10"];
-    [self.whiteView addSubview:restSore];
-    [restSore mas_makeConstraints:^(MASConstraintMaker *make) {
+    _restSore = [[UILabel alloc] init];
+    _restSore.textColor = [UIColor grayColor];
+    _restSore.text = [NSString stringWithFormat:@"积分剩余:"];
+    [self.whiteView addSubview:_restSore];
+    [_restSore mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.blackView.mas_bottom).offset(18);
         make.left.mas_equalTo(self.whiteView).offset(16);
         make.height.mas_offset(12);
         make.width.mas_offset(100);
     }];
     
+    _soreData = [[dailyAttendanceModel alloc] init];
+    _soreData.delegate = self;
+    [_soreData requestNewScore];
+    
     _soreLab = [[UILabel alloc] init];
     _soreLab.font = [UIFont fontWithName:@"Arail" size:ZOOM(20)];
     _soreLab.textColor = [UIColor colorWithHexString:@"7195FA"];
     [self.whiteView addSubview:_soreLab];
     [_soreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(restSore.mas_bottom).offset(22);
+        make.top.mas_equalTo(_restSore.mas_bottom).offset(22);
         make.left.mas_equalTo(self.whiteView).offset(17);
         make.height.mas_offset(16);
         make.width.mas_offset(100);
     }];
     [_soreLab.superview layoutIfNeeded];
     
+    self.confirBtn.hidden = YES;
+    
+    _loadingLab = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH - 100)/ 2, (self.whiteView.height - 50)/ 2, 100, 50)];
+    _loadingLab.font = [UIFont fontWithName:@"Arial" size:15];
+    _loadingLab.text = @"正在加载....";
+    _loadingLab.textAlignment = NSTextAlignmentCenter;
+    [self.whiteView addSubview:_loadingLab];
+    
+}
+
+- (void)setBtnUp{
     UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(15, _soreLab.bottom, ScreenWidth - 30, 1)];
     blackView.backgroundColor = [UIColor grayColor];
     [self.whiteView addSubview:blackView];
@@ -56,10 +77,14 @@
         btn.frame = CGRectMake(16 + (width + 22)* i, blackView.bottom + 25, width, width);
         [btn addTarget:self action:@selector(selectSore:) forControlEvents:UIControlEventTouchUpInside];
         [self.whiteView addSubview:btn];
+        if ([_sore intValue] < [numArray[i] intValue]){
+            btn.userInteractionEnabled  = NO;
+        }
         [_btnArray addObject:btn];
     }
     
 }
+
 - (void)selectSore:(UIButton *)Ubtn{
     for (int i = 0; i < _btnArray.count; i ++) {
         UIButton *btn = _btnArray[i];
@@ -68,7 +93,29 @@
     Ubtn.selected = YES;
     _soreLab.text = [NSString stringWithFormat:@"%@积分", Ubtn.titleLabel.text];
     _sore = _soreLab.text;
+   
+    
 }
+
+- (void)getSore:(NSString *)sore{
+    if ([sore isEqualToString:@"NULL"]) {
+        _loadingLab.text = @"加载失败";
+        double delayInSeconds = 2.0;
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [self removeFromSuperview];
+        });
+        
+        
+    }
+    else{
+        self.confirBtn.hidden = NO;
+        _restSore.text = sore.copy;
+        [_loadingLab removeFromSuperview];
+        [self setBtnUp];
+    }
+}
+
 - (void)confirm{
     NSNotification *notification = [[NSNotification alloc]initWithName:@"soreNotifi" object:@{@"sore":self.sore} userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];

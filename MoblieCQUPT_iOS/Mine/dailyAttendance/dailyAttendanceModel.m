@@ -20,6 +20,7 @@
         NSString *str = [sore stringValue];
         [self.delegate getSore:str];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.delegate getSore:@"NULL"];
     }];
 }
 - (void)requestContinueDay{
@@ -30,6 +31,7 @@
         NSNumber *che = data[@"checked"];
         [self.delegate getSerialDay:str AndCheck:[che stringValue]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 
 }
