@@ -11,6 +11,7 @@
 #import "LXAskDetailModel.h"
 #import "YouWenDetailViewController.h"
 #import <AFNetworking.h>
+#import "YouWenViewController.h"
 
 #define ASKURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/ask"
 #define HELPURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/help"
@@ -116,7 +117,7 @@
                 [self.askQuestionBtn addTarget:self action:@selector(askQuestion) forControlEvents:UIControlEventTouchUpInside];
             } else {
                 [self.askQuestionBtn setTitle:@"去回答" forState:UIControlStateNormal];
-                [self.askQuestionBtn addTarget:self action:@selector(askQuestion) forControlEvents:UIControlEventTouchUpInside];
+                [self.askQuestionBtn addTarget:self action:@selector(replyQuestion) forControlEvents:UIControlEventTouchUpInside];
             }
             [self.askQuestionBtn setBackgroundColor:[UIColor colorWithRed:112/255.0 green:150/255.0 blue:249/255.0 alpha:1]];
             [self.view addSubview:self.askQuestionBtn];
@@ -126,13 +127,23 @@
         [self.tableview reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error:%@", error);
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"您的网络不给力!";
+        [hud hide:YES afterDelay:1];
     }];
     
 }
 
 
 - (void) askQuestion {
-    ;
+    [self.delegate enterYouWen];
+    [self.parentViewController.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) replyQuestion {
+    [self.delegate enterYouWen];
+    [self.parentViewController.navigationController popViewControllerAnimated:YES];
 }
 
 - (UITableView *)tableview {
@@ -208,17 +219,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-//    if (self.isAsk) {
-        YouWenDetailViewController *vc = [[YouWenDetailViewController alloc] init];
-        vc.question_id = self.askDetailModelArr[indexPath.row].quesID;
-        vc.isSelf = @"1";
-        vc.questionTitle = self.askDetailModelArr[indexPath.row].askQuesStr;
-        vc.hidesBottomBarWhenPushed = YES;
-        [self presentViewController:vc animated:YES completion:^{
-            ;
-        }];
-//        [self.navigationController pushViewController:vc animated:YES];
-//    }
+    YouWenDetailViewController *vc = [[YouWenDetailViewController alloc] init];
+    vc.question_id = self.askDetailModelArr[indexPath.row].quesID;
+    vc.isSelf = @"1";
+    vc.questionTitle = self.askDetailModelArr[indexPath.row].askQuesStr;
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.parentViewController.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

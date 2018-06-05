@@ -20,7 +20,10 @@
         self.contentLabel.text = model.content;
         self.dateLabel.text = model.timeStr;
         self.nicknameLabel.text = model.nickname;
-        [self layoutIfNeeded];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.avatarUrl]];
+        self.avatarImageView.image = [UIImage imageWithData:imageData];
+        self.avatarImageView.clipsToBounds = YES;
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width/2.0;
     }
     return self;
 }

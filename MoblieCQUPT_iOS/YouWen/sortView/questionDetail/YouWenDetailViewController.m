@@ -39,16 +39,14 @@
 @property (nonatomic, strong) NSString *tempAnswerID;
 @property (nonatomic, strong) commitSuccessFrameView *commitSuccessFrame;
 @property (nonatomic, copy) NSString *isAdopted;
-
 @end
-
 
 @implementation YouWenDetailViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self getData];
     [self addBottomView];
-    [self.view addSubview:self.tableView];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
 }
@@ -85,14 +83,14 @@
     if (!_tableView) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(self.view.origin.x, self.view.origin.y, self.view.size.width, self.view.size.height - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
         _tableView = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.showsVerticalScrollIndicator = NO;
         _tableView.showsHorizontalScrollIndicator = NO;
-
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.tableHeaderView = [self setTableHeaderView];
     }
     
     return _tableView;
@@ -144,7 +142,9 @@
             cell.adoptBtn.hidden = YES;
         }
         
-        [cell.extendBtn addTarget:self action:@selector(extend) forControlEvents:UIControlEventTouchUpInside];
+        //动态运行时绑定数据(传参数indexPath）
+        objc_setAssociatedObject(cell.extendBtn, @"myBtn", indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        [cell.extendBtn addTarget:self action:@selector(extendCell:) forControlEvents:UIControlEventTouchUpInside];
         [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
         cell.avatar.contentMode = UIViewContentModeScaleAspectFill;
         cell.avatar.layer.cornerRadius = cell.avatar.layer.bounds.size.width/2.0;
@@ -187,16 +187,12 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0 || section == 1) {
-        return 0;
-    } else {
-        return self.answerModelArr.count;
-    }
+    return self.answerModelArr.count;
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 1;
 }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -214,7 +210,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section {
-    return 0.01f;
+    return 20;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -222,60 +218,68 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    if (section == 0) {
-        if (self.detailQuestionModel) {
-            NSUInteger num = self.detailQuestionModel.picArr.count;
-            self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:num];
-            self.headView.titleLabel.text = self.detailQuestionModel.title;
-            self.headView.descriptionLabel.text = self.detailQuestionModel.descriptionStr;
-            self.headView.bottomView.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailQuestionModel.avatar]]];
-            self.headView.bottomView.nicknameLabel.text = self.detailQuestionModel.nickName;
-            self.headView.bottomView.timeLabel.text = self.detailQuestionModel.disappearTime;
-            self.headView.bottomView.rewardImageView.image = [UIImage imageNamed:@"积分按钮"];
-            self.headView.bottomView.rewardLabel.text = [NSString stringWithFormat:@"%d积分", [self.detailQuestionModel.reward intValue]];
-            [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:nil];
-            if ([self.detailQuestionModel.gender isEqualToString:@"女"] ) {
-                self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"女"];
-            } else {
-                self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"男"];
-            }
-            [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar]];
-            
-            NSArray *picArr = [NSArray arrayWithObjects:self.headView.imageview1, self.headView.imageview2, self.headView.imageview3, self.headView.imageview4, nil];
-            for (int i = 0; i < num; i++) {
-                UIImageView *temp = picArr[i];
-                [temp sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.picArr[i]] placeholderImage:nil];
-            }
-            return self.headView;
-        } else {
-            return [[UIView alloc] init];
-        }
-        
-    } else if (section == 1){
-        UIView *headerView = [[UIView alloc] init];
-        UILabel *numOfAns = [[UILabel alloc] init];
-        numOfAns.font = [UIFont systemFontOfSize:14.0];
-        numOfAns.textColor = [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1];
-        numOfAns.numberOfLines = 0;
-        [headerView addSubview:numOfAns];
-        [numOfAns mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(headerView).offset(10);
-            make.bottom.equalTo(headerView).offset(-10);
-            make.left.equalTo(headerView).offset(20);
-        }];
-        
-        if (self.answerModelArr) {
-            NSInteger num = self.answerModelArr.count;
-            numOfAns.text = [NSString stringWithFormat:@"%ld个回答", num];
-        }
-        
-        return headerView;
+    UIView *headerView = [[UIView alloc] init];
+    UILabel *numOfAns = [[UILabel alloc] init];
+    numOfAns.font = [UIFont systemFontOfSize:14.0];
+    numOfAns.textColor = [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1];
+    numOfAns.numberOfLines = 0;
+    [headerView addSubview:numOfAns];
+    [numOfAns mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(headerView).offset(10);
+        make.bottom.equalTo(headerView).offset(-10);
+        make.left.equalTo(headerView).offset(20);
+    }];
+
+    if (self.answerModelArr) {
+        NSInteger num = self.answerModelArr.count;
+        numOfAns.text = [NSString stringWithFormat:@"%ld个回答", num];
     }
-    
-    return [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 0.01f)];
+
+    return headerView;
+
 }
 
+- (YouWenDetailHeadView *)setTableHeaderView {
+    NSUInteger num = self.detailQuestionModel.picArr.count;
+    self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:num];
+    self.headView.titleLabel.text = self.detailQuestionModel.title;
+    self.headView.descriptionLabel.text = self.detailQuestionModel.descriptionStr;
+    self.headView.bottomView.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailQuestionModel.avatar]]];
+    self.headView.bottomView.nicknameLabel.text = self.detailQuestionModel.nickName;
+    self.headView.bottomView.timeLabel.text = self.detailQuestionModel.disappearTime;
+    self.headView.bottomView.rewardImageView.image = [UIImage imageNamed:@"积分按钮"];
+    self.headView.bottomView.rewardLabel.text = [NSString stringWithFormat:@"%d积分", [self.detailQuestionModel.reward intValue]];
+    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:nil];
+    if ([self.detailQuestionModel.gender isEqualToString:@"女"] ) {
+        self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"女"];
+    } else {
+        self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"男"];
+    }
+    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@""]];
+
+    NSArray *picArr = [NSArray arrayWithObjects:self.headView.imageview1, self.headView.imageview2, self.headView.imageview3, self.headView.imageview4, nil];
+    for (int i = 0; i < num; i++) {
+        UIImageView *temp = picArr[i];
+        [temp sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.picArr[i]] placeholderImage:nil];
+    }
+
+    for (UIView *subview in self.headView.subviews) {
+        if ([subview isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)subview;
+            label.numberOfLines = 0;
+            label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame);
+        }
+    }
+
+    [self.headView setNeedsLayout];
+    [self.headView layoutIfNeeded];
+    CGRect frame = self.headView.frame;
+    CGSize size = [self.headView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    frame.size = size;
+    self.headView.frame = frame;
+
+    return self.headView;
+}
 
 #pragma mark - other
 //采纳答案
@@ -284,11 +288,18 @@
         return;
     } else {
     //弹出提示框
-        self.adoptFrame = [YouWenAdoptFrame init];
+        self.adoptFrame = [[YouWenAdoptFrame alloc] init];
         [self.adoptFrame show];
         [self.adoptFrame.confirmBtn addTarget:self action:@selector(confirmAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
         [self.adoptFrame.cancelBtn addTarget:self action:@selector(cancelAdoptAnswer) forControlEvents:UIControlEventTouchUpInside];
+        [self.tableView reloadData];
     }
+}
+
+
+- (void)extendCell:(UIButton *)sender {
+    NSIndexPath *indexPath = objc_getAssociatedObject(sender, @"myBtn");
+    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
 
@@ -346,6 +357,7 @@
 
     [manager POST:QUESTIONSINFO parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if (responseObject) {
+            self.isSelf = responseObject[@"data"][@"is_self"];
             self.detailQuestionModel = [[YouWenQuestionDetailModel alloc] initWithDic:responseObject[@"data"]];
             
             self.answerModelArr = [NSMutableArray array];
@@ -368,7 +380,8 @@
                 [footerView addSubview:label];
                 _tableView.tableFooterView = footerView;
             }
-            [self.tableView reloadData];
+            
+            [self.view addSubview:self.tableView];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);

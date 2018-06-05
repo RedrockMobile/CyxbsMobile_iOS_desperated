@@ -10,7 +10,7 @@
 #import "SegmentView.h"
 #import "LXAskDeatilViewController.h"
 
-@interface LXAskViewController ()<SegmentViewDelegate>
+@interface LXAskViewController ()<SegmentViewDelegate, LXAskDeatilViewControllerDelegate>
 
 @property (nonatomic, strong) SegmentView *segmentView;
 
@@ -20,10 +20,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     
     LXAskDeatilViewController *VC1 = [[LXAskDeatilViewController alloc] init];
     LXAskDeatilViewController *VC2 = [[LXAskDeatilViewController alloc] init];
+    VC1.delegate = self;
+    VC2.delegate = self;
+    [self addChildViewController:VC1];
+    [self addChildViewController:VC2];
     if (self.isAsk) {
         VC1.solvedProblem = @"solvedProblem";
         VC2.solvedProblem = @"notSolvedProblem";
@@ -49,6 +55,9 @@
     ;
 }
 
+- (void) enterYouWen {
+    [self.delegate enterYouWen];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

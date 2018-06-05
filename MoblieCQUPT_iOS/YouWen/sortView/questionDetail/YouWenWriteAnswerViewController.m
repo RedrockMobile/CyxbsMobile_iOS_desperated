@@ -11,6 +11,7 @@
 #import <Masonry.h>
 
 #define ANSWERQUESTION @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/add"
+#define ANSWERQUESTIONPICTURES @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/uploadPicture"
 
 @interface YouWenWriteAnswerViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -18,6 +19,9 @@
 @property (strong, nonatomic) UIImageView *imageView1;
 @property (strong, nonatomic) UIImageView *imageView2;
 @property (strong, nonatomic) UILabel *placehoderLabel;
+@property (copy, nonatomic) NSString *answerID;
+@property int commitPicsNum;
+
 @end
 
 @implementation YouWenWriteAnswerViewController
@@ -26,14 +30,18 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     self.view.userInteractionEnabled = YES;
+    self.commitPicsNum = 0;
     [self setNav];
     [self setUI];
 }
 
 
 - (void)setNav {
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,30,30)];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.frame = CGRectMake(0,0,30,30);
+//    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(0,0,30,30)];
     [btn setTitle:@"提交" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont systemFontOfSize:15];
     [btn addTarget:self action:@selector(commitComment) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
     self.navigationItem.rightBarButtonItem = rightItem;
@@ -131,9 +139,11 @@
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (self.imageView1.tag == 0) {
         self.imageView1.image = image;
+        self.commitPicsNum += 1;
         self.imageView1.tag = 1;
     } else {
         self.imageView2.image = image;
+        self.commitPicsNum += 1;
         self.imageView2.tag = 1;
     }
     [picker dismissViewControllerAnimated:YES completion:^{
@@ -177,18 +187,55 @@
                                  @"stuNum":[UserDefaultTool getStuNum],
                                  @"idNum":[UserDefaultTool getIdNum],
                                  @"content":self.textView.text,
-                                 @"question":self.question_id
+                                 @"question_id":self.question_id
                                  };
     [manager POST:ANSWERQUESTION parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         //返回前一个界面，刷新，弹出提示框
         NSLog(@"发送成功");
-        [self.delegate reload];
-        [self.navigationController popViewControllerAnimated:YES];
+        if ((int)responseObject[@"status"] == 801) {
+            NSLog(@"参数不正确,content为空");
+        } else {
+            self.answerID = responseObject[@"data"];
+            [self uploadPictures];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"Error:%@", error);
     }];
     
 }
+
+- (void) uploadPictures {
+    if (self.commitPicsNum == 0) {
+        [self.delegate reload];
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    } else {
+        NSDictionary *parameters = @{
+                                     @"stuNum":[UserDefaultTool getStuNum],
+                                     @"idNum":[UserDefaultTool getIdNum],
+                                     @"answer_id":self.answerID,
+                                     };
+        
+        NSMutableArray *imgArr = [NSMutableArray array];
+        [imgArr addObject:self.imageView1.image];
+        [imgArr addObject:self.imageView2.image];
+        
+        NSMutableArray<MOHImageParamModel*> *imgs = [NSMutableArray array];
+        for (int i = 0; i < imgArr.count; i++) {
+            MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
+            model.paramName = [NSString stringWithFormat:@"photo%d", i+1];;
+            model.uploadImage = imgArr[i];
+            [imgs addObject:model];
+        }
+        [NetWork uploadImageWithUrl:ANSWERQUESTIONPICTURES imageParams:imgs otherParams:parameters imageQualityRate:1 successBlock:^(id returnValue) {
+            [self.delegate reload];
+            [self.navigationController popViewControllerAnimated:YES];
+        } failureBlock:^{
+            NSLog(@"I have fail");
+        }];
+    }
+}
+
 
 #pragma mark - textView
 

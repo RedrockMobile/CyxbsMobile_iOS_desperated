@@ -7,6 +7,7 @@
 //
 
 #import "YouWenAdoptFrame.h"
+#import <Masonry.h>
 
 @implementation YouWenAdoptFrame
 
@@ -30,7 +31,15 @@
 
 - (void)show {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:self];
+    UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+    [window addSubview:bgView];
+    [bgView addSubview:self];
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(window);
+        make.width.mas_equalTo(@(269/375.0*SCREENWIDTH));
+        make.height.mas_equalTo(@(163/667.0*SCREENHEIGHT));
+    }];
 }
 
 - (void)free {
