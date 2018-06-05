@@ -41,6 +41,7 @@
 -(instancetype)initWithStyle:(NSString *)style{
     if (self = [super init]) {
         [self setView];
+        self.edgesForExtendedLayout = UIRectEdgeNone;
         _titleStr = [NSString string];
         _detailStr = [NSString string];
         _imageArray = [NSArray array].mutableCopy;

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 @protocol dailyAttendanceDelegate <NSObject>
+@optional
 - (void)getSore:(NSString *)sore;
 - (void)getSerialDay:(NSString *)day AndCheck:(NSString *)check;
 @end

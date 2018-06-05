@@ -46,6 +46,9 @@
 
     _tab.delegate = self;
     _tab.dataSource = self;
+    _tab.estimatedRowHeight = 134; // 设置估算高度
+    _tab.rowHeight = UITableViewAutomaticDimension;
+    
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tab.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
     MJRefreshNormalHeader* header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getNewData)];
@@ -130,22 +133,21 @@
     return _dataArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //这个方法不太对，但其他方法有坑
-    CGSize size = CGSizeMake(ScreenWidth - 30, 300);
-    UIFont* font = [UIFont fontWithName:@"Arial" size:15];
-    NSDictionary *dic = @{NSFontAttributeName:font};
-    NSString *string = _dataArray[indexPath.row][@"description"];
-    CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
-        attributes:dic context:nil].size.height;
-    return height + 122;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+//    //这个方法不太对，但其他方法有坑
+//    CGSize size = CGSizeMake(ScreenWidth - 30, 300);
+//    UIFont* font = [UIFont fontWithName:@"Arial" size:15];
+//    NSDictionary *dic = @{NSFontAttributeName:font};
+//    NSString *string = _dataArray[indexPath.row][@"description"];
+//    CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
+//        attributes:dic context:nil].size.height;
+//    return height + 122;
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
     YouWenTableViewCell *cell = (YouWenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     detailVC.question_id = cell.qusId;
-    //  小苟给我来一个isSelf string 和questionTitle string
 //    detailVC.isSelf =
 //    detailVC.questionTitle = self.dataArray[indexPath.row][@"titile"];
     detailVC.hidesBottomBarWhenPushed = YES;
