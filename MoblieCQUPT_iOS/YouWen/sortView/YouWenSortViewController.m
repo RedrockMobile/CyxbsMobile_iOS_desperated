@@ -39,6 +39,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //没用？
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     _tab = [[UITableView alloc] init];
     _cellArray = [NSMutableArray array];
@@ -145,9 +147,10 @@
     YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
     YouWenTableViewCell *cell = (YouWenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     detailVC.question_id = cell.qusId;
-    //  小苟给我来一个isSelf string 和questionTitle string
-//    detailVC.isSelf =
-//    detailVC.questionTitle = self.dataArray[indexPath.row][@"titile"];
+    //测试图片的question_id
+//    detailVC.question_id = @"218";
+//    detailVC.question_id = @"220";
+    detailVC.questionTitle = cell.title;
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.superController.navigationController pushViewController:detailVC animated:YES];
 }

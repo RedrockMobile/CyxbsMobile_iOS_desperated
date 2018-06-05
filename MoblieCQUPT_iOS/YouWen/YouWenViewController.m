@@ -21,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
     YouWenSortViewController *otherView = [[YouWenSortViewController alloc] initViewStyle:@"其他"];

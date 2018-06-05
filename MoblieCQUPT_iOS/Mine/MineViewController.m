@@ -19,7 +19,7 @@
 #import "LXAskViewController.h"
 #import <sys/utsname.h>
 
-@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,LXAskViewControllerDelegate>
 @property (strong, nonatomic) NSArray <NSArray *> *cellDicArray;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -32,6 +32,7 @@
 @implementation MineViewController
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    
     self.navigationController.navigationBar.hidden = YES;
     MyInfoModel *model = [MyInfoModel getMyInfo];
     if (model.photo_thumbnail_src == nil){
@@ -54,6 +55,12 @@
     }
     self.view.backgroundColor = [UIColor whiteColor];
 }
+
+#pragma mark - LXAskDetailViewController delegate
+- (void)enterYouWen {
+    [self.tabBarController setSelectedIndex:1];
+}
+
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -172,6 +179,7 @@
     if ([className isEqualToString:@"LXAskViewController"]) {
         LXAskViewController *vc = [[LXAskViewController alloc] init];
         vc.isAsk = YES;
+        vc.delegate = self;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
@@ -179,6 +187,7 @@
     } else if ([className isEqualToString:@"LXHelpViewController"]) {
         LXAskViewController *vc = (LXAskViewController *)[[LXAskViewController alloc] init];
         vc.isAsk = NO;
+        vc.delegate = self;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
         vc.navigationItem.title = self.cellDicArray[indexPath.section][indexPath.row][@"title"];

@@ -36,20 +36,23 @@
                         <constraint firstAttribute="width" secondItem="KM0-gt-ebs" secondAttribute="height" multiplier="1:1" id="mG2-X3-0EZ"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-Wz-d5V">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4H-Wz-d5V">
                     <rect key="frame" x="59" y="71" width="35.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKq-xS-MeH">
-                    <rect key="frame" x="59" y="95" width="31" height="14.5"/>
+                    <rect key="frame" x="59" y="95" width="200" height="14.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="pgV-Pe-jOM"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="200" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgM-cQ-H5D">
-                    <rect key="frame" x="17" y="124.5" width="373" height="119.5"/>
+                    <rect key="frame" x="17" y="124.5" width="373" height="104.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -78,7 +81,7 @@
                 <constraint firstItem="KM0-gt-ebs" firstAttribute="top" secondItem="2fw-Eo-HI0" secondAttribute="bottom" constant="18" id="CYl-XH-Bu5"/>
                 <constraint firstItem="fgM-cQ-H5D" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="Chn-lH-zsk"/>
                 <constraint firstItem="5Py-k8-rVY" firstAttribute="centerY" secondItem="KM0-gt-ebs" secondAttribute="centerY" id="EXL-L5-Nr9"/>
-                <constraint firstItem="WN3-yU-OiP" firstAttribute="top" secondItem="fgM-cQ-H5D" secondAttribute="bottom" priority="750" id="UGm-Gx-UvT"/>
+                <constraint firstItem="WN3-yU-OiP" firstAttribute="top" secondItem="fgM-cQ-H5D" secondAttribute="bottom" priority="750" constant="15" id="UGm-Gx-UvT"/>
                 <constraint firstAttribute="bottom" secondItem="WN3-yU-OiP" secondAttribute="bottom" id="XyF-Gf-jnl"/>
                 <constraint firstAttribute="trailing" secondItem="5Py-k8-rVY" secondAttribute="trailing" constant="16" id="aIK-bS-1BA"/>
                 <constraint firstItem="2fw-Eo-HI0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="17" id="amJ-A7-j1a"/>

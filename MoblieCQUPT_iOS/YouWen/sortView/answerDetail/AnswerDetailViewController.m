@@ -43,15 +43,7 @@
     [self getData];
     [self addBottomView];
     [self.view addSubview:self.tableview];
-    self.tableHeaderView = [[AnswerDetailTableHeaderView alloc] initWithModel:self.model];
-    self.tableHeaderView.titleLabel.text = self.questionTitle;
-    if ([_isSelf isEqualToString:@"0"]) {
-        self.tableHeaderView.adoptBtn.hidden = YES;
-    } else {
-        [self.tableHeaderView.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
-    }
-    [self.tableview.tableHeaderView layoutIfNeeded];
-    self.tableview.tableHeaderView = self.tableHeaderView;
+    
     
     self.answerCommentModelArr = [NSMutableArray array];
     
@@ -230,6 +222,7 @@
     }else {
         NSString *content = [NSString stringWithFormat:@"%@%@",self.detailCommentView.placeholder.text,self.detailCommentView.commentTextView.text];
         [self upLoadCommentWithContent:content];
+        [self.tableview reloadData];
     }
     
     [self tapCancelBtn];
@@ -279,7 +272,7 @@
         } else {
             self.hud.labelText = @"评论成功";
         }
-        [self.hud hide:YES afterDelay:1.5];
+        [self.hud hide:YES afterDelay:2.0];
         //刷新界面
         [self.tableview reloadData];
         self.detailCommentView.commentTextView.text = @"";
@@ -332,6 +325,9 @@
             label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
             [footerView addSubview:label];
             _tableview.tableFooterView = footerView;
+        } else {
+            UIView *footerView = [[UIView alloc] init];
+            _tableview.tableFooterView = footerView;
         }
         [self.tableview reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -344,7 +340,7 @@
     if (!_tableview) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(self.view.origin.x, self.view.origin.y, self.view.size.width, self.view.size.height - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
         _tableview = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableview.dataSource = self;
         _tableview.delegate = self;
@@ -408,21 +404,33 @@
     return self.answerCommentModelArr.count;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    if (section == 1) {
-//        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 46)];
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(16, 17, 100, 14)];
-//        [view addSubview:label];
-//        if (self.answerCommentModelArr.count > 0) {
-//            label.text = [NSString stringWithFormat:@"评论%ld", self.answerCommentModelArr.count];
-//        }
-//        label.font = [UIFont systemFontOfSize:13];
-//        label.textColor = [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1];
-//        return view;
-//    }
-//
-//    return 0;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    AnswerDetailTableHeaderView *headView = [[AnswerDetailTableHeaderView alloc] initWithModel:self.model];
+    headView.titleLabel.text = self.questionTitle;
+    if ([_isSelf isEqualToString:@"0"]) {
+        headView.adoptBtn.hidden = YES;
+    } else {
+        [headView.adoptBtn addTarget:self action:@selector(adopt) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    
+    for (UIView *subview in headView.subviews) {
+        if ([subview isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)subview;
+            label.numberOfLines = 0;
+            label.preferredMaxLayoutWidth = CGRectGetWidth(label.frame) + 20;
+        }
+    }
+
+    [headView setNeedsLayout];
+    [headView layoutIfNeeded];
+    CGRect frame = headView.frame;
+    CGSize size = [headView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    frame.size = size;
+    headView.frame = frame;
+
+    return headView;
+}
 
 
 

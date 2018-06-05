@@ -24,7 +24,7 @@
     self = [super init];
     
     if (self) {
-        self.frame = [UIScreen mainScreen].bounds;
+        self.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT);
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.numberOfLines = 0;
@@ -183,27 +183,22 @@
         }
         
         
+        [self.picContainer layoutIfNeeded];
         //tableHeaderView下面的阴影
         self.bottomView = [[YouWenDeatilHeadViewBottomView alloc] init];
         [self addSubview:self.bottomView];
         [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(self.mas_left);
             make.right.mas_equalTo(self.mas_right);
-            make.top.equalTo(self.picContainer.mas_bottom).offset(0);
+            make.top.equalTo(self.picContainer.mas_bottom).offset(10);
             make.height.mas_equalTo(@(76/667.0*[UIScreen mainScreen].bounds.size.height));
+            make.bottom.mas_equalTo(self.mas_bottom);
         }];
-        
-        //更新self的约束
-        [self mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.bottom.mas_equalTo(self.bottomView.mas_bottom);
-            make.width.mas_equalTo(@(SCREENWIDTH));
-            make.left.equalTo(self.bottomView.mas_left).offset(0);
-            make.right.equalTo(self.bottomView.mas_right).offset(0);
-        }];
-        
-        [self updateConstraints];
-        [self layoutIfNeeded];
-        
+        self.bottomView.avatarImageView.clipsToBounds = YES;
+        self.bottomView.avatarImageView.layer.cornerRadius = self.bottomView.avatarImageView.frame.size.width/2.0;
+//        [self mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.bottom.mas_equalTo(self.bottomView.mas_bottom);
+//        }];
     }
     
     return self;

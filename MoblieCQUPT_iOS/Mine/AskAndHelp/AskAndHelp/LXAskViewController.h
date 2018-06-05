@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LXAskViewControllerDelegate <NSObject>
+
+- (void) enterYouWen;
+
+@end
+
 @interface LXAskViewController : BaseViewController
 
+@property (nonatomic, weak) id <LXAskViewControllerDelegate> delegate;
 @property BOOL isAsk;
 
 @end

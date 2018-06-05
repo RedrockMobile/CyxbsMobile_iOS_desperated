@@ -8,8 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LXAskDeatilViewControllerDelegate <NSObject>
+
+- (void) enterYouWen;
+
+@end
+
+
 @interface LXAskDeatilViewController : BaseViewController
 
+@property (nonatomic, weak) id <LXAskDeatilViewControllerDelegate> delegate;
 @property BOOL isAsk;
 @property (copy, nonatomic) NSString *solvedProblem;
 @property (copy, nonatomic) NSString *adoptedAnswers;
