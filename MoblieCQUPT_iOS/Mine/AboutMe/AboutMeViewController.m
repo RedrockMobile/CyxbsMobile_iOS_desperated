@@ -53,7 +53,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum} WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -78,7 +78,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stuNum":stuNum, @"idNum":idNum,@"version":@1.0} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/aboutMe" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":stuNum, @"idnum":idNum,@"type":@1} WithReturnValeuBlock:^(id returnValue) {
 
         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         // 刷新表格
@@ -124,9 +124,9 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/aboutme"
-                            WithParameter:@{@"page":@0, @"size":@15, @"stuNum":stuNum, @"idNum":idNum,
-                                @"version":@1.0}
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/aboutMe"
+                            WithParameter:@{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",
+                                @"type":@3}
                      WithReturnValeuBlock:^(id returnValue) {
         
         _data = [[NSMutableArray alloc] init];
@@ -135,7 +135,7 @@
         //按顺序保存article_id
          _articleIdArray = [[NSMutableArray alloc] init];
          for (NSDictionary *dic1 in _data) {
-             [_articleIdArray addObject:dic1[@"article_id"]];
+             [_articleIdArray addObject:dic1[@"question_id"]];
          }
         
         //按顺序保存nickname
@@ -163,7 +163,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *typeString = _data[indexPath.section][@"type"];
-    if ([typeString isEqualToString:@"praise"]) {
+    if ([typeString isEqualToString:@"1"]) {
         return 140;
     } else {
         return 170;
@@ -186,12 +186,13 @@
     NSString *idNum = [UserDefaultTool getIdNum];
     __weak typeof(self) weakSelf = self;
     [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
-                            WithParameter:@{@"stuNum":stuNum, @"idNum":idNum, @"type_id":@5, @"article_id":_articleIdArray[indexPath.section],@"version":@1.0}
+                            WithParameter:@{@"stuNum":stuNum,
+                                @"idNum":idNum,@"type":@1, @"article_id":_articleIdArray[indexPath.section],}
                      WithReturnValeuBlock:^(id returnValue) {
                          NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
                          [dic setObject:_nickname[indexPath.section] forKey:@"nickname"];
-                         [dic setObject:dic[@"photo_src"] forKey:@"article_photo_src"];
-                         [dic setObject:dic[@"thumbnail_src"] forKey:@"article_thumbnail_src"];
+                         [dic setObject:dic[@"photo_src"] forKey:@"photo_src"];
+                         [dic setObject:dic[@"thumbnail_src"] forKey:@"photo_thumbnail_src"];
                          MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
                          communityModel.nickname = [UserDefaultTool valueWithKey:@"nickname"];
                          communityModel.user_photo_src = [UserDefaultTool valueWithKey:@"photo_src"];
@@ -221,26 +222,26 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *typeString = _data[indexPath.section][@"type"];
-    //判断是评论还是赞
-    if ([typeString isEqualToString:@"remark"]) {
-        
+//    NSString *typeString = _data[indexPath.section][@"type"];
+//    //判断是评论还是赞
+//    if ([typeString isEqualToString:@"remark"]) {
+//
         AboutMeTableViewCell *remarkCell = [tableView dequeueReusableCellWithIdentifier:@"remarkCell"];
         if (!remarkCell) {
             remarkCell = [[AboutMeTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"remarkCell"];
         }
         
         if (_data[indexPath.section][@"photo_src"]) {
-            [remarkCell.avatar sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]]];
+            [remarkCell.avatar sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_thumbnail_src"]]];
             remarkCell.avatar.layer.masksToBounds = YES;
             remarkCell.avatar.layer.cornerRadius = remarkCell.avatar.frame.size.height/2;
         }
         
-        if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
-            NSString *imageString1 = _data[indexPath.section][@"article_photo_src"];
-            NSArray *imageNameArray1 = [imageString1 componentsSeparatedByString:@","];
-            NSString *imageUrl1 = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
-            [remarkCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl1] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
+        if (![_data[indexPath.section][@"photo_thumbnail_src"] isEqualToString:@""]) {
+            NSString *imageString1 = _data[indexPath.section][@"photo_src"];
+//            NSArray *imageNameArray1 = [imageString1 componentsSeparatedByString:@","];
+//            NSString *imageUrl1 = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@", imageNameArray1[0]];
+            [remarkCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageString1] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
         } else {
             remarkCell.articlePhotoWidth.constant = 0.1;
             [remarkCell setNeedsLayout];
@@ -248,44 +249,44 @@
         }
         
         remarkCell.nickName.text = _data[indexPath.section][@"nickname"];
-        remarkCell.createdTime.text = _data[indexPath.section][@"created_time"];
+        remarkCell.createdTime.text = _data[indexPath.section][@"created_at"];
         remarkCell.content.text = _data[indexPath.section][@"content"];
-        remarkCell.articleContent.text = _data[indexPath.section][@"article_content"];
+        remarkCell.articleContent.text = _data[indexPath.section][@"answer_content"];
         
         return remarkCell;
 
-    } else if ([typeString isEqualToString:@"praise"]){
-        
-        AboutMePraiseTableViewCell *praiseCell = [tableView dequeueReusableCellWithIdentifier:@"praiseCell"];
-        if (!praiseCell) {
-            praiseCell = [[AboutMePraiseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"praiseCell"];
-        }
-        
-        if (![_data[indexPath.section][@"photo_src"] isEqualToString:@""]) {
-            [praiseCell.avatar sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]] placeholderImage:[UIImage imageNamed:@"headImage.png"]];
-            praiseCell.avatar.layer.masksToBounds = YES;
-            praiseCell.avatar.layer.cornerRadius = praiseCell.avatar.frame.size.height/2;
-        } else {
-            [praiseCell.avatar setImage:[UIImage imageNamed:@"headImage.png"]];
-        }
-        
-        if (![_data[indexPath.section][@"article_photo_src"] isEqualToString:@""]) {
-            NSString *imageString2 = _data[indexPath.section][@"article_photo_src"];
-            NSArray *imageNameArray2 = [imageString2 componentsSeparatedByString:@","];
-            NSString *imageUrl2 = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
-            [praiseCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
-        } else {
-            praiseCell.articlePhotoWidth.constant = 0.1;
-            [praiseCell setNeedsLayout];
-            [praiseCell layoutIfNeeded];
-        }
-        
-        praiseCell.nickname.text = _data[indexPath.section][@"nickname"];
-        praiseCell.createdTime.text = _data[indexPath.section][@"created_time"];
-        praiseCell.articleContent.text = _data[indexPath.section][@"article_content"];
-        return praiseCell;
-    }
-    return  nil;
+//    } else if ([typeString isEqualToString:@"praise"]){
+//
+//        AboutMePraiseTableViewCell *praiseCell = [tableView dequeueReusableCellWithIdentifier:@"praiseCell"];
+//        if (!praiseCell) {
+//            praiseCell = [[AboutMePraiseTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"praiseCell"];
+//        }
+//
+//        if (![_data[indexPath.section][@"photo_src"] isEqualToString:@""]) {
+//            [praiseCell.avatar sd_setImageWithURL:[NSURL URLWithString:_data[indexPath.section][@"photo_src"]] placeholderImage:[UIImage imageNamed:@"headImage.png"]];
+//            praiseCell.avatar.layer.masksToBounds = YES;
+//            praiseCell.avatar.layer.cornerRadius = praiseCell.avatar.frame.size.height/2;
+//        } else {
+//            [praiseCell.avatar setImage:[UIImage imageNamed:@"headImage.png"]];
+//        }
+//
+//        if (![_data[indexPath.section][@"photo_thumbnail_src"] isEqualToString:@""]) {
+//            NSString *imageString2 = _data[indexPath.section][@"photo_thumbnail_src"];
+//            NSArray *imageNameArray2 = [imageString2 componentsSeparatedByString:@","];
+//            NSString *imageUrl2 = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/%@", imageNameArray2[0]];
+//            [praiseCell.articlePhoto sd_setImageWithURL:[NSURL URLWithString:imageUrl2] placeholderImage:[UIImage imageNamed:@"GMEmptyFolder.png"]];
+//        } else {
+//            praiseCell.articlePhotoWidth.constant = 0.1;
+//            [praiseCell setNeedsLayout];
+//            [praiseCell layoutIfNeeded];
+//        }
+//
+//        praiseCell.nickname.text = _data[indexPath.section][@"nickname"];
+//        praiseCell.createdTime.text = _data[indexPath.section][@"created_at"];
+//        praiseCell.articleContent.text = _data[indexPath.section][@"content"];
+//        return praiseCell;
+//    }
+//    return  nil;
 }
 
 @end
