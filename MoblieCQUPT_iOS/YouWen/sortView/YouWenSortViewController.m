@@ -44,12 +44,11 @@
     
     _tab = [[UITableView alloc] init];
     _cellArray = [NSMutableArray array];
-    
-
     _tab.delegate = self;
     _tab.dataSource = self;
-    _tab.estimatedRowHeight = 134; // 设置估算高度
     _tab.rowHeight = UITableViewAutomaticDimension;
+    _tab.estimatedRowHeight = 134; // 设置估算高度
+    
     
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tab.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
@@ -116,6 +115,7 @@
 - (void)getNewData{
     [_dataModel newYWDate];
 }
+
 - (void)getNewPageData{
     _YWpage ++;
     [_dataModel newPage:[NSString stringWithFormat:@"%ld", (long)_YWpage]];

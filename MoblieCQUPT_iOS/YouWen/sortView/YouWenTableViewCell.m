@@ -32,16 +32,17 @@
     {
         cell = [[YouWenTableViewCell alloc] initWithReuseIdentifier:identify WithDic:(NSDictionary *)dic];
     }
-    
+    [cell layoutIfNeeded];
     return cell;
 }
 
-- (instancetype) initWithReuseIdentifier:(NSString *)identify WithDic:(NSDictionary *)dic{
+- (instancetype)initWithReuseIdentifier:(NSString *)identify WithDic:(NSDictionary *)dic{
     if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify]){
         self.dataDic = dic;
         _qusId = [[NSString alloc] initWithFormat:@"%@", dic[@"id"]];
         _title = [[NSString alloc] initWithFormat:@"%@", dic[@"title"]];
-        [self workOutSize];
+        
+//        [self workOutSize];
         [self setUpCell];
         self.frame = CGRectMake(0, 0, SCREENWIDTH, 350);
     }
@@ -62,7 +63,7 @@
 
 - (void)setUpCell{
     self.backgroundColor = [UIColor clearColor];
-    _beyondView = [[UIView alloc] initWithFrame: CGRectMake(10, 10, ScreenWidth - 20, _cellSize.size.height - 20)];
+    _beyondView = [[UIView alloc] init];
     _beyondView.backgroundColor = [UIColor whiteColor];
     _beyondView.layer.cornerRadius = 10;
     _beyondView.layer.masksToBounds = NO;
@@ -87,20 +88,28 @@
     NSArray *array = @[@"nickname", @"title", @"reward", @"description", @"disappear_at"];
     NSArray<UILabel *> *labelArray = @[_nameLabel, _titleLabel, _soreLabel, _descriptionsLabel, _deadTimeLabel];
     
-    _descriptionsLabel.numberOfLines = 0;
-    _descriptionsLabel.textAlignment = NSTextAlignmentLeft;
+   
     _soreImageView.image = [UIImage imageNamed:@"soreImage"];
+    
     NSString *genderStr = ([self.dataDic[@"gender"] isEqualToString:@"男"])?@"male":@"female";
     _genderImageView.image = [UIImage imageNamed:genderStr];
     
     _nameLabel.font = [UIFont fontWithName:@"Arial" size:13];
     _nameLabel.textColor = [UIColor colorWithHexString:@"555555"];
+    
     _titleLabel.font = [UIFont fontWithName:@"Arial" size:17];
     _titleLabel.textColor = [UIColor colorWithHexString:@"333333"];
+    
     _soreLabel.font = [UIFont fontWithName:@"Arial" size:12];
     _soreLabel.textColor = [UIColor colorWithHexString:@"777777"];
-    _descriptionsLabel.font = [UIFont fontWithName:@"Arial" size:10];
+    
+    _descriptionsLabel.font = [UIFont fontWithName:@"Arial" size:11];
     _descriptionsLabel.textColor = [UIColor colorWithHexString:@"555555"];
+//    _descriptionsLabel.numberOfLines = 0;
+    _descriptionsLabel.lineBreakMode = NSLineBreakByCharWrapping;
+//    _descriptionsLabel.textAlignment = NSTextAlignmentLeft;
+    
+    
     _deadTimeLabel.font = [UIFont fontWithName:@"Arial" size:11];
     _deadTimeLabel.textColor = [UIColor colorWithHexString:@"999999"];
     
@@ -133,75 +142,82 @@
         }
     }
     
-    
-    
-    [_beyondView addSubview:_nameLabel];
-    [_beyondView addSubview:_titleLabel];
-    [_beyondView addSubview:_headImageView];
-    [_beyondView addSubview:_descriptionsLabel];
-    [_beyondView addSubview:_soreLabel];
-    [_beyondView addSubview:_genderImageView];
-    [_beyondView addSubview:_soreImageView];
-    [_beyondView addSubview:_deadTimeLabel];
+    [self.contentView addSubview:_nameLabel];
+    [self.contentView addSubview:_titleLabel];
+    [self.contentView addSubview:_headImageView];
+    [self.contentView addSubview:_descriptionsLabel];
+    [self.contentView addSubview:_soreLabel];
+    [self.contentView addSubview:_genderImageView];
+    [self.contentView addSubview:_soreImageView];
+    [self.contentView addSubview:_deadTimeLabel];
     
     [_headImageView sd_setImageWithURL:self.dataDic[@"photo_thumbnail_src"] placeholderImage:nil];
     _headImageView.layer.cornerRadius = 13;
     _headImageView.layer.masksToBounds = YES;
     
+
+}
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    
     [_headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.beyondView).mas_offset(19);
-        make.left.equalTo(self.beyondView).mas_offset(15);
+        make.top.equalTo(self.contentView.mas_top)
+        .mas_offset(20);
+        make.left.equalTo(self.contentView.mas_left)
+        .mas_offset(25);
         make.width.mas_equalTo(30);
         make.height.mas_equalTo(30);
     }];
     
-
     [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.beyondView).mas_offset(20);
+        make.top.equalTo(self.contentView.mas_top)
+        .mas_offset(20);
         make.left.equalTo(self.headImageView.mas_right)
-        .mas_offset(7);
-        CGSize size = CGSizeMake(ScreenWidth - 100, 13);
-        UIFont* font = [UIFont fontWithName:@"Arial" size:13];
-        NSDictionary *dic = @{NSFontAttributeName:font};
-        NSString *string = _dataDic[@"nickname"];
-        CGFloat nameWidth = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
-            attributes:dic context:nil].size.width;
-        make.width.mas_equalTo(nameWidth);
+        .mas_offset(17);
         make.height.mas_equalTo(13);
     }];
     
     [_genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.beyondView).mas_offset(20);
-        make.left.equalTo(self.nameLabel.mas_right).mas_equalTo(2);
+        make.top.equalTo(self.contentView.mas_top)
+        .mas_offset(20);
+        make.left.equalTo(self.nameLabel.mas_right)
+        .mas_equalTo(12);
         make.width.mas_equalTo(9);
         make.height.mas_equalTo(13);
     }];
     
     [_deadTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.nameLabel.mas_bottom).mas_offset(5);
+        make.top.equalTo(self.nameLabel.mas_bottom)
+        .mas_offset(5);
         make.left.equalTo(self.headImageView.mas_right)
-        .mas_offset(7);
-        make.width.mas_equalTo(100);
+        .mas_offset(17);
         make.height.mas_equalTo(11);
+        make.height.mas_lessThanOrEqualTo(100);
     }];
     
     [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.headImageView.mas_bottom)
         .mas_offset(10);
-        make.left.equalTo(self.beyondView).mas_offset(15);
-        make.right.equalTo(self.beyondView).mas_offset(-10);
-        make.height.mas_equalTo(20);
+        make.left.equalTo(self.contentView.mas_left)
+        .mas_offset(25);
+        make.right.equalTo(self.contentView.mas_right)
+        .mas_offset(-25);
+        make.height.mas_lessThanOrEqualTo(100);
     }];
-
+    
     [_soreLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.beyondView).mas_offset(27);
-        make.right.equalTo(self.beyondView).mas_offset(-15);
+        make.top.equalTo(self.contentView.mas_top)
+        .mas_offset(27);
+        make.right.equalTo(self.contentView.mas_right)
+        .mas_offset(-25);
         make.width.mas_equalTo(32);
         make.height.mas_equalTo(12);
     }];
+    
     [_soreImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.soreLabel);
-        make.right.equalTo(self.soreLabel.mas_left).mas_offset(-4);
+        make.bottom.equalTo(self.soreLabel.mas_bottom);
+        make.right.equalTo(self.soreLabel.mas_left)
+        .mas_offset(-4);
         make.width.mas_equalTo(13);
         make.height.mas_equalTo(13);
     }];
@@ -209,14 +225,23 @@
     [_descriptionsLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.titleLabel.mas_bottom)
         .mas_offset(5);
-        make.left.equalTo(self.beyondView).mas_offset(15);
-        make.right.equalTo(self.beyondView).mas_offset(-15);
-        make.height.mas_equalTo(_cellSize.size.height - 122);
+        make.left.equalTo(self.contentView.mas_left)
+        .mas_offset(25);
+        make.right.equalTo(self.contentView.mas_right)
+        .mas_offset(-25);
+        make.bottom.equalTo(self.contentView.mas_bottom)
+        .mas_offset(-20);
+        make.height.mas_lessThanOrEqualTo(100);
     }];
     
-    
-
+    [self layoutIfNeeded];
+    /*使用Masonry会因为还没有约束，而不起作用，解决方法直接取frame，
+     整体内缩
+     */
+    _beyondView.frame = CGRectMake(10, 5, self.contentView.width - 20, self.contentView.height - 10);
 }
+
+
 - (NSString *)countHour:(NSString *)string{
     NSDate *nowDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
