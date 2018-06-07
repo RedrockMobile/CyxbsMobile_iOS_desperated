@@ -13,8 +13,6 @@
 #import "YouWenAddViewController.h"
 #import "YouWenTopicView.h"
 #import "ReportViewController.h"
-#define  IPHONEX (ScreenWidth == 375.f && ScreenHeight == 812.f ? YES : NO)
-#define  TabbarSafeBottomMargin (IPHONEX ? 34.f : 0.f)
 
 @interface YouWenViewController ()<whatTopic>
 @property (strong, nonatomic) UIButton *askBtn;
