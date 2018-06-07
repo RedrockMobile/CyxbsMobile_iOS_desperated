@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "MineTableViewCell.h"
 #import "MyInfoViewController.h"
-#import "AboutMeViewController.h"
+#import "AboutMeMainViewController.h"
 #import "MyMessagesViewController.h"
 #import "QueryViewController.h"
 #import "QueryLoginViewController.h"
@@ -70,6 +70,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     NSArray *array1 =   @[
                 @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
     NSArray *array2 = @[
@@ -78,7 +79,7 @@
                 @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"LXHelpViewController"},
                 @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"draftsViewController"}];
     NSArray *array3 = @[
-                @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeViewController"}];
+                @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeMainViewController"}];
     NSArray *array4 = @[
                 @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingController"}];
     self.cellDicArray = @[array1, array2, array3, array4];
@@ -227,29 +228,29 @@
     [self presentViewController:alertC animated:YES completion:nil];
 }
 
-- (IBAction)clickBtn:(UIButton *)sender {
-    UIViewController *vc;
-    switch (sender.tag) {
-        case 0:
-            vc = [[MyInfoViewController alloc]init];
-            vc.navigationItem.title = @"修改信息";
-            break;
-        case 1:
-            vc = [[AboutMeViewController alloc]init];
-            vc.navigationItem.title = @"与我相关";
-            break;
-        case 2:
-            vc = [[MyMessagesViewController alloc]init];
-            vc.navigationItem.title = @"我的动态";
-            break;
-    }
-    vc.hidesBottomBarWhenPushed = YES;
-    if (![UserDefaultTool getStuNum]) {
-        [self tint:vc];
-        return;
-    }
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//- (IBAction)clickBtn:(UIButton *)sender {
+//    UIViewController *vc;
+//    switch (sender.tag) {
+//        case 0:
+//            vc = [[MyInfoViewController alloc]init];
+//            vc.navigationItem.title = @"修改信息";
+//            break;
+//        case 1:
+//            vc = [[AboutMeViewController alloc]init];
+//            vc.navigationItem.title = @"与我相关";
+//            break;
+//        case 2:
+//            vc = [[MyMessagesViewController alloc]init];
+//            vc.navigationItem.title = @"我的动态";
+//            break;
+//    }
+//    vc.hidesBottomBarWhenPushed = YES;
+//    if (![UserDefaultTool getStuNum]) {
+//        [self tint:vc];
+//        return;
+//    }
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 
 @end
 

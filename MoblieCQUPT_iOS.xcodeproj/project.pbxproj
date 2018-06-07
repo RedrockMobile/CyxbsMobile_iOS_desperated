@@ -149,6 +149,7 @@
 		6E5C0AB420690E1200A73F64 /* myUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E5C0AB320690E1200A73F64 /* myUILabel.m */; };
 		6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */; };
 		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
+		6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */; };
 		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
 		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
 		6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */; };
@@ -824,6 +825,8 @@
 		6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+schoolDate.m"; sourceTree = "<group>"; };
 		6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LessonRemindNotification.m; sourceTree = "<group>"; };
 		6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
+		6E67F0E720C9570500F72C08 /* AboutMeMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutMeMainViewController.h; sourceTree = "<group>"; };
+		6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutMeMainViewController.m; sourceTree = "<group>"; };
 		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
 		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
 		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
@@ -2554,6 +2557,8 @@
 				F242DC981EBCB2BB005AC411 /* AboutMeViewController.h */,
 				F242DC991EBCB2BB005AC411 /* AboutMeViewController.m */,
 				F242DC9A1EBCB2BB005AC411 /* AboutMeViewController.xib */,
+				6E67F0E720C9570500F72C08 /* AboutMeMainViewController.h */,
+				6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */,
 			);
 			path = AboutMe;
 			sourceTree = "<group>";
@@ -3243,6 +3248,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = WTP66K3RCH;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3766,6 +3772,7 @@
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
+				6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
