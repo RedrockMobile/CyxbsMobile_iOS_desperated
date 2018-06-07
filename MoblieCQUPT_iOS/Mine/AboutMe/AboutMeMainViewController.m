@@ -25,7 +25,9 @@
     AboutMeViewController *clickView = [[AboutMeViewController alloc] initViewType:@"2"];
     clickView.title = @"点赞";
     NSArray *views = @[allView, evaluateView, clickView];
-    
+    for (AboutMeViewController *view in views) {
+        view.superController = self;
+    }
     SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT) andControllers:views];
     [self.view addSubview:segView];
 }

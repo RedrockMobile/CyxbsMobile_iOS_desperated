@@ -14,7 +14,7 @@
 #import "UIImage+AFNetworking.h"
 #import "MBCommuityDetailsViewController.h"
 #import "MBProgressHUD.h"
-
+#import "YouWenDetailViewController.h"
 
 
 @interface AboutMeViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -37,6 +37,12 @@
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         self.edgesForExtendedLayout = UIRectEdgeNone;
         [self.view addSubview:self.tableView];
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.mas_equalTo(self.view.mas_top);
+            make.right.mas_equalTo(self.view.mas_right);
+            make.left.mas_equalTo(self.view.mas_left);
+            make.bottom.mas_equalTo(self.view.mas_bottom);
+        }];
         [self setupRefresh];
     }
     return self;
@@ -191,35 +197,40 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
+    YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
+    detailVC.question_id = _articleIdArray[indexPath.section];
+//    detailVC.questionTitle = cell.title;
+    detailVC.hidesBottomBarWhenPushed = YES;
+    [self.superController.navigationController pushViewController:detailVC animated:YES];
     
     //查询文章内容
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
-    __weak typeof(self) weakSelf = self;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
-                            WithParameter:@{@"stunum":stuNum,
-                                @"idnum":idNum,@"type":@1, @"article_id":_articleIdArray[indexPath.section],}
-                     WithReturnValeuBlock:^(id returnValue) {
-                         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
-                         [dic setObject:_nickname[indexPath.section] forKey:@"nickname"];
-                         [dic setObject:dic[@"photo_src"] forKey:@"photo_src"];
-                         [dic setObject:dic[@"thumbnail_src"] forKey:@"photo_thumbnail_src"];
-                         MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
-                         communityModel.nickname = [UserDefaultTool valueWithKey:@"nickname"];
-                         communityModel.user_photo_src = [UserDefaultTool valueWithKey:@"photo_src"];
-                         
-                         MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
-                         community_ViewModel.model = communityModel;
-                         MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
-                         commuityDetailsVC.viewModel = community_ViewModel;
-                         
-                         [weakSelf.navigationController pushViewController:commuityDetailsVC animated:YES];
-                     } WithFailureBlock:^{
-                         MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                         uploadProgress.mode = MBProgressHUDModeText;
-                         uploadProgress.labelText = @"网络状况不佳";
-                         [uploadProgress hide:YES afterDelay:1];
-                            }];
+//    NSString *stuNum = [UserDefaultTool getStuNum];
+//    NSString *idNum = [UserDefaultTool getIdNum];
+//    __weak typeof(self) weakSelf = self;
+//    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
+//                            WithParameter:@{@"stunum":stuNum,
+//                                @"idnum":idNum,@"type":@1, @"article_id":_articleIdArray[indexPath.section],}
+//                     WithReturnValeuBlock:^(id returnValue) {
+//                         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:[returnValue objectForKey:@"data"][0]];
+//                         [dic setObject:_nickname[indexPath.section] forKey:@"nickname"];
+//                         [dic setObject:dic[@"photo_src"] forKey:@"photo_src"];
+//                         [dic setObject:dic[@"thumbnail_src"] forKey:@"photo_thumbnail_src"];
+//                         MBCommunityModel * communityModel= [[MBCommunityModel alloc] initWithDictionary:dic];
+//                         communityModel.nickname = [UserDefaultTool valueWithKey:@"nickname"];
+//                         communityModel.user_photo_src = [UserDefaultTool valueWithKey:@"photo_src"];
+//
+//                         MBCommunity_ViewModel *community_ViewModel = [[MBCommunity_ViewModel alloc] init];
+//                         community_ViewModel.model = communityModel;
+//                         MBCommuityDetailsViewController *commuityDetailsVC = [[MBCommuityDetailsViewController alloc]init];
+//                         commuityDetailsVC.viewModel = community_ViewModel;
+//
+//                         [weakSelf.navigationController pushViewController:commuityDetailsVC animated:YES];
+//                     } WithFailureBlock:^{
+//                         MBProgressHUD *uploadProgress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//                         uploadProgress.mode = MBProgressHUDModeText;
+//                         uploadProgress.labelText = @"网络状况不佳";
+//                         [uploadProgress hide:YES afterDelay:1];
+//                            }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

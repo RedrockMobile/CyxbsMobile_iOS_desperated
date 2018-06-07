@@ -11,4 +11,5 @@
 @interface AboutMeViewController : BaseViewController
 //type 为1 请求的是 点赞 type为2 请求的是评论 3为全部
 - (instancetype)initViewType:(NSString *)type;
+@property (strong, nonatomic) UIViewController *superController;
 @end
