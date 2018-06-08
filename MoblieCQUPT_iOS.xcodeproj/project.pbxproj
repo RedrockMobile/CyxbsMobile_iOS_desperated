@@ -150,6 +150,7 @@
 		6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */; };
 		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
 		6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */; };
+		6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67F0EB20CAADE500F72C08 /* draftsModel.m */; };
 		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
 		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
 		6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */; };
@@ -827,6 +828,8 @@
 		6E66BBA91F8D10DF00C1CE1C /* LessonRemindNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LessonRemindNotification.h; sourceTree = "<group>"; };
 		6E67F0E720C9570500F72C08 /* AboutMeMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutMeMainViewController.h; sourceTree = "<group>"; };
 		6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutMeMainViewController.m; sourceTree = "<group>"; };
+		6E67F0EA20CAADE500F72C08 /* draftsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = draftsModel.h; sourceTree = "<group>"; };
+		6E67F0EB20CAADE500F72C08 /* draftsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = draftsModel.m; sourceTree = "<group>"; };
 		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
 		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
 		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
@@ -1710,6 +1713,8 @@
 				6E1A3A3720B71E0B002D62FC /* draftsViewController.m */,
 				6E50122E20C2523600613B13 /* draftsTableViewCell.h */,
 				6E50122F20C2523600613B13 /* draftsTableViewCell.m */,
+				6E67F0EA20CAADE500F72C08 /* draftsModel.h */,
+				6E67F0EB20CAADE500F72C08 /* draftsModel.m */,
 			);
 			path = drafts;
 			sourceTree = "<group>";
@@ -3808,6 +3813,7 @@
 				6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */,
 				9630E4CA1FAF07D300874EB9 /* QueryDataModel.m in Sources */,
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
+				6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */,
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
 				F2A43ECD1F74FEC200D1B2BD /* LZPersonSelectViewController.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class draftsModel;
 @interface draftsTableViewCell : UITableViewCell
-+ (instancetype)cellWithTableView:(UITableView *)tableView AndLab:(BOOL)whether;
++ (instancetype)cellWithTableView:(UITableView *)tableView AndData:(draftsModel *)model;
 @end
