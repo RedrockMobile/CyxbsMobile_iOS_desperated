@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 @class draftsModel;
+/*
+ 如果有titlecontent，则其为title，
+ 如果没有则content为title
+ */
 @interface draftsTableViewCell : UITableViewCell
 + (instancetype)cellWithTableView:(UITableView *)tableView AndData:(draftsModel *)model;
 @end

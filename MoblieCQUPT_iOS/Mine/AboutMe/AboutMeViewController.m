@@ -177,15 +177,15 @@
 
 #pragma mark - TableView delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *typeString = _data[indexPath.section][@"type"];
-    if ([typeString isEqualToString:@"1"]) {
-        return 140;
-    } else {
-        return 170;
-    }
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    NSString *typeString = _data[indexPath.section][@"type"];
+//    if ([typeString isEqualToString:@"1"]) {
+//        return 140;
+//    } else {
+//        return 170;
+//    }
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;
