@@ -54,7 +54,7 @@
 - (YouWenBottomButtonView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[YouWenBottomButtonView alloc] init];
-        if ([self.detailQuestionModel.isSelf integerValue]) {
+        if ([self.detailQuestionModel.isSelf isEqualToString:@"1"]) {
             _bottomView.label1.text = @"加价";
             _bottomView.label2.text = @"取消提问";
             [_bottomView.btn1 addTarget:self action:@selector(addReward) forControlEvents:UIControlEventTouchUpInside];
@@ -129,7 +129,7 @@
             }
         }
         
-        if (self.isSelf) {
+        if ([self.isSelf isEqualToString:@"1"]) {
             cell.adoptBtn.hidden = NO;
             self.tempAnswerID = self.answerModelArr[indexPath.row].answer_id;
             if ([self.answerModelArr[indexPath.row].is_adopted isEqualToString:@"0"]) {
@@ -357,7 +357,7 @@
 
     [manager POST:QUESTIONSINFO parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if (responseObject) {
-            self.isSelf = responseObject[@"data"][@"is_self"];
+            self.isSelf = [NSString stringWithFormat:@"%@", responseObject[@"data"][@"is_self"]];
             self.detailQuestionModel = [[YouWenQuestionDetailModel alloc] initWithDic:responseObject[@"data"]];
             
             self.answerModelArr = [NSMutableArray array];
@@ -390,7 +390,7 @@
 
 
 - (void)reply {
-    if (self.isSelf) {
+    if ([self.isSelf isEqualToString:@"1"]) {
         NSLog(@"是自己的问题 自己不能回答");
         return;
     } else {

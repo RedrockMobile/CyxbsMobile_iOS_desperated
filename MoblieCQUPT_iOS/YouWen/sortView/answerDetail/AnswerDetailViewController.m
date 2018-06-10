@@ -274,7 +274,7 @@
         }
         [self.hud hide:YES afterDelay:2.0];
         //刷新界面
-        [self.tableview reloadData];
+        [self getData];
         self.detailCommentView.commentTextView.text = @"";
     } WithFailureBlock:^{
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

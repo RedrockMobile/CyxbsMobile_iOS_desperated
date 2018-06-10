@@ -24,6 +24,8 @@
         } else {
             self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil] lastObject];
         }
+        [self.adoptBtn.layer setBorderColor:[UIColor colorWithRed:150/255.0 green:157/255.0 blue:254/255.0 alpha:1].CGColor];
+        [self.adoptBtn.layer setCornerRadius:10.0];
         self.genderImageView.contentMode = UIViewContentModeScaleAspectFit;
         self.upvoteImageView.contentMode = UIViewContentModeScaleAspectFit;;
         self.commentImageView.contentMode = UIViewContentModeScaleAspectFit;
