@@ -135,17 +135,6 @@
     return _dataArray.count;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    //这个方法不太对，但其他方法有坑
-//    CGSize size = CGSizeMake(ScreenWidth - 30, 300);
-//    UIFont* font = [UIFont fontWithName:@"Arial" size:15];
-//    NSDictionary *dic = @{NSFontAttributeName:font};
-//    NSString *string = _dataArray[indexPath.row][@"description"];
-//    CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
-//        attributes:dic context:nil].size.height;
-//    return height + 122;
-//}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
     YouWenTableViewCell *cell = (YouWenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];

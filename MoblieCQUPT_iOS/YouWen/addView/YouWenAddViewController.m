@@ -7,7 +7,7 @@
 //
 
 #import "YouWenAddViewController.h"
-#import "ReportTextView.h"
+
 #import <Masonry.h>
 #import "YouWenTimeView.h"
 #import "YouWenSoreView.h"
@@ -15,20 +15,22 @@
 #import "TransparentView.h"
 #import "YouWenSubjectView.h"
 #import "YouWenAddModel.h"
+#import "emojiDetective.h"
+
 #define PHOTOSIZE 109
 @interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate>
+@property (strong, nonatomic) ReportTextView *titleTextView;
+@property (strong, nonatomic) ReportTextView *detailTextView;
 @property (copy, nonatomic) NSString *style;
 @property (strong, nonatomic) UIView *whiteView;
 @property (strong, nonatomic) UIView *bottomView;
 @property (copy, nonatomic) NSMutableArray *imageArray;
-@property (strong, nonatomic) ReportTextView *titleTextView;
-@property (strong, nonatomic) ReportTextView *detailTextView;
 @property (strong, nonatomic) MBProgressHUD *hud;
 @property (strong, nonatomic) UIButton *addImageButton;
 @property (strong, nonatomic) UIScrollView *imageView;
 @property (strong, nonatomic) NSMutableArray *anotherInf;
-@property (strong, nonatomic) NSString *titleStr;
-@property (strong, nonatomic) NSString *detailStr;
+
+
 @property (copy, nonatomic) NSString *time;
 @property (copy, nonatomic) NSString *sore;
 @property (copy, nonatomic) NSString *is_anonymous;
@@ -48,6 +50,7 @@
         _time = [[NSString alloc] init];
         _sore = [[NSString alloc] init];
         _is_anonymous = @"0";
+        _subject = [NSString string];
         self.navigationItem.title = @"求助";
         UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(confirmInf)];
         self.navigationItem.rightBarButtonItem = rightBarButtonItem;
@@ -232,6 +235,7 @@
         [self nextView];
     }
 }
+
 - (void)nextView{
     _anotherInf = [NSMutableArray array];
     if (!_time.length){
@@ -275,6 +279,7 @@
         [_titleTextView addTopic:_subject];
     }
 }
+
 - (void)soreArrive:(NSNotification *)noti{
     _sore = noti.object[@"sore"];
     if (_sore.length == 0) {
@@ -296,7 +301,17 @@
 }
 
 - (void)postTheNew{
-    NSDictionary *dic = @{@"title":_titleTextView.text, @"description":_detailTextView.text,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
+    emojiDetective *detective = [[emojiDetective alloc] init];
+    NSString *title = [detective transferEmoji: _titleTextView.text];
+    NSString *detail = [detective transferEmoji:_detailTextView.text];
+    NSDictionary *dic;
+    if (_subject.length) {
+        dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
+    }
+    else {
+        dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"reward":_sore,@"disappear_time":_time};
+    }
+    
     YouWenAddModel *model = [[YouWenAddModel alloc] initWithInformation:dic andImage:_imageArray];
     model.delegate = self;
     [model postTheNewInformation];
@@ -343,6 +358,7 @@
     picker.allowsEditing = YES;
     [self presentViewController:picker animated:YES completion:nil];
 }
+
 - (void)takePhoto{
     [_photoView removeFromSuperview];
     

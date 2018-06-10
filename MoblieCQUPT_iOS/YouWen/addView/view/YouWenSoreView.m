@@ -13,7 +13,8 @@
 @property (strong, nonatomic) UILabel *soreLab;
 @property (strong, nonatomic) NSMutableArray *btnArray;
 @property (copy, nonatomic) NSString *sore;
-@property (strong, nonatomic) UILabel *restSore;
+@property (copy, nonatomic) NSString *restSore;
+@property (strong, nonatomic) UILabel *restSoreLab;
 @property (strong, nonatomic) UILabel *loadingLab;
 //这里用了签到请求的积分，懒
 @property (strong, nonatomic) dailyAttendanceModel *soreData;
@@ -23,15 +24,16 @@
 - (void)addDetail{
     [super addDetail];
     _btnArray = [NSMutableArray array];
-    _restSore = [[UILabel alloc] init];
-    _restSore.textColor = [UIColor grayColor];
-    _restSore.text = [NSString stringWithFormat:@"积分剩余:"];
-    [self.whiteView addSubview:_restSore];
-    [_restSore mas_makeConstraints:^(MASConstraintMaker *make) {
+    _restSore = [NSString string];
+    _restSoreLab = [[UILabel alloc] init];
+    _restSoreLab.textColor = [UIColor grayColor];
+    _restSoreLab.text = [NSString stringWithFormat:@"积分剩余:"];
+    [self.whiteView addSubview:_restSoreLab];
+    [_restSoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.blackView.mas_bottom).offset(18);
         make.left.mas_equalTo(self.whiteView).offset(16);
         make.height.mas_offset(12);
-        make.width.mas_offset(100);
+        make.width.mas_offset(200);
     }];
     
     _soreData = [[dailyAttendanceModel alloc] init];
@@ -43,7 +45,7 @@
     _soreLab.textColor = [UIColor colorWithHexString:@"7195FA"];
     [self.whiteView addSubview:_soreLab];
     [_soreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_restSore.mas_bottom).offset(22);
+        make.top.mas_equalTo(_restSoreLab.mas_bottom).offset(22);
         make.left.mas_equalTo(self.whiteView).offset(17);
         make.height.mas_offset(16);
         make.width.mas_offset(100);
@@ -77,7 +79,7 @@
         btn.frame = CGRectMake(16 + (width + 22)* i, blackView.bottom + 25, width, width);
         [btn addTarget:self action:@selector(selectSore:) forControlEvents:UIControlEventTouchUpInside];
         [self.whiteView addSubview:btn];
-        if ([_sore intValue] < [numArray[i] intValue]){
+        if ([_restSore intValue] < [numArray[i] intValue]){
             btn.userInteractionEnabled  = NO;
         }
         [_btnArray addObject:btn];
@@ -92,7 +94,7 @@
     }
     Ubtn.selected = YES;
     _soreLab.text = [NSString stringWithFormat:@"%@积分", Ubtn.titleLabel.text];
-    _sore = _soreLab.text;
+    _sore = Ubtn.titleLabel.text;
    
     
 }
@@ -110,7 +112,8 @@
     }
     else{
         self.confirBtn.hidden = NO;
-        _restSore.text = sore.copy;
+        _restSore = sore.copy;
+        _restSoreLab.text = [NSString stringWithFormat:@"剩余积分：%@", _restSore];
         [_loadingLab removeFromSuperview];
         [self setBtnUp];
     }

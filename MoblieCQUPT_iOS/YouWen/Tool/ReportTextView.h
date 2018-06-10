@@ -16,10 +16,10 @@ typedef NS_ENUM(NSInteger, wordNumState) {
     OnlyWordNum,
     CountWordNum,
 };
+
 @property (strong, nonatomic) UILabel *wordNum;
 @property (strong, nonatomic) myUILabel *placeHolder;
 @property (assign, nonatomic) NSInteger limitNum;
 - (UITextView *)initWithFrame:(CGRect)frame andState:(wordNumState)state;
 - (void)addTopic:(NSString *)topic;
-
 @end

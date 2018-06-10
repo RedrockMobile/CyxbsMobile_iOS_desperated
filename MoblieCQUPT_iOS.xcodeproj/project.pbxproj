@@ -151,6 +151,7 @@
 		6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E66BBA81F8D10DF00C1CE1C /* LessonRemindNotification.m */; };
 		6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */; };
 		6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67F0EB20CAADE500F72C08 /* draftsModel.m */; };
+		6E67F0F120CCE82B00F72C08 /* emojiDetective.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E67F0F020CCE82B00F72C08 /* emojiDetective.m */; };
 		6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167251F85D6E700C46038 /* EmptyClassViewController.m */; };
 		6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7167281F85D70D00C46038 /* EmptyClassView.m */; };
 		6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */; };
@@ -830,6 +831,8 @@
 		6E67F0E820C9570500F72C08 /* AboutMeMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutMeMainViewController.m; sourceTree = "<group>"; };
 		6E67F0EA20CAADE500F72C08 /* draftsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = draftsModel.h; sourceTree = "<group>"; };
 		6E67F0EB20CAADE500F72C08 /* draftsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = draftsModel.m; sourceTree = "<group>"; };
+		6E67F0EF20CCE82B00F72C08 /* emojiDetective.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = emojiDetective.h; sourceTree = "<group>"; };
+		6E67F0F020CCE82B00F72C08 /* emojiDetective.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emojiDetective.m; sourceTree = "<group>"; };
 		6E7167241F85D6E700C46038 /* EmptyClassViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassViewController.h; sourceTree = "<group>"; };
 		6E7167251F85D6E700C46038 /* EmptyClassViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmptyClassViewController.m; sourceTree = "<group>"; };
 		6E7167271F85D70D00C46038 /* EmptyClassView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmptyClassView.h; sourceTree = "<group>"; };
@@ -2707,6 +2710,8 @@
 				F2509BCD1F440D7D0091F678 /* SegmentView.m */,
 				F238C6591F3DC87900FEB179 /* UserDefaultTool.h */,
 				F238C65A1F3DC87900FEB179 /* UserDefaultTool.m */,
+				6E67F0EF20CCE82B00F72C08 /* emojiDetective.h */,
+				6E67F0F020CCE82B00F72C08 /* emojiDetective.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -3900,6 +3905,7 @@
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
 				6E3AB64620AD76A3003A65F5 /* YouWenBottomButtonView.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
+				6E67F0F120CCE82B00F72C08 /* emojiDetective.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */,
 				F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */,
