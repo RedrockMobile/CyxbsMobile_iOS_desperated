@@ -14,11 +14,14 @@
     if (self) {
         self.cellID = dic[@"id"];
         self.type = dic[@"type"];
-        self.create_time = dic[@"created_at"];
+        self.create_time = [NSString stringWithFormat:@"时间：%@", dic[@"created_at"]];
         self.target_ID = dic[@"target_ID"];
         self.title_content = dic[@"title_content"];
         if ([_type isEqualToString:@"question"]) {
-            self.content = [self dencode:dic[@"content"]];
+            NSDictionary *titleData = [self dictionaryWithJsonString:[self dencode:dic[@"content"]]];
+            self.content = titleData[@"title"];
+            self.titleType = titleData[@"kind"];
+            self.titledescription = titleData[@"description"];
         }
         else{
             self.content = dic[@"content"];
@@ -38,4 +41,22 @@
     return string;
 }
 
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonString
+{
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                    options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err)
+    {
+        NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
 @end

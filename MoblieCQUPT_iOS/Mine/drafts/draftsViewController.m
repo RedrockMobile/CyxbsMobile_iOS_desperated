@@ -29,6 +29,8 @@
     _draftTableView.backgroundColor = RGBColor(241, 241, 241, 1);
     _draftTableView.delegate = self;
     _draftTableView.dataSource = self;
+    _draftTableView.estimatedRowHeight = 60.0f;
+    _draftTableView.rowHeight = UITableViewAutomaticDimension;
     [self.view addSubview:_draftTableView];
     [self setupRefresh];
     [self dataFlash];
@@ -110,7 +112,6 @@
 
                          [_draftTableView reloadData];
                          
-                         
                      } WithFailureBlock:^{
                          UILabel *failLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H)];
                          failLabel.text = @"哎呀！网络开小差了 T^T";
@@ -124,22 +125,20 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    draftsTableViewCell *cell;
-    cell = [draftsTableViewCell cellWithTableView:_draftTableView AndData:_dataArray[indexPath.row]];
+    NSLog(@"%ld", (long)indexPath.row);
+    draftsTableViewCell *cell = [draftsTableViewCell cellWithTableView:_draftTableView AndData:_dataArray[indexPath.row]];
+    [cell layoutIfNeeded];
     return cell;
         
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _dataArray.count;
+    return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 95;
-}
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return _dataArray.count;
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -150,11 +149,21 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle==UITableViewCellEditingStyleDelete) {
-        //        获取选中删除行索引值
         NSInteger row = [indexPath row];
-        //        通过获取的索引值删除数组中的值
         [self.dataArray removeObjectAtIndex:row];
-        //        删除单元格的某一行时，在用动画效果实现删除过程
+        
+        NSString *stuNum = [UserDefaultTool getStuNum];
+        NSString *idNum = [UserDefaultTool getIdNum];
+        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/deleteItemInDraft"
+                                WithParameter:@{@"stunum":@"2016210049", @"idnum":@"27001X",@"id":_dataArray[row].cellID
+                                                }
+                         WithReturnValeuBlock:^(id returnValue) {
+                             
+                                 //成功后做什么？？？
+                         } WithFailureBlock:^{
+                             //失败后做什么？？
+                         }];
+        
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -174,7 +183,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    //开启编辑模式
     [tableView setEditing:YES animated:YES];
 }
 
