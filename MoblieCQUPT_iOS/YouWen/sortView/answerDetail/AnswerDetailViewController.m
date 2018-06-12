@@ -42,7 +42,6 @@
     [super viewDidLoad];
     [self getData];
     [self addBottomView];
-    [self.view addSubview:self.tableview];
     
     
     self.answerCommentModelArr = [NSMutableArray array];
@@ -308,10 +307,9 @@
                                  @"answer_id":self.answer_id
                                  };
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    [manager POST:urlStr parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        for (NSDictionary *dic in responseObject[@"data"]) {
+    [NetWork NetRequestPOSTWithRequestURL:urlStr WithParameter:parameters WithReturnValeuBlock:^(id returnValue) {
+        [self.view addSubview:self.tableview];
+        for (NSDictionary *dic in returnValue[@"data"]) {
             AnswerCommentModel *model = [[AnswerCommentModel alloc] initWithDic:dic];
             [self.answerCommentModelArr addObject:model];
         }
@@ -330,9 +328,10 @@
             _tableview.tableFooterView = footerView;
         }
         [self.tableview reloadData];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@", error);
+    } WithFailureBlock:^{
+        ;
     }];
+
 }
 
 #pragma mark - tableview

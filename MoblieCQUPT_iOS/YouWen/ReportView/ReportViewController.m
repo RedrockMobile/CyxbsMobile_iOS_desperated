@@ -9,29 +9,30 @@
 #import "ReportViewController.h"
 #import "ReportSortButton.h"
 #import "ReportTextView.h"
-@interface ReportViewController ()<UITableViewDelegate, UITableViewDataSource>
+#import "ReportModel.h"
+
+@interface ReportViewController ()<UITableViewDelegate, UITableViewDataSource, ReportSuccess>
 @property (strong, nonatomic) UITableView *reportTableView;
 @property (strong, nonatomic) NSMutableArray *btnArray;
 @property (strong, nonatomic) ReportTextView *textView;
 @property (strong, nonatomic) UIButton *commitBtn;
-@property (strong, nonatomic) NSMutableDictionary *selectedDic;
-@property (strong, nonatomic) NSString *id;
+@property (strong, nonatomic) NSMutableString *selectedStr;
+@property (strong, nonatomic) ReportModel *dataModel;
+@property (strong, nonatomic) NSString *qusId;
+@property (strong, nonatomic) MBProgressHUD *hud;
 @end
 
 @implementation ReportViewController
 
 - (instancetype)initWithId:(NSString *)qusId{
     if (self = [super init]) {
-        qusId = [[NSString alloc] initWithString:qusId];
+        _qusId = qusId.copy;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _selectedDic = @{@"0": @NO, @"1": @NO, @"2": @NO,
-                     @"3": @NO, @"4": @NO, @"5": @NO,
-                     @"6": @NO}.mutableCopy;
     self.reportTableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped];
     self.reportTableView.delegate = self;
     self.reportTableView.dataSource = self;
@@ -52,14 +53,18 @@
 
 //btn的响应
 - (void)reportType:(UIButton *)sender{
-    sender.selected = !sender.selected;
-    NSString *str = [NSString stringWithFormat:@"%ld", (long)sender.tag];
-    _selectedDic[str] = [NSNumber numberWithBool:![_selectedDic[str] boolValue]];
+    BOOL select = sender.selected;
+    for (UIButton * btn in _btnArray) {
+        btn.selected = NO;
+    }
+    sender.selected = !select;
+    _selectedStr = sender.currentTitle.copy;
 }
+
 - (void)tryCommit{
     BOOL flag = NO;
-    for (NSString *key in _selectedDic) {
-        if ([_selectedDic[key] boolValue]) {
+    for (UIButton *btn in _btnArray) {
+        if (btn.selected == YES) {
             flag = YES;
             break;
         }
@@ -73,6 +78,21 @@
         [self presentViewController:alertcv animated:YES completion:nil];
     }
     else{
+        _dataModel = [[ReportModel alloc] init];
+        _dataModel.delegate = self;
+        _dataModel.type = _selectedStr;
+        _dataModel.content = _textView.text;
+        _dataModel.qusId = _qusId;
+        [_dataModel setReport];
+        _hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        _hud.labelText = @"正在上传";
+        _hud.removeFromSuperViewOnHide = YES;
+    }
+}
+
+- (void)report:(BOOL)success{
+    [_hud hide:YES];
+    if (success) {
         UIAlertController *alertcv = [UIAlertController alertControllerWithTitle:@"提示" message:@"已成功提交" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             
@@ -80,7 +100,17 @@
         [alertcv addAction:confirmAction];
         [self presentViewController:alertcv animated:YES completion:nil];
     }
+    else {
+        UIAlertController *alertcv = [UIAlertController alertControllerWithTitle:@"提示" message:@"网络异常，请重新提交" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        [alertcv addAction:confirmAction];
+        [self presentViewController:alertcv animated:YES completion:nil];
+    }
+    
 }
+
 #pragma mark tableview协议
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     static NSString *identifier = @"cell";

@@ -160,9 +160,15 @@
 #define kSegmentViewTitleHeight (SCREENHEIGHT*50/667)
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
+
 #define NVGBARHEIGHT (44)
 #define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+
+#define  IPHONEX (ScreenWidth == 375.f && ScreenHeight == 812.f ? YES : NO)
+#define  TabbarSafeBottomMargin (IPHONEX ? 34.f : 0.f)
+
+
 #define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)
 #define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
 #define MHEIGHT (1.6*MWIDTH) //monthLabel的高度

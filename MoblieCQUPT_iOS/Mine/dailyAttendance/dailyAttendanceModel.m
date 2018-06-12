@@ -10,7 +10,7 @@
 #import "HttpClient.h"
 #import "UserDefaultTool.h"
 
-#define URL @"http://hongyan.cqupt.edu.cn/springtest/cyxbsMobile/index.php/QA/Integral/getDiscountBalance"
+#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/getDiscountBalance"
 #define CONTINUEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/getCheckInStatus"
 @implementation dailyAttendanceModel
 - (void)requestNewScore{
@@ -20,6 +20,7 @@
         NSString *str = [sore stringValue];
         [self.delegate getSore:str];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [self.delegate getSore:@"NULL"];
     }];
 }
 - (void)requestContinueDay{
@@ -30,6 +31,7 @@
         NSNumber *che = data[@"checked"];
         [self.delegate getSerialDay:str AndCheck:[che stringValue]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
 
 }

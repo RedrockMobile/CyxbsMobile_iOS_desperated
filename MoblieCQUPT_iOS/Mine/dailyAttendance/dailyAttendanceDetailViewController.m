@@ -86,6 +86,9 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     dailyAttendanceCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"dailyAttendanceCell" owner:nil options:nil] lastObject];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary *dic = _data[indexPath.row];
+    cell.nameLabel = dic[@"message"];
+    cell.soreLabel = dic[@"num"];
     return cell;
 }
 
@@ -101,7 +104,6 @@
     HttpClient * client = [HttpClient defaultClient];
     [client requestWithPath:URL method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idNum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [_data removeAllObjects];
-        
         [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
         // 刷新表格
         self.detailTableView.mj_footer.hidden = NO;
