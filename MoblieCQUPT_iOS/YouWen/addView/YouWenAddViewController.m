@@ -15,7 +15,7 @@
 #import "TransparentView.h"
 #import "YouWenSubjectView.h"
 #import "YouWenAddModel.h"
-#import "emojiDetective.h"
+#import "NSString+Emoji.h"
 
 #define PHOTOSIZE 109
 @interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate>
@@ -301,16 +301,12 @@
 }
 
 - (void)postTheNew{
-    emojiDetective *detective = [[emojiDetective alloc] init];
-    NSString *title = [detective transferEmoji: _titleTextView.text];
-    NSString *detail = [detective transferEmoji:_detailTextView.text];
-    NSDictionary *dic;
-    if (_subject.length) {
-        dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
-    }
-    else {
-        dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"reward":_sore,@"disappear_time":_time};
-    }
+
+    NSString *title = [_titleTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
+    NSString *detail = [_detailTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
+    
+    
+    NSDictionary *dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
     
     YouWenAddModel *model = [[YouWenAddModel alloc] initWithInformation:dic andImage:_imageArray];
     model.delegate = self;
@@ -318,7 +314,7 @@
     _hud = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].keyWindow];
     _hud.dimBackground = YES;
     _hud.removeFromSuperViewOnHide=YES;
-    _hud.labelText = @"等待中";
+    _hud.labelText = @"上传中";
     _hud.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:_hud];
     [_hud show:YES];

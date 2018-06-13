@@ -8,7 +8,8 @@
 
 #import "YouWenDataModel.h"
 #define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getQuestionList"
-#import "emojiDetective.h"
+#import "NSString+Emoji.h"
+
 @interface YouWenDataModel()
 @property (strong, nonatomic) NSMutableDictionary *YWPostDic;
 @property (strong, nonatomic) NSString *modelStyle;
@@ -58,12 +59,11 @@
 
 - (NSArray *)changeAllArray:(NSArray *)array{
     NSMutableArray *endArray = [NSMutableArray array];
-    emojiDetective *detective = [[emojiDetective alloc] init];
     for (int i = 0; i < array.count; i ++ ) {
         NSDictionary *dd = array[i];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:dd];
-        dic[@"title"] = [detective detectiveAndChangeString:dic[@"title"]];
-        dic[@"description"] = [detective detectiveAndChangeString:dic[@"description"]];
+        dic[@"title"] = [dic[@"title"] stringByReplacingEmojiCheatCodesWithUnicode];
+        dic[@"description"] = [dic[@"description"] stringByReplacingEmojiCheatCodesWithUnicode];
         [endArray addObject:dic];
     }
     return endArray.copy;

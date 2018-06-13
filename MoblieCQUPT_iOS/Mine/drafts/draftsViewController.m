@@ -10,7 +10,7 @@
 #import "draftsTableViewCell.h"
 #import "draftsModel.h"
 #import "YouWenAddViewController.h"
-#import "emojiDetective.h"
+#import "NSString+Emoji.h"
 
 @interface draftsViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *draftTableView;
@@ -198,7 +198,6 @@
     else {
         NSString *style = _dataArray[indexPath.row].type;
         YouWenAddViewController *views = [[YouWenAddViewController alloc] initWithStyle:style];
-        emojiDetective *detective = [[emojiDetective alloc] init];
         views.titleStr =  _dataArray[indexPath.row].title_content;
         views.detailStr = _dataArray[indexPath.row].content;
         [self.navigationController pushViewController:views animated:YES];
