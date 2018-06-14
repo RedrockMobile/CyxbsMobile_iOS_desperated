@@ -35,7 +35,7 @@
         make.height.mas_offset(12);
         make.width.mas_offset(200);
     }];
-    
+    _sore = @"0";
     _soreData = [[dailyAttendanceModel alloc] init];
     _soreData.delegate = self;
     [_soreData requestNewScore];

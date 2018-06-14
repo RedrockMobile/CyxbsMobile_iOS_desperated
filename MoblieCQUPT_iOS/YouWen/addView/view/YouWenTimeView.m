@@ -50,6 +50,9 @@
             }
             [nowHour appendObject:nextHour];
         }
+        if (!nowHour.count) {
+            nowHour = @[@"01时", @"02时", @"03时", @"04时", @"05时", @"06时", @"07时", @"08时", @"09时", @"10时", @"11时", @"12时", @"13时", @"14时", @"15时", @"16时", @"17时", @"18时", @"19时", @"20时", @"21时", @"22时", @"23时"].mutableCopy;
+        }
         _timeData = @[day, nowHour, minute];
         
     }
@@ -57,6 +60,15 @@
 }
 
 - (void)confirm{
+    if (_day.length) {
+        [self.inf appendString:_day];
+    }
+    if (_hour.length) {
+        [self.inf appendString:_hour];
+    }
+    if (_minite.length) {
+        [self.inf appendString:_minite];
+    }
     NSNotification *notification = [[NSNotification alloc] initWithName:@"timeNotifi" object:@{@"time":self.inf} userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     [self removeFromSuperview];
@@ -132,7 +144,7 @@
     else{
         _minite = items[row];
     }
-    self.inf = [NSString stringWithFormat:@"%@ %@ %@", _day, _hour, _minite].mutableCopy;
+    
 }
 
 @end

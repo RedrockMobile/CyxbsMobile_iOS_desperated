@@ -238,12 +238,12 @@
 
 - (void)nextView{
     _anotherInf = [NSMutableArray array];
-    if (!_time.length){
+    if (_time.length < 16){
         YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:ZOOM(211)];
         [nextView addDetail];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
-    else if(!_sore.length){
+    else if([_sore isEqualToString:@"0"]){
         YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
         [nextView addDetail];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
@@ -258,7 +258,7 @@
 }
 - (void)timeArrive:(NSNotification *)noti{
     _time = noti.object[@"time"];
-    if (_time.length == 0) {
+    if (_time.length < 16) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"请选择日期" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
                       style:UIAlertActionStyleDefault
@@ -282,7 +282,7 @@
 
 - (void)soreArrive:(NSNotification *)noti{
     _sore = noti.object[@"sore"];
-    if (_sore.length == 0) {
+    if ([_sore isEqualToString:@"0"]) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"请选择积分" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
             style:UIAlertActionStyleDefault
