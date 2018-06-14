@@ -8,6 +8,8 @@
 
 #import "YouWenDataModel.h"
 #define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getQuestionList"
+#import "NSString+Emoji.h"
+
 @interface YouWenDataModel()
 @property (strong, nonatomic) NSMutableDictionary *YWPostDic;
 @property (strong, nonatomic) NSString *modelStyle;
@@ -40,7 +42,7 @@
 - (void)networking{
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:URL method:HttpRequestPost parameters:_YWPostDic prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        _YWdataArray = responseObject[@"data"];
+        _YWdataArray = [self changeAllArray: responseObject[@"data"]];
         NSNotification *notification;
         if (_YWdataArray.count) {
             notification =[NSNotification notificationWithName:[NSString stringWithFormat: @"%@DataLoading", _modelStyle] object:nil userInfo:@{@"state":@"YES"}];
@@ -53,6 +55,17 @@
         NSNotification *notification =[NSNotification notificationWithName:[NSString stringWithFormat: @"%@DataLoading", _modelStyle] object:nil userInfo:@{@"state":@"FAIL"}];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }];
+}
 
+- (NSArray *)changeAllArray:(NSArray *)array{
+    NSMutableArray *endArray = [NSMutableArray array];
+    for (int i = 0; i < array.count; i ++ ) {
+        NSDictionary *dd = array[i];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:dd];
+        dic[@"title"] = [dic[@"title"] stringByReplacingEmojiCheatCodesWithUnicode];
+        dic[@"description"] = [dic[@"description"] stringByReplacingEmojiCheatCodesWithUnicode];
+        [endArray addObject:dic];
+    }
+    return endArray.copy;
 }
 @end

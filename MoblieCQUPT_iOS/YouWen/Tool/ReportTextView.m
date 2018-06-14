@@ -76,6 +76,7 @@
 - (void)textViewDidChange:(UITextView *)textView{
     [self calculateNum:textView.text];
 }
+
 - (void)calculateNum:(NSString *)str{
     NSUInteger Num = self.attributedText.length;
     self.placeHolder.hidden = YES;
@@ -128,6 +129,7 @@
     newFrame.size.width = frame.size.width / SCREEN_RATE;
     return newFrame;
 }
+
 - (void)setText:(NSString *)text{
     [super setText:text];
     [self calculateNum:text];

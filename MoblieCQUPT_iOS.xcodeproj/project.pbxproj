@@ -101,6 +101,7 @@
 		6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E175E521F5FCFD400C0BE60 /* ExamSegementView.m */; };
 		6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A3A3720B71E0B002D62FC /* draftsViewController.m */; };
 		6E1A3A3C20B721B4002D62FC /* shopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1A3A3B20B721B4002D62FC /* shopViewController.m */; };
+		6E1D1BD620CF73F8008DA86C /* NSString+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1D1BD520CF73F8008DA86C /* NSString+Emoji.m */; };
 		6E1F465E20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1F465D20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m */; };
 		6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1F466320C1557000B0F36F /* dailyAttendanceCell.m */; };
 		6E1F466620C1557000B0F36F /* dailyAttendanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */; };
@@ -753,6 +754,8 @@
 		6E1A3A3720B71E0B002D62FC /* draftsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = draftsViewController.m; sourceTree = "<group>"; };
 		6E1A3A3A20B721B4002D62FC /* shopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shopViewController.h; sourceTree = "<group>"; };
 		6E1A3A3B20B721B4002D62FC /* shopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shopViewController.m; sourceTree = "<group>"; };
+		6E1D1BD420CF73F8008DA86C /* NSString+Emoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Emoji.h"; sourceTree = "<group>"; };
+		6E1D1BD520CF73F8008DA86C /* NSString+Emoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Emoji.m"; sourceTree = "<group>"; };
 		6E1F465C20C13F1D00B0F36F /* dailyAttendanceDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dailyAttendanceDetailViewController.h; sourceTree = "<group>"; };
 		6E1F465D20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dailyAttendanceDetailViewController.m; sourceTree = "<group>"; };
 		6E1F466220C1557000B0F36F /* dailyAttendanceCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dailyAttendanceCell.h; sourceTree = "<group>"; };
@@ -2702,6 +2705,8 @@
 		F242DD771EBCB2BB005AC411 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				6E1D1BD420CF73F8008DA86C /* NSString+Emoji.h */,
+				6E1D1BD520CF73F8008DA86C /* NSString+Emoji.m */,
 				F242DD7B1EBCB2BB005AC411 /* NetWork */,
 				F2509BCC1F440D7D0091F678 /* SegmentView.h */,
 				F2509BCD1F440D7D0091F678 /* SegmentView.m */,
@@ -3837,6 +3842,7 @@
 				82A0A56D20BEFD7700BD628E /* LXAskDeatilViewController.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
+				6E1D1BD620CF73F8008DA86C /* NSString+Emoji.m in Sources */,
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,

@@ -9,6 +9,8 @@
 #import "draftsViewController.h"
 #import "draftsTableViewCell.h"
 #import "draftsModel.h"
+#import "YouWenAddViewController.h"
+#import "NSString+Emoji.h"
 
 @interface draftsViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *draftTableView;
@@ -183,7 +185,24 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView setEditing:YES animated:YES];
+//    [tableView setEditing:YES animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消cell选中状态
+    
+    if (_dataArray[indexPath.row].titleType.length) {
+        NSString *style = _dataArray[indexPath.row].titleType;
+        YouWenAddViewController *views = [[YouWenAddViewController alloc] initWithStyle:style];
+        views.titleStr =  _dataArray[indexPath.row].title_content;
+        views.detailStr = _dataArray[indexPath.row].description;
+        [self.navigationController pushViewController:views animated:YES];
+    }
+    else {
+        NSString *style = _dataArray[indexPath.row].type;
+        YouWenAddViewController *views = [[YouWenAddViewController alloc] initWithStyle:style];
+        views.titleStr =  _dataArray[indexPath.row].title_content;
+        views.detailStr = _dataArray[indexPath.row].content;
+        [self.navigationController pushViewController:views animated:YES];
+    }
+    
 }
 
 - (BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{

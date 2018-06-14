@@ -7,7 +7,7 @@
 //
 
 #import "YouWenAddViewController.h"
-#import "ReportTextView.h"
+
 #import <Masonry.h>
 #import "YouWenTimeView.h"
 #import "YouWenSoreView.h"
@@ -15,20 +15,22 @@
 #import "TransparentView.h"
 #import "YouWenSubjectView.h"
 #import "YouWenAddModel.h"
+#import "NSString+Emoji.h"
+
 #define PHOTOSIZE 109
 @interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate>
+@property (strong, nonatomic) ReportTextView *titleTextView;
+@property (strong, nonatomic) ReportTextView *detailTextView;
 @property (copy, nonatomic) NSString *style;
 @property (strong, nonatomic) UIView *whiteView;
 @property (strong, nonatomic) UIView *bottomView;
 @property (copy, nonatomic) NSMutableArray *imageArray;
-@property (strong, nonatomic) ReportTextView *titleTextView;
-@property (strong, nonatomic) ReportTextView *detailTextView;
 @property (strong, nonatomic) MBProgressHUD *hud;
 @property (strong, nonatomic) UIButton *addImageButton;
 @property (strong, nonatomic) UIScrollView *imageView;
 @property (strong, nonatomic) NSMutableArray *anotherInf;
-@property (strong, nonatomic) NSString *titleStr;
-@property (strong, nonatomic) NSString *detailStr;
+
+
 @property (copy, nonatomic) NSString *time;
 @property (copy, nonatomic) NSString *sore;
 @property (copy, nonatomic) NSString *is_anonymous;
@@ -48,6 +50,7 @@
         _time = [[NSString alloc] init];
         _sore = [[NSString alloc] init];
         _is_anonymous = @"0";
+        _subject = [NSString string];
         self.navigationItem.title = @"求助";
         UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(confirmInf)];
         self.navigationItem.rightBarButtonItem = rightBarButtonItem;
@@ -232,14 +235,15 @@
         [self nextView];
     }
 }
+
 - (void)nextView{
     _anotherInf = [NSMutableArray array];
-    if (!_time.length){
+    if (_time.length < 16){
         YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:ZOOM(211)];
         [nextView addDetail];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
-    else if(!_sore.length){
+    else if([_sore isEqualToString:@"0"]){
         YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
         [nextView addDetail];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
@@ -254,7 +258,7 @@
 }
 - (void)timeArrive:(NSNotification *)noti{
     _time = noti.object[@"time"];
-    if (_time.length == 0) {
+    if (_time.length < 16) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"请选择日期" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
                       style:UIAlertActionStyleDefault
@@ -275,9 +279,10 @@
         [_titleTextView addTopic:_subject];
     }
 }
+
 - (void)soreArrive:(NSNotification *)noti{
     _sore = noti.object[@"sore"];
-    if (_sore.length == 0) {
+    if ([_sore isEqualToString:@"0"]) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"请选择积分" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
             style:UIAlertActionStyleDefault
@@ -296,14 +301,20 @@
 }
 
 - (void)postTheNew{
-    NSDictionary *dic = @{@"title":_titleTextView.text, @"description":_detailTextView.text,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
+
+    NSString *title = [_titleTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
+    NSString *detail = [_detailTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
+    
+    
+    NSDictionary *dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
+    
     YouWenAddModel *model = [[YouWenAddModel alloc] initWithInformation:dic andImage:_imageArray];
     model.delegate = self;
     [model postTheNewInformation];
     _hud = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].keyWindow];
     _hud.dimBackground = YES;
     _hud.removeFromSuperViewOnHide=YES;
-    _hud.labelText = @"等待中";
+    _hud.labelText = @"上传中";
     _hud.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:_hud];
     [_hud show:YES];
@@ -343,6 +354,7 @@
     picker.allowsEditing = YES;
     [self presentViewController:picker animated:YES completion:nil];
 }
+
 - (void)takePhoto{
     [_photoView removeFromSuperview];
     

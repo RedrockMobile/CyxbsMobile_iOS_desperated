@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@interface YouWenAddViewController : BaseViewController
+#import "ReportTextView.h"
 
+@interface YouWenAddViewController : BaseViewController
+@property (strong, nonatomic) NSString *titleStr;
+@property (strong, nonatomic) NSString *detailStr;
 -(instancetype)initWithStyle:(NSString *)style;
 @end

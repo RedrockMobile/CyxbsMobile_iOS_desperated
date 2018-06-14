@@ -23,14 +23,17 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *dic = @{@"stuNum":[userDefaults objectForKey:@"stuNum"],@"idNum":[userDefaults objectForKey:@"idNum"]}.mutableCopy;
         [dic addEntriesFromDictionary:inf];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
-         NSDateFormatter *beforeFormatter = [[NSDateFormatter alloc] init];
-        beforeFormatter.dateFormat = @"yyyy年MM月dd日 HH时mm分";
-        NSDate *date = [beforeFormatter dateFromString:(NSString *)dic[@"disappear_time"]];
-        dic[@"disappear_time"] = [formatter stringFromDate:date];
+        
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = @"yyyy年MM月dd日 HH时mm分";
+        NSDate *date = [fmt dateFromString:dic[@"time"]];
+        fmt.dateFormat = @"yyyy-MM-dd HH:mm";
+        NSString *timeString = [NSString stringWithFormat:@"%@:00", [fmt stringFromDate:date]];
+        dic[@"time"] = timeString;
         _inf = [[NSDictionary alloc] initWithDictionary:dic.copy];
         _imageArry = imgs.copy;
+        
+        
     }
     return self;
 }
