@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SheetViewController : UIAlertController
-+ (UIAlertController *)draftsAlert;
+@interface SheetAlertController : UIAlertController
++ (instancetype)draftsAlert;
 @property (nonatomic, strong) NSString *style;
 @property (nonatomic, strong) NSString *content;
 @property (nonatomic, strong) NSString *target_ID;

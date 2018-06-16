@@ -16,10 +16,12 @@
 #import "YouWenSubjectView.h"
 #import "YouWenAddModel.h"
 #import "NSString+Emoji.h"
-#import "SheetViewController.h"
+#import "SheetAlertController.h"
+#import "UIViewController+BackButtonHandler.h"
 
 #define PHOTOSIZE 109
-@interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate>
+@interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate, BackButtonHandlerProtocol>
+
 @property (strong, nonatomic) ReportTextView *titleTextView;
 @property (strong, nonatomic) ReportTextView *detailTextView;
 @property (copy, nonatomic) NSString *style;
@@ -55,11 +57,11 @@
         self.navigationItem.title = @"求助";
         UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(confirmInf)];
         self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeArrive:) name:@"timeNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(soreArrive:) name:@"soreNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectArrive:) name:@"subjectNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postTheNew) name:@"finalNotifi" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(draft:) name:@"saveDraft" object:nil];
         _style = [[NSString alloc] initWithString:style];
     }
     return self;
@@ -77,6 +79,31 @@
     
 }
 
+- (BOOL)navigationShouldPopOnBackButton{
+    if (_detailTextView.text.length) {
+        SheetAlertController *controller = [SheetAlertController draftsAlert];
+        controller.style = @"question";
+        controller.content = _detailTextView.text;
+        [self presentViewController:controller
+                           animated:YES
+                         completion:nil];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    if (_titleTextView.text.length || _detailTextView.text.length) {
+        SheetAlertController *controller = [SheetAlertController draftsAlert];
+        [self presentViewController:controller
+                           animated:YES
+                         completion:nil];
+    }
+    else {
+        [super viewDidDisappear:YES];
+    }
+
+}
 - (void)setView{
     self.navigationController.navigationItem.title = @"求助";
     self.view.backgroundColor = [UIColor colorWithRed:228/255.0 green:228/255.0 blue:228/255.0 alpha:1.0];
@@ -191,8 +218,6 @@
     }];
 }
 - (void)LayOut{
-    
-    
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view);
         make.left.mas_equalTo(self.view);
@@ -223,6 +248,8 @@
     }
     return _addImageButton;
 }
+
+
 - (void)confirmInf{
     //textview当字数为0时返回nil  ????
     if (_titleTextView.text.length == nil||_detailTextView.text.length == nil) {
@@ -276,10 +303,33 @@
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
 }
+
 - (void)subjectArrive:(NSNotification *)noti{
     _subject = noti.object[@"subject"];
     if (_subject.length != 0){
         [_titleTextView addTopic:_subject];
+    }
+    
+}
+- (void)draft:(NSNotification *)noti{
+    NSString *state = noti.userInfo[@"state"];
+    if ([state isEqualToString:@"SENDING"]) {
+        _hud = [[MBProgressHUD alloc] initWithWindow:[UIApplication sharedApplication].keyWindow];
+        _hud.dimBackground = YES;
+        _hud.removeFromSuperViewOnHide=YES;
+        _hud.labelText = @"上传中";
+        _hud.delegate = self;
+        [[UIApplication sharedApplication].keyWindow addSubview:_hud];
+        [_hud show:YES];
+    }
+    if ([state isEqualToString:@"SUCCESS"]){
+        _hud.labelText = @"上传成功";
+        [_hud hide:YES afterDelay:2];
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else if ([state isEqualToString:@"FAIL"]) {
+        _hud.labelText = @"上传失败";
+        [_hud hide:YES afterDelay:2];
     }
 }
 
