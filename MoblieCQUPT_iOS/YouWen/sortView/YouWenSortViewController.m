@@ -72,7 +72,7 @@
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:nil];
 }
 
 - (void)refreshTableData:(NSNotification *)notification{

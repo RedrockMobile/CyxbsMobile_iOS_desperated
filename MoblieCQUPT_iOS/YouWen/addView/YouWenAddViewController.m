@@ -16,6 +16,7 @@
 #import "YouWenSubjectView.h"
 #import "YouWenAddModel.h"
 #import "NSString+Emoji.h"
+#import "SheetViewController.h"
 
 #define PHOTOSIZE 109
 @interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate>
@@ -54,6 +55,7 @@
         self.navigationItem.title = @"求助";
         UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(confirmInf)];
         self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeArrive:) name:@"timeNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(soreArrive:) name:@"soreNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectArrive:) name:@"subjectNotifi" object:nil];
@@ -74,6 +76,7 @@
     [self LayOut];
     
 }
+
 - (void)setView{
     self.navigationController.navigationItem.title = @"求助";
     self.view.backgroundColor = [UIColor colorWithRed:228/255.0 green:228/255.0 blue:228/255.0 alpha:1.0];
@@ -408,6 +411,7 @@
         _is_anonymous = @"1";
     }
 }
+
 /*
 #pragma mark - Navigation
 

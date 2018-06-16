@@ -105,7 +105,7 @@
     
     _descriptionsLabel.font = [UIFont fontWithName:@"Arial" size:11];
     _descriptionsLabel.textColor = [UIColor colorWithHexString:@"555555"];
-//    _descriptionsLabel.numberOfLines = 0;
+    _descriptionsLabel.numberOfLines = 0;
     _descriptionsLabel.lineBreakMode = NSLineBreakByCharWrapping;
 //    _descriptionsLabel.textAlignment = NSTextAlignmentLeft;
     
