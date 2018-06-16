@@ -107,6 +107,7 @@
 		6E1F466620C1557000B0F36F /* dailyAttendanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */; };
 		6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E31E40B2081DA0E00649463 /* YouWenAddModel.m */; };
 		6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E339D9D20B55EF4006F3999 /* attendanceMoreViewController.m */; };
+		6E372C6820D34C0500F930A6 /* SheetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E372C6720D34C0500F930A6 /* SheetViewController.m */; };
 		6E3AB63520AD76A3003A65F5 /* AnswerDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */; };
 		6E3AB63620AD76A3003A65F5 /* AnswerDetailTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB60A20AD76A2003A65F5 /* AnswerDetailTableHeaderView.xib */; };
 		6E3AB63720AD76A3003A65F5 /* AnswerCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB60D20AD76A2003A65F5 /* AnswerCommentModel.m */; };
@@ -765,6 +766,8 @@
 		6E31E40B2081DA0E00649463 /* YouWenAddModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddModel.m; sourceTree = "<group>"; };
 		6E339D9C20B55EF4006F3999 /* attendanceMoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = attendanceMoreViewController.h; sourceTree = "<group>"; };
 		6E339D9D20B55EF4006F3999 /* attendanceMoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = attendanceMoreViewController.m; sourceTree = "<group>"; };
+		6E372C6620D34C0500F930A6 /* SheetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SheetViewController.h; sourceTree = "<group>"; };
+		6E372C6720D34C0500F930A6 /* SheetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SheetViewController.m; sourceTree = "<group>"; };
 		6E3AB60720AD76A2003A65F5 /* AnswerDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerDetailViewController.h; sourceTree = "<group>"; };
 		6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerDetailTableViewCell.xib; sourceTree = "<group>"; };
 		6E3AB60920AD76A2003A65F5 /* AnswerCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerCommentModel.h; sourceTree = "<group>"; };
@@ -1679,6 +1682,8 @@
 				6E12A32D2053904D00D07606 /* YouWenNextView.h */,
 				6E12A32E2053904D00D07606 /* YouWenNextView.m */,
 				6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */,
+				6E372C6620D34C0500F930A6 /* SheetViewController.h */,
+				6E372C6720D34C0500F930A6 /* SheetViewController.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -3949,6 +3954,7 @@
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				6E0F692F20309BE000BB5EF3 /* ReportTextView.m in Sources */,
+				6E372C6820D34C0500F930A6 /* SheetViewController.m in Sources */,
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
 				9630E4CD1FAF07D300874EB9 /* HeaderGifRefresh.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
