@@ -8,7 +8,7 @@
 
 #import "BaseNavigationController.h"
 #import "UIFont+AdaptiveFont.h"
-@interface BaseNavigationController ()
+@interface BaseNavigationController ()<UINavigationBarDelegate>
 
 @end
 
@@ -31,13 +31,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
-    [super pushViewController:viewController animated:animated];
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"";
-    viewController.navigationItem.backBarButtonItem = backItem;
-}
 
 /*
 #pragma mark - Navigation
