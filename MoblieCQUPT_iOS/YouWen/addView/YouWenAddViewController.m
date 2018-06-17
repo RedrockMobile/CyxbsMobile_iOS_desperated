@@ -80,10 +80,12 @@
 }
 
 - (BOOL)navigationShouldPopOnBackButton{
-    if (_detailTextView.text.length) {
+    if (_detailTextView.text.length ||_titleTextView.text.length ) {
         SheetAlertController *controller = [SheetAlertController draftsAlert];
         controller.style = @"question";
-        controller.content = _detailTextView.text;
+        controller.contentStr = _detailTextView.text;
+        controller.kind = self.style;
+        controller.titleStr = _titleTextView.text;
         [self presentViewController:controller
                            animated:YES
                          completion:nil];
@@ -330,6 +332,10 @@
     else if ([state isEqualToString:@"FAIL"]) {
         _hud.labelText = @"上传失败";
         [_hud hide:YES afterDelay:2];
+    }
+    
+    if ([state isEqualToString:@"BACK"]) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

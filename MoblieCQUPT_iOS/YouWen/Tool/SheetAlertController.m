@@ -21,11 +21,14 @@
 - (void)saveDraft{
     HttpClient *client = [HttpClient defaultClient];
     NSDictionary *dic;
+    NSDictionary *base64 = @{@"title":_titleStr,@"description":_contentStr,@"kind":_kind};
+    NSString *string = [self encodeDictory:base64];
+    
     if ([self.style isEqualToString:@"question"]) {
-        dic = @{@"stunum":[UserDefaultTool getStuNum],@"idnum":[UserDefaultTool getIdNum],@"type":_style,@"content":_content};
+        dic = @{@"stunum":[UserDefaultTool getStuNum],@"idnum":[UserDefaultTool getIdNum],@"type":_style,@"content":string};
     }
     else {
-        dic = @{@"stunum":[UserDefaultTool getStuNum],@"idnum":[UserDefaultTool getIdNum],@"type":_style,@"content":_content,@"target_id":_target_ID};
+        dic = @{@"stunum":[UserDefaultTool getStuNum],@"idnum":[UserDefaultTool getIdNum],@"type":_style,@"content":string,@"target_id":_target_ID};
     }
     [client requestWithPath:URL method:HttpRequestPost parameters:dic prepareExecute:nil
                    progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -74,6 +77,16 @@
     [self addAction:action3];
     
     
+}
+- (NSString *)encodeDictory:(NSDictionary *)dic{
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+    NSString *getStr= [jsonData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    if (! jsonData) {
+        return @"{}";
+    } else {
+        return getStr;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

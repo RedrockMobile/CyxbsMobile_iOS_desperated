@@ -11,6 +11,8 @@
 @interface SheetAlertController : UIAlertController
 + (instancetype)draftsAlert;
 @property (nonatomic, strong) NSString *style;
-@property (nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *titleStr;
+@property (nonatomic, strong) NSString *kind;
+@property (nonatomic, strong) NSString *contentStr;
 @property (nonatomic, strong) NSString *target_ID;
 @end
