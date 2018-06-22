@@ -107,6 +107,7 @@
 		6E1F466620C1557000B0F36F /* dailyAttendanceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */; };
 		6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E31E40B2081DA0E00649463 /* YouWenAddModel.m */; };
 		6E3213FA20D5426400E55145 /* UIViewController+BackButtonHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3213F920D5426400E55145 /* UIViewController+BackButtonHandler.m */; };
+		6E32140020D54EE100E55145 /* AboutMePraiseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3213FF20D54EE100E55145 /* AboutMePraiseTableViewCell.xib */; };
 		6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E339D9D20B55EF4006F3999 /* attendanceMoreViewController.m */; };
 		6E372C6820D34C0500F930A6 /* SheetAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E372C6720D34C0500F930A6 /* SheetAlertController.m */; };
 		6E3AB63520AD76A3003A65F5 /* AnswerDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB60820AD76A2003A65F5 /* AnswerDetailTableViewCell.xib */; };
@@ -451,7 +452,6 @@
 		F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC8F1EBCB2BB005AC411 /* XBSAboutViewController.m */; };
 		F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DC901EBCB2BB005AC411 /* XBSAboutViewController.xib */; };
 		F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC931EBCB2BB005AC411 /* AboutMePraiseTableViewCell.m */; };
-		F242DEFA1EBCB2BC005AC411 /* AboutMePraiseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DC941EBCB2BB005AC411 /* AboutMePraiseTableViewCell.xib */; };
 		F242DEFB1EBCB2BC005AC411 /* AboutMeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC961EBCB2BB005AC411 /* AboutMeTableViewCell.m */; };
 		F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DC971EBCB2BB005AC411 /* AboutMeTableViewCell.xib */; };
 		F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DC991EBCB2BB005AC411 /* AboutMeViewController.m */; };
@@ -767,6 +767,7 @@
 		6E31E40B2081DA0E00649463 /* YouWenAddModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddModel.m; sourceTree = "<group>"; };
 		6E3213F820D5426400E55145 /* UIViewController+BackButtonHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BackButtonHandler.h"; sourceTree = "<group>"; };
 		6E3213F920D5426400E55145 /* UIViewController+BackButtonHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BackButtonHandler.m"; sourceTree = "<group>"; };
+		6E3213FF20D54EE100E55145 /* AboutMePraiseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMePraiseTableViewCell.xib; sourceTree = "<group>"; };
 		6E339D9C20B55EF4006F3999 /* attendanceMoreViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = attendanceMoreViewController.h; sourceTree = "<group>"; };
 		6E339D9D20B55EF4006F3999 /* attendanceMoreViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = attendanceMoreViewController.m; sourceTree = "<group>"; };
 		6E372C6620D34C0500F930A6 /* SheetAlertController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SheetAlertController.h; sourceTree = "<group>"; };
@@ -1228,7 +1229,6 @@
 		F242DC901EBCB2BB005AC411 /* XBSAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XBSAboutViewController.xib; sourceTree = "<group>"; };
 		F242DC921EBCB2BB005AC411 /* AboutMePraiseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMePraiseTableViewCell.h; sourceTree = "<group>"; };
 		F242DC931EBCB2BB005AC411 /* AboutMePraiseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMePraiseTableViewCell.m; sourceTree = "<group>"; };
-		F242DC941EBCB2BB005AC411 /* AboutMePraiseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMePraiseTableViewCell.xib; sourceTree = "<group>"; };
 		F242DC951EBCB2BB005AC411 /* AboutMeTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutMeTableViewCell.h; sourceTree = "<group>"; };
 		F242DC961EBCB2BB005AC411 /* AboutMeTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutMeTableViewCell.m; sourceTree = "<group>"; };
 		F242DC971EBCB2BB005AC411 /* AboutMeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutMeTableViewCell.xib; sourceTree = "<group>"; };
@@ -2566,8 +2566,8 @@
 			children = (
 				F242DC921EBCB2BB005AC411 /* AboutMePraiseTableViewCell.h */,
 				F242DC931EBCB2BB005AC411 /* AboutMePraiseTableViewCell.m */,
-				F242DC941EBCB2BB005AC411 /* AboutMePraiseTableViewCell.xib */,
 				F242DC951EBCB2BB005AC411 /* AboutMeTableViewCell.h */,
+				6E3213FF20D54EE100E55145 /* AboutMePraiseTableViewCell.xib */,
 				F242DC961EBCB2BB005AC411 /* AboutMeTableViewCell.m */,
 				F242DC971EBCB2BB005AC411 /* AboutMeTableViewCell.xib */,
 				F242DC981EBCB2BB005AC411 /* AboutMeViewController.h */,
@@ -3364,7 +3364,6 @@
 				F26D967F1F3C400F0063B024 /* icon_share_qzone@3x.png in Resources */,
 				6E3AB66E20B068DB003A65F5 /* countdayView.xib in Resources */,
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
-				F242DEFA1EBCB2BC005AC411 /* AboutMePraiseTableViewCell.xib in Resources */,
 				F242DFAB1EBD9E2C005AC411 /* IssueTableViewController.xib in Resources */,
 				6E3AB64E20AD76A3003A65F5 /* 评论@3x.png in Resources */,
 				9630E49B1FAF07D200874EB9 /* 3@3x.png in Resources */,
@@ -3503,6 +3502,7 @@
 				4A3A07EE1FCC0EC700A50393 /* lost_image_lacktel@2x.png in Resources */,
 				F273B4F11F4B6CEF0004261C /* mine_image_calendar2@3x.png in Resources */,
 				9630E4B71FAF07D200874EB9 /* 展开前@3x.png in Resources */,
+				6E32140020D54EE100E55145 /* AboutMePraiseTableViewCell.xib in Resources */,
 				F242DDC01EBCB2BB005AC411 /* unitImage.png in Resources */,
 				F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */,
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
