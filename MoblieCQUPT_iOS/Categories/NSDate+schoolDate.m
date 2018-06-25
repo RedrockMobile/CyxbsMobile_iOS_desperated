@@ -11,10 +11,13 @@
 @implementation NSDate(schoolDate)
 - (NSDate *)getShoolData:(NSInteger)week andWeekday:(NSInteger)weekday{
     NSInteger nowWeek = [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue];
-    NSInteger diffNum = week - nowWeek;
     NSDate *nowDate = [NSDate date];
-    NSDate *examDate = [nowDate dateByAddingTimeInterval: 60 * 60 * 24 * ((diffNum - 1) * 7 + weekday)];
-    return examDate;
+    NSTimeInterval  oneDay = 24*60*60;
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierChinese];
+    NSDateComponents *components = [calendar components:NSCalendarUnitWeekday fromDate:nowDate];
+    NSTimeInterval timeInterval = ((week-nowWeek)*7+(weekday-(components.weekday+6)%7))*oneDay;
+    NSDate *date = [NSDate dateWithTimeInterval:timeInterval sinceDate:nowDate];
+    return date;
 }
 
 @end
