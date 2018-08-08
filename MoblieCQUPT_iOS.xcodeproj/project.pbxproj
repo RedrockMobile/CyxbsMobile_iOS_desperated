@@ -1528,6 +1528,13 @@
 			path = addView;
 			sourceTree = "<group>";
 		};
+		82B66EE4211AD2A700FA82F1 /* Freshman8 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Freshman8;
+			sourceTree = "<group>";
+		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
 			isa = PBXGroup;
 			children = (
@@ -1817,6 +1824,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
+				82B66EE4211AD2A700FA82F1 /* Freshman8 */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
