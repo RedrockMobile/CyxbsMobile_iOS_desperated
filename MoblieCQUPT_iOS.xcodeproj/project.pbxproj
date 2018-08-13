@@ -210,8 +210,18 @@
 		E4759263211FBCEE008EB61D /* SYCMainPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4759262211FBCEE008EB61D /* SYCMainPageView.m */; };
 		E4759266211FBD3C008EB61D /* SYCMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4759265211FBD3C008EB61D /* SYCMainPageViewController.m */; };
 		E4759268211FBE33008EB61D /* backgroud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4759267211FBE33008EB61D /* backgroud.jpg */; };
-		E475926E21205CA4008EB61D /* 入学必备.png in Resources */ = {isa = PBXBuildFile; fileRef = E475926D21205CA4008EB61D /* 入学必备.png */; };
 		E47592712121281A008EB61D /* SYCMainPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E47592702121281A008EB61D /* SYCMainPageModel.m */; };
+		E475927321213A2B008EB61D /* 入学必备.png in Resources */ = {isa = PBXBuildFile; fileRef = E475927221213A2B008EB61D /* 入学必备.png */; };
+		E475927721213CC3008EB61D /* 军训特辑.png in Resources */ = {isa = PBXBuildFile; fileRef = E475927521213CC3008EB61D /* 军训特辑.png */; };
+		E475927C21213CCB008EB61D /* 重邮风采.png in Resources */ = {isa = PBXBuildFile; fileRef = E475927821213CCA008EB61D /* 重邮风采.png */; };
+		E475927D21213CCB008EB61D /* 线上交流.png in Resources */ = {isa = PBXBuildFile; fileRef = E475927921213CCA008EB61D /* 线上交流.png */; };
+		E475927F21213CCB008EB61D /* 校园攻略.png in Resources */ = {isa = PBXBuildFile; fileRef = E475927B21213CCB008EB61D /* 校园攻略.png */; };
+		E475928321215D8F008EB61D /* 报道流程.png in Resources */ = {isa = PBXBuildFile; fileRef = E475928221215D8E008EB61D /* 报道流程.png */; };
+		E475928521215D95008EB61D /* 我想对你说.png in Resources */ = {isa = PBXBuildFile; fileRef = E475928421215D95008EB61D /* 我想对你说.png */; };
+		E475928B21215E5C008EB61D /* 报道流程锁.png in Resources */ = {isa = PBXBuildFile; fileRef = E475928721215E5B008EB61D /* 报道流程锁.png */; };
+		E475928C21215E5C008EB61D /* 校园攻略锁.png in Resources */ = {isa = PBXBuildFile; fileRef = E475928821215E5C008EB61D /* 校园攻略锁.png */; };
+		E475928D21215E5C008EB61D /* 线上交流锁.png in Resources */ = {isa = PBXBuildFile; fileRef = E475928921215E5C008EB61D /* 线上交流锁.png */; };
+		E475928E21215E5C008EB61D /* 我想对你说锁.png in Resources */ = {isa = PBXBuildFile; fileRef = E475928A21215E5C008EB61D /* 我想对你说锁.png */; };
 		E4A7FB4B211EDDC60047E6DC /* SYCCollageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A7FB4A211EDDC60047E6DC /* SYCCollageModel.m */; };
 		E4A7FB4E211EDE7F0047E6DC /* SYCCollageDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A7FB4D211EDE7F0047E6DC /* SYCCollageDataManager.m */; };
 		E4A7FB55211EE24A0047E6DC /* SYCCollageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A7FB4F211EE2480047E6DC /* SYCCollageTableViewController.m */; };
@@ -868,9 +878,19 @@
 		E4759264211FBD3C008EB61D /* SYCMainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCMainPageViewController.h; sourceTree = "<group>"; };
 		E4759265211FBD3C008EB61D /* SYCMainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCMainPageViewController.m; sourceTree = "<group>"; };
 		E4759267211FBE33008EB61D /* backgroud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroud.jpg; sourceTree = "<group>"; };
-		E475926D21205CA4008EB61D /* 入学必备.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备.png"; sourceTree = "<group>"; };
 		E475926F2121281A008EB61D /* SYCMainPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCMainPageModel.h; sourceTree = "<group>"; };
 		E47592702121281A008EB61D /* SYCMainPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCMainPageModel.m; sourceTree = "<group>"; };
+		E475927221213A2B008EB61D /* 入学必备.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备.png"; sourceTree = "<group>"; };
+		E475927521213CC3008EB61D /* 军训特辑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "军训特辑.png"; sourceTree = "<group>"; };
+		E475927821213CCA008EB61D /* 重邮风采.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重邮风采.png"; sourceTree = "<group>"; };
+		E475927921213CCA008EB61D /* 线上交流.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线上交流.png"; sourceTree = "<group>"; };
+		E475927B21213CCB008EB61D /* 校园攻略.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校园攻略.png"; sourceTree = "<group>"; };
+		E475928221215D8E008EB61D /* 报道流程.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "报道流程.png"; sourceTree = "<group>"; };
+		E475928421215D95008EB61D /* 我想对你说.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我想对你说.png"; sourceTree = "<group>"; };
+		E475928721215E5B008EB61D /* 报道流程锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "报道流程锁.png"; sourceTree = "<group>"; };
+		E475928821215E5C008EB61D /* 校园攻略锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校园攻略锁.png"; sourceTree = "<group>"; };
+		E475928921215E5C008EB61D /* 线上交流锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "线上交流锁.png"; sourceTree = "<group>"; };
+		E475928A21215E5C008EB61D /* 我想对你说锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我想对你说锁.png"; sourceTree = "<group>"; };
 		E4A7FB49211EDDC60047E6DC /* SYCCollageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCCollageModel.h; sourceTree = "<group>"; };
 		E4A7FB4A211EDDC60047E6DC /* SYCCollageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCCollageModel.m; sourceTree = "<group>"; };
 		E4A7FB4C211EDE7F0047E6DC /* SYCCollageDataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCCollageDataManager.h; sourceTree = "<group>"; };
@@ -1883,10 +1903,44 @@
 				E4759262211FBCEE008EB61D /* SYCMainPageView.m */,
 				E475926F2121281A008EB61D /* SYCMainPageModel.h */,
 				E47592702121281A008EB61D /* SYCMainPageModel.m */,
+				E475928021215D2C008EB61D /* ButtonImage */,
 				E4759267211FBE33008EB61D /* backgroud.jpg */,
-				E475926D21205CA4008EB61D /* 入学必备.png */,
 			);
 			path = "主页";
+			sourceTree = "<group>";
+		};
+		E475928021215D2C008EB61D /* ButtonImage */ = {
+			isa = PBXGroup;
+			children = (
+				E475928621215DB0008EB61D /* Locked */,
+				E475928121215D4F008EB61D /* Unlocked */,
+			);
+			path = ButtonImage;
+			sourceTree = "<group>";
+		};
+		E475928121215D4F008EB61D /* Unlocked */ = {
+			isa = PBXGroup;
+			children = (
+				E475927221213A2B008EB61D /* 入学必备.png */,
+				E475927521213CC3008EB61D /* 军训特辑.png */,
+				E475927921213CCA008EB61D /* 线上交流.png */,
+				E475927B21213CCB008EB61D /* 校园攻略.png */,
+				E475927821213CCA008EB61D /* 重邮风采.png */,
+				E475928221215D8E008EB61D /* 报道流程.png */,
+				E475928421215D95008EB61D /* 我想对你说.png */,
+			);
+			path = Unlocked;
+			sourceTree = "<group>";
+		};
+		E475928621215DB0008EB61D /* Locked */ = {
+			isa = PBXGroup;
+			children = (
+				E475928721215E5B008EB61D /* 报道流程锁.png */,
+				E475928A21215E5C008EB61D /* 我想对你说锁.png */,
+				E475928921215E5C008EB61D /* 线上交流锁.png */,
+				E475928821215E5C008EB61D /* 校园攻略锁.png */,
+			);
+			path = Locked;
 			sourceTree = "<group>";
 		};
 		E4A7FB46211EDD4B0047E6DC /* Freshman2018 */ = {
@@ -3385,6 +3439,7 @@
 				F26D968A1F3C400F0063B024 /* topic_image_alltopic@2x.png in Resources */,
 				9630E4B01FAF07D200874EB9 /* scroll@2x.png in Resources */,
 				9630E4B61FAF07D200874EB9 /* 展开前@2x.png in Resources */,
+				E475927F21213CCB008EB61D /* 校园攻略.png in Resources */,
 				4A3A08471FCD990A00A50393 /* tel@3x.png in Resources */,
 				F242DE881EBCB2BC005AC411 /* 地点@2x.png in Resources */,
 				F20026E41F4020FA00360991 /* mine_image_exam@3x.png in Resources */,
@@ -3417,6 +3472,7 @@
 				4A3A07E21FCC0EC700A50393 /* lost_image_com@2x.png in Resources */,
 				F20026E31F4020FA00360991 /* mine_image_exam@2x.png in Resources */,
 				F26D968F1F3C400F0063B024 /* xia.png in Resources */,
+				E475927721213CC3008EB61D /* 军训特辑.png in Resources */,
 				F242DEA21EBCB2BC005AC411 /* 类型@2x.png in Resources */,
 				9630E4A41FAF07D200874EB9 /* login_back.png in Resources */,
 				9630E4B91FAF07D200874EB9 /* 展开后@3x.png in Resources */,
@@ -3424,7 +3480,6 @@
 				F242DE7A1EBCB2BC005AC411 /* remind@3x.png in Resources */,
 				F20026E81F4020FA00360991 /* mine_image_date@3x.png in Resources */,
 				4A3A07EB1FCC0EC700A50393 /* lost_image_lackcate@3x.png in Resources */,
-				E475926E21205CA4008EB61D /* 入学必备.png in Resources */,
 				F242DE7A1EBCB2BC005AC411 /* remind@3x.png in Resources */,
 				F20026E81F4020FA00360991 /* mine_image_date@3x.png in Resources */,
 				E4759268211FBE33008EB61D /* backgroud.jpg in Resources */,
@@ -3443,6 +3498,7 @@
 				F242DE781EBCB2BC005AC411 /* remind2@3x.png in Resources */,
 				4A3A08011FCC0EC700A50393 /* shake_match.mp3 in Resources */,
 				4A3A08461FCD990A00A50393 /* close@3x.png in Resources */,
+				E475927321213A2B008EB61D /* 入学必备.png in Resources */,
 				4A3A07CE1FCC0EC700A50393 /* cqupt2@2x.jpg in Resources */,
 				F20026F81F40372100360991 /* appIcon@3x.png in Resources */,
 				F242DE961EBCB2BC005AC411 /* 无事项@2x.png in Resources */,
@@ -3495,6 +3551,7 @@
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
 				F20026E71F4020FA00360991 /* mine_image_date@2x.png in Resources */,
 				F20027081F404BE100360991 /* timeTable_image_pull@2x.png in Resources */,
+				E475928521215D95008EB61D /* 我想对你说.png in Resources */,
 				9630E4A81FAF07D200874EB9 /* login_icon@2x.png in Resources */,
 				9630E4B31FAF07D200874EB9 /* volunteer_time_icon.png in Resources */,
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
@@ -3512,6 +3569,7 @@
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
 				82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */,
+				E475928C21215E5C008EB61D /* 校园攻略锁.png in Resources */,
 				82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */,
 				82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */,
 				82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */,
@@ -3519,6 +3577,7 @@
 				4A3A07DB1FCC0EC700A50393 /* find_image_query@3x.png in Resources */,
 				F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */,
 				F200271B1F405B8500360991 /* remind_image_remind@3x.png in Resources */,
+				E475928B21215E5C008EB61D /* 报道流程锁.png in Resources */,
 				F20026E21F4020FA00360991 /* mine_image_edit@3x.png in Resources */,
 				823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */,
 				4A3A07EC1FCC0EC700A50393 /* lost_image_lackplace@2x.png in Resources */,
@@ -3552,6 +3611,7 @@
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
+				E475928D21215E5C008EB61D /* 线上交流锁.png in Resources */,
 				9630E4C71FAF07D300874EB9 /* 没有记录@3x.png in Resources */,
 				F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */,
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
@@ -3577,9 +3637,11 @@
 				82D6856B1F6E4F4B004A5C7D /* icon_down@3x.png in Resources */,
 				82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */,
 				F200271C1F405B8500360991 /* remind_image_time@2x.png in Resources */,
+				E475927D21213CCB008EB61D /* 线上交流.png in Resources */,
 				9630E49D1FAF07D200874EB9 /* 4@3x.png in Resources */,
 				F242DE8D1EBCB2BC005AC411 /* 多课1@3x.png in Resources */,
 				4A3A08491FCD990A00A50393 /* yuan@3x.png in Resources */,
+				E475928321215D8F008EB61D /* 报道流程.png in Resources */,
 				9630E4BF1FAF07D200874EB9 /* 时长加号.png in Resources */,
 				F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */,
 				823D41671F6407D300C99D9B /* icon_upvote_outside_notselect@3x.png in Resources */,
@@ -3598,10 +3660,12 @@
 				F242DE5F1EBCB2BC005AC411 /* RemindTableViewCell.xib in Resources */,
 				F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
+				E475927C21213CCB008EB61D /* 重邮风采.png in Resources */,
 				9630E4AD1FAF07D200874EB9 /* login_password.png in Resources */,
 				F273B4EF1F4B6CEF0004261C /* mine_image_calendar1@3x.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				9630E4B11FAF07D200874EB9 /* scroll@3x.png in Resources */,
+				E475928E21215E5C008EB61D /* 我想对你说锁.png in Resources */,
 				4A3A07D01FCC0EC700A50393 /* find_image_food@2x.png in Resources */,
 				9630E4A11FAF07D200874EB9 /* 6@3x.png in Resources */,
 				9630E4A61FAF07D200874EB9 /* login_back@3x.png in Resources */,

@@ -15,7 +15,13 @@
     if (!shareInstance) {
         shareInstance = [[self alloc] init];
     }
+    shareInstance.currentStep =  [[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"currentStep.archiver"]] integerValue];
     return shareInstance;
+}
+
+- (void)setCurrentStep:(NSUInteger)currentStep{
+    _currentStep = currentStep;
+    [NSKeyedArchiver archiveRootObject:[NSNumber numberWithInteger:currentStep] toFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"currentStep.archiver"]];
 }
 
 @end

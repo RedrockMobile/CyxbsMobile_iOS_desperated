@@ -36,6 +36,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"DataDownloadDone" object:nil];
     
     self.title = @"学院选择";
+    self.callBackHandle();
 }
 
 - (void)reloadData:(NSNotification *)notifacation{
@@ -83,5 +84,4 @@
         [self.navigationController pushViewController:dataAnalyseVC animated:YES];
     
 }
-
 @end
