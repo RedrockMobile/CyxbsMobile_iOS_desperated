@@ -18,6 +18,7 @@
 #import "LaunchScreenViewController.h"
 #import "LessonRemindNotification.h"
 #import <Bugly/Bugly.h>
+
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @end
 

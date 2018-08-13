@@ -11,6 +11,9 @@
 #import "FinderCollectionViewCell.h"
 #import "LZCarouselModel.h"
 
+#import "SYCCollageTableViewController.h"
+#import "SYCMainPageViewController.h"
+
 @interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -75,6 +78,29 @@
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
     // 产品的要求 一次滑动只能移动一个
 
+    //测试用Button，进入学院选择界面
+    UIButton *testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    testButton.backgroundColor = [UIColor redColor];
+    [testButton addTarget:self action:@selector(touchTestButton:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testButton];
+    
+    //测试用Button2，进入主页
+    UIButton *testButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, 100, 100)];
+    testButton2.backgroundColor = [UIColor blueColor];
+    [testButton2 addTarget:self action:@selector(touchTestButton2:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testButton2];
+}
+
+//测试按钮方法
+- (void)touchTestButton:(id)sender{
+    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    [self.navigationController pushViewController:collageVC animated:YES];
+}
+
+//测试按钮方法2
+- (void)touchTestButton2:(id)sender{
+    SYCMainPageViewController *mainPageVC = [[SYCMainPageViewController alloc] init];
+    [self.navigationController pushViewController:mainPageVC animated:YES];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
