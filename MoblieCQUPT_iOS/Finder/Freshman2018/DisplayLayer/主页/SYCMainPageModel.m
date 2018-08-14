@@ -14,6 +14,7 @@
     static SYCMainPageModel *shareInstance = nil;
     if (!shareInstance) {
         shareInstance = [[self alloc] init];
+        shareInstance.hasAnimationed = [NSMutableArray arrayWithObjects:[NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], [NSNumber numberWithBool:NO], nil];
     }
     shareInstance.currentStep =  [[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"currentStep.archiver"]] integerValue];
     return shareInstance;

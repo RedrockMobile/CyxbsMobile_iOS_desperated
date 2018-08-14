@@ -19,7 +19,7 @@
 @property (nonatomic, strong) UIButton *xsjlBtn; //线上交流
 @property (nonatomic, strong) UIButton *cyfcBtn; //重邮风采
 @property (nonatomic, strong) UIButton *bdlcBtn; //报道流程
-@property (nonatomic, strong) UIButton *wxdnsBtn; //我想对你说\
+@property (nonatomic, strong) UIButton *wxdnsBtn; //我想对你说
 
 @property (nonatomic, strong) SYCMainPageModel *mainPageModel;
 
@@ -35,14 +35,14 @@
     [super viewDidLoad];
     CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat mainPageHeight = mainPageWidth * 2.933;
-    
-    self.mainPageModel = [SYCMainPageModel shareInstance];
+
     
     
     self.rxbbBtn = [[UIButton alloc] initWithFrame: CGRectMake(mainPageWidth * 0.173, mainPageHeight * 0.193, mainPageWidth * 0.442, mainPageHeight * 0.073)];
     [self.rxbbBtn setBackgroundImage:[UIImage imageNamed:@"入学必备"] forState:UIControlStateNormal];
     [self.rxbbBtn addTarget:self action:@selector(clickRxbbBtn:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:self.rxbbBtn];
+    
     
     self.jxtjBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.725, mainPageHeight * 0.260, mainPageWidth * 0.272, mainPageHeight * 0.105)];
     [self.jxtjBtn setBackgroundImage:[UIImage imageNamed:@"军训特辑"] forState:UIControlStateNormal];
@@ -54,6 +54,7 @@
     if (self.mainPageModel.currentStep < 2) {
         [self.xyglBtn setBackgroundImage:[UIImage imageNamed:@"校园攻略锁"] forState:UIControlStateNormal];
     }else{
+        
         [self.xyglBtn setBackgroundImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
         [self.xyglBtn addTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -104,15 +105,12 @@
         if (self.mainPageModel.currentStep < 2) {
             [self.mainPageModel setCurrentStep:2];
             [self viewDidLoad];
+            if (![self.mainPageModel.hasAnimationed[1] boolValue]) {
+                [self buttonDisappearAnimation:self.xyglBtn];
+                self.mainPageModel.hasAnimationed[1] = [NSNumber numberWithBool:YES];
+            }
         }
     };
-}
-
-- (void)clickJxtjBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
-    collageVC.callBackHandle = ^{
-    };
-    [self.navigationController pushViewController:collageVC animated:YES];
 }
 
 - (void)clickXyglBtn:(id)sender{
@@ -123,6 +121,11 @@
         if (self.mainPageModel.currentStep < 3) {
             [self.mainPageModel setCurrentStep:3];
             [self viewDidLoad];
+            if (![self.mainPageModel.hasAnimationed[2] boolValue]) {
+                [self buttonDisappearAnimation:self.xsjlBtn];
+                self.mainPageModel.hasAnimationed[2] = [NSNumber numberWithBool:YES];
+            }
+            
         }
     };
 }
@@ -135,15 +138,13 @@
         if (self.mainPageModel.currentStep < 4) {
             [self.mainPageModel setCurrentStep:4];
             [self viewDidLoad];
+            if (![self.mainPageModel.hasAnimationed[3] boolValue]) {
+                [self buttonDisappearAnimation:self.bdlcBtn];
+                self.mainPageModel.hasAnimationed[3] = [NSNumber numberWithBool:YES];
+            }
+            
         }
     };
-}
-
-- (void)clickCyfcBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
-    collageVC.callBackHandle = ^{
-    };
-    [self.navigationController pushViewController:collageVC animated:YES];
 }
 
 - (void)clickBdlcBtn:(id)sender{
@@ -154,8 +155,19 @@
         if (self.mainPageModel.currentStep < 5) {
             [self.mainPageModel setCurrentStep:5];
             [self viewDidLoad];
+            if (![self.mainPageModel.hasAnimationed[4] boolValue]) {
+                [self buttonDisappearAnimation:self.wxdnsBtn];
+                self.mainPageModel.hasAnimationed[4] = [NSNumber numberWithBool:YES];
+            }
         }
     };
+}
+
+- (void)clickJxtjBtn:(id)sender{
+    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    collageVC.callBackHandle = ^{
+    };
+    [self.navigationController pushViewController:collageVC animated:YES];
 }
 
 - (void)clickWxdnsBtn:(id)sender{
@@ -165,15 +177,20 @@
     [self.navigationController pushViewController:collageVC animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)clickCyfcBtn:(id)sender{
+    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    collageVC.callBackHandle = ^{
+    };
+    [self.navigationController pushViewController:collageVC animated:YES];
 }
+
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
+        self.mainPageModel = [SYCMainPageModel shareInstance];
+        
         scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         [self.view addSubview:scrollView];
         
@@ -188,14 +205,54 @@
     }
     return self;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)buttonDisappearAnimation:(UIButton *)button{
+    CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
+    
+    CAKeyframeAnimation *rotation = nil;
+    rotation = [CAKeyframeAnimation animationWithKeyPath:@"transform.rotation"];
+    CGFloat angle = M_PI_4 * 0.4;
+    NSArray *values = @[@(angle * 0.1),@(-angle * 0.2),@(angle * 0.3), @(-angle * 0.4), @(angle * 0.5), @(-angle * 0.6),@(angle * 0.7),@(-angle * 0.8), @(angle * 0.9), @(-angle)];
+    [rotation setValues:values];
+    [rotation setRepeatCount:1];
+    [rotation setDuration:2.0];
+    [rotation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
+    UIGraphicsBeginImageContext(self.view.frame.size);
+    rotation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [rotation setRemovedOnCompletion:NO];
+    [rotation setFillMode:kCAFillModeBoth];
+    
+    CABasicAnimation *opacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    [opacity setDuration:2.0];
+    [opacity setFromValue:@1.0];
+    [opacity setToValue:@0];
+    
+    [animationGroup setDuration:2.0];
+    [animationGroup setAnimations:@[rotation, opacity]];
+    [button.layer addAnimation:animationGroup forKey:nil];
+    
+    
 }
-*/
+
+- (void)reloadButtonImage{
+    if (self.mainPageModel.currentStep > 1) {
+        [self.xyglBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        if (self.mainPageModel.currentStep > 2) {
+            [self.xsjlBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+            if (self.mainPageModel.currentStep > 3) {
+                 [self.bdlcBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+                if (self.mainPageModel.currentStep > 4) {
+                     [self.wxdnsBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+                }
+            }
+        }
+    }
+    [self.view setNeedsDisplay];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 @end

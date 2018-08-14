@@ -11,6 +11,7 @@
 @interface SYCMainPageModel : NSObject
 
 @property (nonatomic) NSUInteger currentStep;
+@property (nonatomic) NSMutableArray *hasAnimationed;
 
 + (instancetype)shareInstance;
     
