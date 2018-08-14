@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F22121CFE10009EB39 /* DLNecessityModel.m */; };
+		2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */; };
+		2FB222F92121D0380009EB39 /* addView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F82121D0380009EB39 /* addView.m */; };
+		2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222FB2121D0520009EB39 /* IntroductionView.m */; };
+		2FB222FE2121D0680009EB39 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB222FD2121D0680009EB39 /* Media.xcassets */; };
+		2FB223012121D15C0009EB39 /* DLNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB223002121D15C0009EB39 /* DLNecessityViewController.m */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -571,6 +577,17 @@
 
 /* Begin PBXFileReference section */
 		0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2FB222F12121CFE10009EB39 /* DLNecessityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLNecessityModel.h; sourceTree = "<group>"; };
+		2FB222F22121CFE10009EB39 /* DLNecessityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNecessityModel.m; sourceTree = "<group>"; };
+		2FB222F42121D0240009EB39 /* FMNecessityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMNecessityTableViewCell.h; sourceTree = "<group>"; };
+		2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMNecessityTableViewCell.m; sourceTree = "<group>"; };
+		2FB222F72121D0380009EB39 /* addView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = addView.h; sourceTree = "<group>"; };
+		2FB222F82121D0380009EB39 /* addView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addView.m; sourceTree = "<group>"; };
+		2FB222FA2121D0520009EB39 /* IntroductionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroductionView.h; sourceTree = "<group>"; };
+		2FB222FB2121D0520009EB39 /* IntroductionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroductionView.m; sourceTree = "<group>"; };
+		2FB222FD2121D0680009EB39 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		2FB222FF2121D15C0009EB39 /* DLNecessityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLNecessityViewController.h; sourceTree = "<group>"; };
+		2FB223002121D15C0009EB39 /* DLNecessityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNecessityViewController.m; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1352,6 +1369,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FB222E72121CF020009EB39 /* Necessity */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222F02121CFB60009EB39 /* Model */,
+				2FB222EC2121CF8F0009EB39 /* Controller */,
+				2FB222E92121CF300009EB39 /* View */,
+				2FB222FD2121D0680009EB39 /* Media.xcassets */,
+			);
+			path = Necessity;
+			sourceTree = "<group>";
+		};
+		2FB222E92121CF300009EB39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222F42121D0240009EB39 /* FMNecessityTableViewCell.h */,
+				2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */,
+				2FB222F72121D0380009EB39 /* addView.h */,
+				2FB222F82121D0380009EB39 /* addView.m */,
+				2FB222FA2121D0520009EB39 /* IntroductionView.h */,
+				2FB222FB2121D0520009EB39 /* IntroductionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FB222EC2121CF8F0009EB39 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222FF2121D15C0009EB39 /* DLNecessityViewController.h */,
+				2FB223002121D15C0009EB39 /* DLNecessityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FB222F02121CFB60009EB39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222F12121CFE10009EB39 /* DLNecessityModel.h */,
+				2FB222F22121CFE10009EB39 /* DLNecessityModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3B26610C1BA6E422008632F3 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -1531,6 +1590,7 @@
 		82B66EE4211AD2A700FA82F1 /* Freshman8 */ = {
 			isa = PBXGroup;
 			children = (
+				2FB222E72121CF020009EB39 /* Necessity */,
 			);
 			name = Freshman8;
 			sourceTree = "<group>";
@@ -2908,7 +2968,6 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = WTP66K3RCH;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3140,6 +3199,7 @@
 				F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */,
 				9630E4A91FAF07D200874EB9 /* login_icon@3x.png in Resources */,
 				9630E4AB1FAF07D200874EB9 /* login_number@2x.png in Resources */,
+				2FB222FE2121D0680009EB39 /* Media.xcassets in Resources */,
 				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
 				F26D96821F3C400F0063B024 /* icon_share_wechatTimeLine@2x.png in Resources */,
 				F26D967E1F3C400F0063B024 /* icon_share_qq@3x.png in Resources */,
@@ -3439,6 +3499,7 @@
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
+				2FB223012121D15C0009EB39 /* DLNecessityViewController.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
@@ -3467,6 +3528,7 @@
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
+				2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
 				9630E4CC1FAF07D300874EB9 /* QueryModel.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
@@ -3498,6 +3560,8 @@
 				F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
+				2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */,
+				2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
@@ -3558,6 +3622,7 @@
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
 				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,
+				2FB222F92121D0380009EB39 /* addView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3739,7 +3804,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WTP66K3RCH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -3780,7 +3845,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = WTP66K3RCH;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
