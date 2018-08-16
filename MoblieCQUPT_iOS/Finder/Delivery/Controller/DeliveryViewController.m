@@ -47,7 +47,7 @@
 - (void)loadData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=快递收发&pagenum=1&pagesize=10";
+    NSString *urlStr = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=快递收发&pagenum=1&pagesize=13";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
