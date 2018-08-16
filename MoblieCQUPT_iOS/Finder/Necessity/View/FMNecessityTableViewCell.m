@@ -19,7 +19,7 @@
     {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         self.hidden = NO;
-        UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(15*width, 15*HEIGHT, 345*width, 52*HEIGHT)];
+        UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 52*HEIGHT)];
         bkg.image = [UIImage imageNamed:@"白底"];
         bkg.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:bkg];
@@ -111,7 +111,7 @@
 
 + (CGFloat)getStringHeight:(NSString *)string font:(CGFloat)fontSize {
     
-    CGRect rect = [string boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil];
+    CGRect rect = [string boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-60, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil];
     return ceil(rect.size.height);
 }
 

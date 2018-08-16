@@ -30,6 +30,6 @@
 @property(nonatomic,weak)id<clickDelegate>delegate;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
-+ (CGFloat)cellHeight;
++ (CGFloat)cellHeight:(DeliveryModel *)Model;
 
 @end
