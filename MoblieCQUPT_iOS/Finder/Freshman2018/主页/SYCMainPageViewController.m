@@ -10,6 +10,7 @@
 #import "SYCMainPageView.h"
 #import "SYCCollageTableViewController.h"
 #import "SYCMainPageModel.h"
+#import "SYCCollageDataManager.h"
 
 @interface SYCMainPageViewController ()
 
@@ -21,9 +22,13 @@
 @property (nonatomic, strong) UIButton *bdlcBtn; //报道流程
 @property (nonatomic, strong) UIButton *wxdnsBtn; //我想对你说
 
+@property (nonatomic, strong) UIImageView *carView;
+
 @property (nonatomic, strong) SYCMainPageModel *mainPageModel;
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, strong) NSArray *buttonFrames;
 
 @end
 
@@ -33,68 +38,95 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [SYCCollageDataManager sharedInstance];
+    
     CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat mainPageHeight = mainPageWidth * 2.933;
 
-    
+    self.mainPageModel = [SYCMainPageModel shareInstance];
     
     self.rxbbBtn = [[UIButton alloc] initWithFrame: CGRectMake(mainPageWidth * 0.173, mainPageHeight * 0.193, mainPageWidth * 0.442, mainPageHeight * 0.073)];
-    [self.rxbbBtn setBackgroundImage:[UIImage imageNamed:@"入学必备"] forState:UIControlStateNormal];
+    [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备"] forState:UIControlStateNormal];
     [self.rxbbBtn addTarget:self action:@selector(clickRxbbBtn:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:self.rxbbBtn];
     
-    
     self.jxtjBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.725, mainPageHeight * 0.260, mainPageWidth * 0.272, mainPageHeight * 0.105)];
-    [self.jxtjBtn setBackgroundImage:[UIImage imageNamed:@"军训特辑"] forState:UIControlStateNormal];
+    [self.jxtjBtn setImage:[UIImage imageNamed:@"军训特辑"] forState:UIControlStateNormal];
     [self.jxtjBtn addTarget:self action:@selector(clickJxtjBtn:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:self.jxtjBtn];
     
     
     self.xyglBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.350, mainPageHeight * 0.290, mainPageWidth * 0.354, mainPageHeight * 0.139)];
     if (self.mainPageModel.currentStep < 2) {
-        [self.xyglBtn setBackgroundImage:[UIImage imageNamed:@"校园攻略锁"] forState:UIControlStateNormal];
+        [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略锁"] forState:UIControlStateNormal];
     }else{
-        
-        [self.xyglBtn setBackgroundImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
-        [self.xyglBtn addTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
+        [self.xyglBtn setTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [scrollView addSubview:self.xyglBtn];
     
     
     self.xsjlBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.125, mainPageHeight * 0.475, mainPageWidth * 0.472, mainPageHeight * 0.097)];
     if (self.mainPageModel.currentStep < 3) {
-        [self.xsjlBtn setBackgroundImage:[UIImage imageNamed:@"线上交流锁"] forState:UIControlStateNormal];
+        [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流锁"] forState:UIControlStateNormal];
     }else{
-        [self.xsjlBtn setBackgroundImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
-        [self.xsjlBtn addTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
+        [self.xsjlBtn setTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [scrollView addSubview:self.xsjlBtn];
     
     
     self.cyfcBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.01, mainPageHeight * 0.582, mainPageWidth * 0.440, mainPageHeight * 0.155)];
-    [self.cyfcBtn setBackgroundImage:[UIImage imageNamed:@"重邮风采"] forState:UIControlStateNormal];
+    [self.cyfcBtn setImage:[UIImage imageNamed:@"重邮风采"] forState:UIControlStateNormal];
     [self.cyfcBtn addTarget:self action:@selector(clickCyfcBtn:) forControlEvents:UIControlEventTouchUpInside];
     [scrollView addSubview:self.cyfcBtn];
     
     self.bdlcBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.625, mainPageHeight * 0.655, mainPageWidth * 0.372, mainPageHeight * 0.107)];
     if (self.mainPageModel.currentStep < 4) {
-        [self.bdlcBtn setBackgroundImage:[UIImage imageNamed:@"报道流程锁"] forState:UIControlStateNormal];
+        [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程锁"] forState:UIControlStateNormal];
     }else{
-        [self.bdlcBtn setBackgroundImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
-        [self.bdlcBtn addTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
+        [self.bdlcBtn setTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [scrollView addSubview:self.bdlcBtn];
     
     
     self.wxdnsBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.05, mainPageHeight * 0.800, mainPageWidth * 0.380, mainPageHeight * 0.143)];
     if (self.mainPageModel.currentStep < 5) {
-        [self.wxdnsBtn setBackgroundImage:[UIImage imageNamed:@"我想对你说锁"] forState:UIControlStateNormal];
+        [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说锁"] forState:UIControlStateNormal];
     }else{
-        [self.wxdnsBtn setBackgroundImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
-        [self.wxdnsBtn addTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
+        [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
+        [self.wxdnsBtn setTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [scrollView addSubview: self.wxdnsBtn];
     
+    switch (self.mainPageModel.currentStep) {
+        case 1:
+            self.carView = [[UIImageView alloc] initWithFrame:CGRectMake(mainPageWidth * 0.393, mainPageHeight * 0.250, mainPageWidth * 0.129, mainPageHeight * 0.034)];
+            break;
+        
+        case 2:
+            self.carView = [[UIImageView alloc] initWithFrame:CGRectMake(mainPageWidth * 0.200, mainPageHeight * 0.370, mainPageWidth * 0.129, mainPageHeight * 0.034)];
+            break;
+            
+        case 3:
+            self.carView = [[UIImageView alloc] initWithFrame:CGRectMake(mainPageWidth * 0.590, mainPageHeight * 0.510, mainPageWidth * 0.129, mainPageHeight * 0.034)];
+            break;
+            
+        case 4:
+            self.carView = [[UIImageView alloc] initWithFrame:CGRectMake(mainPageWidth * 0.460, mainPageHeight * 0.700, mainPageWidth * 0.129, mainPageHeight * 0.034)];
+            break;
+            
+        case 5:
+            self.carView = [[UIImageView alloc] initWithFrame:CGRectMake(mainPageWidth * 0.460, mainPageHeight * 0.850, mainPageWidth * 0.129, mainPageHeight * 0.034)];
+            break;
+        default:
+            break;
+    }
+
+    self.carView.image = [UIImage imageNamed:@"小车"];
+    [self.scrollView addSubview:self.carView];
 }
 
 - (void)clickRxbbBtn:(id)sender{
@@ -104,10 +136,12 @@
     collageVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 2) {
             [self.mainPageModel setCurrentStep:2];
-            [self viewDidLoad];
+            [self.xyglBtn addTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
             if (![self.mainPageModel.hasAnimationed[1] boolValue]) {
                 [self buttonDisappearAnimation:self.xyglBtn];
+                [self reloadButtonImage];
                 self.mainPageModel.hasAnimationed[1] = [NSNumber numberWithBool:YES];
+                [self moveCar];
             }
         }
     };
@@ -120,12 +154,13 @@
     collageVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 3) {
             [self.mainPageModel setCurrentStep:3];
-            [self viewDidLoad];
+            [self.xsjlBtn addTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
             if (![self.mainPageModel.hasAnimationed[2] boolValue]) {
                 [self buttonDisappearAnimation:self.xsjlBtn];
+                 [self reloadButtonImage];
                 self.mainPageModel.hasAnimationed[2] = [NSNumber numberWithBool:YES];
+                [self moveCar];
             }
-            
         }
     };
 }
@@ -137,10 +172,12 @@
     collageVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 4) {
             [self.mainPageModel setCurrentStep:4];
-            [self viewDidLoad];
+            [self.bdlcBtn addTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
             if (![self.mainPageModel.hasAnimationed[3] boolValue]) {
                 [self buttonDisappearAnimation:self.bdlcBtn];
+                 [self reloadButtonImage];
                 self.mainPageModel.hasAnimationed[3] = [NSNumber numberWithBool:YES];
+                [self moveCar];
             }
             
         }
@@ -154,10 +191,12 @@
     collageVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 5) {
             [self.mainPageModel setCurrentStep:5];
-            [self viewDidLoad];
+            [self.wxdnsBtn addTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
             if (![self.mainPageModel.hasAnimationed[4] boolValue]) {
                 [self buttonDisappearAnimation:self.wxdnsBtn];
+                 [self reloadButtonImage];
                 self.mainPageModel.hasAnimationed[4] = [NSNumber numberWithBool:YES];
+                [self moveCar];
             }
         }
     };
@@ -218,7 +257,7 @@
     [rotation setDuration:2.0];
     [rotation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
     UIGraphicsBeginImageContext(self.view.frame.size);
-    rotation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
     [rotation setRemovedOnCompletion:NO];
     [rotation setFillMode:kCAFillModeBoth];
     
@@ -230,29 +269,94 @@
     [animationGroup setDuration:2.0];
     [animationGroup setAnimations:@[rotation, opacity]];
     [button.layer addAnimation:animationGroup forKey:nil];
-    
-    
+}
+
+- (void)buttonAppearAnimation:(UIButton *)button{
+    CABasicAnimation *opacity = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    [opacity setDuration:1.0];
+    [opacity setFromValue:@0];
+    [opacity setToValue:@1.0];
+    [opacity setBeginTime:CACurrentMediaTime()+ 2.0];
+    [button.layer addAnimation:opacity forKey:@"opacity"];
 }
 
 - (void)reloadButtonImage{
-    if (self.mainPageModel.currentStep > 1) {
-        [self.xyglBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        if (self.mainPageModel.currentStep > 2) {
-            [self.xsjlBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-            if (self.mainPageModel.currentStep > 3) {
-                 [self.bdlcBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-                if (self.mainPageModel.currentStep > 4) {
-                     [self.wxdnsBtn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-                }
-            }
-        }
+    NSUInteger currentStep = self.mainPageModel.currentStep;
+    switch (currentStep) {
+        case 2:
+            [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
+            [self buttonAppearAnimation:self.xyglBtn];
+            break;
+            
+        case 3:
+            [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
+            [self buttonAppearAnimation:self.xsjlBtn];
+            break;
+            
+        case 4:
+            [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
+            [self buttonAppearAnimation:self.bdlcBtn];
+            break;
+            
+        case 5:
+            [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
+            [self buttonAppearAnimation:self.wxdnsBtn];
+            break;
+            
+        default:
+            break;
     }
-    [self.view setNeedsDisplay];
+
+    [self.view layoutSubviews];
+}
+
+- (void)moveCar{
+    CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat mainPageHeight = mainPageWidth * 2.933;
+    
+    CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    pathAnimation.calculationMode = kCAAnimationPaced;
+    pathAnimation.fillMode = kCAFillModeForwards;
+    pathAnimation.removedOnCompletion = NO;
+    pathAnimation.duration = 3.0;
+    //Lets loop continuously for the demonstration
+    pathAnimation.repeatCount = 1;
+    pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    
+    CGMutablePathRef curvedPath = CGPathCreateMutable();
+    switch (self.mainPageModel.currentStep - 1) {
+        case 1:
+            CGPathMoveToPoint(curvedPath, NULL, mainPageWidth * 0.440, mainPageHeight * 0.270);
+            CGPathAddQuadCurveToPoint(curvedPath, NULL, mainPageWidth * 0.260, mainPageHeight * 0.380, mainPageWidth * 0.260, mainPageHeight * 0.380);
+            break;
+        
+        case 2:
+            CGPathMoveToPoint(curvedPath, NULL, mainPageWidth * 0.260, mainPageHeight * 0.380);
+            CGPathAddQuadCurveToPoint(curvedPath, NULL, mainPageWidth * 0.190, mainPageHeight * 0.430, mainPageWidth * 0.660, mainPageHeight * 0.535);
+            break;
+            
+        case 3:
+            CGPathMoveToPoint(curvedPath, NULL, mainPageWidth * 0.660, mainPageHeight * 0.535);
+            CGPathAddQuadCurveToPoint(curvedPath, NULL, mainPageWidth * 0.860, mainPageHeight * 0.630, mainPageWidth * 0.510, mainPageHeight * 0.715);
+            break;
+            
+        case 4:
+            CGPathMoveToPoint(curvedPath, NULL, mainPageWidth * 0.510, mainPageHeight * 0.715);
+            CGPathAddQuadCurveToPoint(curvedPath, NULL, mainPageWidth * 0.360, mainPageHeight * 0.820, mainPageWidth * 0.510, mainPageHeight * 0.870);
+            break;
+
+        default:
+            break;
+    }
+    
+    pathAnimation.path = curvedPath;
+    CGPathRelease(curvedPath);
+    [self.carView.layer addAnimation:pathAnimation
+                            forKey:@"moveTheSquare"];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 @end

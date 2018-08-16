@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYCCollageModel.h"
 
 @interface SYCSubjectViewController : BaseViewController
+
+@property (nonatomic, strong) NSString *collage;
+
+@property (nonatomic, strong) SYCCollageModel *data;
 
 @end

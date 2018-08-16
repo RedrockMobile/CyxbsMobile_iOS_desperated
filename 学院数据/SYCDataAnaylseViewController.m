@@ -22,11 +22,12 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     SYCSexRatioViewController *sexRatioVC = [[SYCSexRatioViewController alloc] init];
-    sexRatioVC.title = @"性别比例";
+    sexRatioVC.title = @"男女比例";
     sexRatioVC.data = self.data;
     
     SYCSubjectViewController *subjectsVC = [[SYCSubjectViewController alloc] init];
     subjectsVC.title = @"最难科目";
+    subjectsVC.data = self.data;
     
     NSArray *viewsArray = @[sexRatioVC, subjectsVC];
     SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray];

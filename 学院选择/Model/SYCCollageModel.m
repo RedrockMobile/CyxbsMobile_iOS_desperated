@@ -15,7 +15,7 @@
 
 @implementation SYCCollageModel
 
-- (instancetype)initWithName:(NSString *)name andSexRatio:(NSDictionary *)sexRatio andSubjects:(NSDictionary *)subjuets{
+- (instancetype)initWithName:(NSString *)name andSexRatio:(NSDictionary *)sexRatio andSubjects:(NSArray *)subjuets{
     self = [super init];
     if (self) {
         self.name = name;

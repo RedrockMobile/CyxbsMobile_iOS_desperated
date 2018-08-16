@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface SYCMainPageViewController : BaseViewController
+@interface SYCMainPageViewController : BaseViewController<CAAnimationDelegate>
 
 @end

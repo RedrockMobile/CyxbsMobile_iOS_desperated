@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSDictionary *organizationData;
 
++ (instancetype)sharedInstance;
+
 @end

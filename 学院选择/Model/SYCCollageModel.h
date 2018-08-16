@@ -12,7 +12,7 @@
 
 @property(nonatomic) NSString *name;
 @property(nonatomic) NSDictionary *sexRatio;
-@property(nonatomic) NSDictionary *subjects;
+@property(nonatomic) NSArray *subjects;
 
 - (instancetype)initWithName:(NSString *)name andSexRatio:(NSDictionary *)sexRatio andSubjects:(NSDictionary *)subjuets;
 

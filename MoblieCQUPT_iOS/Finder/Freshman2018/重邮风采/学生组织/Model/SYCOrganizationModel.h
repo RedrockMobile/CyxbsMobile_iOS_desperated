@@ -11,9 +11,9 @@
 @interface SYCOrganizationModel : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) NSArray *images;
 @property (nonatomic, strong) NSString *detail;
 
-- (instancetype)initWithName:(NSString *)name AndImage:(UIImage *)image AndDetail:(NSString *)detail;
+- (instancetype)initWithName:(NSString *)name images:(NSArray *)images detail:(NSString *)detail;
 
 @end

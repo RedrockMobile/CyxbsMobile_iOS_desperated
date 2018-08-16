@@ -13,6 +13,7 @@
 
 #import "SYCCollageTableViewController.h"
 #import "SYCMainPageViewController.h"
+#import "SYCActivityTableViewController.h"
 
 @interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -93,7 +94,7 @@
 
 //测试按钮方法
 - (void)touchTestButton:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    SYCActivityTableViewController *collageVC = [[SYCActivityTableViewController alloc] init];
     [self.navigationController pushViewController:collageVC animated:YES];
 }
 

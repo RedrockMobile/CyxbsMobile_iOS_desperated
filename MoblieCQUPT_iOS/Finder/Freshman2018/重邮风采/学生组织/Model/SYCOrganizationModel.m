@@ -10,11 +10,11 @@
 
 @implementation SYCOrganizationModel
 
-- (instancetype)initWithName:(NSString *)name AndImage:(UIImage *)image AndDetail:(NSString *)detail{
+- (instancetype)initWithName:(NSString *)name images:(NSArray *)images detail:(NSString *)detail{
     self = [super init];
     if (self) {
         self.name = name;
-        self.image = image;
+        self.images = images;
         self.detail = detail;
     }
     return self;
