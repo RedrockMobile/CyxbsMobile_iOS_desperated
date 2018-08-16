@@ -74,17 +74,6 @@
     _Model = Model;
     self.titleLabel.text = self.Model.title;
     self.ContentLabel.text = self.Model.content;
-//    NSArray *arr = Model.imgArray;
-//    NSMutableArray *imgArray = [@[] mutableCopy];
-//    for (int i = 0; i < arr.count; i++) {
-//        UIImage *img = arr[i];
-//        UIImageView *image = [[UIImageView alloc] init];
-//        image.layer.cornerRadius = 10;
-//        image.clipsToBounds = YES;
-//        image.image = img;
-//        [imgArray addObject:image];
-//    }
-//    [self.imgViews setImageViewAry:imgArray];
     CGFloat height = [BusTableViewCell getStringHeight:Model.content font:15];
     self.ContentLabel.frame = CGRectMake(30*WIDTH, 237*HEIGHT, 319*WIDTH, height);
     self.bkgImg.frame = CGRectMake(15*WIDTH, 15*HEIGHT,346*WIDTH,237*HEIGHT+height);
@@ -110,7 +99,7 @@
 }
 
 + (CGFloat)getStringHeight:(NSString *)string font:(CGFloat)fontSize {
-    CGRect rect = [string boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil];
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(319*WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil];
     return ceil(rect.size.height);
 }
 
