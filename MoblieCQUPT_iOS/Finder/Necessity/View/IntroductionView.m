@@ -7,6 +7,8 @@
 //
 
 #import "IntroductionView.h"
+#define WIDTH [UIScreen mainScreen].bounds.size.width/375
+#define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 @implementation IntroductionView
 
@@ -15,24 +17,24 @@
     self = [super initWithFrame:frame];
     if (self) {
         UILabel *lab2 = [[UILabel alloc] init];
-        lab2.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:15];
+        lab2.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:14];
         lab2.text = @"1.文本框右侧【箭头】查看每一项任务具体详情。\n2.右上角的【编辑】，通过勾选进行选择性删除（未标识可删除圆圈的则为报道必需）。\n3.点击左侧【空方框】勾选该项即为完成，再次单击即可恢复。\n4.右下角【加号】图样可自定义添加新待办。";
         lab2.textColor = [UIColor darkGrayColor];
         lab2.numberOfLines = 0;
-        CGRect rect = [lab2.text boundingRectWithSize:CGSizeMake(width-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:15]} context:nil];
-        lab2.frame = CGRectMake(33, 73, width-150, ceil(rect.size.height));
+        CGRect rect = [lab2.text boundingRectWithSize:CGSizeMake(width-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:14]} context:nil];
+        lab2.frame = CGRectMake(33*WIDTH, 63*HEIGHT, 253*WIDTH, ceil(rect.size.height));
         
-        UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(5, 10, self.frame.size.width, self.frame.size.height-20)];
-        bkg.image = [UIImage imageNamed:@"白底"];
+        UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        bkg.image = [UIImage imageNamed:@"展开白底"];
         [self addSubview:bkg];
         
-        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(width-120, 20, 20, 20)];
+        UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(286*WIDTH, 12*HEIGHT, 18*WIDTH, 18*HEIGHT)];
         [btn setImage:[UIImage imageNamed:@"关闭"] forState:UIControlStateNormal];
         [self addSubview:btn];
         self.btn = btn;
         
-        UILabel *lab1 = [[UILabel alloc]initWithFrame:CGRectMake(width/2-80, 40, 80, 16)];
-        lab1.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:17];
+        UILabel *lab1 = [[UILabel alloc]initWithFrame:CGRectMake(124*WIDTH, 30*HEIGHT, 66*WIDTH, 16*HEIGHT)];
+        lab1.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:16];
         lab1.text = @"功能介绍";
         lab1.textColor = [UIColor darkGrayColor];
         [self addSubview:lab1];

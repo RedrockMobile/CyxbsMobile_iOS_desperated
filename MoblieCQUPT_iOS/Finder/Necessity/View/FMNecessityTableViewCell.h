@@ -29,6 +29,7 @@ typedef void(^ShowTextBlock)(FMNecessityTableViewCell *Cell);
 
 + (CGFloat) cellDefautHeight:(DLNecessityModel *)DLNModel;
 + (CGFloat) cellMoreHeight:(DLNecessityModel *)DLNModel;
-+ (instancetype)cellWithTableView:(UITableView *)tableView;
++ (instancetype)cellWithTableView:(UITableView *)tableView andIndexpath:(NSIndexPath *)indexPath;
+
 
 @end

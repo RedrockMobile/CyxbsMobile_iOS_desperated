@@ -20,8 +20,6 @@
 #import "RemindMatter.h"
 #import "LessonBtnModel.h"
 #import "LessonButton.h"
-//丁磊测试
-#import "DLNecessityViewController.h"
 
 @interface LessonController ()<LZWeekScrollViewDelegate>
 @property (nonatomic, strong) MainView *mainView;
@@ -251,8 +249,7 @@
 }
 
 - (void)addAction{
-//    AddRemindViewController *vc = [[AddRemindViewController alloc]init];
-    DLNecessityViewController *vc = [[DLNecessityViewController alloc]init];
+    AddRemindViewController *vc = [[AddRemindViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -13,6 +13,7 @@
 
 @property (nonatomic, copy)NSString *necessity;
 @property (nonatomic, copy)NSString *detail;
+@property (nonatomic, copy)NSString *property;
 @property (nonatomic, assign)BOOL isShowMore;
 @property (nonatomic, assign)BOOL isReady;
 @property (nonatomic, assign)BOOL isSelected;

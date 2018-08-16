@@ -7,9 +7,10 @@
 //
 
 #import "FMNecessityTableViewCell.h"
-
 #import "DLNecessityModel.h"
-#import <Masonry.h>
+
+#define WIDTH [UIScreen mainScreen].bounds.size.width/375
+#define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 @implementation FMNecessityTableViewCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -18,7 +19,7 @@
     {
         CGFloat width = [UIScreen mainScreen].bounds.size.width;
         self.hidden = NO;
-        UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(15, 10, width-30, 70)];
+        UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(15*width, 15*HEIGHT, 345*width, 52*HEIGHT)];
         bkg.image = [UIImage imageNamed:@"白底"];
         bkg.backgroundColor = [UIColor clearColor];
         [self.contentView addSubview:bkg];
@@ -62,9 +63,9 @@
     return self;
 }
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView
++ (instancetype)cellWithTableView:(UITableView *)tableView andIndexpath:(NSIndexPath *)indexPath
 {
-    static NSString *Identifier = @"status";
+    NSString *Identifier = [NSString stringWithFormat:@"cell%ld%ld",indexPath.section,indexPath.row];
     FMNecessityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
     if (cell == nil) {
         cell = [[FMNecessityTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
@@ -89,7 +90,6 @@
         _detailLabel.hidden = YES;
         self.btn2.selected = NO;
     }
-    
 }
 
 
@@ -124,25 +124,7 @@
 }
 
 
-#pragma - 隐藏分割线
 
--(UIView *)separatorView
-{
-    if (_separatorView == nil) {
-        UIView *separatorView = [[UIView alloc]init];
-        self.separatorView = separatorView;
-        separatorView.backgroundColor = [UIColor whiteColor];
-        [self addSubview:separatorView];
-    }
-    return _separatorView;
-}
-
-
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.separatorView.frame = CGRectMake(15, self.bounds.size.height-1, self.bounds.size.width-30, 1);
-}
 
 
 

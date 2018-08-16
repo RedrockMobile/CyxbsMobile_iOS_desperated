@@ -14,8 +14,9 @@
 {
     self = [super init];
     if (self) {
-        self.necessity = dic[@"necessity"];
-        self.detail = dic[@"detail"];
+        self.necessity = dic[@"name"];
+        self.detail = dic[@"content"];
+        self.property = dic[@"property"];
         self.isShowMore = NO;
     }
     return self;

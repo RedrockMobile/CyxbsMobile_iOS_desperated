@@ -6,32 +6,47 @@
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
 
+/*
+ 
+ 这个页面主要由一个tableView，一个悬浮的添加Button构成
+ 点击navigationBar的问号按钮，跳出一个UIView介绍本页面并且同时跳出一个背景UIView设置透明度，使弹窗跳出后，背景变暗
+ 点击编辑按钮，编辑按钮变为删除，页面变为删除页面，将原cell里的完成选中按钮移除，添加删除选中按钮
+ 只能删除非必需的项目使用在model里设一个bool值来表示是否要删除
+ 本页面的数据本地化使用plist文件,不更新会保存用户的删除添加和已完成的数据，升级会丢失数据
+ 
+ */
+
 #import "DLNecessityViewController.h"
 #import "FMNecessityTableViewCell.h"
 #import "addView.h"
 #import "DLNecessityModel.h"
 #import "IntroductionView.h"
+#import <AFNetworking.h>
 #define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH   [UIScreen mainScreen].bounds.size.width
+#define WIDTH [UIScreen mainScreen].bounds.size.width/375
+#define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
 @interface DLNecessityViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 
-@property (nonatomic, strong)UIButton *addBtn;
-@property (nonatomic, strong)UIButton *editBtn;
-@property (nonatomic, strong)UIView *bkgView;
+@property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
+@property (nonatomic, strong)UIButton *editBtn;   //编辑按钮
+@property (nonatomic, strong)UIView *bkgView;     //背景阴影
 @property (nonatomic, strong)UITableView *FMtableView;
 @property (nonatomic, strong)NSMutableArray *dataArray;
-@property (nonatomic, strong)NSMutableArray *deleteArray;
-@property (nonatomic, strong)addView *AddView;
-@property (nonatomic, strong)IntroductionView *introduction;
+@property (nonatomic, strong)NSMutableArray *deleteArray;  //需要删除的cell的array
+@property (nonatomic, strong)NSDictionary *dict;
+@property (nonatomic, strong)NSBundle *fileBundel;
+@property (nonatomic, strong)NSString *filePath;
+@property (nonatomic, strong)addView *AddView;   //下方添加栏
+@property (nonatomic, strong)IntroductionView *introduction; //介绍弹窗
 @property (nonatomic, strong)DLNecessityModel *model;
-@property (assign, nonatomic)NSInteger isShowIntroduce;
-@property (assign, nonatomic)BOOL isEdit;
+@property (assign, nonatomic)NSInteger isShowIntroduce;   //如名字
+@property (assign, nonatomic)BOOL isEdit;  //是否编辑的flag
 @property (assign, nonatomic)BOOL isSelected;
-@property (assign, nonatomic)NSUInteger row;
-@property (assign, nonatomic)BOOL isFloat;
+@property (assign, nonatomic)BOOL isFloat;//是否播放cell浮动的动效
 
 
 @end
@@ -43,6 +58,7 @@
         self.FMtableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-50) style:UITableViewStylePlain];
         self.FMtableView.delegate = self;
         self.FMtableView.dataSource = self;
+        self.FMtableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         //        self.FMtableView.rowHeight = 80;
         self.FMtableView.backgroundColor = [UIColor clearColor];
     }
@@ -51,10 +67,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.hidesBottomBarWhenPushed = YES;
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
+    self.fileBundel = [NSBundle mainBundle];
+    self.filePath = [_fileBundel pathForResource:@"Necessity" ofType:@"plist"];
+    
+    NSArray *arr = [NSArray arrayWithContentsOfFile:_filePath];
+    if (arr != nil && ![arr isKindOfClass:[NSNull class]] && arr.count != 0){
+        [self initModel:arr];
+    }
+    else{
+        [self getData];
+    }
     
     [self buildMyNavigationbar];
-    [self buildData];
     self.deleteArray = [@[] mutableCopy];
     self.isShowIntroduce = 1;
     self.isEdit = NO;
@@ -67,12 +93,14 @@
     self.bkgView.backgroundColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.0192 alpha:0.4];
     
     [self.view addSubview:self.FMtableView];
-    
-    self.addBtn = [[UIButton alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width - 120, [UIScreen mainScreen].bounds.size.height - 130, 80, 80)];
+
+    self.addBtn = [[UIButton alloc] initWithFrame:CGRectMake(286*WIDTH, 569*HEIGHT, 61*WIDTH, 61*HEIGHT)];
     self.addBtn.backgroundColor = [UIColor clearColor];
     [self.addBtn setImage:[UIImage imageNamed:@"更多"] forState:UIControlStateNormal];
     [self.addBtn addTarget:self action:@selector(ClickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addBtn];
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -80,10 +108,7 @@
 
 
 - (void)buildMyNavigationbar{
-//    UIBarButtonItem *left = [[UIBarButtonItem alloc] init];
-//    [left setImage:[UIImage imageNamed:@"返回"]];
-//
-//    self.navigationItem.leftBarButtonItem = left;
+
     
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(didClickEditBtn:)];
     self.navigationItem.rightBarButtonItem = right;
@@ -103,43 +128,59 @@
 }
 
 #pragma - 数据
+- (void)getData{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    NSString *urlStr = @"http://47.106.33.112:8080/welcome2018/data/get/describe?index=入学必备";
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [manager GET:urlStr parameters:self.dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.dict = responseObject;
+        NSArray *arr = self.dict[@"describe"];
+        self.dataArray = [@[] mutableCopy];
+        for (NSDictionary *dic in arr) {
+            DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
+            [_dataArray addObject:model];
+        }
+        [self.FMtableView reloadData];
+        [arr writeToFile:self.filePath atomically:YES];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+        [alert show];
+        NSLog(@"failure --- %@",error);
+    }];
+}
 
-- (void)buildData{
-    //    NSArray *arr = @[@"录取通知书",@"高考准考证",@"身份证",@"《新生适应性资料》学习心得",@"同版近期证件照15张",@"《学生管理与学生自律协议书》",@"《致2018级新生的一封信》",@"社会实践报告",@"团员证",@"转团组织关系资料"];
-    NSArray *arr = @[@{@"necessity":@"录取通知书1",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。\n少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。\n"
-                       },
-                     @{@"necessity":@"录取通知书2",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书3",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书4",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书5",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书6",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书7",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书8",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     @{@"necessity":@"录取通知书9",
-                       @"detail":@"少年不识愁滋味，爱上层楼。爱上层楼，为赋新词强说愁。\n而今识尽愁滋味，欲说还休。欲说还休，却道天凉好个秋。"
-                       },
-                     ];
+- (void) initModel:(NSArray *)arr{
     self.dataArray = [@[] mutableCopy];
     for (NSDictionary *dic in arr) {
         DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
+        NSNumber *isReady = dic[@"isReady"];
+        model.isReady = [isReady boolValue];
         [_dataArray addObject:model];
     }
 }
+
+
+- (void)StorageData:(NSMutableArray *)arr{
+    dispatch_queue_t queue = dispatch_queue_create("storageQueue", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_async(queue, ^{
+        NSMutableArray *dataArr = [NSMutableArray array];
+        for (int i = 0; i < arr.count; i++) {
+            DLNecessityModel *model = arr[i];
+            NSNumber *isReady = [NSNumber numberWithBool:model.isReady];
+            NSDictionary *dic = @{@"name": model.necessity,
+                                  @"content":model.detail,
+                                  @"property":model.property,
+                                  @"isReady":isReady
+                                  };
+            [dataArr addObject:dic];
+        }
+        [dataArr writeToFile:self.filePath atomically:YES];
+    });
+}
+
+
 
 #pragma - tableview的代理方法
 
@@ -152,7 +193,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    FMNecessityTableViewCell *cell = [FMNecessityTableViewCell cellWithTableView:tableView];
+    FMNecessityTableViewCell *cell = [FMNecessityTableViewCell cellWithTableView:tableView andIndexpath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.DLNModel = self.dataArray[indexPath.row];
@@ -164,13 +205,13 @@
     };
     cell.btn1.tag = indexPath.row;
     if(self.isEdit){
-        [cell.contentView addSubview:cell.btn3];
+        if ([cell.DLNModel.property isEqualToString:@"非必需"]) {
+            [cell.contentView addSubview:cell.btn3];
+        }
         [cell.btn1 removeFromSuperview];
         [cell.btn3 addTarget:self action:@selector(didClickSelectBtn: event:) forControlEvents:UIControlEventTouchUpInside];
-        self.row = indexPath.row;
     }
     else{
-        self.row = indexPath.row;
         [cell.btn1 addTarget:self action:@selector(didClickCellBtn1:event:) forControlEvents:UIControlEventTouchUpInside];
         [cell.contentView addSubview:cell.btn1];
         [cell.btn3 removeFromSuperview];
@@ -184,9 +225,11 @@
         [cell.btn1 setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
     }
     if(!cell.DLNModel.isSelected){
-        [cell.btn3 setImage:[UIImage imageNamed:@"删除蓝框"] forState:UIControlStateNormal];
+        if ([cell.DLNModel.property isEqualToString:@"非必需"]) {
+            [cell.btn3 setImage:[UIImage imageNamed:@"删除蓝框"] forState:UIControlStateNormal];
+        }
     }
-    
+
     
     return cell;
 }
@@ -200,6 +243,8 @@
     }
 }
 
+
+//cell上浮的动效
 - (void)starAnimationWithTableView:(UITableView *)tableView{
     if(_isFloat){
         NSArray *cells = tableView.visibleCells;
@@ -220,6 +265,7 @@
 }
 
 #pragma - 点击button事件
+//点击cell表示已完成的button
 
 - (void)didClickCellBtn1:(UIButton *)button event:(UIEvent *)event{
     NSInteger count = self.dataArray.count;
@@ -240,26 +286,31 @@
         self.isFloat = NO;
     }
     [_FMtableView reloadData];
+    [self StorageData:self.dataArray];
     [self starAnimationWithTableView:_FMtableView];
     
 }
 
 
+//点击navigationBar的编辑按钮
 - (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
     if(!self.isEdit){
         [barBtn setTitle:@"删除"];
         [_FMtableView reloadData];
+        [self StorageData:self.dataArray];
         self.isEdit = YES;
     }
     else{
         [barBtn setTitle:@"编辑"];
-        [_FMtableView reloadData];
         [self.dataArray removeObjectsInArray:self.deleteArray];
         [self.FMtableView reloadData];
+        [self StorageData:self.dataArray];
         self.isEdit = NO;
     }
 }
 
+
+//删除页面点击圆框按钮
 - (void)didClickSelectBtn:(UIButton *)btn event:(UIEvent *)event{
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint point = [touch locationInView:_FMtableView];
@@ -280,6 +331,8 @@
     }
 }
 
+
+//点击悬浮添加按钮
 - (void)ClickAddBtn:(UIButton *)button{
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
@@ -291,13 +344,15 @@
     [UIView commitAnimations];
 }
 
+
+//点击cell右端详情按钮
 - (void)didClickDetailBtn:(UIButton *)button{
     if(self.isShowIntroduce){
         NSTimeInterval animationDuration = 0.30f;
         [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
         [UIView setAnimationDuration:animationDuration];
         [self.view addSubview:self.bkgView];
-        self.introduction = [[IntroductionView alloc] initWithFrame:CGRectMake(45, 200, [UIScreen mainScreen].bounds.size.width - 90, 300)];
+        self.introduction = [[IntroductionView alloc] initWithFrame:CGRectMake(30*WIDTH, 177*HEIGHT, 316*WIDTH, 301*HEIGHT)];
         [self.introduction.btn addTarget:self action:@selector(didClickCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.introduction];
         self.isShowIntroduce = 0;
@@ -309,11 +364,15 @@
     }
 }
 
+
+//点击介绍弹窗的关闭按钮
 - (void)didClickCloseBtn:(UIButton *)btn{
     self.introduction.hidden = YES;
     self.bkgView.hidden = YES;
 }
 
+
+//点击添加栏的添加按钮
 - (void)didClickAddBtn:(UIButton *)button{
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
@@ -339,12 +398,14 @@
 
 - (void)GetText:(UITextField *)textField{
     
-    NSDictionary *dic = @{@"necessity":textField.text,
-                          @"detail":@""
+    NSDictionary *dic = @{@"name":textField.text,
+                          @"content":@"",
+                          @"property":@"非必需"
                           };
     DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
     [_dataArray addObject:model];
     [self.FMtableView reloadData];
+    [self StorageData:_dataArray];
 }
 
 - (void)keyboardAction:(NSNotification*)sender{
