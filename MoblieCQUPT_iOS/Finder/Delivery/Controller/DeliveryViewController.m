@@ -88,8 +88,7 @@
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DeliveryModel *model = self.dataArray[indexPath.row];
-    return [DeliveryTableViewCell cellHeight:model];
+    return [DeliveryTableViewCell cellHeight];
 }
 
 - (void)clickAtIndex:(NSIndexPath *)indexPath{

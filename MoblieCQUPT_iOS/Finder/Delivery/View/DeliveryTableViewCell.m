@@ -38,7 +38,7 @@
         
         self.contentLab = [[UILabel alloc] initWithFrame:CGRectMake(146*WIDTH, 51*HEIGHT, 195*WIDTH, 32*HEIGHT)];
         self.contentLab.font = [UIFont systemFontOfSize:13];
-        self.contentLab.numberOfLines = 0;
+        self.contentLab.numberOfLines = 2;
         [self.contentView addSubview:self.contentLab];
     }
     self.backgroundColor = [UIColor clearColor];
@@ -57,19 +57,13 @@
 
 - (void)setModel:(DeliveryModel *)Model{
     _Model = Model;
-    CGFloat height = [DeliveryTableViewCell getStringHeight:_Model.content font:13];
     self.titleLab.text = self.Model.title;
     self.image.image = self.Model.imgarr[0];
     self.contentLab.text = self.Model.content;
-    self.contentLab.frame = CGRectMake(146*WIDTH, 51*HEIGHT, 195*WIDTH, height);
 }
 
-+ (CGFloat)getStringHeight:(NSString *)string font:(CGFloat)fontSize {
-    CGRect rect = [string boundingRectWithSize:CGSizeMake([UIScreen mainScreen].bounds.size.width-30, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]} context:nil];
-    return ceil(rect.size.height);
-}
 
-+ (CGFloat)cellHeight:(DeliveryModel *)Model{
++ (CGFloat)cellHeight{
     return 89*HEIGHT;
 }
 
