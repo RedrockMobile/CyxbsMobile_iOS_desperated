@@ -23,46 +23,46 @@
     // Do any additional setup after loading the view.
     
     self.title = @"线上交流";
-    
-    //self.view.backgroundColor = [UIColor whiteColor];
     [self SetSegmentedControl:_segmentedControl];
     
 }
 
+//创建segmentview
 - (void)SetSegmentedControl:(UISegmentedControl *)segmentedControl
 {
     segmentedControl = [[UISegmentedControl alloc] init];
     segmentedControl.frame = CGRectMake(0, 0, width, 50);
     [segmentedControl insertSegmentWithTitle:@"学院群" atIndex:0 animated:YES];
     [segmentedControl insertSegmentWithTitle:@"老乡群" atIndex:1 animated:YES];
-    
     [segmentedControl setTintColor:[UIColor whiteColor]];
-    
+    //添加背景图片
     [segmentedControl setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
     [segmentedControl addTarget:self action:@selector(segChange:) forControlEvents:UIControlEventValueChanged];
-    
     [self.view addSubview:segmentedControl];
 }
 
+//根据不同index来绘制不同的界面
 - (void)segChange:(UISegmentedControl *)seg
 {
-    
     if (seg.selectedSegmentIndex == 0)
     {
+        //创建textField
         _textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 60, width - 60, 60)];
         _textField.borderStyle = UITextBorderStyleRoundedRect;
         _textField.placeholder = @"请输入学院名称";
         
+        //创建搜索button
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         [_button setImage:[UIImage imageNamed:@"search.png"] forState:UIControlStateNormal];
         _button.frame = CGRectMake(width - 110, 0, 60, 60);
         
         [_textField addSubview:_button];
         [self.view addSubview:_textField];
-        NSLog(@"00");
         
+        //响应事件函数
         [_button addTarget:self action:@selector(pressBtn01) forControlEvents:UIControlEventTouchUpInside];
+        
+        //点击button，隐藏当前tableView
         _tableView.hidden = YES;
     }
     else if (seg.selectedSegmentIndex == 1)
@@ -77,7 +77,6 @@
         
         [_textField addSubview:_button];
         [self.view addSubview:_textField];
-        NSLog(@"01");
         
         [_button addTarget:self action:@selector(pressBtn02) forControlEvents:UIControlEventTouchUpInside];
         _tableView.hidden = YES;
@@ -104,6 +103,7 @@
                 [self.view addSubview:_tableView];
         }
     }
+    //刷新
     [_tableView reloadData];
 }
 
@@ -132,7 +132,59 @@
         //[self initTheData01];
         AFHTTPSessionManager *session02 = [AFHTTPSessionManager manager];
         
-        NSString *path02 = [NSString stringWithFormat:@"http://118.24.175.82/search/chatgroup/abstractly?index=学校群&key=%@",_textField.text];
+        NSString *path02 = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018/search/chatgroup/abstractly?index=学校群&key=%@",_textField.text];
+        
+        //中文转码
+        path02 = [path02 stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+        
+//        NSLog(@"%@",path02);
+        [session02 GET:path02 parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSLog(@"下载成功！");
+            
+            if ([responseObject isKindOfClass:[NSDictionary class]])
+            {
+//                NSLog(@"dic = %@",responseObject);
+                [self parseData:responseObject];
+            }
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error){
+            NSLog(@"下载失败！");
+        }];
+    }
+    //输入为空时，弹出对话框警告
+    else if ([temp length] == 0)
+    {
+        UIAlertController *_alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"输入不能为空" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+        [_alertController addAction:ok];
+        
+        [self presentViewController:_alertController animated:YES completion:nil];
+    }
+}
+
+- (void)pressBtn02
+{
+    _tableView.hidden = YES;
+    //判断输入字符串是否为空值
+    NSString *temp = [_textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    if ([temp length] != 0)
+    {
+        //创建数据视图
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(30, 120, width - 60, 240) style:UITableViewStylePlain];
+        
+        //设置数据视图代理协议
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        
+        //自动调整视图大小属性
+        _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        
+        _arrayData01 = [[NSMutableArray alloc] init];
+        _arrayData02 = [[NSMutableArray alloc] init];
+        
+        AFHTTPSessionManager *session02 = [AFHTTPSessionManager manager];
+        
+        NSString *path02 = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018/search/chatgroup/abstractly?index=老乡群&key=%@",_textField.text];
         
         //中文转码
         path02 = [path02 stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -150,52 +202,7 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error){
             NSLog(@"下载失败！");
         }];
-    }
-    else if ([temp length] == 0)
-    {
-        UIAlertController *_alertController = [UIAlertController alertControllerWithTitle:@"Error" message:@"输入不能为空" preferredStyle:UIAlertControllerStyleAlert];
         
-        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
-        [_alertController addAction:ok];
-        
-        [self presentViewController:_alertController animated:YES completion:nil];
-    }
-}
-- (void)pressBtn02
-{
-    _tableView.hidden = YES;
-    //NSLog(@"%@",_textField.text);
-    //判断输入字符串是否为空值
-    NSString *temp = [_textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    
-    NSArray *array = @[@"贵州",@"江苏",@"山西",@"福建",@"安徽",@"陕西",@"广东",@"辽宁",@"海南",@"吉林",@"浙江",@"宁夏",@"湖南",@"天津",@"湖北",@"山东",@"河北",@"四川",@"江西",@"黑龙江",@"河南",@"云南宣威",@"云南玉溪",@"云南曲靖",@"广西贵港",@"广东韶山",@"广东惠州",@"四川成都",@"四川绵阳",@"四川眉山",@"重庆武隆",@"重庆涪陵",@"重庆梁平",@"重庆璧山",@"重庆綦江"];
-    NSArray *number = @[@"",@"123736116",@"119738941",@"",@"757804061",@"193388613",@"113179139",@"134489031",@"9334029",@"118060379",@"247010642",@"319432002",@"204491110",@"8690505",@"33861584",@"384043802",@"634830545",@"142604890",@"476426072",@"316348915",@"",@"211910023",@"256581906",@"117499346",@"5819894",@"66484867",@"213337022",@"298299346",@"191653502",@"273968035",@"123122421",@"199748999",@"85423833",@"112571803",@"109665788"];
-    if ([temp length] != 0)
-    {
-        //创建数据视图
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(30, 120, width - 60, 240) style:UITableViewStylePlain];
-        
-        //设置数据视图代理协议
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        
-        //自动调整视图大小属性
-        _tableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-        
-        _arrayData01 = [[NSMutableArray alloc] init];
-        _arrayData02 = [[NSMutableArray alloc] init];
-        
-        NSString *strPosition = _textField.text;
-        for (int n = 0; n < [array count]; n ++)
-        {
-            if ([array[n] rangeOfString:strPosition].location != NSNotFound)
-            {
-                [_arrayData01 addObject:array[n]];
-                [_arrayData02 addObject:number[n]];
-                [self.view addSubview:_tableView];
-            }
-        }
-        [_tableView reloadData];
     }
     else if ([temp length] == 0)
     {
@@ -209,7 +216,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    //使虚拟键盘回收，不再做为第一消息响应
+    //使键盘回收，不再做为第一消息响应
     [_textField resignFirstResponder];
     
     _tableView.hidden = YES;
@@ -235,6 +242,7 @@
     return _arrayData01.count;
 }
 
+//懒加载
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSString *strID = @"ID";

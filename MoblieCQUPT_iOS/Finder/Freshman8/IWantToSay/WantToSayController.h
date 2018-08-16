@@ -8,12 +8,15 @@
 
 #import "BaseViewController.h"
 
-@interface WantToSayController : BaseViewController
+@interface WantToSayController : UIViewController
 
-@property (retain,nonatomic)UILabel *label01;
+@property (retain,nonatomic)UIImageView *imageView;
 
+//@property (retain,nonatomic)UILabel *label01;
 
-@property (retain,nonatomic)NSString *str01;
-@property (retain,nonatomic)NSString *str02;
-@property (retain,nonatomic)NSString *str03;
+@property (retain,nonatomic)UIScrollView *scrollView;
+
+//@property (retain,nonatomic)NSString *str01;
+//@property (retain,nonatomic)NSString *str02;
+//@property (retain,nonatomic)NSString *str03;
 @end

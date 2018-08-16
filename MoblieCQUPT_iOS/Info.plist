@@ -115,7 +115,7 @@
 	<string>允许之后获取访问本地相册图片权限</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>iconfont.ttf</string>
+		<string>字体管家胖丫儿体.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

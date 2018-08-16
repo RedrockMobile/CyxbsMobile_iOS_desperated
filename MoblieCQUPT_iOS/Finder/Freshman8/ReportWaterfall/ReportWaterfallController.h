@@ -10,6 +10,7 @@
 
 @interface ReportWaterfallController : BaseViewController<UIScrollViewDelegate>
 
+
 @property (retain,nonatomic)UIButton *button01;
 @property (retain,nonatomic)UIButton *button02;
 

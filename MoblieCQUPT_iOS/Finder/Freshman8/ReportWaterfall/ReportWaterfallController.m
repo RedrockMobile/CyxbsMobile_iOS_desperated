@@ -30,7 +30,7 @@ NSString *str04;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewInit) name:@"saveSucessful" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(viewInit) name:@"saveSuccessful" object:nil];
     
     //标题文字
     self.title = @"报道流程";
@@ -44,28 +44,24 @@ NSString *str04;
     _scrollView.contentSize = CGSizeMake(width, height - 60);
     [self.view addSubview:_scrollView];
     
+    //网络请求
     [self getTheData];
     
     //初始化体育馆/宿舍
     _view01 = [[UIView alloc] init];
     _view02 = [[UIView alloc] init];
-    
-    //
     _label01 = [[UILabel alloc] init];
     _label03 = [[UILabel alloc] init];
-    
     _label02 = [[UILabel alloc] init];
     _label04 = [[UILabel alloc] init];
-
     _button01 = [UIButton buttonWithType:UIButtonTypeCustom];
     _button02 = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     _imageView01 = [[UIImageView alloc] init];
     _imageView02 = [[UIImageView alloc] init];
     _imageView03 = [[UIImageView alloc] init];
     _imageView04 = [[UIImageView alloc] init];
     
-    [self viewInit];
+    //[self viewInit];
 }
 
 - (void)viewInit
@@ -73,16 +69,26 @@ NSString *str04;
     //体育馆
     _view01.frame = CGRectMake(0, 0, width, (height - 100) / 2);
     _view01.backgroundColor = [UIColor clearColor];
-    _label01.frame = CGRectMake(20, 10, 60, 30);
+    _label01.frame = CGRectMake(20, 10, 200, 30);
     _label01.text = _arrayData01[0];
     _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
     _label03.text = @"点击按钮，查看具体流程";
     _label03.numberOfLines = 0;
     
+    //设置字体样式
+    _label01.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+    _label03.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+
     _imageView01.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-    [_imageView01 sd_setImageWithURL:[NSURL URLWithString:_arr[0]] placeholderImage:nil];
+    [_imageView01 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",_arr[0]]] placeholderImage:nil];
     _imageView02.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-    [_imageView02 sd_setImageWithURL:[NSURL URLWithString:_arr[1]] placeholderImage:nil];
+    [_imageView02 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",_arr[1]]] placeholderImage:nil];
+    
+    //圆角处理
+    _imageView01.layer.cornerRadius = 20;
+    _imageView01.layer.masksToBounds = YES;
+    _imageView02.layer.cornerRadius = 20;
+    _imageView02.layer.masksToBounds = YES;
     
     [_view01 addSubview:_label01];
     [_view01 addSubview:_label03];
@@ -92,37 +98,46 @@ NSString *str04;
     //寝室
     _view02.frame = CGRectMake(0, (height - 100) / 2 + 40, width, (height - 100) / 2);
     _view02.backgroundColor = [UIColor clearColor];
-    _label02.frame = CGRectMake(20, 10, 60, 30);
+    _label02.frame = CGRectMake(20, 10, 200, 30);
     _label02.text = _arrayData01[1];
     _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
     _label04.text = @"点击按钮，查看具体流程";
     _label04.numberOfLines = 0;
+
+    //设置字体样式
+    _label02.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+    _label04.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
     
     _imageView03.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-    [_imageView03 sd_setImageWithURL:[NSURL URLWithString:_arr[2]] placeholderImage:nil];
+    [_imageView03 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",_arr[2]]] placeholderImage:nil];
     _imageView04.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-    [_imageView04 sd_setImageWithURL:[NSURL URLWithString:_arr[3]] placeholderImage:nil];
+    [_imageView04 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",_arr[3]]] placeholderImage:nil];
+    
+    //圆角处理
+    _imageView03.layer.cornerRadius = 20;
+    _imageView03.layer.masksToBounds = YES;
+    _imageView04.layer.cornerRadius = 20;
+    _imageView04.layer.masksToBounds = YES;
+    
     [_view02 addSubview:_label02];
     [_view02 addSubview:_label04];
     [_view02 addSubview:_imageView03];
     [_view02 addSubview:_imageView04];
 
-    
     //体育馆button01
     _button01.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
-    [_button01 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal]; 
+    [_button01 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
     [_view01 addSubview:_button01];
     _button01.tag = 0;
     [_button01 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
-    
+
     //宿舍button02
     _button02.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
     [_button02 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
     [_view02 addSubview:_button02];
     _button02.tag = 1;
     [_button02 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     [_scrollView addSubview:_view01];
     [_scrollView addSubview:_view02];
 }
@@ -182,8 +197,7 @@ NSString *str04;
         
         //体育馆
         _view01.frame = CGRectMake(0, 0, width, (height - 100) / 2);
-        _label01.frame = CGRectMake(20, 10, 60, 30);
-        _label01.text = _arrayData01[0];
+        _label01.frame = CGRectMake(20, 10, 200, 30);
         _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
         _label03.text = @"点击按钮，查看具体流程";
         _label03.numberOfLines = 0;
@@ -192,8 +206,7 @@ NSString *str04;
         
         //寝室
         _view02.frame = CGRectMake(0, (height - 100) / 2 + 40, width, (height - 100) / 2);
-        _label02.frame = CGRectMake(20, 10, 60, 30);
-        _label02.text = _arrayData01[1];
+        _label02.frame = CGRectMake(20, 10, 200, 30);
         _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
         _label04.text = @"点击按钮，查看具体流程";
         _label04.numberOfLines = 0;
@@ -225,7 +238,7 @@ NSString *str04;
     
     AFHTTPSessionManager *session02 = [AFHTTPSessionManager manager];
     
-    NSString *path02 = @"http://118.24.175.82/data/get/byindex?index=报道流程&pagenum=1&pagesize=2";
+    NSString *path02 = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=报道流程&pagenum=1&pagesize=2";
     
     //中文转码
     path02 = [path02 stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
@@ -258,22 +271,21 @@ NSString *str04;
     for (NSDictionary *dic in arrayEntry)
     {
         [_arrayData01 addObject:[dic objectForKey:@"name"]];
-
+        NSLog(@"%@",[dic objectForKey:@"name"]);
         
     
         [_arrayData02 addObject:[dic objectForKey:@"content"]];
-        
+        NSLog(@"%@",[dic objectForKey:@"content"]);
         
         _arrayData03 = [dic objectForKey:@"picture"];
-        //NSLog(@"%@ + hello",_arrayData03);
+        NSLog(@"%@ + hello",_arrayData03);
         [_arr addObject:_arrayData03[0]];
         [_arr addObject:_arrayData03[1]];
         //NSLog(@"%@ + %@",_arrayData03[0],_arrayData03[1]);
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveSucessful" object:self];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveSuccessful" object:self];
+
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

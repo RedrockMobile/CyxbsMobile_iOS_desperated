@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		288CF3C821246F0C00F0F7CD /* FreshMan2018ViewController01.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288CF3B621246F0B00F0F7CD /* FreshMan2018ViewController01.xib */; };
 		288CF3C921246F0C00F0F7CD /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 288CF3B721246F0B00F0F7CD /* Media.xcassets */; };
-		288CF3CA21246F0C00F0F7CD /* FreshMan2018ViewController01.m in Sources */ = {isa = PBXBuildFile; fileRef = 288CF3B821246F0B00F0F7CD /* FreshMan2018ViewController01.m */; };
 		288CF3CB21246F0C00F0F7CD /* WantToSayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288CF3BB21246F0B00F0F7CD /* WantToSayController.m */; };
 		288CF3CC21246F0C00F0F7CD /* ChatViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 288CF3BF21246F0B00F0F7CD /* ChatViewControl.m */; };
 		288CF3CD21246F0C00F0F7CD /* ReportWaterfallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288CF3C321246F0B00F0F7CD /* ReportWaterfallController.m */; };
 		288CF3CE21246F0C00F0F7CD /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 288CF3C621246F0B00F0F7CD /* UIImageView+WebCache.m */; };
 		288CF3CF21246F0C00F0F7CD /* FreshMan2018ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 288CF3C721246F0B00F0F7CD /* FreshMan2018ViewController.m */; };
+		28F4978E2125B9AA0018F4C8 /* 字体管家胖丫儿体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CFE92F212599BF0098920B /* 字体管家胖丫儿体.ttf */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -477,7 +476,6 @@
 		F26D96871F3C400F0063B024 /* support.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D962A1F3C400E0063B024 /* support.png */; };
 		F26D96881F3C400F0063B024 /* support1.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D962B1F3C400E0063B024 /* support1.png */; };
 		F26D968A1F3C400F0063B024 /* topic_image_alltopic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D962D1F3C400E0063B024 /* topic_image_alltopic@2x.png */; };
-		F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D962E1F3C400E0063B024 /* topic_image_alltopic@3x.png */; };
 		F26D968D1F3C400F0063B024 /* topic_image_join@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96301F3C400E0063B024 /* topic_image_join@2x.png */; };
 		F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96311F3C400E0063B024 /* topic_image_join@3x.png */; };
 		F26D968F1F3C400F0063B024 /* xia.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96321F3C400E0063B024 /* xia.png */; };
@@ -579,13 +577,10 @@
 
 /* Begin PBXFileReference section */
 		0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		288CF3B621246F0B00F0F7CD /* FreshMan2018ViewController01.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FreshMan2018ViewController01.xib; sourceTree = "<group>"; };
 		288CF3B721246F0B00F0F7CD /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		288CF3B821246F0B00F0F7CD /* FreshMan2018ViewController01.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshMan2018ViewController01.m; sourceTree = "<group>"; };
 		288CF3B921246F0B00F0F7CD /* FreshMan2018ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreshMan2018ViewController.h; sourceTree = "<group>"; };
 		288CF3BB21246F0B00F0F7CD /* WantToSayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantToSayController.m; sourceTree = "<group>"; };
 		288CF3BC21246F0B00F0F7CD /* WantToSayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantToSayController.h; sourceTree = "<group>"; };
-		288CF3BD21246F0B00F0F7CD /* FreshMan2018ViewController01.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreshMan2018ViewController01.h; sourceTree = "<group>"; };
 		288CF3BF21246F0B00F0F7CD /* ChatViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewControl.m; sourceTree = "<group>"; };
 		288CF3C021246F0B00F0F7CD /* ChatViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewControl.h; sourceTree = "<group>"; };
 		288CF3C221246F0B00F0F7CD /* ReportWaterfallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportWaterfallController.h; sourceTree = "<group>"; };
@@ -593,6 +588,7 @@
 		288CF3C521246F0B00F0F7CD /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
 		288CF3C621246F0B00F0F7CD /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		288CF3C721246F0B00F0F7CD /* FreshMan2018ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshMan2018ViewController.m; sourceTree = "<group>"; };
+		28CFE92F212599BF0098920B /* 字体管家胖丫儿体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "字体管家胖丫儿体.ttf"; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1377,16 +1373,14 @@
 		288CF3B521246F0B00F0F7CD /* Freshman8 */ = {
 			isa = PBXGroup;
 			children = (
-				288CF3BE21246F0B00F0F7CD /* ChatOnLine */,
+				28CFE92F212599BF0098920B /* 字体管家胖丫儿体.ttf */,
+				288CF3C421246F0B00F0F7CD /* UIImageView+WebCache */,
 				288CF3B921246F0B00F0F7CD /* FreshMan2018ViewController.h */,
 				288CF3C721246F0B00F0F7CD /* FreshMan2018ViewController.m */,
-				288CF3BD21246F0B00F0F7CD /* FreshMan2018ViewController01.h */,
-				288CF3B821246F0B00F0F7CD /* FreshMan2018ViewController01.m */,
-				288CF3B621246F0B00F0F7CD /* FreshMan2018ViewController01.xib */,
-				288CF3BA21246F0B00F0F7CD /* IWantToSay */,
 				288CF3B721246F0B00F0F7CD /* Media.xcassets */,
+				288CF3BE21246F0B00F0F7CD /* ChatOnLine */,
+				288CF3BA21246F0B00F0F7CD /* IWantToSay */,
 				288CF3C121246F0B00F0F7CD /* ReportWaterfall */,
-				288CF3C421246F0B00F0F7CD /* UIImageView+WebCache */,
 			);
 			path = Freshman8;
 			sourceTree = "<group>";
@@ -1394,8 +1388,8 @@
 		288CF3BA21246F0B00F0F7CD /* IWantToSay */ = {
 			isa = PBXGroup;
 			children = (
-				288CF3BB21246F0B00F0F7CD /* WantToSayController.m */,
 				288CF3BC21246F0B00F0F7CD /* WantToSayController.h */,
+				288CF3BB21246F0B00F0F7CD /* WantToSayController.m */,
 			);
 			path = IWantToSay;
 			sourceTree = "<group>";
@@ -1403,8 +1397,8 @@
 		288CF3BE21246F0B00F0F7CD /* ChatOnLine */ = {
 			isa = PBXGroup;
 			children = (
-				288CF3BF21246F0B00F0F7CD /* ChatViewControl.m */,
 				288CF3C021246F0B00F0F7CD /* ChatViewControl.h */,
+				288CF3BF21246F0B00F0F7CD /* ChatViewControl.m */,
 			);
 			path = ChatOnLine;
 			sourceTree = "<group>";
@@ -3017,7 +3011,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
+				28F4978E2125B9AA0018F4C8 /* 字体管家胖丫儿体.ttf in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
 				F26D965C1F3C400F0063B024 /* MBCommentCell.xib in Resources */,
@@ -3126,7 +3120,6 @@
 				F26D968A1F3C400F0063B024 /* topic_image_alltopic@2x.png in Resources */,
 				9630E4B01FAF07D200874EB9 /* scroll@2x.png in Resources */,
 				9630E4B61FAF07D200874EB9 /* 展开前@2x.png in Resources */,
-				288CF3C821246F0C00F0F7CD /* FreshMan2018ViewController01.xib in Resources */,
 				4A3A08471FCD990A00A50393 /* tel@3x.png in Resources */,
 				F242DE881EBCB2BC005AC411 /* 地点@2x.png in Resources */,
 				F20026E41F4020FA00360991 /* mine_image_exam@3x.png in Resources */,
@@ -3477,7 +3470,6 @@
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
 				F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */,
-				288CF3CA21246F0C00F0F7CD /* FreshMan2018ViewController01.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
