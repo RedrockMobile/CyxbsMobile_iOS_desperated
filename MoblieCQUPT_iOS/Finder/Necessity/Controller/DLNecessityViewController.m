@@ -55,7 +55,7 @@
 
 - (UITableView *)FMtableView{
     if(!_FMtableView){
-        self.FMtableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-50) style:UITableViewStylePlain];
+        self.FMtableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
         self.FMtableView.delegate = self;
         self.FMtableView.dataSource = self;
         self.FMtableView.separatorStyle = UITableViewCellSeparatorStyleNone;

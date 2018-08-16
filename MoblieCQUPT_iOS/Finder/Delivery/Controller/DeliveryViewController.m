@@ -35,7 +35,7 @@
     [self loadData];
     self.title = @"快递收发";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
-    self.deliveryTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
+    self.deliveryTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
     self.deliveryTab.delegate = self;
     self.deliveryTab.dataSource = self;
     self.deliveryTab.separatorStyle = UITableViewCellSeparatorStyleNone;

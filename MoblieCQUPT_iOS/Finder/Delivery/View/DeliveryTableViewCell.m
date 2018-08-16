@@ -70,7 +70,7 @@
 }
 
 + (CGFloat)cellHeight:(DeliveryModel *)Model{
-    return 51*HEIGHT+[DeliveryTableViewCell getStringHeight:Model.content font:13];
+    return 89*HEIGHT;
 }
 
 - (void)didClickImage{

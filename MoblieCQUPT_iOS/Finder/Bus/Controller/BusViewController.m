@@ -39,7 +39,7 @@
     self.title = @"公交线路";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     
-    self.BusTab = [[UITableView alloc]initWithFrame: self.view.frame style:UITableViewStylePlain];
+    self.BusTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
     self.BusTab.delegate = self;
     self.BusTab.dataSource = self;
     self.BusTab.separatorStyle = UITableViewCellSeparatorStyleNone;
