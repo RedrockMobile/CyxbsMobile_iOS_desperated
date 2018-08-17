@@ -37,6 +37,8 @@
     [segmentedControl setTintColor:[UIColor whiteColor]];
     //添加背景图片
     [segmentedControl setBackgroundImage:[UIImage imageNamed:@"all_image_background"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    segmentedControl.backgroundColor = [UIColor colorWithHexString:@"#e3e3e3"];
     [segmentedControl addTarget:self action:@selector(segChange:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
 }
@@ -46,6 +48,7 @@
 {
     if (seg.selectedSegmentIndex == 0)
     {
+        seg.backgroundColor = [UIColor colorWithHexString:@"#fbfbfb"];
         //创建textField
         _textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 60, width - 60, 60)];
         _textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -67,6 +70,7 @@
     }
     else if (seg.selectedSegmentIndex == 1)
     {
+        seg.backgroundColor = [UIColor colorWithHexString:@"#fbfbfb"];
         _textField = [[UITextField alloc] initWithFrame:CGRectMake(30, 60, width - 60, 60)];
         _textField.borderStyle = UITextBorderStyleRoundedRect;
         _textField.placeholder = @"请输入区域名";
