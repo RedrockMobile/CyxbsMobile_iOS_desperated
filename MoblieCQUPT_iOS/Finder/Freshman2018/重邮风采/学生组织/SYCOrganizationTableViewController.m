@@ -9,7 +9,6 @@
 #import "SYCOrganizationTableViewController.h"
 #import "SYCOrganizationTableViewCell.h"
 #import "SYCShortTableViewCell.h"
-#import "TableViewAnimationKit.h"
 
 @interface SYCOrganizationTableViewController ()
 
