@@ -21,6 +21,7 @@
 #import "LessonBtnModel.h"
 #import "LessonButton.h"
 
+
 @interface LessonController ()<LZWeekScrollViewDelegate>
 @property (nonatomic, strong) MainView *mainView;
 @property (nonatomic, strong) LZWeekScrollView *weekScrollView;
@@ -37,6 +38,8 @@
 @property (nonatomic, assign) NSInteger currentSelectIndex;
 @property (nonatomic, assign) BOOL isNetWorkSuccess;
 @property (nonatomic, assign) CGFloat weekScrollViewHeight;
+
+
 
 @end
 
@@ -64,8 +67,12 @@
         [self afterLogin];
     }
     [self addNotification];
+    
+    
     // Do any additional setup after loading the view from its nib.
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
