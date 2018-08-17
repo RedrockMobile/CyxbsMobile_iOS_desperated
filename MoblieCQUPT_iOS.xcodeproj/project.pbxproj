@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F22121CFE10009EB39 /* DLNecessityModel.m */; };
+		2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */; };
+		2FB222F92121D0380009EB39 /* addView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F82121D0380009EB39 /* addView.m */; };
+		2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222FB2121D0520009EB39 /* IntroductionView.m */; };
+		2FB222FE2121D0680009EB39 /* NecessityMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FB222FD2121D0680009EB39 /* NecessityMedia.xcassets */; };
+		2FB223012121D15C0009EB39 /* DLNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB223002121D15C0009EB39 /* DLNecessityViewController.m */; };
+		2FB2232A21230FC60009EB39 /* BusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2232921230FC60009EB39 /* BusViewController.m */; };
+		2FB2232D212310BF0009EB39 /* BusTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2232C212310BF0009EB39 /* BusTableViewCell.m */; };
+		2FB22330212310D50009EB39 /* BusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2232F212310D50009EB39 /* BusModel.m */; };
+		2FB22338212311FE0009EB39 /* DeliveryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB22337212311FE0009EB39 /* DeliveryModel.m */; };
+		2FB2233B212312160009EB39 /* DeliveryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2233A212312160009EB39 /* DeliveryTableViewCell.m */; };
+		2FB2233E2123122D0009EB39 /* DeliveryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB2233D2123122D0009EB39 /* DeliveryViewController.m */; };
+		2FB22345212322270009EB39 /* autoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB22344212322270009EB39 /* autoScrollView.m */; };
+		2FB22349212442050009EB39 /* Necessity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2FB22348212442050009EB39 /* Necessity.plist */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -82,6 +96,17 @@
 		4A3A084B1FCD990A00A50393 /* tel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3A083F1FCD990A00A50393 /* tel@2x.png */; };
 		4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */; };
 		4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */; };
+		4ACDF9AC2126DBE10021B8B7 /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9AB2126DBE10021B8B7 /* SchoolViewController.m */; };
+		4ACDF9AF2126DBE90021B8B7 /* SceneryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9AE2126DBE90021B8B7 /* SceneryViewController.m */; };
+		4ACDF9B52126DBF10021B8B7 /* BankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ACDF9B12126DBF00021B8B7 /* BankTableViewCell.xib */; };
+		4ACDF9B62126DBF10021B8B7 /* BankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9B22126DBF10021B8B7 /* BankTableViewCell.m */; };
+		4ACDF9B72126DBF10021B8B7 /* BankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9B42126DBF10021B8B7 /* BankViewController.m */; };
+		4ACDF9C12126DBF90021B8B7 /* rank@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACDF9B82126DBF80021B8B7 /* rank@3x.png */; };
+		4ACDF9C22126DBF90021B8B7 /* FoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9BA2126DBF90021B8B7 /* FoodViewController.m */; };
+		4ACDF9C32126DBF90021B8B7 /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = 4ACDF9BB2126DBF90021B8B7 /* rank.png */; };
+		4ACDF9C42126DBF90021B8B7 /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9BD2126DBF90021B8B7 /* FoodModel.m */; };
+		4ACDF9C52126DBF90021B8B7 /* FoodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACDF9BF2126DBF90021B8B7 /* FoodTableViewCell.m */; };
+		4ACDF9C62126DBF90021B8B7 /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4ACDF9C02126DBF90021B8B7 /* FoodTableViewCell.xib */; };
 		6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F69232030299200BB5EF3 /* ReportViewController.m */; };
 		6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F6926203038B400BB5EF3 /* ReportSortButton.m */; };
 		6E0F69292030712700BB5EF3 /* ReportImage.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E0F69282030712700BB5EF3 /* ReportImage.xcassets */; };
@@ -634,6 +659,32 @@
 
 /* Begin PBXFileReference section */
 		0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		2FB222F12121CFE10009EB39 /* DLNecessityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLNecessityModel.h; sourceTree = "<group>"; };
+		2FB222F22121CFE10009EB39 /* DLNecessityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNecessityModel.m; sourceTree = "<group>"; };
+		2FB222F42121D0240009EB39 /* FMNecessityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMNecessityTableViewCell.h; sourceTree = "<group>"; };
+		2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FMNecessityTableViewCell.m; sourceTree = "<group>"; };
+		2FB222F72121D0380009EB39 /* addView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = addView.h; sourceTree = "<group>"; };
+		2FB222F82121D0380009EB39 /* addView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = addView.m; sourceTree = "<group>"; };
+		2FB222FA2121D0520009EB39 /* IntroductionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroductionView.h; sourceTree = "<group>"; };
+		2FB222FB2121D0520009EB39 /* IntroductionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroductionView.m; sourceTree = "<group>"; };
+		2FB222FD2121D0680009EB39 /* NecessityMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NecessityMedia.xcassets; sourceTree = "<group>"; };
+		2FB222FF2121D15C0009EB39 /* DLNecessityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLNecessityViewController.h; sourceTree = "<group>"; };
+		2FB223002121D15C0009EB39 /* DLNecessityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNecessityViewController.m; sourceTree = "<group>"; };
+		2FB2232821230FC60009EB39 /* BusViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusViewController.h; sourceTree = "<group>"; };
+		2FB2232921230FC60009EB39 /* BusViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusViewController.m; sourceTree = "<group>"; };
+		2FB2232B212310BF0009EB39 /* BusTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusTableViewCell.h; sourceTree = "<group>"; };
+		2FB2232C212310BF0009EB39 /* BusTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusTableViewCell.m; sourceTree = "<group>"; };
+		2FB2232E212310D50009EB39 /* BusModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusModel.h; sourceTree = "<group>"; };
+		2FB2232F212310D50009EB39 /* BusModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BusModel.m; sourceTree = "<group>"; };
+		2FB22336212311FE0009EB39 /* DeliveryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryModel.h; sourceTree = "<group>"; };
+		2FB22337212311FE0009EB39 /* DeliveryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryModel.m; sourceTree = "<group>"; };
+		2FB22339212312160009EB39 /* DeliveryTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryTableViewCell.h; sourceTree = "<group>"; };
+		2FB2233A212312160009EB39 /* DeliveryTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryTableViewCell.m; sourceTree = "<group>"; };
+		2FB2233C2123122D0009EB39 /* DeliveryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeliveryViewController.h; sourceTree = "<group>"; };
+		2FB2233D2123122D0009EB39 /* DeliveryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeliveryViewController.m; sourceTree = "<group>"; };
+		2FB22343212322270009EB39 /* autoScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = autoScrollView.h; sourceTree = "<group>"; };
+		2FB22344212322270009EB39 /* autoScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = autoScrollView.m; sourceTree = "<group>"; };
+		2FB22348212442050009EB39 /* Necessity.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Necessity.plist; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -714,6 +765,24 @@
 		4A3A083F1FCD990A00A50393 /* tel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tel@2x.png"; sourceTree = "<group>"; };
 		4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-comment@2x.png"; sourceTree = "<group>"; };
 		4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "send-comment@3x.png"; sourceTree = "<group>"; };
+		4ACDF9AA2126DBE00021B8B7 /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
+		4ACDF9AB2126DBE10021B8B7 /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		4ACDF9AD2126DBE90021B8B7 /* SceneryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneryViewController.h; sourceTree = "<group>"; };
+		4ACDF9AE2126DBE90021B8B7 /* SceneryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneryViewController.m; sourceTree = "<group>"; };
+		4ACDF9B02126DBF00021B8B7 /* BankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankViewController.h; sourceTree = "<group>"; };
+		4ACDF9B12126DBF00021B8B7 /* BankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankTableViewCell.xib; sourceTree = "<group>"; };
+		4ACDF9B22126DBF10021B8B7 /* BankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankTableViewCell.m; sourceTree = "<group>"; };
+		4ACDF9B32126DBF10021B8B7 /* BankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankTableViewCell.h; sourceTree = "<group>"; };
+		4ACDF9B42126DBF10021B8B7 /* BankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankViewController.m; sourceTree = "<group>"; };
+		4ACDF9B82126DBF80021B8B7 /* rank@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rank@3x.png"; sourceTree = "<group>"; };
+		4ACDF9B92126DBF90021B8B7 /* FoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
+		4ACDF9BA2126DBF90021B8B7 /* FoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewController.m; sourceTree = "<group>"; };
+		4ACDF9BB2126DBF90021B8B7 /* rank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rank.png; sourceTree = "<group>"; };
+		4ACDF9BC2126DBF90021B8B7 /* FoodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTableViewCell.h; sourceTree = "<group>"; };
+		4ACDF9BD2126DBF90021B8B7 /* FoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		4ACDF9BE2126DBF90021B8B7 /* FoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewController.h; sourceTree = "<group>"; };
+		4ACDF9BF2126DBF90021B8B7 /* FoodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTableViewCell.m; sourceTree = "<group>"; };
+		4ACDF9C02126DBF90021B8B7 /* FoodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
 		6E0F69222030299200BB5EF3 /* ReportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		6E0F69232030299200BB5EF3 /* ReportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		6E0F6925203038B400BB5EF3 /* ReportSortButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportSortButton.h; sourceTree = "<group>"; };
@@ -1529,6 +1598,125 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FB222E72121CF020009EB39 /* Necessity */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222F02121CFB60009EB39 /* Model */,
+				2FB222EC2121CF8F0009EB39 /* Controller */,
+				2FB222E92121CF300009EB39 /* View */,
+				2FB222FD2121D0680009EB39 /* NecessityMedia.xcassets */,
+				2FB22348212442050009EB39 /* Necessity.plist */,
+			);
+			path = Necessity;
+			sourceTree = "<group>";
+		};
+		2FB222E92121CF300009EB39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222F42121D0240009EB39 /* FMNecessityTableViewCell.h */,
+				2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */,
+				2FB222F72121D0380009EB39 /* addView.h */,
+				2FB222F82121D0380009EB39 /* addView.m */,
+				2FB222FA2121D0520009EB39 /* IntroductionView.h */,
+				2FB222FB2121D0520009EB39 /* IntroductionView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FB222EC2121CF8F0009EB39 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222FF2121D15C0009EB39 /* DLNecessityViewController.h */,
+				2FB223002121D15C0009EB39 /* DLNecessityViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FB222F02121CFB60009EB39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB222F12121CFE10009EB39 /* DLNecessityModel.h */,
+				2FB222F22121CFE10009EB39 /* DLNecessityModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FB2232421230F1E0009EB39 /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				2FB2232721230F4B0009EB39 /* Controller */,
+				2FB2232621230F440009EB39 /* View */,
+				2FB2232521230F380009EB39 /* Model */,
+			);
+			path = Bus;
+			sourceTree = "<group>";
+		};
+		2FB2232521230F380009EB39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB2232E212310D50009EB39 /* BusModel.h */,
+				2FB2232F212310D50009EB39 /* BusModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		2FB2232621230F440009EB39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FB2232B212310BF0009EB39 /* BusTableViewCell.h */,
+				2FB2232C212310BF0009EB39 /* BusTableViewCell.m */,
+				2FB22343212322270009EB39 /* autoScrollView.h */,
+				2FB22344212322270009EB39 /* autoScrollView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FB2232721230F4B0009EB39 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB2232821230FC60009EB39 /* BusViewController.h */,
+				2FB2232921230FC60009EB39 /* BusViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FB22331212311A30009EB39 /* Delivery */ = {
+			isa = PBXGroup;
+			children = (
+				2FB22335212311DB0009EB39 /* Model */,
+				2FB22333212311BE0009EB39 /* View */,
+				2FB22332212311B30009EB39 /* Controller */,
+			);
+			path = Delivery;
+			sourceTree = "<group>";
+		};
+		2FB22332212311B30009EB39 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2FB2233C2123122D0009EB39 /* DeliveryViewController.h */,
+				2FB2233D2123122D0009EB39 /* DeliveryViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2FB22333212311BE0009EB39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2FB22339212312160009EB39 /* DeliveryTableViewCell.h */,
+				2FB2233A212312160009EB39 /* DeliveryTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2FB22335212311DB0009EB39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2FB22336212311FE0009EB39 /* DeliveryModel.h */,
+				2FB22337212311FE0009EB39 /* DeliveryModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3B26610C1BA6E422008632F3 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -1632,6 +1820,52 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		4ACDF9A62126DB2A0021B8B7 /* FoodAround */ = {
+			isa = PBXGroup;
+			children = (
+				4ACDF9B92126DBF90021B8B7 /* FoodModel.h */,
+				4ACDF9BD2126DBF90021B8B7 /* FoodModel.m */,
+				4ACDF9BC2126DBF90021B8B7 /* FoodTableViewCell.h */,
+				4ACDF9BF2126DBF90021B8B7 /* FoodTableViewCell.m */,
+				4ACDF9C02126DBF90021B8B7 /* FoodTableViewCell.xib */,
+				4ACDF9BE2126DBF90021B8B7 /* FoodViewController.h */,
+				4ACDF9BA2126DBF90021B8B7 /* FoodViewController.m */,
+				4ACDF9BB2126DBF90021B8B7 /* rank.png */,
+				4ACDF9B82126DBF80021B8B7 /* rank@3x.png */,
+			);
+			path = FoodAround;
+			sourceTree = "<group>";
+		};
+		4ACDF9A72126DB610021B8B7 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				4ACDF9B32126DBF10021B8B7 /* BankTableViewCell.h */,
+				4ACDF9B22126DBF10021B8B7 /* BankTableViewCell.m */,
+				4ACDF9B12126DBF00021B8B7 /* BankTableViewCell.xib */,
+				4ACDF9B02126DBF00021B8B7 /* BankViewController.h */,
+				4ACDF9B42126DBF10021B8B7 /* BankViewController.m */,
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		4ACDF9A82126DB870021B8B7 /* Scereny */ = {
+			isa = PBXGroup;
+			children = (
+				4ACDF9AD2126DBE90021B8B7 /* SceneryViewController.h */,
+				4ACDF9AE2126DBE90021B8B7 /* SceneryViewController.m */,
+			);
+			path = Scereny;
+			sourceTree = "<group>";
+		};
+		4ACDF9A92126DBAF0021B8B7 /* SchooAround */ = {
+			isa = PBXGroup;
+			children = (
+				4ACDF9AA2126DBE00021B8B7 /* SchoolViewController.h */,
+				4ACDF9AB2126DBE10021B8B7 /* SchoolViewController.m */,
+			);
+			path = SchooAround;
+			sourceTree = "<group>";
+		};
 		6E0F69302031E30200BB5EF3 /* ReportView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1703,6 +1937,20 @@
 				6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */,
 			);
 			path = addView;
+			sourceTree = "<group>";
+		};
+		82B66EE4211AD2A700FA82F1 /* Freshman8 */ = {
+			isa = PBXGroup;
+			children = (
+				4ACDF9A92126DBAF0021B8B7 /* SchooAround */,
+				4ACDF9A82126DB870021B8B7 /* Scereny */,
+				4ACDF9A72126DB610021B8B7 /* Bank */,
+				4ACDF9A62126DB2A0021B8B7 /* FoodAround */,
+				2FB22331212311A30009EB39 /* Delivery */,
+				2FB2232421230F1E0009EB39 /* Bus */,
+				2FB222E72121CF020009EB39 /* Necessity */,
+			);
+			name = Freshman8;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -2292,7 +2540,9 @@
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
-				E4A7FB46211EDD4B0047E6DC /* Freshman2018 */,
+
+				82B66EE4211AD2A700FA82F1 /* Freshman8 */,
+
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
@@ -3376,7 +3626,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = 5HFKSE2QXG;
+
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3534,6 +3784,7 @@
 				F20026F71F40372100360991 /* appIcon@2x.png in Resources */,
 				9630E4C81FAF07D300874EB9 /* 背景板@2x.png in Resources */,
 				F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */,
+				2FB22349212442050009EB39 /* Necessity.plist in Resources */,
 				F242DE9A1EBCB2BC005AC411 /* 无课@2x.png in Resources */,
 				9630E4AC1FAF07D200874EB9 /* login_number@3x.png in Resources */,
 				F26D96801F3C400F0063B024 /* icon_share_wechat@2x.png in Resources */,
@@ -3587,6 +3838,7 @@
 				E475927321213A2B008EB61D /* 入学必备.png in Resources */,
 				4A3A07CE1FCC0EC700A50393 /* cqupt2@2x.jpg in Resources */,
 				F20026F81F40372100360991 /* appIcon@3x.png in Resources */,
+				4ACDF9C32126DBF90021B8B7 /* rank.png in Resources */,
 				F242DE961EBCB2BC005AC411 /* 无事项@2x.png in Resources */,
 				F242DE831EBCB2BC005AC411 /* 删除@2x.png in Resources */,
 				F242DDF91EBCB2BB005AC411 /* ShakeViewController.xib in Resources */,
@@ -3611,6 +3863,7 @@
 				F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */,
 				9630E4A91FAF07D200874EB9 /* login_icon@3x.png in Resources */,
 				9630E4AB1FAF07D200874EB9 /* login_number@2x.png in Resources */,
+				2FB222FE2121D0680009EB39 /* NecessityMedia.xcassets in Resources */,
 				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
 				F26D96821F3C400F0063B024 /* icon_share_wechatTimeLine@2x.png in Resources */,
 				F26D967E1F3C400F0063B024 /* icon_share_qq@3x.png in Resources */,
@@ -3630,12 +3883,14 @@
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				9630E4B51FAF07D200874EB9 /* 地点坐标@3x.png in Resources */,
 				4A3A07F91FCC0EC700A50393 /* lost_image_success@3x.png in Resources */,
+				4ACDF9C12126DBF90021B8B7 /* rank@3x.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
 				4A3A08431FCD990A00A50393 /* rectangle@2x.png in Resources */,
 				4A3A07DA1FCC0EC700A50393 /* find_image_query@2x.png in Resources */,
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
 				F20026E71F4020FA00360991 /* mine_image_date@2x.png in Resources */,
+				4ACDF9B52126DBF10021B8B7 /* BankTableViewCell.xib in Resources */,
 				F20027081F404BE100360991 /* timeTable_image_pull@2x.png in Resources */,
 				E475928521215D95008EB61D /* 我想对你说.png in Resources */,
 				9630E4A81FAF07D200874EB9 /* login_icon@2x.png in Resources */,
@@ -3754,6 +4009,7 @@
 				9630E4A11FAF07D200874EB9 /* 6@3x.png in Resources */,
 				9630E4A61FAF07D200874EB9 /* login_back@3x.png in Resources */,
 				F242DDB31EBCB2BB005AC411 /* roomIcon.png in Resources */,
+				4ACDF9C62126DBF90021B8B7 /* FoodTableViewCell.xib in Resources */,
 				F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */,
 				F20027161F405B8500360991 /* remind_image_confirm@2x.png in Resources */,
 				F242DE801EBCB2BC005AC411 /* 不提醒@3x.png in Resources */,
@@ -3871,8 +4127,10 @@
 				F2509BCE1F440D7D0091F678 /* SegmentView.m in Sources */,
 				F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */,
 				F242DE621EBCB2BC005AC411 /* DetailLessonController.m in Sources */,
+				4ACDF9AC2126DBE10021B8B7 /* SchoolViewController.m in Sources */,
 				F242DDB11EBCB2BB005AC411 /* IntallFailViewController.m in Sources */,
 				F242DEC31EBCB2BC005AC411 /* main.m in Sources */,
+				2FB2232A21230FC60009EB39 /* BusViewController.m in Sources */,
 				F242DFBA1EBD9E2C005AC411 /* LZLostRemindView.m in Sources */,
 				F23BB4881F50538800DA62ED /* LZWeekScrollView.m in Sources */,
 				F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */,
@@ -3881,6 +4139,7 @@
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
+				2FB2233E2123122D0009EB39 /* DeliveryViewController.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				E4A7FBC6211F09920047E6DC /* SYCOrganizationManager.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
@@ -3935,6 +4194,7 @@
 				E4A7FBA5211EE2750047E6DC /* AAColumn.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
+				2FB223012121D15C0009EB39 /* DLNecessityViewController.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
@@ -3942,6 +4202,8 @@
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
+				2FB2233B212312160009EB39 /* DeliveryTableViewCell.m in Sources */,
+				4ACDF9C22126DBF90021B8B7 /* FoodViewController.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				E4A7FBAF211EE2750047E6DC /* AASpline.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
@@ -3970,14 +4232,17 @@
 				E4A7FBB4211EE2750047E6DC /* AAChartModel.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
+				4ACDF9B62126DBF10021B8B7 /* BankTableViewCell.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
+				2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
 				9630E4CC1FAF07D300874EB9 /* QueryModel.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
+				4ACDF9C42126DBF90021B8B7 /* FoodModel.m in Sources */,
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
@@ -3987,6 +4252,7 @@
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
+				2FB22345212322270009EB39 /* autoScrollView.m in Sources */,
 				F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
@@ -4009,6 +4275,8 @@
 				E43438B221259B890049CECE /* SYCOrganizationTableViewCell.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
+				2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */,
+				2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
@@ -4031,6 +4299,7 @@
 				F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */,
 				F2A92CE41F52E8BE00B4CEEF /* BaseTableViewController.m in Sources */,
 				F26D96691F3C400F0063B024 /* ImageWithLabels.m in Sources */,
+				4ACDF9B72126DBF10021B8B7 /* BankViewController.m in Sources */,
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				F2A6E6811F6E8FE100A663B4 /* LZTextField.m in Sources */,
@@ -4049,7 +4318,11 @@
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
 				9630E4CD1FAF07D300874EB9 /* HeaderGifRefresh.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
+
 				E4A7FB9A211EE2750047E6DC /* AAAreaspline.m in Sources */,
+
+				2FB2232D212310BF0009EB39 /* BusTableViewCell.m in Sources */,
+
 				F2DD71A41F777B24009556BE /* LZPersonAddView.m in Sources */,
 				E4A7FBAA211EE2750047E6DC /* AATitle.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
@@ -4058,6 +4331,7 @@
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
 				F2E04A3F2067E2A200ADDB16 /* NetWork.m in Sources */,
 				9630E48D1FAF07D200874EB9 /* QueryLoginViewController.m in Sources */,
+				4ACDF9C52126DBF90021B8B7 /* FoodTableViewCell.m in Sources */,
 				4A3A07961FCC0E7700A50393 /* ZJShopViewController.m in Sources */,
 				E4A7FBA6211EE2750047E6DC /* AAPlotLinesElement.m in Sources */,
 				E4216725212552D900D36E44 /* SYCActivityModel.m in Sources */,
@@ -4070,7 +4344,11 @@
 				F242DEFB1EBCB2BC005AC411 /* AboutMeTableViewCell.m in Sources */,
 				F26D96971F3C400F0063B024 /* MBBrowserItem.m in Sources */,
 				F242DFB31EBD9E2C005AC411 /* IconTableViewCell.m in Sources */,
+
 				E4A7FB9D211EE2750047E6DC /* AAXAxis.m in Sources */,
+
+				2FB22330212310D50009EB39 /* BusModel.m in Sources */,
+
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
@@ -4083,7 +4361,10 @@
 				6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
+				2FB22338212311FE0009EB39 /* DeliveryModel.m in Sources */,
 				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,
+				4ACDF9AF2126DBE90021B8B7 /* SceneryViewController.m in Sources */,
+				2FB222F92121D0380009EB39 /* addView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4269,7 +4550,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5HFKSE2QXG;
+
+				DEVELOPMENT_TEAM = "";
+
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -4310,7 +4593,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5HFKSE2QXG;
+
+				DEVELOPMENT_TEAM = "";
+
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
