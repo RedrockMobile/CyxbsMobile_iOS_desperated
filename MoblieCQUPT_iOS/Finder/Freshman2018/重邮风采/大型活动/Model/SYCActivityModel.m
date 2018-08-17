@@ -1,14 +1,14 @@
 //
-//  SYCOrganizationModel.m
+//  SYCActivityModel.m
 //  MoblieCQUPT_iOS
 //
-//  Created by 施昱丞 on 2018/8/11.
+//  Created by 施昱丞 on 2018/8/16.
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
 
-#import "SYCOrganizationModel.h"
+#import "SYCActivityModel.h"
 
-@implementation SYCOrganizationModel
+@implementation SYCActivityModel
 
 - (instancetype)initWithName:(NSString *)name imageURLs:(NSArray *)imageURLs detail:(NSString *)detail{
     self = [super init];
@@ -43,5 +43,4 @@
     [coder encodeObject:self.imagesArray forKey:@"imagesArray"];
     [coder encodeObject:self.detail forKey:@"activityDetail"];
 }
-
 @end

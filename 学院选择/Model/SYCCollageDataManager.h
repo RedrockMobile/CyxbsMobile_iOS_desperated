@@ -13,6 +13,8 @@
 @property (nonatomic, strong)NSDictionary *nameList;
 @property (nonatomic, strong)NSMutableDictionary *collageData;
 
+
+
 + (instancetype)sharedInstance;
 
 @end

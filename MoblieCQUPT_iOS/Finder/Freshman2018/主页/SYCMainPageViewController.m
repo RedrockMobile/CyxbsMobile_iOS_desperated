@@ -11,6 +11,8 @@
 #import "SYCCollageTableViewController.h"
 #import "SYCMainPageModel.h"
 #import "SYCCollageDataManager.h"
+#import "SYCActivityManager.h"
+#import "MBProgressHUD.h"
 
 @interface SYCMainPageViewController ()
 
@@ -39,12 +41,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [SYCCollageDataManager sharedInstance];
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            self.mainPageModel = [SYCMainPageModel shareInstance];
+            [SYCActivityManager sharedInstance];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeIndeterminate;
+            
+        });
+    });
+
     CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat mainPageHeight = mainPageWidth * 2.933;
 
-    self.mainPageModel = [SYCMainPageModel shareInstance];
+    
     
     self.rxbbBtn = [[UIButton alloc] initWithFrame: CGRectMake(mainPageWidth * 0.173, mainPageHeight * 0.193, mainPageWidth * 0.442, mainPageHeight * 0.073)];
     [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备"] forState:UIControlStateNormal];

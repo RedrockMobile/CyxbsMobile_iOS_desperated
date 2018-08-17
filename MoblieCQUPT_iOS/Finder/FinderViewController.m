@@ -14,6 +14,8 @@
 #import "SYCCollageTableViewController.h"
 #import "SYCMainPageViewController.h"
 #import "SYCActivityTableViewController.h"
+#import "SYCOrganizationTableViewController.h"
+#import "SYCCharacterViewController.h"
 
 @interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -57,7 +59,7 @@
         [models addObject:model];
     }
     self.array = [self getCarouselModels]?:models;
-    self.selectedIndex = self.array.count*N/2;
+    self.selectedIndex = self.array.count * N/2;
 
     self.pageControl.numberOfPages = self.array.count;
     self.pageControl.currentPage = self.selectedIndex%self.array.count;
@@ -94,7 +96,7 @@
 
 //测试按钮方法
 - (void)touchTestButton:(id)sender{
-    SYCActivityTableViewController *collageVC = [[SYCActivityTableViewController alloc] init];
+    SYCCharacterViewController *collageVC = [[SYCCharacterViewController alloc] init];
     [self.navigationController pushViewController:collageVC animated:YES];
 }
 

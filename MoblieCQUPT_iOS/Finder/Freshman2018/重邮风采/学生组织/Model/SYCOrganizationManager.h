@@ -10,7 +10,7 @@
 
 @interface SYCOrganizationManager : NSObject
 
-@property (nonatomic, strong) NSDictionary *organizationData;
+@property (nonatomic, strong)NSMutableArray *organizationData;
 
 + (instancetype)sharedInstance;
 

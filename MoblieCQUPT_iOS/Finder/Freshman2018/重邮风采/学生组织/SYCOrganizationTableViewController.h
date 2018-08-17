@@ -10,4 +10,6 @@
 
 @interface SYCOrganizationTableViewController : UITableViewController
 
+@property NSUInteger index;
+
 @end

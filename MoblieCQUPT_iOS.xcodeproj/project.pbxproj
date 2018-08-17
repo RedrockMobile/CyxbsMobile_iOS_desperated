@@ -208,8 +208,12 @@
 		E421670D2123EE0F00D36E44 /* 小车.png in Resources */ = {isa = PBXBuildFile; fileRef = E421670C2123EE0F00D36E44 /* 小车.png */; };
 		E42167132124454D00D36E44 /* SYCActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E42167122124454D00D36E44 /* SYCActivityTableViewController.m */; };
 		E42167172124458E00D36E44 /* SYCActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E42167162124458E00D36E44 /* SYCActivityTableViewCell.m */; };
-		E421671921251FEC00D36E44 /* 111.JPG in Resources */ = {isa = PBXBuildFile; fileRef = E421671821251FEB00D36E44 /* 111.JPG */; };
 		E421671C21254FF600D36E44 /* SYCOrganizationTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E421671B21254FF600D36E44 /* SYCOrganizationTableViewController.m */; };
+		E4216725212552D900D36E44 /* SYCActivityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4216724212552D900D36E44 /* SYCActivityModel.m */; };
+		E42167282125553E00D36E44 /* SYCActivityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E42167272125553E00D36E44 /* SYCActivityManager.m */; };
+		E43438B221259B890049CECE /* SYCOrganizationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43438B121259B890049CECE /* SYCOrganizationTableViewCell.m */; };
+		E43438B52125A6380049CECE /* SYCCharacterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43438B42125A6380049CECE /* SYCCharacterViewController.m */; };
+		E43438B82125AA310049CECE /* SYCOrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43438B72125AA310049CECE /* SYCOrganizationViewController.m */; };
 		E4759263211FBCEE008EB61D /* SYCMainPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4759262211FBCEE008EB61D /* SYCMainPageView.m */; };
 		E4759266211FBD3C008EB61D /* SYCMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4759265211FBD3C008EB61D /* SYCMainPageViewController.m */; };
 		E4759268211FBE33008EB61D /* backgroud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4759267211FBE33008EB61D /* backgroud.jpg */; };
@@ -883,9 +887,18 @@
 		E42167122124454D00D36E44 /* SYCActivityTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCActivityTableViewController.m; sourceTree = "<group>"; };
 		E42167152124458E00D36E44 /* SYCActivityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCActivityTableViewCell.h; sourceTree = "<group>"; };
 		E42167162124458E00D36E44 /* SYCActivityTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCActivityTableViewCell.m; sourceTree = "<group>"; };
-		E421671821251FEB00D36E44 /* 111.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 111.JPG; sourceTree = "<group>"; };
 		E421671A21254FF600D36E44 /* SYCOrganizationTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCOrganizationTableViewController.h; sourceTree = "<group>"; };
 		E421671B21254FF600D36E44 /* SYCOrganizationTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationTableViewController.m; sourceTree = "<group>"; };
+		E4216723212552D900D36E44 /* SYCActivityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCActivityModel.h; sourceTree = "<group>"; };
+		E4216724212552D900D36E44 /* SYCActivityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCActivityModel.m; sourceTree = "<group>"; };
+		E42167262125553E00D36E44 /* SYCActivityManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCActivityManager.h; sourceTree = "<group>"; };
+		E42167272125553E00D36E44 /* SYCActivityManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCActivityManager.m; sourceTree = "<group>"; };
+		E43438B021259B890049CECE /* SYCOrganizationTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCOrganizationTableViewCell.h; sourceTree = "<group>"; };
+		E43438B121259B890049CECE /* SYCOrganizationTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationTableViewCell.m; sourceTree = "<group>"; };
+		E43438B32125A6380049CECE /* SYCCharacterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCCharacterViewController.h; sourceTree = "<group>"; };
+		E43438B42125A6380049CECE /* SYCCharacterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCCharacterViewController.m; sourceTree = "<group>"; };
+		E43438B62125AA310049CECE /* SYCOrganizationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCOrganizationViewController.h; sourceTree = "<group>"; };
+		E43438B72125AA310049CECE /* SYCOrganizationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationViewController.m; sourceTree = "<group>"; };
 		E4759261211FBCEE008EB61D /* SYCMainPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCMainPageView.h; sourceTree = "<group>"; };
 		E4759262211FBCEE008EB61D /* SYCMainPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCMainPageView.m; sourceTree = "<group>"; };
 		E4759264211FBD3C008EB61D /* SYCMainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCMainPageViewController.h; sourceTree = "<group>"; };
@@ -1912,7 +1925,6 @@
 			children = (
 				E42167152124458E00D36E44 /* SYCActivityTableViewCell.h */,
 				E42167162124458E00D36E44 /* SYCActivityTableViewCell.m */,
-				E421671821251FEB00D36E44 /* 111.JPG */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1940,6 +1952,10 @@
 		E421671F2125517F00D36E44 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E42167262125553E00D36E44 /* SYCActivityManager.h */,
+				E42167272125553E00D36E44 /* SYCActivityManager.m */,
+				E4216723212552D900D36E44 /* SYCActivityModel.h */,
+				E4216724212552D900D36E44 /* SYCActivityModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1947,6 +1963,8 @@
 		E42167202125518F00D36E44 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E43438B021259B890049CECE /* SYCOrganizationTableViewCell.h */,
+				E43438B121259B890049CECE /* SYCOrganizationTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2147,6 +2165,8 @@
 		E4A7FBBD211F08A20047E6DC /* 重邮风采 */ = {
 			isa = PBXGroup;
 			children = (
+				E43438B32125A6380049CECE /* SYCCharacterViewController.h */,
+				E43438B42125A6380049CECE /* SYCCharacterViewController.m */,
 				E4A7FBBF211F08F70047E6DC /* 大型活动 */,
 				E4A7FBBE211F08E80047E6DC /* 学生组织 */,
 			);
@@ -2156,6 +2176,8 @@
 		E4A7FBBE211F08E80047E6DC /* 学生组织 */ = {
 			isa = PBXGroup;
 			children = (
+				E43438B62125AA310049CECE /* SYCOrganizationViewController.h */,
+				E43438B72125AA310049CECE /* SYCOrganizationViewController.m */,
 				E421671A21254FF600D36E44 /* SYCOrganizationTableViewController.h */,
 				E421671B21254FF600D36E44 /* SYCOrganizationTableViewController.m */,
 				E4A7FBC3211F09490047E6DC /* Model */,
@@ -3476,7 +3498,6 @@
 				4A3A07F01FCC0EC700A50393 /* lost_image_little@2x.png in Resources */,
 				4A3A07EF1FCC0EC700A50393 /* lost_image_lacktel@3x.png in Resources */,
 				4A3A07F61FCC0EC700A50393 /* lost_image_QQ@2x.png in Resources */,
-				E421671921251FEC00D36E44 /* 111.JPG in Resources */,
 				F238C6501F3DA29700FEB179 /* tabbar_image_community@3x.png in Resources */,
 				F238C6531F3DA29700FEB179 /* tabbar_image_mine@2x.png in Resources */,
 				F23078DE1F73EF4C0079E187 /* date_image_add@2x.png in Resources */,
@@ -3820,6 +3841,7 @@
 				F242DDAD1EBCB2BB005AC411 /* InstallBuildTableViewCell.m in Sources */,
 				F2A92CFB1F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m in Sources */,
 				E4A7FB55211EE24A0047E6DC /* SYCCollageTableViewController.m in Sources */,
+				E42167282125553E00D36E44 /* SYCActivityManager.m in Sources */,
 				F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */,
 				F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */,
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
@@ -3829,6 +3851,7 @@
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
 				F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */,
+				E43438B52125A6380049CECE /* SYCCharacterViewController.m in Sources */,
 				E4A7FB9C211EE2750047E6DC /* AASeries.m in Sources */,
 				F26D969E1F3C400F0063B024 /* MBComment_ViewModel.m in Sources */,
 				E4A7FBB2211EE2750047E6DC /* AAChart.m in Sources */,
@@ -3848,6 +3871,7 @@
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				E4A7FBC6211F09920047E6DC /* SYCOrganizationManager.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
+				E43438B82125AA310049CECE /* SYCOrganizationViewController.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				E4A7FB9B211EE2750047E6DC /* AALabels.m in Sources */,
@@ -3968,6 +3992,7 @@
 				F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */,
 				E4A7FBA9211EE2750047E6DC /* AABar.m in Sources */,
 				F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */,
+				E43438B221259B890049CECE /* SYCOrganizationTableViewCell.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
@@ -4021,6 +4046,7 @@
 				9630E48D1FAF07D200874EB9 /* QueryLoginViewController.m in Sources */,
 				4A3A07961FCC0E7700A50393 /* ZJShopViewController.m in Sources */,
 				E4A7FBA6211EE2750047E6DC /* AAPlotLinesElement.m in Sources */,
+				E4216725212552D900D36E44 /* SYCActivityModel.m in Sources */,
 				F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */,
 				E4A7FB57211EE24A0047E6DC /* SYCSexRatioViewController.m in Sources */,
 				E4A7FBAB211EE2750047E6DC /* AAArea.m in Sources */,

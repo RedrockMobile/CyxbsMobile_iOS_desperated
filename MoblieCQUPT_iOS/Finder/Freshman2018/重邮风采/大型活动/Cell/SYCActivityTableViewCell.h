@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYCActivityModel.h"
 
 @interface SYCActivityTableViewCell : UITableViewCell
+
+@property (nonatomic, strong)SYCActivityModel *activity;
+
+@property (nonatomic)NSUInteger row;
 
 @end

@@ -16,16 +16,15 @@
     static SYCCollageDataManager *sharedInstance = nil;
     //如果已经创建过就不创建
     if (!sharedInstance) {
-        sharedInstance = [[self alloc] initPrivate];
+        if ([NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]]) {
+            sharedInstance = [[self alloc] init];
+            sharedInstance.nameList = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]];
+            sharedInstance.collageData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collageData.archiver"]];
+        }else{
+            sharedInstance = [[self alloc] initPrivate];
+        }
     }
     return sharedInstance;
-}
-
-//如果调用init方法，就应该提示使用sharedStore方法
-- (instancetype)init
-{
-    @throw [NSException exceptionWithName:@"Singleton" reason:@"Use +[SYCDataStore sharedStore]" userInfo:nil];
-    return nil;
 }
 
 //真正的（私有的）初始化方法
@@ -79,8 +78,6 @@
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
         [self.collageData setObject:[[SYCCollageModel alloc] initWithName:name andSexRatio:sexRatio andSubjects:subjects] forKey:name];
-        NSLog(@"%@ %@ %@", name, sexRatio, subjects);
-        NSLog(@"%@", self.collageData);
     }
     
     [NSKeyedArchiver archiveRootObject:self.nameList toFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]];

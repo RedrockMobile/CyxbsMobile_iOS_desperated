@@ -8,6 +8,8 @@
 
 #import "SYCActivityTableViewController.h"
 #import "SYCActivityTableViewCell.h"
+#import "SYCActivityManager.h"
+
 
 @interface SYCActivityTableViewController ()
 
@@ -18,9 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[SYCActivityTableViewCell class] forCellReuseIdentifier:@"reuse"];
+    [self.tableView registerClass:[SYCActivityTableViewCell class] forCellReuseIdentifier:@"reuseIdentifier"];
+    
     self.tableView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,7 +40,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -43,10 +48,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SYCActivityTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuse" forIndexPath:indexPath];
-    
-    cell = [[SYCActivityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"reuse"];
-    
+    SYCActivityTableViewCell *cell = [[SYCActivityTableViewCell alloc] init];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.row = [indexPath row];
     return cell;
 }
 
