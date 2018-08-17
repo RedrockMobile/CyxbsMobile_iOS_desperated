@@ -240,7 +240,7 @@
 
 
 - (IBAction)clickBtn:(UIButton *)sender {
-    NSArray *array = @[@"FreshMan2018ViewController",@"MapViewController",@"ZJShopViewController",@"QuerLoginViewController",@"LostViewController",@"ShakeViewController"];
+    NSArray *array = @[@"WebViewController",@"MapViewController",@"ZJShopViewController",@"QuerLoginViewController",@"LostViewController",@"ShakeViewController"];
     NSString *className = array[sender.tag];
     UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
