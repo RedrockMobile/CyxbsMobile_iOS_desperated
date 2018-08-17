@@ -11,6 +11,12 @@
 #import "FinderCollectionViewCell.h"
 #import "LZCarouselModel.h"
 
+#import "SYCCollageTableViewController.h"
+#import "SYCMainPageViewController.h"
+#import "SYCActivityTableViewController.h"
+#import "SYCOrganizationTableViewController.h"
+#import "SYCCharacterViewController.h"
+
 @interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -53,7 +59,7 @@
         [models addObject:model];
     }
     self.array = [self getCarouselModels]?:models;
-    self.selectedIndex = self.array.count*N/2;
+    self.selectedIndex = self.array.count * N/2;
 
     self.pageControl.numberOfPages = self.array.count;
     self.pageControl.currentPage = self.selectedIndex%self.array.count;
@@ -71,10 +77,22 @@
     UISwipeGestureRecognizer *rightSwipeGesture = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipe:)];
     rightSwipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
     [self.collectionView addGestureRecognizer:leftSwipeGesture];
-    [self.collectionView addGestureRecognizer:rightSwipeGesture];
+    [self.collectionView addGestureRecognizer:rightSwipeGesture]; 
+    
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
     // 产品的要求 一次滑动只能移动一个
+    
+    //测试用Button2，进入主页
+    UIButton *testButton2 = [[UIButton alloc] initWithFrame:CGRectMake(0, 100, 100, 100)];
+    testButton2.backgroundColor = [UIColor blueColor];
+    [testButton2 addTarget:self action:@selector(touchTestButton2:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testButton2];
+}
 
+//测试按钮方法2
+- (void)touchTestButton2:(id)sender{
+    SYCMainPageViewController *mainPageVC = [[SYCMainPageViewController alloc] init];
+    [self.navigationController pushViewController:mainPageVC animated:YES];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
