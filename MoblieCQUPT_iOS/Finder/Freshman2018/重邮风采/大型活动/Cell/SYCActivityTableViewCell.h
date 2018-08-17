@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SYCActivityModel.h"
 
-@interface SYCActivityTableViewCell : UITableViewCell
+@interface SYCActivityTableViewCell : UITableViewCell<UIScrollViewDelegate>
 
 @property (nonatomic, strong)SYCActivityModel *activity;
 

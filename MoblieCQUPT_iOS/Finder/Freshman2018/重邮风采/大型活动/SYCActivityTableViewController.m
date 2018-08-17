@@ -19,12 +19,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
+    [tableView registerClass:[SYCActivityTableViewCell class] forCellReuseIdentifier:@"reuseIdentifier"];
     
-    [self.tableView registerClass:[SYCActivityTableViewCell class] forCellReuseIdentifier:@"reuseIdentifier"];
-    
-    self.tableView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    tableView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    [self.view addSubview:tableView];
     
 }
 

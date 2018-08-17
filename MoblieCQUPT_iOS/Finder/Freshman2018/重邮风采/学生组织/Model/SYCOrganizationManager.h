@@ -14,4 +14,6 @@
 
 + (instancetype)sharedInstance;
 
+@property Boolean error;
+
 @end

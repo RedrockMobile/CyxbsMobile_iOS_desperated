@@ -214,6 +214,7 @@
 		E43438B221259B890049CECE /* SYCOrganizationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43438B121259B890049CECE /* SYCOrganizationTableViewCell.m */; };
 		E43438B52125A6380049CECE /* SYCCharacterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43438B42125A6380049CECE /* SYCCharacterViewController.m */; };
 		E43438B82125AA310049CECE /* SYCOrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E43438B72125AA310049CECE /* SYCOrganizationViewController.m */; };
+		E43439432126E2C30049CECE /* SYCShortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E43439422126E2C30049CECE /* SYCShortTableViewCell.m */; };
 		E4759263211FBCEE008EB61D /* SYCMainPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4759262211FBCEE008EB61D /* SYCMainPageView.m */; };
 		E4759266211FBD3C008EB61D /* SYCMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4759265211FBD3C008EB61D /* SYCMainPageViewController.m */; };
 		E4759268211FBE33008EB61D /* backgroud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E4759267211FBE33008EB61D /* backgroud.jpg */; };
@@ -899,6 +900,8 @@
 		E43438B42125A6380049CECE /* SYCCharacterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCCharacterViewController.m; sourceTree = "<group>"; };
 		E43438B62125AA310049CECE /* SYCOrganizationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCOrganizationViewController.h; sourceTree = "<group>"; };
 		E43438B72125AA310049CECE /* SYCOrganizationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationViewController.m; sourceTree = "<group>"; };
+		E43439412126E2C30049CECE /* SYCShortTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCShortTableViewCell.h; sourceTree = "<group>"; };
+		E43439422126E2C30049CECE /* SYCShortTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCShortTableViewCell.m; sourceTree = "<group>"; };
 		E4759261211FBCEE008EB61D /* SYCMainPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCMainPageView.h; sourceTree = "<group>"; };
 		E4759262211FBCEE008EB61D /* SYCMainPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCMainPageView.m; sourceTree = "<group>"; };
 		E4759264211FBD3C008EB61D /* SYCMainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCMainPageViewController.h; sourceTree = "<group>"; };
@@ -1963,6 +1966,7 @@
 		E42167202125518F00D36E44 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				E43439402126E29A0049CECE /* Short Cell */,
 				E43438B021259B890049CECE /* SYCOrganizationTableViewCell.h */,
 				E43438B121259B890049CECE /* SYCOrganizationTableViewCell.m */,
 			);
@@ -1977,6 +1981,15 @@
 				E4A7FBBC211F07AD0047E6DC /* 标签子界面 */,
 			);
 			path = "学院数据";
+			sourceTree = "<group>";
+		};
+		E43439402126E29A0049CECE /* Short Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E43439412126E2C30049CECE /* SYCShortTableViewCell.h */,
+				E43439422126E2C30049CECE /* SYCShortTableViewCell.m */,
+			);
+			path = "Short Cell";
 			sourceTree = "<group>";
 		};
 		E4759260211FBCB6008EB61D /* 主页 */ = {
@@ -3937,6 +3950,7 @@
 				E4A7FBAD211EE2750047E6DC /* AALegend.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				E4A7FB9F211EE2750047E6DC /* AADataLabels.m in Sources */,
+				E43439432126E2C30049CECE /* SYCShortTableViewCell.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				9630E4951FAF07D200874EB9 /* sixViewController.m in Sources */,

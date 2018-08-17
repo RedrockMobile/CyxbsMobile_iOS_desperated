@@ -8,6 +8,8 @@
 
 #import "SYCOrganizationTableViewController.h"
 #import "SYCOrganizationTableViewCell.h"
+#import "SYCShortTableViewCell.h"
+#import "TableViewAnimationKit.h"
 
 @interface SYCOrganizationTableViewController ()
 
@@ -22,6 +24,8 @@
     
     self.tableView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+
     
 }
 
@@ -41,14 +45,25 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 1900;
+    if (self.index == 0) {
+        return 1800;
+    }
+    return 600;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    SYCOrganizationTableViewCell *cell = [[SYCOrganizationTableViewCell alloc] init];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.index = self.index;
-    return cell;
+    if (self.index == 0) {
+        SYCOrganizationTableViewCell *cell = [[SYCOrganizationTableViewCell alloc] init];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.index = self.index;
+        return cell;
+    }else{
+        SYCShortTableViewCell *cell = [[SYCShortTableViewCell alloc] init];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.index = self.index;
+        return cell;
+    }
+    
 }
 
 /*

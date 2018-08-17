@@ -18,6 +18,7 @@
         if ([NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"activityData.archiver"]]) {
             sharedInstance = [[self alloc] init];
             sharedInstance.activityData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"activityData.archiver"]];
+            NSLog(@"!!!!!!!!!");
         }else{
             sharedInstance = [[self alloc] initPrivate];
         }
@@ -38,6 +39,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+    self.error = NO;
     
     [manager GET:@"http://47.106.33.112:8080/welcome2018/data/get/byindex" parameters:@{@"index":@"大型活动", @"pagenum":@"1", @"pagesize":@"5"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.activityData = [NSMutableArray array];
@@ -47,6 +49,7 @@
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@---",error);
+        self.error = YES;
         dispatch_semaphore_signal(semaphore);
     }];
     

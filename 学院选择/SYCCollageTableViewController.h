@@ -14,5 +14,4 @@ typedef void(^callBack)(void);
 
 @property (nonatomic, strong)callBack callBackHandle;
 
-
 @end

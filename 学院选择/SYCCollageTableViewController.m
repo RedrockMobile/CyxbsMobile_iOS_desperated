@@ -16,7 +16,6 @@
 
 @property (nonatomic, strong) NSArray *collageNameArray;
 @property (nonatomic, strong) NSDictionary *collageData;
-@property (nonatomic, strong) SYCCollageDataManager *dataStore;
 
 @end
 
@@ -26,15 +25,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.dataStore = [SYCCollageDataManager sharedInstance];
-    
+
+    [SYCCollageDataManager sharedInstance];
     self.collageNameArray = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]] objectForKey:@"name"];
     self.collageData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collageData.archiver"]];
-
+    
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
 
-    
     self.title = @"学院选择";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"DataDownloadDone" object:nil];

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SYCActivityTableViewController : UITableViewController
+@interface SYCActivityTableViewController : BaseViewController<UITableViewDelegate, UITableViewDataSource>
 
 @end

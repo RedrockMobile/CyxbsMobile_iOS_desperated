@@ -11,6 +11,7 @@
 @interface SYCActivityManager : NSObject
 
 @property (nonatomic, strong)NSMutableArray *activityData;
+@property Boolean error;
 
 + (instancetype)sharedInstance;
 

@@ -13,6 +13,8 @@
 #import "SYCCollageDataManager.h"
 #import "SYCActivityManager.h"
 #import "MBProgressHUD.h"
+#import "SYCCharacterViewController.h"
+#import "SYCOrganizationManager.h"
 
 @interface SYCMainPageViewController ()
 
@@ -32,6 +34,9 @@
 
 @property (nonatomic, strong) NSArray *buttonFrames;
 
+@property (nonatomic, strong) SYCActivityManager *activityManager;
+@property (nonatomic, strong) SYCCollageDataManager *collageManager;
+
 @end
 
 @implementation SYCMainPageViewController
@@ -40,19 +45,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载数据中...";
+    hud.detailsLabelText = @"不如先去看看其他的？";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-            self.mainPageModel = [SYCMainPageModel shareInstance];
-            [SYCActivityManager sharedInstance];
+        [SYCActivityManager sharedInstance];
+        [SYCOrganizationManager sharedInstance];
+        [SYCCollageDataManager sharedInstance];
         dispatch_async(dispatch_get_main_queue(), ^{
-            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-            hud.mode = MBProgressHUDModeIndeterminate;
-            
-            
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         });
     });
-
+    
+    
     CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat mainPageHeight = mainPageWidth * 2.933;
 
@@ -139,6 +146,8 @@
 
     self.carView.image = [UIImage imageNamed:@"小车"];
     [self.scrollView addSubview:self.carView];
+    
+
 }
 
 - (void)clickRxbbBtn:(id)sender{
@@ -229,10 +238,12 @@
 }
 
 - (void)clickCyfcBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
-    collageVC.callBackHandle = ^{
+    
+    
+    SYCCharacterViewController *cyfcVC = [[SYCCharacterViewController alloc] init];
+    cyfcVC.callBackHandle = ^{
     };
-    [self.navigationController pushViewController:collageVC animated:YES];
+    [self.navigationController pushViewController:cyfcVC animated:YES];
 }
 
 
@@ -365,6 +376,29 @@
     CGPathRelease(curvedPath);
     [self.carView.layer addAnimation:pathAnimation
                             forKey:@"moveTheSquare"];
+}
+
+- (void)dataFailed{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"数据加载失败" message:@"请检查网络连接" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *refleshAction = [UIAlertAction actionWithTitle:@"重新加载" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"加载数据中...";
+        hud.detailsLabelText = @"第一次启动请耐心等待噢";
+        hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+        
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+            self.mainPageModel = [SYCMainPageModel shareInstance];
+            [SYCActivityManager sharedInstance];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            });
+        });
+    }];
+    
+    [alertController addAction:refleshAction];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

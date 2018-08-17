@@ -38,11 +38,12 @@
 
 - (void)getAllData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
+    self.error = NO;
     [manager GET:@"http://47.106.33.112:8080/welcome2018/search/school/getname" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.nameList = [NSDictionary dictionaryWithDictionary:responseObject];
         [self getCollageData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        self.error = YES;
         NSLog(@"%@---",error);
     }];
 }
@@ -59,10 +60,13 @@
         
         [manager GET:@"http://47.106.33.112:8080/welcome2018/search/school/1" parameters:@{@"name":name} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             sexRatio = [NSDictionary dictionaryWithDictionary:responseObject];
+            
             dispatch_semaphore_signal(semaphore);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"%@---",error);
+            self.error = YES;
             dispatch_semaphore_signal(semaphore);
+            return;
         }];
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -72,7 +76,9 @@
             dispatch_semaphore_signal(semaphore);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             NSLog(@"%@---",error);
+            self.error = YES;
             dispatch_semaphore_signal(semaphore);
+            return;
         }];
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
@@ -82,8 +88,8 @@
     
     [NSKeyedArchiver archiveRootObject:self.nameList toFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]];
     [NSKeyedArchiver archiveRootObject:self.collageData toFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collageData.archiver"]];
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"DataDownloadDone" object:nil];
+    
     
 }
 

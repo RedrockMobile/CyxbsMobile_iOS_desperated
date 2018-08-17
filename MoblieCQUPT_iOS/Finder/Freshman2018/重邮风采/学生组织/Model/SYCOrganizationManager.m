@@ -13,10 +13,12 @@
 
 + (instancetype)sharedInstance{
     static SYCOrganizationManager *sharedInstance = nil;
+
     //如果已经创建过就不创建
     if (!sharedInstance) {
         if ([NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"organizationData.archiver"]]) {
             sharedInstance = [[self alloc] init];
+            sharedInstance.organizationData = [NSMutableArray array];
             sharedInstance.organizationData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"organizationData.archiver"]];
         }else{
             sharedInstance = [[self alloc] initPrivate];
@@ -34,6 +36,7 @@
 }
 
 - (void)getAllData{
+        self.error = NO;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
@@ -45,6 +48,7 @@
         }
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        self.error = YES;
         NSLog(@"%@---",error);
         dispatch_semaphore_signal(semaphore);
     }];
