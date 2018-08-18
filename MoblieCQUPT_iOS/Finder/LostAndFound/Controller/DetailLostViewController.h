@@ -12,3 +12,4 @@
 
 - (void)refreshWithDetailInfo:(LostItem *)info;
 @end
+ 

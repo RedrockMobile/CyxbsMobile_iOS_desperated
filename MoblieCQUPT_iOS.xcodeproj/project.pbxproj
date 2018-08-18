@@ -154,6 +154,30 @@
 		829C95912127D92000B4B05C /* ReportWaterfallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95892127D91F00B4B05C /* ReportWaterfallController.m */; };
 		829C95922127D92000B4B05C /* WantToSayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C958B2127D91F00B4B05C /* WantToSayController.m */; };
 		829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */; };
+		829C95C52127DABE00B4B05C /* Militarytraining.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829C95962127DABD00B4B05C /* Militarytraining.xcassets */; };
+		829C95C62127DABE00B4B05C /* MilitarytrainingTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95982127DABD00B4B05C /* MilitarytrainingTipsViewController.xib */; };
+		829C95C72127DABE00B4B05C /* MTVideo1.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95992127DABD00B4B05C /* MTVideo1.m */; };
+		829C95C82127DABE00B4B05C /* MilitarytrainingShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C959E2127DABD00B4B05C /* MilitarytrainingShowViewController.m */; };
+		829C95C92127DABE00B4B05C /* MilitarytrainingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C959F2127DABD00B4B05C /* MilitarytrainingViewController.xib */; };
+		829C95CA2127DABE00B4B05C /* MilitarytrainingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95A02127DABD00B4B05C /* MilitarytrainingViewController.m */; };
+		829C95CB2127DABE00B4B05C /* MilitarytrainingShowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95A12127DABD00B4B05C /* MilitarytrainingShowViewController.xib */; };
+		829C95CC2127DABE00B4B05C /* MilitarytrainingTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95A22127DABD00B4B05C /* MilitarytrainingTipsViewController.m */; };
+		829C95CD2127DABE00B4B05C /* ShowPicRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95A42127DABD00B4B05C /* ShowPicRootView.xib */; };
+		829C95CE2127DABE00B4B05C /* ShowVideoScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95A52127DABD00B4B05C /* ShowVideoScroll.m */; };
+		829C95CF2127DABE00B4B05C /* ShowVideoRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95A72127DABD00B4B05C /* ShowVideoRootView.m */; };
+		829C95D02127DABE00B4B05C /* ShowPicRootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95A82127DABD00B4B05C /* ShowPicRootView.m */; };
+		829C95D12127DABE00B4B05C /* ShowPicScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95AB2127DABD00B4B05C /* ShowPicScroll.m */; };
+		829C95D22127DABE00B4B05C /* ShowVideoRootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95AD2127DABD00B4B05C /* ShowVideoRootView.xib */; };
+		829C95D32127DABE00B4B05C /* SchollSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95B02127DABD00B4B05C /* SchollSubViewController.m */; };
+		829C95D42127DABE00B4B05C /* SchollSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95B12127DABD00B4B05C /* SchollSubViewController.xib */; };
+		829C95D52127DABE00B4B05C /* SchoolHomePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95B22127DABD00B4B05C /* SchoolHomePageViewController.xib */; };
+		829C95D62127DABE00B4B05C /* SchoolHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95B42127DABD00B4B05C /* SchoolHomePageViewController.m */; };
+		829C95D72127DABE00B4B05C /* SchollGeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95B62127DABD00B4B05C /* SchollGeneralTableViewCell.m */; };
+		829C95DA2127DABE00B4B05C /* School.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829C95BD2127DABD00B4B05C /* School.xcassets */; };
+		829C95DB2127DABE00B4B05C /* SchollGeneralTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95BE2127DABD00B4B05C /* SchollGeneralTableViewCell.xib */; };
+		829C95DC2127DABE00B4B05C /* StuDormitoryRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95C12127DABD00B4B05C /* StuDormitoryRootViewController.m */; };
+		829C95DD2127DABE00B4B05C /* StuDormitoryRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95C22127DABD00B4B05C /* StuDormitoryRootViewController.xib */; };
+		829C95DE2127DABE00B4B05C /* FreshmanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95C42127DABE00B4B05C /* FreshmanModel.m */; };
 		82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */; };
 		82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */; };
 		82D685641F6AC381004A5C7D /* extend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685621F6AC381004A5C7D /* extend@2x.png */; };
@@ -799,6 +823,43 @@
 		829C958B2127D91F00B4B05C /* WantToSayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantToSayController.m; sourceTree = "<group>"; };
 		829C958C2127D91F00B4B05C /* WantToSayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantToSayController.h; sourceTree = "<group>"; };
 		829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshMan2018ViewController.m; sourceTree = "<group>"; };
+		829C95942127DABD00B4B05C /* FreshmanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreshmanModel.h; sourceTree = "<group>"; };
+		829C95962127DABD00B4B05C /* Militarytraining.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Militarytraining.xcassets; sourceTree = "<group>"; };
+		829C95982127DABD00B4B05C /* MilitarytrainingTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MilitarytrainingTipsViewController.xib; sourceTree = "<group>"; };
+		829C95992127DABD00B4B05C /* MTVideo1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTVideo1.m; sourceTree = "<group>"; };
+		829C959A2127DABD00B4B05C /* MilitarytrainingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitarytrainingViewController.h; sourceTree = "<group>"; };
+		829C959B2127DABD00B4B05C /* MilitarytrainingShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitarytrainingShowViewController.h; sourceTree = "<group>"; };
+		829C959C2127DABD00B4B05C /* MilitarytrainingTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MilitarytrainingTipsViewController.h; sourceTree = "<group>"; };
+		829C959D2127DABD00B4B05C /* MTVideo1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTVideo1.h; sourceTree = "<group>"; };
+		829C959E2127DABD00B4B05C /* MilitarytrainingShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitarytrainingShowViewController.m; sourceTree = "<group>"; };
+		829C959F2127DABD00B4B05C /* MilitarytrainingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MilitarytrainingViewController.xib; sourceTree = "<group>"; };
+		829C95A02127DABD00B4B05C /* MilitarytrainingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitarytrainingViewController.m; sourceTree = "<group>"; };
+		829C95A12127DABD00B4B05C /* MilitarytrainingShowViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MilitarytrainingShowViewController.xib; sourceTree = "<group>"; };
+		829C95A22127DABD00B4B05C /* MilitarytrainingTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MilitarytrainingTipsViewController.m; sourceTree = "<group>"; };
+		829C95A42127DABD00B4B05C /* ShowPicRootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowPicRootView.xib; sourceTree = "<group>"; };
+		829C95A52127DABD00B4B05C /* ShowVideoScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowVideoScroll.m; sourceTree = "<group>"; };
+		829C95A62127DABD00B4B05C /* ShowPicScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPicScroll.h; sourceTree = "<group>"; };
+		829C95A72127DABD00B4B05C /* ShowVideoRootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowVideoRootView.m; sourceTree = "<group>"; };
+		829C95A82127DABD00B4B05C /* ShowPicRootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPicRootView.m; sourceTree = "<group>"; };
+		829C95A92127DABD00B4B05C /* ShowVideoScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowVideoScroll.h; sourceTree = "<group>"; };
+		829C95AA2127DABD00B4B05C /* ShowVideoRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowVideoRootView.h; sourceTree = "<group>"; };
+		829C95AB2127DABD00B4B05C /* ShowPicScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowPicScroll.m; sourceTree = "<group>"; };
+		829C95AC2127DABD00B4B05C /* ShowPicRootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowPicRootView.h; sourceTree = "<group>"; };
+		829C95AD2127DABD00B4B05C /* ShowVideoRootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowVideoRootView.xib; sourceTree = "<group>"; };
+		829C95B02127DABD00B4B05C /* SchollSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchollSubViewController.m; sourceTree = "<group>"; };
+		829C95B12127DABD00B4B05C /* SchollSubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchollSubViewController.xib; sourceTree = "<group>"; };
+		829C95B22127DABD00B4B05C /* SchoolHomePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolHomePageViewController.xib; sourceTree = "<group>"; };
+		829C95B32127DABD00B4B05C /* SchollGeneralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchollGeneralTableViewCell.h; sourceTree = "<group>"; };
+		829C95B42127DABD00B4B05C /* SchoolHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolHomePageViewController.m; sourceTree = "<group>"; };
+		829C95B52127DABD00B4B05C /* SchollSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchollSubViewController.h; sourceTree = "<group>"; };
+		829C95B62127DABD00B4B05C /* SchollGeneralTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchollGeneralTableViewCell.m; sourceTree = "<group>"; };
+		829C95BC2127DABD00B4B05C /* SchoolHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolHomePageViewController.h; sourceTree = "<group>"; };
+		829C95BD2127DABD00B4B05C /* School.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = School.xcassets; sourceTree = "<group>"; };
+		829C95BE2127DABD00B4B05C /* SchollGeneralTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchollGeneralTableViewCell.xib; sourceTree = "<group>"; };
+		829C95C12127DABD00B4B05C /* StuDormitoryRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StuDormitoryRootViewController.m; sourceTree = "<group>"; };
+		829C95C22127DABD00B4B05C /* StuDormitoryRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StuDormitoryRootViewController.xib; sourceTree = "<group>"; };
+		829C95C32127DABD00B4B05C /* StuDormitoryRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StuDormitoryRootViewController.h; sourceTree = "<group>"; };
+		829C95C42127DABE00B4B05C /* FreshmanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshmanModel.m; sourceTree = "<group>"; };
 		82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
 		82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@3x.png"; sourceTree = "<group>"; };
 		82D685621F6AC381004A5C7D /* extend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extend@2x.png"; sourceTree = "<group>"; };
@@ -1815,9 +1876,102 @@
 			path = IWantToSay;
 			sourceTree = "<group>";
 		};
+		829C95952127DABD00B4B05C /* Militarytraining */ = {
+			isa = PBXGroup;
+			children = (
+				829C95962127DABD00B4B05C /* Militarytraining.xcassets */,
+				829C95972127DABD00B4B05C /* Controller */,
+				829C95A32127DABD00B4B05C /* View */,
+				829C95AE2127DABD00B4B05C /* Modle */,
+			);
+			path = Militarytraining;
+			sourceTree = "<group>";
+		};
+		829C95972127DABD00B4B05C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				829C95982127DABD00B4B05C /* MilitarytrainingTipsViewController.xib */,
+				829C95992127DABD00B4B05C /* MTVideo1.m */,
+				829C959A2127DABD00B4B05C /* MilitarytrainingViewController.h */,
+				829C959B2127DABD00B4B05C /* MilitarytrainingShowViewController.h */,
+				829C959C2127DABD00B4B05C /* MilitarytrainingTipsViewController.h */,
+				829C959D2127DABD00B4B05C /* MTVideo1.h */,
+				829C959E2127DABD00B4B05C /* MilitarytrainingShowViewController.m */,
+				829C959F2127DABD00B4B05C /* MilitarytrainingViewController.xib */,
+				829C95A02127DABD00B4B05C /* MilitarytrainingViewController.m */,
+				829C95A12127DABD00B4B05C /* MilitarytrainingShowViewController.xib */,
+				829C95A22127DABD00B4B05C /* MilitarytrainingTipsViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		829C95A32127DABD00B4B05C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				829C95A42127DABD00B4B05C /* ShowPicRootView.xib */,
+				829C95A52127DABD00B4B05C /* ShowVideoScroll.m */,
+				829C95A62127DABD00B4B05C /* ShowPicScroll.h */,
+				829C95A72127DABD00B4B05C /* ShowVideoRootView.m */,
+				829C95A82127DABD00B4B05C /* ShowPicRootView.m */,
+				829C95A92127DABD00B4B05C /* ShowVideoScroll.h */,
+				829C95AA2127DABD00B4B05C /* ShowVideoRootView.h */,
+				829C95AB2127DABD00B4B05C /* ShowPicScroll.m */,
+				829C95AC2127DABD00B4B05C /* ShowPicRootView.h */,
+				829C95AD2127DABD00B4B05C /* ShowVideoRootView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		829C95AE2127DABD00B4B05C /* Modle */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modle;
+			sourceTree = "<group>";
+		};
+		829C95AF2127DABD00B4B05C /* WYCSchool */ = {
+			isa = PBXGroup;
+			children = (
+				829C95B02127DABD00B4B05C /* SchollSubViewController.m */,
+				829C95B12127DABD00B4B05C /* SchollSubViewController.xib */,
+				829C95B22127DABD00B4B05C /* SchoolHomePageViewController.xib */,
+				829C95B32127DABD00B4B05C /* SchollGeneralTableViewCell.h */,
+				829C95B42127DABD00B4B05C /* SchoolHomePageViewController.m */,
+				829C95B52127DABD00B4B05C /* SchollSubViewController.h */,
+				829C95B62127DABD00B4B05C /* SchollGeneralTableViewCell.m */,
+				829C95BC2127DABD00B4B05C /* SchoolHomePageViewController.h */,
+				829C95BD2127DABD00B4B05C /* School.xcassets */,
+				829C95BE2127DABD00B4B05C /* SchollGeneralTableViewCell.xib */,
+				829C95BF2127DABD00B4B05C /* StuDormitory */,
+			);
+			path = WYCSchool;
+			sourceTree = "<group>";
+		};
+		829C95BF2127DABD00B4B05C /* StuDormitory */ = {
+			isa = PBXGroup;
+			children = (
+				829C95C02127DABD00B4B05C /* Controll */,
+			);
+			path = StuDormitory;
+			sourceTree = "<group>";
+		};
+		829C95C02127DABD00B4B05C /* Controll */ = {
+			isa = PBXGroup;
+			children = (
+				829C95C12127DABD00B4B05C /* StuDormitoryRootViewController.m */,
+				829C95C22127DABD00B4B05C /* StuDormitoryRootViewController.xib */,
+				829C95C32127DABD00B4B05C /* StuDormitoryRootViewController.h */,
+			);
+			path = Controll;
+			sourceTree = "<group>";
+		};
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
+				829C95942127DABD00B4B05C /* FreshmanModel.h */,
+				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
+				829C95952127DABD00B4B05C /* Militarytraining */,
+				829C95AF2127DABD00B4B05C /* WYCSchool */,
 				829C95832127D91F00B4B05C /* ChatOnLine */,
 				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
 				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
@@ -3253,6 +3407,7 @@
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
+				829C95C92127DABE00B4B05C /* MilitarytrainingViewController.xib in Resources */,
 				F26D965C1F3C400F0063B024 /* MBCommentCell.xib in Resources */,
 				F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
@@ -3279,6 +3434,7 @@
 				F20027061F404BE100360991 /* timeTable_image_add@2x.png in Resources */,
 				9630E48E1FAF07D200874EB9 /* QueryLoginViewController.xib in Resources */,
 				9630E4A21FAF07D200874EB9 /* 7@2x.png in Resources */,
+				829C95C52127DABE00B4B05C /* Militarytraining.xcassets in Resources */,
 				9630E4B81FAF07D200874EB9 /* 展开后@2x.png in Resources */,
 				9630E4C51FAF07D300874EB9 /* 标签矩形@3x.png in Resources */,
 				F242DDAB1EBCB2BB005AC411 /* buildIcon.png in Resources */,
@@ -3287,6 +3443,7 @@
 				4A3A07EA1FCC0EC700A50393 /* lost_image_lackcate@2x.png in Resources */,
 				F26D96791F3C400F0063B024 /* comment1.png in Resources */,
 				4A3A07F71FCC0EC700A50393 /* lost_image_QQ@3x.png in Resources */,
+				829C95DD2127DABE00B4B05C /* StuDormitoryRootViewController.xib in Resources */,
 				4A3A07FA1FCC0EC700A50393 /* lost_image_tel@2x.png in Resources */,
 				4A3A08441FCD990A00A50393 /* shop_headImage@2x.png in Resources */,
 				F20027191F405B8500360991 /* remind_image_content@3x.png in Resources */,
@@ -3308,6 +3465,7 @@
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
 				9630E4BC1FAF07D200874EB9 /* 志愿时长@2x.png in Resources */,
 				F200271E1F405B8500360991 /* remind_image_title@2x.png in Resources */,
+				829C95D52127DABE00B4B05C /* SchoolHomePageViewController.xib in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
 				82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */,
 				F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */,
@@ -3330,6 +3488,7 @@
 				F242DE951EBCB2BC005AC411 /* 提醒@3x.png in Resources */,
 				4A3A07E51FCC0EC700A50393 /* lost_image_describe@3x.png in Resources */,
 				F238C6451F3D911200FEB179 /* navbar_image_back@3x.png in Resources */,
+				829C95C62127DABE00B4B05C /* MilitarytrainingTipsViewController.xib in Resources */,
 				4A3A07DF1FCC0EC700A50393 /* iconfont-shop2.png in Resources */,
 				F26D968D1F3C400F0063B024 /* topic_image_join@2x.png in Resources */,
 				F242DE821EBCB2BC005AC411 /* 书@3x.png in Resources */,
@@ -3345,6 +3504,7 @@
 				F238C6501F3DA29700FEB179 /* tabbar_image_community@3x.png in Resources */,
 				F238C6531F3DA29700FEB179 /* tabbar_image_mine@2x.png in Resources */,
 				F23078DE1F73EF4C0079E187 /* date_image_add@2x.png in Resources */,
+				829C95DA2127DABE00B4B05C /* School.xcassets in Resources */,
 				F242DDAC1EBCB2BB005AC411 /* doneImage.png in Resources */,
 				9630E4C61FAF07D300874EB9 /* 没有记录@2x.png in Resources */,
 				F242DE501EBCB2BC005AC411 /* Images.xcassets in Resources */,
@@ -3361,6 +3521,7 @@
 				4A3A08471FCD990A00A50393 /* tel@3x.png in Resources */,
 				F242DE881EBCB2BC005AC411 /* 地点@2x.png in Resources */,
 				F20026E41F4020FA00360991 /* mine_image_exam@3x.png in Resources */,
+				829C95CD2127DABE00B4B05C /* ShowPicRootView.xib in Resources */,
 				F20026F71F40372100360991 /* appIcon@2x.png in Resources */,
 				9630E4C81FAF07D300874EB9 /* 背景板@2x.png in Resources */,
 				F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */,
@@ -3369,7 +3530,9 @@
 				829C957B2127D8A500B4B05C /* rank.png in Resources */,
 				9630E4AC1FAF07D200874EB9 /* login_number@3x.png in Resources */,
 				F26D96801F3C400F0063B024 /* icon_share_wechat@2x.png in Resources */,
+				829C95CB2127DABE00B4B05C /* MilitarytrainingShowViewController.xib in Resources */,
 				4A3A07F11FCC0EC700A50393 /* lost_image_little@3x.png in Resources */,
+				829C95D22127DABE00B4B05C /* ShowVideoRootView.xib in Resources */,
 				F2CC3AA01F46BE1B00B031BD /* MineTableViewCell.xib in Resources */,
 				F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */,
 				F2A43ED21F74FF0000D1B2BD /* LZPersonSelectTableViewCell.xib in Resources */,
@@ -3487,6 +3650,7 @@
 				9630E4991FAF07D200874EB9 /* 2@3x.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
+				829C95DB2127DABE00B4B05C /* SchollGeneralTableViewCell.xib in Resources */,
 				82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */,
 				82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */,
 				82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */,
@@ -3547,6 +3711,7 @@
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
 				F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */,
 				4A3A07CF1FCC0EC700A50393 /* cqupt3@2x.jpg in Resources */,
+				829C95D42127DABE00B4B05C /* SchollSubViewController.xib in Resources */,
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
 				4A3A08481FCD990A00A50393 /* close@2x.png in Resources */,
@@ -3678,6 +3843,7 @@
 			files = (
 				F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
+				829C95D32127DABE00B4B05C /* SchollSubViewController.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
 				F2A92CE31F52E8BE00B4CEEF /* BaseNavigationController.m in Sources */,
 				F2DD71A91F77DB70009556BE /* LZNoCourseDateDetailViewController.m in Sources */,
@@ -3718,6 +3884,7 @@
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
 				F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */,
+				829C95CA2127DABE00B4B05C /* MilitarytrainingViewController.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
@@ -3758,6 +3925,7 @@
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
+				829C95CE2127DABE00B4B05C /* ShowVideoScroll.m in Sources */,
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
@@ -3765,6 +3933,7 @@
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
+				829C95DE2127DABE00B4B05C /* FreshmanModel.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
@@ -3783,6 +3952,7 @@
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
+				829C95CC2127DABE00B4B05C /* MilitarytrainingTipsViewController.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
@@ -3791,14 +3961,17 @@
 				9630E4CC1FAF07D300874EB9 /* QueryModel.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
+				829C95C82127DABE00B4B05C /* MilitarytrainingShowViewController.m in Sources */,
 				F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
 				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,
+				829C95DC2127DABE00B4B05C /* StuDormitoryRootViewController.m in Sources */,
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
+				829C95D12127DABE00B4B05C /* ShowPicScroll.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
 				829C957E2127D8A500B4B05C /* SchoolViewController.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
@@ -3807,9 +3980,13 @@
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
+				829C95D62127DABE00B4B05C /* SchoolHomePageViewController.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
+				829C95C72127DABE00B4B05C /* MTVideo1.m in Sources */,
 				F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */,
 				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
+				829C95CF2127DABE00B4B05C /* ShowVideoRootView.m in Sources */,
+				829C95D02127DABE00B4B05C /* ShowPicRootView.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
@@ -3823,6 +4000,7 @@
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
 				2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */,
 				2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */,
+				829C95D72127DABE00B4B05C /* SchollGeneralTableViewCell.m in Sources */,
 				829C958E2127D92000B4B05C /* UIImageView+WebCache.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
