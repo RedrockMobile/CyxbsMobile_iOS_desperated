@@ -2029,8 +2029,8 @@
 		829C95832127D91F00B4B05C /* ChatOnLine */ = {
 			isa = PBXGroup;
 			children = (
-				829C95842127D91F00B4B05C /* ChatViewControl.m */,
 				829C95852127D91F00B4B05C /* ChatViewControl.h */,
+				829C95842127D91F00B4B05C /* ChatViewControl.m */,
 			);
 			path = ChatOnLine;
 			sourceTree = "<group>";
@@ -2431,9 +2431,9 @@
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
+				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
-				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C96082127DCDF00B4B05C /* Others */,
 				829C95952127DABD00B4B05C /* Militarytraining */,
 				829C95AF2127DABD00B4B05C /* WYCSchool */,

@@ -5,6 +5,7 @@
 //  Created by J J on 2018/8/12.
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
+typedef void(^callBack)(void);
 
 #import <UIKit/UIKit.h>
 
@@ -17,5 +18,7 @@
 @property (retain,nonatomic)NSMutableArray *arrayData01;
 //保存号码
 @property (retain,nonatomic)NSMutableArray *arrayData02;
+
+@property (nonatomic, strong)callBack callBackHandle;
 
 @end
