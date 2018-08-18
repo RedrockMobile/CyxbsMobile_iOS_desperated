@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ChatViewControl : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
-
-
 @property (retain,nonatomic)UISegmentedControl *segmentedControl;
 @property (retain,nonatomic)UITextField *textField;
 @property (retain,nonatomic)UIButton *button;
