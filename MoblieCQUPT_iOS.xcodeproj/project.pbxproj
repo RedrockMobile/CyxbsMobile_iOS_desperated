@@ -2146,11 +2146,11 @@
 			isa = PBXGroup;
 			children = (
 				829C95E02127DCDE00B4B05C /* SYCMainPageViewController.h */,
-				829C95E12127DCDE00B4B05C /* SYCMainPageView.h */,
-				829C95E22127DCDE00B4B05C /* Image */,
 				829C95F22127DCDE00B4B05C /* SYCMainPageViewController.m */,
-				829C95F32127DCDE00B4B05C /* Model */,
+				829C95E12127DCDE00B4B05C /* SYCMainPageView.h */,
 				829C95F62127DCDE00B4B05C /* SYCMainPageView.m */,
+				829C95E22127DCDE00B4B05C /* Image */,
+				829C95F32127DCDE00B4B05C /* Model */,
 			);
 			path = "主页";
 			sourceTree = "<group>";
@@ -2435,13 +2435,13 @@
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C96082127DCDF00B4B05C /* Others */,
-				829C95942127DABD00B4B05C /* FreshmanModel.h */,
-				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
 				829C95952127DABD00B4B05C /* Militarytraining */,
 				829C95AF2127DABD00B4B05C /* WYCSchool */,
 				829C95832127D91F00B4B05C /* ChatOnLine */,
 				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
 				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
+				829C95942127DABD00B4B05C /* FreshmanModel.h */,
+				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
 				829C958A2127D91F00B4B05C /* IWantToSay */,
 				829C95822127D91E00B4B05C /* Media.xcassets */,
 				829C95872127D91F00B4B05C /* ReportWaterfall */,

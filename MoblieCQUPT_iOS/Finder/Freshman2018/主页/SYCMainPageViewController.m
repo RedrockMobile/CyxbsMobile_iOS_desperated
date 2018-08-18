@@ -15,6 +15,7 @@
 #import "MBProgressHUD.h"
 #import "SYCCharacterViewController.h"
 #import "SYCOrganizationManager.h"
+#import "DLNecessityViewController.h"
 
 @interface SYCMainPageViewController ()
 
@@ -151,10 +152,10 @@
 }
 
 - (void)clickRxbbBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    DLNecessityViewController *rxbbVC = [[DLNecessityViewController alloc] init];
 
-    [self.navigationController pushViewController:collageVC animated:YES];
-    collageVC.callBackHandle = ^{
+    [self.navigationController pushViewController:rxbbVC animated:YES];
+    rxbbVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 2) {
             [self.mainPageModel setCurrentStep:2];
             [self.xyglBtn addTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];

@@ -102,9 +102,16 @@
     
     
     // Do any additional setup after loading the view, typically from a nib.
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelBtn;
+    
+    self.tabBarController.tabBar.hidden = YES;
 }
 
-
+- (void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+    self.callBackHandle();
+}
 
 
 - (void)buildMyNavigationbar{

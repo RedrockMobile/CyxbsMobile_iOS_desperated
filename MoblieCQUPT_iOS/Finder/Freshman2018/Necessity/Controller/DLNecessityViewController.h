@@ -7,7 +7,10 @@
 //
 
 #import "BaseViewController.h"
+typedef void(^callBack)(void);
 
 @interface DLNecessityViewController : BaseViewController
+
+@property (nonatomic, strong)callBack callBackHandle;
 
 @end

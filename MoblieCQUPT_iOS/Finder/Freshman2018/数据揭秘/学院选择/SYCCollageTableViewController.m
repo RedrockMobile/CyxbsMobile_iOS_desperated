@@ -36,6 +36,7 @@
     self.title = @"学院选择";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"DataDownloadDone" object:nil];
+    
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelBtn;
 }
