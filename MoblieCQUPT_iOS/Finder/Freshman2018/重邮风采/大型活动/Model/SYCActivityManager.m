@@ -11,14 +11,16 @@
 
 @implementation SYCActivityManager
 
+static SYCActivityManager *sharedInstance = nil;
+
 + (instancetype)sharedInstance{
-    static SYCActivityManager *sharedInstance = nil;
+
     //如果已经创建过就不创建
     if (!sharedInstance) {
         NSMutableArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"activityData.archiver"]];
         if (data != nil) {
+            sharedInstance = [[SYCActivityManager alloc] init];
             sharedInstance.activityData = data;
-            NSLog(@"!!!!!!!!!");
         }else{
             sharedInstance = [[self alloc] initPrivate];
         }

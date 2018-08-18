@@ -11,13 +11,16 @@
 
 @implementation SYCOrganizationManager
 
+static SYCOrganizationManager *sharedInstance = nil;
+
 + (instancetype)sharedInstance{
-    static SYCOrganizationManager *sharedInstance = nil;
+
 
     //如果已经创建过就不创建
     if (!sharedInstance) {
         NSMutableArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"organizationData.archiver"]];
         if (data != nil) {
+            sharedInstance = [[SYCOrganizationManager alloc] init];
             sharedInstance.organizationData = data;
         }else{
             sharedInstance = [[self alloc] initPrivate];
