@@ -2194,8 +2194,8 @@
 		829C95F32127DCDE00B4B05C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				829C95F42127DCDE00B4B05C /* SYCMainPageModel.m */,
 				829C95F52127DCDE00B4B05C /* SYCMainPageModel.h */,
+				829C95F42127DCDE00B4B05C /* SYCMainPageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2222,10 +2222,10 @@
 		829C95FB2127DCDF00B4B05C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				829C95FC2127DCDF00B4B05C /* SYCCollageDataManager.m */,
-				829C95FD2127DCDF00B4B05C /* SYCCollageModel.m */,
 				829C95FE2127DCDF00B4B05C /* SYCCollageDataManager.h */,
+				829C95FC2127DCDF00B4B05C /* SYCCollageDataManager.m */,
 				829C95FF2127DCDF00B4B05C /* SYCCollageModel.h */,
+				829C95FD2127DCDF00B4B05C /* SYCCollageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2346,10 +2346,10 @@
 		829C96492127DCDF00B4B05C /* 重邮风采 */ = {
 			isa = PBXGroup;
 			children = (
+				829C96662127DCDF00B4B05C /* SYCCharacterViewController.h */,
 				829C964A2127DCDF00B4B05C /* SYCCharacterViewController.m */,
 				829C964B2127DCDF00B4B05C /* 大型活动 */,
 				829C96562127DCDF00B4B05C /* 学生组织 */,
-				829C96662127DCDF00B4B05C /* SYCCharacterViewController.h */,
 			);
 			path = "重邮风采";
 			sourceTree = "<group>";
@@ -2358,9 +2358,9 @@
 			isa = PBXGroup;
 			children = (
 				829C964C2127DCDF00B4B05C /* SYCActivityTableViewController.h */,
+				829C96552127DCDF00B4B05C /* SYCActivityTableViewController.m */,
 				829C964D2127DCDF00B4B05C /* Cell */,
 				829C96502127DCDF00B4B05C /* Model */,
-				829C96552127DCDF00B4B05C /* SYCActivityTableViewController.m */,
 			);
 			path = "大型活动";
 			sourceTree = "<group>";
@@ -2378,8 +2378,8 @@
 			isa = PBXGroup;
 			children = (
 				829C96512127DCDF00B4B05C /* SYCActivityModel.h */,
-				829C96522127DCDF00B4B05C /* SYCActivityManager.h */,
 				829C96532127DCDF00B4B05C /* SYCActivityModel.m */,
+				829C96522127DCDF00B4B05C /* SYCActivityManager.h */,
 				829C96542127DCDF00B4B05C /* SYCActivityManager.m */,
 			);
 			path = Model;
@@ -2390,10 +2390,10 @@
 			children = (
 				829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */,
 				829C96582127DCDF00B4B05C /* SYCOrganizationTableViewController.h */,
-				829C96592127DCDF00B4B05C /* Cell */,
-				829C965F2127DCDF00B4B05C /* Model */,
 				829C96642127DCDF00B4B05C /* SYCOrganizationViewController.h */,
 				829C96652127DCDF00B4B05C /* SYCOrganizationTableViewController.m */,
+				829C96592127DCDF00B4B05C /* Cell */,
+				829C965F2127DCDF00B4B05C /* Model */,
 			);
 			path = "学生组织";
 			sourceTree = "<group>";

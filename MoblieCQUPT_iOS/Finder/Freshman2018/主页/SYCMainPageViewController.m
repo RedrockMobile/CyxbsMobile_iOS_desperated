@@ -404,4 +404,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
+}
 @end
