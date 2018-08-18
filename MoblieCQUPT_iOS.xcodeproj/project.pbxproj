@@ -137,6 +137,17 @@
 		823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */; };
 		823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */; };
 		823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */; };
+		829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95602127D8A400B4B05C /* SceneryViewController.m */; };
+		829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95622127D8A400B4B05C /* BankTableViewCell.m */; };
+		829C95762127D8A500B4B05C /* BankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95642127D8A400B4B05C /* BankTableViewCell.xib */; };
+		829C95772127D8A500B4B05C /* BankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95662127D8A400B4B05C /* BankViewController.m */; };
+		829C95782127D8A500B4B05C /* rank@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95682127D8A400B4B05C /* rank@3x.png */; };
+		829C95792127D8A500B4B05C /* FoodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95692127D8A400B4B05C /* FoodTableViewCell.m */; };
+		829C957A2127D8A500B4B05C /* FoodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */; };
+		829C957B2127D8A500B4B05C /* rank.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C956D2127D8A400B4B05C /* rank.png */; };
+		829C957C2127D8A500B4B05C /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C956E2127D8A400B4B05C /* FoodModel.m */; };
+		829C957D2127D8A500B4B05C /* FoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95702127D8A400B4B05C /* FoodViewController.m */; };
+		829C957E2127D8A500B4B05C /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95732127D8A500B4B05C /* SchoolViewController.m */; };
 		82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */; };
 		82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */; };
 		82D685641F6AC381004A5C7D /* extend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685621F6AC381004A5C7D /* extend@2x.png */; };
@@ -753,6 +764,24 @@
 		823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_notselect@3x.png"; sourceTree = "<group>"; };
 		823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@2x.png"; sourceTree = "<group>"; };
 		823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@3x.png"; sourceTree = "<group>"; };
+		829C955F2127D8A400B4B05C /* SceneryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneryViewController.h; sourceTree = "<group>"; };
+		829C95602127D8A400B4B05C /* SceneryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneryViewController.m; sourceTree = "<group>"; };
+		829C95622127D8A400B4B05C /* BankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankTableViewCell.m; sourceTree = "<group>"; };
+		829C95632127D8A400B4B05C /* BankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankViewController.h; sourceTree = "<group>"; };
+		829C95642127D8A400B4B05C /* BankTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BankTableViewCell.xib; sourceTree = "<group>"; };
+		829C95652127D8A400B4B05C /* BankTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BankTableViewCell.h; sourceTree = "<group>"; };
+		829C95662127D8A400B4B05C /* BankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankViewController.m; sourceTree = "<group>"; };
+		829C95682127D8A400B4B05C /* rank@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rank@3x.png"; sourceTree = "<group>"; };
+		829C95692127D8A400B4B05C /* FoodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodTableViewCell.m; sourceTree = "<group>"; };
+		829C956A2127D8A400B4B05C /* FoodModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodModel.h; sourceTree = "<group>"; };
+		829C956B2127D8A400B4B05C /* FoodViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodViewController.h; sourceTree = "<group>"; };
+		829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FoodTableViewCell.xib; sourceTree = "<group>"; };
+		829C956D2127D8A400B4B05C /* rank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rank.png; sourceTree = "<group>"; };
+		829C956E2127D8A400B4B05C /* FoodModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodModel.m; sourceTree = "<group>"; };
+		829C956F2127D8A400B4B05C /* FoodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoodTableViewCell.h; sourceTree = "<group>"; };
+		829C95702127D8A400B4B05C /* FoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewController.m; sourceTree = "<group>"; };
+		829C95722127D8A500B4B05C /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
+		829C95732127D8A500B4B05C /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
 		82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
 		82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@3x.png"; sourceTree = "<group>"; };
 		82D685621F6AC381004A5C7D /* extend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extend@2x.png"; sourceTree = "<group>"; };
@@ -1687,9 +1716,59 @@
 			path = addView;
 			sourceTree = "<group>";
 		};
+		829C955E2127D8A400B4B05C /* Scereny */ = {
+			isa = PBXGroup;
+			children = (
+				829C955F2127D8A400B4B05C /* SceneryViewController.h */,
+				829C95602127D8A400B4B05C /* SceneryViewController.m */,
+			);
+			path = Scereny;
+			sourceTree = "<group>";
+		};
+		829C95612127D8A400B4B05C /* BankAround */ = {
+			isa = PBXGroup;
+			children = (
+				829C95622127D8A400B4B05C /* BankTableViewCell.m */,
+				829C95632127D8A400B4B05C /* BankViewController.h */,
+				829C95642127D8A400B4B05C /* BankTableViewCell.xib */,
+				829C95652127D8A400B4B05C /* BankTableViewCell.h */,
+				829C95662127D8A400B4B05C /* BankViewController.m */,
+			);
+			path = BankAround;
+			sourceTree = "<group>";
+		};
+		829C95672127D8A400B4B05C /* FoodAround */ = {
+			isa = PBXGroup;
+			children = (
+				829C95682127D8A400B4B05C /* rank@3x.png */,
+				829C95692127D8A400B4B05C /* FoodTableViewCell.m */,
+				829C956A2127D8A400B4B05C /* FoodModel.h */,
+				829C956B2127D8A400B4B05C /* FoodViewController.h */,
+				829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */,
+				829C956D2127D8A400B4B05C /* rank.png */,
+				829C956E2127D8A400B4B05C /* FoodModel.m */,
+				829C956F2127D8A400B4B05C /* FoodTableViewCell.h */,
+				829C95702127D8A400B4B05C /* FoodViewController.m */,
+			);
+			path = FoodAround;
+			sourceTree = "<group>";
+		};
+		829C95712127D8A500B4B05C /* School */ = {
+			isa = PBXGroup;
+			children = (
+				829C95722127D8A500B4B05C /* SchoolViewController.h */,
+				829C95732127D8A500B4B05C /* SchoolViewController.m */,
+			);
+			path = School;
+			sourceTree = "<group>";
+		};
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
+				829C95612127D8A400B4B05C /* BankAround */,
+				829C95672127D8A400B4B05C /* FoodAround */,
+				829C955E2127D8A400B4B05C /* Scereny */,
+				829C95712127D8A500B4B05C /* School */,
 				2FB22331212311A30009EB39 /* Delivery */,
 				2FB2232421230F1E0009EB39 /* Bus */,
 				2FB222E72121CF020009EB39 /* Necessity */,
@@ -3227,6 +3306,7 @@
 				F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */,
 				2FB22349212442050009EB39 /* Necessity.plist in Resources */,
 				F242DE9A1EBCB2BC005AC411 /* 无课@2x.png in Resources */,
+				829C957B2127D8A500B4B05C /* rank.png in Resources */,
 				9630E4AC1FAF07D200874EB9 /* login_number@3x.png in Resources */,
 				F26D96801F3C400F0063B024 /* icon_share_wechat@2x.png in Resources */,
 				4A3A07F11FCC0EC700A50393 /* lost_image_little@3x.png in Resources */,
@@ -3322,12 +3402,14 @@
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				9630E4B51FAF07D200874EB9 /* 地点坐标@3x.png in Resources */,
 				4A3A07F91FCC0EC700A50393 /* lost_image_success@3x.png in Resources */,
+				829C95782127D8A500B4B05C /* rank@3x.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
 				4A3A08431FCD990A00A50393 /* rectangle@2x.png in Resources */,
 				4A3A07DA1FCC0EC700A50393 /* find_image_query@2x.png in Resources */,
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
 				F20026E71F4020FA00360991 /* mine_image_date@2x.png in Resources */,
+				829C95762127D8A500B4B05C /* BankTableViewCell.xib in Resources */,
 				F20027081F404BE100360991 /* timeTable_image_pull@2x.png in Resources */,
 				9630E4A81FAF07D200874EB9 /* login_icon@2x.png in Resources */,
 				9630E4B31FAF07D200874EB9 /* volunteer_time_icon.png in Resources */,
@@ -3398,6 +3480,7 @@
 				F20026EE1F40336E00360991 /* MapViewController.xib in Resources */,
 				F242DEAB1EBCB2BC005AC411 /* 老师@3x.png in Resources */,
 				F27A93441F4ABC32009860C3 /* remind_image_editing@3x.png in Resources */,
+				829C957A2127D8A500B4B05C /* FoodTableViewCell.xib in Resources */,
 				F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */,
 				823D41681F6407D300C99D9B /* icon_upvote_outside_selected@2x.png in Resources */,
 				4A3A08421FCD990A00A50393 /* yuan@2x.png in Resources */,
@@ -3568,6 +3651,7 @@
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
+				829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
@@ -3576,6 +3660,7 @@
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
 				F242DFB11EBD9E2C005AC411 /* LostModel.m in Sources */,
+				829C957C2127D8A500B4B05C /* FoodModel.m in Sources */,
 				F26D96991F3C400F0063B024 /* MBInputView.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
@@ -3584,6 +3669,7 @@
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
 				F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */,
 				F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */,
+				829C957D2127D8A500B4B05C /* FoodViewController.m in Sources */,
 				4A3A07921FCC0E7700A50393 /* ZJAddCommentView.m in Sources */,
 				F26D965D1F3C400F0063B024 /* MBCommunityCellTableViewCell.m in Sources */,
 				4A3A07941FCC0E7700A50393 /* ZJshopTableViewCell.m in Sources */,
@@ -3629,6 +3715,7 @@
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
 				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
+				829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
@@ -3648,6 +3735,7 @@
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
+				829C957E2127D8A500B4B05C /* SchoolViewController.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
 				2FB22345212322270009EB39 /* autoScrollView.m in Sources */,
 				F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */,
@@ -3664,6 +3752,7 @@
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */,
+				829C95772127D8A500B4B05C /* BankViewController.m in Sources */,
 				F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
@@ -3703,6 +3792,7 @@
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				6E0F692F20309BE000BB5EF3 /* ReportTextView.m in Sources */,
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
+				829C95792127D8A500B4B05C /* FoodTableViewCell.m in Sources */,
 				9630E4CD1FAF07D300874EB9 /* HeaderGifRefresh.m in Sources */,
 				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
 				2FB2232D212310BF0009EB39 /* BusTableViewCell.m in Sources */,
