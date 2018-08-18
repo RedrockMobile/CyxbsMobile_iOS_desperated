@@ -5,6 +5,7 @@
 //  Created by J J on 2018/8/12.
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
+typedef void(^callBack)(void);
 
 #import <UIKit/UIKit.h>
 
@@ -43,4 +44,6 @@
 
 //储存图片URL
 @property (retain,nonatomic)NSMutableArray *arr;
+
+@property (nonatomic, strong)callBack callBackHandle;
 @end

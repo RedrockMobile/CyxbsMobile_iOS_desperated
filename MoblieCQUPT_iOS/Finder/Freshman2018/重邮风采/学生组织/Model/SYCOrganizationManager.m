@@ -16,10 +16,9 @@
 
     //如果已经创建过就不创建
     if (!sharedInstance) {
-        if ([NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"organizationData.archiver"]]) {
-            sharedInstance = [[self alloc] init];
-            sharedInstance.organizationData = [NSMutableArray array];
-            sharedInstance.organizationData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"organizationData.archiver"]];
+        NSMutableArray *data = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"organizationData.archiver"]];
+        if (data != nil) {
+            sharedInstance.organizationData = data;
         }else{
             sharedInstance = [[self alloc] initPrivate];
         }

@@ -81,21 +81,21 @@
                                 <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="xS2-Op-guX"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tik-3J-Et3">
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tik-3J-Et3">
                             <rect key="frame" x="13" y="368" width="113" height="129"/>
                             <state key="normal" image="附近银行"/>
                             <connections>
                                 <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="WFg-i1-0f6"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-gv-5tq">
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-gv-5tq">
                             <rect key="frame" x="131" y="368" width="113" height="129"/>
                             <state key="normal" image="公交路线"/>
                             <connections>
                                 <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="TNB-Wr-jAx"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gog-Y7-61t">
+                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gog-Y7-61t">
                             <rect key="frame" x="249" y="368" width="113" height="129"/>
                             <state key="normal" image="快递收发"/>
                             <connections>

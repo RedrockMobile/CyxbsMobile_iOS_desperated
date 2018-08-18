@@ -62,6 +62,13 @@ NSString *str04;
     _imageView04 = [[UIImageView alloc] init];
     
     //[self viewInit];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelBtn;
+}
+
+- (void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+    self.callBackHandle();
 }
 
 - (void)viewInit

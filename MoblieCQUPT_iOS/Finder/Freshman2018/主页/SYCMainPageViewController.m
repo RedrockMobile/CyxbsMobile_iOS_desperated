@@ -15,6 +15,12 @@
 #import "MBProgressHUD.h"
 #import "SYCCharacterViewController.h"
 #import "SYCOrganizationManager.h"
+#import "DLNecessityViewController.h"
+#import "SchoolHomePageViewController.h"
+#import "ChatViewControl.h"
+#import "WantToSayController.h"
+#import "ReportWaterfallController.h"
+#import "MilitarytrainingViewController.h"
 
 @interface SYCMainPageViewController ()
 
@@ -151,10 +157,10 @@
 }
 
 - (void)clickRxbbBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    DLNecessityViewController *rxbbVC = [[DLNecessityViewController alloc] init];
 
-    [self.navigationController pushViewController:collageVC animated:YES];
-    collageVC.callBackHandle = ^{
+    [self.navigationController pushViewController:rxbbVC animated:YES];
+    rxbbVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 2) {
             [self.mainPageModel setCurrentStep:2];
             [self.xyglBtn addTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -169,10 +175,10 @@
 }
 
 - (void)clickXyglBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    SchoolHomePageViewController *xyglVC = [[SchoolHomePageViewController alloc] init];
     
-    [self.navigationController pushViewController:collageVC animated:YES];
-    collageVC.callBackHandle = ^{
+    [self.navigationController pushViewController:xyglVC animated:YES];
+    xyglVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 3) {
             [self.mainPageModel setCurrentStep:3];
             [self.xsjlBtn addTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -187,10 +193,10 @@
 }
 
 - (void)clickXsjlBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    ChatViewControl *xsjlVC = [[ChatViewControl alloc] init];
     
-    [self.navigationController pushViewController:collageVC animated:YES];
-    collageVC.callBackHandle = ^{
+    [self.navigationController pushViewController:xsjlVC animated:YES];
+    xsjlVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 4) {
             [self.mainPageModel setCurrentStep:4];
             [self.bdlcBtn addTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -200,16 +206,15 @@
                 self.mainPageModel.hasAnimationed[3] = [NSNumber numberWithBool:YES];
                 [self moveCar];
             }
-            
         }
     };
 }
 
 - (void)clickBdlcBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    ReportWaterfallController *bdlcVC = [[ReportWaterfallController alloc] init];
     
-    [self.navigationController pushViewController:collageVC animated:YES];
-    collageVC.callBackHandle = ^{
+    [self.navigationController pushViewController:bdlcVC animated:YES];
+    bdlcVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 5) {
             [self.mainPageModel setCurrentStep:5];
             [self.wxdnsBtn addTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
@@ -224,22 +229,16 @@
 }
 
 - (void)clickJxtjBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
-    collageVC.callBackHandle = ^{
-    };
-    [self.navigationController pushViewController:collageVC animated:YES];
+    MilitarytrainingViewController *jxtjVC = [[MilitarytrainingViewController alloc] init];
+    [self.navigationController pushViewController:jxtjVC animated:YES];
 }
 
 - (void)clickWxdnsBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
-    collageVC.callBackHandle = ^{
-    };
+    WantToSayController *collageVC = [[WantToSayController alloc] init];
     [self.navigationController pushViewController:collageVC animated:YES];
 }
 
 - (void)clickCyfcBtn:(id)sender{
-    
-    
     SYCCharacterViewController *cyfcVC = [[SYCCharacterViewController alloc] init];
     cyfcVC.callBackHandle = ^{
     };
@@ -404,5 +403,9 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    self.tabBarController.tabBar.hidden = NO;
 }
 @end
