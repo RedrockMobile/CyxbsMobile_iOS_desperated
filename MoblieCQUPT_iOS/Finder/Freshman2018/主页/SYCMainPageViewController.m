@@ -16,6 +16,7 @@
 #import "SYCCharacterViewController.h"
 #import "SYCOrganizationManager.h"
 #import "DLNecessityViewController.h"
+#import "SchoolHomePageViewController.h"
 
 @interface SYCMainPageViewController ()
 
@@ -170,10 +171,10 @@
 }
 
 - (void)clickXyglBtn:(id)sender{
-    SYCCollageTableViewController *collageVC = [[SYCCollageTableViewController alloc] init];
+    SchoolHomePageViewController *xyglVC = [[SchoolHomePageViewController alloc] init];
     
-    [self.navigationController pushViewController:collageVC animated:YES];
-    collageVC.callBackHandle = ^{
+    [self.navigationController pushViewController:xyglVC animated:YES];
+    xyglVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 3) {
             [self.mainPageModel setCurrentStep:3];
             [self.xsjlBtn addTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];

@@ -47,6 +47,14 @@
 
     [self.view addSubview:_SchoolRootView];
     // Do any additional setup after loading the view from its nib.
+    
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelBtn;
+}
+
+- (void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+    self.callBackHandle();
 }
 
 - (void)didReceiveMemoryWarning {
