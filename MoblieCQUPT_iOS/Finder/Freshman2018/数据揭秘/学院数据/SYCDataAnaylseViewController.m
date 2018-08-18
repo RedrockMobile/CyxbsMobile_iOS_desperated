@@ -34,6 +34,7 @@
     [self.view addSubview:segmentView];
     
     self.title = self.data.name;
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {

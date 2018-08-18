@@ -2234,8 +2234,8 @@
 			isa = PBXGroup;
 			children = (
 				829C96012127DCDF00B4B05C /* SYCDataAnaylseViewController.h */,
-				829C96022127DCDF00B4B05C /* 标签子界面 */,
 				829C96072127DCDF00B4B05C /* SYCDataAnaylseViewController.m */,
+				829C96022127DCDF00B4B05C /* 标签子界面 */,
 			);
 			path = "学院数据";
 			sourceTree = "<group>";
