@@ -1687,14 +1687,14 @@
 			path = addView;
 			sourceTree = "<group>";
 		};
-		82B66EE4211AD2A700FA82F1 /* Freshman8 */ = {
+		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
 				2FB22331212311A30009EB39 /* Delivery */,
 				2FB2232421230F1E0009EB39 /* Bus */,
 				2FB222E72121CF020009EB39 /* Necessity */,
 			);
-			name = Freshman8;
+			path = Freshman2018;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -1986,7 +1986,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
-				82B66EE4211AD2A700FA82F1 /* Freshman8 */,
+				82B66EE4211AD2A700FA82F1 /* Freshman2018 */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
