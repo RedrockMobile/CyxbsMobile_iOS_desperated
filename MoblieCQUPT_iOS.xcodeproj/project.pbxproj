@@ -148,6 +148,12 @@
 		829C957C2127D8A500B4B05C /* FoodModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C956E2127D8A400B4B05C /* FoodModel.m */; };
 		829C957D2127D8A500B4B05C /* FoodViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95702127D8A400B4B05C /* FoodViewController.m */; };
 		829C957E2127D8A500B4B05C /* SchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95732127D8A500B4B05C /* SchoolViewController.m */; };
+		829C958E2127D92000B4B05C /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95812127D91E00B4B05C /* UIImageView+WebCache.m */; };
+		829C958F2127D92000B4B05C /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829C95822127D91E00B4B05C /* Media.xcassets */; };
+		829C95902127D92000B4B05C /* ChatViewControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95842127D91F00B4B05C /* ChatViewControl.m */; };
+		829C95912127D92000B4B05C /* ReportWaterfallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95892127D91F00B4B05C /* ReportWaterfallController.m */; };
+		829C95922127D92000B4B05C /* WantToSayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C958B2127D91F00B4B05C /* WantToSayController.m */; };
+		829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */; };
 		82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */; };
 		82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */; };
 		82D685641F6AC381004A5C7D /* extend@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685621F6AC381004A5C7D /* extend@2x.png */; };
@@ -782,6 +788,17 @@
 		829C95702127D8A400B4B05C /* FoodViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoodViewController.m; sourceTree = "<group>"; };
 		829C95722127D8A500B4B05C /* SchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolViewController.h; sourceTree = "<group>"; };
 		829C95732127D8A500B4B05C /* SchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolViewController.m; sourceTree = "<group>"; };
+		829C95802127D91E00B4B05C /* UIImageView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+WebCache.h"; sourceTree = "<group>"; };
+		829C95812127D91E00B4B05C /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
+		829C95822127D91E00B4B05C /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		829C95842127D91F00B4B05C /* ChatViewControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewControl.m; sourceTree = "<group>"; };
+		829C95852127D91F00B4B05C /* ChatViewControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewControl.h; sourceTree = "<group>"; };
+		829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreshMan2018ViewController.h; sourceTree = "<group>"; };
+		829C95882127D91F00B4B05C /* ReportWaterfallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportWaterfallController.h; sourceTree = "<group>"; };
+		829C95892127D91F00B4B05C /* ReportWaterfallController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportWaterfallController.m; sourceTree = "<group>"; };
+		829C958B2127D91F00B4B05C /* WantToSayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WantToSayController.m; sourceTree = "<group>"; };
+		829C958C2127D91F00B4B05C /* WantToSayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WantToSayController.h; sourceTree = "<group>"; };
+		829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreshMan2018ViewController.m; sourceTree = "<group>"; };
 		82D6855E1F696DCF004A5C7D /* dottedLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@2x.png"; sourceTree = "<group>"; };
 		82D6855F1F696DCF004A5C7D /* dottedLine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dottedLine@3x.png"; sourceTree = "<group>"; };
 		82D685621F6AC381004A5C7D /* extend@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "extend@2x.png"; sourceTree = "<group>"; };
@@ -1762,9 +1779,52 @@
 			path = School;
 			sourceTree = "<group>";
 		};
+		829C957F2127D91E00B4B05C /* UIImageView+WebCache */ = {
+			isa = PBXGroup;
+			children = (
+				829C95802127D91E00B4B05C /* UIImageView+WebCache.h */,
+				829C95812127D91E00B4B05C /* UIImageView+WebCache.m */,
+			);
+			path = "UIImageView+WebCache";
+			sourceTree = "<group>";
+		};
+		829C95832127D91F00B4B05C /* ChatOnLine */ = {
+			isa = PBXGroup;
+			children = (
+				829C95842127D91F00B4B05C /* ChatViewControl.m */,
+				829C95852127D91F00B4B05C /* ChatViewControl.h */,
+			);
+			path = ChatOnLine;
+			sourceTree = "<group>";
+		};
+		829C95872127D91F00B4B05C /* ReportWaterfall */ = {
+			isa = PBXGroup;
+			children = (
+				829C95882127D91F00B4B05C /* ReportWaterfallController.h */,
+				829C95892127D91F00B4B05C /* ReportWaterfallController.m */,
+			);
+			path = ReportWaterfall;
+			sourceTree = "<group>";
+		};
+		829C958A2127D91F00B4B05C /* IWantToSay */ = {
+			isa = PBXGroup;
+			children = (
+				829C958B2127D91F00B4B05C /* WantToSayController.m */,
+				829C958C2127D91F00B4B05C /* WantToSayController.h */,
+			);
+			path = IWantToSay;
+			sourceTree = "<group>";
+		};
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
+				829C95832127D91F00B4B05C /* ChatOnLine */,
+				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
+				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
+				829C958A2127D91F00B4B05C /* IWantToSay */,
+				829C95822127D91E00B4B05C /* Media.xcassets */,
+				829C95872127D91F00B4B05C /* ReportWaterfall */,
+				829C957F2127D91E00B4B05C /* UIImageView+WebCache */,
 				829C95612127D8A400B4B05C /* BankAround */,
 				829C95672127D8A400B4B05C /* FoodAround */,
 				829C955E2127D8A400B4B05C /* Scereny */,
@@ -3520,6 +3580,7 @@
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				9630E4B11FAF07D200874EB9 /* scroll@3x.png in Resources */,
 				4A3A07D01FCC0EC700A50393 /* find_image_food@2x.png in Resources */,
+				829C958F2127D92000B4B05C /* Media.xcassets in Resources */,
 				9630E4A11FAF07D200874EB9 /* 6@3x.png in Resources */,
 				9630E4A61FAF07D200874EB9 /* login_back@3x.png in Resources */,
 				F242DDB31EBCB2BB005AC411 /* roomIcon.png in Resources */,
@@ -3645,6 +3706,7 @@
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
+				829C95922127D92000B4B05C /* WantToSayController.m in Sources */,
 				2FB2233E2123122D0009EB39 /* DeliveryViewController.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
@@ -3675,6 +3737,7 @@
 				4A3A07941FCC0E7700A50393 /* ZJshopTableViewCell.m in Sources */,
 				9630E4CA1FAF07D300874EB9 /* QueryDataModel.m in Sources */,
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
+				829C95912127D92000B4B05C /* ReportWaterfallController.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
 				F2A43ECD1F74FEC200D1B2BD /* LZPersonSelectViewController.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
@@ -3705,6 +3768,7 @@
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
+				829C95902127D92000B4B05C /* ChatViewControl.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				9630E4951FAF07D200874EB9 /* sixViewController.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
@@ -3720,6 +3784,7 @@
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
+				829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
 				2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
@@ -3758,6 +3823,7 @@
 				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
 				2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */,
 				2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */,
+				829C958E2127D92000B4B05C /* UIImageView+WebCache.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
