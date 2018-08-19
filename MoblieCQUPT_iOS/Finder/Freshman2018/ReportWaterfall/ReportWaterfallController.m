@@ -64,6 +64,8 @@ NSString *str04;
     //[self viewInit];
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelBtn;
+    
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)cancel{
