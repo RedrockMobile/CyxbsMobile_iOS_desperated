@@ -20,16 +20,27 @@
 @implementation SYCActivityTableViewCell
 
 - (void)drawRect:(CGRect)rect{
-    self.activity = [SYCActivityManager sharedInstance].activityData[self.row];
     
     CGFloat backgroundViewWidth = [[UIScreen mainScreen] bounds].size.width - 20;
-    CGFloat backgroundViewHeight = 400 - 30;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - backgroundViewWidth) / 2.0, (400 - backgroundViewHeight) / 2.0, backgroundViewWidth, backgroundViewHeight)];
+    CGFloat backgroundViewHeight = 500 - 30;
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - backgroundViewWidth) / 2.0, (500 - backgroundViewHeight) / 2.0, backgroundViewWidth, backgroundViewHeight)];
     backgroundView.backgroundColor = [UIColor whiteColor];
     backgroundView.layer.masksToBounds = YES;
     backgroundView.layer.cornerRadius = 8.0;
     [self.contentView addSubview:backgroundView];
     self.contentView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+    
+    if (self.row == 4) {
+        self.activity = nil;
+        backgroundView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+    }else{
+        self.activity = [SYCActivityManager sharedInstance].activityData[self.row];
+        backgroundView.backgroundColor = [UIColor whiteColor];
+    }
+    
+    
+    
+    
     
     CGFloat imageViewWidth = backgroundViewWidth * 0.93;
     CGFloat imageViewHeight = backgroundViewHeight * 0.45;
@@ -47,8 +58,11 @@
     [backgroundView addSubview:nameLabel];
     
     CGFloat textViewWidth = backgroundViewWidth * 0.95;
-    CGFloat textViewHeight = backgroundViewHeight * 0.38;
+    CGFloat textViewHeight = backgroundViewHeight * 0.4;
     UITextView *detailText = [[UITextView alloc] initWithFrame:CGRectMake((backgroundViewWidth - textViewWidth) / 2.0, backgroundViewHeight * 0.578, textViewWidth, textViewHeight)];
+    if (self.row == 4) {
+        detailText.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+    }
     detailText.textColor = [UIColor colorWithRed:103.0/255.0 green:103.0/255.0 blue:103.0/255.0 alpha:1.0];
     detailText.font = [UIFont systemFontOfSize:16 weight:UIFontWeightUltraLight];
     detailText.text = self.activity.detail;
