@@ -137,7 +137,8 @@
 		823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */; };
 		823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */; };
 		823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */; };
-		8241F9A02129864100B29E9B /* freshman_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 8241F99F2129864000B29E9B /* freshman_button.png */; };
+		824D4911212A782300F38893 /* freshman_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824D490F212A782200F38893 /* freshman_button@3x.png */; };
+		824D4912212A782300F38893 /* freshman_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824D4910212A782200F38893 /* freshman_button@2x.png */; };
 		829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95602127D8A400B4B05C /* SceneryViewController.m */; };
 		829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95622127D8A400B4B05C /* BankTableViewCell.m */; };
 		829C95762127D8A500B4B05C /* BankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95642127D8A400B4B05C /* BankTableViewCell.xib */; };
@@ -858,7 +859,8 @@
 		823D416B1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_notselect@3x.png"; sourceTree = "<group>"; };
 		823D416C1F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@2x.png"; sourceTree = "<group>"; };
 		823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@3x.png"; sourceTree = "<group>"; };
-		8241F99F2129864000B29E9B /* freshman_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = freshman_button.png; sourceTree = "<group>"; };
+		824D490F212A782200F38893 /* freshman_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "freshman_button@3x.png"; sourceTree = "<group>"; };
+		824D4910212A782200F38893 /* freshman_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "freshman_button@2x.png"; sourceTree = "<group>"; };
 		829C955F2127D8A400B4B05C /* SceneryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneryViewController.h; sourceTree = "<group>"; };
 		829C95602127D8A400B4B05C /* SceneryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneryViewController.m; sourceTree = "<group>"; };
 		829C95622127D8A400B4B05C /* BankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankTableViewCell.m; sourceTree = "<group>"; };
@@ -2433,7 +2435,8 @@
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
-				8241F99F2129864000B29E9B /* freshman_button.png */,
+				824D4910212A782200F38893 /* freshman_button@2x.png */,
+				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
@@ -3882,7 +3885,6 @@
 				F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
 				82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */,
-				8241F9A02129864100B29E9B /* freshman_button.png in Resources */,
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
 				9630E4B21FAF07D200874EB9 /* toolbar_background.png in Resources */,
 				F242DE9E1EBCB2BC005AC411 /* 椭圆@2x.png in Resources */,
@@ -4027,6 +4029,7 @@
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				829C96702127DCE000B4B05C /* 校园攻略.png in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
+				824D4911212A782300F38893 /* freshman_button@3x.png in Resources */,
 				F242DE611EBCB2BC005AC411 /* AddRemindViewController.xib in Resources */,
 				4A3A07E21FCC0EC700A50393 /* lost_image_com@2x.png in Resources */,
 				F20026E31F4020FA00360991 /* mine_image_exam@2x.png in Resources */,
@@ -4133,6 +4136,7 @@
 				82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */,
 				82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */,
 				82D685611F696DCF004A5C7D /* dottedLine@3x.png in Resources */,
+				824D4912212A782300F38893 /* freshman_button@2x.png in Resources */,
 				F242DE531EBCB2BC005AC411 /* LoginViewController.xib in Resources */,
 				4A3A07DB1FCC0EC700A50393 /* find_image_query@3x.png in Resources */,
 				F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */,
