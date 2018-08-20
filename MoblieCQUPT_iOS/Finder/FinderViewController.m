@@ -76,11 +76,6 @@
     [self.collectionView addGestureRecognizer:rightSwipeGesture];
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
     // 产品的要求 一次滑动只能移动一个
-
-    UIButton *testButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-    testButton.backgroundColor = [UIColor redColor];
-    [testButton addTarget:self action:@selector(clickTestButton) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:testButton];
 }
 
 - (void)clickTestButton{

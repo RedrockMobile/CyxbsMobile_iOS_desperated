@@ -47,10 +47,22 @@
 
 @implementation SYCMainPageViewController
 
-@synthesize scrollView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.mainPageModel = [SYCMainPageModel shareInstance];
+    
+    _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [self.view addSubview:_scrollView];
+    
+    const CGFloat imageRatio = 2.933;
+    CGFloat mainPageWidth1 = [UIScreen mainScreen].bounds.size.width;
+    CGFloat mainPageHeight1 = mainPageWidth1 * imageRatio;
+    
+    SYCMainPageView *mainPageView = [[SYCMainPageView alloc] initWithFrame:CGRectMake(0, 0, mainPageWidth1, mainPageHeight1)];
+    [_scrollView addSubview:mainPageView];
+    _scrollView.contentSize = mainPageView.bounds.size;
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"加载数据中...";
@@ -74,12 +86,12 @@
     self.rxbbBtn = [[UIButton alloc] initWithFrame: CGRectMake(mainPageWidth * 0.173, mainPageHeight * 0.193, mainPageWidth * 0.442, mainPageHeight * 0.073)];
     [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备"] forState:UIControlStateNormal];
     [self.rxbbBtn addTarget:self action:@selector(clickRxbbBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:self.rxbbBtn];
+    [_scrollView addSubview:self.rxbbBtn];
     
     self.jxtjBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.725, mainPageHeight * 0.260, mainPageWidth * 0.272, mainPageHeight * 0.105)];
     [self.jxtjBtn setImage:[UIImage imageNamed:@"军训特辑"] forState:UIControlStateNormal];
     [self.jxtjBtn addTarget:self action:@selector(clickJxtjBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:self.jxtjBtn];
+    [_scrollView addSubview:self.jxtjBtn];
     
     
     self.xyglBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.350, mainPageHeight * 0.290, mainPageWidth * 0.354, mainPageHeight * 0.139)];
@@ -89,7 +101,7 @@
         [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
         [self.xyglBtn setTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
-    [scrollView addSubview:self.xyglBtn];
+    [_scrollView addSubview:self.xyglBtn];
     
     
     self.xsjlBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.125, mainPageHeight * 0.475, mainPageWidth * 0.472, mainPageHeight * 0.097)];
@@ -99,13 +111,13 @@
         [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
         [self.xsjlBtn setTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
-    [scrollView addSubview:self.xsjlBtn];
+    [_scrollView addSubview:self.xsjlBtn];
     
     
     self.cyfcBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.01, mainPageHeight * 0.582, mainPageWidth * 0.440, mainPageHeight * 0.155)];
     [self.cyfcBtn setImage:[UIImage imageNamed:@"重邮风采"] forState:UIControlStateNormal];
     [self.cyfcBtn addTarget:self action:@selector(clickCyfcBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [scrollView addSubview:self.cyfcBtn];
+    [_scrollView addSubview:self.cyfcBtn];
     
     self.bdlcBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.625, mainPageHeight * 0.655, mainPageWidth * 0.372, mainPageHeight * 0.107)];
     if (self.mainPageModel.currentStep < 4) {
@@ -114,7 +126,7 @@
         [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
         [self.bdlcBtn setTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
-    [scrollView addSubview:self.bdlcBtn];
+    [_scrollView addSubview:self.bdlcBtn];
     
     
     self.wxdnsBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.05, mainPageHeight * 0.800, mainPageWidth * 0.380, mainPageHeight * 0.143)];
@@ -124,7 +136,7 @@
         [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
         [self.wxdnsBtn setTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
-    [scrollView addSubview: self.wxdnsBtn];
+    [_scrollView addSubview: self.wxdnsBtn];
     
     switch (self.mainPageModel.currentStep) {
         case 1:
@@ -246,26 +258,26 @@
 }
 
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.mainPageModel = [SYCMainPageModel shareInstance];
-        
-        scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        [self.view addSubview:scrollView];
-        
-        const CGFloat imageRatio = 2.933;
-        CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
-        CGFloat mainPageHeight = mainPageWidth * imageRatio;
-        
-        SYCMainPageView *mainPageView = [[SYCMainPageView alloc] initWithFrame:CGRectMake(0, 0, mainPageWidth, mainPageHeight)];
-        [scrollView addSubview:mainPageView];
-        scrollView.contentSize = mainPageView.bounds.size;
-        [self viewDidLoad];
-    }
-    return self;
-}
+//- (instancetype)init
+//{
+//    self = [super init];
+//    if (self) {
+//        self.mainPageModel = [SYCMainPageModel shareInstance];
+//
+//        _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//        [self.view addSubview:_scrollView];
+//
+//        const CGFloat imageRatio = 2.933;
+//        CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
+//        CGFloat mainPageHeight = mainPageWidth * imageRatio;
+//
+//        SYCMainPageView *mainPageView = [[SYCMainPageView alloc] initWithFrame:CGRectMake(0, 0, mainPageWidth, mainPageHeight)];
+//        [_scrollView addSubview:mainPageView];
+//        _scrollView.contentSize = mainPageView.bounds.size;
+//        [self viewDidLoad];
+//    }
+//    return self;
+//}
 
 - (void)buttonDisappearAnimation:(UIButton *)button{
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];

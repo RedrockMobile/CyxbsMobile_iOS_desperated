@@ -149,7 +149,11 @@
             DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
             [_dataArray addObject:model];
         }
-        [self.FMtableView reloadData];
+        //回到主线程刷新tableview
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.FMtableView reloadData];
+        });
+        
         [arr writeToFile:self.filePath atomically:YES];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
