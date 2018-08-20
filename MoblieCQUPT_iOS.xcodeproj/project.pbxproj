@@ -2205,6 +2205,7 @@
 			children = (
 				829C95F82127DCDF00B4B05C /* 学院选择 */,
 				829C96002127DCDF00B4B05C /* 学院数据 */,
+				829C95FB2127DCDF00B4B05C /* Model */,
 			);
 			path = "数据揭秘";
 			sourceTree = "<group>";
@@ -2214,7 +2215,6 @@
 			children = (
 				829C95F92127DCDF00B4B05C /* SYCCollageTableViewController.h */,
 				829C95FA2127DCDF00B4B05C /* SYCCollageTableViewController.m */,
-				829C95FB2127DCDF00B4B05C /* Model */,
 			);
 			path = "学院选择";
 			sourceTree = "<group>";
@@ -2368,8 +2368,8 @@
 		829C964D2127DCDF00B4B05C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				829C964E2127DCDF00B4B05C /* SYCActivityTableViewCell.m */,
 				829C964F2127DCDF00B4B05C /* SYCActivityTableViewCell.h */,
+				829C964E2127DCDF00B4B05C /* SYCActivityTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2388,8 +2388,8 @@
 		829C96562127DCDF00B4B05C /* 学生组织 */ = {
 			isa = PBXGroup;
 			children = (
-				829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */,
 				829C96582127DCDF00B4B05C /* SYCOrganizationTableViewController.h */,
+				829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */,
 				829C96642127DCDF00B4B05C /* SYCOrganizationViewController.h */,
 				829C96652127DCDF00B4B05C /* SYCOrganizationTableViewController.m */,
 				829C96592127DCDF00B4B05C /* Cell */,
@@ -2402,8 +2402,8 @@
 			isa = PBXGroup;
 			children = (
 				829C965A2127DCDF00B4B05C /* Short Cell */,
-				829C965D2127DCDF00B4B05C /* SYCOrganizationTableViewCell.m */,
 				829C965E2127DCDF00B4B05C /* SYCOrganizationTableViewCell.h */,
+				829C965D2127DCDF00B4B05C /* SYCOrganizationTableViewCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -2420,8 +2420,8 @@
 		829C965F2127DCDF00B4B05C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				829C96602127DCDF00B4B05C /* SYCOrganizationModel.m */,
 				829C96612127DCDF00B4B05C /* SYCOrganizationManager.h */,
+				829C96602127DCDF00B4B05C /* SYCOrganizationModel.m */,
 				829C96622127DCDF00B4B05C /* SYCOrganizationModel.h */,
 				829C96632127DCDF00B4B05C /* SYCOrganizationManager.m */,
 			);

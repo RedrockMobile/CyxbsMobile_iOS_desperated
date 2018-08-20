@@ -26,8 +26,8 @@
     self.organization = [SYCOrganizationManager sharedInstance].organizationData[self.index];
     
     CGFloat backgroundViewWidth = [[UIScreen mainScreen] bounds].size.width - 20;
-    CGFloat backgroundViewHeight = 2500 - 30;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - backgroundViewWidth) / 2.0, (2500 - backgroundViewHeight) / 2.0, backgroundViewWidth, backgroundViewHeight)];
+    CGFloat backgroundViewHeight = self.frame.size.height - 30;
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - backgroundViewWidth) / 2.0, (self.frame.size.height - backgroundViewHeight) / 2.0, backgroundViewWidth, backgroundViewHeight)];
     backgroundView.backgroundColor = [UIColor whiteColor];
     backgroundView.layer.masksToBounds = YES;
     backgroundView.layer.cornerRadius = 8.0;
@@ -51,10 +51,12 @@
     
     CGFloat textViewWidth = backgroundViewWidth * 0.95;
     CGFloat textViewHeight = backgroundViewHeight * 0.88;
-    UITextView *detailText = [[UITextView alloc] initWithFrame:CGRectMake((backgroundViewWidth - textViewWidth) / 2.0, backgroundViewHeight * 0.116, textViewWidth, textViewHeight)];
+    UILabel *detailText = [[UILabel alloc] initWithFrame:CGRectMake((backgroundViewWidth - textViewWidth) / 2.0, backgroundViewHeight * 0.116, textViewWidth, textViewHeight)];
     detailText.textColor = [UIColor colorWithRed:103.0/255.0 green:103.0/255.0 blue:103.0/255.0 alpha:1.0];
     detailText.font = [UIFont systemFontOfSize:16 weight:UIFontWeightUltraLight];
     detailText.text = self.organization.detail;
+    detailText.numberOfLines = 0;
+    [detailText sizeToFit];
     [backgroundView addSubview:detailText];
 }
 

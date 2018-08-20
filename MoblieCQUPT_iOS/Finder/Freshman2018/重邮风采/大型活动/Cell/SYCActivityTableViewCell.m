@@ -37,19 +37,7 @@
         self.activity = [SYCActivityManager sharedInstance].activityData[self.row];
         backgroundView.backgroundColor = [UIColor whiteColor];
     }
-    
-    
-    
-    
-    
-    CGFloat imageViewWidth = backgroundViewWidth * 0.93;
-    CGFloat imageViewHeight = backgroundViewHeight * 0.45;
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backgroundViewWidth - imageViewWidth) / 2.0, backgroundViewHeight * 0.035, imageViewWidth, imageViewHeight)];
-//    imageView.image = self.activity.imagesArray[0];
-//    imageView.layer.masksToBounds = YES;
-//    imageView.layer.cornerRadius = 8.0;
-//    [backgroundView addSubview:imageView];
-    
+
     CGFloat labelWidth = backgroundViewWidth * 0.4;
     CGFloat labelHeight = backgroundViewHeight * 0.1;
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(backgroundViewWidth * 0.04, backgroundViewHeight * 0.5, labelWidth, labelHeight)];
@@ -58,16 +46,19 @@
     [backgroundView addSubview:nameLabel];
     
     CGFloat textViewWidth = backgroundViewWidth * 0.95;
-    CGFloat textViewHeight = backgroundViewHeight * 0.4;
-    UITextView *detailText = [[UITextView alloc] initWithFrame:CGRectMake((backgroundViewWidth - textViewWidth) / 2.0, backgroundViewHeight * 0.578, textViewWidth, textViewHeight)];
+    UILabel *detailText = [[UILabel alloc] initWithFrame:CGRectMake((backgroundViewWidth - textViewWidth) / 2.0, backgroundViewHeight * 0.59, textViewWidth, 0)];
     if (self.row == 4) {
         detailText.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     }
     detailText.textColor = [UIColor colorWithRed:103.0/255.0 green:103.0/255.0 blue:103.0/255.0 alpha:1.0];
     detailText.font = [UIFont systemFontOfSize:16 weight:UIFontWeightUltraLight];
     detailText.text = self.activity.detail;
+    detailText.numberOfLines = 0;
+    [detailText sizeToFit];
     [backgroundView addSubview:detailText];
     
+    CGFloat imageViewWidth = backgroundViewWidth * 0.93;
+    CGFloat imageViewHeight = backgroundViewHeight * 0.45;
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake((backgroundViewWidth - imageViewWidth) / 2.0, backgroundViewHeight * 0.035, imageViewWidth, imageViewHeight)];
     CGFloat imageW = self.scrollView.frame.size.width;
     CGFloat imageH = self.scrollView.frame.size.height;

@@ -13,8 +13,6 @@
 @property (nonatomic, strong)NSDictionary *nameList;
 @property (nonatomic, strong)NSMutableDictionary *collageData;
 
-@property Boolean error;
-
 + (instancetype)sharedInstance;
 
 @end
