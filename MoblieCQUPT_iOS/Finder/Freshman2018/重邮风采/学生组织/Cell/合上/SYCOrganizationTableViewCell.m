@@ -25,8 +25,8 @@
 - (void)drawRect:(CGRect)rect{
     self.organization = [SYCOrganizationManager sharedInstance].organizationData[self.index];
     
-    CGFloat backgroundViewWidth = [[UIScreen mainScreen] bounds].size.width - 20;
-    CGFloat backgroundViewHeight = self.frame.size.height - 30;
+    CGFloat backgroundViewWidth = self.frame.size.width * 0.95;
+    CGFloat backgroundViewHeight = self.frame.size.height * 0.95;
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - backgroundViewWidth) / 2.0, (self.frame.size.height - backgroundViewHeight) / 2.0, backgroundViewWidth, backgroundViewHeight)];
     backgroundView.backgroundColor = [UIColor whiteColor];
     backgroundView.layer.masksToBounds = YES;
@@ -34,9 +34,9 @@
     [self.contentView addSubview:backgroundView];
     self.contentView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     
-    CGFloat imageViewWidth = backgroundViewWidth * 0.93;
-    CGFloat imageViewHeight = backgroundViewHeight * 0.1;
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backgroundViewWidth - imageViewWidth) / 2.0, backgroundViewHeight * 0.005, imageViewWidth, imageViewHeight)];
+    CGFloat imageViewWidth = SCREENWIDTH * 0.9;
+    CGFloat imageViewHeight = imageViewWidth * 0.5625;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backgroundViewWidth - imageViewWidth) / 2.0, (backgroundViewWidth - imageViewWidth) / 2.0, imageViewWidth, imageViewHeight)];
     imageView.image = self.organization.imagesArray[0];
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 8.0;
@@ -44,20 +44,30 @@
     
     CGFloat labelWidth = backgroundViewWidth * 0.8;
     CGFloat labelHeight = backgroundViewHeight * 0.03;
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(backgroundViewWidth * 0.04, backgroundViewHeight * 0.95, labelWidth, labelHeight)];
+    CGFloat labelX = (backgroundViewWidth - imageViewWidth) / 2.0;
+    CGFloat labelY = (backgroundViewWidth - imageViewWidth) / 2.0 + imageViewHeight + backgroundViewHeight * 0.04;
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(labelX, labelY, labelWidth, labelHeight)];
     nameLabel.text = self.organization.name;
     nameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
     [backgroundView addSubview:nameLabel];
     
-    CGFloat textViewWidth = backgroundViewWidth * 0.95;
-    CGFloat textViewHeight = backgroundViewHeight * 0.88;
-    UILabel *detailText = [[UILabel alloc] initWithFrame:CGRectMake((backgroundViewWidth - textViewWidth) / 2.0, backgroundViewHeight * 0.116, textViewWidth, textViewHeight)];
+    CGFloat textWidth = backgroundViewWidth * 0.95;
+    CGFloat textX = (backgroundViewWidth - imageViewWidth) / 2.0;
+    CGFloat textY = labelY + labelHeight + backgroundViewHeight * 0.03;
+    UILabel *detailText = [[UILabel alloc] initWithFrame:CGRectMake(textX, textY, textWidth, 0)];
     detailText.textColor = [UIColor colorWithRed:103.0/255.0 green:103.0/255.0 blue:103.0/255.0 alpha:1.0];
     detailText.font = [UIFont systemFontOfSize:16 weight:UIFontWeightUltraLight];
     detailText.text = self.organization.detail;
-    detailText.numberOfLines = 0;
+    detailText.numberOfLines = 8;
     [detailText sizeToFit];
     [backgroundView addSubview:detailText];
+    
+    CGFloat btnWidth = backgroundViewWidth * 0.07;
+    CGFloat btnHeight = btnWidth * 0.5625;
+    CGFloat btnX = (backgroundViewWidth - btnWidth) / 2.0;
+    CGFloat btnY = backgroundViewHeight -  backgroundViewWidth * 0.1;
+    UIButton *moreBtn = [[UIButton alloc] initWithFrame:CGRectMake(btnX , btnY, btnWidth, btnHeight)];;
+    [moreBtn setBackgroundImage:[UIImage imageNamed:@"展开"] forState:UIControlStateNormal];
+    [backgroundView addSubview:moreBtn];
 }
-
 @end

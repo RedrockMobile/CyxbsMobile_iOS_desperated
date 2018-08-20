@@ -236,7 +236,6 @@
 		829C969E2127DCE000B4B05C /* SYCActivityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C96542127DCDF00B4B05C /* SYCActivityManager.m */; };
 		829C969F2127DCE000B4B05C /* SYCActivityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C96552127DCDF00B4B05C /* SYCActivityTableViewController.m */; };
 		829C96A02127DCE000B4B05C /* SYCOrganizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */; };
-		829C96A12127DCE000B4B05C /* SYCShortTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C965B2127DCDF00B4B05C /* SYCShortTableViewCell.m */; };
 		829C96A22127DCE000B4B05C /* SYCOrganizationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C965D2127DCDF00B4B05C /* SYCOrganizationTableViewCell.m */; };
 		829C96A32127DCE000B4B05C /* SYCOrganizationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C96602127DCDF00B4B05C /* SYCOrganizationModel.m */; };
 		829C96A42127DCE000B4B05C /* SYCOrganizationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C96632127DCDF00B4B05C /* SYCOrganizationManager.m */; };
@@ -325,6 +324,9 @@
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
+		E404709A212AB39200121AEE /* 合上.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047098212AB39100121AEE /* 合上.png */; };
+		E404709B212AB39200121AEE /* 展开.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047099212AB39100121AEE /* 展开.png */; };
+		E404709E212AB86600121AEE /* SYCDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -1026,8 +1028,6 @@
 		829C96552127DCDF00B4B05C /* SYCActivityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCActivityTableViewController.m; sourceTree = "<group>"; };
 		829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationViewController.m; sourceTree = "<group>"; };
 		829C96582127DCDF00B4B05C /* SYCOrganizationTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCOrganizationTableViewController.h; sourceTree = "<group>"; };
-		829C965B2127DCDF00B4B05C /* SYCShortTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCShortTableViewCell.m; sourceTree = "<group>"; };
-		829C965C2127DCDF00B4B05C /* SYCShortTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCShortTableViewCell.h; sourceTree = "<group>"; };
 		829C965D2127DCDF00B4B05C /* SYCOrganizationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationTableViewCell.m; sourceTree = "<group>"; };
 		829C965E2127DCDF00B4B05C /* SYCOrganizationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCOrganizationTableViewCell.h; sourceTree = "<group>"; };
 		829C96602127DCDF00B4B05C /* SYCOrganizationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCOrganizationModel.m; sourceTree = "<group>"; };
@@ -1144,6 +1144,10 @@
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		E4047098212AB39100121AEE /* 合上.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "合上.png"; sourceTree = "<group>"; };
+		E4047099212AB39100121AEE /* 展开.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "展开.png"; sourceTree = "<group>"; };
+		E404709C212AB86600121AEE /* SYCDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCDetailTableViewCell.h; sourceTree = "<group>"; };
+		E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCDetailTableViewCell.m; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -2047,6 +2051,7 @@
 		829C958A2127D91F00B4B05C /* IWantToSay */ = {
 			isa = PBXGroup;
 			children = (
+				829C95822127D91E00B4B05C /* Media.xcassets */,
 				829C958B2127D91F00B4B05C /* WantToSayController.m */,
 				829C958C2127D91F00B4B05C /* WantToSayController.h */,
 			);
@@ -2401,20 +2406,10 @@
 		829C96592127DCDF00B4B05C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				829C965A2127DCDF00B4B05C /* Short Cell */,
-				829C965E2127DCDF00B4B05C /* SYCOrganizationTableViewCell.h */,
-				829C965D2127DCDF00B4B05C /* SYCOrganizationTableViewCell.m */,
+				E40470A0212AB87900121AEE /* 合上 */,
+				E404709F212AB86D00121AEE /* 展开 */,
 			);
 			path = Cell;
-			sourceTree = "<group>";
-		};
-		829C965A2127DCDF00B4B05C /* Short Cell */ = {
-			isa = PBXGroup;
-			children = (
-				829C965B2127DCDF00B4B05C /* SYCShortTableViewCell.m */,
-				829C965C2127DCDF00B4B05C /* SYCShortTableViewCell.h */,
-			);
-			path = "Short Cell";
 			sourceTree = "<group>";
 		};
 		829C965F2127DCDF00B4B05C /* Model */ = {
@@ -2443,7 +2438,6 @@
 				829C95942127DABD00B4B05C /* FreshmanModel.h */,
 				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
 				829C958A2127D91F00B4B05C /* IWantToSay */,
-				829C95822127D91E00B4B05C /* Media.xcassets */,
 				829C95872127D91F00B4B05C /* ReportWaterfall */,
 				829C957F2127D91E00B4B05C /* UIImageView+WebCache */,
 				829C95612127D8A400B4B05C /* BankAround */,
@@ -2673,6 +2667,26 @@
 				CEF61B481B82BC950014B980 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E404709F212AB86D00121AEE /* 展开 */ = {
+			isa = PBXGroup;
+			children = (
+				E404709C212AB86600121AEE /* SYCDetailTableViewCell.h */,
+				E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */,
+				E4047098212AB39100121AEE /* 合上.png */,
+			);
+			path = "展开";
+			sourceTree = "<group>";
+		};
+		E40470A0212AB87900121AEE /* 合上 */ = {
+			isa = PBXGroup;
+			children = (
+				829C965E2127DCDF00B4B05C /* SYCOrganizationTableViewCell.h */,
+				829C965D2127DCDF00B4B05C /* SYCOrganizationTableViewCell.m */,
+				E4047099212AB39100121AEE /* 展开.png */,
+			);
+			path = "合上";
 			sourceTree = "<group>";
 		};
 		F20026CC1F4020FA00360991 /* Image */ = {
@@ -4166,6 +4180,7 @@
 				6E0F69292030712700BB5EF3 /* ReportImage.xcassets in Resources */,
 				F26D96841F3C400F0063B024 /* icon_share_weibo@2x.png in Resources */,
 				F242DDBE1EBCB2BB005AC411 /* rightIcon.png in Resources */,
+				E404709B212AB39200121AEE /* 展开.png in Resources */,
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
@@ -4198,6 +4213,7 @@
 				82D6856B1F6E4F4B004A5C7D /* icon_down@3x.png in Resources */,
 				82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */,
 				F200271C1F405B8500360991 /* remind_image_time@2x.png in Resources */,
+				E404709A212AB39200121AEE /* 合上.png in Resources */,
 				9630E49D1FAF07D200874EB9 /* 4@3x.png in Resources */,
 				F242DE8D1EBCB2BC005AC411 /* 多课1@3x.png in Resources */,
 				4A3A08491FCD990A00A50393 /* yuan@3x.png in Resources */,
@@ -4342,6 +4358,7 @@
 				6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */,
 				829C96982127DCE000B4B05C /* AAChartModel.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
+				E404709E212AB86600121AEE /* SYCDetailTableViewCell.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
 				829C96832127DCE000B4B05C /* AADataLabels.m in Sources */,
 				F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */,
@@ -4470,7 +4487,6 @@
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				829C96922127DCE000B4B05C /* AAMarker.m in Sources */,
-				829C96A12127DCE000B4B05C /* SYCShortTableViewCell.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
 				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,

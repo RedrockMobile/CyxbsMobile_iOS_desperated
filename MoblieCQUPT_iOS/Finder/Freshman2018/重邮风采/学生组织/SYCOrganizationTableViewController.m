@@ -8,9 +8,13 @@
 
 #import "SYCOrganizationTableViewController.h"
 #import "SYCOrganizationTableViewCell.h"
-#import "SYCShortTableViewCell.h"
+#import "SYCDetailTableViewCell.h"
+#import "SYCOrganizationManager.h"
+#import "SYCOrganizationModel.h"
 
 @interface SYCOrganizationTableViewController ()
+
+@property (nonatomic)Boolean isShowDetail;
 
 @end
 
@@ -23,9 +27,8 @@
     
     self.tableView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
 
-    
+    self.isShowDetail = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,25 +47,42 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (self.index == 0) {
-        return 2500;
+    SYCOrganizationModel *detailText = [SYCOrganizationManager sharedInstance].organizationData[self.index];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH * 0.9025, 0)];
+    label.text = detailText.detail;
+    label.numberOfLines = 0;
+    label.font = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
+    [label sizeToFit];
+    NSLog(@"%f", label.size.height);
+    
+    if (self.isShowDetail == YES) {
+        return label.size.height + 600;
+    }else{
+        return SCREENHEIGHT * 0.7;
     }
-    return 600;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.index == 0) {
-        SYCOrganizationTableViewCell *cell = [[SYCOrganizationTableViewCell alloc] init];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if (self.isShowDetail == YES) {
+        SYCDetailTableViewCell *cell = [[SYCDetailTableViewCell alloc] init];
         cell.index = self.index;
         return cell;
     }else{
-        SYCShortTableViewCell *cell = [[SYCShortTableViewCell alloc] init];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        SYCOrganizationTableViewCell *cell = [[SYCOrganizationTableViewCell alloc] init];
         cell.index = self.index;
         return cell;
     }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    self.isShowDetail = !self.isShowDetail;
+    
+    [tableView reloadData];
+    [UIView transitionWithView:tableView duration:0.5f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        [tableView reloadData];
+    } completion:nil];
 }
 
 /*
