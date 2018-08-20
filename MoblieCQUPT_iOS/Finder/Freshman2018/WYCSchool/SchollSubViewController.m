@@ -65,6 +65,8 @@
     _tableView = [self tableView];;
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.showsVerticalScrollIndicator = NO;
+    _tableView.showsHorizontalScrollIndicator = NO;
     _cellHeight = [[NSMutableArray alloc]init];
     [_tableView reloadData];
 }
