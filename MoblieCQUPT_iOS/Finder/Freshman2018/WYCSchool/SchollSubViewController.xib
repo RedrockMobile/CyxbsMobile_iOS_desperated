@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchollSubViewController">
             <connections>
                 <outlet property="constraintView" destination="fSJ-La-LPh" id="AIs-yR-qsn"/>
-                <outlet property="tableView" destination="nwb-b1-zmU" id="DjM-CM-7vp"/>
+                <outlet property="tableView" destination="nwb-b1-zmU" id="6M7-fe-hhD"/>
                 <outlet property="topHeight" destination="U4W-x4-4se" id="fL2-V2-UAh"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="Mv9-p1-3ps"/>
             </connections>

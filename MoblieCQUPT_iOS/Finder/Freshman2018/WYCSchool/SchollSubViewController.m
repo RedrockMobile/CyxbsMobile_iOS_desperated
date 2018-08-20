@@ -14,28 +14,21 @@
 @interface SchollSubViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UIView *constraintView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topHeight;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+//@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) FreshmanModel *Model;
 @property (strong, nonatomic) NSMutableArray *cellHeight;
 @property (nonatomic, strong)NSString *url;
 @property (nonatomic, strong)NSArray *urlArray;
+@property (nonatomic, strong)NSArray *dataArray;
 @property (nonatomic, strong)NSArray *titleArray;
+@property (assign, nonatomic)BOOL needReLoadTableView;
 @end
 
 @implementation SchollSubViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    NSLog(@"%@",self.title);
-//    _titleArray = @[@"学生食堂",@"明理苑",@"宁静苑",@"兴业苑",@"知行苑"];
-//    _urlArray = @[@"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=学生食堂&pagenum=1&pagesize=8",@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=明理苑",@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=宁静苑",@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=兴业苑",@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=知行苑"];
-//    int i = 0;
-//    for (NSString *title in _titleArray) {
-//        if ([self.title isEqualToString:title]) {
-//            _url = _urlArray[i];
-//        }
-//        i++;
-//    }
+
     if ([self.title isEqualToString:@"学生食堂"]) {
         _url = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=学生食堂&pagenum=1&pagesize=8";
     }
@@ -43,7 +36,7 @@
     //设置背景色
     self.view.backgroundColor =  [UIColor colorWithHexString:@"f6f6f6"];
     _topHeight.constant = 0;
-   
+    _needReLoadTableView = YES;
     _Model = [[FreshmanModel alloc]init];
     [_Model networkLoadData: _url title:self.title ];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -54,7 +47,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(DataLoadSuccessful)
                                                  name:[NSString stringWithFormat:@"%@DataLoadSuccess",self.title] object:nil];
-    
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -69,6 +62,7 @@
     _tableView.showsHorizontalScrollIndicator = NO;
     _cellHeight = [[NSMutableArray alloc]init];
     [_tableView reloadData];
+    
 }
 
 - (void)DataLoadFailure{
@@ -88,6 +82,9 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , _constraintView.width, _constraintView.height) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.showsHorizontalScrollIndicator = NO;
         UINib *nib = [UINib nibWithNibName:@"SchollGeneralTableViewCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"test"];
         
@@ -102,9 +99,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
    
-    NSArray *arr = [_Model.dic objectForKey:@"array"];
-     NSLog(@"arr:%lu",(unsigned long)arr.count);
-    return arr.count;
+    _dataArray = [_Model.dic objectForKey:@"array"];
+    //NSLog(@"arr:%lu",(unsigned long)_dataArray.count);
+    return _dataArray.count;
 }
 
 
@@ -121,17 +118,31 @@
     cell.contentView.backgroundColor = [UIColor clearColor];
     NSArray *arr = [_Model.dic objectForKey:@"array"];
     [cell initWithDic:arr[indexPath.row]];
-    NSLog(@"%f",cell.height);
+    //NSLog(@"%f",cell.height);
     [_cellHeight addObject:[NSNumber numberWithFloat:cell.height]];
-    
-    
+    [cell layoutSubviews];
+    NSLog(@"indexPath.row %ld",(long)indexPath.row );
+
     return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //SchollGeneralTableViewCell *cell = [[SchollGeneralTableViewCell alloc]init];
+    
     return [_cellHeight[indexPath.row] floatValue];
+}
+
+
+//判断tableview是否加载完毕，加载完毕后刷新一遍数据
+-(void) tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if([indexPath row] == ((NSIndexPath*)[[tableView indexPathsForVisibleRows] lastObject]).row && _needReLoadTableView){
+        //end of loading
+        dispatch_async(dispatch_get_main_queue(),^{
+            [self.tableView reloadData];
+        });
+        _needReLoadTableView = NO;
+    }
 }
 
 //- (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize{

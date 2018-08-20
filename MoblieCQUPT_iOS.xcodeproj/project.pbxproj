@@ -1987,10 +1987,10 @@
 		829C95612127D8A400B4B05C /* BankAround */ = {
 			isa = PBXGroup;
 			children = (
-				829C95622127D8A400B4B05C /* BankTableViewCell.m */,
-				829C95632127D8A400B4B05C /* BankViewController.h */,
-				829C95642127D8A400B4B05C /* BankTableViewCell.xib */,
 				829C95652127D8A400B4B05C /* BankTableViewCell.h */,
+				829C95622127D8A400B4B05C /* BankTableViewCell.m */,
+				829C95642127D8A400B4B05C /* BankTableViewCell.xib */,
+				829C95632127D8A400B4B05C /* BankViewController.h */,
 				829C95662127D8A400B4B05C /* BankViewController.m */,
 			);
 			path = BankAround;
@@ -1999,15 +1999,15 @@
 		829C95672127D8A400B4B05C /* FoodAround */ = {
 			isa = PBXGroup;
 			children = (
-				829C95682127D8A400B4B05C /* rank@3x.png */,
-				829C95692127D8A400B4B05C /* FoodTableViewCell.m */,
 				829C956A2127D8A400B4B05C /* FoodModel.h */,
-				829C956B2127D8A400B4B05C /* FoodViewController.h */,
-				829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */,
-				829C956D2127D8A400B4B05C /* rank.png */,
 				829C956E2127D8A400B4B05C /* FoodModel.m */,
 				829C956F2127D8A400B4B05C /* FoodTableViewCell.h */,
+				829C95692127D8A400B4B05C /* FoodTableViewCell.m */,
+				829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */,
+				829C956B2127D8A400B4B05C /* FoodViewController.h */,
 				829C95702127D8A400B4B05C /* FoodViewController.m */,
+				829C956D2127D8A400B4B05C /* rank.png */,
+				829C95682127D8A400B4B05C /* rank@3x.png */,
 			);
 			path = FoodAround;
 			sourceTree = "<group>";
@@ -2063,7 +2063,6 @@
 				829C95962127DABD00B4B05C /* Militarytraining.xcassets */,
 				829C95972127DABD00B4B05C /* Controller */,
 				829C95A32127DABD00B4B05C /* View */,
-				829C95AE2127DABD00B4B05C /* Modle */,
 			);
 			path = Militarytraining;
 			sourceTree = "<group>";
@@ -2103,26 +2102,19 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		829C95AE2127DABD00B4B05C /* Modle */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modle;
-			sourceTree = "<group>";
-		};
 		829C95AF2127DABD00B4B05C /* WYCSchool */ = {
 			isa = PBXGroup;
 			children = (
+				829C95B32127DABD00B4B05C /* SchollGeneralTableViewCell.h */,
+				829C95B62127DABD00B4B05C /* SchollGeneralTableViewCell.m */,
+				829C95BE2127DABD00B4B05C /* SchollGeneralTableViewCell.xib */,
+				829C95B52127DABD00B4B05C /* SchollSubViewController.h */,
 				829C95B02127DABD00B4B05C /* SchollSubViewController.m */,
 				829C95B12127DABD00B4B05C /* SchollSubViewController.xib */,
-				829C95B22127DABD00B4B05C /* SchoolHomePageViewController.xib */,
-				829C95B32127DABD00B4B05C /* SchollGeneralTableViewCell.h */,
-				829C95B42127DABD00B4B05C /* SchoolHomePageViewController.m */,
-				829C95B52127DABD00B4B05C /* SchollSubViewController.h */,
-				829C95B62127DABD00B4B05C /* SchollGeneralTableViewCell.m */,
-				829C95BC2127DABD00B4B05C /* SchoolHomePageViewController.h */,
 				829C95BD2127DABD00B4B05C /* School.xcassets */,
-				829C95BE2127DABD00B4B05C /* SchollGeneralTableViewCell.xib */,
+				829C95BC2127DABD00B4B05C /* SchoolHomePageViewController.h */,
+				829C95B42127DABD00B4B05C /* SchoolHomePageViewController.m */,
+				829C95B22127DABD00B4B05C /* SchoolHomePageViewController.xib */,
 				829C95BF2127DABD00B4B05C /* StuDormitory */,
 			);
 			path = WYCSchool;

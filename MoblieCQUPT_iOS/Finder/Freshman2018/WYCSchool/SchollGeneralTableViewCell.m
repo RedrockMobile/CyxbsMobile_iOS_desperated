@@ -7,7 +7,7 @@
 //
 
 #import "SchollGeneralTableViewCell.h"
-
+#import <UIImageView+WebCache.h>
 @implementation SchollGeneralTableViewCell
 
 
@@ -67,7 +67,7 @@
     
     [_RootView addSubview:_scrollView];
     
-    [self updatePageControlOnView];
+    //[self updatePageControlOnView];
     
     //设置Label内容
     
