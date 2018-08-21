@@ -15,6 +15,7 @@
 #import "DeliveryViewController.h"
 #import "DeliveryModel.h"
 #import "DeliveryTableViewCell.h"
+#import <MBProgressHUD.h>
 
 
 
@@ -32,6 +33,7 @@
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
     
+    
     [self loadData];
     self.title = @"快递收发";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
@@ -45,9 +47,14 @@
 }
 
 - (void)loadData{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载数据中...";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=快递收发&pagenum=1&pagesize=10";
+    NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/byindex?index=快递收发&pagenum=1&pagesize=10";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
@@ -59,6 +66,7 @@
             DeliveryModel *model = [DeliveryModel DeleModelWithDict:dic];
             [_dataArray addObject:model];
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.deliveryTab reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];

@@ -26,14 +26,18 @@
         
         self.bkgImg = [[UIImageView alloc] initWithFrame:CGRectMake(15*WIDTH, 15*HEIGHT,346*WIDTH,237*HEIGHT)];
         self.bkgImg.image = [UIImage imageNamed:@"圆角矩形"];
+        self.bkgImg.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.bkgImg.layer.shadowOffset = CGSizeMake(0, 0);
+        self.bkgImg.layer.shadowOpacity = 0.05;
+        self.bkgImg.layer.shadowRadius = 4.5;
         [self.contentView addSubview:self.bkgImg];
         
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(30*WIDTH, 213*HEIGHT, 316*WIDTH, 14*HEIGHT)];
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
+        self.titleLabel.font = [UIFont systemFontOfSize:14*HEIGHT];
         [self.contentView addSubview:self.titleLabel];
         
         self.ContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(30*WIDTH, 237*HEIGHT, 316*WIDTH, 0)];
-        self.ContentLabel.font = [UIFont systemFontOfSize:14];
+        self.ContentLabel.font = [UIFont systemFontOfSize:14*HEIGHT];
         self.ContentLabel.numberOfLines = 0;
         [self.contentView addSubview:self.ContentLabel];
         
@@ -74,7 +78,7 @@
     _Model = Model;
     self.titleLabel.text = self.Model.title;
     self.ContentLabel.text = self.Model.content;
-    CGFloat height = [BusTableViewCell getStringHeight:Model.content font:15];
+    CGFloat height = [BusTableViewCell getStringHeight:Model.content font:14*HEIGHT];
     self.ContentLabel.frame = CGRectMake(30*WIDTH, 237*HEIGHT, 319*WIDTH, height);
     self.bkgImg.frame = CGRectMake(15*WIDTH, 15*HEIGHT,346*WIDTH,237*HEIGHT+height);
     
@@ -104,7 +108,7 @@
 }
 
 + (CGFloat)cellHeight:(BusModel *)Model{
-    return [BusTableViewCell getStringHeight:Model.content font:14]+237*HEIGHT;
+    return [BusTableViewCell getStringHeight:Model.content font:14*HEIGHT]+252*HEIGHT;
 }
 
 -(void)didClickPage:(autoScrollView *)view atIndex:(NSInteger)index
@@ -112,6 +116,9 @@
     self.ScrollIndex = index;
     [self.delegate clickAtIndex:_Index andscriollViewIndex:index];
 }
+
+
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

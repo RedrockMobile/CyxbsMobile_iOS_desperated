@@ -28,7 +28,7 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
-@interface DLNecessityViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
+@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
@@ -47,7 +47,7 @@
 @property (assign, nonatomic)BOOL isEdit;  //是否编辑的flag
 @property (assign, nonatomic)BOOL isSelected;
 @property (assign, nonatomic)BOOL isFloat;//是否播放cell浮动的动效
-
+@property (assign, nonatomic)BOOL isShowAddBtn;
 
 @end
 
@@ -68,6 +68,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
+    
+    self.isShowAddBtn = YES;
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     self.fileBundel = [NSBundle mainBundle];
     self.filePath = [_fileBundel pathForResource:@"Necessity" ofType:@"plist"];
@@ -121,13 +123,13 @@
     self.navigationItem.rightBarButtonItem = right;
     
     
-    UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 70, 30)];
+    UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 130, 30)];
+    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
     titleLabel.text = @"入学必备";
     titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.font = [UIFont systemFontOfSize:17];
+    titleLabel.font = [UIFont systemFontOfSize:19];
     [titleView addSubview:titleLabel];
-    UIButton *detailBtn = [[UIButton alloc]initWithFrame:CGRectMake(75, 5, 20, 20)];
+    UIButton *detailBtn = [[UIButton alloc]initWithFrame:CGRectMake(85, 7, 16*WIDTH, 16*WIDTH)];
     [detailBtn setImage:[UIImage imageNamed:@"详细信息入口"] forState:UIControlStateNormal];
     [detailBtn addTarget: self action:@selector(didClickDetailBtn:) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview: detailBtn];
@@ -138,7 +140,7 @@
 - (void)getData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = @"http://47.106.33.112:8080/welcome2018/data/get/describe?index=入学必备";
+    NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/describe?index=入学必备";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     [manager GET:urlStr parameters:self.dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -263,7 +265,7 @@
             UITableViewCell *cell = [cells objectAtIndex:i];
             cell.layer.opacity = 0.7;
             cell.layer.transform = CATransform3DMakeTranslation(0, [[UIScreen mainScreen] bounds].size.height, 20);
-            NSTimeInterval totalTime = 1.0;
+            NSTimeInterval totalTime = 0.5;
             
             [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.65 initialSpringVelocity:1/0.65 options:UIViewAnimationOptionCurveEaseIn animations:^{
                 cell.layer.opacity = 1.0;
@@ -287,18 +289,22 @@
     if(!model.isReady){
         model.isReady = YES;
         [self.dataArray removeObjectAtIndex:index.row];
+        [self.FMtableView deleteRow:index.row inSection:0 withRowAnimation:UITableViewRowAnimationTop];
         [self.dataArray insertObject:model atIndex:0];
+        [self.FMtableView insertRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationTop];
         self.isFloat = YES;
     }
     else{
         model.isReady = NO;
         [self.dataArray removeObjectAtIndex:index.row];
+        [self.FMtableView deleteRow:index.row inSection:0 withRowAnimation:UITableViewRowAnimationBottom];
         [self.dataArray insertObject:model atIndex:count-1];
+        [self.FMtableView insertRow:self.dataArray.count-1 inSection:0 withRowAnimation:UITableViewRowAnimationBottom];
         self.isFloat = NO;
     }
-    [_FMtableView reloadData];
+//    [_FMtableView reloadData];
     [self StorageData:self.dataArray];
-    [self starAnimationWithTableView:_FMtableView];
+//    [self starAnimationWithTableView:_FMtableView];
     
 }
 
@@ -345,6 +351,7 @@
 
 //点击悬浮添加按钮
 - (void)ClickAddBtn:(UIButton *)button{
+    self.isShowAddBtn = NO;
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:animationDuration];
@@ -385,6 +392,7 @@
 
 //点击添加栏的添加按钮
 - (void)didClickAddBtn:(UIButton *)button{
+    self.isShowAddBtn = NO;
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:animationDuration];
@@ -392,8 +400,8 @@
     self.AddView.hidden = YES;
     [UIView commitAnimations];
     [self.AddView.addContent addTarget:self action:@selector(GetText:) forControlEvents:UIControlEventEditingDidEnd];
-    
     [self.AddView.addContent resignFirstResponder];
+    self.isShowAddBtn = YES;
 }
 
 #pragma - 输入监听
@@ -408,15 +416,30 @@
 }
 
 - (void)GetText:(UITextField *)textField{
-    
-    NSDictionary *dic = @{@"name":textField.text,
-                          @"content":@"",
-                          @"property":@"非必需"
-                          };
-    DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
-    [_dataArray addObject:model];
-    [self.FMtableView reloadData];
-    [self StorageData:_dataArray];
+    CGRect rect1 = [textField.text boundingRectWithSize:CGSizeMake(250*WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+    CGFloat height1 = ceil(rect1.size.height);
+    NSString *str = @"十四个字十四个字十四个字十四个字吗";
+    CGRect rect2 = [str boundingRectWithSize:CGSizeMake(250*WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+    CGFloat height2 = ceil(rect2.size.height);
+    if (height1 > height2) {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的待办字数太多了ψ(｀∇´)ψ" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else if (!textField.text.length){
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你没有输入任何待办哦(○o○)" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    else{
+        NSDictionary *dic = @{@"name":textField.text,
+                              @"content":@"",
+                              @"property":@"非必需"
+                              };
+        DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
+        model.isShowMoreBtn = NO;
+        [_dataArray addObject:model];
+        [self.FMtableView reloadData];
+        [self StorageData:_dataArray];
+    }
 }
 
 - (void)keyboardAction:(NSNotification*)sender{
@@ -428,6 +451,19 @@
     }
 }
 
+# pragma - 手势方法
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if (_isShowAddBtn) {
+        self.addBtn.hidden = YES;
+    }
+}
+
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (_isShowAddBtn) {
+        self.addBtn.hidden = NO;
+    }
+}
 
 
 
