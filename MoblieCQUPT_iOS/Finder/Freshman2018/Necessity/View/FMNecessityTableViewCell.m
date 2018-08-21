@@ -43,12 +43,12 @@
         UILabel *label = [[UILabel alloc]init];
         label.frame = CGRectMake(63*WIDTH, 33*HEIGHT, width-150, 16*HEIGHT);
         label.textColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.2000 alpha:1.0];
-        label.font = [UIFont systemFontOfSize:15*HEIGHT];
+        label.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:16*HEIGHT];
         [self.contentView addSubview: label];
         self.label = label;
         
         UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(63*WIDTH, 63*HEIGHT, 269*WIDTH, 0)];
-        detailLabel.font = [UIFont systemFontOfSize:14*HEIGHT];
+        detailLabel.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:14*HEIGHT];
         detailLabel.numberOfLines = 0;
         detailLabel.textColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.4000 alpha:1.0];
         [self.contentView addSubview:detailLabel];
@@ -139,7 +139,7 @@
     
     paraStyle.tailIndent = 0;
     
-    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSParagraphStyleAttributeName:paraStyle, NSKernAttributeName:@1.5f
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Regular" size:fontSize], NSParagraphStyleAttributeName:paraStyle, NSKernAttributeName:@1.5f
                           };
     CGRect rect = [string boundingRectWithSize:CGSizeMake(269*WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:dic context:nil];
     return ceil(rect.size.height);

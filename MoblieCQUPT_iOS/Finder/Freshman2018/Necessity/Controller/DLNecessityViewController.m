@@ -129,7 +129,7 @@
     titleLabel.textColor = [UIColor whiteColor];
     titleLabel.font = [UIFont systemFontOfSize:19];
     [titleView addSubview:titleLabel];
-    UIButton *detailBtn = [[UIButton alloc]initWithFrame:CGRectMake(85, 7, 16*WIDTH, 16*WIDTH)];
+    UIButton *detailBtn = [[UIButton alloc]initWithFrame:CGRectMake(85, 7.5, 15*WIDTH, 15*WIDTH)];
     [detailBtn setImage:[UIImage imageNamed:@"详细信息入口"] forState:UIControlStateNormal];
     [detailBtn addTarget: self action:@selector(didClickDetailBtn:) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview: detailBtn];
