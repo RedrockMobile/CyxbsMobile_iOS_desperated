@@ -2070,17 +2070,17 @@
 		829C95972127DABD00B4B05C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				829C95982127DABD00B4B05C /* MilitarytrainingTipsViewController.xib */,
-				829C95992127DABD00B4B05C /* MTVideo1.m */,
-				829C959A2127DABD00B4B05C /* MilitarytrainingViewController.h */,
 				829C959B2127DABD00B4B05C /* MilitarytrainingShowViewController.h */,
-				829C959C2127DABD00B4B05C /* MilitarytrainingTipsViewController.h */,
-				829C959D2127DABD00B4B05C /* MTVideo1.h */,
 				829C959E2127DABD00B4B05C /* MilitarytrainingShowViewController.m */,
-				829C959F2127DABD00B4B05C /* MilitarytrainingViewController.xib */,
-				829C95A02127DABD00B4B05C /* MilitarytrainingViewController.m */,
 				829C95A12127DABD00B4B05C /* MilitarytrainingShowViewController.xib */,
+				829C959C2127DABD00B4B05C /* MilitarytrainingTipsViewController.h */,
 				829C95A22127DABD00B4B05C /* MilitarytrainingTipsViewController.m */,
+				829C95982127DABD00B4B05C /* MilitarytrainingTipsViewController.xib */,
+				829C959A2127DABD00B4B05C /* MilitarytrainingViewController.h */,
+				829C95A02127DABD00B4B05C /* MilitarytrainingViewController.m */,
+				829C959F2127DABD00B4B05C /* MilitarytrainingViewController.xib */,
+				829C959D2127DABD00B4B05C /* MTVideo1.h */,
+				829C95992127DABD00B4B05C /* MTVideo1.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -2088,16 +2088,16 @@
 		829C95A32127DABD00B4B05C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				829C95A42127DABD00B4B05C /* ShowPicRootView.xib */,
-				829C95A52127DABD00B4B05C /* ShowVideoScroll.m */,
-				829C95A62127DABD00B4B05C /* ShowPicScroll.h */,
-				829C95A72127DABD00B4B05C /* ShowVideoRootView.m */,
-				829C95A82127DABD00B4B05C /* ShowPicRootView.m */,
-				829C95A92127DABD00B4B05C /* ShowVideoScroll.h */,
-				829C95AA2127DABD00B4B05C /* ShowVideoRootView.h */,
-				829C95AB2127DABD00B4B05C /* ShowPicScroll.m */,
 				829C95AC2127DABD00B4B05C /* ShowPicRootView.h */,
+				829C95A82127DABD00B4B05C /* ShowPicRootView.m */,
+				829C95A42127DABD00B4B05C /* ShowPicRootView.xib */,
+				829C95A62127DABD00B4B05C /* ShowPicScroll.h */,
+				829C95AB2127DABD00B4B05C /* ShowPicScroll.m */,
+				829C95AA2127DABD00B4B05C /* ShowVideoRootView.h */,
+				829C95A72127DABD00B4B05C /* ShowVideoRootView.m */,
 				829C95AD2127DABD00B4B05C /* ShowVideoRootView.xib */,
+				829C95A92127DABD00B4B05C /* ShowVideoScroll.h */,
+				829C95A52127DABD00B4B05C /* ShowVideoScroll.m */,
 			);
 			path = View;
 			sourceTree = "<group>";

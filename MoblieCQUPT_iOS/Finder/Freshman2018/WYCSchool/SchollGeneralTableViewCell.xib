@@ -53,9 +53,19 @@
                             <constraint firstAttribute="trailing" secondItem="pn1-48-xMd" secondAttribute="trailing" id="tOE-ir-kgo"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yr-Bm-cqB">
+                        <rect key="frame" x="0.0" y="306" width="346" height="15"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="qVd-gx-Hyt"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstItem="0yr-Bm-cqB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5qQ-RV-tBy"/>
+                    <constraint firstAttribute="trailing" secondItem="0yr-Bm-cqB" secondAttribute="trailing" id="Adq-b6-91P"/>
+                    <constraint firstAttribute="bottom" secondItem="0yr-Bm-cqB" secondAttribute="bottom" id="G8I-jO-W06"/>
                     <constraint firstAttribute="bottom" secondItem="WhD-8p-ydz" secondAttribute="bottom" constant="15" id="T4S-on-rbn"/>
                     <constraint firstItem="WhD-8p-ydz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Xlk-R9-lIj"/>
                     <constraint firstItem="WhD-8p-ydz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="scX-cZ-MA2"/>
@@ -64,6 +74,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="RootView" destination="WhD-8p-ydz" id="BLq-vl-wYC"/>
+                <outlet property="bottomBar" destination="0yr-Bm-cqB" id="tyg-xW-8ew"/>
                 <outlet property="contentLabel" destination="DAR-bZ-aG1" id="yI5-zq-hmQ"/>
                 <outlet property="contentLabelHeight" destination="U3y-Dp-WDT" id="fyX-d5-K3H"/>
                 <outlet property="nameLabel" destination="nQB-t1-g2p" id="aJY-be-167"/>

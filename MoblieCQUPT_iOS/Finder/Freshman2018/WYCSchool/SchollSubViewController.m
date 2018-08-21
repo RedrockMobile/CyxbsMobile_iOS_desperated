@@ -30,11 +30,12 @@
     [super viewDidLoad];
 
     if ([self.title isEqualToString:@"学生食堂"]) {
-        _url = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=学生食堂&pagenum=1&pagesize=8";
+        _url = @"http://wx.yyeke.com/welcome2018/data/get/byindex?index=学生食堂&pagenum=1&pagesize=8";
     }
 
     //设置背景色
     self.view.backgroundColor =  [UIColor colorWithHexString:@"f6f6f6"];
+    _constraintView.backgroundColor = [UIColor clearColor];
     _topHeight.constant = 0;
     _needReLoadTableView = YES;
     _Model = [[FreshmanModel alloc]init];
@@ -58,8 +59,10 @@
     _tableView = [self tableView];;
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = NO;
     _tableView.showsHorizontalScrollIndicator = NO;
+    _tableView.backgroundColor = [UIColor clearColor];
     _cellHeight = [[NSMutableArray alloc]init];
     [_tableView reloadData];
     

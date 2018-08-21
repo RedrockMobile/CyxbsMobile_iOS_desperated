@@ -11,7 +11,7 @@
 #import "SegmentView.h"
 #import "FreshmanModel.h"
 
-@interface StuDormitoryRootViewController ()<SegmentViewDelegate>
+@interface StuDormitoryRootViewController ()
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *topHignt;
 @property (strong, nonatomic) IBOutlet UIView *constraintView;
 @property (nonatomic, strong) FreshmanModel *Model;
@@ -37,25 +37,25 @@
     _Array = [NSMutableArray arrayWithCapacity:4];
     SchollSubViewController *vc1 = [[SchollSubViewController alloc]init];
     vc1.title = @"明理苑";
-    [vc1 setUrl:@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=明理苑"];
+    [vc1 setUrl:@"http://wx.yyeke.com/welcome2018/data/get/sushe?name=明理苑"];
     [self addChildViewController:vc1];
     _Array[0] = vc1;
 
     SchollSubViewController *vc2 = [[SchollSubViewController alloc]init];
     vc2.title = @"宁静苑";
-    [vc2 setUrl:@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=宁静苑"];
+    [vc2 setUrl:@"http://wx.yyeke.com/welcome2018/data/get/sushe?name=宁静苑"];
     [self addChildViewController:vc2];
     _Array[1] = vc2;
 
    SchollSubViewController *vc3 = [[SchollSubViewController alloc]init];
     vc3.title = @"兴业苑";
-     [vc3 setUrl:@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=兴业苑"];
+     [vc3 setUrl:@"http://wx.yyeke.com/welcome2018/data/get/sushe?name=兴业苑"];
     [self addChildViewController:vc3];
     _Array[2] = vc3;
 
     SchollSubViewController *vc4 = [[SchollSubViewController alloc]init];
     vc4.title = @"知行苑";
-     [vc4 setUrl:@"http://47.106.33.112:8080/welcome2018/data/get/sushe?name=知行苑"];
+     [vc4 setUrl:@"http://wx.yyeke.com/welcome2018/data/get/sushe?name=知行苑"];
     [self addChildViewController:vc4];
     _Array[3] = vc4;
 
@@ -64,7 +64,8 @@
     self.MainSegmentView.titleColor = [UIColor colorWithHexString:@"999999"];
     self.MainSegmentView.selectedTitleColor = [UIColor colorWithHexString:@"54acff"];
     [self.constraintView addSubview:self.MainSegmentView];
-    self.MainSegmentView.eventDelegate = self;
+    
+    
     //NSLog(@"MainSegmentView.currentIndex:%ld",(long)self.MainSegmentView.currentIndex);
     
     

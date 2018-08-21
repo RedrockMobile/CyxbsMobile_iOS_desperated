@@ -40,7 +40,7 @@
 
 
 -(void)addScrollViewWithArray:(NSArray *)dataArray{
-    ShowVideoScroll *videoscroll = [[ShowVideoScroll alloc] initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 160*(SCREENHEIGHT/667)) withDistanceForScroll:12.0f withGap:8.0f];
+    ShowVideoScroll *videoscroll = [[ShowVideoScroll alloc] initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 160*(SCREENHEIGHT/667)) withDistanceForScroll:20.0f*autoSizeScaleX withGap:20.0f*autoSizeScaleX];
     
     
     [videoscroll addScrollViewWithArray:dataArray];

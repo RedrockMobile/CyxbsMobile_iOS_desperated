@@ -29,7 +29,10 @@
     
     self.backgroundColor = [UIColor whiteColor];
     _RootView.backgroundColor = [UIColor clearColor];
-    
+    _bottomBar.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
+    //_bottomBar.layer.masksToBounds = YES;
+    // 设置圆角大小
+    //_bottomBar.layer.cornerRadius = 6.0 ;
     //添加scrollview
     
     _index = 0;
@@ -41,6 +44,10 @@
     _scrollView.scrollEnabled = YES;
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToWatch)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [self.scrollView addGestureRecognizer:tap];
     [_scrollView layoutIfNeeded];
     
     
@@ -71,7 +78,7 @@
     
     //设置Label内容
     
-    
+    [_scrollView layoutIfNeeded];
     [_nameLabel setFrame:CGRectMake(0, _scrollView.frame.size.height + 8*autoSizeScaleY, _RootView.frame.size.width, 14*(SCREENHEIGHT/667))];
     _nameLabel.text = [[NSString alloc]initWithFormat:@"%@",[dataDic objectForKey:@"name"]];
     _nameLabel.font = [UIFont adaptFontSize:16];
@@ -113,7 +120,7 @@
     
     
     _pageControl = [[UIPageControl alloc]init];
-    [_pageControl setFrame:CGRectMake(0, 164* autoSizeScaleY - 30*autoSizeScaleY, _scrollView.frame.size.width, 30*autoSizeScaleY)];
+    [_pageControl setFrame:CGRectMake(0, _scrollView.height - 30*autoSizeScaleY, _scrollView.frame.size.width, 30*autoSizeScaleY)];
     _pageControl.numberOfPages = _picUrl.count;
     _pageControl.currentPage = _index;
     _pageControl.hidesForSinglePage = YES;
@@ -142,4 +149,60 @@
     NSInteger i = _pageControl.currentPage;
     [_scrollView setContentOffset:CGPointMake(i*316*autoSizeScaleX, 0) animated:YES];
 }
+
+-(void)tapToWatch{
+    //初始化全屏view
+    
+    if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
+        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
+    }
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    view.backgroundColor = [UIColor blackColor];
+    //设置view的tag
+    view.tag = 999;
+    //添加手势
+    UITapGestureRecognizer *tapToBackGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToBack)];
+    [view addGestureRecognizer:tapToBackGesture];
+    //往全屏view上添加内容
+    CGFloat scrollViewHeight = SCREENWIDTH*0.5079;
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/2-scrollViewHeight/2, SCREENWIDTH, scrollViewHeight)];
+    scrollView.backgroundColor = [UIColor clearColor];
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.pagingEnabled = YES;
+    
+    for (int i = 0; i < _picUrl.count; i++) {
+        UIImageView *tmp = _scrollView.subviews[i];
+        UIImageView *imgView = [[UIImageView alloc]initWithImage:tmp.image];
+        [imgView setFrame:CGRectMake(i*scrollView.width, 0, scrollView.width, scrollView.height)];
+        [scrollView addSubview:imgView];
+    }
+    scrollView.contentSize = CGSizeMake(_picUrl.count*scrollView.width, 0);
+    
+    //NSLog(@"indexInWatch:%ld",(long)_index);
+    scrollView.contentOffset = CGPointMake((_index)*scrollView.width,0);
+    
+    [view addSubview:scrollView];
+    
+    //    [self.viewController.view addSubview:view];
+    //    [self shakeToShow:view];
+    //显示全屏view
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:view];
+    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    animation.duration = 0.3;
+    NSMutableArray *values = [NSMutableArray array];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+    animation.values = values;
+    [view.layer addAnimation:animation forKey:nil];
+    //[self shakeToShow:view];
+    
+}
+- (void)tapToBack {
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIView *view = [window viewWithTag:999];
+    [view removeFromSuperview];
+}
+
 @end

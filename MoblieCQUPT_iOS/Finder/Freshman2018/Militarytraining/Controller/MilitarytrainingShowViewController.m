@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"军训风采";
-   
+    self.hidesBottomBarWhenPushed = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showDataLoadFailure)
                                                  name:@"showDataLoadFailure" object:nil];
@@ -34,7 +34,7 @@
                                                  name:@"showDataLoadSuccess" object:nil];
    
     _showModel = [[FreshmanModel alloc]init];
-    [self.showModel networkLoadData:@"http://47.106.33.112:8080/welcome2018/data/get/junxun" title:@"show" ];
+    [self.showModel networkLoadData:@"http://wx.yyeke.com/welcome2018/data/get/junxun" title:@"show" ];
     
     self.picview.frame = CGRectMake(0, 15*(SCREENHEIGHT/667), SCREENWIDTH, 240*(SCREENHEIGHT/667));
     self.picview.backgroundColor = [UIColor whiteColor];

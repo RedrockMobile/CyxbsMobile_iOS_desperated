@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSArray *picUrl;
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *contentLabelHeight;
+@property (strong, nonatomic) IBOutlet UIView *bottomBar;
 
 -(void)initWithDic:(NSDictionary *)dataDic;
 @end
