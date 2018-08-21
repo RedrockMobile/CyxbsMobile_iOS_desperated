@@ -34,11 +34,9 @@
 - (void)getInformation{
     NSDictionary *parameter = @{
                                 @"index":@"附近银行",
-                                @"pagesize":@15,
-                                @"pagenum":@1
                                 };
     
-    NSString *URL = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *URL = @"http://wx.yyeke.com/welcome2018/data/describe/getamount";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

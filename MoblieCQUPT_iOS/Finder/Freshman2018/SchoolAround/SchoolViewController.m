@@ -2,8 +2,8 @@
 //  SchoolViewController.m
 //  迎新
 //
-//  Created by 周杰 on 2018/8/15.
-//  Copyright © 2018年 周杰. All rights reserved.
+//  Created by 陈大炮 on 2018/8/15.
+//  Copyright © 2018年 陈大炮. All rights reserved.
 //
 
 #import "SchoolViewController.h"
@@ -35,11 +35,10 @@
 - (void)getInformation{
     NSDictionary *parameter = @{
                                 @"index":@"校园环境",
-                                @"pagesize":@15,
-                                @"pagenum":@1
+                              
                                 };
     
-    NSString *URL = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *URL = @"http://wx.yyeke.com/welcome2018/data/describe/getamount";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -60,16 +59,16 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 4) {
-        return 300 *SCREEN_Width;
+        return 310 *SCREEN_Width;
     }
     else if(indexPath.section == 3){
-        return 330 *SCREEN_Width;
+        return 340 *SCREEN_Width;
     }else if (indexPath.section ==
               5){
-        return 330 *SCREEN_Width;
+        return 340 *SCREEN_Width;
     }
         else{
-        return  350 * SCREEN_Width;}
+        return  360 * SCREEN_Width;}
 }
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -86,6 +85,8 @@
     }
     cell.nameLabel.text = _arrData[indexPath.section][@"name"];
     cell.illstrateLabel.text = _arrData[indexPath.section][@"content"];
+    cell.rankButton.hidden = YES;
+    cell.priceLabel.hidden = YES;
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
@@ -100,7 +101,7 @@
     }];
     [cell.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-250 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-50 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-8 * SCREEN_Width);
     }];
     [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {

@@ -37,11 +37,9 @@
 - (void)getInformation{
     NSDictionary *parameter = @{
                                 @"index":@"附近景点",
-                                @"pagesize":@15,
-                                @"pagenum":@1
                                 };
     
-    NSString *URL = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *URL = @"http://wx.yyeke.com/welcome2018/data/describe/getamount";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -64,10 +62,10 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
-        return 370 * SCREEN_Width;
+        return 380 * SCREEN_Width;
     }
     else if (indexPath.section == 1){
-        return 370 * SCREEN_Width;
+        return 380 * SCREEN_Width;
     }
     else if (indexPath.section == 2){
         return 480 * SCREEN_Width;
@@ -93,6 +91,8 @@
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
+    cell.priceLabel.hidden = YES;
+    cell.rankButton.hidden = YES;
     
     [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.equalTo(cell.contentView).offset(15);
