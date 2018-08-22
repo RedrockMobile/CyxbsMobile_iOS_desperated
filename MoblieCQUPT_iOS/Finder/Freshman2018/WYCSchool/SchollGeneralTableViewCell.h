@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *contentLabelHeight;
 @property (strong, nonatomic) IBOutlet UIView *bottomBar;
+@property (strong, nonatomic) IBOutlet UIView *backView;
 
 -(void)initWithDic:(NSDictionary *)dataDic;
 @end

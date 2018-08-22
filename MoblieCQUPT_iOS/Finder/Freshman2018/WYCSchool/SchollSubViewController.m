@@ -83,11 +83,7 @@
 - (UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0 , _constraintView.width, _constraintView.height) style:UITableViewStylePlain];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        _tableView.showsVerticalScrollIndicator = NO;
-        _tableView.showsHorizontalScrollIndicator = NO;
+        
         UINib *nib = [UINib nibWithNibName:@"SchollGeneralTableViewCell" bundle:nil];
         [_tableView registerNib:nib forCellReuseIdentifier:@"test"];
         
@@ -116,15 +112,15 @@
         
         cell = [[[NSBundle mainBundle]loadNibNamed:@"SchollGeneralTableViewCell" owner:self options:nil]firstObject];
     }
+    //cell.width = tableView.width - 30*autoSizeScaleX;
     
-    cell.backgroundColor = [UIColor clearColor];
-    cell.contentView.backgroundColor = [UIColor clearColor];
     NSArray *arr = [_Model.dic objectForKey:@"array"];
     [cell initWithDic:arr[indexPath.row]];
     //NSLog(@"%f",cell.height);
     [_cellHeight addObject:[NSNumber numberWithFloat:cell.height]];
     [cell layoutSubviews];
     NSLog(@"indexPath.row %ld",(long)indexPath.row );
+//
 
     return cell;
 }
@@ -132,7 +128,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return [_cellHeight[indexPath.row] floatValue];
+    return [_cellHeight[indexPath.row] floatValue] ;
 }
 
 

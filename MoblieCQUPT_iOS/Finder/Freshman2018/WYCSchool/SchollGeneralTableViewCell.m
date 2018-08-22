@@ -27,12 +27,36 @@
     // 设置圆角大小
     self.layer.cornerRadius = 6.0 ;
     
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = [UIColor clearColor];
     _RootView.backgroundColor = [UIColor clearColor];
-    _bottomBar.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
-    //_bottomBar.layer.masksToBounds = YES;
+    //self.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
+    _backView.layer.masksToBounds = NO;
     // 设置圆角大小
-    //_bottomBar.layer.cornerRadius = 6.0 ;
+    _backView.layer.cornerRadius = 6.0 ;
+    //添加阴影
+//    _backView.layer.shadowOffset=CGSizeMake(0,0);//往x方向偏移0，y方向偏移0
+//
+//   _backView.layer.shadowOpacity=0.8;//设置阴影透明度
+//
+//    _backView.layer.shadowColor= [UIColor blackColor].CGColor;//设置阴影颜色
+//
+//    _backView.layer.shadowRadius=10;//设置阴影半径
+    _backView.layer.shadowOffset=CGSizeMake(0, 0);
+    
+    _backView.layer.shadowColor= [UIColor blackColor].CGColor;
+    
+    _backView.layer.shadowRadius= 3;
+    
+    _backView.layer.shadowOpacity= .1f;
+//
+//    CGRect shadowFrame = _backView.layer.bounds;
+//
+//    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
+//    _backView.layer.shadowPath = shadowPath;
+    
+    
+    
+    
     //添加scrollview
     
     _index = 0;
