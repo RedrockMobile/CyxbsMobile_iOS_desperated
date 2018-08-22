@@ -8,16 +8,12 @@
 typedef void(^callBack)(void);
 
 #import <UIKit/UIKit.h>
+#import "SegmentView.h"
 
-@interface ChatViewControl : UIViewController<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
-@property (retain,nonatomic)UISegmentedControl *segmentedControl;
-@property (retain,nonatomic)UITextField *textField;
-@property (retain,nonatomic)UIButton *button;
-@property (retain,nonatomic)UITableView *tableView;
-//保存学院/老乡名称
-@property (retain,nonatomic)NSMutableArray *arrayData01;
-//保存号码
-@property (retain,nonatomic)NSMutableArray *arrayData02;
+
+@interface ChatViewControl : UIViewController
+//@property (retain,nonatomic)UISegmentedControl *segmentedControl;
+@property (nonatomic,strong)SegmentView *MainSegmentView;
 
 @property (nonatomic, strong)callBack callBackHandle;
 
