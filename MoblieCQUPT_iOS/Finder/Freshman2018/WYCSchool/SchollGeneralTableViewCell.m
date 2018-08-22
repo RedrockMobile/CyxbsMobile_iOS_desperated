@@ -8,6 +8,7 @@
 
 #import "SchollGeneralTableViewCell.h"
 #import <UIImageView+WebCache.h>
+
 @implementation SchollGeneralTableViewCell
 
 
@@ -23,48 +24,23 @@
 }
 -(void)initWithDic:(NSDictionary *)dataDic{
     //自定义初始化
-    self.layer.masksToBounds = YES;
-    // 设置圆角大小
-    self.layer.cornerRadius = 6.0 ;
-    
-    self.backgroundColor = [UIColor clearColor];
-    _RootView.backgroundColor = [UIColor clearColor];
-    //self.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     _backView.layer.masksToBounds = NO;
     // 设置圆角大小
     _backView.layer.cornerRadius = 6.0 ;
     //添加阴影
-//    _backView.layer.shadowOffset=CGSizeMake(0,0);//往x方向偏移0，y方向偏移0
-//
-//   _backView.layer.shadowOpacity=0.8;//设置阴影透明度
-//
-//    _backView.layer.shadowColor= [UIColor blackColor].CGColor;//设置阴影颜色
-//
-//    _backView.layer.shadowRadius=10;//设置阴影半径
-    _backView.layer.shadowOffset=CGSizeMake(0, 0);
-    
-    _backView.layer.shadowColor= [UIColor blackColor].CGColor;
-    
-    _backView.layer.shadowRadius= 3;
-    
-    _backView.layer.shadowOpacity= .1f;
-//
-//    CGRect shadowFrame = _backView.layer.bounds;
-//
-//    CGPathRef shadowPath = [UIBezierPath bezierPathWithRect:shadowFrame].CGPath;
-//    _backView.layer.shadowPath = shadowPath;
-    
-    
-    
+    _backView.layer.shadowOffset=CGSizeMake(0, 0);//往x方向偏移0，y方向偏移0
+    _backView.layer.shadowColor= [UIColor blackColor].CGColor;//设置阴影颜色
+    _backView.layer.shadowRadius= 3;//设置阴影半径
+    _backView.layer.shadowOpacity= .1f;//设置阴影透明度
+
     
     //添加scrollview
-    
     _index = 0;
-    
+   
     _scrollView.layer.masksToBounds = YES;
     // 设置圆角大小
     _scrollView.layer.cornerRadius = 6.0 ;
-    [_scrollView setFrame:CGRectMake(0, 0, _RootView.frame.size.width, 164*autoSizeScaleY)];
+    //[_scrollView setFrame:CGRectMake(0, 0, _RootView.frame.size.width, 164*autoSizeScaleY)];
     _scrollView.scrollEnabled = YES;
     _scrollView.delegate = self;
     _scrollView.pagingEnabled = YES;
@@ -98,14 +74,12 @@
     
     [_RootView addSubview:_scrollView];
     
-    //[self updatePageControlOnView];
     
     //设置Label内容
     
-    [_scrollView layoutIfNeeded];
-    [_nameLabel setFrame:CGRectMake(0, _scrollView.frame.size.height + 8*autoSizeScaleY, _RootView.frame.size.width, 14*(SCREENHEIGHT/667))];
+    //[_nameLabel setFrame:CGRectMake(0, _scrollView.frame.size.height + 8*autoSizeScaleY, _RootView.frame.size.width, 14*(SCREENHEIGHT/667))];
     _nameLabel.text = [[NSString alloc]initWithFormat:@"%@",[dataDic objectForKey:@"name"]];
-    _nameLabel.font = [UIFont adaptFontSize:16];
+    _nameLabel.font = [UIFont adaptFontSize:15];
     [_RootView addSubview:_nameLabel];
     
     
@@ -117,40 +91,95 @@
     _contentLabel.lineBreakMode = NSLineBreakByWordWrapping;
     _contentLabel.text = [[NSString alloc]initWithFormat:@"%@",[dataDic objectForKey:@"content"]];
     _contentLabel.textColor = [UIColor darkGrayColor];
+    [_RootView addSubview:_contentLabel];
     NSInteger fontSize;
     if (SCREENWIDTH >=375) {
         fontSize = 14;
         _contentLabel.font = [UIFont adaptFontSize:fontSize];
     }else{
-        fontSize = 12;
+        fontSize = 13;
         _contentLabel.font = [UIFont adaptFontSize:fontSize];
     }
     
     [_RootView layoutIfNeeded];
     
     CGFloat contenLableHeight = [self calculateRowHeight:[[NSString alloc]initWithFormat:@"%@",[dataDic objectForKey:@"content"]] fontSize:fontSize];
-    
-    [self setSize:CGSizeMake(self.width, 240*autoSizeScaleY + contenLableHeight)];
-    
+    CGFloat scrollViewHeight = _RootView.width * 0.5189;
+    [self setSize:CGSizeMake(self.width, 113*autoSizeScaleY + scrollViewHeight + contenLableHeight)];
+
     [self layoutIfNeeded];
     [self layoutSubviews];
-    
-  
-    _contentLabelHeight.constant = contenLableHeight + 20*autoSizeScaleY;;
 
-    
-    [_RootView addSubview:_contentLabel];
+
+    //_contentLabelHeight.constant = contenLableHeight + 20*autoSizeScaleY;;
+
+   
     
     
     
     _pageControl = [[UIPageControl alloc]init];
-    [_pageControl setFrame:CGRectMake(0, _scrollView.height - 30*autoSizeScaleY, _scrollView.frame.size.width, 30*autoSizeScaleY)];
+    //[_pageControl setFrame:CGRectMake(0, _scrollView.height - 30*autoSizeScaleY, _scrollView.frame.size.width, 30*autoSizeScaleY)];
     _pageControl.numberOfPages = _picUrl.count;
     _pageControl.currentPage = _index;
     _pageControl.hidesForSinglePage = YES;
     
     [_pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventTouchUpInside];
+    
     [_RootView addSubview:_pageControl];
+    
+    
+    [_backView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_backView.superview.mas_left).offset(15*autoSizeScaleX);
+        make.right.equalTo(_backView.superview.mas_right).offset(-15*autoSizeScaleX);
+        make.top.equalTo(_backView.superview.mas_top).offset(15*autoSizeScaleY);
+        make.bottom.equalTo(_backView.superview.mas_bottom).offset(-15*autoSizeScaleY);
+        
+    }];
+    [_backView layoutIfNeeded];
+    
+    [_RootView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_RootView.superview.mas_left).offset(15*autoSizeScaleX);
+        make.right.equalTo(_RootView.superview.mas_right).offset(-15*autoSizeScaleX);
+        make.top.equalTo(_RootView.superview.mas_top).offset(15*autoSizeScaleY);
+        make.bottom.equalTo(_RootView.superview.mas_bottom).offset(-15*autoSizeScaleY);
+    }];
+    [_RootView layoutIfNeeded];
+   
+    [_scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_RootView.mas_left).offset(0);
+        make.right.equalTo(_RootView.mas_right).offset(0);
+        make.top.equalTo(_RootView.mas_top).offset(0);
+        make.height.mas_equalTo(scrollViewHeight);
+    }];
+    [_scrollView layoutIfNeeded];
+    
+    [_pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_scrollView.mas_left).offset(0);
+        make.right.equalTo(_scrollView.mas_right).offset(0);
+        make.bottom.equalTo(_scrollView.mas_bottom).offset(0);
+        make.height.mas_equalTo(30*autoSizeScaleY);
+    }];
+    [_pageControl layoutIfNeeded];
+    
+    [_nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_RootView.mas_left).offset(0);
+        make.right.equalTo(_RootView.mas_right).offset(0);
+        make.top.equalTo(_scrollView.mas_bottom).offset(18*autoSizeScaleY);
+        make.height.mas_equalTo(14*autoSizeScaleY);
+    }];
+    [_nameLabel layoutIfNeeded];
+    
+    [_contentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(_RootView.mas_left).offset(0);
+        make.right.equalTo(_RootView.mas_right).offset(0);
+        make.top.equalTo(_nameLabel.mas_bottom).offset(0);
+        make.bottom.equalTo(_RootView.mas_bottom).offset(0);
+        //make.height.mas_equalTo(contenLableHeight);
+    }];
+    [_contentLabel layoutIfNeeded];
+    
+    
+    
     
 }
 - (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize{

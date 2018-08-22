@@ -17,11 +17,11 @@
 //@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) FreshmanModel *Model;
 @property (strong, nonatomic) NSMutableArray *cellHeight;
-@property (nonatomic, strong)NSString *url;
-@property (nonatomic, strong)NSArray *urlArray;
-@property (nonatomic, strong)NSArray *dataArray;
-@property (nonatomic, strong)NSArray *titleArray;
-@property (assign, nonatomic)BOOL needReLoadTableView;
+@property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSArray *urlArray;
+@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray *titleArray;
+@property (assign, nonatomic) BOOL needReLoadTableView;
 @end
 
 @implementation SchollSubViewController

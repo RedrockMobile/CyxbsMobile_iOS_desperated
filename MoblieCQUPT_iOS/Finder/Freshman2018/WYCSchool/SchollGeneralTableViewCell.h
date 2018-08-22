@@ -11,6 +11,7 @@
 
 @interface SchollGeneralTableViewCell : UITableViewCell<UIScrollViewDelegate>
 
+
 @property (strong, nonatomic) IBOutlet UIView *RootView;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -19,9 +20,10 @@
 @property (assign, nonatomic) NSInteger index;
 @property (strong, nonatomic) NSArray *picUrl;
 @property (nonatomic, strong) UIPageControl *pageControl;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *contentLabelHeight;
-@property (strong, nonatomic) IBOutlet UIView *bottomBar;
+
 @property (strong, nonatomic) IBOutlet UIView *backView;
+
+
 
 -(void)initWithDic:(NSDictionary *)dataDic;
 @end

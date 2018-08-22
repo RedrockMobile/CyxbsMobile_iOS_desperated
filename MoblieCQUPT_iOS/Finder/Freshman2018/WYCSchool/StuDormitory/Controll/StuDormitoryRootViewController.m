@@ -28,7 +28,7 @@
     self.title = @"学生寝室";
     
     //设置背景色
-    self.view.backgroundColor =  [UIColor colorWithHexString:@"f6f6f6"];
+    self.view.backgroundColor =  [UIColor whiteColor];
     
     _constraintView.backgroundColor = [UIColor clearColor];
     
