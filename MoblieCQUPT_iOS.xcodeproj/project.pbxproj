@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28375C7B212AC96B00DCA738 /* Child_ChatViewControl01.m in Sources */ = {isa = PBXBuildFile; fileRef = 28375C7A212AC96B00DCA738 /* Child_ChatViewControl01.m */; };
+		28375C80212AD4A300DCA738 /* Child_ChatViewControl02.m in Sources */ = {isa = PBXBuildFile; fileRef = 28375C7F212AD4A300DCA738 /* Child_ChatViewControl02.m */; };
+		28375C82212B91A400DCA738 /* 字体管家胖丫儿体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28375C81212B912300DCA738 /* 字体管家胖丫儿体.ttf */; };
 		2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F22121CFE10009EB39 /* DLNecessityModel.m */; };
 		2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */; };
 		2FB222F92121D0380009EB39 /* addView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F82121D0380009EB39 /* addView.m */; };
@@ -691,6 +694,11 @@
 
 /* Begin PBXFileReference section */
 		0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		28375C79212AC96B00DCA738 /* Child_ChatViewControl01.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Child_ChatViewControl01.h; sourceTree = "<group>"; };
+		28375C7A212AC96B00DCA738 /* Child_ChatViewControl01.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Child_ChatViewControl01.m; sourceTree = "<group>"; };
+		28375C7E212AD4A300DCA738 /* Child_ChatViewControl02.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Child_ChatViewControl02.h; path = MoblieCQUPT_iOS/Finder/Freshman2018/ChatOnLine/HometownGroup/Child_ChatViewControl02.h; sourceTree = SOURCE_ROOT; };
+		28375C7F212AD4A300DCA738 /* Child_ChatViewControl02.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Child_ChatViewControl02.m; path = MoblieCQUPT_iOS/Finder/Freshman2018/ChatOnLine/HometownGroup/Child_ChatViewControl02.m; sourceTree = SOURCE_ROOT; };
+		28375C81212B912300DCA738 /* 字体管家胖丫儿体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "字体管家胖丫儿体.ttf"; sourceTree = "<group>"; };
 		2FB222F12121CFE10009EB39 /* DLNecessityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLNecessityModel.h; sourceTree = "<group>"; };
 		2FB222F22121CFE10009EB39 /* DLNecessityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNecessityModel.m; sourceTree = "<group>"; };
 		2FB222F42121D0240009EB39 /* FMNecessityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMNecessityTableViewCell.h; sourceTree = "<group>"; };
@@ -1680,6 +1688,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28375C7C212AD40000DCA738 /* SchoolGroup */ = {
+			isa = PBXGroup;
+			children = (
+				28375C79212AC96B00DCA738 /* Child_ChatViewControl01.h */,
+				28375C7A212AC96B00DCA738 /* Child_ChatViewControl01.m */,
+			);
+			path = SchoolGroup;
+			sourceTree = "<group>";
+		};
+		28375C7D212AD42D00DCA738 /* HometownGroup */ = {
+			isa = PBXGroup;
+			children = (
+				28375C7E212AD4A300DCA738 /* Child_ChatViewControl02.h */,
+				28375C7F212AD4A300DCA738 /* Child_ChatViewControl02.m */,
+			);
+			path = HometownGroup;
+			sourceTree = "<group>";
+		};
 		2FB222E72121CF020009EB39 /* Necessity */ = {
 			isa = PBXGroup;
 			children = (
@@ -2033,6 +2059,8 @@
 		829C95832127D91F00B4B05C /* ChatOnLine */ = {
 			isa = PBXGroup;
 			children = (
+				28375C7D212AD42D00DCA738 /* HometownGroup */,
+				28375C7C212AD40000DCA738 /* SchoolGroup */,
 				829C95852127D91F00B4B05C /* ChatViewControl.h */,
 				829C95842127D91F00B4B05C /* ChatViewControl.m */,
 			);
@@ -2042,6 +2070,7 @@
 		829C95872127D91F00B4B05C /* ReportWaterfall */ = {
 			isa = PBXGroup;
 			children = (
+				28375C81212B912300DCA738 /* 字体管家胖丫儿体.ttf */,
 				829C95882127D91F00B4B05C /* ReportWaterfallController.h */,
 				829C95892127D91F00B4B05C /* ReportWaterfallController.m */,
 			);
@@ -3877,6 +3906,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28375C82212B91A400DCA738 /* 字体管家胖丫儿体.ttf in Resources */,
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
@@ -4411,6 +4441,7 @@
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
 				829C969F2127DCE000B4B05C /* SYCActivityTableViewController.m in Sources */,
 				829C95912127D92000B4B05C /* ReportWaterfallController.m in Sources */,
+				28375C7B212AC96B00DCA738 /* Child_ChatViewControl01.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
 				F2A43ECD1F74FEC200D1B2BD /* LZPersonSelectViewController.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
@@ -4512,6 +4543,7 @@
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
+				28375C80212AD4A300DCA738 /* Child_ChatViewControl02.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */,
