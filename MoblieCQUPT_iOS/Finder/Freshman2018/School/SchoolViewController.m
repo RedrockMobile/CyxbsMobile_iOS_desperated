@@ -35,11 +35,12 @@
 - (void)getInformation{
     NSDictionary *parameter = @{
                                 @"index":@"校园环境",
-                                @"pagesize":@15,
-                                @"pagenum":@1
+                                @"pagenum":@"1",
+                                @"pagesize":@"7"
+                             
                                 };
     
-    NSString *URL = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *URL = @"http://wx.yyeke.com/welcome2018/data/get/byindex";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -80,6 +81,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentify = @"cellOne";
       static  NSString *pictireString = @"http://47.106.33.112:8080/welcome2018";
+  
+    
     FoodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"FoodTableViewCell" owner:self options:nil]firstObject];
@@ -89,6 +92,10 @@
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
+    
+    cell.imgView.layer.cornerRadius = 6;
+     cell.imgView.layer.masksToBounds = YES;
+    
 //    cell.imgView.contentMode = UIViewContentModeScaleAspectFill;
     [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -108,6 +115,13 @@
         make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.mas_bottom).offset(-10 * SCREEN_Width);
     }];
+    
+    cell.priceLabel.hidden = YES;
+    cell.rankButton.hidden = YES;
+    
+    
+    cell.layer.cornerRadius = 6;
+    cell.layer.masksToBounds = YES;
     
     return cell;
 }

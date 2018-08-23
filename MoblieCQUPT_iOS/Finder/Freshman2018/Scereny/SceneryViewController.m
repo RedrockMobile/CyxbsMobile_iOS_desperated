@@ -39,11 +39,11 @@
 - (void)getInformation{
     NSDictionary *parameter = @{
                                 @"index":@"附近景点",
-                                @"pagesize":@15,
-                                @"pagenum":@1
+                                @"pagenum":@"1",
+                                @"pagesize":@"10"
                                 };
     
-    NSString *URL = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *URL = @"http://wx.yyeke.com/welcome2018/data/get/byindex";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -95,12 +95,16 @@
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
+    cell.imgView.layer.cornerRadius = 6;
+    cell.imgView.layer.masksToBounds = YES;
+    cell.priceLabel.hidden = YES;
+    cell.rankButton.hidden = YES;
     
     [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(cell.contentView).offset(15);
-        make.right.equalTo(cell.contentView).offset(-15);
+        make.left.top.equalTo(cell.contentView).offset(15 * SCREEN_Width);
+        make.right.equalTo(cell.contentView).offset(-15 * SCREEN_Width);
 
-        make.bottom.equalTo(cell.nameLabel.mas_top).offset(-10);
+        make.bottom.equalTo(cell.nameLabel.mas_top).offset(-18 * SCREEN_Width);
         
 //        make.bottom.equalTo(cell.illstrateLabel.mas_top).offset(-43);
 //        make.left.mas_equalTo(cell.mas_left).offset(15);
@@ -113,7 +117,7 @@
 //        make.left.mas_equalTo(cell.mas_left).offset(15);
 //        make.right.mas_equalTo(cell.mas_right).offset(-250);
 //        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-8);
-        make.left.equalTo(cell.contentView).offset(15);
+        make.left.equalTo(cell.contentView).offset(15 * SCREEN_Width);
         make.right.equalTo(cell.contentView).offset(-15);
         make.bottom.equalTo(cell.illstrateLabel.mas_top).offset(-8)
         ;    }];
@@ -125,6 +129,9 @@
 //        make.left.mas_equalTo(cell.mas_left).offset(15);
 //        make.bottom.mas_equalTo(cell.mas_bottom).offset(-19);
     }];
+    
+    cell.layer.cornerRadius = 6;
+    cell.layer.masksToBounds = YES;
     
     return cell;
     
