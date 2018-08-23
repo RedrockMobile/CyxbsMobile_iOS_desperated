@@ -18,6 +18,7 @@
         self.detail = dic[@"content"];
         self.property = dic[@"property"];
         self.isShowMore = NO;
+        self.isShowMoreBtn = YES;
     }
     return self;
 }

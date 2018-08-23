@@ -17,6 +17,7 @@
 @property (nonatomic, assign)BOOL isShowMore;
 @property (nonatomic, assign)BOOL isReady;
 @property (nonatomic, assign)BOOL isSelected;
+@property (nonatomic, assign)BOOL isShowMoreBtn;
 
 - (instancetype)initWithDic:(NSDictionary*)dic;
 + (instancetype)DLNecessityModelWithDict:(NSDictionary *)dict;

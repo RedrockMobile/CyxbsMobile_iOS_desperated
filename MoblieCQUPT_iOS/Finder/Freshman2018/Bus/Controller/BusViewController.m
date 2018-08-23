@@ -50,9 +50,14 @@
 
 
 - (void)loadData{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载数据中...";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = @"http://47.106.33.112:8080/welcome2018/data/get/byindex?index=公交线路&pagenum=1&pagesize=10";
+    NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/byindex?index=公交线路&pagenum=1&pagesize=10";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
@@ -64,6 +69,7 @@
             BusModel *model = [BusModel BusAndDeleModelWithDict:dic];
             [_dataArray addObject:model];
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self.BusTab reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];

@@ -20,6 +20,10 @@
     if(self = [super initWithStyle:style reuseIdentifier: reuseIdentifier]){
         self.bkgImage = [[UIImageView alloc]initWithFrame:CGRectMake(15*WIDTH, 15*HEIGHT, 346*WIDTH, 89*HEIGHT)];
         self.bkgImage.image = [UIImage imageNamed:@"白底"];
+        self.bkgImage.layer.shadowColor = [UIColor blackColor].CGColor;
+        self.bkgImage.layer.shadowOffset = CGSizeMake(0, 0);
+        self.bkgImage.layer.shadowOpacity = 0.05;
+        self.bkgImage.layer.shadowRadius = 4.5;
         [self.contentView addSubview:self.bkgImage];
         
         
@@ -33,11 +37,12 @@
         [self.contentView addSubview:self.image];
         
         self.titleLab = [[UILabel alloc]initWithFrame:CGRectMake(147*WIDTH, 31*HEIGHT, 195*WIDTH, 14*HEIGHT)];
-        self.titleLab.font = [UIFont systemFontOfSize:15];
+        self.titleLab.font = [UIFont systemFontOfSize:15*HEIGHT];
         [self.contentView addSubview:self.titleLab];
         
         self.contentLab = [[UILabel alloc] initWithFrame:CGRectMake(146*WIDTH, 51*HEIGHT, 195*WIDTH, 32*HEIGHT)];
-        self.contentLab.font = [UIFont systemFontOfSize:13];
+        self.contentLab.font = [UIFont systemFontOfSize:13*HEIGHT];
+
         self.contentLab.numberOfLines = 2;
         [self.contentView addSubview:self.contentLab];
     }
@@ -70,12 +75,14 @@
 }
 
 + (CGFloat)cellHeight:(DeliveryModel *)Model{
-    return 89*HEIGHT;
+    return 104*HEIGHT;
 }
 
 - (void)didClickImage{
     [self.delegate clickAtIndex:_Index];
 }
+
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];
