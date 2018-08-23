@@ -49,7 +49,7 @@
     _topHight.constant = HEADERHEIGHT;
     _SchoolRootView.backgroundColor =  [UIColor colorWithHexString:@"f6f6f6"];
     self.btnHight.constant = 129*(SCREENHEIGHT/667);
-    self.btnWidth.constant = 113*(SCREENWIDTH/375);
+    self.btnWidth.constant = 114*(SCREENWIDTH/375);
 
 
     [self.view addSubview:_SchoolRootView];

@@ -38,10 +38,10 @@
 - (void)getInformation{
     NSDictionary *paramter = @{
                                @"index":@"周边美食",
-                               @"pagesize":@11,
-                               @"pagenum":@1
+                               @"pagenum":@"1",
+                               @"pagesize":@"10"
                                };
-    NSString *url = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *url = @"http://wx.yyeke.com/welcome2018/data/get/byindex";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:url parameters:paramter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
@@ -58,7 +58,7 @@
         [_tableView removeFromSuperview];
     }];
     
-    
+
 }
 
 
@@ -70,12 +70,17 @@
     UILabel * label = [[UILabel alloc]init];
      label.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_Width, 48 *SCREEN_Width);
     label.textColor = [UIColor blackColor];
-    NSString *str = @"最受好评的top5家美食";
-    label.backgroundColor = [UIColor blueColor];
+    NSString *str = @"   👍最受好评的top5家美食";
+    label.backgroundColor = [UIColor whiteColor];
     label.text = str;
+     NSLog(@"%@",label.text);
+    UIView *viewLabel = (UIView *)label;
+    [self.view addSubview:viewLabel];
     [self.view addSubview:self.tableView];
+     self.automaticallyAdjustsScrollViewInsets = NO;
+    
     [self.view bringSubviewToFront:label];
-      [self.view addSubview:label];
+//      [self.view addSubview:label];
 
 }
 
@@ -113,33 +118,37 @@
     cell.rankButton.titleLabel.text = rankStrng;
     NSString *priceString = [NSString stringWithFormat:@"￥ %@ （人）",_arrData[indexPath.section][@"property"]];
     cell.priceLabel.text = priceString;
+     cell.priceLabel.textColor = [UIColor colorWithRed:255/255.0 green:121/255.0 blue:121/255.0 alpha:1];
     [cell.contentView bringSubviewToFront:cell.rankButton];
     
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
+    
+    cell.imgView.layer.cornerRadius = 6;
+    cell.imgView.layer.masksToBounds = YES;
 
     [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(cell.mas_left).offset(0 * SCREEN_Width);
         make.top.mas_equalTo(cell.mas_top).offset(10 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-10 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-10 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.priceLabel.mas_top).offset(-10 * SCREEN_Width);
    
     }];
     [cell.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(20 * SCREEN_Width);
         make.right.mas_equalTo(cell.mas_right).offset(-200 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
         
     }];
     [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(cell.mas_right).offset(-30 * SCREEN_Width);
-        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-18 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(20 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.mas_bottom).offset(-5 * SCREEN_Width);
     }];
     [cell.rankButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(cell.mas_left).offset(290* SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-30* SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(270* SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-50* SCREEN_Width);
         make.height.mas_equalTo(35* SCREEN_Width);
     }];
     [cell.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -148,7 +157,15 @@
         make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
     }];
     
+    [cell.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(cell.mas_left).offset(240 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-20 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
+    }];
     
+    
+    cell.layer.cornerRadius = 6;
+    cell.layer.masksToBounds = YES;
     
     return cell;
 }

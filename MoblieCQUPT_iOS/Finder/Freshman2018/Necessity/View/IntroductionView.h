@@ -13,4 +13,6 @@
 @property (nonatomic, strong) UIButton *btn;
 @property (nonatomic, strong) UILabel *lab1;
 @property (nonatomic, strong) UILabel *lab2;
+
+@property (nonatomic, strong) NSDictionary *dic;
 @end

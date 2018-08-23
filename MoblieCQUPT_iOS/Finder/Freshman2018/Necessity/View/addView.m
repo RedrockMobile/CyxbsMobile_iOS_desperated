@@ -25,7 +25,7 @@
         
         UITextField *addContent = [[UITextField alloc]initWithFrame:CGRectMake(15, 10, width-135, 40)];
         addContent.borderStyle = UITextBorderStyleRoundedRect;
-        addContent.placeholder = @"请输入待办事项";
+        addContent.placeholder = @"请输入待办事项(14字以内)";
         [self addSubview:addContent];
         self.addContent = addContent;
     }

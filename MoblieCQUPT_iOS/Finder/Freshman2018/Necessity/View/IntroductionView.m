@@ -21,7 +21,8 @@
         lab2.text = @"1.文本框右侧【箭头】查看每一项任务具体详情。\n2.右上角的【编辑】，通过勾选进行选择性删除（未标识可删除圆圈的则为报道必需）。\n3.点击左侧【空方框】勾选该项即为完成，再次单击即可恢复。\n4.右下角【加号】图样可自定义添加新待办。";
         lab2.textColor = [UIColor darkGrayColor];
         lab2.numberOfLines = 0;
-        CGRect rect = [lab2.text boundingRectWithSize:CGSizeMake(width-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont fontWithName:@"PingFang-SC-Medium" size:14]} context:nil];
+        [self setLabelSpace:lab2 withValue:lab2.text withFont:14*HEIGHT];
+        CGRect rect = [lab2.text boundingRectWithSize:CGSizeMake(width-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:self.dic context:nil];
         lab2.frame = CGRectMake(33*WIDTH, 63*HEIGHT, 253*WIDTH, ceil(rect.size.height));
         
         UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
@@ -34,7 +35,7 @@
         self.btn = btn;
         
         UILabel *lab1 = [[UILabel alloc]initWithFrame:CGRectMake(124*WIDTH, 30*HEIGHT, 66*WIDTH, 16*HEIGHT)];
-        lab1.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:16];
+        lab1.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:16*HEIGHT];
         lab1.text = @"功能介绍";
         lab1.textColor = [UIColor darkGrayColor];
         [self addSubview:lab1];
@@ -46,6 +47,39 @@
     }
     self.backgroundColor = [UIColor clearColor];
     return self;
+}
+
+#pragma  - 设置label行间距
+-(void)setLabelSpace:(UILabel*)label withValue:(NSString*)str withFont:(CGFloat)fontSize {
+    
+    NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
+    
+    paraStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    
+    paraStyle.alignment = NSTextAlignmentLeft;
+    
+    paraStyle.lineSpacing = 4.0; //设置行间距
+    
+    paraStyle.hyphenationFactor = 1.0;
+    
+    paraStyle.firstLineHeadIndent = 0.0;
+    
+    paraStyle.paragraphSpacingBefore = 0.0;
+    
+    paraStyle.headIndent = 0;
+    
+    paraStyle.tailIndent = 0;
+    
+    //设置字间距 NSKernAttributeName:@1.5f
+    
+    self.dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSParagraphStyleAttributeName:paraStyle, NSKernAttributeName:@1.5f
+                          };
+    
+    
+    NSAttributedString *attributeStr = [[NSAttributedString alloc] initWithString:str attributes:self.dic];
+    
+    label.attributedText = attributeStr;
+    
 }
 /*
 // Only override drawRect: if you perform custom drawing.
