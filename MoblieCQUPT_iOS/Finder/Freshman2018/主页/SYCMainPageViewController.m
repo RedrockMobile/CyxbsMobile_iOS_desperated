@@ -315,23 +315,32 @@
     NSUInteger currentStep = self.mainPageModel.currentStep;
     switch (currentStep) {
         case 2:
+            [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备2"] forState:UIControlStateNormal];
             [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.xyglBtn];
+            [self.xyglBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.xyglBtn setTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 3:
             [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.xsjlBtn];
+            [self.xsjlBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.xsjlBtn setTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 4:
             [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.bdlcBtn];
+            [self.bdlcBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.bdlcBtn setTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 5:
             [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.wxdnsBtn];
+            [self.wxdnsBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.wxdnsBtn setTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         default:

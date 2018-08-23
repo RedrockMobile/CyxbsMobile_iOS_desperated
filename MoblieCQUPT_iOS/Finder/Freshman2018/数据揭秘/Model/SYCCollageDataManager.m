@@ -41,7 +41,7 @@ static SYCCollageDataManager *sharedInstance = nil;
 
 - (void)getAllData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET:@"http://47.106.33.112:8080/welcome2018/search/school/getname" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:@"http://wx.yyeke.com/welcome2018/search/school/getname" parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.nameList = [NSDictionary dictionaryWithDictionary:responseObject];
         [self getCollageData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -59,7 +59,7 @@ static SYCCollageDataManager *sharedInstance = nil;
         manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
         dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         
-        [manager GET:@"http://47.106.33.112:8080/welcome2018/search/school/1" parameters:@{@"name":name} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager GET:@"http://wx.yyeke.com/welcome2018/search/school/1" parameters:@{@"name":name} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             sexRatio = [NSDictionary dictionaryWithDictionary:responseObject];
             
             dispatch_semaphore_signal(semaphore);
@@ -71,7 +71,7 @@ static SYCCollageDataManager *sharedInstance = nil;
         
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         
-        [manager GET:@"http://47.106.33.112:8080/welcome2018/search/school/2" parameters:@{@"name":name} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [manager GET:@"http://wx.yyeke.com/welcome2018/search/school/2" parameters:@{@"name":name} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             subjects = [[NSDictionary dictionaryWithDictionary:responseObject] objectForKey:@"array"];
             dispatch_semaphore_signal(semaphore);
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
