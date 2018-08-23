@@ -53,21 +53,22 @@
     
     self.columnView = [[AAChartView alloc] initWithFrame:CGRectMake((columnViewBackgroudWidth - columnViewWidth) / 2.0, columnViewBackgroudHeight * 0.1, columnViewWidth, columnViewHeight)];
     [columnViewBackgroud addSubview:self.columnView];
-    NSNumber *data1 = [NSNumber numberWithDouble:[[self.data.subjects[0] objectForKey:@"below_amount"] doubleValue] / 1000.0];
-    NSNumber *data2 = [NSNumber numberWithDouble:[[self.data.subjects[1] objectForKey:@"below_amount"] doubleValue] / 1000.0];
-    NSNumber *data3 = [NSNumber numberWithDouble:[[self.data.subjects[2] objectForKey:@"below_amount"] doubleValue] / 1000.0];
+    NSNumber *data1 = [NSNumber numberWithDouble:[[self.data.subjects[0] objectForKey:@"below_amount"] doubleValue] / 10.0];
+    NSNumber *data2 = [NSNumber numberWithDouble:[[self.data.subjects[1] objectForKey:@"below_amount"] doubleValue] / 10.0];
+    NSNumber *data3 = [NSNumber numberWithDouble:[[self.data.subjects[2] objectForKey:@"below_amount"] doubleValue] / 10.0];
     
     self.columnModel = AAObject(AAChartModel).chartTypeSet(AAChartTypeColumn)//设置图表的类型
     .titleSet(@"")
     .titleFontSizeSet(@20.0)
     .animationTypeSet(AAChartAnimationEaseInOutCubic)
     .animationDurationSet(@1200)
-    .dataLabelEnabledSet(YES)
+    .dataLabelEnabledSet(NO)
     .dataLabelFontSizeSet(@12)
-    .yAxisTitleSet(@"")
+    .yAxisTitleSet(@"挂科数 / 每百人")
     .legendEnabledSet(NO)
-    .colorsThemeSet(@[@"#abd2ff", @"#ffabd7"])
+    .colorsThemeSet(@[@"#54acff", @"#ff86c5",])
     .categoriesSet(@[[self.data.subjects[0] objectForKey:@"subject_name"], [self.data.subjects[1] objectForKey:@"subject_name"], [self.data.subjects[2] objectForKey:@"subject_name"]])
+    .tooltipValueSuffixSet(@"%")
     .seriesSet(@[
             AAObject(AASeriesElement)
                 .nameSet(@"挂科率")
