@@ -8,8 +8,9 @@
 
 #import "BaseViewController.h"
 #import "SYCCollageModel.h"
+#import "SYCSegmentView.h"
 
-@interface SYCDataAnaylseViewController : BaseViewController
+@interface SYCDataAnaylseViewController : BaseViewController <SYCSegmentViewDelegate>
 
 @property (nonatomic, strong) SYCCollageModel *data;
 

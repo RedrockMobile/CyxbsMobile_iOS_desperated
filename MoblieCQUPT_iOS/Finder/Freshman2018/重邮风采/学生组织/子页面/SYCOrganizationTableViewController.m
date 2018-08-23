@@ -29,6 +29,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
     self.isShowDetail = NO;
+    [self.tableView setContentInset:UIEdgeInsetsMake(-SCREENHEIGHT * 0.01, 0, 0, 0)];
 }
 
 - (void)didReceiveMemoryWarning {

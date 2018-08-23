@@ -8,7 +8,7 @@
 
 #import "SYCOrganizationViewController.h"
 #import "SYCOrganizationTableViewController.h"
-#import "SegmentView.h"
+#import "SYCSegmentView.h"
 
 @interface SYCOrganizationViewController ()
 
@@ -56,8 +56,10 @@
     kxVC.title = @"校科协";
     kxVC.index = 8;
     
+    
     NSArray *organizationsArray = @[hywxVC, twbgsVC, twxcbVC, twzzbVC, xxshVC, dxsystVC, qxVC, slVC, kxVC];
-    SegmentView *organizationsSegmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) andControllers:organizationsArray];
+    SYCSegmentView *organizationsSegmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) andControllers:organizationsArray andType:SYCSegmentViewTypeButton];
+    
     [self.view addSubview:organizationsSegmentView];
 }
 

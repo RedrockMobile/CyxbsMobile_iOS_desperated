@@ -33,6 +33,9 @@
     backgroundView.layer.cornerRadius = 8.0;
     [self.contentView addSubview:backgroundView];
     self.contentView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+    backgroundView.layer.shadowOffset = CGSizeMake(2, 5);
+    backgroundView.layer.shadowOpacity = 0.1;
+    backgroundView.layer.shadowColor = [UIColor grayColor].CGColor;
     
     CGFloat imageViewWidth = SCREENWIDTH * 0.9;
     CGFloat imageViewHeight = imageViewWidth * 0.5625;

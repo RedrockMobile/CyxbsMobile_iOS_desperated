@@ -12,6 +12,9 @@
 
 @interface SYCSubjectViewController ()
 
+@property (nonatomic, strong)AAChartView *columnView;
+@property (nonatomic, strong)AAChartModel *columnModel;
+
 @end
 
 @implementation SYCSubjectViewController
@@ -31,6 +34,9 @@
     columnViewBackgroud.backgroundColor = [UIColor whiteColor];
     columnViewBackgroud.layer.cornerRadius = 16;
     columnViewBackgroud.layer.masksToBounds = YES;
+    columnViewBackgroud.layer.shadowOffset = CGSizeMake(2, 5);
+    columnViewBackgroud.layer.shadowOpacity = 0.1;
+    columnViewBackgroud.layer.shadowColor = [UIColor grayColor].CGColor;
     [self.view addSubview:columnViewBackgroud];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(columnViewBackgroudWidth * 0.07, columnViewBackgroudHeight * 0.02, columnViewBackgroudWidth, columnViewBackgroudHeight * 0.08)];
@@ -45,10 +51,10 @@
     labelImage.layer.masksToBounds = YES;
     [columnViewBackgroud addSubview:labelImage];
     
-    AAChartView *columnView = [[AAChartView alloc] initWithFrame:CGRectMake((columnViewBackgroudWidth - columnViewWidth) / 2.0, columnViewBackgroudHeight * 0.1, columnViewWidth, columnViewHeight)];
-    [columnViewBackgroud addSubview:columnView];
+    self.columnView = [[AAChartView alloc] initWithFrame:CGRectMake((columnViewBackgroudWidth - columnViewWidth) / 2.0, columnViewBackgroudHeight * 0.1, columnViewWidth, columnViewHeight)];
+    [columnViewBackgroud addSubview:self.columnView];
     
-    AAChartModel *columnModel = AAObject(AAChartModel).chartTypeSet(AAChartTypeColumn)//设置图表的类型
+    self.columnModel = AAObject(AAChartModel).chartTypeSet(AAChartTypeColumn)//设置图表的类型
     .titleSet(@"")
     .titleFontSizeSet(@20.0)
     .animationTypeSet(AAChartAnimationEaseInOutCubic)
@@ -63,7 +69,7 @@
                 .nameSet(@"挂科人数")
                 .dataSet(@[[self.data.subjects[0] objectForKey:@"below_amount"], [self.data.subjects[1] objectForKey:@"below_amount"], [self.data.subjects[2] objectForKey:@"below_amount"]]),
                 ]);
-    [columnView aa_drawChartWithChartModel:columnModel];
+    [self.columnView aa_drawChartWithChartModel:self.columnModel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +77,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)reflesh{
+    [self.columnView aa_refreshChartWithChartModel:self.columnModel];
+}
 /*
 #pragma mark - Navigation
 
@@ -80,5 +89,6 @@
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

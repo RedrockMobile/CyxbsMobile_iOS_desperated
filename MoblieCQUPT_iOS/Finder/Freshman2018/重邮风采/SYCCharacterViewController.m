@@ -9,7 +9,7 @@
 #import "SYCCharacterViewController.h"
 #import "SYCActivityTableViewController.h"
 #import "SYCOrganizationTableViewController.h"
-#import "SegmentView.h"
+#import "SYCSegmentView.h"
 #import "SYCOrganizationViewController.h"
 #import "SYCActivityManager.h"
 #import "SYCOrganizationManager.h"
@@ -30,7 +30,7 @@
     activityVC.title = @"大型活动";
     
     NSArray *viewsArray = @[organVC, activityVC];
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray];
+    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray andType:SYCSegmentViewTypeNormal];
     [self.view addSubview:segmentView];
     
     UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];

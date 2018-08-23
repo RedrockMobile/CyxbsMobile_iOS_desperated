@@ -330,6 +330,8 @@
 		E404709B212AB39200121AEE /* 展开.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047099212AB39100121AEE /* 展开.png */; };
 		E404709E212AB86600121AEE /* SYCDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */; };
 		E40470CD212D5E4D00121AEE /* SYCCollageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */; };
+		E40470D1212E4C1A00121AEE /* SYCSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D0212E4C1A00121AEE /* SYCSegmentView.m */; };
+		E40470D4212E92DC00121AEE /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -1155,6 +1157,10 @@
 		E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCDetailTableViewCell.m; sourceTree = "<group>"; };
 		E40470CB212D5E4D00121AEE /* SYCCollageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCCollageTableViewCell.h; sourceTree = "<group>"; };
 		E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCCollageTableViewCell.m; sourceTree = "<group>"; };
+		E40470CF212E4C1A00121AEE /* SYCSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCSegmentView.h; sourceTree = "<group>"; };
+		E40470D0212E4C1A00121AEE /* SYCSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentView.m; sourceTree = "<group>"; };
+		E40470D2212E92DC00121AEE /* SYCSegmentViewButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCSegmentViewButton.h; sourceTree = "<group>"; };
+		E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentViewButton.m; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -2257,10 +2263,10 @@
 		829C96022127DCDF00B4B05C /* 标签子界面 */ = {
 			isa = PBXGroup;
 			children = (
-				829C96032127DCDF00B4B05C /* SYCSubjectViewController.m */,
-				829C96042127DCDF00B4B05C /* SYCSexRatioViewController.m */,
 				829C96052127DCDF00B4B05C /* SYCSubjectViewController.h */,
+				829C96032127DCDF00B4B05C /* SYCSubjectViewController.m */,
 				829C96062127DCDF00B4B05C /* SYCSexRatioViewController.h */,
+				829C96042127DCDF00B4B05C /* SYCSexRatioViewController.m */,
 			);
 			path = "标签子界面";
 			sourceTree = "<group>";
@@ -2404,8 +2410,7 @@
 			children = (
 				829C96582127DCDF00B4B05C /* SYCOrganizationTableViewController.h */,
 				829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */,
-				829C96642127DCDF00B4B05C /* SYCOrganizationViewController.h */,
-				829C96652127DCDF00B4B05C /* SYCOrganizationTableViewController.m */,
+				E40470D5212E962700121AEE /* 子页面 */,
 				829C96592127DCDF00B4B05C /* Cell */,
 				829C965F2127DCDF00B4B05C /* Model */,
 			);
@@ -2440,6 +2445,7 @@
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
+				E40470CE212E4BFF00121AEE /* 标签卡 */,
 				829C96082127DCDF00B4B05C /* Others */,
 				829C95952127DABD00B4B05C /* Militarytraining */,
 				829C95AF2127DABD00B4B05C /* WYCSchool */,
@@ -2698,6 +2704,26 @@
 				E4047099212AB39100121AEE /* 展开.png */,
 			);
 			path = "合上";
+			sourceTree = "<group>";
+		};
+		E40470CE212E4BFF00121AEE /* 标签卡 */ = {
+			isa = PBXGroup;
+			children = (
+				E40470CF212E4C1A00121AEE /* SYCSegmentView.h */,
+				E40470D0212E4C1A00121AEE /* SYCSegmentView.m */,
+				E40470D2212E92DC00121AEE /* SYCSegmentViewButton.h */,
+				E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */,
+			);
+			path = "标签卡";
+			sourceTree = "<group>";
+		};
+		E40470D5212E962700121AEE /* 子页面 */ = {
+			isa = PBXGroup;
+			children = (
+				829C96642127DCDF00B4B05C /* SYCOrganizationViewController.h */,
+				829C96652127DCDF00B4B05C /* SYCOrganizationTableViewController.m */,
+			);
+			path = "子页面";
 			sourceTree = "<group>";
 		};
 		F20026CC1F4020FA00360991 /* Image */ = {
@@ -4463,6 +4489,7 @@
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				2FB2233B212312160009EB39 /* DeliveryTableViewCell.m in Sources */,
+				E40470D4212E92DC00121AEE /* SYCSegmentViewButton.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
@@ -4530,6 +4557,7 @@
 				829C95CF2127DABE00B4B05C /* ShowVideoRootView.m in Sources */,
 				829C95D02127DABE00B4B05C /* ShowPicRootView.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
+				E40470D1212E4C1A00121AEE /* SYCSegmentView.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
