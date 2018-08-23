@@ -186,7 +186,6 @@
 		829C966A2127DCE000B4B05C /* 我想对你说锁.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95E72127DCDE00B4B05C /* 我想对你说锁.png */; };
 		829C966B2127DCE000B4B05C /* 小车.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95E82127DCDE00B4B05C /* 小车.png */; };
 		829C966C2127DCE000B4B05C /* backgroud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 829C95E92127DCDE00B4B05C /* backgroud.jpg */; };
-		829C966D2127DCE000B4B05C /* 入学必备.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95EB2127DCDE00B4B05C /* 入学必备.png */; };
 		829C966E2127DCE000B4B05C /* 军训特辑.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95EC2127DCDE00B4B05C /* 军训特辑.png */; };
 		829C966F2127DCE000B4B05C /* 我想对你说.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95ED2127DCDE00B4B05C /* 我想对你说.png */; };
 		829C96702127DCE000B4B05C /* 校园攻略.png in Resources */ = {isa = PBXBuildFile; fileRef = 829C95EE2127DCDE00B4B05C /* 校园攻略.png */; };
@@ -332,6 +331,8 @@
 		E40470CD212D5E4D00121AEE /* SYCCollageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */; };
 		E40470D1212E4C1A00121AEE /* SYCSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D0212E4C1A00121AEE /* SYCSegmentView.m */; };
 		E40470D4212E92DC00121AEE /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */; };
+		E40470DB212EA3EE00121AEE /* 入学必备1.png in Resources */ = {isa = PBXBuildFile; fileRef = E40470DA212EA3EE00121AEE /* 入学必备1.png */; };
+		E40470DD212EA40F00121AEE /* 入学必备2.png in Resources */ = {isa = PBXBuildFile; fileRef = E40470DC212EA40F00121AEE /* 入学必备2.png */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -940,7 +941,6 @@
 		829C95E72127DCDE00B4B05C /* 我想对你说锁.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我想对你说锁.png"; sourceTree = "<group>"; };
 		829C95E82127DCDE00B4B05C /* 小车.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "小车.png"; sourceTree = "<group>"; };
 		829C95E92127DCDE00B4B05C /* backgroud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backgroud.jpg; sourceTree = "<group>"; };
-		829C95EB2127DCDE00B4B05C /* 入学必备.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备.png"; sourceTree = "<group>"; };
 		829C95EC2127DCDE00B4B05C /* 军训特辑.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "军训特辑.png"; sourceTree = "<group>"; };
 		829C95ED2127DCDE00B4B05C /* 我想对你说.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我想对你说.png"; sourceTree = "<group>"; };
 		829C95EE2127DCDE00B4B05C /* 校园攻略.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校园攻略.png"; sourceTree = "<group>"; };
@@ -1161,6 +1161,8 @@
 		E40470D0212E4C1A00121AEE /* SYCSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentView.m; sourceTree = "<group>"; };
 		E40470D2212E92DC00121AEE /* SYCSegmentViewButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCSegmentViewButton.h; sourceTree = "<group>"; };
 		E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentViewButton.m; sourceTree = "<group>"; };
+		E40470DA212EA3EE00121AEE /* 入学必备1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备1.png"; sourceTree = "<group>"; };
+		E40470DC212EA40F00121AEE /* 入学必备2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备2.png"; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -2198,7 +2200,8 @@
 		829C95EA2127DCDE00B4B05C /* UnlockedButton */ = {
 			isa = PBXGroup;
 			children = (
-				829C95EB2127DCDE00B4B05C /* 入学必备.png */,
+				E40470DC212EA40F00121AEE /* 入学必备2.png */,
+				E40470DA212EA3EE00121AEE /* 入学必备1.png */,
 				829C95EC2127DCDE00B4B05C /* 军训特辑.png */,
 				829C95ED2127DCDE00B4B05C /* 我想对你说.png */,
 				829C95EE2127DCDE00B4B05C /* 校园攻略.png */,
@@ -2440,8 +2443,6 @@
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
-				824D4910212A782200F38893 /* freshman_button@2x.png */,
-				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
@@ -2450,10 +2451,6 @@
 				829C95952127DABD00B4B05C /* Militarytraining */,
 				829C95AF2127DABD00B4B05C /* WYCSchool */,
 				829C95832127D91F00B4B05C /* ChatOnLine */,
-				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
-				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
-				829C95942127DABD00B4B05C /* FreshmanModel.h */,
-				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
 				829C958A2127D91F00B4B05C /* IWantToSay */,
 				829C95872127D91F00B4B05C /* ReportWaterfall */,
 				829C957F2127D91E00B4B05C /* UIImageView+WebCache */,
@@ -2798,6 +2795,12 @@
 			isa = PBXGroup;
 			children = (
 				82B66EE4211AD2A700FA82F1 /* Freshman2018 */,
+				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
+				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
+				829C95942127DABD00B4B05C /* FreshmanModel.h */,
+				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
+				824D4910212A782200F38893 /* freshman_button@2x.png */,
+				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
@@ -4035,6 +4038,7 @@
 				4A3A07D81FCC0EC700A50393 /* find_image_map@2x.png in Resources */,
 				F242DEFE1EBCB2BC005AC411 /* AboutMeViewController.xib in Resources */,
 				F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */,
+				E40470DB212EA3EE00121AEE /* 入学必备1.png in Resources */,
 				82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */,
 				4A3A07CD1FCC0EC700A50393 /* cqupt1@2x.jpg in Resources */,
 				F26D968A1F3C400F0063B024 /* topic_image_alltopic@2x.png in Resources */,
@@ -4091,6 +4095,7 @@
 				F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */,
 				9630E4C31FAF07D300874EB9 /* 服务记录矩形.png in Resources */,
 				4A3A07E31FCC0EC700A50393 /* lost_image_com@3x.png in Resources */,
+				E40470DD212EA40F00121AEE /* 入学必备2.png in Resources */,
 				F20027211F405B8500360991 /* remind_image_week@3x.png in Resources */,
 				F242DEAF1EBCB2BC005AC411 /* 选择@3x.png in Resources */,
 				9630E49C1FAF07D200874EB9 /* 4@2x.png in Resources */,
@@ -4191,7 +4196,6 @@
 				4A3A07EC1FCC0EC700A50393 /* lost_image_lackplace@2x.png in Resources */,
 				9630E4A51FAF07D200874EB9 /* login_back@2x.png in Resources */,
 				F242DE871EBCB2BC005AC411 /* 周数@3x.png in Resources */,
-				829C966D2127DCE000B4B05C /* 入学必备.png in Resources */,
 				F26D96A31F3C41130063B024 /* login_image_background@2x.png in Resources */,
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
 				F242DDC21EBCB2BB005AC411 /* reinstallImage.png in Resources */,
