@@ -36,11 +36,11 @@
 - (void)getInformation{
     NSDictionary *parameter = @{
                                 @"index":@"附近银行",
-                                @"pagesize":@15,
-                                @"pagenum":@1
+                                @"pagenum":@"1",
+                                @"pagesize":@"10"
                                 };
     
-    NSString *URL = @"http://47.106.33.112:8080/welcome2018/data/get/byindex";
+    NSString *URL = @"http://wx.yyeke.com/welcome2018/data/get/byindex";
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:URL parameters:parameter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -74,24 +74,31 @@
     cell.bankAddress.numberOfLines = 0;
     [cell.bankImage sd_setImageWithURL:[NSURL URLWithString:picURL]];
  
+    cell.bankImage.layer.cornerRadius = 6;
+    cell.bankImage.layer.masksToBounds = YES;
+    
     [cell.bankImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(cell.mas_left).offset(17);
-        make.top.mas_equalTo(cell.mas_top).offset(17);
-        make.bottom.mas_equalTo(cell.mas_bottom).offset(-17);
-        make.right.equalTo(cell.bankName.mas_left).offset(-11);
-        make.right.equalTo(cell.bankAddress.mas_left).offset(-11);
+        make.left.mas_equalTo(cell.mas_left).offset(15);
+        make.top.mas_equalTo(cell.mas_top).offset(15);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-15);
+        make.right.equalTo(cell.bankName.mas_left).offset(-15);
+        make.right.equalTo(cell.bankAddress.mas_left).offset(-15);
     }];
     [cell.bankName mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(cell.mas_top).offset(5);
-        make.bottom.equalTo(cell.bankAddress.mas_top).offset(0);
+        make.top.mas_equalTo(cell.mas_top).offset(10);
+        make.bottom.equalTo(cell.bankAddress.mas_top).offset(-12);
         make.right.mas_equalTo(cell.mas_right).offset(-10);
-        make.left.mas_equalTo(cell.mas_left).offset(154);
+        make.left.mas_equalTo(cell.mas_left).offset(132);
     }];
     [cell.bankAddress mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(cell.mas_bottom).offset(-13);
-        make.right.mas_equalTo(cell.mas_right).offset(-10);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-25);
+        make.right.mas_equalTo(cell.mas_right).offset(-25);
 //        make.height.mas_equalTo(40);
     }];
+    
+    cell.layer.cornerRadius = 6;
+    cell.layer.masksToBounds = YES;
+  
     
     return cell;
 }
@@ -99,7 +106,7 @@
     return 1;
 }
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 140;
+    return 120;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _arrData.count;
