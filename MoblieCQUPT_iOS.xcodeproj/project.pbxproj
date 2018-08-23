@@ -329,6 +329,7 @@
 		E404709A212AB39200121AEE /* 合上.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047098212AB39100121AEE /* 合上.png */; };
 		E404709B212AB39200121AEE /* 展开.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047099212AB39100121AEE /* 展开.png */; };
 		E404709E212AB86600121AEE /* SYCDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */; };
+		E40470CD212D5E4D00121AEE /* SYCCollageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -1152,6 +1153,8 @@
 		E4047099212AB39100121AEE /* 展开.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "展开.png"; sourceTree = "<group>"; };
 		E404709C212AB86600121AEE /* SYCDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCDetailTableViewCell.h; sourceTree = "<group>"; };
 		E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCDetailTableViewCell.m; sourceTree = "<group>"; };
+		E40470CB212D5E4D00121AEE /* SYCCollageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCCollageTableViewCell.h; sourceTree = "<group>"; };
+		E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCCollageTableViewCell.m; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -2224,6 +2227,8 @@
 			children = (
 				829C95F92127DCDF00B4B05C /* SYCCollageTableViewController.h */,
 				829C95FA2127DCDF00B4B05C /* SYCCollageTableViewController.m */,
+				E40470CB212D5E4D00121AEE /* SYCCollageTableViewCell.h */,
+				E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */,
 			);
 			path = "学院选择";
 			sourceTree = "<group>";
@@ -4559,6 +4564,7 @@
 				829C96882127DCE000B4B05C /* AACrosshair.m in Sources */,
 				F26D96701F3C400F0063B024 /* MBCommunityViewController.m in Sources */,
 				829C969A2127DCE000B4B05C /* AASeriesElement.m in Sources */,
+				E40470CD212D5E4D00121AEE /* SYCCollageTableViewCell.m in Sources */,
 				9630E4911FAF07D200874EB9 /* AllYearsViewController.m in Sources */,
 				F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */,
 				829C96752127DCE000B4B05C /* SYCMainPageModel.m in Sources */,
