@@ -37,6 +37,7 @@
     self.navigationItem.leftBarButtonItem = cancelBtn;
     
     self.tabBarController.tabBar.hidden = YES;
+    self.title = @"重邮风采";
 }
 
 - (void)didReceiveMemoryWarning {

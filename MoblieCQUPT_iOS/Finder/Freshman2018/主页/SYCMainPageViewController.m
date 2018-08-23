@@ -182,7 +182,7 @@
 
 - (void)clickRxbbBtn:(id)sender{
     DLNecessityViewController *rxbbVC = [[DLNecessityViewController alloc] init];
-
+    rxbbVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:rxbbVC animated:YES];
     rxbbVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 2) {
@@ -200,7 +200,7 @@
 
 - (void)clickXyglBtn:(id)sender{
     SchoolHomePageViewController *xyglVC = [[SchoolHomePageViewController alloc] init];
-    
+    xyglVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:xyglVC animated:YES];
     xyglVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 3) {
@@ -218,7 +218,7 @@
 
 - (void)clickXsjlBtn:(id)sender{
     ChatViewControl *xsjlVC = [[ChatViewControl alloc] init];
-    
+    xsjlVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:xsjlVC animated:YES];
     xsjlVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 4) {
@@ -236,7 +236,7 @@
 
 - (void)clickBdlcBtn:(id)sender{
     ReportWaterfallController *bdlcVC = [[ReportWaterfallController alloc] init];
-    
+    bdlcVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:bdlcVC animated:YES];
     bdlcVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 5) {
@@ -254,16 +254,19 @@
 
 - (void)clickJxtjBtn:(id)sender{
     MilitarytrainingViewController *jxtjVC = [[MilitarytrainingViewController alloc] init];
+    jxtjVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:jxtjVC animated:YES];
 }
 
 - (void)clickWxdnsBtn:(id)sender{
     WantToSayController *collageVC = [[WantToSayController alloc] init];
+    collageVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:collageVC animated:YES];
 }
 
 - (void)clickCyfcBtn:(id)sender{
     SYCCharacterViewController *cyfcVC = [[SYCCharacterViewController alloc] init];
+    cyfcVC.hidesBottomBarWhenPushed = YES;
     cyfcVC.callBackHandle = ^{
     };
     [self.navigationController pushViewController:cyfcVC animated:YES];
