@@ -172,8 +172,7 @@
 #pragma mark - UIScrollViewDelegate 方法
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     
-    NSInteger curIndex = scrollView.contentOffset.x  / self.scrollView.frame.size.width;
-    
+    NSInteger curIndex = (long)roundf(scrollView.contentOffset.x  / scrollView.frame.size.width);
     if (curIndex == _imgcount + 1) {
         
         scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width, 0);

@@ -40,7 +40,9 @@
 
 -(void)addScrollView:(NSArray *)data{
     
-    ShowPicScroll *picscrollview  = [[ShowPicScroll alloc] initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 160*(SCREENHEIGHT/667)) withDistanceForScroll:12.0f withGap:8.0f];
+    //Distance是图片之间距离
+    //Gap是边上图片露出的款
+    ShowPicScroll *picscrollview  = [[ShowPicScroll alloc] initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 160*(SCREENHEIGHT/667)) withDistanceForScroll:20.0f*autoSizeScaleX withGap:20.0f*autoSizeScaleX];
     
     
     
