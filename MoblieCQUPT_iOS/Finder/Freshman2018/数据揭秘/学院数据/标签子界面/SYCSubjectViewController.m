@@ -40,7 +40,7 @@
     [self.view addSubview:columnViewBackgroud];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(columnViewBackgroudWidth * 0.07, columnViewBackgroudHeight * 0.02, columnViewBackgroudWidth, columnViewBackgroudHeight * 0.08)];
-    nameLabel.text = [NSString stringWithFormat:@"2017-2018学年第二学期挂科情况"];
+    nameLabel.text = [NSString stringWithFormat:@"2017-2018学年第二学期挂科率"];
     nameLabel.textColor = [UIColor colorWithRed:80.0/255.0 green:161.0/255.0 blue:250.0/255.0 alpha:1.0];
     nameLabel.font = [UIFont systemFontOfSize:16];
     [columnViewBackgroud addSubview:nameLabel];
@@ -53,6 +53,9 @@
     
     self.columnView = [[AAChartView alloc] initWithFrame:CGRectMake((columnViewBackgroudWidth - columnViewWidth) / 2.0, columnViewBackgroudHeight * 0.1, columnViewWidth, columnViewHeight)];
     [columnViewBackgroud addSubview:self.columnView];
+    NSNumber *data1 = [NSNumber numberWithDouble:[[self.data.subjects[0] objectForKey:@"below_amount"] doubleValue] / 1000.0];
+    NSNumber *data2 = [NSNumber numberWithDouble:[[self.data.subjects[1] objectForKey:@"below_amount"] doubleValue] / 1000.0];
+    NSNumber *data3 = [NSNumber numberWithDouble:[[self.data.subjects[2] objectForKey:@"below_amount"] doubleValue] / 1000.0];
     
     self.columnModel = AAObject(AAChartModel).chartTypeSet(AAChartTypeColumn)//设置图表的类型
     .titleSet(@"")
@@ -63,11 +66,12 @@
     .dataLabelFontSizeSet(@12)
     .yAxisTitleSet(@"")
     .legendEnabledSet(NO)
+    .colorsThemeSet(@[@"#abd2ff", @"#ffabd7"])
     .categoriesSet(@[[self.data.subjects[0] objectForKey:@"subject_name"], [self.data.subjects[1] objectForKey:@"subject_name"], [self.data.subjects[2] objectForKey:@"subject_name"]])
     .seriesSet(@[
             AAObject(AASeriesElement)
-                .nameSet(@"挂科人数")
-                .dataSet(@[[self.data.subjects[0] objectForKey:@"below_amount"], [self.data.subjects[1] objectForKey:@"below_amount"], [self.data.subjects[2] objectForKey:@"below_amount"]]),
+                .nameSet(@"挂科率")
+                .dataSet(@[data1, data2, data3]),
                 ]);
     [self.columnView aa_drawChartWithChartModel:self.columnModel];
 }

@@ -72,7 +72,8 @@
                 @[@"男生", numOfBoys],
                 @[@"女生", numOfGirls],
                 ])
-            ]);
+            ])
+    .colorsThemeSet(@[@"#abd2ff", @"#ffabd7"]);
     [self.pieView aa_drawChartWithChartModel:self.pieModel];
     
     UIBarButtonItem *cencelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
