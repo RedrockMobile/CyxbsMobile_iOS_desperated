@@ -28,7 +28,7 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
-@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
@@ -416,10 +416,10 @@
 }
 
 - (void)GetText:(UITextField *)textField{
-    CGRect rect1 = [textField.text boundingRectWithSize:CGSizeMake(250*WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+    CGRect rect1 = [textField.text boundingRectWithSize:CGSizeMake(SCREENWIDTH-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*HEIGHT]} context:nil];
     CGFloat height1 = ceil(rect1.size.height);
-    NSString *str = @"十四个字十四个字十四个字十四个字吗";
-    CGRect rect2 = [str boundingRectWithSize:CGSizeMake(250*WIDTH, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil];
+    NSString *str = @"十四个字十四个字十四个字十四";
+    CGRect rect2 = [str boundingRectWithSize:CGSizeMake(SCREENWIDTH-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*HEIGHT]} context:nil];
     CGFloat height2 = ceil(rect2.size.height);
     if (height1 > height2) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的待办字数太多了ψ(｀∇´)ψ" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
