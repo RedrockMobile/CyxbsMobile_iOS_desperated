@@ -42,7 +42,7 @@
         
         self.contentLab = [[UILabel alloc] initWithFrame:CGRectMake(146*WIDTH, 51*HEIGHT, 195*WIDTH, 32*HEIGHT)];
         self.contentLab.font = [UIFont systemFontOfSize:13*HEIGHT];
-
+        self.contentLab.textColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.4000 alpha:1.0];
         self.contentLab.numberOfLines = 2;
         [self.contentView addSubview:self.contentLab];
     }

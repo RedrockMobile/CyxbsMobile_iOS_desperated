@@ -33,12 +33,14 @@
         [self.contentView addSubview:self.bkgImg];
         
         self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(30*WIDTH, 213*HEIGHT, 316*WIDTH, 14*HEIGHT)];
+        self.titleLabel.numberOfLines = 0;
         self.titleLabel.font = [UIFont systemFontOfSize:14*HEIGHT];
         [self.contentView addSubview:self.titleLabel];
         
         self.ContentLabel = [[UILabel alloc]initWithFrame:CGRectMake(30*WIDTH, 237*HEIGHT, 316*WIDTH, 0)];
         self.ContentLabel.font = [UIFont systemFontOfSize:14*HEIGHT];
         self.ContentLabel.numberOfLines = 0;
+        self.ContentLabel.textColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.4000 alpha:1.0];
         [self.contentView addSubview:self.ContentLabel];
         
         self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(30*WIDTH, 30*WIDTH, 316*WIDTH, 164*HEIGHT)];
@@ -48,6 +50,12 @@
         UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didClickImage)];
         [self.imgView addGestureRecognizer:tapGesture];
 //        [self.contentView addSubview:self.imgView];
+        self.sdwImg = [[UIImageView alloc] initWithFrame:CGRectMake(29.5*WIDTH, 29.5*HEIGHT, 317*WIDTH, 165*HEIGHT)];
+        self.sdwImg.layer.cornerRadius=10;
+        self.sdwImg.clipsToBounds=YES;
+        self.sdwImg.image = [UIImage imageNamed:@"灰色底板"];
+        [self.contentView addSubview:self.sdwImg];
+
         
         self.imgViews = [[autoScrollView alloc]initWithFrame:CGRectMake(30*WIDTH, 30*HEIGHT, 316*WIDTH, 164*HEIGHT)];
         self.imgViews.delegate = self;
@@ -79,8 +87,10 @@
     self.titleLabel.text = self.Model.title;
     self.ContentLabel.text = self.Model.content;
     CGFloat height = [BusTableViewCell getStringHeight:Model.content font:14*HEIGHT];
-    self.ContentLabel.frame = CGRectMake(30*WIDTH, 237*HEIGHT, 319*WIDTH, height);
-    self.bkgImg.frame = CGRectMake(15*WIDTH, 15*HEIGHT,346*WIDTH,237*HEIGHT+height);
+    CGFloat titleH = [BusTableViewCell getStringHeight:Model.title font:14*HEIGHT];
+    self.titleLabel.frame = CGRectMake(30*WIDTH, 213*HEIGHT, 316*WIDTH, titleH);
+    self.ContentLabel.frame = CGRectMake(30*WIDTH, 220*HEIGHT+titleH, 319*WIDTH, height+titleH);
+    self.bkgImg.frame = CGRectMake(15*WIDTH, 15*HEIGHT,346*WIDTH,244*HEIGHT+height+titleH);
     
     if(_Model.arr.count == 1){
         self.imgView.image = _Model.imgArray[0];
@@ -108,7 +118,8 @@
 }
 
 + (CGFloat)cellHeight:(BusModel *)Model{
-    return [BusTableViewCell getStringHeight:Model.content font:14*HEIGHT]+252*HEIGHT;
+    CGFloat height = [BusTableViewCell getStringHeight:Model.title font:14*HEIGHT];
+    return [BusTableViewCell getStringHeight:Model.content font:14*HEIGHT]+252*HEIGHT+height;
 }
 
 -(void)didClickPage:(autoScrollView *)view atIndex:(NSInteger)index
