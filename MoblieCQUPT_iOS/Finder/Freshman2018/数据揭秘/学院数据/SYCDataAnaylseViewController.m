@@ -9,9 +9,11 @@
 #import "SYCDataAnaylseViewController.h"
 #import "SYCSexRatioViewController.h"
 #import "SYCSubjectViewController.h"
-#import "SegmentView.h"
 
 @interface SYCDataAnaylseViewController ()
+
+@property (nonatomic, strong)SYCSexRatioViewController *sexRatioVC;
+@property (nonatomic, strong)SYCSubjectViewController *subjectsVC;
 
 @end
 
@@ -21,25 +23,35 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    SYCSexRatioViewController *sexRatioVC = [[SYCSexRatioViewController alloc] init];
-    sexRatioVC.title = @"男女比例";
-    sexRatioVC.data = self.data;
+    self.sexRatioVC = [[SYCSexRatioViewController alloc] init];
+    self.sexRatioVC.title = @"男女比例";
+    self.sexRatioVC.data = self.data;
     
-    SYCSubjectViewController *subjectsVC = [[SYCSubjectViewController alloc] init];
-    subjectsVC.title = @"最难科目";
-    subjectsVC.data = self.data;
+    self.subjectsVC = [[SYCSubjectViewController alloc] init];
+    self.subjectsVC.title = @"最难科目";
+    self.subjectsVC.data = self.data;
     
-    NSArray *viewsArray = @[sexRatioVC, subjectsVC];
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray];
+    NSArray *viewsArray = @[self.sexRatioVC, self.subjectsVC];
+    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray andType:SYCSegmentViewTypeNormal];
     [self.view addSubview:segmentView];
     
     self.title = self.data.name;
     self.tabBarController.tabBar.hidden = YES;
+    segmentView.eventDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)scrollEventWithIndex:(NSInteger)index{
+    if (index == 1) {
+        [self.subjectsVC reflesh];
+    }else{
+        [self.sexRatioVC reflesh];
+    }
+    
 }
 
 /*

@@ -43,7 +43,7 @@ static SYCOrganizationManager *sharedInstance = nil;
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
-    [manager GET:@"http://47.106.33.112:8080/welcome2018/data/get/byindex" parameters:@{@"index":@"学生组织", @"pagenum":@"1", @"pagesize":@"10"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager GET:@"http://wx.yyeke.com/welcome2018/data/get/byindex" parameters:@{@"index":@"学生组织", @"pagenum":@"1", @"pagesize":@"10"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.organizationData = [NSMutableArray array];
         for (NSDictionary *obj in [responseObject objectForKey:@"array"]) {
             [self.organizationData addObject:[[SYCOrganizationModel alloc] initWithName:[obj objectForKey:@"name"] imageURLs:[obj objectForKey:@"picture"] detail:[obj objectForKey:@"content"]]];

@@ -15,4 +15,6 @@
 
 @property (nonatomic, strong) SYCCollageModel *data;
 
+-(void)reflesh;
+
 @end
