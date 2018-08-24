@@ -8,7 +8,7 @@
 
 #import "SYCOrganizationViewController.h"
 #import "SYCOrganizationTableViewController.h"
-#import "SegmentView.h"
+#import "SYCSegmentView.h"
 
 @interface SYCOrganizationViewController ()
 
@@ -21,15 +21,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     SYCOrganizationTableViewController *hywxVC = [[SYCOrganizationTableViewController alloc] init];
-    hywxVC.title = @"红岩网校";
+    hywxVC.title = @"团委办公室";
     hywxVC.index = 0;
     
     SYCOrganizationTableViewController *twbgsVC = [[SYCOrganizationTableViewController alloc] init];
-    twbgsVC.title = @"团委办公室";
+    twbgsVC.title = @"团委组织部";
     twbgsVC.index = 1;
     
     SYCOrganizationTableViewController *twzzbVC = [[SYCOrganizationTableViewController alloc] init];
-    twzzbVC.title = @"团委组织部";
+    twzzbVC.title = @"校学生会";
     twzzbVC.index = 2;
     
     SYCOrganizationTableViewController *twxcbVC = [[SYCOrganizationTableViewController alloc] init];
@@ -37,11 +37,11 @@
     twxcbVC.index = 3;
     
     SYCOrganizationTableViewController *xxshVC = [[SYCOrganizationTableViewController alloc] init];
-    xxshVC.title = @"校学生会";
+    xxshVC.title = @"校科协";
     xxshVC.index = 4;
     
     SYCOrganizationTableViewController *dxsystVC = [[SYCOrganizationTableViewController alloc] init];
-    dxsystVC.title = @"大学生艺术团";
+    dxsystVC.title = @"社团联合会";
     dxsystVC.index = 5;
     
     SYCOrganizationTableViewController *qxVC = [[SYCOrganizationTableViewController alloc] init];
@@ -49,15 +49,17 @@
     qxVC.index = 6;
     
     SYCOrganizationTableViewController *slVC = [[SYCOrganizationTableViewController alloc] init];
-    slVC.title = @"社团联合会";
+    slVC.title = @"红岩网校";
     slVC.index = 7;
     
     SYCOrganizationTableViewController *kxVC = [[SYCOrganizationTableViewController alloc] init];
-    kxVC.title = @"校科协";
+    kxVC.title = @"艺术团";
     kxVC.index = 8;
     
+    
     NSArray *organizationsArray = @[hywxVC, twbgsVC, twxcbVC, twzzbVC, xxshVC, dxsystVC, qxVC, slVC, kxVC];
-    SegmentView *organizationsSegmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) andControllers:organizationsArray];
+    SYCSegmentView *organizationsSegmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) andControllers:organizationsArray andType:SYCSegmentViewTypeButton];
+    
     [self.view addSubview:organizationsSegmentView];
 }
 

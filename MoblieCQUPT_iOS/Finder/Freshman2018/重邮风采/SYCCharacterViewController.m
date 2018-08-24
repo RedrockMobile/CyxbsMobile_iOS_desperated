@@ -9,7 +9,7 @@
 #import "SYCCharacterViewController.h"
 #import "SYCActivityTableViewController.h"
 #import "SYCOrganizationTableViewController.h"
-#import "SegmentView.h"
+#import "SYCSegmentView.h"
 #import "SYCOrganizationViewController.h"
 #import "SYCActivityManager.h"
 #import "SYCOrganizationManager.h"
@@ -30,13 +30,14 @@
     activityVC.title = @"大型活动";
     
     NSArray *viewsArray = @[organVC, activityVC];
-    SegmentView *segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray];
+    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray andType:SYCSegmentViewTypeNormal];
     [self.view addSubview:segmentView];
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelBtn;
     
     self.tabBarController.tabBar.hidden = YES;
+    self.title = @"重邮风采";
 }
 
 - (void)didReceiveMemoryWarning {

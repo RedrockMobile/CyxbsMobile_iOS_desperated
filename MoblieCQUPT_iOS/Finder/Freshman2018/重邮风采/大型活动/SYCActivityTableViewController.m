@@ -27,7 +27,6 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +45,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([indexPath row] == 4) {
+        return 300;
+    }
     return 500;
 }
 

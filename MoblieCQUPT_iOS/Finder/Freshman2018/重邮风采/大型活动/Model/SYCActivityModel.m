@@ -18,9 +18,13 @@
         
         self.imagesArray = [NSMutableArray array];
         for (NSString *url in imageURLs) {
-            NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@", url]]];
-            UIImage *image = [UIImage imageWithData: imageData];
-            [self.imagesArray addObject:image];
+            NSLog(@"%@", url);
+            
+            if ([NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@", url]]]) {
+                NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@", url]]];
+                UIImage *image = [UIImage imageWithData: imageData];
+                [self.imagesArray addObject:image];
+            }
         }
     }
     return self;
