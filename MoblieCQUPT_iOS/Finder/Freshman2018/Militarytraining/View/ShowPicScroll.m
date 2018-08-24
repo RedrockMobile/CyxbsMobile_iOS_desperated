@@ -272,7 +272,7 @@
     //往全屏view上添加内容
     CGFloat scrollViewHeight = SCREENWIDTH*0.5079;
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/2-scrollViewHeight/2, SCREENWIDTH, scrollViewHeight)];
-    scrollView.backgroundColor = [UIColor redColor];
+    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;

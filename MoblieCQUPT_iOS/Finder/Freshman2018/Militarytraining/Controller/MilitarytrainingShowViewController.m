@@ -51,7 +51,12 @@
     
     
     
-                                      
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载数据中...";
+    hud.detailsLabelText = @"不如先去看看其他的？";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -61,6 +66,7 @@
 }
 
 - (void)showDataLoadSuccessful {
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     //NSLog(@"yyyyy,%@",_showModel.urlDic);
     NSArray *pictureArray = [_showModel.dic objectForKey:@"picture"];
     NSArray *videoArray = [_showModel.dic objectForKey:@"video"];
@@ -78,6 +84,7 @@
 }
 
 - (void)showDataLoadFailure{
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = @"您的网络不给力!";

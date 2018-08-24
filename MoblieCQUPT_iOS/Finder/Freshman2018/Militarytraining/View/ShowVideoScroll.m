@@ -152,7 +152,7 @@
    
     [playbutton setImage:[UIImage imageNamed:@"播放"] forState:UIControlStateNormal];
     
-    [playbutton setSize:CGSizeMake(50*(SCREENWIDTH/667), 50*(SCREENHEIGHT/667))];
+    [playbutton setSize:CGSizeMake(50*autoSizeScaleX, 50*autoSizeScaleY)];
     playbutton.centerX = bar.centerX;
     playbutton.centerY = bar.centerY;
     [playbutton addTarget:self action:@selector(loadVideo) forControlEvents:UIControlEventTouchUpInside];

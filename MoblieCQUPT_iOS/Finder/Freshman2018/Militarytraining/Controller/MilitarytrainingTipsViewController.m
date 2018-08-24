@@ -37,6 +37,8 @@
     _contentview.layer.shadowRadius= 3;//设置阴影半径
     _contentview.layer.shadowOpacity= .1f;//设置阴影透明度
 
+    _scrollview.showsVerticalScrollIndicator = NO;
+    _scrollview.showsHorizontalScrollIndicator = NO;
     [_scrollview addSubview:_title1];
     [_scrollview addSubview:_title2];
     _scrollview.layer.masksToBounds = YES;
