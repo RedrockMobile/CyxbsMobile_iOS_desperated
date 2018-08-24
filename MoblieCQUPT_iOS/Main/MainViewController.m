@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "BaseNavigationController.h"
 @interface MainViewController ()
+@property (nonatomic, strong) UIScrollView *bootPageScrollView;
 @end
 
 @implementation MainViewController
@@ -36,7 +37,13 @@
         }
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchSplash:) name:@"touchSplash" object:nil];
+    
+//    [self bootPage];
 }
+
+//-(void)viewWillAppear:(BOOL)animated {
+//    [self bootPage];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -52,6 +59,75 @@
     vc.hidesBottomBarWhenPushed = YES;
     BaseNavigationController *nvc = [self.viewControllers firstObject];
     [nvc pushViewController:vc animated:YES];
+}
+
+#pragma mark - 引导图
+
+-(void)bootPage {
+    NSDictionary *bundleDic = [[NSBundle mainBundle] infoDictionary];
+    //    NSString *version = [bundleDic objectForKey:@"CFBundleVersion"];
+    NSString *version = @"3";
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
+    
+    if (![[userDefaults objectForKey:@"version"] isEqualToString:version]) {
+        [userDefaults setObject:version forKey:@"version"];
+        
+        //创建引导页
+        self.bootPageScrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        int bootPageNum = 4;
+        self.bootPageScrollView.contentSize = CGSizeMake(SCREENWIDTH*bootPageNum, SCREENHEIGHT);
+        self.bootPageScrollView.directionalLockEnabled = YES;
+        self.bootPageScrollView.bounces = NO;
+        self.bootPageScrollView.pagingEnabled = YES;
+        self.bootPageScrollView.showsHorizontalScrollIndicator = NO;
+        self.bootPageScrollView.showsVerticalScrollIndicator = NO;
+        self.bootPageScrollView.userInteractionEnabled = YES;
+        for (int i = 0; i < bootPageNum; i++) {
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(i*SCREENWIDTH, 0, SCREENWIDTH, SCREENHEIGHT)];
+            imageView.userInteractionEnabled = YES;
+            imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"bg_splash_guide_%d", i+1]];
+            [self.bootPageScrollView addSubview:imageView];
+            if (i != 3) {
+                //跳过按钮
+                UIButton *skipBtn = [[UIButton alloc] init];
+                [imageView addSubview:skipBtn];
+                [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.right.equalTo(imageView.mas_right).offset(-25);
+                    make.top.equalTo(imageView.mas_top).offset(24);
+                    make.width.mas_equalTo(@(58/375.0*SCREENWIDTH));
+                    make.height.mas_equalTo(@(28/667.0*ScreenHeight));
+                }];
+                [skipBtn setBackgroundImage:[UIImage imageNamed:@"skip_btn"] forState:UIControlStateNormal];
+                [skipBtn addTarget:self action:@selector(entryMainView) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                //开始体验按钮
+                UIButton *confirmBtn = [[UIButton alloc] init];
+                [imageView addSubview:confirmBtn];
+                [confirmBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.centerX.equalTo(imageView.mas_centerX);
+                    make.bottom.equalTo(imageView.mas_bottom).offset(-76);
+                    make.width.mas_equalTo(@(193/375.0*SCREENWIDTH));
+                    make.height.mas_equalTo(@(48/667.0*ScreenHeight));
+                }];
+                [confirmBtn setBackgroundImage:[UIImage imageNamed:@"confirm_btn"] forState:UIControlStateNormal];
+                [confirmBtn addTarget:self action:@selector(entryMainView) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+        
+        UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+        [window addSubview:self.bootPageScrollView];
+        
+        return;
+    }else {
+        return;
+    }
+    
+}
+
+- (void)entryMainView {
+    [self.bootPageScrollView removeFromSuperview];
 }
 
 @end
