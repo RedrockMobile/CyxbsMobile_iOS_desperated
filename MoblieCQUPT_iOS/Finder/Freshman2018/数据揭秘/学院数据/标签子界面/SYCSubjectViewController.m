@@ -64,9 +64,10 @@
     .animationDurationSet(@1200)
     .dataLabelEnabledSet(NO)
     .dataLabelFontSizeSet(@12)
-    .yAxisTitleSet(@"挂科数 / 每百人")
+    .yAxisTitleSet(@"百分比")
     .legendEnabledSet(NO)
-    .colorsThemeSet(@[@"#54acff", @"#ff86c5",])
+    .colorsThemeSet(@[@"#6ecaff", @"#ff86c5",])
+    .yAxisTickPositionsSet(@[@0, @25, @50, @75, @100])
     .categoriesSet(@[[self.data.subjects[0] objectForKey:@"subject_name"], [self.data.subjects[1] objectForKey:@"subject_name"], [self.data.subjects[2] objectForKey:@"subject_name"]])
     .tooltipValueSuffixSet(@"%")
     .seriesSet(@[
