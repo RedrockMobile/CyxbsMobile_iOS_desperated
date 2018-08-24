@@ -11,6 +11,8 @@
 #import "FinderCollectionViewCell.h"
 #import "LZCarouselModel.h"
 
+#import "SYCMainPageViewController.h"
+
 @interface FinderViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *collectionView;
@@ -74,7 +76,11 @@
     [self.collectionView addGestureRecognizer:rightSwipeGesture];
     [self.collectionView registerNib:[UINib nibWithNibName:@"FinderCollectionViewCell" bundle:nil]forCellWithReuseIdentifier:@"FinderCollectionViewCell"];
     // 产品的要求 一次滑动只能移动一个
+}
 
+- (void)clickTestButton{
+    SYCMainPageViewController *mainPageVC = [[SYCMainPageViewController alloc] init];
+    [self.navigationController pushViewController:mainPageVC animated:YES];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
