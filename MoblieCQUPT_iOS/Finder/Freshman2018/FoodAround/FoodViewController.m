@@ -67,19 +67,19 @@
     self.view.backgroundColor = [UIColor clearColor];
 //    [self tableView];
     _arrData = [NSMutableArray array];
-    UILabel * label = [[UILabel alloc]init];
-     label.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_Width, 48 *SCREEN_Width);
-    label.textColor = [UIColor blackColor];
+    UILabel * topLabel = [[UILabel alloc]init];
+     topLabel.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_Width, 48 *SCREEN_Width);
+    topLabel.textColor = [UIColor blackColor];
     NSString *str = @"   👍最受好评的top5家美食";
-    label.backgroundColor = [UIColor whiteColor];
-    label.text = str;
-     NSLog(@"%@",label.text);
-    UIView *viewLabel = (UIView *)label;
-    [self.view addSubview:viewLabel];
+    topLabel.backgroundColor = [UIColor whiteColor];
+    topLabel.text = str;
+ 
+  
     [self.view addSubview:self.tableView];
+     [self.view addSubview:topLabel];
      self.automaticallyAdjustsScrollViewInsets = NO;
     
-    [self.view bringSubviewToFront:label];
+    [self.view bringSubviewToFront:topLabel];
 //      [self.view addSubview:label];
 
 }
@@ -108,6 +108,7 @@
     }
     cell.nameLabel.text = _arrData[indexPath.section][@"name"];
     cell.illstrateLabel.text = _arrData[indexPath.section][@"content"];
+    cell.illstrateLabel.textColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:1];
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
 
     cell.rankButton.userInteractionEnabled= NO;
@@ -119,6 +120,7 @@
     NSString *priceString = [NSString stringWithFormat:@"￥ %@ （人）",_arrData[indexPath.section][@"property"]];
     cell.priceLabel.text = priceString;
      cell.priceLabel.textColor = [UIColor colorWithRed:255/255.0 green:121/255.0 blue:121/255.0 alpha:1];
+     cell.illstrateLabel.textColor = [UIColor colorWithRed:151/255.0 green:151/255.0 blue:151/255.0 alpha:1];
     [cell.contentView bringSubviewToFront:cell.rankButton];
     
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
@@ -126,44 +128,49 @@
     cell.imgView.layer.cornerRadius = 6;
     cell.imgView.layer.masksToBounds = YES;
 
-    [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(cell.mas_left).offset(0 * SCREEN_Width);
-        make.top.mas_equalTo(cell.mas_top).offset(10 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-10 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-10 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.priceLabel.mas_top).offset(-10 * SCREEN_Width);
-   
+    [cell.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+        make.top.mas_equalTo(cell.mas_top).offset(16 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-18 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.priceLabel.mas_top).offset(-20 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-183 * SCREEN_Width);
+        
     }];
     [cell.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.mas_equalTo(cell.mas_left).offset(20 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
         make.right.mas_equalTo(cell.mas_right).offset(-200 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-11 * SCREEN_Width);
         
     }];
     [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(cell.mas_right).offset(-18 * SCREEN_Width);
-        make.left.mas_equalTo(cell.mas_left).offset(20 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.mas_bottom).offset(-5 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-14 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(14 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-19 * SCREEN_Width);
     }];
     [cell.rankButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(cell.mas_left).offset(270* SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-50* SCREEN_Width);
-        make.height.mas_equalTo(35* SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(296* SCREEN_Width);
+        make.right.mas_equalTo(cell.imgView.mas_right).offset(-12 * SCREEN_Width);
+        make.height.mas_equalTo(41 * SCREEN_Width);
+        make.top.mas_equalTo(cell.imgView.mas_top).offset( 0 );
     }];
-    [cell.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(cell.mas_left).offset(240 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-20 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
-    }];
+   
+    
     
     [cell.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(cell.mas_left).offset(240 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-20 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(250 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-5 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-11 * SCREEN_Width);
     }];
     
-    
+//    [cell.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(cell.mas_left).offset(240 * SCREEN_Width);
+//        make.right.mas_equalTo(cell.mas_right).offset(-20 * SCREEN_Width);
+//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
+//    }];
+//
+//
     cell.layer.cornerRadius = 6;
     cell.layer.masksToBounds = YES;
     
@@ -177,6 +184,43 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中状态
 }
+
+
+-(CGFloat)tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section
+{
+    return 5;
+}
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+     UIView *headView = [[UIView alloc]init];
+    
+    if (section == 0) {
+        
+        //    headView.backgroundColor = [UIColor redColor];
+        UILabel *topLabel = [[UILabel alloc]init];
+        topLabel.frame = CGRectMake(0, 0, SCREEN_Width * 375, 48 *SCREEN_Width);
+        
+        
+        topLabel.textColor = [UIColor blackColor];
+        NSString *str = @"   👍最受好评的top5家美食";
+        topLabel.backgroundColor = [UIColor whiteColor];
+        topLabel.font = [UIFont systemFontOfSize:13];
+        topLabel.text = str;
+        
+        
+     
+        
+        [headView addSubview:topLabel];
+    }
+    
+    return headView;
+}
+
+
+
+
 /*
 #pragma mark - Navigation
 
