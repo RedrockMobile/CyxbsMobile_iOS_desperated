@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, assign) NSInteger imgcount;
+@property (nonatomic, assign) CGFloat offsetX;
 
 @end
 
@@ -78,7 +79,7 @@
         UIImageView *picImageView = [[UIImageView alloc] init];
         picImageView.userInteractionEnabled = YES;
         picImageView.tag = 400 + i ;
-        
+        picImageView.centerY = _scrollView.centerY;
         picImageView.layer.masksToBounds = YES;
         // 设置圆角大小
         picImageView.layer.cornerRadius = 6.0 ;
@@ -138,6 +139,8 @@
     self.scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width, 0);
     self.scrollView.contentSize = CGSizeMake(self.scrollView.frame.size.width * (_imgcount + 2), 0);
     [self changeImgViewFrame];
+    _offsetX = _scrollView.contentOffset.x ;
+    
     
     
 }
@@ -175,7 +178,9 @@
         scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width * _imgcount, 0);
       
     }
+    _index = (long)roundf(_scrollView.contentOffset.x  / _scrollView.frame.size.width);
     
+    _offsetX = _scrollView.contentOffset.x ;
     [self changeImgViewFrame];
 }
 -(void)changeImgViewFrame{
@@ -198,12 +203,35 @@
     }
 }
 
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-//    CGFloat index = _scrollView.contentOffset.x  / _scrollView.frame.size.width;
-//    CGFloat imgX = _scrollView.subviews[_index].frame.origin.x;
-//    NSLog(@"index:%f",index);
-//    NSLog(@"imgX:%f",imgX);
-//}
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    
+    CGFloat moveX = _scrollView.contentOffset.x-_offsetX;
+    if (moveX > 0 ) {
+        
+        UIImageView  *imgView1 = _scrollView.subviews[_index+1];
+        imgView1.height = _scrollView.height*0.8625 + moveX/_scrollView.width * (_scrollView.height*0.1475);
+        imgView1.centerY = _scrollView.centerY;
+        [imgView1.subviews[0] setOrigin:CGPointMake(imgView1.subviews[0].frame.origin.x, imgView1.frame.size.height - 30)];
+        
+        
+        UIImageView  *imgView2 = _scrollView.subviews[_index];
+        imgView2.height = _scrollView.height - moveX/_scrollView.width * (_scrollView.height*0.1475);
+        imgView2.centerY = _scrollView.centerY;
+        [imgView2.subviews[0] setOrigin:CGPointMake(imgView2.subviews[0].frame.origin.x, imgView2.frame.size.height - 30)];
+    }else{
+        
+        UIImageView  *imgView1 = _scrollView.subviews[_index-1];
+        imgView1.height = _scrollView.height*0.8625 + fabs(moveX)/_scrollView.width * (_scrollView.height*0.1475);
+        imgView1.centerY = _scrollView.centerY;
+        [imgView1.subviews[0] setOrigin:CGPointMake(imgView1.subviews[0].frame.origin.x, imgView1.frame.size.height - 30)];
+        
+        
+        UIImageView  *imgView2 = _scrollView.subviews[_index];
+        imgView2.height = _scrollView.height - fabs(moveX)/_scrollView.width * (_scrollView.height*0.1475);
+        imgView2.centerY = _scrollView.centerY;
+        [imgView2.subviews[0] setOrigin:CGPointMake(imgView2.subviews[0].frame.origin.x, imgView2.frame.size.height - 30)];
+    }
+}
 
 #pragma mark - 轻拍手势的方法
 -(void)tapAction:(UITapGestureRecognizer *)tap{
@@ -244,7 +272,7 @@
     //往全屏view上添加内容
     CGFloat scrollViewHeight = SCREENWIDTH*0.5079;
     UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/2-scrollViewHeight/2, SCREENWIDTH, scrollViewHeight)];
-    scrollView.backgroundColor = [UIColor redColor];
+    scrollView.backgroundColor = [UIColor clearColor];
     scrollView.showsVerticalScrollIndicator = NO;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
@@ -276,26 +304,6 @@
     [view.layer addAnimation:animation forKey:nil];
  //[self shakeToShow:view];
     
-}
--(void)swipetoLeft{
-    if (self.index < self.imgcount) {
-        self.index++;
-        
-    }else{
-        self.index = 1;
-    }
-    [self tapToWatch];
-    _scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width * _index, 0);
-    
-}
--(void)swipetoRight{
-    if (self.index >1) {
-        self.index--;
-    }else{
-        self.index = self.imgcount;
-    }
-    [self tapToWatch];
-    _scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width * _index, 0);
 }
 
 
