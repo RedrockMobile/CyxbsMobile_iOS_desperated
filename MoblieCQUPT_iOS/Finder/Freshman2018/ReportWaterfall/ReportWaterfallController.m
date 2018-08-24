@@ -35,13 +35,15 @@ NSString *str04;
     //标题文字
     self.title = @"报道流程";
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackGround"]];
+    self.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.1];
+    
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackGround"]];
 
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 60, width, height)];
     _scrollView.backgroundColor = [UIColor clearColor];
     _scrollView.bounces = YES;
     //画布大小
-    _scrollView.contentSize = CGSizeMake(width, height - 60 + (height - 100) / 2 + 100);
+    _scrollView.contentSize = CGSizeMake(width, height - 60 + (height - 100) / 2 + 90);
     [self.view addSubview:_scrollView];
     
     //网络请求
@@ -82,28 +84,32 @@ NSString *str04;
 - (void)viewInit
 {
     //体育馆
-    _view01.frame = CGRectMake(0, 0, width, (height - 100) / 2);
-    _view01.backgroundColor = [UIColor clearColor];
-    _label01.frame = CGRectMake(20, 10, 200, 30);
-    _label01.text = _arrayData01[0];
-    _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
+    _view01.frame = CGRectMake(10, 10, width - 20, (height - 100) / 2);
+    _view01.backgroundColor = [UIColor whiteColor];
+    _label01.frame = CGRectMake(20, 10, 300, 30);
+    _label01.text = [[NSString alloc] initWithFormat:@"%@%@",_arrayData01[0],@"(步骤一)"];
+    _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
     _label03.text = @"点击按钮，查看具体流程";
+    _label03.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     _label03.numberOfLines = 0;
     
     //设置字体样式
-    _label01.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
-    _label03.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+//    _label01.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+//    _label03.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
 
-    _imageView01.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
+    _imageView01.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
     [_imageView01 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",_arr[0]]] placeholderImage:nil];
-    _imageView02.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
+    _imageView02.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
     [_imageView02 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",_arr[1]]] placeholderImage:nil];
     
     //圆角处理
-    _imageView01.layer.cornerRadius = 20;
+    _imageView01.layer.cornerRadius = 10;
     _imageView01.layer.masksToBounds = YES;
-    _imageView02.layer.cornerRadius = 20;
+    _imageView02.layer.cornerRadius = 10;
     _imageView02.layer.masksToBounds = YES;
+    _view01.layer.cornerRadius = 10;
+    _view01.layer.masksToBounds = YES;
+    
     
     [_view01 addSubview:_label01];
     [_view01 addSubview:_label03];
@@ -111,28 +117,33 @@ NSString *str04;
     [_view01 addSubview:_imageView02];
 
     //寝室
-    _view02.frame = CGRectMake(0, (height - 100) / 2 + 40, width, (height - 100) / 2);
-    _view02.backgroundColor = [UIColor clearColor];
+    _view02.frame = CGRectMake(10, (height - 100) / 2 + 30, width - 20, (height - 100) / 2);
+    _view02.backgroundColor = [UIColor whiteColor];
     _label02.frame = CGRectMake(20, 10, 200, 30);
-    _label02.text = _arrayData01[1];
-    _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
+    _label02.text = [[NSString alloc] initWithFormat:@"%@%@",_arrayData01[1],@"(步骤二)"];
+    _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
     _label04.text = @"点击按钮，查看具体流程";
+    _label04.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     _label04.numberOfLines = 0;
 
     //设置字体样式
-    _label02.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
-    _label04.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+//    _label02.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+//    _label04.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
     
-    _imageView03.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
+    _imageView03.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
     [_imageView03 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",_arr[2]]] placeholderImage:nil];
-    _imageView04.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
+    _imageView04.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
     [_imageView04 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",_arr[3]]] placeholderImage:nil];
     
     //圆角处理
-    _imageView03.layer.cornerRadius = 20;
+    _imageView03.layer.cornerRadius = 10;
     _imageView03.layer.masksToBounds = YES;
-    _imageView04.layer.cornerRadius = 20;
+    _imageView04.layer.cornerRadius = 10;
     _imageView04.layer.masksToBounds = YES;
+    
+    _view02.layer.cornerRadius = 10;
+    _view02.layer.masksToBounds = YES;
+    
     
     [_view02 addSubview:_label02];
     [_view02 addSubview:_label04];
@@ -140,29 +151,32 @@ NSString *str04;
     [_view02 addSubview:_imageView04];
 
     //支付
-    _view03.frame = CGRectMake(0, ((height - 100) / 2 + 40) * 2, width, (height - 100) / 2);
-    _view03.backgroundColor = [UIColor clearColor];
+    _view03.frame = CGRectMake(10, ((height - 100) / 2 + 30) * 2 - 10, width - 20, (height - 100) / 2);
+    _view03.backgroundColor = [UIColor whiteColor];
     _label05.frame = CGRectMake(20, 10, 200, 30);
-    _label05.text = _arrayData01[2];
-    _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
+    _label05.text = [[NSString alloc] initWithFormat:@"%@%@",_arrayData01[2],@"(步骤三)"];
+    _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
     _label06.text = @"点击按钮，查看具体流程";
+    _label06.textColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
     _label06.numberOfLines = 0;
     
     //设置字体样式
-    _label05.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
-    _label06.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+//    _label05.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
+//    _label06.font = [UIFont fontWithName:@"AaPangYaer" size:19.f];
     
-    _imageView05.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
+    _imageView05.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
     [_imageView05 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",_arr[4]]] placeholderImage:nil];
-    _imageView06.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
+    _imageView06.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
     [_imageView06 sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",_arr[5]]] placeholderImage:nil];
     
     //圆角处理
-    _imageView05.layer.cornerRadius = 20;
+    _imageView05.layer.cornerRadius = 10;
     _imageView05.layer.masksToBounds = YES;
-    _imageView06.layer.cornerRadius = 20;
+    _imageView06.layer.cornerRadius = 10;
     _imageView06.layer.masksToBounds = YES;
     
+    _view03.layer.cornerRadius = 10;
+    _view03.layer.masksToBounds = YES;
     
     //开启交互模式
     _imageView01.userInteractionEnabled = YES;
@@ -199,21 +213,21 @@ NSString *str04;
     
     
     //体育馆button01
-    _button01.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+    _button01.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
     [_button01 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
     [_view01 addSubview:_button01];
     _button01.tag = 0;
     [_button01 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
 
     //宿舍button02
-    _button02.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+    _button02.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
     [_button02 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
     [_view02 addSubview:_button02];
     _button02.tag = 1;
     [_button02 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     //支付button
-    _button03.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+    _button03.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
     [_button03 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
     [_view03 addSubview:_button03];
     _button03.tag = 2;
@@ -223,6 +237,43 @@ NSString *str04;
     [_scrollView addSubview:_view01];
     [_scrollView addSubview:_view02];
     [_scrollView addSubview:_view03];
+    
+    //5S_SE
+    if (height < 667)
+    {
+        _label01.font = [UIFont systemFontOfSize:16];
+        _label03.font = [UIFont systemFontOfSize:14];
+        
+        _label02.font = [UIFont systemFontOfSize:16];
+        _label04.font = [UIFont systemFontOfSize:14];
+        
+        _label05.font = [UIFont systemFontOfSize:16];
+        _label06.font = [UIFont systemFontOfSize:14];
+    }
+    //6_6S_7_8
+    else if (height > 568 && height < 736)
+    {
+        _label01.font = [UIFont systemFontOfSize:19];
+        _label03.font = [UIFont systemFontOfSize:17];
+        
+        _label02.font = [UIFont systemFontOfSize:19];
+        _label04.font = [UIFont systemFontOfSize:17];
+        
+        _label05.font = [UIFont systemFontOfSize:19];
+        _label06.font = [UIFont systemFontOfSize:17];
+    }
+    //plus
+    else if (height == 736)
+    {
+        _label01.font = [UIFont systemFontOfSize:22];
+        _label03.font = [UIFont systemFontOfSize:20];
+        
+        _label02.font = [UIFont systemFontOfSize:22];
+        _label04.font = [UIFont systemFontOfSize:20];
+        
+        _label05.font = [UIFont systemFontOfSize:22];
+        _label06.font = [UIFont systemFontOfSize:20];
+    }
 }
 
 - (void)tapAction:(UIGestureRecognizer *)gesture
@@ -283,7 +334,7 @@ NSString *str04;
     }
     else if (gesture.view.tag == 5)
     {
-        _imageView05.frame = CGRectMake(0, (height - width) / 2, width, width);
+        _imageView05.frame = CGRectMake(0, 0, width, height);
         [view addSubview:_imageView05];
         _imageView05.userInteractionEnabled = YES;
         NSLog(@"_imageView01 touched");
@@ -333,134 +384,133 @@ NSString *str04;
 {
     if (btn.tag == 0)
     {
-        _scrollView.contentSize = CGSizeMake(width, height * 3 / 2 - 10 + (height - 100) / 2 + 40);
-        _view01.frame = CGRectMake(0, 0, width, height - 60);
+        _scrollView.contentSize = CGSizeMake(width, height * 3 / 2 - 120 + (height - 100) / 2);
+        _view01.frame = CGRectMake(10, 10, width - 20, height - 190);
         _label03.text = _arrayData02[0];
-        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, height - 60 - (height - 100) / 2 * 3 / 4 - 60);
+        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, height - 60 - (height - 100) / 2 * 3 / 4 - 170);
 //        _label03.numberOfLines = 0;
         NSLog(@"%@",_arrayData02[0]);
         [_button01 setImage:[UIImage imageNamed:@"upBtn"] forState:UIControlStateNormal];
-        _button01.frame = CGRectMake(width / 2 - 15, height - 120, 30, 30);
+        _button01.frame = CGRectMake(width / 2 - 25, height - 230, 30, 30);
         _button01.tag = 3;
         [_button01 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         //宿舍位置复原
-        _view02.frame = CGRectMake(0, height - 20, width, (height - 100) / 2);
+        _view02.frame = CGRectMake(10, height - 160, width - 20, (height - 100) / 2);
         _label04.text = @"点击按钮，查看具体流程";
-        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
-        _imageView03.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView04.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button02.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
+        _imageView03.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView04.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button02.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button02 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button02.tag = 1;
         
         //支付位置复原
-        _view03.frame = CGRectMake(0, height - 20 + (height - 100) / 2 + 40, width, (height - 100) / 2);
-        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
+        _view03.frame = CGRectMake(10, height - 140 + (height - 100) / 2, width - 20, (height - 100) / 2);
+        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
         _label06.text = @"点击按钮，查看具体流程";
-        _imageView05.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView06.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button03.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _imageView05.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView06.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button03.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button03 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button03.tag = 2;
         
     }
     else if (btn.tag == 1)
     {
-        _scrollView.contentSize = CGSizeMake(width, height * 3 / 2 - 10 + (height - 100) / 2 + 40);
-        _view02.frame = CGRectMake(0, (height - 100) / 2 + 40, width, height - 60);
+        _scrollView.contentSize = CGSizeMake(width, height * 3 / 2 - 120 + (height - 100) / 2);
+        _view02.frame = CGRectMake(10, (height - 100) / 2 + 30, width - 20, height - 190);
         _label04.text = _arrayData02[1];
-        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, height - 60 - (height - 100) / 2 * 3 / 4 - 60);
+        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, height - 60 - (height - 100) / 2 * 3 / 4 - 170);
 //        _label04.numberOfLines = 0;
         //NSLog(@"%@",_arrayData02[1]);
-        _button02.frame = CGRectMake(width / 2 - 15, height - 120, 30, 30);
+        _button02.frame = CGRectMake(width / 2 - 25, height - 230, 30, 30);
         [_button02 setImage:[UIImage imageNamed:@"upBtn"] forState:UIControlStateNormal];
         _button02.tag = 3;
         [_button02 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
         
         //体育馆位置复原
-        _view01.frame = CGRectMake(0, 0, width, (height - 100) / 2);
+        _view01.frame = CGRectMake(10, 10, width - 20, (height - 100) / 2);
         _label03.text = @"点击按钮，查看具体流程";
-        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
-        _imageView01.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView02.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button01.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
+        _imageView01.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView02.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button01.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button01 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button01.tag = 0;
         
         //支付位置复原
-        _view03.frame = CGRectMake(0, (height - 100) / 2 + 40 + height - 60 + 40, width, (height - 100) / 2);
-        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
+        _view03.frame = CGRectMake(10, (height - 100) / 2 + height - 170 + 30, width - 20, (height - 100) / 2);
+        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
         _label06.text = @"点击按钮，查看具体流程";
-        _imageView05.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView06.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button03.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _imageView05.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView06.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button03.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button03 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button03.tag = 2;
     }
     else if (btn.tag == 3)
     {
-        _scrollView.contentSize = CGSizeMake(width, height - 60 + (height - 100) / 2 + 100);
-        
+        _scrollView.contentSize = CGSizeMake(width, height - 60 + (height - 100) / 2 + 90);
         //体育馆位置复原
-        _view01.frame = CGRectMake(0, 0, width, (height - 100) / 2);
+        _view01.frame = CGRectMake(10, 10, width - 20, (height - 100) / 2);
         _label03.text = @"点击按钮，查看具体流程";
-        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
-        _imageView01.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView02.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button01.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
+        _imageView01.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView02.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button01.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button01 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button01.tag = 0;
         
         //宿舍位置复原
-        _view02.frame = CGRectMake(0, (height - 100) / 2 + 40, width, (height - 100) / 2);
+        _view02.frame = CGRectMake(10, (height - 100) / 2 + 30, width - 20, (height - 100) / 2);
         _label04.text = @"点击按钮，查看具体流程";
-        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
-        _imageView03.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView04.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button02.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
+        _imageView03.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView04.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button02.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button02 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button02.tag = 1;
         
         //支付位置复原
-        _view03.frame = CGRectMake(0, ((height - 100) / 2 + 40) * 2, width, (height - 100) / 2);
-        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
+        _view03.frame = CGRectMake(10, ((height - 100) / 2 + 30) * 2 - 10, width - 20, (height - 100) / 2);
+        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
         _label06.text = @"点击按钮，查看具体流程";
-        _imageView05.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView06.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button03.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _imageView05.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView06.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button03.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button03 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button03.tag = 2;
     }
     else if (btn.tag == 2)
     {
-        _scrollView.contentSize = CGSizeMake(width, height * 3 / 2 - 10 + (height - 100) / 2 + 40);
+        _scrollView.contentSize = CGSizeMake(width, height * 3 / 2 - 120 + (height - 100) / 2);
         
         //体育馆位置复原
-        _view01.frame = CGRectMake(0, 0, width, (height - 100) / 2);
+        _view01.frame = CGRectMake(10, 10, width - 20, (height - 100) / 2);
         _label03.text = @"点击按钮，查看具体流程";
-        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
-        _imageView01.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView02.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button01.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _label03.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
+        _imageView01.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView02.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button01.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button01 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button01.tag = 0;
         
         //宿舍位置复原
-        _view02.frame = CGRectMake(0, (height - 100) / 2 + 40, width, (height - 100) / 2);
+        _view02.frame = CGRectMake(10, (height - 100) / 2 + 30, width - 20, (height - 100) / 2);
         _label04.text = @"点击按钮，查看具体流程";
-        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, 30);
-        _imageView03.frame = CGRectMake(20, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _imageView04.frame = CGRectMake(width / 2 + 10, 40, (width - 60) / 2, (height - 100) * 3 / 8 - 40);
-        _button02.frame = CGRectMake(width / 2 - 15, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
+        _label04.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, 30);
+        _imageView03.frame = CGRectMake(10, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _imageView04.frame = CGRectMake(width / 2 - 5, 60, (width - 50) / 2, (height - 100) * 3 / 8 - 60);
+        _button02.frame = CGRectMake(width / 2 - 25, (height - 100) / 2 * 3 / 4 + 30, 30, 30);
         [_button02 setImage:[UIImage imageNamed:@"button"] forState:UIControlStateNormal];
         _button02.tag = 1;
         
         //支付位置
-        _view03.frame = CGRectMake(0, ((height - 100) / 2 + 40) * 2, width, height - 60);
+        _view03.frame = CGRectMake(10, ((height - 100) / 2 + 30) * 2 - 10, width - 20, height - 190);
         _label06.text = _arrayData02[1];
-        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 40, height - 60 - (height - 100) / 2 * 3 / 4 - 60);
-        _button03.frame = CGRectMake(width / 2 - 15, height - 120, 30, 30);
+        _label06.frame = CGRectMake(20, (height - 100) / 2 * 3 / 4, width - 60, height - 60 - (height - 100) / 2 * 3 / 4 - 170);
+        _button03.frame = CGRectMake(width / 2 - 25, height - 230, 30, 30);
         [_button03 setImage:[UIImage imageNamed:@"upBtn"] forState:UIControlStateNormal];
         _button03.tag = 3;
         [_button03 addTarget:self action:@selector(pressBtn:) forControlEvents:UIControlEventTouchUpInside];
