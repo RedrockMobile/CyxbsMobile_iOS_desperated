@@ -92,6 +92,7 @@
     }
     cell.nameLabel.text = _arrData[indexPath.section][@"name"];
     cell.illstrateLabel.text = _arrData[indexPath.section][@"content"];
+    cell.illstrateLabel.textColor = [UIColor colorWithRed:151/255.0 green:151/255.0 blue:151/255.0 alpha:1];
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
@@ -100,35 +101,31 @@
     cell.priceLabel.hidden = YES;
     cell.rankButton.hidden = YES;
     
-    [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(cell.contentView).offset(15 * SCREEN_Width);
-        make.right.equalTo(cell.contentView).offset(-15 * SCREEN_Width);
-
-        make.bottom.equalTo(cell.nameLabel.mas_top).offset(-18 * SCREEN_Width);
+    [cell.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         
-//        make.bottom.equalTo(cell.illstrateLabel.mas_top).offset(-43);
-//        make.left.mas_equalTo(cell.mas_left).offset(15);
-//        make.top.mas_equalTo(cell.mas_top).offset(15);
-//        make.right.mas_equalTo(cell.mas_right).offset(-15);
-//        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-21);
-//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-43);
+        make.left.mas_equalTo(cell.mas_left).offset(15  * SCREEN_Width);
+        make.top.mas_equalTo(cell.mas_top).offset(15 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-15 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-43 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-185 * SCREEN_Width);
     }];
+   
+    
     [cell.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(cell.mas_left).offset(15);
-//        make.right.mas_equalTo(cell.mas_right).offset(-250);
-//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-8);
-        make.left.equalTo(cell.contentView).offset(15 * SCREEN_Width);
-        make.right.equalTo(cell.contentView).offset(-15);
-        make.bottom.equalTo(cell.illstrateLabel.mas_top).offset(-8)
-        ;    }];
-    [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(cell.contentView).offset(15);
-        make.right.bottom.equalTo(cell.contentView).offset(-15);
-        
-//        make.right.mas_equalTo(cell.mas_right).offset(-15);
-//        make.left.mas_equalTo(cell.mas_left).offset(15);
-//        make.bottom.mas_equalTo(cell.mas_bottom).offset(-19);
+        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-200 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-8 * SCREEN_Width);
     }];
+    
+    
+    
+    [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-13 * SCREEN_Width);
+    }];
+    
     
     cell.layer.cornerRadius = 6;
     cell.layer.masksToBounds = YES;
