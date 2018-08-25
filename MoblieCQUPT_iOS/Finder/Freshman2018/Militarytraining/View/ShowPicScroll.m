@@ -109,7 +109,7 @@
         if (i == 0) {
             
             NSString *url = [dataArray[_imgcount - 1] objectForKey:@"url"];
-            url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+            url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
             [picImageView sd_setImageWithURL:[NSURL URLWithString:url]];
             
             self.index = _imgcount - 1;
@@ -118,14 +118,14 @@
         }else if (i == _imgcount+1) {
             
             NSString *url = [dataArray[0] objectForKey:@"url"];
-            url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+            url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
              [picImageView sd_setImageWithURL:[NSURL URLWithString:url]];
             self.index = 0;
             
         }else {
             
             NSString *url = [dataArray[i - 1] objectForKey:@"url"];
-            url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+            url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
             [picImageView sd_setImageWithURL:[NSURL URLWithString:url]];
             self.index = i - 1;
         }

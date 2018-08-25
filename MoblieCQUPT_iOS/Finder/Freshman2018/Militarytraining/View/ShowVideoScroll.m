@@ -106,7 +106,7 @@
         //从图片url设置图片
         if (i == 0) {
             NSString *url = [[dataArray[_imgcount - 1] objectForKey:@"video_pic"] objectForKey:@"url"];
-             url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+             url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
             [videoView sd_setImageWithURL:[NSURL URLWithString:url]];
             
             self.index = _imgcount - 1;
@@ -114,13 +114,13 @@
             
         }else if (i == _imgcount+1) {
             NSString *url = [[dataArray[0] objectForKey:@"video_pic"] objectForKey:@"url"];
-            url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+            url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
             [videoView sd_setImageWithURL:[NSURL URLWithString:url]];
             self.index = 0;
             
         }else {
             NSString *url = [[dataArray[i - 1] objectForKey:@"video_pic"] objectForKey:@"url"];
-            url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+            url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
             [videoView sd_setImageWithURL:[NSURL URLWithString:url]];
             self.index = i - 1;
         }
@@ -164,6 +164,8 @@
 
 
 - (void)loadVideo{
+    _index = (long)roundf(_scrollView.contentOffset.x  / _scrollView.frame.size.width);
+    
     [self.viewController.navigationController pushViewController:[[MTVideo1 alloc] initWithVideoUrlStr:[NSString stringWithFormat:@"%@",[_dataArray[self.index-1]objectForKey:@"url"]]] animated:YES];
     
 }
@@ -180,17 +182,17 @@
         
         scrollView.contentOffset = CGPointMake(self.scrollView.frame.size.width * _imgcount, 0);
     }
+    _index = (long)roundf(_scrollView.contentOffset.x  / _scrollView.frame.size.width);
     
 }
 
 #pragma mark - 轻拍手势的方法
 -(void)tapAction:(UITapGestureRecognizer *)tap{
-    self.index = 0;
+    
     
     if ([_dataArray isKindOfClass:[NSArray class]] && (_imgcount > 0)) {
+        _index = (long)roundf(_scrollView.contentOffset.x  / _scrollView.frame.size.width);
         
-        self.index = self.scrollView.contentOffset.x / self.scrollView.frame.size.width;
-       
         [self loadVideo];
         
     }else{
