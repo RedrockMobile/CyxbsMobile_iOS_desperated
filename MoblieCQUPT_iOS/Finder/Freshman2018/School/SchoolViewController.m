@@ -11,11 +11,13 @@
 #import "FoodTableViewCell.h"
 #import <UIImageView+WebCache.h>
 #import <Masonry.h>
+#import "PictureSize.h"
 #define  SCREEN_Width [UIScreen mainScreen].bounds.size.width / 375
 
 @interface SchoolViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrData;
+@property (nonatomic, strong) UIImageView *cellImage;
 
 @end
 
@@ -130,8 +132,24 @@
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FoodTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    _cellImage = cell.imgView;
+    
+    cell.imgView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(magnifyImag)];
+    
+    [cell.imgView addGestureRecognizer:tap];
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中状态
 }
+
+-(void)magnifyImag
+{
+    [PictureSize showImage:self.cellImage];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.

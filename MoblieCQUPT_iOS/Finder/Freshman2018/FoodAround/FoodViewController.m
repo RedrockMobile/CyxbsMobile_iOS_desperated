@@ -12,11 +12,14 @@
 #import <AFNetworking.h>
 #import <UIImageView+WebCache.h>
 #import <Masonry.h>
+#import "PictureSize.h"
 #define  SCREEN_Width [UIScreen mainScreen].bounds.size.width / 375
 
 @interface FoodViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *arrData;
+@property (strong ,nonatomic) UIImageView *cellImage;
+
 @end
 
 @implementation FoodViewController
@@ -89,6 +92,10 @@
         return 400 * SCREEN_Width;
     }
     return 370 * SCREEN_Width;
+    
+    
+    
+    
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -127,7 +134,19 @@
     
     cell.imgView.layer.cornerRadius = 6;
     cell.imgView.layer.masksToBounds = YES;
+   
 
+//    _cellImage = cell.imgView;
+    
+//    cell.imgView.userInteractionEnabled = YES;
+    
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(magnifyImag)];
+//
+//    [cell.imgView addGestureRecognizer:tap];
+
+    
+    
+    
     [cell.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
         make.top.mas_equalTo(cell.mas_top).offset(16 * SCREEN_Width);
@@ -164,25 +183,38 @@
         make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-11 * SCREEN_Width);
     }];
     
-//    [cell.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(cell.mas_left).offset(240 * SCREEN_Width);
-//        make.right.mas_equalTo(cell.mas_right).offset(-20 * SCREEN_Width);
-//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-4 * SCREEN_Width);
-//    }];
-//
-//
+
     cell.layer.cornerRadius = 6;
     cell.layer.masksToBounds = YES;
     
     return cell;
 }
+
+-(void)magnifyImag
+{
+
+    [PictureSize showImage:_cellImage];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FoodTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    _cellImage = cell.imgView;
+    
+    cell.imgView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(magnifyImag)];
+    
+    [cell.imgView addGestureRecognizer:tap];
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中状态
+    
 }
 
 
@@ -218,6 +250,22 @@
     return headView;
 }
 
+
+
+
+
+
+
+
+
+
+//-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(nonnull UITouch *)touch
+//{
+//    if ([touch.view isKindOfClass:[UIImageView class]]) {
+//        return NO;
+//    }
+//    return YES;
+//}
 
 
 
