@@ -254,6 +254,7 @@
 		82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685691F6E4F4B004A5C7D /* icon_up@3x.png */; };
 		82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856E1F6E701F004A5C7D /* headImage@2x.png */; };
 		82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856F1F6E701F004A5C7D /* headImage@3x.png */; };
+		894239662130FF710060390D /* PictureSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 894239652130FF710060390D /* PictureSize.m */; };
 		9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4351FAF07D200874EB9 /* BackgroundTableViewCell.m */; };
 		9630E48B1FAF07D200874EB9 /* HeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4371FAF07D200874EB9 /* HeaderTableViewCell.m */; };
 		9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4391FAF07D200874EB9 /* QueryTableViewCell.m */; };
@@ -1062,6 +1063,8 @@
 		82D685691F6E4F4B004A5C7D /* icon_up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_up@3x.png"; sourceTree = "<group>"; };
 		82D6856E1F6E701F004A5C7D /* headImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@2x.png"; sourceTree = "<group>"; };
 		82D6856F1F6E701F004A5C7D /* headImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@3x.png"; sourceTree = "<group>"; };
+		894239642130FF710060390D /* PictureSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSize.h; sourceTree = "<group>"; };
+		894239652130FF710060390D /* PictureSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSize.m; sourceTree = "<group>"; };
 		9630E4341FAF07D200874EB9 /* BackgroundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTableViewCell.h; sourceTree = "<group>"; };
 		9630E4351FAF07D200874EB9 /* BackgroundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTableViewCell.m; sourceTree = "<group>"; };
 		9630E4361FAF07D200874EB9 /* HeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -2047,8 +2050,13 @@
 				829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */,
 				829C956B2127D8A400B4B05C /* FoodViewController.h */,
 				829C95702127D8A400B4B05C /* FoodViewController.m */,
+
+				894239642130FF710060390D /* PictureSize.h */,
+				894239652130FF710060390D /* PictureSize.m */,
+
 				829C956D2127D8A400B4B05C /* rank.png */,
 				829C95682127D8A400B4B05C /* rank@3x.png */,
+
 			);
 			path = FoodAround;
 			sourceTree = "<group>";
@@ -4602,6 +4610,7 @@
 				2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */,
 				829C95D72127DABE00B4B05C /* SchollGeneralTableViewCell.m in Sources */,
 				829C958E2127D92000B4B05C /* UIImageView+WebCache.m in Sources */,
+				894239662130FF710060390D /* PictureSize.m in Sources */,
 				829C969E2127DCE000B4B05C /* SYCActivityManager.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
