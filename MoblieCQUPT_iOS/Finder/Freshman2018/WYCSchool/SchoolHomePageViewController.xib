@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SchoolHomePageViewController">
+            <connections>
+                <outlet property="SchoolRootView" destination="6ae-Ty-vZ7" id="qrJ-C1-1Sl"/>
+                <outlet property="btn1" destination="t5Y-90-ckJ" id="9Sz-iC-U34"/>
+                <outlet property="btn2" destination="YpW-CR-tzo" id="oac-WD-CR6"/>
+                <outlet property="btn3" destination="Ksa-OX-5K5" id="I5S-kx-3ob"/>
+                <outlet property="btn4" destination="TgO-18-5S0" id="lgU-kw-YTz"/>
+                <outlet property="btn5" destination="hdH-6W-S7z" id="3DP-jX-YsD"/>
+                <outlet property="btn6" destination="y3N-0p-iIG" id="wQz-UY-ZSP"/>
+                <outlet property="btn7" destination="Tik-3J-Et3" id="HY2-Yg-HzZ"/>
+                <outlet property="btn8" destination="UDv-gv-5tq" id="bdF-rR-Xc4"/>
+                <outlet property="btn9" destination="gog-Y7-61t" id="bsB-uK-0D9"/>
+                <outlet property="btnHight" destination="uXp-Uo-9Pp" id="byk-JV-NON"/>
+                <outlet property="btnWidth" destination="e1V-Dl-dRZ" id="seW-Yb-3tV"/>
+                <outlet property="topHight" destination="SUB-Tj-25i" id="QhU-pv-TEb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="V4U-zY-Wju"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ae-Ty-vZ7">
+                    <rect key="frame" x="0.0" y="100" width="375" height="567"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5Y-90-ckJ">
+                            <rect key="frame" x="13" y="69" width="113" height="129"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="113" id="e1V-Dl-dRZ"/>
+                                <constraint firstAttribute="height" constant="129" id="uXp-Uo-9Pp"/>
+                            </constraints>
+                            <state key="normal" image="学生食堂"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="tx3-lQ-DQR"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YpW-CR-tzo">
+                            <rect key="frame" x="131" y="69" width="113" height="129"/>
+                            <state key="normal" image="学生寝室"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="1DV-ED-kNP"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ksa-OX-5K5">
+                            <rect key="frame" x="249" y="69" width="113" height="129"/>
+                            <state key="normal" image="周边美食"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="TOZ-Mg-oji"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TgO-18-5S0">
+                            <rect key="frame" x="13" y="220" width="113" height="129"/>
+                            <state key="normal" image="附近景点"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="Knu-RK-kkU"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdH-6W-S7z">
+                            <rect key="frame" x="131" y="219" width="113" height="129"/>
+                            <state key="normal" image="校园环境"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="c19-d7-Nbx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3N-0p-iIG">
+                            <rect key="frame" x="249" y="220" width="113" height="129"/>
+                            <state key="normal" image="数据揭秘"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="xS2-Op-guX"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tik-3J-Et3">
+                            <rect key="frame" x="13" y="368" width="113" height="129"/>
+                            <state key="normal" image="附近银行"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="WFg-i1-0f6"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDv-gv-5tq">
+                            <rect key="frame" x="131" y="368" width="113" height="129"/>
+                            <state key="normal" image="公交路线"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="TNB-Wr-jAx"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gog-Y7-61t">
+                            <rect key="frame" x="249" y="368" width="113" height="129"/>
+                            <state key="normal" image="快递收发"/>
+                            <connections>
+                                <action selector="clickbtn:" destination="-1" eventType="touchUpInside" id="Pyh-El-lqK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="UDv-gv-5tq" firstAttribute="top" secondItem="gog-Y7-61t" secondAttribute="top" id="4JN-Ix-GUj"/>
+                        <constraint firstItem="hdH-6W-S7z" firstAttribute="leading" secondItem="UDv-gv-5tq" secondAttribute="leading" id="4YZ-pt-SKQ"/>
+                        <constraint firstItem="Ksa-OX-5K5" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="7KN-SM-nY4"/>
+                        <constraint firstItem="TgO-18-5S0" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="9WT-eG-Zoe"/>
+                        <constraint firstItem="hdH-6W-S7z" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="9aw-4O-YmV"/>
+                        <constraint firstItem="UDv-gv-5tq" firstAttribute="top" secondItem="hdH-6W-S7z" secondAttribute="bottom" constant="20" id="9rJ-iI-cvt"/>
+                        <constraint firstItem="Tik-3J-Et3" firstAttribute="top" secondItem="UDv-gv-5tq" secondAttribute="top" id="Cfq-iL-9Ri"/>
+                        <constraint firstItem="UDv-gv-5tq" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="Cqp-WQ-68C"/>
+                        <constraint firstItem="y3N-0p-iIG" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="InY-7T-441"/>
+                        <constraint firstItem="gog-Y7-61t" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="OPK-ed-nZv"/>
+                        <constraint firstItem="t5Y-90-ckJ" firstAttribute="trailing" secondItem="TgO-18-5S0" secondAttribute="trailing" id="Onw-pt-dul"/>
+                        <constraint firstItem="gog-Y7-61t" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="P7w-vb-JHP"/>
+                        <constraint firstItem="YpW-CR-tzo" firstAttribute="top" secondItem="Ksa-OX-5K5" secondAttribute="top" id="P8E-j5-6XU"/>
+                        <constraint firstItem="Ksa-OX-5K5" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="PGA-xX-upO"/>
+                        <constraint firstItem="TgO-18-5S0" firstAttribute="top" secondItem="y3N-0p-iIG" secondAttribute="top" id="SPi-4e-tWf"/>
+                        <constraint firstItem="YpW-CR-tzo" firstAttribute="centerX" secondItem="6ae-Ty-vZ7" secondAttribute="centerX" id="VAu-9s-Rno"/>
+                        <constraint firstItem="YpW-CR-tzo" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="XpL-VZ-VCi"/>
+                        <constraint firstItem="y3N-0p-iIG" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="Zwg-Tl-vaZ"/>
+                        <constraint firstItem="hdH-6W-S7z" firstAttribute="top" secondItem="YpW-CR-tzo" secondAttribute="bottom" constant="21" id="cu9-ko-ZWu"/>
+                        <constraint firstItem="t5Y-90-ckJ" firstAttribute="top" secondItem="YpW-CR-tzo" secondAttribute="top" id="fas-R0-56z"/>
+                        <constraint firstItem="y3N-0p-iIG" firstAttribute="leading" secondItem="gog-Y7-61t" secondAttribute="leading" id="fzr-L7-IKr"/>
+                        <constraint firstItem="TgO-18-5S0" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="hpS-hg-Pg0"/>
+                        <constraint firstItem="Tik-3J-Et3" firstAttribute="top" secondItem="TgO-18-5S0" secondAttribute="bottom" constant="19" id="iYL-Sv-59c"/>
+                        <constraint firstItem="TgO-18-5S0" firstAttribute="leading" secondItem="Tik-3J-Et3" secondAttribute="leading" id="kcD-RZ-N5Y"/>
+                        <constraint firstItem="hdH-6W-S7z" firstAttribute="centerY" secondItem="6ae-Ty-vZ7" secondAttribute="centerY" id="nJH-a6-C76"/>
+                        <constraint firstItem="Tik-3J-Et3" firstAttribute="width" secondItem="t5Y-90-ckJ" secondAttribute="width" id="pdV-mg-Jaa"/>
+                        <constraint firstItem="YpW-CR-tzo" firstAttribute="leading" secondItem="t5Y-90-ckJ" secondAttribute="trailing" constant="5" id="r3S-5Q-hXD"/>
+                        <constraint firstItem="YpW-CR-tzo" firstAttribute="leading" secondItem="hdH-6W-S7z" secondAttribute="leading" id="rl8-37-RZa"/>
+                        <constraint firstItem="Ksa-OX-5K5" firstAttribute="trailing" secondItem="y3N-0p-iIG" secondAttribute="trailing" id="vLP-W7-L4f"/>
+                        <constraint firstItem="Ksa-OX-5K5" firstAttribute="leading" secondItem="YpW-CR-tzo" secondAttribute="trailing" constant="5" id="w6l-aJ-Q6d"/>
+                        <constraint firstItem="Tik-3J-Et3" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="wzZ-HX-5gz"/>
+                        <constraint firstItem="YpW-CR-tzo" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="x0h-AB-lp4"/>
+                        <constraint firstItem="UDv-gv-5tq" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="yQH-RX-tSv"/>
+                        <constraint firstItem="hdH-6W-S7z" firstAttribute="height" secondItem="t5Y-90-ckJ" secondAttribute="height" id="zRj-4s-pYK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="6ae-Ty-vZ7" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="2iC-tL-BdW"/>
+                <constraint firstItem="6ae-Ty-vZ7" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="KRT-nq-hiF"/>
+                <constraint firstItem="6ae-Ty-vZ7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="SUB-Tj-25i"/>
+                <constraint firstAttribute="bottom" secondItem="6ae-Ty-vZ7" secondAttribute="bottom" id="Uhv-lk-FCF"/>
+            </constraints>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="公交路线" width="113" height="129"/>
+        <image name="周边美食" width="114" height="129"/>
+        <image name="学生寝室" width="113" height="129"/>
+        <image name="学生食堂" width="113" height="129"/>
+        <image name="快递收发" width="113" height="129"/>
+        <image name="数据揭秘" width="113" height="129"/>
+        <image name="校园环境" width="113" height="129"/>
+        <image name="附近景点" width="114" height="129"/>
+        <image name="附近银行" width="114" height="129"/>
+    </resources>
+</document>
