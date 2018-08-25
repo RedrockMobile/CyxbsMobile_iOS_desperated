@@ -53,7 +53,7 @@
     hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/byindex?index=快递收发&pagenum=1&pagesize=10";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
