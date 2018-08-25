@@ -22,7 +22,7 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @property (strong, nonatomic) IBOutlet UIView *backView;
-
+@property (strong, nonatomic) NSMutableArray *imgArray;
 
 
 -(void)initWithDic:(NSDictionary *)dataDic;

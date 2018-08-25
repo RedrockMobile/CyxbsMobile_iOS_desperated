@@ -53,13 +53,14 @@
     
    
     int i = 0;
+    _imgArray = [[NSMutableArray alloc]init];
     _picUrl = [[NSArray alloc]init];
     _picUrl = [dataDic objectForKey:@"picture"];
-    
+    @autoreleasepool{
     for (NSString __strong *url in _picUrl) {
         url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
         UIImageView *view = [[UIImageView alloc]init];
-        
+        [_imgArray addObject:view];
         [view sd_setImageWithURL:[NSURL URLWithString:url]];
         
         view.frame = CGRectMake(_scrollView.frame.size.width*i, 0, _scrollView.frame.size.width, _scrollView.frame.size.height);
@@ -69,7 +70,7 @@
         [_scrollView addSubview:view];
         i++;
     }
-    
+    }
     _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width*_picUrl.count, 0);
     
     [_RootView addSubview:_scrollView];
@@ -93,14 +94,15 @@
     _contentLabel.textColor = [UIColor darkGrayColor];
     [_RootView addSubview:_contentLabel];
     NSInteger fontSize;
-    if (SCREENWIDTH >=375) {
-        fontSize = 14;
-        _contentLabel.font = [UIFont adaptFontSize:fontSize];
-    }else{
-        fontSize = 13;
-        _contentLabel.font = [UIFont adaptFontSize:fontSize];
-    }
-    
+    fontSize = 14;
+//    if (SCREENWIDTH >=375) {
+//        fontSize = 14;
+//        _contentLabel.font = [UIFont adaptFontSize:fontSize];
+//    }else{
+//        fontSize = 14;
+//        _contentLabel.font = [UIFont adaptFontSize:fontSize];
+//    }
+    _contentLabel.font = [UIFont adaptFontSize:fontSize];
     [_RootView layoutIfNeeded];
     
     CGFloat contenLableHeight = [self calculateRowHeight:[[NSString alloc]initWithFormat:@"%@",[dataDic objectForKey:@"content"]] fontSize:fontSize];
@@ -224,11 +226,15 @@
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
     
+    @autoreleasepool{
     for (int i = 0; i < _picUrl.count; i++) {
-        UIImageView *tmp = _scrollView.subviews[i];
+  
+        UIImageView *tmp = _imgArray[i];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:tmp.image];
+
         [imgView setFrame:CGRectMake(i*scrollView.width, 0, scrollView.width, scrollView.height)];
         [scrollView addSubview:imgView];
+    }
     }
     scrollView.contentSize = CGSizeMake(_picUrl.count*scrollView.width, 0);
     
