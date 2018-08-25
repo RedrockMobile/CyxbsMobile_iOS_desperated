@@ -38,8 +38,8 @@
 - (NSMutableArray *)imageWithArray:(NSArray *)arr{
     NSMutableArray *imgArr = [NSMutableArray array];
     for (int i = 0; i < arr.count; i++) {
-        NSString *str = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",self.arr[i]];
-        NSDate *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString: str]];
+        NSString *str = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",self.arr[i]];
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString: str]];
         UIImage *img = [UIImage imageWithData:imageData];
         [imgArr addObject:img];
     }
@@ -49,5 +49,7 @@
 + (instancetype)DeleModelWithDict:(NSDictionary *)dict{
     return [[self alloc]initWithDic:dict];
 }
+
+
 
 @end

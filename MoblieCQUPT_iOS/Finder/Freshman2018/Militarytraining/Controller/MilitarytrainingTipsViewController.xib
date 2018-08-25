@@ -14,7 +14,10 @@
                 <outlet property="contentview" destination="ifq-ox-Xkq" id="cEu-K7-FOd"/>
                 <outlet property="label1" destination="1ys-pL-bQc" id="yHa-K7-LyD"/>
                 <outlet property="label2" destination="Fa6-yi-kNc" id="Ewu-PX-DQb"/>
+                <outlet property="rootView" destination="1my-0O-h1x" id="UWK-bA-2DI"/>
                 <outlet property="scrollview" destination="FYW-EI-rwP" id="hlC-bk-Lyc"/>
+                <outlet property="title1" destination="nQM-5y-zaf" id="eMy-Jl-2IY"/>
+                <outlet property="title2" destination="XBg-bb-EuD" id="sqK-8M-IzG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="13e-A1-NUd"/>
             </connections>
         </placeholder>
@@ -23,79 +26,56 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ifq-ox-Xkq">
-                    <rect key="frame" x="15" y="20" width="345" height="627"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ifq-ox-Xkq">
+                    <rect key="frame" x="9" y="15" width="357" height="642"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FYW-EI-rwP">
-                            <rect key="frame" x="0.0" y="0.0" width="345" height="627"/>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1my-0O-h1x">
+                            <rect key="frame" x="14" y="16" width="329" height="610"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一、 军训纪律" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQM-5y-zaf">
-                                    <rect key="frame" x="112" y="0.0" width="120" height="21"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="120" id="Fag-Yw-XXO"/>
-                                        <constraint firstAttribute="height" constant="21" id="tSf-dJ-jc0"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ys-pL-bQc">
-                                    <rect key="frame" x="0.0" y="29" width="345" height="272"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa6-yi-kNc">
-                                    <rect key="frame" x="0.0" y="332" width="345" height="295"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="295" id="jcB-yR-VdF"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二、 军训贴士" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-bb-EuD">
-                                    <rect key="frame" x="112" y="303" width="120" height="21"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FYW-EI-rwP">
+                                    <rect key="frame" x="14" y="46" width="300" height="518"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa6-yi-kNc">
+                                            <rect key="frame" x="18" y="343" width="269" height="160"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="二、 军训贴士" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XBg-bb-EuD">
+                                            <rect key="frame" x="105" y="287" width="120" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ys-pL-bQc">
+                                            <rect key="frame" x="18" y="89" width="274" height="165"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="一、 军训纪律" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQM-5y-zaf">
+                                            <rect key="frame" x="43" y="38" width="244" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </scrollView>
                             </subviews>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="Fa6-yi-kNc" secondAttribute="bottom" id="1hw-H4-97f"/>
-                                <constraint firstItem="XBg-bb-EuD" firstAttribute="top" secondItem="1ys-pL-bQc" secondAttribute="bottom" constant="2" id="MYv-Jx-fNj"/>
-                                <constraint firstItem="nQM-5y-zaf" firstAttribute="centerX" secondItem="FYW-EI-rwP" secondAttribute="centerX" id="Qds-Ud-DQS"/>
-                                <constraint firstAttribute="trailing" secondItem="1ys-pL-bQc" secondAttribute="trailing" id="SP3-ak-Vlw"/>
-                                <constraint firstItem="1ys-pL-bQc" firstAttribute="top" secondItem="nQM-5y-zaf" secondAttribute="bottom" constant="8" symbolic="YES" id="Xpj-Q6-r43"/>
-                                <constraint firstItem="Fa6-yi-kNc" firstAttribute="top" secondItem="XBg-bb-EuD" secondAttribute="bottom" constant="8" symbolic="YES" id="YRy-yG-Kl6"/>
-                                <constraint firstItem="1ys-pL-bQc" firstAttribute="trailing" secondItem="Fa6-yi-kNc" secondAttribute="trailing" id="eIT-RV-Udi"/>
-                                <constraint firstItem="1ys-pL-bQc" firstAttribute="centerX" secondItem="XBg-bb-EuD" secondAttribute="centerX" id="icb-E2-cf6"/>
-                                <constraint firstItem="nQM-5y-zaf" firstAttribute="trailing" secondItem="XBg-bb-EuD" secondAttribute="trailing" id="kEQ-Gh-kIL"/>
-                                <constraint firstItem="nQM-5y-zaf" firstAttribute="top" secondItem="FYW-EI-rwP" secondAttribute="top" id="kik-9Q-g4j"/>
-                                <constraint firstItem="nQM-5y-zaf" firstAttribute="leading" secondItem="XBg-bb-EuD" secondAttribute="leading" id="rGG-gE-4qh"/>
-                                <constraint firstItem="1ys-pL-bQc" firstAttribute="leading" secondItem="Fa6-yi-kNc" secondAttribute="leading" id="wgi-A4-LTl"/>
-                                <constraint firstItem="XBg-bb-EuD" firstAttribute="centerY" secondItem="FYW-EI-rwP" secondAttribute="centerY" id="yJn-g1-119"/>
-                                <constraint firstItem="1ys-pL-bQc" firstAttribute="leading" secondItem="FYW-EI-rwP" secondAttribute="leading" id="zSG-6w-flP"/>
-                            </constraints>
-                        </scrollView>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="FYW-EI-rwP" firstAttribute="top" secondItem="ifq-ox-Xkq" secondAttribute="top" id="6cX-YS-6qi"/>
-                        <constraint firstAttribute="trailing" secondItem="FYW-EI-rwP" secondAttribute="trailing" id="VXj-Qd-bgy"/>
-                        <constraint firstItem="FYW-EI-rwP" firstAttribute="leading" secondItem="ifq-ox-Xkq" secondAttribute="leading" id="ep2-Ua-MbV"/>
-                        <constraint firstAttribute="bottom" secondItem="FYW-EI-rwP" secondAttribute="bottom" id="fag-dB-UG8"/>
-                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="ifq-ox-Xkq" secondAttribute="trailing" constant="15" id="0mb-Ms-Gku"/>
-                <constraint firstItem="ifq-ox-Xkq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="6NZ-JE-AgT"/>
-                <constraint firstAttribute="bottom" secondItem="ifq-ox-Xkq" secondAttribute="bottom" constant="20" id="PSw-R7-Q2m"/>
-                <constraint firstAttribute="bottom" secondItem="ifq-ox-Xkq" secondAttribute="bottom" constant="20" id="lvo-oW-hgZ"/>
-                <constraint firstItem="ifq-ox-Xkq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="zy1-pU-wzV"/>
-            </constraints>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>

@@ -19,6 +19,7 @@
 
 @property (nonatomic, strong)UIImageView *imgView;
 @property (nonatomic, strong)UIImageView *bkgImg;
+@property (nonatomic, strong)UIImageView *sdwImg;
 @property (nonatomic, strong)UILabel *titleLabel;
 @property (nonatomic, strong)UILabel *ContentLabel;
 @property (nonatomic, weak) UIView *separatorView;

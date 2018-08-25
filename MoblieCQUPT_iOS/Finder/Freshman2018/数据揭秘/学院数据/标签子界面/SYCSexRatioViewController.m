@@ -14,6 +14,8 @@
 
 @property (nonatomic)NSNumber *numOfBoys;
 @property (nonatomic)NSNumber *numOfGirls;
+@property (nonatomic, strong)AAChartView *pieView;
+@property (nonatomic, strong)AAChartModel *pieModel;
 
 @end
 
@@ -31,10 +33,13 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     
-    UIView *pieViewBackgroud = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - pieViewBackgroudWidth) / 2.0, 10, pieViewWidth * 1.05, pieViewHeight * 1.05)];
+    UIView *pieViewBackgroud = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - pieViewBackgroudWidth) / 2.0, 10, pieViewWidth * 1.05, pieViewHeight * 1.1)];
     pieViewBackgroud.backgroundColor = [UIColor whiteColor];
     pieViewBackgroud.layer.cornerRadius = 16;
     pieViewBackgroud.layer.masksToBounds = YES;
+    pieViewBackgroud.layer.shadowOffset = CGSizeMake(2, 5);
+    pieViewBackgroud.layer.shadowOpacity = 0.1;
+    pieViewBackgroud.layer.shadowColor = [UIColor grayColor].CGColor;
     [self.view addSubview:pieViewBackgroud];
     
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(pieViewBackgroudWidth * 0.07, pieViewBackgroudHeight * 0.02, pieViewBackgroudWidth, pieViewBackgroudHeight * 0.08)];
@@ -52,10 +57,10 @@
     numOfBoys = [data.sexRatio objectForKey:@"male_amount"];
     numOfGirls = [data.sexRatio objectForKey:@"female_amount"];
     
-    AAChartView *pieView = [[AAChartView alloc] initWithFrame:CGRectMake((pieViewBackgroudWidth - pieViewWidth) / 2.0, pieViewBackgroudHeight * 0.1, pieViewWidth, pieViewHeight)];
-    [pieViewBackgroud addSubview:pieView];
+    self.pieView = [[AAChartView alloc] initWithFrame:CGRectMake((pieViewBackgroudWidth - pieViewWidth) / 2.0, pieViewBackgroudHeight * 0.1, pieViewWidth, pieViewHeight)];
+    [pieViewBackgroud addSubview:self.pieView];
     
-    AAChartModel *pieModel = AAObject(AAChartModel).chartTypeSet(AAChartTypePie)//设置图表的类型
+    self.pieModel = AAObject(AAChartModel).chartTypeSet(AAChartTypePie)//设置图表的类型
     .titleSet(@"")
     .titleFontSizeSet(@25.0)
     .animationTypeSet(AAChartAnimationEaseInOutCubic)
@@ -67,8 +72,9 @@
                 @[@"男生", numOfBoys],
                 @[@"女生", numOfGirls],
                 ])
-            ]);
-    [pieView aa_drawChartWithChartModel:pieModel];
+            ])
+    .colorsThemeSet(@[@"#6ecaff", @"#ff86c5"]);
+    [self.pieView aa_drawChartWithChartModel:self.pieModel];
     
     UIBarButtonItem *cencelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
     self.navigationItem.leftBarButtonItem = cencelButton;
@@ -83,6 +89,9 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)reflesh{
+    [self.pieView aa_refreshChartWithChartModel:self.pieModel];
+}
 /*
 #pragma mark - Navigation
 

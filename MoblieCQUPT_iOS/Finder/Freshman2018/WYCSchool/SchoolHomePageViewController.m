@@ -49,13 +49,13 @@
     _topHight.constant = HEADERHEIGHT;
     _SchoolRootView.backgroundColor =  [UIColor colorWithHexString:@"f6f6f6"];
     self.btnHight.constant = 129*(SCREENHEIGHT/667);
-    self.btnWidth.constant = 113*(SCREENWIDTH/375);
+    self.btnWidth.constant = 114*(SCREENWIDTH/375);
 
 
     [self.view addSubview:_SchoolRootView];
     // Do any additional setup after loading the view from its nib.
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel)];
+    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelBtn;
 }
 

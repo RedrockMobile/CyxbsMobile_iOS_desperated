@@ -11,6 +11,7 @@
 #import "SYCCollageDataManager.h"
 #import "SYCSexRatioViewController.h"
 #import "SYCDataAnaylseViewController.h"
+#import "SYCCollageTableViewCell.h"
 
 @interface SYCCollageTableViewController ()
 
@@ -31,20 +32,19 @@
     self.collageData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collageData.archiver"]];
     
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-
+    [self.tableView registerClass:[SYCCollageTableViewCell class] forCellReuseIdentifier:@"SYCCollageTableViewCell"];
     self.title = @"学院选择";
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData:) name:@"DataDownloadDone" object:nil];
-    
     self.tabBarController.tabBar.hidden = YES;
+    self.view.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.tableView setContentInset:UIEdgeInsetsMake(SCREENHEIGHT * 0.008, 0, 0, 0)];
 }
 
 - (void)reloadData:(NSNotification *)notifacation{
     self.collageNameArray = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]] objectForKey:@"name"];
     self.collageData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collageData.archiver"]];
     
-    NSLog(@"%@", self.collageData);
     [self.tableView reloadData];
 }
 
@@ -69,9 +69,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
-    
-    cell.textLabel.text = collageNameArray[indexPath.row];
+    SYCCollageTableViewCell *cell = [[SYCCollageTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SYCCollageTableViewCell"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.collageName = collageNameArray[indexPath.row];
     
     return cell;
 }
@@ -79,10 +79,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     SYCDataAnaylseViewController *dataAnalyseVC = [[SYCDataAnaylseViewController alloc] init];
-
     dataAnalyseVC.data = [self.collageData objectForKey:[collageNameArray objectAtIndex:[indexPath row]]];
     
-        [self.navigationController pushViewController:dataAnalyseVC animated:YES];
+    [self.navigationController pushViewController:dataAnalyseVC animated:YES];
     
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return SCREENHEIGHT * 0.08;
+}
+
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SchollSubViewController : BaseViewController
-
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 -(void)setUrl:(NSString *)url;
 
 @end

@@ -81,10 +81,14 @@
     CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
     CGFloat mainPageHeight = mainPageWidth * 2.933;
 
-    
+    NSLog(@"%lu", (unsigned long)self.mainPageModel.currentStep);
     
     self.rxbbBtn = [[UIButton alloc] initWithFrame: CGRectMake(mainPageWidth * 0.173, mainPageHeight * 0.193, mainPageWidth * 0.442, mainPageHeight * 0.073)];
-    [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备"] forState:UIControlStateNormal];
+    if (self.mainPageModel.currentStep == 1) {
+        [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备1"] forState:UIControlStateNormal];
+    }else{
+        [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备2"] forState:UIControlStateNormal];
+    }
     [self.rxbbBtn addTarget:self action:@selector(clickRxbbBtn:) forControlEvents:UIControlEventTouchUpInside];
     [_scrollView addSubview:self.rxbbBtn];
     
@@ -97,8 +101,10 @@
     self.xyglBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.350, mainPageHeight * 0.290, mainPageWidth * 0.354, mainPageHeight * 0.139)];
     if (self.mainPageModel.currentStep < 2) {
         [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略锁"] forState:UIControlStateNormal];
+        [self.xyglBtn setTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
     }else{
         [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
+        [self.xyglBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.xyglBtn setTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [_scrollView addSubview:self.xyglBtn];
@@ -107,8 +113,10 @@
     self.xsjlBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.125, mainPageHeight * 0.475, mainPageWidth * 0.472, mainPageHeight * 0.097)];
     if (self.mainPageModel.currentStep < 3) {
         [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流锁"] forState:UIControlStateNormal];
+        [self.xsjlBtn setTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
     }else{
         [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
+        [self.xsjlBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.xsjlBtn setTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [_scrollView addSubview:self.xsjlBtn];
@@ -122,8 +130,10 @@
     self.bdlcBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.625, mainPageHeight * 0.655, mainPageWidth * 0.372, mainPageHeight * 0.107)];
     if (self.mainPageModel.currentStep < 4) {
         [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程锁"] forState:UIControlStateNormal];
+        [self.bdlcBtn setTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
     }else{
         [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
+        [self.bdlcBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.bdlcBtn setTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [_scrollView addSubview:self.bdlcBtn];
@@ -132,8 +142,10 @@
     self.wxdnsBtn = [[UIButton alloc] initWithFrame:CGRectMake(mainPageWidth * 0.05, mainPageHeight * 0.800, mainPageWidth * 0.380, mainPageHeight * 0.143)];
     if (self.mainPageModel.currentStep < 5) {
         [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说锁"] forState:UIControlStateNormal];
+        [self.wxdnsBtn setTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
     }else{
         [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
+        [self.wxdnsBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
         [self.wxdnsBtn setTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
     }
     [_scrollView addSubview: self.wxdnsBtn];
@@ -170,7 +182,7 @@
 
 - (void)clickRxbbBtn:(id)sender{
     DLNecessityViewController *rxbbVC = [[DLNecessityViewController alloc] init];
-
+    rxbbVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:rxbbVC animated:YES];
     rxbbVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 2) {
@@ -188,7 +200,7 @@
 
 - (void)clickXyglBtn:(id)sender{
     SchoolHomePageViewController *xyglVC = [[SchoolHomePageViewController alloc] init];
-    
+    xyglVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:xyglVC animated:YES];
     xyglVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 3) {
@@ -206,7 +218,7 @@
 
 - (void)clickXsjlBtn:(id)sender{
     ChatViewControl *xsjlVC = [[ChatViewControl alloc] init];
-    
+    xsjlVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:xsjlVC animated:YES];
     xsjlVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 4) {
@@ -224,7 +236,7 @@
 
 - (void)clickBdlcBtn:(id)sender{
     ReportWaterfallController *bdlcVC = [[ReportWaterfallController alloc] init];
-    
+    bdlcVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:bdlcVC animated:YES];
     bdlcVC.callBackHandle = ^{
         if (self.mainPageModel.currentStep < 5) {
@@ -242,42 +254,30 @@
 
 - (void)clickJxtjBtn:(id)sender{
     MilitarytrainingViewController *jxtjVC = [[MilitarytrainingViewController alloc] init];
+    jxtjVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:jxtjVC animated:YES];
 }
 
 - (void)clickWxdnsBtn:(id)sender{
     WantToSayController *collageVC = [[WantToSayController alloc] init];
+    collageVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:collageVC animated:YES];
 }
 
 - (void)clickCyfcBtn:(id)sender{
     SYCCharacterViewController *cyfcVC = [[SYCCharacterViewController alloc] init];
+    cyfcVC.hidesBottomBarWhenPushed = YES;
     cyfcVC.callBackHandle = ^{
     };
     [self.navigationController pushViewController:cyfcVC animated:YES];
 }
 
-
-//- (instancetype)init
-//{
-//    self = [super init];
-//    if (self) {
-//        self.mainPageModel = [SYCMainPageModel shareInstance];
-//
-//        _scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//        [self.view addSubview:_scrollView];
-//
-//        const CGFloat imageRatio = 2.933;
-//        CGFloat mainPageWidth = [UIScreen mainScreen].bounds.size.width;
-//        CGFloat mainPageHeight = mainPageWidth * imageRatio;
-//
-//        SYCMainPageView *mainPageView = [[SYCMainPageView alloc] initWithFrame:CGRectMake(0, 0, mainPageWidth, mainPageHeight)];
-//        [_scrollView addSubview:mainPageView];
-//        _scrollView.contentSize = mainPageView.bounds.size;
-//        [self viewDidLoad];
-//    }
-//    return self;
-//}
+- (void)clickLockedBtn:(id)sender{
+    UIAlertController *lockedAlert = [UIAlertController  alertControllerWithTitle:@"功能锁定中" message:@"请先解锁前面一个功能噢！" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"我明白了 =͟͟͞͞( •̀д•́)" style:UIAlertActionStyleDefault handler:nil];
+    [lockedAlert addAction:okAction];
+    [self presentViewController:lockedAlert animated:YES completion:nil];
+}
 
 - (void)buttonDisappearAnimation:(UIButton *)button{
     CAAnimationGroup *animationGroup = [CAAnimationGroup animation];
@@ -318,23 +318,32 @@
     NSUInteger currentStep = self.mainPageModel.currentStep;
     switch (currentStep) {
         case 2:
+            [self.rxbbBtn setImage:[UIImage imageNamed:@"入学必备2"] forState:UIControlStateNormal];
             [self.xyglBtn setImage:[UIImage imageNamed:@"校园攻略"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.xyglBtn];
+            [self.xyglBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.xyglBtn setTarget:self action:@selector(clickXyglBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 3:
             [self.xsjlBtn setImage:[UIImage imageNamed:@"线上交流"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.xsjlBtn];
+            [self.xsjlBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.xsjlBtn setTarget:self action:@selector(clickXsjlBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 4:
             [self.bdlcBtn setImage:[UIImage imageNamed:@"报道流程"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.bdlcBtn];
+            [self.bdlcBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.bdlcBtn setTarget:self action:@selector(clickBdlcBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         case 5:
             [self.wxdnsBtn setImage:[UIImage imageNamed:@"我想对你说"] forState:UIControlStateNormal];
             [self buttonAppearAnimation:self.wxdnsBtn];
+            [self.wxdnsBtn removeTarget:self action:@selector(clickLockedBtn:) forControlEvents:UIControlEventTouchUpInside];
+            [self.wxdnsBtn setTarget:self action:@selector(clickWxdnsBtn:) forControlEvents:UIControlEventTouchUpInside];
             break;
             
         default:

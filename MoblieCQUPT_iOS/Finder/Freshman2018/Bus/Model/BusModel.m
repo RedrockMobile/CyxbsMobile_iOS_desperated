@@ -26,7 +26,7 @@
     NSMutableArray *imgArr = [[NSMutableArray alloc]init];
     imgArr = [@[] mutableCopy];
     for (int i = 0; i < arr.count; i++) {
-        NSString *str = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",self.arr[i]];
+        NSString *str = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",self.arr[i]];
         NSDate *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString: str]];
         UIImage *img = [UIImage imageWithData:imageData];
 //        UIImage *img = [UIImage imageNamed:Arr[i]];
