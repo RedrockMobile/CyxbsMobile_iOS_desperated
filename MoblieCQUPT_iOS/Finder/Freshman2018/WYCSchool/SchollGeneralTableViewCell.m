@@ -58,7 +58,7 @@
     _picUrl = [dataDic objectForKey:@"picture"];
     @autoreleasepool{
     for (NSString __strong *url in _picUrl) {
-        url = [NSString stringWithFormat:@"http://47.106.33.112:8080/welcome2018%@",url];
+        url = [NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@",url];
         UIImageView *view = [[UIImageView alloc]init];
         [_imgArray addObject:view];
         [view sd_setImageWithURL:[NSURL URLWithString:url]];
