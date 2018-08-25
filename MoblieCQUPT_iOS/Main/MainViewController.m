@@ -150,7 +150,8 @@
 
 - (void)entryMainView {
     [self.bootPageScrollView removeFromSuperview];
-    self.view.hidden = NO;
+    [self.bootPageController removeFromSuperview];
+    self.view.hidden = NO;    
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
