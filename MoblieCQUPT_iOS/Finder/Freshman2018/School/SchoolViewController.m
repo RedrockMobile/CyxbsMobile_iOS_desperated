@@ -2,8 +2,8 @@
 //  SchoolViewController.m
 //  迎新
 //
-//  Created by 周杰 on 2018/8/15.
-//  Copyright © 2018年 周杰. All rights reserved.
+//  Created by 陈大炮 on 2018/8/15.
+//  Copyright © 2018年 陈大炮. All rights reserved.
 //
 
 #import "SchoolViewController.h"
@@ -89,6 +89,7 @@
     }
     cell.nameLabel.text = _arrData[indexPath.section][@"name"];
     cell.illstrateLabel.text = _arrData[indexPath.section][@"content"];
+    cell.illstrateLabel.textColor = [UIColor colorWithRed:151/255.0 green:151/255.0 blue:151/255.0 alpha:1];
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
@@ -97,23 +98,26 @@
      cell.imgView.layer.masksToBounds = YES;
     
 //    cell.imgView.contentMode = UIViewContentModeScaleAspectFill;
-    [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [cell.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
         
         make.left.mas_equalTo(cell.mas_left).offset(15  * SCREEN_Width);
         make.top.mas_equalTo(cell.mas_top).offset(15 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(0 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-15 * SCREEN_Width);
-//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-43);
+        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-21 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-43 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-142 * SCREEN_Width);
     }];
+    
     [cell.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
-        make.right.mas_equalTo(cell.mas_right).offset(-250 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-200 * SCREEN_Width);
         make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-8 * SCREEN_Width);
     }];
+    
     [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
         make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
-        make.bottom.mas_equalTo(cell.mas_bottom).offset(-10 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-19 * SCREEN_Width);
     }];
     
     cell.priceLabel.hidden = YES;
