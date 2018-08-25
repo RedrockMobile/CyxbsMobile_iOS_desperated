@@ -30,7 +30,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     
-    UIView *columnViewBackgroud = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - columnViewBackgroudWidth) / 2.0, 10, columnViewWidth * 1.05, columnViewHeight * 1.05)];
+    UIView *columnViewBackgroud = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - columnViewBackgroudWidth) / 2.0, 10, columnViewWidth * 1.05, columnViewHeight * 1.1)];
     columnViewBackgroud.backgroundColor = [UIColor whiteColor];
     columnViewBackgroud.layer.cornerRadius = 16;
     columnViewBackgroud.layer.masksToBounds = YES;
@@ -64,7 +64,9 @@
     .animationDurationSet(@1200)
     .dataLabelEnabledSet(NO)
     .dataLabelFontSizeSet(@12)
+    .dataLabelFontWeightSet(@"Light")
     .yAxisTitleSet(@"百分比")
+    .xAxisLabelsFontSizeSet(@13.0)
     .legendEnabledSet(NO)
     .colorsThemeSet(@[@"#6ecaff", @"#ff86c5",])
     .yAxisTickPositionsSet(@[@0, @25, @50, @75, @100])

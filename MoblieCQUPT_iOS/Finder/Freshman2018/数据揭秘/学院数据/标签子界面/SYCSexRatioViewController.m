@@ -33,7 +33,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
     
-    UIView *pieViewBackgroud = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - pieViewBackgroudWidth) / 2.0, 10, pieViewWidth * 1.05, pieViewHeight * 1.05)];
+    UIView *pieViewBackgroud = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - pieViewBackgroudWidth) / 2.0, 10, pieViewWidth * 1.05, pieViewHeight * 1.1)];
     pieViewBackgroud.backgroundColor = [UIColor whiteColor];
     pieViewBackgroud.layer.cornerRadius = 16;
     pieViewBackgroud.layer.masksToBounds = YES;
