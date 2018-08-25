@@ -29,15 +29,15 @@
     twbgsVC.index = 1;
     
     SYCOrganizationTableViewController *twzzbVC = [[SYCOrganizationTableViewController alloc] init];
-    twzzbVC.title = @"校学生会";
+    twzzbVC.title = @"团委宣传部";
     twzzbVC.index = 2;
     
     SYCOrganizationTableViewController *twxcbVC = [[SYCOrganizationTableViewController alloc] init];
-    twxcbVC.title = @"团委宣传部";
+    twxcbVC.title = @"校学生会";
     twxcbVC.index = 3;
     
     SYCOrganizationTableViewController *xxshVC = [[SYCOrganizationTableViewController alloc] init];
-    xxshVC.title = @"校科协";
+    xxshVC.title = @"学生科技联合会";
     xxshVC.index = 4;
     
     SYCOrganizationTableViewController *dxsystVC = [[SYCOrganizationTableViewController alloc] init];
@@ -45,15 +45,15 @@
     dxsystVC.index = 5;
     
     SYCOrganizationTableViewController *qxVC = [[SYCOrganizationTableViewController alloc] init];
-    qxVC.title = @"校青协";
+    qxVC.title = @"青年志愿者协会";
     qxVC.index = 6;
     
     SYCOrganizationTableViewController *slVC = [[SYCOrganizationTableViewController alloc] init];
-    slVC.title = @"红岩网校";
+    slVC.title = @"红岩网校工作站";
     slVC.index = 7;
     
     SYCOrganizationTableViewController *kxVC = [[SYCOrganizationTableViewController alloc] init];
-    kxVC.title = @"艺术团";
+    kxVC.title = @"大学生艺术团";
     kxVC.index = 8;
     
     

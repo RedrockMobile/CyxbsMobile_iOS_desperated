@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIView *sliderLine;
 @property (nonatomic, assign) NSInteger currentIndex;
 @property (nonatomic, assign) CGFloat titleBtnWidth;
+@property (nonatomic, strong) NSMutableArray *titleBtnWidthArray;
 @property (nonatomic) CGFloat sliderWidth;
 @property (nonatomic) CGFloat sliderHeight;
 
@@ -30,12 +31,15 @@
     if (self) {
         self.controllers = controllers;
         if (type == SYCSegmentViewTypeButton) {
+            for (UIViewController *vc in self.controllers) {
+                [self.titleBtnWidthArray addObject:[NSNumber numberWithFloat:[self sizeWithText:vc.title font:[UIFont systemFontOfSize:16] maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)]]];
+            }
             if (controllers.count > 2) {
-                self.titleBtnWidth = self.width / 3;
+                self.titleBtnWidth = self.width / 2.5;
             }else{
                 self.titleBtnWidth = self.width / controllers.count;
             }
-        }else{
+        }else if(type == SYCSegmentViewTypeNormal){
             if (controllers.count > 3) {
                 self.titleBtnWidth = self.width / 4;
             }else{
@@ -84,22 +88,21 @@
             [titleBtn setTitle:self.controllers[i].title forState:UIControlStateNormal];
             [titleBtn setTitleColor:self.titleColor forState:UIControlStateNormal];
             [titleBtn setTitleColor:self.selectedTitleColor forState:UIControlStateSelected];
-            [titleBtn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
             [self.btnArray addObject:titleBtn];
             [self.titleView addSubview:titleBtn];
-            
+            [titleBtn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
             [self.titleView addSubview:self.sliderLine];
             [self.titleView addSubview:borderline];
         }else if (type == SYCSegmentViewTypeButton){
             SYCSegmentViewButton *titleBtn = [[SYCSegmentViewButton alloc] initWithFrame:CGRectMake(i * self.titleBtnWidth, 0, self.titleBtnWidth, self.titleHeight)];
-            titleBtn.backgroundColor = [UIColor clearColor];
+            titleBtn.tag = i;
             titleBtn.title = self.controllers[i].title;
-
             [titleBtn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
             [self.btnArray addObject:titleBtn];
             [self.titleView addSubview:titleBtn];
             self.titleView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
         }
+        
     }
 
     
@@ -125,7 +128,7 @@
     
     for (int i = 0; i < self.controllers.count; i++) {
         UIView *view = self.controllers[i].view;
-        view.frame = CGRectMake(i * self.width, 0, self.width, self.height-_titleHeight);
+        view.frame = CGRectMake(i * self.width, 0, self.width, self.height - _titleHeight);
         [self.mainView addSubview:view];
     }
     [self addSubview:self.mainView];
@@ -140,15 +143,15 @@
         
         [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             _sliderLine.frame = CGRectMake(currentIndex * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-            if (_btnArray[currentIndex].frame.origin.x < self.width/2) {
+            if (_btnArray[currentIndex].frame.origin.x < self.width / 2) {
                 [_titleView setContentOffset:CGPointMake(0, 0) animated:YES];
                 //在屏幕中线左边的情况
-            } else if (_titleView.contentSize.width - _btnArray[currentIndex].frame.origin.x <= self.width/2) {
+            } else if (_titleView.contentSize.width - _btnArray[currentIndex].frame.origin.x <= self.width / 2) {
                 [_titleView setContentOffset:CGPointMake(_controllers.count * _titleBtnWidth - self.width, 0) animated:YES];
                 //在最右边的情况
             } else {
                 [_titleView setContentOffset:CGPointMake(self.btnArray[currentIndex].frame.origin.x - self.width / 2.0 + _titleBtnWidth / 2.0, 0) animated:YES];
-                //在中间的情况
+                //在中间的情况 
             }
         } completion:nil];
         
@@ -179,12 +182,10 @@
         btn.titleLabel.font = font;
     }
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
+- (CGFloat)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize
+{
+    NSDictionary *attrs = @{NSFontAttributeName : font};
+    return [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size.width;
+}
 @end

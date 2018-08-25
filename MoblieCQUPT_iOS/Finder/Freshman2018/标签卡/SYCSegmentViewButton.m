@@ -20,6 +20,7 @@
     backgroundView.layer.shadowOpacity = 0.05;
     backgroundView.layer.shadowColor = [UIColor grayColor].CGColor;
     
+    
     CGFloat labelWidth = backgroundWidth * 0.9;
     CGFloat labelHeight = backgroundHeight * 0.8;
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.frame.size.width - labelWidth) / 2.0, (self.frame.size.height - labelHeight) / 2.0, labelWidth, labelHeight)];
@@ -31,8 +32,9 @@
     nameLabel.textAlignment = UITextAlignmentCenter;
     nameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
     
-    [self addSubview:backgroundView];
+    [self.layer addSublayer:backgroundView.layer];
     [self addSubview:nameLabel];
-}
 
+    
+}
 @end
