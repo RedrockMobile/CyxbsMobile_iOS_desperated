@@ -57,7 +57,7 @@ typedef void(^callBack)(void);
 
 @property (nonatomic, strong)callBack callBackHandle;
 
-
-
+//移动手势
+@property (retain,nonatomic)UIPinchGestureRecognizer *_pinchGesture;
 
 @end

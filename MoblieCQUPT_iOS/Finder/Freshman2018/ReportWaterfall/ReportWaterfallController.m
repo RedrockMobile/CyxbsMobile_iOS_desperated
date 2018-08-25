@@ -295,6 +295,10 @@ NSString *str04;
         [_imageView01 addGestureRecognizer:tapGesture];
         
         [self shakeToShow:view];
+        
+        //创建捏合手势
+        __pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
+        [_imageView01 addGestureRecognizer:__pinchGesture];
     }
     else if (gesture.view.tag == 2)
     {
@@ -319,6 +323,10 @@ NSString *str04;
         [_imageView03 addGestureRecognizer:tapGesture];
         
         [self shakeToShow:view];
+        
+        //创建捏合手势
+        __pinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinchAction:)];
+        [_imageView03 addGestureRecognizer:__pinchGesture];
     }
     else if (gesture.view.tag == 4)
     {
@@ -572,6 +580,16 @@ NSString *str04;
     }
     [[NSNotificationCenter defaultCenter] postNotificationName:@"saveSuccessful" object:self];
 
+}
+
+//参数：捏合手势对象
+- (void)pinchAction:(UIPinchGestureRecognizer *)pinchAct
+{
+    //获取监控图像视图
+    UIImageView *IView = (UIImageView *)pinchAct.view;
+    IView.transform = CGAffineTransformScale(IView.transform,pinchAct.scale, pinchAct.scale);
+    pinchAct.scale = 1;
+    
 }
 
 - (void)didReceiveMemoryWarning {
