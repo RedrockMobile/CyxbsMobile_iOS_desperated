@@ -28,16 +28,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        [self loadData];
+    [self loadData];
     self.hidesBottomBarWhenPushed = YES;
     self.title = @"周边美食";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     
-    self.foodTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
+    self.foodTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEADERHEIGHT) style:UITableViewStylePlain];
     self.foodTab.delegate = self;
     self.foodTab.dataSource = self;
     self.foodTab.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.foodTab.backgroundColor = [UIColor clearColor];
+    self.foodTab.showsHorizontalScrollIndicator = NO;
+    self.foodTab.showsVerticalScrollIndicator = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self.view addSubview:_foodTab];
 }
 
@@ -52,7 +55,6 @@
                                };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/byindex";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
