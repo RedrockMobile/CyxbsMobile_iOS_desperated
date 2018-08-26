@@ -70,7 +70,7 @@
 }
 
 - (IBAction)clickbtn:(UIButton *)sender {
-    NSArray *array = @[@"SchollSubViewController",@"StuDormitoryRootViewController",@"FoodViewController",@"SceneryViewController",@"SchoolViewController",@"SYCCollageTableViewController",@"BankViewController",@"BusViewController", @"DeliveryViewController"];
+    NSArray *array = @[@"SchollSubViewController",@"StuDormitoryRootViewController",@"FoodAroundViewController",@"SceneryViewController",@"SchoolViewController",@"SYCCollageTableViewController",@"BankViewController",@"BusViewController", @"DeliveryViewController"];
     NSArray *titleArray = @[@"学生食堂",@"学生寝室", @"周边美食", @"附近景点", @"校园环境", @"数据揭秘", @"附近银行", @"公交路线", @"快递收发"];
     NSString *className = array[sender.tag];
     UIViewController *viewController =  (UIViewController *)[[NSClassFromString(className) alloc] init];

@@ -255,6 +255,9 @@
 		82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856E1F6E701F004A5C7D /* headImage@2x.png */; };
 		82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856F1F6E701F004A5C7D /* headImage@3x.png */; };
 		894239662130FF710060390D /* PictureSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 894239652130FF710060390D /* PictureSize.m */; };
+		89C9343A21326A170074DF18 /* FoodAroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9343921326A170074DF18 /* FoodAroundTableViewCell.m */; };
+		89C9343D21326A340074DF18 /* FoodAroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9343C21326A340074DF18 /* FoodAroundViewController.m */; };
+		89C9344021326A4D0074DF18 /* FoodAroundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9343F21326A4D0074DF18 /* FoodAroundModel.m */; };
 		9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4351FAF07D200874EB9 /* BackgroundTableViewCell.m */; };
 		9630E48B1FAF07D200874EB9 /* HeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4371FAF07D200874EB9 /* HeaderTableViewCell.m */; };
 		9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4391FAF07D200874EB9 /* QueryTableViewCell.m */; };
@@ -1065,6 +1068,12 @@
 		82D6856F1F6E701F004A5C7D /* headImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@3x.png"; sourceTree = "<group>"; };
 		894239642130FF710060390D /* PictureSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSize.h; sourceTree = "<group>"; };
 		894239652130FF710060390D /* PictureSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSize.m; sourceTree = "<group>"; };
+		89C9343821326A170074DF18 /* FoodAroundTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodAroundTableViewCell.h; sourceTree = "<group>"; };
+		89C9343921326A170074DF18 /* FoodAroundTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodAroundTableViewCell.m; sourceTree = "<group>"; };
+		89C9343B21326A340074DF18 /* FoodAroundViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodAroundViewController.h; sourceTree = "<group>"; };
+		89C9343C21326A340074DF18 /* FoodAroundViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodAroundViewController.m; sourceTree = "<group>"; };
+		89C9343E21326A4D0074DF18 /* FoodAroundModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodAroundModel.h; sourceTree = "<group>"; };
+		89C9343F21326A4D0074DF18 /* FoodAroundModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodAroundModel.m; sourceTree = "<group>"; };
 		9630E4341FAF07D200874EB9 /* BackgroundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTableViewCell.h; sourceTree = "<group>"; };
 		9630E4351FAF07D200874EB9 /* BackgroundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTableViewCell.m; sourceTree = "<group>"; };
 		9630E4361FAF07D200874EB9 /* HeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -2040,7 +2049,7 @@
 			path = BankAround;
 			sourceTree = "<group>";
 		};
-		829C95672127D8A400B4B05C /* FoodAround */ = {
+		829C95672127D8A400B4B05C /* Food */ = {
 			isa = PBXGroup;
 			children = (
 				829C956A2127D8A400B4B05C /* FoodModel.h */,
@@ -2058,6 +2067,7 @@
 				829C95682127D8A400B4B05C /* rank@3x.png */,
 
 			);
+			name = Food;
 			path = FoodAround;
 			sourceTree = "<group>";
 		};
@@ -2484,7 +2494,8 @@
 				829C95872127D91F00B4B05C /* ReportWaterfall */,
 				829C957F2127D91E00B4B05C /* UIImageView+WebCache */,
 				829C95612127D8A400B4B05C /* BankAround */,
-				829C95672127D8A400B4B05C /* FoodAround */,
+				89C9342C2131CDB00074DF18 /* FoodAround */,
+				829C95672127D8A400B4B05C /* Food */,
 				829C955E2127D8A400B4B05C /* Scereny */,
 				829C95712127D8A500B4B05C /* School */,
 				2FB22331212311A30009EB39 /* Delivery */,
@@ -2492,6 +2503,20 @@
 				2FB222E72121CF020009EB39 /* Necessity */,
 			);
 			path = Freshman2018;
+			sourceTree = "<group>";
+		};
+		89C9342C2131CDB00074DF18 /* FoodAround */ = {
+			isa = PBXGroup;
+			children = (
+				89C9343821326A170074DF18 /* FoodAroundTableViewCell.h */,
+				89C9343921326A170074DF18 /* FoodAroundTableViewCell.m */,
+				89C9343B21326A340074DF18 /* FoodAroundViewController.h */,
+				89C9343C21326A340074DF18 /* FoodAroundViewController.m */,
+				89C9343E21326A4D0074DF18 /* FoodAroundModel.h */,
+				89C9343F21326A4D0074DF18 /* FoodAroundModel.m */,
+			);
+			name = FoodAround;
+			path = Food;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -4461,6 +4486,8 @@
 				829C969D2127DCE000B4B05C /* SYCActivityModel.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */,
+				89C9343D21326A340074DF18 /* FoodAroundViewController.m in Sources */,
+				89C9344021326A4D0074DF18 /* FoodAroundModel.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				829C96912127DCE000B4B05C /* AALegend.m in Sources */,
@@ -4547,6 +4574,7 @@
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
+				89C9343A21326A170074DF18 /* FoodAroundTableViewCell.m in Sources */,
 				829C95CC2127DABE00B4B05C /* MilitarytrainingTipsViewController.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */,

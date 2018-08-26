@@ -35,7 +35,7 @@ static CGRect oldframe;
     [backgroundView addGestureRecognizer:tap];
     
     [UIView animateWithDuration:0.3 animations:^{
-        cImageView.frame = CGRectMake(0, 220,  [UIScreen mainScreen].bounds.size.width, 370);
+        cImageView.frame = CGRectMake(0, 170,  [UIScreen mainScreen].bounds.size.width, 370);
     } completion:^(BOOL finished) {
         
     }];
