@@ -23,7 +23,7 @@ static CGRect oldframe;
     backgroundView.backgroundColor = [UIColor blackColor];
     
 //    backgroundView.alpha=0;
-    UIImageView *cImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100, 375, 100)];
+    UIImageView *cImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 100 , 375, 100)];
     cImageView.image = cImage;
     cImageView.tag = 1;
 

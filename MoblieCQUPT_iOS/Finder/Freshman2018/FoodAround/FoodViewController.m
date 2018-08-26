@@ -107,7 +107,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static  NSString *cellIdentity = @"cellOne";
-    static  NSString *pictireString = @"http://47.106.33.112:8080/welcome2018";
+    static  NSString *pictireString = @"http://wx.yyeke.com/welcome2018";
 
     FoodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentity];
     if (!cell) {
