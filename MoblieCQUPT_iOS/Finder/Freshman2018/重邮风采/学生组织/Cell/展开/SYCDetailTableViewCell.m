@@ -38,9 +38,7 @@
     CGFloat imageViewWidth = SCREENWIDTH * 0.9;
     CGFloat imageViewHeight = imageViewWidth * 0.5625;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backgroundViewWidth - imageViewWidth) / 2.0, (backgroundViewWidth - imageViewWidth) / 2.0, imageViewWidth, imageViewHeight)];
-    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@", self.organization.imagesURLs[0]]]];
-    UIImage *image = [UIImage imageWithData: imageData];
-    imageView.image = image;
+    imageView.image = self.organization.image;
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 8.0;
     [backgroundView addSubview:imageView];

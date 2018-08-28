@@ -15,7 +15,9 @@
     if (self) {
         self.name = name;
         self.detail = detail;
-        self.imagesURLs = imageURLs;
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@", imageURLs[0]]]];
+        UIImage *image = [UIImage imageWithData: imageData];
+        self.image = image;
     }
     return self;
 }
@@ -25,7 +27,7 @@
     self = [super init];
     if (self) {
         self.name = [coder decodeObjectForKey:@"activityName"];
-        self.imagesURLs = [coder decodeObjectForKey:@"imagesURLs"];
+        self.image = [coder decodeObjectForKey:@"image"];
         self.detail = [coder decodeObjectForKey:@"activityDetail"];
     }
     return self;
@@ -34,7 +36,7 @@
 - (void)encodeWithCoder:(NSCoder *)coder
 {
     [coder encodeObject:self.name forKey:@"activityName"];
-    [coder encodeObject:self.imagesURLs forKey:@"imagesURLs"];
+    [coder encodeObject:self.image forKey:@"image"];
     [coder encodeObject:self.detail forKey:@"activityDetail"];
 }
 

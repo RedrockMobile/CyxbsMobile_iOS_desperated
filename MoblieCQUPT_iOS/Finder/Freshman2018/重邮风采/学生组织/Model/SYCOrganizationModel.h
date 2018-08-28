@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong)NSString *name;
 @property (nonatomic, strong)NSString *detail;
-@property (nonatomic, strong)NSArray *imagesURLs;
+@property (nonatomic, strong)UIImage *image;
 
 - (instancetype)initWithName:(NSString *)name imageURLs:(NSArray *)imageURLs detail:(NSString *)detail;
 
