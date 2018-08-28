@@ -16,18 +16,23 @@
     // Initialization code
 }
 
-- (void)setFrame:(CGRect)frame{
-    frame.origin.x += 15 *SCREEN_Width;
-    frame.origin.y += 15 * SCREEN_Width;
-    frame.size.height -= 30 *SCREEN_Width ;
-    frame.size.width -= 30 *SCREEN_Width ;
-    [super setFrame:frame];
-    self.layer.cornerRadius = 5;
-}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

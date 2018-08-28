@@ -1,79 +1,78 @@
 //
-//  DeliveryViewController.m
+//  FoodAroundViewController.m
 //  MoblieCQUPT_iOS
 //
-//  Created by 丁磊 on 2018/8/14.
+//  Created by 陈大炮 on 2018/8/26.
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
 
-/*
- 
- 点击图片可以查看大图
- 
- */
-
-#import "DeliveryViewController.h"
-#import "DeliveryModel.h"
-#import "DeliveryTableViewCell.h"
-#import <MBProgressHUD.h>
+#import "FoodAroundViewController.h"
+#import "FoodAroundModel.h"
+#import "FoodAroundTableViewCell.h"
 
 
+@interface FoodAroundViewController ()
+<UITableViewDelegate,UITableViewDataSource,clickDelegate>
 
-@interface DeliveryViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate>
-@property (nonatomic, strong) UITableView *deliveryTab;
-@property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong)UIView *Img;//查看大图的黑色背景
-@property (nonatomic, strong)UIImageView *Image;//查看大图的图片
 
+@property (nonatomic, strong)UITableView *foodTab;
+@property (nonatomic, strong)NSMutableArray *dataArray;
+@property (nonatomic, strong)NSDictionary *dict;
+@property (nonatomic, strong)NSDictionary *datadic;
+@property (nonatomic, strong)UIView *Img;     //查看大图的背景
+@property (nonatomic, strong)UIImageView *Image;    //查看大图的图片
+#define  SCREEN_Width [UIScreen mainScreen].bounds.size.width / 375
 @end
 
-@implementation DeliveryViewController
+@implementation FoodAroundViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.hidesBottomBarWhenPushed = YES;
-    
-    
     [self loadData];
-    self.title = @"快递收发";
+    self.hidesBottomBarWhenPushed = YES;
+    self.title = @"周边美食";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
-    self.deliveryTab = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
-    self.deliveryTab.delegate = self;
-    self.deliveryTab.dataSource = self;
-    self.deliveryTab.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.deliveryTab.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.deliveryTab];
     
+    self.foodTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - HEADERHEIGHT) style:UITableViewStylePlain];
+    self.foodTab.delegate = self;
+    self.foodTab.dataSource = self;
+    self.foodTab.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.foodTab.backgroundColor = [UIColor clearColor];
+    self.foodTab.showsHorizontalScrollIndicator = NO;
+    self.foodTab.showsVerticalScrollIndicator = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.view addSubview:_foodTab];
 }
 
+
+
 - (void)loadData{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"加载数据中...";
-    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    NSLog(@"加载数据啦!");
+    NSDictionary *paramter = @{
+                               @"index":@"周边美食",
+                               @"pagenum":@"1",
+                               @"pagesize":@"10"
+                               };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/byindex?index=快递收发&pagenum=1&pagesize=10";
+    NSString *urlStr = @"http://wx.yyeke.com/welcome2018/data/get/byindex";
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
-    [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *dict = responseObject;
-        NSArray *arr = dict[@"array"];
+    [manager GET:urlStr parameters:paramter progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        self.dict = responseObject;
+        NSArray *arr = self.dict[@"array"];
         self.dataArray = [@[] mutableCopy];
         for (NSDictionary *dic in arr) {
-            DeliveryModel *model = [DeliveryModel DeleModelWithDict:dic];
+            FoodAroundModel *model = [FoodAroundModel BusAndDeleModelWithDict:dic];
             [_dataArray addObject:model];
         }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self.deliveryTab reloadData];
+        [self.foodTab reloadData];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
         [alert show];
         NSLog(@"failure --- %@",error);
     }];
-   
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -84,9 +83,8 @@
     return self.dataArray.count;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DeliveryTableViewCell *cell = [DeliveryTableViewCell cellWithTableView:tableView];
+    FoodAroundTableViewCell *cell = [FoodAroundTableViewCell cellWithTableView:tableView];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;;
     cell.Model = self.dataArray[indexPath.row];
     cell.Index = indexPath;
@@ -94,16 +92,14 @@
     return cell;
 }
 
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DeliveryModel *model = self.dataArray[indexPath.row];
-    return [DeliveryTableViewCell cellHeight:model];
+    FoodAroundModel *model = self.dataArray[indexPath.row];
+    return [FoodAroundTableViewCell cellHeight:model];
 }
 
-- (void)clickAtIndex:(NSIndexPath *)indexPath{
-    
+- (void)clickAtIndex:(NSIndexPath *)indexPath andscriollViewIndex:(NSInteger)index{
     self.navigationController.navigationBar.hidden = YES;
-    DeliveryModel *model = self.dataArray[indexPath.row];
+    FoodAroundModel *model = self.dataArray[indexPath.row];
     //创建一个黑色背景
     //初始化一个用来当做背景的View。
     UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(0, -65, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height+65)];
@@ -117,7 +113,7 @@
     UIImageView *browseImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,[UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-64)];
     browseImgView.contentMode = UIViewContentModeScaleAspectFit;
     //要显示的图片，即要放大的图片
-    browseImgView.image = model.imgarr[0];
+    browseImgView.image = model.imgArray[index-1];
     self.Image = browseImgView;
     
     [bgView addSubview:browseImgView];
@@ -127,16 +123,15 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(closeView)];
     [browseImgView addGestureRecognizer:tapGesture];
     
-    [self shakeToShow:bgView];}
-
-
+    [self shakeToShow:bgView];
+    
+}
 
 -(void)closeView{
     self.navigationController.navigationBar.hidden = NO;
     [_Img removeFromSuperview];
 }
 
-//放大过程中出现的缓慢动画
 - (void) shakeToShow:(UIView*)aView{
     CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.duration = 0.3;
@@ -147,19 +142,43 @@
     [aView.layer addAnimation:animation forKey:nil];
 }
 
+
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headView = [[UIView alloc]init];
+    
+    if (section == 0) {
+        
+            headView.backgroundColor = [UIColor redColor];
+        UILabel *topLabel = [[UILabel alloc]init];
+       
+        topLabel.frame = CGRectMake(0, 0, SCREEN_Width * 375, 50 * SCREEN_Width);
+        
+        
+        topLabel.textColor = [UIColor blackColor];
+        NSString *str = @"   👍最受好评的top5家美食";
+        topLabel.backgroundColor = [UIColor whiteColor];
+        topLabel.font = [UIFont systemFontOfSize:13];
+        topLabel.text = str;
+        
+        
+        
+        
+        [headView addSubview:topLabel];
+    }
+    
+    return headView;
+}
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
 
 @end

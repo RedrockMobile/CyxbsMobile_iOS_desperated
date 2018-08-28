@@ -12,6 +12,7 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *pictureURL;
 @property (nonatomic, copy) NSString *illstrate;
+@property (nonatomic, strong)NSDictionary *dic;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 @end
