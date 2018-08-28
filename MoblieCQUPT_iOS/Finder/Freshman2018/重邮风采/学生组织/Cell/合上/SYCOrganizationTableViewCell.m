@@ -23,8 +23,6 @@
 }
 
 - (void)drawRect:(CGRect)rect{
-    self.organization = [SYCOrganizationManager sharedInstance].organizationData[self.index];
-    
     CGFloat backgroundViewWidth = self.frame.size.width * 0.95;
     CGFloat backgroundViewHeight = self.frame.size.height * 0.95;
     UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake(([[UIScreen mainScreen] bounds].size.width - backgroundViewWidth) / 2.0, (self.frame.size.height - backgroundViewHeight) / 2.0, backgroundViewWidth, backgroundViewHeight)];
@@ -40,8 +38,10 @@
     
     CGFloat imageViewWidth = SCREENWIDTH * 0.9;
     CGFloat imageViewHeight = imageViewWidth * 0.5625;
+    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://wx.yyeke.com/welcome2018%@", self.organization.imagesURLs[0]]]];
+    UIImage *image = [UIImage imageWithData: imageData];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake((backgroundViewWidth - imageViewWidth) / 2.0, (backgroundViewWidth - imageViewWidth) / 2.0, imageViewWidth, imageViewHeight)];
-    imageView.image = self.organization.imagesArray[0];
+    imageView.image = image;
     imageView.layer.masksToBounds = YES;
     imageView.layer.cornerRadius = 8.0;
     [backgroundView addSubview:imageView];

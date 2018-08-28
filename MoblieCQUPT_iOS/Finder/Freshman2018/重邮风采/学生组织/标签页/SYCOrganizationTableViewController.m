@@ -10,11 +10,12 @@
 #import "SYCOrganizationTableViewCell.h"
 #import "SYCDetailTableViewCell.h"
 #import "SYCOrganizationManager.h"
-#import "SYCOrganizationModel.h"
+
 
 @interface SYCOrganizationTableViewController ()
 
 @property (nonatomic)Boolean isShowDetail;
+
 
 @end
 
@@ -23,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, self.tableView.frame.size.height + HEADERHEIGHT)];
+    
     [self.tableView registerClass:[SYCOrganizationTableViewCell class] forCellReuseIdentifier:@"reuseIdentifier"];
     
     self.tableView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
@@ -30,6 +33,8 @@
 
     self.isShowDetail = NO;
     [self.tableView setContentInset:UIEdgeInsetsMake(-SCREENHEIGHT * 0.01, 0, 0, 0)];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,10 +60,9 @@
     label.numberOfLines = 0;
     label.font = [UIFont systemFontOfSize:16 weight:UIFontWeightBold];
     [label sizeToFit];
-    NSLog(@"%f", label.size.height);
     
     if (self.isShowDetail == YES) {
-        return label.size.height + 600;
+        return label.size.height * 1.2 + SCREENWIDTH * 0.50625 + 350;
     }else{
         return SCREENHEIGHT * 0.7;
     }
@@ -67,11 +71,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.isShowDetail == YES) {
         SYCDetailTableViewCell *cell = [[SYCDetailTableViewCell alloc] init];
-        cell.index = self.index;
+        cell.organization = self.organization;
         return cell;
     }else{
         SYCOrganizationTableViewCell *cell = [[SYCOrganizationTableViewCell alloc] init];
-        cell.index = self.index;
+        cell.organization = self.organization;
         return cell;
     }
 }

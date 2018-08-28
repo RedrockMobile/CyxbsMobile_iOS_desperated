@@ -12,7 +12,6 @@
 @interface SYCOrganizationTableViewCell : UITableViewCell
 
 @property (nonatomic, strong)SYCOrganizationModel *organization;
-@property (nonatomic)NSUInteger index;
 @property (nonatomic)Boolean isShowed;
 
 @end
