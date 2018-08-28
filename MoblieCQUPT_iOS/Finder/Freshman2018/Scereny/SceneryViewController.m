@@ -11,11 +11,13 @@
 #import "FoodTableViewCell.h"
 #import <UIImageView+WebCache.h>
 #import <Masonry.h>
+#import "PictureSize.h"
 #define  SCREEN_Width [UIScreen mainScreen].bounds.size.width / 375
 
 @interface SceneryViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *arrData;
+@property (nonatomic, strong) UIImageView *cellImage;
 
 @end
 
@@ -66,16 +68,19 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (indexPath.section == 0) {
-        return 370 * SCREEN_Width;
+        return 380 * SCREEN_Width;
     }
     else if (indexPath.section == 1){
-        return 370 * SCREEN_Width;
+        return 380 * SCREEN_Width;
     }
     else if (indexPath.section == 2){
-        return 480 * SCREEN_Width;
+        return 500 * SCREEN_Width;
     }else  {
-        return 400 * SCREEN_Width;
+        return 430 * SCREEN_Width;
     }
+    
+    
+
 }
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
@@ -85,50 +90,69 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentify = @"cellOne";
-    static  NSString *pictireString = @"http://47.106.33.112:8080/welcome2018";
+    static  NSString *pictireString = @"http://wx.yyeke.com/welcome2018";
     FoodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[[NSBundle mainBundle]loadNibNamed:@"FoodTableViewCell" owner:self options:nil]firstObject];
     }
     cell.nameLabel.text = _arrData[indexPath.section][@"name"];
     cell.illstrateLabel.text = _arrData[indexPath.section][@"content"];
+    cell.illstrateLabel.textColor = [UIColor colorWithRed:151/255.0 green:151/255.0 blue:151/255.0 alpha:1];
     NSString *picURL = [NSString stringWithFormat:@"%@%@",pictireString,_arrData[indexPath.section][@"picture"][0]];
     NSLog(@"%@",picURL);
     [cell.imgView sd_setImageWithURL:[NSURL URLWithString:picURL]];
     cell.imgView.layer.cornerRadius = 6;
     cell.imgView.layer.masksToBounds = YES;
+    cell.imgView.clipsToBounds = YES;
+    cell.imgView.contentMode = UIViewContentModeScaleAspectFill;
+//    cell.imgView.frame = CGRectMake(15 * SCREEN_Width, 15 * SCREEN_Width, 316 * SCREEN_Width, 164 * sc);
+//    _cellImage = cell.imgView;
+//    cell.imgView.userInteractionEnabled = YES;
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(magnifyImag)];
+//    [cell.imgView addGestureRecognizer:tap];
+    
+    
     cell.priceLabel.hidden = YES;
     cell.rankButton.hidden = YES;
+    if (indexPath.section == 2) {
+        [cell.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+            
+            make.left.mas_equalTo(cell.mas_left).offset(15  * SCREEN_Width);
+            make.top.mas_equalTo(cell.mas_top).offset(15 * SCREEN_Width);
+            make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+            make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-12 * SCREEN_Width);
+            make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-40 * SCREEN_Width);
+            make.bottom.mas_equalTo(cell.mas_bottom).offset(-300 * SCREEN_Width);
+        }];
+    }
+    else
+    {
+    [cell.imgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.left.mas_equalTo(cell.mas_left).offset(15  * SCREEN_Width);
+        make.top.mas_equalTo(cell.mas_top).offset(15 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-12 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-40 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.mas_bottom).offset(-185 * SCREEN_Width);
+    }];
+    }
     
-    [cell.imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.top.equalTo(cell.contentView).offset(15 * SCREEN_Width);
-        make.right.equalTo(cell.contentView).offset(-15 * SCREEN_Width);
-
-        make.bottom.equalTo(cell.nameLabel.mas_top).offset(-18 * SCREEN_Width);
-        
-//        make.bottom.equalTo(cell.illstrateLabel.mas_top).offset(-43);
-//        make.left.mas_equalTo(cell.mas_left).offset(15);
-//        make.top.mas_equalTo(cell.mas_top).offset(15);
-//        make.right.mas_equalTo(cell.mas_right).offset(-15);
-//        make.bottom.mas_equalTo(cell.nameLabel.mas_top).offset(-21);
-//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-43);
-    }];
     [cell.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(cell.mas_left).offset(15);
-//        make.right.mas_equalTo(cell.mas_right).offset(-250);
-//        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-8);
-        make.left.equalTo(cell.contentView).offset(15 * SCREEN_Width);
-        make.right.equalTo(cell.contentView).offset(-15);
-        make.bottom.equalTo(cell.illstrateLabel.mas_top).offset(-8)
-        ;    }];
-    [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(cell.contentView).offset(15);
-        make.right.bottom.equalTo(cell.contentView).offset(-15);
-        
-//        make.right.mas_equalTo(cell.mas_right).offset(-15);
-//        make.left.mas_equalTo(cell.mas_left).offset(15);
-//        make.bottom.mas_equalTo(cell.mas_bottom).offset(-19);
+        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+        make.right.mas_equalTo(cell.mas_right).offset(-200 * SCREEN_Width);
+        make.bottom.mas_equalTo(cell.illstrateLabel.mas_top).offset(-3 * SCREEN_Width);
     }];
+    
+    
+    
+    [cell.illstrateLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(cell.mas_right).offset(-15 * SCREEN_Width);
+        make.left.mas_equalTo(cell.mas_left).offset(15 * SCREEN_Width);
+//        make.bottom.mas_equalTo(cell.mas_bottom).offset(-13 * SCREEN_Width);
+    }];
+    
+    
     
     cell.layer.cornerRadius = 6;
     cell.layer.masksToBounds = YES;
@@ -136,7 +160,30 @@
     return cell;
     
 }
+
+
+-(void)magnifyImag
+{
+    [PictureSize showImage:self.cellImage];
+}
+
+
+
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FoodTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    _cellImage = cell.imgView;
+    
+    cell.imgView.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(magnifyImag)];
+    
+    [cell.imgView addGestureRecognizer:tap];
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];//取消选中状态
 }
 - (void)viewDidLoad {

@@ -60,7 +60,7 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *cellIdentify = @"cellOne";
-    static  NSString *pictireString = @"http://47.106.33.112:8080/welcome2018";
+    static  NSString *pictireString = @"http://wx.yyeke.com/welcome2018";
     BankTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     
 //    FoodTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];

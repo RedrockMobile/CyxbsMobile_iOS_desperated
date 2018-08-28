@@ -142,6 +142,8 @@
 		823D41711F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */; };
 		824D4911212A782300F38893 /* freshman_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824D490F212A782200F38893 /* freshman_button@3x.png */; };
 		824D4912212A782300F38893 /* freshman_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 824D4910212A782200F38893 /* freshman_button@2x.png */; };
+		8291268F21330397002BA8E3 /* mine_image_calendar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8291268D21330396002BA8E3 /* mine_image_calendar2.png */; };
+		8291269021330397002BA8E3 /* mine_image_calendar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8291268E21330396002BA8E3 /* mine_image_calendar1.png */; };
 		829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95602127D8A400B4B05C /* SceneryViewController.m */; };
 		829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 829C95622127D8A400B4B05C /* BankTableViewCell.m */; };
 		829C95762127D8A500B4B05C /* BankTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 829C95642127D8A400B4B05C /* BankTableViewCell.xib */; };
@@ -254,6 +256,10 @@
 		82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D685691F6E4F4B004A5C7D /* icon_up@3x.png */; };
 		82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856E1F6E701F004A5C7D /* headImage@2x.png */; };
 		82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D6856F1F6E701F004A5C7D /* headImage@3x.png */; };
+		894239662130FF710060390D /* PictureSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 894239652130FF710060390D /* PictureSize.m */; };
+		89C9343A21326A170074DF18 /* FoodAroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9343921326A170074DF18 /* FoodAroundTableViewCell.m */; };
+		89C9343D21326A340074DF18 /* FoodAroundViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9343C21326A340074DF18 /* FoodAroundViewController.m */; };
+		89C9344021326A4D0074DF18 /* FoodAroundModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89C9343F21326A4D0074DF18 /* FoodAroundModel.m */; };
 		9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4351FAF07D200874EB9 /* BackgroundTableViewCell.m */; };
 		9630E48B1FAF07D200874EB9 /* HeaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4371FAF07D200874EB9 /* HeaderTableViewCell.m */; };
 		9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9630E4391FAF07D200874EB9 /* QueryTableViewCell.m */; };
@@ -625,10 +631,6 @@
 		F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AA1F3C45540063B024 /* login_image_account@3x.png */; };
 		F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AB1F3C45540063B024 /* login_image_password@3x.png */; };
 		F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AC1F3C45540063B024 /* login_image_password@2x.png */; };
-		F273B4EE1F4B6CEF0004261C /* mine_image_calendar1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F273B4EA1F4B6CEF0004261C /* mine_image_calendar1@2x.png */; };
-		F273B4EF1F4B6CEF0004261C /* mine_image_calendar1@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F273B4EB1F4B6CEF0004261C /* mine_image_calendar1@3x.png */; };
-		F273B4F01F4B6CEF0004261C /* mine_image_calendar2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F273B4EC1F4B6CEF0004261C /* mine_image_calendar2@2x.png */; };
-		F273B4F11F4B6CEF0004261C /* mine_image_calendar2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F273B4ED1F4B6CEF0004261C /* mine_image_calendar2@3x.png */; };
 		F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */; };
 		F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */; };
 		F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */; };
@@ -875,6 +877,8 @@
 		823D416D1F6533FA00C99D9B /* icon_upvote_inside_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_upvote_inside_selected@3x.png"; sourceTree = "<group>"; };
 		824D490F212A782200F38893 /* freshman_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "freshman_button@3x.png"; sourceTree = "<group>"; };
 		824D4910212A782200F38893 /* freshman_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "freshman_button@2x.png"; sourceTree = "<group>"; };
+		8291268D21330396002BA8E3 /* mine_image_calendar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_image_calendar2.png; sourceTree = "<group>"; };
+		8291268E21330396002BA8E3 /* mine_image_calendar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_image_calendar1.png; sourceTree = "<group>"; };
 		829C955F2127D8A400B4B05C /* SceneryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneryViewController.h; sourceTree = "<group>"; };
 		829C95602127D8A400B4B05C /* SceneryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneryViewController.m; sourceTree = "<group>"; };
 		829C95622127D8A400B4B05C /* BankTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BankTableViewCell.m; sourceTree = "<group>"; };
@@ -1062,6 +1066,14 @@
 		82D685691F6E4F4B004A5C7D /* icon_up@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_up@3x.png"; sourceTree = "<group>"; };
 		82D6856E1F6E701F004A5C7D /* headImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@2x.png"; sourceTree = "<group>"; };
 		82D6856F1F6E701F004A5C7D /* headImage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "headImage@3x.png"; sourceTree = "<group>"; };
+		894239642130FF710060390D /* PictureSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSize.h; sourceTree = "<group>"; };
+		894239652130FF710060390D /* PictureSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSize.m; sourceTree = "<group>"; };
+		89C9343821326A170074DF18 /* FoodAroundTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodAroundTableViewCell.h; sourceTree = "<group>"; };
+		89C9343921326A170074DF18 /* FoodAroundTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodAroundTableViewCell.m; sourceTree = "<group>"; };
+		89C9343B21326A340074DF18 /* FoodAroundViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodAroundViewController.h; sourceTree = "<group>"; };
+		89C9343C21326A340074DF18 /* FoodAroundViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodAroundViewController.m; sourceTree = "<group>"; };
+		89C9343E21326A4D0074DF18 /* FoodAroundModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoodAroundModel.h; sourceTree = "<group>"; };
+		89C9343F21326A4D0074DF18 /* FoodAroundModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodAroundModel.m; sourceTree = "<group>"; };
 		9630E4341FAF07D200874EB9 /* BackgroundTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundTableViewCell.h; sourceTree = "<group>"; };
 		9630E4351FAF07D200874EB9 /* BackgroundTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundTableViewCell.m; sourceTree = "<group>"; };
 		9630E4361FAF07D200874EB9 /* HeaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderTableViewCell.h; sourceTree = "<group>"; };
@@ -1594,10 +1606,6 @@
 		F2722DAD1FBAD5C3007C41F6 /* find_image_food@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@3x.png"; sourceTree = "<group>"; };
 		F2722DAE1FBAD5C4007C41F6 /* find_image_hongyan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@3x.png"; sourceTree = "<group>"; };
 		F2722DAF1FBAD5C4007C41F6 /* find_image_query@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_query@2x.png"; sourceTree = "<group>"; };
-		F273B4EA1F4B6CEF0004261C /* mine_image_calendar1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar1@2x.png"; sourceTree = "<group>"; };
-		F273B4EB1F4B6CEF0004261C /* mine_image_calendar1@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar1@3x.png"; sourceTree = "<group>"; };
-		F273B4EC1F4B6CEF0004261C /* mine_image_calendar2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar2@2x.png"; sourceTree = "<group>"; };
-		F273B4ED1F4B6CEF0004261C /* mine_image_calendar2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar2@3x.png"; sourceTree = "<group>"; };
 		F2770B3E1F453CF700BB6186 /* FinderCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FinderCollectionViewFlowLayout.h; path = MoblieCQUPT_iOS/Finder/FinderCollectionViewFlowLayout.h; sourceTree = SOURCE_ROOT; };
 		F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FinderCollectionViewFlowLayout.m; path = MoblieCQUPT_iOS/Finder/FinderCollectionViewFlowLayout.m; sourceTree = SOURCE_ROOT; };
 		F2770B411F4543BF00BB6186 /* FinderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderCollectionViewCell.h; sourceTree = "<group>"; };
@@ -2037,7 +2045,7 @@
 			path = BankAround;
 			sourceTree = "<group>";
 		};
-		829C95672127D8A400B4B05C /* FoodAround */ = {
+		829C95672127D8A400B4B05C /* Food */ = {
 			isa = PBXGroup;
 			children = (
 				829C956A2127D8A400B4B05C /* FoodModel.h */,
@@ -2047,9 +2055,12 @@
 				829C956C2127D8A400B4B05C /* FoodTableViewCell.xib */,
 				829C956B2127D8A400B4B05C /* FoodViewController.h */,
 				829C95702127D8A400B4B05C /* FoodViewController.m */,
+				894239642130FF710060390D /* PictureSize.h */,
+				894239652130FF710060390D /* PictureSize.m */,
 				829C956D2127D8A400B4B05C /* rank.png */,
 				829C95682127D8A400B4B05C /* rank@3x.png */,
 			);
+			name = Food;
 			path = FoodAround;
 			sourceTree = "<group>";
 		};
@@ -2476,7 +2487,8 @@
 				829C95872127D91F00B4B05C /* ReportWaterfall */,
 				829C957F2127D91E00B4B05C /* UIImageView+WebCache */,
 				829C95612127D8A400B4B05C /* BankAround */,
-				829C95672127D8A400B4B05C /* FoodAround */,
+				89C9342C2131CDB00074DF18 /* FoodAround */,
+				829C95672127D8A400B4B05C /* Food */,
 				829C955E2127D8A400B4B05C /* Scereny */,
 				829C95712127D8A500B4B05C /* School */,
 				2FB22331212311A30009EB39 /* Delivery */,
@@ -2484,6 +2496,20 @@
 				2FB222E72121CF020009EB39 /* Necessity */,
 			);
 			path = Freshman2018;
+			sourceTree = "<group>";
+		};
+		89C9342C2131CDB00074DF18 /* FoodAround */ = {
+			isa = PBXGroup;
+			children = (
+				89C9343821326A170074DF18 /* FoodAroundTableViewCell.h */,
+				89C9343921326A170074DF18 /* FoodAroundTableViewCell.m */,
+				89C9343B21326A340074DF18 /* FoodAroundViewController.h */,
+				89C9343C21326A340074DF18 /* FoodAroundViewController.m */,
+				89C9343E21326A4D0074DF18 /* FoodAroundModel.h */,
+				89C9343F21326A4D0074DF18 /* FoodAroundModel.m */,
+			);
+			name = FoodAround;
+			path = Food;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -2747,14 +2773,12 @@
 		F20026CC1F4020FA00360991 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				8291268E21330396002BA8E3 /* mine_image_calendar1.png */,
+				8291268D21330396002BA8E3 /* mine_image_calendar2.png */,
 				F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */,
 				F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */,
 				F23078DD1F73E3F80079E187 /* date_image_add@2x.png */,
 				F23078DC1F73E3F80079E187 /* date_image_add@3x.png */,
-				F273B4EA1F4B6CEF0004261C /* mine_image_calendar1@2x.png */,
-				F273B4EB1F4B6CEF0004261C /* mine_image_calendar1@3x.png */,
-				F273B4EC1F4B6CEF0004261C /* mine_image_calendar2@2x.png */,
-				F273B4ED1F4B6CEF0004261C /* mine_image_calendar2@3x.png */,
 				F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */,
 				F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */,
 				F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */,
@@ -3905,6 +3929,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = HPM8HVK7C6;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -4088,7 +4113,6 @@
 				F238C6571F3DA3C400FEB179 /* tabbar_image_timetable@2x.png in Resources */,
 				F242DE921EBCB2BC005AC411 /* 左三角@2x.png in Resources */,
 				F20026E61F4020FA00360991 /* mine_image_remind@3x.png in Resources */,
-				F273B4F01F4B6CEF0004261C /* mine_image_calendar2@2x.png in Resources */,
 				4A3A07E91FCC0EC700A50393 /* lost_image_itemcategory@3x.png in Resources */,
 				F242DE8B1EBCB2BC005AC411 /* 多课0@3x.png in Resources */,
 				F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */,
@@ -4138,13 +4162,13 @@
 				F242DE941EBCB2BC005AC411 /* 提醒@2x.png in Resources */,
 				F20027171F405B8500360991 /* remind_image_confirm@3x.png in Resources */,
 				4A3A07EE1FCC0EC700A50393 /* lost_image_lacktel@2x.png in Resources */,
-				F273B4F11F4B6CEF0004261C /* mine_image_calendar2@3x.png in Resources */,
 				9630E4B71FAF07D200874EB9 /* 展开前@3x.png in Resources */,
 				F242DDC01EBCB2BB005AC411 /* unitImage.png in Resources */,
 				F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */,
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
 				F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
+				8291269021330397002BA8E3 /* mine_image_calendar1.png in Resources */,
 				F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */,
 				F242DE791EBCB2BC005AC411 /* remind@2x.png in Resources */,
 				9630E4BA1FAF07D200874EB9 /* 年份圆圈.png in Resources */,
@@ -4171,7 +4195,6 @@
 				9630E4C41FAF07D300874EB9 /* 标签矩形@2x.png in Resources */,
 				9630E4AA1FAF07D200874EB9 /* login_number.png in Resources */,
 				F242DEA11EBCB2BC005AC411 /* 箭头@3x.png in Resources */,
-				F273B4EE1F4B6CEF0004261C /* mine_image_calendar1@2x.png in Resources */,
 				9630E49F1FAF07D200874EB9 /* 5@3x.png in Resources */,
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				9630E4B51FAF07D200874EB9 /* 地点坐标@3x.png in Resources */,
@@ -4188,6 +4211,7 @@
 				F20027081F404BE100360991 /* timeTable_image_pull@2x.png in Resources */,
 				9630E4A81FAF07D200874EB9 /* login_icon@2x.png in Resources */,
 				9630E4B31FAF07D200874EB9 /* volunteer_time_icon.png in Resources */,
+				8291268F21330397002BA8E3 /* mine_image_calendar2.png in Resources */,
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
 				4A3A07FF1FCC0EC700A50393 /* shake_image_shake@2x.png in Resources */,
 				82280CB31F60205200A5921E /* LXcommentTitle@3x.png in Resources */,
@@ -4303,7 +4327,6 @@
 				F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
 				9630E4AD1FAF07D200874EB9 /* login_password.png in Resources */,
-				F273B4EF1F4B6CEF0004261C /* mine_image_calendar1@3x.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				9630E4B11FAF07D200874EB9 /* scroll@3x.png in Resources */,
 				4A3A07D01FCC0EC700A50393 /* find_image_food@2x.png in Resources */,
@@ -4453,6 +4476,8 @@
 				829C969D2127DCE000B4B05C /* SYCActivityModel.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */,
+				89C9343D21326A340074DF18 /* FoodAroundViewController.m in Sources */,
+				89C9344021326A4D0074DF18 /* FoodAroundModel.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				829C96912127DCE000B4B05C /* AALegend.m in Sources */,
@@ -4539,6 +4564,7 @@
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
+				89C9343A21326A170074DF18 /* FoodAroundTableViewCell.m in Sources */,
 				829C95CC2127DABE00B4B05C /* MilitarytrainingTipsViewController.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */,
@@ -4602,6 +4628,7 @@
 				2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */,
 				829C95D72127DABE00B4B05C /* SchollGeneralTableViewCell.m in Sources */,
 				829C958E2127D92000B4B05C /* UIImageView+WebCache.m in Sources */,
+				894239662130FF710060390D /* PictureSize.m in Sources */,
 				829C969E2127DCE000B4B05C /* SYCActivityManager.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
@@ -4720,7 +4747,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ClassWidget/Today.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -4741,7 +4768,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = ClassWidget/Today.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				INFOPLIST_FILE = ClassWidget/Info.plist;
@@ -4780,7 +4807,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaogou134@hotmail.com (8586Z2K36R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -4834,7 +4861,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiaogou134@hotmail.com (8586Z2K36R)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
@@ -4864,7 +4891,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -4905,7 +4932,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
