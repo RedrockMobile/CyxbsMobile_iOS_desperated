@@ -2257,7 +2257,7 @@
 			isa = PBXGroup;
 			children = (
 				829C95F82127DCDF00B4B05C /* 学院选择 */,
-				829C96002127DCDF00B4B05C /* 学院数据 */,
+				829C96002127DCDF00B4B05C /* 性别科目 */,
 				829C95FB2127DCDF00B4B05C /* Model */,
 			);
 			path = "数据揭秘";
@@ -2268,8 +2268,7 @@
 			children = (
 				829C95F92127DCDF00B4B05C /* SYCCollageTableViewController.h */,
 				829C95FA2127DCDF00B4B05C /* SYCCollageTableViewController.m */,
-				E40470CB212D5E4D00121AEE /* SYCCollageTableViewCell.h */,
-				E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */,
+				E4AFDBF7213241230022BB01 /* Cell */,
 			);
 			path = "学院选择";
 			sourceTree = "<group>";
@@ -2285,14 +2284,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		829C96002127DCDF00B4B05C /* 学院数据 */ = {
+		829C96002127DCDF00B4B05C /* 性别科目 */ = {
 			isa = PBXGroup;
 			children = (
 				829C96012127DCDF00B4B05C /* SYCDataAnaylseViewController.h */,
 				829C96072127DCDF00B4B05C /* SYCDataAnaylseViewController.m */,
 				829C96022127DCDF00B4B05C /* 标签子界面 */,
 			);
-			path = "学院数据";
+			path = "性别科目";
 			sourceTree = "<group>";
 		};
 		829C96022127DCDF00B4B05C /* 标签子界面 */ = {
@@ -2310,6 +2309,7 @@
 			isa = PBXGroup;
 			children = (
 				829C96092127DCDF00B4B05C /* AAChartKitLib */,
+				E40470CE212E4BFF00121AEE /* 标签卡 */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -2403,8 +2403,8 @@
 			children = (
 				829C96662127DCDF00B4B05C /* SYCCharacterViewController.h */,
 				829C964A2127DCDF00B4B05C /* SYCCharacterViewController.m */,
-				829C964B2127DCDF00B4B05C /* 大型活动 */,
 				829C96562127DCDF00B4B05C /* 学生组织 */,
+				829C964B2127DCDF00B4B05C /* 大型活动 */,
 			);
 			path = "重邮风采";
 			sourceTree = "<group>";
@@ -2443,9 +2443,9 @@
 		829C96562127DCDF00B4B05C /* 学生组织 */ = {
 			isa = PBXGroup;
 			children = (
-				829C96582127DCDF00B4B05C /* SYCOrganizationTableViewController.h */,
+				829C96642127DCDF00B4B05C /* SYCOrganizationViewController.h */,
 				829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */,
-				E40470D5212E962700121AEE /* 子页面 */,
+				E40470D5212E962700121AEE /* 标签页 */,
 				829C96592127DCDF00B4B05C /* Cell */,
 				829C965F2127DCDF00B4B05C /* Model */,
 			);
@@ -2465,9 +2465,9 @@
 			isa = PBXGroup;
 			children = (
 				829C96612127DCDF00B4B05C /* SYCOrganizationManager.h */,
-				829C96602127DCDF00B4B05C /* SYCOrganizationModel.m */,
-				829C96622127DCDF00B4B05C /* SYCOrganizationModel.h */,
 				829C96632127DCDF00B4B05C /* SYCOrganizationManager.m */,
+				829C96622127DCDF00B4B05C /* SYCOrganizationModel.h */,
+				829C96602127DCDF00B4B05C /* SYCOrganizationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2478,7 +2478,6 @@
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
-				E40470CE212E4BFF00121AEE /* 标签卡 */,
 				829C96082127DCDF00B4B05C /* Others */,
 				829C95952127DABD00B4B05C /* Militarytraining */,
 				829C95AF2127DABD00B4B05C /* WYCSchool */,
@@ -2761,13 +2760,22 @@
 			path = "标签卡";
 			sourceTree = "<group>";
 		};
-		E40470D5212E962700121AEE /* 子页面 */ = {
+		E40470D5212E962700121AEE /* 标签页 */ = {
 			isa = PBXGroup;
 			children = (
-				829C96642127DCDF00B4B05C /* SYCOrganizationViewController.h */,
+				829C96582127DCDF00B4B05C /* SYCOrganizationTableViewController.h */,
 				829C96652127DCDF00B4B05C /* SYCOrganizationTableViewController.m */,
 			);
-			path = "子页面";
+			path = "标签页";
+			sourceTree = "<group>";
+		};
+		E4AFDBF7213241230022BB01 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E40470CB212D5E4D00121AEE /* SYCCollageTableViewCell.h */,
+				E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		F20026CC1F4020FA00360991 /* Image */ = {

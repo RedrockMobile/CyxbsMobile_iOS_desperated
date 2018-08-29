@@ -65,12 +65,10 @@
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"加载数据中...";
-    hud.detailsLabelText = @"不如先去看看其他的？";
+    hud.labelText = @"加载中...";
+    hud.detailsLabelText = @"第一次加载请耐心等待噢";
     hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
     dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
-        [SYCActivityManager sharedInstance];
-        [SYCOrganizationManager sharedInstance];
         [SYCCollageDataManager sharedInstance];
         dispatch_async(dispatch_get_main_queue(), ^{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -269,7 +267,20 @@
     cyfcVC.hidesBottomBarWhenPushed = YES;
     cyfcVC.callBackHandle = ^{
     };
-    [self.navigationController pushViewController:cyfcVC animated:YES];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载中...";
+    hud.detailsLabelText = @"第一次加载请耐心等待噢";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        [SYCOrganizationManager sharedInstance];
+        [SYCActivityManager sharedInstance];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.navigationController pushViewController:cyfcVC animated:YES];
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+        });
+    });
+    
 }
 
 - (void)clickLockedBtn:(id)sender{

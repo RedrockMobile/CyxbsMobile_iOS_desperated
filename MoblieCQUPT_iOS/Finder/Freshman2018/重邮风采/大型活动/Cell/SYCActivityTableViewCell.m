@@ -91,7 +91,7 @@
     //设置pageControl的总页数
     self.pageControl.numberOfPages = [self.activity.imagesArray count];
     
-    //7.添加定时器
+    //添加定时器
     self.timer=[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop]addTimer:self.timer forMode:NSRunLoopCommonModes];
     [backgroundView addSubview:self.scrollView];
@@ -115,7 +115,7 @@
     }
     
     //2.计算scrollView滚动的位置
-    CGFloat offsetX=page*self.scrollView.frame.size.width;
+    CGFloat offsetX = page * self.scrollView.frame.size.width;
     CGPoint offset=CGPointMake(offsetX, 0);
     [self.scrollView setContentOffset:offset animated:YES];
 }
@@ -125,15 +125,15 @@
 {
     //停止定时器
     [self.timer invalidate];
-    self.timer=nil;
+    self.timer = nil;
 }
 
 //停止拖拽的时候调用
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     //再次开启定时器
-    self.timer=[NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
-    [[NSRunLoop currentRunLoop]addTimer:self.timer forMode:NSRunLoopCommonModes];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
     
 }
 

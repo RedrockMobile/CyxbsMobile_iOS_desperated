@@ -11,18 +11,21 @@
 
 @interface SYCSegmentView() <UIScrollViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray <UIButton *> *btnArray;
-@property (nonatomic, copy) NSArray <UIViewController *> *controllers;
+//内容视图
+@property (nonatomic, strong) NSArray <UIViewController *> *controllers;
 @property (nonatomic, strong) UIScrollView *mainView;
-@property (nonatomic, strong) UIScrollView *titleView;
-@property (nonatomic, strong) UIView *sliderLine;
 @property (nonatomic, assign) NSInteger currentIndex;
-@property (nonatomic, assign) CGFloat titleBtnWidth;
-@property (nonatomic, strong) NSMutableArray *titleBtnWidthArray;
+
+//滑动标签栏
+@property (nonatomic, strong) NSMutableArray <UIButton *> *titleBtnArray;
+@property (nonatomic, strong) UIScrollView *titleView;
+@property (nonatomic) CGFloat titleBtnWidth;
+@property (nonatomic, strong) UIView *sliderLine;   //标题下小滑块
 @property (nonatomic) CGFloat sliderWidth;
 @property (nonatomic) CGFloat sliderHeight;
 
 @end
+
 
 @implementation SYCSegmentView
 
@@ -31,9 +34,6 @@
     if (self) {
         self.controllers = controllers;
         if (type == SYCSegmentViewTypeButton) {
-            for (UIViewController *vc in self.controllers) {
-                [self.titleBtnWidthArray addObject:[NSNumber numberWithFloat:[self sizeWithText:vc.title font:[UIFont systemFontOfSize:16] maxSize:CGSizeMake(MAXFLOAT, MAXFLOAT)]]];
-            }
             if (controllers.count > 2) {
                 self.titleBtnWidth = self.width / 2.5;
             }else{
@@ -46,24 +46,22 @@
                 self.titleBtnWidth = self.width / controllers.count;
             }
         }
-        [self initPrivate];
-        [self initMainView];
-        [self initTitleViewWithType:type];
+        
+        //默认属性
+        self.titleBtnArray = [NSMutableArray array];
+        self.currentIndex = 0;
+        self.titleHeight = SCREENHEIGHT * 0.06;
+        self.titleColor = RGBColor(153, 153, 153, 1.0);
+        self.selectedTitleColor = MAIN_COLOR;
+        self.titleFont = [UIFont systemFontOfSize:16.0 weight:UIFontWeightRegular];
+        self.segmentType = SYCSegmentViewTypeNormal;
+        
+        [self initViewWithType:type];
     }
     return self;
 }
 
-- (void)initPrivate{
-    self.btnArray = [NSMutableArray array];
-    self.currentIndex = 0;
-    self.titleHeight = SCREENHEIGHT * 0.06;
-    self.titleColor = RGBColor(153, 153, 153, 1.0);
-    self.selectedTitleColor = MAIN_COLOR;
-    self.titleFont = [UIFont systemFontOfSize:16.0 weight:UIFontWeightRegular];
-    self.segmentType = SYCSegmentViewTypeNormal;
-}
-
-- (void)initTitleViewWithType:(SYCSegmentViewType)type{
+- (void)initViewWithType:(SYCSegmentViewType)type{
     self.titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.width, self.titleHeight)];
     self.titleView.contentSize = CGSizeMake(self.titleBtnWidth * self.controllers.count, self.titleHeight);
     self.titleView.bounces = NO;
@@ -80,6 +78,7 @@
     self.sliderLine.layer.cornerRadius = 3.0;
     self.sliderLine.backgroundColor = self.selectedTitleColor;
     
+    //加载滑动标签栏
     for (int i = 0; i < self.controllers.count; ++i) {
         if (type == SYCSegmentViewTypeNormal) {
             UIButton *titleBtn = [[UIButton alloc] initWithFrame:CGRectMake(i * self.titleBtnWidth, 0, self.titleBtnWidth, self.titleHeight)];
@@ -88,7 +87,7 @@
             [titleBtn setTitle:self.controllers[i].title forState:UIControlStateNormal];
             [titleBtn setTitleColor:self.titleColor forState:UIControlStateNormal];
             [titleBtn setTitleColor:self.selectedTitleColor forState:UIControlStateSelected];
-            [self.btnArray addObject:titleBtn];
+            [self.titleBtnArray addObject:titleBtn];
             [self.titleView addSubview:titleBtn];
             [titleBtn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
             [self.titleView addSubview:self.sliderLine];
@@ -98,26 +97,15 @@
             titleBtn.tag = i;
             titleBtn.title = self.controllers[i].title;
             [titleBtn addTarget:self action:@selector(clickTitleBtn:) forControlEvents:UIControlEventTouchUpInside];
-            [self.btnArray addObject:titleBtn];
-            [self.titleView addSubview:titleBtn];
             self.titleView.backgroundColor = [UIColor colorWithRed:246.0/255.0 green:246.0/255.0 blue:246.0/255.0 alpha:1.0];
+            [self.titleBtnArray addObject:titleBtn];
+            [self.titleView addSubview:titleBtn];
         }
-        
     }
-
-    
-    
-    [self.btnArray firstObject].selected = YES;
+    [self.titleBtnArray firstObject].selected = YES;
     [self addSubview:self.titleView];
-}
-
-- (void)clickTitleBtn:(UIButton *)sender {
-    [UIView animateWithDuration:0.25 animations:^{
-        [self.mainView setContentOffset:CGPointMake(sender.tag * self.width, 0)];
-    }];
-}
-
-- (void)initMainView{
+    
+    //加载主视图
     self.mainView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.titleHeight, self.width, self.height - self.titleHeight)];
     self.mainView.contentSize = CGSizeMake(self.width * self.controllers.count, 0);
     self.mainView.showsVerticalScrollIndicator = NO;
@@ -125,7 +113,6 @@
     self.mainView.pagingEnabled = YES;
     self.mainView.bounces = NO;
     self.mainView.delegate = self;
-    
     for (int i = 0; i < self.controllers.count; i++) {
         UIView *view = self.controllers[i].view;
         view.frame = CGRectMake(i * self.width, 0, self.width, self.height - _titleHeight);
@@ -134,24 +121,25 @@
     [self addSubview:self.mainView];
 }
 
+- (void)clickTitleBtn:(UIButton *)sender {
+    [self.mainView setContentOffset:CGPointMake(sender.tag * self.width, 0) animated:YES];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger currentIndex = round(_mainView.contentOffset.x / self.width);
     if (currentIndex != _currentIndex) {
-        _btnArray[_currentIndex].selected = NO;
+        _titleBtnArray[_currentIndex].selected = NO;
         _currentIndex = currentIndex;
-        _btnArray[_currentIndex].selected = YES;
+        _titleBtnArray[_currentIndex].selected = YES;
         
         [UIView animateWithDuration:0.5f delay:0.0f options:UIViewAnimationOptionCurveEaseInOut animations:^{
             _sliderLine.frame = CGRectMake(currentIndex * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-            if (_btnArray[currentIndex].frame.origin.x < self.width / 2) {
+            if (_titleBtnArray[currentIndex].frame.origin.x < self.width / 2) {    //在屏幕中线左边的情况
                 [_titleView setContentOffset:CGPointMake(0, 0) animated:YES];
-                //在屏幕中线左边的情况
-            } else if (_titleView.contentSize.width - _btnArray[currentIndex].frame.origin.x <= self.width / 2) {
+            } else if (_titleView.contentSize.width - _titleBtnArray[currentIndex].frame.origin.x <= self.width / 2) {   //在最右边的情况
                 [_titleView setContentOffset:CGPointMake(_controllers.count * _titleBtnWidth - self.width, 0) animated:YES];
-                //在最右边的情况
-            } else {
-                [_titleView setContentOffset:CGPointMake(self.btnArray[currentIndex].frame.origin.x - self.width / 2.0 + _titleBtnWidth / 2.0, 0) animated:YES];
-                //在中间的情况 
+            } else {   //在中间的情况
+                [_titleView setContentOffset:CGPointMake(self.titleBtnArray[currentIndex].frame.origin.x - self.width / 2.0 + _titleBtnWidth / 2.0, 0) animated:YES];
             }
         } completion:nil];
         
@@ -163,14 +151,14 @@
 
 - (void)setTitleColor:(UIColor *)titleColor{
     _titleColor = titleColor;
-    for (UIButton * btn in self.btnArray) {
+    for (UIButton * btn in self.titleBtnArray) {
         [btn setTitleColor:titleColor forState:UIControlStateNormal];
     }
 }
 
 - (void)setSelectedTitleColor:(UIColor *)selectedTitleColor{
     _selectedTitleColor = selectedTitleColor;
-    for (UIButton * btn in self.btnArray) {
+    for (UIButton * btn in self.titleBtnArray) {
         [btn setTitleColor:selectedTitleColor forState:UIControlStateSelected];
     }
     _sliderLine.backgroundColor = selectedTitleColor;
@@ -178,14 +166,9 @@
 
 - (void)setFont:(UIFont *)font{
     _titleFont = font;
-    for (UIButton * btn in self.btnArray) {
+    for (UIButton * btn in self.titleBtnArray) {
         btn.titleLabel.font = font;
     }
 }
 
-- (CGFloat)sizeWithText:(NSString *)text font:(UIFont *)font maxSize:(CGSize)maxSize
-{
-    NSDictionary *attrs = @{NSFontAttributeName : font};
-    return [text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size.width;
-}
 @end

@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SYCOrganizationModel.h"
 
 @interface SYCOrganizationTableViewController : UITableViewController
 
 @property NSUInteger index;
+@property (nonatomic, strong)SYCOrganizationModel *organization;
 
 @end

@@ -9,8 +9,12 @@
 #import "SYCOrganizationViewController.h"
 #import "SYCOrganizationTableViewController.h"
 #import "SYCSegmentView.h"
+#import "SYCOrganizationModel.h"
+#import "SYCOrganizationManager.h"
 
 @interface SYCOrganizationViewController ()
+
+@property (nonatomic, strong)NSMutableArray *controllers;
 
 @end
 
@@ -19,45 +23,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.controllers = [NSMutableArray array];
     
-    SYCOrganizationTableViewController *hywxVC = [[SYCOrganizationTableViewController alloc] init];
-    hywxVC.title = @"团委办公室";
-    hywxVC.index = 0;
+    int i = 0;
+    for (SYCOrganizationModel *organization in [SYCOrganizationManager sharedInstance].organizationData) {
+        SYCOrganizationTableViewController *controller = [[SYCOrganizationTableViewController alloc] init];
+        controller.title = organization.name;
+        controller.organization = organization;
+        controller.index = i;
+        i++;
+        [self.controllers addObject:controller];
+    }
     
-    SYCOrganizationTableViewController *twbgsVC = [[SYCOrganizationTableViewController alloc] init];
-    twbgsVC.title = @"团委组织部";
-    twbgsVC.index = 1;
-    
-    SYCOrganizationTableViewController *twzzbVC = [[SYCOrganizationTableViewController alloc] init];
-    twzzbVC.title = @"团委宣传部";
-    twzzbVC.index = 2;
-    
-    SYCOrganizationTableViewController *twxcbVC = [[SYCOrganizationTableViewController alloc] init];
-    twxcbVC.title = @"校学生会";
-    twxcbVC.index = 3;
-    
-    SYCOrganizationTableViewController *xxshVC = [[SYCOrganizationTableViewController alloc] init];
-    xxshVC.title = @"学生科技联合会";
-    xxshVC.index = 4;
-    
-    SYCOrganizationTableViewController *dxsystVC = [[SYCOrganizationTableViewController alloc] init];
-    dxsystVC.title = @"社团联合会";
-    dxsystVC.index = 5;
-    
-    SYCOrganizationTableViewController *qxVC = [[SYCOrganizationTableViewController alloc] init];
-    qxVC.title = @"青年志愿者协会";
-    qxVC.index = 6;
-    
-    SYCOrganizationTableViewController *slVC = [[SYCOrganizationTableViewController alloc] init];
-    slVC.title = @"红岩网校工作站";
-    slVC.index = 7;
-    
-    SYCOrganizationTableViewController *kxVC = [[SYCOrganizationTableViewController alloc] init];
-    kxVC.title = @"大学生艺术团";
-    kxVC.index = 8;
-    
-    
-    NSArray *organizationsArray = @[hywxVC, twbgsVC, twxcbVC, twzzbVC, xxshVC, dxsystVC, qxVC, slVC, kxVC];
+    NSArray *organizationsArray = self.controllers;
     SYCSegmentView *organizationsSegmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) andControllers:organizationsArray andType:SYCSegmentViewTypeButton];
     
     [self.view addSubview:organizationsSegmentView];

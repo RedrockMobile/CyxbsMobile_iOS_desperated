@@ -29,9 +29,12 @@ typedef NS_ENUM(NSUInteger, SYCSegmentViewType){
 @property (nonatomic, strong) UIColor *selectedTitleColor;  //标签选中时的字体颜色
 @property (nonatomic, strong) UIColor *titleColor;  //标签字体颜色
 @property (nonatomic, strong) UIFont *titleFont;    //标签字体属性
-@property (nonatomic) SYCSegmentViewType segmentType;
+@property (nonatomic) SYCSegmentViewType segmentType;   //SegmentView类型
 
 - (instancetype)initWithFrame:(CGRect)frame andControllers:(NSArray <UIViewController *> *)controllers andType:(SYCSegmentViewType)type;
+- (void)setTitleColor:(UIColor *)titleColor;
+- (void)setSelectedTitleColor:(UIColor *)selectedTitleColor;
+- (void)setFont:(UIFont *)font;
 
 @end
 

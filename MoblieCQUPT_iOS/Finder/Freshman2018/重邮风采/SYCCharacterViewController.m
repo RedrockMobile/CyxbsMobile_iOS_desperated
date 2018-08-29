@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    
     SYCOrganizationViewController *organVC = [[SYCOrganizationViewController alloc] init];
     organVC.title = @"学生组织";
     

@@ -41,7 +41,6 @@ static SYCActivityManager *sharedInstance = nil;
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
-    self.error = NO;
     
     [manager GET:@"http://wx.yyeke.com/welcome2018/data/get/byindex" parameters:@{@"index":@"大型活动", @"pagenum":@"1", @"pagesize":@"5"} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         self.activityData = [NSMutableArray array];
@@ -51,7 +50,6 @@ static SYCActivityManager *sharedInstance = nil;
         dispatch_semaphore_signal(semaphore);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@---",error);
-        self.error = YES;
         dispatch_semaphore_signal(semaphore);
     }];
     
