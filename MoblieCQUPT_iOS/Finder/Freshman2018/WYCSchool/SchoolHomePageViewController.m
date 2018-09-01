@@ -55,12 +55,10 @@
     [self.view addSubview:_SchoolRootView];
     // Do any additional setup after loading the view from its nib.
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelBtn;
 }
 
-- (void)cancel{
-    [self.navigationController popViewControllerAnimated:YES];
+
+- (void)viewDidDisappear:(BOOL)animated{
     self.callBackHandle();
 }
 

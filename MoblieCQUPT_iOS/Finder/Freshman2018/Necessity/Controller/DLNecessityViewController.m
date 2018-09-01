@@ -69,8 +69,7 @@
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
     
-    [self AddPanGesture];
-    
+  
     self.isShowAddBtn = YES;
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     self.fileBundel = [NSBundle mainBundle];
@@ -103,34 +102,12 @@
     [self.addBtn setImage:[UIImage imageNamed:@"更多"] forState:UIControlStateNormal];
     [self.addBtn addTarget:self action:@selector(ClickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addBtn];
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelBtn;
-    
     self.tabBarController.tabBar.hidden = YES;
 }
 
 
 
-- (void)cancel{
-    [self.navigationController popViewControllerAnimated:YES];
-    self.callBackHandle();
-}
 
-//添加返回方法
-- (void)AddPanGesture{
-    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
-    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
-    // 设置手势代理，拦截手势触发
-    pan.delegate = self;
-    // 给导航控制器的view添加全屏滑动手势
-    [self.view addGestureRecognizer:pan];
-    // 禁止使用系统自带的滑动手势
-    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-}
 
 
 - (void)buildMyNavigationbar{
@@ -482,7 +459,7 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
+- (void)viewDidDisappear:(BOOL)animated{
     self.callBackHandle();
 }
 
