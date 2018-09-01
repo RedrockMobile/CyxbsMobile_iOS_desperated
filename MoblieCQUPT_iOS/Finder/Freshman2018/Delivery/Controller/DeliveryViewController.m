@@ -19,7 +19,7 @@
 
 
 
-@interface DeliveryViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate>
+@interface DeliveryViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UITableView *deliveryTab;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong)UIView *Img;//查看大图的黑色背景
