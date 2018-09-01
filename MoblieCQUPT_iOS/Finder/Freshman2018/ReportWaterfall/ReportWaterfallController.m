@@ -78,6 +78,7 @@ NSString *str04;
 
 - (void)viewDidDisappear:(BOOL)animated{
     self.callBackHandle();
+    [super viewDidDisappear:animated];
 }
 
 

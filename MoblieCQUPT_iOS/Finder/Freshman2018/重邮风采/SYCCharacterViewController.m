@@ -47,6 +47,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     self.callBackHandle();
+    [super viewDidDisappear:animated];
 }
 
 
