@@ -27,7 +27,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     [SYCCollageDataManager sharedInstance];
     self.collageNameArray = [[NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"nameList.archiver"]] objectForKey:@"name"];
     self.collageData = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"collageData.archiver"]];

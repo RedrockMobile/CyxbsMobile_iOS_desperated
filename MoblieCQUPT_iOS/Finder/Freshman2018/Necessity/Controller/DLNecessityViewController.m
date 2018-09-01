@@ -28,7 +28,7 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
-@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
@@ -68,6 +68,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
+    
+    [self AddPanGesture];
     
     self.isShowAddBtn = YES;
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
@@ -110,9 +112,24 @@
     self.tabBarController.tabBar.hidden = YES;
 }
 
+
+
 - (void)cancel{
     [self.navigationController popViewControllerAnimated:YES];
     self.callBackHandle();
+}
+
+//添加返回方法
+- (void)AddPanGesture{
+    id target = self.navigationController.interactivePopGestureRecognizer.delegate;
+    // 创建全屏滑动手势，调用系统自带滑动手势的target的action方法
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:target action:@selector(handleNavigationTransition:)];
+    // 设置手势代理，拦截手势触发
+    pan.delegate = self;
+    // 给导航控制器的view添加全屏滑动手势
+    [self.view addGestureRecognizer:pan];
+    // 禁止使用系统自带的滑动手势
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 
 
@@ -134,7 +151,6 @@
     [detailBtn addTarget: self action:@selector(didClickDetailBtn:) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview: detailBtn];
     self.navigationItem.titleView = titleView;
-    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 #pragma - 数据
@@ -466,7 +482,21 @@
     }
 }
 
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    // 注意：只有非根控制器才有滑动返回功能，根控制器没有。
+    // 判断导航控制器是否只有一个子控制器，如果只有一个子控制器，肯定是根控制器
+    if (self.childViewControllers.count == 1) {
+        // 表示用户在根控制器界面，就不需要触发滑动手势，
+        return NO;
+    }
+    self.callBackHandle();
+    return YES;
+}
 
+- (void)handleNavigationTransition:(UIGestureRecognizer *)gesture{
+    self.callBackHandle();
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
