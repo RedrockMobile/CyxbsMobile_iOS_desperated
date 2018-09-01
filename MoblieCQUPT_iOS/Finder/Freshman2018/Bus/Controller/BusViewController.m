@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadData];
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     
     self.hidesBottomBarWhenPushed = YES;
     self.title = @"公交线路";

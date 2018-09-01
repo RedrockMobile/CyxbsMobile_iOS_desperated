@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
-    
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     
     [self loadData];
     self.title = @"快递收发";

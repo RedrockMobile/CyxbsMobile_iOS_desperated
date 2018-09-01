@@ -134,6 +134,7 @@
     [detailBtn addTarget: self action:@selector(didClickDetailBtn:) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview: detailBtn];
     self.navigationItem.titleView = titleView;
+    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 #pragma - 数据
