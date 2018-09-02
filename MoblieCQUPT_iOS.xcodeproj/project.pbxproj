@@ -2404,6 +2404,7 @@
 				829C96662127DCDF00B4B05C /* SYCCharacterViewController.h */,
 				829C964A2127DCDF00B4B05C /* SYCCharacterViewController.m */,
 				829C96562127DCDF00B4B05C /* 学生组织 */,
+				829C965F2127DCDF00B4B05C /* Model */,
 				829C964B2127DCDF00B4B05C /* 大型活动 */,
 			);
 			path = "重邮风采";
@@ -2447,7 +2448,6 @@
 				829C96572127DCDF00B4B05C /* SYCOrganizationViewController.m */,
 				E40470D5212E962700121AEE /* 标签页 */,
 				829C96592127DCDF00B4B05C /* Cell */,
-				829C965F2127DCDF00B4B05C /* Model */,
 			);
 			path = "学生组织";
 			sourceTree = "<group>";
@@ -3937,7 +3937,6 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = HPM8HVK7C6;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -4899,7 +4898,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -4940,7 +4939,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";

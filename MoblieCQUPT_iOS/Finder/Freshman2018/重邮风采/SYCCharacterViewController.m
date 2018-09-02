@@ -22,8 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 
+    
     
     SYCOrganizationViewController *organVC = [[SYCOrganizationViewController alloc] init];
     organVC.title = @"学生组织";
@@ -35,8 +35,6 @@
     SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray andType:SYCSegmentViewTypeNormal];
     [self.view addSubview:segmentView];
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelBtn;
     
     self.tabBarController.tabBar.hidden = YES;
     self.title = @"重邮风采";
@@ -47,10 +45,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)cancel{
-    [self.navigationController popViewControllerAnimated:YES];
+- (void)viewDidDisappear:(BOOL)animated{
     self.callBackHandle();
+    [super viewDidDisappear:animated];
 }
+
+
+
 
 /*
 #pragma mark - Navigation

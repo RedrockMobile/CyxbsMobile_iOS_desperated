@@ -14,7 +14,7 @@
 #import "BusModel.h"
 #import "BusTableViewCell.h"
 
-@interface BusViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate>
+@interface BusViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate,UIGestureRecognizerDelegate>
 
 
 @property (nonatomic, strong)UITableView *BusTab;
@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadData];
+//    self.navigationController.interactivePopGestureRecognizer.delegate = (id)self;
     
     self.hidesBottomBarWhenPushed = YES;
     self.title = @"公交线路";
@@ -46,8 +47,6 @@
     self.BusTab.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_BusTab];
 }
-
-
 
 - (void)loadData{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -148,7 +147,6 @@
     animation.values = values;
     [aView.layer addAnimation:animation forKey:nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

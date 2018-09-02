@@ -28,7 +28,7 @@
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
-@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
@@ -69,6 +69,7 @@
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
     
+  
     self.isShowAddBtn = YES;
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     self.fileBundel = [NSBundle mainBundle];
@@ -101,19 +102,12 @@
     [self.addBtn setImage:[UIImage imageNamed:@"更多"] forState:UIControlStateNormal];
     [self.addBtn addTarget:self action:@selector(ClickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addBtn];
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelBtn;
-    
     self.tabBarController.tabBar.hidden = YES;
 }
 
-- (void)cancel{
-    [self.navigationController popViewControllerAnimated:YES];
-    self.callBackHandle();
-}
+
+
+
 
 
 - (void)buildMyNavigationbar{
@@ -465,6 +459,10 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    self.callBackHandle();
+    [super viewDidDisappear:animated];
+}
 
 
 - (void)didReceiveMemoryWarning {

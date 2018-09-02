@@ -27,16 +27,15 @@
     self.title = @"线上交流";
     [self SetSegmentedControl:_MainSegmentView];
     
-    UIBarButtonItem *cancelBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navbar_image_back"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
-    self.navigationItem.leftBarButtonItem = cancelBtn;
     
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)cancel{
-    [self.navigationController popViewControllerAnimated:YES];
+
+- (void)viewWillDisappear:(BOOL)animated{
     self.callBackHandle();
 }
+
 
 //创建segmentview
 - (void)SetSegmentedControl:(SegmentView *)segmentedControl

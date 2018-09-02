@@ -19,7 +19,7 @@
 
 
 
-@interface DeliveryViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate>
+@interface DeliveryViewController ()<UITableViewDelegate,UITableViewDataSource,clickDelegate,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UITableView *deliveryTab;
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong)UIView *Img;//查看大图的黑色背景
@@ -32,8 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
-    
-    
     [self loadData];
     self.title = @"快递收发";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
@@ -45,6 +43,7 @@
     [self.view addSubview:self.deliveryTab];
     
 }
+
 
 - (void)loadData{
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -146,6 +145,7 @@
     animation.values = values;
     [aView.layer addAnimation:animation forKey:nil];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
