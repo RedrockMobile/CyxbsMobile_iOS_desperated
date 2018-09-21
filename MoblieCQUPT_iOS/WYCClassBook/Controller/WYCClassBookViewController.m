@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UIButton *titleBtn;
 @property (nonatomic, assign) BOOL hiddenWeekChooseBar;
 @property (nonatomic, strong) NSNumber *nowWeek;
-@property (nonatomic, strong) NSArray *titleTextArray;
+@property (nonatomic, strong) NSMutableArray *titleTextArray;
 @property (strong, nonatomic) IBOutlet UIView *rootView;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -41,7 +41,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titleTextArray = @[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"];
+    self.titleTextArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
     //默认星期选择条不显示
     self.hiddenWeekChooseBar = YES;
     [self initNavigationBar];
@@ -92,8 +92,8 @@
     [view initView:YES];
     NSArray *dateArray = @[];
     [view addBar:dateArray isFirst:YES];
-    [view addBtn:_classBook.classBookArray[0]];
-    [view chackBigLesson];
+    [view addClassBtn:_classBook.weekArray[0]];
+  
     [_scrollView addSubview:view];
     
     @autoreleasepool {
@@ -101,8 +101,8 @@
             WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
             [view initView:NO];
             [view addBar:date.dateArray[i] isFirst:NO];
-            [view addBtn:_classBook.classBookArray[i]];
-            [view chackBigLesson];
+            [view addClassBtn:_classBook.weekArray[i]];
+            
             [_scrollView addSubview:view];
         }
     }
@@ -116,9 +116,9 @@
     NSLog(@"nowweek:%@",self.classBook.nowWeek);
     self.index = self.classBook.nowWeek.integerValue;
     
-    
+    self.titleTextArray[_index] = @"本周";
     self.scrollView.contentOffset = CGPointMake(self.index*self.scrollView.frame.size.width,0);
-    
+    [self initWeekChooseBar];
     [self initTitleLabel];
     [self.weekChooseBar changeIndex:self.index];
    
@@ -243,7 +243,9 @@
 
 //添加星期选择条
 - (void)initWeekChooseBar{
-   
+    if (_weekChooseBar) {
+        [_weekChooseBar removeFromSuperview];
+    }
     self.weekChooseBar = [[WYCWeekChooseBar alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 39*autoSizeScaleY) andArray:self.titleTextArray];
     self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
     [self.view addSubview:self.weekChooseBar];

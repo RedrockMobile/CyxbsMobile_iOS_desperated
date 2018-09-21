@@ -16,7 +16,9 @@
 @property (nonatomic, strong) UIView *month;
 @property (nonatomic, strong) UIView *dayBar;
 @property (nonatomic, strong) UIView *rootView;
+@property (nonatomic, strong) UIView *detailClassBookView;
 @property (nonatomic, strong) NSArray *dataArray;
+
 
 @end
 @implementation WYCClassBookView
@@ -46,7 +48,7 @@
     _scrollView = [[UIScrollView alloc]init];
     _scrollView.backgroundColor = [UIColor whiteColor];
     _scrollView.scrollEnabled = YES;
-     _scrollView.contentSize = CGSizeMake(0,606*autoSizeScaleY);
+    _scrollView.contentSize = CGSizeMake(0,606*autoSizeScaleY);
     
     [_rootView addSubview:_scrollView];
     [self addSubview:_rootView];
@@ -199,158 +201,124 @@
             
         }
     }
-//    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width,_leftBar.frame.size.height);
+    //    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width,_leftBar.frame.size.height);
     
 }
--(void)addBtn:(NSArray *)array{
+-(void)addClassBtn:(NSArray *)array{
     _dataArray = array;
+    NSLog(@"%lu",(unsigned long)array.count);
+    
     @autoreleasepool {
         [_dayBar layoutIfNeeded];
         [_leftBar layoutIfNeeded];
         CGFloat btnWidth = _dayBar.frame.size.width/7;
-        CGFloat btnHeight = 101*autoSizeScaleY;
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 6; j++) {
-                
-                UIColor *viewColor = [[UIColor alloc]init];
-                if (j<2) {
-                    viewColor = [UIColor colorWithHexString:@"#FF89A5"];
-                }else if(j>=2&&j<4){
-                    viewColor = [UIColor colorWithHexString:@"#FFBF7B"];
-                }else{
-                    viewColor = [UIColor colorWithHexString:@"#81B6FE"];
-                }
-                UIView *btnView = [[UIView alloc]init];
-                [btnView setFrame:CGRectMake(_leftBar.frame.size.width +  i*btnWidth, j*btnHeight, btnWidth, btnHeight)];
-                
-                UIButton *btn = [[UIButton alloc]init];
-                btn.layer.cornerRadius = 3.0 ;
-                
-                if ([[NSString stringWithFormat:@"%@",_dataArray[j][i]] isEqualToString:@""]) {
-                    btn.backgroundColor = [UIColor whiteColor];
-                    [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
-                    [btnView addSubview:btn];
-                }else{
-                    
-                    btn.backgroundColor = viewColor;
-                    [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
-                    
-                    
-                    UILabel *classRoomNumLabel = [[UILabel alloc]init];
-                    [classRoomNumLabel setFrame:CGRectMake(0, btn.frame.size.height-20, btn.frame.size.width, 10)];
-                    classRoomNumLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[j][i] objectForKey:@"classroom"]];
-                    
-                    classRoomNumLabel.textAlignment = NSTextAlignmentCenter;
-                    classRoomNumLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
-                    classRoomNumLabel.font = [UIFont systemFontOfSize:12];
-                    
-                    UILabel *classNameLabel = [[UILabel alloc]init];
-                    CGFloat classNameLabelHeight = [self calculateRowHeight:[NSString stringWithFormat:@"%@", [_dataArray[j][i] objectForKey:@"course"]] fontSize:12 width:btn.frame.size.width - 10];
-                    if (classNameLabelHeight > btn.frame.size.height-30) {
-                        classNameLabelHeight = btn.frame.size.height-30;
-                    }
-                    
-                    [classNameLabel setFrame:CGRectMake(5, 9, btn.frame.size.width - 10, classNameLabelHeight)];
-                    classNameLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[j][i] objectForKey:@"course"]];
-                    classNameLabel.textAlignment = NSTextAlignmentCenter;
-                    classNameLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
-                    classNameLabel.font = [UIFont systemFontOfSize:12];
-                    [classNameLabel setNumberOfLines:0];
-                    classNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-                    
-                    
-                    [btn addSubview:classRoomNumLabel];
-                    [btn addSubview:classNameLabel];
-                    [btnView addSubview:btn];
-                }
-                [_scrollView addSubview:btnView];
-                
+        CGFloat btnHeight;
+        for (int i = 0; i < _dataArray.count; i++) {
+            NSLog(@"%@",array[i]);
+            NSNumber *hash_day = [array[i] objectForKey:@"hash_day"];
+            NSNumber *hash_lesson = [array[i] objectForKey:@"hash_lesson"];
+            NSNumber *period = [array[i] objectForKey:@"period"];
+            UIColor *viewColor = [[UIColor alloc]init];
+            if (hash_lesson.integerValue<2) {
+                viewColor = [UIColor colorWithHexString:@"#FF89A5"];
+            }else if(hash_lesson.integerValue>=2&&hash_lesson.integerValue<4){
+                viewColor = [UIColor colorWithHexString:@"#FFBF7B"];
+            }else{
+                viewColor = [UIColor colorWithHexString:@"#81B6FE"];
             }
+            btnHeight =  50.5*autoSizeScaleY*period.integerValue;
+            UIView *btnView = [[UIView alloc]init];
+            [btnView setFrame:CGRectMake(_leftBar.frame.size.width +  hash_day.integerValue*btnWidth, hash_lesson.integerValue*101*autoSizeScaleY, btnWidth, btnHeight)];
+            
+            UIButton *btn = [[UIButton alloc]init];
+            btn.layer.cornerRadius = 3.0 ;
+            btn.backgroundColor = viewColor;
+            btn.tag = i;
+            [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
+            [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+            
+            
+            UILabel *classRoomNumLabel = [[UILabel alloc]init];
+            [classRoomNumLabel setFrame:CGRectMake(0, btn.frame.size.height-20, btn.frame.size.width, 10)];
+            classRoomNumLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[i] objectForKey:@"classroom"]];
+            
+            classRoomNumLabel.textAlignment = NSTextAlignmentCenter;
+            classRoomNumLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
+            classRoomNumLabel.font = [UIFont systemFontOfSize:12];
+            
+            UILabel *classNameLabel = [[UILabel alloc]init];
+            CGFloat classNameLabelHeight = [self calculateRowHeight:[NSString stringWithFormat:@"%@", [_dataArray[i] objectForKey:@"course"]] fontSize:12 width:btn.frame.size.width - 10];
+            if (classNameLabelHeight > btn.frame.size.height-30) {
+                classNameLabelHeight = btn.frame.size.height-30;
+            }
+            
+            [classNameLabel setFrame:CGRectMake(5, 9, btn.frame.size.width - 10, classNameLabelHeight)];
+            classNameLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[i] objectForKey:@"course"]];
+            classNameLabel.textAlignment = NSTextAlignmentCenter;
+            classNameLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
+            classNameLabel.font = [UIFont systemFontOfSize:12];
+            [classNameLabel setNumberOfLines:0];
+            classNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+            
+            
+            [btn addSubview:classRoomNumLabel];
+            [btn addSubview:classNameLabel];
+            [btnView addSubview:btn];
+            [_scrollView addSubview:btnView];
         }
         
     }
-    //NSLog(@"subcount:%lu",(unsigned long)_scrollView.subviews.count);
 }
--(void)chackBigLesson{
-    @autoreleasepool {
-        [_dayBar layoutIfNeeded];
-        [_leftBar layoutIfNeeded];
-        CGFloat btnWidth = _dayBar.frame.size.width/7;
-        CGFloat btnHeight = 101*autoSizeScaleY;
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 6; j++) {
-                
-                if (![[NSString stringWithFormat:@"%@",_dataArray[j][i]] isEqualToString:@""]) {
-                    
-                    
-                    
-                    NSNumber *tmp = [_dataArray[j][i] objectForKey:@"period"];
-                    if (tmp.integerValue != 2) {
-                        //NSLog(@"biglesson:%ld,i:%d,j:%d",tmp.integerValue,i,j);
-                        btnHeight = 101*autoSizeScaleY*(tmp.integerValue/2);
-                        
-                        
-                        UIColor *viewColor = [[UIColor alloc]init];
-                        if (j<2) {
-                            viewColor = [UIColor colorWithHexString:@"#FF89A5"];
-                        }else if(j>=2&&j<4){
-                            viewColor = [UIColor colorWithHexString:@"#FFBF7B"];
-                        }else{
-                            viewColor = [UIColor colorWithHexString:@"#81B6FE"];
-                        }
-                        UIView *btnView = [[UIView alloc]init];
-                        
-                        [btnView setFrame:CGRectMake(_leftBar.frame.size.width +  i*btnWidth, j*101*autoSizeScaleY, btnWidth, btnHeight)];
-                        
-                        UIButton *btn = [[UIButton alloc]init];
-                        btn.layer.cornerRadius = 3.0 ;
-                        
-                        if ([[NSString stringWithFormat:@"%@",_dataArray[j][i]] isEqualToString:@""]) {
-                            btn.backgroundColor = [UIColor whiteColor];
-                            [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
-                            [btnView addSubview:btn];
-                        }else{
-                            
-                            btn.backgroundColor = viewColor;
-                            [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
-                            [btn layoutIfNeeded];
-                            
-                            UILabel *classRoomNumLabel = [[UILabel alloc]init];
-                            [classRoomNumLabel setFrame:CGRectMake(0, btn.frame.size.height-20, btn.frame.size.width, 10)];
-                            classRoomNumLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[j][i] objectForKey:@"classroom"]];
-                            
-                            classRoomNumLabel.textAlignment = NSTextAlignmentCenter;
-                            classRoomNumLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
-                            classRoomNumLabel.font = [UIFont systemFontOfSize:12];
-                            
-                            UILabel *classNameLabel = [[UILabel alloc]init];
-                            CGFloat classNameLabelHeight = [self calculateRowHeight:[NSString stringWithFormat:@"%@", [_dataArray[j][i] objectForKey:@"course"]] fontSize:12 width:btn.frame.size.width - 10];
-                            if (classNameLabelHeight > btn.frame.size.height-20) {
-                                classNameLabelHeight = btn.frame.size.height-20;
-                            }
-                            
-                            [classNameLabel setFrame:CGRectMake(5, 9, btn.frame.size.width - 10, classNameLabelHeight)];
-                            classNameLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[j][i] objectForKey:@"course"]];
-                            classNameLabel.textAlignment = NSTextAlignmentCenter;
-                            classNameLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
-                            classNameLabel.font = [UIFont systemFontOfSize:12];
-                            [classNameLabel setNumberOfLines:0];
-                            classNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-                            
-                            
-                            [btn addSubview:classRoomNumLabel];
-                            [btn addSubview:classNameLabel];
-                            [btnView addSubview:btn];
-                        }
-                        [_scrollView addSubview:btnView];
-                    }
-                }
-            }
-        }
-        
+- (void)clickBtn:(UIButton *)sender{
+    
+    //添加点击手势
+    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
+    [self.detailClassBookView addGestureRecognizer:tapGesture];
+    //初始化全屏view
+    
+    if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
+        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
+    self.detailClassBookView  = [[UIView alloc]initWithFrame:sender.superview.frame];
+    self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
+    
+    //设置view的tag
+    self.detailClassBookView.tag = 999;
+    //添加手势
+    UITapGestureRecognizer *tapToBackGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenDetailView)];
+    [self.detailClassBookView addGestureRecognizer:tapToBackGesture];
+    //往全屏view上添加内容
+    
+    //显示全屏view
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self.detailClassBookView];
+    [UIView animateWithDuration:0.1f animations:^{
+        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    } completion:nil];
+//    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+//    animation.duration = 0.1;
+//    NSMutableArray *values = [NSMutableArray array];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
+//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
+//    animation.values = values;
+//    [view.layer addAnimation:animation forKey:nil];
     
 }
+- (void)hiddenDetailView{
+    if (_detailClassBookView) {
+        [_detailClassBookView removeFromSuperview];
+    }
+    
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIView *view = [window viewWithTag:999];
+    [view removeFromSuperview];
+    
+
+}
+//- (void)addNoteBtn:({
+//    
+//}
+
 
 - (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize width:(CGFloat)width{
     NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};//指定字号

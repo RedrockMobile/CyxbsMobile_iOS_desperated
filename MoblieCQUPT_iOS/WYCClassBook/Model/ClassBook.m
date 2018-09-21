@@ -67,6 +67,7 @@
 //        [_classBookArray addObject:tmp];
         
     }
+    _weekArray = weekArray;
     
     //把数据转换成按每天每节课分
     

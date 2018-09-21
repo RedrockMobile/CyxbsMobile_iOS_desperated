@@ -126,8 +126,8 @@
     [view initView:YES];
     NSArray *dateArray = @[];
     [view addBar:dateArray isFirst:YES];
-    [view addBtn:_model.classBookArray[0]];
-    [view chackBigLesson];
+    [view addClassBtn:_model.classBookArray[0]];
+ 
     [_scrollView addSubview:view];
     
     @autoreleasepool {
@@ -135,8 +135,8 @@
             WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
             [view initView:NO];
             [view addBar:date.dateArray[i] isFirst:NO];
-            [view addBtn:_model.classBookArray[i]];
-            [view chackBigLesson];
+            [view addClassBtn:_model.classBookArray[i]];
+          
             [_scrollView addSubview:view];
         }
     }

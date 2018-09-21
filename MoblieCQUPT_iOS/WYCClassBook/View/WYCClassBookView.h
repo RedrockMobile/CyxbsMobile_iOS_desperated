@@ -12,7 +12,6 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 -(void)initView:(BOOL)isFirst;
 -(void)addBar:(NSArray *)date isFirst:(BOOL)isFirst;
--(void)addBtn:(NSArray *)array;
--(void)chackBigLesson;
+-(void)addClassBtn:(NSArray *)array;
 -(void)changeScrollViewContentSize:(CGSize)contentSize;
 @end
