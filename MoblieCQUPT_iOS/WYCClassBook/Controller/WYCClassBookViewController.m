@@ -17,7 +17,8 @@
 
 #import "AddRemindViewController.h"
 #import "UIFont+AdaptiveFont.h"
-
+#import "RemindNotification.h"
+#import "LessonController.h"
 
 #define DateStart @"2018-09-10"
 
@@ -45,6 +46,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *homeDir = NSHomeDirectory();
+    NSLog(@"homeDir:%@", homeDir);
+    
+    
+   // LessonController *vc = [[LessonController alloc]init];
+    
+    
+    
+    
     
     self.titleTextArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
     //默认星期选择条不显示
@@ -52,7 +62,7 @@
    
     [self initWeekChooseBar];
     
-    self.rootView.backgroundColor = [UIColor greenColor];
+    //self.rootView.backgroundColor = [UIColor greenColor];
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"加载数据中...";
@@ -72,7 +82,7 @@
         NSLog(@"stuNum:%@",self.stuNum);
         NSLog(@"idNum:%@",self.idNum);
         [self initModel];
-        [self getRemindData];
+        
         
     }
     
@@ -192,7 +202,7 @@
     
     //自定义titleView
     self.titleView = [[UIView alloc]init];
-    self.titleView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH/2-50, 0, 100, 40)];
+    self.titleView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH/2-60, 0, 120, 40)];
     self.titleView.backgroundColor = [UIColor clearColor];
     [self initTitleLabel];
     [self initTitleBtn];
@@ -201,7 +211,7 @@
     if (_titleLabel) {
         [_titleLabel removeFromSuperview];
     }
-    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(_titleView.frame.size.width/2-40, 0, 80, _titleView.frame.size.height)];
+    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(_titleView.frame.size.width/2-50, 0, 100, _titleView.frame.size.height)];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     
     
@@ -322,8 +332,13 @@
             if (success) {
                 self.stuNum = [UserDefaultTool getStuNum];
                 self.idNum = [UserDefaultTool getIdNum];
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                hud.mode = MBProgressHUDModeIndeterminate;
+                hud.labelText = @"加载数据中...";
+                hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
                 [self initModel];
                 [self getRemindData];
+                [[RemindNotification shareInstance] addNotifictaion];
             }
         };
         [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
@@ -339,6 +354,27 @@
     AddRemindViewController *vc = [[AddRemindViewController alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)request{
+    
+    
+        [self getLessonData];
+   
+    
+        [self getRemindData];
+    
+    [self afterRequest];
+        
+   
+}
+
+- (void)afterRequest{
+    
+    if ([UserDefaultTool valueWithKey:@"nowWeek"]!=nil && [UserDefaultTool valueWithKey:@"lessonResponse"]!=nil) {
+        [[RemindNotification shareInstance] addNotifictaion];
+       
+    }
 }
 
 - (void)getRemindData{
@@ -363,6 +399,85 @@
     }];
     
 }
+- (void)getLessonData{
+    //dispatch_semaphore_t sema = dispatch_semaphore_create(0);
+    NSString *stuNum = [UserDefaultTool valueWithKey:@"stuNum"];
+    HttpClient *client = [HttpClient defaultClient];
+    NSDictionary *parameter = @{@"stuNum":stuNum,@"forceFetch":@"true"};
+    [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        //NSLog(@"%@",responseObject);
+        NSNumber *nowWeek = responseObject[@"nowWeek"];
+        [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
+        [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
+        
+        // 共享数据
+        NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
+        [shared setObject:responseObject forKey:@"lessonResponse"];
+        [shared synchronize];
+        //
+        //dispatch_semaphore_signal(sema);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        //dispatch_semaphore_signal(sema);
+        NSLog(@"%@",error);
+    }];
+    //dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
+}
+- (void)reTryRequest{
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
+    NSMutableArray *failureRequests = [NSMutableArray arrayWithContentsOfFile:failurePath];
+    if (failureRequests.count == 0) {
+        return;
+    }
+    else{
+        NSDictionary *failure = failureRequests[0];
+        NSString *type = [failure objectForKey:@"type"];
+        NSMutableDictionary *parameters = [failure objectForKey:@"parameters"];
+        NSError *error;
+        NSArray *dateArray = [parameters objectForKey:@"date"];
+        NSMutableDictionary *jsonParameters = [parameters mutableCopy];
+        if (dateArray != nil) {
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dateArray options:NSJSONWritingPrettyPrinted error:&error];
+            NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+            [jsonParameters setObject:jsonString forKey:@"date"];
+        }
+        NSMutableDictionary *realParameters;
+        HttpClient *client = [HttpClient defaultClient];
+        NSString *path = [NSString string];
+        if ([type isEqualToString:@"edit"]) {
+            path = EDITREMINDAPI;
+            realParameters = jsonParameters;
+        }
+        else if([type isEqualToString:@"delete"]){
+            path = DELETEREMINDAPI;
+            realParameters = parameters;
+        }
+        else if([type isEqualToString:@"add"]){
+            path = ADDREMINDAPI;
+            realParameters = jsonParameters;
+        }
+        [client requestWithPath:path method:HttpRequestPost parameters:realParameters prepareExecute:^{
+            
+        } progress:^(NSProgress *progress) {
+            
+        } success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSLog(@"%@",responseObject);
+            [failureRequests removeObject:failure];
+            if ([failureRequests writeToFile:failurePath atomically:YES]) {
+                dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                    [self reTryRequest];
+                });
+            }
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            NSLog(@"%@",error);
+            return;
+            
+        }];
+    }
+}
+
 
 @end
 

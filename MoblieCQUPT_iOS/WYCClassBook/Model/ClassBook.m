@@ -32,6 +32,8 @@
         [self transform:array];
         //NSLog(@"classbookArray:%@",array);
         self->_nowWeek = [responseObject objectForKey:@"nowWeek"];
+        NSNumber *nowWeek = responseObject[@"nowWeek"];
+        [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
         //NSLog(@"week1:%@",self->_classBookArray[0]);
         [[NSNotificationCenter defaultCenter] postNotificationName:[NSString stringWithFormat: @"%@DataLoadSuccess",title] object:nil];
         
