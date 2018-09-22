@@ -15,16 +15,8 @@
 #import "LoginViewController.h"
 #import "NoLoginView.h"
 
-
 #import "AddRemindViewController.h"
-#import "LoginViewController.h"
-#import "RemindNotification.h"
 #import "UIFont+AdaptiveFont.h"
-
-#import "NoLoginView.h"
-
-#import "LessonMatter.h"
-#import "RemindMatter.h"
 
 
 #define DateStart @"2018-09-10"
@@ -118,7 +110,7 @@
             WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
             [view initView:NO];
             [view addBar:date.dateArray[i] isFirst:NO];
-            [view addClassBtn:_classBook.weekArray[i]];
+            [view addClassBtn:_classBook.weekArray[i+1]];
             
             [_scrollView addSubview:view];
         }

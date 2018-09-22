@@ -21,7 +21,7 @@
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mF9-dW-Y90">
                             <rect key="frame" x="0.0" y="-2" width="270" height="342"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my7-06-WC2">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my7-06-WC2">
                                     <rect key="frame" x="0.0" y="0.0" width="270" height="342"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="上课时间" translatesAutoresizingMaskIntoConstraints="NO" id="f78-kT-aOm">

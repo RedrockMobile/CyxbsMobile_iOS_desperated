@@ -322,8 +322,10 @@
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
 //    self.detailClassBookView  = [[UIView alloc]initWithFrame:CGRectMake(sender.superview.frame.origin.x, sender.superview.frame.origin.y + HEADERHEIGHT + self.topBar.height, sender.superview.frame.size.width, sender.superview.frame.size.height)];
-    self.detailClassBookView = [WYCShowDetailView initViewFromXib];
-    [self.detailClassBookView initView];
+    
+    self.detailClassBookView  = [[WYCShowDetailView alloc]init];
+    [self.detailClassBookView initViewWithDic:_dataArray[sender.tag]];
+    
     
    // self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     //添加点击手势

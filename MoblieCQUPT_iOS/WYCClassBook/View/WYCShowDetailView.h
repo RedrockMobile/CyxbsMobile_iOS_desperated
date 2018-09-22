@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WYCShowDetailView : UIView
-+(WYCShowDetailView *)initViewFromXib;
 
--(void)initView;
+
+- (void)initViewWithDic:(NSDictionary *)dic;
 
 @end
 

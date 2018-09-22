@@ -15,14 +15,8 @@
 
 @implementation WYCShowDetailView
 
-+(WYCShowDetailView *)initViewFromXib;
-{
-    NSArray* nibView =  [[NSBundle mainBundle] loadNibNamed:@"WYCShowDetailView" owner:nil options:nil];
-    return [nibView objectAtIndex:0];
-    
-}
 
-- (void)initView{
+- (void)initViewWithDic:(NSDictionary *)dic{
     
     self.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];

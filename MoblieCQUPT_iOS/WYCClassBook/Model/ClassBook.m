@@ -66,13 +66,13 @@
             
         }
         
-        [weekArray addObject:tmp];
+        [_weekArray addObject:tmp];
         
 //        [_classBookArray addObject:tmp];
         
     }
     
-    _weekArray = weekArray;
+    //_weekArray = weekArray;
     
     //把数据转换成按每天每节课分
     
