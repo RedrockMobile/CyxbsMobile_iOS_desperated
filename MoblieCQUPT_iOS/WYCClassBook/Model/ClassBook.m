@@ -13,6 +13,7 @@
 
 
 - (void)getClassBookArray:(NSString *)stu_Num title:(NSString *)title {
+    self.weekArray = [[NSMutableArray alloc]init];
     
     NSDictionary *parameters = @{@"stu_num":stu_Num};
     
@@ -26,6 +27,8 @@
         NSArray *array = [responseObject objectForKey:@"data"];
         self->_classBookArray = [[NSMutableArray alloc]init];
         //[self->_classBookArray addObject:array];
+        
+        [self ->_weekArray addObject:array];
         [self transform:array];
         //NSLog(@"classbookArray:%@",array);
         self->_nowWeek = [responseObject objectForKey:@"nowWeek"];
@@ -64,9 +67,11 @@
         }
         
         [weekArray addObject:tmp];
+        
 //        [_classBookArray addObject:tmp];
         
     }
+    
     _weekArray = weekArray;
     
     //把数据转换成按每天每节课分

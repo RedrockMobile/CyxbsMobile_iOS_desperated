@@ -334,6 +334,8 @@
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		D07CFD5621549619008D9EE6 /* WYCClassBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD5521549619008D9EE6 /* WYCClassBookViewController.m */; };
+		D07CFD59215633ED008D9EE6 /* WYCShowDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */; };
+		D07CFD5B2156363B008D9EE6 /* WYCShowDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07CFD5A2156363B008D9EE6 /* WYCShowDetailView.xib */; };
 		D081E65C2152484C00245FD9 /* ClassBook.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6592152484C00245FD9 /* ClassBook.m */; };
 		D081E65D2152484C00245FD9 /* DateModle.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E65B2152484C00245FD9 /* DateModle.m */; };
 		D081E6652152488D00245FD9 /* WYCClassBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D081E65F2152488C00245FD9 /* WYCClassBookView.xib */; };
@@ -1178,6 +1180,9 @@
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
 		D07CFD5421549619008D9EE6 /* WYCClassBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCClassBookViewController.h; sourceTree = "<group>"; };
 		D07CFD5521549619008D9EE6 /* WYCClassBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookViewController.m; sourceTree = "<group>"; };
+		D07CFD57215633ED008D9EE6 /* WYCShowDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCShowDetailView.h; sourceTree = "<group>"; };
+		D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCShowDetailView.m; sourceTree = "<group>"; };
+		D07CFD5A2156363B008D9EE6 /* WYCShowDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYCShowDetailView.xib; sourceTree = "<group>"; };
 		D081E6582152484C00245FD9 /* DateModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModle.h; sourceTree = "<group>"; };
 		D081E6592152484C00245FD9 /* ClassBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassBook.m; sourceTree = "<group>"; };
 		D081E65A2152484C00245FD9 /* ClassBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassBook.h; sourceTree = "<group>"; };
@@ -2770,6 +2775,9 @@
 				D081E65F2152488C00245FD9 /* WYCClassBookView.xib */,
 				D081E6612152488D00245FD9 /* WYCWeekChooseBar.h */,
 				D081E6642152488D00245FD9 /* WYCWeekChooseBar.m */,
+				D07CFD57215633ED008D9EE6 /* WYCShowDetailView.h */,
+				D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */,
+				D07CFD5A2156363B008D9EE6 /* WYCShowDetailView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4244,6 +4252,7 @@
 				F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */,
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
 				F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */,
+				D07CFD5B2156363B008D9EE6 /* WYCShowDetailView.xib in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
 				8291269021330397002BA8E3 /* mine_image_calendar1.png in Resources */,
 				F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */,
@@ -4551,6 +4560,7 @@
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
+				D07CFD59215633ED008D9EE6 /* WYCShowDetailView.m in Sources */,
 				829C969D2127DCE000B4B05C /* SYCActivityModel.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */,

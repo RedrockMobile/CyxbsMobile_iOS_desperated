@@ -14,6 +14,19 @@
 #import "WYCWeekChooseBar.h"
 #import "LoginViewController.h"
 #import "NoLoginView.h"
+
+
+#import "AddRemindViewController.h"
+#import "LoginViewController.h"
+#import "RemindNotification.h"
+#import "UIFont+AdaptiveFont.h"
+
+#import "NoLoginView.h"
+
+#import "LessonMatter.h"
+#import "RemindMatter.h"
+
+
 #define DateStart @"2018-09-10"
 
 @interface WYCClassBookViewController ()<UIScrollViewDelegate>
@@ -44,10 +57,14 @@
     self.titleTextArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
     //默认星期选择条不显示
     self.hiddenWeekChooseBar = YES;
-    [self initNavigationBar];
+   
     [self initWeekChooseBar];
     
     self.rootView.backgroundColor = [UIColor greenColor];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载数据中...";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
     
     //判断是否已经登录
     NSString *stuNum = [UserDefaultTool getStuNum];
@@ -63,6 +80,7 @@
         NSLog(@"stuNum:%@",self.stuNum);
         NSLog(@"idNum:%@",self.idNum);
         [self initModel];
+        [self getRemindData];
         
     }
     
@@ -85,9 +103,8 @@
     DateModle *date = [[DateModle alloc]init];
     [date initCalculateDate:DateStart];
     
-    
-    
     [_scrollView layoutIfNeeded];
+    
     WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(0*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
     [view initView:YES];
     NSArray *dateArray = @[];
@@ -122,7 +139,7 @@
     [self initTitleLabel];
     [self.weekChooseBar changeIndex:self.index];
    
-    
+     [self initNavigationBar];
  
     
     
@@ -166,11 +183,7 @@
 }
 - (void)initClassModel{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"加载数据中...";
-    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
-   
+    
     if (!_classBook) {
         _classBook = [[ClassBook alloc]init];
         [_classBook getClassBookArray:self.stuNum title:self.title];
@@ -232,13 +245,17 @@
 }
 - (void)initRightButton{
     //添加备忘按钮
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"加号"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"加号"] style:UIBarButtonItemStylePlain target:self action:@selector(addAction)];
     self.navigationItem.rightBarButtonItem = right;
+   
 }
 
 //添加备忘
 - (void)addNote{
     
+    AddRemindViewController *vc = [[AddRemindViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //添加星期选择条
@@ -314,6 +331,7 @@
                 self.stuNum = [UserDefaultTool getStuNum];
                 self.idNum = [UserDefaultTool getIdNum];
                 [self initModel];
+                [self getRemindData];
             }
         };
         [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
@@ -324,4 +342,36 @@
 }
 
 
+
+- (void)addAction{
+    AddRemindViewController *vc = [[AddRemindViewController alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)getRemindData{
+   
+    HttpClient *client = [HttpClient defaultClient];
+    NSString *stuNum = [UserDefaultTool getStuNum];
+    NSString *idNum =  [UserDefaultTool getIdNum];
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    [client requestWithPath:GETREMINDAPI method:HttpRequestPost parameters:@{@"stuNum":stuNum,@"idNum":idNum} prepareExecute:^{
+        
+    } progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *reminds = [responseObject objectForKey:@"data"];
+        
+        [reminds writeToFile:remindPath atomically:YES];
+       
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+       
+        NSLog(@"%@",error);
+    }];
+    
+}
+
 @end
+
+

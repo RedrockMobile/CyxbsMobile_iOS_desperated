@@ -8,6 +8,7 @@
 
 #import "WYCClassBookView.h"
 #import "Masonry.h"
+#import "WYCShowDetailView.h"
 //#import "UIColor+Hex.h"
 @interface WYCClassBookView()
 
@@ -16,8 +17,9 @@
 @property (nonatomic, strong) UIView *month;
 @property (nonatomic, strong) UIView *dayBar;
 @property (nonatomic, strong) UIView *rootView;
-@property (nonatomic, strong) UIView *detailClassBookView;
+@property (nonatomic, strong) WYCShowDetailView *detailClassBookView;
 @property (nonatomic, strong) NSArray *dataArray;
+
 
 
 @end
@@ -207,14 +209,56 @@
 -(void)addClassBtn:(NSArray *)array{
     _dataArray = array;
     NSLog(@"%lu",(unsigned long)array.count);
+//
+//
+//    NSMutableArray *btnData = [[NSMutableArray alloc]init];
+//
+//    NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
+//
+//    for (int i = 0; i < 6; i++) {
+//        [lesson addObject:[btnData mutableCopy]];
+//    }
+//    NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
+//
+//    for (int i = 0; i < 7; i++) {
+//        [day addObject:[lesson mutableCopy]];
+//    }
+//
     
+    NSMutableArray *btnData = [[NSMutableArray alloc]init];
+    btnData = [@[] mutableCopy];
+    NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
+    
+    for (int i = 0; i < 6; i++) {
+        lesson[i] = [btnData mutableCopy];
+    }
+    NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
+    
+    for (int i = 0; i < 7; i++) {
+        day[i] = [lesson mutableCopy];
+    }
     @autoreleasepool {
         [_dayBar layoutIfNeeded];
         [_leftBar layoutIfNeeded];
         CGFloat btnWidth = _dayBar.frame.size.width/7;
         CGFloat btnHeight;
+//        for (int i = 0; i < _dataArray.count; i++) {
+//            //NSLog(@"%@",array[i]);
+//            NSNumber *hash_day = [array[i] objectForKey:@"hash_day"];
+//            NSNumber *hash_lesson = [array[i] objectForKey:@"hash_lesson"];
+////            day[hash_day.integerValue][hash_lesson.integerValue] = array[i];
+//            
+//            
+//            day[hash_day.integerValue][hash_lesson.integerValue] = array[i];
+//        }
+////        for (int i = 0; i < 7; i++) {
+////            for (int j = 0; j < 6; j++) {
+////                <#statements#>
+////            }
+////        }
+//        
         for (int i = 0; i < _dataArray.count; i++) {
-            NSLog(@"%@",array[i]);
+            //NSLog(@"%@",array[i]);
             NSNumber *hash_day = [array[i] objectForKey:@"hash_day"];
             NSNumber *hash_lesson = [array[i] objectForKey:@"hash_lesson"];
             NSNumber *period = [array[i] objectForKey:@"period"];
@@ -271,17 +315,20 @@
 }
 - (void)clickBtn:(UIButton *)sender{
     
-    //添加点击手势
-    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
-    [self.detailClassBookView addGestureRecognizer:tapGesture];
+   
     //初始化全屏view
     
     if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
-    self.detailClassBookView  = [[UIView alloc]initWithFrame:sender.superview.frame];
-    self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
+//    self.detailClassBookView  = [[UIView alloc]initWithFrame:CGRectMake(sender.superview.frame.origin.x, sender.superview.frame.origin.y + HEADERHEIGHT + self.topBar.height, sender.superview.frame.size.width, sender.superview.frame.size.height)];
+    self.detailClassBookView = [WYCShowDetailView initViewFromXib];
+    [self.detailClassBookView initView];
     
+   // self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
+    //添加点击手势
+    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
+    [self.detailClassBookView addGestureRecognizer:tapGesture];
     //设置view的tag
     self.detailClassBookView.tag = 999;
     //添加手势
@@ -291,17 +338,12 @@
     
     //显示全屏view
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    //[window addSubview:self.detailClassBookView];
     [window addSubview:self.detailClassBookView];
-    [UIView animateWithDuration:0.1f animations:^{
-        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-    } completion:nil];
-//    CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-//    animation.duration = 0.1;
-//    NSMutableArray *values = [NSMutableArray array];
-//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)]];
-//    [values addObject:[NSValue valueWithCATransform3D:CATransform3DMakeScale(1.0, 1.0, 1.0)]];
-//    animation.values = values;
-//    [view.layer addAnimation:animation forKey:nil];
+//    [UIView animateWithDuration:0.06f animations:^{
+//        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+//    } completion:nil];
+
     
 }
 - (void)hiddenDetailView{
@@ -329,5 +371,8 @@
 -(void)changeScrollViewContentSize:(CGSize)contentSize{
     _scrollView.contentSize = contentSize;
 }
+
+
+
 
 @end
