@@ -59,7 +59,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(91.5, 187, 194, 208);
+    imageView.frame = CGRectMake(SCREENWIDTH * 0.2, SCREENHEIGHT * 0.3, SCREENWIDTH * 0.6, SCREENWIDTH * 0.6);
     imageView.contentMode = UIViewContentModeScaleToFill;
     
     [self.view addSubview:imageView];

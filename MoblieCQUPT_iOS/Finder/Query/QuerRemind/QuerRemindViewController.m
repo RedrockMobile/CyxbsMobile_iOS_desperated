@@ -11,6 +11,9 @@
 #import "AppDelegate.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+
 
 CG_INLINE CGRect
 CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
@@ -47,28 +50,28 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)showInfoView{
-    _infoBigView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 667)];
+    _infoBigView = [[UIView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT)];
     _infoBigView.backgroundColor = [UIColor colorWithRed:57/255.0 green:57/255.0 blue:57/255.0 alpha:0.7];
     
-    UIView *achieveView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(31, 174.5, 313, 319)];
+    UIView *achieveView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.1, (SCREENHEIGHT - HEADERHEIGHT) / 2 - SCREENWIDTH * 0.4, SCREENWIDTH * 0.8, SCREENWIDTH * 0.8)];
     achieveView.layer.cornerRadius = 12;
     achieveView.layer.masksToBounds = YES;
     achieveView.backgroundColor = [UIColor whiteColor];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"achieveImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(0, 0, 313, 187.5);
+    imageView.frame = CGRectMake(0, 0, SCREENWIDTH * 0.8, SCREENWIDTH * 0.48);
     
-    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(100.5, 213.5, 116, 20)];
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREENWIDTH * 0.48, SCREENWIDTH * 0.8, SCREENWIDTH * 0.13)];
     infoLabel.font = [UIFont systemFontOfSize:font(17)];
     infoLabel.textColor = [UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1];
     infoLabel.backgroundColor = [UIColor clearColor];
     infoLabel.text = @"你还没有填写呢";
-    infoLabel.textAlignment = NSTextAlignmentLeft;
+    infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.adjustsFontSizeToFitWidth = YES;
     infoLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     infoLabel.contentMode = UIViewContentModeRedraw;
     
-    UIButton *achieveBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(31, 264, 252, 41.5)];
+    UIButton *achieveBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.8 * 0.1, SCREENWIDTH * 0.61, SCREENWIDTH * 0.8 * 0.8, SCREENWIDTH * 0.8 * 0.16)];
     achieveBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
     [achieveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [achieveBtn setTitle:@"确 定" forState:UIControlStateNormal];
@@ -95,15 +98,17 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)addTitleView{
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"remindImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(0, 64, 375, 295);
+    //修改图片位置
+    imageView.frame = CGRectMake(0, HEADERHEIGHT, WIDTH, (HEIGHT - 60) / 2);
+    //imageView.frame = CGRectMake(0, 58, WIDTH, (HEIGHT - 60) / 2);
     imageView.contentMode = UIViewContentModeScaleToFill;
     
     [self.view addSubview:imageView];
 }
 
 - (void)addTitleRemindLabel{
-    UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(87, 403, 215, 20)];
-    label.textAlignment = NSTextAlignmentLeft;
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.2, SCREENHEIGHT * 0.6, SCREENWIDTH * 0.6, 30)];
+    label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:font(17)];
     label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     label.text = @"请输入一个最低电费提醒值";
@@ -114,7 +119,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)addUnitView{
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"unitImage"]];
-    imageView.frame = CHANGE_CGRectMake(108, 442, 33, 41);
+    imageView.frame = CGRectMake(SCREENWIDTH * 0.3 - SCREENWIDTH / 10, SCREENHEIGHT * 0.69, SCREENWIDTH / 10, SCREENWIDTH / 9);
     imageView.contentMode = UIViewContentModeScaleToFill;
     
     [self.view addSubview:imageView];
@@ -127,21 +132,22 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
     NSDictionary *dataDic = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
     
-    _remindTextField = [[UITextField alloc] initWithFrame:CHANGE_CGRectMake(155, 443, 180, 45)];
+    _remindTextField = [[UITextField alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.34, SCREENHEIGHT * 0.69, SCREENWIDTH * 0.45, SCREENWIDTH / 9)];
     _remindTextField.textAlignment = NSTextAlignmentLeft;
     _remindTextField.keyboardType = UIKeyboardTypeNumberPad;
-      _remindTextField.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //_remindTextField.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     if (dataDic[@"remind"]) {
         NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",dataDic[@"remind"]] attributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:18/255.0 green:208/255.0 blue:255/255.0 alpha:1]}];
         [content addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Bold" size:font(52)]} range:NSMakeRange(0, content.length)];
         _remindTextField.attributedPlaceholder = content;
     }
     _remindTextField.textColor = [UIColor colorWithRed:18/255.0 green:208/255.0 blue:255/255.0 alpha:1];
-    [_remindTextField setFont:[UIFont fontWithName:@"Helvetica-Bold" size:font(55)]];
+    [_remindTextField setFont:[UIFont fontWithName:@"Helvetica-Bold" size:font(50)]];
     
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(106, 496.5, 185, 1)];
+    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.34, SCREENHEIGHT * 0.75, SCREENWIDTH * 0.45, 1)];
     lineLabel.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.5];
     _remindTextField.tintColor = [UIColor blackColor];
+    //_remindTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     [self.view addSubview:lineLabel];
     [self.view addSubview:_remindTextField];
@@ -151,7 +157,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:@"确 定" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [content addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(21)]} range:NSMakeRange(0, content.length)];
     
-    UIButton *doneBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(43.5, 544.5, 288,46)];
+    UIButton *doneBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.12, SCREENHEIGHT * 0.84, SCREENWIDTH * 0.76, 50)];
     [doneBtn setAttributedTitle:content forState:UIControlStateNormal];
     doneBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
     
@@ -163,10 +169,58 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self.view addSubview:doneBtn];
 }
 
+//判断是否是数字
+- (BOOL)isPureInt:(NSString *)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return [scan scanInt:&val] && [scan isAtEnd];
+}
 - (void)saveData{
     if (!_remindTextField.text.length) {
         [self showInfoView];
-    }else{
+    }
+    else if (![self isPureInt:_remindTextField.text])
+    {
+        //
+        NSLog(@"请数字输入");
+            _infoBigView = [[UIView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT)];
+            _infoBigView.backgroundColor = [UIColor colorWithRed:57/255.0 green:57/255.0 blue:57/255.0 alpha:0.7];
+        
+            UIView *achieveView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.1, (SCREENHEIGHT - HEADERHEIGHT) / 2 - SCREENWIDTH * 0.4, SCREENWIDTH * 0.8, SCREENWIDTH * 0.8)];
+            achieveView.layer.cornerRadius = 12;
+            achieveView.layer.masksToBounds = YES;
+            achieveView.backgroundColor = [UIColor whiteColor];
+        
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"achieveImage.png"]];
+            imageView.frame = CGRectMake(0, 0, SCREENWIDTH * 0.8, SCREENWIDTH * 0.48);
+        
+            UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREENWIDTH * 0.48, SCREENWIDTH * 0.8, SCREENWIDTH * 0.13)];
+            infoLabel.font = [UIFont systemFontOfSize:font(17)];
+            infoLabel.textColor = [UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1];
+            infoLabel.backgroundColor = [UIColor clearColor];
+            infoLabel.text = @"请正确输入";
+            infoLabel.textAlignment = NSTextAlignmentCenter;
+            infoLabel.adjustsFontSizeToFitWidth = YES;
+            infoLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+            infoLabel.contentMode = UIViewContentModeRedraw;
+        
+            UIButton *achieveBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.8 * 0.1, SCREENWIDTH * 0.61, SCREENWIDTH * 0.8 * 0.8, SCREENWIDTH * 0.8 * 0.16)];
+            achieveBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
+            [achieveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [achieveBtn setTitle:@"确 定" forState:UIControlStateNormal];
+            [achieveBtn addTarget:self action:@selector(removeInfoBigView) forControlEvents:UIControlEventTouchDown];
+            achieveBtn.layer.cornerRadius = 5;
+            achieveBtn.layer.masksToBounds = YES;
+        
+            [achieveView addSubview:imageView];
+            [achieveView addSubview:infoLabel];
+            [achieveView addSubview:achieveBtn];
+        
+            [_infoBigView addSubview:achieveView];
+            [self.view addSubview:_infoBigView];
+    }
+    else{
+        //[_remindTextField setText:nil];
         InstallRoomDoneViewController *irdVC = [[InstallRoomDoneViewController alloc] init];
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];
