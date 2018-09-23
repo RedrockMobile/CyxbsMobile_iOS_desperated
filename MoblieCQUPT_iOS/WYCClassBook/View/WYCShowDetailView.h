@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WYCShowDetailView : UIView
 
 
-- (void)initViewWithDic:(NSDictionary *)dic;
+- (void)initViewWithArray:(NSArray *)array;
 
 @end
 

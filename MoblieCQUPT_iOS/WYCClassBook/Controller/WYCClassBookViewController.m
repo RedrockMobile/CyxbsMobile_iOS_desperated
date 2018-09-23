@@ -164,7 +164,7 @@
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
     _index = (long)roundf(scrollView.contentOffset.x/_scrollView.frame.size.width);
-    NSLog(@"index:%ld",_index);
+    //NSLog(@"index:%ld",_index);
     // NSLog(@"index:%ld",(long)_index);
     [self initTitleLabel];
     [self.weekChooseBar changeIndex:_index];

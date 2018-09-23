@@ -12,13 +12,15 @@
 //#import "UIColor+Hex.h"
 @interface WYCClassBookView()
 
-@property (nonatomic, strong) UIView *topBar;
-@property (nonatomic, strong) UIView *leftBar;
+@property (nonatomic, strong) UIView *topBar;    //顶栏日期月份
+@property (nonatomic, strong) UIView *leftBar;   //左边栏课数
 @property (nonatomic, strong) UIView *month;
 @property (nonatomic, strong) UIView *dayBar;
 @property (nonatomic, strong) UIView *rootView;
 @property (nonatomic, strong) WYCShowDetailView *detailClassBookView;
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray *dataArray;  //本周的课表数据
+@property (nonatomic, strong) NSMutableArray *detailDataArray;  //详细信息，每个btn包含多个信息
+@property (nonatomic, assign) NSInteger classCount;  //一周的课数
 
 
 
@@ -207,127 +209,122 @@
     
 }
 -(void)addClassBtn:(NSArray *)array{
+    _classCount = array.count;
     _dataArray = array;
-    NSLog(@"%lu",(unsigned long)array.count);
-//
-//
-//    NSMutableArray *btnData = [[NSMutableArray alloc]init];
-//
-//    NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
-//
-//    for (int i = 0; i < 6; i++) {
-//        [lesson addObject:[btnData mutableCopy]];
-//    }
-//    NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
-//
-//    for (int i = 0; i < 7; i++) {
-//        [day addObject:[lesson mutableCopy]];
-//    }
-//
+    //NSLog(@"classcount:%lu",(unsigned long)array.count);
     
-    NSMutableArray *btnData = [[NSMutableArray alloc]init];
-    btnData = [@[] mutableCopy];
-    NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
-    
-    for (int i = 0; i < 6; i++) {
-        lesson[i] = [btnData mutableCopy];
-    }
     NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
     
     for (int i = 0; i < 7; i++) {
-        day[i] = [lesson mutableCopy];
+        
+        NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
+        
+        for (int i = 0; i < 6; i++) {
+            
+            [lesson addObject:[@[] mutableCopy]];
+        }
+        [day addObject:[lesson mutableCopy]];
     }
+    
+    
     @autoreleasepool {
         [_dayBar layoutIfNeeded];
         [_leftBar layoutIfNeeded];
         CGFloat btnWidth = _dayBar.frame.size.width/7;
         CGFloat btnHeight;
-//        for (int i = 0; i < _dataArray.count; i++) {
-//            //NSLog(@"%@",array[i]);
-//            NSNumber *hash_day = [array[i] objectForKey:@"hash_day"];
-//            NSNumber *hash_lesson = [array[i] objectForKey:@"hash_lesson"];
-////            day[hash_day.integerValue][hash_lesson.integerValue] = array[i];
-//            
-//            
-//            day[hash_day.integerValue][hash_lesson.integerValue] = array[i];
-//        }
-////        for (int i = 0; i < 7; i++) {
-////            for (int j = 0; j < 6; j++) {
-////                <#statements#>
-////            }
-////        }
-//        
+        
         for (int i = 0; i < _dataArray.count; i++) {
-            //NSLog(@"%@",array[i]);
-            NSNumber *hash_day = [array[i] objectForKey:@"hash_day"];
-            NSNumber *hash_lesson = [array[i] objectForKey:@"hash_lesson"];
-            NSNumber *period = [array[i] objectForKey:@"period"];
-            UIColor *viewColor = [[UIColor alloc]init];
-            if (hash_lesson.integerValue<2) {
-                viewColor = [UIColor colorWithHexString:@"#FF89A5"];
-            }else if(hash_lesson.integerValue>=2&&hash_lesson.integerValue<4){
-                viewColor = [UIColor colorWithHexString:@"#FFBF7B"];
-            }else{
-                viewColor = [UIColor colorWithHexString:@"#81B6FE"];
+            
+            NSNumber *hash_day = [_dataArray[i] objectForKey:@"hash_day"];
+            NSNumber *hash_lesson = [_dataArray[i] objectForKey:@"hash_lesson"];
+            
+            [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: _dataArray[i]];
+            
+        }
+        
+        NSInteger classNum = 0;
+        self.detailDataArray = [[NSMutableArray alloc]init];
+        for (int dayNum = 0; dayNum < 7; dayNum++) {
+            for (int lessonNum = 0; lessonNum < 6; lessonNum++) {
+                NSArray *tmp = day[dayNum][lessonNum];
+                if (tmp.count != 0) {
+                    
+                    [self.detailDataArray addObject:tmp];
+                    
+                    NSNumber *hash_day = [tmp[0] objectForKey:@"hash_day"];
+                    NSNumber *hash_lesson = [tmp[0] objectForKey:@"hash_lesson"];
+                    NSNumber *period = [tmp[0] objectForKey:@"period"];
+                    UIColor *viewColor = [[UIColor alloc]init];
+                    if (hash_lesson.integerValue<2) {
+                        viewColor = [UIColor colorWithHexString:@"#FF89A5"];
+                    }else if(hash_lesson.integerValue>=2&&hash_lesson.integerValue<4){
+                        viewColor = [UIColor colorWithHexString:@"#FFBF7B"];
+                    }else{
+                        viewColor = [UIColor colorWithHexString:@"#81B6FE"];
+                    }
+                    btnHeight =  50.5*autoSizeScaleY*period.integerValue;
+                    UIView *btnView = [[UIView alloc]init];
+                    [btnView setFrame:CGRectMake(_leftBar.frame.size.width +  hash_day.integerValue*btnWidth, hash_lesson.integerValue*101*autoSizeScaleY, btnWidth, btnHeight)];
+                    
+                    UIButton *btn = [[UIButton alloc]init];
+                    btn.layer.cornerRadius = 3.0 ;
+                    btn.backgroundColor = viewColor;
+                    btn.tag = classNum;
+                    classNum++;
+                    [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
+                    [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
+                    
+                    
+                    UILabel *classRoomNumLabel = [[UILabel alloc]init];
+                    [classRoomNumLabel setFrame:CGRectMake(0, btn.frame.size.height-20, btn.frame.size.width, 10)];
+                    classRoomNumLabel.text = [NSString stringWithFormat:@"%@", [tmp[0] objectForKey:@"classroom"]];
+                    
+                    classRoomNumLabel.textAlignment = NSTextAlignmentCenter;
+                    classRoomNumLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
+                    classRoomNumLabel.font = [UIFont systemFontOfSize:12];
+                    
+                    UILabel *classNameLabel = [[UILabel alloc]init];
+                    CGFloat classNameLabelHeight = [self calculateRowHeight:[NSString stringWithFormat:@"%@", [tmp[0] objectForKey:@"course"]] fontSize:12 width:btn.frame.size.width - 10];
+                    if (classNameLabelHeight > btn.frame.size.height-30) {
+                        classNameLabelHeight = btn.frame.size.height-30;
+                    }
+                    
+                    [classNameLabel setFrame:CGRectMake(5, 9, btn.frame.size.width - 10, classNameLabelHeight)];
+                    classNameLabel.text = [NSString stringWithFormat:@"%@", [tmp[0] objectForKey:@"course"]];
+                    classNameLabel.textAlignment = NSTextAlignmentCenter;
+                    classNameLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
+                    classNameLabel.font = [UIFont systemFontOfSize:12];
+                    [classNameLabel setNumberOfLines:0];
+                    classNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
+                    
+                    
+                    [btn addSubview:classRoomNumLabel];
+                    [btn addSubview:classNameLabel];
+                    [btnView addSubview:btn];
+                    [_scrollView addSubview:btnView];
+                }
             }
-            btnHeight =  50.5*autoSizeScaleY*period.integerValue;
-            UIView *btnView = [[UIView alloc]init];
-            [btnView setFrame:CGRectMake(_leftBar.frame.size.width +  hash_day.integerValue*btnWidth, hash_lesson.integerValue*101*autoSizeScaleY, btnWidth, btnHeight)];
-            
-            UIButton *btn = [[UIButton alloc]init];
-            btn.layer.cornerRadius = 3.0 ;
-            btn.backgroundColor = viewColor;
-            btn.tag = i;
-            [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
-            [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
-            
-            
-            UILabel *classRoomNumLabel = [[UILabel alloc]init];
-            [classRoomNumLabel setFrame:CGRectMake(0, btn.frame.size.height-20, btn.frame.size.width, 10)];
-            classRoomNumLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[i] objectForKey:@"classroom"]];
-            
-            classRoomNumLabel.textAlignment = NSTextAlignmentCenter;
-            classRoomNumLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
-            classRoomNumLabel.font = [UIFont systemFontOfSize:12];
-            
-            UILabel *classNameLabel = [[UILabel alloc]init];
-            CGFloat classNameLabelHeight = [self calculateRowHeight:[NSString stringWithFormat:@"%@", [_dataArray[i] objectForKey:@"course"]] fontSize:12 width:btn.frame.size.width - 10];
-            if (classNameLabelHeight > btn.frame.size.height-30) {
-                classNameLabelHeight = btn.frame.size.height-30;
-            }
-            
-            [classNameLabel setFrame:CGRectMake(5, 9, btn.frame.size.width - 10, classNameLabelHeight)];
-            classNameLabel.text = [NSString stringWithFormat:@"%@", [_dataArray[i] objectForKey:@"course"]];
-            classNameLabel.textAlignment = NSTextAlignmentCenter;
-            classNameLabel.textColor = [UIColor colorWithHexString:@"#FFFFFF"];
-            classNameLabel.font = [UIFont systemFontOfSize:12];
-            [classNameLabel setNumberOfLines:0];
-            classNameLabel.lineBreakMode = NSLineBreakByWordWrapping;
-            
-            
-            [btn addSubview:classRoomNumLabel];
-            [btn addSubview:classNameLabel];
-            [btnView addSubview:btn];
-            [_scrollView addSubview:btnView];
         }
         
     }
 }
 - (void)clickBtn:(UIButton *)sender{
     
-   
+//    NSLog(@"tag:%ld",(long)sender.tag);
+//    NSArray *tmp = self.detailDataArray[sender.tag];
+//    NSLog(@"%lu",(unsigned long)tmp.count);
     //初始化全屏view
     
     if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
-//    self.detailClassBookView  = [[UIView alloc]initWithFrame:CGRectMake(sender.superview.frame.origin.x, sender.superview.frame.origin.y + HEADERHEIGHT + self.topBar.height, sender.superview.frame.size.width, sender.superview.frame.size.height)];
+    //    self.detailClassBookView  = [[UIView alloc]initWithFrame:CGRectMake(sender.superview.frame.origin.x, sender.superview.frame.origin.y + HEADERHEIGHT + self.topBar.height, sender.superview.frame.size.width, sender.superview.frame.size.height)];
     
     self.detailClassBookView  = [[WYCShowDetailView alloc]init];
-    [self.detailClassBookView initViewWithDic:_dataArray[sender.tag]];
+    [self.detailClassBookView initViewWithArray:self.detailDataArray[sender.tag]];
     
     
-   // self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
+    // self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     //添加点击手势
     UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
     [self.detailClassBookView addGestureRecognizer:tapGesture];
@@ -342,10 +339,10 @@
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     //[window addSubview:self.detailClassBookView];
     [window addSubview:self.detailClassBookView];
-//    [UIView animateWithDuration:0.06f animations:^{
-//        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-//    } completion:nil];
-
+    //    [UIView animateWithDuration:0.06f animations:^{
+    //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    //    } completion:nil];
+    
     
 }
 - (void)hiddenDetailView{
@@ -357,11 +354,8 @@
     UIView *view = [window viewWithTag:999];
     [view removeFromSuperview];
     
-
+    
 }
-//- (void)addNoteBtn:({
-//    
-//}
 
 
 - (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize width:(CGFloat)width{
