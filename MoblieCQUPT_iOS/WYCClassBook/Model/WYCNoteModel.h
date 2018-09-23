@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WYCNoteModel : NSObject
+@property (nonatomic, strong) NSMutableArray *noteArray;
+- (void)getNote:(NSString *)stuNum idNum:(NSString *)idNum;
 
 @end
 

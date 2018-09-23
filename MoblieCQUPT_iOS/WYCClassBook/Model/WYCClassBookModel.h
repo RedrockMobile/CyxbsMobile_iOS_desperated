@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ClassBook : NSObject
+@interface WYCClassBookModel : NSObject
 @property (nonatomic, strong) NSMutableArray *classBookArray;
 @property (nonatomic, strong) NSMutableArray *weekArray;
 @property (nonatomic, copy) NSNumber *nowWeek;
-- (void)getClassBookArray:(NSString *)stu_Num title:(NSString *)title;
+- (void)getClassBookArray:(NSString *)stu_Num;
 
 @end

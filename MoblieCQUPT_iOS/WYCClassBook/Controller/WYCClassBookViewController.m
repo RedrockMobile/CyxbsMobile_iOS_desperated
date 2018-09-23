@@ -7,7 +7,8 @@
 //
 
 #import "WYCClassBookViewController.h"
-#import "ClassBook.h"
+#import "WYCClassBookModel.h"
+#import "WYCNoteModel.h"
 #import "DateModle.h"
 #import "SegmentView.h"
 #import "WYCClassBookView.h"
@@ -37,7 +38,9 @@
 @property (nonatomic, strong) WYCWeekChooseBar *weekChooseBar;
 @property (nonatomic, strong) NoLoginView *noLoginView;
 @property (nonatomic, strong) DateModle *dateModel;
-@property (nonatomic, strong) ClassBook *classBook;
+@property (nonatomic, strong) WYCClassBookModel *classBookModel;
+@property (nonatomic, strong) WYCNoteModel *noteModel;
+
 @property (nonatomic, assign) NSString *stuNum;
 @property (nonatomic, assign) NSString *idNum;
 @end
@@ -79,8 +82,8 @@
     else{
          self.stuNum = [UserDefaultTool getStuNum];
         self.idNum = [UserDefaultTool getIdNum];
-        NSLog(@"stuNum:%@",self.stuNum);
-        NSLog(@"idNum:%@",self.idNum);
+//        NSLog(@"stuNum:%@",self.stuNum);
+//        NSLog(@"idNum:%@",self.idNum);
         [self initModel];
         
         
@@ -88,10 +91,16 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(DataLoadSuccessful)
-                                                 name:[NSString stringWithFormat:@"%@DataLoadSuccess",self.title] object:nil];
+                                                 name:@"WYCClassBookModelDataLoadSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(DataLoadFailure)
-                                                 name:[NSString stringWithFormat:@"%@DataLoadFailure",self.title] object:nil];
+                                                 name:@"WYCClassBookModelDataLoadFailure" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(DataLoadSuccessful)
+                                                 name:@"WYCClassNoteModelDataLoadSuccess" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(DataLoadFailure)
+                                                 name:@"WYCClassNoteModelDataLoadFailure" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateScrollViewOffSet)
                                                  name:@"ScrollViewBarChanged" object:nil];
@@ -111,7 +120,8 @@
     [view initView:YES];
     NSArray *dateArray = @[];
     [view addBar:dateArray isFirst:YES];
-    [view addClassBtn:_classBook.weekArray[0]];
+    [view addClassData:_classBookModel.weekArray[0]];
+    [view addBtn];
   
     [_scrollView addSubview:view];
     
@@ -120,8 +130,8 @@
             WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
             [view initView:NO];
             [view addBar:date.dateArray[i] isFirst:NO];
-            [view addClassBtn:_classBook.weekArray[i+1]];
-            
+            [view addClassData:_classBookModel.weekArray[i+1]];
+            [view addBtn];
             [_scrollView addSubview:view];
         }
     }
@@ -132,8 +142,8 @@
      [_rootView addSubview:_scrollView];
     [self.view addSubview:_rootView];
     
-    NSLog(@"nowweek:%@",self.classBook.nowWeek);
-    self.index = self.classBook.nowWeek.integerValue;
+    NSLog(@"nowweek:%@",self.classBookModel.nowWeek);
+    self.index = self.classBookModel.nowWeek.integerValue;
     
     self.titleTextArray[_index] = @"本周";
     self.scrollView.contentOffset = CGPointMake(self.index*self.scrollView.frame.size.width,0);
@@ -149,6 +159,7 @@
 }
 
 - (void)DataLoadFailure{
+     [MBProgressHUD hideHUDForView:self.view animated:YES];
     UIAlertController *controller=[UIAlertController alertControllerWithTitle:@"网络错误" message:@"数据加载失败" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *act1=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -181,18 +192,21 @@
 }
 - (void)initModel{
     [self initClassModel];
-    [self initNoteModel];
+    //[self initNoteModel];
 }
 - (void)initClassModel{
     
     
-    if (!_classBook) {
-        _classBook = [[ClassBook alloc]init];
-        [_classBook getClassBookArray:self.stuNum title:self.title];
+    if (!_classBookModel) {
+        _classBookModel = [[WYCClassBookModel alloc]init];
+        [_classBookModel getClassBookArray:self.stuNum];
     }
 }
 - (void)initNoteModel{
-    
+    if (!_noteModel) {
+        _noteModel = [[WYCNoteModel alloc]init];
+        [_noteModel getNote:self.stuNum idNum:self.idNum];
+    }
 }
 - (void)initNavigationBar{
     [self initTitleView];
@@ -247,7 +261,7 @@
 }
 - (void)initRightButton{
     //添加备忘按钮
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"加号"] style:UIBarButtonItemStylePlain target:self action:@selector(addAction)];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"加号"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
     self.navigationItem.rightBarButtonItem = right;
    
 }

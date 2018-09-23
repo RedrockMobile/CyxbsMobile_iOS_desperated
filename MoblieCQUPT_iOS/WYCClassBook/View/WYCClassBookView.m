@@ -18,9 +18,11 @@
 @property (nonatomic, strong) UIView *dayBar;
 @property (nonatomic, strong) UIView *rootView;
 @property (nonatomic, strong) WYCShowDetailView *detailClassBookView;
-@property (nonatomic, strong) NSArray *dataArray;  //本周的课表数据
+@property (nonatomic, strong) NSArray *classBookData;  //课表数据
+@property (nonatomic, strong) NSArray *noteData;  //备忘数据
 @property (nonatomic, strong) NSMutableArray *detailDataArray;  //详细信息，每个btn包含多个信息
-@property (nonatomic, assign) NSInteger classCount;  //一周的课数
+@property (nonatomic, assign) NSInteger classCount;  //课数
+@property (nonatomic, assign) NSInteger noteCount;  //备忘数
 
 
 
@@ -208,10 +210,18 @@
     //    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width,_leftBar.frame.size.height);
     
 }
--(void)addClassBtn:(NSArray *)array{
+-(void)addClassData:(NSArray *)array{
     _classCount = array.count;
-    _dataArray = array;
-    //NSLog(@"classcount:%lu",(unsigned long)array.count);
+    _classBookData = array;
+    
+}
+-(void)addNoteData:(NSArray *)array{
+    _noteCount = array.count;
+    _noteData = array;
+    
+}
+- (void)addBtn{
+    
     
     NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
     
@@ -226,19 +236,18 @@
         [day addObject:[lesson mutableCopy]];
     }
     
-    
     @autoreleasepool {
         [_dayBar layoutIfNeeded];
         [_leftBar layoutIfNeeded];
         CGFloat btnWidth = _dayBar.frame.size.width/7;
         CGFloat btnHeight;
         
-        for (int i = 0; i < _dataArray.count; i++) {
+        for (int i = 0; i < _classBookData.count; i++) {
             
-            NSNumber *hash_day = [_dataArray[i] objectForKey:@"hash_day"];
-            NSNumber *hash_lesson = [_dataArray[i] objectForKey:@"hash_lesson"];
+            NSNumber *hash_day = [_classBookData[i] objectForKey:@"hash_day"];
+            NSNumber *hash_lesson = [_classBookData[i] objectForKey:@"hash_lesson"];
             
-            [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: _dataArray[i]];
+            [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: _classBookData[i]];
             
         }
         
@@ -265,13 +274,25 @@
                     btnHeight =  50.5*autoSizeScaleY*period.integerValue;
                     UIView *btnView = [[UIView alloc]init];
                     [btnView setFrame:CGRectMake(_leftBar.frame.size.width +  hash_day.integerValue*btnWidth, hash_lesson.integerValue*101*autoSizeScaleY, btnWidth, btnHeight)];
+                    [btnView layoutIfNeeded];
+                    
+                    UIView *backgroundView = [[UIView alloc]initWithFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
+                    backgroundView.backgroundColor = viewColor;
+                    backgroundView.layer.cornerRadius = 3.0 ;
+                    [backgroundView layoutIfNeeded];
+                    //如果同一个位置有多个课，添加小三角
+                    if (tmp.count>1) {
+                         UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(backgroundView.width - 10, 2, 8, 8)];
+                        img.image = [UIImage imageNamed:@"小三角"];
+                        [backgroundView addSubview:img];
+                    }
                     
                     UIButton *btn = [[UIButton alloc]init];
+                    btn.backgroundColor = [UIColor clearColor];
                     btn.layer.cornerRadius = 3.0 ;
-                    btn.backgroundColor = viewColor;
                     btn.tag = classNum;
                     classNum++;
-                    [btn setFrame:CGRectMake(1, 1, btnWidth-2, btnHeight-2)];
+                    [btn setFrame:CGRectMake(0, 0, btnWidth-2, btnHeight-2)];
                     [btn addTarget:self action:@selector(clickBtn:) forControlEvents:UIControlEventTouchUpInside];
                     
                     
@@ -300,7 +321,8 @@
                     
                     [btn addSubview:classRoomNumLabel];
                     [btn addSubview:classNameLabel];
-                    [btnView addSubview:btn];
+                    [backgroundView addSubview:btn];
+                    [btnView addSubview:backgroundView];
                     [_scrollView addSubview:btnView];
                 }
             }
@@ -310,21 +332,16 @@
 }
 - (void)clickBtn:(UIButton *)sender{
     
-//    NSLog(@"tag:%ld",(long)sender.tag);
-//    NSArray *tmp = self.detailDataArray[sender.tag];
-//    NSLog(@"%lu",(unsigned long)tmp.count);
     //初始化全屏view
     
     if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
-    //    self.detailClassBookView  = [[UIView alloc]initWithFrame:CGRectMake(sender.superview.frame.origin.x, sender.superview.frame.origin.y + HEADERHEIGHT + self.topBar.height, sender.superview.frame.size.width, sender.superview.frame.size.height)];
-    
+   
     self.detailClassBookView  = [[WYCShowDetailView alloc]init];
     [self.detailClassBookView initViewWithArray:self.detailDataArray[sender.tag]];
     
     
-    // self.detailClassBookView.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     //添加点击手势
     UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
     [self.detailClassBookView addGestureRecognizer:tapGesture];
@@ -339,6 +356,7 @@
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     //[window addSubview:self.detailClassBookView];
     [window addSubview:self.detailClassBookView];
+    
     //    [UIView animateWithDuration:0.06f animations:^{
     //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     //    } completion:nil];
