@@ -250,6 +250,13 @@
             [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: _classBookData[i]];
             
         }
+        for (int i = 0; i < _noteCount; i++) {
+            
+            NSNumber *hash_day = [_noteData[i] objectForKey:@"hash_day"];
+            NSNumber *hash_lesson = [_noteData[i] objectForKey:@"hash_lesson"];
+            
+            [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: _noteData[i]];
+        }
         
         NSInteger classNum = 0;
         self.detailDataArray = [[NSMutableArray alloc]init];
@@ -347,9 +354,7 @@
     [self.detailClassBookView addGestureRecognizer:tapGesture];
     //设置view的tag
     self.detailClassBookView.tag = 999;
-    //添加手势
-    UITapGestureRecognizer *tapToBackGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hiddenDetailView)];
-    [self.detailClassBookView addGestureRecognizer:tapToBackGesture];
+    
     //往全屏view上添加内容
     
     //显示全屏view

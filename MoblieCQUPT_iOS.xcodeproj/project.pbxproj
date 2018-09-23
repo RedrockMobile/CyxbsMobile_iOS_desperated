@@ -340,6 +340,9 @@
 		D07CFD612157297B008D9EE6 /* WYCNoteDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD602157297B008D9EE6 /* WYCNoteDetailView.m */; };
 		D07CFD6321572986008D9EE6 /* WYCNoteDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07CFD6221572986008D9EE6 /* WYCNoteDetailView.xib */; };
 		D07CFD6621572D15008D9EE6 /* WYCNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6521572D15008D9EE6 /* WYCNoteModel.m */; };
+		D07CFD6E2157A9D9008D9EE6 /* DLChooseClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */; };
+		D07CFD6F2157A9D9008D9EE6 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6A2157A9D9008D9EE6 /* ListModel.m */; };
+		D07CFD702157A9D9008D9EE6 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */; };
 		D081E65C2152484C00245FD9 /* WYCClassBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6592152484C00245FD9 /* WYCClassBookModel.m */; };
 		D081E65D2152484C00245FD9 /* DateModle.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E65B2152484C00245FD9 /* DateModle.m */; };
 		D081E6652152488D00245FD9 /* WYCClassBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D081E65F2152488C00245FD9 /* WYCClassBookView.xib */; };
@@ -1193,6 +1196,12 @@
 		D07CFD6221572986008D9EE6 /* WYCNoteDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYCNoteDetailView.xib; sourceTree = "<group>"; };
 		D07CFD6421572D15008D9EE6 /* WYCNoteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCNoteModel.h; sourceTree = "<group>"; };
 		D07CFD6521572D15008D9EE6 /* WYCNoteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCNoteModel.m; sourceTree = "<group>"; };
+		D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLChooseClassListViewController.m; sourceTree = "<group>"; };
+		D07CFD692157A9D8008D9EE6 /* ListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListModel.h; sourceTree = "<group>"; };
+		D07CFD6A2157A9D9008D9EE6 /* ListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
+		D07CFD6B2157A9D9008D9EE6 /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
+		D07CFD6C2157A9D9008D9EE6 /* DLChooseClassListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLChooseClassListViewController.h; sourceTree = "<group>"; };
+		D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		D081E6582152484C00245FD9 /* DateModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModle.h; sourceTree = "<group>"; };
 		D081E6592152484C00245FD9 /* WYCClassBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookModel.m; sourceTree = "<group>"; };
 		D081E65A2152484C00245FD9 /* WYCClassBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassBookModel.h; sourceTree = "<group>"; };
@@ -2779,16 +2788,16 @@
 				D081E6602152488C00245FD9 /* WYCClassBookView.h */,
 				D081E6632152488D00245FD9 /* WYCClassBookView.m */,
 				D081E65F2152488C00245FD9 /* WYCClassBookView.xib */,
-				D081E6612152488D00245FD9 /* WYCWeekChooseBar.h */,
-				D081E6642152488D00245FD9 /* WYCWeekChooseBar.m */,
-				D07CFD57215633ED008D9EE6 /* WYCShowDetailView.h */,
-				D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */,
-				D07CFD5A2156363B008D9EE6 /* WYCClassDetailView.xib */,
 				D07CFD5C2156C98A008D9EE6 /* WYCClassDetailView.h */,
 				D07CFD5D2156C98A008D9EE6 /* WYCClassDetailView.m */,
+				D07CFD5A2156363B008D9EE6 /* WYCClassDetailView.xib */,
 				D07CFD5F2157297B008D9EE6 /* WYCNoteDetailView.h */,
 				D07CFD602157297B008D9EE6 /* WYCNoteDetailView.m */,
 				D07CFD6221572986008D9EE6 /* WYCNoteDetailView.xib */,
+				D07CFD57215633ED008D9EE6 /* WYCShowDetailView.h */,
+				D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */,
+				D081E6612152488D00245FD9 /* WYCWeekChooseBar.h */,
+				D081E6642152488D00245FD9 /* WYCWeekChooseBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2804,6 +2813,19 @@
 				D07CFD6521572D15008D9EE6 /* WYCNoteModel.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D07CFD672157A87D008D9EE6 /* DLChooseClassList */ = {
+			isa = PBXGroup;
+			children = (
+				D07CFD692157A9D8008D9EE6 /* ListModel.h */,
+				D07CFD6A2157A9D9008D9EE6 /* ListModel.m */,
+				D07CFD6B2157A9D9008D9EE6 /* ListTableViewCell.h */,
+				D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */,
+				D07CFD6C2157A9D9008D9EE6 /* DLChooseClassListViewController.h */,
+				D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */,
+			);
+			path = DLChooseClassList;
 			sourceTree = "<group>";
 		};
 		D081E6552152481300245FD9 /* WYCClassBook */ = {
@@ -2908,6 +2930,7 @@
 		F242DA551EBCB2BB005AC411 /* MoblieCQUPT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D07CFD672157A87D008D9EE6 /* DLChooseClassList */,
 				D081E6552152481300245FD9 /* WYCClassBook */,
 				F2A92CD71F52E8BE00B4CEEF /* Base */,
 				F242DC331EBCB2BB005AC411 /* Main */,
@@ -4621,6 +4644,7 @@
 				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
 				829C969C2127DCE000B4B05C /* SYCActivityTableViewCell.m in Sources */,
 				F2F194751F68395D0034A3BB /* SplashModel.m in Sources */,
+				D07CFD6F2157A9D9008D9EE6 /* ListModel.m in Sources */,
 				F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */,
 				829C967F2127DCE000B4B05C /* AALabels.m in Sources */,
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
@@ -4634,6 +4658,7 @@
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
 				2FB223012121D15C0009EB39 /* DLNecessityViewController.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
+				D07CFD702157A9D9008D9EE6 /* ListTableViewCell.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
@@ -4652,6 +4677,7 @@
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
+				D07CFD6E2157A9D9008D9EE6 /* DLChooseClassListViewController.m in Sources */,
 				829C95902127D92000B4B05C /* ChatViewControl.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				9630E4951FAF07D200874EB9 /* sixViewController.m in Sources */,

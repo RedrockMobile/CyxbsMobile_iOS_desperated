@@ -37,40 +37,35 @@
    
 }
 //解析数据
--(void)parsingData:(NSArray *)noteArray{
+-(void)parsingData:(NSArray *)array{
     _noteArray = [[NSMutableArray alloc]initWithCapacity:25];
     for (int i = 0; i < 25; i++) {
         _noteArray[i] = [@[] mutableCopy];
     }
-    NSMutableArray *array = [noteArray mutableCopy];
+  
     
-    for (int i = 0; i < noteArray.count; i++) {
-        array[i] = [noteArray[i] mutableCopy];
-    }
     
     for (int i = 0; i < array.count; i++) {
         NSArray *date = [array[i] objectForKey:@"date"];
-        NSArray *weekArray = [date[i] objectForKey:@"week"];
+        
         for (int time = 0; time < date.count; time++) {
+            
+            
             NSNumber *hash_day = [date[time] objectForKey:@"day"];
             NSNumber *hash_lesson = [date[time] objectForKey:@"class"];
+            NSMutableDictionary *tmp = [array[i] mutableCopy];
             
+            [tmp setObject:hash_day forKey:@"hash_day"];
+            [tmp setObject:hash_lesson forKey:@"hash_lesson"];
             
-            [array[i] setObject:hash_day forKey:@"hash_day"];
-            [array[i] setObject:hash_lesson forKey:@"hash_lesson"];
-            
-            
+            NSArray *weekArray = [date[time] objectForKey:@"week"];
+            for (int week = 0; week < weekArray.count; week++) {
+                 NSNumber *weekNum = weekArray[week];
+                [_noteArray[weekNum.integerValue-1] addObject:tmp];
+            }
         }
         
-        for (int j = 0; j < weekArray.count; j++) {
-            NSNumber *weekNum = weekArray[j];
-            [_noteArray[weekNum.integerValue - 1] addObject:[array[i] mutableCopy]];
-        }
-        
-        //[array[i] removeObjectForKey:@"date"];
     }
-    
-    NSLog(@"%@",_noteArray[1]);
     
     
 }

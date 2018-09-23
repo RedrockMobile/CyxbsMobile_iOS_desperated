@@ -30,7 +30,7 @@
     self = [super initWithCoder:aDecoder];
     if(self)
     {
-        self.frame = CGRectMake(0, 0, 270, 350);
+        self.frame = CGRectMake(0, 0, 270, 360);
         
     }
     return self;
@@ -82,9 +82,13 @@
     self.classWeek.lineBreakMode = NSLineBreakByWordWrapping;
     
 }
-- (IBAction)stuList:(UIButton *)sender {
-    
-}
+//- (IBAction)stuList:(UIButton *)sender {
+//    NSString *classNum = [self.dic objectForKey:@"course_num"];
+//    NSLog(@"clickStuList:%@",classNum);
+//    DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
+//    [vc initWithClassNum:classNum];
+//    [self.viewController.navigationController pushViewController:vc animated:YES];
+//}
 
 - (NSString *)getClassTime{
     NSString *classTime = [[NSString alloc]init];

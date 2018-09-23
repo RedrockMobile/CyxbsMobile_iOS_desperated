@@ -41,23 +41,21 @@
 @property (nonatomic, strong) WYCClassBookModel *classBookModel;
 @property (nonatomic, strong) WYCNoteModel *noteModel;
 
-@property (nonatomic, assign) NSString *stuNum;
-@property (nonatomic, assign) NSString *idNum;
+@property (nonatomic, copy) NSString *stuNum;
+@property (nonatomic, copy) NSString *idNum;
+
+@property (nonatomic, copy) NSString *noteModelLoadSuccess;
+@property (nonatomic, copy) NSString *classbookModelLoadSuccess;
 @end
 
 @implementation WYCClassBookViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *homeDir = NSHomeDirectory();
-    NSLog(@"homeDir:%@", homeDir);
     
     
-   // LessonController *vc = [[LessonController alloc]init];
-    
-    
-    
-    
+    _noteModelLoadSuccess = @"";
+    _classbookModelLoadSuccess = @"";
     
     self.titleTextArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
     //默认星期选择条不显示
@@ -66,10 +64,7 @@
     [self initWeekChooseBar];
     
     //self.rootView.backgroundColor = [UIColor greenColor];
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"加载数据中...";
-    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    
     
     //判断是否已经登录
     NSString *stuNum = [UserDefaultTool getStuNum];
@@ -80,27 +75,31 @@
         [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"加载数据中...";
+        hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
          self.stuNum = [UserDefaultTool getStuNum];
         self.idNum = [UserDefaultTool getIdNum];
 //        NSLog(@"stuNum:%@",self.stuNum);
 //        NSLog(@"idNum:%@",self.idNum);
         [self initModel];
-        
+        [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:5];
         
     }
     
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(DataLoadSuccessful)
+                                             selector:@selector(WYCClassBookModelDataLoadSuccessful)
                                                  name:@"WYCClassBookModelDataLoadSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(DataLoadFailure)
+                                             selector:@selector(WYCClassBookModelDataLoadFailure)
                                                  name:@"WYCClassBookModelDataLoadFailure" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(DataLoadSuccessful)
-                                                 name:@"WYCClassNoteModelDataLoadSuccess" object:nil];
+                                             selector:@selector(WYCNoteModelDataLoadSuccess)
+                                                 name:@"WYCNoteModelDataLoadSuccess" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(DataLoadFailure)
-                                                 name:@"WYCClassNoteModelDataLoadFailure" object:nil];
+                                             selector:@selector(WYCNoteModelDataLoadFailure)
+                                                 name:@"WYCNoteModelDataLoadFailure" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateScrollViewOffSet)
                                                  name:@"ScrollViewBarChanged" object:nil];
@@ -108,68 +107,87 @@
     
     
 }
-- (void)DataLoadSuccessful {
-    [MBProgressHUD hideHUDForView:self.view animated:YES];
-    
-    DateModle *date = [[DateModle alloc]init];
-    [date initCalculateDate:DateStart];
-    
-    [_scrollView layoutIfNeeded];
-    
-    WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(0*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
-    [view initView:YES];
-    NSArray *dateArray = @[];
-    [view addBar:dateArray isFirst:YES];
-    [view addClassData:_classBookModel.weekArray[0]];
-    [view addBtn];
-  
-    [_scrollView addSubview:view];
-    
-    @autoreleasepool {
-        for (int i = 0; i < date.dateArray.count; i++) {
-            WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
-            [view initView:NO];
-            [view addBar:date.dateArray[i] isFirst:NO];
-            [view addClassData:_classBookModel.weekArray[i+1]];
-            [view addBtn];
-            [_scrollView addSubview:view];
-        }
-    }
-    [_scrollView layoutSubviews];
-    _scrollView.contentSize = CGSizeMake(date.dateArray.count * _scrollView.frame.size.width, 0);
-    _scrollView.pagingEnabled = YES;
-    _scrollView.delegate = self;
-     [_rootView addSubview:_scrollView];
-    [self.view addSubview:_rootView];
-    
-    NSLog(@"nowweek:%@",self.classBookModel.nowWeek);
-    self.index = self.classBookModel.nowWeek.integerValue;
-    
-    self.titleTextArray[_index] = @"本周";
-    self.scrollView.contentOffset = CGPointMake(self.index*self.scrollView.frame.size.width,0);
-    [self initWeekChooseBar];
-    [self initTitleLabel];
-    [self.weekChooseBar changeIndex:self.index];
-   
-     [self initNavigationBar];
- 
-    
-    
-    
+- (void)WYCClassBookModelDataLoadSuccessful {
+    _classbookModelLoadSuccess = @"YES";
 }
 
-- (void)DataLoadFailure{
-     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    UIAlertController *controller=[UIAlertController alertControllerWithTitle:@"网络错误" message:@"数据加载失败" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *act1=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+- (void)WYCClassBookModelDataLoadFailure{
+    _classbookModelLoadSuccess = @"NO";
+}
+- (void)WYCNoteModelDataLoadSuccess{
+    _noteModelLoadSuccess = @"YES";
+}
+
+- (void)WYCNoteModelDataLoadFailure{
+    _noteModelLoadSuccess = @"NO";
+}
+
+- (void)allModelLoadSuccessful{
+//    while (([_noteModelLoadSuccess isEqualToString:@""]&&[_classbookModelLoadSuccess isEqualToString:@""]))
+//    {
+//
+//    }
+//
+    if (([_noteModelLoadSuccess isEqualToString:@"YES"]&&[_classbookModelLoadSuccess isEqualToString:@"YES"])) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         
-    }];
-    
-    [controller addAction:act1];
-    
-    [self presentViewController:controller animated:YES completion:^{
+        DateModle *date = [[DateModle alloc]init];
+        [date initCalculateDate:DateStart];
         
-    }];
+        [_scrollView layoutIfNeeded];
+        
+        WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(0*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+        [view initView:YES];
+        NSArray *dateArray = @[];
+        [view addBar:dateArray isFirst:YES];
+        [view addClassData:_classBookModel.weekArray[0]];
+        [view addBtn];
+        
+        [_scrollView addSubview:view];
+        
+        @autoreleasepool {
+            for (int i = 0; i < date.dateArray.count; i++) {
+                WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+                [view initView:NO];
+                [view addBar:date.dateArray[i] isFirst:NO];
+                [view addClassData:_classBookModel.weekArray[i+1]];
+                [view addNoteData:_noteModel.noteArray[i]];
+                [view addBtn];
+                [_scrollView addSubview:view];
+            }
+        }
+        [_scrollView layoutSubviews];
+        _scrollView.contentSize = CGSizeMake(date.dateArray.count * _scrollView.frame.size.width, 0);
+        _scrollView.pagingEnabled = YES;
+        _scrollView.delegate = self;
+        [_rootView addSubview:_scrollView];
+        [self.view addSubview:_rootView];
+        
+        NSLog(@"nowweek:%@",self.classBookModel.nowWeek);
+        self.index = self.classBookModel.nowWeek.integerValue;
+        
+        self.titleTextArray[_index] = @"本周";
+        self.scrollView.contentOffset = CGPointMake(self.index*self.scrollView.frame.size.width,0);
+        [self initWeekChooseBar];
+        [self initTitleLabel];
+        [self.weekChooseBar changeIndex:self.index];
+        
+        [self initNavigationBar];
+        
+    }else{
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        NSLog(@"classBook:%@,note:%@",_classbookModelLoadSuccess,_noteModelLoadSuccess);
+        UIAlertController *controller=[UIAlertController alertControllerWithTitle:@"网络错误" message:@"数据加载失败" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *act1=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+        }];
+        
+        [controller addAction:act1];
+        
+        [self presentViewController:controller animated:YES completion:^{
+            
+        }];
+    }
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
@@ -192,7 +210,7 @@
 }
 - (void)initModel{
     [self initClassModel];
-    //[self initNoteModel];
+    [self initNoteModel];
 }
 - (void)initClassModel{
     
@@ -364,11 +382,6 @@
 
 
 
-- (void)addAction{
-    AddRemindViewController *vc = [[AddRemindViewController alloc]init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 - (void)request{
     
