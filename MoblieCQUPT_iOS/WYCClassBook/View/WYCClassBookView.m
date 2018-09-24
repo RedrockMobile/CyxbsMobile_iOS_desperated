@@ -10,7 +10,7 @@
 #import "Masonry.h"
 #import "WYCShowDetailView.h"
 //#import "UIColor+Hex.h"
-@interface WYCClassBookView()
+@interface WYCClassBookView()<UIScrollViewDelegate>
 
 @property (nonatomic, strong) UIView *topBar;    //顶栏日期月份
 @property (nonatomic, strong) UIView *leftBar;   //左边栏课数
@@ -58,6 +58,7 @@
     _scrollView.backgroundColor = [UIColor whiteColor];
     _scrollView.scrollEnabled = YES;
     _scrollView.contentSize = CGSizeMake(0,606*autoSizeScaleY);
+    _scrollView.delegate = self;
     
     [_rootView addSubview:_scrollView];
     [self addSubview:_rootView];
@@ -67,9 +68,6 @@
     _leftBar.backgroundColor = [UIColor colorWithHexString:@"#EEF6FD"];
     
     [_scrollView addSubview: _leftBar];
-    
-    
-    
     
     
     
@@ -233,16 +231,10 @@
                     
                     if ([tmp[0] objectForKey:@"id"]) {
                         [self addNoteBtn:tmp];
-//                        NSLog(@"tmp:%@",tmp[0]);
-//                        NSLog(@"%@",[tmp[0] objectForKey:@"title"]);
-//                        NSLog(@"%@",[tmp[0] objectForKey:@"content"]);
-                        
                     }else{
                         [self addClassBtn:tmp];
                         
                     }
-                    
-                    
                 }
             }
         }
@@ -447,8 +439,15 @@
 }
 -(void)changeScrollViewContentSize:(CGSize)contentSize{
     _scrollView.contentSize = contentSize;
+    
 }
-
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSLog(@"%f",_scrollView.contentOffset.y);
+    if (_scrollView.contentOffset.y < -100) {
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadView" object:nil];
+    }
+    
+}
 
 
 

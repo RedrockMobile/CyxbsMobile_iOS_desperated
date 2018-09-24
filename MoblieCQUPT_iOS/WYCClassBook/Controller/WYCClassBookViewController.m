@@ -35,8 +35,8 @@
 @property (nonatomic, strong) NSNumber *nowWeek;
 @property (nonatomic, strong) NSMutableArray *titleTextArray;
 @property (strong, nonatomic) IBOutlet UIView *rootView;
-
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (nonatomic, strong) WYCWeekChooseBar *weekChooseBar;
 @property (nonatomic, strong) NoLoginView *noLoginView;
 @property (nonatomic, strong) DateModle *dateModel;
@@ -48,6 +48,7 @@
 
 @property (nonatomic, copy) NSString *noteModelLoadSuccess;
 @property (nonatomic, copy) NSString *classbookModelLoadSuccess;
+
 @end
 
 @implementation WYCClassBookViewController
@@ -65,8 +66,6 @@
     
     [self initWeekChooseBar];
     
-    //self.rootView.backgroundColor = [UIColor greenColor];
-    
     
     //判断是否已经登录
     NSString *stuNum = [UserDefaultTool getStuNum];
@@ -77,16 +76,13 @@
         [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeIndeterminate;
-        hud.labelText = @"加载数据中...";
-        hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+        
         self.stuNum = [UserDefaultTool getStuNum];
         self.idNum = [UserDefaultTool getIdNum];
         //        NSLog(@"stuNum:%@",self.stuNum);
         //        NSLog(@"idNum:%@",self.idNum);
         [self initModel];
-        [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:2];
+        
         
     }
     
@@ -105,7 +101,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(updateScrollViewOffSet)
                                                  name:@"ScrollViewBarChanged" object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadView)
+                                                 name:@"reloadView" object:nil];
     
     
 }
@@ -124,12 +122,57 @@
     _noteModelLoadSuccess = @"NO";
 }
 
+-(void)reloadView{
+    [_scrollView removeAllSubviews];
+    self.stuNum = [UserDefaultTool getStuNum];
+    self.idNum = [UserDefaultTool getIdNum];
+    [self initModel];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    _index = (long)roundf(scrollView.contentOffset.x/_scrollView.frame.size.width);
+    //NSLog(@"index:%ld",_index);
+    // NSLog(@"index:%ld",(long)_index);
+    [self initTitleLabel];
+    [self.weekChooseBar changeIndex:_index];
+    
+}
+-(void)updateScrollViewOffSet{
+    self.index = self.weekChooseBar.index;
+    [UIView animateWithDuration:0.2f animations:^{
+        self.scrollView.contentOffset = CGPointMake(self.index*self.scrollView.frame.size.width,0);
+    } completion:nil];
+    [self initTitleLabel];
+    
+    
+}
+- (void)initModel{
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"加载数据中...";
+    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    [self initClassModel];
+    [self initNoteModel];
+    [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:3];
+}
+- (void)initClassModel{
+    
+    
+    if (!_classBookModel) {
+        _classBookModel = [[WYCClassBookModel alloc]init];
+        [_classBookModel getClassBookArray:self.stuNum];
+    }
+}
+- (void)initNoteModel{
+    if (!_noteModel) {
+        _noteModel = [[WYCNoteModel alloc]init];
+        [_noteModel getNote:self.stuNum idNum:self.idNum];
+    }
+}
+
 - (void)allModelLoadSuccessful{
-    //    while (([_noteModelLoadSuccess isEqualToString:@""]&&[_classbookModelLoadSuccess isEqualToString:@""]))
-    //    {
-    //
-    //    }
-    //
     if (([_noteModelLoadSuccess isEqualToString:@"YES"]&&[_classbookModelLoadSuccess isEqualToString:@"YES"])) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -137,39 +180,7 @@
         [date initCalculateDate:DateStart];
         
         [_scrollView layoutIfNeeded];
-        /*
-         NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
-         
-         for (int i = 0; i < 7; i++) {
-         
-         NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
-         
-         for (int i = 0; i < 6; i++) {
-         
-         [lesson addObject:[@[] mutableCopy]];
-         }
-         [day addObject:[lesson mutableCopy]];
-         }
-         
-         NSArray *classBookData = _classBookModel.weekArray[0];
-         for (int i = 0; i < classBookData.count; i++) {
-         
-         NSNumber *hash_day = [classBookData[i] objectForKey:@"hash_day"];
-         NSNumber *hash_lesson = [classBookData[i] objectForKey:@"hash_lesson"];
-         
-         [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: classBookData[i]];
-         
-         }
-         
-         WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(0*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
-         [view initView:YES];
-         NSArray *dateArray = @[];
-         [view addBar:dateArray isFirst:YES];
-         //[view addClassData:_classBookModel.weekArray[0]];
-         [view addBtn:day];
-         
-         [_scrollView addSubview:view];
-         */
+        
         @autoreleasepool {
             for (int dateNum = 0; dateNum < date.dateArray.count + 1; dateNum++) {
                 
@@ -231,7 +242,8 @@
         _scrollView.pagingEnabled = YES;
         _scrollView.delegate = self;
         [_rootView addSubview:_scrollView];
-        [self.view addSubview:_rootView];
+        
+        
         
         NSLog(@"nowweek:%@",self.classBookModel.nowWeek);
         self.index = self.classBookModel.nowWeek.integerValue;
@@ -257,43 +269,14 @@
         [self presentViewController:controller animated:YES completion:^{
             
         }];
-    }
-}
-
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    
-    _index = (long)roundf(scrollView.contentOffset.x/_scrollView.frame.size.width);
-    //NSLog(@"index:%ld",_index);
-    // NSLog(@"index:%ld",(long)_index);
-    [self initTitleLabel];
-    [self.weekChooseBar changeIndex:_index];
-    
-}
--(void)updateScrollViewOffSet{
-    self.index = self.weekChooseBar.index;
-    [UIView animateWithDuration:0.2f animations:^{
-        self.scrollView.contentOffset = CGPointMake(self.index*self.scrollView.frame.size.width,0);
-    } completion:nil];
-    [self initTitleLabel];
-    
-    
-}
-- (void)initModel{
-    [self initClassModel];
-    [self initNoteModel];
-}
-- (void)initClassModel{
-    
-    
-    if (!_classBookModel) {
-        _classBookModel = [[WYCClassBookModel alloc]init];
-        [_classBookModel getClassBookArray:self.stuNum];
-    }
-}
-- (void)initNoteModel{
-    if (!_noteModel) {
-        _noteModel = [[WYCNoteModel alloc]init];
-        [_noteModel getNote:self.stuNum idNum:self.idNum];
+        UIButton *btn = [[UIButton alloc]init];
+        btn.height = 20;
+        btn.width = 40;
+        btn.centerX = self.view.centerX;
+        btn.centerY = self.view.centerY;
+        [btn setTitle:@"重新加载" forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(reloadView) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
     }
 }
 - (void)initNavigationBar{
@@ -437,12 +420,9 @@
             if (success) {
                 self.stuNum = [UserDefaultTool getStuNum];
                 self.idNum = [UserDefaultTool getIdNum];
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                hud.mode = MBProgressHUDModeIndeterminate;
-                hud.labelText = @"加载数据中...";
-                hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+               
                 [self initModel];
-                [self getRemindData];
+                [self.noLoginView removeFromSuperview];
                 [[RemindNotification shareInstance] addNotifictaion];
             }
         };
@@ -455,136 +435,12 @@
 
 
 
-
-- (void)request{
-    
-    
-    [self getLessonData];
-    
-    
-    [self getRemindData];
-    
-    [self afterRequest];
-    
-    
-}
-
-- (void)afterRequest{
-    
-    if ([UserDefaultTool valueWithKey:@"nowWeek"]!=nil && [UserDefaultTool valueWithKey:@"lessonResponse"]!=nil) {
-        [[RemindNotification shareInstance] addNotifictaion];
-        
-    }
-}
-
-- (void)getRemindData{
-    
-    HttpClient *client = [HttpClient defaultClient];
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum =  [UserDefaultTool getIdNum];
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-    [client requestWithPath:GETREMINDAPI method:HttpRequestPost parameters:@{@"stuNum":stuNum,@"idNum":idNum} prepareExecute:^{
-        
-    } progress:^(NSProgress *progress) {
-        
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
-        NSMutableArray *reminds = [responseObject objectForKey:@"data"];
-        
-        [reminds writeToFile:remindPath atomically:YES];
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
-        NSLog(@"%@",error);
-    }];
-    
-}
-- (void)getLessonData{
-    //dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    NSString *stuNum = [UserDefaultTool valueWithKey:@"stuNum"];
-    HttpClient *client = [HttpClient defaultClient];
-    NSDictionary *parameter = @{@"stuNum":stuNum,@"forceFetch":@"true"};
-    [client requestWithPath:kebiaoAPI method:HttpRequestPost parameters:parameter prepareExecute:nil progress:^(NSProgress *progress) {
-        
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
-        //NSLog(@"%@",responseObject);
-        NSNumber *nowWeek = responseObject[@"nowWeek"];
-        [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
-        [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
-        
-        // 共享数据
-        NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
-        [shared setObject:responseObject forKey:@"lessonResponse"];
-        [shared synchronize];
-        //
-        //dispatch_semaphore_signal(sema);
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        //dispatch_semaphore_signal(sema);
-        NSLog(@"%@",error);
-    }];
-    //dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-}
-- (void)reTryRequest{
-    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-    NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
-    NSMutableArray *failureRequests = [NSMutableArray arrayWithContentsOfFile:failurePath];
-    if (failureRequests.count == 0) {
-        return;
-    }
-    else{
-        NSDictionary *failure = failureRequests[0];
-        NSString *type = [failure objectForKey:@"type"];
-        NSMutableDictionary *parameters = [failure objectForKey:@"parameters"];
-        NSError *error;
-        NSArray *dateArray = [parameters objectForKey:@"date"];
-        NSMutableDictionary *jsonParameters = [parameters mutableCopy];
-        if (dateArray != nil) {
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dateArray options:NSJSONWritingPrettyPrinted error:&error];
-            NSString *jsonString = [[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
-            [jsonParameters setObject:jsonString forKey:@"date"];
-        }
-        NSMutableDictionary *realParameters;
-        HttpClient *client = [HttpClient defaultClient];
-        NSString *path = [NSString string];
-        if ([type isEqualToString:@"edit"]) {
-            path = EDITREMINDAPI;
-            realParameters = jsonParameters;
-        }
-        else if([type isEqualToString:@"delete"]){
-            path = DELETEREMINDAPI;
-            realParameters = parameters;
-        }
-        else if([type isEqualToString:@"add"]){
-            path = ADDREMINDAPI;
-            realParameters = jsonParameters;
-        }
-        [client requestWithPath:path method:HttpRequestPost parameters:realParameters prepareExecute:^{
-            
-        } progress:^(NSProgress *progress) {
-            
-        } success:^(NSURLSessionDataTask *task, id responseObject) {
-            NSLog(@"%@",responseObject);
-            [failureRequests removeObject:failure];
-            if ([failureRequests writeToFile:failurePath atomically:YES]) {
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    [self reTryRequest];
-                });
-            }
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            NSLog(@"%@",error);
-            return;
-            
-        }];
-    }
-}
-
 - (void)showDetail:(NSArray *)array{
     WYCShowDetailViewController *vc = [[WYCShowDetailViewController alloc]init];
     [vc initWithArray:array];
     [self.navigationController pushViewController:vc animated:YES];
     
   
-    
 }
 
 @end

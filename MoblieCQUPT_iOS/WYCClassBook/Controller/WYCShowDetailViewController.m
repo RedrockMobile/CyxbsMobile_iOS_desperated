@@ -20,8 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title =  @"课表详情";
-//    [self.detailClassBookView addObserver:self forKeyPath:@"classNum" options: NSKeyValueObservingOptionOld|NSKeyValueObservingOptionNew context:nil];
+    self.title =  @"详细信息";
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(showStuList)
                                                  name:@"showStuList" object:nil];
@@ -50,21 +50,7 @@
     [self.view addSubview:self.detailClassBookView];
 }
 
-//-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-//{
-//
-//    // 判断是否为self.myKVO的属性“num”:
-//    if([keyPath isEqualToString:@"classNum"] && object == self.detailClassBookView) {
-//        // 响应变化处理：UI更新（label文本改变）
-//        NSLog(@"now:%@",[NSString stringWithFormat:@"当前的num值为：%@",
-//                           [change valueForKey:@"classNum"]]);
-//
-////        //change的使用：上文注册时，枚举为2个，因此可以提取change字典中的新、旧值的这两个方法
-////        NSLog(@"\\noldnum:%@ newnum:%@",
-////              [change valueForKey:@"old"],
-////              [change valueForKey:@"new"]);
-//    }
-//}
+
 - (void)showStuList{
     DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
     [vc initWithClassNum:self.detailClassBookView.classNum];
