@@ -13,11 +13,12 @@
 
 
 - (void)getClassBookArray:(NSString *)stu_Num{
+    
     self.weekArray = [[NSMutableArray alloc]init];
     
     NSDictionary *parameters = @{@"stu_num":stu_Num};
     
-   [[HttpClient defaultClient] requestWithPath:URL method:HttpRequestPost parameters:parameters prepareExecute:nil progress:^(NSProgress *progress) {
+    [[HttpClient defaultClient] requestWithPath:URL method:HttpRequestPost parameters:parameters prepareExecute:nil progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
@@ -30,16 +31,21 @@
         self->_nowWeek = nowWeek;
         [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
         [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
+        //数据缓存
+        NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString *lessonPath = [path stringByAppendingPathComponent:@"lesson.plist"];
+        NSArray *lesson = [responseObject objectForKey:@"data"];
+        [lesson writeToFile:lessonPath atomically:YES];
         
         // 共享数据
         NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
         [shared setObject:responseObject forKey:@"lessonResponse"];
         [shared synchronize];
-      
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WYCClassBookModelDataLoadSuccess" object:nil];
         
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-     
+        
         NSLog(@"WYCClassBookModelLoadErrorCode:%@",error);
         [[NSNotificationCenter defaultCenter] postNotificationName: @"WYCClassBookModelDataLoadFailure" object:nil];
         
@@ -52,13 +58,13 @@
         NSMutableArray *tmp = [[NSMutableArray alloc]init];
         
         for (int i = 0; i < array.count; i++) {
-          
+            
             NSArray *week = [array[i] objectForKey:@"week"];
             
             
-            for (int j = 0;j < week.count; j++) { 
+            for (int j = 0;j < week.count; j++) {
                 NSNumber *k = week[j];
-             
+                
                 if (weeknum == k.intValue) {
                     [tmp addObject:array[i]];
                 }
@@ -66,10 +72,10 @@
         }
         
         [_weekArray addObject:tmp];
-       
+        
         
     }
-   
+    
     
     
 }

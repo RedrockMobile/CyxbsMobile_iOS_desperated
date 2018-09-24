@@ -126,8 +126,11 @@
     [_scrollView removeAllSubviews];
     self.stuNum = [UserDefaultTool getStuNum];
     self.idNum = [UserDefaultTool getIdNum];
-    [self initModel];
+    [self initClassModel];
+    [self initNoteModel];
+    [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:3];
 }
+
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     
@@ -153,9 +156,35 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"加载数据中...";
     hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+    /*
+    //如果有缓存，则从缓存加载数据
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    
+    if (([UserDefaultTool valueWithKey:@"lessonResponse"][@"data"]) && ([NSMutableArray arrayWithContentsOfFile:remindPath])) {
+        
+        _noteModel = [[WYCNoteModel alloc]init];
+        [_noteModel parsingData:[NSMutableArray arrayWithContentsOfFile:remindPath]];
+        self.noteModelLoadSuccess = @"YES";
+        
+        
+        _classBookModel = [[WYCClassBookModel alloc]init];
+        NSArray *array = [UserDefaultTool valueWithKey:@"lessonResponse"][@"data"];
+        [_classBookModel.weekArray addObject:array];
+        [ _classBookModel parsingData:array];
+        self.classbookModelLoadSuccess = @"YES";
+        
+        [self allModelLoadSuccessful];
+    }else{
+    //没缓存，从网络加载
+        [self initClassModel];
+        [self initNoteModel];
+        [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:3];
+    }
+    */
     [self initClassModel];
     [self initNoteModel];
-    [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:3];
+    [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:2];
 }
 - (void)initClassModel{
     

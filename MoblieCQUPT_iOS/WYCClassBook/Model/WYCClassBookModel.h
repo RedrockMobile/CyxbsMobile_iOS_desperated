@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface WYCClassBookModel : NSObject
-@property (nonatomic, strong) NSMutableArray *classBookArray;
 @property (nonatomic, strong) NSMutableArray *weekArray;
 @property (nonatomic, copy) NSNumber *nowWeek;
 - (void)getClassBookArray:(NSString *)stu_Num;
-
+-(void)parsingData:(NSArray*)array;
 @end
