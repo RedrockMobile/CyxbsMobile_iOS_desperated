@@ -1,5 +1,7 @@
 platform :ios,'8.0'
 target 'MoblieCQUPT_iOS' do
+	pod 'AMap2DMap'
+	pod 'AMapLocation'	
 	pod 'SDWebImage'
 	pod 'AFNetworking'
 	pod 'FMDB'

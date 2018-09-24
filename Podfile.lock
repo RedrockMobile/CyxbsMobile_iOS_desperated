@@ -14,6 +14,11 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - AMap2DMap (5.6.0):
+    - AMapFoundation (~> 1.4)
+  - AMapFoundation (1.4.3)
+  - AMapLocation (2.6.0):
+    - AMapFoundation (~> 1.4)
   - Bugly (2.5.0)
   - FMDB (2.7.2):
     - FMDB/standard (= 2.7.2)
@@ -44,6 +49,8 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - AMap2DMap
+  - AMapLocation
   - Bugly
   - FMDB
   - GMImagePicker
@@ -59,8 +66,29 @@ DEPENDENCIES:
   - UMengUShare/UI
   - YYKit
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - AMap2DMap
+    - AMapFoundation
+    - AMapLocation
+    - Bugly
+    - FMDB
+    - GMImagePicker
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - pop
+    - SDWebImage
+    - UMengAnalytics-NO-IDFA
+    - UMengUShare
+    - YYKit
+
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  AMap2DMap: cf0bfd6ae97951b55cc061903b814f924ba6c221
+  AMapFoundation: 973682cfe60b92efd73a8ef8f1144fa0fa8e1296
+  AMapLocation: 55116a2c8956eab7550cbb56e989aa5cdcc424e3
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
   GMImagePicker: 6438a6764d6280b1dbf19b59140313f5a73daeeb
@@ -73,6 +101,6 @@ SPEC CHECKSUMS:
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 9c04695d9271aeb26361f54fb378c089c89c9f38
+PODFILE CHECKSUM: ef2bce0abaf47fa519f230e786793e12f3c136c5
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.5.0

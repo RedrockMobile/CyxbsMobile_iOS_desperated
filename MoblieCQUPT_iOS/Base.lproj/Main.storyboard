@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -83,7 +83,7 @@
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-3m-iLC">
                                 <rect key="frame" x="10" y="421.5" width="147.5" height="77.5"/>
-                                <state key="normal" backgroundImage="find_image_lostAndFound.png"/>
+                                <state key="normal" backgroundImage="find_image_schoolCar.png"/>
                                 <connections>
                                     <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="5Kh-Yb-umz"/>
                                 </connections>
@@ -463,9 +463,9 @@
     <resources>
         <image name="find_image_food.png" width="178" height="107"/>
         <image name="find_image_hongyan.png" width="178" height="107"/>
-        <image name="find_image_lostAndFound.png" width="178" height="107"/>
         <image name="find_image_map.png" width="178" height="107"/>
         <image name="find_image_query.png" width="178" height="107"/>
+        <image name="find_image_schoolCar.png" width="178" height="95"/>
         <image name="find_image_shake.png" width="178" height="107"/>
         <image name="mine_image_edit.png" width="14" height="14"/>
     </resources>
