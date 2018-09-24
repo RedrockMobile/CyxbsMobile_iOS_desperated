@@ -17,6 +17,18 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7X0-Ff-wlU">
                     <rect key="frame" x="0.0" y="0.0" width="270" height="350"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTa-F7-7IU">
+                            <rect key="frame" x="48" y="301" width="31" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="修改"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w0B-Bb-6lI">
+                            <rect key="frame" x="189" y="301" width="31" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="删除"/>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="课程名称" translatesAutoresizingMaskIntoConstraints="NO" id="WHk-Yu-JN6">
@@ -27,7 +39,7 @@
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="教师姓名" translatesAutoresizingMaskIntoConstraints="NO" id="Iaq-mw-sJd">
-                    <rect key="frame" x="52" y="195" width="14" height="14"/>
+                    <rect key="frame" x="52" y="171" width="14" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="EPb-0X-329"/>
                         <constraint firstAttribute="width" constant="14" id="uvW-c7-SO2"/>
@@ -44,10 +56,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rms-Hg-p7l">
-                    <rect key="frame" x="106" y="80" width="135" height="244"/>
+                    <rect key="frame" x="106" y="80" width="135" height="196"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="135" id="Af6-vp-DPb"/>
-                        <constraint firstAttribute="height" constant="244" id="guW-0X-Pm0"/>
+                        <constraint firstAttribute="height" constant="196" id="guW-0X-Pm0"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -62,7 +74,7 @@
                 <constraint firstItem="7X0-Ff-wlU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NV2-rQ-5u5"/>
                 <constraint firstItem="7X0-Ff-wlU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WLM-ol-f8e"/>
                 <constraint firstItem="SIz-hi-Izt" firstAttribute="centerY" secondItem="WHk-Yu-JN6" secondAttribute="centerY" constant="0.5" id="WgW-Tf-ZaG"/>
-                <constraint firstItem="Iaq-mw-sJd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="195" id="Xcz-wA-QqS"/>
+                <constraint firstItem="Iaq-mw-sJd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="171" id="Xcz-wA-QqS"/>
                 <constraint firstItem="rms-Hg-p7l" firstAttribute="centerY" secondItem="Iaq-mw-sJd" secondAttribute="centerY" id="b3B-pd-hSp"/>
                 <constraint firstItem="WHk-Yu-JN6" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="40" id="iHg-Bl-B9a"/>
                 <constraint firstItem="WHk-Yu-JN6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="52" id="lAR-O5-Kbj"/>
@@ -72,6 +84,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="content" destination="rms-Hg-p7l" id="5ni-C2-CxK"/>
+                <outlet property="deleteNote" destination="w0B-Bb-6lI" id="3Go-3I-PcI"/>
+                <outlet property="editNote" destination="BTa-F7-7IU" id="UkU-Qi-7MY"/>
                 <outlet property="title" destination="SIz-hi-Izt" id="yh7-5Q-e8d"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="48.575712143928037"/>

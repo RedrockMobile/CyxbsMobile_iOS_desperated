@@ -12,7 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WYCShowDetailView : UIView
 
-
+@property (nonatomic, copy) NSString *classNum;
+@property (nonatomic, strong) NSDictionary *remind;
 - (void)initViewWithArray:(NSArray *)array;
 
 @end

@@ -7,11 +7,12 @@
 //
 
 #import "WYCClassBookViewController.h"
+#import "WYCShowDetailViewController.h"
 #import "WYCClassBookModel.h"
 #import "WYCNoteModel.h"
 #import "DateModle.h"
-#import "SegmentView.h"
 #import "WYCClassBookView.h"
+
 #import "WYCWeekChooseBar.h"
 #import "LoginViewController.h"
 #import "NoLoginView.h"
@@ -21,9 +22,10 @@
 #import "RemindNotification.h"
 #import "LessonController.h"
 
+
 #define DateStart @"2018-09-10"
 
-@interface WYCClassBookViewController ()<UIScrollViewDelegate>
+@interface WYCClassBookViewController ()<UIScrollViewDelegate,WYCClassBookViewDelegate>
 @property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) NSString *titleText;
@@ -60,7 +62,7 @@
     self.titleTextArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
     //默认星期选择条不显示
     self.hiddenWeekChooseBar = YES;
-   
+    
     [self initWeekChooseBar];
     
     //self.rootView.backgroundColor = [UIColor greenColor];
@@ -79,12 +81,12 @@
         hud.mode = MBProgressHUDModeIndeterminate;
         hud.labelText = @"加载数据中...";
         hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
-         self.stuNum = [UserDefaultTool getStuNum];
+        self.stuNum = [UserDefaultTool getStuNum];
         self.idNum = [UserDefaultTool getIdNum];
-//        NSLog(@"stuNum:%@",self.stuNum);
-//        NSLog(@"idNum:%@",self.idNum);
+        //        NSLog(@"stuNum:%@",self.stuNum);
+        //        NSLog(@"idNum:%@",self.idNum);
         [self initModel];
-        [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:5];
+        [self performSelector:@selector(allModelLoadSuccessful) withObject:nil afterDelay:2];
         
     }
     
@@ -123,11 +125,11 @@
 }
 
 - (void)allModelLoadSuccessful{
-//    while (([_noteModelLoadSuccess isEqualToString:@""]&&[_classbookModelLoadSuccess isEqualToString:@""]))
-//    {
-//
-//    }
-//
+    //    while (([_noteModelLoadSuccess isEqualToString:@""]&&[_classbookModelLoadSuccess isEqualToString:@""]))
+    //    {
+    //
+    //    }
+    //
     if (([_noteModelLoadSuccess isEqualToString:@"YES"]&&[_classbookModelLoadSuccess isEqualToString:@"YES"])) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
@@ -135,24 +137,92 @@
         [date initCalculateDate:DateStart];
         
         [_scrollView layoutIfNeeded];
-        
-        WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(0*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
-        [view initView:YES];
-        NSArray *dateArray = @[];
-        [view addBar:dateArray isFirst:YES];
-        [view addClassData:_classBookModel.weekArray[0]];
-        [view addBtn];
-        
-        [_scrollView addSubview:view];
-        
+        /*
+         NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
+         
+         for (int i = 0; i < 7; i++) {
+         
+         NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
+         
+         for (int i = 0; i < 6; i++) {
+         
+         [lesson addObject:[@[] mutableCopy]];
+         }
+         [day addObject:[lesson mutableCopy]];
+         }
+         
+         NSArray *classBookData = _classBookModel.weekArray[0];
+         for (int i = 0; i < classBookData.count; i++) {
+         
+         NSNumber *hash_day = [classBookData[i] objectForKey:@"hash_day"];
+         NSNumber *hash_lesson = [classBookData[i] objectForKey:@"hash_lesson"];
+         
+         [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: classBookData[i]];
+         
+         }
+         
+         WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(0*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+         [view initView:YES];
+         NSArray *dateArray = @[];
+         [view addBar:dateArray isFirst:YES];
+         //[view addClassData:_classBookModel.weekArray[0]];
+         [view addBtn:day];
+         
+         [_scrollView addSubview:view];
+         */
         @autoreleasepool {
-            for (int i = 0; i < date.dateArray.count; i++) {
-                WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake((i+1)*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
-                [view initView:NO];
-                [view addBar:date.dateArray[i] isFirst:NO];
-                [view addClassData:_classBookModel.weekArray[i+1]];
-                [view addNoteData:_noteModel.noteArray[i]];
-                [view addBtn];
+            for (int dateNum = 0; dateNum < date.dateArray.count + 1; dateNum++) {
+                
+                NSMutableArray *day = [[NSMutableArray alloc]initWithCapacity:7];
+                
+                for (int i = 0; i < 7; i++) {
+                    
+                    NSMutableArray *lesson = [[NSMutableArray alloc]initWithCapacity:6];
+                    
+                    for (int j = 0; j < 6; j++) {
+                        
+                        [lesson addObject:[@[] mutableCopy]];
+                    }
+                    [day addObject:[lesson mutableCopy]];
+                }
+                
+                NSArray *classBookData = _classBookModel.weekArray[dateNum];
+                for (int i = 0; i < classBookData.count; i++) {
+                    
+                    NSNumber *hash_day = [classBookData[i] objectForKey:@"hash_day"];
+                    NSNumber *hash_lesson = [classBookData[i] objectForKey:@"hash_lesson"];
+                    
+                    [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: classBookData[i]];
+                    
+                }
+                
+                
+                if (dateNum !=0) {
+                    NSArray *noteData = _noteModel.noteArray[dateNum-1];
+                    
+                    for (int i = 0; i < noteData.count; i++) {
+                        
+                        NSNumber *hash_day = [noteData[i] objectForKey:@"hash_day"];
+                        NSNumber *hash_lesson = [noteData[i] objectForKey:@"hash_lesson"];
+                        
+                        [ day[hash_day.integerValue][hash_lesson.integerValue] addObject: noteData[i]];
+                    }
+                }
+                
+                WYCClassBookView *view = [[WYCClassBookView alloc]initWithFrame:CGRectMake(dateNum*_scrollView.frame.size.width, 0, _scrollView.frame.size.width, _scrollView.frame.size.height)];
+                view.detailDelegate = self;
+                if (dateNum == 0) {
+                    [view initView:YES];
+                    NSArray *dateArray = @[];
+                    [view addBar:dateArray isFirst:YES];
+                }else{
+                    [view initView:NO];
+                    [view addBar:date.dateArray[dateNum-1] isFirst:NO];
+                }
+                
+                // [view addClassData:_classBookModel.weekArray[i+1]];
+                //[view addNoteData:_noteModel.noteArray[i]];
+                [view addBtn:day];
                 [_scrollView addSubview:view];
             }
         }
@@ -281,7 +351,7 @@
     //添加备忘按钮
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"加号"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
     self.navigationItem.rightBarButtonItem = right;
-   
+    
 }
 
 //添加备忘
@@ -318,11 +388,13 @@
     }
 }
 -(void)updateScrollViewFame{
+    //NSLog(@"num:%lu",(unsigned long)_scrollView.subviews.count);
     if (self.hiddenWeekChooseBar) {
         [_rootView setFrame:CGRectMake(0, 0, _rootView.frame.size.width, _rootView.frame.size.height)];
         [_rootView layoutIfNeeded];
         [_rootView layoutSubviews];
         for (int i = 0; i < 26; i++) {
+            //NSLog(@"num:%d",i);
             WYCClassBookView *view = _scrollView.subviews[i];
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY)];
             [view layoutIfNeeded];
@@ -334,8 +406,9 @@
         [_rootView layoutSubviews];
         //NSLog(@"viewcount:%lu",(unsigned long)_scrollView.subviews.count);
         for (int i = 0; i < 26; i++) {
-
+            //NSLog(@"num:%d",i);
             WYCClassBookView *view = _scrollView.subviews[i];
+            
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY + self.weekChooseBar.frame.size.height)];
             [view layoutIfNeeded];
             [view layoutSubviews];
@@ -345,14 +418,14 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (void)clickLoginBtn{
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否登录" message:@"马上登录拯救课表菌" preferredStyle:UIAlertControllerStyleAlert];
@@ -386,26 +459,26 @@
 - (void)request{
     
     
-        [self getLessonData];
-   
+    [self getLessonData];
     
-        [self getRemindData];
+    
+    [self getRemindData];
     
     [self afterRequest];
-        
-   
+    
+    
 }
 
 - (void)afterRequest{
     
     if ([UserDefaultTool valueWithKey:@"nowWeek"]!=nil && [UserDefaultTool valueWithKey:@"lessonResponse"]!=nil) {
         [[RemindNotification shareInstance] addNotifictaion];
-       
+        
     }
 }
 
 - (void)getRemindData{
-   
+    
     HttpClient *client = [HttpClient defaultClient];
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum =  [UserDefaultTool getIdNum];
@@ -419,9 +492,9 @@
         NSMutableArray *reminds = [responseObject objectForKey:@"data"];
         
         [reminds writeToFile:remindPath atomically:YES];
-       
+        
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-       
+        
         NSLog(@"%@",error);
     }];
     
@@ -505,6 +578,14 @@
     }
 }
 
+- (void)showDetail:(NSArray *)array{
+    WYCShowDetailViewController *vc = [[WYCShowDetailViewController alloc]init];
+    [vc initWithArray:array];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+  
+    
+}
 
 @end
 

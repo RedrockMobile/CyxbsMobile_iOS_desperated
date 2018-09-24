@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WYCNoteDetailView : UIView
 +(WYCNoteDetailView *)initViewFromXib;
 -(void)initWithDic:(NSDictionary *)dic;
+@property (strong, nonatomic) IBOutlet UIButton *editNote;
+@property (strong, nonatomic) IBOutlet UIButton *deleteNote;
 
 @end
 

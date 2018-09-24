@@ -8,7 +8,6 @@
 
 #import "WYCNoteModel.h"
 
-#define URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
 
 @implementation WYCNoteModel
 
@@ -18,10 +17,14 @@
     
     NSDictionary *parameters = @{@"stuNum":stuNum,@"idNum":idNum};
     
-    [[HttpClient defaultClient] requestWithPath:URL method:HttpRequestPost parameters:parameters prepareExecute:nil progress:^(NSProgress *progress) {
+    [[HttpClient defaultClient] requestWithPath:GETREMINDAPI method:HttpRequestPost parameters:parameters prepareExecute:nil progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
+        NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+        NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+        NSMutableArray *reminds = [responseObject objectForKey:@"data"];
+        [reminds writeToFile:remindPath atomically:YES];
         
         NSArray *dataArray = [responseObject objectForKey:@"data"];
         [self parsingData:dataArray];
@@ -53,10 +56,12 @@
             
             NSNumber *hash_day = [date[time] objectForKey:@"day"];
             NSNumber *hash_lesson = [date[time] objectForKey:@"class"];
+            NSNumber *period = [NSNumber numberWithInt:2];
             NSMutableDictionary *tmp = [array[i] mutableCopy];
             
             [tmp setObject:hash_day forKey:@"hash_day"];
             [tmp setObject:hash_lesson forKey:@"hash_lesson"];
+            [tmp setObject:period forKey:@"period"];
             
             NSArray *weekArray = [date[time] objectForKey:@"week"];
             for (int week = 0; week < weekArray.count; week++) {
@@ -69,6 +74,25 @@
     
     
 }
-
+- (void)deleteNote:(NSString *)stuNum idNum:(NSString *)idNum noteId:(NSNumber *)noteId{
+    NSDictionary *parameters = @{@"stuNum":stuNum,@"idNum":idNum,@"id":noteId};
+    
+    [[HttpClient defaultClient] requestWithPath:DELETEREMINDAPI method:HttpRequestPost parameters:parameters prepareExecute:nil progress:^(NSProgress *progress) {
+        
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        
+        NSNumber *result = [responseObject objectForKey:@"status"];
+        if (result.integerValue == 200) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteDeleteSuccess" object:nil];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+        NSLog(@"NoteDeleteFailure:%@",error);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteDeleteFailure" object:nil];
+        
+    }];
+    
+}
 
 @end

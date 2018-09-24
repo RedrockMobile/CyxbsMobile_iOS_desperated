@@ -30,7 +30,27 @@
 }
 
 -(void)initWithDic:(NSDictionary *)dic{
+    self.title.text = [NSString stringWithFormat:@"备忘: %@",[dic objectForKey:@"title"]];
+    self.title.font = [UIFont systemFontOfSize:14];
+    self.title.textColor = [UIColor colorWithHexString:@"#444444"];
+    self.title.textAlignment = NSTextAlignmentLeft;
+    [self.title setNumberOfLines:0];
+    self.title.lineBreakMode = NSLineBreakByWordWrapping;
+    
+    self.content.text = [NSString stringWithFormat:@"内容: %@",[dic objectForKey:@"content"]];
+    self.content.font = [UIFont systemFontOfSize:14];
+    self.content.textColor = [UIColor colorWithHexString:@"#444444"];
+    self.content.textAlignment = NSTextAlignmentLeft;
+    [self.content setNumberOfLines:0];
+    self.content.lineBreakMode = NSLineBreakByWordWrapping;
+    CGFloat contentLabelHeight = [self calculateRowHeight:[dic objectForKey:@"content"] fontSize:12 width:self.content.frame.size.width];
+    self.content.height = contentLabelHeight;
     
 }
-
+- (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize width:(CGFloat)width{
+    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};//指定字号
+    CGRect rect = [string boundingRectWithSize:CGSizeMake(width, 0)/*计算高度要先指定宽度*/ options:NSStringDrawingUsesLineFragmentOrigin |
+                   NSStringDrawingUsesFontLeading attributes:dic context:nil];
+    return rect.size.height;
+}
 @end

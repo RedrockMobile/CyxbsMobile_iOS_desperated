@@ -128,6 +128,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="选课名单"/>
+                            <connections>
+                                <action selector="stuList:" destination="iN0-l3-epB" eventType="touchUpInside" id="ASS-Z3-Mbj"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

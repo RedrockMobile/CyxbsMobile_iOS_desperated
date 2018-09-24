@@ -29,6 +29,12 @@
         NSNumber *nowWeek = responseObject[@"nowWeek"];
         self->_nowWeek = nowWeek;
         [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
+        [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
+        
+        // 共享数据
+        NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
+        [shared setObject:responseObject forKey:@"lessonResponse"];
+        [shared synchronize];
       
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WYCClassBookModelDataLoadSuccess" object:nil];
         

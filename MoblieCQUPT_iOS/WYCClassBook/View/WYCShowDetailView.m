@@ -8,8 +8,9 @@
 
 #import "WYCShowDetailView.h"
 #import "WYCClassDetailView.h"
+#import "WYCNoteDetailView.h"
 #import "DLChooseClassListViewController.h"
-@interface WYCShowDetailView()<UIScrollViewDelegate>
+@interface WYCShowDetailView()<UIScrollViewDelegate,WYCClassDetailViewDelegate>
 @property (nonatomic, strong) UIView *rootView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -24,12 +25,19 @@
 - (void)initViewWithArray:(NSArray *)array{
     _index = 0;
     self.array = array;
-    self.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+//    self.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+ 
+    [self layoutIfNeeded];
+    
     self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
-    self.rootView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH/2 - 135, SCREENHEIGHT/2 - 170, 270, 360)];
+    self.rootView = [[UIView alloc]init];
+    self.rootView.width = 270;
+    self.rootView.height = 360;
+    self.rootView.centerX = self.centerX;
+    self.rootView.centerY = self.centerY;
+//    self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.width/2 - 170, 270, 360)];
     self.rootView.backgroundColor = [UIColor whiteColor];
     [self.rootView layoutIfNeeded];
-    
     
     
     self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0,0,self.rootView.width,self.rootView.height)];
@@ -42,12 +50,27 @@
     self.scrollView.showsHorizontalScrollIndicator = NO;
     
     for (int i = 0; i < array.count; i++) {
-        WYCClassDetailView *view = [WYCClassDetailView initViewFromXib];
-        [view initWithDic:array[i]];
-        [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
-        view.chooseClassList.tag = i;
-        [view.chooseClassList addTarget:self action:@selector(chooseClassList:) forControlEvents:UIControlEventTouchUpInside];
-        [self.scrollView addSubview:view];
+        
+        if ([array[i] objectForKey:@"id"]) {
+            WYCNoteDetailView *view = [WYCNoteDetailView initViewFromXib];
+            [view initWithDic:array[i]];
+            [view.editNote addTarget:self action:@selector(editNote:) forControlEvents:UIControlEventTouchUpInside];
+            view.editNote.tag = i;
+            [view.deleteNote addTarget:self action:@selector(deleteNote:) forControlEvents:UIControlEventTouchUpInside];
+            view.deleteNote.tag = i;
+            [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
+            [self.scrollView addSubview:view];
+        }else{
+            WYCClassDetailView *view = [WYCClassDetailView initViewFromXib];
+            [view initWithDic:array[i]];
+            [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
+            //view.detailDelegate = self;
+            view.chooseClassList.tag = i;
+            [view.chooseClassList addTarget:self action:@selector(chooseClassList:) forControlEvents:UIControlEventTouchUpInside];
+            [self.scrollView addSubview:view];
+        }
+        
+        
     }
     
     self.pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, self.rootView.height - 30, self.rootView.width, 30)];
@@ -64,16 +87,7 @@
      [[NSNotificationCenter defaultCenter] postNotificationName:@"showChooseClassList" object:nil];
     
 }
--(void)chooseClassList:(UIButton *)sender{
-    NSString *classNum = [self.array[sender.tag] objectForKey:@"course_num"];
-    NSLog(@"clickStuList,tag:%ld",sender.tag);
-    NSLog(@"clickStuList:%@",classNum);
-    
-    DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
-    [vc initWithClassNum:classNum];
-    [self.viewController.navigationController pushViewController:vc animated:YES];
-    
-}
+
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     _index = self.scrollView.contentOffset.x/self.rootView.width;
@@ -85,5 +99,21 @@
     NSInteger i = _pageControl.currentPage;
     [_scrollView setContentOffset:CGPointMake(i*self.rootView.width, 0) animated:YES];
 }
-
+- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
+    
+    
+    
+}
+-(void)chooseClassList:(UIButton *)sender{
+    self.classNum = [self.array[sender.tag] objectForKey:@"course_num"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"showStuList" object:nil];
+}
+-(void)editNote:(UIButton *)sender{
+    self.remind = self.array[sender.tag];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"editNote" object:nil];
+}
+-(void)deleteNote:(UIButton *)sender{
+    self.remind = self.array[sender.tag];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteNote" object:nil];
+}
 @end
