@@ -78,27 +78,11 @@ int mark1 = 1;
 //得到校车数据
 - (void)getSchoolLocation{
     NSString *str = @"https://wx.idsbllp.cn/extension/test";
-//    //获取时间戳 无延迟的
-//    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
-//    NSTimeInterval time = [date timeIntervalSince1970];
-//    NSString *timeString = [NSString stringWithFormat:@"%.0f",time];
-//    //延迟一秒时间戳
-//    NSDate *date1 = [NSDate dateWithTimeIntervalSinceNow:-1];
-//    NSTimeInterval time1 = [date timeIntervalSince1970]*1000;
-//    NSString *timeString1 = [NSString stringWithFormat:@"%d",time];
-//    //扰乱参数
-//    NSString *string = [NSString stringWithFormat:[self md5:timeString1]];
-//    //验证参数
-//    NSString *AuthoString = [NSString stringWithFormat:@"%@+.+%@",timeString,string];
-    
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:@"Redrock" forHTTPHeaderField:@"Authorization"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
     
     //参数
-//    NSDictionary *parameters = @{@"s":AuthoString,@"t":timeString,@"r":string
-//                                 };
     NSDictionary *parameters = @{@"t":@"1537425225",@"r":@"97d8def90c78d993c7908df0da616fc2",@"s":@"bd61c2c55c5a98d354a822bff05b15cd"
 
                                  };
@@ -123,28 +107,7 @@ int mark1 = 1;
         [self popSchoolOffView];
         dispatch_cancel(self.time);
     }];
-    
-//    [manager POST:str parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        {
-//            //经纬数据
-//            NSArray *dicResult = [responseObject objectForKey:@"data"];
-//            for (NSDictionary *dic in dicResult) {
-//                SchoolCarModel *model = [[SchoolCarModel alloc]initWithDic:dic];
-//                [_SchoolCarMutableArray addObject:model];
-//            }
-//            _startLocation0.latitude = _SchoolCarMutableArray[0].latitude;
-//            _startLocation0.longitude = _SchoolCarMutableArray[0].lonitude;
-//            _startLocation1.latitude = _SchoolCarMutableArray[1].latitude;
-//            _startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
-//            [self initSchoolCarAnnotationView:_startLocation0 AndCarID:1];
-//            [self initSchoolCarAnnotationView:_startLocation1 AndCarID:2];
-//            _SchoolCarMutableArray = [NSMutableArray array];
-//        }
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"校车不在线");
-//        [self popSchoolOffView];
-//        dispatch_cancel(self.time);
-//    }];
+
 //
 }
 //MD5加密
