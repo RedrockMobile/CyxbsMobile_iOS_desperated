@@ -141,9 +141,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (void)saveData{
-    if (_roomTextField.text.length!=3||_buildLabel.text.length!=3) {
-        [self showInfoView];
-    }else{
+    if (_roomTextField.text.length==3&&(_buildLabel.text.length==3||_buildLabel.text.length==4))
+    {
         NSDate *currentDate = [NSDate date];
         
         NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -154,11 +153,32 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         NSString *documentsDirectory = pathArray[0];
         NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
         NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
-            [data setObject:[NSString stringWithFormat:@"%@",_roomTextField.text] forKey:@"room"];
-            [data setObject:[NSString stringWithFormat:@"%@",[_buildLabel.text substringWithRange:NSMakeRange(0, 2)]] forKey:@"build"];
-        [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
+        [data setObject:[NSString stringWithFormat:@"%@",_roomTextField.text] forKey:@"room"];
+        
+        if ([_buildLabel.text isEqualToString:@"23a栋"])
+        {
+            [data setObject:@"23a" forKey:@"build"];
+            [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
             [data writeToFile:plistPath atomically:YES];
+        }
+        else if ([_buildLabel.text isEqualToString:@"23b栋"])
+        {
+            [data setObject:@"23b" forKey:@"build"];
+            [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
+            [data writeToFile:plistPath atomically:YES];
+        }
+        else
+        {
+            [data setObject:[NSString stringWithFormat:@"%@",[_buildLabel.text substringWithRange:NSMakeRange(0, 2)]] forKey:@"build"];
+            [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
+            [data writeToFile:plistPath atomically:YES];
+            
+        }
         [self pushToDoneVC];
+    }
+    else
+    {
+        [self showInfoView];
     }
     
 }
@@ -232,7 +252,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 39;
+    return 40;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -248,8 +268,29 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     InstallBuildTableViewCell *cell = [InstallBuildTableViewCell tableView:tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.row + 1 < 10) {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
         cell.buildLabel.text = [NSString stringWithFormat:@"0%ld栋",(long)indexPath.row+1];
-    }else{
+    }
+    //23a
+    else if (indexPath.row + 1 == 23)
+    {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
+        cell.buildLabel.text = [NSString stringWithFormat:@"%lda栋",(long)indexPath.row+1];
+    }
+    //23b
+    else if (indexPath.row + 1 == 24)
+    {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
+        cell.buildLabel.text = [NSString stringWithFormat:@"%ldb栋",(long)indexPath.row];
+    }
+    else if (indexPath.row + 1 > 24)
+    {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
+        cell.buildLabel.text = [NSString stringWithFormat:@"%ld栋",(long)indexPath.row];
+    }
+    //
+    else{
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
         cell.buildLabel.text = [NSString stringWithFormat:@"%ld栋",(long)indexPath.row+1];
     }
      return cell;

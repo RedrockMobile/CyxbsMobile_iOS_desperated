@@ -65,6 +65,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
     NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     
+    //
     QuerLoginModel *qlModel = [[QuerLoginModel alloc] init];
     [qlModel RequestWithBuildingNum:[NSString stringWithFormat:@"%@",dataDic[@"build"]] RoomNum:[NSString stringWithFormat:@"%@",dataDic[@"room"]]];
 
@@ -148,6 +149,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.view.backgroundColor = [UIColor whiteColor];
     
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStylePlain target:self action:@selector(showMinTableView)];
+    
+//    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"rightIcon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showMinTableView)];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(0, 435, 375, 10)];
     label.backgroundColor = [UIColor colorWithRed:240/255.0 green:241/255.0 blue:245/255.0 alpha:1];
