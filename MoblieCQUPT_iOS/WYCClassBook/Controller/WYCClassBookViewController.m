@@ -349,9 +349,9 @@
     self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.frame.size.width-10, 0, 9, _titleView.frame.size.height)];
     //判断箭头方向
     if (_hiddenWeekChooseBar) {
-        [self.titleBtn setImage:[UIImage imageNamed:@"下箭头"] forState:UIControlStateNormal];   //初始是下箭头
+        [self.titleBtn setImage:[UIImage imageNamed:@"downarrow"] forState:UIControlStateNormal];   //初始是下箭头
     }else{
-        [self.titleBtn setImage:[UIImage imageNamed:@"上箭头"] forState:UIControlStateNormal];
+        [self.titleBtn setImage:[UIImage imageNamed:@"uparrow"] forState:UIControlStateNormal];
     }
     
     [self.titleBtn addTarget: self action:@selector(updateWeekChooseBar) forControlEvents:UIControlEventTouchUpInside];
@@ -361,7 +361,7 @@
 }
 - (void)initRightButton{
     //添加备忘按钮
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"加号"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
     self.navigationItem.rightBarButtonItem = right;
     
 }

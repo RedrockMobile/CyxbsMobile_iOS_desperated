@@ -18,42 +18,42 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my7-06-WC2">
                     <rect key="frame" x="0.0" y="0.0" width="270" height="360"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="上课时间" translatesAutoresizingMaskIntoConstraints="NO" id="f78-kT-aOm">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classtime" translatesAutoresizingMaskIntoConstraints="NO" id="f78-kT-aOm">
                             <rect key="frame" x="52" y="189" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="14" id="1an-IC-yZs"/>
                                 <constraint firstAttribute="height" constant="14" id="ojd-lK-ylg"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="课程名称" translatesAutoresizingMaskIntoConstraints="NO" id="zix-lA-1rY">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classname" translatesAutoresizingMaskIntoConstraints="NO" id="zix-lA-1rY">
                             <rect key="frame" x="52" y="40" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="14" id="hQ4-W2-igE"/>
                                 <constraint firstAttribute="height" constant="14" id="nCZ-2V-zZ1"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="周数" translatesAutoresizingMaskIntoConstraints="NO" id="7UR-lt-TUU">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classweek" translatesAutoresizingMaskIntoConstraints="NO" id="7UR-lt-TUU">
                             <rect key="frame" x="52" y="280" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="14" id="UAd-1A-V3Z"/>
                                 <constraint firstAttribute="height" constant="14" id="v4Q-ys-TmX"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="课程类型" translatesAutoresizingMaskIntoConstraints="NO" id="44L-D5-X49">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classtype" translatesAutoresizingMaskIntoConstraints="NO" id="44L-D5-X49">
                             <rect key="frame" x="52" y="238" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="Unw-V1-Pdr"/>
                                 <constraint firstAttribute="width" constant="14" id="n8n-Ux-H4A"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="教师姓名" translatesAutoresizingMaskIntoConstraints="NO" id="k3n-LV-2Yz">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teacher" translatesAutoresizingMaskIntoConstraints="NO" id="k3n-LV-2Yz">
                             <rect key="frame" x="52" y="83" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="14" id="amC-Cy-WZc"/>
                                 <constraint firstAttribute="height" constant="14" id="u6O-Iu-eUY"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="教室号" translatesAutoresizingMaskIntoConstraints="NO" id="vlG-yb-usd">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classroom" translatesAutoresizingMaskIntoConstraints="NO" id="vlG-yb-usd">
                             <rect key="frame" x="52" y="128" width="14" height="14"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="14" id="7Pg-19-X2l"/>
@@ -187,11 +187,11 @@
         </view>
     </objects>
     <resources>
-        <image name="上课时间" width="14" height="14"/>
-        <image name="周数" width="13" height="13"/>
-        <image name="教室号" width="11" height="16"/>
-        <image name="教师姓名" width="14" height="14"/>
-        <image name="课程名称" width="12" height="14"/>
-        <image name="课程类型" width="13" height="13"/>
+        <image name="classname" width="12" height="14"/>
+        <image name="classroom" width="11" height="16"/>
+        <image name="classtime" width="14" height="14"/>
+        <image name="classtype" width="13" height="13"/>
+        <image name="classweek" width="13" height="13"/>
+        <image name="teacher" width="16" height="16"/>
     </resources>
 </document>

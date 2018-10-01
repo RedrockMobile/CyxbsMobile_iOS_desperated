@@ -41,14 +41,14 @@
     }
     return self;
 }
-//设置属性，如果没有指定属性的值，则使用默认属性
+//设置属性
 - (void)setProperty{
     _index = 0;
-    [self initializeSubviewCountInView];
-    [self initializeBackgroundColor];
-    [self initializeTitleFont];
-    [self initializeTitleColor];
-    [self initializeSelectedTitleColor];
+    _backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
+    _selectedTitleColor = [UIColor colorWithHexString:@"#7196FA"];
+     _titleColor = [UIColor colorWithHexString:@"#999999"];
+    _font = [UIFont systemFontOfSize:12];
+     _subviewCountInView = 5;
 }
 //添加scrollView
 -(void)buildView{
@@ -111,35 +111,6 @@
     
 }
 
-//初始化属性方法
--(void)initializeSubviewCountInView{
-    if (!_subviewCountInView) {
-        _subviewCountInView = 5;
-    }
-}
--(void)initializeTitleFont{
-    if (!_font) {
-        _font = [UIFont systemFontOfSize:12];
-        
-    }
-}
--(void)initializeTitleColor{
-    if (!_titleColor) {
-        _titleColor = [UIColor colorWithHexString:@"#999999"];
-    }
-}
--(void)initializeSelectedTitleColor{
-    if (!_selectedTitleColor) {
-        _selectedTitleColor = [UIColor colorWithHexString:@"#7196FA"];
-    }
-    
-}
--(void)initializeBackgroundColor{
-    if (!_backgroundColor) {
-        _backgroundColor = [UIColor colorWithHexString:@"#FFFFFF"];
-    }
-    
-}
 
 
 @end

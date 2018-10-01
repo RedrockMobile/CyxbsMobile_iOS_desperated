@@ -267,7 +267,7 @@
     //如果同一个位置有多个课，添加小三角
     if (tmp.count>1) {
         UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(backgroundView.width - 10, 2, 8, 8)];
-        img.image = [UIImage imageNamed:@"小三角"];
+        img.image = [UIImage imageNamed:@"triangle"];
         [backgroundView addSubview:img];
     }
     UIButton *btn = [[UIButton alloc]init];
@@ -332,7 +332,7 @@
     //如果同一个位置有多个课，添加小三角
     if (tmp.count>1) {
         UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(backgroundView.width - 10, 2, 8, 8)];
-        img.image = [UIImage imageNamed:@"小三角"];
+        img.image = [UIImage imageNamed:@"triangle"];
         [backgroundView addSubview:img];
     }
     
