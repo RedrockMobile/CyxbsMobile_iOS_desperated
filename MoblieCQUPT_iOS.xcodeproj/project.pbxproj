@@ -333,6 +333,24 @@
 		CE43344F1BE7C52D000C407D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE43344E1BE7C52D000C407D /* MainInterface.storyboard */; };
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
+		D07CFD5621549619008D9EE6 /* WYCClassBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD5521549619008D9EE6 /* WYCClassBookViewController.m */; };
+		D07CFD59215633ED008D9EE6 /* WYCShowDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */; };
+		D07CFD5B2156363B008D9EE6 /* WYCClassDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07CFD5A2156363B008D9EE6 /* WYCClassDetailView.xib */; };
+		D07CFD5E2156C98A008D9EE6 /* WYCClassDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD5D2156C98A008D9EE6 /* WYCClassDetailView.m */; };
+		D07CFD612157297B008D9EE6 /* WYCNoteDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD602157297B008D9EE6 /* WYCNoteDetailView.m */; };
+		D07CFD6321572986008D9EE6 /* WYCNoteDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07CFD6221572986008D9EE6 /* WYCNoteDetailView.xib */; };
+		D07CFD6621572D15008D9EE6 /* WYCNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6521572D15008D9EE6 /* WYCNoteModel.m */; };
+		D07CFD6E2157A9D9008D9EE6 /* DLChooseClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */; };
+		D07CFD6F2157A9D9008D9EE6 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6A2157A9D9008D9EE6 /* ListModel.m */; };
+		D07CFD702157A9D9008D9EE6 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */; };
+		D07CFD742158B0DB008D9EE6 /* WYCShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD722158B0DB008D9EE6 /* WYCShowDetailViewController.m */; };
+		D07CFD752158B0DB008D9EE6 /* WYCShowDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07CFD732158B0DB008D9EE6 /* WYCShowDetailViewController.xib */; };
+		D081E65C2152484C00245FD9 /* WYCClassBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6592152484C00245FD9 /* WYCClassBookModel.m */; };
+		D081E65D2152484C00245FD9 /* DateModle.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E65B2152484C00245FD9 /* DateModle.m */; };
+		D081E6652152488D00245FD9 /* WYCClassBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D081E65F2152488C00245FD9 /* WYCClassBookView.xib */; };
+		D081E6672152488D00245FD9 /* WYCClassBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6632152488D00245FD9 /* WYCClassBookView.m */; };
+		D081E6682152488D00245FD9 /* WYCWeekChooseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6642152488D00245FD9 /* WYCWeekChooseBar.m */; };
+		D081E66A21524CD500245FD9 /* ClassBookImg.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D081E66921524CD500245FD9 /* ClassBookImg.xcassets */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
 		E404709A212AB39200121AEE /* 合上.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047098212AB39100121AEE /* 合上.png */; };
 		E404709B212AB39200121AEE /* 展开.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047099212AB39100121AEE /* 展开.png */; };
@@ -1168,6 +1186,37 @@
 		CEF61B2A1B82BC950014B980 /* 掌上重邮.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上重邮.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B481B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
+		D07CFD5421549619008D9EE6 /* WYCClassBookViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCClassBookViewController.h; sourceTree = "<group>"; };
+		D07CFD5521549619008D9EE6 /* WYCClassBookViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookViewController.m; sourceTree = "<group>"; };
+		D07CFD57215633ED008D9EE6 /* WYCShowDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCShowDetailView.h; sourceTree = "<group>"; };
+		D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCShowDetailView.m; sourceTree = "<group>"; };
+		D07CFD5A2156363B008D9EE6 /* WYCClassDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYCClassDetailView.xib; sourceTree = "<group>"; };
+		D07CFD5C2156C98A008D9EE6 /* WYCClassDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCClassDetailView.h; sourceTree = "<group>"; };
+		D07CFD5D2156C98A008D9EE6 /* WYCClassDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCClassDetailView.m; sourceTree = "<group>"; };
+		D07CFD5F2157297B008D9EE6 /* WYCNoteDetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCNoteDetailView.h; sourceTree = "<group>"; };
+		D07CFD602157297B008D9EE6 /* WYCNoteDetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCNoteDetailView.m; sourceTree = "<group>"; };
+		D07CFD6221572986008D9EE6 /* WYCNoteDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYCNoteDetailView.xib; sourceTree = "<group>"; };
+		D07CFD6421572D15008D9EE6 /* WYCNoteModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCNoteModel.h; sourceTree = "<group>"; };
+		D07CFD6521572D15008D9EE6 /* WYCNoteModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCNoteModel.m; sourceTree = "<group>"; };
+		D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLChooseClassListViewController.m; sourceTree = "<group>"; };
+		D07CFD692157A9D8008D9EE6 /* ListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListModel.h; sourceTree = "<group>"; };
+		D07CFD6A2157A9D9008D9EE6 /* ListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
+		D07CFD6B2157A9D9008D9EE6 /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
+		D07CFD6C2157A9D9008D9EE6 /* DLChooseClassListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLChooseClassListViewController.h; sourceTree = "<group>"; };
+		D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
+		D07CFD712158B0DB008D9EE6 /* WYCShowDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYCShowDetailViewController.h; sourceTree = "<group>"; };
+		D07CFD722158B0DB008D9EE6 /* WYCShowDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCShowDetailViewController.m; sourceTree = "<group>"; };
+		D07CFD732158B0DB008D9EE6 /* WYCShowDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYCShowDetailViewController.xib; sourceTree = "<group>"; };
+		D081E6582152484C00245FD9 /* DateModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModle.h; sourceTree = "<group>"; };
+		D081E6592152484C00245FD9 /* WYCClassBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookModel.m; sourceTree = "<group>"; };
+		D081E65A2152484C00245FD9 /* WYCClassBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassBookModel.h; sourceTree = "<group>"; };
+		D081E65B2152484C00245FD9 /* DateModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModle.m; sourceTree = "<group>"; };
+		D081E65F2152488C00245FD9 /* WYCClassBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYCClassBookView.xib; sourceTree = "<group>"; };
+		D081E6602152488C00245FD9 /* WYCClassBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassBookView.h; sourceTree = "<group>"; };
+		D081E6612152488D00245FD9 /* WYCWeekChooseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCWeekChooseBar.h; sourceTree = "<group>"; };
+		D081E6632152488D00245FD9 /* WYCClassBookView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookView.m; sourceTree = "<group>"; };
+		D081E6642152488D00245FD9 /* WYCWeekChooseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCWeekChooseBar.m; sourceTree = "<group>"; };
+		D081E66921524CD500245FD9 /* ClassBookImg.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ClassBookImg.xcassets; sourceTree = "<group>"; };
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -2729,6 +2778,75 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D07CFD512154955F008D9EE6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D07CFD5421549619008D9EE6 /* WYCClassBookViewController.h */,
+				D07CFD5521549619008D9EE6 /* WYCClassBookViewController.m */,
+				D07CFD712158B0DB008D9EE6 /* WYCShowDetailViewController.h */,
+				D07CFD722158B0DB008D9EE6 /* WYCShowDetailViewController.m */,
+				D07CFD732158B0DB008D9EE6 /* WYCShowDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D07CFD522154956D008D9EE6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D081E6602152488C00245FD9 /* WYCClassBookView.h */,
+				D081E6632152488D00245FD9 /* WYCClassBookView.m */,
+				D081E65F2152488C00245FD9 /* WYCClassBookView.xib */,
+				D07CFD5C2156C98A008D9EE6 /* WYCClassDetailView.h */,
+				D07CFD5D2156C98A008D9EE6 /* WYCClassDetailView.m */,
+				D07CFD5A2156363B008D9EE6 /* WYCClassDetailView.xib */,
+				D07CFD5F2157297B008D9EE6 /* WYCNoteDetailView.h */,
+				D07CFD602157297B008D9EE6 /* WYCNoteDetailView.m */,
+				D07CFD6221572986008D9EE6 /* WYCNoteDetailView.xib */,
+				D07CFD57215633ED008D9EE6 /* WYCShowDetailView.h */,
+				D07CFD58215633ED008D9EE6 /* WYCShowDetailView.m */,
+				D081E6612152488D00245FD9 /* WYCWeekChooseBar.h */,
+				D081E6642152488D00245FD9 /* WYCWeekChooseBar.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D07CFD5321549575008D9EE6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D081E65A2152484C00245FD9 /* WYCClassBookModel.h */,
+				D081E6592152484C00245FD9 /* WYCClassBookModel.m */,
+				D081E6582152484C00245FD9 /* DateModle.h */,
+				D081E65B2152484C00245FD9 /* DateModle.m */,
+				D07CFD6421572D15008D9EE6 /* WYCNoteModel.h */,
+				D07CFD6521572D15008D9EE6 /* WYCNoteModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D07CFD672157A87D008D9EE6 /* DLChooseClassList */ = {
+			isa = PBXGroup;
+			children = (
+				D07CFD692157A9D8008D9EE6 /* ListModel.h */,
+				D07CFD6A2157A9D9008D9EE6 /* ListModel.m */,
+				D07CFD6B2157A9D9008D9EE6 /* ListTableViewCell.h */,
+				D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */,
+				D07CFD6C2157A9D9008D9EE6 /* DLChooseClassListViewController.h */,
+				D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */,
+			);
+			path = DLChooseClassList;
+			sourceTree = "<group>";
+		};
+		D081E6552152481300245FD9 /* WYCClassBook */ = {
+			isa = PBXGroup;
+			children = (
+				D07CFD5321549575008D9EE6 /* Model */,
+				D07CFD522154956D008D9EE6 /* View */,
+				D07CFD512154955F008D9EE6 /* Controller */,
+				D081E66921524CD500245FD9 /* ClassBookImg.xcassets */,
+			);
+			path = WYCClassBook;
+			sourceTree = "<group>";
+		};
 		E404709F212AB86D00121AEE /* 展开 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2820,6 +2938,8 @@
 		F242DA551EBCB2BB005AC411 /* MoblieCQUPT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				D07CFD672157A87D008D9EE6 /* DLChooseClassList */,
+				D081E6552152481300245FD9 /* WYCClassBook */,
 				F2A92CD71F52E8BE00B4CEEF /* Base */,
 				F242DC331EBCB2BB005AC411 /* Main */,
 				F242DB8C1EBCB2BB005AC411 /* Login */,
@@ -4058,6 +4178,7 @@
 				4A3A07FD1FCC0EC700A50393 /* lost_image_time@3x.png in Resources */,
 				4A3A07F41FCC0EC700A50393 /* lost_image_place@2x.png in Resources */,
 				F242DDC51EBCB2BB005AC411 /* WebViewController.xib in Resources */,
+				D081E66A21524CD500245FD9 /* ClassBookImg.xcassets in Resources */,
 				F242DE9F1EBCB2BC005AC411 /* 椭圆@3x.png in Resources */,
 				9630E4A71FAF07D200874EB9 /* login_icon.png in Resources */,
 				F242DE9D1EBCB2BC005AC411 /* 时间@3x.png in Resources */,
@@ -4122,6 +4243,7 @@
 				F20026E61F4020FA00360991 /* mine_image_remind@3x.png in Resources */,
 				4A3A07E91FCC0EC700A50393 /* lost_image_itemcategory@3x.png in Resources */,
 				F242DE8B1EBCB2BC005AC411 /* 多课0@3x.png in Resources */,
+				D081E6652152488D00245FD9 /* WYCClassBookView.xib in Resources */,
 				F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */,
 				F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */,
 				F26D96AD1F3C45540063B024 /* login_image_account@2x.png in Resources */,
@@ -4174,6 +4296,7 @@
 				F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */,
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
 				F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */,
+				D07CFD5B2156363B008D9EE6 /* WYCClassDetailView.xib in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
 				8291269021330397002BA8E3 /* mine_image_calendar1.png in Resources */,
 				F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */,
@@ -4189,6 +4312,7 @@
 				9630E4AB1FAF07D200874EB9 /* login_number@2x.png in Resources */,
 				2FB222FE2121D0680009EB39 /* NecessityMedia.xcassets in Resources */,
 				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
+				D07CFD752158B0DB008D9EE6 /* WYCShowDetailViewController.xib in Resources */,
 				F26D96821F3C400F0063B024 /* icon_share_wechatTimeLine@2x.png in Resources */,
 				F26D967E1F3C400F0063B024 /* icon_share_qq@3x.png in Resources */,
 				F200271A1F405B8500360991 /* remind_image_remind@2x.png in Resources */,
@@ -4352,6 +4476,7 @@
 				823D41661F6407D300C99D9B /* icon_upvote_outside_notselect@2x.png in Resources */,
 				F20027091F404BE100360991 /* timeTable_image_pull@3x.png in Resources */,
 				F26D96871F3C400F0063B024 /* support.png in Resources */,
+				D07CFD6321572986008D9EE6 /* WYCNoteDetailView.xib in Resources */,
 				9630E4AE1FAF07D200874EB9 /* login_password@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4435,6 +4560,7 @@
 			files = (
 				F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */,
 				829C96772127DCE000B4B05C /* SYCCollageTableViewController.m in Sources */,
+				D081E6682152488D00245FD9 /* WYCWeekChooseBar.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
 				829C95D32127DABE00B4B05C /* SchollSubViewController.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
@@ -4480,6 +4606,7 @@
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
+				D07CFD59215633ED008D9EE6 /* WYCShowDetailView.m in Sources */,
 				829C969D2127DCE000B4B05C /* SYCActivityModel.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				829C95742127D8A500B4B05C /* SceneryViewController.m in Sources */,
@@ -4506,6 +4633,7 @@
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
 				F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */,
+				D07CFD5621549619008D9EE6 /* WYCClassBookViewController.m in Sources */,
 				F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */,
 				829C968C2127DCE000B4B05C /* AAStyle.m in Sources */,
 				829C957D2127D8A500B4B05C /* FoodViewController.m in Sources */,
@@ -4525,6 +4653,7 @@
 				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
 				829C969C2127DCE000B4B05C /* SYCActivityTableViewCell.m in Sources */,
 				F2F194751F68395D0034A3BB /* SplashModel.m in Sources */,
+				D07CFD6F2157A9D9008D9EE6 /* ListModel.m in Sources */,
 				F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */,
 				829C967F2127DCE000B4B05C /* AALabels.m in Sources */,
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
@@ -4538,7 +4667,9 @@
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
 				2FB223012121D15C0009EB39 /* DLNecessityViewController.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
+				D07CFD702157A9D9008D9EE6 /* ListTableViewCell.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
+				D07CFD742158B0DB008D9EE6 /* WYCShowDetailViewController.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
 				829C96852127DCE000B4B05C /* AATooltip.m in Sources */,
@@ -4556,6 +4687,7 @@
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
+				D07CFD6E2157A9D9008D9EE6 /* DLChooseClassListViewController.m in Sources */,
 				829C95902127D92000B4B05C /* ChatViewControl.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				9630E4951FAF07D200874EB9 /* sixViewController.m in Sources */,
@@ -4568,10 +4700,12 @@
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
 				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
 				829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */,
+				D07CFD6621572D15008D9EE6 /* WYCNoteModel.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
 				89C9343A21326A170074DF18 /* FoodAroundTableViewCell.m in Sources */,
+				D081E65D2152484C00245FD9 /* DateModle.m in Sources */,
 				829C95CC2127DABE00B4B05C /* MilitarytrainingTipsViewController.m in Sources */,
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */,
@@ -4580,6 +4714,7 @@
 				2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
 				9630E4CC1FAF07D300874EB9 /* QueryModel.m in Sources */,
+				D081E65C2152484C00245FD9 /* WYCClassBookModel.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				829C95C82127DABE00B4B05C /* MilitarytrainingShowViewController.m in Sources */,
@@ -4618,6 +4753,7 @@
 				829C95D02127DABE00B4B05C /* ShowPicRootView.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				E40470D1212E4C1A00121AEE /* SYCSegmentView.m in Sources */,
+				D081E6672152488D00245FD9 /* WYCClassBookView.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
@@ -4641,6 +4777,7 @@
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
 				9630E4941FAF07D200874EB9 /* sevenViewController.m in Sources */,
+				D07CFD5E2156C98A008D9EE6 /* WYCClassDetailView.m in Sources */,
 				6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */,
 				9630E4921FAF07D200874EB9 /* fiveViewController.m in Sources */,
 				F2A43ED11F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m in Sources */,
@@ -4714,6 +4851,7 @@
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
 				2FB22338212311FE0009EB39 /* DeliveryModel.m in Sources */,
+				D07CFD612157297B008D9EE6 /* WYCNoteDetailView.m in Sources */,
 				829C96762127DCE000B4B05C /* SYCMainPageView.m in Sources */,
 				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,
 				2FB222F92121D0380009EB39 /* addView.m in Sources */,
