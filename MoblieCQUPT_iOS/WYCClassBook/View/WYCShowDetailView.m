@@ -25,17 +25,18 @@
 - (void)initViewWithArray:(NSArray *)array{
     _index = 0;
     self.array = array;
-//    self.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+   
  
     [self layoutIfNeeded];
     
     self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     self.rootView = [[UIView alloc]init];
-    self.rootView.width = 270;
-    self.rootView.height = 360;
-    self.rootView.centerX = self.centerX;
-    self.rootView.centerY = self.centerY;
-//    self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.width/2 - 170, 270, 360)];
+
+//    self.rootView.width = 270;
+//    self.rootView.height = 360;
+//    self.rootView.centerX = self.centerX;
+//    self.rootView.centerY = self.centerY;
+    self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.height/2 - 170, 270, 360)];
     self.rootView.backgroundColor = [UIColor whiteColor];
     [self.rootView layoutIfNeeded];
     
@@ -64,7 +65,7 @@
             WYCClassDetailView *view = [WYCClassDetailView initViewFromXib];
             [view initWithDic:array[i]];
             [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
-            //view.detailDelegate = self;
+            view.detailDelegate = self.superview;
             view.chooseClassList.tag = i;
             [view.chooseClassList addTarget:self action:@selector(chooseClassList:) forControlEvents:UIControlEventTouchUpInside];
             [self.scrollView addSubview:view];
@@ -99,11 +100,11 @@
     NSInteger i = _pageControl.currentPage;
     [_scrollView setContentOffset:CGPointMake(i*self.rootView.width, 0) animated:YES];
 }
-- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
-    
-    
-    
-}
+//- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
+//
+//    NSLog(@"%@",str);
+//
+//}
 -(void)chooseClassList:(UIButton *)sender{
     self.classNum = [self.array[sender.tag] objectForKey:@"course_num"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"showStuList" object:nil];
@@ -114,6 +115,7 @@
 }
 -(void)deleteNote:(UIButton *)sender{
     self.remind = self.array[sender.tag];
+    [UserDefaultTool saveValue:self.array[sender.tag] forKey:@"deleteNote"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteNote" object:nil];
 }
 @end

@@ -10,8 +10,25 @@
 
 
 @implementation WYCNoteModel
-
 - (void)getNote:(NSString *)stuNum idNum:(NSString *)idNum{
+    //如果有缓存，则从缓存加载数据
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    NSArray *array = [NSMutableArray arrayWithContentsOfFile:remindPath];
+    
+    if (array) {
+        self.noteArray = [[NSMutableArray alloc]init];
+        
+        
+        [self parsingNoteData:array];
+        
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"WYCNoteModelDataLoadSuccess" object:nil];
+    }else{
+        
+        [self getNoteFromNet:stuNum idNum:idNum];
+    }
+}
+- (void)getNoteFromNet:(NSString *)stuNum idNum:(NSString *)idNum{
     self.noteArray = [[NSMutableArray alloc]init];
     
     
@@ -27,7 +44,7 @@
         [reminds writeToFile:remindPath atomically:YES];
         
         NSArray *dataArray = [responseObject objectForKey:@"data"];
-        [self parsingData:dataArray];
+        [self parsingNoteData:dataArray];
        
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WYCNoteModelDataLoadSuccess" object:nil];
         
@@ -40,7 +57,7 @@
    
 }
 //解析数据
--(void)parsingData:(NSArray *)array{
+-(void)parsingNoteData:(NSArray *)array{
     _noteArray = [[NSMutableArray alloc]initWithCapacity:25];
     for (int i = 0; i < 25; i++) {
         _noteArray[i] = [@[] mutableCopy];

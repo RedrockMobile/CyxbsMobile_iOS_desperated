@@ -345,7 +345,7 @@
 		D07CFD702157A9D9008D9EE6 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */; };
 		D07CFD742158B0DB008D9EE6 /* WYCShowDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07CFD722158B0DB008D9EE6 /* WYCShowDetailViewController.m */; };
 		D07CFD752158B0DB008D9EE6 /* WYCShowDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07CFD732158B0DB008D9EE6 /* WYCShowDetailViewController.xib */; };
-		D081E65C2152484C00245FD9 /* WYCClassBookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6592152484C00245FD9 /* WYCClassBookModel.m */; };
+		D081E65C2152484C00245FD9 /* WYCClassAndNoteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6592152484C00245FD9 /* WYCClassAndNoteModel.m */; };
 		D081E65D2152484C00245FD9 /* DateModle.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E65B2152484C00245FD9 /* DateModle.m */; };
 		D081E6652152488D00245FD9 /* WYCClassBookView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D081E65F2152488C00245FD9 /* WYCClassBookView.xib */; };
 		D081E6672152488D00245FD9 /* WYCClassBookView.m in Sources */ = {isa = PBXBuildFile; fileRef = D081E6632152488D00245FD9 /* WYCClassBookView.m */; };
@@ -1208,8 +1208,8 @@
 		D07CFD722158B0DB008D9EE6 /* WYCShowDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYCShowDetailViewController.m; sourceTree = "<group>"; };
 		D07CFD732158B0DB008D9EE6 /* WYCShowDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYCShowDetailViewController.xib; sourceTree = "<group>"; };
 		D081E6582152484C00245FD9 /* DateModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateModle.h; sourceTree = "<group>"; };
-		D081E6592152484C00245FD9 /* WYCClassBookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookModel.m; sourceTree = "<group>"; };
-		D081E65A2152484C00245FD9 /* WYCClassBookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassBookModel.h; sourceTree = "<group>"; };
+		D081E6592152484C00245FD9 /* WYCClassAndNoteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassAndNoteModel.m; sourceTree = "<group>"; };
+		D081E65A2152484C00245FD9 /* WYCClassAndNoteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassAndNoteModel.h; sourceTree = "<group>"; };
 		D081E65B2152484C00245FD9 /* DateModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModle.m; sourceTree = "<group>"; };
 		D081E65F2152488C00245FD9 /* WYCClassBookView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYCClassBookView.xib; sourceTree = "<group>"; };
 		D081E6602152488C00245FD9 /* WYCClassBookView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassBookView.h; sourceTree = "<group>"; };
@@ -2813,8 +2813,8 @@
 		D07CFD5321549575008D9EE6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D081E65A2152484C00245FD9 /* WYCClassBookModel.h */,
-				D081E6592152484C00245FD9 /* WYCClassBookModel.m */,
+				D081E65A2152484C00245FD9 /* WYCClassAndNoteModel.h */,
+				D081E6592152484C00245FD9 /* WYCClassAndNoteModel.m */,
 				D081E6582152484C00245FD9 /* DateModle.h */,
 				D081E65B2152484C00245FD9 /* DateModle.m */,
 				D07CFD6421572D15008D9EE6 /* WYCNoteModel.h */,
@@ -4714,7 +4714,7 @@
 				2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
 				9630E4CC1FAF07D300874EB9 /* QueryModel.m in Sources */,
-				D081E65C2152484C00245FD9 /* WYCClassBookModel.m in Sources */,
+				D081E65C2152484C00245FD9 /* WYCClassAndNoteModel.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				829C95C82127DABE00B4B05C /* MilitarytrainingShowViewController.m in Sources */,

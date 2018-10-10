@@ -14,6 +14,7 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"yyyy.MM.d"];
     NSDate *resDate = [formatter dateFromString:startDate];
+    [self calculateNowWeek:resDate];
     //初始化日期数组
     _dateArray = [[NSMutableArray alloc]init];
     int n = 0;
@@ -63,5 +64,18 @@
     //NSLog(@"y:%ld,m:%ld,d:%ld",(long)year,(long)month,(long)day);
     
     return arr;
+}
+-(void)calculateNowWeek:(NSDate *)Date{
+    
+    //计算当前是第几周
+    NSInteger beginTime=[Date timeIntervalSince1970];
+    NSDate *now = [NSDate date];
+    NSInteger nowTime = [now timeIntervalSince1970];
+    double day = (float)(nowTime - beginTime)/(float)86400/(float)7;
+    NSInteger nowWeek = (int)ceil(day);
+    
+    self.nowWeek = [NSNumber numberWithInteger:nowWeek];
+    [UserDefaultTool saveValue:self.nowWeek forKey:@"nowWeek"];
+    
 }
 @end
