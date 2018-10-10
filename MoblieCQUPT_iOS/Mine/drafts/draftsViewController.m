@@ -47,7 +47,7 @@
 - (void)headerRereshing{
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList" WithParameter:@{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X"}
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList" WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum}
                      WithReturnValeuBlock:^(id returnValue) {
                          [_dataArray removeAllObjects];
                          for (NSDictionary *dic in returnValue[@"data"]) {
@@ -72,7 +72,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X"} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":stuNum, @"idnum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
         NSArray *newData = [returnValue objectForKey:@"data"];
         for (NSDictionary *dic in newData) {
@@ -157,16 +157,15 @@
 {
     if (editingStyle==UITableViewCellEditingStyleDelete) {
         NSInteger row = [indexPath row];
-        [self.dataArray removeObjectAtIndex:row];
         
         NSString *stuNum = [UserDefaultTool getStuNum];
         NSString *idNum = [UserDefaultTool getIdNum];
         [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/deleteItemInDraft"
-                                WithParameter:@{@"stunum":@"2016210049", @"idnum":@"27001X",@"id":_dataArray[row].cellID
+                                WithParameter:@{@"stunum":stuNum, @"idnum":idNum,@"id":_dataArray[row].cellID
                                                 }
                          WithReturnValeuBlock:^(id returnValue) {
                              
-                                 //成功后做什么？？？
+                          [self.dataArray removeObjectAtIndex:row];
                          } WithFailureBlock:^{
                              //失败后做什么？？
                          }];
@@ -178,7 +177,18 @@
 -(UISwipeActionsConfiguration *)tableView:(UITableView *)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath *)indexPath API_AVAILABLE(ios(11.0)){
     //删除
     UIContextualAction *deleteRowAction = [UIContextualAction contextualActionWithStyle:UIContextualActionStyleDestructive title:@"delete" handler:^(UIContextualAction * _Nonnull action, __kindof UIView * _Nonnull sourceView, void (^ _Nonnull completionHandler)(BOOL)) {
-//        [self.dataArray removeObjectAtIndex:indexPath.row];
+        
+        NSString *stuNum = [UserDefaultTool getStuNum];
+        NSString *idNum = [UserDefaultTool getIdNum];
+        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/deleteItemInDraft"
+                                WithParameter:@{@"stunum":stuNum, @"idnum":idNum,@"id":_dataArray[indexPath.row].cellID
+                                                }
+                         WithReturnValeuBlock:^(id returnValue) {
+            
+                            [self.dataArray removeObjectAtIndex:indexPath.row];
+                         } WithFailureBlock:^{
+                             //失败后做什么？？
+                         }];
         completionHandler (YES);
     }];
     //所以图片在这个环境里都会变成白色，折中的办法
@@ -196,8 +206,8 @@
     if (_dataArray[indexPath.row].titleType.length) {
         NSString *style = _dataArray[indexPath.row].titleType;
         YouWenAddViewController *views = [[YouWenAddViewController alloc] initWithStyle:style];
-        views.titleStr =  _dataArray[indexPath.row].title_content;
-        views.detailStr = _dataArray[indexPath.row].description;
+        views.titleStr =  _dataArray[indexPath.row].content;
+        views.detailStr = _dataArray[indexPath.row].titledescription;
         [self.navigationController pushViewController:views animated:YES];
     }
     else {

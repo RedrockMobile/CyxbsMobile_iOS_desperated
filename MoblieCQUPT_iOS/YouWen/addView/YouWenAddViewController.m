@@ -80,10 +80,12 @@
 }
 
 - (BOOL)navigationShouldPopOnBackButton{
-    if (_detailTextView.text.length) {
+    if (_detailTextView.text.length ||_titleTextView.text.length ) {
         SheetAlertController *controller = [SheetAlertController draftsAlert];
         controller.style = @"question";
-        controller.content = _detailTextView.text;
+        controller.contentStr = _detailTextView.text;
+        controller.kind = self.style;
+        controller.titleStr = _titleTextView.text;
         [self presentViewController:controller
                            animated:YES
                          completion:nil];
@@ -92,18 +94,6 @@
     return YES;
 }
 
-- (void)viewWillDisappear:(BOOL)animated{
-    if (_titleTextView.text.length || _detailTextView.text.length) {
-        SheetAlertController *controller = [SheetAlertController draftsAlert];
-        [self presentViewController:controller
-                           animated:YES
-                         completion:nil];
-    }
-    else {
-        [super viewDidDisappear:YES];
-    }
-
-}
 - (void)setView{
     self.navigationController.navigationItem.title = @"求助";
     self.view.backgroundColor = [UIColor colorWithRed:228/255.0 green:228/255.0 blue:228/255.0 alpha:1.0];
@@ -252,6 +242,7 @@
 
 - (void)confirmInf{
     //textview当字数为0时返回nil  ????
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     if (_titleTextView.text.length == nil||_detailTextView.text.length == nil) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有完善信息哦" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
@@ -330,6 +321,10 @@
     else if ([state isEqualToString:@"FAIL"]) {
         _hud.labelText = @"上传失败";
         [_hud hide:YES afterDelay:2];
+    }
+    
+    if ([state isEqualToString:@"BACK"]) {
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 

@@ -13,6 +13,8 @@
 @interface ReportTextView()<UITextViewDelegate>
 @property (assign, nonatomic) wordNumState wnState;
 @property (assign, nonatomic) NSInteger topicLen;
+@property (strong, nonatomic) NSMutableArray<NSString *> *topicArray;
+@property (strong, nonatomic) NSMutableAttributedString *nowString;
 @end
 @implementation ReportTextView
 - (UITextView *)initWithFrame:(CGRect)frame andState:(wordNumState)state{
@@ -21,6 +23,7 @@
         _topicLen = 0;
         self.scrollEnabled = NO;
         _wnState = state;
+        _nowString = [[NSMutableAttributedString alloc] init];
         self.textContainerInset = UIEdgeInsetsMake(10, 0, 0, 0);
         self.font = [UIFont fontWithName:@"Arial" size: 16];
         if (_wnState == NoneWordNum) {
@@ -36,7 +39,14 @@
     return self;
 }
 
--(UILabel *)wordNum{
+- (NSMutableArray *)topicArray{
+    if (!_topicArray) {
+        _topicArray = [NSMutableArray array];
+    }
+    return _topicArray;
+}
+
+- (UILabel *)wordNum{
     if (!_wordNum) {
         int wordNumHeight = (self.height > 20)?20:self.height;
         self.wordNum = [[UILabel alloc] initWithFrame:CGRectMake(self.width - WORDNUMWIDTH - 10, self.height - wordNumHeight, WORDNUMWIDTH, wordNumHeight)];
@@ -78,8 +88,33 @@
 }
 
 - (void)calculateNum:(NSString *)str{
-    NSUInteger Num = self.attributedText.length;
+    NSUInteger Num;
     self.placeHolder.hidden = YES;
+    NSInteger flag = -1;
+    for (int i = 0; i < _topicArray.count; i ++){
+        NSRange range = [str rangeOfString:_topicArray[i]];
+        if (range.location == NSNotFound) {
+            flag = i;
+            break;
+        }
+    }
+    if (flag != -1) {
+        NSMutableString *mstr = self.nowString.string.mutableCopy;
+        NSRange range = [mstr rangeOfString:_topicArray[flag]];
+        [mstr deleteCharactersInRange:range];
+        NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:mstr];
+        _topicLen -= _topicArray[flag].length;
+        [sub addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, _topicLen)];
+        self.attributedText = sub;
+        [_topicArray removeObjectAtIndex:flag];
+        Num = self.attributedText.length;
+    }
+    else {
+        NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:str];
+        [sub addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, _topicLen)];
+        self.attributedText = sub;
+        Num = self.attributedText.length;
+    }
     if (Num <= _limitNum) {
         if (_wnState == OnlyWordNum){
             self.wordNum.text = [NSString stringWithFormat:@"%lu", (unsigned long)Num];
@@ -100,12 +135,14 @@
             self.attributedText = [self.attributedText attributedSubstringFromRange:NSMakeRange(0, _limitNum)];
             self.wordNum.text = [NSString stringWithFormat:@"%ld/%ld", (long)_limitNum, (long)_limitNum];
         }
-        
     }
+    _nowString = self.attributedText.mutableCopy;
 }
+
 - (void)addTopic:(NSString *)subject{
-    NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@ %@", subject, self.text]];
-    _topicLen += (subject.length + 1);
+    NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@", subject, self.text]];
+    _topicLen += subject.length;
+    [self.topicArray appendObject:subject];
     [sub addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, _topicLen)];
     NSInteger Num = sub.length;
     if (Num < _limitNum) {
@@ -118,7 +155,7 @@
         }
         self.placeHolder.hidden = YES;
     }
-    
+    _nowString = self.attributedText.mutableCopy;
 }
 
 - (CGRect)zoomFrame:(CGRect)frame{

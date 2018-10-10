@@ -245,7 +245,7 @@
     if (_textView.text.length) {
         SheetAlertController *controller = [SheetAlertController draftsAlert];
         controller.style = @"answer";
-        controller.content = _textView.text;
+        controller.contentStr = _textView.text;
         [self presentViewController:controller
                            animated:YES
                          completion:nil];
