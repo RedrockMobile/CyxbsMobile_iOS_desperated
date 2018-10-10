@@ -9,6 +9,9 @@
 #import "YouWenWriteAnswerViewController.h"
 #import <AFNetworking.h>
 #import <Masonry.h>
+#import "SheetAlertController.h"
+#import "UIViewController+BackButtonHandler.h"
+
 
 #define ANSWERQUESTION @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/add"
 #define ANSWERQUESTIONPICTURES @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/uploadPicture"
@@ -234,6 +237,21 @@
             NSLog(@"I have fail");
         }];
     }
+}
+
+
+#pragma mark - 草稿箱
+- (BOOL)navigationShouldPopOnBackButton{
+    if (_textView.text.length) {
+        SheetAlertController *controller = [SheetAlertController draftsAlert];
+        controller.style = @"answer";
+        controller.content = _textView.text;
+        [self presentViewController:controller
+                           animated:YES
+                         completion:nil];
+        return NO;
+    }
+    return YES;
 }
 
 
