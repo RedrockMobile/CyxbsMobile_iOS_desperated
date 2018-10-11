@@ -128,9 +128,6 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <state key="normal" title="选课名单"/>
-                            <connections>
-                                <action selector="stuList:" destination="iN0-l3-epB" eventType="touchUpInside" id="ASS-Z3-Mbj"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -192,6 +189,6 @@
         <image name="classtime" width="14" height="14"/>
         <image name="classtype" width="13" height="13"/>
         <image name="classweek" width="13" height="13"/>
-        <image name="teacher" width="16" height="16"/>
+        <image name="teacher" width="14" height="14"/>
     </resources>
 </document>

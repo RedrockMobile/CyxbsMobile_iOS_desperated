@@ -10,6 +10,7 @@
 @protocol WYCClassBookViewDelegate <NSObject>
 @required
 - (void)showDetail:(NSArray *)array;
+- (void)showChooseClassList:(NSString *)classNum classRoom:(NSString *)classRoom;
 @end
 
 

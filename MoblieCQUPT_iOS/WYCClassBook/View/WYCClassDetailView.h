@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-@protocol WYCClassDetailViewDelegate <NSObject>
-@required
-- (void)eventWhenChooseClassListBtnClick:(NSString *)str;
-@end
+//@protocol WYCClassDetailViewDelegate <NSObject>
+//@required
+//- (void)eventWhenChooseClassListBtnClick:(NSString *)str;
+//@end
 
 
 @interface WYCClassDetailView : UIView
@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(WYCClassDetailView *)initViewFromXib;
 -(void)initWithDic:(NSDictionary *)dic;
 @property (strong, nonatomic) IBOutlet UIButton *chooseClassList;
-@property (nonatomic, weak) id<WYCClassDetailViewDelegate> detailDelegate;
+//@property (nonatomic, weak) id<WYCClassDetailViewDelegate> classbookDetailDelegate;
 
 @end
 

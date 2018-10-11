@@ -9,8 +9,15 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@protocol WYCShowDetailDelegate <NSObject>
+@required
+- (void)clickChooseClassListBtn:(NSDictionary *)dic;
+- (void)clickEditNoteBtn:(NSDictionary *)dic;
+- (void)clickDeleteNoteBtn:(NSDictionary *)dic;
+@end
 
 @interface WYCShowDetailView : UIView
+@property (nonatomic, weak) id<WYCShowDetailDelegate> chooseClassListDelegate;
 
 @property (nonatomic, copy) NSString *classNum;
 @property (nonatomic, strong) NSDictionary *remind;

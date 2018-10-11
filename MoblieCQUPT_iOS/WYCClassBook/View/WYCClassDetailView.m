@@ -82,16 +82,12 @@
     self.classWeek.lineBreakMode = NSLineBreakByWordWrapping;
     
 }
-- (IBAction)stuList:(UIButton *)sender {
-    if ([self.detailDelegate respondsToSelector:@selector(eventWhenChooseClassListBtnClick:)]) {
-        [self.detailDelegate eventWhenChooseClassListBtnClick:[self.dic objectForKey:@"course_num"]];
-    }
-//    NSString *classNum = [self.dic objectForKey:@"course_num"];
-//    NSLog(@"clickStuList:%@",classNum);
-//    DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
-//    [vc initWithClassNum:classNum];
-//    [self.viewController.navigationController pushViewController:vc animated:YES];
-}
+//- (IBAction)stuList:(UIButton *)sender {
+//    if ([self.detailDelegate respondsToSelector:@selector(eventWhenChooseClassListBtnClick:)]) {
+//        [self.detailDelegate eventWhenChooseClassListBtnClick:[self.dic objectForKey:@"course_num"]];
+//    }
+//
+//}
 
 - (NSString *)getClassTime{
     NSString *classTime = [[NSString alloc]init];

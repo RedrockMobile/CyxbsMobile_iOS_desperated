@@ -10,7 +10,7 @@
 #import "WYCClassDetailView.h"
 #import "WYCNoteDetailView.h"
 #import "DLChooseClassListViewController.h"
-@interface WYCShowDetailView()<UIScrollViewDelegate,WYCClassDetailViewDelegate>
+@interface WYCShowDetailView()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *rootView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -25,17 +25,18 @@
 - (void)initViewWithArray:(NSArray *)array{
     _index = 0;
     self.array = array;
-//    self.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+   
  
     [self layoutIfNeeded];
     
     self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     self.rootView = [[UIView alloc]init];
-    self.rootView.width = 270;
-    self.rootView.height = 360;
-    self.rootView.centerX = self.centerX;
-    self.rootView.centerY = self.centerY;
-//    self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.width/2 - 170, 270, 360)];
+
+//    self.rootView.width = 270;
+//    self.rootView.height = 360;
+//    self.rootView.centerX = self.centerX;
+//    self.rootView.centerY = self.centerY;
+    self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.height/2 - 170, 270, 360)];
     self.rootView.backgroundColor = [UIColor whiteColor];
     [self.rootView layoutIfNeeded];
     
@@ -56,6 +57,8 @@
             [view initWithDic:array[i]];
             [view.editNote addTarget:self action:@selector(editNote:) forControlEvents:UIControlEventTouchUpInside];
             view.editNote.tag = i;
+            [view.editNote addTarget:self action:@selector(editNote:) forControlEvents:UIControlEventTouchUpInside];
+            view.deleteNote.tag = i;
             [view.deleteNote addTarget:self action:@selector(deleteNote:) forControlEvents:UIControlEventTouchUpInside];
             view.deleteNote.tag = i;
             [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
@@ -99,21 +102,24 @@
     NSInteger i = _pageControl.currentPage;
     [_scrollView setContentOffset:CGPointMake(i*self.rootView.width, 0) animated:YES];
 }
-- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
-    
-    
-    
-}
+//- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
+//
+//    NSLog(@"%@",str);
+//
+//}
 -(void)chooseClassList:(UIButton *)sender{
-    self.classNum = [self.array[sender.tag] objectForKey:@"course_num"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showStuList" object:nil];
+    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickChooseClassListBtn:)]) {
+        [self.chooseClassListDelegate clickChooseClassListBtn:self.array[sender.tag]];
+    }
 }
 -(void)editNote:(UIButton *)sender{
-    self.remind = self.array[sender.tag];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"editNote" object:nil];
+    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickEditNoteBtn:)]) {
+        [self.chooseClassListDelegate clickEditNoteBtn:self.array[sender.tag]];
+    }
 }
 -(void)deleteNote:(UIButton *)sender{
-    self.remind = self.array[sender.tag];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteNote" object:nil];
+    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickDeleteNoteBtn:)]) {
+        [self.chooseClassListDelegate clickDeleteNoteBtn:self.array[sender.tag]];
+    }
 }
 @end

@@ -10,7 +10,7 @@
 #import "Masonry.h"
 #import "WYCShowDetailView.h"
 //#import "UIColor+Hex.h"
-@interface WYCClassBookView()<UIScrollViewDelegate>
+@interface WYCClassBookView()<UIScrollViewDelegate,WYCShowDetailDelegate>
 
 @property (nonatomic, strong) UIView *topBar;    //顶栏日期月份
 @property (nonatomic, strong) UIView *leftBar;   //左边栏课数
@@ -57,6 +57,7 @@
     _scrollView = [[UIScrollView alloc]init];
     _scrollView.backgroundColor = [UIColor whiteColor];
     _scrollView.scrollEnabled = YES;
+    
     _scrollView.contentSize = CGSizeMake(0,606*autoSizeScaleY);
     _scrollView.delegate = self;
     
@@ -112,8 +113,7 @@
         make.bottom.equalTo(self->_rootView.mas_bottom).offset(0);
         
     }];
-    
-    
+
     [_leftBar mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self->_scrollView.mas_top).offset(0);
         make.left.equalTo(self->_scrollView.mas_left).offset(0);
@@ -383,46 +383,47 @@
     if ([self.detailDelegate respondsToSelector:@selector(showDetail:)]) {
         [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
     }
-
-}
-//    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
-//
-    
-//    //初始化全屏view
-//
-//    if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
-//        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
+//    if ([self.detailDelegate respondsToSelector:@selector(showChooseClassList:classRoom:)]) {
+//        [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
 //    }
-//
-//    self.detailClassBookView  = [[WYCShowDetailView alloc]init];
-//    [self.detailClassBookView initViewWithArray:self.detailDataArray[sender.tag]];
-//
-//
-//    //添加点击手势
-//    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
-//    [self.detailClassBookView addGestureRecognizer:tapGesture];
-//    //设置view的tag
-//    self.detailClassBookView.tag = 999;
-//
-//    //往全屏view上添加内容
-//
-//    //显示全屏view
-//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-//    //[window addSubview:self.detailClassBookView];
-//    [window addSubview:self.detailClassBookView];
-//
-//    //    [UIView animateWithDuration:0.06f animations:^{
-//    //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
-//    //    } completion:nil];
-//
-    
-//}
+    //
+    //    if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
+    //        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
+    //    }
+    //    //初始化全屏view
+    //    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    //    //设置view的tag
+    //    view.tag = 999;
+    //
+    //
+    //    //往全屏view上添加内容
+    //    self.detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    //    [self.detailClassBookView initViewWithArray:self.detailDataArray[sender.tag]];
+    //
+    //
+    //    //添加点击手势
+    //    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
+    //    [self.detailClassBookView addGestureRecognizer:tapGesture];
+    //
+    //
+    //    //显示全屏view
+    //    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    //    [view addSubview:self.detailClassBookView];
+    //    [window addSubview:view];
+    //
+    //    //    [UIView animateWithDuration:0.06f animations:^{
+    //    //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    //    //    } completion:nil];
+    //
+    //
+}
+
 
 - (void)hiddenDetailView{
-    if (_detailClassBookView) {
-        [_detailClassBookView removeFromSuperview];
-    }
-    
+//    if (_detailClassBookView) {
+//        [_detailClassBookView removeFromSuperview];
+//    }
+//
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
     [view removeFromSuperview];
@@ -442,12 +443,13 @@
     
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"%f",_scrollView.contentOffset.y);
+    NSLog(@"xxx%f",_scrollView.contentOffset.y);
     if (_scrollView.contentOffset.y < -100) {
          [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadView" object:nil];
     }
     
 }
+
 
 
 
