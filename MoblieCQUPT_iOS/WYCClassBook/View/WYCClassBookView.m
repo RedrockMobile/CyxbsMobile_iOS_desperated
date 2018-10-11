@@ -10,7 +10,7 @@
 #import "Masonry.h"
 #import "WYCShowDetailView.h"
 //#import "UIColor+Hex.h"
-@interface WYCClassBookView()<UIScrollViewDelegate>
+@interface WYCClassBookView()<UIScrollViewDelegate,WYCShowDetailDelegate>
 
 @property (nonatomic, strong) UIView *topBar;    //顶栏日期月份
 @property (nonatomic, strong) UIView *leftBar;   //左边栏课数
@@ -383,9 +383,9 @@
     if ([self.detailDelegate respondsToSelector:@selector(showDetail:)]) {
         [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
     }
-    if ([self.detailDelegate respondsToSelector:@selector(showChooseClassList:classRoom:)]) {
-        [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
-    }
+//    if ([self.detailDelegate respondsToSelector:@selector(showChooseClassList:classRoom:)]) {
+//        [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
+//    }
     //
     //    if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
     //        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
@@ -449,6 +449,7 @@
     }
     
 }
+
 
 
 

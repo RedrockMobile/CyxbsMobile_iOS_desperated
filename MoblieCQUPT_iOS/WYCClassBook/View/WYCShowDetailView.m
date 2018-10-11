@@ -10,7 +10,7 @@
 #import "WYCClassDetailView.h"
 #import "WYCNoteDetailView.h"
 #import "DLChooseClassListViewController.h"
-@interface WYCShowDetailView()<UIScrollViewDelegate,WYCClassDetailViewDelegate>
+@interface WYCShowDetailView()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *rootView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
@@ -57,6 +57,8 @@
             [view initWithDic:array[i]];
             [view.editNote addTarget:self action:@selector(editNote:) forControlEvents:UIControlEventTouchUpInside];
             view.editNote.tag = i;
+            [view.editNote addTarget:self action:@selector(editNote:) forControlEvents:UIControlEventTouchUpInside];
+            view.deleteNote.tag = i;
             [view.deleteNote addTarget:self action:@selector(deleteNote:) forControlEvents:UIControlEventTouchUpInside];
             view.deleteNote.tag = i;
             [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
@@ -65,7 +67,7 @@
             WYCClassDetailView *view = [WYCClassDetailView initViewFromXib];
             [view initWithDic:array[i]];
             [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
-            view.detailDelegate = self.superview;
+            //view.detailDelegate = self;
             view.chooseClassList.tag = i;
             [view.chooseClassList addTarget:self action:@selector(chooseClassList:) forControlEvents:UIControlEventTouchUpInside];
             [self.scrollView addSubview:view];
@@ -106,16 +108,18 @@
 //
 //}
 -(void)chooseClassList:(UIButton *)sender{
-    self.classNum = [self.array[sender.tag] objectForKey:@"course_num"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"showStuList" object:nil];
+    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickChooseClassListBtn:)]) {
+        [self.chooseClassListDelegate clickChooseClassListBtn:self.array[sender.tag]];
+    }
 }
 -(void)editNote:(UIButton *)sender{
-    self.remind = self.array[sender.tag];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"editNote" object:nil];
+    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickEditNoteBtn:)]) {
+        [self.chooseClassListDelegate clickEditNoteBtn:self.array[sender.tag]];
+    }
 }
 -(void)deleteNote:(UIButton *)sender{
-    self.remind = self.array[sender.tag];
-    [UserDefaultTool saveValue:self.array[sender.tag] forKey:@"deleteNote"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteNote" object:nil];
+    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickDeleteNoteBtn:)]) {
+        [self.chooseClassListDelegate clickDeleteNoteBtn:self.array[sender.tag]];
+    }
 }
 @end

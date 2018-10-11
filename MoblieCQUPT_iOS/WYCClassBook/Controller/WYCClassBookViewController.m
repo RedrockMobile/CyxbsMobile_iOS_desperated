@@ -7,9 +7,9 @@
 //
 
 #import "WYCClassBookViewController.h"
-#import "WYCShowDetailViewController.h"
+
 #import "WYCClassAndNoteModel.h"
-#import "WYCNoteModel.h"
+
 #import "DateModle.h"
 #import "WYCClassBookView.h"
 #import "WYCClassDetailView.h"
@@ -22,11 +22,11 @@
 #import "UIFont+AdaptiveFont.h"
 #import "RemindNotification.h"
 #import "LessonController.h"
-
+#import "DLChooseClassListViewController.h"
 
 #define DateStart @"2018-09-10"
 
-@interface WYCClassBookViewController ()<UIScrollViewDelegate,WYCClassBookViewDelegate,WYCClassDetailViewDelegate>
+@interface WYCClassBookViewController ()<UIScrollViewDelegate,WYCClassBookViewDelegate,WYCShowDetailDelegate>
 @property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) NSString *titleText;
@@ -579,6 +579,7 @@
     
     //往全屏view上添加内容
     WYCShowDetailView *detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    detailClassBookView.chooseClassListDelegate = self;
     [detailClassBookView initViewWithArray:array];
     
     
@@ -600,34 +601,38 @@
 }
 
 - (void)hiddenDetailView{
-    //    if (_detailClassBookView) {
-    //        [_detailClassBookView removeFromSuperview];
-    //    }
-    //
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
     [view removeFromSuperview];
     
     
 }
-- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
-    
-    NSLog(@"%@",str);
+
+
+//选课列表预留
+- (void)clickChooseClassListBtn:(NSDictionary *)dic{
+    //NSLog(@"%@",[dic objectForKey:@"course_num"]);
     
 }
-- (void)showChooseClassList:(NSString *)classNum classRoom:(NSString *)classRoom{
+- (void)clickEditNoteBtn:(NSDictionary *)dic{
+    //NSLog(@"%@",[dic objectForKey:@"id"]);
+    [self hiddenDetailView];
+    AddRemindViewController *vc = [[AddRemindViewController alloc]initWithRemind:dic];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
     
 }
--(void)deleteNote{
-    
-    NSDictionary *noteId = [UserDefaultTool valueForKey:@"deleteNote"];
-   // NSNumber *noteId = [UserDefaultTool valueForKey:@"deleteNote"];
+- (void)clickDeleteNoteBtn:(NSDictionary *)dic{
+    [self hiddenDetailView];
+    NSNumber *noteId = [dic objectForKey:@"id"];
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     
-    WYCNoteModel *model = [[WYCNoteModel alloc]init];
+    WYCClassAndNoteModel *model = [[WYCClassAndNoteModel alloc]init];
     [model deleteNote:stuNum idNum:idNum noteId:noteId];
+    [self reloadView];
 }
+
 @end
 
 
