@@ -590,9 +590,12 @@
     
     //显示全屏view
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    detailClassBookView.layer.opacity = 0.0f;
     [view addSubview:detailClassBookView];
     [window addSubview:view];
-    
+    [UIView animateWithDuration:0.1f animations:^{
+        detailClassBookView.layer.opacity = 1.0f;
+    } completion:nil];
     //    [UIView animateWithDuration:0.06f animations:^{
     //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     //    } completion:nil];
@@ -603,9 +606,11 @@
 - (void)hiddenDetailView{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
-    [view removeFromSuperview];
-    
-    
+    [UIView animateWithDuration:0.2f animations:^{
+        view.layer.opacity = 0.0f;
+    } completion:^(BOOL finished) {
+        [view removeFromSuperview];
+    }];
 }
 
 
