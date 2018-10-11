@@ -14,5 +14,7 @@
 @property (nonatomic, copy) NSString *keyword;
 @property (nonatomic, strong) UIImage *picture;
 @property (nonatomic, strong) NSData *imageData;
+
 - (instancetype)initWithData:(NSDictionary *)data;
+
 @end
