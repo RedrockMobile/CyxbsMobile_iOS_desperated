@@ -116,7 +116,7 @@
     NSString *examDateLabelText = [NSString stringWithFormat:@"%@周 周%@",_data[indexPath.row][@"week"],dateArray[dateIndex]];
     cell.examDate.text = examDateLabelText;
     //日期
-    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
+    NSDate *newDate = [[NSDate alloc]getShoolData:[_data[indexPath.row][@"week"] integerValue] andWeekday:[_data[indexPath.row][@"weekday"] integerValue]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM-dd";
     NSString *examDate = [formatter stringFromDate:newDate];
