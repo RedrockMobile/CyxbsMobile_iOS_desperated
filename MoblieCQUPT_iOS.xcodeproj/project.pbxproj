@@ -366,6 +366,16 @@
 		E405C460216F904300F671CE /* SYCToolsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C458216F904200F671CE /* SYCToolsCell.m */; };
 		E405C461216F904300F671CE /* SYCToolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C459216F904200F671CE /* SYCToolModel.m */; };
 		E405C462216F904300F671CE /* SYCFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C45A216F904200F671CE /* SYCFinderViewController.m */; };
+		E405C46D216F914100F671CE /* 课前提醒.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C463216F913D00F671CE /* 课前提醒.png */; };
+		E405C46E216F914100F671CE /* 成绩单灰.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C464216F913D00F671CE /* 成绩单灰.png */; };
+		E405C46F216F914100F671CE /* 没课约.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C465216F913E00F671CE /* 没课约.png */; };
+		E405C470216F914100F671CE /* 志愿时长圆.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C466216F913E00F671CE /* 志愿时长圆.png */; };
+		E405C471216F914100F671CE /* 校历.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C467216F913E00F671CE /* 校历.png */; };
+		E405C472216F914100F671CE /* 关于红岩.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C468216F913F00F671CE /* 关于红岩.png */; };
+		E405C473216F914100F671CE /* 重邮地图.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C469216F914000F671CE /* 重邮地图.png */; };
+		E405C474216F914100F671CE /* 成绩单.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46A216F914000F671CE /* 成绩单.png */; };
+		E405C475216F914100F671CE /* 空教室.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46B216F914000F671CE /* 空教室.png */; };
+		E405C476216F914100F671CE /* 查电费.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46C216F914000F671CE /* 查电费.png */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -425,7 +435,6 @@
 		F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA571EBCB2BB005AC411 /* AppDelegate.m */; };
 		F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */; };
 		F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F242DA5A1EBCB2BB005AC411 /* Main.storyboard */; };
-		F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA711EBCB2BB005AC411 /* FinderViewController.m */; };
 		F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9A1EBCB2BB005AC411 /* achieveImage.png */; };
 		F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9B1EBCB2BB005AC411 /* angleImage.png */; };
 		F242DDAB1EBCB2BB005AC411 /* buildIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9C1EBCB2BB005AC411 /* buildIcon.png */; };
@@ -655,9 +664,6 @@
 		F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AA1F3C45540063B024 /* login_image_account@3x.png */; };
 		F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AB1F3C45540063B024 /* login_image_password@3x.png */; };
 		F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AC1F3C45540063B024 /* login_image_password@2x.png */; };
-		F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */; };
-		F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */; };
-		F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */; };
 		F27A93411F4ABC32009860C3 /* remind_image_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933D1F4ABC32009860C3 /* remind_image_edit@2x.png */; };
 		F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933E1F4ABC32009860C3 /* remind_image_edit@3x.png */; };
 		F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933F1F4ABC32009860C3 /* remind_image_editing@2x.png */; };
@@ -774,8 +780,6 @@
 		4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
 		4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@2x.png"; sourceTree = "<group>"; };
 		4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@3x.png"; sourceTree = "<group>"; };
-		4A3A079D1FCC0EC500A50393 /* find_image_freshman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_freshman@2x.png"; sourceTree = "<group>"; };
-		4A3A079E1FCC0EC500A50393 /* find_image_freshman@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_freshman@3x.png"; sourceTree = "<group>"; };
 		4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@2x.png"; sourceTree = "<group>"; };
 		4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@3x.png"; sourceTree = "<group>"; };
 		4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_lostAndFound@2x.png"; sourceTree = "<group>"; };
@@ -1250,6 +1254,16 @@
 		E405C45A216F904200F671CE /* SYCFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCFinderViewController.m; sourceTree = "<group>"; };
 		E405C45B216F904200F671CE /* SYCCustomLayoutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCCustomLayoutModel.h; sourceTree = "<group>"; };
 		E405C45C216F904200F671CE /* SYCToolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCToolModel.h; sourceTree = "<group>"; };
+		E405C463216F913D00F671CE /* 课前提醒.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "课前提醒.png"; sourceTree = "<group>"; };
+		E405C464216F913D00F671CE /* 成绩单灰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成绩单灰.png"; sourceTree = "<group>"; };
+		E405C465216F913E00F671CE /* 没课约.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "没课约.png"; sourceTree = "<group>"; };
+		E405C466216F913E00F671CE /* 志愿时长圆.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "志愿时长圆.png"; sourceTree = "<group>"; };
+		E405C467216F913E00F671CE /* 校历.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校历.png"; sourceTree = "<group>"; };
+		E405C468216F913F00F671CE /* 关于红岩.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于红岩.png"; sourceTree = "<group>"; };
+		E405C469216F914000F671CE /* 重邮地图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重邮地图.png"; sourceTree = "<group>"; };
+		E405C46A216F914000F671CE /* 成绩单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成绩单.png"; sourceTree = "<group>"; };
+		E405C46B216F914000F671CE /* 空教室.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空教室.png"; sourceTree = "<group>"; };
+		E405C46C216F914000F671CE /* 查电费.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "查电费.png"; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -1313,8 +1327,6 @@
 		F242DA571EBCB2BB005AC411 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F242DA591EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F242DA5B1EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F242DA701EBCB2BB005AC411 /* FinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderViewController.h; sourceTree = "<group>"; };
-		F242DA711EBCB2BB005AC411 /* FinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderViewController.m; sourceTree = "<group>"; };
 		F242DA9A1EBCB2BB005AC411 /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
 		F242DA9B1EBCB2BB005AC411 /* angleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleImage.png; sourceTree = "<group>"; };
 		F242DA9C1EBCB2BB005AC411 /* buildIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildIcon.png; sourceTree = "<group>"; };
@@ -1673,11 +1685,6 @@
 		F2722DAD1FBAD5C3007C41F6 /* find_image_food@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@3x.png"; sourceTree = "<group>"; };
 		F2722DAE1FBAD5C4007C41F6 /* find_image_hongyan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@3x.png"; sourceTree = "<group>"; };
 		F2722DAF1FBAD5C4007C41F6 /* find_image_query@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_query@2x.png"; sourceTree = "<group>"; };
-		F2770B3E1F453CF700BB6186 /* FinderCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FinderCollectionViewFlowLayout.h; path = MoblieCQUPT_iOS/Finder/FinderCollectionViewFlowLayout.h; sourceTree = SOURCE_ROOT; };
-		F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FinderCollectionViewFlowLayout.m; path = MoblieCQUPT_iOS/Finder/FinderCollectionViewFlowLayout.m; sourceTree = SOURCE_ROOT; };
-		F2770B411F4543BF00BB6186 /* FinderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderCollectionViewCell.h; sourceTree = "<group>"; };
-		F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderCollectionViewCell.m; sourceTree = "<group>"; };
-		F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderCollectionViewCell.xib; sourceTree = "<group>"; };
 		F2770B661F45789100BB6186 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F27A933D1F4ABC32009860C3 /* remind_image_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_edit@2x.png"; sourceTree = "<group>"; };
 		F27A933E1F4ABC32009860C3 /* remind_image_edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_edit@3x.png"; sourceTree = "<group>"; };
@@ -1945,6 +1952,16 @@
 		4A3A07971FCC0EC500A50393 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E405C46C216F914000F671CE /* 查电费.png */,
+				E405C46A216F914000F671CE /* 成绩单.png */,
+				E405C464216F913D00F671CE /* 成绩单灰.png */,
+				E405C468216F913F00F671CE /* 关于红岩.png */,
+				E405C463216F913D00F671CE /* 课前提醒.png */,
+				E405C46B216F914000F671CE /* 空教室.png */,
+				E405C465216F913E00F671CE /* 没课约.png */,
+				E405C467216F913E00F671CE /* 校历.png */,
+				E405C466216F913E00F671CE /* 志愿时长圆.png */,
+				E405C469216F914000F671CE /* 重邮地图.png */,
 				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
 				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
 				4A3A08391FCD990900A50393 /* Address@2x.png */,
@@ -1964,8 +1981,6 @@
 				4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */,
 				4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */,
 				4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */,
-				4A3A079D1FCC0EC500A50393 /* find_image_freshman@2x.png */,
-				4A3A079E1FCC0EC500A50393 /* find_image_freshman@3x.png */,
 				4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */,
 				4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */,
 				4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */,
@@ -2540,6 +2555,12 @@
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
+				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
+				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
+				829C95942127DABD00B4B05C /* FreshmanModel.h */,
+				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
+				824D4910212A782200F38893 /* freshman_button@2x.png */,
+				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
@@ -3013,12 +3034,6 @@
 			children = (
 				E405C446216F900000F671CE /* SYCMainPage */,
 				82B66EE4211AD2A700FA82F1 /* Freshman2018 */,
-				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
-				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
-				829C95942127DABD00B4B05C /* FreshmanModel.h */,
-				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
-				824D4910212A782200F38893 /* freshman_button@2x.png */,
-				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
@@ -3026,13 +3041,6 @@
 				F242DA981EBCB2BB005AC411 /* Query */,
 				F242DAC71EBCB2BB005AC411 /* RedrockWebsite */,
 				F242DAFE1EBCB2BB005AC411 /* shake */,
-				F2770B3E1F453CF700BB6186 /* FinderCollectionViewFlowLayout.h */,
-				F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */,
-				F242DA701EBCB2BB005AC411 /* FinderViewController.h */,
-				F242DA711EBCB2BB005AC411 /* FinderViewController.m */,
-				F2770B411F4543BF00BB6186 /* FinderCollectionViewCell.h */,
-				F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */,
-				F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */,
 			);
 			path = Finder;
 			sourceTree = "<group>";
@@ -4141,6 +4149,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E405C474216F914100F671CE /* 成绩单.png in Resources */,
 				28375C82212B91A400DCA738 /* 字体管家胖丫儿体.ttf in Resources */,
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
@@ -4173,6 +4182,7 @@
 				F20027061F404BE100360991 /* timeTable_image_add@2x.png in Resources */,
 				9630E48E1FAF07D200874EB9 /* QueryLoginViewController.xib in Resources */,
 				9630E4A21FAF07D200874EB9 /* 7@2x.png in Resources */,
+				E405C471216F914100F671CE /* 校历.png in Resources */,
 				829C95C52127DABE00B4B05C /* Militarytraining.xcassets in Resources */,
 				9630E4B81FAF07D200874EB9 /* 展开后@2x.png in Resources */,
 				9630E4C51FAF07D300874EB9 /* 标签矩形@3x.png in Resources */,
@@ -4364,14 +4374,17 @@
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
 				F242DEA31EBCB2BC005AC411 /* 类型@3x.png in Resources */,
+				E405C475216F914100F671CE /* 空教室.png in Resources */,
 				9630E4AF1FAF07D200874EB9 /* login_password@3x.png in Resources */,
 				9630E4C41FAF07D300874EB9 /* 标签矩形@2x.png in Resources */,
+				E405C470216F914100F671CE /* 志愿时长圆.png in Resources */,
 				9630E4AA1FAF07D200874EB9 /* login_number.png in Resources */,
 				F242DEA11EBCB2BC005AC411 /* 箭头@3x.png in Resources */,
 				9630E49F1FAF07D200874EB9 /* 5@3x.png in Resources */,
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				9630E4B51FAF07D200874EB9 /* 地点坐标@3x.png in Resources */,
 				4A3A07F91FCC0EC700A50393 /* lost_image_success@3x.png in Resources */,
+				E405C46F216F914100F671CE /* 没课约.png in Resources */,
 				829C95782127D8A500B4B05C /* rank@3x.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
@@ -4385,6 +4398,7 @@
 				9630E4A81FAF07D200874EB9 /* login_icon@2x.png in Resources */,
 				9630E4B31FAF07D200874EB9 /* volunteer_time_icon.png in Resources */,
 				8291268F21330397002BA8E3 /* mine_image_calendar2.png in Resources */,
+				E405C46D216F914100F671CE /* 课前提醒.png in Resources */,
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
 				4A3A07FF1FCC0EC700A50393 /* shake_image_shake@2x.png in Resources */,
 				82280CB31F60205200A5921E /* LXcommentTitle@3x.png in Resources */,
@@ -4398,6 +4412,7 @@
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
 				F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */,
 				9630E4991FAF07D200874EB9 /* 2@3x.png in Resources */,
+				E405C476216F914100F671CE /* 查电费.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
 				829C95DB2127DABE00B4B05C /* SchollGeneralTableViewCell.xib in Resources */,
@@ -4422,6 +4437,7 @@
 				4A3A08411FCD990A00A50393 /* shop_headImage@3x.png in Resources */,
 				4A3A07FB1FCC0EC700A50393 /* lost_image_tel@3x.png in Resources */,
 				82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */,
+				E405C472216F914100F671CE /* 关于红岩.png in Resources */,
 				9630E4971FAF07D200874EB9 /* 1@3x.png in Resources */,
 				F242DE841EBCB2BC005AC411 /* 删除@3x.png in Resources */,
 				829C967D2127DCE000B4B05C /* AAJSFiles.bundle in Resources */,
@@ -4448,7 +4464,6 @@
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
 				829C96732127DCE000B4B05C /* 报道流程.png in Resources */,
 				9630E4C71FAF07D300874EB9 /* 没有记录@3x.png in Resources */,
-				F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */,
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
 				F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */,
 				4A3A07F21FCC0EC700A50393 /* lost_image_many@2x.png in Resources */,
@@ -4483,6 +4498,7 @@
 				F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */,
 				823D41671F6407D300C99D9B /* icon_upvote_outside_notselect@3x.png in Resources */,
 				F20027051F404BE100360991 /* courseMengbi.jpg in Resources */,
+				E405C46E216F914100F671CE /* 成绩单灰.png in Resources */,
 				F242DE861EBCB2BC005AC411 /* 周数@2x.png in Resources */,
 				F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
@@ -4499,6 +4515,7 @@
 				829C966B2127DCE000B4B05C /* 小车.png in Resources */,
 				F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
+				E405C473216F914100F671CE /* 重邮地图.png in Resources */,
 				9630E4AD1FAF07D200874EB9 /* login_password.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				9630E4B11FAF07D200874EB9 /* scroll@3x.png in Resources */,
@@ -4600,7 +4617,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */,
 				829C96772127DCE000B4B05C /* SYCCollageTableViewController.m in Sources */,
 				D081E6682152488D00245FD9 /* WYCWeekChooseBar.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
@@ -4742,7 +4758,6 @@
 				9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
-				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
 				829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
@@ -4762,7 +4777,6 @@
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				829C95C82127DABE00B4B05C /* MilitarytrainingShowViewController.m in Sources */,
-				F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				829C96922127DCE000B4B05C /* AAMarker.m in Sources */,
