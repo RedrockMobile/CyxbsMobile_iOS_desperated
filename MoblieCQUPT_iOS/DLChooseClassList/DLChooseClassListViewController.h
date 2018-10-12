@@ -12,7 +12,8 @@
 
 
 
-- (void)initWithClassNum:(NSString *)classNum;
+@property(nonatomic, strong) NSString *course_num;
+@property(nonatomic, strong) NSString *classroom;
 
 @end
 

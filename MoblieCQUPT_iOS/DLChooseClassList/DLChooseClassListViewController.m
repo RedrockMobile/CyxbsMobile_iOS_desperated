@@ -14,29 +14,24 @@
 @interface DLChooseClassListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(strong, nonatomic) UITableView *listTab;
 @property(strong, nonatomic) NSMutableArray *dataArray;
-@property(nonatomic, strong) NSString *classNum;
 @end
 
 @implementation DLChooseClassListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"选课名单";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
-    
-    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
+    self.dataArray = [@[] mutableCopy];
+    [self loadData];
+    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
     self.listTab.delegate = self;
     self.listTab.dataSource = self;
     self.listTab.backgroundColor = [UIColor clearColor];
     self.listTab.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.view addSubview:_listTab];
-    //[self initWithClassNum:@"A2010770"];
 }
 
-- (void)initWithClassNum:(NSString *)classNum{
-    
-    self.classNum = classNum;
-    [self loadData];
-}
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -66,40 +61,27 @@
 }
 
 - (void)loadData{
-    NSDictionary *dic = @{@"stuName": @"易烊千玺",
-                          @"stuId": @"12345678",
-                          @"major": @"电子信息工程",
-                          @"classId": @"12345678",
-                          @"school": @"通信与信息工程学院",
-                          @"year": @"2017",
-                          @"stuSex": @"男"
-                          };
-    self.dataArray = [NSMutableArray array];
-    for (int i = 0; i < 10; i++) {
-        ListModel *model = [ListModel ListModelWithDict:dic];
-        [self.dataArray addObject:model];
-    }
-    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *urlStr = [NSString stringWithFormat:@"ip/zhangyou01/search/kebiao/xkmd?jxb=%@",self.classNum];
+    //    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    NSString *urlStr = [NSString stringWithFormat:@"http://wx.yyeke.com/api/search/coursetable/xkmdsearch?course_num=%@&classroom=%@",self.course_num,self.classroom];
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSArray *arr = responseObject[@"data"];
-        for (NSDictionary *dic in arr) {
-            ListModel *model = [ListModel ListModelWithDict:dic];
-            [self.dataArray addObject:model];
+        if (arr != nil && ![arr isKindOfClass:[NSNull class]] && arr.count != 0){
+            for (NSDictionary *dic in arr) {
+                ListModel *model = [ListModel ListModelWithDict:dic];
+                [self.dataArray addObject:model];
+            }
+            [self.listTab reloadData];
         }
-        [self.listTab reloadData];
+        else{
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"名单空了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+            [alert show];
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        UIAlertController *controller=[UIAlertController alertControllerWithTitle:@"网络错误" message:@"数据加载失败" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *act1=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
-        }];
-        
-        [controller addAction:act1];
-        
-        [self presentViewController:controller animated:YES completion:^{
-            
-        }];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+        [alert show];
+        NSLog(@"failure --- %@",error);
     }];
     
 }

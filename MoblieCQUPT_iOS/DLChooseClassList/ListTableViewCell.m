@@ -17,7 +17,7 @@
     if (self = [super initWithStyle:style reuseIdentifier: reuseIdentifier])
     {
         UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 85*HEIGHT)];
-        bkg.image = [UIImage imageNamed:@"whitepiece"];
+        bkg.image = [UIImage imageNamed:@"白底"];
         bkg.backgroundColor = [UIColor clearColor];
         bkg.layer.shadowColor = [UIColor blackColor].CGColor;
         bkg.layer.shadowOffset = CGSizeMake(0, 0);
@@ -31,60 +31,60 @@
         [self.MoreBtn addTarget:self action:@selector(showMoreText:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.MoreBtn];
         
-        self.nameLab = [[UILabel alloc] initWithFrame:CGRectMake(30*WIDTH, 30*HEIGHT, 50*WIDTH, 50*HEIGHT)];
+        self.nameLab = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 20*HEIGHT, 200*WIDTH, 50*HEIGHT)];
         self.nameLab.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:17*HEIGHT];
         self.nameLab.numberOfLines = 2;
         [self.contentView addSubview:self.nameLab];
         
-        self.stuNumLab = [[UILabel alloc] initWithFrame:CGRectMake(90*WIDTH, 30*HEIGHT, 250*WIDTH, 20*HEIGHT)];
+        self.stuNumLab = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 65*HEIGHT, 250*WIDTH, 20*HEIGHT)];
         self.stuNumLab.font = [UIFont systemFontOfSize:13*HEIGHT];
         self.stuNumLab.textAlignment = NSTextAlignmentLeft;
         self.stuNumLab.textColor = [UIColor darkGrayColor];
         [self.contentView addSubview:self.stuNumLab];
         
-        self.schoolLab = [[UILabel alloc] initWithFrame:CGRectMake(90*WIDTH, 60*HEIGHT, 250*WIDTH, 20*HEIGHT)];
+        self.schoolLab = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 210*HEIGHT, 250*WIDTH, 20*HEIGHT)];
         self.schoolLab.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.schoolLab.textAlignment = NSTextAlignmentLeft;
         self.schoolLab.textColor = [UIColor darkGrayColor];
-        [self.contentView addSubview:self.schoolLab];
         
         self.lab1 = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 120*HEIGHT, 70*WIDTH, 20*HEIGHT)];
         self.lab1.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.lab1.textAlignment = NSTextAlignmentLeft;
         self.lab1.text = @"年级：";
-        self.lab1.textColor = [UIColor lightGrayColor];
+        self.lab1.textColor = [UIColor darkGrayColor];
 
         self.year = [[UILabel alloc] initWithFrame:CGRectMake(110*WIDTH, 120*HEIGHT, 100*WIDTH, 20*HEIGHT)];
         self.year.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.year.textAlignment = NSTextAlignmentLeft;
-        
+        self.year.textColor = [UIColor darkGrayColor];
         self.lab2 = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 180*HEIGHT, 70*WIDTH, 20*HEIGHT)];
         self.lab2.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.lab2.textAlignment = NSTextAlignmentLeft;
         self.lab2.text = @"专业：";
-        self.lab2.textColor = [UIColor lightGrayColor];
+        self.lab2.textColor = [UIColor darkGrayColor];
         
         self.majorLab = [[UILabel alloc] initWithFrame:CGRectMake(110*WIDTH, 180*HEIGHT, 200*WIDTH, 20*HEIGHT)];
         self.majorLab.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.majorLab.textAlignment = NSTextAlignmentLeft;
-        
+        self.majorLab.textColor = [UIColor darkGrayColor];
         self.lab3 = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 150*HEIGHT, 70*WIDTH, 20*HEIGHT)];
         self.lab3.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.lab3.textAlignment = NSTextAlignmentLeft;
         self.lab3.text = @"班级：";
-        self.lab3.textColor = [UIColor lightGrayColor];
+        self.lab3.textColor = [UIColor darkGrayColor];
         self.classIdLab = [[UILabel alloc] initWithFrame:CGRectMake(110*WIDTH, 150*HEIGHT, 200*WIDTH, 20*HEIGHT)];
         self.classIdLab.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:14*HEIGHT];
         self.classIdLab.textAlignment = NSTextAlignmentLeft;
-        
+        self.classIdLab.textColor = [UIColor darkGrayColor];
         self.lab4 = [[UILabel alloc] initWithFrame:CGRectMake(40*WIDTH, 90*HEIGHT, 70*WIDTH, 20*HEIGHT)];
         self.lab4.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:13*HEIGHT];
         self.lab4.textAlignment = NSTextAlignmentLeft;
         self.lab4.text = @"性别：";
-        self.lab4.textColor = [UIColor lightGrayColor];
+        self.lab4.textColor = [UIColor darkGrayColor];
         self.stuSecLab = [[UILabel alloc] initWithFrame:CGRectMake(110*WIDTH, 90*HEIGHT, 200*WIDTH, 20*HEIGHT)];
         self.stuSecLab.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:14*HEIGHT];
         self.stuSecLab.textAlignment = NSTextAlignmentLeft;
+        self.stuSecLab.textColor = [UIColor darkGrayColor];
         
     }
     self.backgroundColor = [UIColor clearColor];
@@ -106,22 +106,23 @@
 }
 
 + (CGFloat)cellMoreHeight{
-    return 215*HEIGHT;
+    return 250*HEIGHT;
 }
 
 - (void)setModel:(ListModel *)Model{
     _Model = Model;
     _nameLab.text = self.Model.stuName;
-    _stuNumLab.text = [NSString stringWithFormat:@"学号：  %@",self.Model.stuNum];
-    _schoolLab.text = [NSString stringWithFormat:@"学院：  %@",self.Model.school];
+    _stuNumLab.text = [NSString stringWithFormat:@"学号：      %@",self.Model.stuNum];
+    _schoolLab.text = [NSString stringWithFormat:@"学院：     %@",self.Model.school];
     if (self.Model.isShowMore) {
-        _bkg.image = [UIImage imageNamed:@"unfold"];
-        _bkg.frame = CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 200*HEIGHT);
-        [_MoreBtn setImage:[UIImage imageNamed:@"down"] forState:UIControlStateNormal];
+        _bkg.image = [UIImage imageNamed:@"展开白底"];
+        _bkg.frame = CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 235*HEIGHT);
+        [_MoreBtn setImage:[UIImage imageNamed:@"向上"] forState:UIControlStateNormal];
         _year.text = self.Model.year;
         _stuSecLab.text = self.Model.stuSex;
         _majorLab.text = self.Model.major;
         _classIdLab.text = self.Model.classId;
+        [self.contentView addSubview:self.schoolLab];
         [self.contentView addSubview: _year];
         [self.contentView addSubview: _classIdLab];
         [self.contentView addSubview: _majorLab];
@@ -132,7 +133,7 @@
         [self.contentView addSubview: _lab4];
     }
     else{
-        [_MoreBtn setImage:[UIImage imageNamed:@"Up"] forState:UIControlStateNormal];
+        [_MoreBtn setImage:[UIImage imageNamed:@"向下"] forState:UIControlStateNormal];
         _bkg.frame = CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 85*HEIGHT);
         [_year removeFromSuperview];
         [_classIdLab removeFromSuperview];
