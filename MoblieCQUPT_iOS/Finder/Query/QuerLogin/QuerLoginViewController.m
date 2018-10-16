@@ -47,7 +47,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 @property (nonatomic, strong) NSDictionary *dataDic;
 
-//@property (nonatomic, strong) UIView *infoBigView;
 @end
 
 @implementation QuerLoginViewController
@@ -59,13 +58,11 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     //修改“查电费”View位置
     QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT * 1.5, WIDTH, HEIGHT / 3)];
-    //QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CGRectMake(0, HEIGHT * 0.2, WIDTH, HEIGHT / 3)];
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
     NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     
-    //
     QuerLoginModel *qlModel = [[QuerLoginModel alloc] init];
     [qlModel RequestWithBuildingNum:[NSString stringWithFormat:@"%@",dataDic[@"build"]] RoomNum:[NSString stringWithFormat:@"%@",dataDic[@"room"]]];
 
@@ -150,8 +147,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStylePlain target:self action:@selector(showMinTableView)];
     
-//    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"rightIcon.png"] style:UIBarButtonItemStylePlain target:self action:@selector(showMinTableView)];
-    
     UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(0, 435, 375, 10)];
     label.backgroundColor = [UIColor colorWithRed:240/255.0 green:241/255.0 blue:245/255.0 alpha:1];
     [self.view addSubview:label];
@@ -173,11 +168,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
     [self presentViewController:_alertController animated:YES completion:nil];
 }
-
-//- (void)removeInfoBigView{
-//    _infoBigView.hidden = YES;
-//    _infoBigView = nil;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     QuerPullTableViewCell *cell = [QuerPullTableViewCell cellWithTableView:tableView];

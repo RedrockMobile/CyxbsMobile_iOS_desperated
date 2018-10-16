@@ -100,7 +100,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"remindImage.png"]];
     //修改图片位置
     imageView.frame = CGRectMake(0, HEADERHEIGHT, WIDTH, (HEIGHT - 60) / 2);
-    //imageView.frame = CGRectMake(0, 58, WIDTH, (HEIGHT - 60) / 2);
     imageView.contentMode = UIViewContentModeScaleToFill;
     
     [self.view addSubview:imageView];
@@ -135,7 +134,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     _remindTextField = [[UITextField alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.34, SCREENHEIGHT * 0.69, SCREENWIDTH * 0.45, SCREENWIDTH / 9)];
     _remindTextField.textAlignment = NSTextAlignmentLeft;
     _remindTextField.keyboardType = UIKeyboardTypeNumberPad;
-    //_remindTextField.autoresizingMask =  UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     if (dataDic[@"remind"]) {
         NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@",dataDic[@"remind"]] attributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:18/255.0 green:208/255.0 blue:255/255.0 alpha:1]}];
         [content addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Bold" size:font(52)]} range:NSMakeRange(0, content.length)];
@@ -147,8 +145,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.34, SCREENHEIGHT * 0.75, SCREENWIDTH * 0.45, 1)];
     lineLabel.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.5];
     _remindTextField.tintColor = [UIColor blackColor];
-    //_remindTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
     [self.view addSubview:lineLabel];
     [self.view addSubview:_remindTextField];
 }
@@ -220,7 +216,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
             [self.view addSubview:_infoBigView];
     }
     else{
-        //[_remindTextField setText:nil];
         InstallRoomDoneViewController *irdVC = [[InstallRoomDoneViewController alloc] init];
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];

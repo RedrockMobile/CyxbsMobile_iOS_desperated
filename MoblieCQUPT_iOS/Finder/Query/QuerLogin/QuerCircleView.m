@@ -15,19 +15,6 @@
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
-//CG_INLINE CGRect
-//CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
-//
-//    CGRect rect;
-//    rect.origin.x = x * autoSizeScaleX;
-//    rect.origin.y = y * autoSizeScaleY;
-//    rect.size.width = width * autoSizeScaleY;
-//    rect.size.height = height * autoSizeScaleY;
-//    return rect;
-//}
-
-//#define  DEGREES_TO_RADIANS(angle) ((M_PI * angle) / 180)
-
 @interface QuerCircleView ()
 
 //日均量显示标签
@@ -204,7 +191,6 @@
     self.contentMode = UIViewContentModeRedraw;
     [self addSubview:self.elcLabel];
 }
-
 
 //刻度圆环
 - (void)drawPointingCircle{

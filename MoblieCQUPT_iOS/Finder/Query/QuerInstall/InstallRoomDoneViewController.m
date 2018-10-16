@@ -24,21 +24,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     return rect;
 }
 
-//@interface InstallRoomDoneViewController () <MyNavigationControllerShouldPopProtocol>
-
-//@end
-
 @implementation InstallRoomDoneViewController
-
-//- (BOOL)my_navigationControllershouldPopWhenSystemBackBtnSelected:(id)navigationController{
-//    QuerLoginViewController *querVC = [[QuerLoginViewController alloc] init];
-//    for (UIViewController *controller in self.navigationController.viewControllers) {
-//        if ([controller isKindOfClass:[querVC class]]) {
-//               [self.navigationController popToViewController:controller animated:YES];
-//        }
-//    }
-//    return NO;
-//}
 
 - (void)viewDidAppear:(BOOL)animated{
     NSMutableArray *array = [self.navigationController.viewControllers mutableCopy];
