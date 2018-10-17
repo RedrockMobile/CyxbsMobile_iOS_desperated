@@ -9,7 +9,9 @@
 #import "DLChooseClassListViewController.h"
 #import "ListModel.h"
 #import "ListTableViewCell.h"
-#import <AFNetworking.h>
+#import "HttpClient.h"
+
+#define LIST_URL @"http://wx.yyeke.com/api/search/coursetable/xkmdsearch?course_num=%@&classroom=%@"
 
 @interface DLChooseClassListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(strong, nonatomic) UITableView *listTab;
@@ -23,13 +25,14 @@
     self.title = @"选课名单";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     self.dataArray = [@[] mutableCopy];
-    [self loadData];
-    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height) style:UITableViewStylePlain];
+    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStylePlain];
     self.listTab.delegate = self;
     self.listTab.dataSource = self;
     self.listTab.backgroundColor = [UIColor clearColor];
     self.listTab.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.view addSubview:_listTab];
+    
+    [self loadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -61,11 +64,10 @@
 }
 
 - (void)loadData{
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    //    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = [NSString stringWithFormat:@"http://wx.yyeke.com/api/search/coursetable/xkmdsearch?course_num=%@&classroom=%@",self.course_num,self.classroom];
+    NSString *urlStr = [NSString stringWithFormat:LIST_URL, self.course_num, self.classroom];
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[HttpClient defaultClient] requestWithPath:urlStr method: HttpRequestGet parameters:nil prepareExecute:nil progress:^(NSProgress *progress) {
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *arr = responseObject[@"data"];
         if (arr != nil && ![arr isKindOfClass:[NSNull class]] && arr.count != 0){
             for (NSDictionary *dic in arr) {
@@ -75,15 +77,22 @@
             [self.listTab reloadData];
         }
         else{
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"名单空了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
-            [alert show];
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"数据错误" message:@"名单空了m(._.)m" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *act = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [alert addAction:act];
+            [self presentViewController:alert animated:YES completion:nil];
         }
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
-        [alert show];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络错误" message:@"你的网络坏掉了m(._.)m" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *act = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        [alert addAction:act];
+        [self presentViewController:alert animated:YES completion:nil];
         NSLog(@"failure --- %@",error);
     }];
-    
 }
 
 

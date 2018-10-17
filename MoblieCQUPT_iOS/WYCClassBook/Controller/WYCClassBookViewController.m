@@ -612,8 +612,8 @@
 //选课列表预留
 - (void)clickChooseClassListBtn:(NSDictionary *)dic{
     DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
-    vc.course_num = dic[@"course_num"];
-    vc.classroom = dic[@"classroom"];
+    //vc.course_num = dic[@"course_num"];
+    //vc.classroom = dic[@"classroom"];
     [self hiddenDetailView];
     [self.navigationController pushViewController:vc animated:YES];
 }

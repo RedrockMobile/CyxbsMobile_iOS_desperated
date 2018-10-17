@@ -43,7 +43,7 @@
         self.ContentLabel.textColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.4000 alpha:1.0];
         [self.contentView addSubview:self.ContentLabel];
         
-        self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(30*WIDTH, 40*WIDTH, 316*WIDTH, 164*HEIGHT)];
+        self.imgView = [[UIImageView alloc]initWithFrame:CGRectMake(30*WIDTH, 40*HEIGHT, 316*WIDTH, 164*HEIGHT)];
         self.imgView.userInteractionEnabled = YES;
         self.imgView.layer.cornerRadius=10;
         self.imgView.clipsToBounds=YES;

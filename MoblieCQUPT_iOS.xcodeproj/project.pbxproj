@@ -10,6 +10,7 @@
 		28375C7B212AC96B00DCA738 /* Child_ChatViewControl01.m in Sources */ = {isa = PBXBuildFile; fileRef = 28375C7A212AC96B00DCA738 /* Child_ChatViewControl01.m */; };
 		28375C80212AD4A300DCA738 /* Child_ChatViewControl02.m in Sources */ = {isa = PBXBuildFile; fileRef = 28375C7F212AD4A300DCA738 /* Child_ChatViewControl02.m */; };
 		28375C82212B91A400DCA738 /* 字体管家胖丫儿体.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28375C81212B912300DCA738 /* 字体管家胖丫儿体.ttf */; };
+		2F02755F21774F7400697C26 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F02755E21774F7400697C26 /* Media.xcassets */; };
 		2FB222F32121CFE10009EB39 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F22121CFE10009EB39 /* DLNecessityModel.m */; };
 		2FB222F62121D0240009EB39 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F52121D0240009EB39 /* FMNecessityTableViewCell.m */; };
 		2FB222F92121D0380009EB39 /* addView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FB222F82121D0380009EB39 /* addView.m */; };
@@ -722,6 +723,7 @@
 		28375C7E212AD4A300DCA738 /* Child_ChatViewControl02.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Child_ChatViewControl02.h; path = MoblieCQUPT_iOS/Finder/Freshman2018/ChatOnLine/HometownGroup/Child_ChatViewControl02.h; sourceTree = SOURCE_ROOT; };
 		28375C7F212AD4A300DCA738 /* Child_ChatViewControl02.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Child_ChatViewControl02.m; path = MoblieCQUPT_iOS/Finder/Freshman2018/ChatOnLine/HometownGroup/Child_ChatViewControl02.m; sourceTree = SOURCE_ROOT; };
 		28375C81212B912300DCA738 /* 字体管家胖丫儿体.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "字体管家胖丫儿体.ttf"; sourceTree = "<group>"; };
+		2F02755E21774F7400697C26 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		2FB222F12121CFE10009EB39 /* DLNecessityModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLNecessityModel.h; sourceTree = "<group>"; };
 		2FB222F22121CFE10009EB39 /* DLNecessityModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLNecessityModel.m; sourceTree = "<group>"; };
 		2FB222F42121D0240009EB39 /* FMNecessityTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FMNecessityTableViewCell.h; sourceTree = "<group>"; };
@@ -2819,6 +2821,7 @@
 				D07CFD6D2157A9D9008D9EE6 /* ListTableViewCell.m */,
 				D07CFD6C2157A9D9008D9EE6 /* DLChooseClassListViewController.h */,
 				D07CFD682157A9D8008D9EE6 /* DLChooseClassListViewController.m */,
+				2F02755E21774F7400697C26 /* Media.xcassets */,
 			);
 			path = DLChooseClassList;
 			sourceTree = "<group>";
@@ -4415,6 +4418,7 @@
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
 				4A3A08481FCD990A00A50393 /* close@2x.png in Resources */,
+				2F02755F21774F7400697C26 /* Media.xcassets in Resources */,
 				F242DE751EBCB2BC005AC411 /* remind1@2x.png in Resources */,
 				82D6856B1F6E4F4B004A5C7D /* icon_down@3x.png in Resources */,
 				82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */,

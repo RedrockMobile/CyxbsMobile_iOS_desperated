@@ -12,8 +12,8 @@
 
 
 
-@property(nonatomic, strong) NSString *course_num;
-@property(nonatomic, strong) NSString *classroom;
+@property(nonatomic, copy) NSString *course_num;
+@property(nonatomic, copy) NSString *classroom;
 
 @end
 

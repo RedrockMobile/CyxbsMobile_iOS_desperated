@@ -17,7 +17,7 @@
     if (self = [super initWithStyle:style reuseIdentifier: reuseIdentifier])
     {
         UIImageView *bkg = [[UIImageView alloc]initWithFrame:CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 85*HEIGHT)];
-        bkg.image = [UIImage imageNamed:@"白底"];
+        bkg.image = [UIImage imageNamed:@"white_bkg"];
         bkg.backgroundColor = [UIColor clearColor];
         bkg.layer.shadowColor = [UIColor blackColor].CGColor;
         bkg.layer.shadowOffset = CGSizeMake(0, 0);
@@ -27,7 +27,7 @@
         self.bkg = bkg;
         
         self.MoreBtn = [[UIButton alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width-70, 45, 30, 30)];
-        [self.MoreBtn setImage:[UIImage imageNamed:@"Up"] forState:UIControlStateNormal];
+        [self.MoreBtn setImage:[UIImage imageNamed:@"downward"] forState:UIControlStateNormal];
         [self.MoreBtn addTarget:self action:@selector(showMoreText:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.MoreBtn];
         
@@ -115,9 +115,9 @@
     _stuNumLab.text = [NSString stringWithFormat:@"学号：      %@",self.Model.stuNum];
     _schoolLab.text = [NSString stringWithFormat:@"学院：     %@",self.Model.school];
     if (self.Model.isShowMore) {
-        _bkg.image = [UIImage imageNamed:@"展开白底"];
+        _bkg.image = [UIImage imageNamed:@"unfold_white_bkg"];
         _bkg.frame = CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 235*HEIGHT);
-        [_MoreBtn setImage:[UIImage imageNamed:@"向上"] forState:UIControlStateNormal];
+        [_MoreBtn setImage:[UIImage imageNamed:@"upward"] forState:UIControlStateNormal];
         _year.text = self.Model.year;
         _stuSecLab.text = self.Model.stuSex;
         _majorLab.text = self.Model.major;
@@ -133,7 +133,7 @@
         [self.contentView addSubview: _lab4];
     }
     else{
-        [_MoreBtn setImage:[UIImage imageNamed:@"向下"] forState:UIControlStateNormal];
+        [_MoreBtn setImage:[UIImage imageNamed:@"downward"] forState:UIControlStateNormal];
         _bkg.frame = CGRectMake(15*WIDTH, 15*HEIGHT, 345*WIDTH, 85*HEIGHT);
         [_year removeFromSuperview];
         [_classIdLab removeFromSuperview];
