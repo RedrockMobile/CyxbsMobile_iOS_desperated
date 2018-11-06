@@ -358,6 +358,25 @@
 		E40470D4212E92DC00121AEE /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */; };
 		E40470DB212EA3EE00121AEE /* 入学必备1.png in Resources */ = {isa = PBXBuildFile; fileRef = E40470DA212EA3EE00121AEE /* 入学必备1.png */; };
 		E40470DD212EA40F00121AEE /* 入学必备2.png in Resources */ = {isa = PBXBuildFile; fileRef = E40470DC212EA40F00121AEE /* 入学必备2.png */; };
+		E405C44E216F903000F671CE /* SYCCustomToolsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C448216F902F00F671CE /* SYCCustomToolsControl.m */; };
+		E405C44F216F903000F671CE /* SYCEditToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C44A216F902F00F671CE /* SYCEditToolsView.m */; };
+		E405C450216F903000F671CE /* SYCEditToolsViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C44B216F902F00F671CE /* SYCEditToolsViewHeader.m */; };
+		E405C45D216F904300F671CE /* LZCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C453216F904100F671CE /* LZCarouselModel.m */; };
+		E405C45E216F904300F671CE /* SYCCustomLayoutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C455216F904100F671CE /* SYCCustomLayoutModel.m */; };
+		E405C45F216F904300F671CE /* SYCPictureDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C457216F904200F671CE /* SYCPictureDisplay.m */; };
+		E405C460216F904300F671CE /* SYCToolsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C458216F904200F671CE /* SYCToolsCell.m */; };
+		E405C461216F904300F671CE /* SYCToolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C459216F904200F671CE /* SYCToolModel.m */; };
+		E405C462216F904300F671CE /* SYCFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C45A216F904200F671CE /* SYCFinderViewController.m */; };
+		E405C46D216F914100F671CE /* 课前提醒.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C463216F913D00F671CE /* 课前提醒.png */; };
+		E405C46E216F914100F671CE /* 成绩单灰.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C464216F913D00F671CE /* 成绩单灰.png */; };
+		E405C46F216F914100F671CE /* 没课约.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C465216F913E00F671CE /* 没课约.png */; };
+		E405C470216F914100F671CE /* 志愿时长圆.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C466216F913E00F671CE /* 志愿时长圆.png */; };
+		E405C471216F914100F671CE /* 校历.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C467216F913E00F671CE /* 校历.png */; };
+		E405C472216F914100F671CE /* 关于红岩.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C468216F913F00F671CE /* 关于红岩.png */; };
+		E405C473216F914100F671CE /* 重邮地图.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C469216F914000F671CE /* 重邮地图.png */; };
+		E405C474216F914100F671CE /* 成绩单.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46A216F914000F671CE /* 成绩单.png */; };
+		E405C475216F914100F671CE /* 空教室.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46B216F914000F671CE /* 空教室.png */; };
+		E405C476216F914100F671CE /* 查电费.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46C216F914000F671CE /* 查电费.png */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -417,7 +436,6 @@
 		F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA571EBCB2BB005AC411 /* AppDelegate.m */; };
 		F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */; };
 		F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F242DA5A1EBCB2BB005AC411 /* Main.storyboard */; };
-		F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA711EBCB2BB005AC411 /* FinderViewController.m */; };
 		F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9A1EBCB2BB005AC411 /* achieveImage.png */; };
 		F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9B1EBCB2BB005AC411 /* angleImage.png */; };
 		F242DDAB1EBCB2BB005AC411 /* buildIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9C1EBCB2BB005AC411 /* buildIcon.png */; };
@@ -647,9 +665,6 @@
 		F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AA1F3C45540063B024 /* login_image_account@3x.png */; };
 		F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AB1F3C45540063B024 /* login_image_password@3x.png */; };
 		F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96AC1F3C45540063B024 /* login_image_password@2x.png */; };
-		F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */; };
-		F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */; };
-		F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */; };
 		F27A93411F4ABC32009860C3 /* remind_image_edit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933D1F4ABC32009860C3 /* remind_image_edit@2x.png */; };
 		F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933E1F4ABC32009860C3 /* remind_image_edit@3x.png */; };
 		F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F27A933F1F4ABC32009860C3 /* remind_image_editing@2x.png */; };
@@ -689,7 +704,6 @@
 		F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */; };
 		F2F194751F68395D0034A3BB /* SplashModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F194741F68395D0034A3BB /* SplashModel.m */; };
 		F2F37F4E200A13B6008E3FDC /* icon_share_weibo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2F37F4D200A13B5008E3FDC /* icon_share_weibo@3x.png */; };
-		F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F2F7409F1F8B6D0700140B25 /* LZCarouselModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -768,8 +782,6 @@
 		4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
 		4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@2x.png"; sourceTree = "<group>"; };
 		4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@3x.png"; sourceTree = "<group>"; };
-		4A3A079D1FCC0EC500A50393 /* find_image_freshman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_freshman@2x.png"; sourceTree = "<group>"; };
-		4A3A079E1FCC0EC500A50393 /* find_image_freshman@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_freshman@3x.png"; sourceTree = "<group>"; };
 		4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@2x.png"; sourceTree = "<group>"; };
 		4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@3x.png"; sourceTree = "<group>"; };
 		4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_lostAndFound@2x.png"; sourceTree = "<group>"; };
@@ -1226,6 +1238,34 @@
 		E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentViewButton.m; sourceTree = "<group>"; };
 		E40470DA212EA3EE00121AEE /* 入学必备1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备1.png"; sourceTree = "<group>"; };
 		E40470DC212EA40F00121AEE /* 入学必备2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备2.png"; sourceTree = "<group>"; };
+		E405C448216F902F00F671CE /* SYCCustomToolsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomToolsControl.m; sourceTree = "<group>"; };
+		E405C449216F902F00F671CE /* SYCEditToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCEditToolsView.h; sourceTree = "<group>"; };
+		E405C44A216F902F00F671CE /* SYCEditToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCEditToolsView.m; sourceTree = "<group>"; };
+		E405C44B216F902F00F671CE /* SYCEditToolsViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCEditToolsViewHeader.m; sourceTree = "<group>"; };
+		E405C44C216F902F00F671CE /* SYCEditToolsViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCEditToolsViewHeader.h; sourceTree = "<group>"; };
+		E405C44D216F903000F671CE /* SYCCustomToolsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCCustomToolsControl.h; sourceTree = "<group>"; };
+		E405C451216F904000F671CE /* SYCToolsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCToolsCell.h; sourceTree = "<group>"; };
+		E405C452216F904100F671CE /* SYCPictureDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCPictureDisplay.h; sourceTree = "<group>"; };
+		E405C453216F904100F671CE /* LZCarouselModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCarouselModel.m; sourceTree = "<group>"; };
+		E405C454216F904100F671CE /* SYCFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCFinderViewController.h; sourceTree = "<group>"; };
+		E405C455216F904100F671CE /* SYCCustomLayoutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomLayoutModel.m; sourceTree = "<group>"; };
+		E405C456216F904100F671CE /* LZCarouselModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCarouselModel.h; sourceTree = "<group>"; };
+		E405C457216F904200F671CE /* SYCPictureDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCPictureDisplay.m; sourceTree = "<group>"; };
+		E405C458216F904200F671CE /* SYCToolsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCToolsCell.m; sourceTree = "<group>"; };
+		E405C459216F904200F671CE /* SYCToolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCToolModel.m; sourceTree = "<group>"; };
+		E405C45A216F904200F671CE /* SYCFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCFinderViewController.m; sourceTree = "<group>"; };
+		E405C45B216F904200F671CE /* SYCCustomLayoutModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCCustomLayoutModel.h; sourceTree = "<group>"; };
+		E405C45C216F904200F671CE /* SYCToolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCToolModel.h; sourceTree = "<group>"; };
+		E405C463216F913D00F671CE /* 课前提醒.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "课前提醒.png"; sourceTree = "<group>"; };
+		E405C464216F913D00F671CE /* 成绩单灰.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成绩单灰.png"; sourceTree = "<group>"; };
+		E405C465216F913E00F671CE /* 没课约.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "没课约.png"; sourceTree = "<group>"; };
+		E405C466216F913E00F671CE /* 志愿时长圆.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "志愿时长圆.png"; sourceTree = "<group>"; };
+		E405C467216F913E00F671CE /* 校历.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校历.png"; sourceTree = "<group>"; };
+		E405C468216F913F00F671CE /* 关于红岩.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于红岩.png"; sourceTree = "<group>"; };
+		E405C469216F914000F671CE /* 重邮地图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重邮地图.png"; sourceTree = "<group>"; };
+		E405C46A216F914000F671CE /* 成绩单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成绩单.png"; sourceTree = "<group>"; };
+		E405C46B216F914000F671CE /* 空教室.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空教室.png"; sourceTree = "<group>"; };
+		E405C46C216F914000F671CE /* 查电费.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "查电费.png"; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -1289,8 +1329,6 @@
 		F242DA571EBCB2BB005AC411 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F242DA591EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F242DA5B1EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F242DA701EBCB2BB005AC411 /* FinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderViewController.h; sourceTree = "<group>"; };
-		F242DA711EBCB2BB005AC411 /* FinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderViewController.m; sourceTree = "<group>"; };
 		F242DA9A1EBCB2BB005AC411 /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
 		F242DA9B1EBCB2BB005AC411 /* angleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleImage.png; sourceTree = "<group>"; };
 		F242DA9C1EBCB2BB005AC411 /* buildIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildIcon.png; sourceTree = "<group>"; };
@@ -1649,11 +1687,6 @@
 		F2722DAD1FBAD5C3007C41F6 /* find_image_food@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@3x.png"; sourceTree = "<group>"; };
 		F2722DAE1FBAD5C4007C41F6 /* find_image_hongyan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@3x.png"; sourceTree = "<group>"; };
 		F2722DAF1FBAD5C4007C41F6 /* find_image_query@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_query@2x.png"; sourceTree = "<group>"; };
-		F2770B3E1F453CF700BB6186 /* FinderCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FinderCollectionViewFlowLayout.h; path = MoblieCQUPT_iOS/Finder/FinderCollectionViewFlowLayout.h; sourceTree = SOURCE_ROOT; };
-		F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FinderCollectionViewFlowLayout.m; path = MoblieCQUPT_iOS/Finder/FinderCollectionViewFlowLayout.m; sourceTree = SOURCE_ROOT; };
-		F2770B411F4543BF00BB6186 /* FinderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderCollectionViewCell.h; sourceTree = "<group>"; };
-		F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderCollectionViewCell.m; sourceTree = "<group>"; };
-		F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderCollectionViewCell.xib; sourceTree = "<group>"; };
 		F2770B661F45789100BB6186 /* cqupt1@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt1@2x.jpg"; sourceTree = "<group>"; };
 		F27A933D1F4ABC32009860C3 /* remind_image_edit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_edit@2x.png"; sourceTree = "<group>"; };
 		F27A933E1F4ABC32009860C3 /* remind_image_edit@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remind_image_edit@3x.png"; sourceTree = "<group>"; };
@@ -1723,8 +1756,6 @@
 		F2F194731F68395D0034A3BB /* SplashModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashModel.h; sourceTree = "<group>"; };
 		F2F194741F68395D0034A3BB /* SplashModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashModel.m; sourceTree = "<group>"; };
 		F2F37F4D200A13B5008E3FDC /* icon_share_weibo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_share_weibo@3x.png"; sourceTree = "<group>"; };
-		F2F7409E1F8B6D0700140B25 /* LZCarouselModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = LZCarouselModel.h; path = MoblieCQUPT_iOS/Finder/LZCarouselModel.h; sourceTree = SOURCE_ROOT; };
-		F2F7409F1F8B6D0700140B25 /* LZCarouselModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = LZCarouselModel.m; path = MoblieCQUPT_iOS/Finder/LZCarouselModel.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1923,6 +1954,16 @@
 		4A3A07971FCC0EC500A50393 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E405C46C216F914000F671CE /* 查电费.png */,
+				E405C46A216F914000F671CE /* 成绩单.png */,
+				E405C464216F913D00F671CE /* 成绩单灰.png */,
+				E405C468216F913F00F671CE /* 关于红岩.png */,
+				E405C463216F913D00F671CE /* 课前提醒.png */,
+				E405C46B216F914000F671CE /* 空教室.png */,
+				E405C465216F913E00F671CE /* 没课约.png */,
+				E405C467216F913E00F671CE /* 校历.png */,
+				E405C466216F913E00F671CE /* 志愿时长圆.png */,
+				E405C469216F914000F671CE /* 重邮地图.png */,
 				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
 				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
 				4A3A08391FCD990900A50393 /* Address@2x.png */,
@@ -1942,8 +1983,6 @@
 				4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */,
 				4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */,
 				4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */,
-				4A3A079D1FCC0EC500A50393 /* find_image_freshman@2x.png */,
-				4A3A079E1FCC0EC500A50393 /* find_image_freshman@3x.png */,
 				4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */,
 				4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */,
 				4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */,
@@ -2518,6 +2557,12 @@
 		82B66EE4211AD2A700FA82F1 /* Freshman2018 */ = {
 			isa = PBXGroup;
 			children = (
+				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
+				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
+				829C95942127DABD00B4B05C /* FreshmanModel.h */,
+				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
+				824D4910212A782200F38893 /* freshman_button@2x.png */,
+				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				829C95DF2127DCDE00B4B05C /* 主页 */,
 				829C95F72127DCDF00B4B05C /* 数据揭秘 */,
 				829C96492127DCDF00B4B05C /* 重邮风采 */,
@@ -2878,6 +2923,39 @@
 			path = "标签页";
 			sourceTree = "<group>";
 		};
+		E405C446216F900000F671CE /* SYCMainPage */ = {
+			isa = PBXGroup;
+			children = (
+				E405C456216F904100F671CE /* LZCarouselModel.h */,
+				E405C453216F904100F671CE /* LZCarouselModel.m */,
+				E405C45B216F904200F671CE /* SYCCustomLayoutModel.h */,
+				E405C455216F904100F671CE /* SYCCustomLayoutModel.m */,
+				E405C454216F904100F671CE /* SYCFinderViewController.h */,
+				E405C45A216F904200F671CE /* SYCFinderViewController.m */,
+				E405C452216F904100F671CE /* SYCPictureDisplay.h */,
+				E405C457216F904200F671CE /* SYCPictureDisplay.m */,
+				E405C45C216F904200F671CE /* SYCToolModel.h */,
+				E405C459216F904200F671CE /* SYCToolModel.m */,
+				E405C451216F904000F671CE /* SYCToolsCell.h */,
+				E405C458216F904200F671CE /* SYCToolsCell.m */,
+				E405C447216F901800F671CE /* EditPage */,
+			);
+			path = SYCMainPage;
+			sourceTree = "<group>";
+		};
+		E405C447216F901800F671CE /* EditPage */ = {
+			isa = PBXGroup;
+			children = (
+				E405C44D216F903000F671CE /* SYCCustomToolsControl.h */,
+				E405C448216F902F00F671CE /* SYCCustomToolsControl.m */,
+				E405C449216F902F00F671CE /* SYCEditToolsView.h */,
+				E405C44A216F902F00F671CE /* SYCEditToolsView.m */,
+				E405C44C216F902F00F671CE /* SYCEditToolsViewHeader.h */,
+				E405C44B216F902F00F671CE /* SYCEditToolsViewHeader.m */,
+			);
+			path = EditPage;
+			sourceTree = "<group>";
+		};
 		E4AFDBF7213241230022BB01 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -2957,13 +3035,8 @@
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
+				E405C446216F900000F671CE /* SYCMainPage */,
 				82B66EE4211AD2A700FA82F1 /* Freshman2018 */,
-				829C95862127D91F00B4B05C /* FreshMan2018ViewController.h */,
-				829C958D2127D91F00B4B05C /* FreshMan2018ViewController.m */,
-				829C95942127DABD00B4B05C /* FreshmanModel.h */,
-				829C95C42127DABE00B4B05C /* FreshmanModel.m */,
-				824D4910212A782200F38893 /* freshman_button@2x.png */,
-				824D490F212A782200F38893 /* freshman_button@3x.png */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
@@ -2971,15 +3044,6 @@
 				F242DA981EBCB2BB005AC411 /* Query */,
 				F242DAC71EBCB2BB005AC411 /* RedrockWebsite */,
 				F242DAFE1EBCB2BB005AC411 /* shake */,
-				F2770B3E1F453CF700BB6186 /* FinderCollectionViewFlowLayout.h */,
-				F2770B3F1F453CF700BB6186 /* FinderCollectionViewFlowLayout.m */,
-				F2F7409E1F8B6D0700140B25 /* LZCarouselModel.h */,
-				F2F7409F1F8B6D0700140B25 /* LZCarouselModel.m */,
-				F242DA701EBCB2BB005AC411 /* FinderViewController.h */,
-				F242DA711EBCB2BB005AC411 /* FinderViewController.m */,
-				F2770B411F4543BF00BB6186 /* FinderCollectionViewCell.h */,
-				F2770B421F4543BF00BB6186 /* FinderCollectionViewCell.m */,
-				F2770B431F4543BF00BB6186 /* FinderCollectionViewCell.xib */,
 			);
 			path = Finder;
 			sourceTree = "<group>";
@@ -4088,6 +4152,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E405C474216F914100F671CE /* 成绩单.png in Resources */,
 				28375C82212B91A400DCA738 /* 字体管家胖丫儿体.ttf in Resources */,
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
@@ -4120,6 +4185,7 @@
 				F20027061F404BE100360991 /* timeTable_image_add@2x.png in Resources */,
 				9630E48E1FAF07D200874EB9 /* QueryLoginViewController.xib in Resources */,
 				9630E4A21FAF07D200874EB9 /* 7@2x.png in Resources */,
+				E405C471216F914100F671CE /* 校历.png in Resources */,
 				829C95C52127DABE00B4B05C /* Militarytraining.xcassets in Resources */,
 				9630E4B81FAF07D200874EB9 /* 展开后@2x.png in Resources */,
 				9630E4C51FAF07D300874EB9 /* 标签矩形@3x.png in Resources */,
@@ -4311,14 +4377,17 @@
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
 				F242DEA31EBCB2BC005AC411 /* 类型@3x.png in Resources */,
+				E405C475216F914100F671CE /* 空教室.png in Resources */,
 				9630E4AF1FAF07D200874EB9 /* login_password@3x.png in Resources */,
 				9630E4C41FAF07D300874EB9 /* 标签矩形@2x.png in Resources */,
+				E405C470216F914100F671CE /* 志愿时长圆.png in Resources */,
 				9630E4AA1FAF07D200874EB9 /* login_number.png in Resources */,
 				F242DEA11EBCB2BC005AC411 /* 箭头@3x.png in Resources */,
 				9630E49F1FAF07D200874EB9 /* 5@3x.png in Resources */,
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				9630E4B51FAF07D200874EB9 /* 地点坐标@3x.png in Resources */,
 				4A3A07F91FCC0EC700A50393 /* lost_image_success@3x.png in Resources */,
+				E405C46F216F914100F671CE /* 没课约.png in Resources */,
 				829C95782127D8A500B4B05C /* rank@3x.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
@@ -4332,6 +4401,7 @@
 				9630E4A81FAF07D200874EB9 /* login_icon@2x.png in Resources */,
 				9630E4B31FAF07D200874EB9 /* volunteer_time_icon.png in Resources */,
 				8291268F21330397002BA8E3 /* mine_image_calendar2.png in Resources */,
+				E405C46D216F914100F671CE /* 课前提醒.png in Resources */,
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
 				4A3A07FF1FCC0EC700A50393 /* shake_image_shake@2x.png in Resources */,
 				82280CB31F60205200A5921E /* LXcommentTitle@3x.png in Resources */,
@@ -4345,6 +4415,7 @@
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
 				F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */,
 				9630E4991FAF07D200874EB9 /* 2@3x.png in Resources */,
+				E405C476216F914100F671CE /* 查电费.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
 				829C95DB2127DABE00B4B05C /* SchollGeneralTableViewCell.xib in Resources */,
@@ -4369,6 +4440,7 @@
 				4A3A08411FCD990A00A50393 /* shop_headImage@3x.png in Resources */,
 				4A3A07FB1FCC0EC700A50393 /* lost_image_tel@3x.png in Resources */,
 				82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */,
+				E405C472216F914100F671CE /* 关于红岩.png in Resources */,
 				9630E4971FAF07D200874EB9 /* 1@3x.png in Resources */,
 				F242DE841EBCB2BC005AC411 /* 删除@3x.png in Resources */,
 				829C967D2127DCE000B4B05C /* AAJSFiles.bundle in Resources */,
@@ -4395,7 +4467,6 @@
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
 				829C96732127DCE000B4B05C /* 报道流程.png in Resources */,
 				9630E4C71FAF07D300874EB9 /* 没有记录@3x.png in Resources */,
-				F2770B451F4543BF00BB6186 /* FinderCollectionViewCell.xib in Resources */,
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
 				F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */,
 				4A3A07F21FCC0EC700A50393 /* lost_image_many@2x.png in Resources */,
@@ -4431,6 +4502,7 @@
 				F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */,
 				823D41671F6407D300C99D9B /* icon_upvote_outside_notselect@3x.png in Resources */,
 				F20027051F404BE100360991 /* courseMengbi.jpg in Resources */,
+				E405C46E216F914100F671CE /* 成绩单灰.png in Resources */,
 				F242DE861EBCB2BC005AC411 /* 周数@2x.png in Resources */,
 				F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
@@ -4447,6 +4519,7 @@
 				829C966B2127DCE000B4B05C /* 小车.png in Resources */,
 				F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
+				E405C473216F914100F671CE /* 重邮地图.png in Resources */,
 				9630E4AD1FAF07D200874EB9 /* login_password.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				9630E4B11FAF07D200874EB9 /* scroll@3x.png in Resources */,
@@ -4530,7 +4603,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"97fdc8c6c0\"\n# #\nBUGLY_APP_KEY=\"47747c0f-9a88-49e3-98a8-5a2aac961a37\"\n# #\nBUNDLE_IDENTIFIER=\"com.mredrock.cyxbs\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\n# UPLOAD_DEBUG_SYMBOLS=0\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\n    echo \"--------------------------------\"\n    echo \"${1}\"\n    echo \"--------------------------------\"\n    exit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\n    P_APP_ID=\"$1\"\n    P_APP_KEY=\"$2\"\n    P_APP_BUNDLE_ID=\"$3\"\n    P_APP_VERSION=\"$4\"\n    P_BSYMBOL_ZIP_FILE=\"$5\"\n    \n    #\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\n        P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\n            P_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n            \n            DSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\n            echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n            \n            echo \"-----------------------------\"\n            STATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\n            echo \"-----------------------------\"\n            \n            UPLOAD_RESULT=\"FAILTURE\"\n            echo \"Bugly server response: ${STATUS}\"\n            if [ ! \"${STATUS}\" ]; then\n            echo \"Error: Failed to upload the zip archive file.\"\n            elif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\n            echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n            UPLOAD_RESULT=\"SUCCESS\"\n            else\n            echo \"Error: Failed to upload the zip archive file to Bugly.\"\n            fi\n            \n            #Remove temp dSYM archive\n            #echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n            #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n            \n            if [ \"$?\" -ne 0 ]; then\n            exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n            fi\n            \n            echo \"--------------------------------\"\n            echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n            \n            if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n            echo \"--------------------------------\"\n            echo \"Failed to upload the dSYM\"\n            echo \"Please check the script and try it again.\"\n            fi\n        }\n        \n        # .dSYM解析为bSYMBOL文件\n        function dSYMParse() {\n            DSYM_FILE=\"$1\"\n            DSYM_SYMBOL_FILE=\"$2\"\n            \n            echo \"--------------------------------\"\n            echo \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n            (/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n            echo \"--------------------------------\"\n            \n        }\n        \n        # 执行\n        function run() {\n            \n            CONFIG_BUGLY_APP_ID=\"$1\"\n            CONFIG_BUGLY_APP_KEY=\"$2\"\n            \n            CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\n            CONFIG_BUGLY_APP_VERSION=\"$4\"\n            CONFIG_DSYM_SOURCE_DIR=\"$5\"\n            CONFIG_DSYM_DEST_DIR=\"$6\"\n            CONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n            \n            # 检查必须参数是否设置\n            if [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\n            exitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\n            fi\n            \n            if [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\n            exitWithMessage \"Error: Bugly App ID not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\n            exitWithMessage \"Error: Bugly App Key not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\n            exitWithMessage \"Error: Bundle Identifier not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\n            exitWithMessage \"Error: App Version not defined.\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\n            fi\n            \n            if [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            mkdir ${CONFIG_DSYM_DEST_DIR}\n            fi\n            \n            DSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\n            IFS=$'\\n'\n            \n            echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n            RET=\"F\"\n            \n            #\n            for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n            RET=\"T\"\n            echo \"Found dSYM file: $dsymFile\"\n            \n            DSYM_FILE_NAME=${dsymFile##*/}\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\n                DSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n                \n                if [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\n                if [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\n                rm -f $DSYM_SYMBOL_ZIP_FILE\n                fi\n                # 如果只上传dSYM，直接压缩dSYM目录\n                zip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\n                else\n                # 使用符号表工具来生成Symbol文件\n                dSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\n                fi\n                \n                # 上传\n                dSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\n                done\n                \n                if [ $RET = \"F\" ]; then\n                exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n                fi\n            }\n            \n            # 在Xcode工程中执行\n            function runInXcode(){\n                echo \"Uploading dSYM to Bugly in Xcode ...\"\n                \n                echo \"Info.Plist : ${INFOPLIST_FILE}\"\n                \n                BUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\n                BUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n                \n                # 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\n                if [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\n                BUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\n                else\n                BUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\n                fi\n                \n                echo \"--------------------------------\"\n                echo \"Prepare application information.\"\n                echo \"--------------------------------\"\n                \n                echo \"Product Name: ${PRODUCT_NAME}\"\n                echo \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\n                echo \"Version: ${BUNDLE_SHORT_VERSION}\"\n                echo \"Build: ${BUNDLE_VERSION}\"\n                \n                echo \"Bugly App ID: ${BUGLY_APP_ID}\"\n                echo \"Bugly App key: ${BUGLY_APP_KEY}\"\n                echo \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n                \n                echo \"--------------------------------\"\n                echo \"Check the arguments ...\"\n                \n                ##检查模拟器编译是否允许上传符号\n                if [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\n                if [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否是Release模式编译\n                if [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\n                if [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否Archive操作\n                if [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\n                if [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\n                echo \"Archive the package\"\n                else\n                exitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\n                fi\n                fi\n                \n                #\n                run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n            }\n            \n            # 根据Xcode的环境变量判断是否处于Xcode环境\n            INFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n            \n            BuildInXcode=\"F\"\n            if [ -f \"${INFO_PLIST_FILE}\" ]; then\n            BuildInXcode=\"T\"\n            fi\n            \n            if [ $BuildInXcode = \"T\" ]; then\n            runInXcode\n            else\n            echo \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n            # 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\n            BUGLY_APP_ID=\"$1\"\n            BUGLY_APP_KEY=\"$2\"\n            BUNDLE_IDENTIFIER=\"$3\"\n            BUGLY_APP_VERSION=\"$4\"\n            DWARF_DSYM_FOLDER_PATH=\"$5\"\n            SYMBOL_OUTPUT_PATH=\"$6\"\n            UPLOAD_DSYM_ONLY=$7\n            run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\n            fi";
+			shellScript = "#!/bin/sh\n#\n# Copyright 2016 Bugly, Tencent. All rights reserved.\n#\n# V1.4.0\n#\n# 2016.08.03\n#\n#\n#\n######################################################\n# 1. 脚本集成到Xcode工程的Target\n######################################################\n#\n# --- Copy the SCRIPT to the Run Script of Build Phases in the Xcode project ---\n#\n# #\nBUGLY_APP_ID=\"97fdc8c6c0\"\n# #\nBUGLY_APP_KEY=\"47747c0f-9a88-49e3-98a8-5a2aac961a37\"\n# #\nBUNDLE_IDENTIFIER=\"com.mredrock.cyxbs\"\n# #\nUPLOAD_DSYM_ONLY=1\n#\n# # 脚本默认配置的版本格式为CFBundleShortVersionString(CFBundleVersion),  如果你修改默认的版本格式, 请设置此变量, 如果不想修改, 请忽略此设置\n# CUSTOMIZED_APP_VERSION=\"\"\n#\n# # Debug模式编译是否上传，1＝上传 0＝不上传，默认不上传\n# UPLOAD_DEBUG_SYMBOLS=0\n#\n# # 模拟器编译是否上传，1=上传 0=不上传，默认不上传\n# UPLOAD_SIMULATOR_SYMBOLS=0\n#\n# #只有Archive操作时上传, 1=支持Archive上传 0=所有Release模式编译都上传\n# UPLOAD_ARCHIVE_ONLY=0\n#\n# #\n# source dSYMUpload.sh\n#\n# --- END OF SCRIPT ---\n#\n#\n#\n#\n#######################################################\n# 2. 脚本根据输入参数处理\n#######################################################\n#\n# #命令行下输入应用基本信息, .dSYM文件的父目录路径, 输出文件目录即可\n#\n# sh dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir>\n#\n# #\n#\n# #注意:\n# # 1. dSYMUpload.sh会调用buglySymboliOS.jar进行.dSYM解析，所以依赖Java运行时环境\n# # 2. dSYMUpload.sh和buglySymboliOS.jar的文件路径需一致\n#\n#\n\n#\n# --- CONTENT OF SCRIPT ---\n#\n\n# Bugly服务域名\nBUGLY_DSYM_UPLOAD_DOMAIN=\"api.bugly.qq.com\"\n\n# 注意jar工具的路径跟dSYMUpload.sh脚本路径一致, 请务必保证jar路径的正确性\nBUGLY_SYMBOL_JAR_PATH=\"dsymtool/buglySymboliOS.jar\"\n# 查找添加到系统目录的jar工具\nif [ ! -f \"${BUGLY_SYMBOL_JAR_PATH}\" ]; then\nBUGLY_SYMBOL_JAR_PATH=\"$HOME/bin/buglySymboliOS.jar\"\nfi\n\n# 打印错误信息\nfunction exitWithMessage(){\n    echo \"--------------------------------\"\n    echo \"${1}\"\n    echo \"--------------------------------\"\n    exit ${2}\n}\n\n# 上传bSYMBOL文件\nfunction dSYMUpload() {\n    P_APP_ID=\"$1\"\n    P_APP_KEY=\"$2\"\n    P_APP_BUNDLE_ID=\"$3\"\n    P_APP_VERSION=\"$4\"\n    P_BSYMBOL_ZIP_FILE=\"$5\"\n    \n    #\n    P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE##*/}\n        P_BSYMBOL_ZIP_FILE_NAME=${P_BSYMBOL_ZIP_FILE_NAME//&/_}\n            P_BSYMBOL_ZIP_FILE_NAME=\"${P_BSYMBOL_ZIP_FILE_NAME// /_}\"\n            \n            DSYM_UPLOAD_URL=\"https://${BUGLY_DSYM_UPLOAD_DOMAIN}/openapi/file/upload/symbol?app_id=${P_APP_ID}&app_key=${P_APP_KEY}\"\n            echo \"dSYM upload url: ${DSYM_UPLOAD_URL}\"\n            \n            echo \"-----------------------------\"\n            STATUS=$(/usr/bin/curl -k \"${DSYM_UPLOAD_URL}\" --form \"api_version=1\" --form \"app_id=${P_APP_ID}\" --form \"app_key=${P_APP_KEY}\" --form \"symbolType=2\"  --form \"bundleId=${BUNDLE_IDENTIFIER}\" --form \"productVersion=${BUGLY_APP_VERSION}\" --form \"fileName=${P_BSYMBOL_ZIP_FILE_NAME}\" --form \"file=@${P_BSYMBOL_ZIP_FILE}\" --verbose)\n            echo \"-----------------------------\"\n            \n            UPLOAD_RESULT=\"FAILTURE\"\n            echo \"Bugly server response: ${STATUS}\"\n            if [ ! \"${STATUS}\" ]; then\n            echo \"Error: Failed to upload the zip archive file.\"\n            elif [[ \"${STATUS}\" == *\"{\\\"reponseCode\\\":\\\"0\\\"}\"* ]]; then\n            echo \"Success to upload the dSYM for the app [${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION}]\"\n            UPLOAD_RESULT=\"SUCCESS\"\n            else\n            echo \"Error: Failed to upload the zip archive file to Bugly.\"\n            fi\n            \n            #Remove temp dSYM archive\n            #echo \"Remove temporary zip archive: ${DSYM_ZIP_FPATH}\"\n            #/bin/rm -f \"${DSYM_ZIP_FPATH}\"\n            \n            if [ \"$?\" -ne 0 ]; then\n            exitWithMessage \"Error: Failed to remove temporary zip archive.\" 0\n            fi\n            \n            echo \"--------------------------------\"\n            echo \"${UPLOAD_RESULT} - dSYM upload complete.\"\n            \n            if [[ \"${UPLOAD_RESULT}\" == \"FAILTURE\" ]]; then\n            echo \"--------------------------------\"\n            echo \"Failed to upload the dSYM\"\n            echo \"Please check the script and try it again.\"\n            fi\n        }\n        \n        # .dSYM解析为bSYMBOL文件\n        function dSYMParse() {\n            DSYM_FILE=\"$1\"\n            DSYM_SYMBOL_FILE=\"$2\"\n            \n            echo \"--------------------------------\"\n            echo \"Extract symbol info from .dSYM file. to ${DSYM_SYMBOL_FILE}\"\n            (/usr/bin/java -Xms512m -Xmx1024m -Dfile.encoding=UTF8 -jar \"${BUGLY_SYMBOL_JAR_PATH}\" -i \"${DSYM_FILE}\" -o \"${DSYM_SYMBOL_FILE}\" ) || exitWithMessage \"Error: Failed to extract symbols.\" 1\n            echo \"--------------------------------\"\n            \n        }\n        \n        # 执行\n        function run() {\n            \n            CONFIG_BUGLY_APP_ID=\"$1\"\n            CONFIG_BUGLY_APP_KEY=\"$2\"\n            \n            CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER=\"$3\"\n            CONFIG_BUGLY_APP_VERSION=\"$4\"\n            CONFIG_DSYM_SOURCE_DIR=\"$5\"\n            CONFIG_DSYM_DEST_DIR=\"$6\"\n            CONFIG_UPLOAD_DSYM_ONLY=\"$7\"\n            \n            # 检查必须参数是否设置\n            if [ ! \"${CONFIG_BUGLY_APP_ID}\" ]; then\n            exitWithMessage \"Error: Bugly App ID not defined. Please set 'BUGLY_APP_ID' \" 0\n            fi\n            \n            if [[ \"${CONFIG_BUGLY_APP_ID}\" == *\"App ID\"* ]]; then\n            exitWithMessage \"Error: Bugly App ID not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_KEY}\" ]; then\n            exitWithMessage \"Error: Bugly App Key not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER}\" ]; then\n            exitWithMessage \"Error: Bundle Identifier not defined.\" 0\n            fi\n            \n            if [ ! \"${CONFIG_BUGLY_APP_VERSION}\" ]; then\n            exitWithMessage \"Error: App Version not defined.\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_SOURCE_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_SOURCE_DIR}\" 0\n            fi\n            \n            if [ ! \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            exitWithMessage \"Error: Invalid dir ${CONFIG_DSYM_DEST_DIR}\" 0\n            fi\n            \n            if [ ! -e \"${CONFIG_DSYM_DEST_DIR}\" ]; then\n            mkdir ${CONFIG_DSYM_DEST_DIR}\n            fi\n            \n            DSYM_FOLDER=\"${CONFIG_DSYM_SOURCE_DIR}\"\n            IFS=$'\\n'\n            \n            echo \"Scaning dSYM FOLDER: ${DSYM_FOLDER} ...\"\n            RET=\"F\"\n            \n            #\n            for dsymFile in $(find \"$DSYM_FOLDER\" -name '*.dSYM'); do\n            RET=\"T\"\n            echo \"Found dSYM file: $dsymFile\"\n            \n            DSYM_FILE_NAME=${dsymFile##*/}\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_FILE_NAME}.zip\"\n                DSYM_SYMBOL_ZIP_FILE_NAME=\"${DSYM_SYMBOL_ZIP_FILE_NAME// /_}\"\n                DSYM_SYMBOL_ZIP_FILE=${CONFIG_DSYM_DEST_DIR}/${DSYM_SYMBOL_ZIP_FILE_NAME}\n                \n                if [ $CONFIG_UPLOAD_DSYM_ONLY -eq 1 ]; then\n                if [ -e $DSYM_SYMBOL_ZIP_FILE ]; then\n                rm -f $DSYM_SYMBOL_ZIP_FILE\n                fi\n                # 如果只上传dSYM，直接压缩dSYM目录\n                zip -r -j $DSYM_SYMBOL_ZIP_FILE $dsymFile -x *.plist\n                else\n                # 使用符号表工具来生成Symbol文件\n                dSYMParse $dsymFile $DSYM_SYMBOL_ZIP_FILE\n                fi\n                \n                # 上传\n                dSYMUpload $CONFIG_BUGLY_APP_ID $CONFIG_BUGLY_APP_KEY $CONFIG_BUGLY_APP_BUNDLE_IDENTIFIER $CONFIG_BUGLY_APP_VERSION $DSYM_SYMBOL_ZIP_FILE\n                done\n                \n                if [ $RET = \"F\" ]; then\n                exitWithMessage \"No .dSYM found in ${DSYM_FOLDER}\" 0\n                fi\n            }\n            \n            # 在Xcode工程中执行\n            function runInXcode(){\n                echo \"Uploading dSYM to Bugly in Xcode ...\"\n                \n                echo \"Info.Plist : ${INFOPLIST_FILE}\"\n                \n                BUNDLE_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleVersion' \"${INFOPLIST_FILE}\")\n                BUNDLE_SHORT_VERSION=$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' \"${INFOPLIST_FILE}\")\n                \n                # 组装Bugly默认识别的版本信息(格式为CFBundleShortVersionString(CFBundleVersion), 例如: 1.0(1))\n                if [ ! \"${CUSTOMIZED_APP_VERSION}\" ]; then\n                BUGLY_APP_VERSION=\"${BUNDLE_SHORT_VERSION}(${BUNDLE_VERSION})\"\n                else\n                BUGLY_APP_VERSION=\"${CUSTOMIZED_APP_VERSION}\"\n                fi\n                \n                echo \"--------------------------------\"\n                echo \"Prepare application information.\"\n                echo \"--------------------------------\"\n                \n                echo \"Product Name: ${PRODUCT_NAME}\"\n                echo \"Bundle Identifier: ${BUNDLE_IDENTIFIER}\"\n                echo \"Version: ${BUNDLE_SHORT_VERSION}\"\n                echo \"Build: ${BUNDLE_VERSION}\"\n                \n                echo \"Bugly App ID: ${BUGLY_APP_ID}\"\n                echo \"Bugly App key: ${BUGLY_APP_KEY}\"\n                echo \"Bugly App Version: ${BUGLY_APP_VERSION}\"\n                \n                echo \"--------------------------------\"\n                echo \"Check the arguments ...\"\n                \n                ##检查模拟器编译是否允许上传符号\n                if [ \"$EFFECTIVE_PLATFORM_NAME\" == \"-iphonesimulator\" ]; then\n                if [ $UPLOAD_SIMULATOR_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for simulator and skipping to upload. \\nYou can modify 'UPLOAD_SIMULATOR_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否是Release模式编译\n                if [ \"${CONFIGURATION=}\" == \"Debug\" ]; then\n                if [ $UPLOAD_DEBUG_SYMBOLS -eq 0 ]; then\n                exitWithMessage \"Warning: Build for debug mode and skipping to upload. \\nYou can modify 'UPLOAD_DEBUG_SYMBOLS' to 1 in the script.\" 0\n                fi\n                fi\n                \n                ##检查是否Archive操作\n                if [ $UPLOAD_ARCHIVE_ONLY -eq 1 ]; then\n                if [[ \"$TARGET_BUILD_DIR\" == *\"/Archive\"* ]]; then\n                echo \"Archive the package\"\n                else\n                exitWithMessage \"Warning: Build for NOT Archive mode and skipping to upload. \\nYou can modify 'UPLOAD_ARCHIVE_ONLY' to 0 in the script.\" 0\n                fi\n                fi\n                \n                #\n                run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${BUILD_DIR}/BuglySymbolTemp ${UPLOAD_DSYM_ONLY}\n            }\n            \n            # 根据Xcode的环境变量判断是否处于Xcode环境\n            INFO_PLIST_FILE=\"${INFOPLIST_FILE}\"\n            \n            BuildInXcode=\"F\"\n            if [ -f \"${INFO_PLIST_FILE}\" ]; then\n            BuildInXcode=\"T\"\n            fi\n            \n            if [ $BuildInXcode = \"T\" ]; then\n            runInXcode\n            else\n            echo \"\\nUsage: dSYMUpload.sh <bugly_app_id> <bugly_app_key> <app_bundle_identifier> <app_version> <dSYM_src_dir> <bSYMBOL_dest_dir> [upload_dsym_only]\\n\"\n            # 你可以在此处直接设置BuglyAppID和BuglyAppKey，排除不常变参数的输入\n            BUGLY_APP_ID=\"$1\"\n            BUGLY_APP_KEY=\"$2\"\n            BUNDLE_IDENTIFIER=\"$3\"\n            BUGLY_APP_VERSION=\"$4\"\n            DWARF_DSYM_FOLDER_PATH=\"$5\"\n            SYMBOL_OUTPUT_PATH=\"$6\"\n            UPLOAD_DSYM_ONLY=$7\n            run ${BUGLY_APP_ID} ${BUGLY_APP_KEY} ${BUNDLE_IDENTIFIER} ${BUGLY_APP_VERSION} ${DWARF_DSYM_FOLDER_PATH} ${SYMBOL_OUTPUT_PATH} ${UPLOAD_DSYM_ONLY}\n            fi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -4548,7 +4621,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2770B441F4543BF00BB6186 /* FinderCollectionViewCell.m in Sources */,
 				829C96772127DCE000B4B05C /* SYCCollageTableViewController.m in Sources */,
 				D081E6682152488D00245FD9 /* WYCWeekChooseBar.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
@@ -4568,6 +4640,7 @@
 				829C96782127DCE000B4B05C /* SYCCollageDataManager.m in Sources */,
 				6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */,
 				829C96982127DCE000B4B05C /* AAChartModel.m in Sources */,
+				E405C45F216F904300F671CE /* SYCPictureDisplay.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
 				E404709E212AB86600121AEE /* SYCDetailTableViewCell.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
@@ -4590,6 +4663,7 @@
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				829C95922127D92000B4B05C /* WantToSayController.m in Sources */,
+				E405C461216F904300F671CE /* SYCToolModel.m in Sources */,
 				2FB2233E2123122D0009EB39 /* DeliveryViewController.m in Sources */,
 				829C968B2127DCE000B4B05C /* AAOptions3d.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
@@ -4606,7 +4680,6 @@
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				829C96912127DCE000B4B05C /* AALegend.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
-				F2F740A01F8B6D0700140B25 /* LZCarouselModel.m in Sources */,
 				829C95CA2127DABE00B4B05C /* MilitarytrainingViewController.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
@@ -4619,6 +4692,7 @@
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
 				829C96A22127DCE000B4B05C /* SYCOrganizationTableViewCell.m in Sources */,
+				E405C45D216F904300F671CE /* LZCarouselModel.m in Sources */,
 				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
@@ -4649,6 +4723,7 @@
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
+				E405C460216F904300F671CE /* SYCToolsCell.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
 				F20026ED1F40336E00360991 /* MapViewController.m in Sources */,
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
@@ -4687,7 +4762,6 @@
 				9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
-				F242DD931EBCB2BB005AC411 /* FinderViewController.m in Sources */,
 				829C95752127D8A500B4B05C /* BankTableViewCell.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
@@ -4698,6 +4772,7 @@
 				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				829C95932127D92000B4B05C /* FreshMan2018ViewController.m in Sources */,
 				829C968E2127DCE000B4B05C /* AATitle.m in Sources */,
+				E405C44E216F903000F671CE /* SYCCustomToolsControl.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
 				2FB222FC2121D0520009EB39 /* IntroductionView.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
@@ -4706,13 +4781,13 @@
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				829C95C82127DABE00B4B05C /* MilitarytrainingShowViewController.m in Sources */,
-				F2770B401F453CF700BB6186 /* FinderCollectionViewFlowLayout.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				829C96922127DCE000B4B05C /* AAMarker.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
 				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,
+				E405C462216F904300F671CE /* SYCFinderViewController.m in Sources */,
 				829C95DC2127DABE00B4B05C /* StuDormitoryRootViewController.m in Sources */,
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
@@ -4776,6 +4851,7 @@
 				F242DFAD1EBD9E2C005AC411 /* LostViewController.m in Sources */,
 				829C96862127DCE000B4B05C /* AASubtitle.m in Sources */,
 				829C96942127DCE000B4B05C /* AAItemStyle.m in Sources */,
+				E405C45E216F904300F671CE /* SYCCustomLayoutModel.m in Sources */,
 				829C96882127DCE000B4B05C /* AACrosshair.m in Sources */,
 				F26D96701F3C400F0063B024 /* MBCommunityViewController.m in Sources */,
 				829C969A2127DCE000B4B05C /* AASeriesElement.m in Sources */,
@@ -4802,6 +4878,7 @@
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
 				F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */,
+				E405C450216F903000F671CE /* SYCEditToolsViewHeader.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
 				F29245641F7A942E001A8788 /* LessonButtonViewModel.m in Sources */,
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
@@ -4832,6 +4909,7 @@
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
+				E405C44F216F903000F671CE /* SYCEditToolsView.m in Sources */,
 				6E7C98652046E499000BAA16 /* UILabel+check.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
 				F242DFB21EBD9E2C005AC411 /* CategoryChooseView.m in Sources */,
