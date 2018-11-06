@@ -38,7 +38,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)addTitleView{
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reinstallImage.png"]];
-    titleView.frame = CHANGE_CGRectMake(0, 64, 375, 300);
+    titleView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, (SCREENHEIGHT - 60) / 2);
+        //titleView.frame = CGRectMake(0, SCREENHEIGHT * 0.09 - 7, SCREENWIDTH, SCREENHEIGHT * 0.75 / 2);
     titleView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:titleView];
 }
@@ -49,7 +50,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
     NSMutableDictionary *dataDic = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(101.5, 455, 175, 16)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(101.5, 455, 180, 16)];
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"当前设置寝室:%@栋%@",dataDic[@"build"],dataDic[@"room"]] attributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:17/255.0 green:188/255.0 blue:255/255.0 alpha:1]}];
     [content addAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:157/255.0 green:157/255.0 blue:157/255.0 alpha:1]} range:NSMakeRange(0, 6)];
     [content addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(16)]} range:NSMakeRange(0, content.length)];

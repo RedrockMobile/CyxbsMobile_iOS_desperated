@@ -22,9 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //self.view.backgroundColor = [UIColor whiteColor];
-    
     self.title = @"2018迎新网";
     
     //创建滚动视图

@@ -30,12 +30,12 @@
 - (void)loadData{
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
-    [HttpClient requestWithPath:MAKEAPI method:HttpRequestPost parameters:@{@"stuNum": stuNum} prepareExecute:^{
+    [HttpClient requestWithPath:MAKEAPI method:HttpRequestPost parameters:@{@"stu": stuNum} prepareExecute:^{
         
     } progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        if (responseObject[@"data"]) {
+        if (responseObject[@"data"] == NULL) {
             [self initFailViewWithDetail:@"暂无补考消息~"];
         }
         else{
@@ -48,6 +48,7 @@
 
     }];
 }
+//
 - (void)setUpTableView{
     _MakeUpExamTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-self.view.height*58/667-HEADERHEIGHT) style:UITableViewStylePlain];
     _MakeUpExamTableView.delegate = self;

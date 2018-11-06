@@ -53,12 +53,19 @@
         
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        _data = [[NSMutableArray alloc] init];
-        [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
-        [_data reverse];
-        
-        [_tableView reloadData];
+        if (responseObject[@"data"] == NULL)
+        {
+            NSLog(@"empty");
+            [self initFailViewWithDetail:@"暂无考试消息~"];
+        }
+        else
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            _data = [[NSMutableArray alloc] init];
+            [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
+            [_data reverse];
+            [_tableView reloadData];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
           [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
     }];

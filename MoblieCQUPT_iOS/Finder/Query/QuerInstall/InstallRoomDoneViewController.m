@@ -24,21 +24,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     return rect;
 }
 
-//@interface InstallRoomDoneViewController () <MyNavigationControllerShouldPopProtocol>
-
-//@end
-
 @implementation InstallRoomDoneViewController
-
-//- (BOOL)my_navigationControllershouldPopWhenSystemBackBtnSelected:(id)navigationController{
-//    QuerLoginViewController *querVC = [[QuerLoginViewController alloc] init];
-//    for (UIViewController *controller in self.navigationController.viewControllers) {
-//        if ([controller isKindOfClass:[querVC class]]) {
-//               [self.navigationController popToViewController:controller animated:YES];
-//        }
-//    }
-//    return NO;
-//}
 
 - (void)viewDidAppear:(BOOL)animated{
     NSMutableArray *array = [self.navigationController.viewControllers mutableCopy];
@@ -59,7 +45,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     self.view.backgroundColor = [UIColor whiteColor];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(91.5, 187, 194, 208);
+    imageView.frame = CGRectMake(SCREENWIDTH * 0.2, SCREENHEIGHT * 0.3, SCREENWIDTH * 0.6, SCREENWIDTH * 0.6);
     imageView.contentMode = UIViewContentModeScaleToFill;
     
     [self.view addSubview:imageView];

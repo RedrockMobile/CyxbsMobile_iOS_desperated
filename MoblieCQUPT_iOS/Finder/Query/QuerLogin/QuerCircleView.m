@@ -12,18 +12,8 @@
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 
-CG_INLINE CGRect
-CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
-
-    CGRect rect;
-    rect.origin.x = x * autoSizeScaleX;
-    rect.origin.y = y * autoSizeScaleY;
-    rect.size.width = width * autoSizeScaleY;
-    rect.size.height = height * autoSizeScaleY;
-    return rect;
-}
-
-//#define  DEGREES_TO_RADIANS(angle) ((M_PI * angle) / 180)
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
 
 @interface QuerCircleView ()
 
@@ -100,49 +90,57 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)drawElcEndUnitLabel{
     UILabel *label = [[UILabel alloc] init];
-    [self maekLabel:label WithText:@"电止度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(295.5,303, 65, 20)];
+    //修改label位置
+    [self maekLabel:label WithText:@"电止度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CGRectMake(WIDTH * 3 / 4, HEIGHT / 2 * 0.77, WIDTH / 4, 30)];
     [self addSubview:label];
 }
 
 - (void)drawELcStartUnitLabel{
     UILabel *label = [[UILabel alloc] init];
-    [self maekLabel:label WithText:@"电起度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(194.5,303, 65, 20)];
+    //修改label位置
+    [self maekLabel:label WithText:@"电起度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CGRectMake(WIDTH / 2, HEIGHT / 2 * 0.77, WIDTH / 4, 30)];
     [self addSubview:label];
 }
 
 - (void)drawFreeElcUnitLabel{
     UILabel *label = [[UILabel alloc] init];
-    [self maekLabel:label WithText:@"月优惠量/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(99.5,303, 68, 20)];
+    //修改label位置
+    [self maekLabel:label WithText:@"月优惠量/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CGRectMake(WIDTH / 4, HEIGHT / 2 * 0.77, WIDTH / 4, 30)];
     [self addSubview:label];
 }
 
 - (void)drawAverageElcUnitLabel{
     UILabel *label = [[UILabel alloc] init];
-    [self maekLabel:label WithText:@"日均量/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(17.5,303, 50, 20)];
+    //修改label位置
+    [self maekLabel:label WithText:@"日均量/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CGRectMake(0, HEIGHT / 2 * 0.77 , WIDTH / 4, 30)];
     [self addSubview:label];
 }
 
 - (void)drawElcEndLabelWithData:(NSString *)data{
     self.ElcEndLabel = [[UILabel alloc] init];
-    [self maekLabel:self.ElcEndLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CHANGE_CGRectMake(295.5,268, 65, 40)];
+    //修改电止label位置
+    [self maekLabel:self.ElcEndLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CGRectMake(WIDTH * 3 / 4, HEIGHT / 3, WIDTH / 4, 30)];
     [self addSubview:self.ElcEndLabel];
 }
 
 - (void)drawElcStartLabelWithData:(NSString *)data{
     self.ElcStartLabel = [[UILabel alloc] init];
-    [self maekLabel:self.ElcStartLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CHANGE_CGRectMake(194.5,268, 65, 40)];
+    //修改电起label位置
+    [self maekLabel:self.ElcStartLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CGRectMake(WIDTH / 2, HEIGHT / 3, WIDTH / 4, 30)];
     [self addSubview:self.ElcStartLabel];
 }
 
 - (void)drawFreeLabelWithData:(NSString *)data{
     self.freeElcLabel = [[UILabel alloc] init];
-    [self maekLabel:self.freeElcLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CHANGE_CGRectMake(114.5,268, 40, 40)];
+    //修改月优惠label位置
+    [self maekLabel:self.freeElcLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CGRectMake(WIDTH / 4, HEIGHT / 3, WIDTH / 4, 30)];
     [self addSubview:self.freeElcLabel];
 }
 
 - (void)drawAveragELecWithData:(NSString *)data{
     self.avergaeElecLabel = [[UILabel alloc] init];
-    [self maekLabel:self.avergaeElecLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CHANGE_CGRectMake(24.5,268, 40, 40)];
+    //修日均度label位置
+    [self maekLabel:self.avergaeElecLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1] frame:CGRectMake(0, HEIGHT / 3, WIDTH / 4, 30)];
     [self addSubview:self.avergaeElecLabel];
 }
 
@@ -168,7 +166,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (void)drawElectrolysisUnitLabel{
-    UILabel *elcUnitLable = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(186, 155, 20, 20)];
+    UILabel *elcUnitLable = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH / 16 * 9, HEIGHT / 5, WIDTH / 16, WIDTH / 16)];
     elcUnitLable.text = @"度";
     elcUnitLable.textAlignment = NSTextAlignmentCenter;
     elcUnitLable.backgroundColor = [UIColor clearColor];
@@ -182,9 +180,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (void)drawElectrolysisLabelWithData:(NSString *)data{
-    self.elcLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(167.5, 153,20, 23)];
+    self.elcLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH / 16 * 7, HEIGHT / 5, WIDTH / 8, WIDTH / 16)];
     self.elcLabel.text = data;
-    self.elcLabel.textAlignment = NSTextAlignmentLeft;
+    self.elcLabel.textAlignment = NSTextAlignmentCenter;
     self.elcLabel.textColor = [UIColor colorWithRed:147/255.0 green:179/255.0 blue:194/255.0 alpha:1];
     self.elcLabel.backgroundColor = [UIColor clearColor];
     self.elcLabel.font = [UIFont systemFontOfSize:font(15)];
@@ -193,7 +191,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.contentMode = UIViewContentModeRedraw;
     [self addSubview:self.elcLabel];
 }
-
 
 //刻度圆环
 - (void)drawPointingCircle{
@@ -220,7 +217,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     pathAnimation.path = curvedPath;
     CGPathRelease(curvedPath);
     
-    PointingCircleView *pcv = [[PointingCircleView alloc] initWithFrame:CHANGE_CGRectMake(self.centerPoint.x - lunetteRadius, 132, 24, 24)];
+    PointingCircleView *pcv = [[PointingCircleView alloc] initWithFrame:CGRectMake(WIDTH / 2 - (MIN(self.bounds.size.width, self.bounds.size.height) / 2.0) - WIDTH / 40, HEIGHT / 6.5, WIDTH / 16, WIDTH / 16)];
     
     [pcv.layer addAnimation:pathAnimation forKey:@"moveTheCircle"];
     
@@ -240,6 +237,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (void)drawOutCircle{
     self.endAngle = self.percentage * (M_PI) + M_PI;
     CGRect bounds = self.bounds;
+    
+    //
     CGFloat radius = (MIN(bounds.size.width, bounds.size.height) / 2.0) - 3.5;
     ;
     UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.centerPoint.x, self.centerPoint.y) radius:radius startAngle:M_PI endAngle:self.endAngle clockwise:YES];
@@ -313,7 +312,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)drawRightSun{
     UIImageView *rightSun = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rightIcon.png"]];
-    CGRect frame = CHANGE_CGRectMake(310,136, 15, 15);
+    CGRect frame = CGRectMake(WIDTH / 2 + (MIN(self.bounds.size.width, self.bounds.size.height) / 2.0) - 3 - WIDTH / 40, HEIGHT / 6.5, WIDTH / 16, WIDTH / 16);
     rightSun.frame = frame;
     [self addSubview:rightSun];
     
@@ -321,13 +320,13 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)drawLeftSun{
     UIImageView *leftSun = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftIcon.png"]];
-    CGRect frame = CHANGE_CGRectMake(50, 136, 15, 15);
+    CGRect frame = CGRectMake(WIDTH / 2 - (MIN(self.bounds.size.width, self.bounds.size.height) / 2.0) - WIDTH / 40, HEIGHT / 6.5, WIDTH / 16, WIDTH / 16);
     leftSun.frame = frame;
     [self addSubview:leftSun];
 }
 
 - (void)drawChargeUnitLabel{
-    UILabel *unitLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(247.5, 117.5, 14.5, 14.5)];
+    UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH / 8 * 5, HEIGHT / 8 + WIDTH / 16, WIDTH / 16, WIDTH / 16)];
     unitLabel.text = @"元";
     unitLabel.textAlignment = NSTextAlignmentCenter;
     unitLabel.backgroundColor = [UIColor clearColor];
@@ -340,7 +339,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)drawChargeLabelWithData:(NSString *)data{
-    self.centerLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(127.5 , 90, 120, 42)];
+    self.centerLabel = [[UILabel alloc] initWithFrame:CGRectMake(WIDTH / 8 * 3, HEIGHT / 8, WIDTH / 4, WIDTH / 8)];
     self.centerLabel.text = data;
     self.centerLabel.textAlignment = NSTextAlignmentLeft;
     self.centerLabel.textColor = [UIColor colorWithRed:18/255.0 green:208/255.0 blue:255/255.0 alpha:1];

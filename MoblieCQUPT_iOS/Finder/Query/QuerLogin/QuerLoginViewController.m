@@ -21,6 +21,9 @@
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 #define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
 
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT [UIScreen mainScreen].bounds.size.height
+
 CG_INLINE CGRect
 CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
@@ -43,6 +46,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 @property (nonatomic) BOOL on;
 
 @property (nonatomic, strong) NSDictionary *dataDic;
+
 @end
 
 @implementation QuerLoginViewController
@@ -52,7 +56,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
     QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0, 450, 375, 247)];
     
-    QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CHANGE_CGRectMake(0, 94, 378, 264)];
+    //修改“查电费”View位置
+    QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT * 1.5, WIDTH, HEIGHT / 3)];
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
@@ -86,6 +91,12 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     }
     [self.view addSubview:qnv];
     [self.view addSubview:qcv];
+    
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    if (!data[@"room"])
+    {
+        [self showAlertController];
+    }
 }
 
 - (void)reloadElecData{
@@ -96,9 +107,11 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSDictionary *dataDic = [userDefault objectForKey:@"elecData"];
     
+    //
     QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0, 450, 375, 247)];
     
-    QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CHANGE_CGRectMake(0, 94, 378, 264)];
+    //
+    QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT * 1.5, WIDTH, HEIGHT / 3)];
     
     NSString *charge = [NSString stringWithFormat:@"%@.%@",dataDic[@"elec_cost"][0],dataDic[@"elec_cost"][1]];
     qcv.chargeStr = charge;
@@ -140,10 +153,20 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     [barItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(34)]} forState:UIControlStateNormal];
     
-    
     self.navigationItem.rightBarButtonItem = barItem;
     self.navigationItem.title = @"查电费";
+}
 
+//增加未设置寝室时的弹窗提示
+- (void)showAlertController
+{
+    //
+    UIAlertController *_alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请点击右上角按钮设置寝室哦(o^^o)" preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Ok" style:UIAlertActionStyleCancel handler:nil];
+    [_alertController addAction:ok];
+
+    [self presentViewController:_alertController animated:YES completion:nil];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -179,6 +202,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         [self.navigationController pushViewController:qrVC animated:YES];
     }
     if (indexPath.row == 1) {
+        
         NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *documentsDirectory = pathArray[0];
         NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
@@ -189,6 +213,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         NSCalendar *calendar = [NSCalendar currentCalendar];
         
         NSDateComponents *compoent = [calendar components:NSCalendarUnitMonth fromDate:currentDate];
+        
         
         if (data[@"room"]) {
             if ([NSString stringWithFormat:@"%@",compoent].integerValue -[NSString stringWithFormat:@"%@",data[@"month"]].integerValue == 0) {
