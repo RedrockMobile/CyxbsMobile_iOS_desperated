@@ -156,6 +156,8 @@
 //补考接口
 #define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
 
+
+
 #define kSegmentViewTitleHeight (SCREENHEIGHT*50/667)
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)

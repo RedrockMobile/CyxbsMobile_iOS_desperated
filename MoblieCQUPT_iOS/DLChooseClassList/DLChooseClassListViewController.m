@@ -9,34 +9,32 @@
 #import "DLChooseClassListViewController.h"
 #import "ListModel.h"
 #import "ListTableViewCell.h"
-#import <AFNetworking.h>
+#import "HttpClient.h"
+
+#define LIST_URL @"http://wx.yyeke.com/api/search/coursetable/xkmdsearch?course_num=%@&classroom=%@"
 
 @interface DLChooseClassListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(strong, nonatomic) UITableView *listTab;
 @property(strong, nonatomic) NSMutableArray *dataArray;
-@property(nonatomic, strong) NSString *classNum;
 @end
 
 @implementation DLChooseClassListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"选课名单";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
-    
-    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStylePlain];
+    self.dataArray = [@[] mutableCopy];
+    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStylePlain];
     self.listTab.delegate = self;
     self.listTab.dataSource = self;
     self.listTab.backgroundColor = [UIColor clearColor];
     self.listTab.separatorStyle = UITableViewCellSelectionStyleNone;
     [self.view addSubview:_listTab];
-    //[self initWithClassNum:@"A2010770"];
-}
-
-- (void)initWithClassNum:(NSString *)classNum{
     
-    self.classNum = classNum;
     [self loadData];
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -66,42 +64,35 @@
 }
 
 - (void)loadData{
-    NSDictionary *dic = @{@"stuName": @"易烊千玺",
-                          @"stuId": @"12345678",
-                          @"major": @"电子信息工程",
-                          @"classId": @"12345678",
-                          @"school": @"通信与信息工程学院",
-                          @"year": @"2017",
-                          @"stuSex": @"男"
-                          };
-    self.dataArray = [NSMutableArray array];
-    for (int i = 0; i < 10; i++) {
-        ListModel *model = [ListModel ListModelWithDict:dic];
-        [self.dataArray addObject:model];
-    }
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSString *urlStr = [NSString stringWithFormat:@"ip/zhangyou01/search/kebiao/xkmd?jxb=%@",self.classNum];
-    [manager GET:urlStr parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSString *urlStr = [NSString stringWithFormat:LIST_URL, self.course_num, self.classroom];
+    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[HttpClient defaultClient] requestWithPath:urlStr method: HttpRequestGet parameters:nil prepareExecute:nil progress:^(NSProgress *progress) {
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *arr = responseObject[@"data"];
-        for (NSDictionary *dic in arr) {
-            ListModel *model = [ListModel ListModelWithDict:dic];
-            [self.dataArray addObject:model];
+        if (arr != nil && ![arr isKindOfClass:[NSNull class]] && arr.count != 0){
+            for (NSDictionary *dic in arr) {
+                ListModel *model = [ListModel ListModelWithDict:dic];
+                [self.dataArray addObject:model];
+            }
+            [self.listTab reloadData];
         }
-        [self.listTab reloadData];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        UIAlertController *controller=[UIAlertController alertControllerWithTitle:@"网络错误" message:@"数据加载失败" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *act1=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            
+        else{
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"数据错误" message:@"名单空了m(._.)m" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *act = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            [alert addAction:act];
+            [self presentViewController:alert animated:YES completion:nil];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"网络错误" message:@"你的网络坏掉了m(._.)m" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *act = [UIAlertAction actionWithTitle:@"退出" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
         }];
-        
-        [controller addAction:act1];
-        
-        [self presentViewController:controller animated:YES completion:^{
-            
-        }];
+        [alert addAction:act];
+        [self presentViewController:alert animated:YES completion:nil];
+        NSLog(@"failure --- %@",error);
     }];
-    
 }
 
 
