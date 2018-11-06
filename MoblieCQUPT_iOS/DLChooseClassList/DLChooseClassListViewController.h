@@ -12,7 +12,7 @@
 
 
 
-@property(nonatomic, copy) NSString *course_num;
+@property(nonatomic, copy) NSString *teacher;
 @property(nonatomic, copy) NSString *classroom;
 
 @end

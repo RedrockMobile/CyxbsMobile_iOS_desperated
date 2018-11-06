@@ -11,7 +11,7 @@
 #import "ListTableViewCell.h"
 #import "HttpClient.h"
 
-#define LIST_URL @"http://wx.yyeke.com/api/search/coursetable/xkmdsearch?course_num=%@&classroom=%@"
+#define LIST_URL @"http://wx.yyeke.com/api/search/coursetable/xkmdget?teacher=%@&stuNum=%@&classroom=%@"
 
 @interface DLChooseClassListViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(strong, nonatomic) UITableView *listTab;
@@ -64,7 +64,7 @@
 }
 
 - (void)loadData{
-    NSString *urlStr = [NSString stringWithFormat:LIST_URL, self.course_num, self.classroom];
+    NSString *urlStr = [NSString stringWithFormat:LIST_URL, self.teacher, [UserDefaultTool getStuNum], self.classroom];
     urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [[HttpClient defaultClient] requestWithPath:urlStr method: HttpRequestGet parameters:nil prepareExecute:nil progress:^(NSProgress *progress) {
     } success:^(NSURLSessionDataTask *task, id responseObject) {
