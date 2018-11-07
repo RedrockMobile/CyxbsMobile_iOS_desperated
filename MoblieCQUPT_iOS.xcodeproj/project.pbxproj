@@ -353,8 +353,6 @@
 		E404709B212AB39200121AEE /* 展开.png in Resources */ = {isa = PBXBuildFile; fileRef = E4047099212AB39100121AEE /* 展开.png */; };
 		E404709E212AB86600121AEE /* SYCDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */; };
 		E40470CD212D5E4D00121AEE /* SYCCollageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */; };
-		E40470D1212E4C1A00121AEE /* SYCSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D0212E4C1A00121AEE /* SYCSegmentView.m */; };
-		E40470D4212E92DC00121AEE /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */; };
 		E40470DB212EA3EE00121AEE /* 入学必备1.png in Resources */ = {isa = PBXBuildFile; fileRef = E40470DA212EA3EE00121AEE /* 入学必备1.png */; };
 		E40470DD212EA40F00121AEE /* 入学必备2.png in Resources */ = {isa = PBXBuildFile; fileRef = E40470DC212EA40F00121AEE /* 入学必备2.png */; };
 		E405C44E216F903000F671CE /* SYCCustomToolsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = E405C448216F902F00F671CE /* SYCCustomToolsControl.m */; };
@@ -376,6 +374,8 @@
 		E405C474216F914100F671CE /* 成绩单.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46A216F914000F671CE /* 成绩单.png */; };
 		E405C475216F914100F671CE /* 空教室.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46B216F914000F671CE /* 空教室.png */; };
 		E405C476216F914100F671CE /* 查电费.png in Resources */ = {isa = PBXBuildFile; fileRef = E405C46C216F914000F671CE /* 查电费.png */; };
+		E461EE3D217234CA00F10EFE /* SYCSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E461EE39217234C900F10EFE /* SYCSegmentView.m */; };
+		E461EE3E217234CA00F10EFE /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E461EE3C217234CA00F10EFE /* SYCSegmentViewButton.m */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -1230,10 +1230,6 @@
 		E404709D212AB86600121AEE /* SYCDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCDetailTableViewCell.m; sourceTree = "<group>"; };
 		E40470CB212D5E4D00121AEE /* SYCCollageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCCollageTableViewCell.h; sourceTree = "<group>"; };
 		E40470CC212D5E4D00121AEE /* SYCCollageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCCollageTableViewCell.m; sourceTree = "<group>"; };
-		E40470CF212E4C1A00121AEE /* SYCSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCSegmentView.h; sourceTree = "<group>"; };
-		E40470D0212E4C1A00121AEE /* SYCSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentView.m; sourceTree = "<group>"; };
-		E40470D2212E92DC00121AEE /* SYCSegmentViewButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCSegmentViewButton.h; sourceTree = "<group>"; };
-		E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentViewButton.m; sourceTree = "<group>"; };
 		E40470DA212EA3EE00121AEE /* 入学必备1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备1.png"; sourceTree = "<group>"; };
 		E40470DC212EA40F00121AEE /* 入学必备2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "入学必备2.png"; sourceTree = "<group>"; };
 		E405C448216F902F00F671CE /* SYCCustomToolsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomToolsControl.m; sourceTree = "<group>"; };
@@ -1264,6 +1260,10 @@
 		E405C46A216F914000F671CE /* 成绩单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成绩单.png"; sourceTree = "<group>"; };
 		E405C46B216F914000F671CE /* 空教室.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "空教室.png"; sourceTree = "<group>"; };
 		E405C46C216F914000F671CE /* 查电费.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "查电费.png"; sourceTree = "<group>"; };
+		E461EE39217234C900F10EFE /* SYCSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentView.m; sourceTree = "<group>"; };
+		E461EE3A217234C900F10EFE /* SYCSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCSegmentView.h; sourceTree = "<group>"; };
+		E461EE3B217234CA00F10EFE /* SYCSegmentViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCSegmentViewButton.h; sourceTree = "<group>"; };
+		E461EE3C217234CA00F10EFE /* SYCSegmentViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentViewButton.m; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -2389,7 +2389,6 @@
 			isa = PBXGroup;
 			children = (
 				829C96092127DCDF00B4B05C /* AAChartKitLib */,
-				E40470CE212E4BFF00121AEE /* 标签卡 */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -2899,17 +2898,6 @@
 			path = "合上";
 			sourceTree = "<group>";
 		};
-		E40470CE212E4BFF00121AEE /* 标签卡 */ = {
-			isa = PBXGroup;
-			children = (
-				E40470CF212E4C1A00121AEE /* SYCSegmentView.h */,
-				E40470D0212E4C1A00121AEE /* SYCSegmentView.m */,
-				E40470D2212E92DC00121AEE /* SYCSegmentViewButton.h */,
-				E40470D3212E92DC00121AEE /* SYCSegmentViewButton.m */,
-			);
-			path = "标签卡";
-			sourceTree = "<group>";
-		};
 		E40470D5212E962700121AEE /* 标签页 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2919,24 +2907,15 @@
 			path = "标签页";
 			sourceTree = "<group>";
 		};
-		E405C446216F900000F671CE /* SYCMainPage */ = {
+		E405C446216F900000F671CE /* SYCMainFinderPage */ = {
 			isa = PBXGroup;
 			children = (
-				E405C456216F904100F671CE /* LZCarouselModel.h */,
-				E405C453216F904100F671CE /* LZCarouselModel.m */,
-				E405C45B216F904200F671CE /* SYCCustomLayoutModel.h */,
-				E405C455216F904100F671CE /* SYCCustomLayoutModel.m */,
-				E405C454216F904100F671CE /* SYCFinderViewController.h */,
-				E405C45A216F904200F671CE /* SYCFinderViewController.m */,
-				E405C452216F904100F671CE /* SYCPictureDisplay.h */,
-				E405C457216F904200F671CE /* SYCPictureDisplay.m */,
-				E405C45C216F904200F671CE /* SYCToolModel.h */,
-				E405C459216F904200F671CE /* SYCToolModel.m */,
-				E405C451216F904000F671CE /* SYCToolsCell.h */,
-				E405C458216F904200F671CE /* SYCToolsCell.m */,
+				E461EE2E217230B000F10EFE /* Controller */,
+				E461EE2D217230AA00F10EFE /* View */,
+				E461EE2C217230A300F10EFE /* Model */,
 				E405C447216F901800F671CE /* EditPage */,
 			);
-			path = SYCMainPage;
+			path = SYCMainFinderPage;
 			sourceTree = "<group>";
 		};
 		E405C447216F901800F671CE /* EditPage */ = {
@@ -2950,6 +2929,50 @@
 				E405C44B216F902F00F671CE /* SYCEditToolsViewHeader.m */,
 			);
 			path = EditPage;
+			sourceTree = "<group>";
+		};
+		E461EE2C217230A300F10EFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E405C45B216F904200F671CE /* SYCCustomLayoutModel.h */,
+				E405C455216F904100F671CE /* SYCCustomLayoutModel.m */,
+				E405C456216F904100F671CE /* LZCarouselModel.h */,
+				E405C453216F904100F671CE /* LZCarouselModel.m */,
+				E405C45C216F904200F671CE /* SYCToolModel.h */,
+				E405C459216F904200F671CE /* SYCToolModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E461EE2D217230AA00F10EFE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E405C451216F904000F671CE /* SYCToolsCell.h */,
+				E405C458216F904200F671CE /* SYCToolsCell.m */,
+				E405C452216F904100F671CE /* SYCPictureDisplay.h */,
+				E405C457216F904200F671CE /* SYCPictureDisplay.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E461EE2E217230B000F10EFE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E405C454216F904100F671CE /* SYCFinderViewController.h */,
+				E405C45A216F904200F671CE /* SYCFinderViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E461EE38217234B900F10EFE /* SYCSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				E461EE3A217234C900F10EFE /* SYCSegmentView.h */,
+				E461EE39217234C900F10EFE /* SYCSegmentView.m */,
+				E461EE3B217234CA00F10EFE /* SYCSegmentViewButton.h */,
+				E461EE3C217234CA00F10EFE /* SYCSegmentViewButton.m */,
+			);
+			path = SYCSegmentView;
 			sourceTree = "<group>";
 		};
 		E4AFDBF7213241230022BB01 /* Cell */ = {
@@ -3032,7 +3055,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
-				E405C446216F900000F671CE /* SYCMainPage */,
+				E405C446216F900000F671CE /* SYCMainFinderPage */,
 				82B66EE4211AD2A700FA82F1 /* Freshman2018 */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
@@ -3557,6 +3580,7 @@
 		F242DD771EBCB2BB005AC411 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				E461EE38217234B900F10EFE /* SYCSegmentView */,
 				F242DD7B1EBCB2BB005AC411 /* NetWork */,
 				F2509BCC1F440D7D0091F678 /* SegmentView.h */,
 				F2509BCD1F440D7D0091F678 /* SegmentView.m */,
@@ -4619,6 +4643,7 @@
 			files = (
 				829C96772127DCE000B4B05C /* SYCCollageTableViewController.m in Sources */,
 				D081E6682152488D00245FD9 /* WYCWeekChooseBar.m in Sources */,
+				E461EE3E217234CA00F10EFE /* SYCSegmentViewButton.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
 				829C95D32127DABE00B4B05C /* SchollSubViewController.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
@@ -4739,7 +4764,6 @@
 				F2A6E6801F6E8FE100A663B4 /* LZSearchView.m in Sources */,
 				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				2FB2233B212312160009EB39 /* DeliveryTableViewCell.m in Sources */,
-				E40470D4212E92DC00121AEE /* SYCSegmentViewButton.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
@@ -4797,6 +4821,7 @@
 				829C967B2127DCE000B4B05C /* SYCSexRatioViewController.m in Sources */,
 				2FB22345212322270009EB39 /* autoScrollView.m in Sources */,
 				829C96742127DCE000B4B05C /* SYCMainPageViewController.m in Sources */,
+				E461EE3D217234CA00F10EFE /* SYCSegmentView.m in Sources */,
 				F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
@@ -4811,7 +4836,6 @@
 				829C95CF2127DABE00B4B05C /* ShowVideoRootView.m in Sources */,
 				829C95D02127DABE00B4B05C /* ShowPicRootView.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
-				E40470D1212E4C1A00121AEE /* SYCSegmentView.m in Sources */,
 				D081E6672152488D00245FD9 /* WYCClassBookView.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,

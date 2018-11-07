@@ -149,7 +149,9 @@
 
 - (void)buttonAction1{
    [self.navigationController popViewControllerAnimated:true];
+    self.navigationController.navigationBar.hidden = NO;
 }
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
    [self.accountField resignFirstResponder];
    [self.passwordField resignFirstResponder];

@@ -32,7 +32,7 @@
     activityVC.title = @"大型活动";
     
     NSArray *viewsArray = @[organVC, activityVC];
-    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray andType:SYCSegmentViewTypeNormal];
+    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) controllers:viewsArray type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segmentView];
     
     

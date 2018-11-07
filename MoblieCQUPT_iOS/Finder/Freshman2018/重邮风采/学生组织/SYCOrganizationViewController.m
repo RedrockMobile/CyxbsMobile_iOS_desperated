@@ -36,7 +36,7 @@
     }
     
     NSArray *organizationsArray = self.controllers;
-    SYCSegmentView *organizationsSegmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) andControllers:organizationsArray andType:SYCSegmentViewTypeButton];
+    SYCSegmentView *organizationsSegmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) controllers:organizationsArray type:SYCSegmentViewTypeButton];
     
     [self.view addSubview:organizationsSegmentView];
 }

@@ -22,6 +22,7 @@
 #import <MBProgressHUD/MBProgressHUD.h>
 #import "MBCommunityHandle.h"
 #import "BannerScrollView.h"
+#import "SYCSegmentView.h"
 
 @interface MBCommunityViewController ()<UITableViewDataSource,UITableViewDelegate,MBCommunityCellEventDelegate>
 
