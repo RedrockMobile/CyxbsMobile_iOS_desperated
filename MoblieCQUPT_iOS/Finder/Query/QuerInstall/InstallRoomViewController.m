@@ -69,7 +69,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)addTitleView{
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"querElecIcon.png"]];
-    titleView.frame = CHANGE_CGRectMake(0, 64, 375, 300);
+    //修改图片位置
+    titleView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, (SCREENHEIGHT - 60) / 2);
     titleView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:titleView];
 }
@@ -86,7 +87,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBuildTableView)];
     [_buildLabel addGestureRecognizer:tapGesture];
     
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 447.5, 250, 1)];
+    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.22, SCREENHEIGHT * 0.666, SCREENWIDTH * 0.66, 1)];
     lineLabel.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.7];
     
     UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"angleImage.png"]];
@@ -112,7 +113,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     _roomTextField.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     _roomTextField.delegate = self;
     
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 497.5, 250, 1)];
+    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.22, SCREENHEIGHT * 0.74, SCREENWIDTH * 0.66, 1)];
     lineLabel.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.7];
     
     [self.view addSubview:lineLabel];
@@ -124,7 +125,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:@"确 定" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [content addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(21)]} range:NSMakeRange(0, content.length)];
     
-    _achieveBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(43.5, 544.5, 288,46)];
+    _achieveBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.12, SCREENHEIGHT * 0.84, SCREENWIDTH * 0.76, 50)];
     [_achieveBtn setAttributedTitle:content forState:UIControlStateNormal];
     _achieveBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
     
@@ -139,9 +140,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (void)saveData{
-    if (_roomTextField.text.length!=3||_buildLabel.text.length!=3) {
-        [self showInfoView];
-    }else{
+    if (_roomTextField.text.length==3&&(_buildLabel.text.length==3||_buildLabel.text.length==4))
+    {
         NSDate *currentDate = [NSDate date];
         
         NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -152,12 +152,32 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         NSString *documentsDirectory = pathArray[0];
         NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
         NSMutableDictionary *data = [[NSMutableDictionary alloc] init];
-            [data setObject:[NSString stringWithFormat:@"%@",_roomTextField.text] forKey:@"room"];
-            [data setObject:[NSString stringWithFormat:@"%@",[_buildLabel.text substringWithRange:NSMakeRange(0, 2)]] forKey:@"build"];
-        [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
-            [data writeToFile:plistPath atomically:YES];
+        [data setObject:[NSString stringWithFormat:@"%@",_roomTextField.text] forKey:@"room"];
         
+        if ([_buildLabel.text isEqualToString:@"23a栋"])
+        {
+            [data setObject:@"23a" forKey:@"build"];
+            [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
+            [data writeToFile:plistPath atomically:YES];
+        }
+        else if ([_buildLabel.text isEqualToString:@"23b栋"])
+        {
+            [data setObject:@"23b" forKey:@"build"];
+            [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
+            [data writeToFile:plistPath atomically:YES];
+        }
+        else
+        {
+            [data setObject:[NSString stringWithFormat:@"%@",[_buildLabel.text substringWithRange:NSMakeRange(0, 2)]] forKey:@"build"];
+            [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
+            [data writeToFile:plistPath atomically:YES];
+            
+        }
         [self pushToDoneVC];
+    }
+    else
+    {
+        [self showInfoView];
     }
     
 }
@@ -170,28 +190,28 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (void)showInfoView{
-    _infoBigView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 667)];
+    _infoBigView = [[UIView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT)];
     _infoBigView.backgroundColor = [UIColor colorWithRed:57/255.0 green:57/255.0 blue:57/255.0 alpha:0.7];
     
-    UIView *achieveView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(31, 174.5, 313, 319)];
+    UIView *achieveView = [[UIView alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.1, (SCREENHEIGHT - HEADERHEIGHT) / 2 - SCREENWIDTH * 0.4, SCREENWIDTH * 0.8, SCREENWIDTH * 0.8)];
     achieveView.layer.cornerRadius = 12;
     achieveView.layer.masksToBounds = YES;
     achieveView.backgroundColor = [UIColor whiteColor];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"achieveImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(0, 0, 313, 187.5);
+    imageView.frame = CGRectMake(0, 0, SCREENWIDTH * 0.8, SCREENWIDTH * 0.48);
     
-    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(100.5, 213.5, 116, 20)];
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREENWIDTH * 0.48, SCREENWIDTH * 0.8, SCREENWIDTH * 0.13)];
     infoLabel.font = [UIFont systemFontOfSize:font(17)];
     infoLabel.textColor = [UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1];
     infoLabel.backgroundColor = [UIColor clearColor];
     infoLabel.text = @"请将信息填写完整";
-    infoLabel.textAlignment = NSTextAlignmentLeft;
+    infoLabel.textAlignment = NSTextAlignmentCenter;
     infoLabel.adjustsFontSizeToFitWidth = YES;
     infoLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     infoLabel.contentMode = UIViewContentModeRedraw;
     
-    UIButton *achieveBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(31, 264, 252, 41.5)];
+    UIButton *achieveBtn = [[UIButton alloc] initWithFrame:CGRectMake(SCREENWIDTH * 0.8 * 0.1, SCREENWIDTH * 0.61, SCREENWIDTH * 0.8 * 0.8, SCREENWIDTH * 0.8 * 0.16)];
     achieveBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
     [achieveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [achieveBtn setTitle:@"确 定" forState:UIControlStateNormal];
@@ -231,7 +251,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 39;
+    return 40;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -247,8 +267,29 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     InstallBuildTableViewCell *cell = [InstallBuildTableViewCell tableView:tableView cellForRowAtIndexPath:indexPath];
     if (indexPath.row + 1 < 10) {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
         cell.buildLabel.text = [NSString stringWithFormat:@"0%ld栋",(long)indexPath.row+1];
-    }else{
+    }
+    //23a
+    else if (indexPath.row + 1 == 23)
+    {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
+        cell.buildLabel.text = [NSString stringWithFormat:@"%lda栋",(long)indexPath.row+1];
+    }
+    //23b
+    else if (indexPath.row + 1 == 24)
+    {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
+        cell.buildLabel.text = [NSString stringWithFormat:@"%ldb栋",(long)indexPath.row];
+    }
+    else if (indexPath.row + 1 > 24)
+    {
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
+        cell.buildLabel.text = [NSString stringWithFormat:@"%ld栋",(long)indexPath.row];
+    }
+    //
+    else{
+        cell.buildLabel.frame = CGRectMake(SCREENWIDTH * 0.13, 0, 60, cell.height);
         cell.buildLabel.text = [NSString stringWithFormat:@"%ld栋",(long)indexPath.row+1];
     }
      return cell;

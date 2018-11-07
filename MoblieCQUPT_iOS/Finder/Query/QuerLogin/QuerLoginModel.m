@@ -27,6 +27,7 @@
     manger.responseSerializer = [AFHTTPResponseSerializer serializer];
     [manger POST:ELECTROLYSIS_URL parameters:param success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         
+        NSLog(@"%@",responseObject);
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         
         NSData *jsonData = [str dataUsingEncoding:NSUTF8StringEncoding];

@@ -53,12 +53,19 @@
         
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        _data = [[NSMutableArray alloc] init];
-        [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
-        [_data reverse];
-        
-        [_tableView reloadData];
+        if (responseObject[@"data"] == NULL)
+        {
+            NSLog(@"empty");
+            [self initFailViewWithDetail:@"暂无考试消息~"];
+        }
+        else
+        {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            _data = [[NSMutableArray alloc] init];
+            [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
+            [_data reverse];
+            [_tableView reloadData];
+        }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
           [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
     }];
@@ -106,7 +113,9 @@
 //    NSDateFormatter *dateFormatter = [NSDateFormatter new];
 //    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
 //    NSDate *myDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@-%@-12", [NSString stringWithFormat:@"0%@", [schoolData substringWithRange:NSMakeRange(0, 4)]], [schoolData substringWithRange:NSMakeRange(4, 1)]]];
-    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
+    NSInteger week = [_data[indexPath.row][@"week"] integerValue];
+    NSInteger weekday = [_data[indexPath.row][@"weekday"] integerValue];
+    NSDate *newDate = [[NSDate alloc]getShoolData:week andWeekday:weekday];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM-dd";
     NSString *examDate = [formatter stringFromDate:newDate];

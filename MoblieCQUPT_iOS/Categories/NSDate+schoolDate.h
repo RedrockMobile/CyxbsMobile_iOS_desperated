@@ -14,5 +14,5 @@
     用于算考试的日期
  */
 @interface NSDate(schoolDate)
-- (NSDate *)getShoolData:(NSString *)week andWeekday:(NSString *)weekday;
+- (NSDate *)getShoolData:(NSInteger)week andWeekday:(NSInteger)weekday;
 @end

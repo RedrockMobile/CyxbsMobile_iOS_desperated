@@ -43,7 +43,8 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)addTitleView{
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reinstallImage.png"]];
-    titleView.frame = CHANGE_CGRectMake(0, 64, 375, 300);
+    //
+    titleView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, (SCREENHEIGHT - 60) / 2);
     titleView.contentMode = UIViewContentModeScaleToFill;
     [self.view addSubview:titleView];
 }
