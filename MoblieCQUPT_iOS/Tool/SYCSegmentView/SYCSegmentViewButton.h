@@ -1,9 +1,9 @@
 //
 //  SYCSegmentViewButton.h
-//  MoblieCQUPT_iOS
+//  SYCSegmentView
 //
-//  Created by 施昱丞 on 2018/8/23.
-//  Copyright © 2018年 Orange-W. All rights reserved.
+//  Created by 施昱丞 on 2018/8/28.
+//  Copyright © 2018年 Shi Yucheng. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

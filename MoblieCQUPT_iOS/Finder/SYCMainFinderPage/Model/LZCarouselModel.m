@@ -27,7 +27,6 @@
         self.picture_goto_url = [aDecoder decodeObjectForKey:@"picture_goto_url"];
         self.keyword = [aDecoder decodeObjectForKey:@"keyword"];
         self.imageData = [aDecoder decodeObjectForKey:@"imageData"];
-        self.picture = [UIImage imageWithData:self.imageData];
     }
     return self;
 }

@@ -36,7 +36,7 @@
         <!--finder-->
         <scene sceneID="PB4-oC-gF3">
             <objects>
-                <viewController title="finder" id="NV8-MB-g1R" customClass="FinderViewController" sceneMemberID="viewController">
+                <viewController title="finder" id="NV8-MB-g1R" customClass="SYCFinderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nAj-8a-kt5"/>
                         <viewControllerLayoutGuide type="bottom" id="kPD-Ri-GDN"/>
@@ -44,113 +44,10 @@
                     <view key="view" contentMode="scaleToFill" id="cWk-Vf-fqs">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r32-xj-rWu">
-                                <rect key="frame" x="16" y="72" width="288" height="162"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="r32-xj-rWu" secondAttribute="height" multiplier="16:9" id="zC5-Yw-R6a"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LiX-UC-fSd" customClass="FinderCollectionViewFlowLayout">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                            </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uf-ty-yTz">
-                                <rect key="frame" x="10" y="254" width="147.5" height="77.5"/>
-                                <state key="normal" backgroundImage="find_image_hongyan.png"/>
-                                <connections>
-                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="ctk-gf-Erz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crD-8G-ggR">
-                                <rect key="frame" x="10" y="337.5" width="147.5" height="78"/>
-                                <state key="normal" backgroundImage="find_image_food.png"/>
-                                <connections>
-                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="6ts-Kt-VQq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6c-sk-tAs">
-                                <rect key="frame" x="162.5" y="337.5" width="147.5" height="78"/>
-                                <state key="normal" backgroundImage="find_image_query.png"/>
-                                <connections>
-                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="iPP-JK-d56"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gI7-3m-iLC">
-                                <rect key="frame" x="10" y="421.5" width="147.5" height="77.5"/>
-                                <state key="normal" backgroundImage="find_image_lostAndFound.png"/>
-                                <connections>
-                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="5Kh-Yb-umz"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMI-EA-sFR">
-                                <rect key="frame" x="162.5" y="421.5" width="147.5" height="77.5"/>
-                                <state key="normal" backgroundImage="find_image_shake.png"/>
-                                <connections>
-                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="TZI-JF-gq7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3w9-JS-8Nz">
-                                <rect key="frame" x="162.5" y="254" width="147.5" height="77.5"/>
-                                <state key="normal" backgroundImage="find_image_map.png"/>
-                                <connections>
-                                    <action selector="clickBtn:" destination="NV8-MB-g1R" eventType="touchUpInside" id="KWC-R6-uzc"/>
-                                </connections>
-                            </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="eag-Ol-55f">
-                                <rect key="frame" x="16" y="192" width="288" height="37"/>
-                                <color key="pageIndicatorTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.41176470588235292" green="0.62352941176470589" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="3w9-JS-8Nz" firstAttribute="width" secondItem="4uf-ty-yTz" secondAttribute="width" id="0eu-AB-NIn"/>
-                            <constraint firstItem="eag-Ol-55f" firstAttribute="centerX" secondItem="r32-xj-rWu" secondAttribute="centerX" id="1U9-Lg-NJ1"/>
-                            <constraint firstItem="4uf-ty-yTz" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="10" id="2EJ-DU-1bI"/>
-                            <constraint firstItem="4uf-ty-yTz" firstAttribute="top" secondItem="r32-xj-rWu" secondAttribute="bottom" constant="20" id="4kO-mI-ya7"/>
-                            <constraint firstItem="eag-Ol-55f" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="16" id="8WL-CK-YSF"/>
-                            <constraint firstItem="gI7-3m-iLC" firstAttribute="width" secondItem="4uf-ty-yTz" secondAttribute="width" id="8c8-IA-udT"/>
-                            <constraint firstItem="kPD-Ri-GDN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cMI-EA-sFR" secondAttribute="bottom" constant="20" id="F1w-oW-tbs"/>
-                            <constraint firstAttribute="trailing" secondItem="r32-xj-rWu" secondAttribute="trailing" constant="16" id="FAV-rV-deT"/>
-                            <constraint firstAttribute="trailing" secondItem="3w9-JS-8Nz" secondAttribute="trailing" constant="10" id="GgU-fC-gFf"/>
-                            <constraint firstItem="3w9-JS-8Nz" firstAttribute="top" secondItem="r32-xj-rWu" secondAttribute="bottom" constant="20" id="Hkl-sA-QdK"/>
-                            <constraint firstItem="y6c-sk-tAs" firstAttribute="top" secondItem="3w9-JS-8Nz" secondAttribute="bottom" constant="6" id="J9F-jb-DBM"/>
-                            <constraint firstItem="cMI-EA-sFR" firstAttribute="height" secondItem="4uf-ty-yTz" secondAttribute="height" id="Jag-oG-7YK"/>
-                            <constraint firstAttribute="trailing" secondItem="y6c-sk-tAs" secondAttribute="trailing" constant="10" id="LQ3-Jp-TGl"/>
-                            <constraint firstItem="gI7-3m-iLC" firstAttribute="top" secondItem="crD-8G-ggR" secondAttribute="bottom" constant="6" id="Mil-UN-yJk"/>
-                            <constraint firstItem="cMI-EA-sFR" firstAttribute="width" secondItem="4uf-ty-yTz" secondAttribute="width" id="PYc-cv-yhT"/>
-                            <constraint firstAttribute="trailing" secondItem="eag-Ol-55f" secondAttribute="trailing" constant="16" id="QLx-hb-g9P"/>
-                            <constraint firstItem="crD-8G-ggR" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="10" id="QQO-ht-lsw"/>
-                            <constraint firstItem="r32-xj-rWu" firstAttribute="top" secondItem="nAj-8a-kt5" secondAttribute="bottom" constant="8" id="ZbT-Bn-7bi"/>
-                            <constraint firstItem="cMI-EA-sFR" firstAttribute="top" secondItem="y6c-sk-tAs" secondAttribute="bottom" constant="6" id="Zo2-zl-EVX"/>
-                            <constraint firstItem="3w9-JS-8Nz" firstAttribute="height" secondItem="4uf-ty-yTz" secondAttribute="height" id="aHm-sB-d2H"/>
-                            <constraint firstItem="crD-8G-ggR" firstAttribute="top" secondItem="4uf-ty-yTz" secondAttribute="bottom" constant="6" id="ax1-PF-rhk"/>
-                            <constraint firstItem="r32-xj-rWu" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="16" id="bWV-I3-mlZ"/>
-                            <constraint firstItem="y6c-sk-tAs" firstAttribute="leading" secondItem="crD-8G-ggR" secondAttribute="trailing" constant="5" id="ccr-Hw-hrG"/>
-                            <constraint firstItem="gI7-3m-iLC" firstAttribute="leading" secondItem="cWk-Vf-fqs" secondAttribute="leading" constant="10" id="dC0-QW-tsX"/>
-                            <constraint firstItem="gI7-3m-iLC" firstAttribute="height" secondItem="4uf-ty-yTz" secondAttribute="height" id="dEI-Bh-hsU"/>
-                            <constraint firstItem="kPD-Ri-GDN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gI7-3m-iLC" secondAttribute="bottom" constant="20" id="dFT-Dw-gqw"/>
-                            <constraint firstAttribute="trailing" secondItem="cMI-EA-sFR" secondAttribute="trailing" constant="10" id="dPK-d1-eul"/>
-                            <constraint firstItem="y6c-sk-tAs" firstAttribute="height" secondItem="4uf-ty-yTz" secondAttribute="height" id="ggq-CZ-VYF"/>
-                            <constraint firstItem="crD-8G-ggR" firstAttribute="height" secondItem="4uf-ty-yTz" secondAttribute="height" id="htf-0g-2Cg"/>
-                            <constraint firstItem="3w9-JS-8Nz" firstAttribute="leading" secondItem="4uf-ty-yTz" secondAttribute="trailing" constant="5" id="kZ7-jo-SoM"/>
-                            <constraint firstItem="4uf-ty-yTz" firstAttribute="top" secondItem="eag-Ol-55f" secondAttribute="bottom" constant="25" id="msJ-gF-Mqv"/>
-                            <constraint firstItem="y6c-sk-tAs" firstAttribute="width" secondItem="4uf-ty-yTz" secondAttribute="width" id="qcL-XZ-Sv7"/>
-                            <constraint firstItem="crD-8G-ggR" firstAttribute="width" secondItem="4uf-ty-yTz" secondAttribute="width" id="sxP-or-l04"/>
-                            <constraint firstItem="cMI-EA-sFR" firstAttribute="leading" secondItem="gI7-3m-iLC" secondAttribute="trailing" constant="5" id="uAW-JK-DZf"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="Cg0-7l-lGF"/>
                     <navigationItem key="navigationItem" id="AmP-68-mUd"/>
-                    <connections>
-                        <outlet property="collectionView" destination="r32-xj-rWu" id="xZk-WL-CQX"/>
-                        <outlet property="layout" destination="LiX-UC-fSd" id="aPB-WM-bPx"/>
-                        <outlet property="pageControl" destination="eag-Ol-55f" id="sUy-ep-GFa"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Of-rr-lAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -506,12 +403,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="find_image_food.png" width="178" height="107"/>
-        <image name="find_image_hongyan.png" width="178" height="107"/>
-        <image name="find_image_lostAndFound.png" width="178" height="107"/>
-        <image name="find_image_map.png" width="178" height="107"/>
-        <image name="find_image_query.png" width="178" height="107"/>
-        <image name="find_image_shake.png" width="178" height="107"/>
         <image name="mine_image_edit.png" width="14" height="14"/>
     </resources>
 </document>

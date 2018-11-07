@@ -32,7 +32,7 @@
     self.subjectsVC.data = self.data;
     
     NSArray *viewsArray = @[self.sexRatioVC, self.subjectsVC];
-    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewsArray andType:SYCSegmentViewTypeNormal];
+    SYCSegmentView *segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) controllers:viewsArray type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segmentView];
     
     self.title = self.data.name;

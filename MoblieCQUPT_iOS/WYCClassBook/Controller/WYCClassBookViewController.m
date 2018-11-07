@@ -486,13 +486,22 @@
 - (void)updateWeekChooseBar{
     if (self.hiddenWeekChooseBar) {
         self.hiddenWeekChooseBar = NO;
-        self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
+        [UIView animateWithDuration:0.1f animations:^{
+            self.weekChooseBar.layer.opacity = 1.0f;
+        } completion:^(BOOL finished) {
+            self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
+        }];
+        
         [self initTitleBtn];
         [self updateScrollViewFame];
         
     }else{
         self.hiddenWeekChooseBar = YES;
-        self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
+        [UIView animateWithDuration:0.1f animations:^{
+            self.weekChooseBar.layer.opacity = 0.0f;
+        } completion:^(BOOL finished) {
+            self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
+        }];
         [self initTitleBtn];
         [self updateScrollViewFame];
     }
@@ -500,7 +509,10 @@
 -(void)updateScrollViewFame{
     //NSLog(@"num:%lu",(unsigned long)_scrollView.subviews.count);
     if (self.hiddenWeekChooseBar) {
-        [_rootView setFrame:CGRectMake(0, 0, _rootView.frame.size.width, _rootView.frame.size.height)];
+        [UIView animateWithDuration:0.2f animations:^{
+            [_rootView setFrame:CGRectMake(0, 0, _rootView.frame.size.width, _rootView.frame.size.height)];
+        }];
+        
         [_rootView layoutIfNeeded];
         [_rootView layoutSubviews];
         for (int i = 0; i < 26; i++) {
@@ -511,7 +523,10 @@
             [view layoutSubviews];
         }
     }else{
-        [_rootView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, _rootView.frame.size.width, _rootView.frame.size.height)];
+        [UIView animateWithDuration:0.2f animations:^{
+            [_rootView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, _rootView.frame.size.width, _rootView.frame.size.height)];
+        }];
+        
         [_rootView layoutIfNeeded];
         [_rootView layoutSubviews];
         //NSLog(@"viewcount:%lu",(unsigned long)_scrollView.subviews.count);
@@ -590,9 +605,12 @@
     
     //显示全屏view
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    detailClassBookView.layer.opacity = 0.0f;
     [view addSubview:detailClassBookView];
     [window addSubview:view];
-    
+    [UIView animateWithDuration:0.1f animations:^{
+        detailClassBookView.layer.opacity = 1.0f;
+    } completion:nil];
     //    [UIView animateWithDuration:0.06f animations:^{
     //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
     //    } completion:nil];
@@ -603,9 +621,11 @@
 - (void)hiddenDetailView{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
-    [view removeFromSuperview];
-    
-    
+    [UIView animateWithDuration:0.2f animations:^{
+        view.layer.opacity = 0.0f;
+    } completion:^(BOOL finished) {
+        [view removeFromSuperview];
+    }];
 }
 
 

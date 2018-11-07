@@ -1,9 +1,9 @@
 //
 //  SYCSegmentViewButton.m
-//  MoblieCQUPT_iOS
+//  SYCSegmentView
 //
-//  Created by 施昱丞 on 2018/8/23.
-//  Copyright © 2018年 Orange-W. All rights reserved.
+//  Created by 施昱丞 on 2018/8/28.
+//  Copyright © 2018年 Shi Yucheng. All rights reserved.
 //
 
 #import "SYCSegmentViewButton.h"
@@ -24,12 +24,12 @@
     CGFloat labelWidth = backgroundWidth * 0.9;
     CGFloat labelHeight = backgroundHeight * 0.8;
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.frame.size.width - labelWidth) / 2.0, (self.frame.size.height - labelHeight) / 2.0, labelWidth, labelHeight)];
-    nameLabel.textColor = RGBColor(153, 153, 153, 1.0);
+    nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     if (self.state == UIControlStateSelected) {
         nameLabel.textColor = MAIN_COLOR;
     }
     nameLabel.text = self.title;
-    nameLabel.textAlignment = UITextAlignmentCenter;
+    nameLabel.textAlignment = NSTextAlignmentCenter;
     nameLabel.font = [UIFont systemFontOfSize:16 weight:UIFontWeightRegular];
     
     [self.layer addSublayer:backgroundView.layer];
