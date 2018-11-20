@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +35,6 @@
         <!--finder-->
         <scene sceneID="PB4-oC-gF3">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Of-rr-lAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="finder" id="NV8-MB-g1R" customClass="SYCFinderViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nAj-8a-kt5"/>
@@ -49,6 +48,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="Cg0-7l-lGF"/>
                     <navigationItem key="navigationItem" id="AmP-68-mUd"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Of-rr-lAS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="43.125" y="1050"/>
         </scene>
@@ -62,7 +62,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="Zs5-pY-eiB" kind="relationship" relationship="rootViewController" id="FwZ-KS-ZbO"/>
+                        <segue destination="6bF-e4-NNQ" kind="relationship" relationship="rootViewController" id="M3k-IK-iVh"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTs-I5-Kba" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -87,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x9J-LC-god" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="-417"/>
+            <point key="canvasLocation" x="43" y="-433"/>
         </scene>
         <!--setting-->
         <scene sceneID="aff-Tf-EaZ">
@@ -283,6 +283,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a6y-f1-2zr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2810" y="1487"/>
+        </scene>
+        <!--Course-->
+        <scene sceneID="5Ee-eF-ITu">
+            <objects>
+                <viewController title="Course" id="6bF-e4-NNQ" customClass="WYCClassBookViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4uz-L2-LHW"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Bq-1E-hgc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iQX-vJ-Pvd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnk-3X-p9A">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvq-Wq-wS3">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </scrollView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Cvq-Wq-wS3" firstAttribute="leading" secondItem="jnk-3X-p9A" secondAttribute="leading" id="AEf-E4-4sM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cvq-Wq-wS3" secondAttribute="trailing" id="G1A-8E-IWl"/>
+                                    <constraint firstItem="Cvq-Wq-wS3" firstAttribute="top" secondItem="jnk-3X-p9A" secondAttribute="top" id="lJ3-Ym-tP0"/>
+                                    <constraint firstAttribute="bottom" secondItem="Cvq-Wq-wS3" secondAttribute="bottom" id="zn6-jF-g5H"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jnk-3X-p9A" secondAttribute="trailing" id="10m-bN-BcS"/>
+                            <constraint firstItem="jnk-3X-p9A" firstAttribute="bottom" secondItem="1Bq-1E-hgc" secondAttribute="top" id="hDz-D7-5Qt"/>
+                            <constraint firstItem="jnk-3X-p9A" firstAttribute="leading" secondItem="iQX-vJ-Pvd" secondAttribute="leading" id="ydF-Pv-3JN"/>
+                            <constraint firstItem="jnk-3X-p9A" firstAttribute="top" secondItem="4uz-L2-LHW" secondAttribute="bottom" id="zTh-xM-93n"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="1Uh-99-nWU"/>
+                    <navigationItem key="navigationItem" id="jgg-5o-cID"/>
+                    <connections>
+                        <outlet property="rootView" destination="jnk-3X-p9A" id="77Y-6f-DKr"/>
+                        <outlet property="scrollView" destination="Cvq-Wq-wS3" id="VCO-T3-Ks0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iJs-mj-MOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="-369"/>
         </scene>
     </scenes>
     <resources>
