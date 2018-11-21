@@ -65,6 +65,21 @@ DEPENDENCIES:
   - UMengUShare/UI
   - YYKit
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Bugly
+    - FMDB
+    - GMImagePicker
+    - Masonry
+    - MBProgressHUD
+    - MJRefresh
+    - pop
+    - SDWebImage
+    - UMengAnalytics-NO-IDFA
+    - UMengUShare
+    - YYKit
+
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Bugly: da3c02408c14838d498429320545a8e439392978
@@ -81,4 +96,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a0993587c5acafacfaba13f09bd74035734db1e9
 
-COCOAPODS: 1.2.0.beta.1
+COCOAPODS: 1.5.3
