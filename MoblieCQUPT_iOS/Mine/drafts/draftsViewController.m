@@ -101,11 +101,16 @@
 
 - (void)dataFlash{
     //获取已登录用户的账户信息
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
+    NSDictionary *parameters = @{
+                                 @"page":@0,
+                                 @"size":@15,
+                                 @"stunum":[UserDefaultTool getStuNum],
+                                 @"idnum":[UserDefaultTool getIdNum]
+                                 };
+    
     [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList"
-                            WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum,
-                            }
+                            WithParameter:parameters
+//  @{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",}
                      WithReturnValeuBlock:^(id returnValue) {
                          for (NSDictionary *dic in returnValue[@"data"]) {
                              draftsModel *model = [[draftsModel alloc] initWithDic:dic];
