@@ -27,6 +27,7 @@
     dispatch_once(&onceToken, ^{
         control = [[SYCCustomToolsControl alloc] init];
     });
+    MAIN_COLOR
     return control;
 }
 

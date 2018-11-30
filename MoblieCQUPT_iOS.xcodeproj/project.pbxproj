@@ -1943,33 +1943,33 @@
 			name = images;
 			sourceTree = "<group>";
 		};
-		82398BB021A4289500300C91 /* SYCMainPage */ = {
+		82398BB021A4289500300C91 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
+				82398BBF21A4289500300C91 /* SYCFinderViewController.h */,
 				82398BB121A4289500300C91 /* SYCFinderViewController.m */,
+				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
 				82398BB221A4289500300C91 /* SYCPictureDisplay.m */,
 				82398BB321A4289500300C91 /* SYCToolModel.h */,
-				82398BB421A4289500300C91 /* LZCarouselModel.h */,
-				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
-				82398BB621A4289500300C91 /* SYCToolsCell.m */,
-				82398BB721A4289500300C91 /* EditPage */,
-				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
-				82398BBF21A4289500300C91 /* SYCFinderViewController.h */,
 				82398BC021A4289500300C91 /* SYCToolModel.m */,
-				82398BC121A4289500300C91 /* LZCarouselModel.m */,
 				82398BC221A4289500300C91 /* SYCToolsCell.h */,
+				82398BB621A4289500300C91 /* SYCToolsCell.m */,
+				82398BB421A4289500300C91 /* LZCarouselModel.h */,
+				82398BC121A4289500300C91 /* LZCarouselModel.m */,
 				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
+				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
+				82398BB721A4289500300C91 /* EditPage */,
 			);
-			path = SYCMainPage;
+			path = MainPage;
 			sourceTree = "<group>";
 		};
 		82398BB721A4289500300C91 /* EditPage */ = {
 			isa = PBXGroup;
 			children = (
 				82398BB821A4289500300C91 /* SYCEditToolsView.h */,
+				82398BBB21A4289500300C91 /* SYCCustomToolsControl.h */,
 				82398BB921A4289500300C91 /* SYCCustomToolsControl.m */,
 				82398BBA21A4289500300C91 /* SYCEditToolsViewHeader.m */,
-				82398BBB21A4289500300C91 /* SYCCustomToolsControl.h */,
 				82398BBC21A4289500300C91 /* SYCEditToolsView.m */,
 				82398BBD21A4289500300C91 /* SYCEditToolsViewHeader.h */,
 			);
@@ -2354,7 +2354,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
 			isa = PBXGroup;
 			children = (
-				82398BB021A4289500300C91 /* SYCMainPage */,
+				82398BB021A4289500300C91 /* MainPage */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
