@@ -24,7 +24,7 @@
 #import "LessonController.h"
 #import "DLChooseClassListViewController.h"
 
-#define DateStart @"2018-09-10"
+#define DateStart @"2019-02-25"
 
 @interface WYCClassBookViewController ()<UIScrollViewDelegate,WYCClassBookViewDelegate,WYCShowDetailDelegate>
 @property (nonatomic, strong) UIView *titleView;

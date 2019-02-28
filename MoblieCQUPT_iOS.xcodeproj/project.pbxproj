@@ -313,6 +313,25 @@
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
+		E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D52227FAD20029501A /* IssueTableViewController.m */; };
+		E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D72227FAD20029501A /* DetailLostViewController.m */; };
+		E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9D82227FAD20029501A /* IssueTableViewController.xib */; };
+		E470C9FB2227FAD20029501A /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D92227FAD20029501A /* LostViewController.m */; };
+		E470C9FC2227FAD20029501A /* LZIssueSucceedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9DA2227FAD20029501A /* LZIssueSucceedViewController.m */; };
+		E470C9FD2227FAD20029501A /* LostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9DC2227FAD20029501A /* LostTableViewController.m */; };
+		E470C9FE2227FAD20029501A /* LZIssueSucceedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9DD2227FAD20029501A /* LZIssueSucceedViewController.xib */; };
+		E470C9FF2227FAD20029501A /* DetailLostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9E12227FAD20029501A /* DetailLostViewController.xib */; };
+		E470CA002227FAD20029501A /* LostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9E52227FAD20029501A /* LostItem.m */; };
+		E470CA012227FAD20029501A /* LostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9E62227FAD20029501A /* LostModel.m */; };
+		E470CA022227FAD20029501A /* LZDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9E82227FAD20029501A /* LZDatePicker.m */; };
+		E470CA032227FAD20029501A /* IconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9EA2227FAD20029501A /* IconTableViewCell.m */; };
+		E470CA042227FAD20029501A /* LZConfirmButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9EB2227FAD20029501A /* LZConfirmButton.m */; };
+		E470CA052227FAD20029501A /* IconTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9ED2227FAD20029501A /* IconTableViewCell.xib */; };
+		E470CA062227FAD20029501A /* LostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9EE2227FAD20029501A /* LostTableViewCell.m */; };
+		E470CA072227FAD20029501A /* LostAndFoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9EF2227FAD20029501A /* LostAndFoundButton.m */; };
+		E470CA082227FAD20029501A /* LZLostRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9F02227FAD20029501A /* LZLostRemindView.m */; };
+		E470CA092227FAD20029501A /* LostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9F22227FAD20029501A /* LostTableViewCell.xib */; };
+		E470CA0A2227FAD20029501A /* CategoryChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9F62227FAD20029501A /* CategoryChooseView.m */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -512,25 +531,6 @@
 		F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD7F1EBCB2BB005AC411 /* MOHImageParamModel.m */; };
 		F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD811EBCB2BB005AC411 /* NetWork.m */; };
 		F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */; };
-		F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF861EBD9E2C005AC411 /* DetailLostViewController.m */; };
-		F242DFA91EBD9E2C005AC411 /* DetailLostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DF871EBD9E2C005AC411 /* DetailLostViewController.xib */; };
-		F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF891EBD9E2C005AC411 /* IssueTableViewController.m */; };
-		F242DFAB1EBD9E2C005AC411 /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DF8A1EBD9E2C005AC411 /* IssueTableViewController.xib */; };
-		F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF8C1EBD9E2C005AC411 /* LostTableViewController.m */; };
-		F242DFAD1EBD9E2C005AC411 /* LostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF8E1EBD9E2C005AC411 /* LostViewController.m */; };
-		F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF901EBD9E2C005AC411 /* LZIssueSucceedViewController.m */; };
-		F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DF911EBD9E2C005AC411 /* LZIssueSucceedViewController.xib */; };
-		F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF941EBD9E2C005AC411 /* LostItem.m */; };
-		F242DFB11EBD9E2C005AC411 /* LostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF961EBD9E2C005AC411 /* LostModel.m */; };
-		F242DFB21EBD9E2C005AC411 /* CategoryChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF991EBD9E2C005AC411 /* CategoryChooseView.m */; };
-		F242DFB31EBD9E2C005AC411 /* IconTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF9B1EBD9E2C005AC411 /* IconTableViewCell.m */; };
-		F242DFB41EBD9E2C005AC411 /* IconTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DF9C1EBD9E2C005AC411 /* IconTableViewCell.xib */; };
-		F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DF9E1EBD9E2C005AC411 /* LostAndFoundButton.m */; };
-		F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA01EBD9E2C005AC411 /* LostTableViewCell.m */; };
-		F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DFA11EBD9E2C005AC411 /* LostTableViewCell.xib */; };
-		F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA31EBD9E2C005AC411 /* LZConfirmButton.m */; };
-		F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA51EBD9E2C005AC411 /* LZDatePicker.m */; };
-		F242DFBA1EBD9E2C005AC411 /* LZLostRemindView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DFA71EBD9E2C005AC411 /* LZLostRemindView.m */; };
 		F2509BCE1F440D7D0091F678 /* SegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2509BCD1F440D7D0091F678 /* SegmentView.m */; };
 		F26D95D71F3C3FF70063B024 /* iconfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F26D95D51F3C3FF70063B024 /* iconfont.ttf */; };
 		F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D95E51F3C400E0063B024 /* MBCommentCell.m */; };
@@ -1084,6 +1084,39 @@
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		E470C9D52227FAD20029501A /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
+		E470C9D62227FAD20029501A /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
+		E470C9D72227FAD20029501A /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
+		E470C9D82227FAD20029501A /* IssueTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueTableViewController.xib; sourceTree = "<group>"; };
+		E470C9D92227FAD20029501A /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
+		E470C9DA2227FAD20029501A /* LZIssueSucceedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZIssueSucceedViewController.m; sourceTree = "<group>"; };
+		E470C9DB2227FAD20029501A /* DetailLostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLostViewController.h; sourceTree = "<group>"; };
+		E470C9DC2227FAD20029501A /* LostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostTableViewController.m; sourceTree = "<group>"; };
+		E470C9DD2227FAD20029501A /* LZIssueSucceedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LZIssueSucceedViewController.xib; sourceTree = "<group>"; };
+		E470C9DE2227FAD20029501A /* IssueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTableViewController.h; sourceTree = "<group>"; };
+		E470C9DF2227FAD20029501A /* LZIssueSucceedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZIssueSucceedViewController.h; sourceTree = "<group>"; };
+		E470C9E02227FAD20029501A /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
+		E470C9E12227FAD20029501A /* DetailLostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLostViewController.xib; sourceTree = "<group>"; };
+		E470C9E32227FAD20029501A /* LostItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostItem.h; sourceTree = "<group>"; };
+		E470C9E42227FAD20029501A /* LostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostModel.h; sourceTree = "<group>"; };
+		E470C9E52227FAD20029501A /* LostItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostItem.m; sourceTree = "<group>"; };
+		E470C9E62227FAD20029501A /* LostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostModel.m; sourceTree = "<group>"; };
+		E470C9E82227FAD20029501A /* LZDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZDatePicker.m; sourceTree = "<group>"; };
+		E470C9E92227FAD20029501A /* LZLostRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZLostRemindView.h; sourceTree = "<group>"; };
+		E470C9EA2227FAD20029501A /* IconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconTableViewCell.m; sourceTree = "<group>"; };
+		E470C9EB2227FAD20029501A /* LZConfirmButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZConfirmButton.m; sourceTree = "<group>"; };
+		E470C9EC2227FAD20029501A /* CategoryChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryChooseView.h; sourceTree = "<group>"; };
+		E470C9ED2227FAD20029501A /* IconTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconTableViewCell.xib; sourceTree = "<group>"; };
+		E470C9EE2227FAD20029501A /* LostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostTableViewCell.m; sourceTree = "<group>"; };
+		E470C9EF2227FAD20029501A /* LostAndFoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostAndFoundButton.m; sourceTree = "<group>"; };
+		E470C9F02227FAD20029501A /* LZLostRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZLostRemindView.m; sourceTree = "<group>"; };
+		E470C9F12227FAD20029501A /* LZDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZDatePicker.h; sourceTree = "<group>"; };
+		E470C9F22227FAD20029501A /* LostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostTableViewCell.xib; sourceTree = "<group>"; };
+		E470C9F32227FAD20029501A /* IconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconTableViewCell.h; sourceTree = "<group>"; };
+		E470C9F42227FAD20029501A /* LostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewCell.h; sourceTree = "<group>"; };
+		E470C9F52227FAD20029501A /* LostAndFoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostAndFoundButton.h; sourceTree = "<group>"; };
+		E470C9F62227FAD20029501A /* CategoryChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryChooseView.m; sourceTree = "<group>"; };
+		E470C9F72227FAD20029501A /* LZConfirmButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZConfirmButton.h; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -1357,39 +1390,6 @@
 		F242DD821EBCB2BB005AC411 /* ORWRequestCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORWRequestCache.h; sourceTree = "<group>"; };
 		F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORWRequestCache.m; sourceTree = "<group>"; };
 		F242DD861EBCB2BB005AC411 /* 掌上重邮.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "掌上重邮.entitlements"; sourceTree = "<group>"; };
-		F242DF851EBD9E2C005AC411 /* DetailLostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailLostViewController.h; sourceTree = "<group>"; };
-		F242DF861EBD9E2C005AC411 /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
-		F242DF871EBD9E2C005AC411 /* DetailLostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailLostViewController.xib; sourceTree = "<group>"; };
-		F242DF881EBD9E2C005AC411 /* IssueTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueTableViewController.h; sourceTree = "<group>"; };
-		F242DF891EBD9E2C005AC411 /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
-		F242DF8A1EBD9E2C005AC411 /* IssueTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IssueTableViewController.xib; sourceTree = "<group>"; };
-		F242DF8B1EBD9E2C005AC411 /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
-		F242DF8C1EBD9E2C005AC411 /* LostTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostTableViewController.m; sourceTree = "<group>"; };
-		F242DF8D1EBD9E2C005AC411 /* LostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostViewController.h; sourceTree = "<group>"; };
-		F242DF8E1EBD9E2C005AC411 /* LostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostViewController.m; sourceTree = "<group>"; };
-		F242DF8F1EBD9E2C005AC411 /* LZIssueSucceedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZIssueSucceedViewController.h; sourceTree = "<group>"; };
-		F242DF901EBD9E2C005AC411 /* LZIssueSucceedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZIssueSucceedViewController.m; sourceTree = "<group>"; };
-		F242DF911EBD9E2C005AC411 /* LZIssueSucceedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LZIssueSucceedViewController.xib; sourceTree = "<group>"; };
-		F242DF931EBD9E2C005AC411 /* LostItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostItem.h; sourceTree = "<group>"; };
-		F242DF941EBD9E2C005AC411 /* LostItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostItem.m; sourceTree = "<group>"; };
-		F242DF951EBD9E2C005AC411 /* LostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostModel.h; sourceTree = "<group>"; };
-		F242DF961EBD9E2C005AC411 /* LostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostModel.m; sourceTree = "<group>"; };
-		F242DF981EBD9E2C005AC411 /* CategoryChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryChooseView.h; sourceTree = "<group>"; };
-		F242DF991EBD9E2C005AC411 /* CategoryChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryChooseView.m; sourceTree = "<group>"; };
-		F242DF9A1EBD9E2C005AC411 /* IconTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IconTableViewCell.h; sourceTree = "<group>"; };
-		F242DF9B1EBD9E2C005AC411 /* IconTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IconTableViewCell.m; sourceTree = "<group>"; };
-		F242DF9C1EBD9E2C005AC411 /* IconTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IconTableViewCell.xib; sourceTree = "<group>"; };
-		F242DF9D1EBD9E2C005AC411 /* LostAndFoundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostAndFoundButton.h; sourceTree = "<group>"; };
-		F242DF9E1EBD9E2C005AC411 /* LostAndFoundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostAndFoundButton.m; sourceTree = "<group>"; };
-		F242DF9F1EBD9E2C005AC411 /* LostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewCell.h; sourceTree = "<group>"; };
-		F242DFA01EBD9E2C005AC411 /* LostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LostTableViewCell.m; sourceTree = "<group>"; };
-		F242DFA11EBD9E2C005AC411 /* LostTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LostTableViewCell.xib; sourceTree = "<group>"; };
-		F242DFA21EBD9E2C005AC411 /* LZConfirmButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZConfirmButton.h; sourceTree = "<group>"; };
-		F242DFA31EBD9E2C005AC411 /* LZConfirmButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZConfirmButton.m; sourceTree = "<group>"; };
-		F242DFA41EBD9E2C005AC411 /* LZDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZDatePicker.h; sourceTree = "<group>"; };
-		F242DFA51EBD9E2C005AC411 /* LZDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZDatePicker.m; sourceTree = "<group>"; };
-		F242DFA61EBD9E2C005AC411 /* LZLostRemindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZLostRemindView.h; sourceTree = "<group>"; };
-		F242DFA71EBD9E2C005AC411 /* LZLostRemindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZLostRemindView.m; sourceTree = "<group>"; };
 		F2509BCC1F440D7D0091F678 /* SegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentView.h; sourceTree = "<group>"; };
 		F2509BCD1F440D7D0091F678 /* SegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentView.m; sourceTree = "<group>"; };
 		F26D95D51F3C3FF70063B024 /* iconfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = iconfont.ttf; sourceTree = "<group>"; };
@@ -2284,6 +2284,70 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E470C9D32227FAD20029501A /* LostAndFound */ = {
+			isa = PBXGroup;
+			children = (
+				E470C9D42227FAD20029501A /* Controller */,
+				E470C9E22227FAD20029501A /* Model */,
+				E470C9E72227FAD20029501A /* View */,
+			);
+			path = LostAndFound;
+			sourceTree = "<group>";
+		};
+		E470C9D42227FAD20029501A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E470C9D52227FAD20029501A /* IssueTableViewController.m */,
+				E470C9D62227FAD20029501A /* LostTableViewController.h */,
+				E470C9D72227FAD20029501A /* DetailLostViewController.m */,
+				E470C9D82227FAD20029501A /* IssueTableViewController.xib */,
+				E470C9D92227FAD20029501A /* LostViewController.m */,
+				E470C9DA2227FAD20029501A /* LZIssueSucceedViewController.m */,
+				E470C9DB2227FAD20029501A /* DetailLostViewController.h */,
+				E470C9DC2227FAD20029501A /* LostTableViewController.m */,
+				E470C9DD2227FAD20029501A /* LZIssueSucceedViewController.xib */,
+				E470C9DE2227FAD20029501A /* IssueTableViewController.h */,
+				E470C9DF2227FAD20029501A /* LZIssueSucceedViewController.h */,
+				E470C9E02227FAD20029501A /* LostViewController.h */,
+				E470C9E12227FAD20029501A /* DetailLostViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E470C9E22227FAD20029501A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E470C9E32227FAD20029501A /* LostItem.h */,
+				E470C9E42227FAD20029501A /* LostModel.h */,
+				E470C9E52227FAD20029501A /* LostItem.m */,
+				E470C9E62227FAD20029501A /* LostModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E470C9E72227FAD20029501A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E470C9E82227FAD20029501A /* LZDatePicker.m */,
+				E470C9E92227FAD20029501A /* LZLostRemindView.h */,
+				E470C9EA2227FAD20029501A /* IconTableViewCell.m */,
+				E470C9EB2227FAD20029501A /* LZConfirmButton.m */,
+				E470C9EC2227FAD20029501A /* CategoryChooseView.h */,
+				E470C9ED2227FAD20029501A /* IconTableViewCell.xib */,
+				E470C9EE2227FAD20029501A /* LostTableViewCell.m */,
+				E470C9EF2227FAD20029501A /* LostAndFoundButton.m */,
+				E470C9F02227FAD20029501A /* LZLostRemindView.m */,
+				E470C9F12227FAD20029501A /* LZDatePicker.h */,
+				E470C9F22227FAD20029501A /* LostTableViewCell.xib */,
+				E470C9F32227FAD20029501A /* IconTableViewCell.h */,
+				E470C9F42227FAD20029501A /* LostTableViewCell.h */,
+				E470C9F52227FAD20029501A /* LostAndFoundButton.h */,
+				E470C9F62227FAD20029501A /* CategoryChooseView.m */,
+				E470C9F72227FAD20029501A /* LZConfirmButton.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F20026CC1F4020FA00360991 /* Image */ = {
 			isa = PBXGroup;
 			children = (
@@ -2333,7 +2397,7 @@
 				F242DB921EBCB2BB005AC411 /* LZCourse */,
 				F242DC371EBCB2BB005AC411 /* MBCommunity */,
 				6E0F69312033424500BB5EF3 /* YouWen */,
-				F242DA6B1EBCB2BB005AC411 /* Finder */,
+				F242DA6B1EBCB2BB005AC411 /* Discover */,
 				F242DC8C1EBCB2BB005AC411 /* Mine */,
 				F2A92CE71F52E8F900B4CEEF /* Categories */,
 				F242DCD81EBCB2BB005AC411 /* Resoure */,
@@ -2351,19 +2415,19 @@
 			path = MoblieCQUPT_iOS;
 			sourceTree = SOURCE_ROOT;
 		};
-		F242DA6B1EBCB2BB005AC411 /* Finder */ = {
+		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				E470C9D32227FAD20029501A /* LostAndFound */,
 				82398BB021A4289500300C91 /* MainPage */,
 				4A3A07971FCC0EC500A50393 /* Resource */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
 				F20026E91F40336E00360991 /* Map */,
-				F242DF831EBD9E2C005AC411 /* LostAndFound */,
 				F242DA981EBCB2BB005AC411 /* Query */,
-				F242DAC71EBCB2BB005AC411 /* RedrockWebsite */,
-				F242DAFE1EBCB2BB005AC411 /* shake */,
+				F242DAC71EBCB2BB005AC411 /* AboutRedrock */,
+				F242DAFE1EBCB2BB005AC411 /* ShakeShake */,
 			);
-			path = Finder;
+			path = Discover;
 			sourceTree = "<group>";
 		};
 		F242DA981EBCB2BB005AC411 /* Query */ = {
@@ -2440,24 +2504,24 @@
 			path = QuerRemind;
 			sourceTree = "<group>";
 		};
-		F242DAC71EBCB2BB005AC411 /* RedrockWebsite */ = {
+		F242DAC71EBCB2BB005AC411 /* AboutRedrock */ = {
 			isa = PBXGroup;
 			children = (
 				F242DAC81EBCB2BB005AC411 /* WebViewController.h */,
 				F242DAC91EBCB2BB005AC411 /* WebViewController.m */,
 				F242DACA1EBCB2BB005AC411 /* WebViewController.xib */,
 			);
-			path = RedrockWebsite;
+			path = AboutRedrock;
 			sourceTree = "<group>";
 		};
-		F242DAFE1EBCB2BB005AC411 /* shake */ = {
+		F242DAFE1EBCB2BB005AC411 /* ShakeShake */ = {
 			isa = PBXGroup;
 			children = (
 				F242DAFF1EBCB2BB005AC411 /* ShakeViewController.h */,
 				F242DB001EBCB2BB005AC411 /* ShakeViewController.m */,
 				F242DB011EBCB2BB005AC411 /* ShakeViewController.xib */,
 			);
-			path = shake;
+			path = ShakeShake;
 			sourceTree = "<group>";
 		};
 		F242DB8C1EBCB2BB005AC411 /* Login */ = {
@@ -2913,71 +2977,6 @@
 				F242DD831EBCB2BB005AC411 /* ORWRequestCache.m */,
 			);
 			path = NetWork;
-			sourceTree = "<group>";
-		};
-		F242DF831EBD9E2C005AC411 /* LostAndFound */ = {
-			isa = PBXGroup;
-			children = (
-				F242DF841EBD9E2C005AC411 /* Controller */,
-				F242DF921EBD9E2C005AC411 /* Model */,
-				F242DF971EBD9E2C005AC411 /* View */,
-			);
-			name = LostAndFound;
-			path = MoblieCQUPT_iOS/Finder/LostAndFound;
-			sourceTree = SOURCE_ROOT;
-		};
-		F242DF841EBD9E2C005AC411 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				F242DF851EBD9E2C005AC411 /* DetailLostViewController.h */,
-				F242DF861EBD9E2C005AC411 /* DetailLostViewController.m */,
-				F242DF871EBD9E2C005AC411 /* DetailLostViewController.xib */,
-				F242DF881EBD9E2C005AC411 /* IssueTableViewController.h */,
-				F242DF891EBD9E2C005AC411 /* IssueTableViewController.m */,
-				F242DF8A1EBD9E2C005AC411 /* IssueTableViewController.xib */,
-				F242DF8B1EBD9E2C005AC411 /* LostTableViewController.h */,
-				F242DF8C1EBD9E2C005AC411 /* LostTableViewController.m */,
-				F242DF8D1EBD9E2C005AC411 /* LostViewController.h */,
-				F242DF8E1EBD9E2C005AC411 /* LostViewController.m */,
-				F242DF8F1EBD9E2C005AC411 /* LZIssueSucceedViewController.h */,
-				F242DF901EBD9E2C005AC411 /* LZIssueSucceedViewController.m */,
-				F242DF911EBD9E2C005AC411 /* LZIssueSucceedViewController.xib */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		F242DF921EBD9E2C005AC411 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F242DF931EBD9E2C005AC411 /* LostItem.h */,
-				F242DF941EBD9E2C005AC411 /* LostItem.m */,
-				F242DF951EBD9E2C005AC411 /* LostModel.h */,
-				F242DF961EBD9E2C005AC411 /* LostModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		F242DF971EBD9E2C005AC411 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				F242DF981EBD9E2C005AC411 /* CategoryChooseView.h */,
-				F242DF991EBD9E2C005AC411 /* CategoryChooseView.m */,
-				F242DF9A1EBD9E2C005AC411 /* IconTableViewCell.h */,
-				F242DF9B1EBD9E2C005AC411 /* IconTableViewCell.m */,
-				F242DF9C1EBD9E2C005AC411 /* IconTableViewCell.xib */,
-				F242DF9D1EBD9E2C005AC411 /* LostAndFoundButton.h */,
-				F242DF9E1EBD9E2C005AC411 /* LostAndFoundButton.m */,
-				F242DF9F1EBD9E2C005AC411 /* LostTableViewCell.h */,
-				F242DFA01EBD9E2C005AC411 /* LostTableViewCell.m */,
-				F242DFA11EBD9E2C005AC411 /* LostTableViewCell.xib */,
-				F242DFA21EBD9E2C005AC411 /* LZConfirmButton.h */,
-				F242DFA31EBD9E2C005AC411 /* LZConfirmButton.m */,
-				F242DFA41EBD9E2C005AC411 /* LZDatePicker.h */,
-				F242DFA51EBD9E2C005AC411 /* LZDatePicker.m */,
-				F242DFA61EBD9E2C005AC411 /* LZLostRemindView.h */,
-				F242DFA71EBD9E2C005AC411 /* LZLostRemindView.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		F26D95D41F3C3FF70063B024 /* Font */ = {
@@ -3488,7 +3487,6 @@
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
 				F26D965C1F3C400F0063B024 /* MBCommentCell.xib in Resources */,
-				F242DFAF1EBD9E2C005AC411 /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
 				82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */,
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
@@ -3503,8 +3501,8 @@
 				9630E4C21FAF07D300874EB9 /* 月日标签@3x.png in Resources */,
 				F242DE731EBCB2BC005AC411 /* remind0@2x.png in Resources */,
 				F26D96881F3C400F0063B024 /* support1.png in Resources */,
+				E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */,
 				F210F0BC1F441CF7003BDF6A /* all_image_background@3x.png in Resources */,
-				F242DFA91EBD9E2C005AC411 /* DetailLostViewController.xib in Resources */,
 				F200271F1F405B8500360991 /* remind_image_title@3x.png in Resources */,
 				F26D967D1F3C400F0063B024 /* icon_share_qq@2x.png in Resources */,
 				F242DE971EBCB2BC005AC411 /* 无事项@3x.png in Resources */,
@@ -3540,7 +3538,6 @@
 				F26D967F1F3C400F0063B024 /* icon_share_qzone@3x.png in Resources */,
 				6E3AB66E20B068DB003A65F5 /* countdayView.xib in Resources */,
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
-				F242DFAB1EBD9E2C005AC411 /* IssueTableViewController.xib in Resources */,
 				6E3AB64E20AD76A3003A65F5 /* 评论@3x.png in Resources */,
 				9630E49B1FAF07D200874EB9 /* 3@3x.png in Resources */,
 				9630E4A31FAF07D200874EB9 /* 7@3x.png in Resources */,
@@ -3553,6 +3550,7 @@
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
 				82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */,
 				F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */,
+				E470CA092227FAD20029501A /* LostTableViewCell.xib in Resources */,
 				F20026E01F4020FA00360991 /* mine_image_classroom@3x.png in Resources */,
 				6E3AB63D20AD76A3003A65F5 /* 加号@3x.png in Resources */,
 				F26D96901F3C400F0063B024 /* 叉叉.png in Resources */,
@@ -3613,6 +3611,7 @@
 				F20026E41F4020FA00360991 /* mine_image_exam@3x.png in Resources */,
 				F20026F71F40372100360991 /* appIcon@2x.png in Resources */,
 				9630E4C81FAF07D300874EB9 /* 背景板@2x.png in Resources */,
+				E470CA052227FAD20029501A /* IconTableViewCell.xib in Resources */,
 				F27A93431F4ABC32009860C3 /* remind_image_editing@2x.png in Resources */,
 				F242DE9A1EBCB2BC005AC411 /* 无课@2x.png in Resources */,
 				9630E4AC1FAF07D200874EB9 /* login_number@3x.png in Resources */,
@@ -3699,7 +3698,6 @@
 				9630E4A91FAF07D200874EB9 /* login_icon@3x.png in Resources */,
 				82398BD721A42AFE00300C91 /* 成绩单.png in Resources */,
 				9630E4AB1FAF07D200874EB9 /* login_number@2x.png in Resources */,
-				F242DFB71EBD9E2C005AC411 /* LostTableViewCell.xib in Resources */,
 				F26D96821F3C400F0063B024 /* icon_share_wechatTimeLine@2x.png in Resources */,
 				82A0A56620BEC94D00BD628E /* YouWenAdoptFrame.xib in Resources */,
 				F26D967E1F3C400F0063B024 /* icon_share_qq@3x.png in Resources */,
@@ -3707,6 +3705,7 @@
 				F200271A1F405B8500360991 /* remind_image_remind@2x.png in Resources */,
 				F242DEA81EBCB2BC005AC411 /* 编辑箭头@2x.png in Resources */,
 				82398BDB21A42AFE00300C91 /* 查电费.png in Resources */,
+				E470C9FF2227FAD20029501A /* DetailLostViewController.xib in Resources */,
 				F200271D1F405B8500360991 /* remind_image_time@3x.png in Resources */,
 				82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */,
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
@@ -3783,7 +3782,6 @@
 				9630E4C01FAF07D200874EB9 /* 时长加号@3x.png in Resources */,
 				9630E49E1FAF07D200874EB9 /* 5@2x.png in Resources */,
 				4A3A07D41FCC0EC700A50393 /* find_image_hongyan@2x.png in Resources */,
-				F242DFB41EBD9E2C005AC411 /* IconTableViewCell.xib in Resources */,
 				82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */,
 				6E0F69292030712700BB5EF3 /* ReportImage.xcassets in Resources */,
 				F26D96841F3C400F0063B024 /* icon_share_weibo@2x.png in Resources */,
@@ -3809,6 +3807,7 @@
 				F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */,
 				823D41681F6407D300C99D9B /* icon_upvote_outside_selected@2x.png in Resources */,
 				4A3A08421FCD990A00A50393 /* yuan@2x.png in Resources */,
+				E470C9FE2227FAD20029501A /* LZIssueSucceedViewController.xib in Resources */,
 				6E3AB64020AD76A3003A65F5 /* 未点赞图标@2x.png in Resources */,
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
 				F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */,
@@ -3990,7 +3989,6 @@
 				F242DE621EBCB2BC005AC411 /* DetailLessonController.m in Sources */,
 				F242DDB11EBCB2BB005AC411 /* IntallFailViewController.m in Sources */,
 				F242DEC31EBCB2BC005AC411 /* main.m in Sources */,
-				F242DFBA1EBD9E2C005AC411 /* LZLostRemindView.m in Sources */,
 				F23BB4881F50538800DA62ED /* LZWeekScrollView.m in Sources */,
 				F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */,
 				6E3AB63720AD76A3003A65F5 /* AnswerCommentModel.m in Sources */,
@@ -3998,6 +3996,7 @@
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
+				E470CA0A2227FAD20029501A /* CategoryChooseView.m in Sources */,
 				6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */,
 				82398C0821A42F0F00300C91 /* WYCWeekChooseBar.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
@@ -4008,20 +4007,22 @@
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
+				E470CA082227FAD20029501A /* LZLostRemindView.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F2A6E67D1F6E8FE100A663B4 /* LZNoCourseViewController.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */,
+				E470CA002227FAD20029501A /* LostItem.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
 				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
-				F242DFB11EBD9E2C005AC411 /* LostModel.m in Sources */,
 				F26D96991F3C400F0063B024 /* MBInputView.m in Sources */,
 				82398C0E21A42F0F00300C91 /* WYCClassDetailView.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
 				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				6E3AB65B20AED319003A65F5 /* dailyAttendanceModel.m in Sources */,
+				E470CA032227FAD20029501A /* IconTableViewCell.m in Sources */,
 				6E1F465E20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m in Sources */,
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F2A92D021F52EBBC00B4CEEF /* HttpClient.m in Sources */,
@@ -4049,6 +4050,7 @@
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
 				82398BC621A4289500300C91 /* SYCCustomLayoutModel.m in Sources */,
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
+				E470CA012227FAD20029501A /* LostModel.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
 				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
@@ -4075,8 +4077,11 @@
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
+				E470C9FB2227FAD20029501A /* LostViewController.m in Sources */,
 				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
+				E470CA022227FAD20029501A /* LZDatePicker.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
+				E470C9FC2227FAD20029501A /* LZIssueSucceedViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				9630E4931FAF07D200874EB9 /* fourViewController.m in Sources */,
 				6E5C09FD205EA5D800A73F64 /* YouWenSubjectView.m in Sources */,
@@ -4098,13 +4103,13 @@
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				9630E48A1FAF07D200874EB9 /* BackgroundTableViewCell.m in Sources */,
-				F242DFB51EBD9E2C005AC411 /* LostAndFoundButton.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
 				F2A43ECA1F74B3AD00D1B2BD /* LZPersonModel.m in Sources */,
 				9630E4CC1FAF07D300874EB9 /* QueryModel.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
+				E470CA042227FAD20029501A /* LZConfirmButton.m in Sources */,
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
@@ -4121,7 +4126,7 @@
 				6E3AB63920AD76A3003A65F5 /* AnswerDetailTableViewCell.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
-				F242DFB61EBD9E2C005AC411 /* LostTableViewCell.m in Sources */,
+				E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */,
 				82398BC521A4289500300C91 /* SYCPictureDisplay.m in Sources */,
 				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
 				82398C0521A42F0F00300C91 /* WYCClassBookViewController.m in Sources */,
@@ -4135,14 +4140,12 @@
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				82398BC821A4289500300C91 /* SYCCustomToolsControl.m in Sources */,
-				F242DFB81EBD9E2C005AC411 /* LZConfirmButton.m in Sources */,
-				F242DFAE1EBD9E2C005AC411 /* LZIssueSucceedViewController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
-				F242DFB01EBD9E2C005AC411 /* LostItem.m in Sources */,
 				82398C0221A42F0F00300C91 /* DLChooseClassListViewController.m in Sources */,
 				6E3AB63820AD76A3003A65F5 /* AnswerDetailViewController.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
+				E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */,
 				6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */,
 				6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
@@ -4152,11 +4155,9 @@
 				F2A43ED11F74FF0000D1B2BD /* LZPersonSelectTableViewCell.m in Sources */,
 				6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */,
 				F26D96661F3C400F0063B024 /* DetailBannnerView.m in Sources */,
-				F242DFAD1EBD9E2C005AC411 /* LostViewController.m in Sources */,
 				F26D96701F3C400F0063B024 /* MBCommunityViewController.m in Sources */,
 				82398C0421A42F0F00300C91 /* ListTableViewCell.m in Sources */,
 				9630E4911FAF07D200874EB9 /* AllYearsViewController.m in Sources */,
-				F242DFA81EBD9E2C005AC411 /* DetailLostViewController.m in Sources */,
 				F2A92CEF1F52E8F900B4CEEF /* UIImage+Color.m in Sources */,
 				F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */,
 				F2C862C91F4E9F08005C887E /* MyInfoModel.m in Sources */,
@@ -4170,8 +4171,9 @@
 				9630E48B1FAF07D200874EB9 /* HeaderTableViewCell.m in Sources */,
 				F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
+				E470C9FD2227FAD20029501A /* LostTableViewController.m in Sources */,
+				E470CA062227FAD20029501A /* LostTableViewCell.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
-				F242DFB91EBD9E2C005AC411 /* LZDatePicker.m in Sources */,
 				6E3AB66520B06741003A65F5 /* countdayView.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
 				82398C0621A42F0F00300C91 /* DateModle.m in Sources */,
@@ -4187,12 +4189,11 @@
 				6E12A339205532A300D07606 /* YouWenResultView.m in Sources */,
 				F2DD71A41F777B24009556BE /* LZPersonAddView.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
-				F242DFAC1EBD9E2C005AC411 /* LostTableViewController.m in Sources */,
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
+				E470CA072227FAD20029501A /* LostAndFoundButton.m in Sources */,
 				9630E48D1FAF07D200874EB9 /* QueryLoginViewController.m in Sources */,
 				6E3AB65F20AFD7EE003A65F5 /* rotaryCountView.m in Sources */,
 				4A3A07961FCC0E7700A50393 /* ZJShopViewController.m in Sources */,
-				F242DFAA1EBD9E2C005AC411 /* IssueTableViewController.m in Sources */,
 				6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */,
 				F26D966B1F3C400F0063B024 /* TopicBtn.m in Sources */,
 				F26D96651F3C400F0063B024 /* BannerScrollView.m in Sources */,
@@ -4200,13 +4201,11 @@
 				82398BCC21A4289500300C91 /* LZCarouselModel.m in Sources */,
 				6E3213FA20D5426400E55145 /* UIViewController+BackButtonHandler.m in Sources */,
 				F26D96971F3C400F0063B024 /* MBBrowserItem.m in Sources */,
-				F242DFB31EBD9E2C005AC411 /* IconTableViewCell.m in Sources */,
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
 				6E5C0AB420690E1200A73F64 /* myUILabel.m in Sources */,
-				F242DFB21EBD9E2C005AC411 /* CategoryChooseView.m in Sources */,
 				6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */,
 				6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
@@ -4259,6 +4258,7 @@
 				INFOPLIST_FILE = ClassWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -4332,7 +4332,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -4417,6 +4417,7 @@
 					"$(PROJECT_DIR)/Pods/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5",
 				);
 				New_Setting = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mredrock.cyxbs;
 				PRODUCT_NAME = "掌上重邮";
 				PROVISIONING_PROFILE = "";
