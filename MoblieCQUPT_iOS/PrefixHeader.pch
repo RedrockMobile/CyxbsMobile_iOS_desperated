@@ -127,6 +127,7 @@
 #define TOPICLIST_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 //话题文章列表接口
 #define TOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+
 //首页图接口
 #define SPLASH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
 #define kebiaoAPI @"https://wx.idsbllp.cn/redapi2/api/kebiao"
@@ -148,6 +149,7 @@
 #define TOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 #define MYJOINTOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
 #define Carousel_API @"https://wx.idsbllp.cn/app/api/pictureCarousel.php"
+
 //空教室接口
 #define EMPTYCLASSAPI @"https://wx.idsbllp.cn/api/roomEmpty"
 //成绩接口
@@ -156,6 +158,8 @@
 #define GRADECLASSAPI @"https://wx.idsbllp.cn/api/examSchedule"
 //补考接口
 #define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
+//邮问接口
+#define YOUWEN_API @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getQuestionList"
 
 #define kSegmentViewTitleHeight (SCREENHEIGHT*50/667)
 #define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
