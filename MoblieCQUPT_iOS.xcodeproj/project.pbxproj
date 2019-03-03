@@ -88,8 +88,6 @@
 		6E0F692F20309BE000BB5EF3 /* ReportTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F692E20309BE000BB5EF3 /* ReportTextView.m */; };
 		6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F6933203342E800BB5EF3 /* YouWenTableViewCell.m */; };
 		6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */; };
-		6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205B31F6614E100E5020E /* BeforeClassViewController.m */; };
-		6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */; };
 		6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A32B20518F9C00D07606 /* TransparentView.m */; };
 		6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A32E2053904D00D07606 /* YouWenNextView.m */; };
 		6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E12A3312053A31700D07606 /* YouWenTimeView.m */; };
@@ -162,7 +160,6 @@
 		6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */; };
 		6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */; };
 		6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDA4BC22034737200AA264E /* YouWenViewController.m */; };
-		6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EF302D41F8A0B42009B7A66 /* ExamPickView.m */; };
 		82280CA91F60169B00A5921E /* LXReplyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CA81F60169B00A5921E /* LXReplyView.m */; };
 		82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CAA1F601AFD00A5921E /* icon_comment_inside@2x.png */; };
 		82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CAB1F601AFD00A5921E /* icon_comment_inside@3x.png */; };
@@ -315,6 +312,12 @@
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
 		E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */; };
 		E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */; };
+		E41AD25B222BF13D00360C56 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD258222BF13D00360C56 /* GradeView.m */; };
+		E41AD25C222BF13D00360C56 /* ExamGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41AD259222BF13D00360C56 /* ExamGradeViewController.xib */; };
+		E41AD25D222BF13D00360C56 /* ExamGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD25A222BF13D00360C56 /* ExamGradeViewController.m */; };
+		E41AD263222BF55000360C56 /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD25F222BF55000360C56 /* BeforeClassCell.m */; };
+		E41AD264222BF55000360C56 /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD260222BF55000360C56 /* BeforeClassViewController.m */; };
+		E41AD267222BF64300360C56 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD266222BF64200360C56 /* ExamPickView.m */; };
 		E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D52227FAD20029501A /* IssueTableViewController.m */; };
 		E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D72227FAD20029501A /* DetailLostViewController.m */; };
 		E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9D82227FAD20029501A /* IssueTableViewController.xib */; };
@@ -523,9 +526,6 @@
 		F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCA11EBCB2BB005AC411 /* ExamScheduleTableViewCell.m */; };
 		F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCA21EBCB2BB005AC411 /* ExamScheduleTableViewCell.xib */; };
 		F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */; };
-		F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */; };
-		F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */; };
-		F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB31EBCB2BB005AC411 /* GradeView.m */; };
 		F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCB51EBCB2BB005AC411 /* MineViewController.m */; };
 		F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBB1EBCB2BB005AC411 /* MyInfoViewController.m */; };
 		F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DCBE1EBCB2BB005AC411 /* UITextField+Custom.m */; };
@@ -683,8 +683,6 @@
 		4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cqupt3@2x.jpg"; sourceTree = "<group>"; };
 		4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@2x.png"; sourceTree = "<group>"; };
 		4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_food@3x.png"; sourceTree = "<group>"; };
-		4A3A079D1FCC0EC500A50393 /* find_image_freshman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_freshman@2x.png"; sourceTree = "<group>"; };
-		4A3A079E1FCC0EC500A50393 /* find_image_freshman@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_freshman@3x.png"; sourceTree = "<group>"; };
 		4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@2x.png"; sourceTree = "<group>"; };
 		4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_hongyan@3x.png"; sourceTree = "<group>"; };
 		4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_image_lostAndFound@2x.png"; sourceTree = "<group>"; };
@@ -756,10 +754,6 @@
 		6E0F6933203342E800BB5EF3 /* YouWenTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenTableViewCell.m; sourceTree = "<group>"; };
 		6E12059C1F637F0F00E5020E /* MakeUpExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MakeUpExamViewController.h; sourceTree = "<group>"; };
 		6E12059D1F637F0F00E5020E /* MakeUpExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MakeUpExamViewController.m; sourceTree = "<group>"; };
-		6E1205B21F6614E100E5020E /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
-		6E1205B31F6614E100E5020E /* BeforeClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassViewController.m; sourceTree = "<group>"; };
-		6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassCell.m; sourceTree = "<group>"; };
-		6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassCell.h; sourceTree = "<group>"; };
 		6E12A32A20518F9C00D07606 /* TransparentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransparentView.h; sourceTree = "<group>"; };
 		6E12A32B20518F9C00D07606 /* TransparentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransparentView.m; sourceTree = "<group>"; };
 		6E12A32D2053904D00D07606 /* YouWenNextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenNextView.h; sourceTree = "<group>"; };
@@ -879,8 +873,6 @@
 		6E7C986B20482ECA000BAA16 /* YouWenAddViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenAddViewController.m; sourceTree = "<group>"; };
 		6EDA4BC12034737200AA264E /* YouWenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YouWenViewController.h; sourceTree = "<group>"; };
 		6EDA4BC22034737200AA264E /* YouWenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouWenViewController.m; sourceTree = "<group>"; };
-		6EF302D41F8A0B42009B7A66 /* ExamPickView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
-		6EF302D51F8A0B42009B7A66 /* ExamPickView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
 		82280CA71F60169B00A5921E /* LXReplyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReplyView.h; sourceTree = "<group>"; };
 		82280CA81F60169B00A5921E /* LXReplyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReplyView.m; sourceTree = "<group>"; };
 		82280CAA1F601AFD00A5921E /* icon_comment_inside@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_comment_inside@2x.png"; sourceTree = "<group>"; };
@@ -1084,6 +1076,17 @@
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_mine@2x.png"; sourceTree = "<group>"; };
 		E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_youwen@2x.png"; sourceTree = "<group>"; };
+		E41AD256222BF13D00360C56 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
+		E41AD257222BF13D00360C56 /* ExamGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamGradeViewController.h; sourceTree = "<group>"; };
+		E41AD258222BF13D00360C56 /* GradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeView.m; sourceTree = "<group>"; };
+		E41AD259222BF13D00360C56 /* ExamGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamGradeViewController.xib; sourceTree = "<group>"; };
+		E41AD25A222BF13D00360C56 /* ExamGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamGradeViewController.m; sourceTree = "<group>"; };
+		E41AD25F222BF55000360C56 /* BeforeClassCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassCell.m; sourceTree = "<group>"; };
+		E41AD260222BF55000360C56 /* BeforeClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeforeClassViewController.m; sourceTree = "<group>"; };
+		E41AD261222BF55000360C56 /* BeforeClassCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassCell.h; sourceTree = "<group>"; };
+		E41AD262222BF55000360C56 /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
+		E41AD265222BF64200360C56 /* ExamPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
+		E41AD266222BF64200360C56 /* ExamPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
 		E470C9D52227FAD20029501A /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
 		E470C9D62227FAD20029501A /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
 		E470C9D72227FAD20029501A /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
@@ -1373,11 +1376,6 @@
 		F242DCA21EBCB2BB005AC411 /* ExamScheduleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamScheduleTableViewCell.xib; sourceTree = "<group>"; };
 		F242DCA41EBCB2BB005AC411 /* ExamScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamScheduleViewController.h; sourceTree = "<group>"; };
 		F242DCA51EBCB2BB005AC411 /* ExamScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamScheduleViewController.m; sourceTree = "<group>"; };
-		F242DCAF1EBCB2BB005AC411 /* ExamGradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamGradeViewController.h; sourceTree = "<group>"; };
-		F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamGradeViewController.m; sourceTree = "<group>"; };
-		F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamGradeViewController.xib; sourceTree = "<group>"; };
-		F242DCB21EBCB2BB005AC411 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
-		F242DCB31EBCB2BB005AC411 /* GradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradeView.m; sourceTree = "<group>"; };
 		F242DCB41EBCB2BB005AC411 /* MineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineViewController.h; sourceTree = "<group>"; };
 		F242DCB51EBCB2BB005AC411 /* MineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MineViewController.m; sourceTree = "<group>"; };
 		F242DCBA1EBCB2BB005AC411 /* MyInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInfoViewController.h; sourceTree = "<group>"; };
@@ -1627,90 +1625,6 @@
 			path = Shop;
 			sourceTree = "<group>";
 		};
-		4A3A07971FCC0EC500A50393 /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				82398BD121A42AFC00300C91 /* 查电费.png */,
-				82398BCD21A42AFC00300C91 /* 成绩单.png */,
-				82398BCF21A42AFC00300C91 /* 成绩单灰.png */,
-				82398BD521A42AFD00300C91 /* 关于红岩.png */,
-				82398BD621A42AFD00300C91 /* 课前提醒.png */,
-				82398BCE21A42AFC00300C91 /* 空教室.png */,
-				82398BD221A42AFD00300C91 /* 没课约.png */,
-				82398BD021A42AFC00300C91 /* 校历.png */,
-				82398BD321A42AFD00300C91 /* 志愿时长圆.png */,
-				82398BD421A42AFD00300C91 /* 重邮地图.png */,
-				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
-				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
-				4A3A08391FCD990900A50393 /* Address@2x.png */,
-				4A3A083E1FCD990A00A50393 /* Address@3x.png */,
-				4A3A083C1FCD990900A50393 /* close@2x.png */,
-				4A3A083A1FCD990900A50393 /* close@3x.png */,
-				4A3A08371FCD990800A50393 /* rectangle@2x.png */,
-				4A3A08341FCD990700A50393 /* rectangle@3x.png */,
-				4A3A08381FCD990900A50393 /* shop_headImage@2x.png */,
-				4A3A08351FCD990800A50393 /* shop_headImage@3x.png */,
-				4A3A083F1FCD990A00A50393 /* tel@2x.png */,
-				4A3A083B1FCD990900A50393 /* tel@3x.png */,
-				4A3A08361FCD990800A50393 /* yuan@2x.png */,
-				4A3A083D1FCD990A00A50393 /* yuan@3x.png */,
-				4A3A07981FCC0EC500A50393 /* cqupt1@2x.jpg */,
-				4A3A07991FCC0EC500A50393 /* cqupt2@2x.jpg */,
-				4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */,
-				4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */,
-				4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */,
-				4A3A079D1FCC0EC500A50393 /* find_image_freshman@2x.png */,
-				4A3A079E1FCC0EC500A50393 /* find_image_freshman@3x.png */,
-				4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */,
-				4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */,
-				4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */,
-				4A3A07A21FCC0EC500A50393 /* find_image_lostAndFound@3x.png */,
-				4A3A07A31FCC0EC500A50393 /* find_image_map@2x.png */,
-				4A3A07A41FCC0EC500A50393 /* find_image_map@3x.png */,
-				4A3A07A51FCC0EC500A50393 /* find_image_query@2x.png */,
-				4A3A07A61FCC0EC500A50393 /* find_image_query@3x.png */,
-				4A3A07A71FCC0EC500A50393 /* find_image_shake@2x.png */,
-				4A3A07A81FCC0EC500A50393 /* find_image_shake@3x.png */,
-				4A3A07A91FCC0EC500A50393 /* iconfont-shop1.png */,
-				4A3A07AA1FCC0EC500A50393 /* iconfont-shop2.png */,
-				4A3A07AB1FCC0EC500A50393 /* lost_image_add@2x.png */,
-				4A3A07AC1FCC0EC500A50393 /* lost_image_add@3x.png */,
-				4A3A07AD1FCC0EC500A50393 /* lost_image_com@2x.png */,
-				4A3A07AE1FCC0EC500A50393 /* lost_image_com@3x.png */,
-				4A3A07AF1FCC0EC500A50393 /* lost_image_describe@2x.png */,
-				4A3A07B01FCC0EC500A50393 /* lost_image_describe@3x.png */,
-				4A3A07B11FCC0EC500A50393 /* lost_image_infocategory@2x.png */,
-				4A3A07B21FCC0EC500A50393 /* lost_image_infocategory@3x.png */,
-				4A3A07B31FCC0EC500A50393 /* lost_image_itemcategory@2x.png */,
-				4A3A07B41FCC0EC500A50393 /* lost_image_itemcategory@3x.png */,
-				4A3A07B51FCC0EC500A50393 /* lost_image_lackcate@2x.png */,
-				4A3A07B61FCC0EC500A50393 /* lost_image_lackcate@3x.png */,
-				4A3A07B71FCC0EC500A50393 /* lost_image_lackplace@2x.png */,
-				4A3A07B81FCC0EC500A50393 /* lost_image_lackplace@3x.png */,
-				4A3A07B91FCC0EC500A50393 /* lost_image_lacktel@2x.png */,
-				4A3A07BA1FCC0EC500A50393 /* lost_image_lacktel@3x.png */,
-				4A3A07BB1FCC0EC500A50393 /* lost_image_little@2x.png */,
-				4A3A07BC1FCC0EC500A50393 /* lost_image_little@3x.png */,
-				4A3A07BD1FCC0EC500A50393 /* lost_image_many@2x.png */,
-				4A3A07BE1FCC0EC500A50393 /* lost_image_many@3x.png */,
-				4A3A07BF1FCC0EC500A50393 /* lost_image_place@2x.png */,
-				4A3A07C01FCC0EC500A50393 /* lost_image_place@3x.png */,
-				4A3A07C11FCC0EC600A50393 /* lost_image_QQ@2x.png */,
-				4A3A07C21FCC0EC600A50393 /* lost_image_QQ@3x.png */,
-				4A3A07C31FCC0EC600A50393 /* lost_image_success@2x.png */,
-				4A3A07C41FCC0EC600A50393 /* lost_image_success@3x.png */,
-				4A3A07C51FCC0EC600A50393 /* lost_image_tel@2x.png */,
-				4A3A07C61FCC0EC600A50393 /* lost_image_tel@3x.png */,
-				4A3A07C71FCC0EC600A50393 /* lost_image_time@2x.png */,
-				4A3A07C81FCC0EC600A50393 /* lost_image_time@3x.png */,
-				4A3A07C91FCC0EC600A50393 /* ok.png */,
-				4A3A07CA1FCC0EC600A50393 /* shake_image_shake@2x.png */,
-				4A3A07CB1FCC0EC600A50393 /* shake_image_shake@3x.png */,
-				4A3A07CC1FCC0EC600A50393 /* shake_match.mp3 */,
-			);
-			path = Resource;
-			sourceTree = "<group>";
-		};
 		6E0F69302031E30200BB5EF3 /* ReportView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1736,19 +1650,6 @@
 				6EDA4BC22034737200AA264E /* YouWenViewController.m */,
 			);
 			path = YouWen;
-			sourceTree = "<group>";
-		};
-		6E1205B11F6614BF00E5020E /* BeforeClass */ = {
-			isa = PBXGroup;
-			children = (
-				6E1205BE1F6A9FE100E5020E /* BeforeClassCell.h */,
-				6E1205BD1F6A9FE100E5020E /* BeforeClassCell.m */,
-				6E1205B21F6614E100E5020E /* BeforeClassViewController.h */,
-				6E1205B31F6614E100E5020E /* BeforeClassViewController.m */,
-				6EF302D51F8A0B42009B7A66 /* ExamPickView.h */,
-				6EF302D41F8A0B42009B7A66 /* ExamPickView.m */,
-			);
-			name = BeforeClass;
 			sourceTree = "<group>";
 		};
 		6E12A32920518F5600D07606 /* Tool */ = {
@@ -1932,27 +1833,7 @@
 			path = addView;
 			sourceTree = "<group>";
 		};
-		82398BB021A4289500300C91 /* MainPage */ = {
-			isa = PBXGroup;
-			children = (
-				82398BBF21A4289500300C91 /* SYCFinderViewController.h */,
-				82398BB121A4289500300C91 /* SYCFinderViewController.m */,
-				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
-				82398BB221A4289500300C91 /* SYCPictureDisplay.m */,
-				82398BB321A4289500300C91 /* SYCToolModel.h */,
-				82398BC021A4289500300C91 /* SYCToolModel.m */,
-				82398BC221A4289500300C91 /* SYCToolsCell.h */,
-				82398BB621A4289500300C91 /* SYCToolsCell.m */,
-				82398BB421A4289500300C91 /* LZCarouselModel.h */,
-				82398BC121A4289500300C91 /* LZCarouselModel.m */,
-				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
-				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
-				82398BB721A4289500300C91 /* EditPage */,
-			);
-			path = MainPage;
-			sourceTree = "<group>";
-		};
-		82398BB721A4289500300C91 /* EditPage */ = {
+		82398BB721A4289500300C91 /* EditTools */ = {
 			isa = PBXGroup;
 			children = (
 				82398BB821A4289500300C91 /* SYCEditToolsView.h */,
@@ -1962,19 +1843,20 @@
 				82398BBC21A4289500300C91 /* SYCEditToolsView.m */,
 				82398BBD21A4289500300C91 /* SYCEditToolsViewHeader.h */,
 			);
-			path = EditPage;
+			path = EditTools;
 			sourceTree = "<group>";
 		};
-		82398BE121A42F0F00300C91 /* WYCClassBook */ = {
+		82398BE121A42F0F00300C91 /* ClassSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				F242DB921EBCB2BB005AC411 /* LZCourse */,
 				82398BE221A42F0F00300C91 /* DLChooseClassList */,
 				82398BEA21A42F0F00300C91 /* Controller */,
 				82398BED21A42F0F00300C91 /* Model */,
 				82398BF221A42F0F00300C91 /* View */,
 				82398C0021A42F0F00300C91 /* ClassBookImg.xcassets */,
 			);
-			path = WYCClassBook;
+			path = ClassSchedule;
 			sourceTree = "<group>";
 		};
 		82398BE221A42F0F00300C91 /* DLChooseClassList */ = {
@@ -2031,14 +1913,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		82A0A56720BEFCD300BD628E /* AskAndHelp */ = {
-			isa = PBXGroup;
-			children = (
-				82A0A57720BF111200BD628E /* AskAndHelp */,
-			);
-			path = AskAndHelp;
-			sourceTree = "<group>";
-		};
 		82A0A57720BF111200BD628E /* AskAndHelp */ = {
 			isa = PBXGroup;
 			children = (
@@ -2052,7 +1926,8 @@
 				82A0A57220BEFFC800BD628E /* LXAskTableViewCell.m */,
 				82A0A57320BEFFC800BD628E /* LXAskTableViewCell.xib */,
 			);
-			path = AskAndHelp;
+			name = AskAndHelp;
+			path = AskAndHelp/AskAndHelp;
 			sourceTree = "<group>";
 		};
 		9630E4311FAF07D200874EB9 /* Volunteer */ = {
@@ -2273,6 +2148,42 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E41AD24B222BECDE00360C56 /* #Outdated */ = {
+			isa = PBXGroup;
+			children = (
+				9630E4311FAF07D200874EB9 /* Volunteer */,
+				E470C9D32227FAD20029501A /* LostAndFound */,
+				4A3A07711FCC0E7700A50393 /* Shop */,
+				F242DC371EBCB2BB005AC411 /* MBCommunity */,
+			);
+			path = "#Outdated";
+			sourceTree = "<group>";
+		};
+		E41AD255222BF13D00360C56 /* Grade */ = {
+			isa = PBXGroup;
+			children = (
+				E41AD256222BF13D00360C56 /* GradeView.h */,
+				E41AD257222BF13D00360C56 /* ExamGradeViewController.h */,
+				E41AD258222BF13D00360C56 /* GradeView.m */,
+				E41AD259222BF13D00360C56 /* ExamGradeViewController.xib */,
+				E41AD25A222BF13D00360C56 /* ExamGradeViewController.m */,
+			);
+			path = Grade;
+			sourceTree = "<group>";
+		};
+		E41AD25E222BF55000360C56 /* BeforeClass */ = {
+			isa = PBXGroup;
+			children = (
+				E41AD265222BF64200360C56 /* ExamPickView.h */,
+				E41AD266222BF64200360C56 /* ExamPickView.m */,
+				E41AD25F222BF55000360C56 /* BeforeClassCell.m */,
+				E41AD260222BF55000360C56 /* BeforeClassViewController.m */,
+				E41AD261222BF55000360C56 /* BeforeClassCell.h */,
+				E41AD262222BF55000360C56 /* BeforeClassViewController.h */,
+			);
+			path = BeforeClass;
+			sourceTree = "<group>";
+		};
 		E470C9D32227FAD20029501A /* LostAndFound */ = {
 			isa = PBXGroup;
 			children = (
@@ -2395,35 +2306,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		F20026CC1F4020FA00360991 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				82398C1221A432DD00300C91 /* mine_image_calendar1.png */,
-				82398C1121A432DD00300C91 /* mine_image_calendar2.png */,
-				F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */,
-				F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */,
-				F23078DD1F73E3F80079E187 /* date_image_add@2x.png */,
-				F23078DC1F73E3F80079E187 /* date_image_add@3x.png */,
-				F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */,
-				F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */,
-				F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */,
-				F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */,
-				F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */,
-				F20026D01F4020FA00360991 /* mine_image_setting@3x.png */,
-				F20026D11F4020FA00360991 /* mine_image_classroom@2x.png */,
-				F20026D21F4020FA00360991 /* mine_image_classroom@3x.png */,
-				F20026D31F4020FA00360991 /* mine_image_edit@2x.png */,
-				F20026D41F4020FA00360991 /* mine_image_edit@3x.png */,
-				F20026D51F4020FA00360991 /* mine_image_exam@2x.png */,
-				F20026D61F4020FA00360991 /* mine_image_exam@3x.png */,
-				F20026D71F4020FA00360991 /* mine_image_remind@2x.png */,
-				F20026D81F4020FA00360991 /* mine_image_remind@3x.png */,
-				F20026D91F4020FA00360991 /* mine_image_date@2x.png */,
-				F20026DA1F4020FA00360991 /* mine_image_date@3x.png */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
 		F20026E91F40336E00360991 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -2437,16 +2319,14 @@
 		F242DA551EBCB2BB005AC411 /* MoblieCQUPT_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				82398BE121A42F0F00300C91 /* WYCClassBook */,
+				E41AD24B222BECDE00360C56 /* #Outdated */,
+				82398BE121A42F0F00300C91 /* ClassSchedule */,
 				F2A92CD71F52E8BE00B4CEEF /* Base */,
 				F242DC331EBCB2BB005AC411 /* Main */,
 				F242DB8C1EBCB2BB005AC411 /* Login */,
-				F242DB921EBCB2BB005AC411 /* LZCourse */,
-				F242DC371EBCB2BB005AC411 /* MBCommunity */,
 				6E0F69312033424500BB5EF3 /* YouWen */,
 				F242DA6B1EBCB2BB005AC411 /* Discover */,
 				F242DC8C1EBCB2BB005AC411 /* Mine */,
-				F2A92CE71F52E8F900B4CEEF /* Categories */,
 				F242DCD81EBCB2BB005AC411 /* Resoure */,
 				F242DD771EBCB2BB005AC411 /* Tool */,
 				F242DA561EBCB2BB005AC411 /* AppDelegate.h */,
@@ -2465,26 +2345,40 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				E470C9D32227FAD20029501A /* LostAndFound */,
-				82398BB021A4289500300C91 /* MainPage */,
-				4A3A07971FCC0EC500A50393 /* Resource */,
-				4A3A07711FCC0E7700A50393 /* Shop */,
+				82398BBF21A4289500300C91 /* SYCFinderViewController.h */,
+				82398BB121A4289500300C91 /* SYCFinderViewController.m */,
+				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
+				82398BB221A4289500300C91 /* SYCPictureDisplay.m */,
+				82398BB321A4289500300C91 /* SYCToolModel.h */,
+				82398BC021A4289500300C91 /* SYCToolModel.m */,
+				82398BC221A4289500300C91 /* SYCToolsCell.h */,
+				82398BB621A4289500300C91 /* SYCToolsCell.m */,
+				82398BB421A4289500300C91 /* LZCarouselModel.h */,
+				82398BC121A4289500300C91 /* LZCarouselModel.m */,
+				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
+				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
+				E41AD25E222BF55000360C56 /* BeforeClass */,
+				F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */,
+				F242DC9E1EBCB2BB005AC411 /* ExamSchedule */,
+				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
+				E470CA0B2228055B0029501A /* NoCourseDate */,
+				82398BB721A4289500300C91 /* EditTools */,
 				F20026E91F40336E00360991 /* Map */,
-				F242DA981EBCB2BB005AC411 /* Query */,
+				F242DA981EBCB2BB005AC411 /* ElectricityFee */,
 				F242DAC71EBCB2BB005AC411 /* AboutRedrock */,
 				F242DAFE1EBCB2BB005AC411 /* ShakeShake */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		F242DA981EBCB2BB005AC411 /* Query */ = {
+		F242DA981EBCB2BB005AC411 /* ElectricityFee */ = {
 			isa = PBXGroup;
 			children = (
 				F242DA991EBCB2BB005AC411 /* QuerInstall */,
 				F242DAAA1EBCB2BB005AC411 /* QuerLogin */,
 				F242DAC21EBCB2BB005AC411 /* QuerRemind */,
 			);
-			path = Query;
+			path = ElectricityFee;
 			sourceTree = "<group>";
 		};
 		F242DA991EBCB2BB005AC411 /* QuerInstall */ = {
@@ -2807,25 +2701,18 @@
 		F242DC8C1EBCB2BB005AC411 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				E470CA0B2228055B0029501A /* NoCourseDate */,
-				82A0A56720BEFCD300BD628E /* AskAndHelp */,
-				6E1A3A3920B72199002D62FC /* CreditsShop */,
-				6E1A3A3520B71DE6002D62FC /* DraftsBox */,
-				6E3AB65620AED319003A65F5 /* DailyAttendance */,
-				9630E4311FAF07D200874EB9 /* Volunteer */,
-				F20026CC1F4020FA00360991 /* Image */,
 				F242DCB41EBCB2BB005AC411 /* MineViewController.h */,
 				F242DCB51EBCB2BB005AC411 /* MineViewController.m */,
 				F2CC3A9C1F46BE1B00B031BD /* MineTableViewCell.h */,
 				F2CC3A9D1F46BE1B00B031BD /* MineTableViewCell.m */,
 				F2CC3A9E1F46BE1B00B031BD /* MineTableViewCell.xib */,
+				82A0A57720BF111200BD628E /* AskAndHelp */,
+				6E1A3A3920B72199002D62FC /* CreditsShop */,
+				6E1A3A3520B71DE6002D62FC /* DraftsBox */,
+				6E3AB65620AED319003A65F5 /* DailyAttendance */,
 				F242DCB61EBCB2BB005AC411 /* MyInfo */,
 				F242DC911EBCB2BB005AC411 /* AboutMe */,
-				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
-				F242DC9B1EBCB2BB005AC411 /* Calendar */,
-				F242DC9E1EBCB2BB005AC411 /* ExamSchedule */,
 				F242DCBF1EBCB2BB005AC411 /* MyMessages */,
-				6E1205B11F6614BF00E5020E /* BeforeClass */,
 				F242DCCE1EBCB2BB005AC411 /* Setting */,
 				F242DC8D1EBCB2BB005AC411 /* About */,
 				F242DCD11EBCB2BB005AC411 /* Suggestion */,
@@ -2861,19 +2748,19 @@
 			path = AboutMe;
 			sourceTree = "<group>";
 		};
-		F242DC9B1EBCB2BB005AC411 /* Calendar */ = {
+		F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */ = {
 			isa = PBXGroup;
 			children = (
 				F242DC9C1EBCB2BB005AC411 /* CalendarViewController.h */,
 				F242DC9D1EBCB2BB005AC411 /* CalendarViewController.m */,
 			);
-			path = Calendar;
+			path = SchoolCalendar;
 			sourceTree = "<group>";
 		};
 		F242DC9E1EBCB2BB005AC411 /* ExamSchedule */ = {
 			isa = PBXGroup;
 			children = (
-				F242DCAE1EBCB2BB005AC411 /* Grade */,
+				E41AD255222BF13D00360C56 /* Grade */,
 				F242DCA31EBCB2BB005AC411 /* ExamClass */,
 				6E175E541F5FD4A900C0BE60 /* MakeUpExam */,
 				6E175E4E1F5E82EC00C0BE60 /* ExamTotalViewController.h */,
@@ -2914,21 +2801,7 @@
 				6E7167271F85D70D00C46038 /* EmptyClassView.h */,
 				6E7167281F85D70D00C46038 /* EmptyClassView.m */,
 			);
-			name = EmptyClass;
-			path = GQConsult/EmptyClass;
-			sourceTree = "<group>";
-		};
-		F242DCAE1EBCB2BB005AC411 /* Grade */ = {
-			isa = PBXGroup;
-			children = (
-				F242DCAF1EBCB2BB005AC411 /* ExamGradeViewController.h */,
-				F242DCB01EBCB2BB005AC411 /* ExamGradeViewController.m */,
-				F242DCB11EBCB2BB005AC411 /* ExamGradeViewController.xib */,
-				F242DCB21EBCB2BB005AC411 /* GradeView.h */,
-				F242DCB31EBCB2BB005AC411 /* GradeView.m */,
-			);
-			name = Grade;
-			path = ../GQConsult/Grade;
+			path = EmptyClass;
 			sourceTree = "<group>";
 		};
 		F242DCB61EBCB2BB005AC411 /* MyInfo */ = {
@@ -2985,6 +2858,7 @@
 		F242DCD81EBCB2BB005AC411 /* Resoure */ = {
 			isa = PBXGroup;
 			children = (
+				4A3A07CC1FCC0EC600A50393 /* shake_match.mp3 */,
 				F26D95D41F3C3FF70063B024 /* Font */,
 				F26D95D61F3C3FF70063B024 /* Images */,
 				F242DD171EBCB2BB005AC411 /* Mobile_CQUPT_iOS.db */,
@@ -2995,6 +2869,24 @@
 		F242DD771EBCB2BB005AC411 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				F2A92CF11F52EB2600B4CEEF /* CAShapeLayer+ViewMask.h */,
+				F2A92CF21F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m */,
+				F2A92CF31F52EB2600B4CEEF /* NSNull+Helper.h */,
+				F2A92CF41F52EB2600B4CEEF /* NSNull+Helper.m */,
+				F2A92CF51F52EB2600B4CEEF /* UIColor+Helper.h */,
+				F2A92CF61F52EB2600B4CEEF /* UIColor+Helper.m */,
+				F2A92CF71F52EB2600B4CEEF /* UIImage+Helper.h */,
+				F2A92CF81F52EB2600B4CEEF /* UIImage+Helper.m */,
+				F2A92CF91F52EB2600B4CEEF /* UIImage+ImageEffects.h */,
+				F2A92CFA1F52EB2600B4CEEF /* UIImage+ImageEffects.m */,
+				F2A92CE81F52E8F900B4CEEF /* UIFont+AdaptiveFont.h */,
+				F2A92CE91F52E8F900B4CEEF /* UIFont+AdaptiveFont.m */,
+				F2A92CEA1F52E8F900B4CEEF /* UIImage+Color.h */,
+				F2A92CEB1F52E8F900B4CEEF /* UIImage+Color.m */,
+				F2A92CEC1F52E8F900B4CEEF /* UILabel+Adapter.h */,
+				F2A92CED1F52E8F900B4CEEF /* UILabel+Adapter.m */,
+				6E6171281FDAED1D00FD2DDF /* NSDate+schoolDate.h */,
+				6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */,
 				6E3213F820D5426400E55145 /* UIViewController+BackButtonHandler.h */,
 				6E3213F920D5426400E55145 /* UIViewController+BackButtonHandler.m */,
 				6E1D1BD420CF73F8008DA86C /* NSString+Emoji.h */,
@@ -3036,6 +2928,102 @@
 		F26D95D61F3C3FF70063B024 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				82398C1221A432DD00300C91 /* mine_image_calendar1.png */,
+				82398C1121A432DD00300C91 /* mine_image_calendar2.png */,
+				F2A43ED61F75031000D1B2BD /* date_image_addBtn@2x.png */,
+				F2A43ED51F75031000D1B2BD /* date_image_addBtn@3x.png */,
+				F23078DD1F73E3F80079E187 /* date_image_add@2x.png */,
+				F23078DC1F73E3F80079E187 /* date_image_add@3x.png */,
+				F2E95B5B1F4B14DA000A136E /* date_image_cancel@2x.png */,
+				F2E95B5C1F4B14DA000A136E /* date_image_cancel@3x.png */,
+				F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */,
+				F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */,
+				F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */,
+				F20026D01F4020FA00360991 /* mine_image_setting@3x.png */,
+				F20026D11F4020FA00360991 /* mine_image_classroom@2x.png */,
+				F20026D21F4020FA00360991 /* mine_image_classroom@3x.png */,
+				F20026D31F4020FA00360991 /* mine_image_edit@2x.png */,
+				F20026D41F4020FA00360991 /* mine_image_edit@3x.png */,
+				F20026D51F4020FA00360991 /* mine_image_exam@2x.png */,
+				F20026D61F4020FA00360991 /* mine_image_exam@3x.png */,
+				F20026D71F4020FA00360991 /* mine_image_remind@2x.png */,
+				F20026D81F4020FA00360991 /* mine_image_remind@3x.png */,
+				F20026D91F4020FA00360991 /* mine_image_date@2x.png */,
+				F20026DA1F4020FA00360991 /* mine_image_date@3x.png */,
+				82398BD121A42AFC00300C91 /* 查电费.png */,
+				82398BCD21A42AFC00300C91 /* 成绩单.png */,
+				82398BCF21A42AFC00300C91 /* 成绩单灰.png */,
+				82398BD521A42AFD00300C91 /* 关于红岩.png */,
+				82398BD621A42AFD00300C91 /* 课前提醒.png */,
+				82398BCE21A42AFC00300C91 /* 空教室.png */,
+				82398BD221A42AFD00300C91 /* 没课约.png */,
+				82398BD021A42AFC00300C91 /* 校历.png */,
+				82398BD321A42AFD00300C91 /* 志愿时长圆.png */,
+				82398BD421A42AFD00300C91 /* 重邮地图.png */,
+				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
+				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
+				4A3A08391FCD990900A50393 /* Address@2x.png */,
+				4A3A083E1FCD990A00A50393 /* Address@3x.png */,
+				4A3A083C1FCD990900A50393 /* close@2x.png */,
+				4A3A083A1FCD990900A50393 /* close@3x.png */,
+				4A3A08371FCD990800A50393 /* rectangle@2x.png */,
+				4A3A08341FCD990700A50393 /* rectangle@3x.png */,
+				4A3A08381FCD990900A50393 /* shop_headImage@2x.png */,
+				4A3A08351FCD990800A50393 /* shop_headImage@3x.png */,
+				4A3A083F1FCD990A00A50393 /* tel@2x.png */,
+				4A3A083B1FCD990900A50393 /* tel@3x.png */,
+				4A3A08361FCD990800A50393 /* yuan@2x.png */,
+				4A3A083D1FCD990A00A50393 /* yuan@3x.png */,
+				4A3A07981FCC0EC500A50393 /* cqupt1@2x.jpg */,
+				4A3A07991FCC0EC500A50393 /* cqupt2@2x.jpg */,
+				4A3A079A1FCC0EC500A50393 /* cqupt3@2x.jpg */,
+				4A3A079B1FCC0EC500A50393 /* find_image_food@2x.png */,
+				4A3A079C1FCC0EC500A50393 /* find_image_food@3x.png */,
+				4A3A079F1FCC0EC500A50393 /* find_image_hongyan@2x.png */,
+				4A3A07A01FCC0EC500A50393 /* find_image_hongyan@3x.png */,
+				4A3A07A11FCC0EC500A50393 /* find_image_lostAndFound@2x.png */,
+				4A3A07A21FCC0EC500A50393 /* find_image_lostAndFound@3x.png */,
+				4A3A07A31FCC0EC500A50393 /* find_image_map@2x.png */,
+				4A3A07A41FCC0EC500A50393 /* find_image_map@3x.png */,
+				4A3A07A51FCC0EC500A50393 /* find_image_query@2x.png */,
+				4A3A07A61FCC0EC500A50393 /* find_image_query@3x.png */,
+				4A3A07A71FCC0EC500A50393 /* find_image_shake@2x.png */,
+				4A3A07A81FCC0EC500A50393 /* find_image_shake@3x.png */,
+				4A3A07A91FCC0EC500A50393 /* iconfont-shop1.png */,
+				4A3A07AA1FCC0EC500A50393 /* iconfont-shop2.png */,
+				4A3A07AB1FCC0EC500A50393 /* lost_image_add@2x.png */,
+				4A3A07AC1FCC0EC500A50393 /* lost_image_add@3x.png */,
+				4A3A07AD1FCC0EC500A50393 /* lost_image_com@2x.png */,
+				4A3A07AE1FCC0EC500A50393 /* lost_image_com@3x.png */,
+				4A3A07AF1FCC0EC500A50393 /* lost_image_describe@2x.png */,
+				4A3A07B01FCC0EC500A50393 /* lost_image_describe@3x.png */,
+				4A3A07B11FCC0EC500A50393 /* lost_image_infocategory@2x.png */,
+				4A3A07B21FCC0EC500A50393 /* lost_image_infocategory@3x.png */,
+				4A3A07B31FCC0EC500A50393 /* lost_image_itemcategory@2x.png */,
+				4A3A07B41FCC0EC500A50393 /* lost_image_itemcategory@3x.png */,
+				4A3A07B51FCC0EC500A50393 /* lost_image_lackcate@2x.png */,
+				4A3A07B61FCC0EC500A50393 /* lost_image_lackcate@3x.png */,
+				4A3A07B71FCC0EC500A50393 /* lost_image_lackplace@2x.png */,
+				4A3A07B81FCC0EC500A50393 /* lost_image_lackplace@3x.png */,
+				4A3A07B91FCC0EC500A50393 /* lost_image_lacktel@2x.png */,
+				4A3A07BA1FCC0EC500A50393 /* lost_image_lacktel@3x.png */,
+				4A3A07BB1FCC0EC500A50393 /* lost_image_little@2x.png */,
+				4A3A07BC1FCC0EC500A50393 /* lost_image_little@3x.png */,
+				4A3A07BD1FCC0EC500A50393 /* lost_image_many@2x.png */,
+				4A3A07BE1FCC0EC500A50393 /* lost_image_many@3x.png */,
+				4A3A07BF1FCC0EC500A50393 /* lost_image_place@2x.png */,
+				4A3A07C01FCC0EC500A50393 /* lost_image_place@3x.png */,
+				4A3A07C11FCC0EC600A50393 /* lost_image_QQ@2x.png */,
+				4A3A07C21FCC0EC600A50393 /* lost_image_QQ@3x.png */,
+				4A3A07C31FCC0EC600A50393 /* lost_image_success@2x.png */,
+				4A3A07C41FCC0EC600A50393 /* lost_image_success@3x.png */,
+				4A3A07C51FCC0EC600A50393 /* lost_image_tel@2x.png */,
+				4A3A07C61FCC0EC600A50393 /* lost_image_tel@3x.png */,
+				4A3A07C71FCC0EC600A50393 /* lost_image_time@2x.png */,
+				4A3A07C81FCC0EC600A50393 /* lost_image_time@3x.png */,
+				4A3A07C91FCC0EC600A50393 /* ok.png */,
+				4A3A07CA1FCC0EC600A50393 /* shake_image_shake@2x.png */,
+				4A3A07CB1FCC0EC600A50393 /* shake_image_shake@3x.png */,
 				F20026F11F40372100360991 /* appIcon@2x.png */,
 				F20026F21F40372100360991 /* appIcon@3x.png */,
 				F20026F31F40372100360991 /* searchIcon@2x.png */,
@@ -3297,31 +3285,6 @@
 				F2A92CDF1F52E8BE00B4CEEF /* BaseViewController.m */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		F2A92CE71F52E8F900B4CEEF /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				F2A92CF11F52EB2600B4CEEF /* CAShapeLayer+ViewMask.h */,
-				F2A92CF21F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m */,
-				F2A92CF31F52EB2600B4CEEF /* NSNull+Helper.h */,
-				F2A92CF41F52EB2600B4CEEF /* NSNull+Helper.m */,
-				F2A92CF51F52EB2600B4CEEF /* UIColor+Helper.h */,
-				F2A92CF61F52EB2600B4CEEF /* UIColor+Helper.m */,
-				F2A92CF71F52EB2600B4CEEF /* UIImage+Helper.h */,
-				F2A92CF81F52EB2600B4CEEF /* UIImage+Helper.m */,
-				F2A92CF91F52EB2600B4CEEF /* UIImage+ImageEffects.h */,
-				F2A92CFA1F52EB2600B4CEEF /* UIImage+ImageEffects.m */,
-				F2A92CE81F52E8F900B4CEEF /* UIFont+AdaptiveFont.h */,
-				F2A92CE91F52E8F900B4CEEF /* UIFont+AdaptiveFont.m */,
-				F2A92CEA1F52E8F900B4CEEF /* UIImage+Color.h */,
-				F2A92CEB1F52E8F900B4CEEF /* UIImage+Color.m */,
-				F2A92CEC1F52E8F900B4CEEF /* UILabel+Adapter.h */,
-				F2A92CED1F52E8F900B4CEEF /* UILabel+Adapter.m */,
-				6E6171281FDAED1D00FD2DDF /* NSDate+schoolDate.h */,
-				6E6171291FDAED1D00FD2DDF /* NSDate+schoolDate.m */,
-			);
-			path = Categories;
 			sourceTree = "<group>";
 		};
 		F2C862C61F4E9F08005C887E /* MyInfoModel */ = {
@@ -3671,7 +3634,6 @@
 				F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
 				E470CA2B2228055C0029501A /* LZPersonSelectTableViewCell.xib in Resources */,
-				F242DF081EBCB2BC005AC411 /* ExamGradeViewController.xib in Resources */,
 				F242DE791EBCB2BC005AC411 /* remind@2x.png in Resources */,
 				9630E4BA1FAF07D200874EB9 /* 年份圆圈.png in Resources */,
 				F20026E51F4020FA00360991 /* mine_image_remind@2x.png in Resources */,
@@ -3748,6 +3710,7 @@
 				F26D96A31F3C41130063B024 /* login_image_background@2x.png in Resources */,
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
 				F242DDC21EBCB2BB005AC411 /* reinstallImage.png in Resources */,
+				E41AD25C222BF13D00360C56 /* ExamGradeViewController.xib in Resources */,
 				F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */,
 				4A3A08411FCD990A00A50393 /* shop_headImage@3x.png in Resources */,
 				4A3A07FB1FCC0EC700A50393 /* lost_image_tel@3x.png in Resources */,
@@ -3949,6 +3912,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82398C0921A42F0F00300C91 /* WYCShowDetailView.m in Sources */,
+				E41AD263222BF55000360C56 /* BeforeClassCell.m in Sources */,
 				6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
@@ -3961,7 +3925,6 @@
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
 				6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */,
 				F242DE671EBCB2BC005AC411 /* DetailViewController.m in Sources */,
-				6E1205B41F6614E100E5020E /* BeforeClassViewController.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
 				E470CA272228055C0029501A /* LZPersonModel.m in Sources */,
 				E470CA242228055C0029501A /* LZNoCourseDateDetailViewController.m in Sources */,
@@ -3987,6 +3950,7 @@
 				82398C0821A42F0F00300C91 /* WYCWeekChooseBar.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
+				E41AD25D222BF13D00360C56 /* ExamGradeViewController.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
@@ -4001,6 +3965,7 @@
 				E470CA002227FAD20029501A /* LostItem.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
 				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
+				E41AD264222BF55000360C56 /* BeforeClassViewController.m in Sources */,
 				F26D96991F3C400F0063B024 /* MBInputView.m in Sources */,
 				E470CA2C2228055C0029501A /* LZPersonSelectTableViewCell.m in Sources */,
 				82398C0E21A42F0F00300C91 /* WYCClassDetailView.m in Sources */,
@@ -4023,6 +3988,7 @@
 				6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */,
 				82398BC921A4289500300C91 /* SYCEditToolsViewHeader.m in Sources */,
 				9630E4CA1FAF07D300874EB9 /* QueryDataModel.m in Sources */,
+				E41AD25B222BF13D00360C56 /* GradeView.m in Sources */,
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
 				6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */,
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
@@ -4054,7 +4020,6 @@
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
 				6E1D1BD620CF73F8008DA86C /* NSString+Emoji.m in Sources */,
 				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
-				6E1205BF1F6A9FE100E5020E /* BeforeClassCell.m in Sources */,
 				82398BCA21A4289500300C91 /* SYCEditToolsView.m in Sources */,
 				82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */,
 				82398BC721A4289500300C91 /* SYCToolsCell.m in Sources */,
@@ -4063,7 +4028,6 @@
 				6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				E470C9FB2227FAD20029501A /* LostViewController.m in Sources */,
-				6EF302D61F8A0B43009B7A66 /* ExamPickView.m in Sources */,
 				E470CA022227FAD20029501A /* LZDatePicker.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				E470C9FC2227FAD20029501A /* LZIssueSucceedViewController.m in Sources */,
@@ -4098,7 +4062,6 @@
 				9630E4CB1FAF07D300874EB9 /* QueryHeader.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
-				F242DF071EBCB2BC005AC411 /* ExamGradeViewController.m in Sources */,
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
@@ -4131,6 +4094,7 @@
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */,
+				E41AD267222BF64300360C56 /* ExamPickView.m in Sources */,
 				6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */,
 				6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
@@ -4152,7 +4116,6 @@
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				9630E48B1FAF07D200874EB9 /* HeaderTableViewCell.m in Sources */,
-				F242DF091EBCB2BC005AC411 /* GradeView.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
 				E470C9FD2227FAD20029501A /* LostTableViewController.m in Sources */,
 				E470CA282228055C0029501A /* LZPersonAddView.m in Sources */,
