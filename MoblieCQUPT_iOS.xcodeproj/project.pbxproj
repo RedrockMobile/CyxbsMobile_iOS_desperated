@@ -318,6 +318,8 @@
 		E41AD263222BF55000360C56 /* BeforeClassCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD25F222BF55000360C56 /* BeforeClassCell.m */; };
 		E41AD264222BF55000360C56 /* BeforeClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD260222BF55000360C56 /* BeforeClassViewController.m */; };
 		E41AD267222BF64300360C56 /* ExamPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD266222BF64200360C56 /* ExamPickView.m */; };
+		E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD269222BFE9000360C56 /* SYCSegmentViewButton.m */; };
+		E41AD26F222BFE9000360C56 /* SYCSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD26A222BFE9000360C56 /* SYCSegmentView.m */; };
 		E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D52227FAD20029501A /* IssueTableViewController.m */; };
 		E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D72227FAD20029501A /* DetailLostViewController.m */; };
 		E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9D82227FAD20029501A /* IssueTableViewController.xib */; };
@@ -1087,6 +1089,10 @@
 		E41AD262222BF55000360C56 /* BeforeClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeforeClassViewController.h; sourceTree = "<group>"; };
 		E41AD265222BF64200360C56 /* ExamPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamPickView.h; sourceTree = "<group>"; };
 		E41AD266222BF64200360C56 /* ExamPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamPickView.m; sourceTree = "<group>"; };
+		E41AD269222BFE9000360C56 /* SYCSegmentViewButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentViewButton.m; sourceTree = "<group>"; };
+		E41AD26A222BFE9000360C56 /* SYCSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCSegmentView.m; sourceTree = "<group>"; };
+		E41AD26B222BFE9000360C56 /* SYCSegmentViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCSegmentViewButton.h; sourceTree = "<group>"; };
+		E41AD26D222BFE9000360C56 /* SYCSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCSegmentView.h; sourceTree = "<group>"; };
 		E470C9D52227FAD20029501A /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
 		E470C9D62227FAD20029501A /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
 		E470C9D72227FAD20029501A /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
@@ -2151,6 +2157,8 @@
 		E41AD24B222BECDE00360C56 /* #Outdated */ = {
 			isa = PBXGroup;
 			children = (
+				F2509BCC1F440D7D0091F678 /* SegmentView.h */,
+				F2509BCD1F440D7D0091F678 /* SegmentView.m */,
 				9630E4311FAF07D200874EB9 /* Volunteer */,
 				E470C9D32227FAD20029501A /* LostAndFound */,
 				4A3A07711FCC0E7700A50393 /* Shop */,
@@ -2182,6 +2190,17 @@
 				E41AD262222BF55000360C56 /* BeforeClassViewController.h */,
 			);
 			path = BeforeClass;
+			sourceTree = "<group>";
+		};
+		E41AD268222BFE9000360C56 /* SegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				E41AD26D222BFE9000360C56 /* SYCSegmentView.h */,
+				E41AD26A222BFE9000360C56 /* SYCSegmentView.m */,
+				E41AD269222BFE9000360C56 /* SYCSegmentViewButton.m */,
+				E41AD26B222BFE9000360C56 /* SYCSegmentViewButton.h */,
+			);
+			path = SegmentView;
 			sourceTree = "<group>";
 		};
 		E470C9D32227FAD20029501A /* LostAndFound */ = {
@@ -2869,6 +2888,8 @@
 		F242DD771EBCB2BB005AC411 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				E41AD268222BFE9000360C56 /* SegmentView */,
+				F242DD7B1EBCB2BB005AC411 /* NetWork */,
 				F2A92CF11F52EB2600B4CEEF /* CAShapeLayer+ViewMask.h */,
 				F2A92CF21F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m */,
 				F2A92CF31F52EB2600B4CEEF /* NSNull+Helper.h */,
@@ -2891,9 +2912,6 @@
 				6E3213F920D5426400E55145 /* UIViewController+BackButtonHandler.m */,
 				6E1D1BD420CF73F8008DA86C /* NSString+Emoji.h */,
 				6E1D1BD520CF73F8008DA86C /* NSString+Emoji.m */,
-				F242DD7B1EBCB2BB005AC411 /* NetWork */,
-				F2509BCC1F440D7D0091F678 /* SegmentView.h */,
-				F2509BCD1F440D7D0091F678 /* SegmentView.m */,
 				F238C6591F3DC87900FEB179 /* UserDefaultTool.h */,
 				F238C65A1F3DC87900FEB179 /* UserDefaultTool.m */,
 			);
@@ -3377,7 +3395,7 @@
 				TargetAttributes = {
 					CE4334431BE7C52D000C407D = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = HPM8HVK7C6;
+						DevelopmentTeam = 5HFKSE2QXG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3387,7 +3405,7 @@
 					};
 					CEF61B291B82BC950014B980 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = HPM8HVK7C6;
+						DevelopmentTeam = 5HFKSE2QXG;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -3993,6 +4011,7 @@
 				6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */,
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
+				E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
 				82398BC421A4289500300C91 /* SYCFinderViewController.m in Sources */,
 				F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */,
@@ -4049,6 +4068,7 @@
 				9630E48C1FAF07D200874EB9 /* QueryTableViewCell.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				82398BCB21A4289500300C91 /* SYCToolModel.m in Sources */,
+				E41AD26F222BFE9000360C56 /* SYCSegmentView.m in Sources */,
 				9630E48F1FAF07D200874EB9 /* QueryViewController.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
@@ -4197,7 +4217,7 @@
 				CODE_SIGN_ENTITLEMENTS = ClassWidget/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = 5HFKSE2QXG;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -4219,7 +4239,7 @@
 				CODE_SIGN_ENTITLEMENTS = ClassWidget/Today.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = 5HFKSE2QXG;
 				INFOPLIST_FILE = ClassWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -4340,7 +4360,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = 5HFKSE2QXG;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";
@@ -4382,7 +4402,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = HPM8HVK7C6;
+				DEVELOPMENT_TEAM = 5HFKSE2QXG;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MoblieCQUPT_iOS/PrefixHeader.pch";

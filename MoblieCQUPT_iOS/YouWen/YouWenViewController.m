@@ -13,6 +13,7 @@
 #import "YouWenAddViewController.h"
 #import "YouWenTopicView.h"
 #import "ReportViewController.h"
+#import "SYCSegmentView.h"
 
 @interface YouWenViewController ()<whatTopic>
 @property (strong, nonatomic) UIButton *askBtn;
@@ -35,16 +36,20 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) andControllers:views];
+    
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
+    
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
     _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
     
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"inform"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
+    
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"inform"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
+    
 }
 - (void)setNewQuestion{
     YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
@@ -58,21 +63,12 @@
     addView.hidesBottomBarWhenPushed = YES;
      [self.navigationController pushViewController:addView animated:YES];
 }
-- (void)sdf{
-    ReportViewController *reportView =  [[ReportViewController alloc] init];
-    reportView.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:reportView animated:YES];
-}
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+//- (void)sdf{
+//    ReportViewController *reportView =  [[ReportViewController alloc] init];
+//    reportView.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:reportView animated:YES];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
