@@ -7,7 +7,7 @@
 //
 
 #import "AboutMeMainViewController.h"
-#import "SegmentView.h"
+#import "SYCSegmentView.h"
 #import "AboutMeViewController.h"
 @interface AboutMeMainViewController ()
 
@@ -28,7 +28,7 @@
     for (AboutMeViewController *view in views) {
         view.superController = self;
     }
-    SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT) andControllers:views];
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
 }
 
