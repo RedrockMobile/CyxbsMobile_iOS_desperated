@@ -7,12 +7,12 @@
 //
 
 #import "LXAskViewController.h"
-#import "SYCSegmentView.h"
+#import "SegmentView.h"
 #import "LXAskDeatilViewController.h"
 
-@interface LXAskViewController ()<LXAskDeatilViewControllerDelegate>
+@interface LXAskViewController ()<SegmentViewDelegate, LXAskDeatilViewControllerDelegate>
 
-@property (nonatomic, strong) SYCSegmentView *segmentView;
+@property (nonatomic, strong) SegmentView *segmentView;
 
 @end
 
@@ -46,7 +46,7 @@
         VC2.isAsk = NO;
     }
     NSArray *VCArray = @[VC1, VC2];
-    self.segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) controllers:VCArray type:SYCSegmentViewTypeNormal];
+    self.segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) andControllers:VCArray];
     self.segmentView.eventDelegate = self;
     [self.view addSubview:self.segmentView];
 }
