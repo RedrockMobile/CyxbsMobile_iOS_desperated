@@ -46,10 +46,6 @@
     
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
-    
-//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"inform"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
-    
 }
 - (void)setNewQuestion{
     YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
@@ -58,17 +54,12 @@
     [[UIApplication sharedApplication].keyWindow addSubview:topicView];
     
 }
+
 - (void)topicStyle:(NSString *)style{
     YouWenAddViewController *addView = [[YouWenAddViewController alloc] initWithStyle:style];
     addView.hidesBottomBarWhenPushed = YES;
      [self.navigationController pushViewController:addView animated:YES];
 }
-
-//- (void)sdf{
-//    ReportViewController *reportView =  [[ReportViewController alloc] init];
-//    reportView.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:reportView animated:YES];
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
