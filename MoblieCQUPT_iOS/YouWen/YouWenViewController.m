@@ -13,6 +13,7 @@
 #import "YouWenTopicView.h"
 #import "ReportViewController.h"
 #import "SYCSegmentView.h"
+#import "LoginViewController.h"
 
 @interface YouWenViewController ()<whatTopic>
 @property (strong, nonatomic) UIButton *askBtn;
@@ -22,6 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (![UserDefaultTool getStuNum]) {
+        [self tint:self];
+        return;
+    }else{
+        [self setUpUI];
+    }
+}
+
+- (void)setUpUI{
     self.edgesForExtendedLayout = UIRectEdgeNone;
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
@@ -46,6 +56,7 @@
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
 }
+
 - (void)setNewQuestion{
     YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
     [topicView addDetail];
@@ -63,6 +74,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tint:(UIViewController *)controller{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LoginViewController *LVC = [[LoginViewController alloc] init];
+        LVC.loginSuccessHandler = ^(BOOL success) {
+            if (success) {
+                [self setUpUI];
+            }
+        };
+        [weakSelf presentViewController:LVC animated:YES completion:nil];
+    }];
+    [alertC addAction:cancel];
+    [alertC addAction:confirm];
+    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 @end

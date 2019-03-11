@@ -72,6 +72,8 @@
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
+
+    
     self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREENWIDTH, SCREENWIDTH * 0.55)];
     NSMutableArray *pictureArray = [NSMutableArray array];
     for (LZCarouselModel *model in self.carouselDataArray) {
@@ -88,6 +90,8 @@
     backgroundView.layer.masksToBounds = YES;
     backgroundView.layer.cornerRadius = 10.0;
     [self.scrollView addSubview:backgroundView];
+    
+
     
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -108,6 +112,18 @@
     [_scrollView addSubview:shadowView];
     [_scrollView sendSubviewToBack:shadowView];
     
+    //添加视差效果
+    UIInterpolatingMotionEffect *motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    motionEffect.minimumRelativeValue = @(-15);
+    motionEffect.maximumRelativeValue = @(15);
+    [backgroundView addMotionEffect:motionEffect];
+    [shadowView addMotionEffect:motionEffect];
+    
+    motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    motionEffect.minimumRelativeValue = @(-15);
+    motionEffect.maximumRelativeValue = @(15);
+    [backgroundView addMotionEffect:motionEffect];
+    [shadowView addMotionEffect:motionEffect];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     
