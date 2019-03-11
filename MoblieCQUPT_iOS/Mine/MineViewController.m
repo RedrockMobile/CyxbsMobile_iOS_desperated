@@ -20,12 +20,12 @@
 #import <sys/utsname.h>
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,LXAskViewControllerDelegate>
-@property (strong, nonatomic) NSArray <NSArray *> *cellDicArray;
+
+@property (copy, nonatomic) NSArray <NSArray *> *cellDicArray;
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *introductionLabel;
 @property (strong, nonatomic) UITableView *tableView;
-
 
 @end
 
@@ -37,22 +37,22 @@
     MyInfoModel *model = [MyInfoModel getMyInfo];
     if (model.photo_thumbnail_src == nil){
         self.headImageView.image = [UIImage imageNamed:@"headImage"];
-    }
-    else {
+    }else {
         self.headImageView.image = model.photo_thumbnail_src;
     }
+    
     if (model.nickname.length == 0) {
         self.nameLabel.text = @"请填写用户名";
-    }
-    else {
+    }else {
         self.nameLabel.text = model.nickname;
     }
+    
     if (model.introduction.length == 0) {
         self.introductionLabel.text = @"写下你想对世界说的话，就现在";
-    }
-    else {
+    }else {
         self.introductionLabel.text = model.introduction;
     }
+    
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
@@ -66,6 +66,7 @@
     [super viewWillDisappear:animated];
     self.navigationController.navigationBar.hidden = NO;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -82,39 +83,40 @@
                 @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeMainViewController"}];
     NSArray *array4 = @[
                 @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingViewController"}];
-    self.cellDicArray = @[array1, array2, array3, array4];
+    _cellDicArray = @[array1, array2, array3, array4];
     
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.top - 20, SCREENWIDTH, SCREENHEIGHT - self.tableView.top - 20)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.top - 20, SCREENWIDTH, SCREENHEIGHT - _tableView.top - 20)];
     whiteView.backgroundColor = RGBColor(246, 246, 246, 1);;
     [self.view addSubview:whiteView];
     [self.view sendSubviewToBack:whiteView];
     
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.bounces = NO;
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.separatorColor = [UIColor clearColor];
-    self.tableView.showsVerticalScrollIndicator = NO;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.bounces = NO;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.showsVerticalScrollIndicator = NO;
+    
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage)];
-    [self.headImageView addGestureRecognizer:gesture];
-    self.headImageView.userInteractionEnabled = YES;
+    [_headImageView addGestureRecognizer:gesture];
+    _headImageView.userInteractionEnabled = YES;
 }
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
-    self.headImageView.layer.cornerRadius = self.headImageView.width/2;
-    self.headImageView.layer.borderWidth = 1;
-    self.headImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.headImageView.layer.masksToBounds = YES;
+    _headImageView.layer.cornerRadius = self.headImageView.width/2;
+    _headImageView.layer.borderWidth = 1;
+    _headImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    _headImageView.layer.masksToBounds = YES;
 }
 
 #pragma mark - TableView 代理
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.cellDicArray[section].count;
+    return _cellDicArray[section].count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.cellDicArray.count;
+    return _cellDicArray.count;
 }
 
 
@@ -123,44 +125,28 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone; 
     cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
     cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
-    if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
-            cell.backgroudImage.image = [UIImage imageNamed:@"middle_t"];
-        }
-        else if (indexPath.row == 1 || indexPath.row == 2) {
-            cell.backgroudImage.image = [UIImage imageNamed:@"middle_m"];
-        }
-        else {
-            cell.backgroudImage.image = [UIImage imageNamed:@"middle_b"];
-        }
-    }
-    else {
-        cell.backgroudImage.image = [UIImage imageNamed:@"topBotton"];
-    }
     return cell;
 }
 
 #pragma mark 分割tableview设置
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return 1;
+    return 10;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return (self.tableView.size.height - 23)/7;
-    
+    return SCREENHEIGHT / 12;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {
-    view.tintColor = RGBColor(246, 246, 246, 1);;
+    view.tintColor = RGBColor(246, 246, 246, 1);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSString *className = self.cellDicArray[indexPath.section][indexPath.row][@"controller"];
+    NSString *className = _cellDicArray[indexPath.section][indexPath.row][@"controller"];
     
     UIViewController *vc;
     vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
 
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         if (indexPath.row == 1 || indexPath.row == 2 ||indexPath.row==5) {
@@ -227,30 +213,6 @@
     [alertC addAction:confirm];
     [self presentViewController:alertC animated:YES completion:nil];
 }
-
-//- (IBAction)clickBtn:(UIButton *)sender {
-//    UIViewController *vc;
-//    switch (sender.tag) {
-//        case 0:
-//            vc = [[MyInfoViewController alloc]init];
-//            vc.navigationItem.title = @"修改信息";
-//            break;
-//        case 1:
-//            vc = [[AboutMeViewController alloc]init];
-//            vc.navigationItem.title = @"与我相关";
-//            break;
-//        case 2:
-//            vc = [[MyMessagesViewController alloc]init];
-//            vc.navigationItem.title = @"我的动态";
-//            break;
-//    }
-//    vc.hidesBottomBarWhenPushed = YES;
-//    if (![UserDefaultTool getStuNum]) {
-//        [self tint:vc];
-//        return;
-//    }
-//    [self.navigationController pushViewController:vc animated:YES];
-//}
 
 @end
 

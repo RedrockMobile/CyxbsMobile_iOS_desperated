@@ -40,7 +40,7 @@ typedef NS_ENUM(NSUInteger, SYCSegmentViewType){
 
 
 /**
- 默认初始化方法
+ 默认初始化方法（Type是样式类型）
  
  @param frame SegmentView的Frame大小
  @param controllers SegmentView容纳的视图控制器，以数组形式提供

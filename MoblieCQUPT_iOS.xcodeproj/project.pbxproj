@@ -2352,7 +2352,6 @@
 				F242DA571EBCB2BB005AC411 /* AppDelegate.m */,
 				F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */,
 				F242DA5A1EBCB2BB005AC411 /* Main.storyboard */,
-				F242DB8A1EBCB2BB005AC411 /* Images.xcassets */,
 				F242DB8B1EBCB2BB005AC411 /* Info.plist */,
 				F242DC361EBCB2BB005AC411 /* main.m */,
 				F242DCD71EBCB2BB005AC411 /* PrefixHeader.pch */,
@@ -2878,6 +2877,7 @@
 		F242DCD81EBCB2BB005AC411 /* Resoure */ = {
 			isa = PBXGroup;
 			children = (
+				F242DB8A1EBCB2BB005AC411 /* Images.xcassets */,
 				4A3A07CC1FCC0EC600A50393 /* shake_match.mp3 */,
 				F26D95D41F3C3FF70063B024 /* Font */,
 				F26D95D61F3C3FF70063B024 /* Images */,

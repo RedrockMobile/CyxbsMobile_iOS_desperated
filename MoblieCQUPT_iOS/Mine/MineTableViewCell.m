@@ -15,7 +15,9 @@
     self.accessoryType = UITableViewCellAccessoryNone;
     // Initialization code
     self.backgroundColor = [UIColor clearColor];
-
+    
+    _backgroudView.layer.masksToBounds = YES;
+    _backgroudView.layer.cornerRadius = 15.0;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

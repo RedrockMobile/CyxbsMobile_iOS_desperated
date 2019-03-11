@@ -9,7 +9,6 @@
 #import "YouWenViewController.h"
 #import "YouWenTableViewCell.h"
 #import "YouWenSortViewController.h"
-#import "SegmentView.h"
 #import "YouWenAddViewController.h"
 #import "YouWenTopicView.h"
 #import "ReportViewController.h"
