@@ -45,7 +45,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = BACK_GRAY_COLOR;
+    self.view.backgroundColor = RGBColor(246, 246, 246, 1.0);
     self.carouselDataArray = [NSMutableArray array];
     self.filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"carouselDataArray.archiver"];
     
@@ -97,7 +97,17 @@
     self.toolsView.delegate = self;
     self.toolsView.dataSource = self;
     [self.toolsView registerClass:[SYCToolsCell class] forCellWithReuseIdentifier:@"SYCToolsCell"];
+    
+    UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(backgroundView.frame.origin.x + 4, backgroundView.frame.origin.y + 4, backgroundView.frame.size.width - 8, backgroundView.frame.size.height - 8)];
+    shadowView.backgroundColor = [UIColor whiteColor];
+    shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadowView.layer.shadowOpacity = 0.1;
+    shadowView.layer.shadowOffset = CGSizeMake(0, 7);
+    shadowView.layer.shadowRadius = 5;
     [backgroundView addSubview:self.toolsView];
+    [_scrollView addSubview:shadowView];
+    [_scrollView sendSubviewToBack:shadowView];
+    
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     

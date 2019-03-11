@@ -1843,11 +1843,11 @@
 			isa = PBXGroup;
 			children = (
 				82398BB821A4289500300C91 /* SYCEditToolsView.h */,
+				82398BBC21A4289500300C91 /* SYCEditToolsView.m */,
 				82398BBB21A4289500300C91 /* SYCCustomToolsControl.h */,
 				82398BB921A4289500300C91 /* SYCCustomToolsControl.m */,
-				82398BBA21A4289500300C91 /* SYCEditToolsViewHeader.m */,
-				82398BBC21A4289500300C91 /* SYCEditToolsView.m */,
 				82398BBD21A4289500300C91 /* SYCEditToolsViewHeader.h */,
+				82398BBA21A4289500300C91 /* SYCEditToolsViewHeader.m */,
 			);
 			path = EditTools;
 			sourceTree = "<group>";
