@@ -21,10 +21,10 @@
 
 @interface MineViewController ()<UITableViewDataSource,UITableViewDelegate,LXAskViewControllerDelegate>
 @property (strong, nonatomic) NSArray <NSArray *> *cellDicArray;
-@property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *introductionLabel;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UIImageView *headImageView;
+@property (strong, nonatomic) UILabel *nameLabel;
+@property (strong, nonatomic) UILabel *introductionLabel;
+@property (strong, nonatomic) UITableView *tableView;
 
 
 @end
@@ -81,7 +81,7 @@
     NSArray *array3 = @[
                 @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeMainViewController"}];
     NSArray *array4 = @[
-                @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingController"}];
+                @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingViewController"}];
     self.cellDicArray = @[array1, array2, array3, array4];
     
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, self.tableView.top - 20, SCREENWIDTH, SCREENHEIGHT - self.tableView.top - 20)];
