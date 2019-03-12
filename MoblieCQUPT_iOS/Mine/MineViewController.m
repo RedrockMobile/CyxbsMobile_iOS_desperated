@@ -96,6 +96,7 @@
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.showsVerticalScrollIndicator = NO;
+    [_tableView registerNib:[UINib nibWithNibName:@"MineTableViewCell" bundle:nil] forCellReuseIdentifier:@"MineCell"];
     
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(touchImage)];
     [_headImageView addGestureRecognizer:gesture];
@@ -121,8 +122,21 @@
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    MineTableViewCell *cell = [[[NSBundle mainBundle]loadNibNamed:@"MineTableViewCell" owner:nil options:nil] lastObject];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone; 
+    MineTableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:@"MineCell"];
+    
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            cell.type = MineCellTypeStart;
+        }else if (indexPath.row == 3){
+            cell.type = MineCellTypeEnd;
+        }else{
+            cell.type = MineCellTypeMiddle;
+        }
+    }else{
+        cell.type = MineCellTypeNormal;
+    }
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     cell.cellImageView.image = [UIImage imageNamed:self.cellDicArray[indexPath.section][indexPath.row][@"img"]];
     cell.cellLabel.text = self.cellDicArray[indexPath.section][indexPath.row][@"title"];
     return cell;
@@ -204,7 +218,6 @@
         LoginViewController *LVC = [[LoginViewController alloc] init];
         LVC.loginSuccessHandler = ^(BOOL success) {
             if (success) {
-//                [self.navigationController pushViewController:controller animated:YES];
             }
         };
         [weakSelf presentViewController:LVC animated:YES completion:nil];
