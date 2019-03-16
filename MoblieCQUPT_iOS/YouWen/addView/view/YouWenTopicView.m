@@ -14,14 +14,13 @@
 
 - (void)addDetail{
     [super addDetail];
+    
     [self.cancelBtn setBackgroundImage:[UIImage imageNamed:@"chacha"] forState:UIControlStateNormal];
     self.cancelBtn.size = CGSizeMake(17, 17);
     self.cancelBtn.centerX = self.whiteView.centerX;
     [self.cancelBtn setTitle:@"" forState:UIControlStateNormal];
     self.cancelBtn.centerY = self.whiteView.height - 50;
-    [self.confirBtn setTitle:@"下一步" forState:UIControlStateNormal];
-    
-    self.confirBtn.titleLabel.font = [UIFont fontWithName:@"Arial" size:13];
+
     UILabel *titleLab = [[UILabel alloc] init];
     titleLab.text = @"选择求助类型";
     titleLab.font = [UIFont fontWithName:@"Arial" size:16];
@@ -54,17 +53,11 @@
     }
     return _style;
 }
+
 -(void)selectStyle:(UIButton *)btn{
     self.style = _topics[btn.tag];
     [self removeFromSuperview];
     [self.topicDelegate topicStyle:self.style];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

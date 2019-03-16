@@ -23,18 +23,20 @@
     }
     return self;
 }
+
+//触摸阴影返回的手势
 - (void)setSelf{
     self.backgroundColor = [UIColor colorWithRed:152/255.0 green:152/255.0 blue:152/255.0 alpha:0.8];
     self.enableBack = YES;
     UITapGestureRecognizer *touchBack = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
     [touchBack setNumberOfTapsRequired:1];
     [self addGestureRecognizer:touchBack];
-    
 }
 
 - (void)back{
     [self removeFromSuperview];
 }
+
 - (void)setEnableBack:(BOOL)enableBack{
     _enableBack = enableBack;
     if (self.enableBack) {
@@ -45,6 +47,7 @@
     }
 }
 
+//弹出下面选择话题界面的方法
 - (void)setUpWhiteView:(CGFloat)height{
     _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, height)];
     [UIView animateWithDuration:0.5 animations:^{
@@ -117,24 +120,5 @@
     [self removeFromSuperview];
     [self.delegate newView:btn];
 }
-//不传递
--(id)hitTest:(CGPoint)point withEvent:(UIEvent *)event
-{
-    UIView *hitView = [super hitTest:point withEvent:event];
-    if (hitView == _whiteView||hitView == _squareBox) {
-        return nil;
-    } else {
-        return hitView;
-    }
-}
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
