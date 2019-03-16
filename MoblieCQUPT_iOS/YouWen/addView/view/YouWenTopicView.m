@@ -40,7 +40,7 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:topicImages[i]] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:selectImages[i]] forState:UIControlStateSelected];
-        btn.frame = CGRectMake(15 + (btnWidth + 30)* i, self.blackView.bottom + 50, btnWidth, ZOOM(88));
+        btn.frame = CGRectMake(15 + (btnWidth + 30)* i, self.blackView.bottom + 50, btnWidth, ZOOM(75));
         btn.tag = i;
         [btn addTarget:self action:@selector(selectStyle:) forControlEvents:UIControlEventTouchUpInside];
         [self.whiteView addSubview:btn];
