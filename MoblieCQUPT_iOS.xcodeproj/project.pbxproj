@@ -1648,12 +1648,13 @@
 		6E0F69312033424500BB5EF3 /* YouWen */ = {
 			isa = PBXGroup;
 			children = (
+				6EDA4BC12034737200AA264E /* YouWenViewController.h */,
+				6EDA4BC22034737200AA264E /* YouWenViewController.m */,
+				6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */,
 				6E12A32920518F5600D07606 /* Tool */,
 				6E0F69302031E30200BB5EF3 /* ReportView */,
 				6E7C98662047F1C6000BAA16 /* addView */,
 				6E7C98622044601A000BAA16 /* sortView */,
-				6EDA4BC12034737200AA264E /* YouWenViewController.h */,
-				6EDA4BC22034737200AA264E /* YouWenViewController.m */,
 			);
 			path = YouWen;
 			sourceTree = "<group>";
@@ -1669,7 +1670,6 @@
 				6E12A32B20518F9C00D07606 /* TransparentView.m */,
 				6E12A32D2053904D00D07606 /* YouWenNextView.h */,
 				6E12A32E2053904D00D07606 /* YouWenNextView.m */,
-				6E7C985A204158D2000BAA16 /* YouWenMedia.xcassets */,
 				6E372C6620D34C0500F930A6 /* SheetAlertController.h */,
 				6E372C6720D34C0500F930A6 /* SheetAlertController.m */,
 			);

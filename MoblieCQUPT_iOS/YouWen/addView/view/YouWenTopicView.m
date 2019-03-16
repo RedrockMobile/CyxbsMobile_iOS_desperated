@@ -47,6 +47,7 @@
         [self.whiteView addSubview:btn];
     }
 }
+
 - (NSMutableString *)style{
     if (!_style) {
         _style = [NSMutableString string];
