@@ -9,6 +9,11 @@
 #import "DateModle.h"
 
 @implementation DateModle
++(instancetype)initWithStartDate:(NSString *)startDate{
+    DateModle *dateModel = [[DateModle alloc]init];
+    [dateModel initCalculateDate:startDate];
+    return dateModel;
+}
 -(void)initCalculateDate:(NSString *)startDate{
     //从字符串转换日期
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
@@ -76,6 +81,6 @@
     
     self.nowWeek = [NSNumber numberWithInteger:nowWeek];
     [UserDefaultTool saveValue:self.nowWeek forKey:@"nowWeek"];
-    
+    NSLog(@"nowweek:%ld",(long)nowWeek);
 }
 @end

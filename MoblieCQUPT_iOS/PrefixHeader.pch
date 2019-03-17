@@ -74,6 +74,8 @@
 #import "UIColor+Helper.h"
 #import "UserDefaultTool.h"
 #import "BaseViewController.h"
+#import "AESCipher.h"
+
 
 #pragma Group共享
 #define kAPPGroupID @"group.com.redrock.mobile"

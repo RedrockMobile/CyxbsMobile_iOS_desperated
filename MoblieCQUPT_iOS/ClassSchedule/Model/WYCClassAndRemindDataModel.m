@@ -1,22 +1,20 @@
 //
-//  WYCClassAndNoteModel.m
-//  ChatBotTest
+//  WYCClassAndRemindDataModel.m
+//  MoblieCQUPT_iOS
 //
-//  Created by 王一成 on 2018/8/29.
-//  Copyright © 2018年 wyc. All rights reserved.
+//  Created by 王一成 on 2019/3/8.
+//  Copyright © 2019年 Orange-W. All rights reserved.
 //
 
-#import "WYCClassAndNoteModel.h"
-#import "HttpClient.h"
-#define URL @"https://wx.idsbllp.cn/api/kebiao"
-@interface WYCClassAndNoteModel()
+#import "WYCClassAndRemindDataModel.h"
+@interface WYCClassAndRemindDataModel()
 //课表
 @property (nonatomic, assign) BOOL classDataLoadFinish;
-@property (nonatomic, assign) BOOL noteDataLoadFinish;
+@property (nonatomic, assign) BOOL remindDataLoadFinish;
 //备忘
-
 @end
-@implementation WYCClassAndNoteModel
+
+@implementation WYCClassAndRemindDataModel
 
 
 - (void)getClassBookArray:(NSString *)stu_Num{
@@ -29,7 +27,7 @@
         self.weekArray = [[NSMutableArray alloc]init];
         [self.weekArray addObject:array];
         
-        [self parsingData:array];
+        [self parsingClassBookData:array];
         
         self.classDataLoadFinish = YES;
         [self loadFinish];
@@ -49,24 +47,22 @@
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
         
-        NSArray *array = [responseObject objectForKey:@"data"];
-        [self ->_weekArray addObject:array];
-        [self parsingData:array];
+        NSArray *lessonArray = [responseObject objectForKey:@"data"];
         
-        NSNumber *nowWeek = responseObject[@"nowWeek"];
-        self->_nowWeek = nowWeek;
-        [UserDefaultTool saveValue:nowWeek forKey:@"nowWeek"];
-        [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
-        //数据缓存
+        
+       // [UserDefaultTool saveValue:responseObject forKey:@"lessonResponse"];
+        //保存获取的课表数据到文件
         NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         NSString *lessonPath = [path stringByAppendingPathComponent:@"lesson.plist"];
-        NSArray *lesson = [responseObject objectForKey:@"data"];
-        [lesson writeToFile:lessonPath atomically:YES];
+        [lessonArray writeToFile:lessonPath atomically:YES];
+        
         
         // 共享数据
-        NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
-        [shared setObject:responseObject forKey:@"lessonResponse"];
-        [shared synchronize];
+        //NSUserDefaults *shared = [[NSUserDefaults alloc]initWithSuiteName:kAPPGroupID];
+        //[shared setObject:responseObject forKey:@"lessonResponse"];
+        //[shared synchronize];
+        [self.weekArray addObject:lessonArray];
+        [self parsingClassBookData:lessonArray];
         
         self.classDataLoadFinish = YES;
         [self loadFinish];
@@ -79,7 +75,7 @@
     }];
     
 }
--(void)parsingData:(NSArray*)array{
+-(void)parsingClassBookData:(NSArray*)array{
     
     for (int weeknum = 1; weeknum <= 25; weeknum++) {
         NSMutableArray *tmp = [[NSMutableArray alloc]init];
@@ -108,27 +104,27 @@
 
 
 //备忘
-- (void)getNote:(NSString *)stuNum idNum:(NSString *)idNum{
+- (void)getRemind:(NSString *)stuNum idNum:(NSString *)idNum{
     //如果有缓存，则从缓存加载数据
     NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
     NSArray *array = [NSMutableArray arrayWithContentsOfFile:remindPath];
     
     if (array) {
-        self.noteArray = [[NSMutableArray alloc]init];
+        self.remindArray = [[NSMutableArray alloc]init];
         
-        [self parsingNoteData:array];
+        [self parsingRemindData:array];
         
-        self.noteDataLoadFinish = YES;
+        self.remindDataLoadFinish = YES;
         [self loadFinish];
     }else{
         
-        [self getNoteFromNet:stuNum idNum:idNum];
+        [self getRemindFromNet:stuNum idNum:idNum];
     }
 }
-- (void)getNoteFromNet:(NSString *)stuNum idNum:(NSString *)idNum{
-    self.noteArray = [[NSMutableArray alloc]init];
-    self.noteDataLoadFinish = nil;
+- (void)getRemindFromNet:(NSString *)stuNum idNum:(NSString *)idNum{
+    self.remindArray = [[NSMutableArray alloc]init];
+    self.remindDataLoadFinish = nil;
     
     NSDictionary *parameters = @{@"stuNum":stuNum,@"idNum":idNum};
     
@@ -136,30 +132,31 @@
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
         
+       
+        NSArray *dataArray = [responseObject objectForKey:@"data"];
+  
+        //保存获取的备忘数据到文件
         NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
         NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
         NSMutableArray *reminds = [responseObject objectForKey:@"data"];
-        
         [reminds writeToFile:remindPath atomically:YES];
-        
-        NSArray *dataArray = [responseObject objectForKey:@"data"];
-        [self parsingNoteData:dataArray];
-        
-        self.noteDataLoadFinish = YES;
+        //解析备忘数据
+        [self parsingRemindData:dataArray];
+        self.remindDataLoadFinish = YES;
         [self loadFinish];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-        NSLog(@"WYCNoteModelDataLoadFailure:%@",error);
-        self.noteDataLoadFinish = NO;
+        NSLog(@"WYCRemindModelRemindLoadFailure:%@",error);
+        self.remindDataLoadFinish = NO;
         [self loadFinish];
     }];
     
 }
 //解析数据
--(void)parsingNoteData:(NSArray *)array{
-    _noteArray = [[NSMutableArray alloc]initWithCapacity:25];
+-(void)parsingRemindData:(NSArray *)array{
+    _remindArray = [[NSMutableArray alloc]initWithCapacity:25];
     for (int i = 0; i < 25; i++) {
-        _noteArray[i] = [@[] mutableCopy];
+        _remindArray[i] = [@[] mutableCopy];
     }
     
     
@@ -182,7 +179,7 @@
             NSArray *weekArray = [date[time] objectForKey:@"week"];
             for (int week = 0; week < weekArray.count; week++) {
                 NSNumber *weekNum = weekArray[week];
-                [_noteArray[weekNum.integerValue-1] addObject:tmp];
+                [_remindArray[weekNum.integerValue-1] addObject:tmp];
             }
         }
         
@@ -190,8 +187,8 @@
     
     
 }
-- (void)deleteNote:(NSString *)stuNum idNum:(NSString *)idNum noteId:(NSNumber *)noteId{
-    NSDictionary *parameters = @{@"stuNum":stuNum,@"idNum":idNum,@"id":noteId};
+- (void)deleteRemind:(NSString *)stuNum idNum:(NSString *)idNum remindId:(NSNumber *)remindId{
+    NSDictionary *parameters = @{@"stuNum":stuNum,@"idNum":idNum,@"id":remindId};
     
     [[HttpClient defaultClient] requestWithPath:DELETEREMINDAPI method:HttpRequestPost parameters:parameters prepareExecute:nil progress:^(NSProgress *progress) {
         
@@ -200,24 +197,25 @@
         
         NSNumber *result = [responseObject objectForKey:@"status"];
         if (result.integerValue == 200) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteDeleteSuccess" object:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"RemindDeleteSuccess" object:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
         NSLog(@"NoteDeleteFailure:%@",error);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"NoteDeleteFailure" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"RemindDeleteFailure" object:nil];
         
     }];
     
 }
 
 -(void)loadFinish{
-    if (self.classDataLoadFinish == YES&&self.noteDataLoadFinish == YES) {
+    if (self.classDataLoadFinish == YES&&self.remindDataLoadFinish == YES) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ModelDataLoadSuccess" object:nil];
     }
-    if (self.classDataLoadFinish == NO&&self.noteDataLoadFinish == NO) {
+    if (self.classDataLoadFinish == NO&&self.remindDataLoadFinish == NO) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ModelDataLoadFailure" object:nil];
     }
     
 }
 @end
+

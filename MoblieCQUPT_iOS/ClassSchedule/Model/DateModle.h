@@ -11,6 +11,6 @@
 @interface DateModle : NSObject
 @property (nonatomic, strong) NSMutableArray *dateArray;
 @property (nonatomic, strong) NSNumber *nowWeek;
--(void)initCalculateDate:(NSString *)startDate;
++(instancetype)initWithStartDate:(NSString *)startDate;
 
 @end

@@ -53,7 +53,6 @@
     
     _rootView = [[UIView alloc]init];
     
-    
     _scrollView = [[UIScrollView alloc]init];
     _scrollView.backgroundColor = [UIColor whiteColor];
     _scrollView.scrollEnabled = YES;
