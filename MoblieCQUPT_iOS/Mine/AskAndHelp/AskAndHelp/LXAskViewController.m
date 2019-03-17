@@ -7,12 +7,12 @@
 //
 
 #import "LXAskViewController.h"
-#import "SegmentView.h"
+#import "SYCSegmentView.h"
 #import "LXAskDeatilViewController.h"
 
-@interface LXAskViewController ()<SegmentViewDelegate, LXAskDeatilViewControllerDelegate>
+@interface LXAskViewController ()<LXAskDeatilViewControllerDelegate>
 
-@property (nonatomic, strong) SegmentView *segmentView;
+@property (nonatomic, strong) SYCSegmentView *segmentView;
 
 @end
 
@@ -46,8 +46,7 @@
         VC2.isAsk = NO;
     }
     NSArray *VCArray = @[VC1, VC2];
-    self.segmentView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) andControllers:VCArray];
-    self.segmentView.eventDelegate = self;
+    self.segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) controllers:VCArray type:SYCSegmentViewTypeNormal];
     [self.view addSubview:self.segmentView];
 }
 
@@ -63,15 +62,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

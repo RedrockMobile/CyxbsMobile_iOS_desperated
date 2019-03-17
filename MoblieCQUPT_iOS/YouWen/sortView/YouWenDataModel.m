@@ -5,9 +5,7 @@
 //  Created by xiaogou134 on 2018/2/24.
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
-
 #import "YouWenDataModel.h"
-#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getQuestionList"
 #import "NSString+Emoji.h"
 
 @interface YouWenDataModel()
@@ -25,7 +23,9 @@
         _YWPostDic = @{
                        @"page":@"0",
                        @"size":@"6",
-                       @"kind":style
+                       @"kind":style,
+                       @"stunum":[UserDefaultTool getStuNum],
+                       @"idnum":[UserDefaultTool getIdNum]
                        }.mutableCopy;
         _modelStyle = [[NSString alloc] initWithString:style];
     }
@@ -41,7 +41,7 @@
 }
 - (void)networking{
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:URL method:HttpRequestPost parameters:_YWPostDic prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_API method:HttpRequestPost parameters:_YWPostDic prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         _YWdataArray = [self changeAllArray: responseObject[@"data"]];
         NSNotification *notification;
         if (_YWdataArray.count) {

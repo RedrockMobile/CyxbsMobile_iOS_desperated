@@ -7,21 +7,41 @@
 //
 
 #import "MineTableViewCell.h"
+#import <UIBezierPath+YYAdd.h>
 
 @implementation MineTableViewCell
+
+- (instancetype)initWithType:(MineCellType)type{
+    self = [super init];
+    if (self) {
+        _type = type;
+    }
+    return self;
+}
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.accessoryType = UITableViewCellAccessoryNone;
-    // Initialization code
     self.backgroundColor = [UIColor clearColor];
-
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)drawRect:(CGRect)rect{
+    if (_type == MineCellTypeNormal) {
+        _backgroudView.layer.masksToBounds = YES;
+        _backgroudView.layer.cornerRadius = 15.0;
+    }else if(_type == MineCellTypeStart){
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_backgroudView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(15,15)];
+        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+        maskLayer.frame = _backgroudView.bounds;
+        maskLayer.path = maskPath.CGPath;
+        _backgroudView.layer.mask = maskLayer;
+    }else if (_type == MineCellTypeEnd){
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:_backgroudView.bounds byRoundingCorners:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(15,15)];
+        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+        maskLayer.frame = _backgroudView.bounds;
+        maskLayer.path = maskPath.CGPath;
+        _backgroudView.layer.mask = maskLayer;
+    }
 }
-
+    
 @end

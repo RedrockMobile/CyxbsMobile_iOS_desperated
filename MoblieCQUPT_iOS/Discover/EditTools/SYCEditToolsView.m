@@ -22,7 +22,6 @@ static CGFloat CellMarginY = 10.0f;
     SYCToolsCell *dragingItem;
     NSIndexPath *dragingIndexPath;
     NSIndexPath *targetIndexPath;
-
 }
 
 @end
@@ -37,7 +36,7 @@ static CGFloat CellMarginY = 10.0f;
 }
 
 - (void)buildUI{
-    self.backgroundColor = [UIColor whiteColor];
+    self.backgroundColor = RGBColor(246, 246, 246, 1.0);
     
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     CGFloat cellWidth = (self.bounds.size.width - (ColumnNumber + 1) * CellMarginX)/ColumnNumber;

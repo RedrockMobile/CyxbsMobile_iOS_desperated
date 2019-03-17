@@ -11,6 +11,8 @@
 #import "ExamScheduleViewController.h"
 #import "ExamGradeViewController.h"
 #import "MakeUpExamViewController.h"
+#import "SYCSegmentView.h"
+
 @interface ExamTotalViewController ()
 
 @end
@@ -28,9 +30,9 @@
     MakeUpExamViewController *view3 = [[MakeUpExamViewController alloc] init];
     view3.title = @"补考安排";
     NSArray *viewArray = @[view1,view2,view3];
-    ExamSegementView *semgent = [[ExamSegementView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) andControllers:viewArray];
+    
+    SYCSegmentView *semgent = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) controllers:viewArray type:SYCSegmentViewTypeNormal];
     [self.view addSubview:semgent];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,10 +9,11 @@
 #import "YouWenViewController.h"
 #import "YouWenTableViewCell.h"
 #import "YouWenSortViewController.h"
-#import "SegmentView.h"
 #import "YouWenAddViewController.h"
 #import "YouWenTopicView.h"
 #import "ReportViewController.h"
+#import "SYCSegmentView.h"
+#import "LoginViewController.h"
 
 @interface YouWenViewController ()<whatTopic>
 @property (strong, nonatomic) UIButton *askBtn;
@@ -22,6 +23,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if (![UserDefaultTool getStuNum]) {
+        [self tint:self];
+        return;
+    }else{
+        [self setUpUI];
+    }
+}
+
+- (void)setUpUI{
     self.edgesForExtendedLayout = UIRectEdgeNone;
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
@@ -35,17 +45,18 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    SegmentView *segView = [[SegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) andControllers:views];
+    
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
+    
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
     _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
     
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"inform"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"sort"] style:UIBarButtonItemStylePlain target:self action:@selector(sdf)];
 }
+
 - (void)setNewQuestion{
     YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
     [topicView addDetail];
@@ -53,30 +64,34 @@
     [[UIApplication sharedApplication].keyWindow addSubview:topicView];
     
 }
+
 - (void)topicStyle:(NSString *)style{
     YouWenAddViewController *addView = [[YouWenAddViewController alloc] initWithStyle:style];
     addView.hidesBottomBarWhenPushed = YES;
      [self.navigationController pushViewController:addView animated:YES];
 }
-- (void)sdf{
-    ReportViewController *reportView =  [[ReportViewController alloc] init];
-    reportView.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:reportView animated:YES];
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)tint:(UIViewController *)controller{
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
+    __weak typeof(self) weakSelf = self;
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        LoginViewController *LVC = [[LoginViewController alloc] init];
+        LVC.loginSuccessHandler = ^(BOOL success) {
+            if (success) {
+                [self setUpUI];
+            }
+        };
+        [weakSelf presentViewController:LVC animated:YES completion:nil];
+    }];
+    [alertC addAction:cancel];
+    [alertC addAction:confirm];
+    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 @end

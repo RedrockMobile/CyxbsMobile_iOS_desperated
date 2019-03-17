@@ -33,14 +33,11 @@
 - (NSMutableArray *)dataArray{
     if (_dataArray) {
         _dataArray = [NSArray array].mutableCopy;
-        
     }
     return _dataArray;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //没用？
-//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     _tab = [[UITableView alloc] init];
     _cellArray = [NSMutableArray array];
@@ -51,7 +48,7 @@
     
     
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
-    _tab.backgroundColor = [UIColor colorWithRed:242/255.0 green:242/255.0 blue:242/255.0 alpha:1.0];
+    _tab.backgroundColor = RGBColor(246, 246, 246, 1.0);
     MJRefreshNormalHeader* header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(getNewData)];
     header.stateLabel.textColor = [UIColor blackColor];
     header.lastUpdatedTimeLabel.hidden = YES;
@@ -69,10 +66,6 @@
         make.width.equalTo(self.view);
     }];
     [_tab.mj_header beginRefreshing];
-}
-
--(void)viewWillDisappear:(BOOL)animated{
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:nil object:nil];
 }
 
 - (void)refreshTableData:(NSNotification *)notification{
@@ -139,23 +132,9 @@
     YouWenDetailViewController *detailVC = [[YouWenDetailViewController alloc] init];
     YouWenTableViewCell *cell = (YouWenTableViewCell *)[tableView cellForRowAtIndexPath:indexPath];
     detailVC.question_id = cell.qusId;
-//    detailVC.isSelf =
-//    detailVC.questionTitle = self.dataArray[indexPath.row][@"titile"];
-    //测试图片的question_id
-//    detailVC.question_id = @"218";
-//    detailVC.question_id = @"220";
     detailVC.questionTitle = cell.title;
     detailVC.hidesBottomBarWhenPushed = YES;
     [self.superController.navigationController pushViewController:detailVC animated:YES];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

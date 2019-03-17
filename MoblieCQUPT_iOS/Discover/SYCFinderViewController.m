@@ -40,10 +40,12 @@
 
 @implementation SYCFinderViewController
 
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = BACK_GRAY_COLOR;
+    self.view.backgroundColor = RGBColor(246, 246, 246, 1.0);
     self.carouselDataArray = [NSMutableArray array];
     self.filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"carouselDataArray.archiver"];
     
@@ -70,6 +72,8 @@
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
+
+    
     self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREENWIDTH, SCREENWIDTH * 0.55)];
     NSMutableArray *pictureArray = [NSMutableArray array];
     for (LZCarouselModel *model in self.carouselDataArray) {
@@ -87,6 +91,8 @@
     backgroundView.layer.cornerRadius = 10.0;
     [self.scrollView addSubview:backgroundView];
     
+
+    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.itemSize = CGSizeMake(backgroundWidth / 3 - 7, backgroundHeight / 3 - 7);
@@ -95,7 +101,29 @@
     self.toolsView.delegate = self;
     self.toolsView.dataSource = self;
     [self.toolsView registerClass:[SYCToolsCell class] forCellWithReuseIdentifier:@"SYCToolsCell"];
+    
+    UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(backgroundView.frame.origin.x + 4, backgroundView.frame.origin.y + 4, backgroundView.frame.size.width - 8, backgroundView.frame.size.height - 8)];
+    shadowView.backgroundColor = [UIColor whiteColor];
+    shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadowView.layer.shadowOpacity = 0.1;
+    shadowView.layer.shadowOffset = CGSizeMake(0, 7);
+    shadowView.layer.shadowRadius = 5;
     [backgroundView addSubview:self.toolsView];
+    [_scrollView addSubview:shadowView];
+    [_scrollView sendSubviewToBack:shadowView];
+    
+    //添加视差效果
+    UIInterpolatingMotionEffect *motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
+    motionEffect.minimumRelativeValue = @(-15);
+    motionEffect.maximumRelativeValue = @(15);
+    [backgroundView addMotionEffect:motionEffect];
+    [shadowView addMotionEffect:motionEffect];
+    
+    motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
+    motionEffect.minimumRelativeValue = @(-15);
+    motionEffect.maximumRelativeValue = @(15);
+    [backgroundView addMotionEffect:motionEffect];
+    [shadowView addMotionEffect:motionEffect];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     

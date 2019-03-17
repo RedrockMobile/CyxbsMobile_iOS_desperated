@@ -15,8 +15,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSArray *titles = @[@"课表",@"社区",@"发现",@"我的"];
-    NSArray *images = @[@"tabbar_image_timetable",@"tabbar_image_community",@"tabbar_image_find",@"tabbar_image_mine"];
+    NSArray *titles = @[@"课表",@"邮问",@"发现",@"我的"];
+    NSArray *images = @[@"tabbar_image_timetable",@"tabbar_image_youwen",@"tabbar_image_find",@"tabbar_image_mine"];
     self.tabBar.backgroundColor = [UIColor whiteColor];
     self.tabBar.tintColor = [UIColor colorWithHexString:@"788EFA"];
     for (int i = 0; i<self.viewControllers.count; i++) {
