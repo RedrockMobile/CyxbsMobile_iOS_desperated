@@ -112,19 +112,6 @@
     [_scrollView addSubview:shadowView];
     [_scrollView sendSubviewToBack:shadowView];
     
-    //添加视差效果
-    UIInterpolatingMotionEffect *motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.x" type:UIInterpolatingMotionEffectTypeTiltAlongHorizontalAxis];
-    motionEffect.minimumRelativeValue = @(-15);
-    motionEffect.maximumRelativeValue = @(15);
-    [backgroundView addMotionEffect:motionEffect];
-    [shadowView addMotionEffect:motionEffect];
-    
-    motionEffect = [[UIInterpolatingMotionEffect alloc] initWithKeyPath:@"center.y" type:UIInterpolatingMotionEffectTypeTiltAlongVerticalAxis];
-    motionEffect.minimumRelativeValue = @(-15);
-    motionEffect.maximumRelativeValue = @(15);
-    [backgroundView addMotionEffect:motionEffect];
-    [shadowView addMotionEffect:motionEffect];
-    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     
     self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
@@ -151,7 +138,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     SYCToolModel *tool = self.inusedTools[[indexPath row]];
-    if ([tool.className  isEqual: @"ExamTotalViewController"]) {
+    if ([tool.className isEqual: @"ExamTotalViewController"]) {
         if (![UserDefaultTool getStuNum]) {
             [self tint:self];
             return;
@@ -194,9 +181,7 @@
 - (void)getNetworkData{
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:^{
-    } progress:^(NSProgress *progress) {
-
-    } success:^(NSURLSessionDataTask *task, id responseObject) {
+    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *dataArray = [responseObject objectForKey:@"data"];
         NSMutableArray *tempArray = [NSMutableArray array];
         self.allDownload = YES;
@@ -228,17 +213,10 @@
                 dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
                 if (i == dataArray.count - 1) {
                     [NSKeyedArchiver archiveRootObject:tempArray toFile:self.filePath];
-                    NSLog(@"All Download");
                 }
             });
         }
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"您的网络不给力!";
-        [hud hide:YES afterDelay:1];
-        NSLog(@"%@",error);
-    }];
+    } failure:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated{

@@ -100,10 +100,6 @@
                 _sliderLinePart1.layer.cornerRadius = 2.0;
                 _sliderLinePart1.backgroundColor = _selectedTitleColor;
                 [_titleView addSubview:_sliderLinePart1];
-                _sliderLinePart2 = [[UIView alloc] initWithFrame:_sliderLinePart1.frame];
-                _sliderLinePart2.layer.cornerRadius = 2.0;
-                _sliderLinePart2.backgroundColor = _selectedTitleColor;
-                [_titleView addSubview:_sliderLinePart2];
             }
         }
     }else if (_type == SYCSegmentViewTypeButton){
@@ -148,19 +144,9 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger currentIndex = floor(_mainScrollView.contentOffset.x / SCREEN_WIDTH);
     CGFloat offSetX = scrollView.contentOffset.x; //主页面相对起始位置的位移
-    CGFloat reletiveOffSetX = offSetX - _currentX; //主页面相对上一次移动后的位移
     
     //滑块第一部分的位移变化
     _sliderLinePart1.frame = CGRectMake(offSetX / SCREEN_WIDTH * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-    //滑块第二部分的位移变化
-    float part2X = 0;
-    if (reletiveOffSetX >= SCREEN_WIDTH / 2.0) {
-        part2X = ((reletiveOffSetX - (SCREEN_WIDTH / 2)) / (SCREEN_WIDTH / 2)) * _titleBtnWidth;
-        _sliderLinePart2.frame = CGRectMake(part2X + _currentIndex * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-    }else if(reletiveOffSetX <= -SCREEN_WIDTH / 2.0){
-        part2X = -((-reletiveOffSetX - (SCREEN_WIDTH / 2)) / (SCREEN_WIDTH / 2)) * _titleBtnWidth;
-        _sliderLinePart2.frame = CGRectMake(part2X + (_currentIndex + 1) * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-    }
     
     
     if (currentIndex != _currentIndex) {

@@ -2363,6 +2363,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				82398BB721A4289500300C91 /* EditTools */,
 				82398BBF21A4289500300C91 /* SYCFinderViewController.h */,
 				82398BB121A4289500300C91 /* SYCFinderViewController.m */,
 				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
@@ -2381,7 +2382,6 @@
 				F242DC9E1EBCB2BB005AC411 /* ExamSchedule */,
 				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
 				E470CA0B2228055B0029501A /* NoCourseDate */,
-				82398BB721A4289500300C91 /* EditTools */,
 				F20026E91F40336E00360991 /* Map */,
 				F242DA981EBCB2BB005AC411 /* ElectricityFee */,
 				F242DAC71EBCB2BB005AC411 /* AboutRedrock */,

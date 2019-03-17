@@ -54,6 +54,10 @@
 }
 
 -(void)addScrollViewWithArray:(NSArray *)dataArray{
+    if (dataArray == nil) {
+        return;
+    }
+    
     self.dataArray = dataArray;
     self.imgcount = dataArray.count;
     
