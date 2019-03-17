@@ -241,9 +241,9 @@
 
 
 - (void)confirmInf{
-    //textview当字数为0时返回nil  ????
+    //textview当字数为0时返回nil
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    if (_titleTextView.text.length == nil||_detailTextView.text.length == nil) {
+    if (_titleTextView.text.length == nil || _detailTextView.text.length == nil) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有完善信息哦" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
                       style:UIAlertActionStyleDefault

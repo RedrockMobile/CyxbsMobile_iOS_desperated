@@ -10,13 +10,19 @@
 
 #define WORDNUMWIDTH self.width / 5
 #define DEFINECOLOR [UIColor colorWithHexString:@"999999"];
+
 @interface ReportTextView()<UITextViewDelegate>
+
 @property (assign, nonatomic) wordNumState wnState;
 @property (assign, nonatomic) NSInteger topicLen;
 @property (strong, nonatomic) NSMutableArray<NSString *> *topicArray;
 @property (strong, nonatomic) NSMutableAttributedString *nowString;
+
 @end
+
+
 @implementation ReportTextView
+
 - (UITextView *)initWithFrame:(CGRect)frame andState:(wordNumState)state{
     self = [super initWithFrame:frame];
     if (self) {
@@ -84,12 +90,14 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
-    [self calculateNum:textView.text];
+    self.placeHolder.hidden = YES;
+    if (textView.markedTextRange == nil) {
+        [self calculateNum:textView.text];
+    }
 }
 
 - (void)calculateNum:(NSString *)str{
     NSUInteger Num;
-    self.placeHolder.hidden = YES;
     NSInteger flag = -1;
     for (int i = 0; i < _topicArray.count; i ++){
         NSRange range = [str rangeOfString:_topicArray[i]];
@@ -172,12 +180,5 @@
     [self calculateNum:text];
     
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

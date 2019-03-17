@@ -21,13 +21,20 @@
 
 @implementation YouWenViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad{
     [super viewDidLoad];
     if (![UserDefaultTool getStuNum]) {
         [self tint:self];
         return;
     }else{
         [self setUpUI];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    if (![UserDefaultTool getStuNum]) {
+        [self tint:self];
+        return;
     }
 }
 

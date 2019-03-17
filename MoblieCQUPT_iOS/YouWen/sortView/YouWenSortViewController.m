@@ -53,11 +53,11 @@
     header.stateLabel.textColor = [UIColor blackColor];
     header.lastUpdatedTimeLabel.hidden = YES;
     _tab.mj_header = header;
-    MJRefreshAutoNormalFooter* footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getNewPageData)];
-    footer.stateLabel.textColor = [UIColor blackColor];
-    //这是个坑，不关会多次刷新
-    footer.automaticallyRefresh = NO;
-    _tab.mj_footer = footer;
+//    MJRefreshAutoNormalFooter* footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getNewPageData)];
+//    footer.stateLabel.textColor = [UIColor blackColor];
+//    //这是个坑，不关会多次刷新
+//    footer.automaticallyRefresh = NO;
+//    _tab.mj_footer = footer;
     [self.view addSubview:_tab];
     [_tab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view);

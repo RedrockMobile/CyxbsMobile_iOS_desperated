@@ -120,5 +120,4 @@
     [self removeFromSuperview];
     [self.delegate newView:btn];
 }
-
 @end
