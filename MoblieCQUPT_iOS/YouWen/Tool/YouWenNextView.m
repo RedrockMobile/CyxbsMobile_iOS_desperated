@@ -22,16 +22,6 @@
     [self.cancelBtn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
     [self.whiteView addSubview:_cancelBtn];
     
-    _confirBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _confirBtn.frame = CGRectMake(ScreenWidth - 70, 10, ZOOM(60), ZOOM(15));
-    _confirBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    [_confirBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [_confirBtn setTitle:@"完成" forState:UIControlStateNormal];
-    [_confirBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
-    _confirBtn.titleLabel.font = [UIFont fontWithName:@"Arail" size:14];
-    [self.confirBtn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
-    [self.whiteView addSubview:_confirBtn];
-    
     _blackView = [[UIView alloc] initWithFrame:CGRectMake(0, _confirBtn.bottom + 17, ScreenWidth, 1)];
     _blackView.backgroundColor =  [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     [self.whiteView addSubview:_blackView];

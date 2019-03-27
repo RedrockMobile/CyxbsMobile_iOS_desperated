@@ -46,12 +46,15 @@
         tap.numberOfTapsRequired = 1;
         tap.numberOfTouchesRequired = 1;
         [self.scrollView addGestureRecognizer:tap];
+        
+
+        
     }
     return self;
 }
 
 -(void)addScrollViewWithArray:(NSArray *)dataArray{
-    if ([dataArray count] == 0) {
+    if (dataArray == nil) {
         return;
     }
     
