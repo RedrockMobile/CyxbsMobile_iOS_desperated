@@ -98,7 +98,7 @@
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
 //登录
-#define Base_Login @"https://wx.idsbllp.cn/api/verify"
+#define LOGIN_API @"https://wx.idsbllp.cn/api/verify"
 //哔哔叨叨列表
 #define LISTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
 //热门动态列表
@@ -126,7 +126,7 @@
 //动态查询接口
 #define SEARCHTREBDS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
 //话题列表接口
-#define TOPICLIST_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
+#define TOPIC_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 //话题文章列表接口
 #define TOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
 
@@ -137,7 +137,6 @@
 #define GETREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
 #define EDITREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
 #define DELETEREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
-#define EXAMAPI @"https://wx.idsbllp.cn/api/examSchedule"
 #define SEARCHPEOPLEAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
 #define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
 #define BASE_URL @"https://wx.idsbllp.cn"
@@ -146,9 +145,7 @@
 #define SUGGESTION_API @"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion"
 #define GRADEAPI @"https://wx.idsbllp.cn/api/examGrade"
 #define MakeApi @"https://wx.idsbllp.cn/api/examReexam"
-#define EXAM_SCHEDULE_API @"https://wx.idsbllp.cn/api/examSchedule"
 #define EmptyClassApi @"https://wx.idsbllp.cn/api/roomEmpty"
-#define TOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 #define MYJOINTOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
 #define Carousel_API @"https://wx.idsbllp.cn/app/api/pictureCarousel.php"
 

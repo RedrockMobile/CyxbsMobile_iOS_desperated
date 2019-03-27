@@ -271,7 +271,7 @@
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     
     NSString *stuNum = [UserDefaultTool getStuNum]?:@"";
-    [NetWork NetRequestPOSTWithRequestURL:TOPICLIST_API WithParameter:@{@"stuNum":stuNum,
+    [NetWork NetRequestPOSTWithRequestURL:TOPIC_API WithParameter:@{@"stuNum":stuNum,
                                                                         }
                      WithReturnValeuBlock:^(id returnValue) {
                          NSLog(@"%@",returnValue);

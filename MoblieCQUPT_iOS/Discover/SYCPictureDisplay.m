@@ -53,8 +53,8 @@
     return self;
 }
 
--(void)addScrollViewWithArray:(NSArray *)dataArray{
-    if (dataArray == nil) {
+- (void)addScrollViewWithArray:(NSArray *)dataArray{
+    if ([dataArray count] == 0) {
         return;
     }
     
@@ -90,8 +90,6 @@
          *  0 ->  1 * halfGap ;
          *  1 ->  3 * halfGap + a ;
          *  2 ->  5 * halfGap + 2 * a ;
-         .
-         .
          *  i   -> (2 * i +1) *  halfGap + i *(width - 2 * halfGap )
          */
         CGFloat imgViewHeight = _scrollView.height * 0.8625;

@@ -28,7 +28,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     
     if (serachText) {
-        [manager POST:TOPIC_URL parameters:@{@"size":size,
+        [manager POST:TOPIC_API parameters:@{@"size":size,
                                             @"page":page,
                                             @"searchKeyword":serachText}
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -43,7 +43,7 @@
                  }
              }];
     }else{
-    [manager POST:TOPIC_URL parameters:@{@"size":size,
+    [manager POST:TOPIC_API parameters:@{@"size":size,
                                         @"page":page}
          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];

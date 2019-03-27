@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
     else{
         NSDictionary *parameter = @{@"stuNum":_accountField.text,@"idNum":_passwordField.text};
         HttpClient *client = [HttpClient defaultClient];
-        [client requestWithPath:Base_Login method:HttpRequestPost parameters:parameter prepareExecute:^{
+        [client requestWithPath:LOGIN_API method:HttpRequestPost parameters:parameter prepareExecute:^{
             
         } progress:^(NSProgress *progress) {
             
