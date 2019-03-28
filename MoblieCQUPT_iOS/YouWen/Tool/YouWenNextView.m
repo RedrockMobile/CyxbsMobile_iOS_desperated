@@ -7,8 +7,10 @@
 //
 
 #import "YouWenNextView.h"
+
 @interface YouWenNextView()
 @end
+
 @implementation YouWenNextView
 - (void)addDetail{
     _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -36,9 +38,6 @@
     _blackView = [[UIView alloc] initWithFrame:CGRectMake(0, _confirBtn.bottom + 17, ScreenWidth, 1)];
     _blackView.backgroundColor =  [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     [self.whiteView addSubview:_blackView];
-    
-   
-
 }
 
 

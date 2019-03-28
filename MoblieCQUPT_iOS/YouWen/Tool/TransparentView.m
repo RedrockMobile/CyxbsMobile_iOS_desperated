@@ -16,6 +16,7 @@
     }
     return self;
 }
+
 - (instancetype)initWithNews:(NSArray *)array{
     if (self = [super initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]) {
         [self setSelf];
@@ -24,17 +25,10 @@
     return self;
 }
 
-//触摸阴影返回的手势
+
 - (void)setSelf{
     self.backgroundColor = [UIColor colorWithRed:152/255.0 green:152/255.0 blue:152/255.0 alpha:0.8];
     self.enableBack = YES;
-    UITapGestureRecognizer *touchBack = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(back)];
-    [touchBack setNumberOfTapsRequired:1];
-    [self addGestureRecognizer:touchBack];
-}
-
-- (void)back{
-    [self removeFromSuperview];
 }
 
 //设置视图的交互性

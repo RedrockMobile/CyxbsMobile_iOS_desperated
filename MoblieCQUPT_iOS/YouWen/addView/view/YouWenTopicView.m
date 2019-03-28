@@ -17,7 +17,7 @@
     [super addDetail];
     
     [self.cancelBtn setBackgroundImage:[UIImage imageNamed:@"chacha"] forState:UIControlStateNormal];
-    self.cancelBtn.size = CGSizeMake(17, 17);
+    self.cancelBtn.size = CGSizeMake(25, 25);
     self.cancelBtn.centerX = self.whiteView.centerX;
     [self.cancelBtn setTitle:@"" forState:UIControlStateNormal];
     self.cancelBtn.centerY = self.whiteView.height - 50;
@@ -35,7 +35,7 @@
         make.centerX.equalTo(self.whiteView);
     }];
     _topics = @[@"学习",  @"生活", @"情感", @"其他"];
-    _style = _topics[0];
+    
     NSArray *topicImages = @[@"learning", @"live", @"emotion", @"other"];
     NSArray *selectImages = @[@"learning_in", @"live_in", @"emotion_in", @"other_in"];
     CGFloat btnWidth = (SCREENWIDTH - 120) / 4;
@@ -43,13 +43,15 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:topicImages[i]] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:selectImages[i]] forState:UIControlStateSelected];
-        btn.frame = CGRectMake(15 + (btnWidth + 30) * i, self.blackView.bottom + 70, btnWidth, ZOOM(75));
+        btn.frame = CGRectMake(15 + (btnWidth + 30) * i, self.blackView.bottom + 40, btnWidth, ZOOM(75));
         btn.tag = i;
         [btn addTarget:self action:@selector(currentSelect:) forControlEvents:UIControlEventTouchUpInside];
         [_btnArray addObject:btn];
         [self.whiteView addSubview:btn];
     }
-    
+    //默认选中第一个
+    _style = _topics[0];
+    _btnArray[0].selected = YES;
     [self.confirBtn addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -72,5 +74,4 @@
     [self removeFromSuperview];
     [self.topicDelegate topicStyle:self.style];
 }
-
 @end
