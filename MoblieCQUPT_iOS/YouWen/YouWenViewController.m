@@ -15,9 +15,12 @@
 #import "SYCSegmentView.h"
 #import "LoginViewController.h"
 
-@interface YouWenViewController ()<whatTopic>
+@interface YouWenViewController () <whatTopic>
+//添加新问题按钮
 @property (strong, nonatomic) UIButton *askBtn;
+
 @end
+
 
 @implementation YouWenViewController
 
@@ -38,7 +41,9 @@
     }
 }
 
+//加载界面方法
 - (void)setUpUI{
+    //加载4个分类板块，并添加z进SegmentView
     self.edgesForExtendedLayout = UIRectEdgeNone;
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
@@ -52,18 +57,18 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    
     SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
     
+    //加载添加按钮
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
     _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
-    
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
 }
 
+//点击加载按钮调用的方法
 - (void)setNewQuestion{
     YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
     [topicView addDetail];
@@ -72,17 +77,14 @@
     
 }
 
+//获取得到的话题类型的代理方法
 - (void)topicStyle:(NSString *)style{
     YouWenAddViewController *addView = [[YouWenAddViewController alloc] initWithStyle:style];
     addView.hidesBottomBarWhenPushed = YES;
      [self.navigationController pushViewController:addView animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+//登陆弹窗
 - (void)tint:(UIViewController *)controller{
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];

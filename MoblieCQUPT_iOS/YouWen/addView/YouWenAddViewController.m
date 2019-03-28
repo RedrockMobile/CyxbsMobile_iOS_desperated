@@ -126,6 +126,8 @@
     if (_detailStr.length) {
         _detailTextView.text = _detailStr;
     }
+    _detailTextView.inputAccessoryView = [self addToolBar];
+    _titleTextView.inputAccessoryView = [self addToolBar];
 
     [_whiteView addSubview:_titleTextView];
     [_whiteView addSubview:_detailTextView];
@@ -207,6 +209,7 @@
         make.height.mas_equalTo(18);
     }];
 }
+
 - (void)LayOut{
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view);
@@ -225,11 +228,13 @@
     
 
 }
+
 - (void)addTopic{
     YouWenSubjectView *subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:300];
     [subjectView addDetail];
     [[UIApplication sharedApplication].keyWindow addSubview:subjectView];
 }
+
 - (UIButton *)addImageButton{
     if (!_addImageButton){
         _addImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -239,11 +244,10 @@
     return _addImageButton;
 }
 
-
 - (void)confirmInf{
     //textview当字数为0时返回nil
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    if (_titleTextView.text.length == nil || _detailTextView.text.length == nil) {
+    if (_titleTextView.text.length == 0 || _detailTextView.text.length == 0) {
         UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有完善信息哦" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
                       style:UIAlertActionStyleDefault
@@ -442,11 +446,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)anonymityState:(UIButton *)btn{
     btn.selected = !btn.selected;
     if (btn.selected == YES) {
@@ -457,14 +456,23 @@
     }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/**
+ 键盘上用于回收键盘的ToolBar
+
+ @return ToolBar
+ */
+- (UIToolbar *)addToolBar{
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 40)];
+    toolBar.tintColor = [UIColor blackColor];
+    toolBar.backgroundColor = [UIColor lightGrayColor];
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(textFieldDone)];
+    toolBar.items = @[doneItem];
+    return toolBar;
 }
-*/
+
+- (void)textFieldDone{
+    [self.view endEditing:YES];
+}
 
 @end

@@ -37,6 +37,7 @@
     [self removeFromSuperview];
 }
 
+//设置视图的交互性
 - (void)setEnableBack:(BOOL)enableBack{
     _enableBack = enableBack;
     if (self.enableBack) {

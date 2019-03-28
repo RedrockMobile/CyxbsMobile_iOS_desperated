@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+/**
+ 实现可控制位置的UILable
+ */
 @interface myUILabel : UILabel
-typedef enum
-{
+
+typedef enum{
     VerticalAlignmentTop = 0, // default
     VerticalAlignmentMiddle,
     VerticalAlignmentBottom,
 } VerticalAlignment;
 @property (nonatomic) VerticalAlignment verticalAlignment;
+
 @end

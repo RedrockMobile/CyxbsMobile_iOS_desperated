@@ -15,8 +15,13 @@ typedef NS_ENUM(NSInteger, wordNumState) {
     CountWordNum,
 };
 
+
+/**
+ 实现可计算文字多少的文本输入框
+ */
 @interface ReportTextView : UITextView
 
+//显示文字字数的标签
 @property (strong, nonatomic) UILabel *wordNum;
 @property (strong, nonatomic) myUILabel *placeHolder;
 @property (assign, nonatomic) NSInteger limitNum;

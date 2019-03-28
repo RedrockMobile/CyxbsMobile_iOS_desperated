@@ -8,11 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TransparentView.h"
+
 @protocol getInformation <NSObject>
+
 @optional
 - (void)sendInformation:(NSString *)inf;
+
 @end
+
+
 @interface YouWenNextView : TransparentView
+
 @property (nonatomic, weak) id<getInformation> delegate;
 @property (nonatomic, strong) NSMutableString *inf;
 @property (nonatomic, strong) UIView *blackView;
@@ -21,4 +27,5 @@
 - (void)addDetail;
 - (void)confirm;
 - (void)quit;
+
 @end
