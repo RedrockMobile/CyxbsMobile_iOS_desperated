@@ -9,6 +9,7 @@
 #import "YouWenTopicView.h"
 @interface YouWenTopicView ()
 @property (copy, nonatomic) NSArray *topics;
+@property (copy, nonatomic) NSMutableArray<UIButton *> *btnArray;
 @end
 @implementation YouWenTopicView
 
@@ -21,6 +22,7 @@
     [self.cancelBtn setTitle:@"" forState:UIControlStateNormal];
     self.cancelBtn.centerY = self.whiteView.height - 50;
 
+    _btnArray = [NSMutableArray array];
     UILabel *titleLab = [[UILabel alloc] init];
     titleLab.text = @"选择求助类型";
     titleLab.font = [UIFont fontWithName:@"Arial" size:16];
@@ -33,6 +35,7 @@
         make.centerX.equalTo(self.whiteView);
     }];
     _topics = @[@"学习",  @"生活", @"情感", @"其他"];
+    _style = _topics[0];
     NSArray *topicImages = @[@"learning", @"live", @"emotion", @"other"];
     NSArray *selectImages = @[@"learning_in", @"live_in", @"emotion_in", @"other_in"];
     CGFloat btnWidth = (SCREENWIDTH - 120) / 4;
@@ -42,9 +45,12 @@
         [btn setBackgroundImage:[UIImage imageNamed:selectImages[i]] forState:UIControlStateSelected];
         btn.frame = CGRectMake(15 + (btnWidth + 30) * i, self.blackView.bottom + 70, btnWidth, ZOOM(75));
         btn.tag = i;
-        [btn addTarget:self action:@selector(selectStyle:) forControlEvents:UIControlEventTouchUpInside];
+        [btn addTarget:self action:@selector(currentSelect:) forControlEvents:UIControlEventTouchUpInside];
+        [_btnArray addObject:btn];
         [self.whiteView addSubview:btn];
     }
+    
+    [self.confirBtn addTarget:self action:@selector(nextStep) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (NSMutableString *)style{
@@ -54,8 +60,15 @@
     return _style;
 }
 
--(void)selectStyle:(UIButton *)btn{
+- (void)currentSelect:(UIButton *) btn{
+    for (UIButton *btn in _btnArray) {
+        btn.selected = NO;
+    }
     self.style = _topics[btn.tag];
+    btn.selected = YES;
+}
+
+- (void)nextStep{
     [self removeFromSuperview];
     [self.topicDelegate topicStyle:self.style];
 }
