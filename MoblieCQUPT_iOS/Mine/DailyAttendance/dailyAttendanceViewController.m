@@ -281,7 +281,7 @@
 
 - (void)attendance{
     HttpClient * client = [HttpClient defaultClient];
-    [client requestWithPath:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/checkIn" method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_CHECKIN_API method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         _attendanceBotton.hidden = YES;
         [self setUpLab];
         _continueday ++;

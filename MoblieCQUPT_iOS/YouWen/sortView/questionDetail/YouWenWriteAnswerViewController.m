@@ -12,10 +12,6 @@
 #import "SheetAlertController.h"
 #import "UIViewController+BackButtonHandler.h"
 
-
-#define ANSWERQUESTION @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/add"
-#define ANSWERQUESTIONPICTURES @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/uploadPicture"
-
 @interface YouWenWriteAnswerViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UITextView *textView;
@@ -192,7 +188,7 @@
                                  @"content":self.textView.text,
                                  @"question_id":self.question_id
                                  };
-    [manager POST:ANSWERQUESTION parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager POST:YOUWEN_ANSWER_QUESTION_API parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         //返回前一个界面，刷新，弹出提示框
         NSLog(@"发送成功");
         if ((int)responseObject[@"status"] == 801) {
@@ -230,7 +226,7 @@
             model.uploadImage = imgArr[i];
             [imgs addObject:model];
         }
-        [NetWork uploadImageWithUrl:ANSWERQUESTIONPICTURES imageParams:imgs otherParams:parameters imageQualityRate:1 successBlock:^(id returnValue) {
+        [NetWork uploadImageWithUrl:YOUWEN_UPLOAD_PIC_API imageParams:imgs otherParams:parameters imageQualityRate:1 successBlock:^(id returnValue) {
             [self.delegate reload];
             [self.navigationController popViewControllerAnimated:YES];
         } failureBlock:^{

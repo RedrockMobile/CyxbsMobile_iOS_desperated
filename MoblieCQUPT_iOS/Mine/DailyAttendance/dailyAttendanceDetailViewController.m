@@ -8,7 +8,6 @@
 
 #import "dailyAttendanceDetailViewController.h"
 #import "dailyAttendanceCell.h"
-#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/integralRecords"
 
 @interface dailyAttendanceDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *detailTableView;
@@ -102,7 +101,7 @@
 
 - (void)freshData{
     HttpClient * client = [HttpClient defaultClient];
-    [client requestWithPath:URL method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idNum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_CREDIT_USE_RECORD_LIST_API method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idNum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         [_data removeAllObjects];
         [_data addObjectsFromArray:[responseObject objectForKey:@"data"]];
         // 刷新表格

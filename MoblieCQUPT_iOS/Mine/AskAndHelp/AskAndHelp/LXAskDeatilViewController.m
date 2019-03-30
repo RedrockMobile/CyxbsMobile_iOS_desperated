@@ -13,9 +13,6 @@
 #import <AFNetworking.h>
 #import "YouWenViewController.h"
 
-#define ASKURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/ask"
-#define HELPURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/help"
-
 @interface LXAskDeatilViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -63,9 +60,9 @@
     
     NSString *url;
     if (self.isAsk) {
-        url = ASKURL;
+        url = YOUWEN_MY_ASK_API;
     } else {
-        url = HELPURL;
+        url = YOUWEN_MY_HELP_API;
     }
     
     [manager POST:url parameters:parameter success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {

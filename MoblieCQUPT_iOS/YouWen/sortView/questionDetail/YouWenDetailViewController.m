@@ -22,11 +22,6 @@
 #import "YouWenAdoptFrame.h"
 #import "commitSuccessFrameView.h"
 
-#define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
-#define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
-#define QUESTIONSINFO @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getDetailedInfo"
-#define ADOPTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/adopt"
-
 @interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -312,7 +307,7 @@
                                 };
     
     _hud.labelText = @"...";
-    [NetWork NetRequestPOSTWithRequestURL:ADOPTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADOPT_ANSWER_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -355,7 +350,7 @@
                                  };
     
 
-    [manager POST:QUESTIONSINFO parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager POST:YOUWEN_QUESTION_DETAIL_API parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if (responseObject) {
             self.isSelf = [NSString stringWithFormat:@"%@", responseObject[@"data"][@"is_self"]];
             self.detailQuestionModel = [[YouWenQuestionDetailModel alloc] initWithDic:responseObject[@"data"]];
@@ -411,9 +406,9 @@
     model = self.answerModelArr[indexpath.row];
 
     if (model.is_praised) {
-        url = CANCELUPVOTEURL;
+        url = YOUWEN_CANCEL_LIKE_API;
     } else {
-        url = UPVOTEURL;
+        url = YOUWEN_ADD_LIKE_API;
     }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *answer_id = [NSString stringWithFormat:@"%ld", sender.view.tag];
@@ -427,7 +422,7 @@
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         model.is_praised = !model.is_praised;
-        if ([url isEqualToString:UPVOTEURL]) {
+        if ([url isEqualToString:YOUWEN_ADD_LIKE_API]) {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] + 1];
         } else {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] - 1];
@@ -475,14 +470,5 @@
         [self.commitSuccessFrame free];
     }
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

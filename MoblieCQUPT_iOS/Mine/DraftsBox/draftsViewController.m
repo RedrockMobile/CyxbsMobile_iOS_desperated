@@ -47,7 +47,7 @@
 - (void)headerRereshing{
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList" WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum}
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_DARAFTBOX_LIST_API WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum}
                      WithReturnValeuBlock:^(id returnValue) {
                          [_dataArray removeAllObjects];
                          for (NSDictionary *dic in returnValue[@"data"]) {
@@ -72,7 +72,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":stuNum, @"idnum":idNum} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_DARAFTBOX_LIST_API WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":stuNum, @"idnum":idNum} WithReturnValeuBlock:^(id returnValue) {
         
         NSArray *newData = [returnValue objectForKey:@"data"];
         for (NSDictionary *dic in newData) {
@@ -108,7 +108,7 @@
                                  @"idnum":[UserDefaultTool getIdNum]
                                  };
     
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList"
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_DARAFTBOX_LIST_API
                             WithParameter:parameters
 //  @{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",}
                      WithReturnValeuBlock:^(id returnValue) {
@@ -160,7 +160,7 @@
         
         NSString *stuNum = [UserDefaultTool getStuNum];
         NSString *idNum = [UserDefaultTool getIdNum];
-        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/deleteItemInDraft"
+        [NetWork NetRequestPOSTWithRequestURL:YOUWEN_DARAFTBOX_DELETE_API
                                 WithParameter:@{@"stunum":stuNum, @"idnum":idNum,@"id":_dataArray[row].cellID
                                                 }
                          WithReturnValeuBlock:^(id returnValue) {
@@ -180,7 +180,7 @@
         
         NSString *stuNum = [UserDefaultTool getStuNum];
         NSString *idNum = [UserDefaultTool getIdNum];
-        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/deleteItemInDraft"
+        [NetWork NetRequestPOSTWithRequestURL:YOUWEN_DARAFTBOX_DELETE_API
                                 WithParameter:@{@"stunum":stuNum, @"idnum":idNum,@"id":_dataArray[indexPath.row].cellID
                                                 }
                          WithReturnValeuBlock:^(id returnValue) {

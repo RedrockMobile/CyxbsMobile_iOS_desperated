@@ -18,10 +18,6 @@
 #import "MBCommunityHandle.h"
 #import "YouWenAdoptFrame.h"
 
-#define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
-#define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
-#define COMMENTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/remark"
-#define ADOPTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/adopt"
 @interface AnswerDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -108,7 +104,7 @@
                                };
     
     _hud.labelText = @"...";
-    [NetWork NetRequestPOSTWithRequestURL:ADOPTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADOPT_ANSWER_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -143,9 +139,9 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = [NSString string];
     if (self.is_upvote) {
-        url = CANCELUPVOTEURL;
+        url = YOUWEN_ADD_LIKE_API;
     } else {
-        url = UPVOTEURL;
+        url = YOUWEN_CANCEL_LIKE_API;
     }
     NSDictionary *parameters = @{
                                  @"stuNum":[UserDefaultTool getStuNum],
@@ -262,7 +258,7 @@
                                 @"content":content};
     NSLog(@"发送评论");
     _hud.labelText = @"正在发送评论...";
-    [NetWork NetRequestPOSTWithRequestURL:COMMENTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADD_DISCUSS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -300,14 +296,13 @@
 
 
 - (void)getData {
-    NSString *urlStr = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/getRemarkList";
     NSDictionary *parameters = @{
                                  @"stuNum":@"2016214345",
                                  @"idNum":@"257654",
                                  @"answer_id":self.answer_id
                                  };
     
-    [NetWork NetRequestPOSTWithRequestURL:urlStr WithParameter:parameters WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_QUESTION_DISUCESS_API WithParameter:parameters WithReturnValeuBlock:^(id returnValue) {
         [self.view addSubview:self.tableview];
         for (NSDictionary *dic in returnValue[@"data"]) {
             AnswerCommentModel *model = [[AnswerCommentModel alloc] initWithDic:dic];
