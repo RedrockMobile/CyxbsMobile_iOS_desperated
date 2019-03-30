@@ -66,7 +66,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_MY_INFO_API WithParameter:@{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",@"type":_type}
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_MY_INFO_API WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum,@"type":_type}
                      WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
@@ -174,18 +174,6 @@
         [_tableView removeFromSuperview];
     }];
 }
-
-#pragma mark - TableView delegate
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSString *typeString = _data[indexPath.section][@"type"];
-//    if ([typeString isEqualToString:@"1"]) {
-//        return 140;
-//    } else {
-//        return 170;
-//    }
-//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;
