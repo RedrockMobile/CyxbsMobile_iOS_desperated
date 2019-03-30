@@ -301,7 +301,7 @@
     }
     else{
         [parameter setObject:@5 forKey:@"type_id"];
-        API = ADDARTICLE_API;
+        API = YOUWEN_ADD_QUESTION_API;
     }
     _hud.labelText = @"正在发布...";
     __weak typeof(self) weakSelf = self;
@@ -336,7 +336,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     __weak typeof(self) weakSelf = self;
     __block NSInteger flagBlock = flag;
-    [NetWork uploadImageWithUrl:UPLOADARTICLE_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {
+    [NetWork uploadImageWithUrl:YOUWEN_UPLOAD_PIC_API imageParams:@[imageModel] otherParams:@{@"stunum":stuNum} imageQualityRate:1.0 successBlock:^(id returnValue) {
         [weakSelf.hud hide:YES];
         NSRange range = [returnValue[@"data"][@"photosrc"] rangeOfString:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"];
         NSRange range1 = [returnValue[@"data"][@"thumbnail_src"] rangeOfString:@"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/thumbnail/"];

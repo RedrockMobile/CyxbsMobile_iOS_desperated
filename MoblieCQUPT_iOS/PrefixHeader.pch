@@ -156,35 +156,42 @@
 #define SCREEN_RATE (667/[UIScreen mainScreen].bounds.size.height)
 #define ZOOM(x) x / SCREEN_RATE
 
+
+
 /************************************************/
 /*                   邮问接口                     */
-/********************************************* **/
+/************************************************/
 
 /* 问题部分 */
 
 //全部问题列表
 #define YOUWEN_ALL_QUESTIONS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getQuestionList"
 
-//提新问题
+//添加新问题
 #define YOUWEN_ADD_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/add"
-
-//取消提问
-
-//问题详情
 
 //问题图片上传
 #define YOUWEN_UPLOAD_PIC_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/uploadPicture"
 
+//取消提问
+#define YOUWEN_CANCEL_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/cancelQuestion"
+
+//问题详情
+#define YOUWEN_QUESTION_DETAIL_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getDetailedInfo"
+
 //忽略问题
+#define YOUWEN_IGNORE_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/ignore"
 
 /* 回答部分 */
-//某个问题下的评论列表
-#define YOUWEN_QUESTION_DISUCESS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getRemarkList"
 
-//在问题下添加评论接口
-#define YOUWEN_ADD_DISCUSS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/remark"
+//回答问题
+#define YOUWEN_ANSWER_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
 
+//某个问题下的回答列表
+#define YOUWEN_QUESTION_ANSWER_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
 
+//采纳答案
+#define YOUWEN_ADOPT_ANSWER_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/adopt"
 
 //赞接口
 #define YOUWEN_ADD_LIKE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/praise"
@@ -192,23 +199,28 @@
 //取消赞接口
 #define YOUWEN_CANCEL_LIKE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/cancelPraise"
 
-//发布动态接口
-#define ADDARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
+//某个回答下的评论列表
+#define YOUWEN_QUESTION_DISUCESS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getRemarkList"
 
+//在回答下添加评论
+#define YOUWEN_ADD_DISCUSS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/remark"
+
+
+/* */
 //发布话题文章接口
 #define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
 
-//查询个人信息接口
-#define SEARCH_API @"http://hongyan.cqupt.edu.cn/app"
+
 
 //
 #define SETINFO_API @"http://hongyan.cqupt.edu.cn/app"
 
-//上传图片接口
-#define UPLOADARTICLE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/uploadPicture"
-
 //动态查询接口
 #define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/app"
+
+
+//查询个人信息接口
+#define SEARCH_API @"http://hongyan.cqupt.edu.cn/app"
 
 //话题列表接口
 #define TOPIC_API @"http://hongyan.cqupt.edu.cn/app"
