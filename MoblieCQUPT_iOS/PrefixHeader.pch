@@ -99,36 +99,7 @@
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
 //登录
 #define LOGIN_API @"https://wx.idsbllp.cn/api/verify"
-//哔哔叨叨列表
-#define LISTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
-//热门动态列表
-#define SEARCHHOTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
-//获取评论列表
-#define GETREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
-//官方咨询列表
-#define LISTNEWS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
-//评论接口
-#define POSTREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
-//赞接口
-#define ADDSUPPORT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/addone"
-//取消赞接口
-#define CANCELSUPPOTRT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/cancel"
-//发布动态接口
-#define ADDARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/addArticle"
-//发布话题文章接口
-#define ADDTOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
-//查询个人信息接口
-#define SEARCH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/search"
-//
-#define SETINFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
-//上传图片接口
-#define UPLOADARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
-//动态查询接口
-#define SEARCHTREBDS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
-//话题列表接口
-#define TOPIC_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
-//话题文章列表接口
-#define TOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+
 
 //首页图接口
 #define SPLASH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
@@ -189,7 +160,36 @@
 //全部问题列表
 #define YOUWEN_ALL_QUESTIONS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getQuestionList"
 
-//提新问题
+//热门动态列表
+#define SEARCHHOTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
+//获取评论列表
+#define GETREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
+//官方咨询列表
+#define LISTNEWS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
+//评论接口
+#define POSTREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
+//赞接口
+#define ADDSUPPORT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/addone"
+//取消赞接口
+#define CANCELSUPPOTRT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+//发布动态接口
+#define ADDARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/addArticle"
+//发布话题文章接口
+#define ADDTOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
+//查询个人信息接口
+#define SEARCH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/search"
+//
+#define SETINFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
+//上传图片接口
+#define UPLOADARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
+//动态查询接口
+#define SEARCHTREBDS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
+//话题列表接口
+#define TOPIC_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
+//话题文章列表接口
+#define TOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+
+
 
 
 #endif

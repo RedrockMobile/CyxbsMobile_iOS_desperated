@@ -565,8 +565,6 @@
 		F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D960C1F3C400E0063B024 /* MBCommuityDetailsViewController.m */; };
 		F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26D960D1F3C400E0063B024 /* MBCommuityDetailsViewController.xib */; };
 		F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D960F1F3C400E0063B024 /* MBCommunityHandle.m */; };
-		F26D96701F3C400F0063B024 /* MBCommunityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D96111F3C400E0063B024 /* MBCommunityViewController.m */; };
-		F26D96711F3C400F0063B024 /* MBCommunityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26D96121F3C400E0063B024 /* MBCommunityViewController.xib */; };
 		F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F26D96141F3C400E0063B024 /* MBReleaseViewController.m */; };
 		F26D96731F3C400F0063B024 /* MBReleaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F26D96151F3C400E0063B024 /* MBReleaseViewController.xib */; };
 		F26D96761F3C400F0063B024 /* aNumIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F26D96191F3C400E0063B024 /* aNumIcon.png */; };
@@ -1455,9 +1453,6 @@
 		F26D960D1F3C400E0063B024 /* MBCommuityDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBCommuityDetailsViewController.xib; sourceTree = "<group>"; };
 		F26D960E1F3C400E0063B024 /* MBCommunityHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunityHandle.h; sourceTree = "<group>"; };
 		F26D960F1F3C400E0063B024 /* MBCommunityHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityHandle.m; sourceTree = "<group>"; };
-		F26D96101F3C400E0063B024 /* MBCommunityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBCommunityViewController.h; sourceTree = "<group>"; };
-		F26D96111F3C400E0063B024 /* MBCommunityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBCommunityViewController.m; sourceTree = "<group>"; };
-		F26D96121F3C400E0063B024 /* MBCommunityViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBCommunityViewController.xib; sourceTree = "<group>"; };
 		F26D96131F3C400E0063B024 /* MBReleaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBReleaseViewController.h; sourceTree = "<group>"; };
 		F26D96141F3C400E0063B024 /* MBReleaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBReleaseViewController.m; sourceTree = "<group>"; };
 		F26D96151F3C400E0063B024 /* MBReleaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBReleaseViewController.xib; sourceTree = "<group>"; };
@@ -3173,9 +3168,6 @@
 				F26D960D1F3C400E0063B024 /* MBCommuityDetailsViewController.xib */,
 				F26D960E1F3C400E0063B024 /* MBCommunityHandle.h */,
 				F26D960F1F3C400E0063B024 /* MBCommunityHandle.m */,
-				F26D96101F3C400E0063B024 /* MBCommunityViewController.h */,
-				F26D96111F3C400E0063B024 /* MBCommunityViewController.m */,
-				F26D96121F3C400E0063B024 /* MBCommunityViewController.xib */,
 				F26D96131F3C400E0063B024 /* MBReleaseViewController.h */,
 				F26D96141F3C400E0063B024 /* MBReleaseViewController.m */,
 				F26D96151F3C400E0063B024 /* MBReleaseViewController.xib */,
@@ -3763,7 +3755,6 @@
 				E48DB662223E3DAF00B9D744 /* Volunteer.xcassets in Resources */,
 				E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */,
 				E48DB688223E3DAF00B9D744 /* scroll@2x.png in Resources */,
-				F26D96711F3C400F0063B024 /* MBCommunityViewController.xib in Resources */,
 				F242DE7F1EBCB2BC005AC411 /* 不提醒@2x.png in Resources */,
 				F26D96781F3C400F0063B024 /* cancel.png in Resources */,
 				E48DB691223E3DAF00B9D744 /* 标签矩形@2x.png in Resources */,
@@ -4149,7 +4140,6 @@
 				6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */,
 				E48DB664223E3DAF00B9D744 /* HeaderGifRefresh.m in Sources */,
 				F26D96661F3C400F0063B024 /* DetailBannnerView.m in Sources */,
-				F26D96701F3C400F0063B024 /* MBCommunityViewController.m in Sources */,
 				82398C0421A42F0F00300C91 /* ListTableViewCell.m in Sources */,
 				F2A92CEF1F52E8F900B4CEEF /* UIImage+Color.m in Sources */,
 				E48DB534223E36BD00B9D744 /* DateModle.m in Sources */,
