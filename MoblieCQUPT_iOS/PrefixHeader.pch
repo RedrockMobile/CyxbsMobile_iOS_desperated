@@ -160,22 +160,24 @@
 //全部问题列表
 #define YOUWEN_ALL_QUESTIONS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getQuestionList"
 
-//热门动态列表
-#define SEARCHHOTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
-//获取评论列表
-#define GETREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
-//官方咨询列表
-#define LISTNEWS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
-//评论接口
-#define POSTREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
+//某个问题下的评论列表
+#define YOUWEN_QUESTION_DISUCESS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getRemarkList"
+
+//在问题下添加评论接口
+#define YOUWEN_ADD_DISCUSS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/remark"
+
 //赞接口
 #define ADDSUPPORT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/addone"
+
 //取消赞接口
 #define CANCELSUPPOTRT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/cancel"
+
 //发布动态接口
 #define ADDARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/addArticle"
+
 //发布话题文章接口
 #define ADDTOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
+
 //查询个人信息接口
 #define SEARCH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/search"
 //

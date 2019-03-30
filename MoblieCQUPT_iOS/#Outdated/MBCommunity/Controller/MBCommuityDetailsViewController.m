@@ -384,7 +384,7 @@
                                 @"type_id":type_id,
                                 @"version":@1.0,
                                 @"size":@(15)};
-    [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_QUESTION_DISUCESS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         _isLoadedComment = YES;
         _dataArray = [NSMutableArray array];
         NSArray *array = returnValue[@"data"];
