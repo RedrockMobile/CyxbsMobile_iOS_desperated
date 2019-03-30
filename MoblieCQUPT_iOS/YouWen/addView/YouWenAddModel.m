@@ -9,8 +9,6 @@
 #import "YouWenAddModel.h"
 #import "MyInfoModel.h"
 #import "NetWork.h"
-#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/add"
-#define IMGURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/uploadPicture"
 
 @interface YouWenAddModel()
 @property (copy, nonatomic) NSDictionary *inf;
@@ -39,7 +37,7 @@
 }
 -(void)postTheNewInformation{
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:URL method:HttpRequestPost parameters:_inf prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_ALL_QUESTIONS_API method:HttpRequestPost parameters:_inf prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *qusId = responseObject[@"data"][@"id"];
         if (_imageArry.count){
             [self postTheImageWithId:qusId];
@@ -64,7 +62,7 @@
         model.uploadImage = _imageArry[i - 1];
         [imgs addObject:model];
     }
-    [NetWork uploadImageWithUrl:IMGURL imageParams:@[imgs[0]] otherParams:dic imageQualityRate:1 successBlock:^(id returnValue) {
+    [NetWork uploadImageWithUrl:YOUWEN_UPLOAD_PIC_API imageParams:@[imgs[0]] otherParams:dic imageQualityRate:1 successBlock:^(id returnValue) {
         [self.delegate missionComplete];
     } failureBlock:^{
         NSLog(@"I have fail");
