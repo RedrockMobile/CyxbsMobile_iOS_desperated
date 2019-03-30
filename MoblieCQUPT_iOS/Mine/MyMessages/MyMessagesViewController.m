@@ -64,7 +64,7 @@
     else{
         _stunum_other = stuNum;
     }
-    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_USER_INFO_API WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
                          _myInfoData = returnValue[@"data"];
                          [self.communityTableView reloadData];

@@ -162,7 +162,9 @@
 /*                   邮问接口                     */
 /************************************************/
 
-/* 问题部分 */
+/*
+ 问题部分
+ */
 
 //全部问题列表
 #define YOUWEN_ALL_QUESTIONS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getQuestionList"
@@ -182,7 +184,9 @@
 //忽略问题
 #define YOUWEN_IGNORE_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/ignore"
 
-/* 回答部分 */
+/*
+ 回答部分
+ */
 
 //回答问题
 #define YOUWEN_ANSWER_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
@@ -205,22 +209,74 @@
 //在回答下添加评论
 #define YOUWEN_ADD_DISCUSS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/remark"
 
+/*
+ 积分部分
+ */
 
-/* */
-//发布话题文章接口
-#define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
+//积分商城列表
+#define YOUWEN_STORE_ITEMS_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/getItemList"
+
+//添加积分商城物品
+#define YOUWEN_STORE_ADD_ITEM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/getItemList"
+
+//积分使用记录
+#define YOUWEN_CREDIT_USE_RECORD_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/integralRecord"
+
+/*
+ 个人部分
+ */
+
+//帮一帮
+#define YOUWEN_MY_HELP_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/help"
+
+//问一问
+#define YOUWEN_MY_ASK_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/ask"
+
+//草稿箱列表
+#define YOUWEN_DARAFTBOX_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/getDraftList"
+
+//草稿箱删除
+#define YOUWEN_DARAFTBOX_DELETE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/addItemInDraft"
+
+//增加草稿箱内容
+#define YOUWEN_DARAFTBOX_ADD_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/addItemInDraft"
+
+//修改草稿箱内容
+#define YOUWEN_DARAFTBOX_MODIFY_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/updateItemInDraft"
+
+//关于我的信息
+#define YOUWEN_MY_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/aboutMe"
+
+/*
+ 举报部分
+ */
+
+//举报列表
+#define YOUWEN_INFORM_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/reportList"
+
+//增加举报
+#define YOUWEN_ADD_INFORM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/addReport"
+
+//删除举报
+#define YOUWEN_DELETE_INFORM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/addReport"
+
+/*
+ 其他
+ */
+
+//签到
+#define YOUWEN_CHECKIN_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/checkIn"
+
+//获取掌邮用户信息
+#define YOUWEN_USER_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/Home/Person/search"
+
+//设置个人信息
+#define SET_MY_INFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
 
 
-
-//
-#define SETINFO_API @"http://hongyan.cqupt.edu.cn/app"
-
-//动态查询接口
-#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/app"
-
-
-//查询个人信息接口
-#define SEARCH_API @"http://hongyan.cqupt.edu.cn/app"
+/************************************************/
+/*                   过时接口                     */
+/************************************************/
 
 //话题列表接口
 #define TOPIC_API @"http://hongyan.cqupt.edu.cn/app"
@@ -228,11 +284,11 @@
 //话题文章列表接口
 #define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
 
-
-
-
+//发布话题文章接口
+#define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
 #endif
 
-
+//动态查询接口
+#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/app"
 
 

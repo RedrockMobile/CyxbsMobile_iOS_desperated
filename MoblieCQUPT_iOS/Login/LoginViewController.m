@@ -77,7 +77,7 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 - (void)verifyUserInfo {
     HttpClient *client = [HttpClient defaultClient];
     NSDictionary *parameters = @{@"stuNum":[UserDefaultTool getStuNum],@"idNum":[UserDefaultTool getIdNum]};
-    [client requestWithPath:SEARCH_API method:HttpRequestPost parameters:parameters prepareExecute:^{
+    [client requestWithPath:YOUWEN_USER_INFO_API method:HttpRequestPost parameters:parameters prepareExecute:^{
         
     } progress:^(NSProgress *progress) {
         

@@ -204,7 +204,6 @@
                             [tempArray addObject:model];
                         }
                         if (error) {
-                            NSLog(@"%@",error);
                             self.allDownload = NO;
                         }
                         dispatch_semaphore_signal(sema);

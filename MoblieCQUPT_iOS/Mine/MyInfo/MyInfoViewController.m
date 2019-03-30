@@ -109,7 +109,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
 - (void)refreshMyInfo {
     dispatch_semaphore_t sema = dispatch_semaphore_create(0);
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:SETINFO_API method:HttpRequestPost parameters:self.parameters prepareExecute:^{
+    [client requestWithPath:SET_MY_INFO_API method:HttpRequestPost parameters:self.parameters prepareExecute:^{
         
     } progress:^(NSProgress *progress) {
         
