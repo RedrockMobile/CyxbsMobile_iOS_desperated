@@ -43,7 +43,7 @@
 
 //加载界面方法
 - (void)setUpUI{
-    //加载4个分类板块，并添加z进SegmentView
+    //加载4个分类板块，并添加进SegmentView
     self.edgesForExtendedLayout = UIRectEdgeNone;
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
@@ -57,7 +57,7 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT - SAFE_AREA_BOTTOM) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
     
     //加载添加按钮

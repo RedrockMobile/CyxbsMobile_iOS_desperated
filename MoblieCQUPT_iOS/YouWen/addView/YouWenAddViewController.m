@@ -379,24 +379,30 @@
 }
 //照片
 - (void)selectImage{
-    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:100];
+    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:150];
     UIButton *pictureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [pictureBtn setTitle:@"从相册中选择" forState:UIControlStateNormal];
-    [pictureBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [pictureBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     [pictureBtn addTarget:self action:@selector(selectPicture) forControlEvents:UIControlEventTouchUpInside];
     pictureBtn.frame = CGRectMake(0, 0, ScreenWidth, 50);
     [_photoView.whiteView addSubview:pictureBtn];
     
     UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [photoBtn setTitle:@"拍照" forState:UIControlStateNormal];
-    [photoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [photoBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     [photoBtn addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
     photoBtn.frame = CGRectMake(0, 50, ScreenWidth, 50);
     [_photoView.whiteView addSubview:photoBtn];
     _titleStr = _titleTextView.text;
     _detailStr = _detailTextView.text;
     [[UIApplication sharedApplication].keyWindow addSubview:_photoView];
-
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    cancelButton.frame = CGRectMake(0, 100, ScreenWidth, 50);
+    [_photoView.whiteView addSubview:cancelButton];
 }
 - (void)selectPicture{
     [_photoView removeFromSuperview];
@@ -429,6 +435,10 @@
                            animated:YES
                          completion:nil];
     }
+}
+
+- (void)cancel{
+    [_photoView removeFromSuperview];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{

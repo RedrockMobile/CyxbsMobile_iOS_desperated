@@ -7,6 +7,8 @@
 //
 
 #import "SYCPictureDisplay.h"
+#import "LZCarouselModel.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface SYCPictureDisplay() <UIScrollViewDelegate>
 
@@ -16,7 +18,7 @@
 @property (nonatomic, strong) UIView *line;
 
 @property (nonatomic, assign) float halfGap;   // 图片间距的一半
-@property (nonatomic, strong) NSArray *dataArray;
+@property (nonatomic, strong) NSArray<LZCarouselModel *> *dataArray;
 
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, assign) NSInteger imgcount;
@@ -26,7 +28,7 @@
 
 @implementation SYCPictureDisplay
 
-- (instancetype)initWithFrame:(CGRect)frame{
+- (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)data{
     self = [super initWithFrame:frame];
     if (self) {
         CGFloat distance = SCREENWIDTH * 0.05;
@@ -47,22 +49,21 @@
         tap.numberOfTouchesRequired = 1;
         [self.scrollView addGestureRecognizer:tap];
         
-
+        self.dataArray = data;
+        self.imgcount = data.count;
         
     }
+    [self addScrollView];
     return self;
 }
 
-- (void)addScrollViewWithArray:(NSArray *)dataArray{
-    if ([dataArray count] == 0) {
+- (void)addScrollView{
+    if ([_dataArray count] == 0) {
         return;
     }
     
-    self.dataArray = dataArray;
-    self.imgcount = dataArray.count;
-    
     //循环创建添加轮播图片, 前后各添加一张
-    for (int i = 0; i < dataArray.count + 2; i++) {
+    for (int i = 0; i < _dataArray.count + 2; i++) {
         for (UIView *underView in self.scrollView.subviews) {
             if (underView.tag == 400 + i) {
                 [underView removeFromSuperview];
@@ -78,6 +79,7 @@
         picImageView.layer.cornerRadius = 10.0;
         picImageView.contentMode = UIViewContentModeScaleAspectFill;
         picImageView.clipsToBounds = YES;
+        
         
         /**  说明
          *   1. 设置完 ScrollView的width, 那么分页的宽也为 width.
@@ -98,13 +100,16 @@
         
         
         if (i == 0) {
-            picImageView.image = dataArray[self.imgcount - 1];
+            [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[self.imgcount - 1].picture_url]
+                            placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
             self.index = self.imgcount - 1;
         }else if (i == self.imgcount + 1) {
-            picImageView.image = dataArray[0];
+            [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[0].picture_url]
+                            placeholderImage:[UIImage imageNamed:@"cqupt2.jpg"]];
             self.index = 0;
         }else {
-            picImageView.image = dataArray[i - 1];
+            [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[i - 1].picture_url]
+                            placeholderImage:[UIImage imageNamed:@"cqupt3.jpg"]];
             self.index = i - 1;
         }
         
@@ -131,7 +136,6 @@
     self.slider1.layer.masksToBounds = YES;
     self.slider1.layer.cornerRadius = 2.0;
     [self addSubview:self.slider1];
-
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

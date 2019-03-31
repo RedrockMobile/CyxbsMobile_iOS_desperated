@@ -30,12 +30,14 @@
     }
     return self;
 }
+
 - (NSMutableArray *)dataArray{
     if (_dataArray) {
         _dataArray = [NSArray array].mutableCopy;
     }
     return _dataArray;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

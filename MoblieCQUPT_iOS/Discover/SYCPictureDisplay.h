@@ -10,6 +10,6 @@
 
 @interface SYCPictureDisplay : UIView
 
--(void)addScrollViewWithArray:(NSArray *)dataArray;
+- (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)data;
 
 @end

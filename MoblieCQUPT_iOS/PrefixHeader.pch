@@ -138,7 +138,7 @@
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
 
 #define  IPHONEX (ScreenWidth == 375.f && ScreenHeight == 812.f ? YES : NO)
-#define  TabbarSafeBottomMargin (IPHONEX ? 34.f : 0.f)
+#define  SAFE_AREA_BOTTOM (IPHONEX ? 34.f : 0.f)
 
 
 #define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)
@@ -161,7 +161,6 @@
 /************************************************/
 /*                   邮问接口                     */
 /************************************************/
-
 /*
  问题部分
  */
@@ -286,9 +285,8 @@
 
 //发布话题文章接口
 #define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
-#endif
 
 //动态查询接口
 #define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/app"
 
-
+#endif

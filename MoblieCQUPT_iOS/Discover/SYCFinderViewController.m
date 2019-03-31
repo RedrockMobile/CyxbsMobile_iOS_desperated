@@ -40,47 +40,20 @@
 
 @implementation SYCFinderViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _allDownload = NO;
+    _filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"carouselDataArray.archiver"];
+    _carouselDataArray = [[NSMutableArray alloc] init];
+    [self getNetworkData];
     
     self.view.backgroundColor = RGBColor(246, 246, 246, 1.0);
-    self.carouselDataArray = [NSMutableArray array];
-    self.filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"carouselDataArray.archiver"];
-    
-    if ([NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath]) {
-        self.carouselDataArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
-    }else{
-        LZCarouselModel *model1 = [[LZCarouselModel alloc] init];
-        model1.imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"cqupt1.jpg"], 1.0f);
-        [self.carouselDataArray addObject:model1];
-        
-        LZCarouselModel *model2 = [[LZCarouselModel alloc] init];
-        model2.imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"cqupt2.jpg"], 1.0f);
-        [self.carouselDataArray addObject:model2];
-        
-        LZCarouselModel *model3 = [[LZCarouselModel alloc] init];
-        model3.imageData = UIImageJPEGRepresentation([UIImage imageNamed:@"cqupt3.jpg"], 1.0f);
-        [self.carouselDataArray addObject:model3];
-        [NSKeyedArchiver archiveRootObject:self.carouselDataArray toFile:self.filePath];
-    }
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     self.scrollView.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT * 1.1);
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
-    
-
-    
-    self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREENWIDTH, SCREENWIDTH * 0.55)];
-    NSMutableArray *pictureArray = [NSMutableArray array];
-    for (LZCarouselModel *model in self.carouselDataArray) {
-        [pictureArray addObject:[UIImage imageWithData:model.imageData]];
-    }
-    [self.pictureDisplay addScrollViewWithArray:pictureArray];
-    [self.scrollView addSubview:self.pictureDisplay];
     
     CGFloat backgroundWidth = SCREENWIDTH * 0.93;
     CGFloat backgroundHeight = backgroundWidth * 1;
@@ -115,7 +88,11 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     
     self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
-    [self getNetworkData];
+}
+
+- (void)loadPicDisplay:(NSArray<LZCarouselModel *> *)picData{
+        self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREENWIDTH, SCREENWIDTH * 0.55) data:_carouselDataArray];
+        [self.scrollView addSubview:self.pictureDisplay];
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -180,42 +157,19 @@
 
 - (void)getNetworkData{
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:^{
-    } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSArray *dataArray = [responseObject objectForKey:@"data"];
-        NSMutableArray *tempArray = [NSMutableArray array];
-        self.allDownload = YES;
-        
-        dispatch_group_t group = dispatch_group_create();
-        for (int i = 0; i < dataArray.count; ++i) {
-            NSDictionary *data = dataArray[i];
-            dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-                LZCarouselModel *model = [[LZCarouselModel alloc] initWithData:data];
-                
-                dispatch_queue_t asynchronousQueue = dispatch_queue_create("imageDownloadQueue", NULL);
-                dispatch_async(asynchronousQueue, ^{
-                    NSError *error;
-                    NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.picture_url]];
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        if (imageData) {
-                            model.imageData = imageData;
-                            [tempArray addObject:model];
-                        }
-                        if (error) {
-                            self.allDownload = NO;
-                        }
-                        dispatch_semaphore_signal(sema);
-                    });
-                });
-                dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-                if (i == dataArray.count - 1) {
-                    [NSKeyedArchiver archiveRootObject:tempArray toFile:self.filePath];
-                }
-            });
+        for (NSDictionary *picData in dataArray) {
+            LZCarouselModel *model = [[LZCarouselModel alloc] init];
+            model.picture_url = [picData objectForKey:@"picture_url"];
+            model.picture_goto_url = [picData objectForKey:@"picture_goto_url"];
+            model.keyword = [picData objectForKey:@"keyword"];
+            [_carouselDataArray addObject:model];
         }
-    } failure:nil];
+        [self loadPicDisplay:_carouselDataArray];
+    } failure:^(NSURLSessionDataTask *task, NSError *error){
+        NSLog(@"获取轮播图图片失败");
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
