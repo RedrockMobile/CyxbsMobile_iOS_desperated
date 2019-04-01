@@ -70,7 +70,7 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(@(45/720.0*ScreenHeight));
+        make.height.mas_equalTo(@(45/720.0*SCREEN_HEIGHT));
     }];
 }
 
@@ -78,7 +78,7 @@
     if (!_tableView) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
         _tableView = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -366,8 +366,8 @@
             }
             
             if (self.answerModelArr.count == 0) {
-                UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+                UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
                 label.text = @"快来成为第一个帮助者吧～";
                 label.textAlignment = NSTextAlignmentCenter;
                 label.font = [UIFont systemFontOfSize:14.0];

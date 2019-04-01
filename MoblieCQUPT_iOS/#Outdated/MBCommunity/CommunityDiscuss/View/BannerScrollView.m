@@ -30,10 +30,10 @@
         for (NSInteger i = 0; i<=topics.count; i++) {
             TopicBtn *btn;
             if (i == topics.count) {
-                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH*num/2.0+16*(i+1),0,SCREENWIDTH/2.0,frame.size.height)];
+                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH*num/2.0+16*(i+1),0,SCREEN_WIDTH/2.0,frame.size.height)];
             }
             else{
-                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREENWIDTH*num/2.0+16*(i+1),0,SCREENWIDTH/2.0,frame.size.height)andTopic:topics[i]];
+                btn = [[TopicBtn alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH*num/2.0+16*(i+1),0,SCREEN_WIDTH/2.0,frame.size.height)andTopic:topics[i]];
             }
             [self.btnArray addObject:btn];
             [self addSubview:btn];

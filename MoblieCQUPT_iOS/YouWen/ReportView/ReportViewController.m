@@ -134,7 +134,7 @@
         
     }
     else{
-        _textView = [[ReportTextView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+        _textView = [[ReportTextView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
         [cell.contentView addSubview:_textView];
     }
     return cell;
@@ -142,8 +142,8 @@
 
 - (UIView *)tableView:(UITableView *)tableView
 viewForHeaderInSection:(NSInteger)section{
-    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 30)];
-    UILabel *headViewLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREENWIDTH, 20)];
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+    UILabel *headViewLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREEN_WIDTH, 20)];
     headViewLab.textColor = kDetailTextColor;
     headViewLab.font = [UIFont fontWithName:@"Arial" size:12];
     if (section == 0) {

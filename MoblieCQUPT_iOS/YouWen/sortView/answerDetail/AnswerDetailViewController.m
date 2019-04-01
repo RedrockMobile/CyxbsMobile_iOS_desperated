@@ -131,7 +131,7 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(@(45/700.0*ScreenHeight));
+        make.height.mas_equalTo(@(45/700.0*SCREEN_HEIGHT));
     }];
 }
 
@@ -183,7 +183,7 @@
     
     [UIView beginAnimations:@"riseAnimate" context:nil];
     [UIView setAnimationDuration:0.275];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - height - self.detailCommentView.frame.size.height, SCREENWIDTH, self.detailCommentView.frame.size.height);
+    self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT - height - self.detailCommentView.frame.size.height, SCREEN_WIDTH, self.detailCommentView.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -191,7 +191,7 @@
 - (UIView *)detailCommentView {
     if (!_detailCommentView) {
         _detailCommentView = [[LXDetailCommentView alloc] init];
-        _detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
+        _detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
         [_detailCommentView.cancelBtn addTarget:self action:@selector(tapCancelBtn) forControlEvents:UIControlEventTouchDown];
         [_detailCommentView.sendBtn addTarget:self action:@selector(tapSendBtn) forControlEvents:UIControlEventTouchDown];
         
@@ -204,7 +204,7 @@
 - (void)tapCancelBtn {
     [UIView beginAnimations:@"downAnimate" context:nil];
     [UIView setAnimationDuration:0.1];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENHEIGHT, 0);
+    self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_HEIGHT, 0);
     self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [UIView commitAnimations];
     [self.detailCommentView.commentTextView resignFirstResponder];
@@ -236,7 +236,7 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-            self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - (271/667.0) * SCREENHEIGHT, SCREENWIDTH, (271/667.0) * SCREENHEIGHT);
+            self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT - (271/667.0) * SCREEN_HEIGHT, SCREEN_WIDTH, (271/667.0) * SCREEN_HEIGHT);
         }];
     } else {
         [MBCommunityHandle noLogin:self handler:^(BOOL success) {
@@ -310,8 +310,8 @@
         }
         
         if (self.answerCommentModelArr.count == 0) {
-            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
             label.text = @"快来成为第一个帮助者吧～";
             label.textAlignment = NSTextAlignmentCenter;
             label.font = [UIFont systemFontOfSize:14.0];
@@ -334,7 +334,7 @@
     if (!_tableview) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
         _tableview = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableview.dataSource = self;
         _tableview.delegate = self;

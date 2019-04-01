@@ -57,7 +57,7 @@
     [header addSubview:_soreLab];
     // 设置header
     
-    self.detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 20, ScreenWidth - 40, 300) style:UITableViewStylePlain];
+    self.detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(20, 20, SCREEN_WIDTH - 40, 300) style:UITableViewStylePlain];
     self.detailTableView.tableHeaderView = header;
     self.detailTableView.delegate = self;
     self.detailTableView.dataSource = self;

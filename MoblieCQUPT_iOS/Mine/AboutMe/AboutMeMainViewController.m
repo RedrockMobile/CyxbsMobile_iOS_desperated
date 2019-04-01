@@ -28,7 +28,7 @@
     for (AboutMeViewController *view in views) {
         view.superController = self;
     }
-    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
 }
 

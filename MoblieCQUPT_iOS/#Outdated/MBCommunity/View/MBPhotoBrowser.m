@@ -38,7 +38,7 @@
     
     self = [super init];
     if (self) {
-        self.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         _sourceContainerView = sourceContainerView;
         _currentImageItem = currentImageItem;
         _sourceImageArray = sourceImageArray;
@@ -95,11 +95,11 @@
     if (self.sourceImageArray.count > 0) {
         _indexLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentImageItem+1,self.sourceImageArray.count];
     }
-    _indexLabel.center = CGPointMake(ScreenWidth * 0.5, 35);
+    _indexLabel.center = CGPointMake(SCREEN_WIDTH * 0.5, 35);
 }
 
 - (void)setupScrollView {
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kImageBrowserWidth, ScreenHeight)];
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, kImageBrowserWidth, SCREEN_HEIGHT)];
     _scrollView.delegate = self;
     _scrollView.showsHorizontalScrollIndicator = NO;
     _scrollView.showsVerticalScrollIndicator = NO;
@@ -141,7 +141,7 @@
         [browserItem removeFromSuperview];
         _scrollView.hidden = NO;
         [weakSelf addSubview:_indexLabel];
-        browserItem.frame = CGRectMake(kImageBrowserWidth * self.currentImageItem, 0, ScreenWidth, kImageBrowserHeight);
+        browserItem.frame = CGRectMake(kImageBrowserWidth * self.currentImageItem, 0, SCREEN_WIDTH, kImageBrowserHeight);
         browserItem.pic = weakSelf.sourceImageArray[weakSelf.currentImageItem];
         browserItem.thumbnailPic = weakSelf.sourceThumbnailPictureArray[weakSelf.currentImageItem];
 //        browserItem.thumbnailPic = browserItem.imageView.image;
@@ -159,14 +159,14 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    self.currentImageItem = (NSInteger)(self.scrollView.contentOffset.x / ScreenWidth + 0.5);
+    self.currentImageItem = (NSInteger)(self.scrollView.contentOffset.x / SCREEN_WIDTH + 0.5);
      _indexLabel.text = [NSString stringWithFormat:@"%ld/%ld",self.currentImageItem+1,self.sourceImageArray.count];
 }
 
 - (void)loadPreAndNextItem {
     for (NSInteger i = 0; i < self.sourceImageArray.count; i ++) {
         if (i != self.currentImageItem) {
-            MBBrowserItem *browserItem = [[MBBrowserItem alloc]initWithFrame:CGRectMake(kImageBrowserWidth * i, 0, ScreenWidth, kImageBrowserHeight)];
+            MBBrowserItem *browserItem = [[MBBrowserItem alloc]initWithFrame:CGRectMake(kImageBrowserWidth * i, 0, SCREEN_WIDTH, kImageBrowserHeight)];
             browserItem.pic = self.sourceImageArray[i];
             browserItem.thumbnailPic = self.sourceThumbnailPictureArray[i];
             browserItem.eventDelegate = self;
@@ -205,9 +205,9 @@
         return CGRectZero;
     }
     CGRect rect = CGRectMake(kImageBrowserWidth * index,
-                             (ScreenHeight - size.height * ScreenWidth / size.width)/2,
-                             ScreenWidth,
-                             size.height * ScreenWidth / size.width);
+                             (SCREEN_HEIGHT - size.height * SCREEN_WIDTH / size.width)/2,
+                             SCREEN_WIDTH,
+                             size.height * SCREEN_WIDTH / size.width);
     return rect;
 }
 

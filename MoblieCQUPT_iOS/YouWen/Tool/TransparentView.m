@@ -9,7 +9,7 @@
 #import "TransparentView.h"
 @implementation TransparentView
 - (instancetype)initTheWhiteViewHeight:(CGFloat)height{
-    if (self = [super initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         [self setSelf];
         [self setUpWhiteView:height];
 
@@ -18,7 +18,7 @@
 }
 
 - (instancetype)initWithNews:(NSArray *)array{
-    if (self = [super initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)]) {
+    if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         [self setSelf];
         [self setUpMessage:array];
     }
@@ -44,9 +44,9 @@
 
 //弹出下面选择话题界面的方法
 - (void)setUpWhiteView:(CGFloat)height{
-    _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, height)];
+    _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, height)];
     [UIView animateWithDuration:0.5 animations:^{
-        _whiteView.centerY = ScreenHeight - height / 2;
+        _whiteView.centerY = SCREEN_HEIGHT - height / 2;
     }];
     _whiteView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_whiteView];

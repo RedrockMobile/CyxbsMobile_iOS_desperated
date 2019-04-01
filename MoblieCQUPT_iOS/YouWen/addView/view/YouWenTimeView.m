@@ -75,7 +75,7 @@
 }
 - (void)addDetail{
     [super addDetail];
-    _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.blackView.bottom, ScreenWidth, self.whiteView.height - self.blackView.bottom)];
+    _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.blackView.bottom, SCREEN_WIDTH, self.whiteView.height - self.blackView.bottom)];
     _pickView.delegate = self;
     _pickView.dataSource = self;
 //    _day = @"今日";

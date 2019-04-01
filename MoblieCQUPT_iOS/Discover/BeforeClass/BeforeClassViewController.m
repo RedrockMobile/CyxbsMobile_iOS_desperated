@@ -23,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _beforClassTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, ScreenHeight) style:UITableViewStyleGrouped];
+    _beforClassTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStyleGrouped];
     _beforClassTableView.delegate = self;
     _beforClassTableView.dataSource =self;
     [self.view addSubview:_beforClassTableView];
@@ -85,8 +85,8 @@
 #pragma mark tableView协议
 - (UIView *)tableView:(UITableView *)tableView
 viewForHeaderInSection:(NSInteger)section{
-    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 30)];
-    UILabel *headViewLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREENWIDTH, 20)];
+    UIView *headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 30)];
+    UILabel *headViewLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREEN_WIDTH, 20)];
     headViewLab.textColor = kDetailTextColor;
     headViewLab.font = [UIFont fontWithName:@"Arial" size:12];
     if (section == 0) {
@@ -101,8 +101,8 @@ viewForHeaderInSection:(NSInteger)section{
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     if (section == 1) {
-            UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 50)];
-        UILabel *footViewLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREENWIDTH - 20, 50)];
+            UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
+        UILabel *footViewLab = [[UILabel alloc]initWithFrame:CGRectMake(10, 5, SCREEN_WIDTH - 20, 50)];
         footViewLab.textColor = kDetailTextColor;
         footViewLab.font = [UIFont fontWithName:@"Arial" size:12];
         footViewLab.numberOfLines = 0;
@@ -125,7 +125,7 @@ viewForHeaderInSection:(NSInteger)section{
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if ((indexPath.row == 1) &&(indexPath.section == 0||indexPath.section == 1)) {
-        ExamPickView *views = [[ExamPickView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT + 250)];
+        ExamPickView *views = [[ExamPickView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT + 250)];
         if (indexPath.section == 0) {
             NSArray * beforeArray = @[@"10分钟", @"20分钟", @"30分钟", @"40分钟"];
             views.nameArray = beforeArray;

@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SYCPictureDisplayDelegate <NSObject>
+
+- (void)didClicked:(NSInteger)index;
+
+@end
+
 @interface SYCPictureDisplay : UIView
+
+@property (nonatomic, strong) id<SYCPictureDisplayDelegate> delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)data;
 

@@ -101,7 +101,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     if (stuNum == nil || idNum == nil) {
-        self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
+        self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
         [self.view addSubview:self.noLoginView];
         [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -269,7 +269,7 @@
 - (void)initScrollView{
     //[self.rootView layoutIfNeeded];
     self.scrollView = [[UIScrollView alloc]init];
-    [self.scrollView setFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT-NVGBARHEIGHT)];
+    [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-NVGBARHEIGHT)];
     _scrollView.contentSize = CGSizeMake(self.dateModel.dateArray.count * _scrollView.frame.size.width, 0);
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
@@ -288,7 +288,7 @@
     
     //自定义titleView
     self.titleView = [[UIView alloc]init];
-    self.titleView = [[UIView alloc]initWithFrame:CGRectMake(SCREENWIDTH/2-60, 0, 120, 40)];
+    self.titleView = [[UIView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2-60, 0, 120, 40)];
     self.titleView.backgroundColor = [UIColor clearColor];
     [self initTitleLabel];
     [self initTitleBtn];
@@ -385,7 +385,7 @@
     if (self.hiddenWeekChooseBar) {
 
         [UIView animateWithDuration:0.2f animations:^{
-            [self.scrollView setFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+            [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         }];
 
         for (int i = 0; i < 26; i++) {
@@ -397,7 +397,7 @@
         }
     }else{
         [UIView animateWithDuration:0.2f animations:^{
-            [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREENWIDTH, SCREENHEIGHT)];
+            [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT)];
         }];
         
 
@@ -446,13 +446,13 @@
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
     //初始化全屏view
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //设置view的tag
     view.tag = 999;
     
     
     //往全屏view上添加内容
-    WYCShowDetailView *detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    WYCShowDetailView *detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     detailClassBookView.chooseClassListDelegate = self;
     [detailClassBookView initViewWithArray:array];
     

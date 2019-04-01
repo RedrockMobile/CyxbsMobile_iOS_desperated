@@ -96,7 +96,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         [weakSelf.navigationController pushViewController:dtVC animated:YES];
     };
     
-    self.segementView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) andControllers:@[self.joinVC,self.allVC]];
+    self.segementView = [[SegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT) andControllers:@[self.joinVC,self.allVC]];
     self.segementView.eventDelegate = self;
     self.currentIndex = 0;
     [self.view addSubview:self.segementView];

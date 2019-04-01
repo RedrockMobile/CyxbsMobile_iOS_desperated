@@ -55,7 +55,7 @@
     self.titleTextField.delegate = self;
     self.titleTextField.clearButtonMode = UITextFieldViewModeWhileEditing;    //防止文字输入后下移
     self.contentTextView.delegate = self;
-    self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     __weak typeof(self) weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
         [weakSelf touchesBegan:touches withEvent:event];
@@ -68,10 +68,10 @@
     UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"remind_image_confirm"] style:UIBarButtonItemStyleDone target:self action:@selector(saveRemind)];
     self.navigationItem.rightBarButtonItem = saveItem;
     
-    self.remindTimeChooseView = [[TimeChooseScrollView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5.f)titles:@[@"不提醒",@"提前五分钟",@"提前十分钟",@"提前二十分钟",@"提前半小时",@"提前一小时"]];
+    self.remindTimeChooseView = [[TimeChooseScrollView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/12*7.f, SCREEN_WIDTH, SCREEN_HEIGHT/12*5.f)titles:@[@"不提醒",@"提前五分钟",@"提前十分钟",@"提前二十分钟",@"提前半小时",@"提前一小时"]];
     self.remindTimeChooseView.chooseDelegate = self;
     CGRect frame = self.remindTimeChooseView.frame;
-    frame.origin.y = SCREENHEIGHT;
+    frame.origin.y = SCREEN_HEIGHT;
     frame.size.height = 1;
     self.remindTimeChooseView.frame = frame;
     self.remindTimeChooseView.hidden = YES;
@@ -205,7 +205,7 @@
     if (!self.remindTimeChooseView.hidden) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.remindTimeChooseView.frame;
-            frame.origin.y = SCREENHEIGHT;
+            frame.origin.y = SCREEN_HEIGHT;
             frame.size.height = 1;
             self.remindTimeChooseView.frame = frame;
         }completion:^(BOOL finished) {
@@ -219,7 +219,7 @@
         [self.view.window addSubview:self.remindTimeChooseView];
         self.remindTimeChooseView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.remindTimeChooseView.frame = CGRectMake(0, SCREENHEIGHT/12*7.f, SCREENWIDTH, SCREENHEIGHT/12*5);
+            self.remindTimeChooseView.frame = CGRectMake(0, SCREEN_HEIGHT/12*7.f, SCREEN_WIDTH, SCREEN_HEIGHT/12*5);
         }completion:^(BOOL finished) {
             
         }];

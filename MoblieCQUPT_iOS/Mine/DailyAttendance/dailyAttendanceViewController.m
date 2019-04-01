@@ -45,7 +45,7 @@
 }
 
 - (void)setUpMainView{
-    _mainView = [[UIView alloc] initWithFrame:CGRectMake(18, 22, SCREENWIDTH - 36, 382)];
+    _mainView = [[UIView alloc] initWithFrame:CGRectMake(18, 22, SCREEN_WIDTH - 36, 382)];
     _mainView.layer.cornerRadius = 5;
     _mainView.layer.borderWidth = 1;
     _mainView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -164,7 +164,7 @@
 
 
 - (void)setUpSwitch{
-    _cellView = [[UIView alloc] initWithFrame:CGRectMake(18, _mainView.bottom + 14, SCREENWIDTH - 36, 56)];
+    _cellView = [[UIView alloc] initWithFrame:CGRectMake(18, _mainView.bottom + 14, SCREEN_WIDTH - 36, 56)];
     _cellView.layer.cornerRadius = 5;
     _cellView.layer.borderWidth = 1;
     _cellView.layer.borderColor = [UIColor whiteColor].CGColor;

@@ -48,15 +48,15 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
         NSMutableArray *dataArray = returnValue[@"data"];
-        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - HEADERHEIGHT - 50)];
-        _scrollView.contentSize = CGSizeMake(ScreenWidth, (dataArray.count)*_kHeight);
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - 50)];
+        _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, (dataArray.count)*_kHeight);
         _scrollView.showsVerticalScrollIndicator = NO;
         [_scrollView flashScrollIndicators];
         [self.view addSubview:_scrollView];
         
         for (int i = 0; i < dataArray.count; i ++) {
             NSDictionary *dic = dataArray[i];
-            GradeView *view = [[GradeView alloc]initWithFrame:CGRectMake(0, i*_kHeight, ScreenWidth, _kHeight - 1) titileWithDic:dic fontSize:_fontSize];
+            GradeView *view = [[GradeView alloc]initWithFrame:CGRectMake(0, i*_kHeight, SCREEN_WIDTH, _kHeight - 1) titileWithDic:dic fontSize:_fontSize];
                 view.backgroundColor = [UIColor whiteColor];
 
             [_scrollView addSubview:view];
@@ -68,10 +68,10 @@
 }
 - (void)initFailViewWithDetail:(NSString *)string{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    UIImageView *failLoad = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 250)];
+    UIImageView *failLoad = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, 250)];
     failLoad.contentMode = UIViewContentModeScaleAspectFit;
     failLoad.image = [UIImage imageNamed:@"emptyImage"];
-    UILabel *detailLab= [[UILabel alloc]initWithFrame:CGRectMake(0, failLoad.bottom, SCREENWIDTH, 30)];
+    UILabel *detailLab= [[UILabel alloc]initWithFrame:CGRectMake(0, failLoad.bottom, SCREEN_WIDTH, 30)];
     detailLab.textAlignment = NSTextAlignmentCenter;
     detailLab.font = kFont;
     detailLab.textColor = [UIColor colorWithHexString:@"4B535B"];

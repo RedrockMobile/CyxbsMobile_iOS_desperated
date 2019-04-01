@@ -97,7 +97,7 @@
     [doneBtn sizeToFit];
     [cancelBtn sizeToFit];
     
-    doneBtn.center = CGPointMake(ScreenWidth - 15 - doneBtn.frame.size.width/2, 42);
+    doneBtn.center = CGPointMake(SCREEN_WIDTH - 15 - doneBtn.frame.size.width/2, 42);
     cancelBtn.center = CGPointMake(15 + cancelBtn.frame.size.width/2, 42);
     
     [doneBtn addTarget:self action:@selector(clickDone:) forControlEvents:UIControlEventTouchUpInside];
@@ -108,7 +108,7 @@
 
 - (MBInputView *)inputView {
     if (!_inputView) {
-        _inputView = [[MBInputView alloc]initWithFrame:CGRectMake(0, 65, ScreenWidth, ScreenHeight-65) withInptuViewStyle:MBInputViewStyleWithPhoto];
+        _inputView = [[MBInputView alloc]initWithFrame:CGRectMake(0, 65, SCREEN_WIDTH, SCREEN_HEIGHT-65) withInptuViewStyle:MBInputViewStyleWithPhoto];
         _inputView.backgroundColor = [UIColor whiteColor];
         _inputView.textView.backgroundColor = [UIColor clearColor];
         _inputView.textView.placeholder = @"点击输入文字";
@@ -187,7 +187,7 @@
 
 - (GMImagePickerController *)pickView{
     if (self && !_pickView) {
-        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 20)];
+        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 20)];
         view.backgroundColor = [UIColor whiteColor];
         
         _pickView = [[GMImagePickerController alloc] init];

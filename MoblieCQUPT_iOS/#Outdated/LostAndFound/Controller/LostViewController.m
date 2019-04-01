@@ -47,8 +47,8 @@
         foundArray[i] = vc;
     }
     
-    self.lostSegmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, ScreenHeight-HEADERHEIGHT) andControllers:[NSArray arrayWithArray:lostArray]];
-    self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, ScreenHeight-HEADERHEIGHT) andControllers:[NSArray arrayWithArray:foundArray]];
+    self.lostSegmentView = [[SegmentView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT) andControllers:[NSArray arrayWithArray:lostArray]];
+    self.foundSegmentView =  [[SegmentView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT) andControllers:[NSArray arrayWithArray:foundArray]];
     [self.view addSubview:self.lostSegmentView];
     
     self.addBtn = [[UIButton alloc]initWithFrame:CGRectMake(200, 400, 100, 100)];

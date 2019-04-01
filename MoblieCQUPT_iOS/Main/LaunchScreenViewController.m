@@ -42,7 +42,7 @@
     if (image && self.model) {
         self.mainVC = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"MainViewController"];
         UIView *launchScreen = [[[NSBundle mainBundle]loadNibNamed:@"LaunchScreen" owner:nil options:nil] lastObject];
-        launchScreen.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+        launchScreen.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
         UIImageView *splashView = [launchScreen.subviews lastObject];
         splashView.userInteractionEnabled = YES;
         [launchScreen addSubview:splashView];

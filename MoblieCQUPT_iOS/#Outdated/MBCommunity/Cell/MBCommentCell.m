@@ -85,7 +85,7 @@
     _IDLabel.frame = self.viewModel.IDLabelFrame;
     _timeLabel.frame = self.viewModel.timeLabelFrame;
     _contentLabel.frame = self.viewModel.contentLabelFrame;
-    _underLine.frame = CGRectMake(0, self.viewModel.cellHeight - 1, ScreenWidth, 1);
+    _underLine.frame = CGRectMake(0, self.viewModel.cellHeight - 1, SCREEN_WIDTH, 1);
 }
 
 - (void)clickHeadImageView:(UITapGestureRecognizer *)gesture {

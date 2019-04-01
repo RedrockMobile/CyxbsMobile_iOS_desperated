@@ -175,9 +175,9 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 83.f/667*SCREENHEIGHT;
+        return 83.f/667*SCREEN_HEIGHT;
     }
-    return 43.f/667*SCREENHEIGHT;
+    return 43.f/667*SCREEN_HEIGHT;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -206,7 +206,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
         [textLabel sizeToFit];
         [cell.contentView addSubview:textLabel];
         UIImageView *point = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"backPoint"]];
-        point.frame = CGRectMake(SCREENWIDTH - 20, cell.size.height / 2 - textLabel.size.height / 2, textLabel.size.height / 2, textLabel.size.height);
+        point.frame = CGRectMake(SCREEN_WIDTH - 20, cell.size.height / 2 - textLabel.size.height / 2, textLabel.size.height / 2, textLabel.size.height);
         [cell.contentView addSubview:point];
         if (indexPath.row == 0) {
             self.nicknameTextField = [UITextField initWithPlaceholder:@"请输入昵称" andCell:cell];

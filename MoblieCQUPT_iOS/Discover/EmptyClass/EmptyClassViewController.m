@@ -28,13 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _views = [[EmptyClassView alloc] initWithFrame:CGRectMake(0,0, SCREENWIDTH, 181)];
+    _views = [[EmptyClassView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 181)];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self.view addSubview:_views];
     [self.views.handleBtn addObserver:self forKeyPath:@"selected" options:NSKeyValueObservingOptionNew context:nil];
     //选择项完成收到通知
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, _views.bottom + 10, SCREENWIDTH, SCREENHEIGHT)];
-    _scrollView.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT + _views.height);
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, _views.bottom + 10, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT + _views.height);
     _scrollView.delegate = self;
     _scrollView.showsVerticalScrollIndicator = NO;
     _scrollView.showsHorizontalScrollIndicator = NO;
@@ -160,10 +160,10 @@
             continue;
         }
         if (_viewArry.count == 0) {
-            dataView.frame = CGRectMake(0, 31, SCREENWIDTH, highOfView);
+            dataView.frame = CGRectMake(0, 31, SCREEN_WIDTH, highOfView);
         }
         else{
-            dataView.frame = CGRectMake(0, _viewArry[_viewArry.count - 1].bottom, SCREENWIDTH, highOfView);
+            dataView.frame = CGRectMake(0, _viewArry[_viewArry.count - 1].bottom, SCREEN_WIDTH, highOfView);
         }
         [_viewArry addObject:dataView];
         [self.scrollView addSubview:dataView];
@@ -175,11 +175,11 @@
     UIView *dataView = [[UIView alloc]init];
     NSArray *floorArry = @[@"一楼",@"二楼",@"三楼",@"四楼",@"五楼"];
     NSArray *eightFloorArry = @[@"一栋",@"二栋",@"三栋",@"四东",@"五栋"];
-    UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31 * SCREENWIDTH / 375, 2, 13)];
+    UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31 * SCREEN_WIDTH / 375, 2, 13)];
     besidesView.image = [UIImage imageNamed:@"ImageBesidesTheEmptyClass"];
     [dataView addSubview:besidesView];
     UILabel *floorLab = [[UILabel alloc]initWithFrame:CGRectMake(besidesView.right + 8, besidesView.centerY - 8.5, 0, 0)];
-    floorLab.font = [UIFont systemFontOfSize:14 *SCREENWIDTH / 350];
+    floorLab.font = [UIFont systemFontOfSize:14 *SCREEN_WIDTH / 350];
     [floorLab sizeToFit];
     if([_dataDic[@"buildNum"] isEqualToString:@"8"]){
          floorLab.text = eightFloorArry[key.intValue - 1];
@@ -194,17 +194,17 @@
         CGRect rect;
         if (i % 4 == 0) {
             if (i == 0){
-                rect = CGRectMake(floorLab.right + 29 *  SCREENWIDTH / 350, besidesView.centerY - 8.5, 0, 0);
+                rect = CGRectMake(floorLab.right + 29 *  SCREEN_WIDTH / 350, besidesView.centerY - 8.5, 0, 0);
             }
             else{
-                rect = CGRectMake(floorLab.right + 29 *  SCREENWIDTH / 350, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+                rect = CGRectMake(floorLab.right + 29 *  SCREEN_WIDTH / 350, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
             }
         }
         else{
-            rect =  CGRectMake(labArry[i % 4 - 1].right + 29 *  SCREENWIDTH / 350, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
+            rect =  CGRectMake(labArry[i % 4 - 1].right + 29 *  SCREEN_WIDTH / 350, besidesView.centerY - 8.5 + (labArry[0].bottom - 21) * (i / 4), 0, 0);
         }
         UILabel *lab = [[UILabel alloc]init];
-        lab.font = [UIFont fontWithName:@"Helvetica"  size:16 *  SCREENWIDTH / 350];
+        lab.font = [UIFont fontWithName:@"Helvetica"  size:16 *  SCREEN_WIDTH / 350];
         lab.frame = rect;
         lab.text = arry[i];
         NSMutableAttributedString *noteStr = [[NSMutableAttributedString alloc] initWithString:arry[i]];

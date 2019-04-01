@@ -50,14 +50,14 @@
     self.view.backgroundColor = RGBColor(246, 246, 246, 1.0);
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    self.scrollView.contentSize = CGSizeMake(SCREENWIDTH, SCREENHEIGHT * 1.1);
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT * 1.1);
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
-    CGFloat backgroundWidth = SCREENWIDTH * 0.93;
+    CGFloat backgroundWidth = SCREEN_WIDTH * 0.93;
     CGFloat backgroundHeight = backgroundWidth * 1;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake((SCREENWIDTH - backgroundWidth) / 2.0, SCREENWIDTH * 0.55 + 70, backgroundWidth, backgroundHeight)];
+    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - backgroundWidth) / 2.0, SCREEN_WIDTH * 0.55 + 70, backgroundWidth, backgroundHeight)];
     
     backgroundView.backgroundColor = [UIColor whiteColor];
     backgroundView.layer.masksToBounds = YES;
@@ -91,7 +91,7 @@
 }
 
 - (void)loadPicDisplay:(NSArray<LZCarouselModel *> *)picData{
-        self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREENWIDTH, SCREENWIDTH * 0.55) data:_carouselDataArray];
+        self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREEN_WIDTH, SCREEN_WIDTH * 0.55) data:_carouselDataArray];
         [self.scrollView addSubview:self.pictureDisplay];
 }
 

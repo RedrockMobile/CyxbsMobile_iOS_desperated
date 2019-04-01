@@ -93,7 +93,7 @@
 }
 
 - (void)clickBtn:(UIButton *)sender {
-    //    [self.backScrollView setContentOffset:CGPointMake(sender.tag*ScreenWidth, 0) animated:YES];
+    //    [self.backScrollView setContentOffset:CGPointMake(sender.tag*SCREEN_WIDTH, 0) animated:YES];
     [self.mainScrollView setContentOffset:CGPointMake(sender.tag * self.width, 0) animated:YES];
     
     //    [UIView animateWithDuration:0.2f animations:^{

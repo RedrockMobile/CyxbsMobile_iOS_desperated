@@ -390,13 +390,13 @@
     //        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     //    }
     //    //初始化全屏view
-    //    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    //    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //    //设置view的tag
     //    view.tag = 999;
     //
     //
     //    //往全屏view上添加内容
-    //    self.detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    //    self.detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //    [self.detailClassBookView initViewWithArray:self.detailDataArray[sender.tag]];
     //
     //
@@ -411,7 +411,7 @@
     //    [window addSubview:view];
     //
     //    //    [UIView animateWithDuration:0.06f animations:^{
-    //    //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    //    //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     //    //    } completion:nil];
     //
     //

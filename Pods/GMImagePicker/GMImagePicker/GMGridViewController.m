@@ -63,8 +63,8 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
 
 @implementation GMGridViewController
 {
-    CGFloat screenWidth;
-    CGFloat screenHeight;
+    CGFloat SCREEN_WIDTH;
+    CGFloat SCREEN_HEIGHT;
     UICollectionViewFlowLayout *portraitLayout;
     UICollectionViewFlowLayout *landscapeLayout;
 }
@@ -77,20 +77,20 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
     //Ipad popover is not affected by rotation!
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        screenWidth = CGRectGetWidth(picker.view.bounds);
-        screenHeight = CGRectGetHeight(picker.view.bounds);
+        SCREEN_WIDTH = CGRectGetWidth(picker.view.bounds);
+        SCREEN_HEIGHT = CGRectGetHeight(picker.view.bounds);
     }
     else
     {
         if(UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation))
         {
-            screenHeight = CGRectGetWidth(picker.view.bounds);
-            screenWidth = CGRectGetHeight(picker.view.bounds);
+            SCREEN_HEIGHT = CGRectGetWidth(picker.view.bounds);
+            SCREEN_WIDTH = CGRectGetHeight(picker.view.bounds);
         }
         else
         {
-            screenWidth = CGRectGetWidth(picker.view.bounds);
-            screenHeight = CGRectGetHeight(picker.view.bounds);
+            SCREEN_WIDTH = CGRectGetWidth(picker.view.bounds);
+            SCREEN_HEIGHT = CGRectGetHeight(picker.view.bounds);
         }
     }
     
@@ -241,10 +241,10 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
         {
             portraitLayout = [[UICollectionViewFlowLayout alloc] init];
             portraitLayout.minimumInteritemSpacing = self.picker.minimumInteritemSpacing;
-            int cellTotalUsableWidth = screenWidth - (self.picker.colsInPortrait-1)*self.picker.minimumInteritemSpacing;
+            int cellTotalUsableWidth = SCREEN_WIDTH - (self.picker.colsInPortrait-1)*self.picker.minimumInteritemSpacing;
             portraitLayout.itemSize = CGSizeMake(cellTotalUsableWidth/self.picker.colsInPortrait, cellTotalUsableWidth/self.picker.colsInPortrait);
             double cellTotalUsedWidth = (double)portraitLayout.itemSize.width*self.picker.colsInPortrait;
-            double spaceTotalWidth = (double)screenWidth-cellTotalUsedWidth;
+            double spaceTotalWidth = (double)SCREEN_WIDTH-cellTotalUsedWidth;
             double spaceWidth = spaceTotalWidth/(double)(self.picker.colsInPortrait-1);
             portraitLayout.minimumLineSpacing = spaceWidth;
         }
@@ -258,10 +258,10 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
             {
                 landscapeLayout = [[UICollectionViewFlowLayout alloc] init];
                 landscapeLayout.minimumInteritemSpacing = self.picker.minimumInteritemSpacing;
-                int cellTotalUsableWidth = screenHeight - (self.picker.colsInLandscape-1)*self.picker.minimumInteritemSpacing;
+                int cellTotalUsableWidth = SCREEN_HEIGHT - (self.picker.colsInLandscape-1)*self.picker.minimumInteritemSpacing;
                 landscapeLayout.itemSize = CGSizeMake(cellTotalUsableWidth/self.picker.colsInLandscape, cellTotalUsableWidth/self.picker.colsInLandscape);
                 double cellTotalUsedWidth = (double)landscapeLayout.itemSize.width*self.picker.colsInLandscape;
-                double spaceTotalWidth = (double)screenHeight-cellTotalUsedWidth;
+                double spaceTotalWidth = (double)SCREEN_HEIGHT-cellTotalUsedWidth;
                 double spaceWidth = spaceTotalWidth/(double)(self.picker.colsInLandscape-1);
                 landscapeLayout.minimumLineSpacing = spaceWidth;
             }
@@ -273,10 +273,10 @@ NSString * const GMGridViewCellIdentifier = @"GMGridViewCellIdentifier";
             {
                 portraitLayout = [[UICollectionViewFlowLayout alloc] init];
                 portraitLayout.minimumInteritemSpacing = self.picker.minimumInteritemSpacing;
-                int cellTotalUsableWidth = screenWidth - (self.picker.colsInPortrait-1)*self.picker.minimumInteritemSpacing;
+                int cellTotalUsableWidth = SCREEN_WIDTH - (self.picker.colsInPortrait-1)*self.picker.minimumInteritemSpacing;
                 portraitLayout.itemSize = CGSizeMake(cellTotalUsableWidth/self.picker.colsInPortrait, cellTotalUsableWidth/self.picker.colsInPortrait);
                 double cellTotalUsedWidth = (double)portraitLayout.itemSize.width*self.picker.colsInPortrait;
-                double spaceTotalWidth = (double)screenWidth-cellTotalUsedWidth;
+                double spaceTotalWidth = (double)SCREEN_WIDTH-cellTotalUsedWidth;
                 double spaceWidth = spaceTotalWidth/(double)(self.picker.colsInPortrait-1);
                 portraitLayout.minimumLineSpacing = spaceWidth;
             }

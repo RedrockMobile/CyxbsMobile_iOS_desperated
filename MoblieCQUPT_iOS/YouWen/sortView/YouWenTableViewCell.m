@@ -44,7 +44,7 @@
         
 //        [self workOutSize];
         [self setUpCell];
-        self.frame = CGRectMake(0, 0, SCREENWIDTH, 350);
+        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 350);
     }
     return self;
 }
@@ -52,13 +52,13 @@
 
 
 - (void)workOutSize{
-    CGSize size = CGSizeMake(ScreenWidth - 50, 300);
+    CGSize size = CGSizeMake(SCREEN_WIDTH - 50, 300);
     UIFont* font = [UIFont fontWithName:@"Arial" size:17];
     NSDictionary *dic = @{NSFontAttributeName:font};
     NSString *string = _dataDic[@"description"];
     CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
         attributes:dic context:nil].size.height;
-    _cellSize = CGRectMake(0, 0, ScreenWidth, height + 122);
+    _cellSize = CGRectMake(0, 0, SCREEN_WIDTH, height + 122);
 }
 
 - (void)setUpCell{

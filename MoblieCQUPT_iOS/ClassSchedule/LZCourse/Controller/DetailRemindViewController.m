@@ -35,7 +35,7 @@
     self.imageViewArray = [NSMutableArray array];
     self.isEditing = NO;
     self.tableView.editing = NO;
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.separatorStyle = NO;
@@ -169,7 +169,7 @@
         }
     }
     NSString *content = [remind objectForKey:@"content"];
-    return [content boundingRectWithSize:CGSizeMake(SCREENWIDTH-80,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+100;
+    return [content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-80,CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading  attributes:@{NSFontAttributeName:[UIFont adaptFontSize:12]} context:nil].size.height+100;
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
     return UITableViewCellEditingStyleDelete;
@@ -249,7 +249,7 @@
 
 - (void)showNoRemindView{
     [self.tableView removeFromSuperview];
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MWIDTH, SCREENHEIGHT/6+STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH-2*MWIDTH, SCREENWIDTH/2)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MWIDTH, SCREEN_HEIGHT/6+STATUSBARHEIGHT+NVGBARHEIGHT, SCREEN_WIDTH-2*MWIDTH, SCREEN_WIDTH/2)];
     imageView.image = [UIImage imageNamed:@"无事项"];
     [self.view addSubview:imageView];
 }

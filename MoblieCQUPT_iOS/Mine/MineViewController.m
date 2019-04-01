@@ -85,7 +85,7 @@
                 @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingViewController"}];
     _cellDicArray = @[array1, array2, array3, array4];
     
-    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.top - 20, SCREENWIDTH, SCREENHEIGHT - _tableView.top - 20)];
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.top - 20, SCREEN_WIDTH, SCREEN_HEIGHT - _tableView.top - 20)];
     whiteView.backgroundColor = RGBColor(246, 246, 246, 1);;
     [self.view addSubview:whiteView];
     [self.view sendSubviewToBack:whiteView];
@@ -148,7 +148,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return SCREENHEIGHT / 12;
+    return SCREEN_HEIGHT / 12;
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section {

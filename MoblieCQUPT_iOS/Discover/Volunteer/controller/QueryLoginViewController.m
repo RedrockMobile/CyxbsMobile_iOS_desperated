@@ -47,7 +47,7 @@
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc]init];
     self.navigationItem.title =@"完善信息";
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     imageView.image = [UIImage imageNamed:@"志愿时长"];
     [self.view addSubview:imageView];
     //设置返回按钮

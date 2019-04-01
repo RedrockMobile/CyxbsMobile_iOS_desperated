@@ -148,7 +148,7 @@
         self.extendLabel.textColor = [UIColor colorWithRed:120/255.0 green:142/255.0 blue:250/255.0 alpha:1];
         
         //展开
-        CGFloat height = [self.model.content boundingRectWithSize:CGSizeMake(SCREENWIDTH-18, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+        CGFloat height = [self.model.content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-18, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
         
         CGFloat twoLinesHeight = [UIFont systemFontOfSize:14].lineHeight * 2;
         

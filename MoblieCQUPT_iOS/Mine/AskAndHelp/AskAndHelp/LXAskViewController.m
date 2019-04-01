@@ -46,7 +46,7 @@
         VC2.isAsk = NO;
     }
     NSArray *VCArray = @[VC1, VC2];
-    self.segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT) controllers:VCArray type:SYCSegmentViewTypeNormal];
+    self.segmentView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT) controllers:VCArray type:SYCSegmentViewTypeNormal];
     [self.view addSubview:self.segmentView];
 }
 

@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.weekScrollViewHeight = 0.06*SCREENHEIGHT;
+    self.weekScrollViewHeight = 0.06*SCREEN_HEIGHT;
     self.isNetWorkSuccess = YES;
     self.nowWeek = [[UserDefaultTool valueWithKey:@"nowWeek"] integerValue];
     if (self.nowWeek <0 ) {
@@ -56,7 +56,7 @@
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
     if (stuNum == nil || idNum == nil) {
-         self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
+         self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
         [self.view addSubview:self.noLoginView];
         [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -145,7 +145,7 @@
     if (self.nowWeek>0 && self.nowWeek <=20) {
         weekArray[self.nowWeek] = @"本周";
     }
-    self.weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight) andTitles:weekArray];
+    self.weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, _weekScrollViewHeight) andTitles:weekArray];
     self.weekScrollView.eventDelegate = self;
     [self.weekScrollView scrollToIndex:self.nowWeek];
     [self.view addSubview:self.weekScrollView];
@@ -179,7 +179,7 @@
 
 - (void)initMainView{
     [self.mainView removeFromSuperview];
-    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT-TABBARHEIGHT)];
+    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-TABBARHEIGHT)];
     [self.view addSubview:self.mainView]; //初始化主界面
     [self initBtnController];
     [self showMatterWithWeek:@(self.weekScrollView.currentIndex)];
@@ -229,7 +229,7 @@
     }
     if (lessonNum == 0) {
         self.noLessonImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"无课"]];
-        self.noLessonImageView.frame = CGRectMake(2*MWIDTH, SCREENHEIGHT/6, SCREENWIDTH-3*MWIDTH, SCREENWIDTH/2);
+        self.noLessonImageView.frame = CGRectMake(2*MWIDTH, SCREEN_HEIGHT/6, SCREEN_WIDTH-3*MWIDTH, SCREEN_WIDTH/2);
         [self.mainView.scrollView addSubview:self.noLessonImageView];
     }
     [self.mainView loadDayLbTimeWithWeek:week.integerValue nowWeek:[[UserDefaultTool valueWithKey:@"nowWeek"] integerValue]];
@@ -260,8 +260,8 @@
     if (!self.weekScrollView.hidden) {
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,1.0);
-            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, 0);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT));
+            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, 0);
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(TABBARHEIGHT+HEADERHEIGHT));
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = YES;
         }];
@@ -269,8 +269,8 @@
     else{
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
-            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_weekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_weekScrollViewHeight));
+            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, _weekScrollViewHeight);
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_weekScrollViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-(TABBARHEIGHT+HEADERHEIGHT+_weekScrollViewHeight));
             
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = NO;

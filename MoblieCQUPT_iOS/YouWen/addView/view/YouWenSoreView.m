@@ -54,7 +54,7 @@
     
     self.confirBtn.hidden = YES;
     
-    _loadingLab = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH - 100)/ 2, (self.whiteView.height - 50)/ 2, 100, 50)];
+    _loadingLab = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 100)/ 2, (self.whiteView.height - 50)/ 2, 100, 50)];
     _loadingLab.font = [UIFont fontWithName:@"Arial" size:15];
     _loadingLab.text = @"正在加载....";
     _loadingLab.textAlignment = NSTextAlignmentCenter;
@@ -63,12 +63,12 @@
 }
 
 - (void)setBtnUp{
-    UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(15, _soreLab.bottom, ScreenWidth - 30, 1)];
+    UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(15, _soreLab.bottom, SCREEN_WIDTH - 30, 1)];
     blackView.backgroundColor = [UIColor grayColor];
     [self.whiteView addSubview:blackView];
     
     NSArray *numArray = @[@"1", @"2", @"3", @"5", @"10", @"15"];
-    CGFloat  width = (ScreenWidth - 142)/ 6;
+    CGFloat  width = (SCREEN_WIDTH - 142)/ 6;
     for (int i = 0; i < numArray.count; i ++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:@"square"] forState:UIControlStateNormal];

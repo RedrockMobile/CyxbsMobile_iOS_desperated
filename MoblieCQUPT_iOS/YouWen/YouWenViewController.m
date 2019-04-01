@@ -57,13 +57,13 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, SCREENHEIGHT - HEADERHEIGHT - TABBARHEIGHT - SAFE_AREA_BOTTOM) controllers:views type:SYCSegmentViewTypeNormal];
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - TABBARHEIGHT - SAFE_AREA_BOTTOM) controllers:views type:SYCSegmentViewTypeNormal];
     [self.view addSubview:segView];
     
     //加载添加按钮
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
-    _askBtn.frame = CGRectMake(ScreenWidth - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
+    _askBtn.frame = CGRectMake(SCREEN_WIDTH - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
     [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
 }

@@ -107,20 +107,20 @@
         make.top.mas_equalTo(self.view);
         make.left.mas_equalTo(self.view);
         make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(327).multipliedBy(ScreenHeight / 667);
+        make.height.mas_equalTo(327).multipliedBy(SCREEN_HEIGHT / 667);
     }];
     [_whiteView.superview layoutIfNeeded];
     
-    _titleTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, 15, ScreenWidth - 30, 30) andState:OnlyWordNum];
+    _titleTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 30) andState:OnlyWordNum];
     _titleTextView.limitNum = 20;
     _titleTextView.placeHolder.text = @"请输入标题";
     if (_titleStr.length) {
         _titleTextView.text = _titleStr;
     }
-    UIView *blackLine = [[UIView alloc] initWithFrame:CGRectMake(15, _titleTextView.bottom, ScreenWidth - 30, 1)];
+    UIView *blackLine = [[UIView alloc] initWithFrame:CGRectMake(15, _titleTextView.bottom, SCREEN_WIDTH - 30, 1)];
     blackLine.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     
-    _detailTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, blackLine.bottom + 11, ScreenWidth - 30, _whiteView.height - blackLine.bottom - 11) andState:OnlyWordNum];
+    _detailTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, blackLine.bottom + 11, SCREEN_WIDTH - 30, _whiteView.height - blackLine.bottom - 11) andState:OnlyWordNum];
     _detailTextView.limitNum = 200;
     self.detailTextView.placeHolder.text = @"详细描述你的问题和需求，表达越清楚，越容易获得帮助哦！";
     if (_detailStr.length) {
@@ -136,7 +136,7 @@
 
 - (void)setImageView{
     _imageView = [[UIScrollView alloc]init];
-    _imageView.contentSize = CGSizeMake(ScreenWidth, _imageArray.count / 3 * PHOTOSIZE + 216 - 60);
+    _imageView.contentSize = CGSizeMake(SCREEN_WIDTH, _imageArray.count / 3 * PHOTOSIZE + 216 - 60);
     _imageView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_imageView];
     CGRect final;
@@ -384,14 +384,14 @@
     [pictureBtn setTitle:@"从相册中选择" forState:UIControlStateNormal];
     [pictureBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     [pictureBtn addTarget:self action:@selector(selectPicture) forControlEvents:UIControlEventTouchUpInside];
-    pictureBtn.frame = CGRectMake(0, 0, ScreenWidth, 50);
+    pictureBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:pictureBtn];
     
     UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [photoBtn setTitle:@"拍照" forState:UIControlStateNormal];
     [photoBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     [photoBtn addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-    photoBtn.frame = CGRectMake(0, 50, ScreenWidth, 50);
+    photoBtn.frame = CGRectMake(0, 50, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:photoBtn];
     _titleStr = _titleTextView.text;
     _detailStr = _detailTextView.text;
@@ -401,7 +401,7 @@
     [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
     [cancelButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
-    cancelButton.frame = CGRectMake(0, 100, ScreenWidth, 50);
+    cancelButton.frame = CGRectMake(0, 100, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:cancelButton];
 }
 - (void)selectPicture{
@@ -473,7 +473,7 @@
  @return ToolBar
  */
 - (UIToolbar *)addToolBar{
-    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 40)];
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
     toolBar.tintColor = [UIColor blackColor];
     toolBar.backgroundColor = [UIColor lightGrayColor];
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(textFieldDone)];

@@ -112,7 +112,7 @@
     NSString *idNum = [UserDefaultTool getIdNum];
     
     if (stuNum == nil || idNum == nil) {
-        self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
+        self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
         [self.view addSubview:self.noLoginView];
         [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -124,7 +124,7 @@
     
     
     self.navigationController.navigationBar.hidden = YES;
-    UIImageView *toolBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH,HEADERHEIGHT)];
+    UIImageView *toolBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,HEADERHEIGHT)];
     toolBarImageView.image = [UIImage imageNamed:@"toolbar_background"];
     [self.view addSubview:toolBarImageView];
     self.selectedIndex = 0;
@@ -160,7 +160,7 @@
     
     __weak typeof(self) weakSelf = self;
     self.view.backgroundColor=[UIColor whiteColor];
-    _headView = [[QueryHeader alloc]initWithFrame:CGRectMake(0, 64, SCREENWIDTH, 39)];
+    _headView = [[QueryHeader alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 39)];
     NSDate  *currentDate = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentDate];
@@ -176,7 +176,7 @@
     };
     [self.view addSubview:_headView];
     
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame),SCREENWIDTH,SCREENHEIGHT-CGRectGetMaxY(_headView.frame))];
+    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame),SCREEN_WIDTH,SCREEN_HEIGHT-CGRectGetMaxY(_headView.frame))];
     _scrollView.backgroundColor = [UIColor whiteColor];
     _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width*5, _scrollView.bounds.size.height);
     _scrollView.pagingEnabled = YES;
@@ -320,8 +320,8 @@
         _headView.hidden = NO;
         [UIView animateWithDuration:0.1f animations:^{
             self.allYears.transform = CGAffineTransformMakeScale(1, 1);
-            _headView.frame = CGRectMake(0, 64, SCREENWIDTH, 39);
-            _scrollView.frame = CGRectMake(0, 39+64, SCREENWIDTH, SCREENHEIGHT-64-39);
+            _headView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 39);
+            _scrollView.frame = CGRectMake(0, 39+64, SCREEN_WIDTH, SCREEN_HEIGHT-64-39);
             self.allYearsVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
             self.sevenVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
             self.sixVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
@@ -333,9 +333,9 @@
     }
     else{
         [UIView animateWithDuration:0.1f animations:^{
-            _headView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
+            _headView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 0);
             self.allYears.transform = CGAffineTransformMakeScale(1, -1);
-            _scrollView.frame = CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64);
+            _scrollView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
             self.allYearsVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
             self.sevenVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
             self.sixVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);

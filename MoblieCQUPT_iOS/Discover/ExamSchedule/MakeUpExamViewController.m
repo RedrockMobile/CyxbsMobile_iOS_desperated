@@ -45,7 +45,7 @@
     }];
 }
 - (void)setUpTableView{
-    _MakeUpExamTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-self.view.height*58/667-HEADERHEIGHT) style:UITableViewStylePlain];
+    _MakeUpExamTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-self.view.height*58/667-HEADERHEIGHT) style:UITableViewStylePlain];
     _MakeUpExamTableView.delegate = self;
     _MakeUpExamTableView.dataSource = self;
     _MakeUpExamTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -56,10 +56,10 @@
 
 - (void)initFailViewWithDetail:(NSString *)string{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    UIImageView *failLoad = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 250)];
+    UIImageView *failLoad = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, 250)];
     failLoad.contentMode = UIViewContentModeScaleAspectFit;
     failLoad.image = [UIImage imageNamed:@"emptyImage"];
-    UILabel *detailLab= [[UILabel alloc]initWithFrame:CGRectMake(0, failLoad.bottom, SCREENWIDTH, 30)];
+    UILabel *detailLab= [[UILabel alloc]initWithFrame:CGRectMake(0, failLoad.bottom, SCREEN_WIDTH, 30)];
     detailLab.textAlignment = NSTextAlignmentCenter;
     detailLab.font = kFont;
     detailLab.textColor = [UIColor colorWithHexString:@"4B535B"];

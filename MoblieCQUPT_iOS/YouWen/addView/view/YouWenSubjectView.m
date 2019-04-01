@@ -32,21 +32,21 @@
         make.width.mas_equalTo(80);
     }];
     
-    _topicLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.blackView.bottom + 23, ScreenWidth - 30, 18)];
+    _topicLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.blackView.bottom + 23, SCREEN_WIDTH - 30, 18)];
     _topicLab.font = [UIFont fontWithName:@"Arial" size:ZOOM(17)];
     _topicLab.textColor = [UIColor colorWithHexString:@"7195FA"];
     [self.whiteView addSubview:_topicLab];
     
-    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(15, _topicLab.bottom + 8, ScreenWidth - 30, 1)];
+    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(15, _topicLab.bottom + 8, SCREEN_WIDTH - 30, 1)];
     grayView.backgroundColor = [UIColor grayColor];
     [self.whiteView addSubview:grayView];
     
-    UILabel *hotTopic  = [[UILabel alloc] initWithFrame:CGRectMake(15, grayView.bottom + 23, ScreenWidth - 30, 32)];
+    UILabel *hotTopic  = [[UILabel alloc] initWithFrame:CGRectMake(15, grayView.bottom + 23, SCREEN_WIDTH - 30, 32)];
     hotTopic.text = @"热门话题";
     hotTopic.textColor = [UIColor grayColor];
     hotTopic.font = [UIFont fontWithName:@"Arial" size:ZOOM(15)];
     [self.whiteView addSubview:hotTopic];
-    CGFloat btnWidth = (ScreenWidth - 75) /4;
+    CGFloat btnWidth = (SCREEN_WIDTH - 75) /4;
     NSArray *topicArray = @[@"大物", @"英语", @"线代", @"高数", @"几何", @"思修"];
     for (int i = 0; i < topicArray.count; i ++){
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];

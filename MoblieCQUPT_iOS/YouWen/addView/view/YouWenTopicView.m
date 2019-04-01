@@ -38,7 +38,7 @@
     
     NSArray *topicImages = @[@"learning", @"live", @"emotion", @"other"];
     NSArray *selectImages = @[@"learning_in", @"live_in", @"emotion_in", @"other_in"];
-    CGFloat btnWidth = (SCREENWIDTH - 120) / 4;
+    CGFloat btnWidth = (SCREEN_WIDTH - 120) / 4;
     for (int i = 0 ; i < 4; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:topicImages[i]] forState:UIControlStateNormal];

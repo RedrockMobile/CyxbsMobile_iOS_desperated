@@ -37,13 +37,13 @@
         [self.addBtn.layer addSublayer:maskLayer];
       
         if (style == MBInputViewStyleDefault) {
-            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(12, 37, ScreenWidth - 24, frame.size.height - 20)];
+            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(12, 37, SCREEN_WIDTH - 24, frame.size.height - 20)];
             [self addSubview:self.textView];
             _textView.placeholderColor = [UIColor lightGrayColor];
         }else if (style == MBInputViewStyleWithPhoto) {
-            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(12, 37, ScreenWidth - 24, 0.26*ScreenHeight)];
+            _textView = [[MBTextView alloc]initWithFrame:CGRectMake(12, 37, SCREEN_WIDTH - 24, 0.26*SCREEN_HEIGHT)];
             [self addSubview:self.textView];
-            _container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, ScreenWidth - 24, 1000)];
+            _container = [[MBAddPhotoContainerView alloc]initWithFrame:CGRectMake(10, CGRectGetMaxY(_textView.frame) + 10, SCREEN_WIDTH - 24, 1000)];
             
             [self addSubview:self.container];
         }

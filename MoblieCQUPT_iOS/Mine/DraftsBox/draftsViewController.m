@@ -27,7 +27,7 @@
 
     _dataArray = [NSMutableArray array];
     
-    _draftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+    _draftTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
     _draftTableView.backgroundColor = RGBColor(241, 241, 241, 1);
     _draftTableView.delegate = self;
     _draftTableView.dataSource = self;
