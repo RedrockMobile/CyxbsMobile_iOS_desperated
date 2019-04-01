@@ -297,17 +297,18 @@
     if (_titleLabel) {
         [_titleLabel removeFromSuperview];
     }
-    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(_titleView.frame.size.width/2-50, 0, 100, _titleView.frame.size.height)];
+    CGFloat titleLabelWidth = SCREEN_WIDTH * 0.2;
+    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((_titleView.width - titleLabelWidth)/ 2, 0, titleLabelWidth, _titleView.height)];
     self.titleLabel.backgroundColor = [UIColor clearColor];
     NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
     
-    titleArray[self.dateModel.nowWeek.integerValue] = @"本周";
+    titleArray[self.dateModel.nowWeek.integerValue] = @"本 周";
     
     self.titleText = titleArray[_index];
     self.titleLabel.text = self.titleText;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
     self.titleLabel.userInteractionEnabled = YES;
     
     //添加点击手势
@@ -315,12 +316,13 @@
     [self.titleLabel addGestureRecognizer:tapGesture];
     [self.titleView addSubview:self.titleLabel];
 }
+
 - (void)initTitleBtn{
     //添加箭头按钮
     if (_titleBtn) {
         [_titleBtn removeFromSuperview];
     }
-    self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.frame.size.width-10, 0, 9, _titleView.frame.size.height)];
+    self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width - 28, 0, 9, _titleView.height)];
     //判断箭头方向
     if (_hiddenWeekChooseBar) {
         [self.titleBtn setImage:[UIImage imageNamed:@"downarrow"] forState:UIControlStateNormal];   //初始是下箭头
@@ -333,6 +335,7 @@
     
     self.navigationItem.titleView = self.titleView;
 }
+
 - (void)initRightButton{
     //添加备忘按钮
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
@@ -380,35 +383,29 @@
         [self updateScrollViewFame];
     }
 }
--(void)updateScrollViewFame{
-    //NSLog(@"num:%lu",(unsigned long)_scrollView.subviews.count);
-    if (self.hiddenWeekChooseBar) {
 
-        [UIView animateWithDuration:0.2f animations:^{
+-(void)updateScrollViewFame{
+    if (self.hiddenWeekChooseBar) {
+        [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
             [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        }];
+        } completion:nil];
 
         for (int i = 0; i < 26; i++) {
-            //NSLog(@"num:%d",i);
             WYCClassBookView *view = _scrollView.subviews[i];
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY)];
             [view layoutIfNeeded];
             [view layoutSubviews];
         }
     }else{
-        [UIView animateWithDuration:0.2f animations:^{
+        [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
             [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        }];
-        
+        } completion:nil];
 
         for (int i = 0; i < 26; i++) {
-
             WYCClassBookView *view = _scrollView.subviews[i];
-            
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY + self.weekChooseBar.frame.size.height)];
             [view layoutIfNeeded];
             [view layoutSubviews];
-
         }
     }
 }
