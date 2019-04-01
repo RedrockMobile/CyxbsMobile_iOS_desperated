@@ -167,7 +167,7 @@
             self.titleBtnArray[currentIndex].alpha = 1.0;
         }];
         
-        [UIView animateWithDuration:0.25f animations:^{
+        [UIView animateWithDuration:0.4f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             //当标题栏超出屏幕时移动标题栏
             if (self.titleBtnArray[currentIndex].frame.origin.x < SCREEN_WIDTH / 2) {
                 [self.titleView setContentOffset:CGPointMake(0, 0)];
@@ -176,7 +176,7 @@
             } else {
                 [self.titleView setContentOffset:CGPointMake(self.titleBtnArray[currentIndex].frame.origin.x - SCREEN_WIDTH / 2.0 + self.titleBtnWidth / 2.0, 0)];
             }
-        }];
+        } completion:nil];
         
         if ([_eventDelegate respondsToSelector:@selector(scrollEventWithIndex:)]){
             [self.eventDelegate scrollEventWithIndex:currentIndex];
