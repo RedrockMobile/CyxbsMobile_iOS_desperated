@@ -90,11 +90,6 @@
     self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
 }
 
-- (void)loadPicDisplay:(NSArray<LZCarouselModel *> *)picData{
-        self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREEN_WIDTH, SCREEN_WIDTH * 0.55) data:_carouselDataArray];
-        [self.scrollView addSubview:self.pictureDisplay];
-}
-
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -170,6 +165,11 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error){
         NSLog(@"获取轮播图图片失败");
     }];
+}
+
+- (void)loadPicDisplay:(NSArray<LZCarouselModel *> *)picData{
+    self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREEN_WIDTH, SCREEN_WIDTH * 0.55) data:_carouselDataArray];
+    [self.scrollView addSubview:self.pictureDisplay];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
