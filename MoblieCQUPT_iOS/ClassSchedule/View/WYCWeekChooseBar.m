@@ -72,6 +72,7 @@
     [_scrollView addSubview:_sliderView];
     [self addSubview:_scrollView];
 }
+
 //添加按钮
 -(void)addBtn{
     for (int i = 0 ; i < _titleArray.count; i++) {
@@ -86,6 +87,7 @@
         [_scrollView addSubview:btn];
     }
 }
+
 //按钮点击事件
 -(void)clickBtn:(UIButton *)sender{
     
@@ -98,10 +100,12 @@
     }
     
 }
+
 -(void)changeIndex:(NSInteger)index{
     _index = index;
     [self updateScrollView];
 }
+
 -(void)updateScrollView{
     CGFloat offSetX = (_index - (5/2))*_btnWidth;
     //offSetX = (_index - (_subviewCountInView/2))*_btnWidth;
@@ -109,13 +113,13 @@
         offSetX = 0;
     }
     if(  (_index + (5/2))*_btnWidth >= _scrollView.contentSize.width){
-        
         offSetX = _scrollView.contentSize.width - 5*_btnWidth;
     }
-    [_scrollView setContentOffset:CGPointMake(offSetX, 0) animated:YES];
-    [UIView animateWithDuration:0.2f animations:^{
+    [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [_scrollView setContentOffset:CGPointMake(offSetX, 0)];
         self->_sliderView.frame = CGRectMake(self->_index * self->_btnWidth, self->_scrollViewHeight - 2, self->_btnWidth, 2);
     } completion:nil];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ScrollViewBarChanged" object:nil];
     
 }
