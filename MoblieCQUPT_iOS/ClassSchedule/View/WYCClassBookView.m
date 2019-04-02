@@ -9,7 +9,6 @@
 #import "WYCClassBookView.h"
 #import "Masonry.h"
 #import "WYCShowDetailView.h"
-//#import "UIColor+Hex.h"
 @interface WYCClassBookView()<UIScrollViewDelegate,WYCShowDetailDelegate>
 
 @property (nonatomic, strong) UIView *topBar;    //顶栏日期月份
@@ -69,9 +68,6 @@
     
     [_scrollView addSubview: _leftBar];
     
-    
-    
-    
     [_month mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self->_topBar.mas_top).offset(0);
         make.left.equalTo(self->_topBar.mas_left).offset(0);
@@ -123,8 +119,6 @@
     
 }
 -(void)addBar:(NSArray *)date isFirst:(BOOL)isFirst{
-    //NSLog(@"%lu",(unsigned long)date.count);
-    //NSLog(@"%@",date[0]);
     [_dayBar layoutIfNeeded];
     
     NSArray *day = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];
@@ -206,18 +200,12 @@
             
         }
     }
-    //    _scrollView.contentSize = CGSizeMake(_scrollView.frame.size.width,_leftBar.frame.size.height);
-    
 }
 
 - (void)addBtn:(NSMutableArray *)day{
-    
-    
-
     @autoreleasepool {
         [_dayBar layoutIfNeeded];
         [_leftBar layoutIfNeeded];
-        
         
         _classNum = 0;
         self.detailDataArray = [[NSMutableArray alloc]init];
@@ -240,6 +228,7 @@
         
     }
 }
+
 - (void)addClassBtn:(NSArray *)tmp{
     
     NSNumber *hash_day = [tmp[0] objectForKey:@"hash_day"];
@@ -310,6 +299,7 @@
     [_scrollView addSubview:btnView];
     
 }
+
 - (void)addNoteBtn:(NSArray *)tmp{
     
     NSNumber *hash_day = [tmp[0] objectForKey:@"hash_day"];
@@ -377,59 +367,16 @@
 }
 
 - (void)clickBtn:(UIButton *)sender{
-    
-    
     if ([self.detailDelegate respondsToSelector:@selector(showDetail:)]) {
         [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
     }
-//    if ([self.detailDelegate respondsToSelector:@selector(showChooseClassList:classRoom:)]) {
-//        [self.detailDelegate showDetail:self.detailDataArray[sender.tag]];
-//    }
-    //
-    //    if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
-    //        [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
-    //    }
-    //    //初始化全屏view
-    //    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    //    //设置view的tag
-    //    view.tag = 999;
-    //
-    //
-    //    //往全屏view上添加内容
-    //    self.detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    //    [self.detailClassBookView initViewWithArray:self.detailDataArray[sender.tag]];
-    //
-    //
-    //    //添加点击手势
-    //    UIGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hiddenDetailView)];
-    //    [self.detailClassBookView addGestureRecognizer:tapGesture];
-    //
-    //
-    //    //显示全屏view
-    //    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    //    [view addSubview:self.detailClassBookView];
-    //    [window addSubview:view];
-    //
-    //    //    [UIView animateWithDuration:0.06f animations:^{
-    //    //        self->_detailClassBookView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    //    //    } completion:nil];
-    //
-    //
 }
 
-
 - (void)hiddenDetailView{
-//    if (_detailClassBookView) {
-//        [_detailClassBookView removeFromSuperview];
-//    }
-//
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
     [view removeFromSuperview];
-    
-    
 }
-
 
 - (CGFloat)calculateRowHeight:(NSString *)string fontSize:(NSInteger)fontSize width:(CGFloat)width{
     NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:fontSize]};//指定字号
@@ -437,19 +384,16 @@
                    NSStringDrawingUsesFontLeading attributes:dic context:nil];
     return rect.size.height;
 }
--(void)changeScrollViewContentSize:(CGSize)contentSize{
+
+- (void)changeScrollViewContentSize:(CGSize)contentSize{
     _scrollView.contentSize = contentSize;
     
 }
--(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSLog(@"xxx%f",_scrollView.contentOffset.y);
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if (_scrollView.contentOffset.y < -100) {
          [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadView" object:nil];
     }
-    
 }
-
-
-
 
 @end

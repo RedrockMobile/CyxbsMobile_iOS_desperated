@@ -297,10 +297,10 @@
     if (_titleLabel) {
         [_titleLabel removeFromSuperview];
     }
-    CGFloat titleLabelWidth = SCREEN_WIDTH * 0.2;
+    CGFloat titleLabelWidth = SCREEN_WIDTH * 0.3;
     self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((_titleView.width - titleLabelWidth)/ 2, 0, titleLabelWidth, _titleView.height)];
     self.titleLabel.backgroundColor = [UIColor clearColor];
-    NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
+    NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"二十一周",@"二十二周",@"二十三周",@"二十四周",@"二十五周"] mutableCopy];
     
     titleArray[self.dateModel.nowWeek.integerValue] = @"本 周";
     
@@ -322,7 +322,7 @@
     if (_titleBtn) {
         [_titleBtn removeFromSuperview];
     }
-    self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width - 28, 0, 9, _titleView.height)];
+    self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width - 15, 0, 9, _titleView.height)];
     //判断箭头方向
     if (_hiddenWeekChooseBar) {
         [self.titleBtn setImage:[UIImage imageNamed:@"downarrow"] forState:UIControlStateNormal];   //初始是下箭头
