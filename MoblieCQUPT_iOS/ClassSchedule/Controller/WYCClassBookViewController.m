@@ -437,8 +437,6 @@
 
 
 - (void)showDetail:(NSArray *)array{
-  
-    
     if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
@@ -446,10 +444,14 @@
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     //设置view的tag
     view.tag = 999;
+    UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
+    UIVisualEffectView *blurBackgroundView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+    blurBackgroundView.frame = view.frame;
+    [view addSubview:blurBackgroundView];
     
     
     //往全屏view上添加内容
-    WYCShowDetailView *detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    WYCShowDetailView *detailClassBookView  = [[WYCShowDetailView alloc]initWithFrame:CGRectMake(0, 2 * SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
     detailClassBookView.chooseClassListDelegate = self;
     [detailClassBookView initViewWithArray:array];
     
@@ -461,11 +463,13 @@
     
     //显示全屏view
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    detailClassBookView.layer.opacity = 0.0f;
+    view.layer.opacity = 0.0f;
     [view addSubview:detailClassBookView];
     [window addSubview:view];
-    [UIView animateWithDuration:0.4f animations:^{
+    [UIView animateWithDuration:0.4f delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        view.layer.opacity = 1.0f;
         detailClassBookView.layer.opacity = 1.0f;
+        detailClassBookView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     } completion:nil];
     
 }
