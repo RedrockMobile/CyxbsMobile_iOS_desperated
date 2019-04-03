@@ -31,7 +31,7 @@
     self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.height/2 - 170, 270, 360)];
     self.rootView.backgroundColor = [UIColor whiteColor];
     self.rootView.layer.masksToBounds = YES;
-    self.rootView.layer.cornerRadius = 20;
+    self.rootView.layer.cornerRadius = 10;
     [self.rootView layoutIfNeeded];
     
     

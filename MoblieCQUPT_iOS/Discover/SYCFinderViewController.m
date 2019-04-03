@@ -22,7 +22,7 @@
 #import "QueryLoginViewController.h"
 #import "MapViewController.h"
 #import "LoginViewController.h"
-#import "QuerLoginViewController.h"
+#import "WYCElectricityFeeViewController.h"
 #import "HttpClient.h"
 #import "MBProgressHUD.h"
 

@@ -38,7 +38,7 @@ static SYCCustomLayoutModel *newInstance = nil;
     }else{
         self.inuseTools = [NSMutableArray array];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"成绩单" ImageName:@"成绩单" ClassName:@"ExamTotalViewController"]];
-        [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"查电费" ImageName:@"查电费" ClassName:@"QuerLoginViewController"]];
+        [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"查电费" ImageName:@"查电费" ClassName:@"WYCElectricityFeeViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"关于红岩" ImageName:@"关于红岩" ClassName:@"WebViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"课前提醒" ImageName:@"课前提醒" ClassName:@"BeforeClassViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"空教室" ImageName:@"空教室" ClassName:@"EmptyClassViewController"]];
