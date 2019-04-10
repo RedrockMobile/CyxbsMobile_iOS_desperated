@@ -474,6 +474,11 @@
     
 }
 
+- (void)showChooseClassList:(NSString *)classNum classRoom:(NSString *)classRoom {
+    <#code#>
+}
+
+
 - (void)hiddenDetailView{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
@@ -486,7 +491,7 @@
 }
 
 
-//选课列表预留
+    //选课列表预留
 - (void)clickChooseClassListBtn:(NSDictionary *)dic{
     DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
     vc.teacher = dic[@"teacher"];
@@ -497,7 +502,7 @@
 }
 
 - (void)clickEditNoteBtn:(NSDictionary *)dic{
-    //NSLog(@"%@",[dic objectForKey:@"id"]);
+        //NSLog(@"%@",[dic objectForKey:@"id"]);
     [self hiddenDetailView];
     AddRemindViewController *vc = [[AddRemindViewController alloc]initWithRemind:dic];
     vc.hidesBottomBarWhenPushed = YES;

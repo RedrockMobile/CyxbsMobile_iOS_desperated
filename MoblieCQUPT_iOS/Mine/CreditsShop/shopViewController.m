@@ -14,8 +14,6 @@
 
 @implementation shopViewController
 
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIImageView *emptyImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"shop"]];
