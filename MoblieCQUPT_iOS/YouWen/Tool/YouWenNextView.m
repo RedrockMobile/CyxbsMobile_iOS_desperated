@@ -46,7 +46,7 @@
 }
 
 - (void)confirm{
-    [self.myDelegate sendInformation:_inf.copy];
+    [self.delegate sendInformation:_inf.copy];
 }
 
 - (NSMutableString *)inf{

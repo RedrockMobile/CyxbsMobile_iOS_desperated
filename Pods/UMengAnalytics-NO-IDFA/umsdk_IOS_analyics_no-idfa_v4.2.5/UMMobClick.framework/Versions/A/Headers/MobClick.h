@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 #define XcodeAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
-typedef void(^CallbackBlock)(void);
+typedef void(^CallbackBlock)();
 
 /**
   REALTIME只在“集成测试”设备的DEBUG模式下有效，其它情况下的REALTIME会改为使用BATCH策略。
