@@ -232,40 +232,6 @@
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
-		E417011122545F9500848C32 /* WYCSetUpRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41700E922545F9500848C32 /* WYCSetUpRoomViewController.m */; };
-		E417011222545F9500848C32 /* WYCElectricityFeeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E41700EA22545F9500848C32 /* WYCElectricityFeeModel.m */; };
-		E417011322545F9500848C32 /* WYCElectricityFeeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41700EB22545F9500848C32 /* WYCElectricityFeeViewController.xib */; };
-		E417011422545F9500848C32 /* WYCElectricityFee.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E41700EC22545F9500848C32 /* WYCElectricityFee.xcassets */; };
-		E417011522545F9500848C32 /* WYCElectricityFeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41700ED22545F9500848C32 /* WYCElectricityFeeViewController.m */; };
-		E417011622545F9500848C32 /* settingRoomBackground-26.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700EF22545F9500848C32 /* settingRoomBackground-26.png */; };
-		E417011722545F9500848C32 /* settingRoomBackground-1.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F022545F9500848C32 /* settingRoomBackground-1.png */; };
-		E417011822545F9500848C32 /* settingRoomBackground-19.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F122545F9500848C32 /* settingRoomBackground-19.png */; };
-		E417011922545F9500848C32 /* settingRoomBackground-25.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F222545F9500848C32 /* settingRoomBackground-25.png */; };
-		E417011A22545F9500848C32 /* settingRoomBackground-2.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F322545F9500848C32 /* settingRoomBackground-2.png */; };
-		E417011B22545F9500848C32 /* settingRoomBackground-3.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F422545F9500848C32 /* settingRoomBackground-3.png */; };
-		E417011C22545F9500848C32 /* settingRoomBackground-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F522545F9500848C32 /* settingRoomBackground-24.png */; };
-		E417011D22545F9500848C32 /* settingRoomBackground-18.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F622545F9500848C32 /* settingRoomBackground-18.png */; };
-		E417011E22545F9500848C32 /* settingRoomBackground-20.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F722545F9500848C32 /* settingRoomBackground-20.png */; };
-		E417011F22545F9500848C32 /* settingRoomBackground-7.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F822545F9500848C32 /* settingRoomBackground-7.png */; };
-		E417012022545F9500848C32 /* settingRoomBackground-6.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700F922545F9500848C32 /* settingRoomBackground-6.png */; };
-		E417012122545F9500848C32 /* settingRoomBackground-21.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700FA22545F9500848C32 /* settingRoomBackground-21.png */; };
-		E417012222545F9500848C32 /* settingRoomBackground-23.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700FB22545F9500848C32 /* settingRoomBackground-23.png */; };
-		E417012322545F9500848C32 /* settingRoomBackground-4.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700FC22545F9500848C32 /* settingRoomBackground-4.png */; };
-		E417012422545F9500848C32 /* settingRoomBackground-5.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700FD22545F9500848C32 /* settingRoomBackground-5.png */; };
-		E417012522545F9500848C32 /* settingRoomBackground-22.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700FE22545F9500848C32 /* settingRoomBackground-22.png */; };
-		E417012622545F9500848C32 /* settingRoomBackground-13.png in Resources */ = {isa = PBXBuildFile; fileRef = E41700FF22545F9500848C32 /* settingRoomBackground-13.png */; };
-		E417012722545F9500848C32 /* settingRoomBackground-8.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010022545F9500848C32 /* settingRoomBackground-8.png */; };
-		E417012822545F9500848C32 /* settingRoomBackground-9.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010122545F9500848C32 /* settingRoomBackground-9.png */; };
-		E417012922545F9500848C32 /* settingRoomBackground-12.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010222545F9500848C32 /* settingRoomBackground-12.png */; };
-		E417012A22545F9500848C32 /* settingRoomBackground-10.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010322545F9500848C32 /* settingRoomBackground-10.png */; };
-		E417012B22545F9500848C32 /* settingRoomBackground-11.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010422545F9500848C32 /* settingRoomBackground-11.png */; };
-		E417012C22545F9500848C32 /* settingRoomBackground-15.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010522545F9500848C32 /* settingRoomBackground-15.png */; };
-		E417012D22545F9500848C32 /* settingRoomBackground-14.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010622545F9500848C32 /* settingRoomBackground-14.png */; };
-		E417012E22545F9500848C32 /* settingRoomBackground-16.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010722545F9500848C32 /* settingRoomBackground-16.png */; };
-		E417012F22545F9500848C32 /* settingRoomBackground-17.png in Resources */ = {isa = PBXBuildFile; fileRef = E417010822545F9500848C32 /* settingRoomBackground-17.png */; };
-		E417013022545F9500848C32 /* WYCSetUpRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E417010A22545F9500848C32 /* WYCSetUpRoomViewController.xib */; };
-		E417013122545F9500848C32 /* WYCElectricityFeeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E417010D22545F9500848C32 /* WYCElectricityFeeView.m */; };
-		E417013222545F9500848C32 /* WYCElectricityFeeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E417010E22545F9500848C32 /* WYCElectricityFeeView.xib */; };
 		E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */; };
 		E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */; };
 		E41AD25B222BF13D00360C56 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD258222BF13D00360C56 /* GradeView.m */; };
@@ -441,6 +407,33 @@
 		F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA571EBCB2BB005AC411 /* AppDelegate.m */; };
 		F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */; };
 		F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F242DA5A1EBCB2BB005AC411 /* Main.storyboard */; };
+		F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9A1EBCB2BB005AC411 /* achieveImage.png */; };
+		F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9B1EBCB2BB005AC411 /* angleImage.png */; };
+		F242DDAB1EBCB2BB005AC411 /* buildIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9C1EBCB2BB005AC411 /* buildIcon.png */; };
+		F242DDAC1EBCB2BB005AC411 /* doneImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DA9D1EBCB2BB005AC411 /* doneImage.png */; };
+		F242DDAD1EBCB2BB005AC411 /* InstallBuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA9F1EBCB2BB005AC411 /* InstallBuildTableViewCell.m */; };
+		F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAA11EBCB2BB005AC411 /* InstallcurrentViewController.m */; };
+		F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAA31EBCB2BB005AC411 /* InstallRoomDoneViewController.m */; };
+		F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAA51EBCB2BB005AC411 /* InstallRoomViewController.m */; };
+		F242DDB11EBCB2BB005AC411 /* IntallFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAA71EBCB2BB005AC411 /* IntallFailViewController.m */; };
+		F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DAA81EBCB2BB005AC411 /* querElecIcon.png */; };
+		F242DDB31EBCB2BB005AC411 /* roomIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DAA91EBCB2BB005AC411 /* roomIcon.png */; };
+		F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAAC1EBCB2BB005AC411 /* buildCircleView.m */; };
+		F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DAAD1EBCB2BB005AC411 /* leftIcon.png */; };
+		F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAAF1EBCB2BB005AC411 /* PointingCircleView.m */; };
+		F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAB11EBCB2BB005AC411 /* QuerCircleView.m */; };
+		F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAB31EBCB2BB005AC411 /* QuerCurveView.m */; };
+		F242DDB91EBCB2BB005AC411 /* QuerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAB51EBCB2BB005AC411 /* QuerInfo.m */; };
+		F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAB71EBCB2BB005AC411 /* QuerLoginModel.m */; };
+		F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAB91EBCB2BB005AC411 /* QuerLoginViewController.m */; };
+		F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DABB1EBCB2BB005AC411 /* QuerNoteView.m */; };
+		F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DABD1EBCB2BB005AC411 /* QuerPullTableViewCell.m */; };
+		F242DDBE1EBCB2BB005AC411 /* rightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DABE1EBCB2BB005AC411 /* rightIcon.png */; };
+		F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAC01EBCB2BB005AC411 /* triangleView.m */; };
+		F242DDC01EBCB2BB005AC411 /* unitImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DAC11EBCB2BB005AC411 /* unitImage.png */; };
+		F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAC41EBCB2BB005AC411 /* QuerRemindViewController.m */; };
+		F242DDC21EBCB2BB005AC411 /* reinstallImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DAC51EBCB2BB005AC411 /* reinstallImage.png */; };
+		F242DDC31EBCB2BB005AC411 /* remindImage.png in Resources */ = {isa = PBXBuildFile; fileRef = F242DAC61EBCB2BB005AC411 /* remindImage.png */; };
 		F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DAC91EBCB2BB005AC411 /* WebViewController.m */; };
 		F242DDC51EBCB2BB005AC411 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DACA1EBCB2BB005AC411 /* WebViewController.xib */; };
 		F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DB001EBCB2BB005AC411 /* ShakeViewController.m */; };
@@ -983,44 +976,6 @@
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
-		E41700E922545F9500848C32 /* WYCSetUpRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCSetUpRoomViewController.m; sourceTree = "<group>"; };
-		E41700EA22545F9500848C32 /* WYCElectricityFeeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCElectricityFeeModel.m; sourceTree = "<group>"; };
-		E41700EB22545F9500848C32 /* WYCElectricityFeeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYCElectricityFeeViewController.xib; sourceTree = "<group>"; };
-		E41700EC22545F9500848C32 /* WYCElectricityFee.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WYCElectricityFee.xcassets; sourceTree = "<group>"; };
-		E41700ED22545F9500848C32 /* WYCElectricityFeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCElectricityFeeViewController.m; sourceTree = "<group>"; };
-		E41700EF22545F9500848C32 /* settingRoomBackground-26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-26.png"; sourceTree = "<group>"; };
-		E41700F022545F9500848C32 /* settingRoomBackground-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-1.png"; sourceTree = "<group>"; };
-		E41700F122545F9500848C32 /* settingRoomBackground-19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-19.png"; sourceTree = "<group>"; };
-		E41700F222545F9500848C32 /* settingRoomBackground-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-25.png"; sourceTree = "<group>"; };
-		E41700F322545F9500848C32 /* settingRoomBackground-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-2.png"; sourceTree = "<group>"; };
-		E41700F422545F9500848C32 /* settingRoomBackground-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-3.png"; sourceTree = "<group>"; };
-		E41700F522545F9500848C32 /* settingRoomBackground-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-24.png"; sourceTree = "<group>"; };
-		E41700F622545F9500848C32 /* settingRoomBackground-18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-18.png"; sourceTree = "<group>"; };
-		E41700F722545F9500848C32 /* settingRoomBackground-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-20.png"; sourceTree = "<group>"; };
-		E41700F822545F9500848C32 /* settingRoomBackground-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-7.png"; sourceTree = "<group>"; };
-		E41700F922545F9500848C32 /* settingRoomBackground-6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-6.png"; sourceTree = "<group>"; };
-		E41700FA22545F9500848C32 /* settingRoomBackground-21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-21.png"; sourceTree = "<group>"; };
-		E41700FB22545F9500848C32 /* settingRoomBackground-23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-23.png"; sourceTree = "<group>"; };
-		E41700FC22545F9500848C32 /* settingRoomBackground-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-4.png"; sourceTree = "<group>"; };
-		E41700FD22545F9500848C32 /* settingRoomBackground-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-5.png"; sourceTree = "<group>"; };
-		E41700FE22545F9500848C32 /* settingRoomBackground-22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-22.png"; sourceTree = "<group>"; };
-		E41700FF22545F9500848C32 /* settingRoomBackground-13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-13.png"; sourceTree = "<group>"; };
-		E417010022545F9500848C32 /* settingRoomBackground-8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-8.png"; sourceTree = "<group>"; };
-		E417010122545F9500848C32 /* settingRoomBackground-9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-9.png"; sourceTree = "<group>"; };
-		E417010222545F9500848C32 /* settingRoomBackground-12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-12.png"; sourceTree = "<group>"; };
-		E417010322545F9500848C32 /* settingRoomBackground-10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-10.png"; sourceTree = "<group>"; };
-		E417010422545F9500848C32 /* settingRoomBackground-11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-11.png"; sourceTree = "<group>"; };
-		E417010522545F9500848C32 /* settingRoomBackground-15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-15.png"; sourceTree = "<group>"; };
-		E417010622545F9500848C32 /* settingRoomBackground-14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-14.png"; sourceTree = "<group>"; };
-		E417010722545F9500848C32 /* settingRoomBackground-16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-16.png"; sourceTree = "<group>"; };
-		E417010822545F9500848C32 /* settingRoomBackground-17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingRoomBackground-17.png"; sourceTree = "<group>"; };
-		E417010922545F9500848C32 /* WYCSetUpRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCSetUpRoomViewController.h; sourceTree = "<group>"; };
-		E417010A22545F9500848C32 /* WYCSetUpRoomViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYCSetUpRoomViewController.xib; sourceTree = "<group>"; };
-		E417010C22545F9500848C32 /* WYCElectricityFeeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCElectricityFeeView.h; sourceTree = "<group>"; };
-		E417010D22545F9500848C32 /* WYCElectricityFeeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCElectricityFeeView.m; sourceTree = "<group>"; };
-		E417010E22545F9500848C32 /* WYCElectricityFeeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYCElectricityFeeView.xib; sourceTree = "<group>"; };
-		E417010F22545F9500848C32 /* WYCElectricityFeeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCElectricityFeeModel.h; sourceTree = "<group>"; };
-		E417011022545F9500848C32 /* WYCElectricityFeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCElectricityFeeViewController.h; sourceTree = "<group>"; };
 		E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_mine@2x.png"; sourceTree = "<group>"; };
 		E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_youwen@2x.png"; sourceTree = "<group>"; };
 		E41AD256222BF13D00360C56 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
@@ -1256,6 +1211,49 @@
 		F242DA571EBCB2BB005AC411 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F242DA591EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		F242DA5B1EBCB2BB005AC411 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F242DA9A1EBCB2BB005AC411 /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
+		F242DA9B1EBCB2BB005AC411 /* angleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleImage.png; sourceTree = "<group>"; };
+		F242DA9C1EBCB2BB005AC411 /* buildIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildIcon.png; sourceTree = "<group>"; };
+		F242DA9D1EBCB2BB005AC411 /* doneImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneImage.png; sourceTree = "<group>"; };
+		F242DA9E1EBCB2BB005AC411 /* InstallBuildTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallBuildTableViewCell.h; sourceTree = "<group>"; };
+		F242DA9F1EBCB2BB005AC411 /* InstallBuildTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallBuildTableViewCell.m; sourceTree = "<group>"; };
+		F242DAA01EBCB2BB005AC411 /* InstallcurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallcurrentViewController.h; sourceTree = "<group>"; };
+		F242DAA11EBCB2BB005AC411 /* InstallcurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallcurrentViewController.m; sourceTree = "<group>"; };
+		F242DAA21EBCB2BB005AC411 /* InstallRoomDoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomDoneViewController.h; sourceTree = "<group>"; };
+		F242DAA31EBCB2BB005AC411 /* InstallRoomDoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomDoneViewController.m; sourceTree = "<group>"; };
+		F242DAA41EBCB2BB005AC411 /* InstallRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomViewController.h; sourceTree = "<group>"; };
+		F242DAA51EBCB2BB005AC411 /* InstallRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomViewController.m; sourceTree = "<group>"; };
+		F242DAA61EBCB2BB005AC411 /* IntallFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntallFailViewController.h; sourceTree = "<group>"; };
+		F242DAA71EBCB2BB005AC411 /* IntallFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntallFailViewController.m; sourceTree = "<group>"; };
+		F242DAA81EBCB2BB005AC411 /* querElecIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = querElecIcon.png; sourceTree = "<group>"; };
+		F242DAA91EBCB2BB005AC411 /* roomIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roomIcon.png; sourceTree = "<group>"; };
+		F242DAAB1EBCB2BB005AC411 /* buildCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildCircleView.h; sourceTree = "<group>"; };
+		F242DAAC1EBCB2BB005AC411 /* buildCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buildCircleView.m; sourceTree = "<group>"; };
+		F242DAAD1EBCB2BB005AC411 /* leftIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftIcon.png; sourceTree = "<group>"; };
+		F242DAAE1EBCB2BB005AC411 /* PointingCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointingCircleView.h; sourceTree = "<group>"; };
+		F242DAAF1EBCB2BB005AC411 /* PointingCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointingCircleView.m; sourceTree = "<group>"; };
+		F242DAB01EBCB2BB005AC411 /* QuerCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCircleView.h; sourceTree = "<group>"; };
+		F242DAB11EBCB2BB005AC411 /* QuerCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCircleView.m; sourceTree = "<group>"; };
+		F242DAB21EBCB2BB005AC411 /* QuerCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCurveView.h; sourceTree = "<group>"; };
+		F242DAB31EBCB2BB005AC411 /* QuerCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCurveView.m; sourceTree = "<group>"; };
+		F242DAB41EBCB2BB005AC411 /* QuerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerInfo.h; sourceTree = "<group>"; };
+		F242DAB51EBCB2BB005AC411 /* QuerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerInfo.m; sourceTree = "<group>"; };
+		F242DAB61EBCB2BB005AC411 /* QuerLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginModel.h; sourceTree = "<group>"; };
+		F242DAB71EBCB2BB005AC411 /* QuerLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginModel.m; sourceTree = "<group>"; };
+		F242DAB81EBCB2BB005AC411 /* QuerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginViewController.h; sourceTree = "<group>"; };
+		F242DAB91EBCB2BB005AC411 /* QuerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginViewController.m; sourceTree = "<group>"; };
+		F242DABA1EBCB2BB005AC411 /* QuerNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerNoteView.h; sourceTree = "<group>"; };
+		F242DABB1EBCB2BB005AC411 /* QuerNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerNoteView.m; sourceTree = "<group>"; };
+		F242DABC1EBCB2BB005AC411 /* QuerPullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerPullTableViewCell.h; sourceTree = "<group>"; };
+		F242DABD1EBCB2BB005AC411 /* QuerPullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerPullTableViewCell.m; sourceTree = "<group>"; };
+		F242DABE1EBCB2BB005AC411 /* rightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightIcon.png; sourceTree = "<group>"; };
+		F242DABF1EBCB2BB005AC411 /* triangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangleView.h; sourceTree = "<group>"; };
+		F242DAC01EBCB2BB005AC411 /* triangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = triangleView.m; sourceTree = "<group>"; };
+		F242DAC11EBCB2BB005AC411 /* unitImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unitImage.png; sourceTree = "<group>"; };
+		F242DAC31EBCB2BB005AC411 /* QuerRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerRemindViewController.h; sourceTree = "<group>"; };
+		F242DAC41EBCB2BB005AC411 /* QuerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerRemindViewController.m; sourceTree = "<group>"; };
+		F242DAC51EBCB2BB005AC411 /* reinstallImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reinstallImage.png; sourceTree = "<group>"; };
+		F242DAC61EBCB2BB005AC411 /* remindImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remindImage.png; sourceTree = "<group>"; };
 		F242DAC81EBCB2BB005AC411 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		F242DAC91EBCB2BB005AC411 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		F242DACA1EBCB2BB005AC411 /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -2021,67 +2019,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E41700E822545F9500848C32 /* ElectricityFee */ = {
-			isa = PBXGroup;
-			children = (
-				E417010922545F9500848C32 /* WYCSetUpRoomViewController.h */,
-				E41700E922545F9500848C32 /* WYCSetUpRoomViewController.m */,
-				E41700EB22545F9500848C32 /* WYCElectricityFeeViewController.xib */,
-				E41700EA22545F9500848C32 /* WYCElectricityFeeModel.m */,
-				E417010F22545F9500848C32 /* WYCElectricityFeeModel.h */,
-				E417011022545F9500848C32 /* WYCElectricityFeeViewController.h */,
-				E41700ED22545F9500848C32 /* WYCElectricityFeeViewController.m */,
-				E417010A22545F9500848C32 /* WYCSetUpRoomViewController.xib */,
-				E41700EE22545F9500848C32 /* settingRoomBackground */,
-				E417010B22545F9500848C32 /* View */,
-				E41700EC22545F9500848C32 /* WYCElectricityFee.xcassets */,
-			);
-			path = ElectricityFee;
-			sourceTree = "<group>";
-		};
-		E41700EE22545F9500848C32 /* settingRoomBackground */ = {
-			isa = PBXGroup;
-			children = (
-				E41700EF22545F9500848C32 /* settingRoomBackground-26.png */,
-				E41700F022545F9500848C32 /* settingRoomBackground-1.png */,
-				E41700F122545F9500848C32 /* settingRoomBackground-19.png */,
-				E41700F222545F9500848C32 /* settingRoomBackground-25.png */,
-				E41700F322545F9500848C32 /* settingRoomBackground-2.png */,
-				E41700F422545F9500848C32 /* settingRoomBackground-3.png */,
-				E41700F522545F9500848C32 /* settingRoomBackground-24.png */,
-				E41700F622545F9500848C32 /* settingRoomBackground-18.png */,
-				E41700F722545F9500848C32 /* settingRoomBackground-20.png */,
-				E41700F822545F9500848C32 /* settingRoomBackground-7.png */,
-				E41700F922545F9500848C32 /* settingRoomBackground-6.png */,
-				E41700FA22545F9500848C32 /* settingRoomBackground-21.png */,
-				E41700FB22545F9500848C32 /* settingRoomBackground-23.png */,
-				E41700FC22545F9500848C32 /* settingRoomBackground-4.png */,
-				E41700FD22545F9500848C32 /* settingRoomBackground-5.png */,
-				E41700FE22545F9500848C32 /* settingRoomBackground-22.png */,
-				E41700FF22545F9500848C32 /* settingRoomBackground-13.png */,
-				E417010022545F9500848C32 /* settingRoomBackground-8.png */,
-				E417010122545F9500848C32 /* settingRoomBackground-9.png */,
-				E417010222545F9500848C32 /* settingRoomBackground-12.png */,
-				E417010322545F9500848C32 /* settingRoomBackground-10.png */,
-				E417010422545F9500848C32 /* settingRoomBackground-11.png */,
-				E417010522545F9500848C32 /* settingRoomBackground-15.png */,
-				E417010622545F9500848C32 /* settingRoomBackground-14.png */,
-				E417010722545F9500848C32 /* settingRoomBackground-16.png */,
-				E417010822545F9500848C32 /* settingRoomBackground-17.png */,
-			);
-			path = settingRoomBackground;
-			sourceTree = "<group>";
-		};
-		E417010B22545F9500848C32 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				E417010C22545F9500848C32 /* WYCElectricityFeeView.h */,
-				E417010D22545F9500848C32 /* WYCElectricityFeeView.m */,
-				E417010E22545F9500848C32 /* WYCElectricityFeeView.xib */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		E41AD24B222BECDE00360C56 /* #Outdated */ = {
 			isa = PBXGroup;
 			children = (
@@ -2459,7 +2396,6 @@
 				82398BC121A4289500300C91 /* LZCarouselModel.m */,
 				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
 				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
-				E41700E822545F9500848C32 /* ElectricityFee */,
 				E48DB604223E3DAF00B9D744 /* Volunteer */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */,
@@ -2467,10 +2403,85 @@
 				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
 				E470CA0B2228055B0029501A /* NoCourseDate */,
 				F20026E91F40336E00360991 /* Map */,
+				F242DA981EBCB2BB005AC411 /* ElectricityFee */,
 				F242DAC71EBCB2BB005AC411 /* AboutRedrock */,
 				F242DAFE1EBCB2BB005AC411 /* ShakeShake */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		F242DA981EBCB2BB005AC411 /* ElectricityFee */ = {
+			isa = PBXGroup;
+			children = (
+				F242DA991EBCB2BB005AC411 /* QuerInstall */,
+				F242DAAA1EBCB2BB005AC411 /* QuerLogin */,
+				F242DAC21EBCB2BB005AC411 /* QuerRemind */,
+			);
+			path = ElectricityFee;
+			sourceTree = "<group>";
+		};
+		F242DA991EBCB2BB005AC411 /* QuerInstall */ = {
+			isa = PBXGroup;
+			children = (
+				F242DA9A1EBCB2BB005AC411 /* achieveImage.png */,
+				F242DA9B1EBCB2BB005AC411 /* angleImage.png */,
+				F242DA9C1EBCB2BB005AC411 /* buildIcon.png */,
+				F242DA9D1EBCB2BB005AC411 /* doneImage.png */,
+				F242DA9E1EBCB2BB005AC411 /* InstallBuildTableViewCell.h */,
+				F242DA9F1EBCB2BB005AC411 /* InstallBuildTableViewCell.m */,
+				F242DAA01EBCB2BB005AC411 /* InstallcurrentViewController.h */,
+				F242DAA11EBCB2BB005AC411 /* InstallcurrentViewController.m */,
+				F242DAA21EBCB2BB005AC411 /* InstallRoomDoneViewController.h */,
+				F242DAA31EBCB2BB005AC411 /* InstallRoomDoneViewController.m */,
+				F242DAA41EBCB2BB005AC411 /* InstallRoomViewController.h */,
+				F242DAA51EBCB2BB005AC411 /* InstallRoomViewController.m */,
+				F242DAA61EBCB2BB005AC411 /* IntallFailViewController.h */,
+				F242DAA71EBCB2BB005AC411 /* IntallFailViewController.m */,
+				F242DAA81EBCB2BB005AC411 /* querElecIcon.png */,
+				F242DAA91EBCB2BB005AC411 /* roomIcon.png */,
+			);
+			path = QuerInstall;
+			sourceTree = "<group>";
+		};
+		F242DAAA1EBCB2BB005AC411 /* QuerLogin */ = {
+			isa = PBXGroup;
+			children = (
+				F242DAAB1EBCB2BB005AC411 /* buildCircleView.h */,
+				F242DAAC1EBCB2BB005AC411 /* buildCircleView.m */,
+				F242DAAD1EBCB2BB005AC411 /* leftIcon.png */,
+				F242DAAE1EBCB2BB005AC411 /* PointingCircleView.h */,
+				F242DAAF1EBCB2BB005AC411 /* PointingCircleView.m */,
+				F242DAB01EBCB2BB005AC411 /* QuerCircleView.h */,
+				F242DAB11EBCB2BB005AC411 /* QuerCircleView.m */,
+				F242DAB21EBCB2BB005AC411 /* QuerCurveView.h */,
+				F242DAB31EBCB2BB005AC411 /* QuerCurveView.m */,
+				F242DAB41EBCB2BB005AC411 /* QuerInfo.h */,
+				F242DAB51EBCB2BB005AC411 /* QuerInfo.m */,
+				F242DAB61EBCB2BB005AC411 /* QuerLoginModel.h */,
+				F242DAB71EBCB2BB005AC411 /* QuerLoginModel.m */,
+				F242DAB81EBCB2BB005AC411 /* QuerLoginViewController.h */,
+				F242DAB91EBCB2BB005AC411 /* QuerLoginViewController.m */,
+				F242DABA1EBCB2BB005AC411 /* QuerNoteView.h */,
+				F242DABB1EBCB2BB005AC411 /* QuerNoteView.m */,
+				F242DABC1EBCB2BB005AC411 /* QuerPullTableViewCell.h */,
+				F242DABD1EBCB2BB005AC411 /* QuerPullTableViewCell.m */,
+				F242DABE1EBCB2BB005AC411 /* rightIcon.png */,
+				F242DABF1EBCB2BB005AC411 /* triangleView.h */,
+				F242DAC01EBCB2BB005AC411 /* triangleView.m */,
+				F242DAC11EBCB2BB005AC411 /* unitImage.png */,
+			);
+			path = QuerLogin;
+			sourceTree = "<group>";
+		};
+		F242DAC21EBCB2BB005AC411 /* QuerRemind */ = {
+			isa = PBXGroup;
+			children = (
+				F242DAC31EBCB2BB005AC411 /* QuerRemindViewController.h */,
+				F242DAC41EBCB2BB005AC411 /* QuerRemindViewController.m */,
+				F242DAC51EBCB2BB005AC411 /* reinstallImage.png */,
+				F242DAC61EBCB2BB005AC411 /* remindImage.png */,
+			);
+			path = QuerRemind;
 			sourceTree = "<group>";
 		};
 		F242DAC71EBCB2BB005AC411 /* AboutRedrock */ = {
@@ -3458,8 +3469,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E417012A22545F9500848C32 /* settingRoomBackground-10.png in Resources */,
-				E417011822545F9500848C32 /* settingRoomBackground-19.png in Resources */,
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
 				E48DB68D223E3DAF00B9D744 /* 2@3x.png in Resources */,
@@ -3471,9 +3480,7 @@
 				82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */,
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
 				F242DE9E1EBCB2BC005AC411 /* 椭圆@2x.png in Resources */,
-				E417011C22545F9500848C32 /* settingRoomBackground-24.png in Resources */,
 				4A3A07E71FCC0EC700A50393 /* lost_image_infocategory@3x.png in Resources */,
-				E417012722545F9500848C32 /* settingRoomBackground-8.png in Resources */,
 				4A3A07F51FCC0EC700A50393 /* lost_image_place@3x.png in Resources */,
 				F26D96731F3C400F0063B024 /* MBReleaseViewController.xib in Resources */,
 				4A3A07DD1FCC0EC700A50393 /* find_image_shake@3x.png in Resources */,
@@ -3483,9 +3490,7 @@
 				F210F0BC1F441CF7003BDF6A /* all_image_background@3x.png in Resources */,
 				E48DB68E223E3DAF00B9D744 /* 背景板@2x.png in Resources */,
 				F200271F1F405B8500360991 /* remind_image_title@3x.png in Resources */,
-				E417012422545F9500848C32 /* settingRoomBackground-5.png in Resources */,
 				F26D967D1F3C400F0063B024 /* icon_share_qq@2x.png in Resources */,
-				E417011E22545F9500848C32 /* settingRoomBackground-20.png in Resources */,
 				F242DE971EBCB2BC005AC411 /* 无事项@3x.png in Resources */,
 				6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */,
 				82398BE021A42AFE00300C91 /* 课前提醒.png in Resources */,
@@ -3494,19 +3499,16 @@
 				82398C1321A432DE00300C91 /* mine_image_calendar2.png in Resources */,
 				F20027061F404BE100360991 /* timeTable_image_add@2x.png in Resources */,
 				E48DB685223E3DAF00B9D744 /* 6@3x.png in Resources */,
+				F242DDAB1EBCB2BB005AC411 /* buildIcon.png in Resources */,
 				F242DE8C1EBCB2BC005AC411 /* 多课1@2x.png in Resources */,
 				4A3A07EA1FCC0EC700A50393 /* lost_image_lackcate@2x.png in Resources */,
 				F26D96791F3C400F0063B024 /* comment1.png in Resources */,
-				E417012122545F9500848C32 /* settingRoomBackground-21.png in Resources */,
 				E48DB667223E3DAF00B9D744 /* 7@2x.png in Resources */,
 				4A3A07F71FCC0EC700A50393 /* lost_image_QQ@3x.png in Resources */,
 				4A3A07FA1FCC0EC700A50393 /* lost_image_tel@2x.png in Resources */,
 				4A3A08441FCD990A00A50393 /* shop_headImage@2x.png in Resources */,
 				F20027191F405B8500360991 /* remind_image_content@3x.png in Resources */,
-				E417011622545F9500848C32 /* settingRoomBackground-26.png in Resources */,
 				82398C1421A432DE00300C91 /* mine_image_calendar1.png in Resources */,
-				E417012C22545F9500848C32 /* settingRoomBackground-15.png in Resources */,
-				E417011B22545F9500848C32 /* settingRoomBackground-3.png in Resources */,
 				823D416E1F6533FA00C99D9B /* icon_upvote_inside_notselect@2x.png in Resources */,
 				E48DB695223E3DAF00B9D744 /* 背景板@3x.png in Resources */,
 				F238C6521F3DA29700FEB179 /* tabbar_image_find@3x.png in Resources */,
@@ -3522,10 +3524,8 @@
 				6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */,
 				F26D96771F3C400F0063B024 /* arrowIcon.png in Resources */,
 				82398C0121A42F0F00300C91 /* Media.xcassets in Resources */,
-				E417012522545F9500848C32 /* settingRoomBackground-22.png in Resources */,
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
 				E48DB66F223E3DAF00B9D744 /* 7@3x.png in Resources */,
-				E417012322545F9500848C32 /* settingRoomBackground-4.png in Resources */,
 				E48DB66B223E3DAF00B9D744 /* 月日标签@3x.png in Resources */,
 				F200271E1F405B8500360991 /* remind_image_title@2x.png in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
@@ -3534,17 +3534,14 @@
 				E48DB692223E3DAF00B9D744 /* 标签矩形@3x.png in Resources */,
 				E470CA092227FAD20029501A /* LostTableViewCell.xib in Resources */,
 				F20026E01F4020FA00360991 /* mine_image_classroom@3x.png in Resources */,
-				E417012622545F9500848C32 /* settingRoomBackground-13.png in Resources */,
 				6E3AB63D20AD76A3003A65F5 /* 加号@3x.png in Resources */,
 				F26D96901F3C400F0063B024 /* 叉叉.png in Resources */,
 				82D6856A1F6E4F4B004A5C7D /* icon_down@2x.png in Resources */,
 				F20026FC1F40372100360991 /* settingIcon@3x.png in Resources */,
-				E417012E22545F9500848C32 /* settingRoomBackground-16.png in Resources */,
 				4A3A07FE1FCC0EC700A50393 /* ok.png in Resources */,
 				4A3A07951FCC0E7700A50393 /* ZJshopTableViewCell.xib in Resources */,
 				F242DDC51EBCB2BB005AC411 /* WebViewController.xib in Resources */,
 				4A3A07D71FCC0EC700A50393 /* find_image_lostAndFound@3x.png in Resources */,
-				E417011922545F9500848C32 /* settingRoomBackground-25.png in Resources */,
 				4A3A07FD1FCC0EC700A50393 /* lost_image_time@3x.png in Resources */,
 				4A3A07F41FCC0EC700A50393 /* lost_image_place@2x.png in Resources */,
 				F242DDC51EBCB2BB005AC411 /* WebViewController.xib in Resources */,
@@ -3559,7 +3556,6 @@
 				F238C6451F3D911200FEB179 /* navbar_image_back@3x.png in Resources */,
 				6E3AB65320AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.xib in Resources */,
 				E48DB67E223E3DAF00B9D744 /* 时长加号@3x.png in Resources */,
-				E417012922545F9500848C32 /* settingRoomBackground-12.png in Resources */,
 				4A3A07DF1FCC0EC700A50393 /* iconfont-shop2.png in Resources */,
 				6E3AB64C20AD76A3003A65F5 /* 积分按钮@3x.png in Resources */,
 				E48DB547223E36CF00B9D744 /* WYCClassBookView.xib in Resources */,
@@ -3567,7 +3563,6 @@
 				82398BDD21A42AFE00300C91 /* 志愿时长圆.png in Resources */,
 				F26D968D1F3C400F0063B024 /* topic_image_join@2x.png in Resources */,
 				F242DE821EBCB2BC005AC411 /* 书@3x.png in Resources */,
-				E417011D22545F9500848C32 /* settingRoomBackground-18.png in Resources */,
 				F242DE9C1EBCB2BC005AC411 /* 时间@2x.png in Resources */,
 				823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */,
 				E48DB66E223E3DAF00B9D744 /* toolbar_background.png in Resources */,
@@ -3579,6 +3574,7 @@
 				4A3A07F61FCC0EC700A50393 /* lost_image_QQ@2x.png in Resources */,
 				6E3AB65220AD76A3003A65F5 /* 评论@2x.png in Resources */,
 				F23078DE1F73EF4C0079E187 /* date_image_add@2x.png in Resources */,
+				F242DDAC1EBCB2BB005AC411 /* doneImage.png in Resources */,
 				F242DE501EBCB2BC005AC411 /* Images.xcassets in Resources */,
 				F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */,
 				E48DB67C223E3DAF00B9D744 /* 展开后@2x.png in Resources */,
@@ -3587,7 +3583,6 @@
 				F242DEFE1EBCB2BC005AC411 /* AboutMeViewController.xib in Resources */,
 				E48DB682223E3DAF00B9D744 /* 展开前@2x.png in Resources */,
 				F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */,
-				E417012222545F9500848C32 /* settingRoomBackground-23.png in Resources */,
 				82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */,
 				E48DB698223E3DAF00B9D744 /* QueryLoginViewController.xib in Resources */,
 				4A3A07CD1FCC0EC700A50393 /* cqupt1@2x.jpg in Resources */,
@@ -3606,6 +3601,7 @@
 				F2CC3AA01F46BE1B00B031BD /* MineTableViewCell.xib in Resources */,
 				E48DB696223E3DAF00B9D744 /* 2@2x.png in Resources */,
 				F242DF011EBCB2BC005AC411 /* ExamScheduleTableViewCell.xib in Resources */,
+				F242DDC31EBCB2BB005AC411 /* remindImage.png in Resources */,
 				F238C6571F3DA3C400FEB179 /* tabbar_image_timetable@2x.png in Resources */,
 				F242DE921EBCB2BC005AC411 /* 左三角@2x.png in Resources */,
 				F20026E61F4020FA00360991 /* mine_image_remind@3x.png in Resources */,
@@ -3617,7 +3613,6 @@
 				F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */,
 				F26D96AD1F3C45540063B024 /* login_image_account@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
-				E417012B22545F9500848C32 /* settingRoomBackground-11.png in Resources */,
 				4A3A07D11FCC0EC700A50393 /* find_image_food@3x.png in Resources */,
 				E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */,
 				825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */,
@@ -3633,8 +3628,6 @@
 				82398BDA21A42AFE00300C91 /* 校历.png in Resources */,
 				4A3A07E21FCC0EC700A50393 /* lost_image_com@2x.png in Resources */,
 				F20026E31F4020FA00360991 /* mine_image_exam@2x.png in Resources */,
-				E417013222545F9500848C32 /* WYCElectricityFeeView.xib in Resources */,
-				E417012D22545F9500848C32 /* settingRoomBackground-14.png in Resources */,
 				F26D968F1F3C400F0063B024 /* xia.png in Resources */,
 				E48DB697223E3DAF00B9D744 /* 年份圆圈.png in Resources */,
 				F242DEA21EBCB2BC005AC411 /* 类型@2x.png in Resources */,
@@ -3650,7 +3643,6 @@
 				E48DB686223E3DAF00B9D744 /* login_icon.png in Resources */,
 				F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */,
 				4A3A07E31FCC0EC700A50393 /* lost_image_com@3x.png in Resources */,
-				E417012F22545F9500848C32 /* settingRoomBackground-17.png in Resources */,
 				F20027211F405B8500360991 /* remind_image_week@3x.png in Resources */,
 				F242DEAF1EBCB2BC005AC411 /* 选择@3x.png in Resources */,
 				F26D965E1F3C400F0063B024 /* MBCommunityCellTableViewCell.xib in Resources */,
@@ -3673,13 +3665,13 @@
 				F242DE941EBCB2BC005AC411 /* 提醒@2x.png in Resources */,
 				F20027171F405B8500360991 /* remind_image_confirm@3x.png in Resources */,
 				4A3A07EE1FCC0EC700A50393 /* lost_image_lacktel@2x.png in Resources */,
-				E417012822545F9500848C32 /* settingRoomBackground-9.png in Resources */,
 				6E32140020D54EE100E55145 /* AboutMePraiseTableViewCell.xib in Resources */,
+				F242DDC01EBCB2BB005AC411 /* unitImage.png in Resources */,
 				F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */,
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
+				F242DDB21EBCB2BB005AC411 /* querElecIcon.png in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
 				E470CA2B2228055C0029501A /* LZPersonSelectTableViewCell.xib in Resources */,
-				E417011722545F9500848C32 /* settingRoomBackground-1.png in Resources */,
 				F242DE791EBCB2BC005AC411 /* remind@2x.png in Resources */,
 				F20026E51F4020FA00360991 /* mine_image_remind@2x.png in Resources */,
 				F242DE8F1EBCB2BC005AC411 /* 多课2@3x.png in Resources */,
@@ -3698,9 +3690,7 @@
 				E48DB67B223E3DAF00B9D744 /* login_password@3x.png in Resources */,
 				82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */,
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
-				E417013022545F9500848C32 /* WYCSetUpRoomViewController.xib in Resources */,
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
-				E417011A22545F9500848C32 /* settingRoomBackground-2.png in Resources */,
 				F242DEA31EBCB2BC005AC411 /* 类型@3x.png in Resources */,
 				E48DB67D223E3DAF00B9D744 /* 没有记录@3x.png in Resources */,
 				6E3AB63F20AD76A3003A65F5 /* YouWenDetailCell.xib in Resources */,
@@ -3752,6 +3742,7 @@
 				F242DE871EBCB2BC005AC411 /* 周数@3x.png in Resources */,
 				F26D96A31F3C41130063B024 /* login_image_background@2x.png in Resources */,
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
+				F242DDC21EBCB2BB005AC411 /* reinstallImage.png in Resources */,
 				E41AD25C222BF13D00360C56 /* ExamGradeViewController.xib in Resources */,
 				E48DB543223E36CF00B9D744 /* WYCClassDetailView.xib in Resources */,
 				F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */,
@@ -3769,19 +3760,17 @@
 				E48DB691223E3DAF00B9D744 /* 标签矩形@2x.png in Resources */,
 				82280CB21F60205200A5921E /* LXCommentTitle@2x.png in Resources */,
 				4A3A08001FCC0EC700A50393 /* shake_image_shake@3x.png in Resources */,
-				E417011322545F9500848C32 /* WYCElectricityFeeViewController.xib in Resources */,
 				F242DEAA1EBCB2BC005AC411 /* 老师@2x.png in Resources */,
 				823D41641F6407D300C99D9B /* icon_comment_outside@3x.png in Resources */,
 				4A3A07D41FCC0EC700A50393 /* find_image_hongyan@2x.png in Resources */,
 				82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */,
 				6E0F69292030712700BB5EF3 /* ReportImage.xcassets in Resources */,
 				F26D96841F3C400F0063B024 /* icon_share_weibo@2x.png in Resources */,
-				E417011F22545F9500848C32 /* settingRoomBackground-7.png in Resources */,
 				E48DB677223E3DAF00B9D744 /* 1@3x.png in Resources */,
+				F242DDBE1EBCB2BB005AC411 /* rightIcon.png in Resources */,
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
 				E48DB665223E3DAF00B9D744 /* 服务记录矩形.png in Resources */,
-				E417011422545F9500848C32 /* WYCElectricityFee.xcassets in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
 				82398BDC21A42AFE00300C91 /* 没课约.png in Resources */,
 				6E3AB64F20AD76A3003A65F5 /* 男@3x.png in Resources */,
@@ -3802,9 +3791,9 @@
 				823D41681F6407D300C99D9B /* icon_upvote_outside_selected@2x.png in Resources */,
 				4A3A08421FCD990A00A50393 /* yuan@2x.png in Resources */,
 				E470C9FE2227FAD20029501A /* LZIssueSucceedViewController.xib in Resources */,
-				E417012022545F9500848C32 /* settingRoomBackground-6.png in Resources */,
 				6E3AB64020AD76A3003A65F5 /* 未点赞图标@2x.png in Resources */,
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
+				F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */,
 				4A3A07CF1FCC0EC700A50393 /* cqupt3@2x.jpg in Resources */,
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
@@ -3836,9 +3825,12 @@
 				F242DEA01EBCB2BC005AC411 /* 箭头@2x.png in Resources */,
 				F242DE5F1EBCB2BC005AC411 /* RemindTableViewCell.xib in Resources */,
 				E48DB672223E3DAF00B9D744 /* login_back@3x.png in Resources */,
+				F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				4A3A07D01FCC0EC700A50393 /* find_image_food@2x.png in Resources */,
+				F242DDB31EBCB2BB005AC411 /* roomIcon.png in Resources */,
+				F242DDA91EBCB2BB005AC411 /* achieveImage.png in Resources */,
 				F20027161F405B8500360991 /* remind_image_confirm@2x.png in Resources */,
 				F242DE801EBCB2BC005AC411 /* 不提醒@3x.png in Resources */,
 				F26D96861F3C400F0063B024 /* noTopicIcon.png in Resources */,
@@ -3961,6 +3953,7 @@
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
 				F2A92CE31F52E8BE00B4CEEF /* BaseNavigationController.m in Sources */,
+				F242DDAD1EBCB2BB005AC411 /* InstallBuildTableViewCell.m in Sources */,
 				F2A92CFB1F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m in Sources */,
 				F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */,
 				82A0A57020BEFF2000BD628E /* LXAskDetailModel.m in Sources */,
@@ -3979,11 +3972,12 @@
 				F2509BCE1F440D7D0091F678 /* SegmentView.m in Sources */,
 				F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */,
 				F242DE621EBCB2BC005AC411 /* DetailLessonController.m in Sources */,
-				E417011222545F9500848C32 /* WYCElectricityFeeModel.m in Sources */,
+				F242DDB11EBCB2BB005AC411 /* IntallFailViewController.m in Sources */,
 				F242DEC31EBCB2BC005AC411 /* main.m in Sources */,
 				F23BB4881F50538800DA62ED /* LZWeekScrollView.m in Sources */,
 				F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */,
 				6E3AB63720AD76A3003A65F5 /* AnswerCommentModel.m in Sources */,
+				F242DDB91EBCB2BB005AC411 /* QuerInfo.m in Sources */,
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
@@ -3992,6 +3986,7 @@
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				E41AD25D222BF13D00360C56 /* ExamGradeViewController.m in Sources */,
+				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
@@ -4002,7 +3997,6 @@
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */,
-				E417011122545F9500848C32 /* WYCSetUpRoomViewController.m in Sources */,
 				E470CA002227FAD20029501A /* LostItem.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
 				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
@@ -4012,6 +4006,7 @@
 				E470CA232228055C0029501A /* LessonButtonViewModel.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
+				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				6E3AB65B20AED319003A65F5 /* dailyAttendanceModel.m in Sources */,
 				E470CA032227FAD20029501A /* IconTableViewCell.m in Sources */,
 				6E1F465E20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m in Sources */,
@@ -4029,12 +4024,14 @@
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
 				6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */,
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
+				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
 				E48DB6A5223E3DAF00B9D744 /* QueryModel.m in Sources */,
 				E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
 				82398BC421A4289500300C91 /* SYCFinderViewController.m in Sources */,
 				F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */,
 				E48DB6A4223E3DAF00B9D744 /* QueryDataModel.m in Sources */,
+				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
 				F2F194751F68395D0034A3BB /* SplashModel.m in Sources */,
 				F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */,
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
@@ -4053,9 +4050,10 @@
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				82A0A56D20BEFD7700BD628E /* LXAskDeatilViewController.m in Sources */,
+				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
-				E417013122545F9500848C32 /* WYCElectricityFeeView.m in Sources */,
 				6E1D1BD620CF73F8008DA86C /* NSString+Emoji.m in Sources */,
+				F242DDBA1EBCB2BB005AC411 /* QuerLoginModel.m in Sources */,
 				82398BCA21A4289500300C91 /* SYCEditToolsView.m in Sources */,
 				82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */,
 				82398BC721A4289500300C91 /* SYCToolsCell.m in Sources */,
@@ -4063,9 +4061,11 @@
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
 				E48DB52F223E36AB00B9D744 /* WYCClassBookViewController.m in Sources */,
 				6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */,
+				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				E48DB535223E36BD00B9D744 /* WYCClassAndRemindDataModel.m in Sources */,
 				E470C9FB2227FAD20029501A /* LostViewController.m in Sources */,
 				E470CA022227FAD20029501A /* LZDatePicker.m in Sources */,
+				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
 				E470C9FC2227FAD20029501A /* LZIssueSucceedViewController.m in Sources */,
 				E48DB6A0223E3DAF00B9D744 /* QueryTableViewCell.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
@@ -4073,10 +4073,10 @@
 				F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				6E17201C208C8057008967D9 /* ReportModel.m in Sources */,
-				E417011522545F9500848C32 /* WYCElectricityFeeViewController.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
 				E470CA292228055C0029501A /* LZSearchView.m in Sources */,
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
+				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				82398C0321A42F0F00300C91 /* ListModel.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
 				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,
@@ -4090,6 +4090,7 @@
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
+				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
 				E470CA042227FAD20029501A /* LZConfirmButton.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
@@ -4133,6 +4134,7 @@
 				E41AD267222BF64300360C56 /* ExamPickView.m in Sources */,
 				6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */,
 				6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */,
+				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
 				6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */,
 				E48DB549223E36CF00B9D744 /* WYCClassBookView.m in Sources */,
 				6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */,
@@ -4164,6 +4166,7 @@
 				E48DB545223E36CF00B9D744 /* WYCNoteDetailView.m in Sources */,
 				6E372C6820D34C0500F930A6 /* SheetAlertController.m in Sources */,
 				F2A92CFD1F52EB2600B4CEEF /* UIColor+Helper.m in Sources */,
+				F242DDC11EBCB2BB005AC411 /* QuerRemindViewController.m in Sources */,
 				6E12A339205532A300D07606 /* YouWenResultView.m in Sources */,
 				E48DB54A223E36CF00B9D744 /* WYCClassDetailView.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
@@ -4193,6 +4196,7 @@
 				6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
+				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
