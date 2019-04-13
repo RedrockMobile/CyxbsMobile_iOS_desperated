@@ -38,7 +38,7 @@
 //定义返回请求数据的block类型
 typedef void (^SucessWithJson) (id returnValue);
 typedef void (^ErrorCode) (id errorCode);
-typedef void (^FailureFunction)();
+typedef void (^FailureFunction)(void);
 typedef void (^NetWorkBlock)(BOOL netConnetState);
 
 + (void)NetRequestGETWithRequestURL: (NSString *) requestURLString

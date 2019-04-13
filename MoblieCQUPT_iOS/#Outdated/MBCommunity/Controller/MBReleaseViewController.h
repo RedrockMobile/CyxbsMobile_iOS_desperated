@@ -12,5 +12,5 @@
 
 @interface MBReleaseViewController : BaseViewController
 - (instancetype)initWithTopic:(TopicModel *)topic;
-@property (nonatomic, strong) void(^updateBlock)();
+@property (nonatomic, strong) void(^updateBlock)(void);
 @end

@@ -93,11 +93,6 @@
 
 #pragma mark - tableview delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identify = @"YouWenDetailCell";
-    
-//    YouWenDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-//
-//        cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     YouWenDetailCell *cell;
     if (self.answerModelArr.count > 0) {
         NSInteger index = indexPath.row;
@@ -236,7 +231,7 @@
 
 - (YouWenDetailHeadView *)setTableHeaderView {
     NSUInteger num = self.detailQuestionModel.picArr.count;
-    self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:num];
+    self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:(int)num];
     self.headView.titleLabel.text = self.detailQuestionModel.title;
     self.headView.descriptionLabel.text = self.detailQuestionModel.descriptionStr;
     self.headView.bottomView.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailQuestionModel.avatar]]];

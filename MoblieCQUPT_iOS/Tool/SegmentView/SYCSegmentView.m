@@ -6,10 +6,6 @@
 //  Copyright © 2018年 Shi Yucheng. All rights reserved.
 //
 
-//屏幕长宽
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-
 //默认颜色
 #define SELECTED_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define TITLE_COLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]

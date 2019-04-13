@@ -6,9 +6,7 @@
 //  Copyright © 2016年 GegeChen. All rights reserved.
 //
 
-#define kFont [UIFont fontWithName:@"Arial" size:15]
 #define kTextColor [UIColor colorWithRed:100/255.0 green:100/255.0 blue:100/255.0 alpha:1]
-#define kDetailTextColor [UIColor colorWithRed:70/255.0 green:70/255.0 blue:70/255.0 alpha:0.7]
 
 #import "MyMessagesTableViewCell.h"
 

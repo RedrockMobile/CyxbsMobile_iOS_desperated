@@ -261,7 +261,6 @@
 }
 
 - (void)addViewControllsToScrollView{
-    UIColor *backgroundColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
     self.allYearsVC = [[AllYearsViewController alloc]init];
     //self.allYearsVC .view.backgroundColor = backgroundColor;
     self.allYearsVC .view.frame = CGRectMake(0, 0, _scrollView.bounds.size.width,MAIN_SCREEN_H);
