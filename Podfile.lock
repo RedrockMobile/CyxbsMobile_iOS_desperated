@@ -21,6 +21,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Bugly (2.4.8)
+  - ESTabBarController-swift (2.6.2)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
@@ -51,6 +52,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - Bugly
+  - ESTabBarController-swift
   - FMDB
   - GMImagePicker
   - Masonry
@@ -69,6 +71,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Bugly
+    - ESTabBarController-swift
     - FMDB
     - GMImagePicker
     - Masonry
@@ -83,6 +86,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
   Bugly: da3c02408c14838d498429320545a8e439392978
+  ESTabBarController-swift: f0a8679e43df1e60b7b36bbcaf1dc98ba6273c7d
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   GMImagePicker: 6438a6764d6280b1dbf19b59140313f5a73daeeb
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
@@ -94,6 +98,6 @@ SPEC CHECKSUMS:
   UMengUShare: cd54ae52958426b79aa9193a7b02058d6a6d9aa0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: a0993587c5acafacfaba13f09bd74035734db1e9
+PODFILE CHECKSUM: bde6237582f5d77e96e1087038930341fdba81fc
 
 COCOAPODS: 1.5.3
