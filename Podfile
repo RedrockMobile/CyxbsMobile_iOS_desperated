@@ -20,7 +20,4 @@ target 'MoblieCQUPT_iOS' do
 	# 集成新浪微博(精简版1M)
     	pod 'UMengUShare/Social/ReducedSina'
 	pod 'Bugly'
-  
-  # 自定义Tabbar
-  pod 'ESTabBarController-swift'
 end

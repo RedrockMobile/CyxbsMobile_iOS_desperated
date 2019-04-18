@@ -92,7 +92,6 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "${PODS_ROOT}/ESTabBarController-swift/Sources/en.lproj"
   install_resource "${PODS_ROOT}/GMImagePicker/GMImagePicker/GMEmptyFolder@1x.png"
   install_resource "${PODS_ROOT}/GMImagePicker/GMImagePicker/GMEmptyFolder@2x.png"
   install_resource "${PODS_ROOT}/GMImagePicker/GMImagePicker/GMSelected.png"
@@ -112,7 +111,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialUI/UMSocialSDKResources.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_ROOT}/ESTabBarController-swift/Sources/en.lproj"
   install_resource "${PODS_ROOT}/GMImagePicker/GMImagePicker/GMEmptyFolder@1x.png"
   install_resource "${PODS_ROOT}/GMImagePicker/GMImagePicker/GMEmptyFolder@2x.png"
   install_resource "${PODS_ROOT}/GMImagePicker/GMImagePicker/GMSelected.png"

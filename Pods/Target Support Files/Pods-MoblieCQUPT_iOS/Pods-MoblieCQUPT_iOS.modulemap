@@ -1,6 +1,0 @@
-module Pods_MoblieCQUPT_iOS {
-  umbrella header "Pods-MoblieCQUPT_iOS-umbrella.h"
-
-  export *
-  module * { export * }
-}
