@@ -35,7 +35,7 @@
         <!--finder-->
         <scene sceneID="PB4-oC-gF3">
             <objects>
-                <viewController title="finder" id="NV8-MB-g1R" customClass="SYCFinderViewController" sceneMemberID="viewController">
+                <viewController title="finder" id="NV8-MB-g1R" customClass="SYCMainDiscoverViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nAj-8a-kt5"/>
                         <viewControllerLayoutGuide type="bottom" id="kPD-Ri-GDN"/>

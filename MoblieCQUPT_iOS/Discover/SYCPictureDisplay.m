@@ -7,7 +7,7 @@
 //
 
 #import "SYCPictureDisplay.h"
-#import "LZCarouselModel.h"
+
 #import <SDWebImage/UIImageView+WebCache.h>
 
 /**  说明
@@ -37,32 +37,29 @@
 
 @implementation SYCPictureDisplay
 
-- (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)picDataArray{
-    self = [super initWithFrame:frame];
-    if (self) {
-        _distance = SCREEN_WIDTH * 0.05;
-        _picGap = SCREEN_WIDTH * 0.03;
-        _picHalfGap = _picGap / 2;
-
-        self.dataArray = picDataArray;
-        self.picCount = picDataArray.count;
-        
-
-        //初始化ScrollView
-        self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(_distance, 0, self.frame.size.width - 2 * _distance, self.frame.size.height)];
-        [self addSubview:self.scrollView];
-        self.scrollView.pagingEnabled = YES;
-        self.scrollView.delegate = self;
-        self.scrollView.clipsToBounds = NO;
-        self.scrollView.showsHorizontalScrollIndicator = NO;
-        _picHeight = _scrollView.height * 0.8625;
-        _picWidth = _scrollView.width - 2 * _picHalfGap;
-    }
-    return self;
+- (void)setData:(NSArray<LZCarouselModel *> *)dataArray{
+    _distance = SCREEN_WIDTH * 0.05;
+    _picGap = SCREEN_WIDTH * 0.03;
+    _picHalfGap = _picGap / 2;
+    
+    self.dataArray = dataArray;
+    self.picCount = dataArray.count;
+    
+    [self buildUI];
 }
 
-- (void)layoutSubviews{
-    //循环创建添加轮播图片, 前后各添加一张
+- (void)buildUI{
+        //初始化ScrollView
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(_distance, 0, self.frame.size.width - 2 * _distance, self.frame.size.height)];
+    [self addSubview:self.scrollView];
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
+    self.scrollView.clipsToBounds = NO;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    _picHeight = _scrollView.height * 0.8625;
+    _picWidth = _scrollView.width - 2 * _picHalfGap;
+    
+        //循环创建添加轮播图片, 前后各添加一张
     for (int i = 0; i < _dataArray.count + 2; i++) {
         for (UIView *underView in self.scrollView.subviews) {
             if (underView.tag == 400 + i) {
@@ -78,16 +75,16 @@
         picImageView.layer.cornerRadius = 15.0;
         picImageView.contentMode = UIViewContentModeScaleAspectFill;
         picImageView.clipsToBounds = YES;
-
+        
         
         /*
-        *  假如图像宽为a，两张图片之间的间距为Gap
-        *  图片位置对应关系:
-        *  0 -> 1 * halfGap ;
-        *  1 -> 3 * halfGap + a ;
-        *  2 -> 5 * halfGap + 2 * a ;
-        *  i -> (2 * i + 1) * halfGap + i * a ;
-        */
+         *  假如图像宽为a，两张图片之间的间距为Gap
+         *  图片位置对应关系:
+         *  0 -> 1 * halfGap ;
+         *  1 -> 3 * halfGap + a ;
+         *  2 -> 5 * halfGap + 2 * a ;
+         *  i -> (2 * i + 1) * halfGap + i * a ;
+         */
         picImageView.frame = CGRectMake((2 * i + 1) * _picHalfGap + i * _picWidth, (_scrollView.height - _picHeight) / 2, _picWidth, _picHeight);
         
         if (i == 0) {
@@ -103,17 +100,17 @@
                             placeholderImage:[UIImage imageNamed:@"cqupt3.jpg"]];
             self.index = i - 1;
         }
-
+        
         [_scrollView addSubview:picImageView];
     }
     
-    //设置轮播图当前的显示区域
+        //设置轮播图当前的显示区域
     self.scrollView.contentOffset = CGPointMake(self.scrollView.width, 0);
     self.scrollView.contentSize = CGSizeMake(self.scrollView.width * (_picCount + 2), 0);
     [self changeImgViewFrame];
     _offsetX = _scrollView.contentOffset.x;
     
-    //设置标签指示器
+        //设置标签指示器
     CGFloat indicatorWidth = _scrollView.width / 2;
     CGFloat indocatorHeight = 2.5;
     CGFloat segmentWidth;
@@ -130,7 +127,7 @@
     }
     _segmentArray[0].selected = YES;
     
-    //单击图片手势
+        //单击图片手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;

@@ -6,27 +6,24 @@
 //  Copyright © 2018 Orange-W. All rights reserved.
 //
 
-#import "SYCCustomToolsControl.h"
+#import "SYCCustomToolsControlView.h"
 #import "SYCEditToolsView.h"
 #import "BaseNavigationController.h"
 
-@interface SYCCustomToolsControl ()
-{
+@interface SYCCustomToolsControlView (){
     BaseNavigationController *_nav;
-    
     SYCEditToolsView *_channelView;
-    
     ChannelBlock _block;
 }
 @end
 
-@implementation SYCCustomToolsControl
+@implementation SYCCustomToolsControlView
 
-+ (SYCCustomToolsControl *)shareControl{
-    static SYCCustomToolsControl *control = nil;
++ (SYCCustomToolsControlView *)shareInstance{
+    static SYCCustomToolsControlView *control = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        control = [[SYCCustomToolsControl alloc] init];
+        control = [[SYCCustomToolsControlView alloc] init];
     });
     return control;
 }
@@ -47,8 +44,7 @@
     _nav.topViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backMethod)];
 }
 
-- (void)backMethod
-{
+- (void)backMethod{
     [UIView animateWithDuration:0.3 animations:^{
         CGRect frame = _nav.view.frame;
         frame.origin.y = - _nav.view.bounds.size.height;
@@ -74,8 +70,6 @@
         _nav.view.alpha = 1;
         _nav.view.frame = [UIScreen mainScreen].bounds;
     } completion:nil];
-    
-    
 }
 
 @end

@@ -170,11 +170,11 @@
 		82280CBA1F612A2300A5921E /* 灰色叉叉@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CB81F612A2300A5921E /* 灰色叉叉@2x.png */; };
 		82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CB91F612A2300A5921E /* 灰色叉叉@3x.png */; };
 		82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CC01F613D8800A5921E /* LXDetailCommentView.m */; };
-		82398BC421A4289500300C91 /* SYCFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB121A4289500300C91 /* SYCFinderViewController.m */; };
+		82398BC421A4289500300C91 /* SYCMainDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */; };
 		82398BC521A4289500300C91 /* SYCPictureDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB221A4289500300C91 /* SYCPictureDisplay.m */; };
 		82398BC621A4289500300C91 /* SYCCustomLayoutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */; };
 		82398BC721A4289500300C91 /* SYCToolsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB621A4289500300C91 /* SYCToolsCell.m */; };
-		82398BC821A4289500300C91 /* SYCCustomToolsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB921A4289500300C91 /* SYCCustomToolsControl.m */; };
+		82398BC821A4289500300C91 /* SYCCustomToolsControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB921A4289500300C91 /* SYCCustomToolsControlView.m */; };
 		82398BC921A4289500300C91 /* SYCEditToolsViewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BBA21A4289500300C91 /* SYCEditToolsViewHeader.m */; };
 		82398BCA21A4289500300C91 /* SYCEditToolsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BBC21A4289500300C91 /* SYCEditToolsView.m */; };
 		82398BCB21A4289500300C91 /* SYCToolModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BC021A4289500300C91 /* SYCToolModel.m */; };
@@ -887,20 +887,20 @@
 		82280CB91F612A2300A5921E /* 灰色叉叉@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "灰色叉叉@3x.png"; sourceTree = "<group>"; };
 		82280CBF1F613D8800A5921E /* LXDetailCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDetailCommentView.h; sourceTree = "<group>"; };
 		82280CC01F613D8800A5921E /* LXDetailCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDetailCommentView.m; sourceTree = "<group>"; };
-		82398BB121A4289500300C91 /* SYCFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCFinderViewController.m; sourceTree = "<group>"; };
+		82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCMainDiscoverViewController.m; sourceTree = "<group>"; };
 		82398BB221A4289500300C91 /* SYCPictureDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCPictureDisplay.m; sourceTree = "<group>"; };
 		82398BB321A4289500300C91 /* SYCToolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCToolModel.h; sourceTree = "<group>"; };
 		82398BB421A4289500300C91 /* LZCarouselModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCarouselModel.h; sourceTree = "<group>"; };
 		82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomLayoutModel.m; sourceTree = "<group>"; };
 		82398BB621A4289500300C91 /* SYCToolsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCToolsCell.m; sourceTree = "<group>"; };
 		82398BB821A4289500300C91 /* SYCEditToolsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCEditToolsView.h; sourceTree = "<group>"; };
-		82398BB921A4289500300C91 /* SYCCustomToolsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomToolsControl.m; sourceTree = "<group>"; };
+		82398BB921A4289500300C91 /* SYCCustomToolsControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomToolsControlView.m; sourceTree = "<group>"; };
 		82398BBA21A4289500300C91 /* SYCEditToolsViewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCEditToolsViewHeader.m; sourceTree = "<group>"; };
-		82398BBB21A4289500300C91 /* SYCCustomToolsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCCustomToolsControl.h; sourceTree = "<group>"; };
+		82398BBB21A4289500300C91 /* SYCCustomToolsControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCCustomToolsControlView.h; sourceTree = "<group>"; };
 		82398BBC21A4289500300C91 /* SYCEditToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCEditToolsView.m; sourceTree = "<group>"; };
 		82398BBD21A4289500300C91 /* SYCEditToolsViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCEditToolsViewHeader.h; sourceTree = "<group>"; };
 		82398BBE21A4289500300C91 /* SYCPictureDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCPictureDisplay.h; sourceTree = "<group>"; };
-		82398BBF21A4289500300C91 /* SYCFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCFinderViewController.h; sourceTree = "<group>"; };
+		82398BBF21A4289500300C91 /* SYCMainDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCMainDiscoverViewController.h; sourceTree = "<group>"; };
 		82398BC021A4289500300C91 /* SYCToolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCToolModel.m; sourceTree = "<group>"; };
 		82398BC121A4289500300C91 /* LZCarouselModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCarouselModel.m; sourceTree = "<group>"; };
 		82398BC221A4289500300C91 /* SYCToolsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCToolsCell.h; sourceTree = "<group>"; };
@@ -1845,8 +1845,8 @@
 			children = (
 				82398BB821A4289500300C91 /* SYCEditToolsView.h */,
 				82398BBC21A4289500300C91 /* SYCEditToolsView.m */,
-				82398BBB21A4289500300C91 /* SYCCustomToolsControl.h */,
-				82398BB921A4289500300C91 /* SYCCustomToolsControl.m */,
+				82398BBB21A4289500300C91 /* SYCCustomToolsControlView.h */,
+				82398BB921A4289500300C91 /* SYCCustomToolsControlView.m */,
 				82398BBD21A4289500300C91 /* SYCEditToolsViewHeader.h */,
 				82398BBA21A4289500300C91 /* SYCEditToolsViewHeader.m */,
 			);
@@ -2384,8 +2384,8 @@
 			isa = PBXGroup;
 			children = (
 				82398BB721A4289500300C91 /* EditTools */,
-				82398BBF21A4289500300C91 /* SYCFinderViewController.h */,
-				82398BB121A4289500300C91 /* SYCFinderViewController.m */,
+				82398BBF21A4289500300C91 /* SYCMainDiscoverViewController.h */,
+				82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */,
 				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
 				82398BB221A4289500300C91 /* SYCPictureDisplay.m */,
 				82398BB321A4289500300C91 /* SYCToolModel.h */,
@@ -4028,7 +4028,7 @@
 				E48DB6A5223E3DAF00B9D744 /* QueryModel.m in Sources */,
 				E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
-				82398BC421A4289500300C91 /* SYCFinderViewController.m in Sources */,
+				82398BC421A4289500300C91 /* SYCMainDiscoverViewController.m in Sources */,
 				F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */,
 				E48DB6A4223E3DAF00B9D744 /* QueryDataModel.m in Sources */,
 				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
@@ -4122,7 +4122,7 @@
 				6E3AB64620AD76A3003A65F5 /* YouWenBottomButtonView.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
-				82398BC821A4289500300C91 /* SYCCustomToolsControl.m in Sources */,
+				82398BC821A4289500300C91 /* SYCCustomToolsControlView.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				E48DB6A3223E3DAF00B9D744 /* QueryHeader.m in Sources */,
 				82398C0221A42F0F00300C91 /* DLChooseClassListViewController.m in Sources */,

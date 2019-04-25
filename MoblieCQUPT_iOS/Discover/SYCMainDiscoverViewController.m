@@ -5,11 +5,12 @@
 //  Created by 施昱丞 on 2018/9/26.
 //  Copyright © 2018 Orange-W. All rights reserved.
 //
+#define SCREEN_MARGIN 10
 
-#import "SYCFinderViewController.h"
+#import "SYCMainDiscoverViewController.h"
 #import "SYCPictureDisplay.h"
 #import "SYCToolsCell.h"
-#import "SYCCustomToolsControl.h"
+#import "SYCCustomToolsControlView.h"
 #import "SYCCustomLayoutModel.h"
 #import "LZCarouselModel.h"
 #import "SYCToolModel.h"
@@ -25,8 +26,9 @@
 #import "QuerLoginViewController.h"
 #import "HttpClient.h"
 #import "MBProgressHUD.h"
+#import <Masonry.h>
 
-@interface SYCFinderViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
+@interface SYCMainDiscoverViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray<LZCarouselModel *> *carouselDataArray;
 @property (nonatomic, strong) SYCPictureDisplay *pictureDisplay;
@@ -34,60 +36,74 @@
 @property (nonatomic, strong) NSArray *inusedTools;
 @property (nonatomic, strong) UICollectionView *toolsView;
 @property (nonatomic, strong) NSString *filePath;
-@property BOOL allDownload;
 
 @end
 
-@implementation SYCFinderViewController
+
+@implementation SYCMainDiscoverViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _allDownload = NO;
-    _filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"carouselDataArray.archiver"];
     _carouselDataArray = [[NSMutableArray alloc] init];
+    self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
+
+    [self bulidUI];
     [self getNetworkData];
+}
+
+
+- (void)bulidUI{
+    self.view.backgroundColor = BACK_COLOR;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     
-    self.view.backgroundColor = RGBColor(246, 246, 246, 1.0);
-    
-    self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, SCREEN_HEIGHT * 1.1);
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBARHEIGHT - TABBARHEIGHT - NVGBARHEIGHT)];
+
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
-    CGFloat backgroundWidth = SCREEN_WIDTH * 0.93;
-    CGFloat backgroundHeight = backgroundWidth * 1;
-    UIView *backgroundView = [[UIView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - backgroundWidth) / 2.0, SCREEN_WIDTH * 0.55 + 70, backgroundWidth, backgroundHeight)];
-    
-    backgroundView.backgroundColor = [UIColor whiteColor];
-    backgroundView.layer.masksToBounds = YES;
-    backgroundView.layer.cornerRadius = 10.0;
-    [self.scrollView addSubview:backgroundView];
-    
+    self.pictureDisplay = [[SYCPictureDisplay alloc] init];
+    [self.scrollView addSubview:self.pictureDisplay];
+    self.pictureDisplay.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.pictureDisplay mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.scrollView).with.offset(20);
+        make.left.and.right.equalTo(self.view);
+        make.height.equalTo(@(SCREEN_WIDTH * 0.55));
+    }];
 
-    
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
-    layout.itemSize = CGSizeMake(backgroundWidth / 3 - 7, backgroundHeight / 3 - 7);
-    self.toolsView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, backgroundWidth, backgroundHeight) collectionViewLayout:layout];
-    self.toolsView.backgroundColor = [UIColor whiteColor];
+    //CollectionViewn中内边距大约为10，每行3个按钮中间2个内边距2 * 10 = 20
+    CGFloat itemWidth = ((SCREEN_WIDTH - 2 * SCREEN_MARGIN - 30) / 3);
+    CGFloat itemHeight = itemWidth * 1.2;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    self.toolsView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:layout];
+    self.toolsView.backgroundColor = [UIColor clearColor];
+    self.toolsView.scrollEnabled = NO;
     self.toolsView.delegate = self;
     self.toolsView.dataSource = self;
     [self.toolsView registerClass:[SYCToolsCell class] forCellWithReuseIdentifier:@"SYCToolsCell"];
+    [self.scrollView addSubview:self.toolsView];
+    double rows = ceil(self.inusedTools.count / 3);
+    self.toolsView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.toolsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.pictureDisplay.mas_bottom).with.offset(50);
+        make.left.equalTo(self.view.mas_left).with.offset(SCREEN_MARGIN);
+        make.right.equalTo(self.view.mas_right).with.offset(-SCREEN_MARGIN);
+        make.height.equalTo(@(rows * itemHeight + (rows - 1) * 10));
+    }];
     
-    UIView *shadowView = [[UIView alloc] initWithFrame:CGRectMake(backgroundView.frame.origin.x + 4, backgroundView.frame.origin.y + 4, backgroundView.frame.size.width - 8, backgroundView.frame.size.height - 8)];
-    shadowView.backgroundColor = [UIColor whiteColor];
-    shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
-    shadowView.layer.shadowOpacity = 0.1;
-    shadowView.layer.shadowOffset = CGSizeMake(0, 7);
-    shadowView.layer.shadowRadius = 5;
-    [backgroundView addSubview:self.toolsView];
-    [_scrollView addSubview:shadowView];
-    [_scrollView sendSubviewToBack:shadowView];
+    UIView *toolBackgroudView = [[UIView alloc] init];
+    toolBackgroudView.backgroundColor = [UIColor whiteColor];
+    toolBackgroudView.layer.cornerRadius = 10.f;
+    [self.scrollView addSubview:toolBackgroudView];
+    [self.scrollView sendSubviewToBack:toolBackgroudView];
+    self.toolsView.translatesAutoresizingMaskIntoConstraints = NO;
+    [toolBackgroudView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.and.centerY.height.width.equalTo(self.toolsView);
+    }];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
-    
-    self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, 30 + SCREEN_WIDTH * 0.55 + 50 + (rows * itemHeight + (rows - 1) * 10));
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -99,14 +115,15 @@
     return self.inusedTools.count;
 }
 
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SYCToolsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SYCToolsCell" forIndexPath:indexPath];
     SYCToolModel *tool = self.inusedTools[[indexPath row]];
     cell.image = [UIImage imageNamed:tool.imageName];
     cell.title = tool.title;
-    
     return cell;
 }
+
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     SYCToolModel *tool = self.inusedTools[[indexPath row]];
@@ -122,8 +139,9 @@
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
+
 -(void)showChannel{
-    [[SYCCustomToolsControl shareControl] showChannelViewWithInUseTitles:self.inusedTools unUseTitles:[SYCCustomLayoutModel sharedInstance].unuseTools finish:^(NSArray *inUseTitles, NSArray *unUseTitles) {
+    [[SYCCustomToolsControlView shareInstance] showChannelViewWithInUseTitles:self.inusedTools unUseTitles:[SYCCustomLayoutModel sharedInstance].unuseTools finish:^(NSArray *inUseTitles, NSArray *unUseTitles) {
         self.inusedTools = inUseTitles;
         [SYCCustomLayoutModel sharedInstance].inuseTools = [inUseTitles copy];
         [SYCCustomLayoutModel sharedInstance].unuseTools = [unUseTitles copy];
@@ -131,6 +149,7 @@
         [self.toolsView reloadData];
     }];
 }
+
 
 - (void)tint:(UIViewController *)controller{
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
@@ -161,15 +180,10 @@
             model.keyword = [picData objectForKey:@"keyword"];
             [_carouselDataArray addObject:model];
         }
-        [self loadPicDisplay:_carouselDataArray];
+        [self.pictureDisplay setData:_carouselDataArray];
     } failure:^(NSURLSessionDataTask *task, NSError *error){
         NSLog(@"获取轮播图图片失败");
     }];
-}
-
-- (void)loadPicDisplay:(NSArray<LZCarouselModel *> *)picData{
-    self.pictureDisplay = [[SYCPictureDisplay alloc] initWithFrame:CGRectMake(0, 30, SCREEN_WIDTH, SCREEN_WIDTH * 0.55) data:_carouselDataArray];
-    [self.scrollView addSubview:self.pictureDisplay];
 }
 
 - (void)viewDidAppear:(BOOL)animated{

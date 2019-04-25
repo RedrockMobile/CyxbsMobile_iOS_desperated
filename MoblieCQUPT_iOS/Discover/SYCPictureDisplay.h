@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LZCarouselModel.h"
 
 @protocol SYCPictureDisplayDelegate <NSObject>
 
@@ -18,6 +19,6 @@
 
 @property (nonatomic, strong) id<SYCPictureDisplayDelegate> delegate;
 
-- (instancetype)initWithFrame:(CGRect)frame data:(NSArray *)data;
+- (void)setData:(NSArray<LZCarouselModel *> *)dataArray;
 
 @end

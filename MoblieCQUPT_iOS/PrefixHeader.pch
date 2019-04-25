@@ -24,7 +24,7 @@
     #define DDLog(xx, ...)     ;
     //#define NSLog(format, ...) ;
 #endif
-#define BACKCOLOR [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
+#define BACK_COLOR [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define MAIN_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define FONT_COLOR  [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]
 //#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
@@ -126,16 +126,33 @@
 //补考接口
 #define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
 
-#define kSegmentViewTitleHeight (SCREEN_HEIGHT*50/667)
+/* 全面屏相关 */
+#define IS_IPHONEX ((SCREEN_WIDTH == 375.f && SCREEN_HEIGHT == 812.f) || (SCREEN_WIDTH == 414.f && SCREEN_HEIGHT == 896.f)? YES : NO)
+#define SAFE_AREA_BOTTOM (34.f)
+
+/* 屏幕宽高 */
 #define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
-#define NVGBARHEIGHT (44)
-#define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
-#define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
+/* TabBar高度 */
+#define TABBARHEIGHT (49.f)
 
-#define  IS_IPHONEX ((SCREEN_WIDTH == 375.f && SCREEN_HEIGHT == 812.f) || (SCREEN_WIDTH == 414.f && SCREEN_HEIGHT == 896.f)? YES : NO)
-#define  SAFE_AREA_BOTTOM (IS_IPHONEX ? 34.f : 0.f)
+/* 状态栏高度 */
+#define STATUSBARHEIGHT (IS_IPHONEX ? (44.f) : (20.f))
+
+/* NavigationBar高度 */
+#define NVGBARHEIGHT (44.f)
+
+/* 顶部总高度 */
+#define TOTAL_TOP_HEIGHT (STATUSBARHEIGHT + NVGBARHEIGHT)
+
+#define kSegmentViewTitleHeight (SCREEN_HEIGHT * 50 / 667)
+
+
+
+
+
+
 
 
 #define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)
