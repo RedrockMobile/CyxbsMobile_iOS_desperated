@@ -44,6 +44,7 @@
     soreLab.attributedText = soreAttributedStr;
     [self.whiteView addSubview:soreLab];
 }
+
 - (void)confirm{
     NSNotification *notification = [[NSNotification alloc]initWithName:@"finalNotifi" object:nil userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];

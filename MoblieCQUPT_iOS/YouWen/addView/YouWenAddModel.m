@@ -21,23 +21,17 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSMutableDictionary *dic = @{@"stuNum":[userDefaults objectForKey:@"stuNum"],@"idNum":[userDefaults objectForKey:@"idNum"]}.mutableCopy;
         [dic addEntriesFromDictionary:inf];
-        
-        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
-        fmt.dateFormat = @"yyyy年MM月dd日 HH时mm分";
-        NSDate *date = [fmt dateFromString:dic[@"time"]];
-        fmt.dateFormat = @"yyyy-MM-dd HH:mm";
-        NSString *timeString = [NSString stringWithFormat:@"%@:00", [fmt stringFromDate:date]];
-        dic[@"time"] = timeString;
+
         _inf = [[NSDictionary alloc] initWithDictionary:dic.copy];
         _imageArry = imgs.copy;
-        
-        
     }
+    NSLog(@"Post Data:%@", _inf);
     return self;
 }
 -(void)postTheNewInformation{
+    
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:YOUWEN_ALL_QUESTIONS_API method:HttpRequestPost parameters:_inf prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_ADD_QUESTION_API method:HttpRequestPost parameters:_inf prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *qusId = responseObject[@"data"][@"id"];
         if (_imageArry.count){
             [self postTheImageWithId:qusId];
@@ -46,7 +40,8 @@
             [self.delegate missionComplete];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+        NSLog(@"%@", error);
+        NSLog(@"!!!");
     }];
 }
 

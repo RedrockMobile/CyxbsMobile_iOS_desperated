@@ -42,7 +42,13 @@
 
 
 - (void)quit{
-    [self removeFromSuperview];
+    [UIView animateWithDuration:0.3f animations:^{
+        self.whiteView.centerY = SCREEN_HEIGHT + 200;
+        self.backgroundColor = [UIColor clearColor];
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+    
 }
 
 - (void)confirm{

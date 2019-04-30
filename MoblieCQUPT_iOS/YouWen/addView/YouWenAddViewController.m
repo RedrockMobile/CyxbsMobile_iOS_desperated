@@ -170,11 +170,11 @@
     _bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bottomView];
     
-    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [photoButton setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-    [photoButton addTarget:self action:@selector(selectImage)
-          forControlEvents:UIControlEventTouchUpInside];
-    [_bottomView addSubview:photoButton];
+//    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    [photoButton setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
+//    [photoButton addTarget:self action:@selector(selectImage)
+//          forControlEvents:UIControlEventTouchUpInside];
+//    [_bottomView addSubview:photoButton];
     
     UIButton *topicButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [topicButton setImage:[UIImage imageNamed:@"topic"] forState:UIControlStateNormal];
@@ -194,13 +194,13 @@
         make.height.mas_equalTo(25);
     }];
     
-    [photoButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(topicButton.mas_right).
-        mas_offset(37);
-        make.top.mas_equalTo(_bottomView).mas_offset(13);
-        make.width.mas_equalTo(24);
-        make.height.mas_equalTo(24);
-    }];
+//    [photoButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.mas_equalTo(topicButton.mas_right).
+//        mas_offset(37);
+//        make.top.mas_equalTo(_bottomView).mas_offset(13);
+//        make.width.mas_equalTo(24);
+//        make.height.mas_equalTo(24);
+//    }];
     
     [anonymityButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(_bottomView).mas_offset(-15);
@@ -212,10 +212,10 @@
 
 - (void)LayOut{
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view);
+        make.bottom.equalTo(self.view);
         make.left.mas_equalTo(self.view);
         make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(50 + SAFE_AREA_BOTTOM);
     }];
     [_bottomView.superview layoutIfNeeded];
     
@@ -353,9 +353,14 @@
 }
 
 - (void)postTheNew{
-
     NSString *title = [_titleTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
     NSString *detail = [_detailTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy年mm月dd日HH时mm分";
+    NSDate *aDate = [dateFormatter dateFromString:_time];
+    dateFormatter.dateFormat = @"yyyy-mm-dd HH:mm:ss";
+    _time = [dateFormatter stringFromDate:aDate];
     
     
     NSDictionary *dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
@@ -377,9 +382,10 @@
     [_hud removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 //照片
 - (void)selectImage{
-    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:150];
+    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:150 + SAFE_AREA_BOTTOM];
     UIButton *pictureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [pictureBtn setTitle:@"从相册中选择" forState:UIControlStateNormal];
     [pictureBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
@@ -404,6 +410,7 @@
     cancelButton.frame = CGRectMake(0, 100, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:cancelButton];
 }
+
 - (void)selectPicture{
     [_photoView removeFromSuperview];
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];

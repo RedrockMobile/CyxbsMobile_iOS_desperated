@@ -45,9 +45,9 @@
 //弹出下面选择话题界面的方法
 - (void)setUpWhiteView:(CGFloat)height{
     _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, height)];
-    [UIView animateWithDuration:0.5 animations:^{
+    [UIView animateWithDuration:0.6 delay:0.f usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
         _whiteView.centerY = SCREEN_HEIGHT - height / 2;
-    }];
+    } completion:nil];
     _whiteView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_whiteView];
 }

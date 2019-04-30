@@ -19,8 +19,8 @@
     [self.cancelBtn setBackgroundImage:[UIImage imageNamed:@"chacha"] forState:UIControlStateNormal];
     self.cancelBtn.size = CGSizeMake(25, 25);
     self.cancelBtn.centerX = self.whiteView.centerX;
-    [self.cancelBtn setTitle:@"" forState:UIControlStateNormal];
     self.cancelBtn.centerY = self.whiteView.height - 50;
+    [self.cancelBtn setTitle:@"" forState:UIControlStateNormal];
 
     _btnArray = [NSMutableArray array];
     UILabel *titleLab = [[UILabel alloc] init];
@@ -34,7 +34,7 @@
         make.top.equalTo(self.whiteView).offset(15);
         make.centerX.equalTo(self.whiteView);
     }];
-    _topics = @[@"学习",  @"生活", @"情感", @"其他"];
+    _topics = @[@"学习", @"生活", @"情感", @"其他"];
     
     NSArray *topicImages = @[@"learning", @"live", @"emotion", @"other"];
     NSArray *selectImages = @[@"learning_in", @"live_in", @"emotion_in", @"other_in"];
