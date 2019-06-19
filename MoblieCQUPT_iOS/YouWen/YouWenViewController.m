@@ -71,7 +71,7 @@
 //点击加载按钮调用的方法
 - (void)setNewQuestion{
     YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
-    [topicView addDetail];
+    [topicView setUpUI];
     topicView.topicDelegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:topicView];
     

@@ -73,8 +73,8 @@
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     [self removeFromSuperview];
 }
-- (void)addDetail{
-    [super addDetail];
+- (void)setUpUI{
+    [super setUpUI];
     _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.blackView.bottom, SCREEN_WIDTH, self.whiteView.height - self.blackView.bottom)];
     _pickView.delegate = self;
     _pickView.dataSource = self;

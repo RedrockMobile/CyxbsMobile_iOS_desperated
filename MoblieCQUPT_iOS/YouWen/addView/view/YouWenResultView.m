@@ -9,8 +9,8 @@
 #import "YouWenResultView.h"
 
 @implementation YouWenResultView
-- (void)addDetail{
-    [super addDetail];
+- (void)setUpUI{
+    [super setUpUI];
     
     [self.confirBtn setTitle:@"发布" forState:UIControlStateNormal];
     UILabel *titleLab = [[UILabel alloc] init];

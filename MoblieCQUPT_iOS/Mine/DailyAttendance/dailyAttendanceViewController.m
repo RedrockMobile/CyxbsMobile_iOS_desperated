@@ -274,7 +274,7 @@
     [self.navigationController pushViewController:view animated:YES];
 }
 - (void)moreInfor{
-    TransparentView *view = [[TransparentView alloc] initWithNews:@[@"signInRule",@"soreDetail",@"签到规则",@"积分说明"]];
+    TransparentView *view = [[TransparentView alloc] initWithTypes:@[@"signInRule",@"soreDetail",@"签到规则",@"积分说明"]];
     view.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }

@@ -14,8 +14,8 @@
 @property (copy, nonatomic) NSString *subject;
 @end
 @implementation YouWenSubjectView
-- (void)addDetail{
-    [super addDetail];
+- (void)setUpUI{
+    [super setUpUI];
     self.cancelBtn.hidden = YES;
     self.blackView.hidden = YES;
     _btnArray = [NSMutableArray array];

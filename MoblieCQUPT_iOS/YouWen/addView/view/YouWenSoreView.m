@@ -21,8 +21,8 @@
 @end
 @implementation YouWenSoreView
 
-- (void)addDetail{
-    [super addDetail];
+- (void)setUpUI{
+    [super setUpUI];
     _btnArray = [NSMutableArray array];
     _restSore = [NSString string];
     _restSoreLab = [[UILabel alloc] init];

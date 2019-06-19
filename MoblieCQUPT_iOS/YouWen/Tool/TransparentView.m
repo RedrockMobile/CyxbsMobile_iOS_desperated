@@ -11,16 +11,15 @@
 - (instancetype)initTheWhiteViewHeight:(CGFloat)height{
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         [self setSelf];
-        [self setUpWhiteView:height];
-
+        [self popWhiteView:height];
     }
     return self;
 }
 
-- (instancetype)initWithNews:(NSArray *)array{
+- (instancetype)initWithTypes:(NSArray *)types{
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
         [self setSelf];
-        [self setUpMessage:array];
+        [self setUpMessage:types];
     }
     return self;
 }
@@ -42,8 +41,8 @@
     }
 }
 
-//弹出下面选择话题界面的方法
-- (void)setUpWhiteView:(CGFloat)height{
+//弹出白色视图方法
+- (void)popWhiteView:(CGFloat)height{
     _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, height)];
     [UIView animateWithDuration:0.6 delay:0.f usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
         _whiteView.centerY = SCREEN_HEIGHT - height / 2;
@@ -51,6 +50,15 @@
     _whiteView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_whiteView];
 }
+
+//压入白色视图方法
+- (void)pushWhiteView{
+    [UIView animateWithDuration:0.6 delay:0.f usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
+        _whiteView.centerY = -SCREEN_HEIGHT;
+    } completion:nil];
+    _whiteView.hidden = YES;
+}
+
 
 - (void)setUpMessage:(NSArray *)array{
    NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:13]};
@@ -115,4 +123,5 @@
     [self removeFromSuperview];
     [self.delegate newView:btn];
 }
+
 @end

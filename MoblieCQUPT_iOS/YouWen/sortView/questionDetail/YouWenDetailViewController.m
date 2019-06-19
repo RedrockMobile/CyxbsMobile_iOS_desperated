@@ -441,7 +441,7 @@
     [self.navigationController pushViewController:view animated:YES];
 }
 - (void)moreInfor{
-    TransparentView *view = [[TransparentView alloc] initWithNews:@[@"report",@"share",@"举报",@"分享"]];
+    TransparentView *view = [[TransparentView alloc] initWithTypes:@[@"report",@"share",@"举报",@"分享"]];
     view.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }

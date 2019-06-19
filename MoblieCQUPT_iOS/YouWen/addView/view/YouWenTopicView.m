@@ -13,8 +13,8 @@
 @end
 @implementation YouWenTopicView
 
-- (void)addDetail{
-    [super addDetail];
+- (void)setUpUI{
+    [super setUpUI];
     
     [self.cancelBtn setBackgroundImage:[UIImage imageNamed:@"chacha"] forState:UIControlStateNormal];
     self.cancelBtn.size = CGSizeMake(25, 25);
