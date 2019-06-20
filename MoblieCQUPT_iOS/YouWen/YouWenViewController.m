@@ -46,7 +46,8 @@
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
-    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBARHEIGHT - TABBARHEIGHT - NVGBARHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
+    SYCSegmentView *segView = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TOTAL_TOP_HEIGHT - TABBARHEIGHT) controllers:views type:SYCSegmentViewTypeNormal];
+    
     [self.view addSubview:segView];
     
     //加载添加按钮

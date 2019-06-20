@@ -135,10 +135,10 @@
 #define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
 
 /* TabBar高度 */
-#define TABBARHEIGHT (49.f)
+#define TABBARHEIGHT (IS_IPHONEX ? (49.f + SAFE_AREA_BOTTOM) : (49.f))
 
 /* 状态栏高度 */
-#define STATUSBARHEIGHT (IS_IPHONEX ? (44.f) : (20.f))
+#define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
 
 /* NavigationBar高度 */
 #define NVGBARHEIGHT (44.f)
@@ -147,8 +147,6 @@
 #define TOTAL_TOP_HEIGHT (STATUSBARHEIGHT + NVGBARHEIGHT)
 
 #define kSegmentViewTitleHeight (SCREEN_HEIGHT * 50 / 667)
-
-
 
 
 
