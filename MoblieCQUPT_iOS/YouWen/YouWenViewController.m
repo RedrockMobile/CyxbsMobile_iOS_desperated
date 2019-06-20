@@ -16,6 +16,7 @@
 #import "LoginViewController.h"
 
 @interface YouWenViewController () <whatTopic>
+
 //添加新问题按钮
 @property (strong, nonatomic) UIButton *askBtn;
 
@@ -26,19 +27,7 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    if (![UserDefaultTool getStuNum]) {
-        [self tint:self];
-        return;
-    }else{
-        [self setUpUI];
-    }
-}
-
-- (void)viewDidAppear:(BOOL)animated{
-    if (![UserDefaultTool getStuNum]) {
-        [self tint:self];
-        return;
-    }
+    [self setUpUI];
 }
 
 //加载界面方法
@@ -47,13 +36,13 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     YouWenSortViewController *emtionView = [[YouWenSortViewController alloc] initViewStyle:@"情感"];
     emtionView.title = @"情感";
-    YouWenSortViewController *otherView = [[YouWenSortViewController alloc] initViewStyle:@"其他"];
-    otherView.title = @"其他";
     YouWenSortViewController *learningView = [[YouWenSortViewController alloc] initViewStyle:@"学习"];
     learningView.title = @"学习";
+    YouWenSortViewController *otherView = [[YouWenSortViewController alloc] initViewStyle:@"其他"];
+    otherView.title = @"其他";
     YouWenSortViewController *allView = [[YouWenSortViewController alloc] initViewStyle:@"全部"];
     allView.title = @"全部";
-    NSArray *views = @[emtionView, otherView, learningView, allView];
+    NSArray *views = @[allView, emtionView, learningView, otherView];
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }
@@ -61,11 +50,18 @@
     [self.view addSubview:segView];
     
     //加载添加按钮
+    CGFloat buttonRadius = 40;
     _askBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [_askBtn setImage:[UIImage imageNamed:@"AskQuestion"] forState:UIControlStateNormal];
-    _askBtn.frame = CGRectMake(SCREEN_WIDTH - 28 - 58 * autoSizeScaleX, segView.height - 58 * autoSizeScaleX - 20, 58 * autoSizeScaleX, 58 * autoSizeScaleX);
-    [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_askBtn];
+    [_askBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.mas_equalTo(buttonRadius * 2);
+        make.height.mas_equalTo(buttonRadius * 2);
+        make.bottom.equalTo(segView);
+        make.right.equalTo(segView).with.offset(-10);
+    }];
+    [_askBtn addTarget:self action:@selector(setNewQuestion) forControlEvents:UIControlEventTouchUpInside];
+    
 }
 
 //点击加载按钮调用的方法
@@ -82,25 +78,6 @@
     YouWenAddViewController *addView = [[YouWenAddViewController alloc] initWithStyle:style];
     addView.hidesBottomBarWhenPushed = YES;
      [self.navigationController pushViewController:addView animated:YES];
-}
-
-//登陆弹窗
-- (void)tint:(UIViewController *)controller{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
-    __weak typeof(self) weakSelf = self;
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        LoginViewController *LVC = [[LoginViewController alloc] init];
-        LVC.loginSuccessHandler = ^(BOOL success) {
-            if (success) {
-                [self setUpUI];
-            }
-        };
-        [weakSelf presentViewController:LVC animated:YES completion:nil];
-    }];
-    [alertC addAction:cancel];
-    [alertC addAction:confirm];
-    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 @end
