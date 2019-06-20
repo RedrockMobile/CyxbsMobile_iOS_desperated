@@ -43,9 +43,9 @@
         _type = type;
         _controllers = controllers;
         if (_type == SYCSegmentViewTypeButton) {
-            _titleBtnWidth = controllers.count > 2 ? SCREEN_WIDTH / 3 : SCREEN_WIDTH / controllers.count;
+            _titleBtnWidth = controllers.count > 3 ? SCREEN_WIDTH / 4 : SCREEN_WIDTH / controllers.count;
         }else if(_type == SYCSegmentViewTypeNormal){
-            _titleBtnWidth = controllers.count > 3 ? SCREEN_WIDTH / 3 : SCREEN_WIDTH / controllers.count;
+            _titleBtnWidth = controllers.count > 4 ? SCREEN_WIDTH / 5 : SCREEN_WIDTH / controllers.count;
         }
         
         //默认属性

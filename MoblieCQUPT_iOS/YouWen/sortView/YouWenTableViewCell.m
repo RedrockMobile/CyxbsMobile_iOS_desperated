@@ -17,7 +17,6 @@
 @property (strong, nonatomic) UILabel *deadTimeLabel;
 @property (strong, nonatomic) UILabel *descriptionsLabel;
 @property (strong, nonatomic) UILabel *soreLabel;
-@property (strong, nonatomic) UIImageView *genderImageView;
 @property (strong, nonatomic) UIImageView *soreImageView;
 
 
@@ -42,7 +41,6 @@
         _qusId = [[NSString alloc] initWithFormat:@"%@", dic[@"id"]];
         _title = [[NSString alloc] initWithFormat:@"%@", dic[@"title"]];
         
-//        [self workOutSize];
         [self setUpCell];
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 350);
     }
@@ -81,7 +79,6 @@
     _titleLabel = [[UILabel alloc] init];
     _descriptionsLabel = [[UILabel alloc] init];
     _soreLabel = [[UILabel alloc] init];
-    _genderImageView = [[UIImageView alloc] init];
     _soreImageView = [[UIImageView alloc] init];
     _deadTimeLabel = [[UILabel alloc] init];
     
@@ -90,9 +87,6 @@
     
    
     _soreImageView.image = [UIImage imageNamed:@"soreImage"];
-    
-    NSString *genderStr = ([self.dataDic[@"gender"] isEqualToString:@"男"])?@"male":@"female";
-    _genderImageView.image = [UIImage imageNamed:genderStr];
     
     _nameLabel.font = [UIFont fontWithName:@"Arial" size:13];
     _nameLabel.textColor = [UIColor colorWithHexString:@"555555"];
@@ -107,7 +101,6 @@
     _descriptionsLabel.textColor = [UIColor colorWithHexString:@"555555"];
     _descriptionsLabel.numberOfLines = 0;
     _descriptionsLabel.lineBreakMode = NSLineBreakByCharWrapping;
-//    _descriptionsLabel.textAlignment = NSTextAlignmentLeft;
     
     
     _deadTimeLabel.font = [UIFont fontWithName:@"Arial" size:11];
@@ -147,7 +140,6 @@
     [self.contentView addSubview:_headImageView];
     [self.contentView addSubview:_descriptionsLabel];
     [self.contentView addSubview:_soreLabel];
-    [self.contentView addSubview:_genderImageView];
     [self.contentView addSubview:_soreImageView];
     [self.contentView addSubview:_deadTimeLabel];
     
@@ -174,15 +166,6 @@
         .mas_offset(20);
         make.left.equalTo(self.headImageView.mas_right)
         .mas_offset(17);
-        make.height.mas_equalTo(13);
-    }];
-    
-    [_genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_top)
-        .mas_offset(20);
-        make.left.equalTo(self.nameLabel.mas_right)
-        .mas_equalTo(12);
-        make.width.mas_equalTo(9);
         make.height.mas_equalTo(13);
     }];
     
