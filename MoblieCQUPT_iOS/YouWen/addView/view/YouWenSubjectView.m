@@ -17,7 +17,6 @@
 - (void)setUpUI{
     [super setUpUI];
     self.cancelBtn.hidden = YES;
-    self.blackView.hidden = YES;
     _btnArray = [NSMutableArray array];
     _subject = [NSString string];
     
@@ -32,7 +31,7 @@
         make.width.mas_equalTo(80);
     }];
     
-    _topicLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.blackView.bottom + 23, SCREEN_WIDTH - 30, 18)];
+    _topicLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.bottom + 23, SCREEN_WIDTH - 30, 18)];
     _topicLab.font = [UIFont fontWithName:@"Arial" size:ZOOM(17)];
     _topicLab.textColor = [UIColor colorWithHexString:@"7195FA"];
     [self.whiteView addSubview:_topicLab];

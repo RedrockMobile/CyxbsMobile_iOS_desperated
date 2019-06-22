@@ -36,7 +36,7 @@
     //退出
     _quitImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 15, 14)];
     _quitImage.image = [UIImage imageNamed:@"quitBtn"];
-    UITapGestureRecognizer *quitGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(quit)];
+    UITapGestureRecognizer *quitGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancel)];
     _quitImage.userInteractionEnabled = YES;
     [_quitImage addGestureRecognizer:quitGesture];
     [_topView addSubview:_quitImage];

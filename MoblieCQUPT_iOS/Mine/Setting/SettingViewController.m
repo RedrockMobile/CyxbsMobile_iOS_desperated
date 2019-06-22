@@ -36,7 +36,7 @@
     UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [quitBtn setImage:[UIImage imageNamed:@"backColor"] forState:UIControlStateNormal];
     quitBtn.frame = CGRectMake(self.view.centerX - (SCREEN_WIDTH - 40) / 2, self.view.centerY - 40, SCREEN_WIDTH - 40, 50  * SCREEN_WIDTH / 375);
-    [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
+    [quitBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:quitBtn];
     _cellArray = @[@{@"cell":@"在课表上没课的地方显示备忘内容"},
                    @{@"cell":@"意见与反馈", @"controller":@"SuggestionViewController"},

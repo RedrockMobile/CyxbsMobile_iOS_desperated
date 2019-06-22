@@ -20,19 +20,19 @@
 @interface YouWenNextView : TransparentView
 
 @property (nonatomic, weak) id<getInformation> delegate;
-
 @property (nonatomic, strong) NSMutableString *inf;
-//背景黑色半透明视图
-@property (nonatomic, strong) UIView *blackView;
+
 //下一步按钮
 @property (nonatomic, strong) UIButton *confirBtn;
 //取消按钮
 @property (nonatomic, strong) UIButton *cancelBtn;
+//标题
+@property (nonatomic, strong) UILabel *titleLabel;
 
 - (void)setUpUI;
 
 - (void)confirm;
 
-- (void)quit;
+- (void)cancel;
 
 @end

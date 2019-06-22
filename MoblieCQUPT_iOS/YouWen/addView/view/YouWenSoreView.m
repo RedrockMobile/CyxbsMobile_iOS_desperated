@@ -30,7 +30,7 @@
     _restSoreLab.text = [NSString stringWithFormat:@"积分剩余:"];
     [self.whiteView addSubview:_restSoreLab];
     [_restSoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.blackView.mas_bottom).offset(18);
+        make.top.mas_equalTo(self.mas_bottom).offset(18);
         make.left.mas_equalTo(self.whiteView).offset(16);
         make.height.mas_offset(12);
         make.width.mas_offset(200);

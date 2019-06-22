@@ -116,7 +116,7 @@
             else if (i == 1){
                 NSMutableAttributedString *attrString;
                 if (tag.length != 0) {
-                    attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"#%@#", tag]];
+                    attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"#%@# ", tag]];
                     [attrString appendString:self.dataDic[array[i]]];
                     [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, tag.length + 2)];
                 }

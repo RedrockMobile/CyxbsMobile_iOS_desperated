@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) UIImageView *squareBox;
 @property (strong, nonatomic) UIView *whiteView;
-@property (assign, nonatomic) BOOL enableBack;
+
 @property (nonatomic, weak) id <getNewView> delegate;
 
 
@@ -41,5 +41,11 @@
  @return 初始化方法
  */
 - (instancetype)initWithTypes:(NSArray *)types;
+
+- (void)popWhiteView;
+
+- (void)pushWhiteView;
+
+- (void)setUpUI;
 
 @end

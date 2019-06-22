@@ -67,11 +67,10 @@
 
 //点击加载按钮调用的方法
 - (void)setNewQuestion{
-    YouWenTopicView *topicView = [[YouWenTopicView alloc]initTheWhiteViewHeight:283];
-    [topicView setUpUI];
-    topicView.topicDelegate = self;
+    YouWenTopicView *topicView = [[YouWenTopicView alloc] initTheWhiteViewHeight:235 + SAFE_AREA_BOTTOM];
     [[UIApplication sharedApplication].keyWindow addSubview:topicView];
-    
+    topicView.topicDelegate = self;
+    [topicView popWhiteView];
 }
 
 //获取得到的话题类型的代理方法

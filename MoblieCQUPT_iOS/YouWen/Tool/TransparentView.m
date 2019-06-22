@@ -7,56 +7,62 @@
 //
 
 #import "TransparentView.h"
+
+@interface TransparentView()
+
+@property (nonatomic, assign) CGFloat whiteViewHeight;
+@property (nonatomic, strong) UIView *blackView;
+
+@end
+
 @implementation TransparentView
 - (instancetype)initTheWhiteViewHeight:(CGFloat)height{
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
-        [self setSelf];
-        [self popWhiteView:height];
+        _whiteViewHeight = height;
+        [self setUpUI];
     }
     return self;
 }
 
 - (instancetype)initWithTypes:(NSArray *)types{
     if (self = [super initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)]) {
-        [self setSelf];
+        [self setUpUI];
         [self setUpMessage:types];
     }
     return self;
 }
 
 
-- (void)setSelf{
-    self.backgroundColor = [UIColor colorWithRed:152/255.0 green:152/255.0 blue:152/255.0 alpha:0.8];
-    self.enableBack = YES;
-}
-
-//设置视图的交互性
-- (void)setEnableBack:(BOOL)enableBack{
-    _enableBack = enableBack;
-    if (self.enableBack) {
-        self.userInteractionEnabled = YES;
-    }
-    else{
-        self.userInteractionEnabled = NO;
-    }
+- (void)setUpUI{
+    _blackView = [[UIView alloc] initWithFrame:self.frame];
+    _blackView.backgroundColor = [UIColor blackColor];
+    _blackView.layer.opacity = 0;
+    
+    _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT + _whiteViewHeight, SCREEN_WIDTH, _whiteViewHeight)];
+    _whiteView.backgroundColor = [UIColor whiteColor];
 }
 
 //弹出白色视图方法
-- (void)popWhiteView:(CGFloat)height{
-    _whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, height)];
-    [UIView animateWithDuration:0.6 delay:0.f usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
-        _whiteView.centerY = SCREEN_HEIGHT - height / 2;
-    } completion:nil];
-    _whiteView.backgroundColor = [UIColor whiteColor];
+- (void)popWhiteView{
+    [self addSubview:_blackView];
     [self addSubview:_whiteView];
+    
+    [UIView animateWithDuration:0.6 delay:0.f usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
+        //为什么要高度+20:弹簧效果上移时不会留白
+        _whiteView.frame = CGRectMake(0, SCREEN_HEIGHT - _whiteViewHeight, SCREEN_WIDTH, _whiteViewHeight + 20);
+        _blackView.layer.opacity = 0.4;
+    } completion:nil];
 }
 
 //压入白色视图方法
 - (void)pushWhiteView{
     [UIView animateWithDuration:0.6 delay:0.f usingSpringWithDamping:0.7 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
-        _whiteView.centerY = -SCREEN_HEIGHT;
-    } completion:nil];
-    _whiteView.hidden = YES;
+        _whiteView.centerY = SCREEN_HEIGHT + _whiteViewHeight;
+        _blackView.layer.opacity = 0;
+    } completion:^(BOOL finished) {
+        [self removeAllSubviews];
+        self.hidden = YES;
+    }];
 }
 
 
@@ -66,14 +72,14 @@
         |NSStringDrawingUsesFontLeading
         attributes:dic context:nil];
     CGRect rect2 = [array[3] boundingRectWithSize:CGSizeMake(0, 30) options:NSStringDrawingUsesLineFragmentOrigin |NSStringDrawingUsesFontLeading attributes:dic context:nil];
-    CGFloat width = rect1.size.width > rect2.size.width?rect1.size.width:rect2.size.width;
+    CGFloat width = rect1.size.width > rect2.size.width ? rect1.size.width : rect2.size.width;
     _squareBox = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"squareBox"]];
     //否则btn不响应
     _squareBox.userInteractionEnabled = YES;
-    [self addSubview:_squareBox];
+    [_whiteView addSubview:_squareBox];
     [_squareBox mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.mas_equalTo(self).mas_offset(-10);
-        make.top.mas_equalTo(self).mas_offset(64);
+        make.right.mas_equalTo(_whiteView).mas_offset(-10);
+        make.top.mas_equalTo(_whiteView).mas_offset(64);
         make.width.mas_offset(96);
         make.height.mas_offset(84);
     }];
@@ -120,7 +126,7 @@
 }
 
 - (void)btnAction:(UIButton *)btn{
-    [self removeFromSuperview];
+    [self pushWhiteView];
     [self.delegate newView:btn];
 }
 

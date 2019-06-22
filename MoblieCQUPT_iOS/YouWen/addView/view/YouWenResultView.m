@@ -16,7 +16,6 @@
     UILabel *titleLab = [[UILabel alloc] init];
     titleLab.text = @"求助设置";
     titleLab.font = [UIFont fontWithName:@"Arial" size:ZOOM(16)];
-    self.blackView.hidden = YES;
     [self.whiteView addSubview:titleLab];
     [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.whiteView).mas_offset(18);
