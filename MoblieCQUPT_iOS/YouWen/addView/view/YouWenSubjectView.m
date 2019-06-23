@@ -10,15 +10,21 @@
 
 @interface YouWenSubjectView()
 
-@property (copy, nonatomic) NSString *subject;
 
 @end
+
 @implementation YouWenSubjectView
+
+- (instancetype)initTheWhiteViewHeight:(CGFloat)height subject:(NSString *)subject{
+    _subject = subject;
+    self = [super initTheWhiteViewHeight:height];
+    return self;
+}
+
 - (void)setUpUI{
     [super setUpUI];
 
     _btnArray = [NSMutableArray array];
-    _subject = [NSString string];
     
     NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"添加话题"];
     [str addAttribute:NSKernAttributeName value:@(1) range:NSMakeRange(0, str.length)];
@@ -50,7 +56,12 @@
     }];
     
     _topicField = [[UITextField alloc] init];
-    _topicField.placeholder = @"话题";
+    NSLog(@"%@", _subject);
+    if (_subject) {
+        _topicField.text = _subject;
+    }else{
+        _topicField.placeholder = @"话题";
+    }
     _topicField.textColor = [UIColor colorWithHexString:@"7195FA"];
     [self.whiteView addSubview:_topicField];
     [_topicField mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -96,15 +107,15 @@
         }
         button.selected = YES;
         _topicField.text = [NSString stringWithFormat:@"#%@#", button.currentTitle];
-        _subject = button.currentTitle;
     }
     [_topicField resignFirstResponder];
 }
 
 - (void)confirm{
-    NSNotification *notification = [[NSNotification alloc]initWithName:@"subjectNotifi" object:@{@"subject":self.subject} userInfo:nil];
-    [[NSNotificationCenter defaultCenter]postNotification:notification];
-    [self removeFromSuperview];
+    _subject = _topicField.text;
+    NSNotification *notification = [[NSNotification alloc] initWithName:@"subjectNotifi" object:@{@"subject":_subject} userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    [self pushWhiteView];
 }
 
 @end

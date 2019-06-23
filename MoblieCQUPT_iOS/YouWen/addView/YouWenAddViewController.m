@@ -63,10 +63,12 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectArrive:) name:@"subjectNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postTheNew) name:@"finalNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(draft:) name:@"saveDraft" object:nil];
+        
         _style = [[NSString alloc] initWithString:style];
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -217,7 +219,11 @@
 }
 
 - (void)addTopic{
-    _subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:250 + SAFE_AREA_BOTTOM];
+    if (_subject) {
+        _subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:250 + SAFE_AREA_BOTTOM subject:_subject];
+    } else{
+        _subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:250 + SAFE_AREA_BOTTOM];
+    }
     _subjectView.topicField.delegate = self;
     [_subjectView popWhiteView];
     [[UIApplication sharedApplication].keyWindow addSubview:_subjectView];
@@ -269,6 +275,7 @@
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
+
 - (void)timeArrive:(NSNotification *)noti{
     _time = noti.object[@"time"];
     if (_time.length < 16) {
@@ -289,11 +296,8 @@
 
 - (void)subjectArrive:(NSNotification *)noti{
     _subject = noti.object[@"subject"];
-    if (_subject.length != 0){
-        [_titleTextView addTopic:_subject];
-    }
-    
 }
+
 - (void)draft:(NSNotification *)noti{
     NSString *state = noti.userInfo[@"state"];
     if ([state isEqualToString:@"SENDING"]) {
@@ -500,9 +504,11 @@
         [UIView animateWithDuration:0.3f animations:^{
             _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y + 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
         } completion:nil];
+        
     } else if(_subjectView.topicField.text.length == 0){
         
     } else{
+        [_subjectView pushWhiteView];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"话题字数过长" message:@"话题不能超过6个字哦！" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [_subjectView.topicField becomeFirstResponder];
