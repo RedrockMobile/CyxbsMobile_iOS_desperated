@@ -57,6 +57,7 @@
         _subject = [NSString string];
         self.navigationItem.title = @"求助";
         UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(confirmInf)];
+        
         self.navigationItem.rightBarButtonItem = rightBarButtonItem;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeArrive:) name:@"timeNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(soreArrive:) name:@"soreNotifi" object:nil];
@@ -241,16 +242,31 @@
 - (void)confirmInf{
     //textview当字数为0时返回nil
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    if (_titleTextView.text.length == 0 || _detailTextView.text.length == 0) {
-        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有完善信息哦" preferredStyle:UIAlertControllerStyleAlert];
+    if (_titleTextView.text.length == 0) {
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有填写标题哦" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
                       style:UIAlertActionStyleDefault
                     handler:nil]];
         [self presentViewController:alertCon
                            animated:YES
                          completion:nil];
-    }
-    else{
+    }else if(_detailTextView.text.length == 0){
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有输入详情哦" preferredStyle:UIAlertControllerStyleAlert];
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil]];
+        [self presentViewController:alertCon
+                           animated:YES
+                         completion:nil];
+    }else if(_subject.length == 0){
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有选择话题哦" preferredStyle:UIAlertControllerStyleAlert];
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil]];
+        [self presentViewController:alertCon
+                           animated:YES
+                         completion:nil];
+    }else{
         [self nextView];
     }
 }
@@ -260,11 +276,13 @@
     if (_time.length < 16){
         YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:ZOOM(211)];
         [nextView setUpUI];
+        [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else if([_sore isEqualToString:@"0"]){
         YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
         [nextView setUpUI];
+        [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else{
@@ -272,6 +290,7 @@
         resultView.time = _time;
         resultView.sore = _sore;
         [resultView setUpUI];
+        [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
@@ -401,6 +420,8 @@
     [cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     cancelButton.frame = CGRectMake(0, 100, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:cancelButton];
+    
+    [_photoView popWhiteView];
 }
 
 - (void)selectPicture{
@@ -437,7 +458,7 @@
 }
 
 - (void)cancel{
-    [_photoView removeFromSuperview];
+    [_photoView pushWhiteView];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
@@ -506,7 +527,9 @@
         } completion:nil];
         
     } else if(_subjectView.topicField.text.length == 0){
-        
+        [UIView animateWithDuration:0.3f animations:^{
+            _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y + 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
+        } completion:nil];
     } else{
         [_subjectView pushWhiteView];
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"话题字数过长" message:@"话题不能超过6个字哦！" preferredStyle:UIAlertControllerStyleAlert];

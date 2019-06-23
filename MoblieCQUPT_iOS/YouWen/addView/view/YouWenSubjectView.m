@@ -83,6 +83,7 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(selectTopic:) forControlEvents:UIControlEventTouchUpInside];
         btn.adjustsImageWhenHighlighted = NO;
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
         [self.whiteView addSubview:btn];
         [btn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.mas_equalTo(15 + (btnWidth + 15) * (i % 4));
