@@ -10,4 +10,7 @@
 //话题添加
 @interface YouWenSubjectView : YouWenNextView
 
+@property (copy, nonatomic) NSMutableArray *btnArray;
+@property (nonatomic, strong) UITextField *topicField;
+
 @end

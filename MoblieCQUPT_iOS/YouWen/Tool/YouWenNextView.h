@@ -29,6 +29,8 @@
 //标题
 @property (nonatomic, strong) UILabel *titleLabel;
 
+- (void)setUpThemeUI;
+
 - (void)setUpUI;
 
 - (void)confirm;

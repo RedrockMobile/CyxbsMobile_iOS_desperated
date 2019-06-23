@@ -96,7 +96,7 @@
  @param subject 话题
  */
 - (void)addTopic:(NSString *)subject{
-    NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@", subject, self.text]];
+    NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@ ", subject, self.text]];
     _topicLen += subject.length;
     [self.topicArray appendObject:subject];
     [sub addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, _topicLen)];

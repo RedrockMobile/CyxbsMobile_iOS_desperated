@@ -20,7 +20,7 @@
 #import "UIViewController+BackButtonHandler.h"
 
 #define PHOTOSIZE 109
-@interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate, BackButtonHandlerProtocol>
+@interface YouWenAddViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate, BackButtonHandlerProtocol, UITextFieldDelegate>
 
 @property (strong, nonatomic) ReportTextView *titleTextView;
 @property (strong, nonatomic) ReportTextView *detailTextView;
@@ -32,6 +32,7 @@
 @property (strong, nonatomic) UIButton *addImageButton;
 @property (strong, nonatomic) UIScrollView *imageView;
 @property (strong, nonatomic) NSMutableArray *anotherInf;
+@property (strong, nonatomic) YouWenSubjectView *subjectView;
 
 
 @property (copy, nonatomic) NSString *time;
@@ -170,12 +171,6 @@
     _bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bottomView];
     
-//    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [photoButton setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-//    [photoButton addTarget:self action:@selector(selectImage)
-//          forControlEvents:UIControlEventTouchUpInside];
-//    [_bottomView addSubview:photoButton];
-    
     UIButton *topicButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [topicButton setImage:[UIImage imageNamed:@"topic"] forState:UIControlStateNormal];
     [topicButton addTarget:self action:@selector(addTopic) forControlEvents:UIControlEventTouchUpInside];
@@ -193,14 +188,6 @@
         make.width.mas_equalTo(25);
         make.height.mas_equalTo(25);
     }];
-    
-//    [photoButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.mas_equalTo(topicButton.mas_right).
-//        mas_offset(37);
-//        make.top.mas_equalTo(_bottomView).mas_offset(13);
-//        make.width.mas_equalTo(24);
-//        make.height.mas_equalTo(24);
-//    }];
     
     [anonymityButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(_bottomView).mas_offset(-15);
@@ -230,9 +217,10 @@
 }
 
 - (void)addTopic{
-    YouWenSubjectView *subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:300];
-    [subjectView setUpUI];
-    [[UIApplication sharedApplication].keyWindow addSubview:subjectView];
+    _subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:250 + SAFE_AREA_BOTTOM];
+    _subjectView.topicField.delegate = self;
+    [_subjectView popWhiteView];
+    [[UIApplication sharedApplication].keyWindow addSubview:_subjectView];
 }
 
 - (UIButton *)addImageButton{
@@ -488,8 +476,45 @@
     return toolBar;
 }
 
+
 - (void)textFieldDone{
     [self.view endEditing:YES];
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [UIView animateWithDuration:0.3f animations:^{
+        _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y - 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
+    } completion:nil];
+    
+    _subjectView.topicField.text = @"";
+    for (UIButton *btn in _subjectView.btnArray) {
+        btn.selected = NO;
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (_subjectView.topicField.text.length < 7 && _subjectView.topicField.text.length > 0) {
+        _subject = _subjectView.topicField.text;
+        _subjectView.topicField.text = [NSString stringWithFormat:@"#%@#", _subjectView.topicField.text];
+        [UIView animateWithDuration:0.3f animations:^{
+            _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y + 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
+        } completion:nil];
+    } else if(_subjectView.topicField.text.length == 0){
+        
+    } else{
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"话题字数过长" message:@"话题不能超过6个字哦！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [_subjectView.topicField becomeFirstResponder];
+        }];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_subjectView.topicField resignFirstResponder];
+    return YES;
 }
 
 @end
