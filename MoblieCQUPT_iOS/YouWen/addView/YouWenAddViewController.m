@@ -284,9 +284,7 @@
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
-        resultView.time = _time;
-        resultView.sore = _sore;
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM score:_sore time:_time];
         [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
@@ -352,10 +350,8 @@
                          completion:nil];
     }
     else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        resultView.time = _time;
-        resultView.sore = _sore;
-        [resultView setUpUI];
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
