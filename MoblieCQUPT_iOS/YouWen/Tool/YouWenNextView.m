@@ -30,7 +30,7 @@
     [self.cancelBtn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
     [self.whiteView addSubview:_cancelBtn];
     [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_titleLabel);
+        make.top.equalTo(self.whiteView).offset(8);
         make.left.equalTo(self.whiteView).with.offset(20);
     }];
 
@@ -42,7 +42,7 @@
     [self.confirBtn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
     [self.whiteView addSubview:_confirBtn];
     [_confirBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerY.equalTo(_titleLabel);
+        make.top.equalTo(self.whiteView).offset(8);
         make.right.equalTo(self.whiteView).with.offset(-20);
     }];
 

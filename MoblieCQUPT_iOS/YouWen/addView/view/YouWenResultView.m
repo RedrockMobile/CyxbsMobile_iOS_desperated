@@ -13,19 +13,11 @@
     [super setUpUI];
     
     [self.confirBtn setTitle:@"发布" forState:UIControlStateNormal];
-    UILabel *titleLab = [[UILabel alloc] init];
-    titleLab.text = @"求助设置";
-    titleLab.font = [UIFont fontWithName:@"Arial" size:ZOOM(16)];
-    [self.whiteView addSubview:titleLab];
-    [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.whiteView).mas_offset(18);
-        make.centerX.mas_equalTo(self.whiteView);
-        make.height.mas_equalTo(18);
-        make.width.mas_equalTo(80);
-    }];
-    [titleLab.superview layoutIfNeeded];
     
-    UILabel *timeLab = [[UILabel alloc] initWithFrame:CGRectMake(15, titleLab.bottom + 50, SCREEN_WIDTH - 30, 40)];
+    self.titleLabel.text = @"求助设置";
+ 
+    
+    UILabel *timeLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.titleLabel.bottom + 50, SCREEN_WIDTH - 30, 40)];
     NSMutableAttributedString* timeAttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"最晚完成任务至：%@", _time]];
     [timeAttributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(8, _time.length)];
     [timeAttributedStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:15] range:NSMakeRange(0, timeAttributedStr.length)];

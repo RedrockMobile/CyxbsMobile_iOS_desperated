@@ -17,8 +17,8 @@
 @property (strong, nonatomic) NSArray *nowtimeData;
 @end
 @implementation YouWenTimeView
--(NSArray *)timeData
-{
+
+-(NSArray *)timeData{
     if (!_timeData) {
         NSMutableArray *minute = [NSMutableArray array];
         NSMutableArray *hour = [NSMutableArray array];
@@ -59,23 +59,11 @@
     return _timeData;
 }
 
-- (void)confirm{
-    if (_day.length) {
-        [self.inf appendString:_day];
-    }
-    if (_hour.length) {
-        [self.inf appendString:_hour];
-    }
-    if (_minite.length) {
-        [self.inf appendString:_minite];
-    }
-    NSNotification *notification = [[NSNotification alloc] initWithName:@"timeNotifi" object:@{@"time":self.inf} userInfo:nil];
-    [[NSNotificationCenter defaultCenter]postNotification:notification];
-    [self removeFromSuperview];
-}
+
+
 - (void)setUpUI{
     [super setUpUI];
-    _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, self.bottom, SCREEN_WIDTH, self.whiteView.height - self.bottom)];
+    _pickView = [[UIPickerView alloc] init];
     _pickView.delegate = self;
     _pickView.dataSource = self;
 //    _day = @"今日";
@@ -83,6 +71,12 @@
 //    _minite = @"0分";
 //    self.inf = [NSString stringWithFormat:@"%@ %@ %@", _day, _hour, _minite].mutableCopy;
     [self.whiteView addSubview:_pickView];
+    [_pickView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.confirBtn).with.offset(20);
+        make.centerY.equalTo(self.whiteView).with.offset(-10);
+        make.width.mas_equalTo(SCREEN_WIDTH);
+        make.height.mas_equalTo(300);
+    }];
     self.pickViewArray = self.timeData.mutableCopy;
 }
 
@@ -147,4 +141,18 @@
     
 }
 
+- (void)confirm{
+    if (_day.length) {
+        [self.inf appendString:_day];
+    }
+    if (_hour.length) {
+        [self.inf appendString:_hour];
+    }
+    if (_minite.length) {
+        [self.inf appendString:_minite];
+    }
+    NSNotification *notification = [[NSNotification alloc] initWithName:@"timeNotifi" object:@{@"time":self.inf} userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    [self pushWhiteView];
+}
 @end

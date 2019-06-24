@@ -274,22 +274,19 @@
 - (void)nextView{
     _anotherInf = [NSMutableArray array];
     if (_time.length < 16){
-        YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        [nextView setUpUI];
+        YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:210 + SAFE_AREA_BOTTOM];
         [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else if([_sore isEqualToString:@"0"]){
-        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        [nextView setUpUI];
+        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
         [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:ZOOM(211)];
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
         resultView.time = _time;
         resultView.sore = _sore;
-        [resultView setUpUI];
         [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
@@ -307,8 +304,8 @@
                          completion:nil];
     }
     else{
-        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        [nextView setUpUI];
+        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
+        [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
 }

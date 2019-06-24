@@ -27,35 +27,48 @@
     _restSore = [NSString string];
     _restSoreLab = [[UILabel alloc] init];
     _restSoreLab.textColor = [UIColor grayColor];
-    _restSoreLab.text = [NSString stringWithFormat:@"积分剩余:"];
+    _restSoreLab.layer.opacity = 0.6;
+    _restSoreLab.font = [UIFont systemFontOfSize:14];
     [self.whiteView addSubview:_restSoreLab];
     [_restSoreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.mas_bottom).offset(18);
-        make.left.mas_equalTo(self.whiteView).offset(16);
+        make.top.mas_equalTo(self.cancelBtn).offset(50);
+        make.left.mas_equalTo(self.cancelBtn);
         make.height.mas_offset(12);
         make.width.mas_offset(200);
     }];
+    
     _sore = @"0";
     _soreData = [[dailyAttendanceModel alloc] init];
     _soreData.delegate = self;
     [_soreData requestNewScore];
     
     _soreLab = [[UILabel alloc] init];
-    _soreLab.font = [UIFont fontWithName:@"Arail" size:ZOOM(20)];
+    _soreLab.font = [UIFont systemFontOfSize:18];
     _soreLab.textColor = [UIColor colorWithHexString:@"7195FA"];
     [self.whiteView addSubview:_soreLab];
     [_soreLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(_restSoreLab.mas_bottom).offset(22);
-        make.left.mas_equalTo(self.whiteView).offset(17);
+        make.top.mas_equalTo(_restSoreLab.mas_bottom).offset(40);
+        make.left.mas_equalTo(self.cancelBtn);
         make.height.mas_offset(16);
         make.width.mas_offset(100);
     }];
     [_soreLab.superview layoutIfNeeded];
     
+    UIView *grayLine = [[UIView alloc] init];
+    grayLine.backgroundColor = [UIColor grayColor];
+    grayLine.layer.opacity = 0.6;
+    [self.whiteView addSubview:grayLine];
+    [grayLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(_soreLab.mas_bottom).with.offset(10);
+        make.centerX.equalTo(self.whiteView);
+        make.width.mas_equalTo(SCREEN_WIDTH - 40);
+        make.height.mas_equalTo(0.4);
+    }];
+    
     self.confirBtn.hidden = YES;
     
     _loadingLab = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 100)/ 2, (self.whiteView.height - 50)/ 2, 100, 50)];
-    _loadingLab.font = [UIFont fontWithName:@"Arial" size:15];
+    _loadingLab.font = [UIFont systemFontOfSize:15];
     _loadingLab.text = @"正在加载....";
     _loadingLab.textAlignment = NSTextAlignmentCenter;
     [self.whiteView addSubview:_loadingLab];
@@ -63,22 +76,23 @@
 }
 
 - (void)setBtnUp{
-    UIView *blackView = [[UIView alloc] initWithFrame:CGRectMake(15, _soreLab.bottom, SCREEN_WIDTH - 30, 1)];
-    blackView.backgroundColor = [UIColor grayColor];
-    [self.whiteView addSubview:blackView];
-    
     NSArray *numArray = @[@"1", @"2", @"3", @"5", @"10", @"15"];
-    CGFloat  width = (SCREEN_WIDTH - 142)/ 6;
-    for (int i = 0; i < numArray.count; i ++) {
+    CGFloat width = (SCREEN_WIDTH - 142) / 6;
+    for (int i = 0; i < numArray.count; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setBackgroundImage:[UIImage imageNamed:@"square"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"blueSquare"] forState:UIControlStateSelected];
         [btn setTitle:numArray[i] forState:UIControlStateNormal];
-        [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        btn.frame = CGRectMake(16 + (width + 22)* i, blackView.bottom + 25, width, width);
         [btn addTarget:self action:@selector(selectSore:) forControlEvents:UIControlEventTouchUpInside];
         [self.whiteView addSubview:btn];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(16 + (width + 22) * i);
+            make.top.mas_equalTo(self.whiteView.mas_bottom).with.offset(-100);
+            make.width.mas_equalTo(width);
+            make.height.mas_equalTo(width);
+        }];
         if ([_restSore intValue] < [numArray[i] intValue]){
             btn.userInteractionEnabled  = NO;
         }
@@ -113,7 +127,7 @@
     else{
         self.confirBtn.hidden = NO;
         _restSore = sore.copy;
-        _restSoreLab.text = [NSString stringWithFormat:@"剩余积分：%@", _restSore];
+        _restSoreLab.text = [NSString stringWithFormat:@"积分剩余：%@", _restSore];
         [_loadingLab removeFromSuperview];
         [self setBtnUp];
     }
@@ -124,12 +138,5 @@
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     [self removeFromSuperview];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
