@@ -411,31 +411,6 @@
 }
 
 
-
-- (void)clickLoginBtn{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否登录" message:@"马上登录拯救课表菌" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        LoginViewController *loginViewController = [[LoginViewController alloc]init];
-        
-        loginViewController.loginSuccessHandler = ^(BOOL success) {
-            if (success) {
-                self.stuNum = [UserDefaultTool getStuNum];
-                self.idNum = [UserDefaultTool getIdNum];
-                
-                [self initModel];
-                [self.noLoginView removeFromSuperview];
-            }
-        };
-        [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
-    }];
-    [alertController addAction:cancelAction];
-    [alertController addAction:loginAction];
-    [self.navigationController presentViewController:alertController animated:YES completion:nil];
-}
-
-
-
 - (void)showDetail:(NSArray *)array{
     if ([[UIApplication sharedApplication].keyWindow viewWithTag:999]) {
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
@@ -497,7 +472,6 @@
 }
 
 - (void)clickEditNoteBtn:(NSDictionary *)dic{
-    //NSLog(@"%@",[dic objectForKey:@"id"]);
     [self hiddenDetailView];
     AddRemindViewController *vc = [[AddRemindViewController alloc]initWithRemind:dic];
     vc.hidesBottomBarWhenPushed = YES;

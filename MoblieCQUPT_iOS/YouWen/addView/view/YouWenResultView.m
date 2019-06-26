@@ -7,6 +7,8 @@
 //
 
 #import "YouWenResultView.h"
+#import "YouWenTimeView.h"
+#import "YouWenSoreView.h"
 
 @interface YouWenResultView()
 
@@ -33,25 +35,28 @@
     self.titleLabel.text = @"求助设置";
  
     
-    UILabel *timeLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.titleLabel.bottom + 80 , SCREEN_WIDTH - 30, 40)];
+    UIButton *timeLab = [[UIButton alloc] initWithFrame:CGRectMake(16, 86 - 20, SCREEN_WIDTH - 32, 40)];
     NSMutableAttributedString *timeAttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"最晚完成任务至：%@", _untilTime]];
     [timeAttributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(8, _untilTime.length)];
     [timeAttributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:15] range:NSMakeRange(0, timeAttributedStr.length)];
     [timeAttributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, 8)];
-    
-    timeLab.attributedText = timeAttributedStr;
+    [timeLab setAttributedTitle:timeAttributedStr forState:UIControlStateNormal];
+    [timeLab addTarget:self action:@selector(changeTime) forControlEvents:UIControlEventTouchUpInside];
+    timeLab.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.whiteView addSubview:timeLab];
     
-    UIView *grayLine = [[UIView alloc] initWithFrame:CGRectMake(15, timeLab.bottom + 20, SCREEN_WIDTH - 30, 1)];
+    UIView *grayLine = [[UIView alloc] initWithFrame:CGRectMake(15, 120, SCREEN_WIDTH - 30, 1)];
     grayLine.backgroundColor = RGBColor(221, 221, 221, 1.0);
     [self.whiteView addSubview:grayLine];
     
-    UILabel *soreLab = [[UILabel alloc] initWithFrame:CGRectMake(15, grayLine.bottom + 20, SCREEN_WIDTH - 30, 40)];
-    NSMutableAttributedString* soreAttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"奖励积分数额为：%@", _score]];
+    UIButton *soreLab = [[UIButton alloc] initWithFrame:CGRectMake(16, 141, SCREEN_WIDTH - 32, 40)];
+    NSMutableAttributedString *soreAttributedStr = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"奖励积分数额为：%@", _score]];
     [soreAttributedStr addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"Arial" size:15] range:NSMakeRange(0, soreAttributedStr.length)];
     [soreAttributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(8, _score.length)];
     [soreAttributedStr addAttribute:NSForegroundColorAttributeName value:[UIColor grayColor] range:NSMakeRange(0, 8)];
-    soreLab.attributedText = soreAttributedStr;
+    [soreLab setAttributedTitle:soreAttributedStr forState:UIControlStateNormal];
+    [soreLab addTarget:self action:@selector(changeSore) forControlEvents:UIControlEventTouchUpInside];
+    soreLab.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     [self.whiteView addSubview:soreLab];
 }
 
@@ -59,6 +64,26 @@
     NSNotification *notification = [[NSNotification alloc]initWithName:@"finalNotifi" object:nil userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     [self removeFromSuperview];
+}
+
+- (void)changeTime{
+    [self pushWhiteView];
+    YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:210 + SAFE_AREA_BOTTOM];
+    [nextView popWhiteView];
+    [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+}
+
+- (void)changeSore{
+    [self pushWhiteView];
+    YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
+    [nextView popWhiteView];
+    [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+}
+
+- (void)cancel{
+    NSNotification *notification = [[NSNotification alloc]initWithName:@"cancelPushed" object:nil userInfo:nil];
+    [[NSNotificationCenter defaultCenter]postNotification:notification];
+    [super cancel];
 }
 
 @end

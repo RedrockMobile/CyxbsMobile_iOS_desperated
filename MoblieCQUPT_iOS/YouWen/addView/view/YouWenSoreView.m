@@ -134,6 +134,7 @@
 }
 
 - (void)confirm{
+    [super confirm];
     NSNotification *notification = [[NSNotification alloc]initWithName:@"soreNotifi" object:@{@"sore":self.sore} userInfo:nil];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     [self removeFromSuperview];

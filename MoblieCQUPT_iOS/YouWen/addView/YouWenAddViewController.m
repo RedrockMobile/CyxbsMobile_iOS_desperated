@@ -40,6 +40,8 @@
 @property (copy, nonatomic) NSString *is_anonymous;
 @property (copy, nonatomic) NSString *subject;
 @property (strong, nonatomic) TransparentView *photoView;
+
+@property (nonatomic, assign) BOOL isResultPushed;
 @end
 
 @implementation YouWenAddViewController
@@ -47,6 +49,7 @@
 -(instancetype)initWithStyle:(NSString *)style{
     if (self = [super init]) {
         [self setView];
+        _isResultPushed = NO;
         self.edgesForExtendedLayout = UIRectEdgeNone;
         _titleStr = [NSString string];
         _detailStr = [NSString string];
@@ -64,6 +67,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectArrive:) name:@"subjectNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postTheNew) name:@"finalNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(draft:) name:@"saveDraft" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelPushed:) name:@"cancelPushed" object:nil];
         
         _style = [[NSString alloc] initWithString:style];
     }
@@ -284,7 +288,7 @@
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:195 + SAFE_AREA_BOTTOM score:_sore time:_time];
         [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
@@ -301,10 +305,15 @@
                            animated:YES
                          completion:nil];
     }
-    else{
+    else if(_sore.length == 0){
         YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
         [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+    }else{
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:195 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        _isResultPushed = YES;
+        [resultView popWhiteView];
+        [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
 
@@ -338,6 +347,10 @@
     }
 }
 
+- (void)cancelPushed:(NSNotification *)noti{
+    _isResultPushed = NO;
+}
+
 - (void)soreArrive:(NSNotification *)noti{
     _sore = noti.object[@"sore"];
     if ([_sore isEqualToString:@"0"]) {
@@ -349,8 +362,9 @@
                            animated:YES
                          completion:nil];
     }
-    else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM score:_sore time:_time];
+    else {
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:195 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        _isResultPushed = YES;
         [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
