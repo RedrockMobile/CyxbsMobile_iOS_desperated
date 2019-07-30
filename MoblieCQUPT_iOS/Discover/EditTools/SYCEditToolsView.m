@@ -65,9 +65,6 @@ static CGFloat CellMarginY = 10.0f;
     [collectionView addSubview:dragingItem];
 }
 
-
-
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return section == 0 ? self.inUseTools.count : self.unUseTools.count;
 }
@@ -226,7 +223,6 @@ static CGFloat CellMarginY = 10.0f;
     return targetIndexPath;
 }
 
-#pragma mark -
 #pragma mark 刷新方法
 //拖拽排序后需要重新排序数据源
 - (void)rearrangeInUseTitles{

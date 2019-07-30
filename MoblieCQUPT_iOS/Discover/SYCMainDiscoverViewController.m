@@ -47,12 +47,12 @@
     _carouselDataArray = [[NSMutableArray alloc] init];
     self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
 
-    [self bulidUI];
+    [self setUpUI];
     [self getNetworkData];
 }
 
 
-- (void)bulidUI{
+- (void)setUpUI{
     self.view.backgroundColor = BACK_COLOR;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     
@@ -127,12 +127,6 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     SYCToolModel *tool = self.inusedTools[[indexPath row]];
-    if ([tool.className isEqual: @"ExamTotalViewController"]) {
-        if (![UserDefaultTool getStuNum]) {
-            [self tint:self];
-            return;
-        }
-    }
     UIViewController *viewController =  (UIViewController *)[[NSClassFromString(tool.className) alloc] init];
     viewController.hidesBottomBarWhenPushed = YES;
     viewController.title = tool.title;
@@ -149,25 +143,6 @@
         [self.toolsView reloadData];
     }];
 }
-
-
-- (void)tint:(UIViewController *)controller{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
-    __weak typeof(self) weakSelf = self;
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        LoginViewController *LVC = [[LoginViewController alloc] init];
-        LVC.loginSuccessHandler = ^(BOOL success) {
-            if (success) {
-            }
-        };
-        [weakSelf presentViewController:LVC animated:YES completion:nil];
-    }];
-    [alertC addAction:cancel];
-    [alertC addAction:confirm];
-    [self presentViewController:alertC animated:YES completion:nil];
-}
-
 
 - (void)getNetworkData{
     HttpClient *client = [HttpClient defaultClient];

@@ -10,22 +10,25 @@
 
 
 @interface YouWenTimeView ()<UIPickerViewDelegate, UIPickerViewDataSource>
+
 @property (copy, nonatomic) NSString *day;
 @property (copy, nonatomic) NSString *hour;
 @property (copy, nonatomic) NSString *minite;
 @property (copy, nonatomic) NSString *nowday;
 @property (strong, nonatomic) NSArray *nowtimeData;
+
 @end
+
 @implementation YouWenTimeView
 
--(NSArray *)timeData{
+- (NSArray *)timeData{
     if (!_timeData) {
         NSMutableArray *minute = [NSMutableArray array];
         NSMutableArray *hour = [NSMutableArray array];
-        for (int i = 21; i <= 23; i ++) {
+        for (int i = 1; i <= 23; i++) {
             [hour appendObject:[NSString stringWithFormat:@"%d时", i]];
         }
-        for (int i = 0; i <= 60; i ++) {
+        for (int i = 0; i <= 60; i++) {
             [minute appendObject:[NSString stringWithFormat:@"%d分", i]];
         }
         NSDate *now = [NSDate date];
@@ -35,7 +38,7 @@
         NSTimeInterval interval = 60 * 60 * 24;
         NSMutableArray *day = [NSMutableArray array];
         [day appendObject:@"今天"];
-        for (int i = 1; i <= 2; i ++){
+        for (int i = 1; i <= 2; i++){
             NSString *nextDay = [formatter stringFromDate:[now initWithTimeInterval:interval * i sinceDate:now]];
             [day appendObject:nextDay];
         }
@@ -43,7 +46,7 @@
         NSMutableArray *nowHour = [NSMutableArray array];
         formatter.dateFormat = @"HH时";
         _nowday = [formatter stringFromDate:now].copy;
-        for (int i = 1; ; i ++){
+        for (int i = 1; ; i++){
             NSString *nextHour = [formatter stringFromDate:[now initWithTimeInterval:60 * 60 * i sinceDate:now]];
             if ([nextHour isEqualToString:@"00时"]) {
                 break;
@@ -66,10 +69,7 @@
     _pickView = [[UIPickerView alloc] init];
     _pickView.delegate = self;
     _pickView.dataSource = self;
-//    _day = @"今日";
-//    _hour = @"21时";
-//    _minite = @"0分";
-//    self.inf = [NSString stringWithFormat:@"%@ %@ %@", _day, _hour, _minite].mutableCopy;
+
     [self.whiteView addSubview:_pickView];
     [_pickView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.confirBtn).with.offset(20);
@@ -89,14 +89,13 @@
         pickerLabel.font = [UIFont boldSystemFontOfSize:ZOOM(15)];
         pickerLabel.textColor =  [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     }
-    pickerLabel.text=[self pickerView:pickerView titleForRow:row forComponent:component];
+    pickerLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
 }
+
 // 返回多少列
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return self.pickViewArray.count;
-    
 }
 
 - (NSMutableArray *)pickViewArray{
@@ -105,21 +104,19 @@
     }
     return _pickViewArray;
 }
+
 // 返回多少行
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
     NSArray *items = self.pickViewArray[component];
     return items.count;
     
 }
 
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return self.pickViewArray[component][row];
 }
 
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     UILabel *piketLabel =  (UILabel *)[pickerView viewForRow:row forComponent:component];
     piketLabel.textColor = [UIColor colorWithHexString:@"7195FA"];
     NSMutableArray *items = self.pickViewArray[component];
