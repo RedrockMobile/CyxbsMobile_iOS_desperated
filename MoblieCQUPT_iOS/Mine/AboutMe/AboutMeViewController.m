@@ -66,7 +66,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/aboutMe" WithParameter:@{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",@"type":_type}
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_MY_INFO_API WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum,@"type":_type}
                      WithReturnValeuBlock:^(id returnValue) {
         [_data removeAllObjects];
         
@@ -91,7 +91,7 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/aboutMe" WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",@"type":_type} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_MY_INFO_API WithParameter:@{@"page":[NSNumber numberWithInteger:_flag], @"size":@15, @"stunum":stuNum, @"idnum":idNum,@"type":_type} WithReturnValeuBlock:^(id returnValue) {
         
         NSArray *newData = [returnValue objectForKey:@"data"];
         [_data addObjectsFromArray:newData];
@@ -118,7 +118,7 @@
 //覆盖初始化方法
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, self.view.height)  style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.view.height)  style:UITableViewStyleGrouped];
         [self dataFlash];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -141,8 +141,8 @@
     //获取已登录用户的账户信息
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/aboutMe"
-                            WithParameter:@{@"page":@0, @"size":@15, @"stunum":@"2016210049", @"idnum":@"27001X",
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_MY_INFO_API
+                            WithParameter:@{@"page":@0, @"size":@15, @"stunum":stuNum, @"idnum":idNum,
                                 @"type":_type}
                      WithReturnValeuBlock:^(id returnValue) {
         
@@ -174,18 +174,6 @@
         [_tableView removeFromSuperview];
     }];
 }
-
-#pragma mark - TableView delegate
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSString *typeString = _data[indexPath.section][@"type"];
-//    if ([typeString isEqualToString:@"1"]) {
-//        return 140;
-//    } else {
-//        return 170;
-//    }
-//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1;

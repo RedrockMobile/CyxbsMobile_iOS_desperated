@@ -25,19 +25,13 @@
 - (void)initViewWithArray:(NSArray *)array{
     _index = 0;
     self.array = array;
-   
- 
     [self layoutIfNeeded];
     
-    self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.6];
     self.rootView = [[UIView alloc]init];
-
-//    self.rootView.width = 270;
-//    self.rootView.height = 360;
-//    self.rootView.centerX = self.centerX;
-//    self.rootView.centerY = self.centerY;
     self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.height/2 - 170, 270, 360)];
     self.rootView.backgroundColor = [UIColor whiteColor];
+    self.rootView.layer.masksToBounds = YES;
+    self.rootView.layer.cornerRadius = 20;
     [self.rootView layoutIfNeeded];
     
     
@@ -91,32 +85,28 @@
     
 }
 
-
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     _index = self.scrollView.contentOffset.x/self.rootView.width;
     self.pageControl.currentPage = _index;
-    NSLog(@"index:%ld",_index);
 }
 
 -(void)changePage:(id)sender{
     NSInteger i = _pageControl.currentPage;
     [_scrollView setContentOffset:CGPointMake(i*self.rootView.width, 0) animated:YES];
 }
-//- (void)eventWhenChooseClassListBtnClick:(NSString *)str{
-//
-//    NSLog(@"%@",str);
-//
-//}
+
 -(void)chooseClassList:(UIButton *)sender{
     if ([self.chooseClassListDelegate respondsToSelector:@selector(clickChooseClassListBtn:)]) {
         [self.chooseClassListDelegate clickChooseClassListBtn:self.array[sender.tag]];
     }
 }
+
 -(void)editNote:(UIButton *)sender{
     if ([self.chooseClassListDelegate respondsToSelector:@selector(clickEditNoteBtn:)]) {
         [self.chooseClassListDelegate clickEditNoteBtn:self.array[sender.tag]];
     }
 }
+
 -(void)deleteNote:(UIButton *)sender{
     if ([self.chooseClassListDelegate respondsToSelector:@selector(clickDeleteNoteBtn:)]) {
         [self.chooseClassListDelegate clickDeleteNoteBtn:self.array[sender.tag]];

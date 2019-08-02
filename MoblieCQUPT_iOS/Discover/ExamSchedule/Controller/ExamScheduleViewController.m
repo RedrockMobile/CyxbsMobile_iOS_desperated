@@ -69,10 +69,10 @@
 }
 - (void)initFailViewWithDetail:(NSString *)string{
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    UIImageView *failLoad = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50, SCREENWIDTH, 250)];
+    UIImageView *failLoad = [[UIImageView alloc]initWithFrame:CGRectMake(0, 50, SCREEN_WIDTH, 250)];
     failLoad.contentMode = UIViewContentModeScaleAspectFit;
     failLoad.image = [UIImage imageNamed:@"emptyImage"];
-    UILabel *detailLab= [[UILabel alloc]initWithFrame:CGRectMake(0, failLoad.bottom, SCREENWIDTH, 30)];
+    UILabel *detailLab= [[UILabel alloc]initWithFrame:CGRectMake(0, failLoad.bottom, SCREEN_WIDTH, 30)];
     detailLab.textAlignment = NSTextAlignmentCenter;
     detailLab.font = kFont;
     detailLab.textColor = [UIColor colorWithHexString:@"4B535B"];
@@ -160,7 +160,7 @@
 //        [_refreshControl beginRefreshing];
 //        [self fetchData];
 //    }
-//    else if(scrollView.contentOffset.y > SCREENHEIGHT - 50){
+//    else if(scrollView.contentOffset.y > SCREEN_HEIGHT - 50){
 //    }
 //}
 

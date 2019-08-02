@@ -7,7 +7,6 @@
 //
 
 #import "SheetAlertController.h"
-#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/addItemInDraft"
 @interface SheetAlertController ()
 
 @end
@@ -30,7 +29,7 @@
     else {
         dic = @{@"stunum":[UserDefaultTool getStuNum],@"idnum":[UserDefaultTool getIdNum],@"type":_style,@"content":string,@"target_id":_target_ID};
     }
-    [client requestWithPath:URL method:HttpRequestPost parameters:dic prepareExecute:nil
+    [client requestWithPath:YOUWEN_DARAFTBOX_ADD_API method:HttpRequestPost parameters:dic prepareExecute:nil
                    progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
                        NSString *info = responseObject
                        [@"info"];

@@ -37,19 +37,19 @@
 }
 
 - (void)setUI {    
-    self.frame = CGRectMake(0, SCREENHEIGHT - 59, SCREENWIDTH, 59);
+    self.frame = CGRectMake(0, SCREEN_HEIGHT - 59, SCREEN_WIDTH, 59);
     
-    CGRect commentBtnRect = CGRectMake(0, 0, SCREENWIDTH/2.0, 59);
+    CGRect commentBtnRect = CGRectMake(0, 0, SCREEN_WIDTH/2.0, 59);
     self.commentBtn = [[UIButton alloc] init];
     [self addSubview:self.commentBtn];
     self.commentBtn.frame = commentBtnRect;
     
-    CGRect upvoteBtnRect = CGRectMake(SCREENWIDTH/2.0, 0, SCREENWIDTH/2.0, 59);
+    CGRect upvoteBtnRect = CGRectMake(SCREEN_WIDTH/2.0, 0, SCREEN_WIDTH/2.0, 59);
     self.upvoteBtn = [[UIButton alloc] init];
     [self addSubview:self.upvoteBtn];
     self.upvoteBtn.frame = upvoteBtnRect;
     
-    CGRect subview1Rect = CGRectMake(59/375.0 * SCREENWIDTH, 19, 22, 22);
+    CGRect subview1Rect = CGRectMake(59/375.0 * SCREEN_WIDTH, 19, 22, 22);
     CGRect subview2Rect = CGRectMake(subview1Rect.origin.x + 22 + 11, 21, 36, 17);
     
     self.commentIconImageView = [[UIImageView alloc] initWithFrame:subview1Rect];

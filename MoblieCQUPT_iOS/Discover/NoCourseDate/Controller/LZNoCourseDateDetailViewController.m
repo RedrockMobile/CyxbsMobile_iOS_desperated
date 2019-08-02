@@ -37,7 +37,7 @@
     self.hud.labelText=@"loading";
     self.isNetWorkSuccess = YES;
     self.nowWeek = 0;
-    self.weekScrollViewHeight = SCREENHEIGHT*0.06;
+    self.weekScrollViewHeight = SCREEN_HEIGHT*0.06;
     [self getLessonsData];
     [self initNavigationBar];
     [self.view addSubview:self.mainView];
@@ -75,7 +75,7 @@
 
 - (MainView *)mainView{
     if (_mainView == nil) {
-        _mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
+        _mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT)];
         [self initBtns];
     }
     return _mainView;
@@ -88,7 +88,7 @@
         if (_nowWeek >0 && _nowWeek<=20) {
             weekArray[_nowWeek] = @"本周";
         }
-        _weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight) andTitles:weekArray];
+        _weekScrollView = [[LZWeekScrollView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, _weekScrollViewHeight) andTitles:weekArray];
         _weekScrollView.eventDelegate = self;
         [self clickBtn];
         
@@ -118,8 +118,8 @@
     if (!self.weekScrollView.hidden) {
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,1.0);
-            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, 0);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT));
+            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, 0);
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT));
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = YES;
         }];
@@ -127,8 +127,8 @@
     else{
         [UIView animateWithDuration:0.3 animations:^{
             self.pullImageView.transform = CGAffineTransformMakeScale(1.0,-1.0);
-            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, _weekScrollViewHeight);
-            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_weekScrollViewHeight, SCREENWIDTH, SCREENHEIGHT-(HEADERHEIGHT+_weekScrollViewHeight));
+            self.weekScrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, _weekScrollViewHeight);
+            self.mainView.frame = CGRectMake(0, HEADERHEIGHT+_weekScrollViewHeight, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT+_weekScrollViewHeight));
             
         }completion:^(BOOL finished) {
             self.weekScrollView.hidden = NO;

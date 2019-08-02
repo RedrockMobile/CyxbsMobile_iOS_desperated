@@ -79,9 +79,9 @@
 + (void)uploadSupport:(MBCommunity_ViewModel *)viewModel withType:(NSInteger)type {
     //type == 0 赞 , type == 1 取消赞
     MBCommunityModel *model = viewModel.model;
-    NSString *url = ADDSUPPORT_API;
+    NSString *url = YOUWEN_ADD_LIKE_API;
     if (type == 1) {
-        url = CANCELSUPPOTRT_API;
+        url = YOUWEN_CANCEL_LIKE_API;
     }
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];

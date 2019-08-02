@@ -38,7 +38,7 @@
     self.contentLabel.textAlignment = NSTextAlignmentLeft;
     self.footTableView.bounces = NO;
     self.footTableView.showsVerticalScrollIndicator = NO;
-    self.whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    self.whiteView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     self.whiteView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.whiteView];
     self.hud=[MBProgressHUD showHUDAddedTo:self.whiteView animated:YES];

@@ -22,11 +22,6 @@
 #import "YouWenAdoptFrame.h"
 #import "commitSuccessFrameView.h"
 
-#define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
-#define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
-#define QUESTIONSINFO @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getDetailedInfo"
-#define ADOPTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/adopt"
-
 @interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -49,6 +44,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
+    self.title = @"求助详情";
 }
 
 - (YouWenBottomButtonView *)bottomView {
@@ -75,7 +71,7 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(@(45/720.0*ScreenHeight));
+        make.height.mas_equalTo(@(45/720.0*SCREEN_HEIGHT));
     }];
 }
 
@@ -83,7 +79,7 @@
     if (!_tableView) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
         _tableView = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -98,11 +94,6 @@
 
 #pragma mark - tableview delegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identify = @"YouWenDetailCell";
-    
-//    YouWenDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-//
-//        cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
     YouWenDetailCell *cell;
     if (self.answerModelArr.count > 0) {
         NSInteger index = indexPath.row;
@@ -241,7 +232,7 @@
 
 - (YouWenDetailHeadView *)setTableHeaderView {
     NSUInteger num = self.detailQuestionModel.picArr.count;
-    self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:num];
+    self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:(int)num];
     self.headView.titleLabel.text = self.detailQuestionModel.title;
     self.headView.descriptionLabel.text = self.detailQuestionModel.descriptionStr;
     self.headView.bottomView.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailQuestionModel.avatar]]];
@@ -312,7 +303,7 @@
                                 };
     
     _hud.labelText = @"...";
-    [NetWork NetRequestPOSTWithRequestURL:ADOPTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADOPT_ANSWER_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -355,7 +346,7 @@
                                  };
     
 
-    [manager POST:QUESTIONSINFO parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager POST:YOUWEN_QUESTION_DETAIL_API parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if (responseObject) {
             self.isSelf = [NSString stringWithFormat:@"%@", responseObject[@"data"][@"is_self"]];
             self.detailQuestionModel = [[YouWenQuestionDetailModel alloc] initWithDic:responseObject[@"data"]];
@@ -371,8 +362,8 @@
             }
             
             if (self.answerModelArr.count == 0) {
-                UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+                UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
                 label.text = @"快来成为第一个帮助者吧～";
                 label.textAlignment = NSTextAlignmentCenter;
                 label.font = [UIFont systemFontOfSize:14.0];
@@ -411,9 +402,9 @@
     model = self.answerModelArr[indexpath.row];
 
     if (model.is_praised) {
-        url = CANCELUPVOTEURL;
+        url = YOUWEN_CANCEL_LIKE_API;
     } else {
-        url = UPVOTEURL;
+        url = YOUWEN_ADD_LIKE_API;
     }
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *answer_id = [NSString stringWithFormat:@"%ld", sender.view.tag];
@@ -427,7 +418,7 @@
     
     [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         model.is_praised = !model.is_praised;
-        if ([url isEqualToString:UPVOTEURL]) {
+        if ([url isEqualToString:YOUWEN_ADD_LIKE_API]) {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] + 1];
         } else {
             model.upvoteNum = [NSString stringWithFormat:@"%d", [model.upvoteNum intValue] - 1];
@@ -451,7 +442,7 @@
     [self.navigationController pushViewController:view animated:YES];
 }
 - (void)moreInfor{
-    TransparentView *view = [[TransparentView alloc] initWithNews:@[@"report",@"share",@"举报",@"分享"]];
+    TransparentView *view = [[TransparentView alloc] initWithTypes:@[@"report",@"share",@"举报",@"分享"]];
     view.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
@@ -475,14 +466,5 @@
         [self.commitSuccessFrame free];
     }
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

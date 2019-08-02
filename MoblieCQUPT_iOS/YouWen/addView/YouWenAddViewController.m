@@ -20,7 +20,7 @@
 #import "UIViewController+BackButtonHandler.h"
 
 #define PHOTOSIZE 109
-@interface YouWenAddViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate, BackButtonHandlerProtocol>
+@interface YouWenAddViewController ()<UINavigationControllerDelegate, UIImagePickerControllerDelegate, getInformation, MBProgressHUDDelegate, YouWenAddDelegate, BackButtonHandlerProtocol, UITextFieldDelegate>
 
 @property (strong, nonatomic) ReportTextView *titleTextView;
 @property (strong, nonatomic) ReportTextView *detailTextView;
@@ -32,6 +32,7 @@
 @property (strong, nonatomic) UIButton *addImageButton;
 @property (strong, nonatomic) UIScrollView *imageView;
 @property (strong, nonatomic) NSMutableArray *anotherInf;
+@property (strong, nonatomic) YouWenSubjectView *subjectView;
 
 
 @property (copy, nonatomic) NSString *time;
@@ -39,6 +40,8 @@
 @property (copy, nonatomic) NSString *is_anonymous;
 @property (copy, nonatomic) NSString *subject;
 @property (strong, nonatomic) TransparentView *photoView;
+
+@property (nonatomic, assign) BOOL isResultPushed;
 @end
 
 @implementation YouWenAddViewController
@@ -46,6 +49,7 @@
 -(instancetype)initWithStyle:(NSString *)style{
     if (self = [super init]) {
         [self setView];
+        _isResultPushed = NO;
         self.edgesForExtendedLayout = UIRectEdgeNone;
         _titleStr = [NSString string];
         _detailStr = [NSString string];
@@ -56,16 +60,20 @@
         _subject = [NSString string];
         self.navigationItem.title = @"求助";
         UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一步" style:UIBarButtonItemStylePlain target:self action:@selector(confirmInf)];
+        
         self.navigationItem.rightBarButtonItem = rightBarButtonItem;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(timeArrive:) name:@"timeNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(soreArrive:) name:@"soreNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(subjectArrive:) name:@"subjectNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(postTheNew) name:@"finalNotifi" object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(draft:) name:@"saveDraft" object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cancelPushed:) name:@"cancelPushed" object:nil];
+        
         _style = [[NSString alloc] initWithString:style];
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -107,25 +115,27 @@
         make.top.mas_equalTo(self.view);
         make.left.mas_equalTo(self.view);
         make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(327).multipliedBy(ScreenHeight / 667);
+        make.height.mas_equalTo(327).multipliedBy(SCREEN_HEIGHT / 667);
     }];
     [_whiteView.superview layoutIfNeeded];
     
-    _titleTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, 15, ScreenWidth - 30, 30) andState:OnlyWordNum];
+    _titleTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, 15, SCREEN_WIDTH - 30, 30) andState:OnlyWordNum];
     _titleTextView.limitNum = 20;
     _titleTextView.placeHolder.text = @"请输入标题";
     if (_titleStr.length) {
         _titleTextView.text = _titleStr;
     }
-    UIView *blackLine = [[UIView alloc] initWithFrame:CGRectMake(15, _titleTextView.bottom, ScreenWidth - 30, 1)];
+    UIView *blackLine = [[UIView alloc] initWithFrame:CGRectMake(15, _titleTextView.bottom, SCREEN_WIDTH - 30, 1)];
     blackLine.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
     
-    _detailTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, blackLine.bottom + 11, ScreenWidth - 30, _whiteView.height - blackLine.bottom - 11) andState:OnlyWordNum];
+    _detailTextView = [[ReportTextView alloc] initWithFrame:CGRectMake(15, blackLine.bottom + 11, SCREEN_WIDTH - 30, _whiteView.height - blackLine.bottom - 11) andState:OnlyWordNum];
     _detailTextView.limitNum = 200;
     self.detailTextView.placeHolder.text = @"详细描述你的问题和需求，表达越清楚，越容易获得帮助哦！";
     if (_detailStr.length) {
         _detailTextView.text = _detailStr;
     }
+    _detailTextView.inputAccessoryView = [self addToolBar];
+    _titleTextView.inputAccessoryView = [self addToolBar];
 
     [_whiteView addSubview:_titleTextView];
     [_whiteView addSubview:_detailTextView];
@@ -134,7 +144,7 @@
 
 - (void)setImageView{
     _imageView = [[UIScrollView alloc]init];
-    _imageView.contentSize = CGSizeMake(ScreenWidth, _imageArray.count / 3 * PHOTOSIZE + 216 - 60);
+    _imageView.contentSize = CGSizeMake(SCREEN_WIDTH, _imageArray.count / 3 * PHOTOSIZE + 216 - 60);
     _imageView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_imageView];
     CGRect final;
@@ -168,12 +178,6 @@
     _bottomView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_bottomView];
     
-    UIButton *photoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [photoButton setImage:[UIImage imageNamed:@"photo"] forState:UIControlStateNormal];
-    [photoButton addTarget:self action:@selector(selectImage)
-          forControlEvents:UIControlEventTouchUpInside];
-    [_bottomView addSubview:photoButton];
-    
     UIButton *topicButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [topicButton setImage:[UIImage imageNamed:@"topic"] forState:UIControlStateNormal];
     [topicButton addTarget:self action:@selector(addTopic) forControlEvents:UIControlEventTouchUpInside];
@@ -192,14 +196,6 @@
         make.height.mas_equalTo(25);
     }];
     
-    [photoButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(topicButton.mas_right).
-        mas_offset(37);
-        make.top.mas_equalTo(_bottomView).mas_offset(13);
-        make.width.mas_equalTo(24);
-        make.height.mas_equalTo(24);
-    }];
-    
     [anonymityButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.mas_equalTo(_bottomView).mas_offset(-15);
         make.top.mas_equalTo(_bottomView).mas_offset(16);
@@ -207,12 +203,13 @@
         make.height.mas_equalTo(18);
     }];
 }
+
 - (void)LayOut{
     [_bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.mas_equalTo(self.view);
+        make.bottom.equalTo(self.view);
         make.left.mas_equalTo(self.view);
         make.right.mas_equalTo(self.view);
-        make.height.mas_equalTo(50);
+        make.height.mas_equalTo(50 + SAFE_AREA_BOTTOM);
     }];
     [_bottomView.superview layoutIfNeeded];
     
@@ -225,11 +222,18 @@
     
 
 }
+
 - (void)addTopic{
-    YouWenSubjectView *subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:300];
-    [subjectView addDetail];
-    [[UIApplication sharedApplication].keyWindow addSubview:subjectView];
+    if (_subject) {
+        _subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:250 + SAFE_AREA_BOTTOM subject:_subject];
+    } else{
+        _subjectView = [[YouWenSubjectView alloc] initTheWhiteViewHeight:250 + SAFE_AREA_BOTTOM];
+    }
+    _subjectView.topicField.delegate = self;
+    [_subjectView popWhiteView];
+    [[UIApplication sharedApplication].keyWindow addSubview:_subjectView];
 }
+
 - (UIButton *)addImageButton{
     if (!_addImageButton){
         _addImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -239,20 +243,34 @@
     return _addImageButton;
 }
 
-
 - (void)confirmInf{
-    //textview当字数为0时返回nil  ????
+    //textview当字数为0时返回nil
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-    if (_titleTextView.text.length == nil||_detailTextView.text.length == nil) {
-        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有完善信息哦" preferredStyle:UIAlertControllerStyleAlert];
+    if (_titleTextView.text.length == 0) {
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有填写标题哦" preferredStyle:UIAlertControllerStyleAlert];
         [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
                       style:UIAlertActionStyleDefault
                     handler:nil]];
         [self presentViewController:alertCon
                            animated:YES
                          completion:nil];
-    }
-    else{
+    }else if(_detailTextView.text.length == 0){
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有输入详情哦" preferredStyle:UIAlertControllerStyleAlert];
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil]];
+        [self presentViewController:alertCon
+                           animated:YES
+                         completion:nil];
+    }else if(_subject.length == 0){
+        UIAlertController *alertCon = [UIAlertController alertControllerWithTitle:@"注意" message:@"还没有选择话题哦" preferredStyle:UIAlertControllerStyleAlert];
+        [alertCon addAction:[UIAlertAction actionWithTitle:@"确定"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:nil]];
+        [self presentViewController:alertCon
+                           animated:YES
+                         completion:nil];
+    }else{
         [self nextView];
     }
 }
@@ -260,23 +278,22 @@
 - (void)nextView{
     _anotherInf = [NSMutableArray array];
     if (_time.length < 16){
-        YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        [nextView addDetail];
+        YouWenTimeView *nextView = [[YouWenTimeView alloc] initTheWhiteViewHeight:210 + SAFE_AREA_BOTTOM];
+        [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else if([_sore isEqualToString:@"0"]){
-        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        [nextView addDetail];
+        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
+        [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
     }
     else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        resultView.time = _time;
-        resultView.sore = _sore;
-        [resultView addDetail];
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:195 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
+
 - (void)timeArrive:(NSNotification *)noti{
     _time = noti.object[@"time"];
     if (_time.length < 16) {
@@ -288,20 +305,22 @@
                            animated:YES
                          completion:nil];
     }
-    else{
-        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        [nextView addDetail];
+    else if(_sore.length == 0){
+        YouWenSoreView *nextView = [[YouWenSoreView alloc] initTheWhiteViewHeight:240 + SAFE_AREA_BOTTOM];
+        [nextView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:nextView];
+    }else{
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:195 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        _isResultPushed = YES;
+        [resultView popWhiteView];
+        [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
 
 - (void)subjectArrive:(NSNotification *)noti{
     _subject = noti.object[@"subject"];
-    if (_subject.length != 0){
-        [_titleTextView addTopic:_subject];
-    }
-    
 }
+
 - (void)draft:(NSNotification *)noti{
     NSString *state = noti.userInfo[@"state"];
     if ([state isEqualToString:@"SENDING"]) {
@@ -328,6 +347,10 @@
     }
 }
 
+- (void)cancelPushed:(NSNotification *)noti{
+    _isResultPushed = NO;
+}
+
 - (void)soreArrive:(NSNotification *)noti{
     _sore = noti.object[@"sore"];
     if ([_sore isEqualToString:@"0"]) {
@@ -339,19 +362,23 @@
                            animated:YES
                          completion:nil];
     }
-    else{
-        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:ZOOM(211)];
-        resultView.time = _time;
-        resultView.sore = _sore;
-        [resultView addDetail];
+    else {
+        YouWenResultView *resultView = [[YouWenResultView alloc] initTheWhiteViewHeight:195 + SAFE_AREA_BOTTOM score:_sore time:_time];
+        _isResultPushed = YES;
+        [resultView popWhiteView];
         [[UIApplication sharedApplication].keyWindow addSubview:resultView];
     }
 }
 
 - (void)postTheNew{
-
     NSString *title = [_titleTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
     NSString *detail = [_detailTextView.text stringByReplacingEmojiUnicodeWithCheatCodes];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy年mm月dd日HH时mm分";
+    NSDate *aDate = [dateFormatter dateFromString:_time];
+    dateFormatter.dateFormat = @"yyyy-mm-dd HH:mm:ss";
+    _time = [dateFormatter stringFromDate:aDate];
     
     
     NSDictionary *dic = @{@"title":title, @"description":detail,@"is_anonymous":_is_anonymous,@"kind":_style,@"tags":_subject,@"reward":_sore,@"disappear_time":_time};
@@ -373,27 +400,37 @@
     [_hud removeFromSuperview];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 //照片
 - (void)selectImage{
-    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:100];
+    _photoView = [[TransparentView alloc] initTheWhiteViewHeight:150 + SAFE_AREA_BOTTOM];
     UIButton *pictureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [pictureBtn setTitle:@"从相册中选择" forState:UIControlStateNormal];
-    [pictureBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [pictureBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     [pictureBtn addTarget:self action:@selector(selectPicture) forControlEvents:UIControlEventTouchUpInside];
-    pictureBtn.frame = CGRectMake(0, 0, ScreenWidth, 50);
+    pictureBtn.frame = CGRectMake(0, 0, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:pictureBtn];
     
     UIButton *photoBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [photoBtn setTitle:@"拍照" forState:UIControlStateNormal];
-    [photoBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [photoBtn setTitleColor:MAIN_COLOR forState:UIControlStateNormal];
     [photoBtn addTarget:self action:@selector(takePhoto) forControlEvents:UIControlEventTouchUpInside];
-    photoBtn.frame = CGRectMake(0, 50, ScreenWidth, 50);
+    photoBtn.frame = CGRectMake(0, 50, SCREEN_WIDTH, 50);
     [_photoView.whiteView addSubview:photoBtn];
     _titleStr = _titleTextView.text;
     _detailStr = _detailTextView.text;
     [[UIApplication sharedApplication].keyWindow addSubview:_photoView];
-
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    cancelButton.frame = CGRectMake(0, 100, SCREEN_WIDTH, 50);
+    [_photoView.whiteView addSubview:cancelButton];
+    
+    [_photoView popWhiteView];
 }
+
 - (void)selectPicture{
     [_photoView removeFromSuperview];
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
@@ -427,6 +464,10 @@
     }
 }
 
+- (void)cancel{
+    [_photoView pushWhiteView];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         if ([info[UIImagePickerControllerMediaType] isEqualToString:@"public.image"]) {
@@ -442,11 +483,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)anonymityState:(UIButton *)btn{
     btn.selected = !btn.selected;
     if (btn.selected == YES) {
@@ -457,14 +493,64 @@
     }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/**
+ 键盘上用于回收键盘的ToolBar
+
+ @return ToolBar
+ */
+- (UIToolbar *)addToolBar{
+    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+    toolBar.tintColor = [UIColor blackColor];
+    toolBar.backgroundColor = [UIColor lightGrayColor];
+    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStylePlain target:self action:@selector(textFieldDone)];
+    toolBar.items = @[doneItem];
+    return toolBar;
 }
-*/
+
+
+- (void)textFieldDone{
+    [self.view endEditing:YES];
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [UIView animateWithDuration:0.3f animations:^{
+        _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y - 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
+    } completion:nil];
+    
+    _subjectView.topicField.text = @"";
+    for (UIButton *btn in _subjectView.btnArray) {
+        btn.selected = NO;
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    if (_subjectView.topicField.text.length < 7 && _subjectView.topicField.text.length > 0) {
+        _subject = _subjectView.topicField.text;
+        _subjectView.topicField.text = [NSString stringWithFormat:@"#%@#", _subjectView.topicField.text];
+        [UIView animateWithDuration:0.3f animations:^{
+            _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y + 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
+        } completion:nil];
+        
+    } else if(_subjectView.topicField.text.length == 0){
+        [UIView animateWithDuration:0.3f animations:^{
+            _subjectView.whiteView.frame = CGRectMake(_subjectView.whiteView.frame.origin.x, _subjectView.whiteView.frame.origin.y + 200, _subjectView.whiteView.frame.size.width, _subjectView.whiteView.frame.size.height);
+        } completion:nil];
+    } else{
+        [_subjectView pushWhiteView];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"话题字数过长" message:@"话题不能超过6个字哦！" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [_subjectView.topicField becomeFirstResponder];
+        }];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [_subjectView.topicField resignFirstResponder];
+    return YES;
+}
 
 @end

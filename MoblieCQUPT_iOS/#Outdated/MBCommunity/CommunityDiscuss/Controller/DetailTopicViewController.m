@@ -49,12 +49,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = 0;
-    self.detailBannnerView =[[DetailBannnerView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 230) andTopic:self.topic];
+    self.detailBannnerView =[[DetailBannnerView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 230) andTopic:self.topic];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.joinBtn];
     [self.joinBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.and.left.and.bottom.equalTo(self.view).offset(0);
-        make.height.mas_equalTo(SCREENHEIGHT*50/667);
+        make.height.mas_equalTo(SCREEN_HEIGHT*50/667);
     }];
     self.navigationItem.rightBarButtonItem = self.shareButton;
     [self getArticles];
@@ -88,7 +88,7 @@
 
 - (UITableView *)tableView{
     if (!_tableView) {
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT-SCREENHEIGHT*50/667) style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-SCREEN_HEIGHT*50/667) style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.sectionHeaderHeight = 0;

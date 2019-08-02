@@ -23,7 +23,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"时间编辑";
     self.buttonArray = [NSMutableArray array];
-    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT)];
+    self.mainView = [[MainView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT)];
     [self.view addSubview:self.mainView];
     self.mainView.backgroundColor = [UIColor colorWithRed:246/255.f green:246/255.f blue:246/255.f alpha:1];
     for (int i = 0; i<DAY; i++) {

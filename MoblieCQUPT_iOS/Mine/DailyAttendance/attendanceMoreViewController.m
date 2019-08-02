@@ -27,10 +27,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSDictionary *dic = @{NSFontAttributeName:[UIFont systemFontOfSize:14]};
-    CGRect rect = [_textStr boundingRectWithSize:CGSizeMake(0, SCREENWIDTH - 70) options:NSStringDrawingUsesLineFragmentOrigin
+    CGRect rect = [_textStr boundingRectWithSize:CGSizeMake(0, SCREEN_WIDTH - 70) options:NSStringDrawingUsesLineFragmentOrigin
         |NSStringDrawingUsesFontLeading
         attributes:dic context:nil];
-    _mainView = [[UIView alloc] initWithFrame:CGRectMake(15, 25, SCREENWIDTH - 30, rect.size.height + 110)];
+    _mainView = [[UIView alloc] initWithFrame:CGRectMake(15, 25, SCREEN_WIDTH - 30, rect.size.height + 110)];
     _mainView.layer.cornerRadius = 5;
     _mainView.layer.borderWidth = 1;
     _mainView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -42,7 +42,7 @@
    
     [self.view addSubview:_mainView];
     
-    UILabel *textLab = [[UILabel alloc] initWithFrame:CGRectMake(20, 25, SCREENWIDTH - 70, rect.size.height)];
+    UILabel *textLab = [[UILabel alloc] initWithFrame:CGRectMake(20, 25, SCREEN_WIDTH - 70, rect.size.height)];
     textLab.numberOfLines = 0;
     textLab.font = [UIFont fontWithName:@"Arial" size:14];
     textLab.text = _textStr;

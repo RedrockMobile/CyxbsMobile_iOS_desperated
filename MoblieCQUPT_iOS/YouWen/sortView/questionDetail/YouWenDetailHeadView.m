@@ -24,7 +24,7 @@
     self = [super init];
     
     if (self) {
-        self.frame = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT-HEADERHEIGHT);
+        self.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT);
         
         self.titleLabel = [[UILabel alloc] init];
         self.titleLabel.numberOfLines = 0;
@@ -66,7 +66,7 @@
                 make.top.equalTo(self.descriptionLabel.mas_bottom).offset(10);
                 make.left.mas_equalTo(self.titleLabel.mas_left);
                 make.right.mas_equalTo(self.titleLabel.mas_right);
-                make.height.mas_equalTo(@(162/667.0*SCREENHEIGHT));
+                make.height.mas_equalTo(@(162/667.0*SCREEN_HEIGHT));
             }];
             
             self.imageview1 = [[UIImageView alloc] init];
@@ -81,7 +81,7 @@
                 make.top.equalTo(self.descriptionLabel.mas_bottom).offset(10);
                 make.left.mas_equalTo(self.titleLabel.mas_left);
                 make.right.mas_equalTo(self.titleLabel.mas_right);
-                make.height.mas_equalTo(@(102/667.0*SCREENHEIGHT));
+                make.height.mas_equalTo(@(102/667.0*SCREEN_HEIGHT));
             }];
             
             self.imageview1 = [[UIImageView alloc] init];
@@ -117,7 +117,7 @@
                 make.top.equalTo(self.descriptionLabel.mas_bottom).offset(10);
                 make.left.mas_equalTo(self.titleLabel.mas_left);
                 make.right.mas_equalTo(self.titleLabel.mas_right);
-                make.height.mas_equalTo(@(214/667.0*SCREENHEIGHT));
+                make.height.mas_equalTo(@(214/667.0*SCREEN_HEIGHT));
             }];
             
             self.imageview1 = [[UIImageView alloc] init];

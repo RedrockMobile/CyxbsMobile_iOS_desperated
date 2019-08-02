@@ -325,13 +325,13 @@ static inline UIEdgeInsets UIEdgeInsetPixelCeil(UIEdgeInsets insets) {
 #endif
 
 // main screen's width (portrait)
-#ifndef kScreenWidth
-#define kScreenWidth YYScreenSize().width
+#ifndef kSCREEN_WIDTH
+#define kSCREEN_WIDTH YYScreenSize().width
 #endif
 
 // main screen's height (portrait)
-#ifndef kScreenHeight
-#define kScreenHeight YYScreenSize().height
+#ifndef kSCREEN_HEIGHT
+#define kSCREEN_HEIGHT YYScreenSize().height
 #endif
 
 NS_ASSUME_NONNULL_END

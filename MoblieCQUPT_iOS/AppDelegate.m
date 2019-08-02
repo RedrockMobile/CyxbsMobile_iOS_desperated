@@ -156,7 +156,7 @@
         [tbc setSelectedIndex:1];
         NSString *topic_id = [url lastPathComponent];
         HttpClient *client = [HttpClient defaultClient];
-        [client requestWithPath:TOPICLIST_API method:HttpRequestGet parameters:nil prepareExecute:^{
+        [client requestWithPath:TOPIC_API method:HttpRequestGet parameters:nil prepareExecute:^{
             
         } progress:^(NSProgress *progress) {
             

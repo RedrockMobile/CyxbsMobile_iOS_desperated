@@ -88,27 +88,27 @@
     self.tableView.tableFooterView = [[UIView alloc]init];
     [self.tableView setSeparatorInset:UIEdgeInsetsMake(0, 16, 0, 16)];
     
-    self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+    self.coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
     __weak IssueTableViewController *weakSelf = self;
     self.coverView.passTap = ^(NSSet *touches,UIEvent *event){
         [weakSelf touchesBegan:touches withEvent:event];
     };
     
-    self.categoryChooseView = [[CategoryChooseView alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/2, SCREENWIDTH, SCREENHEIGHT/2)];
+    self.categoryChooseView = [[CategoryChooseView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT/2)];
     for (int i = 0; i<self.categoryChooseView.btnArray.count; i++) {
         [self.categoryChooseView.btnArray[i] addTarget:self action:@selector(chooseCategory:) forControlEvents:UIControlEventTouchUpInside];
     }
 
     CGRect frame = self.categoryChooseView.frame;
-    frame.origin.y = SCREENHEIGHT;
+    frame.origin.y = SCREEN_HEIGHT;
     frame.size.height = 1;
     self.categoryChooseView.frame = frame;
     self.categoryChooseView.hidden = YES;
     
-    self.datePicker = [[LZDatePicker alloc]initWithFrame:CGRectMake(0, SCREENHEIGHT/2, SCREENWIDTH, SCREENHEIGHT/2)];
+    self.datePicker = [[LZDatePicker alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT/2)];
     self.datePicker.backgroundColor = [UIColor colorWithHexString:@"#fbfbfb"];
     CGRect pickerFrame = self.datePicker.frame;
-    pickerFrame.origin.y = SCREENHEIGHT;
+    pickerFrame.origin.y = SCREEN_HEIGHT;
     pickerFrame.size.height = 1;
     self.datePicker.frame = pickerFrame;
     self.datePicker.hidden = YES;
@@ -132,7 +132,7 @@
     if (self.datePicker.hidden == NO) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.datePicker.frame;
-            frame.origin.y = SCREENHEIGHT;
+            frame.origin.y = SCREEN_HEIGHT;
             frame.size.height = 1;
             self.datePicker.frame = frame;
         }completion:^(BOOL finished) {
@@ -146,7 +146,7 @@
         [self.view.window addSubview:self.datePicker];
         self.datePicker.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.datePicker.frame = CGRectMake(0, SCREENHEIGHT/2, SCREENWIDTH, SCREENHEIGHT/2);
+            self.datePicker.frame = CGRectMake(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT/2);
         }completion:^(BOOL finished) {
             
         }];
@@ -156,7 +156,7 @@
     if (self.categoryChooseView.hidden == NO) {
         [UIView animateWithDuration:0.3 animations:^{
             CGRect frame = self.categoryChooseView.frame;
-            frame.origin.y = SCREENHEIGHT;
+            frame.origin.y = SCREEN_HEIGHT;
             frame.size.height = 1;
             self.categoryChooseView.frame = frame;
         }completion:^(BOOL finished) {
@@ -170,7 +170,7 @@
         [self.view.window addSubview:self.categoryChooseView];
         self.categoryChooseView.hidden = NO;
         [UIView animateWithDuration:0.3 animations:^{
-            self.categoryChooseView.frame = CGRectMake(0, SCREENHEIGHT/2, SCREENWIDTH, SCREENHEIGHT/2);
+            self.categoryChooseView.frame = CGRectMake(0, SCREEN_HEIGHT/2, SCREEN_WIDTH, SCREEN_HEIGHT/2);
         }completion:^(BOOL finished) {
             
         }];

@@ -19,15 +19,15 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        self.frame = CGRectMake(0, ScreenHeight - 50, ScreenWidth, 50);
+        self.frame = CGRectMake(0, SCREEN_HEIGHT - 50, SCREEN_WIDTH, 50);
         self.backgroundColor = BACK_GRAY_COLOR;
         
         CALayer *line = [[CALayer alloc]init];
-        line.frame = CGRectMake(0, 0, ScreenWidth, 0.5);
+        line.frame = CGRectMake(0, 0, SCREEN_WIDTH, 0.5);
         line.backgroundColor = [UIColor colorWithRed:220/255.0 green:220/255.0 blue:236/255.0 alpha:1].CGColor;
         
         
-        _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 10, ScreenWidth - 20 - 30, 30)];
+        _textView = [[MBTextView alloc]initWithFrame:CGRectMake(10, 10, SCREEN_WIDTH - 20 - 30, 30)];
         _textView.placeholderColor = [UIColor lightGrayColor];
         _textView.backgroundColor = [UIColor whiteColor];
         _textView.placeholder = @"评论";
@@ -56,7 +56,7 @@
     [_textView resignFirstResponder];
     _cancel.transform = CGAffineTransformMakeRotation(M_PI);
     [UIView animateWithDuration:0.25 animations:^{
-        self.frame = CGRectMake(0, ScreenHeight - self.frame.size.height, self.frame.size.width, self.frame.size.height);
+        self.frame = CGRectMake(0, SCREEN_HEIGHT - self.frame.size.height, self.frame.size.width, self.frame.size.height);
     } completion:^(BOOL finished) {
         _textView.placeholder = @"评论";
     }];

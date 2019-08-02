@@ -12,10 +12,6 @@
 #import "SheetAlertController.h"
 #import "UIViewController+BackButtonHandler.h"
 
-
-#define ANSWERQUESTION @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/add"
-#define ANSWERQUESTIONPICTURES @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/uploadPicture"
-
 @interface YouWenWriteAnswerViewController ()<UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) UITextView *textView;
@@ -55,7 +51,7 @@
     self.textView.returnKeyType = UIReturnKeyDone;
     self.textView.font = [UIFont systemFontOfSize:16];
     self.textView.delegate = self;
-    self.placehoderLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 19, SCREENWIDTH-16, 18)];
+    self.placehoderLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 19, SCREEN_WIDTH-16, 18)];
     self.placehoderLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.6];
     self.placehoderLabel.text = @"请尽可能给出明确的解决思路哦";
     self.placehoderLabel.font = [UIFont systemFontOfSize:16];
@@ -65,7 +61,7 @@
     
     [self.textView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(self.view);
-        make.height.mas_equalTo(@(320/667.0*SCREENHEIGHT));
+        make.height.mas_equalTo(@(320/667.0*SCREEN_HEIGHT));
     }];
     [self.textView layoutIfNeeded];
  
@@ -84,12 +80,12 @@
     bottomGrayView.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.08];
     [bottomGrayView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.top.equalTo(picView);
-        make.height.mas_equalTo(@(11/667.0*SCREENHEIGHT));
+        make.height.mas_equalTo(@(11/667.0*SCREEN_HEIGHT));
     }];
     
-    self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 16, 109/375.0*SCREENWIDTH, 109/375.0*SCREENWIDTH)];
+    self.imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(15, 16, 109/375.0*SCREEN_WIDTH, 109/375.0*SCREEN_WIDTH)];
     self.imageView1.image = [UIImage imageNamed:@"加号"];
-    self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(15 * 2 + 109/375.0*SCREENWIDTH, 16, 109/375.0*SCREENWIDTH, 109/375.0*SCREENWIDTH)];
+    self.imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(15 * 2 + 109/375.0*SCREEN_WIDTH, 16, 109/375.0*SCREEN_WIDTH, 109/375.0*SCREEN_WIDTH)];
     [picView addSubview:self.imageView1];
     [picView addSubview:self.imageView2];
     
@@ -192,7 +188,7 @@
                                  @"content":self.textView.text,
                                  @"question_id":self.question_id
                                  };
-    [manager POST:ANSWERQUESTION parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager POST:YOUWEN_ANSWER_QUESTION_API parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         //返回前一个界面，刷新，弹出提示框
         NSLog(@"发送成功");
         if ((int)responseObject[@"status"] == 801) {
@@ -230,7 +226,7 @@
             model.uploadImage = imgArr[i];
             [imgs addObject:model];
         }
-        [NetWork uploadImageWithUrl:ANSWERQUESTIONPICTURES imageParams:imgs otherParams:parameters imageQualityRate:1 successBlock:^(id returnValue) {
+        [NetWork uploadImageWithUrl:YOUWEN_UPLOAD_PIC_API imageParams:imgs otherParams:parameters imageQualityRate:1 successBlock:^(id returnValue) {
             [self.delegate reload];
             [self.navigationController popViewControllerAnimated:YES];
         } failureBlock:^{

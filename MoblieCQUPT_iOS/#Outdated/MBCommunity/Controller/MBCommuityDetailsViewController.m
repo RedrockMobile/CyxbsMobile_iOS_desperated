@@ -98,13 +98,13 @@
     
     [UIView beginAnimations:@"riseAnimate" context:nil];
     [UIView setAnimationDuration:0.275];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - height - self.detailCommentView.frame.size.height, SCREENWIDTH, self.detailCommentView.frame.size.height);
+    self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT - height - self.detailCommentView.frame.size.height, SCREEN_WIDTH, self.detailCommentView.frame.size.height);
     [UIView commitAnimations];
 }
 
 - (MBCommunityTableView *)tableView {
     if (!_tableView) {
-        _tableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight-59) style:UITableViewStylePlain];
+        _tableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-59) style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.delegate = self;
         _tableView.sectionHeaderHeight = 0;
@@ -131,9 +131,9 @@
 //评论的heedView
 - (UIView *)headView {
     if (!_headView) {
-        _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+        _headView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
         _headView.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
-        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(0, 10, ScreenWidth, 40)];
+        UIView *back = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 40)];
         back.backgroundColor = [UIColor whiteColor];
         
         UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 40)];
@@ -143,7 +143,7 @@
         [headLabel sizeToFit];
         headLabel.center = CGPointMake(10+headLabel.frame.size.width/2, back.frame.size.height/2);
         
-        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
+        UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 1)];
         line.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
         
         _headLabel = headLabel;
@@ -193,7 +193,7 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-            self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - (271/667.0) * SCREENHEIGHT, SCREENWIDTH, (271/667.0) * SCREENHEIGHT);
+            self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT - (271/667.0) * SCREEN_HEIGHT, SCREEN_WIDTH, (271/667.0) * SCREEN_HEIGHT);
         }];
     } else {
         [MBCommunityHandle noLogin:self handler:^(BOOL success) {
@@ -206,7 +206,7 @@
 - (UIView *)detailCommentView {
     if (!_detailCommentView) {
         _detailCommentView = [[LXDetailCommentView alloc] init];
-        _detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
+        _detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
         [_detailCommentView.cancelBtn addTarget:self action:@selector(tapCancelBtn) forControlEvents:UIControlEventTouchDown];
         [_detailCommentView.sendBtn addTarget:self action:@selector(tapSendBtn) forControlEvents:UIControlEventTouchDown];
         
@@ -219,7 +219,7 @@
 - (void)tapCancelBtn {
     [UIView beginAnimations:@"downAnimate" context:nil];
     [UIView setAnimationDuration:0.1];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENHEIGHT, 0);
+    self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_HEIGHT, 0);
     self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [UIView commitAnimations];
     [self.detailCommentView.commentTextView resignFirstResponder];
@@ -319,14 +319,14 @@
                 cell = [[MBCommentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify];
                 if (!_isLoadedComment) {
                     _indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-                    _indicatorView.frame = CGRectMake(0, 0, ScreenWidth, 200);
+                    _indicatorView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
                     [cell.contentView addSubview:_indicatorView];
                     cell.contentView.backgroundColor = [UIColor colorWithRed:252/255.0 green:252/255.0 blue:252/255.0 alpha:1];
                     [_indicatorView startAnimating];
                     [self loadNetWorkData];
                 }
             }else {
-                UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 200)];
+                UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
                 label.text = @"快来发表你的评论吧";
                 label.font = [UIFont systemFontOfSize:14];
                 label.textColor = [UIColor colorWithRed:186/255.0 green:186/255.0 blue:186/255.0 alpha:1];
@@ -384,7 +384,7 @@
                                 @"type_id":type_id,
                                 @"version":@1.0,
                                 @"size":@(15)};
-    [NetWork NetRequestPOSTWithRequestURL:GETREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_QUESTION_DISUCESS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         _isLoadedComment = YES;
         _dataArray = [NSMutableArray array];
         NSArray *array = returnValue[@"data"];
@@ -427,7 +427,7 @@
                                 @"content":content};
     NSLog(@"发送评论");
     _hud.labelText = @"正在发送评论...";
-    [NetWork NetRequestPOSTWithRequestURL:POSTREMARK_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADD_DISCUSS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;

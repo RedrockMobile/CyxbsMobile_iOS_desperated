@@ -30,12 +30,14 @@
     }
     return self;
 }
+
 - (NSMutableArray *)dataArray{
     if (_dataArray) {
         _dataArray = [NSArray array].mutableCopy;
     }
     return _dataArray;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,7 +46,7 @@
     _tab.delegate = self;
     _tab.dataSource = self;
     _tab.rowHeight = UITableViewAutomaticDimension;
-    _tab.estimatedRowHeight = 134; // 设置估算高度
+    _tab.estimatedRowHeight = 200; // 设置估算高度
     
     
     _tab.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -53,11 +55,6 @@
     header.stateLabel.textColor = [UIColor blackColor];
     header.lastUpdatedTimeLabel.hidden = YES;
     _tab.mj_header = header;
-    MJRefreshAutoNormalFooter* footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(getNewPageData)];
-    footer.stateLabel.textColor = [UIColor blackColor];
-    //这是个坑，不关会多次刷新
-    footer.automaticallyRefresh = NO;
-    _tab.mj_footer = footer;
     [self.view addSubview:_tab];
     [_tab mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.view);

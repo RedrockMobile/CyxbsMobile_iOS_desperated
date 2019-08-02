@@ -32,14 +32,14 @@
     
     //时间
     CGSize timeSize = [_model.created_time sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
-    CGFloat timeX = SCREENWIDTH - timeSize.width - 17;
+    CGFloat timeX = SCREEN_WIDTH - timeSize.width - 17;
     CGFloat timeY = CGRectGetMinY(_IDLabelFrame) + (_IDLabelFrame.size.height - timeSize.height) / 2.0;
     _timeLabelFrame = (CGRect){{timeX,timeY},timeSize};
     
     //内容
     CGFloat contentX = CGRectGetMaxX(_headImageViewFrame) + MARGIN;
     CGFloat contentY = CGRectGetMaxY(_headImageViewFrame) + MARGIN;
-    CGFloat contentW = ScreenWidth - contentX - MARGIN;
+    CGFloat contentW = SCREEN_WIDTH - contentX - MARGIN;
     CGRect contentSize = [_model.content boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
     _contentLabelFrame = (CGRect){{contentX,contentY},contentSize.size};
     

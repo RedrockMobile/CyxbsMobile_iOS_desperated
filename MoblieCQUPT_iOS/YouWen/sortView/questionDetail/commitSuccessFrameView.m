@@ -36,8 +36,8 @@
     [self.bgView addSubview:self];
     [self mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(window);
-        make.width.mas_equalTo(@(269/375.0*SCREENWIDTH));
-        make.height.mas_equalTo(@(163/667.0*SCREENHEIGHT));
+        make.width.mas_equalTo(@(269/375.0*SCREEN_WIDTH));
+        make.height.mas_equalTo(@(163/667.0*SCREEN_HEIGHT));
     }];
 }
 

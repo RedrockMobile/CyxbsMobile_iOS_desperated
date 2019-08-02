@@ -53,8 +53,8 @@
         [self addSubview:self.addBtn];
         [self addSubview:self.cancelBtn];
         [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(self.mas_top).offset(30*SCREENHEIGHT/667);
-            make.height.mas_equalTo(40*SCREENHEIGHT/667);
+            make.top.mas_equalTo(self.mas_top).offset(30*SCREEN_HEIGHT/667);
+            make.height.mas_equalTo(40*SCREEN_HEIGHT/667);
             make.left.mas_equalTo(self.mas_left).offset(18);
             make.centerX.mas_equalTo(self.mas_centerX);
             make.right.mas_equalTo(self.mas_right).offset(-18);
@@ -65,7 +65,7 @@
             make.centerY.mas_equalTo(self.addBtn.mas_centerY);
             make.left.mas_equalTo(18);
             make.right.mas_equalTo(self.addBtn.mas_left).offset(-20);
-            make.bottom.mas_equalTo(-30*SCREENHEIGHT/667);
+            make.bottom.mas_equalTo(-30*SCREEN_HEIGHT/667);
         }];
         [self.addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.height.mas_equalTo(self.textField.mas_height);

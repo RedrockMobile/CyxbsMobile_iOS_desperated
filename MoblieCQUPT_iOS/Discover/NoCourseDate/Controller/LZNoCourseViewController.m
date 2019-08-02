@@ -39,7 +39,7 @@
         make.left.mas_equalTo(0);
         make.right.mas_equalTo(0);
         make.top.mas_equalTo(0);
-        make.height.mas_equalTo(SCREENHEIGHT/2);
+        make.height.mas_equalTo(SCREEN_HEIGHT/2);
     }];
     [self.queryBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(18);
@@ -67,7 +67,7 @@
     if (_collectionView == nil) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
         layout.sectionInset = UIEdgeInsetsMake(20, 20, 0, 15);
-        layout.itemSize = CGSizeMake((SCREENWIDTH-40-3*15)/4, (SCREENWIDTH-40-3*15)/6);
+        layout.itemSize = CGSizeMake((SCREEN_WIDTH-40-3*15)/4, (SCREEN_WIDTH-40-3*15)/6);
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.backgroundColor = [UIColor whiteColor];
         [_collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
@@ -91,7 +91,7 @@
 
 - (CoverView *)coverView{
     if (_coverView == nil) {
-        _coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT)];
+        _coverView = [[CoverView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         __weak typeof(self) weakSelf = self;
         _coverView.passTap = ^(NSSet<UITouch *> *touches, UIEvent *event) {
             [weakSelf touchesBegan:touches withEvent:event];
@@ -184,7 +184,7 @@
     [_searchView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(18);
         make.right.mas_equalTo(-18);
-        make.height.mas_equalTo((SCREENHEIGHT-HEADERHEIGHT)*0.26);
+        make.height.mas_equalTo((SCREEN_HEIGHT-HEADERHEIGHT)*0.26);
         make.centerY.mas_equalTo(self.view.mas_centerY);
     }];
 }

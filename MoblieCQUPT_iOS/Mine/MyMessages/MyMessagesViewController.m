@@ -64,7 +64,7 @@
     else{
         _stunum_other = stuNum;
     }
-    [NetWork NetRequestPOSTWithRequestURL:SEARCH_API WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_USER_INFO_API WithParameter:@{@"stuNum":stuNum, @"idNum":idNum,@"stunum_other":_stunum_other,@"version":@1.0}
                      WithReturnValeuBlock:^(id returnValue) {
                          _myInfoData = returnValue[@"data"];
                          [self.communityTableView reloadData];
@@ -93,7 +93,7 @@
 
 - (MBCommunityTableView *)communityTableView {
     if (!_communityTableView) {
-        _communityTableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight) style:UITableViewStylePlain];
+        _communityTableView = [[MBCommunityTableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _communityTableView.dataSource = self;
         _communityTableView.delegate = self;
         _communityTableView.sectionHeaderHeight = 0;
@@ -213,10 +213,10 @@
         if (!cell) {
             cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"headViewCell"];
             
-            UIView *head = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
+            UIView *head = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 50)];
             head.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
 
-            UIView *back = [[UIView alloc] initWithFrame:CGRectMake(0, 10, ScreenWidth, 40)];
+            UIView *back = [[UIView alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH, 40)];
             back.backgroundColor = [UIColor whiteColor];
             
             UILabel *headLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 40)];
@@ -227,7 +227,7 @@
             [headLabel sizeToFit];
             headLabel.center = CGPointMake(10+headLabel.frame.size.width/2, back.frame.size.height/2);
             
-            UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 39, ScreenWidth, 1)];
+            UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 1)];
             line.backgroundColor = [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1];
             
             [back addSubview:headLabel];

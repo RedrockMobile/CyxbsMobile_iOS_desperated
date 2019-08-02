@@ -10,13 +10,19 @@
 
 #define WORDNUMWIDTH self.width / 5
 #define DEFINECOLOR [UIColor colorWithHexString:@"999999"];
+
 @interface ReportTextView()<UITextViewDelegate>
+
 @property (assign, nonatomic) wordNumState wnState;
 @property (assign, nonatomic) NSInteger topicLen;
 @property (strong, nonatomic) NSMutableArray<NSString *> *topicArray;
 @property (strong, nonatomic) NSMutableAttributedString *nowString;
+
 @end
+
+
 @implementation ReportTextView
+
 - (UITextView *)initWithFrame:(CGRect)frame andState:(wordNumState)state{
     self = [super initWithFrame:frame];
     if (self) {
@@ -66,7 +72,6 @@
             default:
                 break;
         }
-        
     }
     return _wordNum;
 }
@@ -83,13 +88,39 @@
     return _placeHolder;
 }
 
-- (void)textViewDidChange:(UITextView *)textView{
-    [self calculateNum:textView.text];
+
+
+/**
+ 添加话题标签的方法
+
+ @param subject 话题
+ */
+- (void)addTopic:(NSString *)subject{
+    NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@ ", subject, self.text]];
+    _topicLen += subject.length;
+    [self.topicArray appendObject:subject];
+    [sub addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, _topicLen)];
+    NSInteger Num = sub.length;
+    if (Num < _limitNum) {
+        self.attributedText = sub;
+        if (_wnState == OnlyWordNum){
+            self.wordNum.text = [NSString stringWithFormat:@"%lu", (unsigned long)Num];
+        }
+        else if (_wnState == CountWordNum){
+            self.wordNum.text = [NSString stringWithFormat:@"%lu/%ld", (unsigned long)Num, (long)_limitNum];
+        }
+        self.placeHolder.hidden = YES;
+    }
+    _nowString = self.attributedText.mutableCopy;
 }
 
+/**
+ 计算文本数量方法
+ 
+ @param str 文本
+ */
 - (void)calculateNum:(NSString *)str{
     NSUInteger Num;
-    self.placeHolder.hidden = YES;
     NSInteger flag = -1;
     for (int i = 0; i < _topicArray.count; i ++){
         NSRange range = [str rangeOfString:_topicArray[i]];
@@ -139,45 +170,17 @@
     _nowString = self.attributedText.mutableCopy;
 }
 
-- (void)addTopic:(NSString *)subject{
-    NSMutableAttributedString *sub = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@%@", subject, self.text]];
-    _topicLen += subject.length;
-    [self.topicArray appendObject:subject];
-    [sub addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, _topicLen)];
-    NSInteger Num = sub.length;
-    if (Num < _limitNum) {
-        self.attributedText = sub;
-        if (_wnState == OnlyWordNum){
-            self.wordNum.text = [NSString stringWithFormat:@"%lu", (unsigned long)Num];
-        }
-        else if (_wnState == CountWordNum){
-            self.wordNum.text = [NSString stringWithFormat:@"%lu/%ld", (unsigned long)Num, (long)_limitNum];
-        }
-        self.placeHolder.hidden = YES;
-    }
-    _nowString = self.attributedText.mutableCopy;
-}
-
-- (CGRect)zoomFrame:(CGRect)frame{
-    CGRect newFrame;
-    newFrame.origin.x = frame.origin.x;
-    newFrame.origin.y = frame.origin.y;
-    newFrame.size.height = frame.size.height / SCREEN_RATE;
-    newFrame.size.width = frame.size.width / SCREEN_RATE;
-    return newFrame;
-}
 
 - (void)setText:(NSString *)text{
     [super setText:text];
     [self calculateNum:text];
-    
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+
+- (void)textViewDidChange:(UITextView *)textView{
+    self.placeHolder.hidden = YES;
+    if (textView.markedTextRange == nil) {
+        [self calculateNum:textView.text];
+    }
 }
-*/
 
 @end

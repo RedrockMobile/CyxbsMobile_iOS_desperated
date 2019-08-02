@@ -22,7 +22,7 @@
     self = [super init];
     
     if (self) {
-        UIView *toolBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 48/667.0 * SCREENHEIGHT)];
+        UIView *toolBarView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 48/667.0 * SCREEN_HEIGHT)];
         toolBarView.backgroundColor = [UIColor whiteColor];
         [self addSubview:toolBarView];
         
@@ -38,11 +38,11 @@
         [toolBarView addSubview:self.cancelBtn];
         [self.cancelBtn setImage:[UIImage imageNamed:@"灰色叉叉"] forState:UIControlStateNormal];
         
-        _commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(26, 47/667.0 * SCREENHEIGHT, SCREENWIDTH - 26*2, 271/667.0 * SCREENHEIGHT - 47/667.0 * SCREENHEIGHT)];
+        _commentTextView = [[UITextView alloc] initWithFrame:CGRectMake(26, 47/667.0 * SCREEN_HEIGHT, SCREEN_WIDTH - 26*2, 271/667.0 * SCREEN_HEIGHT - 47/667.0 * SCREEN_HEIGHT)];
         [self addSubview:_commentTextView];
         _commentTextView.font = [UIFont systemFontOfSize:13];
         
-        self.placeholder = [[UILabel alloc] initWithFrame:CGRectMake(4, 8, SCREENWIDTH - 32, 15)];
+        self.placeholder = [[UILabel alloc] initWithFrame:CGRectMake(4, 8, SCREEN_WIDTH - 32, 15)];
         [_commentTextView addSubview:self.placeholder];
         self.placeholder.text = @"说点什么吧...";
         self.placeholder.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];

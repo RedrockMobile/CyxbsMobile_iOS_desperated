@@ -24,7 +24,7 @@
     #define DDLog(xx, ...)     ;
     //#define NSLog(format, ...) ;
 #endif
-#define BACKCOLOR [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
+#define BACK_COLOR [UIColor colorWithRed:246/255.0 green:246/255.0 blue:246/255.0 alpha:1.0]
 #define MAIN_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define FONT_COLOR  [UIColor colorWithRed:89/255.0 green:89/255.0 blue:89/255.0 alpha:1]
 //#define MAIN_COLOR  [UIColor colorWithRed:111/255.0 green:219/255.0 blue:188/255.0 alpha:1]
@@ -74,6 +74,8 @@
 #import "UIColor+Helper.h"
 #import "UserDefaultTool.h"
 #import "BaseViewController.h"
+#import "AESCipher.h"
+
 
 #pragma Group共享
 #define kAPPGroupID @"group.com.redrock.mobile"
@@ -83,50 +85,18 @@
 #define kAPPUserDefaultLoginName @"name"
 #define kAPPUserDefaultStudentID @"stuNum"
 
-
-#define ScreenWidth ([UIScreen mainScreen].bounds.size.width)
-#define ScreenHeight ([UIScreen mainScreen].bounds.size.height)
-#define kWidthGrid  (ScreenWidth/7.5)
+#define kWidthGrid  (SCREEN_WIDTH/7.5)
 #define RGBColor(r,g,b,a) ([UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a])
 
 #define ColorArray [[NSMutableArray alloc]initWithObjects:@"254,145,103",@"120,201,252",@"111,219,188",@"191,161,233",nil]
 
-#define kPhotoImageViewW (ScreenWidth - 2 * 10 - 4) / 3
+#define kPhotoImageViewW (SCREEN_WIDTH - 2 * 10 - 4) / 3
 
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
 //登录
-#define Base_Login @"https://wx.idsbllp.cn/api/verify"
-//哔哔叨叨列表
-#define LISTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listArticle"
-//热门动态列表
-#define SEARCHHOTARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchHotArticle"
-//获取评论列表
-#define GETREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticleRemark/getremark"
-//官方咨询列表
-#define LISTNEWS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/listNews"
-//评论接口
-#define POSTREMARK_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/ArticleRemark/postremarks"
-//赞接口
-#define ADDSUPPORT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/addone"
-//取消赞接口
-#define CANCELSUPPOTRT_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Praise/cancel"
-//发布动态接口
-#define ADDARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Article/addArticle"
-//发布话题文章接口
-#define ADDTOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/addTopicArticle"
-//查询个人信息接口
-#define SEARCH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/search"
-//
-#define SETINFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
-//上传图片接口
-#define UPLOADARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/uploadArticle"
-//动态查询接口
-#define SEARCHTREBDS_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchtrends"
-//话题列表接口
-#define TOPICLIST_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
-//话题文章列表接口
-#define TOPICARTICLE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/listTopicArticle"
+#define LOGIN_API @"https://wx.idsbllp.cn/api/verify"
+
 
 //首页图接口
 #define SPLASH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
@@ -135,7 +105,6 @@
 #define GETREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
 #define EDITREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
 #define DELETEREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
-#define EXAMAPI @"https://wx.idsbllp.cn/api/examSchedule"
 #define SEARCHPEOPLEAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
 #define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
 #define BASE_URL @"https://wx.idsbllp.cn"
@@ -144,9 +113,7 @@
 #define SUGGESTION_API @"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion"
 #define GRADEAPI @"https://wx.idsbllp.cn/api/examGrade"
 #define MakeApi @"https://wx.idsbllp.cn/api/examReexam"
-#define EXAM_SCHEDULE_API @"https://wx.idsbllp.cn/api/examSchedule"
 #define EmptyClassApi @"https://wx.idsbllp.cn/api/roomEmpty"
-#define TOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/topicList"
 #define MYJOINTOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
 #define Carousel_API @"https://wx.idsbllp.cn/app/api/pictureCarousel.php"
 
@@ -158,33 +125,180 @@
 #define GRADECLASSAPI @"https://wx.idsbllp.cn/api/examSchedule"
 //补考接口
 #define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
-//邮问接口
-#define YOUWEN_API @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Question/getQuestionList"
 
-#define kSegmentViewTitleHeight (SCREENHEIGHT*50/667)
-#define SCREENWIDTH ([UIScreen mainScreen].bounds.size.width)
-#define SCREENHEIGHT ([UIScreen mainScreen].bounds.size.height)
+/* 全面屏相关 */
+#define IS_IPHONEX ((SCREEN_WIDTH == 375.f && SCREEN_HEIGHT == 812.f) || (SCREEN_WIDTH == 414.f && SCREEN_HEIGHT == 896.f)? YES : NO)
+#define SAFE_AREA_BOTTOM (IS_IPHONEX ? (34.f) : (0.f))
 
-#define NVGBARHEIGHT (44)
-#define TABBARHEIGHT self.tabBarController.tabBar.frame.size.height
+/* 屏幕宽高 */
+#define SCREEN_WIDTH ([UIScreen mainScreen].bounds.size.width)
+#define SCREEN_HEIGHT ([UIScreen mainScreen].bounds.size.height)
+
+/* TabBar高度 */
+#define TABBARHEIGHT (IS_IPHONEX ? (49.f + SAFE_AREA_BOTTOM) : (49.f))
+
+/* 状态栏高度 */
 #define STATUSBARHEIGHT [[UIApplication sharedApplication] statusBarFrame].size.height
 
-#define  IPHONEX (ScreenWidth == 375.f && ScreenHeight == 812.f ? YES : NO)
-#define  TabbarSafeBottomMargin (IPHONEX ? 34.f : 0.f)
+/* NavigationBar高度 */
+#define NVGBARHEIGHT (44.f)
+
+/* 顶部总高度 */
+#define TOTAL_TOP_HEIGHT (STATUSBARHEIGHT + NVGBARHEIGHT)
+
+#define kSegmentViewTitleHeight (SCREEN_HEIGHT * 50 / 667)
+
+
+
+
 
 
 #define HEADERHEIGHT (STATUSBARHEIGHT+NVGBARHEIGHT)
-#define MWIDTH ((SCREENWIDTH)/(DAY*2+1)) //monthLabel的宽度
+#define MWIDTH ((SCREEN_WIDTH)/(DAY*2+1)) //monthLabel的宽度
 #define MHEIGHT (1.6*MWIDTH) //monthLabel的高度
 #define DAY 7
 #define LESSON 12
 #define WEEK 20
 #define LONGLESSON (LESSON/2)
-#define LESSONBTNSIDE (((SCREENWIDTH)-(MWIDTH))/DAY)
+#define LESSONBTNSIDE (((SCREEN_WIDTH)-(MWIDTH))/DAY)
 #define SEGMENT 2
-#define autoSizeScaleX SCREENWIDTH/375.0
-#define autoSizeScaleY SCREENHEIGHT/667.0
+#define autoSizeScaleX SCREEN_WIDTH/375.0
+#define autoSizeScaleY SCREEN_HEIGHT/667.0
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 #define SCREEN_RATE (667/[UIScreen mainScreen].bounds.size.height)
 #define ZOOM(x) x / SCREEN_RATE
+
+
+
+/************************************************/
+/*                   邮问接口                     */
+/************************************************/
+/*
+ 问题部分
+ */
+
+//全部问题列表
+#define YOUWEN_ALL_QUESTIONS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getQuestionList"
+
+//添加新问题
+#define YOUWEN_ADD_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/add"
+
+//问题图片上传
+#define YOUWEN_UPLOAD_PIC_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/uploadPicture"
+
+//取消提问
+#define YOUWEN_CANCEL_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/cancelQuestion"
+
+//问题详情
+#define YOUWEN_QUESTION_DETAIL_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getDetailedInfo"
+
+//忽略问题
+#define YOUWEN_IGNORE_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/ignore"
+
+/*
+ 回答部分
+ */
+
+//回答问题
+#define YOUWEN_ANSWER_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
+
+//某个问题下的回答列表
+#define YOUWEN_QUESTION_ANSWER_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
+
+//采纳答案
+#define YOUWEN_ADOPT_ANSWER_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/adopt"
+
+//赞接口
+#define YOUWEN_ADD_LIKE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/praise"
+
+//取消赞接口
+#define YOUWEN_CANCEL_LIKE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/cancelPraise"
+
+//某个回答下的评论列表
+#define YOUWEN_QUESTION_DISUCESS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getRemarkList"
+
+//在回答下添加评论
+#define YOUWEN_ADD_DISCUSS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/remark"
+
+/*
+ 积分部分
+ */
+
+//积分商城列表
+#define YOUWEN_STORE_ITEMS_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/getItemList"
+
+//添加积分商城物品
+#define YOUWEN_STORE_ADD_ITEM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/getItemList"
+
+//积分使用记录
+#define YOUWEN_CREDIT_USE_RECORD_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/integralRecord"
+
+/*
+ 个人部分
+ */
+
+//帮一帮
+#define YOUWEN_MY_HELP_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/help"
+
+//问一问
+#define YOUWEN_MY_ASK_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/ask"
+
+//草稿箱列表
+#define YOUWEN_DARAFTBOX_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/getDraftList"
+
+//草稿箱删除
+#define YOUWEN_DARAFTBOX_DELETE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/addItemInDraft"
+
+//增加草稿箱内容
+#define YOUWEN_DARAFTBOX_ADD_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/addItemInDraft"
+
+//修改草稿箱内容
+#define YOUWEN_DARAFTBOX_MODIFY_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/updateItemInDraft"
+
+//关于我的信息
+#define YOUWEN_MY_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/aboutMe"
+
+/*
+ 举报部分
+ */
+
+//举报列表
+#define YOUWEN_INFORM_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/reportList"
+
+//增加举报
+#define YOUWEN_ADD_INFORM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/addReport"
+
+//删除举报
+#define YOUWEN_DELETE_INFORM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/addReport"
+
+/*
+ 其他
+ */
+
+//签到
+#define YOUWEN_CHECKIN_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/checkIn"
+
+//获取掌邮用户信息
+#define YOUWEN_USER_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/Home/Person/search"
+
+//设置个人信息
+#define SET_MY_INFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
+
+
+/************************************************/
+/*                   过时接口                     */
+/************************************************/
+
+//话题列表接口
+#define TOPIC_API @"http://hongyan.cqupt.edu.cn/app"
+
+//话题文章列表接口
+#define TOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
+
+//发布话题文章接口
+#define ADDTOPICARTICLE_API @"http://hongyan.cqupt.edu.cn/app"
+
+//动态查询接口
+#define SEARCHTREBDS_API @"http://hongyan.cqupt.edu.cn/app"
+
 #endif

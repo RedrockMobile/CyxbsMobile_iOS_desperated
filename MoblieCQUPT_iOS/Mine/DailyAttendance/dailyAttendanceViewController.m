@@ -45,7 +45,7 @@
 }
 
 - (void)setUpMainView{
-    _mainView = [[UIView alloc] initWithFrame:CGRectMake(18, 22, SCREENWIDTH - 36, 382)];
+    _mainView = [[UIView alloc] initWithFrame:CGRectMake(18, 22, SCREEN_WIDTH - 36, 382)];
     _mainView.layer.cornerRadius = 5;
     _mainView.layer.borderWidth = 1;
     _mainView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -164,7 +164,7 @@
 
 
 - (void)setUpSwitch{
-    _cellView = [[UIView alloc] initWithFrame:CGRectMake(18, _mainView.bottom + 14, SCREENWIDTH - 36, 56)];
+    _cellView = [[UIView alloc] initWithFrame:CGRectMake(18, _mainView.bottom + 14, SCREEN_WIDTH - 36, 56)];
     _cellView.layer.cornerRadius = 5;
     _cellView.layer.borderWidth = 1;
     _cellView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -274,14 +274,14 @@
     [self.navigationController pushViewController:view animated:YES];
 }
 - (void)moreInfor{
-    TransparentView *view = [[TransparentView alloc] initWithNews:@[@"signInRule",@"soreDetail",@"签到规则",@"积分说明"]];
+    TransparentView *view = [[TransparentView alloc] initWithTypes:@[@"signInRule",@"soreDetail",@"签到规则",@"积分说明"]];
     view.delegate = self;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
 }
 
 - (void)attendance{
     HttpClient * client = [HttpClient defaultClient];
-    [client requestWithPath:@"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/checkIn" method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_CHECKIN_API method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         _attendanceBotton.hidden = YES;
         [self setUpLab];
         _continueday ++;

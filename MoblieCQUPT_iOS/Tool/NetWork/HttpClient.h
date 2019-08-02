@@ -18,6 +18,16 @@ typedef void (^PrepareExecuteBlock)(void);
 
 @interface HttpClient : NSObject
 + (HttpClient *)defaultClient;
+
+- (void)requestWithHead:(NSString *)url
+                 method:(NSInteger)method
+             parameters:(id)parameters
+                   head:(NSDictionary *)head
+         prepareExecute:(PrepareExecuteBlock) prepare
+               progress:(void (^)(NSProgress * progress))progress
+                success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure;
+
 - (void)requestWithPath:(NSString *)url
                  method:(NSInteger)method
              parameters:(id)parameters

@@ -25,7 +25,7 @@
     self.title = @"选课名单";
     self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
     self.dataArray = [@[] mutableCopy];
-    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT) style:UITableViewStylePlain];
+    self.listTab = [[UITableView alloc]initWithFrame: CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
     self.listTab.delegate = self;
     self.listTab.dataSource = self;
     self.listTab.backgroundColor = [UIColor clearColor];

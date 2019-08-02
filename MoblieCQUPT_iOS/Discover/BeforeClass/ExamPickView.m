@@ -27,23 +27,23 @@
 #pragma mark 布局
 - (void)layout{
     self.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
-    _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 250 + SCREENHEIGHT * 2/ 3 - 40, SCREENWIDTH, 40)];
+    _topView = [[UIView alloc]initWithFrame:CGRectMake(0, 250 + SCREEN_HEIGHT * 2/ 3 - 40, SCREEN_WIDTH, 40)];
     _topView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_topView];
-    UIView *sliderView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, SCREENWIDTH, 1)];
+    UIView *sliderView = [[UIView alloc] initWithFrame:CGRectMake(0, 39, SCREEN_WIDTH, 1)];
     sliderView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
     [_topView addSubview:sliderView];
     //退出
     _quitImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 15, 14)];
     _quitImage.image = [UIImage imageNamed:@"quitBtn"];
-    UITapGestureRecognizer *quitGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(quit)];
+    UITapGestureRecognizer *quitGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancel)];
     _quitImage.userInteractionEnabled = YES;
     [_quitImage addGestureRecognizer:quitGesture];
     [_topView addSubview:_quitImage];
     
     
     _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _confirmBtn.frame = CGRectMake(SCREENWIDTH - 50, 5, 34, 19);
+    _confirmBtn.frame = CGRectMake(SCREEN_WIDTH - 50, 5, 34, 19);
     [_confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
     _confirmBtn.titleLabel.font = [UIFont fontWithName:@"Arial" size:17];
     [_confirmBtn sizeToFit];
@@ -51,7 +51,7 @@
     [_confirmBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
     [_topView addSubview:_confirmBtn];
     
-    _singlePicker  = [[UIPickerView alloc]initWithFrame:CGRectMake(0,  250 + SCREENHEIGHT * 2/ 3, SCREENWIDTH, SCREENHEIGHT /3)];
+    _singlePicker  = [[UIPickerView alloc]initWithFrame:CGRectMake(0,  250 + SCREEN_HEIGHT * 2/ 3, SCREEN_WIDTH, SCREEN_HEIGHT /3)];
     _singlePicker.delegate = self;
     _singlePicker.dataSource = self;
     _singlePicker.backgroundColor = [UIColor whiteColor];
@@ -114,7 +114,7 @@
     {
         if (singleLine.frame.size.height < 1)
         {
-            singleLine.size = CGSizeMake(SCREENWIDTH, 2);
+            singleLine.size = CGSizeMake(SCREEN_WIDTH, 2);
             singleLine.backgroundColor = xgBuleColor;
         }
     }

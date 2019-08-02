@@ -56,24 +56,24 @@
     _weekScrollView = [self setUpScrollView];
     _weekScrollView.backgroundColor = [UIColor whiteColor];
     [self addSubview:_weekScrollView];
-    UIView *sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, _weekScrollView.bottom, SCREENWIDTH, 3)];
+    UIView *sliderView = [[UIView alloc]initWithFrame:CGRectMake(0, _weekScrollView.bottom, SCREEN_WIDTH, 3)];
     sliderView.backgroundColor = [UIColor colorWithRed:241/255.0 green:241/255.0 blue:241/255.0 alpha:1.0/1.0];
     [self addSubview:sliderView];
  
     NSArray *weekday = @[@"周一",@"周二",@"周三",@"周四",@"周五",@"周六",@"周日"];
     UIView *weekdayView = [self setUpWeekdayBtn:weekday];
     weekdayView.backgroundColor = [UIColor whiteColor];
-    weekdayView.frame = CGRectMake(0, sliderView.bottom, SCREENWIDTH, (self.size.height - 6 )/ 4 );
+    weekdayView.frame = CGRectMake(0, sliderView.bottom, SCREEN_WIDTH, (self.size.height - 6 )/ 4 );
     [self addSubview: weekdayView];
     
     UIView *buildView = [self setUpBuildBtn];
     buildView.backgroundColor = [UIColor whiteColor];
-    buildView.frame = CGRectMake(0, weekdayView.bottom + 1.5, SCREENWIDTH, (self.size.height - 6 )/ 4 );
+    buildView.frame = CGRectMake(0, weekdayView.bottom + 1.5, SCREEN_WIDTH, (self.size.height - 6 )/ 4 );
     [self addSubview:buildView];
 
     UIView *classView = [self setUpClassBtn];
     classView.backgroundColor = [UIColor whiteColor];
-    classView.frame = CGRectMake(0, buildView.bottom + 1.5, SCREENWIDTH, (self.size.height - 6 )/ 4 );
+    classView.frame = CGRectMake(0, buildView.bottom + 1.5, SCREEN_WIDTH, (self.size.height - 6 )/ 4 );
     [self addSubview:classView];
 
     //添加操作btn
@@ -336,7 +336,7 @@
 }
 //解决按键在view外
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)even{
-    if (CGRectContainsPoint(CGRectMake(0, 0, SCREENWIDTH, self.size.height),point)||CGRectContainsPoint(CGRectMake(0, self.size.height, SCREENWIDTH, 15),point)) {
+    if (CGRectContainsPoint(CGRectMake(0, 0, SCREEN_WIDTH, self.size.height),point)||CGRectContainsPoint(CGRectMake(0, self.size.height, SCREEN_WIDTH, 15),point)) {
 
         return YES;
     }

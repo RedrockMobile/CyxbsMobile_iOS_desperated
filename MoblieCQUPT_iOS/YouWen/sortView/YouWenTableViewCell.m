@@ -17,7 +17,6 @@
 @property (strong, nonatomic) UILabel *deadTimeLabel;
 @property (strong, nonatomic) UILabel *descriptionsLabel;
 @property (strong, nonatomic) UILabel *soreLabel;
-@property (strong, nonatomic) UIImageView *genderImageView;
 @property (strong, nonatomic) UIImageView *soreImageView;
 
 
@@ -42,9 +41,8 @@
         _qusId = [[NSString alloc] initWithFormat:@"%@", dic[@"id"]];
         _title = [[NSString alloc] initWithFormat:@"%@", dic[@"title"]];
         
-//        [self workOutSize];
         [self setUpCell];
-        self.frame = CGRectMake(0, 0, SCREENWIDTH, 350);
+        self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 350);
     }
     return self;
 }
@@ -52,13 +50,13 @@
 
 
 - (void)workOutSize{
-    CGSize size = CGSizeMake(ScreenWidth - 50, 300);
+    CGSize size = CGSizeMake(SCREEN_WIDTH - 50, 300);
     UIFont* font = [UIFont fontWithName:@"Arial" size:17];
     NSDictionary *dic = @{NSFontAttributeName:font};
     NSString *string = _dataDic[@"description"];
     CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
         attributes:dic context:nil].size.height;
-    _cellSize = CGRectMake(0, 0, ScreenWidth, height + 122);
+    _cellSize = CGRectMake(0, 0, SCREEN_WIDTH, height + 122);
 }
 
 - (void)setUpCell{
@@ -81,7 +79,6 @@
     _titleLabel = [[UILabel alloc] init];
     _descriptionsLabel = [[UILabel alloc] init];
     _soreLabel = [[UILabel alloc] init];
-    _genderImageView = [[UIImageView alloc] init];
     _soreImageView = [[UIImageView alloc] init];
     _deadTimeLabel = [[UILabel alloc] init];
     
@@ -90,9 +87,6 @@
     
    
     _soreImageView.image = [UIImage imageNamed:@"soreImage"];
-    
-    NSString *genderStr = ([self.dataDic[@"gender"] isEqualToString:@"男"])?@"male":@"female";
-    _genderImageView.image = [UIImage imageNamed:genderStr];
     
     _nameLabel.font = [UIFont fontWithName:@"Arial" size:13];
     _nameLabel.textColor = [UIColor colorWithHexString:@"555555"];
@@ -107,7 +101,6 @@
     _descriptionsLabel.textColor = [UIColor colorWithHexString:@"555555"];
     _descriptionsLabel.numberOfLines = 0;
     _descriptionsLabel.lineBreakMode = NSLineBreakByCharWrapping;
-//    _descriptionsLabel.textAlignment = NSTextAlignmentLeft;
     
     
     _deadTimeLabel.font = [UIFont fontWithName:@"Arial" size:11];
@@ -123,7 +116,7 @@
             else if (i == 1){
                 NSMutableAttributedString *attrString;
                 if (tag.length != 0) {
-                    attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"#%@#", tag]];
+                    attrString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"#%@# ", tag]];
                     [attrString appendString:self.dataDic[array[i]]];
                     [attrString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"7195FA"] range:NSMakeRange(0, tag.length + 2)];
                 }
@@ -147,7 +140,6 @@
     [self.contentView addSubview:_headImageView];
     [self.contentView addSubview:_descriptionsLabel];
     [self.contentView addSubview:_soreLabel];
-    [self.contentView addSubview:_genderImageView];
     [self.contentView addSubview:_soreImageView];
     [self.contentView addSubview:_deadTimeLabel];
     
@@ -174,15 +166,6 @@
         .mas_offset(20);
         make.left.equalTo(self.headImageView.mas_right)
         .mas_offset(17);
-        make.height.mas_equalTo(13);
-    }];
-    
-    [_genderImageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.contentView.mas_top)
-        .mas_offset(20);
-        make.left.equalTo(self.nameLabel.mas_right)
-        .mas_equalTo(12);
-        make.width.mas_equalTo(9);
         make.height.mas_equalTo(13);
     }];
     

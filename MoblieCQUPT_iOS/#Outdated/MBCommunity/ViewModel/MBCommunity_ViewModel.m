@@ -40,7 +40,7 @@
     //内容
     CGFloat contentX = imageX;
     CGFloat contentY = CGRectGetMaxY(_headImageViewFrame) + MARGIN+5;
-    CGFloat contentW = ScreenWidth - 2 * contentX;
+    CGFloat contentW = SCREEN_WIDTH - 2 * contentX;
     CGRect contentSize = [_model.content boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
     CGRect detailContentSize = [_model.detailContent boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
     _contentLabelFrame = (CGRect){{contentX,contentY},contentSize.size};
@@ -57,12 +57,12 @@
      }
      */
     coverContentY = CGRectGetMaxY(_headImageViewFrame) + MARGIN + 5;
-    CGFloat coverContentW = ScreenWidth - 2 * contentX;
+    CGFloat coverContentW = SCREEN_WIDTH - 2 * contentX;
     CGFloat coverContentH = [UIFont systemFontOfSize:15].lineHeight * 2;
     CGRect coverContentRect = CGRectMake(coverContentX, coverContentY, coverContentW, coverContentH);
     _coverContentLabelFrame = coverContentRect;
     
-    CGFloat height = [self.model.content boundingRectWithSize:CGSizeMake(SCREENWIDTH-18, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+    CGFloat height = [self.model.content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-18, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
     
     CGFloat twoLinesHeight = [UIFont systemFontOfSize:14].lineHeight * 2;
     
@@ -124,7 +124,7 @@
     } else {
         contentY = CGRectGetMaxY(_photoContainerViewFrame) + MARGIN+5;
     }
-    CGFloat contentW = ScreenWidth - 2 * contentX;
+    CGFloat contentW = SCREEN_WIDTH - 2 * contentX;
     CGRect contentSize = [_model.content boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
     CGRect detailContentSize = [_model.detailContent boundingRectWithSize:CGSizeMake(contentW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil];
     _contentLabelFrame = (CGRect){{contentX,contentY},contentSize.size};
@@ -135,7 +135,7 @@
 
     
     
-//    CGFloat height = [self.model.content boundingRectWithSize:CGSizeMake(SCREENWIDTH-18, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
+//    CGFloat height = [self.model.content boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-18, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} context:nil].size.height;
 //    
 //    CGFloat twoLinesHeight = [UIFont systemFontOfSize:14].lineHeight * 2;
     
@@ -182,12 +182,12 @@
 //        self.extendLabelFrame = contentLastFrame;
 //    }
     
-    self.dottedLineImageViewFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(contentLastFrame) + 12, SCREENWIDTH - _headImageViewFrame.origin.x * 2, 1);
+    self.dottedLineImageViewFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(contentLastFrame) + 12, SCREEN_WIDTH - _headImageViewFrame.origin.x * 2, 1);
     
 //点赞 评论数
     
     CGSize numOfCommentSize = [_model.remark_num.stringValue sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]}];
-    CGFloat numOfCommentX = SCREENWIDTH - numOfCommentSize.width - 10;
+    CGFloat numOfCommentX = SCREEN_WIDTH - numOfCommentSize.width - 10;
     CGFloat numOfCommentY = CGRectGetMaxY(self.dottedLineImageViewFrame) + 16;
     self.numOfCommentFrame = (CGRect){{numOfCommentX, numOfCommentY}, numOfCommentSize};
     
@@ -214,11 +214,11 @@
         self.extend_photoContainerViewFrame = self.extend_extendLabelFrame;
     }
     
-    self.extend_dottedLineImageViewFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(self.extend_photoContainerViewFrame) + 12, SCREENWIDTH - _headImageViewFrame.origin.x * 2, 1);
+    self.extend_dottedLineImageViewFrame = CGRectMake(_headImageViewFrame.origin.x, CGRectGetMaxY(self.extend_photoContainerViewFrame) + 12, SCREEN_WIDTH - _headImageViewFrame.origin.x * 2, 1);
     
     
     CGSize extend_numOfCommentSize = [_model.remark_num.stringValue sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16]}];
-    CGFloat extend_numOfCommentX = SCREENWIDTH - extend_numOfCommentSize.width - 10;
+    CGFloat extend_numOfCommentX = SCREEN_WIDTH - extend_numOfCommentSize.width - 10;
     CGFloat extend_numOfCommentY = CGRectGetMaxY(self.extend_dottedLineImageViewFrame) + 16;
     self.extend_numOfCommentFrame = (CGRect){{extend_numOfCommentX, extend_numOfCommentY}, extend_numOfCommentSize};
     
@@ -238,7 +238,7 @@
     
     //评论
 /*    CGSize commentSize = [_model.remark_num.stringValue sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]}];
-    CGFloat commentX = ScreenWidth - commentSize.width - 15;
+    CGFloat commentX = SCREEN_WIDTH - commentSize.width - 15;
     CGFloat commentY = CGRectGetMaxY(lastFrame) + 13;
     CGFloat detailCommentY = CGRectGetMaxY(detailLastFrame) +13;
     _numOfCommentFrame = (CGRect){{commentX,commentY},commentSize};

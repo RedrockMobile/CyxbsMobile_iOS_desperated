@@ -6,10 +6,6 @@
 //  Copyright © 2018年 Shi Yucheng. All rights reserved.
 //
 
-//屏幕长宽
-#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
-
 //默认颜色
 #define SELECTED_COLOR  [UIColor colorWithRed:84/255.0 green:172/255.0 blue:255/255.0 alpha:1]
 #define TITLE_COLOR [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
@@ -47,9 +43,9 @@
         _type = type;
         _controllers = controllers;
         if (_type == SYCSegmentViewTypeButton) {
-            _titleBtnWidth = controllers.count > 2 ? SCREEN_WIDTH / 3 : SCREEN_WIDTH / controllers.count;
+            _titleBtnWidth = controllers.count > 3 ? self.frame.size.width / 4 : self.frame.size.width / controllers.count;
         }else if(_type == SYCSegmentViewTypeNormal){
-            _titleBtnWidth = controllers.count > 3 ? SCREEN_WIDTH / 3 : SCREEN_WIDTH / controllers.count;
+            _titleBtnWidth = controllers.count > 4 ? self.frame.size.width / 5 : self.frame.size.width / controllers.count;
         }
         
         //默认属性
@@ -63,7 +59,7 @@
         _titleView.backgroundColor = [UIColor clearColor];
         _currentX = 0;
         
-        _titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, self.titleHeight)];
+        _titleView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.titleHeight)];
         _titleView.contentSize = CGSizeMake(self.titleBtnWidth * self.controllers.count, self.titleHeight);
         _titleView.bounces = NO;
         _titleView.showsVerticalScrollIndicator = NO;
@@ -100,10 +96,6 @@
                 _sliderLinePart1.layer.cornerRadius = 2.0;
                 _sliderLinePart1.backgroundColor = _selectedTitleColor;
                 [_titleView addSubview:_sliderLinePart1];
-                _sliderLinePart2 = [[UIView alloc] initWithFrame:_sliderLinePart1.frame];
-                _sliderLinePart2.layer.cornerRadius = 2.0;
-                _sliderLinePart2.backgroundColor = _selectedTitleColor;
-                [_titleView addSubview:_sliderLinePart2];
             }
         }
     }else if (_type == SYCSegmentViewTypeButton){
@@ -124,8 +116,8 @@
     [self addSubview:_titleView];
     
     //加载主视图
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.titleHeight, SCREEN_WIDTH, SCREEN_HEIGHT - self.titleHeight)];
-    _mainScrollView.contentSize = CGSizeMake(SCREEN_WIDTH * self.controllers.count, 0);
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, self.titleHeight, self.frame.size.width, self.frame.size.height - self.titleHeight)];
+    _mainScrollView.contentSize = CGSizeMake(self.frame.size.width * self.controllers.count, 0);
     _mainScrollView.showsVerticalScrollIndicator = NO;
     _mainScrollView.showsHorizontalScrollIndicator = NO;
     _mainScrollView.pagingEnabled = YES;
@@ -133,7 +125,7 @@
     _mainScrollView.delegate = self;
     for (int i = 0; i < _controllers.count; i++) {
         UIView *view = _controllers[i].view;
-        view.frame = CGRectMake(i * SCREEN_WIDTH, 0, SCREEN_WIDTH, SCREEN_HEIGHT - _titleHeight);
+        view.frame = CGRectMake(i * self.frame.size.width, 0, self.frame.size.width, self.frame.size.height - _titleHeight);
         [_mainScrollView addSubview:view];
     }
     [self addSubview:_mainScrollView];
@@ -141,26 +133,16 @@
 
 
 - (void)clickTitleBtn:(UIButton *)sender {
-    [self.mainScrollView setContentOffset:CGPointMake(sender.tag * SCREEN_WIDTH, 0) animated:YES];
+    [self.mainScrollView setContentOffset:CGPointMake(sender.tag * self.frame.size.width, 0) animated:YES];
 }
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSInteger currentIndex = floor(_mainScrollView.contentOffset.x / SCREEN_WIDTH);
+    NSInteger currentIndex = floor(_mainScrollView.contentOffset.x / self.frame.size.width);
     CGFloat offSetX = scrollView.contentOffset.x; //主页面相对起始位置的位移
-    CGFloat reletiveOffSetX = offSetX - _currentX; //主页面相对上一次移动后的位移
     
     //滑块第一部分的位移变化
-    _sliderLinePart1.frame = CGRectMake(offSetX / SCREEN_WIDTH * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-    //滑块第二部分的位移变化
-    float part2X = 0;
-    if (reletiveOffSetX >= SCREEN_WIDTH / 2.0) {
-        part2X = ((reletiveOffSetX - (SCREEN_WIDTH / 2)) / (SCREEN_WIDTH / 2)) * _titleBtnWidth;
-        _sliderLinePart2.frame = CGRectMake(part2X + _currentIndex * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-    }else if(reletiveOffSetX <= -SCREEN_WIDTH / 2.0){
-        part2X = -((-reletiveOffSetX - (SCREEN_WIDTH / 2)) / (SCREEN_WIDTH / 2)) * _titleBtnWidth;
-        _sliderLinePart2.frame = CGRectMake(part2X + (_currentIndex + 1) * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
-    }
+    _sliderLinePart1.frame = CGRectMake(offSetX / self.frame.size.width * _titleBtnWidth + (_titleBtnWidth - _sliderWidth) / 2.0, _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight);
     
     
     if (currentIndex != _currentIndex) {
@@ -181,16 +163,16 @@
             self.titleBtnArray[currentIndex].alpha = 1.0;
         }];
         
-        [UIView animateWithDuration:0.25f animations:^{
+        [UIView animateWithDuration:0.4f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             //当标题栏超出屏幕时移动标题栏
-            if (self.titleBtnArray[currentIndex].frame.origin.x < SCREEN_WIDTH / 2) {
+            if (self.titleBtnArray[currentIndex].frame.origin.x < self.frame.size.width / 2) {
                 [self.titleView setContentOffset:CGPointMake(0, 0)];
-            } else if (self.titleView.contentSize.width - self.titleBtnArray[currentIndex].frame.origin.x <= SCREEN_WIDTH / 2) {
-                [self.titleView setContentOffset:CGPointMake(self.controllers.count * self.titleBtnWidth - SCREEN_WIDTH, 0)];
+            } else if (self.titleView.contentSize.width - self.titleBtnArray[currentIndex].frame.origin.x <= self.frame.size.width / 2) {
+                [self.titleView setContentOffset:CGPointMake(self.controllers.count * self.titleBtnWidth - self.frame.size.width, 0)];
             } else {
-                [self.titleView setContentOffset:CGPointMake(self.titleBtnArray[currentIndex].frame.origin.x - SCREEN_WIDTH / 2.0 + self.titleBtnWidth / 2.0, 0)];
+                [self.titleView setContentOffset:CGPointMake(self.titleBtnArray[currentIndex].frame.origin.x - self.frame.size.width / 2.0 + self.titleBtnWidth / 2.0, 0)];
             }
-        }];
+        } completion:nil];
         
         if ([_eventDelegate respondsToSelector:@selector(scrollEventWithIndex:)]){
             [self.eventDelegate scrollEventWithIndex:currentIndex];

@@ -7,7 +7,7 @@
 //
 
 #import "draftsModel.h"
-#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/getDraftList"
+
 @implementation draftsModel
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [super init];

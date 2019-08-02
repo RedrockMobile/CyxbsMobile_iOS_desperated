@@ -9,48 +9,72 @@
 #import "YouWenSubjectView.h"
 
 @interface YouWenSubjectView()
-@property (copy, nonatomic) NSMutableArray *btnArray;
-@property (strong, nonatomic) UILabel *topicLab;
-@property (copy, nonatomic) NSString *subject;
+
+
 @end
+
 @implementation YouWenSubjectView
-- (void)addDetail{
-    [super addDetail];
-    self.cancelBtn.hidden = YES;
-    self.blackView.hidden = YES;
+
+- (instancetype)initTheWhiteViewHeight:(CGFloat)height subject:(NSString *)subject{
+    _subject = subject;
+    self = [super initTheWhiteViewHeight:height];
+    return self;
+}
+
+- (void)setUpUI{
+    [super setUpUI];
+
     _btnArray = [NSMutableArray array];
-    _subject = [NSString string];
     
-    UILabel *titleLab = [[UILabel alloc] init];
-    titleLab.text = @"添加话题";
-    titleLab.font = [UIFont fontWithName:@"Arial" size:ZOOM(16)];
-    [self.whiteView addSubview:titleLab];
-    [titleLab mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.whiteView).mas_offset(15);
-        make.centerX.mas_equalTo(self.whiteView);
-        make.height.mas_equalTo(20);
-        make.width.mas_equalTo(80);
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:@"添加话题"];
+    [str addAttribute:NSKernAttributeName value:@(1) range:NSMakeRange(0, str.length)];
+    self.titleLabel.attributedText = str;
+    [self.confirBtn setTitle:@"确定" forState:UIControlStateNormal];
+    
+    UIView *grayLine = [[UIView alloc] init];
+    grayLine.backgroundColor = [UIColor grayColor];
+    grayLine.layer.opacity = 0.4;
+    [self.whiteView addSubview:grayLine];
+    [grayLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.titleLabel).with.offset(75);
+        make.centerX.equalTo(self.whiteView);
+        make.width.mas_equalTo(SCREEN_WIDTH - 30);
+        make.height.mas_equalTo(0.3);
     }];
     
-    _topicLab = [[UILabel alloc] initWithFrame:CGRectMake(15, self.blackView.bottom + 23, ScreenWidth - 30, 18)];
-    _topicLab.font = [UIFont fontWithName:@"Arial" size:ZOOM(17)];
-    _topicLab.textColor = [UIColor colorWithHexString:@"7195FA"];
-    [self.whiteView addSubview:_topicLab];
-    
-    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(15, _topicLab.bottom + 8, ScreenWidth - 30, 1)];
-    grayView.backgroundColor = [UIColor grayColor];
-    [self.whiteView addSubview:grayView];
-    
-    UILabel *hotTopic  = [[UILabel alloc] initWithFrame:CGRectMake(15, grayView.bottom + 23, ScreenWidth - 30, 32)];
+    UILabel *hotTopic  = [[UILabel alloc] init];
     hotTopic.text = @"热门话题";
     hotTopic.textColor = [UIColor grayColor];
-    hotTopic.font = [UIFont fontWithName:@"Arial" size:ZOOM(15)];
+    hotTopic.font = [UIFont systemFontOfSize:14];
+    hotTopic.layer.opacity = 0.8;
     [self.whiteView addSubview:hotTopic];
-    CGFloat btnWidth = (ScreenWidth - 75) /4;
+    [hotTopic mas_makeConstraints:^(MASConstraintMaker *make){
+        make.left.equalTo(self.whiteView).with.offset(15);
+        make.top.equalTo(grayLine).with.offset(20);
+        make.width.mas_equalTo(SCREEN_WIDTH - 30);
+        make.height.mas_equalTo(32);
+    }];
+    
+    _topicField = [[UITextField alloc] init];
+    NSLog(@"%@", _subject);
+    if (_subject) {
+        _topicField.text = _subject;
+    }else{
+        _topicField.placeholder = @"话题";
+    }
+    _topicField.textColor = [UIColor colorWithHexString:@"7195FA"];
+    [self.whiteView addSubview:_topicField];
+    [_topicField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(grayLine.mas_top);
+        make.left.equalTo(grayLine);
+        make.width.mas_equalTo(200);
+        make.height.mas_equalTo(30);
+    }];
+    
+    CGFloat btnWidth = (SCREEN_WIDTH - 75) /4;
     NSArray *topicArray = @[@"大物", @"英语", @"线代", @"高数", @"几何", @"思修"];
     for (int i = 0; i < topicArray.count; i ++){
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(15 + (btnWidth + 15)* (i % 4), hotTopic.bottom + 15 + (i / 4) * 50, btnWidth, 35);
         [btn setBackgroundImage:[UIImage imageNamed:@"emptybox"] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"bluebox"]
             forState:UIControlStateSelected];
@@ -59,31 +83,40 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
         [btn addTarget:self action:@selector(selectTopic:) forControlEvents:UIControlEventTouchUpInside];
         btn.adjustsImageWhenHighlighted = NO;
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
         [self.whiteView addSubview:btn];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(15 + (btnWidth + 15) * (i % 4));
+            make.top.equalTo(hotTopic).with.offset(40 + (i / 4) * 50);
+            make.width.mas_equalTo(btnWidth);
+            make.height.mas_equalTo(35);
+        }];
         [_btnArray addObject:btn];
     }
     
 }
+
 - (void)selectTopic:(UIButton *)button{
-    button.highlighted = NO;
-    for (UIButton *btn in _btnArray) {
-        btn.selected = NO;
+    if (button.selected) {
+        button.highlighted = YES;
+        button.selected = NO;
+        _topicField.text = @"";
+    } else{
+        button.highlighted = NO;
+        for (UIButton *btn in _btnArray) {
+            btn.selected = NO;
+        }
+        button.selected = YES;
+        _topicField.text = [NSString stringWithFormat:@"#%@#", button.currentTitle];
     }
-    button.selected = YES;
-    _topicLab.text = [NSString stringWithFormat:@"#%@#", button.currentTitle];
-    _subject = _topicLab.text;
+    [_topicField resignFirstResponder];
 }
+
 - (void)confirm{
-    NSNotification *notification = [[NSNotification alloc]initWithName:@"subjectNotifi" object:@{@"subject":self.subject} userInfo:nil];
-    [[NSNotificationCenter defaultCenter]postNotification:notification];
-    [self removeFromSuperview];
+    _subject = _topicField.text;
+    NSNotification *notification = [[NSNotification alloc] initWithName:@"subjectNotifi" object:@{@"subject":_subject} userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotification:notification];
+    [self pushWhiteView];
 }
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

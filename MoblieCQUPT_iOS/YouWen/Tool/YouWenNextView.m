@@ -7,61 +7,62 @@
 //
 
 #import "YouWenNextView.h"
-@interface YouWenNextView()
-@end
+
 @implementation YouWenNextView
-- (void)addDetail{
+
+- (void)setUpUI{
+    [super setUpUI];
+    //标题
+    _titleLabel = [[UILabel alloc] init];
+    _titleLabel.textColor = RGBColor(87, 87, 87, 1);
+    _titleLabel.font = [UIFont systemFontOfSize:16];
+    [self.whiteView addSubview:_titleLabel];
+    [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.whiteView).offset(12);
+        make.centerX.equalTo(self.whiteView);
+    }];
+    
+    //默认取消按钮设置
     _cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _cancelBtn.frame = CGRectMake(10, 10, ZOOM(60), ZOOM(15));
-    _cancelBtn.titleLabel.font = [UIFont fontWithName:@"Arail" size:14];
-    _cancelBtn.titleLabel.adjustsFontSizeToFitWidth = YES;
-    _cancelBtn.titleLabel.textAlignment = NSTextAlignmentLeft;
+    _cancelBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     [_cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    [_cancelBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [_cancelBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
+    [_cancelBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
     [self.cancelBtn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
     [self.whiteView addSubview:_cancelBtn];
-    
-    
+    [_cancelBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.whiteView).offset(8);
+        make.left.equalTo(self.whiteView).with.offset(20);
+    }];
+
+    //默认确认按钮设置
     _confirBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _confirBtn.frame = CGRectMake(ScreenWidth - 70, 10, ZOOM(60), ZOOM(15));
-    _confirBtn.titleLabel.textAlignment = NSTextAlignmentRight;
-    [_confirBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [_confirBtn setTitle:@"完成" forState:UIControlStateNormal];
+    _confirBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+    [_confirBtn setTitle:@"下一步" forState:UIControlStateNormal];
     [_confirBtn addTarget:self action:@selector(confirm) forControlEvents:UIControlEventTouchUpInside];
-    _confirBtn.titleLabel.font = [UIFont fontWithName:@"Arail" size:14];
     [self.confirBtn setTitleColor:[UIColor colorWithHexString:@"7195FA"] forState:UIControlStateNormal];
     [self.whiteView addSubview:_confirBtn];
-    
-    _blackView = [[UIView alloc] initWithFrame:CGRectMake(0, _confirBtn.bottom + 17, ScreenWidth, 1)];
-    _blackView.backgroundColor =  [UIColor colorWithRed:239/255.0 green:239/255.0 blue:239/255.0 alpha:1.0];
-    [self.whiteView addSubview:_blackView];
-    
-   
+    [_confirBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.whiteView).offset(8);
+        make.right.equalTo(self.whiteView).with.offset(-20);
+    }];
 
 }
 
 
-- (void)quit{
-    [self removeFromSuperview];
+- (void)cancel{
+    [self pushWhiteView];
 }
 
 - (void)confirm{
+    [self pushWhiteView];
     [self.delegate sendInformation:_inf.copy];
 }
 
 - (NSMutableString *)inf{
     if (!_inf) {
-        _inf = [[NSMutableString alloc] init];    }
+        _inf = [[NSMutableString alloc] init];
+    }
     return _inf;
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

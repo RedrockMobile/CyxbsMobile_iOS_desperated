@@ -13,9 +13,6 @@
 #import <AFNetworking.h>
 #import "YouWenViewController.h"
 
-#define ASKURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/ask"
-#define HELPURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/User/help"
-
 @interface LXAskDeatilViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -63,9 +60,9 @@
     
     NSString *url;
     if (self.isAsk) {
-        url = ASKURL;
+        url = YOUWEN_MY_ASK_API;
     } else {
-        url = HELPURL;
+        url = YOUWEN_MY_HELP_API;
     }
     
     [manager POST:url parameters:parameter success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
@@ -104,14 +101,14 @@
         
         //没有信息时的提示
         if (self.askDetailModelArr.count == 0) {
-            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT)];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((SCREENWIDTH-147)/2.0, 330, 147, 40)];
+            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-147)/2.0, 330, 147, 40)];
             label.text = @"竟然是空的～";
             label.textAlignment = NSTextAlignmentCenter;
             label.font = [UIFont systemFontOfSize:14.0];
             label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
             [self.view addSubview:label];
-            self.askQuestionBtn = [[UIButton alloc] initWithFrame:CGRectMake((SCREENWIDTH-147)/2.0, 390, 147, 40)];
+            self.askQuestionBtn = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH-147)/2.0, 390, 147, 40)];
             if (self.isAsk) {
                 [self.askQuestionBtn setTitle:@"去提问" forState:UIControlStateNormal];
                 [self.askQuestionBtn addTarget:self action:@selector(askQuestion) forControlEvents:UIControlEventTouchUpInside];
@@ -172,12 +169,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.isAsk) {
         if ([self.solvedProblem isEqualToString:@"solvedProblem"]) {
-            return 110/692.0 * ScreenHeight;
+            return 110/692.0 * SCREEN_HEIGHT;
         } else {
-            return 88/692.0 * ScreenHeight;
+            return 88/692.0 * SCREEN_HEIGHT;
         }
     } else {
-        return 110/692.0 * ScreenHeight;
+        return 110/692.0 * SCREEN_HEIGHT;
     }
 }
 

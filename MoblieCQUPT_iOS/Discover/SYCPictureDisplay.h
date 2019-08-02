@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LZCarouselModel.h"
+
+@protocol SYCPictureDisplayDelegate <NSObject>
+
+- (void)didClicked:(NSInteger)index;
+
+@end
 
 @interface SYCPictureDisplay : UIView
 
--(void)addScrollViewWithArray:(NSArray *)dataArray;
+@property (nonatomic, strong) id<SYCPictureDisplayDelegate> delegate;
+
+- (void)setData:(NSArray<LZCarouselModel *> *)dataArray;
 
 @end

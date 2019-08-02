@@ -31,7 +31,7 @@
     view3.title = @"补考安排";
     NSArray *viewArray = @[view1,view2,view3];
     
-    SYCSegmentView *semgent = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT) controllers:viewArray type:SYCSegmentViewTypeNormal];
+    SYCSegmentView *semgent = [[SYCSegmentView alloc] initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT) controllers:viewArray type:SYCSegmentViewTypeNormal];
     [self.view addSubview:semgent];
 }
 

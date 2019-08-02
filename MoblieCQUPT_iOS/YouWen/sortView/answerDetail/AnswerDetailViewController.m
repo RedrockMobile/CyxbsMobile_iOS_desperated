@@ -18,10 +18,6 @@
 #import "MBCommunityHandle.h"
 #import "YouWenAdoptFrame.h"
 
-#define UPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/praise"
-#define CANCELUPVOTEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/cancelPraise"
-#define COMMENTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/remark"
-#define ADOPTANSWERURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/adopt"
 @interface AnswerDetailViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableview;
@@ -108,7 +104,7 @@
                                };
     
     _hud.labelText = @"...";
-    [NetWork NetRequestPOSTWithRequestURL:ADOPTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADOPT_ANSWER_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -135,7 +131,7 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(@(45/700.0*ScreenHeight));
+        make.height.mas_equalTo(@(45/700.0*SCREEN_HEIGHT));
     }];
 }
 
@@ -143,9 +139,9 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSString *url = [NSString string];
     if (self.is_upvote) {
-        url = CANCELUPVOTEURL;
+        url = YOUWEN_ADD_LIKE_API;
     } else {
-        url = UPVOTEURL;
+        url = YOUWEN_CANCEL_LIKE_API;
     }
     NSDictionary *parameters = @{
                                  @"stuNum":[UserDefaultTool getStuNum],
@@ -187,7 +183,7 @@
     
     [UIView beginAnimations:@"riseAnimate" context:nil];
     [UIView setAnimationDuration:0.275];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - height - self.detailCommentView.frame.size.height, SCREENWIDTH, self.detailCommentView.frame.size.height);
+    self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT - height - self.detailCommentView.frame.size.height, SCREEN_WIDTH, self.detailCommentView.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -195,7 +191,7 @@
 - (UIView *)detailCommentView {
     if (!_detailCommentView) {
         _detailCommentView = [[LXDetailCommentView alloc] init];
-        _detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENWIDTH, 0);
+        _detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_WIDTH, 0);
         [_detailCommentView.cancelBtn addTarget:self action:@selector(tapCancelBtn) forControlEvents:UIControlEventTouchDown];
         [_detailCommentView.sendBtn addTarget:self action:@selector(tapSendBtn) forControlEvents:UIControlEventTouchDown];
         
@@ -208,7 +204,7 @@
 - (void)tapCancelBtn {
     [UIView beginAnimations:@"downAnimate" context:nil];
     [UIView setAnimationDuration:0.1];
-    self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT, SCREENHEIGHT, 0);
+    self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT, SCREEN_HEIGHT, 0);
     self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0];
     [UIView commitAnimations];
     [self.detailCommentView.commentTextView resignFirstResponder];
@@ -240,7 +236,7 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             self.coverGrayView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
-            self.detailCommentView.frame = CGRectMake(0, SCREENHEIGHT - (271/667.0) * SCREENHEIGHT, SCREENWIDTH, (271/667.0) * SCREENHEIGHT);
+            self.detailCommentView.frame = CGRectMake(0, SCREEN_HEIGHT - (271/667.0) * SCREEN_HEIGHT, SCREEN_WIDTH, (271/667.0) * SCREEN_HEIGHT);
         }];
     } else {
         [MBCommunityHandle noLogin:self handler:^(BOOL success) {
@@ -262,7 +258,7 @@
                                 @"content":content};
     NSLog(@"发送评论");
     _hud.labelText = @"正在发送评论...";
-    [NetWork NetRequestPOSTWithRequestURL:COMMENTANSWERURL WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_ADD_DISCUSS_API WithParameter:parameter WithReturnValeuBlock:^(id returnValue) {
         NSLog(@"%@",returnValue);
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.mode = MBProgressHUDModeText;
@@ -300,14 +296,13 @@
 
 
 - (void)getData {
-    NSString *urlStr = @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Answer/getRemarkList";
     NSDictionary *parameters = @{
                                  @"stuNum":@"2016214345",
                                  @"idNum":@"257654",
                                  @"answer_id":self.answer_id
                                  };
     
-    [NetWork NetRequestPOSTWithRequestURL:urlStr WithParameter:parameters WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:YOUWEN_QUESTION_DISUCESS_API WithParameter:parameters WithReturnValeuBlock:^(id returnValue) {
         [self.view addSubview:self.tableview];
         for (NSDictionary *dic in returnValue[@"data"]) {
             AnswerCommentModel *model = [[AnswerCommentModel alloc] initWithDic:dic];
@@ -315,8 +310,8 @@
         }
         
         if (self.answerCommentModelArr.count == 0) {
-            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 200)];
+            UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
             label.text = @"快来成为第一个帮助者吧～";
             label.textAlignment = NSTextAlignmentCenter;
             label.font = [UIFont systemFontOfSize:14.0];
@@ -339,7 +334,7 @@
     if (!_tableview) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREENWIDTH, SCREENHEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
         _tableview = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableview.dataSource = self;
         _tableview.delegate = self;

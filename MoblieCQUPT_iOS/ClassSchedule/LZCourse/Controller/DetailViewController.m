@@ -95,7 +95,7 @@
             self.isFirstEnter = NO;
             return;
         }
-        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MWIDTH, SCREENHEIGHT/6+STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH-2*MWIDTH, SCREENWIDTH/2)];
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(MWIDTH, SCREEN_HEIGHT/6+STATUSBARHEIGHT+NVGBARHEIGHT, SCREEN_WIDTH-2*MWIDTH, SCREEN_WIDTH/2)];
         imageView.image = [UIImage imageNamed:@"无课"];
         [self.view addSubview:imageView];
         return;

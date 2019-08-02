@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="MjZ-iQ-Zd5">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -35,7 +35,7 @@
         <!--finder-->
         <scene sceneID="PB4-oC-gF3">
             <objects>
-                <viewController title="finder" id="NV8-MB-g1R" customClass="SYCFinderViewController" sceneMemberID="viewController">
+                <viewController title="finder" id="NV8-MB-g1R" customClass="SYCMainDiscoverViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nAj-8a-kt5"/>
                         <viewControllerLayoutGuide type="bottom" id="kPD-Ri-GDN"/>
@@ -123,14 +123,35 @@
                                 <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="我的" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCa-ch-VCV">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCa-ch-VCV">
                                 <rect key="frame" x="165" y="52" width="45" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2Re-Tf-5Zr"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="45" id="YTk-6p-TZs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="PingFangSC-Regular" family="PingFang SC" pointSize="18"/>
-                                <color key="textColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="我">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="PingFangSC-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="Helvetica-Bold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="的">
+                                        <attributes>
+                                            <color key="NSColor" red="0.96470588239999999" green="0.96470588239999999" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="PingFangSC-Semibold"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="写下你对世界想说的话，就现在" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dFD-aV-Moh">
@@ -295,37 +316,10 @@
                     <view key="view" contentMode="scaleToFill" id="iQX-vJ-Pvd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jnk-3X-p9A">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
-                                <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvq-Wq-wS3">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </scrollView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Cvq-Wq-wS3" firstAttribute="leading" secondItem="jnk-3X-p9A" secondAttribute="leading" id="AEf-E4-4sM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Cvq-Wq-wS3" secondAttribute="trailing" id="G1A-8E-IWl"/>
-                                    <constraint firstItem="Cvq-Wq-wS3" firstAttribute="top" secondItem="jnk-3X-p9A" secondAttribute="top" id="lJ3-Ym-tP0"/>
-                                    <constraint firstAttribute="bottom" secondItem="Cvq-Wq-wS3" secondAttribute="bottom" id="zn6-jF-g5H"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jnk-3X-p9A" secondAttribute="trailing" id="10m-bN-BcS"/>
-                            <constraint firstItem="jnk-3X-p9A" firstAttribute="bottom" secondItem="1Bq-1E-hgc" secondAttribute="top" id="hDz-D7-5Qt"/>
-                            <constraint firstItem="jnk-3X-p9A" firstAttribute="leading" secondItem="iQX-vJ-Pvd" secondAttribute="leading" id="ydF-Pv-3JN"/>
-                            <constraint firstItem="jnk-3X-p9A" firstAttribute="top" secondItem="4uz-L2-LHW" secondAttribute="bottom" id="zTh-xM-93n"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="1Uh-99-nWU"/>
                     <navigationItem key="navigationItem" id="jgg-5o-cID"/>
-                    <connections>
-                        <outlet property="rootView" destination="jnk-3X-p9A" id="77Y-6f-DKr"/>
-                        <outlet property="scrollView" destination="Cvq-Wq-wS3" id="VCO-T3-Ks0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iJs-mj-MOL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

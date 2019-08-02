@@ -41,7 +41,7 @@
 }
 - (void)networking{
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:YOUWEN_API method:HttpRequestPost parameters:_YWPostDic prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_ALL_QUESTIONS_API method:HttpRequestPost parameters:_YWPostDic prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         _YWdataArray = [self changeAllArray: responseObject[@"data"]];
         NSNotification *notification;
         if (_YWdataArray.count) {

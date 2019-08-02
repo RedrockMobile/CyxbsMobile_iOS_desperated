@@ -8,6 +8,7 @@
 
 #import "YouWenNextView.h"
 @interface YouWenResultView : YouWenNextView
-@property (copy, nonatomic) NSString *time;
-@property (copy, nonatomic) NSString *sore;
+
+- (instancetype)initTheWhiteViewHeight:(CGFloat)height score:(NSString *)score time:(NSString *)time;
+
 @end

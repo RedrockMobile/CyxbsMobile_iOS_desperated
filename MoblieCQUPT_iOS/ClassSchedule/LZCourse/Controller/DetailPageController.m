@@ -39,10 +39,10 @@
         [controllers addObject:[NSNull null]];
     };
     [self.view layoutIfNeeded];
-    self.view.frame = CGRectMake(0, 0, SCREENWIDTH, SCREENHEIGHT);
+    self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     [self.scrollView setNeedsLayout];
     [self.scrollView layoutIfNeeded];
-    self.scrollView.frame = CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREENWIDTH, SCREENHEIGHT-(STATUSBARHEIGHT+NVGBARHEIGHT));
+    self.scrollView.frame = CGRectMake(0, STATUSBARHEIGHT+NVGBARHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(STATUSBARHEIGHT+NVGBARHEIGHT));
     self.viewControllers = controllers;
     self.scrollView.bounces = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;

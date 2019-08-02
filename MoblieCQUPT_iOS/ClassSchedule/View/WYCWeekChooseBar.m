@@ -9,8 +9,13 @@
 #import "WYCWeekChooseBar.h"
 //#import "UIColor+Hex.h"
 @interface WYCWeekChooseBar()
+@property (nonatomic, strong) UIColor *backgroundColor;
+@property (nonatomic, strong) UIColor *selectedTitleColor;
+@property (nonatomic, strong) UIColor *titleColor;
+
 @property (nonatomic, strong) NSMutableArray <UIButton *> *btnArray;
-@property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, strong) NSMutableArray *titleArray;
+@property (nonatomic, assign) NSInteger titleCount;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *sliderView;
 
@@ -20,23 +25,28 @@
 
 @implementation WYCWeekChooseBar
 
-- (instancetype)initWithFrame:(CGRect)frame andArray:(NSArray *)array{
+-(instancetype)initWithFrame:(CGRect)frame nowWeek:(NSNumber *)nowWeek{
     self = [self initWithFrame:frame];
     if(self){
-        _titleArray = array;
+        NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"二十一周",@"二十二周",@"二十三周",@"二十四周",@"二十五周"] mutableCopy];
+        
+        titleArray[nowWeek.integerValue] = @"本周";
+        self.titleArray = titleArray;
+        self.titleCount = titleArray.count;
+        
         [self setProperty];
-        if (array.count >=_subviewCountInView) {
-            _btnWidth = self.frame.size.width/_subviewCountInView;
+        if (self.titleArray.count >=5) {
+            _btnWidth = self.frame.size.width/5;
             _scrollViewHeight = self.frame.size.height;
             
         }
         else{
-            _btnWidth = self.frame.size.width/array.count;
+            _btnWidth = self.frame.size.width/self.titleCount;
             _scrollViewHeight = self.frame.size.height;
             
         }
         
-        [self buildView];
+        [self setupScrollView];
         [self addBtn];
     }
     return self;
@@ -48,10 +58,9 @@
     _selectedTitleColor = [UIColor colorWithHexString:@"#7196FA"];
      _titleColor = [UIColor colorWithHexString:@"#999999"];
     _font = [UIFont systemFontOfSize:12];
-     _subviewCountInView = 5;
 }
 //添加scrollView
--(void)buildView{
+-(void)setupScrollView{
     _scrollView = [[UIScrollView alloc]initWithFrame:self.bounds];
     _scrollView.contentSize = CGSizeMake(_btnWidth*_titleArray.count, _scrollViewHeight);
     _scrollView.backgroundColor = _backgroundColor;
@@ -63,6 +72,7 @@
     [_scrollView addSubview:_sliderView];
     [self addSubview:_scrollView];
 }
+
 //添加按钮
 -(void)addBtn{
     for (int i = 0 ; i < _titleArray.count; i++) {
@@ -77,6 +87,7 @@
         [_scrollView addSubview:btn];
     }
 }
+
 //按钮点击事件
 -(void)clickBtn:(UIButton *)sender{
     
@@ -89,24 +100,26 @@
     }
     
 }
+
 -(void)changeIndex:(NSInteger)index{
     _index = index;
     [self updateScrollView];
 }
+
 -(void)updateScrollView{
-    CGFloat offSetX = (_index - (_subviewCountInView/2))*_btnWidth;
+    CGFloat offSetX = (_index - (5/2))*_btnWidth;
     //offSetX = (_index - (_subviewCountInView/2))*_btnWidth;
-    if (   (_index - (_subviewCountInView/2))*_btnWidth < 0) {
+    if (   (_index - (5/2))*_btnWidth < 0) {
         offSetX = 0;
     }
-    if(  (_index + (_subviewCountInView/2))*_btnWidth >= _scrollView.contentSize.width){
-        
-        offSetX = _scrollView.contentSize.width - _subviewCountInView*_btnWidth;
+    if(  (_index + (5/2))*_btnWidth >= _scrollView.contentSize.width){
+        offSetX = _scrollView.contentSize.width - 5*_btnWidth;
     }
-    [_scrollView setContentOffset:CGPointMake(offSetX, 0) animated:YES];
-    [UIView animateWithDuration:0.2f animations:^{
+    [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:1.0 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+        [_scrollView setContentOffset:CGPointMake(offSetX, 0)];
         self->_sliderView.frame = CGRectMake(self->_index * self->_btnWidth, self->_scrollViewHeight - 2, self->_btnWidth, 2);
     } completion:nil];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"ScrollViewBarChanged" object:nil];
     
 }
