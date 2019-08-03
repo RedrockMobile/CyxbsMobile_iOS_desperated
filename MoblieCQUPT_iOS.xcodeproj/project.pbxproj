@@ -255,6 +255,7 @@
 		E470CA2A2228055C0029501A /* LZTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = E470CA1E2228055B0029501A /* LZTextField.m */; };
 		E470CA2B2228055C0029501A /* LZPersonSelectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470CA212228055B0029501A /* LZPersonSelectTableViewCell.xib */; };
 		E470CA2C2228055C0029501A /* LZPersonSelectTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E470CA222228055B0029501A /* LZPersonSelectTableViewCell.m */; };
+		E4889CD222F42800006C66F6 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4889CD122F42800006C66F6 /* MainPageViewController.m */; };
 		E48DB52F223E36AB00B9D744 /* WYCClassBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DB52E223E36AB00B9D744 /* WYCClassBookViewController.m */; };
 		E48DB534223E36BD00B9D744 /* DateModle.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DB530223E36BC00B9D744 /* DateModle.m */; };
 		E48DB535223E36BD00B9D744 /* WYCClassAndRemindDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DB532223E36BD00B9D744 /* WYCClassAndRemindDataModel.m */; };
@@ -1014,6 +1015,8 @@
 		E470CA202228055B0029501A /* LZPersonAddView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZPersonAddView.h; sourceTree = "<group>"; };
 		E470CA212228055B0029501A /* LZPersonSelectTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LZPersonSelectTableViewCell.xib; sourceTree = "<group>"; };
 		E470CA222228055B0029501A /* LZPersonSelectTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZPersonSelectTableViewCell.m; sourceTree = "<group>"; };
+		E4889CD022F42800006C66F6 /* MainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
+		E4889CD122F42800006C66F6 /* MainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
 		E48DB52D223E36AB00B9D744 /* WYCClassBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassBookViewController.h; sourceTree = "<group>"; };
 		E48DB52E223E36AB00B9D744 /* WYCClassBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassBookViewController.m; sourceTree = "<group>"; };
 		E48DB530223E36BC00B9D744 /* DateModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateModle.m; sourceTree = "<group>"; };
@@ -2144,6 +2147,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E4889CCF22F427CF006C66F6 /* Freshman2019 */ = {
+			isa = PBXGroup;
+			children = (
+				E4889CD022F42800006C66F6 /* MainPageViewController.h */,
+				E4889CD122F42800006C66F6 /* MainPageViewController.m */,
+			);
+			path = Freshman2019;
+			sourceTree = "<group>";
+		};
 		E48DB604223E3DAF00B9D744 /* Volunteer */ = {
 			isa = PBXGroup;
 			children = (
@@ -2313,6 +2325,7 @@
 		F242DA551EBCB2BB005AC411 /* MoblieCQUPT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E4889CCF22F427CF006C66F6 /* Freshman2019 */,
 				E41AD24B222BECDE00360C56 /* #Outdated */,
 				82398BE121A42F0F00300C91 /* ClassSchedule */,
 				F2A92CD71F52E8BE00B4CEEF /* Base */,
@@ -3921,6 +3934,7 @@
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
 				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
+				E4889CD222F42800006C66F6 /* MainPageViewController.m in Sources */,
 				E470CA0A2227FAD20029501A /* CategoryChooseView.m in Sources */,
 				6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
