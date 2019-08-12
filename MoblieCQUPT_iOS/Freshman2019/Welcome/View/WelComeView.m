@@ -104,6 +104,15 @@
             self.rightDown.frame = CGRectMake(self_W * 0.384, self_H * 0.49, self_W * 0.3, self_W * 1.648 * 0.045);
             self.rightUp.frame = CGRectMake(self_W * 0.6493, self_H * 0.4565, self_W * 0.035, self_W * 1.648 * 0.0265);
             self.leftDown.frame = CGRectMake(self_W * 0.314, self_H * 0.51, self_W * 0.035, self_W * 1.648 * 0.025);
+        } else if (MAIN_SCREEN_H / MAIN_SCREEN_W == 568/320.0) {
+            self.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - 49 - 54);
+            
+            CGFloat self_W = self.frame.size.width;
+            CGFloat self_H = self.frame.size.height;
+            self.leftUp.frame = CGRectMake(self_W * 0.314, self_H * 0.4565, self_W * 0.3, self_W * 1.648 * 0.0465);
+            self.rightDown.frame = CGRectMake(self_W * 0.384, self_H * 0.49, self_W * 0.3, self_W * 1.648 * 0.045);
+            self.rightUp.frame = CGRectMake(self_W * 0.6493, self_H * 0.4565, self_W * 0.035, self_W * 1.648 * 0.0265);
+            self.leftDown.frame = CGRectMake(self_W * 0.314, self_H * 0.51, self_W * 0.035, self_W * 1.648 * 0.025);
         } else {
             self.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - 49 - 120);
             
@@ -130,42 +139,6 @@
         
     }
     return self;
-}
-
-- (void)layoutSubviews {
-    //给的图尺寸太小了，PxCook里面有些比例看起来甚至是0%，再加上视觉图上图层大小和实际大小不一样...
-    //相对误差就更大了。。。。导致后面甚至出现了4位小数。。。
-    
-//    self.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - 49);
-//
-//    CGFloat self_W = self.frame.size.width;
-//    CGFloat self_H = self.frame.size.height;
-    
-    // 四个角
-//    if (MAIN_SCREEN_H / MAIN_SCREEN_W == 667 / 375.0) {
-//        self.leftUp.frame = CGRectMake(self_W * 0.314, self_H * 0.4565, self_W * 0.3, self_W * 1.648 * 0.0465);
-//        self.rightDown.frame = CGRectMake(self_W * 0.384, self_H * 0.49, self_W * 0.3, self_W * 1.648 * 0.045);
-//        self.rightUp.frame = CGRectMake(self_W * 0.6493, self_H * 0.4565, self_W * 0.035, self_W * 1.648 * 0.0265);
-//        self.leftDown.frame = CGRectMake(self_W * 0.314, self_H * 0.51, self_W * 0.035, self_W * 1.648 * 0.025);
-//    } else {
-//        self.leftUp.frame = CGRectMake(self_W * 0.314, self_H * 0.4565, self_W * 0.3, self_W * 1.648 * 0.0465);
-//        self.rightDown.frame = CGRectMake(self_W * 0.384, self_H * 0.485, self_W * 0.3, self_W * 1.648 * 0.045);
-//        self.rightUp.frame = CGRectMake(self_W * 0.6493, self_H * 0.4565, self_W * 0.035, self_W * 1.648 * 0.0265);
-//        self.leftDown.frame = CGRectMake(self_W * 0.314, self_H * 0.501, self_W * 0.035, self_W * 1.648 * 0.025);
-//    }
-    
-    // 背景
-//    self.background_Before.frame = CGRectMake(self_W * 0.3315, self_H * 0.465, self_W * 0.3323, self_W * 1.648 * 0.06);
-//    CGFloat background_X = self.background_Before.frame.origin.x;
-//    CGFloat background_Y = self.background_Before.frame.origin.y;
-//    CGFloat background_W = self.background_Before.frame.size.width;
-//    CGFloat background_H = self.background_Before.frame.size.height;
-
-    // 连接线
-//    self.left.frame = CGRectMake(background_X - 5, self.leftUp.frame.origin.y + self.leftUp.frame.size.height - 1, self_W * 0.008, self_W * 1.648 * 0.02);
-//    self.right.frame = CGRectMake(background_X + background_W + 2, self.rightUp.frame.origin.y + self.rightUp.frame.size.height - 1, self_W * 0.008, self_W * 1.648 * 0.02);
-//    self.up.frame = CGRectMake(self.leftUp.frame.origin.x + self.leftUp.frame.size.width , background_Y - 3, self_W * 0.04, self_W * 1.648 * 0.005);
-//    self.down.frame = CGRectMake(self.leftDown.frame.origin.x + self.leftDown.frame.size.width , background_Y + background_H, self_W * 0.04, self_W * 1.648 * 0.005);
 }
 
 - (void)spreadOutView {
@@ -195,9 +168,11 @@
     //行间距
     if (MAIN_SCREEN_H / MAIN_SCREEN_W == 667/375.0) {
         paraStyle.lineSpacing = 8.0;
+    } else if (MAIN_SCREEN_H / MAIN_SCREEN_W == 568/320.0) {
+        paraStyle.lineSpacing = 6.0;
+        body.font = [UIFont systemFontOfSize:11 weight:UIFontWeightThin];
     } else {
         paraStyle.lineSpacing = 10.0;
-
     }
     textDict[NSParagraphStyleAttributeName] = paraStyle;
     body.attributedText = [[NSAttributedString alloc] initWithString:bodyText attributes:textDict];
@@ -220,28 +195,47 @@
     [background_After addSubview:author];
     self.author = author;
     
-    [title mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(background_After).offset(33);
-        make.top.equalTo(background_After).offset(40);
-    }];
-    [body mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(title);
-        make.right.equalTo(background_After).offset(-33);
-        make.top.equalTo(title.mas_bottom).offset(10);
-    }];
-    [author mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(body.mas_bottom).offset(10);
-        make.right.equalTo(body);
-    }];
+    if (MAIN_SCREEN_H / MAIN_SCREEN_W == 568/320.0) {
+        title.font = [UIFont systemFontOfSize:12];
+        author.font = [UIFont systemFontOfSize:12];
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(background_After).offset(33);
+            make.top.equalTo(background_After).offset(27);
+        }];
+        [body mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(title);
+            make.right.equalTo(background_After).offset(-33);
+            make.top.equalTo(title.mas_bottom).offset(5);
+        }];
+        [author mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(body.mas_bottom).offset(5);
+            make.right.equalTo(body);
+        }];
+    } else {
+        [title mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(background_After).offset(33);
+            make.top.equalTo(background_After).offset(40);
+        }];
+        [body mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(title);
+            make.right.equalTo(background_After).offset(-33);
+            make.top.equalTo(title.mas_bottom).offset(10);
+        }];
+        [author mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(body.mas_bottom).offset(10);
+            make.right.equalTo(body);
+        }];
+    }
+    
     
     [UIView animateWithDuration:1.5 animations:^{
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
 
         // 四个角
         if (MAIN_SCREEN_H / MAIN_SCREEN_W == 667 / 375.0) {
-            self.leftUp.frame = CGRectMake(self_W * 0.04, self_H * 0.03, self_W * 0.3, self_W * 1.648 * 0.0465);
+            self.leftUp.frame = CGRectMake(self_W * 0.04, self_H * 0.027, self_W * 0.3, self_W * 1.648 * 0.0465);
             self.rightDown.frame = CGRectMake(self_W * 0.66, self_H * 0.915, self_W * 0.3, self_W * 1.648 * 0.045);
-            self.rightUp.frame = CGRectMake(self_W * 0.925, self_H * 0.03, self_W * 0.035, self_W * 1.648 * 0.0265);
+            self.rightUp.frame = CGRectMake(self_W * 0.925, self_H * 0.027, self_W * 0.035, self_W * 1.648 * 0.0265);
             self.leftDown.frame = CGRectMake(self_W * 0.04, self_H * 0.935 , self_W * 0.035, self_W * 1.648 * 0.025);
         } else {
             self.leftUp.frame = CGRectMake(self_W * 0.04, self_H * 0.03, self_W * 0.3, self_W * 1.648 * 0.0465);
