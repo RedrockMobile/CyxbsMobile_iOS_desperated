@@ -12,26 +12,21 @@
 {
     self = [super init];
     if (self) {
-
         
-        _fanTang = @[@"大西北",@"红高粱",@"千禧鹤",@"兴业苑",@"延生食堂",@"中心食堂"];
         _firstDataTitle = @[@"宿舍",@"食堂",@"快递",@"数据揭秘"];
-        _suShe = @[@"明理苑",@"宁静苑",@"兴业苑",@"知行苑"];
-        _kuaiDi = @[@"顺丰",@"京东",@"圆通",@"申通",@"韵达",@"邮政EMS",@"百世",@"菜鸟驿站",@"中通"];
         _shuJuJieMi = @[@"最难科目",@"男女比例"];
-//        _subject = @[@{@"计算机科学与技术":@0.6},@{@"离散数学":@0.5},@{@"大学物理":@0.4}];
-//        _xueYuanName = @[@"计算机科学与技术学院",@"传媒艺术学院",@"网络空间安全与信息法学院"];
         
-        
-//        _biLi = @[@"84.9%",@"15.1%"];
-
-//        [self getbiLi];
-        [self getsuSheDetail];
+        [self getsuShe];
         [self getsuShePhoto];
-        [self getxueYuanName];
-        [self getshiTangDetail];
+        
+        [self getshiTang];
+        [self getshiTangPhoto];
+        
+        
         [self getkuaiDiPhoto];
-        [self getkuaiDiDetail];
+        [self getkuaiDi];
+        
+        [self getxueYuanName];
         //接受用户选择的学院
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserCollege:) name:@"LQQuserCollege" object:nil];
         
@@ -49,8 +44,9 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _xueYuanName = [NSMutableArray array];
+        
         for(int i = 0;i < 16;i++){
             [_xueYuanName addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"name"]]];
             NSLog(@"%@QWWQ",_xueYuanName);
@@ -58,29 +54,10 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
-
-
-}
--(void)getbiLi{
-    //https://getman.cn/mock/testJson
-
-    NSString *url = @"https://getman.cn/mock/testJson";
     
-    
-    //初始化一个HTTP管理者
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
-    //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        
-        _biLi = @[[NSString stringWithFormat:@"%@",responseObject[@"text"][0][@"message"][1][@"boy"]],[NSString stringWithFormat:@"%@",responseObject[@"text"][0][@"message"][1][@"girl"]]];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"失败----%@", error);//失败的回调方法
-    }];
-
 }
--(void)getsuSheDetail{
+
+-(void)getsuShe{
     NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
     
     
@@ -88,17 +65,19 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _suSheDetail = [NSMutableArray array];
+        
         for(int i = 0;i < 4;i++){
             [_suSheDetail addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][0][@"message"][i][@"detail"]]];
             NSLog(@"%@",_suSheDetail[i]);
+            [_suShe addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][0][@"message"][i][@"name"]]];
         }
-
+        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
-
+    
 }
 -(void)getsuShePhoto{
     NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
@@ -108,7 +87,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _suShePhoto = [NSMutableArray array];
         
         for(int i = 0;i < 4;i++){
@@ -117,14 +96,14 @@
                 [_suShePhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://129.28.185.138:9025/zsqy/image/%@",responseObject[@"text"][0][@"message"][i][@"photo"][j]]]];
             }
             NSLog(@"LQLQQ%@",_suShePhoto);
-
+            
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
 }
--(void)getshiTangDetail{
+-(void)getshiTang{
     NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
     
     
@@ -132,12 +111,16 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _shiTangDetail = [NSMutableArray array];
+        _fanTang = [NSMutableArray array];
         for(int i = 0;i < 6;i++){
             [_shiTangDetail addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][1][@"message"][i][@"detail"]]];
             NSLog(@"%@",_shiTangDetail[i]);
+            [_fanTang addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][1][@"message"][i][@"name"]]];
         }
+        
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
@@ -152,9 +135,8 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _shiTangPhoto = [NSMutableArray array];
-        
         for(int i = 0;i < 6;i++){
             for(int j =0; j < 3;j++){
                 _shiTangPhoto[i] = [NSMutableArray array];
@@ -168,7 +150,7 @@
 }
 
 
--(void)getkuaiDiDetail{
+-(void)getkuaiDi{
     NSString *url = @"http://129.28.185.138:9025/zsqy/json/33";
     
     
@@ -176,10 +158,12 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _kuaiDiDetail = [NSMutableArray array];
+        _kuaiDi = [NSMutableArray array];
         for(int i = 0;i < _kuaiDi.count;i++){
             [_kuaiDiDetail addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"message"][0][@"detail"]]];
+            [_kuaiDi addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"message"][0][@"name"]]];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -195,7 +179,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _kuaiDiPhoto = [NSMutableArray array];
         
         for(int i = 0;i < _kuaiDi.count;i++){
@@ -220,12 +204,12 @@
 -(void)getUserCollege:(NSNotification*)notification{//同时getbili和最难科目
     NSString *url = @"http://129.28.185.138:9025/zsqy/json/44";
     NSLog(@"QLLQQQ%@",notification.userInfo[@"用户选择的学院"]);
-   static int collegeIndex = 0;//记录用户所选择学院的下标
+    static int collegeIndex = 0;//记录用户所选择学院的下标
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         //遍历最难科目的不同name来确定下标亦用作获取比例和最难科目
         for(int i = 0 ; i < 16;i++){
             if([notification.userInfo[@"用户选择的学院"] isEqualToString:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"name"]]])
@@ -233,7 +217,7 @@
                 collegeIndex = i;
                 break;
             }
-                }
+        }
         NSLog(@"下标是%d",collegeIndex);
         
         _biLi = @[[NSString stringWithFormat:@"%@",responseObject[@"text"][collegeIndex][@"girl"]],[NSString stringWithFormat:@"%@",responseObject[@"text"][collegeIndex][@"boy"]]];
@@ -242,7 +226,7 @@
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
     url =@"http://129.28.185.138:9025/zsqy/json/4";
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         _subject = @[@{responseObject[@"text"][collegeIndex][@"message"][0][@"subject"]:responseObject[@"text"][collegeIndex][@"message"][0][@"data"]},@{responseObject[@"text"][collegeIndex][@"message"][1][@"subject"]:responseObject[@"text"][collegeIndex][@"message"][1][@"data"]},@{responseObject[@"text"][collegeIndex][@"message"][2][@"subject"]:responseObject[@"text"][collegeIndex][@"message"][2][@"data"]}];
         NSLog(@"subject is %@",_subject);
