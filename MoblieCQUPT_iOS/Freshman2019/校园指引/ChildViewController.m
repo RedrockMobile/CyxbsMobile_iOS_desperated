@@ -9,7 +9,6 @@
 #import "ChildViewController.h"
 #import "InfiniteRollScrollView.h"
 #import <Masonry.h>
-#import "LQQimageModel.h"
 @interface ChildViewController ()
 
 @end
