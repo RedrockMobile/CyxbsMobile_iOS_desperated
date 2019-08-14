@@ -9,9 +9,12 @@
 #import "MainPageViewController.h"
 #import "WelcomeTableViewCell.h"
 #import "RegisterNecessaryViewController.h"
+#import "LQQXiaoYuanZhiYinViewController.h"
+#import "LQQwantMoreViewController.h"
 #import "FYHOnlineActivityMainViewController.h"
 #import "AboutUsViewController.h"
 #import "WelComeView.h"
+
 
 @interface MainPageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     UITableView *_tableView;
@@ -88,6 +91,7 @@
                                 views:NSDictionaryOfVariableBindings(_tableView)]];
 
     
+
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *isFirstLaunch = [user objectForKey:@"isFirstLaunch"];
     
@@ -103,8 +107,6 @@
         
         [welcome performSelector:@selector(spreadOutView) withObject:nil afterDelay:1];
     }
-
-
 }
 
 //跳转到入学必备
@@ -121,8 +123,10 @@
 - (void)gotoRegisterFlow {
 }
 
-//跳转到校园指导
+//跳转到校园指引
 - (void)gotoSchoolIndex {
+    LQQXiaoYuanZhiYinViewController*vc = [[LQQXiaoYuanZhiYinViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //跳转到线上活动
@@ -134,6 +138,8 @@
 
 //跳转到更多功能
 - (void)gotoMore {
+    LQQwantMoreViewController*vc =[[LQQwantMoreViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 //跳转到关于我们
