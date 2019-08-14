@@ -11,6 +11,11 @@
 #import "RegisterNecessaryViewController.h"
 #import "LQQXiaoYuanZhiYinViewController.h"
 #import "LQQwantMoreViewController.h"
+#import "FYHOnlineActivityMainViewController.h"
+#import "AboutUsViewController.h"
+#import "WelComeView.h"
+
+
 @interface MainPageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     UITableView *_tableView;
     NSArray *_dataArr;
@@ -87,6 +92,21 @@
 
     
 
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *isFirstLaunch = [user objectForKey:@"isFirstLaunch"];
+    
+    if (isFirstLaunch.length == 0) {
+        [user setObject:@"no" forKey:@"isFirstLaunch"];
+        [user synchronize];
+        WelComeView *welcome = [[WelComeView alloc] init];
+        welcome.alpha = 0;
+        [UIView animateWithDuration:0.5 animations:^{
+            welcome.alpha = 1;
+        }];
+        [self.view addSubview:welcome];
+        
+        [welcome performSelector:@selector(spreadOutView) withObject:nil afterDelay:1];
+    }
 }
 
 //跳转到入学必备
@@ -111,6 +131,9 @@
 
 //跳转到线上活动
 - (void)gotoOnlineActivity {
+    FYHOnlineActivityMainViewController *controller = [[FYHOnlineActivityMainViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 //跳转到更多功能
@@ -121,6 +144,9 @@
 
 //跳转到关于我们
 - (void)gotoAboutUs {
+    AboutUsViewController *controller = [[AboutUsViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark -UITableViewDataSource

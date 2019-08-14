@@ -126,6 +126,19 @@
 //补考接口
 #define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
 
+/* 2019迎新接口 */
+// 学院群
+#define ACADEMYGROUPAPI @"http://129.28.185.138:9025/zsqy/json/7"
+// 老乡群
+#define HOMETOWNGROUPAPI @"http://129.28.185.138:9025/zsqy/json/77"
+// 搜索学院群
+#define SEARCHACADEMYAPI @"http://129.28.185.138:9025/zsqy/select/college"
+// 搜索老乡群
+#define SEARCHHOMETOWNAPI @"http://129.28.185.138:9025/zsqy/select/province"
+// 线上活动
+#define ONLINEACTIVITYAPI @"http://129.28.185.138:9025/zsqy/json/8"
+
+
 /* 全面屏相关 */
 #define IS_IPHONEX ((SCREEN_WIDTH == 375.f && SCREEN_HEIGHT == 812.f) || (SCREEN_WIDTH == 414.f && SCREEN_HEIGHT == 896.f)? YES : NO)
 #define SAFE_AREA_BOTTOM (IS_IPHONEX ? (34.f) : (0.f))
