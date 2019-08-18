@@ -70,7 +70,7 @@
     [super layoutSubviews];
     self.frame = [UIScreen mainScreen].bounds;
 
-    self.messageWindow.frame = CGRectMake(0, 0, MAIN_SCREEN_W - 80, MAIN_SCREEN_H * 0.24);
+    self.messageWindow.frame = CGRectMake(0, 0, MAIN_SCREEN_W - 80, MAIN_SCREEN_W * 1.778 * 0.24);
     self.messageWindow.center = CGPointMake(MAIN_SCREEN_W * 0.5, MAIN_SCREEN_H * 0.4);
 
     CGFloat window_H = self.messageWindow.frame.size.height;

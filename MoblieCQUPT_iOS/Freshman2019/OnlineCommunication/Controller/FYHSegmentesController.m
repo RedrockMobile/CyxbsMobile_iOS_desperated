@@ -88,7 +88,7 @@
         [button setTitle:self.controllers[i].title forState:UIControlStateNormal];
         [button.titleLabel sizeToFit];
         button.titleLabel.font = [UIFont systemFontOfSize:17];
-        [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] forState:UIControlStateNormal];
         button.tag = i;
         
         [tempSegmentButtons addObject:button];

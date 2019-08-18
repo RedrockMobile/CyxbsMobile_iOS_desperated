@@ -89,21 +89,20 @@
     [self.messageWindow mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self);
         make.centerY.equalTo(self).offset(-TOTAL_TOP_HEIGHT);
-        make.top.equalTo(self.QRCodeView).offset(-40);
+        make.top.equalTo(self.QRCodeView).offset(-16);
         make.left.equalTo(self).offset(40);
         make.right.equalTo(self).offset(-40);
         make.bottom.equalTo(self.note).offset(5);
     }];
     
     [self.QRCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.bottom.equalTo(self.messageLabel.mas_top).offset(-40);
+        make.bottom.equalTo(self.messageLabel.mas_top).offset(-10);
         make.width.equalTo(self.QRCodeView.mas_height);
-        make.left.equalTo(self.messageWindow).offset(40);
-        make.right.equalTo(self.messageWindow).offset(-40);
+        make.left.equalTo(self.messageWindow).offset(16);
+        make.right.equalTo(self.messageWindow).offset(-16);
     }];
     
     [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.QRCodeView.mas_bottom).offset(40);
         make.left.equalTo(self.messageWindow).offset(40);
         make.right.equalTo(self.messageWindow).offset(-40);
     }];
@@ -112,35 +111,6 @@
         make.top.equalTo(self.messageLabel.mas_bottom).offset(20);
         make.centerX.equalTo(self);
     }];
-    
-////    self.messageWindow.frame = CGRectMake(0, 0, MAIN_SCREEN_W * 0.79, MAIN_SCREEN_H * 0.55);
-////    self.messageWindow.center = CGPointMake(MAIN_SCREEN_W * 0.5, MAIN_SCREEN_H * 0.5 * 0.8);
-//    [self.messageWindow mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.equalTo(self);
-//        make.width.equalTo(@(MAIN_SCREEN_W * 0.79));
-//        make.top.equalTo(self.QRCodeView).offset(-40);
-//        make.bottom.equalTo(self.note).offset(5);
-//    }];
-//
-//    CGFloat message_H = self.messageWindow.frame.size.height;
-//    CGFloat message_W = self.messageWindow.frame.size.width;
-//
-////    self.QRCodeView.frame = CGRectMake(message_W * 0.04, message_H * 0.04, message_W * 0.92, message_H * 0.73);
-//    [self.QRCodeView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.messageWindow).offset(40);
-//        make.right.equalTo(self.messageWindow).offset(-40);
-//    }];
-//
-//    [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.top.equalTo(self.QRCodeView.mas_bottom).offset(10);
-//        make.left.equalTo(self.messageWindow).offset(message_W * 0.12);
-//        make.right.equalTo(self.messageWindow).offset(- message_W * 0.12);
-//    }];
-//
-//    [self.note mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerX.equalTo(self);
-////        make.bottom.equalTo(self.messageWindow).offset(-5);
-//    }];
     
 }
 

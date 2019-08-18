@@ -128,15 +128,15 @@
 
 /* 2019迎新接口 */
 // 学院群
-#define ACADEMYGROUPAPI @"http://129.28.185.138:9025/zsqy/json/7"
+#define ACADEMYGROUPAPI @"http://129.28.185.138:8080/zsqy/json/7"
 // 老乡群
-#define HOMETOWNGROUPAPI @"http://129.28.185.138:9025/zsqy/json/77"
+#define HOMETOWNGROUPAPI @"http://129.28.185.138:8080/zsqy/json/77"
 // 搜索学院群
-#define SEARCHACADEMYAPI @"http://129.28.185.138:9025/zsqy/select/college"
+#define SEARCHACADEMYAPI @"http://129.28.185.138:8080/zsqy/select/college"
 // 搜索老乡群
-#define SEARCHHOMETOWNAPI @"http://129.28.185.138:9025/zsqy/select/province"
+#define SEARCHHOMETOWNAPI @"http://129.28.185.138:8080/zsqy/select/province"
 // 线上活动
-#define ONLINEACTIVITYAPI @"http://129.28.185.138:9025/zsqy/json/8"
+#define ONLINEACTIVITYAPI @"http://129.28.185.138:8080/zsqy/json/8"
 
 
 /* 全面屏相关 */

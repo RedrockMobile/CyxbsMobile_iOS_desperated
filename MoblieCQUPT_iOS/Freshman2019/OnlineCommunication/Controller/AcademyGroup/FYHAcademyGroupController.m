@@ -34,8 +34,8 @@
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, 50)];
     label.text = @"没有更多了";
-    label.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
-    label.font = [UIFont systemFontOfSize:15];
+    label.textColor = [UIColor colorWithRed:172/255.0 green:172/255.0 blue:172/255.0 alpha:1];
+    label.font = [UIFont systemFontOfSize:12];
     label.textAlignment = NSTextAlignmentCenter;
     self.tableView.tableFooterView = label;
     
@@ -127,7 +127,13 @@
         if ([((AcademyOrHometownItem *)notification.userInfo[@"model"]).data isEqualToString:self.allModelArray[i].data]) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
             
-            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            if (self.allModelArray.count - i <= 6) {
+                [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
+            } else if (i <= 6) {
+                [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+            } else {
+                [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
+            }
             [self performSelector:@selector(dismissHighlight:) withObject:indexPath afterDelay:0.5];
             break;
         }
