@@ -34,13 +34,13 @@
         [self.contentView addSubview:centerView];
         [self.contentView addConstraints:[NSLayoutConstraint
                                           constraintsWithVisualFormat:@"H:|-(20)-[centerView]-(20)-|"
-                                    options:0
+                                          options:0
                                           metrics:nil
-                                        views:NSDictionaryOfVariableBindings(centerView)]];
+                                          views:NSDictionaryOfVariableBindings(centerView)]];
         [self.contentView addConstraints: [NSLayoutConstraint
                                            constraintsWithVisualFormat:@"V:|-(10)-[centerView]-(0)-|"
-                                        options:0
-                                        metrics:nil
+                                           options:0
+                                           metrics:nil
                                            views:NSDictionaryOfVariableBindings(centerView)]];
         
         UIImageView *bgImageView = [[UIImageView alloc]init];
@@ -49,13 +49,13 @@
         [centerView addSubview:bgImageView];
         [centerView addConstraints:[NSLayoutConstraint
                                     constraintsWithVisualFormat:@"H:|-(0)-[bgImageView]-(0)-|"
-                                options:0
+                                    options:0
                                     metrics:nil
                                     views:NSDictionaryOfVariableBindings(bgImageView)]];
         [centerView addConstraints: [NSLayoutConstraint
                                      constraintsWithVisualFormat:@"V:|-(0)-[bgImageView]-(0)-|"
                                      options:0
-                                metrics:nil
+                                     metrics:nil
                                      views:NSDictionaryOfVariableBindings(bgImageView)]];
         
         UIImageView *arrowImageView = [[UIImageView alloc]init];
@@ -64,16 +64,17 @@
         [centerView addSubview:arrowImageView];
         [centerView addConstraints:[NSLayoutConstraint
                                     constraintsWithVisualFormat:@"H:[arrowImageView]-(20)-|"
-                                options:0
+                                    options:0
                                     metrics:nil
-                                views:NSDictionaryOfVariableBindings(arrowImageView)]];
+                                    views:NSDictionaryOfVariableBindings(arrowImageView)]];
         NSLayoutConstraint *centerCstt = [NSLayoutConstraint constraintWithItem:arrowImageView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:centerView attribute:NSLayoutAttributeCenterY multiplier:1 constant:0];
         [centerView addConstraint:centerCstt];
         
         
         _titleLbl = [[UILabel alloc]init];
         _titleLbl.translatesAutoresizingMaskIntoConstraints = NO;
-        _titleLbl.textColor = [UIColor blackColor];
+        _titleLbl.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
+        _titleLbl.font = [UIFont systemFontOfSize:16];
         [centerView addSubview:_titleLbl];
         [centerView addConstraints:[NSLayoutConstraint
                                     constraintsWithVisualFormat:@"H:|-(20)-[_titleLbl]-(0)-|"
@@ -81,15 +82,16 @@
                                     metrics:nil
                                     views:NSDictionaryOfVariableBindings(_titleLbl)]];
         [centerView addConstraints: [NSLayoutConstraint
-                                     constraintsWithVisualFormat:@"V:|-(18)-[_titleLbl]"
+                                     constraintsWithVisualFormat:@"V:|-(20)-[_titleLbl]"
                                      options:0
-                                    metrics:nil
+                                     metrics:nil
                                      views:NSDictionaryOfVariableBindings(_titleLbl)]];
         
         
         _descriptionLbl = [[UILabel alloc]init];
         _descriptionLbl.translatesAutoresizingMaskIntoConstraints = NO;
-        _descriptionLbl.textColor = [UIColor grayColor];
+        _descriptionLbl.textColor = [UIColor colorWithRed:136/255.0 green:136/255.0 blue:136/255.0 alpha:1];
+        _descriptionLbl.font = [UIFont systemFontOfSize:12];
         [centerView addSubview:_descriptionLbl];
         [centerView addConstraints:[NSLayoutConstraint
                                     constraintsWithVisualFormat:@"H:|-(20)-[_descriptionLbl]-(45)-|"
@@ -97,7 +99,7 @@
                                     metrics:nil
                                     views:NSDictionaryOfVariableBindings(_descriptionLbl)]];
         [centerView addConstraints: [NSLayoutConstraint
-                                     constraintsWithVisualFormat:@"V:[_titleLbl]-(5)-[_descriptionLbl]"
+                                     constraintsWithVisualFormat:@"V:[_titleLbl]-(8)-[_descriptionLbl]"
                                      options:0
                                      metrics:nil
                                      views:NSDictionaryOfVariableBindings(_titleLbl,_descriptionLbl)]];
@@ -108,7 +110,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

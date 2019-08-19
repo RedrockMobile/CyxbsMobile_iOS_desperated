@@ -51,9 +51,15 @@
         //默认属性
         _titleBtnArray = [NSMutableArray array];
         _currentIndex = 0;
-        _titleHeight = SCREEN_HEIGHT * 0.06;
+        if (_isHiddenLine) {
+            _titleHeight = SCREEN_HEIGHT * 0.08;
+        }else{
+            _titleHeight = SCREEN_HEIGHT * 0.06;
+        }
+        
         _titleColor = TITLE_COLOR;
         _selectedTitleColor = SELECTED_COLOR;
+        
         _titleFont = [UIFont systemFontOfSize:16.0 weight:UIFontWeightRegular];
         _segmentType = SYCSegmentViewTypeNormal;
         _titleView.backgroundColor = [UIColor clearColor];
@@ -95,7 +101,9 @@
                 _sliderLinePart1 = [[UIView alloc] initWithFrame:CGRectMake((_titleBtnWidth - _sliderWidth) / 2.0 , _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight)];
                 _sliderLinePart1.layer.cornerRadius = 2.0;
                 _sliderLinePart1.backgroundColor = _selectedTitleColor;
-                [_titleView addSubview:_sliderLinePart1];
+                if (_isHiddenLine) {
+                    [_titleView addSubview:_sliderLinePart1];
+                }
             }
         }
     }else if (_type == SYCSegmentViewTypeButton){

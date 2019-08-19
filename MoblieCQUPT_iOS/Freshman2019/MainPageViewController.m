@@ -8,14 +8,17 @@
 
 #import "MainPageViewController.h"
 #import "WelcomeTableViewCell.h"
-#import "RegisterNecessaryViewController.h"
-#import "LQQXiaoYuanZhiYinViewController.h"
-#import "LQQwantMoreViewController.h"
+//#import "RegisterNecessaryViewController.h"
 #import "FYHOnlineActivityMainViewController.h"
 #import "AboutUsViewController.h"
 #import "WelComeView.h"
-
-
+#import "StartStepsController.h"
+#import "MainPageViewController.h"
+#import "WelcomeTableViewCell.h"
+#import "RoadIndex/RoadIndex.h"
+#import "Necessity/NecessityViewController.h"
+#import "LQQwantMoreViewController.h"
+#import "LQQXiaoYuanZhiYinViewController.h"
 @interface MainPageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     UITableView *_tableView;
     NSArray *_dataArr;
@@ -24,6 +27,24 @@
 @end
 
 @implementation MainPageViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    CABasicAnimation *rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotateAnim.fromValue = @(0);
+    rotateAnim.toValue = @(M_PI*2);
+    rotateAnim.repeatCount = 10000;
+    rotateAnim.duration = 3;
+    
+    UIImageView *bannerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"掌邮迎新版"]];
+    bannerImageView.translatesAutoresizingMaskIntoConstraints = YES;
+    bannerImageView.size = CGSizeMake(MAIN_SCREEN_W, MAIN_SCREEN_W * 0.767);
+    UIImageView *pin1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"形状741"]];
+    [pin1.layer addAnimation:rotateAnim forKey:nil];
+    [bannerImageView addSubview:pin1];
+    pin1.frame = CGRectMake(MAIN_SCREEN_W * 0.78, MAIN_SCREEN_W * 0.33, 7, 7);
+    
+    _tableView.tableHeaderView = bannerImageView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,32 +55,32 @@
     _dataArr = @[
                  @{
                      @"title":@"入学必备",
-                     @"description":@"报道必备、宿舍用品、学习用品",
+                     @"description":@"报道必备 军训用品",
                      @"selector": NSStringFromSelector(@selector(gotoRegisterNecessary))
                      },
                  @{
                      @"title":@"指路重邮",
-                     @"description":@"重邮路线、重邮地图",
+                     @"description":@"公交线路 重邮地图 校园风光",
                      @"selector": NSStringFromSelector(@selector(gotoRoadIndex))
                      },
                  @{
                      @"title":@"入学流程",
-                     @"description":@"入学步骤、入学地点",
+                     @"description":@"报到流程",
                      @"selector": NSStringFromSelector(@selector(gotoRegisterFlow))
                      },
                  @{
-                     @"title":@"校园指导",
-                     @"description":@"宿舍、快递地点指引",
+                     @"title":@"校园指引",
+                     @"description":@"宿舍 食堂 快递 数据揭秘",
                      @"selector": NSStringFromSelector(@selector(gotoSchoolIndex))
                      },
                  @{
-                     @"title":@"线上活动",
-                     @"description":@"老乡群、专业群",
+                     @"title":@"线上交流",
+                     @"description":@"老乡群 学院群 线上活动",
                      @"selector": NSStringFromSelector(@selector(gotoOnlineActivity))
                      },
                  @{
                      @"title":@"更多功能",
-                     @"description":@"迎新网、新生课表",
+                     @"description":@"迎新网 重邮小帮手 发现",
                      @"selector": NSStringFromSelector(@selector(gotoMore))
                      },
                  @{
@@ -89,9 +110,8 @@
                                 options:0
                                 metrics:nil
                                 views:NSDictionaryOfVariableBindings(_tableView)]];
-
     
-
+    
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *isFirstLaunch = [user objectForKey:@"isFirstLaunch"];
     
@@ -109,24 +129,24 @@
     }
 }
 
+
 //跳转到入学必备
 - (void)gotoRegisterNecessary {
-    RegisterNecessaryViewController *vc = [[RegisterNecessaryViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    NecessityViewController *necessityVC = [[NecessityViewController alloc] init];
+    [self.navigationController pushViewController:necessityVC animated:YES];
 }
 
 //跳转到指路重邮
 - (void)gotoRoadIndex {
+    RoadIndex *roadIndex = [[RoadIndex alloc] init];
+    [self.navigationController pushViewController:roadIndex animated:YES];
 }
 
-//跳转到入学流程
-- (void)gotoRegisterFlow {
-}
-
-//跳转到校园指引
+//跳转到校园指导
 - (void)gotoSchoolIndex {
-    LQQXiaoYuanZhiYinViewController*vc = [[LQQXiaoYuanZhiYinViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    LQQXiaoYuanZhiYinViewController*xyzy = [[LQQXiaoYuanZhiYinViewController alloc]init];
+    xyzy.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:xyzy animated:YES];
 }
 
 //跳转到线上活动
@@ -138,13 +158,20 @@
 
 //跳转到更多功能
 - (void)gotoMore {
-    LQQwantMoreViewController*vc =[[LQQwantMoreViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    LQQwantMoreViewController*gdgn = [[LQQwantMoreViewController alloc]init];
+    gdgn.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:gdgn animated:YES];
 }
 
 //跳转到关于我们
 - (void)gotoAboutUs {
     AboutUsViewController *controller = [[AboutUsViewController alloc] init];
+    controller.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+- (void)gotoRegisterFlow{
+    StartStepsController *controller = [[StartStepsController alloc] init];
     controller.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:controller animated:YES];
 }
@@ -164,50 +191,8 @@
     NSDictionary *dataDic = _dataArr[indexPath.row];
     cell.title = dataDic[@"title"];
     cell.descript = dataDic[@"description"];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    
-    CABasicAnimation *rotateAnim = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    rotateAnim.fromValue = @(0);
-    rotateAnim.toValue = @(M_PI*2);
-    rotateAnim.repeatCount = 10000;
-    rotateAnim.duration = 3;
-    
-    UIImageView *bannerImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"welcome_banner.png"]];
-    bannerImageView.translatesAutoresizingMaskIntoConstraints = YES;
-    UIImageView *pin1 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"welcome_banner_pin1.png"]];
-    pin1.translatesAutoresizingMaskIntoConstraints = NO;
-    [pin1.layer addAnimation:rotateAnim forKey:nil];
-    [bannerImageView addSubview:pin1];
-    [bannerImageView addConstraints:[NSLayoutConstraint
-                                constraintsWithVisualFormat:@"H:|-(321)-[pin1]"
-                                options:0
-                                metrics:nil
-                                views:NSDictionaryOfVariableBindings(pin1)]];
-    [bannerImageView addConstraints: [NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"V:|-(127)-[pin1]"
-                                 options:0
-                                 metrics:nil
-                                 views:NSDictionaryOfVariableBindings(pin1)]];
-    
-    UIImageView *pin2 = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"welcome_banner_pin2.png"]];
-    pin2.translatesAutoresizingMaskIntoConstraints = NO;
-    [pin2.layer addAnimation:rotateAnim forKey:nil];
-    [bannerImageView addSubview:pin2];
-    [bannerImageView addConstraints:[NSLayoutConstraint
-                                     constraintsWithVisualFormat:@"H:|-(200)-[pin2]"
-                                     options:0
-                                     metrics:nil
-                                     views:NSDictionaryOfVariableBindings(pin2)]];
-    [bannerImageView addConstraints: [NSLayoutConstraint
-                                      constraintsWithVisualFormat:@"V:|-(85)-[pin2]"
-                                      options:0
-                                      metrics:nil
-                                      views:NSDictionaryOfVariableBindings(pin2)]];
-    
-    return bannerImageView;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {

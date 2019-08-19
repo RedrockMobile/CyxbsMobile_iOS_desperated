@@ -12,32 +12,40 @@
 {
     self = [super init];
     if (self) {
-        
+    
         _firstDataTitle = @[@"宿舍",@"食堂",@"快递",@"数据揭秘"];
         _shuJuJieMi = @[@"最难科目",@"男女比例"];
-        
-        [self getsuShe];
-        [self getsuShePhoto];
-        
-        [self getshiTang];
-        [self getshiTangPhoto];
-        
-        
-        [self getkuaiDiPhoto];
-        [self getkuaiDi];
-        
-        [self getxueYuanName];
+        _suShePhoto = [NSMutableArray array];
+        _shiTangPhoto = [NSMutableArray array];
+        _kuaiDiDetail = [NSMutableArray array];
+        _kuaiDi = [NSMutableArray array];
+        _kuaiDiNumber = [NSMutableArray array];
+        _kuaiDiTitle2 = [NSMutableArray array];
+        _kuaiDiDetail2 = [NSMutableArray array];
+        _kuaiDiPhoto = [NSMutableArray array];
+        _kuaiDiPhoto2 = [NSMutableArray array];
+        dispatch_async_on_main_queue(^{
+            [self getsuShe];
+            [self getsuShePhoto];
+            
+            [self getshiTang];
+            [self getshiTangPhoto];
+            
+            
+            [self getkuaiDi];
+            
+            [self getxueYuanName];
+        });
+       
         //接受用户选择的学院
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getUserCollege:) name:@"LQQuserCollege" object:nil];
-        
     }
     return self;
 }
 
 -(void)getxueYuanName{
-    //http://129.28.185.138:9025/zsqy/json/44
     
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/44";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/44";
     
     
     //初始化一个HTTP管理者
@@ -46,41 +54,43 @@
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
     [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _xueYuanName = [NSMutableArray array];
-        
+
         for(int i = 0;i < 16;i++){
-            [_xueYuanName addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"name"]]];
-            NSLog(@"%@QWWQ",_xueYuanName);
+        [_xueYuanName addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"name"]]];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
-    
+
 }
 
--(void)getsuShe{
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
+- (void)getsuShe{
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/3";
     
     
     //初始化一个HTTP管理者
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
+    
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
     [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         _suSheDetail = [NSMutableArray array];
+        _suShe = [NSMutableArray array];
         
         for(int i = 0;i < 4;i++){
             [_suSheDetail addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][0][@"message"][i][@"detail"]]];
-            NSLog(@"%@",_suSheDetail[i]);
             [_suShe addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][0][@"message"][i][@"name"]]];
         }
+//        NSLog(@"LQLQLQ%@",_suShe);
         
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"getSuSheSuccess" object:nil userInfo:@{@"宿舍个数":@(_suShe.count)}];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
-    
+
 }
 -(void)getsuShePhoto{
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/3";
     
     
     //初始化一个HTTP管理者
@@ -88,15 +98,15 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
     [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        _suShePhoto = [NSMutableArray array];
-        
+//        _suShePhoto = [NSMutableArray array];
         for(int i = 0;i < 4;i++){
+            _suShePhoto[i] = [NSMutableArray array];
             for(int j =0; j < 3;j++){
-                _suShePhoto[i] = [NSMutableArray array];
-                [_suShePhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://129.28.185.138:9025/zsqy/image/%@",responseObject[@"text"][0][@"message"][i][@"photo"][j]]]];
+                [_suShePhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@",responseObject[@"text"][0][@"message"][i][@"photo"][j]]]];
+//                NSLog(@"LQLQQ%@",_suShePhoto[i][j]);
+
             }
-            NSLog(@"LQLQQ%@",_suShePhoto);
-            
+
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -104,7 +114,7 @@
     }];
 }
 -(void)getshiTang{
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/3";
     
     
     //初始化一个HTTP管理者
@@ -116,10 +126,9 @@
         _fanTang = [NSMutableArray array];
         for(int i = 0;i < 6;i++){
             [_shiTangDetail addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][1][@"message"][i][@"detail"]]];
-            NSLog(@"%@",_shiTangDetail[i]);
             [_fanTang addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][1][@"message"][i][@"name"]]];
         }
-        
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"getFanTangSuccess" object:nil userInfo:@{@"食堂个数":@(_fanTang.count)}];
         
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -128,7 +137,7 @@
     
 }
 -(void)getshiTangPhoto{
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/3";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/3";
     
     
     //初始化一个HTTP管理者
@@ -136,13 +145,14 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
     [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        _shiTangPhoto = [NSMutableArray array];
         for(int i = 0;i < 6;i++){
+            _shiTangPhoto[i] = [NSMutableArray array];
             for(int j =0; j < 3;j++){
-                _shiTangPhoto[i] = [NSMutableArray array];
-                [_shiTangPhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://129.28.185.138:9025/zsqy/image/%@",responseObject[@"text"][1][@"message"][i][@"photo"][j]]]];
+                [_shiTangPhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@",responseObject[@"text"][1][@"message"][i][@"photo"][j]]]];
+//                NSLog(@"QLQL%@",_shiTangPhoto[i]);
             }
         }
+        
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
@@ -151,7 +161,7 @@
 
 
 -(void)getkuaiDi{
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/33";
+    NSString *url = EXPRESSAPI;
     
     
     //初始化一个HTTP管理者
@@ -159,42 +169,46 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
     //为管理者分配url,参数，成功回掉方法，失败回掉方法
     [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        _kuaiDiDetail = [NSMutableArray array];
-        _kuaiDi = [NSMutableArray array];
-        for(int i = 0;i < _kuaiDi.count;i++){
+
+        
+        for(int i = 0;i < 9;i++){
             [_kuaiDiDetail addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"message"][0][@"detail"]]];
-            [_kuaiDi addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"message"][0][@"name"]]];
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"失败----%@", error);//失败的回调方法
-    }];
-    
-}
--(void)getkuaiDiPhoto{
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/33";
-    
-    
-    //初始化一个HTTP管理者
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
-    //为管理者分配url,参数，成功回掉方法，失败回掉方法
-    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        _kuaiDiPhoto = [NSMutableArray array];
-        
-        for(int i = 0;i < _kuaiDi.count;i++){
-            for(int j =0; j < 1;j++){
-                _kuaiDiPhoto[i] = [NSMutableArray array];
-                [_kuaiDiPhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"http://129.28.185.138:9025/zsqy/image/%@",responseObject[@"text"][i][@"message"][0][@"photo"]]]];
-                NSLog(@"快递照片URLis%@",_kuaiDiPhoto);
+            [_kuaiDi addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"name"]]];
+            
+            NSArray *array = [NSArray arrayWithArray: responseObject[@"text"][i][@"message"]];
+            [_kuaiDiNumber addObject:@(array.count)];
+            if(_kuaiDiNumber[i]==[NSNumber numberWithLong:1]){
+                [_kuaiDiTitle2 addObject:@"暂无第二快递点"];
+                [_kuaiDiDetail2 addObject:@"暂无第二快递点介绍"];
+            }else{
+                [_kuaiDiTitle2 addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"message"][1][@"title"]]];
+                [_kuaiDiDetail2 addObject:[NSString stringWithFormat:@"%@",responseObject[@"text"][i][@"message"][1][@"detail"]]];
             }
+        }
+
+        for(int i = 0;i < 9;i++){
+            _kuaiDiPhoto[i] = [NSMutableArray array];
+            _kuaiDiPhoto2[i] = [NSMutableArray array];
+            for(int j =0; j < 1;j++){
+                [_kuaiDiPhoto[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@",responseObject[@"text"][i][@"message"][0][@"photo"]]]];
+                if(_kuaiDiNumber[i]==[NSNumber numberWithLong:1]){//如果快递只有一个取货点
+                    [_kuaiDiPhoto2[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@",responseObject[@"text"][i][@"message"][0][@"photo"]]]];
+                }else{//若有两个取货点
+                    [_kuaiDiPhoto2[i] addObject:[NSURL URLWithString:[NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@",responseObject[@"text"][i][@"message"][1][@"photo"]]]];
+                }
+//                NSLog(@"LQ%@",_kuaiDiPhoto[i][j]);
+
+            }                
             
         }
-        
+
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"getKuaiDiSuccess" object:nil userInfo:@{@"快递个数":@(_kuaiDi.count)}];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
+    
 }
+
 
 
 
@@ -202,9 +216,9 @@
 
 
 -(void)getUserCollege:(NSNotification*)notification{//同时getbili和最难科目
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/44";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/44";
     NSLog(@"QLLQQQ%@",notification.userInfo[@"用户选择的学院"]);
-    static int collegeIndex = 0;//记录用户所选择学院的下标
+   static int collegeIndex = 0;//记录用户所选择学院的下标
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"text/plain",@"application/json",nil];//解决不能识别json的报错
@@ -217,27 +231,32 @@
                 collegeIndex = i;
                 break;
             }
-        }
+                }
         NSLog(@"下标是%d",collegeIndex);
         
         _biLi = @[[NSString stringWithFormat:@"%@",responseObject[@"text"][collegeIndex][@"girl"]],[NSString stringWithFormat:@"%@",responseObject[@"text"][collegeIndex][@"boy"]]];
         NSLog(@"The bili is %@",_biLi);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"biliDataOK" object:nil];
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
-    url =@"http://129.28.185.138:9025/zsqy/json/4";
+
+    url =@"https://cyxbsmobile.redrock.team/zscy/zsqy/json/4";
     [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         _subject = @[@{responseObject[@"text"][collegeIndex][@"message"][0][@"subject"]:responseObject[@"text"][collegeIndex][@"message"][0][@"data"]},@{responseObject[@"text"][collegeIndex][@"message"][1][@"subject"]:responseObject[@"text"][collegeIndex][@"message"][1][@"data"]},@{responseObject[@"text"][collegeIndex][@"message"][2][@"subject"]:responseObject[@"text"][collegeIndex][@"message"][2][@"data"]}];
         NSLog(@"subject is %@",_subject);
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"biliDataOK" object:nil];
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法
     }];
-    
+
     
 }
 
-+ (instancetype)sharedSingleton {
++ (instancetype)sharedSingleton{
     static LQQDataModel *_sharedSingleton = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{

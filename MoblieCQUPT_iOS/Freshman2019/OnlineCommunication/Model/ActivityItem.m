@@ -12,10 +12,11 @@
 
 - (instancetype)initWithDict:(NSDictionary *)dict {
     if (self = [super init]) {
+        
         self.name = dict[@"name"];
-        self.photo = dict[@"photo"];
+        self.photo = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@", dict[@"photo"]];
         self.message = dict[@"message"];
-        self.QRCode = dict[@"QR"];
+        self.QRCode = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@", dict[@"QR"]];
     }
     return self;
 }

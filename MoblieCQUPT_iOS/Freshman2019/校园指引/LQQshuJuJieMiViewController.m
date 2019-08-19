@@ -13,6 +13,7 @@
 #import "ChildViewController.h"
 #import "FSScrollContentView.h"
 #import "InfiniteRollScrollView.h"
+#import "DGActivityIndicatorView.h"
 
 @interface LQQshuJuJieMiViewController ()<FSPageContentViewDelegate,FSSegmentTitleViewDelegate>
 @property(nonatomic,strong)LQQDataModel*INeedData;
@@ -28,14 +29,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+//先拿到模型中获取的数据
     
     _INeedData = [LQQDataModel sharedSingleton];
-    // Do any additional setup after loading the view.
+
     [self buildMyNavigationbar];
+    self.navigationController.navigationBar.topItem.title = @"";
     _currentSecondList = _INeedData.shuJuJieMi;
-
-
     self.titleView = [[FSSegmentTitleView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), self.view.height*60.0/1334) titles:_currentSecondList delegate:self indicatorType:FSIndicatorTypeEqualTitle];
        self.titleView.selectIndex = 0;
   [self.view addSubview:_titleView];
@@ -45,9 +45,24 @@
     _titleView.titleNormalColor = [UIColor colorWithRed:122/255.0 green:118/255.0 blue:127/255.0 alpha:0.8];
     _titleView.titleSelectColor = [UIColor colorWithRed:11/255.0 green:18/255.0 blue:16/255.0 alpha:0.9];
     _titleView.indicatorColor = _titleView.titleSelectColor;
+    
+    
+    
+//    加载数据时的动画
+//    UIView*shadowView = [[UIView alloc]initWithFrame:self.view.frame];
+//    shadowView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+//    [self.view addSubview:shadowView];
+//    DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeLineScalePulseOutRapid tintColor:[UIColor blueColor]size:80.0f];
+//
+//    activityIndicatorView.frame = CGRectMake(self.view.width/2.0-50, self.view.height/2.0-100,100,100);
+//
+//    [shadowView addSubview:activityIndicatorView];
+//    [activityIndicatorView startAnimating];
+//
+//
      [self buildSubjectDataView];
     
-  
+      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downLoadNanNvBiLi) name:@"biliDataOK" object:nil];
     
     
 }
@@ -75,7 +90,7 @@
     LQQsubjectDataView*znkm = [[LQQsubjectDataView alloc]initWithDictionary:_INeedData.subject];
 
     LQQpercentageOfStudent*nanNvBiLi = [[LQQpercentageOfStudent alloc]initWithArray:_INeedData.biLi userXueYuan:_userXueYuan];
-    NSLog(@"LQLQ,%@",_INeedData.biLi);
+//    NSLog(@"LQLQ,%@",_INeedData.biLi);
     
         _childVCs = [[NSMutableArray alloc]init];//此数组用来放每一个view
     [_pageContentView removeFromSuperview];
@@ -137,6 +152,9 @@
         
     }
 }
+-(void)downLoadNanNvBiLi{
+         [self buildSubjectDataView];
 
+}
 
 @end

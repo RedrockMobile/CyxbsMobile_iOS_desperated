@@ -188,7 +188,7 @@
     
     UILabel *author = [[UILabel alloc] init];
     author.text = @"红岩网校工作站";
-    author.font = [UIFont systemFontOfSize:15];
+    author.font = [UIFont systemFontOfSize:13];
     author.textColor = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1];
     author.alpha = 0;
     author.numberOfLines = 0;

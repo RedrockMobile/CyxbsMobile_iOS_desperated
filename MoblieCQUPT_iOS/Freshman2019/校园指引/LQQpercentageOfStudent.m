@@ -9,7 +9,7 @@
 #import "LQQpercentageOfStudent.h"
 @interface LQQpercentageOfStudent ()
 {
-    CGFloat percentageOfman;//男生所占百分比的小数形式
+    CGFloat percentageOfWoman;//男生所占百分比的小数形式
     NSTimer *timer;
     UIBezierPath *circlePath;
     CAShapeLayer*layer;
@@ -28,7 +28,7 @@
     if (self) {
         _biliArray = biLiArray;
 //        NSLog(@"QLLQ%@",_biliArray);
-        percentageOfman = [[biLiArray[0] substringToIndex:2] floatValue]*0.01;
+        percentageOfWoman = [[biLiArray[0] substringToIndex:4] floatValue]*0.01;
         userXueYuan = xueYuan;
     }
     return self;
@@ -110,48 +110,56 @@
 }
 - (void)draw
 {
-    layer0 = [CAShapeLayer layer];
+    layer0 = [CAShapeLayer layer];//画女生那半部分
     self.backgroundColor = [UIColor whiteColor];
     layer0.lineWidth = 1*self.frame.size.width*220.0/750;
     //拐角设置
     layer0.lineCap = kCALineCapButt;
     //绘制的线的颜色
-    layer0.strokeColor = [[UIColor colorWithRed:105/255.0 green:203/255.0 blue:247/255.0 alpha:1] CGColor];
+        layer0.strokeColor = [[UIColor colorWithRed:253/255.0 green:137/255.0 blue:190/255.0 alpha:1] CGColor];
+
     layer0.fillColor = nil;
     layer0.strokeStart=0;
     layer0.strokeEnd=end/10;
     [self.layer addSublayer:layer0];
     //用贝塞尔曲线来画扇形，实际上画的是圆，因为半径为边线中间到原点的距离，所以设置半径为线宽的一半，这样线宽就覆盖了中间填充部分的颜色，形成扇形
-    UIBezierPath *bezierPath0=[UIBezierPath bezierPathWithArcCenter:CGPointMake((self.frame.size.width)/2+6, (self.frame.size.height)/2) radius:0.5*self.frame.size.width*220.0/750 startAngle:M_PI_2 endAngle:percentageOfman*2*M_PI+M_PI_2 clockwise:NO];
-    
+    CGFloat radius0 = 0.5*self.frame.size.width*220.0/750;
+    UIBezierPath *bezierPath0=[UIBezierPath bezierPathWithArcCenter:CGPointMake((self.frame.size.width)/2+6, (self.frame.size.height)/2) radius:radius0 startAngle:M_PI_2 endAngle:percentageOfWoman*2*M_PI+M_PI_2 clockwise:YES];
+    NSLog(@"男生占百分之%lf",percentageOfWoman); NSLog(@"圆点坐标(%lf,%lf)半径%lf,转过的角度%f",(self.frame.size.width)/2+6,(self.frame.size.height)/2,radius0,percentageOfWoman*2*M_PI);
     layer0.path = bezierPath0.CGPath;
+    UILabel*label0 = [[UILabel alloc]initWithFrame:CGRectMake(-(radius0*2*cos(M_PI_2-(percentageOfWoman*2*M_PI)/2.0)/2.0)+((self.frame.size.width)/2+6-15),(radius0*2*sin(M_PI_2-(percentageOfWoman*2*M_PI)/2.0))/2.0+((self.frame.size.height)/2), 153, 11)];
+//    [label setCenter:CGPointMake(-(radius0*cos(M_PI_2-(percentageOfWoman*2*M_PI)/2.0)/2.0)+((self.frame.size.width)/2+6),(radius0*sin(M_PI_2-(percentageOfWoman*2*M_PI)/2.0))/2.0+((self.frame.size.height)/2))];
+    label0.text = [NSString stringWithFormat:@"%.1lf%%",percentageOfWoman*100];
+    label0.font = [UIFont systemFontOfSize:14];
+    [label0 setTextColor:[UIColor whiteColor] ];
+    [self addSubview:label0];
     
     
     
-    layer = [CAShapeLayer layer];
+    
+    layer = [CAShapeLayer layer];//画男生那半部分
     //这里设置填充线的宽度，这个参数很重要
     layer.lineWidth = 1*self.frame.size.width*220.0/750;
     //拐角设置
     layer.lineCap = kCALineCapButt;
     //绘制的线的颜色
-    layer.strokeColor = [[UIColor colorWithRed:253/255.0 green:137/255.0 blue:190/255.0 alpha:1] CGColor];
+    layer.strokeColor = [[UIColor colorWithRed:105/255.0 green:203/255.0 blue:247/255.0 alpha:1] CGColor];
     layer.fillColor = nil;
     layer.strokeStart=0;
     layer.strokeEnd=end/10;
     [self.layer addSublayer:layer];
     //用贝塞尔曲线来画扇形，实际上画的是圆，因为半径为边线中间到原点的距离，所以设置半径为线宽的一半，这样线宽就覆盖了中间填充部分的颜色，形成扇形
-    UIBezierPath *bezierPath=[UIBezierPath bezierPathWithArcCenter:CGPointMake((self.frame.size.width)/2+6, (self.frame.size.height)/2) radius:0.5*self.frame.size.width*220.0/750 startAngle:M_PI_2 endAngle:percentageOfman*2*M_PI+M_PI_2 clockwise:YES];
+    UIBezierPath *bezierPath=[UIBezierPath bezierPathWithArcCenter:CGPointMake((self.frame.size.width)/2+6, (self.frame.size.height)/2) radius:0.5*self.frame.size.width*220.0/750 startAngle:M_PI_2 endAngle:percentageOfWoman*2*M_PI+M_PI_2 clockwise:NO];
     
     
     
-    
-    
+    UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake((radius0*2*cos(M_PI_2-(percentageOfWoman*2*M_PI)/2.0)/2.0)+((self.frame.size.width)/2+6-15),-((radius0*2*sin(M_PI_2-(percentageOfWoman*2*M_PI)/2.0))/2.0)+((self.frame.size.height)/2), 153, 11)];
+    //    [label setCenter:CGPointMake(-(radius0*cos(M_PI_2-(percentageOfWoman*2*M_PI)/2.0)/2.0)+((self.frame.size.width)/2+6),(radius0*sin(M_PI_2-(percentageOfWoman*2*M_PI)/2.0))/2.0+((self.frame.size.height)/2))];
+    label.text = [NSString stringWithFormat:@"%.1lf%%",(1-percentageOfWoman)*100];
+    label.font = [UIFont systemFontOfSize:14];
+    [label setTextColor:[UIColor whiteColor] ];
+    [self addSubview:label];
 
-    
-    CGRect rect = [self getEndPointFrameWithProgress:percentageOfman*2*M_PI+M_PI_2-M_PI_2];
-    UIView*view = [[UIView alloc]initWithFrame:CGRectMake(rect.origin.x, rect.origin.y, 10, 10)];
-    view.backgroundColor = [UIColor redColor];
-//    [self addSubview:view];
     
     layer.path = bezierPath.CGPath;
 }

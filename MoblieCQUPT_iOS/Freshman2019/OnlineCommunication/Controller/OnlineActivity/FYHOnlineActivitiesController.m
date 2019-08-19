@@ -27,7 +27,7 @@
     
     [self requestList];
     
-    self.tableView.rowHeight = MAIN_SCREEN_W * 0.717 + 15;
+    self.tableView.rowHeight = MAIN_SCREEN_W * 0.82 + 15;
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 30, 0);
 }
 
@@ -35,7 +35,7 @@
 - (void)requestList {
 //    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 //    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
-    NSString *url = @"http://129.28.185.138:9025/zsqy/json/8";
+    NSString *url = ONLINEACTIVITYAPI;
     
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:url method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -50,19 +50,6 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"activity get failed" object:nil];
     }];
-    
-//    [manager GET:url parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        NSMutableArray *tempArray = [NSMutableArray array];
-//        for (NSDictionary *dict in responseObject[@"text"]) {
-//            ActivityItem *item = [[ActivityItem alloc] initWithDict:dict];
-//            [tempArray addObject:item];
-//        }
-//        self.acticityList = tempArray;
-//
-//        [self.tableView reloadData];
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"activity get failed" object:nil];
-//    }];
 }
 
 #pragma mark - Table view data source

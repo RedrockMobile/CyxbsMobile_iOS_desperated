@@ -6,7 +6,7 @@
 //  Copyright © 2019 Orange-W. All rights reserved.
 //
 
-
+#define HIGHTPERONE 32//每个单位的高度
 #import "LQQsubjectDataView.h"
 
 @implementation LQQsubjectDataView
@@ -24,23 +24,21 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
-    //            一格大概代表25个单位
     if(_x==0){
     UILabel*title = [[UILabel alloc]initWithFrame:CGRectMake(30, 5, 260, 40)];
     //            title.backgroundColor = [UIColor blackColor];
-    title.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:15.0f];
+    title.font = [UIFont fontWithName:@"PingFang-SC-Regular" size:17.0f];
     title.textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.75f];
     title.text = @"2018-2019部分学科难度系数";
     [self addSubview:title];
     
     
     _viewOne = [[UIView alloc]init];
-    _viewOne.backgroundColor = [[UIColor alloc]initWithRed:arc4random() % 255/255.0 green:arc4random() % 255/255.0 blue:arc4random() % 255/255.0 alpha:1];
+    _viewOne.backgroundColor = [UIColor colorWithRed:128.0f/255.0f green:155.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
     _viewTwo = [[UIView alloc]init];
-    _viewTwo.backgroundColor = [[UIColor alloc]initWithRed:arc4random() % 255/255.0 green:arc4random() % 255/255.0 blue:arc4random() % 255/255.0 alpha:1];
+    _viewTwo.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:116.0f/255.0f blue:184.0f/255.0f alpha:1.0f];
     _viewThree = [[UIView alloc]init];
-    _viewThree.backgroundColor = [[UIColor alloc]initWithRed:arc4random() % 255/255.0 green:arc4random() % 255/255.0 blue:arc4random() % 255/255.0 alpha:1];
+    _viewThree.backgroundColor = [UIColor colorWithRed:61.0f/255.0f green:206.0f/255.0f blue:255.0f/255.0f alpha:1.0f];
     
     _xyZhou = [[UIImageView alloc]init];
     [self addSubview:_xyZhou];
@@ -54,9 +52,9 @@
         make.centerY.equalTo(self);
         
     }];
-    UILabel*leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(-10, 3, 20, 70)];
+    UILabel*leftLabel = [[UILabel alloc]initWithFrame:CGRectMake(-7, -13, 20, 110)];
     //            leftLabel.backgroundColor = [UIColor blackColor];
-    leftLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:11.0f];
+    leftLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:13.0f];
     leftLabel.text = @"难\n度\n系\n数";
     [_xyZhou addSubview:leftLabel];
     leftLabel.numberOfLines = [leftLabel.text length];
@@ -77,52 +75,52 @@
 //        NSLog(@"*-*-*-%@",key);
         
         if(i == 0){
-            x0 =  21*10*[[dic valueForKey:dic.allKeys[0]] floatValue];
+            x0 =  HIGHTPERONE*10*[[dic valueForKey:dic.allKeys[0]] floatValue];
             value0 = dic.allKeys[0];
-            NSLog(@"LQx0 is %f",x0/210.0);
         }
         if(i == 1){
-            x1 =  21*10*[[dic valueForKey:dic.allKeys[0]] floatValue];
+            x1 =  HIGHTPERONE*10*[[dic valueForKey:dic.allKeys[0]] floatValue];
             value1 = dic.allKeys[0];
-            NSLog(@"LQx1 is %f",x1/210.0);
             
         }
         if(i == 2){
-            x2 =  21*10*[[dic valueForKey:dic.allKeys[0]] floatValue];
+            x2 =  HIGHTPERONE*10*[[dic valueForKey:dic.allKeys[0]] floatValue];
             value2 =dic.allKeys[0];
-            NSLog(@"LQx2 is %f",x2/210.0);
             
         }
         i++;
     }
 //    _viewOne.frame = CGRectMake(self.bounds.size.width/2.0, self.bounds.size.height*(199+292.0)/(199+104+292), 40,10);
 
-    [UIView animateWithDuration:3 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         //                _viewOne.frame = CGRectMake(75,306-x0,40,x0);
         _viewOne.frame = CGRectMake(148.0/(70+452+148)*self.bounds.size.width, self.bounds.size.height*(199+292.0-41)/(199+104+292)-x0,40, x0);
         
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(5, -15, 45, 15)];
         //                label.backgroundColor = [UIColor blackColor];
-        label.text = [NSString stringWithFormat:@"%.1f%%",x0/210.0*100];
-        label.font = [UIFont systemFontOfSize:14];
+        label.text = [NSString stringWithFormat:@"%.2f",x0/(HIGHTPERONE*10.0)];
+        label.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:13.0f];
+        label.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:0.8f];
         [_viewOne addSubview:label];
     }];
     
     
-    [UIView animateWithDuration:3 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         _viewTwo.frame = CGRectMake((336.0/(70+336+315))*self.bounds.size.width,self.bounds.size.height*(199+292.0-41)/(199+104+292)-x1, 40,x1);
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(5, -15, 45, 15)];
         //            label.backgroundColor = [UIColor blackColor];
-        label.text = [NSString stringWithFormat:@"%.1f%%",x1/210.0*100];
-        label.font = [UIFont systemFontOfSize:14];
+        label.text = [NSString stringWithFormat:@"%.2f",x1/(HIGHTPERONE*10.0)];
+        label.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:13.0f];
+        label.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:0.8f];
         [_viewTwo addSubview:label];
     }];
-    [UIView animateWithDuration:3 animations:^{
+    [UIView animateWithDuration:1 animations:^{
         _viewThree.frame = CGRectMake((494.0/(70+453+147))*self.bounds.size.width,self.bounds.size.height*(199+292.0-41)/(199+104+292)-x2, 40,x2);
         UILabel*label = [[UILabel alloc]initWithFrame:CGRectMake(5, -15, 45, 15)];
         //            label.backgroundColor = [UIColor blackColor];
-        label.text = [NSString stringWithFormat:@"%.1f%%",x2/210.0*100];
-        label.font = [UIFont systemFontOfSize:14];
+        label.text = [NSString stringWithFormat:@"%.2f",x2/(HIGHTPERONE*10.0)];
+        label.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:13.0f];
+        label.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:0.8f];
         [_viewThree addSubview:label];
     }];
     UILabel*subject1 = [[UILabel alloc]init];//用来存放科目

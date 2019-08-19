@@ -29,6 +29,8 @@ PODS:
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.1.12)
   - pop (1.0.9)
+  - SDCycleScrollView (1.75):
+    - SDWebImage (>= 4.0.0)
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
@@ -57,6 +59,7 @@ DEPENDENCIES:
   - MBProgressHUD (~> 0.9.2)
   - MJRefresh
   - pop
+  - SDCycleScrollView
   - SDWebImage
   - UMengAnalytics-NO-IDFA
   - UMengUShare/Social/ReducedQQ
@@ -75,6 +78,7 @@ SPEC REPOS:
     - MBProgressHUD
     - MJRefresh
     - pop
+    - SDCycleScrollView
     - SDWebImage
     - UMengAnalytics-NO-IDFA
     - UMengUShare
@@ -89,11 +93,12 @@ SPEC CHECKSUMS:
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDCycleScrollView: 884b88f0266dd4708a0e1934975c69cb971707b1
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
   UMengUShare: cd54ae52958426b79aa9193a7b02058d6a6d9aa0
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: a0993587c5acafacfaba13f09bd74035734db1e9
+PODFILE CHECKSUM: e45113479e9a1c10e23ba77c9c56237179c4f2ef
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.0

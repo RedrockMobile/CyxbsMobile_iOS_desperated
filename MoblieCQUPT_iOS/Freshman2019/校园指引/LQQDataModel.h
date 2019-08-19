@@ -26,9 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong)NSMutableArray<NSMutableArray<NSURL*>*>*shiTangPhoto;
 @property(nonatomic,strong)NSMutableArray<NSString*>*shiTangDetail;//食堂详情
 
+@property(nonatomic,strong)NSMutableArray<NSNumber*>*kuaiDiNumber;//快递的个数数组
 @property(nonatomic, strong)NSMutableArray<NSMutableArray<NSURL*>*>*kuaiDiPhoto;
 @property(nonatomic,strong)NSMutableArray<NSString*>*kuaiDiTitle;//快递Title
 @property(nonatomic,strong)NSMutableArray<NSString*>*kuaiDiDetail;//快递详情
+//下面的属性用来记录部分有第二个快递点的快递
+@property(nonatomic, strong)NSMutableArray<NSMutableArray<NSURL*>*>*kuaiDiPhoto2;
+@property(nonatomic,strong)NSMutableArray<NSString*>*kuaiDiTitle2;//快递Title
+@property(nonatomic,strong)NSMutableArray<NSString*>*kuaiDiDetail2;//快递详情
+
 @property(nonatomic, strong)NSString*chooSingCollege;//用户当前选择的学院;
 //- (void)getbili:(void (^)(NSArray *bili))success;
 + (instancetype)sharedSingleton;

@@ -17,6 +17,12 @@
 #import "LQQpercentageOfStudent.h"
 //#import "LQQimageModel.h"
 #import "LQQchooseCollegeViewController.h"
+#import "ExpressCompanyItem.h"
+#import "SchoolNavigatorController.h"
+#import "DiningHallAndDormitoryItem.h"
+#import "DiningHallAndDormitoryController.h"
+
+
 @interface LQQXiaoYuanZhiYinViewController ()<FSPageContentViewDelegate,FSSegmentTitleViewDelegate>
 //下方的滚动view
 //@property(nonatomic,strong)UIScrollView*backgroundView;
@@ -25,66 +31,37 @@
 @property (nonatomic, strong) FSSegmentTitleView *titleView;
 //数据
 @property (nonatomic,strong) LQQDataModel*INeedData;
-@property(nonatomic,strong) NSArray*currentSecondList;//当前的二级目录标题
-//@property(nonatomic)int firstChoose;//当前选择的一级目录//0-3分别为宿舍、食堂、快递、数据揭秘
-@property(nonatomic, strong)NSMutableArray<UILabel*>*titleLabelArr;//大标题
-@property(nonatomic, strong)NSMutableArray<UILabel*>*contentLabelArr;//小标题
-@property(nonatomic, strong)NSMutableArray<UILabel*>*contentLabelArrshiTang;//食堂的小标题
-@property(nonatomic, strong)NSMutableArray<UILabel*>*contentLabelArrkuaiDi;//食堂的小标题
 
 @property(nonatomic,strong) LQQfirstChooseButtonView * topButton;
-@property(nonatomic,strong)NSMutableArray<InfiniteRollScrollView*>*scrollImageArr;//存放轮播图的数组
-//@property(nonatomic,strong)InfiniteRollScrollView *scrollView;
-//@property(nonatomic,strong) UIView* backgroundView;//背景框，图片命名为itemBackgroundImage
-@property(nonatomic,strong)NSMutableArray<NSMutableArray<UIImage*>*>*suShePhoto;
-@property(nonatomic,strong)NSMutableArray<NSMutableArray<UIImage*>*>*shiTangPhoto;
-@property(nonatomic,strong)NSMutableArray<NSMutableArray<UIImage*>*>*kuaiDiPhoto;
-@property(nonatomic)int flag0;//等于1时代表用户第一次点进宿舍;解决了反复加载图片的bug;
-@property(nonatomic)int flag1;//等于1时代表用户第一次点进食堂;解决了反复加载图片的bug;
-@property(nonatomic)int flag2;
-//@property(nonatomic,strong)NSMutableArray<NSMutableArray<UIImage*>*>*suSheImageArray;
+@property (nonatomic, strong) FSPageContentView *fyhPageContentView;
+
+@property (nonatomic, copy) NSArray<ExpressCompanyItem *> *companyArray;
+@property(nonatomic, assign)BOOL firstChoose;
+
 @end
 
 @implementation LQQXiaoYuanZhiYinViewController
 
 - (void)viewDidLoad {
 
-    _flag0 = 1;
-    _flag1 = 1;
-    _flag2 = 1;
     //页面初始化工作
     [super viewDidLoad];
     _INeedData = [LQQDataModel sharedSingleton];
     self.hidesBottomBarWhenPushed = YES;
     [self buildMyNavigationbar];
-    _scrollImageArr = [NSMutableArray array];
-    _titleLabelArr = [NSMutableArray array];
-    _contentLabelArr = [NSMutableArray array];
-    _contentLabelArrshiTang = [NSMutableArray array];
-    _contentLabelArrkuaiDi = [NSMutableArray array];
-//    _suSheImageArray = [NSMutableArray array];
-    for(int i = 0; i < _INeedData.suShe.count ;i++){
-        _contentLabelArr[i] = [[UILabel alloc]init];
-    }
-    for(int i = 0; i < _INeedData.fanTang.count ;i++){
-        _contentLabelArrshiTang[i] = [[UILabel alloc]init];
-    }
-    for(int i = 0; i < _INeedData.kuaiDi.count ;i++){
-        _contentLabelArrkuaiDi[i] = [[UILabel alloc]init];
-    }
+
     _choosedCollege = [[NSString alloc]init];
     //加载宿舍食堂快递数据揭秘按钮的View
     _topButton = [[LQQfirstChooseButtonView alloc]init];
-     _topButton.frame = CGRectMake(0, 0,self.view.bounds.size.width, self.view.height*97.0/1334);
-    _topButton.backgroundColor = [UIColor whiteColor];
+     _topButton.frame = CGRectMake(0, 0,self.view.bounds.size.width, 49);
+    _topButton.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_topButton];
 
     //数据初始化
-    NSArray<NSString*> *diningHall = [[NSArray alloc]initWithArray:_INeedData.fanTang];
     self.automaticallyAdjustsScrollViewInsets = NO;
 
-    _currentSecondList = [[NSArray alloc]initWithArray:_INeedData.suShe];
-    
+    self.view.backgroundColor = [UIColor colorWithRed:235/255.0 green:247/255.0 blue:255/255.0 alpha:1];
+
     //一级选择
 
     
@@ -103,13 +80,12 @@
     [_topButton.shuJuJieMi addTarget:self action:@selector(clickShuJuJieMi) forControlEvents:UIControlEventTouchUpInside];
     [_topButton.shuJuJieMi setTitle:_INeedData.firstDataTitle[3] forState:UIControlStateNormal];
     
+//二级选择标题
+    self.titleView = [[FSSegmentTitleView alloc]initWithFrame:CGRectMake(0, _topButton.height, CGRectGetWidth(self.view.bounds), 30/*self.view.height*60.0/1334*/) titles:@[@"明理苑",@"宁静苑",@"兴业苑",@"知行苑"] delegate:self indicatorType:FSIndicatorTypeEqualTitle];
     
-    //二级选择
-    self.titleView = [[FSSegmentTitleView alloc]initWithFrame:CGRectMake(0, _topButton.height, CGRectGetWidth(self.view.bounds), self.view.height*60.0/1334) titles:_currentSecondList delegate:self indicatorType:FSIndicatorTypeEqualTitle];
-
-    
-//    self.titleView.titleSelectFont = [UIFont systemFontOfSize:15];
+    self.titleView.titleSelectFont = [UIFont systemFontOfSize:15];
     self.titleView.selectIndex = 0;
+
     [self.view addSubview:_titleView];
     _titleView.backgroundColor = [UIColor colorWithRed:246/255.0 green:253/255.0 blue:255/255.0 alpha:1];
 
@@ -119,15 +95,16 @@
     //第三部分的调色工作
     _titleView.titleNormalColor = [UIColor colorWithRed:122/255.0 green:118/255.0 blue:127/255.0 alpha:0.8];
     _titleView.titleSelectColor = [UIColor colorWithRed:11/255.0 green:18/255.0 blue:16/255.0 alpha:0.9];
-    _titleView.indicatorColor = _titleView.titleSelectColor;
+    _titleView.indicatorColor = [UIColor clearColor];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    [_topButton.dormitory sendActionsForControlEvents:UIControlEventTouchUpInside];
+//    [_topButton.kuaiDi sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 - (void)viewDidAppear:(BOOL)animated{
+    if(!_firstChoose){
     [_topButton.dormitory sendActionsForControlEvents:UIControlEventTouchUpInside];
-
+    }
 }
 //展示导航栏
 - (void)buildMyNavigationbar{
@@ -154,423 +131,174 @@
 
 -(void)clickDormitory{
     
-    //未选择数据揭秘
-//    _firstChoose = 0;
     //更新之前title的光标
     self.titleView.selectIndex = 0;
     //刷新下方title
     //1. 承载title的列表数据被替换
     [_titleView removeFromSuperview];
-    _currentSecondList = _INeedData.suShe;
-    _titleView.titlesArr = _INeedData.suShe;
-    [self.view addSubview:_titleView];
+    
+//    _titleView.titlesArr = @[@"test1",@"test2",@"test3",@"test4"];
+
+
     _topButton.dormitory.selected = YES;
     _topButton.shiTang.selected = NO;
     _topButton.kuaiDi.selected = NO;
     _topButton.shuJuJieMi.selected = NO;
     
-    
-    if(_flag0 == 1){
-        _flag0++;
-    //将传过来的URL转化为图片
-    for(int i = 0; i < _INeedData.suShe.count;i++){
-        for(int j = 0;j < 3;j++){
-            [self.suShePhoto[i] addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:_INeedData.suShePhoto[i][j]]]];
-            NSLog(@"QLLQ%@",_INeedData.suShePhoto[i][j]);
+    if (self.fyhPageContentView) {
+        [self.fyhPageContentView removeFromSuperview];
+        self.fyhPageContentView = nil;
+    }
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:DININGHALLANDDORMITORYAPI method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *dormitoryItems = [NSMutableArray array];
+        NSMutableArray*array = [NSMutableArray array];
+        for (NSDictionary *dict in responseObject[@"text"][0][@"message"]) {
+            DiningHallAndDormitoryItem *dormitory = [DiningHallAndDormitoryItem diningHallWithDict:dict];
+            [array addObject:dormitory.name];
+            [dormitoryItems addObject:dormitory];
         }
-//
-    }
-    }
+        _titleView.titlesArr = array;
+        [self.view addSubview:_titleView];
 
-    
-    //刷新下方view
-    [_pageContentView removeFromSuperview];
-    NSMutableArray<ChildViewController*> *childVCs = [[NSMutableArray alloc]init];//此数组用来放第四部分的每一个view
-    for (NSString *title in _INeedData.suShe) {
-        ChildViewController *vc = [[ChildViewController alloc]init];
-        //        vc.title = title;
-        vc.view.backgroundColor = [UIColor colorWithRed:238/255.0 green:246/255.0 blue:255/255.0 alpha:1];
-        [childVCs addObject:vc];
-    }
-    
-    //hhhhhhhhhhhhhhh
-
-
-
-    for(int i = 0; i < _INeedData.suShe.count ;i++){
-    InfiniteRollScrollView*view =[[InfiniteRollScrollView alloc]init];
-    _scrollImageArr[i] = view;
-//        [_scrollImageArr addObject:view];
-    [childVCs[i].backgroundView addSubview:_scrollImageArr[i]];
-    _scrollImageArr[i].backgroundColor = [UIColor redColor];
-    [_scrollImageArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(childVCs[i].backgroundView).offset(30);
-        make.width.equalTo(childVCs[i].backgroundView).offset(-60);
-        make.height.equalTo(childVCs[i].backgroundView).multipliedBy(0.45);
-        make.centerX.equalTo(childVCs[i].backgroundView);
+        NSMutableArray *childVC = [NSMutableArray array];
+        for (DiningHallAndDormitoryItem *item in dormitoryItems) {
+            DiningHallAndDormitoryController *vc = [[DiningHallAndDormitoryController alloc] init];
+            vc.model = item;
+            [childVC addObject:vc];
+        }
+        self.fyhPageContentView = [[FSPageContentView alloc] initWithFrame:CGRectMake(0, 94 - 15, MAIN_SCREEN_W, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - 94 + 15) childVCs:childVC parentVC:self delegate:self];
+        [self.view addSubview:self.fyhPageContentView];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@", error);
     }];
-    _scrollImageArr[i].delegate = self;
-        _scrollImageArr[i].pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
-//    _scrollImage.pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        
-    //需要显示的所有图片对应的信息
-    _scrollImageArr[i].imageModelInfoArray = [NSMutableArray array];
 
-    [childVCs[i].scrollImage removeFromSuperview];
-        _titleLabelArr[i] = [[UILabel alloc]init];
-        [childVCs[i].view addSubview:_titleLabelArr[i]];
-//        _titleLabelArr[i].backgroundColor = [UIColor redColor];
-        [_titleLabelArr[i] setFont:[UIFont fontWithName:@"PingFang-SC-Bold" size:14.0f]];
-         _titleLabelArr[i].textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.7f];
-        _titleLabelArr[i].text = _INeedData.suShe[i];
-            [_titleLabelArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.top.equalTo(_scrollImageArr[i].mas_bottom).offset(10);
-                make.width.equalTo(childVCs[i].view).multipliedBy((144.0+150)/750);
-                make.height.equalTo(childVCs[i].view).multipliedBy(26.0/(1334-129-97-60));
-                make.left.equalTo(_scrollImageArr[i]);
-            }];
-    
 
-    //iiiiiiiiiiiiiiiiiiiiiii
-    [childVCs[i].view addSubview:_contentLabelArr[i]];
-    _contentLabelArr[i].backgroundColor = [UIColor clearColor];
-    [_contentLabelArr[i] setFont:[UIFont fontWithName:@"PingFang-SC-Regular" size:14.0f]];
-        _contentLabelArr[i].textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.65f];
-        
-        
-        
-        _contentLabelArr[i].text = _INeedData.suSheDetail[i];
-        _contentLabelArr[i].numberOfLines = 0;
-    [_contentLabelArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(_titleLabelArr[i].mas_bottom).offset(5);
-        make.width.equalTo(_scrollImageArr[i]);
-        make.height.equalTo(childVCs[i].view).multipliedBy((218.0+85)/(1334-129-97-60));
-        make.left.equalTo(_scrollImageArr[i]);
-    }];
-      
-//        _suSheImageArray[i] = self.suShePhoto[i];
-        
-        _scrollImageArr[i].imageArray = self.suShePhoto[i];
-        NSLog(@"%@LQLQLQ",self.suShePhoto);
-//
-        
-        
-    }
-    //下面的可以删掉
+}
     
-    
-    
-//
-//
-//    _scrollImageArr[0].imageArray =@[
-//                                     [UIImage imageNamed:@"LQQ0"],
-//                                     [UIImage imageNamed:@"LQQ1"],
-//                                     [UIImage imageNamed:@"LQQ2"],
-//                                     [UIImage imageNamed:@"LQQ3"],
-//                                     [UIImage imageNamed:@"LQQ4"]
-//                                     ];
-//    _scrollImageArr[1].imageArray =@[
-//                                     [UIImage imageNamed:@"LQQ0"],
-//
-//                                     [UIImage imageNamed:@"LQQ4"]
-//                                     ];
-    //到这里
-    self.pageContentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0,100, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 90) childVCs:childVCs parentVC:self delegate:self];//把ChildVCs数组中的界面展示在pageContentview上
-    self.pageContentView.contentViewCurrentIndex = 0;
-    //    self.pageContentView.contentViewCanScroll = NO;//设置滑动属性
-    [self.view addSubview:_pageContentView];
-    [self.pageContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view);
-        make.height.equalTo(self.view).multipliedBy(0.75);
-        make.top.equalTo(_titleView.mas_bottom);
-        make.centerX.equalTo(self.view);
-//        make.centerY.equalTo(self.view.mas_centerY).offset(15);
-    }];
-    }
-    
-    
-    
-
+#warning shitang
 -(void)clickFanTang{
-    //未选择数据揭秘
-    //    _firstChoose = 1;
+    
     //更新之前title的光标
     self.titleView.selectIndex = 0;
     //刷新下方title
     //1. 承载title的列表数据被替换
     [_titleView removeFromSuperview];
-    _currentSecondList = _INeedData.fanTang;
-    _titleView.titlesArr = _INeedData.fanTang;
+    
+    //    self.
     [self.view addSubview:_titleView];
+//    _titleView.userInteractionEnabled = NO;
     _topButton.dormitory.selected = NO;
     _topButton.shiTang.selected = YES;
     _topButton.kuaiDi.selected = NO;
     _topButton.shuJuJieMi.selected = NO;
-
     
-    
-    if(_flag1 == 1){
-        _flag1++;
-        //将传过来的URL转化为图片
-        for(int i = 0; i < _INeedData.fanTang.count;i++){
-            for(int j = 0;j < 3;j++){
-                [self.shiTangPhoto[i] addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:_INeedData.shiTangPhoto[i][j]]]];
-            }
-            //
+    if (self.fyhPageContentView) {
+        [self.fyhPageContentView removeFromSuperview];
+        self.fyhPageContentView = nil;
+    }
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:DININGHALLANDDORMITORYAPI method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *diningHallItems = [NSMutableArray array];
+         NSMutableArray*array = [NSMutableArray array];
+        for (NSDictionary *dict in responseObject[@"text"][1][@"message"]) {
+            DiningHallAndDormitoryItem *diningHall = [DiningHallAndDormitoryItem diningHallWithDict:dict];
+            [diningHallItems addObject:diningHall];
+              [array addObject:diningHall.name];
+            
+            
         }
-    }
-    
-    
-    //刷新下方view
-    [_pageContentView removeFromSuperview];
-    NSMutableArray<ChildViewController*> *childVCs = [[NSMutableArray alloc]init];//此数组用来放第四部分的每一个view
-    for (NSString *title in _INeedData.fanTang) {
-        ChildViewController *vc = [[ChildViewController alloc]init];
-        //        vc.title = title;
-        vc.view.backgroundColor = [UIColor colorWithRed:238/255.0 green:246/255.0 blue:255/255.0 alpha:1];
-        [childVCs addObject:vc];
-    }
-    
-    //hhhhhhhhhhhhhhh
-    
-    
-    
-    for(int i = 0; i < _INeedData.fanTang.count ;i++){
-        InfiniteRollScrollView*view =[[InfiniteRollScrollView alloc]init];
-        _scrollImageArr[i] = view;
-        //        [_scrollImageArr addObject:view];
-        [childVCs[i].backgroundView addSubview:_scrollImageArr[i]];
-        _scrollImageArr[i].backgroundColor = [UIColor redColor];
-        [_scrollImageArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(childVCs[i].backgroundView).offset(30);
-            make.width.equalTo(childVCs[i].backgroundView).offset(-60);
-            make.height.equalTo(childVCs[i].backgroundView).multipliedBy(0.45);
-            make.centerX.equalTo(childVCs[i].backgroundView);
-        }];
-        _scrollImageArr[i].delegate = self;
-        _scrollImageArr[i].pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
-        //    _scrollImage.pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        
-        //需要显示的所有图片对应的信息
-        _scrollImageArr[i].imageModelInfoArray = [NSMutableArray array];
-        
-        [childVCs[i].scrollImage removeFromSuperview];
-        _titleLabelArr[i] = [[UILabel alloc]init];
-        [childVCs[i].view addSubview:_titleLabelArr[i]];
-        //        _titleLabelArr[i].backgroundColor = [UIColor redColor];
-        [_titleLabelArr[i] setFont:[UIFont fontWithName:@"PingFang-SC-Bold" size:14.0f]];
-        _titleLabelArr[i].textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.7f];
-        _titleLabelArr[i].text = _INeedData.fanTang[i];
-        [_titleLabelArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_scrollImageArr[i].mas_bottom).offset(10);
-            make.width.equalTo(childVCs[i].view).multipliedBy((144.0+150)/750);
-            make.height.equalTo(childVCs[i].view).multipliedBy(26.0/(1334-129-97-60));
-            make.left.equalTo(_scrollImageArr[i]);
-        }];
-        
-        
-        //iiiiiiiiiiiiiiiiiiiiiii
-        [childVCs[i].view addSubview:_contentLabelArrshiTang[i]];
-        _contentLabelArrshiTang[i].backgroundColor = [UIColor clearColor];
-        [_contentLabelArrshiTang[i] setFont:[UIFont fontWithName:@"PingFang-SC-Regular" size:14.0f]];
-        _contentLabelArrshiTang[i].textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.65f];
-        
-        
-        
-        _contentLabelArrshiTang[i].text = _INeedData.shiTangDetail[i];
-        _contentLabelArrshiTang[i].numberOfLines = 0;
-        [_contentLabelArrshiTang[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_titleLabelArr[i].mas_bottom).offset(5);
-            make.width.equalTo(_scrollImageArr[i]);
-            make.height.equalTo(childVCs[i].view).multipliedBy((218.0+85)/(1334-129-97-60));
-            make.left.equalTo(_scrollImageArr[i]);
-        }];
-        
-        //        _suSheImageArray[i] = self.suShePhoto[i];
-        
-        _scrollImageArr[i].imageArray = self.shiTangPhoto[i];
-        //
-        
-        
-    }
-    //下面的可以删掉
-    
-    
-    
-    //
-    //
-    //    _scrollImageArr[0].imageArray =@[
-    //                                     [UIImage imageNamed:@"LQQ0"],
-    //                                     [UIImage imageNamed:@"LQQ1"],
-    //                                     [UIImage imageNamed:@"LQQ2"],
-    //                                     [UIImage imageNamed:@"LQQ3"],
-    //                                     [UIImage imageNamed:@"LQQ4"]
-    //                                     ];
-    //    _scrollImageArr[1].imageArray =@[
-    //                                     [UIImage imageNamed:@"LQQ0"],
-    //
-    //                                     [UIImage imageNamed:@"LQQ4"]
-    //                                     ];
-    //到这里
-    self.pageContentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0,100, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 90) childVCs:childVCs parentVC:self delegate:self];//把ChildVCs数组中的界面展示在pageContentview上
-    self.pageContentView.contentViewCurrentIndex = 0;
-    //    self.pageContentView.contentViewCanScroll = NO;//设置滑动属性
-    [self.view addSubview:_pageContentView];
-    [self.pageContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view);
-        make.height.equalTo(self.view).multipliedBy(0.75);
-        make.top.equalTo(_titleView.mas_bottom);
-        make.centerX.equalTo(self.view);
-        //        make.centerY.equalTo(self.view.mas_centerY).offset(15);
+        _titleView.titlesArr = array;
+        NSMutableArray *childVC = [NSMutableArray array];
+        for (DiningHallAndDormitoryItem *item in diningHallItems) {
+            DiningHallAndDormitoryController *vc = [[DiningHallAndDormitoryController alloc] init];
+            vc.model = item;
+            [childVC addObject:vc];
+        }
+        self.fyhPageContentView = [[FSPageContentView alloc] initWithFrame:CGRectMake(0, 94 - 15, MAIN_SCREEN_W, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - 94 + 15) childVCs:childVC parentVC:self delegate:self];
+        [self.view addSubview:self.fyhPageContentView];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@", error);
     }];
-    
-    
-    
 }
 
     
     
     
 
-
+#warning express
 -(void)clickKuaiDi{
-    //未选择数据揭秘
-//    _firstChoose = 2;
-    //更新之前title的光标
-    self.titleView.selectIndex = 0;
-    //刷新下方title
-    //1. 承载title的列表数据被替换
-    [_titleView removeFromSuperview];
-    _currentSecondList = _INeedData.kuaiDi;
-    _titleView.titlesArr = _INeedData.kuaiDi;
-    [self.view addSubview:_titleView];
     _topButton.dormitory.selected = NO;
     _topButton.shiTang.selected = NO;
     _topButton.kuaiDi.selected = YES;
     _topButton.shuJuJieMi.selected = NO;
     
-    if(_flag2 == 1){
-        _flag2++;
-        //将传过来的URL转化为图片
-        for(int i = 0; i < _INeedData.kuaiDi.count;i++){
-            for(int j = 0;j < 1;j++){
-//                [self.kuaiDiPhoto[i] addObject:[UIImage imageWithData:[NSData dataWithContentsOfURL:_INeedData.kuaiDiPhoto[i][j]]]];
-            }
-            //
+    
+    //更新之前title的光标
+    self.titleView.selectIndex = 0;
+    //刷新下方title
+    //1. 承载title的列表数据被替换
+    [_titleView removeFromSuperview];
+    
+    //    self.
+    [self.view addSubview:_titleView];
+//    _titleView.userInteractionEnabled = NO;
+
+    if (self.fyhPageContentView) {
+        [self.fyhPageContentView removeFromSuperview];
+        self.fyhPageContentView = nil;
+    }
+    HttpClient *client = [HttpClient defaultClient];
+    [client requestWithPath:EXPRESSAPI method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSMutableArray *tempArray = [NSMutableArray array];
+        NSMutableArray*array = [NSMutableArray array];
+        for (NSDictionary *dict in responseObject[@"text"]) {
+            ExpressCompanyItem *item = [ExpressCompanyItem companyWithDict:dict];
+            [tempArray addObject:item];
+            [array addObject:item.companyName];
         }
-    }
-    
-    
-    //刷新下方view
-    [_pageContentView removeFromSuperview];
-    NSMutableArray<ChildViewController*> *childVCs = [[NSMutableArray alloc]init];//此数组用来放第四部分的每一个view
-    for (NSString *title in _INeedData.kuaiDi) {
-        ChildViewController *vc = [[ChildViewController alloc]init];
-        //        vc.title = title;
-        vc.view.backgroundColor = [UIColor colorWithRed:238/255.0 green:246/255.0 blue:255/255.0 alpha:1];
-        [childVCs addObject:vc];
-    }
-    
-    //hhhhhhhhhhhhhhh
-    
-    
-    
-    for(int i = 0; i < _INeedData.kuaiDi.count ;i++){
-        InfiniteRollScrollView*view =[[InfiniteRollScrollView alloc]init];
-        _scrollImageArr[i] = view;
-        //        [_scrollImageArr addObject:view];
-        [childVCs[i].backgroundView addSubview:_scrollImageArr[i]];
-        _scrollImageArr[i].backgroundColor = [UIColor redColor];
-        [_scrollImageArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(childVCs[i].backgroundView).offset(30);
-            make.width.equalTo(childVCs[i].backgroundView).offset(-60);
-            make.height.equalTo(childVCs[i].backgroundView).multipliedBy(0.45);
-            make.centerX.equalTo(childVCs[i].backgroundView);
-        }];
-        _scrollImageArr[i].delegate = self;
-        _scrollImageArr[i].pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
-        //    _scrollImage.pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        _titleView.titlesArr = array;
+
+        self.companyArray = tempArray;
         
-        //需要显示的所有图片对应的信息
-        _scrollImageArr[i].imageModelInfoArray = [NSMutableArray array];
+        NSMutableArray *childVCArray = [NSMutableArray array];
+        for (ExpressCompanyItem *company in self.companyArray) {
+            
+            SchoolNavigatorController *vc = [[SchoolNavigatorController alloc] init];
+            vc.company = company;
+            [childVCArray addObject:vc];
+        }
+        self.fyhPageContentView = [[FSPageContentView alloc] initWithFrame:CGRectMake(0, 94 - 15, MAIN_SCREEN_W, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - 94 + 15) childVCs:childVCArray parentVC:self delegate:self];
+        [self.view addSubview:self.fyhPageContentView];
         
-        [childVCs[i].scrollImage removeFromSuperview];
-        _titleLabelArr[i] = [[UILabel alloc]init];
-        [childVCs[i].view addSubview:_titleLabelArr[i]];
-        //        _titleLabelArr[i].backgroundColor = [UIColor redColor];
-        [_titleLabelArr[i] setFont:[UIFont fontWithName:@"PingFang-SC-Bold" size:14.0f]];
-        _titleLabelArr[i].textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.7f];
-        _titleLabelArr[i].text = _INeedData.kuaiDi[i];
-        [_titleLabelArr[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_scrollImageArr[i].mas_bottom).offset(10);
-            make.width.equalTo(childVCs[i].view).multipliedBy((144.0+150)/750);
-            make.height.equalTo(childVCs[i].view).multipliedBy(26.0/(1334-129-97-60));
-            make.left.equalTo(_scrollImageArr[i]);
-        }];
-        
-        
-        //iiiiiiiiiiiiiiiiiiiiiii
-        [childVCs[i].view addSubview:_contentLabelArrkuaiDi[i]];
-        _contentLabelArrkuaiDi[i].backgroundColor = [UIColor clearColor];
-        [_contentLabelArrkuaiDi[i] setFont:[UIFont fontWithName:@"PingFang-SC-Regular" size:14.0f]];
-        _contentLabelArrkuaiDi[i].textColor = [UIColor colorWithRed:0.0f/255.0f green:0.0f/255.0f blue:0.0f/255.0f alpha:0.65f];
-        
-        
-        
-        _contentLabelArrkuaiDi[i].text = _INeedData.kuaiDiDetail[i];
-        _contentLabelArrkuaiDi[i].numberOfLines = 0;
-        [_contentLabelArrkuaiDi[i] mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(_titleLabelArr[i].mas_bottom).offset(5);
-            make.width.equalTo(_scrollImageArr[i]);
-            make.height.equalTo(childVCs[i].view).multipliedBy((218.0+85)/(1334-129-97-60));
-            make.left.equalTo(_scrollImageArr[i]);
-        }];
-        
-        //        _suSheImageArray[i] = self.suShePhoto[i];
-        
-        _scrollImageArr[i].imageArray = self.kuaiDiPhoto[i];
-        //
-        
-        
-    }
-    //下面的可以删掉
-    
-    
-    
-    //
-    //
-    //    _scrollImageArr[0].imageArray =@[
-    //                                     [UIImage imageNamed:@"LQQ0"],
-    //                                     [UIImage imageNamed:@"LQQ1"],
-    //                                     [UIImage imageNamed:@"LQQ2"],
-    //                                     [UIImage imageNamed:@"LQQ3"],
-    //                                     [UIImage imageNamed:@"LQQ4"]
-    //                                     ];
-    //    _scrollImageArr[1].imageArray =@[
-    //                                     [UIImage imageNamed:@"LQQ0"],
-    //
-    //                                     [UIImage imageNamed:@"LQQ4"]
-    //                                     ];
-    //到这里
-    self.pageContentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0,100, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 90) childVCs:childVCs parentVC:self delegate:self];//把ChildVCs数组中的界面展示在pageContentview上
-    self.pageContentView.contentViewCurrentIndex = 0;
-    //    self.pageContentView.contentViewCanScroll = NO;//设置滑动属性
-    [self.view addSubview:_pageContentView];
-    [self.pageContentView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(self.view);
-        make.height.equalTo(self.view).multipliedBy(0.75);
-        make.top.equalTo(_titleView.mas_bottom);
-        make.centerX.equalTo(self.view);
-        //        make.centerY.equalTo(self.view.mas_centerY).offset(15);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"%@", error);
     }];
-    
-
-
 }
+
 -(void)clickShuJuJieMi{
-    LQQchooseCollegeViewController*chooseCollegeTableViewController = [[LQQchooseCollegeViewController alloc]init];
-    [self.navigationController pushViewController:chooseCollegeTableViewController animated:YES];
     
+    _firstChoose = YES;
+    
+    _topButton.dormitory.selected = NO;
+    _topButton.shiTang.selected = NO;
+    _topButton.kuaiDi.selected = NO;
+    _topButton.shuJuJieMi.selected = YES;
+//    UIView*view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
+//    [self.view addSubview:view];
+//    view.backgroundColor = [UIColor redColor];
+    [_titleView removeFromSuperview];
+    [_fyhPageContentView removeAllSubviews];
+    
+    
+#warning 移除控制器
+    LQQchooseCollegeViewController*chooseCollegeTableViewController = [[LQQchooseCollegeViewController alloc]init];
+    [self addChildViewController:chooseCollegeTableViewController];
+    [self.view addSubview:chooseCollegeTableViewController.view];
+    chooseCollegeTableViewController.view.frame = CGRectMake(0,49, self.view.width, self.view.height-49);
+    
+//    [self.navigationController pushViewController:chooseCollegeTableViewController animated:YES];
+
 }
 
 
@@ -579,29 +307,22 @@
 //代理：处理点击后的回调数据
 - (void)FSSegmentTitleView:(FSSegmentTitleView *)titleView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex
 {
-    //    dataModel* INeedData = [[dataModel alloc]init];
-    //    NSArray<NSString*> *FoodTang = [[NSArray alloc]initWithArray:INeedData.fanTang];
-    self.pageContentView.contentViewCurrentIndex = endIndex;
-    //    self.title = FoodTang[endIndex];
+    self.fyhPageContentView.contentViewCurrentIndex = endIndex;
+//    self.fyhPageContentView.conte
 }
 //处理滑动后的回调数据
 - (void)FSContenViewDidEndDecelerating:(FSPageContentView *)contentView startIndex:(NSInteger)startIndex endIndex:(NSInteger)endIndex
 {
-    //    dataModel* INeedData = [[dataModel alloc]init];
-    //    NSArray<NSString*> *FoodTang = [[NSArray alloc]initWithArray:INeedData.fanTang];
+
     self.titleView.selectIndex = endIndex;
-    //    self.title = FoodTang[endIndex];
+
 }
 
 //hhhhhhhh
 
 -(void)buildInfiniteRollView{
     
-    
-    
-    
-    
+   
     
 }
-
 @end

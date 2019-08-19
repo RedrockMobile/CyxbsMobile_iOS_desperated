@@ -145,21 +145,7 @@
         NSLog(@"%@", error);
         [[NSNotificationCenter defaultCenter] postNotificationName:@"model requests failed" object:nil];
     }];
-    
-//    [manager POST:url parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//        NSMutableArray *tempArray = [NSMutableArray array];
-//        for (NSDictionary *dict in responseObject[@"text"]) {
-//            AcademyOrHometownItem *academy = [[AcademyOrHometownItem alloc] initWithDict:dict];
-//            [tempArray addObject:academy];
-//        }
-//        if (self.isKeyboardVisible) {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"model requests suceeded" object:nil userInfo:@{@"modelName": modelName, @"modelArray": tempArray}];
-//        }
-//
-//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"%@", error);
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"model requests failed" object:nil];
-//    }];
+
 }
 
 // 通知回调(设置模型数据，展示结果表格)
@@ -195,9 +181,15 @@
         
         [self.resultTable reloadData];
         
-        [UIView animateWithDuration:0.3 animations:^{
-            self.resultTable.frame = CGRectMake(15, SEGMENTBAR_H + CELL_H + 15, MAIN_SCREEN_W - 30, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - SEGMENTBAR_H - 30 - CELL_H);
-        }];
+        if ( CELL_H * [notification.userInfo[@"modelArray"] count] >= MAIN_SCREEN_H) {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.resultTable.frame = CGRectMake(15, SEGMENTBAR_H + CELL_H + 15, MAIN_SCREEN_W - 30, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - SEGMENTBAR_H - 30 - CELL_H * 4);
+            }];
+        } else {
+            [UIView animateWithDuration:0.3 animations:^{
+                self.resultTable.frame = CGRectMake(15, SEGMENTBAR_H + CELL_H + 15, MAIN_SCREEN_W - 30, CELL_H * [notification.userInfo[@"modelArray"] count]);
+            }];
+        }
     }
 }
 
@@ -341,7 +333,7 @@
     } else if ([change[NSKeyValueChangeNewKey] integerValue] == 1) {
         self.searchBar.textField.placeholder = @" 找不到老乡群？试试搜索";
     }
-    [self.segmentButtons[[change[NSKeyValueChangeOldKey] integerValue]] setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.segmentButtons[[change[NSKeyValueChangeOldKey] integerValue]] setTitleColor:[UIColor colorWithRed:0 green:0 blue:0 alpha:0.8] forState:UIControlStateNormal];
     [self.segmentButtons[[change[NSKeyValueChangeNewKey] integerValue]] setTitleColor:[UIColor colorWithRed:70/255.0 green:114/255.0 blue:255/255.0 alpha:1] forState:UIControlStateNormal];
 }
 
@@ -400,7 +392,7 @@
 #pragma mark - 点击了立即加入活动
 -(void)joinActivity:(NSNotification *)notification {
     ActivityItem *model = notification.userInfo[@"model"];
-    ActicytyQRCodeView *QRCodeView = [[ActicytyQRCodeView alloc] initWithImageURL:model.photo andMessage:model.message];
+    ActicytyQRCodeView *QRCodeView = [[ActicytyQRCodeView alloc] initWithImageURL:model.QRCode andMessage:model.message];
     QRCodeView.alpha = 0;
     [self.view addSubview:QRCodeView];
     [UIView animateWithDuration:0.15 animations:^{

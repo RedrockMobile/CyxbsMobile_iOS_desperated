@@ -21,14 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self buildMyNavigationbar];
+//    [self buildMyNavigationbar];
     _INeedData = [LQQDataModel sharedSingleton];
-    UITableView*tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, self.view.height*(1227.0-1090-107)/(1440-145-97), self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
-    tableView.backgroundColor = [UIColor colorWithRed:236/255.0 green:246/255.0 blue:246/255.0 alpha:1];
+    UITableView*tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height - 49 - TOTAL_TOP_HEIGHT) style:UITableViewStylePlain];
+    tableView.backgroundColor = [UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
     self.view.backgroundColor = tableView.backgroundColor;
+    self.navigationController.navigationBar.topItem.title = @"";
+//    self.view.backgroundColor = [UIColor clearColor];
 }
 - (void)buildMyNavigationbar{
     
@@ -68,7 +70,7 @@
     xueYuan.text = _INeedData.xueYuanName[indexPath.section];
     [backImageView addSubview:xueYuan];
     
-    [xueYuan setFont:[UIFont fontWithName:@"PingFang-SC-Medium" size:15.0f]];
+    [xueYuan setFont:[UIFont systemFontOfSize:15]];
     [xueYuan setTextColor:[UIColor colorWithRed:51.0f/255.0f green:51.0f/255.0f blue:51.0f/255.0f alpha:1.0f]];
     [xueYuan mas_makeConstraints:^(MASConstraintMaker *make) {
 //        make.top.equalTo(backImageView);
@@ -101,7 +103,7 @@
     [self.navigationController pushViewController:sjjm animated:YES];
     //发一个通知给dataMode;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LQQuserCollege" object:nil userInfo:@{@"用户选择的学院":_usersXueYuan}];
-    
+
     
     
 }

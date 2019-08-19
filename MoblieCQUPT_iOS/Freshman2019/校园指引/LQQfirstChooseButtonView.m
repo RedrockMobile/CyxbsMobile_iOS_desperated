@@ -41,38 +41,38 @@
         [_shuJuJieMi setTitleColor:[UIColor colorWithRed:36/255.0 green:78/255.0 blue:254/255.0 alpha:1] forState:UIControlStateSelected];
         [self addSubview:_dormitory];
         [_dormitory mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@40
+            make.height.equalTo(@49
                                 );
             make.width.equalTo(self.mas_width).multipliedBy(0.25);
             make.left.equalTo(self);
-            make.top.equalTo(self.mas_top).offset(10);
+            make.top.equalTo(self.mas_top);
             
         }];
         [self addSubview:_shiTang];
         [_shiTang mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@40
+            make.height.equalTo(@49
                                 );
             make.width.equalTo(self.mas_width).multipliedBy(0.25);
             make.left.equalTo(_dormitory.mas_right);
-            make.top.equalTo(self.mas_top).offset(10);
+            make.top.equalTo(self.mas_top);
             
         }];
         [self addSubview:_kuaiDi];
         [_kuaiDi mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@40
+            make.height.equalTo(@49
                                 );
             make.width.equalTo(self.mas_width).multipliedBy(0.25);
             make.left.equalTo(_shiTang.mas_right);
-            make.top.equalTo(self.mas_top).offset(10);
+            make.top.equalTo(self.mas_top);
             
         }];
         [self addSubview:_shuJuJieMi];
         [_shuJuJieMi mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@40
+            make.height.equalTo(@49
                                 );
             make.width.equalTo(self.mas_width).multipliedBy(0.25);
             make.left.equalTo(_kuaiDi.mas_right);
-            make.top.equalTo(self.mas_top).offset(10);
+            make.top.equalTo(self.mas_top);
 
         }];
 //        [self addSubview:shuJuJieMi];

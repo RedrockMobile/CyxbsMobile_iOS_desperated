@@ -20,7 +20,9 @@
     if (self) {
         // 背景图片
         UIImageView *backgroundIamgeView = [[UIImageView alloc] init];
+        UIEdgeInsets edge = UIEdgeInsetsMake(30, 0, 30, 0);
         backgroundIamgeView.image = [UIImage imageNamed:@"背景"];
+        self.backgroundIamgeView.image = [self.backgroundIamgeView.image resizableImageWithCapInsets:edge resizingMode:UIImageResizingModeStretch];
         [self.contentView addSubview:backgroundIamgeView];
         self.backgroundIamgeView = backgroundIamgeView;
         

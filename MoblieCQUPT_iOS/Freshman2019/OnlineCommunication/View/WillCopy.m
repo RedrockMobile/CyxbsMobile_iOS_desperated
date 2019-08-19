@@ -80,12 +80,19 @@
     
     self.cancel.frame = CGRectMake(0, window_H * 0.63, window_W * 0.5, window_H * 0.37);
     self.certain.frame = CGRectMake(window_W * 0.5, window_H * 0.63, window_W * 0.5, window_H * 0.37);
-    
+    if(MAIN_SCREEN_W / MAIN_SCREEN_H == 320/568.0){
     [self.academy mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self.messageWindow);
-        make.top.equalTo(self.messageWindow).offset(window_H * 0.23);
+        make.top.equalTo(self.messageWindow).offset(20);
         make.width.lessThanOrEqualTo(self.messageWindow);
     }];
+    }else{
+        [self.academy mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.messageWindow);
+            make.top.equalTo(self.messageWindow).offset(window_H * 0.23);
+            make.width.lessThanOrEqualTo(self.messageWindow);
+        }];
+    }
     
     [self.groupNumber mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.academy.mas_bottom).offset(5);

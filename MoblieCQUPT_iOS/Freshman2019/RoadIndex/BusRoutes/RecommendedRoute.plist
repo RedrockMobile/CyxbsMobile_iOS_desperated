@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>重庆火车北站北广场/南广场</key>
+	<array>
+		<string>贵阳</string>
+	</array>
+	<key>重庆西站</key>
+	<array>
+		<string>武冈市</string>
+	</array>
+	<key>江北T2机场</key>
+	<array>
+		<string>武汉市</string>
+	</array>
+</dict>
+</plist>

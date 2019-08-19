@@ -73,7 +73,13 @@ static int const ImageViewCount = 3;
     CGFloat pageH = 20;
     CGFloat pageX = self.scrollView.frame.size.width - pageW;
     CGFloat pageY = self.scrollView.frame.size.height - pageH;
-    self.pageControl.frame = CGRectMake(pageX, pageY, pageW, pageH);
+//    self.pageControl.frame = CGRectMake(pageX, pageY, pageW, pageH);
+    [self.pageControl mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(pageH));
+        make.width.equalTo(@(pageW));
+        make.centerX.equalTo(_scrollView);
+        make.top.equalTo(_scrollView).offset(pageY);
+    }];
 }
 
 #pragma mark - 添加点击手势
