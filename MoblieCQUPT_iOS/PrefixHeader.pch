@@ -128,15 +128,20 @@
 
 /* 2019迎新接口 */
 // 学院群
-#define ACADEMYGROUPAPI @"http://129.28.185.138:8080/zsqy/json/7"
+#define ACADEMYGROUPAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/7"
 // 老乡群
-#define HOMETOWNGROUPAPI @"http://129.28.185.138:8080/zsqy/json/77"
+#define HOMETOWNGROUPAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/77"
 // 搜索学院群
-#define SEARCHACADEMYAPI @"http://129.28.185.138:8080/zsqy/select/college"
+#define SEARCHACADEMYAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/select/college"
 // 搜索老乡群
-#define SEARCHHOMETOWNAPI @"http://129.28.185.138:8080/zsqy/select/province"
+#define SEARCHHOMETOWNAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/select/province"
 // 线上活动
-#define ONLINEACTIVITYAPI @"http://129.28.185.138:8080/zsqy/json/8"
+#define ONLINEACTIVITYAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/8"
+
+// 快递接口
+#define EXPRESSAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/33"
+// 食堂和宿舍
+#define DININGHALLANDDORMITORYAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/3"
 
 
 /* 全面屏相关 */

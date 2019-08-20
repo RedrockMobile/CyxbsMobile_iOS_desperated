@@ -181,10 +181,7 @@
                 [self.titleView setContentOffset:CGPointMake(self.titleBtnArray[currentIndex].frame.origin.x - self.frame.size.width / 2.0 + self.titleBtnWidth / 2.0, 0)];
             }
         } completion:nil];
-        
-        if ([_eventDelegate respondsToSelector:@selector(scrollEventWithIndex:)]){
-            [self.eventDelegate scrollEventWithIndex:currentIndex];
-        }
+        [self.eventDelegate scrollEventWithIndex:currentIndex];
     }
 }
 

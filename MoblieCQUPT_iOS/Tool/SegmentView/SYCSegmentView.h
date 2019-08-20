@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, SYCSegmentViewType){
 };
 
 
-@protocol SYCSegmentViewDelegate <NSObject>
+@protocol SYCSegmentViewDelegate
 
 @required
 /**
@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, SYCSegmentViewType){
 @end
 
 
-@interface SYCSegmentView : UIView
+@interface SYCSegmentView : UIView <SYCSegmentViewDelegate>
 
 @property (nonatomic, weak) id<SYCSegmentViewDelegate> eventDelegate;
 @property (nonatomic) CGFloat titleHeight;  //标签栏高度

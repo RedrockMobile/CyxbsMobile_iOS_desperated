@@ -24,14 +24,14 @@
     if (self) {
         self.title = dict[@"title"];
         self.message = dict[@"detail"];
-        self.photo = [NSString stringWithFormat:@"http://129.28.185.138:8080/zsqy/image/%@", dict[@"photo"]];
+        self.photo = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@", dict[@"photo"]];
         self.detail = dict[@"detail"];
     }
     return self;
 }
 
 + (void)getModelData:(void (^)(NSArray * _Nonnull))success {
-    NSString *url = @"http://129.28.185.138:8080/zsqy/json/2";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/2";
     
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:url method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {

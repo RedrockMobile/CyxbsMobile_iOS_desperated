@@ -117,7 +117,7 @@
     
 //    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
 //    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    NSString *urlStr = @"http://129.28.185.138:8080/zsqy/json/1";
+    NSString *urlStr = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/1";
 //    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:urlStr method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {

@@ -11,7 +11,7 @@
 @implementation CampusSceneryModel
 
 -(void)getCampusSceneryData{
-    NSString *url = @"http://129.28.185.138:8080/zsqy/json/6";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/6";
 //    NSString *url = @"https://getman.cn/mock/schoolPic";
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:url method:HttpRequestGet parameters:nil prepareExecute:^{
@@ -23,7 +23,7 @@
         if ([info  isEqualToString:@"ok"]) {
             NSDictionary *dic = [responseObject objectForKey:@"text"];
             NSString *photoName = [dic objectForKey:@"photo"];
-            NSString *urlString = [NSString stringWithFormat:@"%@%@",@"http://129.28.185.138:8080/zsqy/image/",photoName];
+            NSString *urlString = [NSString stringWithFormat:@"%@%@",@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/",photoName];
             NSString * encodingString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 //            NSLog(@"%@",urlString);
             self.schoolMapUrl = [NSURL URLWithString:encodingString];
@@ -34,7 +34,7 @@
                 [self.schoolPicNameArray addObject:[dic objectForKey:@"name"]];
                 NSString *photoName = [dic objectForKey:@"photo"];
                 
-                NSString *urlString = [NSString stringWithFormat:@"%@%@",@"http://129.28.185.138:8080/zsqy/image/",photoName];
+                NSString *urlString = [NSString stringWithFormat:@"%@%@",@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/",photoName];
                 NSString * encodingString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 //                NSLog(@"%@",urlString);
                 NSURL *url = [NSURL URLWithString:encodingString];

@@ -8,7 +8,6 @@
 
 #import "MainPageViewController.h"
 #import "WelcomeTableViewCell.h"
-//#import "RegisterNecessaryViewController.h"
 #import "FYHOnlineActivityMainViewController.h"
 #import "AboutUsViewController.h"
 #import "WelComeView.h"
@@ -17,7 +16,8 @@
 #import "WelcomeTableViewCell.h"
 #import "RoadIndex/RoadIndex.h"
 #import "Necessity/NecessityViewController.h"
-
+#import "LQQwantMoreViewController.h"
+#import "LQQxiaoYuanZhiYinViewController.h"
 @interface MainPageViewController ()<UITableViewDataSource,UITableViewDelegate> {
     UITableView *_tableView;
     NSArray *_dataArr;
@@ -143,6 +143,10 @@
 
 //跳转到校园指导
 - (void)gotoSchoolIndex {
+    LQQXiaoYuanZhiYinViewController*xyzy = [[LQQXiaoYuanZhiYinViewController alloc]init];
+    xyzy.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:xyzy animated:YES];
+    
 }
 
 //跳转到线上活动
@@ -154,6 +158,9 @@
 
 //跳转到更多功能
 - (void)gotoMore {
+    LQQwantMoreViewController*gdgn = [[LQQwantMoreViewController alloc]init];
+    gdgn.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:gdgn animated:YES];
 }
 
 //跳转到关于我们

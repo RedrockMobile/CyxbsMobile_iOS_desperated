@@ -33,6 +33,7 @@
     StartStepsTableView *tableView = [[StartStepsTableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.backgroundColor = [UIColor colorWithRed:235/255.0 green:247/255.0 blue:255/255.0 alpha:1];
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }

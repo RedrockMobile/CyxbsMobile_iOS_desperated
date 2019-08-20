@@ -11,7 +11,7 @@
 @implementation BusRoutesModel
 
 -(void)getBusRoutesData{
-    NSString *url = @"http://129.28.185.138:8080/zsqy/json/5";
+    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/5";
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:url method:HttpRequestGet parameters:nil prepareExecute:^{
     } progress:^(NSProgress *progress) {

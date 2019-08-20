@@ -20,4 +20,5 @@ target 'MoblieCQUPT_iOS' do
 	# 集成新浪微博(精简版1M)
     	pod 'UMengUShare/Social/ReducedSina'
 	pod 'Bugly'
+	pod 'SDCycleScrollView'
 end
