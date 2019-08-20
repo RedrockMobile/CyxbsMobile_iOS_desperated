@@ -12,6 +12,7 @@
 typedef NS_ENUM(NSUInteger, SYCSegmentViewType){
     SYCSegmentViewTypeNormal = 0,
     SYCSegmentViewTypeButton = 1,
+    SYCSegmentViewTypeHiddenLine = 2,
 };
 
 
@@ -37,7 +38,6 @@ typedef NS_ENUM(NSUInteger, SYCSegmentViewType){
 @property (nonatomic, strong) UIFont *titleFont;    //标签字体属性
 @property (nonatomic, strong) UIColor *titleBackgroundColor;    //标签背景颜色
 @property (nonatomic) SYCSegmentViewType segmentType;   //SegmentView样式类型
-@property (nonatomic) BOOL isHiddenLine;
 
 
 /**

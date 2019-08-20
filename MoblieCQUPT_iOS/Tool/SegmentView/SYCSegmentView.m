@@ -44,14 +44,14 @@
         _controllers = controllers;
         if (_type == SYCSegmentViewTypeButton) {
             _titleBtnWidth = controllers.count > 3 ? self.frame.size.width / 4 : self.frame.size.width / controllers.count;
-        }else if(_type == SYCSegmentViewTypeNormal){
+        }else if(_type == SYCSegmentViewTypeNormal || _type == SYCSegmentViewTypeHiddenLine){
             _titleBtnWidth = controllers.count > 4 ? self.frame.size.width / 5 : self.frame.size.width / controllers.count;
         }
         
         //默认属性
         _titleBtnArray = [NSMutableArray array];
         _currentIndex = 0;
-        if (_isHiddenLine) {
+        if (_segmentType == SYCSegmentViewTypeHiddenLine) {
             _titleHeight = SCREEN_HEIGHT * 0.08;
         }else{
             _titleHeight = SCREEN_HEIGHT * 0.06;
@@ -61,7 +61,7 @@
         _selectedTitleColor = SELECTED_COLOR;
         
         _titleFont = [UIFont systemFontOfSize:16.0 weight:UIFontWeightRegular];
-        _segmentType = SYCSegmentViewTypeNormal;
+        _segmentType = type;
         _titleView.backgroundColor = [UIColor clearColor];
         _currentX = 0;
         
@@ -70,7 +70,6 @@
         _titleView.bounces = NO;
         _titleView.showsVerticalScrollIndicator = NO;
         _titleView.showsHorizontalScrollIndicator = NO;
-        
     }
     
     [self setUpView];
@@ -80,7 +79,7 @@
 
 - (void)setUpView{
     //加载滑动标签栏
-    if (_type == SYCSegmentViewTypeNormal) {
+    if (_type == SYCSegmentViewTypeNormal || _type == SYCSegmentViewTypeHiddenLine) {
         for (int i = 0; i < self.controllers.count; ++i) {
                 //创建按钮
             UIButton *titleBtn = [[UIButton alloc] initWithFrame:CGRectMake(i * _titleBtnWidth, 0, _titleBtnWidth, _titleHeight)];
@@ -101,7 +100,7 @@
                 _sliderLinePart1 = [[UIView alloc] initWithFrame:CGRectMake((_titleBtnWidth - _sliderWidth) / 2.0 , _titleHeight - _sliderHeight, _sliderWidth, _sliderHeight)];
                 _sliderLinePart1.layer.cornerRadius = 2.0;
                 _sliderLinePart1.backgroundColor = _selectedTitleColor;
-                if (_isHiddenLine) {
+                if (_segmentType == SYCSegmentViewTypeNormal) {
                     [_titleView addSubview:_sliderLinePart1];
                 }
             }

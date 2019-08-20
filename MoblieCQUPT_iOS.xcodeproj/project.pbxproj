@@ -2704,19 +2704,19 @@
 			isa = PBXGroup;
 			children = (
 				E480E5712307EF0000F69199 /* NecessityViewController.h */,
-				E480E5722307EF0000F69199 /* Model.m */,
-				E480E5732307EF0000F69199 /* IntroductionView.m */,
-				E480E5742307EF0000F69199 /* Necessity.plist */,
-				E480E5752307EF0000F69199 /* NecessityViewCell.h */,
-				E480E5762307EF0000F69199 /* GroupModel.h */,
-				E480E5772307EF0000F69199 /* addView.h */,
 				E480E5782307EF0000F69199 /* NecessityViewController.m */,
-				E480E5792307EF0000F69199 /* Model.h */,
+				E480E5752307EF0000F69199 /* NecessityViewCell.h */,
 				E480E57A2307EF0000F69199 /* NecessityViewCell.m */,
-				E480E57B2307EF0000F69199 /* NecessityMedia.xcassets */,
+				E480E5792307EF0000F69199 /* Model.h */,
+				E480E5722307EF0000F69199 /* Model.m */,
 				E480E57C2307EF0000F69199 /* IntroductionView.h */,
-				E480E57D2307EF0000F69199 /* addView.m */,
+				E480E5732307EF0000F69199 /* IntroductionView.m */,
+				E480E5762307EF0000F69199 /* GroupModel.h */,
 				E480E57E2307EF0000F69199 /* GroupModel.m */,
+				E480E5772307EF0000F69199 /* addView.h */,
+				E480E57D2307EF0000F69199 /* addView.m */,
+				E480E5742307EF0000F69199 /* Necessity.plist */,
+				E480E57B2307EF0000F69199 /* NecessityMedia.xcassets */,
 			);
 			path = Necessity;
 			sourceTree = "<group>";

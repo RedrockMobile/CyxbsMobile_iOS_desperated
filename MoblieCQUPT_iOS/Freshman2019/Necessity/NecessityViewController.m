@@ -228,15 +228,6 @@
     return ((GroupModel *)self.dataArray[section]).headerTitle;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    UILabel *label = [[UILabel alloc] init];
-//    label.frame = CGRectMake(15, 15, MAIN_SCREEN_W, 14);
-//    label.text = ((GroupModel *)self.dataArray[section]).headerTitle;
-//    label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
-//    label.font = [UIFont systemFontOfSize:14];
-//    return label;
-//}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     Model *model = ((GroupModel *)self.dataArray[indexPath.section]).modelArray[indexPath.row];
     if (model.isShowMore) {
@@ -455,26 +446,11 @@
     }
 }
 
-- (void)viewDidDisappear:(BOOL)animated{
-    self.callBackHandle();
-    [super viewDidDisappear:animated];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 
 @end

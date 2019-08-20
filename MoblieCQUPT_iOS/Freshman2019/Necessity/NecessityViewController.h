@@ -7,11 +7,9 @@
 //
 
 #import "BaseViewController.h"
-typedef void(^callBack)(void);
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NecessityViewController : BaseViewController
-@property (nonatomic, strong)callBack callBackHandle;
 
 @end
 
