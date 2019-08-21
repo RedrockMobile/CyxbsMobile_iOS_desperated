@@ -31,7 +31,7 @@
 }
 
 + (void)getModelData:(void (^)(NSArray * _Nonnull))success {
-    NSString *url = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/2";
+    NSString *url = STARTSTEPSAPI;
     
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:url method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {

@@ -92,6 +92,20 @@ static NSString *cellID = @"startSteps";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.tableView beginUpdates];
     StartStepsCell *cell = ((StartStepsCell *)[self.tableView cellForRowAtIndexPath:indexPath]);
+    if (cell.extendedHeight == 0) {
+        if (indexPath.row == 0) {
+            cell.extendedHeight = 313.8;
+        } else if (indexPath.row == 1) {
+            cell.extendedHeight = 179.5;
+        } else if (indexPath.row == 2) {
+            cell.extendedHeight = 577.2;
+        } else if (indexPath.row == 3) {
+            cell.extendedHeight = 163.0;
+        } else if (indexPath.row == 4) {
+            cell.extendedHeight = 196.0;
+        }
+    }
+    NSLog(@"%f", cell.extendedHeight);
     // 展开时点击
     if (cell.isExtended) {
         cell.isExtended = NO;
@@ -109,6 +123,19 @@ static NSString *cellID = @"startSteps";
     [self.tableView beginUpdates];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:button.tag inSection:0];
     StartStepsCell *cell = ((StartStepsCell *)[self.tableView cellForRowAtIndexPath:indexPath]);
+    if (cell.extendedHeight == 0) {
+        if (indexPath.row == 0) {
+            cell.extendedHeight = 313.8;
+        } else if (indexPath.row == 1) {
+            cell.extendedHeight = 179.5;
+        } else if (indexPath.row == 2) {
+            cell.extendedHeight = 577.2;
+        } else if (indexPath.row == 3) {
+            cell.extendedHeight = 163.0;
+        } else if (indexPath.row == 4) {
+            cell.extendedHeight = 196.0;
+        }
+    }
     // 展开时点击
     if (cell.isExtended) {
         cell.isExtended = NO;

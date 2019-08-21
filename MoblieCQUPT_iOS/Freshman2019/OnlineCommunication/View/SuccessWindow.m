@@ -89,7 +89,7 @@
         [self.display invalidate];
     }
     
-    self.endAngle += 0.2;
+    self.endAngle += 0.25;
     
     UIBezierPath *circle = [UIBezierPath bezierPathWithArcCenter:CGPointMake(circleCenterX, circleCenterY) radius:26 startAngle:- M_PI endAngle:- M_PI - self.endAngle clockwise:NO];
     
