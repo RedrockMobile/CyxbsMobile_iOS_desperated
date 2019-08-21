@@ -52,7 +52,6 @@
     [self.view addSubview:self.schoolMapView];
 }
 -(void)setSchoolPicView{
-//    self.schoolPicView = [[SchoolPicView alloc]initWithFrame:CGRectMake(0, 285, self.view.width, self.view.height - 285 - TOTAL_TOP_HEIGHT - SCREEN_HEIGHT * 0.06 - TABBARHEIGHT)];
     self.schoolPicView = [[SchoolPicView alloc]initWithFrame:CGRectMake(0, 285, self.view.width, self.view.height - 285)];
     self.schoolPicView.schoolPicCollectionView.delegate = self;
     self.schoolPicView.schoolPicCollectionView.dataSource = self;
@@ -63,40 +62,21 @@
 -(void)setDataFromModel{
     self.imgUrlArray = self.model.schoolPicUrlArray;
     self.imgNameArray = self.model.schoolPicNameArray;
-//    self.imgNameArray = [@[@"八十万",@"八十万",@"八十万",@"八十万",@"八十万",@"八十万",@"八十万"] mutableCopy];
-//    for(int i = 0;i < 6;i++){
-//
-//        [self.imgUrlArray addObject:[UIImage imageNamed:@"SchoolPicNodataImg"]];
-//    }
-//    for (NSDictionary *dic in self.model.schoolPicArray) {
-//        [self.imgNameArray addObject:[dic objectForKey:@"name"]];
-//        NSString *photoName = [dic objectForKey:@"photo"];
-//        
-//        NSString *urlString = [NSString stringWithFormat:@"%@%@",@"http://129.28.185.138:8080/zsqy/image/",photoName];
-//        NSURL *url = [NSURL URLWithString:urlString];
-//        //        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
-//        //        UIImage *image = [UIImage imageWithData:imgData];// 拿到image
-//        [self.imgUrlArray addObject:url];
-//    }
-
-    
 }
+
+
 #pragma mark collectionView代理方法
 //返回section个数
--(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
 
 //每个section的item个数
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return 23;
 }
 
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     SchoolPicCollectionViewCell *cell = (SchoolPicCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];

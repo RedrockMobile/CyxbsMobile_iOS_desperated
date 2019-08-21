@@ -2669,11 +2669,11 @@
 		E480E5382306D80100F69199 /* CampusScenery */ = {
 			isa = PBXGroup;
 			children = (
+				E480E5452306D80200F69199 /* CampusScenery.h */,
 				E480E5392306D80100F69199 /* CampusScenery.m */,
 				E480E53A2306D80200F69199 /* CampusScenery.xcassets */,
 				E480E53B2306D80200F69199 /* Model */,
 				E480E53E2306D80200F69199 /* View */,
-				E480E5452306D80200F69199 /* CampusScenery.h */,
 			);
 			path = CampusScenery;
 			sourceTree = "<group>";

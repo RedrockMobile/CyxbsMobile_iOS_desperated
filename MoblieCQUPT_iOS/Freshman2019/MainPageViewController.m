@@ -43,6 +43,8 @@
     pin1.frame = CGRectMake(MAIN_SCREEN_W * 0.78, MAIN_SCREEN_W * 0.33, 7, 7);
     
     _tableView.tableHeaderView = bannerImageView;
+    
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)viewDidLoad {
