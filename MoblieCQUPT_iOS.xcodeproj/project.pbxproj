@@ -256,6 +256,7 @@
 		E46FCE58230C3D5C001FECE8 /* addView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE51230C3D5B001FECE8 /* addView.m */; };
 		E46FCE59230C3D5C001FECE8 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE52230C3D5B001FECE8 /* FMNecessityTableViewCell.m */; };
 		E46FCE5A230C3D5C001FECE8 /* NecessityMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */; };
+		E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */; };
 		E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D52227FAD20029501A /* IssueTableViewController.m */; };
 		E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D72227FAD20029501A /* DetailLostViewController.m */; };
 		E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9D82227FAD20029501A /* IssueTableViewController.xib */; };
@@ -1138,6 +1139,8 @@
 		E46FCE51230C3D5B001FECE8 /* addView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addView.m; sourceTree = "<group>"; };
 		E46FCE52230C3D5B001FECE8 /* FMNecessityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNecessityTableViewCell.m; sourceTree = "<group>"; };
 		E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NecessityMedia.xcassets; sourceTree = "<group>"; };
+		E46FCE5B230D3C74001FECE8 /* SYCAddReminderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCAddReminderViewController.h; sourceTree = "<group>"; };
+		E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCAddReminderViewController.m; sourceTree = "<group>"; };
 		E470C9D52227FAD20029501A /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
 		E470C9D62227FAD20029501A /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
 		E470C9D72227FAD20029501A /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
@@ -2497,6 +2500,8 @@
 			children = (
 				E46FCE48230C3D5B001FECE8 /* DLNecessityViewController.h */,
 				E46FCE47230C3D5B001FECE8 /* DLNecessityViewController.m */,
+				E46FCE5B230D3C74001FECE8 /* SYCAddReminderViewController.h */,
+				E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */,
 				E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */,
 				E46FCE45230C3D5B001FECE8 /* Necessity.plist */,
 				E46FCE49230C3D5B001FECE8 /* Model */,
@@ -4868,6 +4873,7 @@
 				EE19DDD7230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				E48DB544223E36CF00B9D744 /* WYCWeekChooseBar.m in Sources */,
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
+				E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */,
 				E470CA012227FAD20029501A /* LostModel.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
 				1A5A202E2307FFD000D6D329 /* FYHSearchResult.m in Sources */,

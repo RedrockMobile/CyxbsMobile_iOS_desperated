@@ -23,6 +23,8 @@
 #import "IntroductionView.h"
 #import <AFNetworking.h>
 #import <Masonry.h>
+#import "BaseNavigationController.h"
+#import "SYCAddReminderViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width/375
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
@@ -339,57 +341,9 @@
 
 //点击悬浮添加按钮
 - (void)clickAddBtn:(UIButton *)button{
-    self.isShowAddBtn = NO;
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    self.addBtn.hidden = YES;
-    self.AddView = [[addView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 60, [UIScreen mainScreen].bounds.size.width, 60)];
-    [self.AddView.btn addTarget:self action:@selector(didClickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.AddView];
-    [UIView commitAnimations];
-}
-
-
-//点击cell右端详情按钮
-- (void)didClickDetailBtn:(UIButton *)button{
-    if(self.isShowIntroduce){
-        NSTimeInterval animationDuration = 0.30f;
-        [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-        [UIView setAnimationDuration:animationDuration];
-        [self.view addSubview:self.bkgView];
-        self.introduction = [[IntroductionView alloc] initWithFrame:CGRectMake(30*WIDTH, 177*HEIGHT, 316*WIDTH, 301*HEIGHT)];
-        [self.introduction.btn addTarget:self action:@selector(didClickCloseBtn:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.introduction];
-        self.isShowIntroduce = 0;
-        [UIView commitAnimations];
-    }
-    else{
-        self.bkgView.hidden = NO;
-        self.introduction.hidden = NO;
-    }
-}
-
-
-//点击介绍弹窗的关闭按钮
-- (void)didClickCloseBtn:(UIButton *)btn{
-    self.introduction.hidden = YES;
-    self.bkgView.hidden = YES;
-}
-
-
-//点击添加栏的添加按钮
-- (void)didClickAddBtn:(UIButton *)button{
-    self.isShowAddBtn = NO;
-    NSTimeInterval animationDuration = 0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    self.addBtn.hidden = NO;
-    self.AddView.hidden = YES;
-    [UIView commitAnimations];
-    [self.AddView.addContent addTarget:self action:@selector(GetText:) forControlEvents:UIControlEventEditingDidEnd];
-    [self.AddView.addContent resignFirstResponder];
-    self.isShowAddBtn = YES;
+    [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:[[SYCAddReminderViewController alloc] init]] animated:YES completion:^{
+        [self.FMtableView reloadData];
+    }];
 }
 
 #pragma - 输入监听
