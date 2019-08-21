@@ -2,15 +2,15 @@
 //  addView.m
 //  MoblieCQUPT_iOS
 //
-//  Created by 汪明天 on 2019/8/9.
-//  Copyright © 2019 Orange-W. All rights reserved.
+//  Created by 丁磊 on 2018/8/13.
+//  Copyright © 2018年 Orange-W. All rights reserved.
 //
 
 #import "addView.h"
 
 @implementation addView
 
--(id)initWithFrame:(CGRect)frame{
+- (id)initWithFrame:(CGRect)frame{
     CGFloat width = [UIScreen mainScreen].bounds.size.width;
     self = [super initWithFrame:frame];
     if (self) {
@@ -20,7 +20,8 @@
         [btn setTitle:@"添加" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [self addSubview:btn];
-        self.btn =btn;
+        self.btn = btn;
+        
         
         UITextField *addContent = [[UITextField alloc]initWithFrame:CGRectMake(15, 10, width-135, 40)];
         addContent.borderStyle = UITextBorderStyleRoundedRect;
@@ -32,9 +33,13 @@
     return self;
 }
 
-                                                               
+
+/*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-
+- (void)drawRect:(CGRect)rect {
+    // Drawing code
+}
+*/
 
 @end

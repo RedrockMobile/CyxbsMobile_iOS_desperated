@@ -1,37 +1,47 @@
 //
-//  NecessityViewController.m
+//  DLNecessityViewController.m
 //  MoblieCQUPT_iOS
 //
-//  Created by 汪明天 on 2019/8/10.
-//  Copyright © 2019 Orange-W. All rights reserved.
+//  Created by 丁磊 on 2018/8/13.
+//  Copyright © 2018年 Orange-W. All rights reserved.
 //
 
-#import "NecessityViewController.h"
-#import "NecessityViewCell.h"
-#import "IntroductionView.h"
-#import "Model.h"
+/*
+ 
+ 这个页面主要由一个tableView，一个悬浮的添加Button构成
+ 点击navigationBar的问号按钮，跳出一个UIView介绍本页面并且同时跳出一个背景UIView设置透明度，使弹窗跳出后，背景变暗
+ 点击编辑按钮，编辑按钮变为删除，页面变为删除页面，将原cell里的完成选中按钮移除，添加删除选中按钮
+ 只能删除非必需的项目使用在model里设一个bool值来表示是否要删除
+ 本页面的数据本地化使用plist文件,不更新会保存用户的删除添加和已完成的数据，升级会丢失数据
+ 
+ */
+
+#import "DLNecessityViewController.h"
+#import "FMNecessityTableViewCell.h"
 #import "addView.h"
+#import "DLNecessityModel.h"
+#import "IntroductionView.h"
 #import <AFNetworking.h>
-#import "GroupModel.h"
-#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
-#define SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#import <Masonry.h>
 #define WIDTH [UIScreen mainScreen].bounds.size.width/375
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
-@interface NecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
+
+
+@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
+
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
 @property (nonatomic, strong)UIButton *editBtn;   //编辑按钮
 @property (nonatomic, strong)UIView *bkgView;     //背景阴影
-@property (nonatomic, strong)UITableView *WMTtableView;
-@property (nonatomic, strong)NSMutableArray *dataArray;
+@property (nonatomic, strong)UITableView *FMtableView;
+@property (nonatomic)NSMutableArray<NSMutableArray<DLNecessityModel *> *> *dataArray;
+@property (nonatomic)NSMutableArray<NSString *> *titleArray;
 @property (nonatomic, strong)NSMutableArray *deleteArray;  //需要删除的cell的array
-@property (nonatomic, strong)NSDictionary *dict;
 @property (nonatomic, strong)NSBundle *fileBundel;
 @property (nonatomic, strong)NSString *filePath;
 @property (nonatomic, strong)addView *AddView;   //下方添加栏
 @property (nonatomic, strong)IntroductionView *introduction; //介绍弹窗
-@property (nonatomic, strong)Model *model;
-@property (nonatomic, strong) GroupModel *groups;
+@property (nonatomic, strong)DLNecessityModel *model;
 @property (assign, nonatomic)NSInteger isShowIntroduce;   //如名字
 @property (assign, nonatomic)BOOL isEdit;  //是否编辑的flag
 @property (assign, nonatomic)BOOL isSelected;
@@ -39,32 +49,20 @@
 @property (assign, nonatomic)BOOL isShowAddBtn;
 
 @end
-@implementation NecessityViewController
 
-- (UITableView *)WMTtableView{
-    if(!_WMTtableView){
-        self.WMTtableView = [[UITableView alloc]initWithFrame: CGRectMake(0, 50, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStyleGrouped];
-        self.WMTtableView.delegate = self;
-        self.WMTtableView.dataSource = self;
-        self.WMTtableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.WMTtableView.backgroundColor = [UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1];
-    }
-    return _WMTtableView;
-    
-}
+@implementation DLNecessityViewController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
     
-    
+  
     self.isShowAddBtn = YES;
-    self.view.backgroundColor = [UIColor colorWithHue:0.6111 saturation:0.0122 brightness:0.9647 alpha:1.0];
-    self.fileBundel = [NSBundle mainBundle];
-    self.filePath = [_fileBundel pathForResource:@"Necessity" ofType:@"plist"];
-    
-    NSArray *arr = [NSArray arrayWithContentsOfFile:_filePath];
-    if (arr != nil && ![arr isKindOfClass:[NSNull class]] && arr.count != 0){
-        [self initModel:arr];
+    self.view.backgroundColor = RGBColor(239, 247, 255, 1);
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *dataPath = [docPath stringByAppendingPathComponent:@"dataArray.archiver"];
+    if ([NSKeyedUnarchiver unarchiveObjectWithFile:dataPath]){
+        [self initModel];
     }
     else{
         [self getData];
@@ -80,125 +78,117 @@
     
     
     self.bkgView = [[UIView alloc]initWithFrame:self.view.frame];
-    self.bkgView.backgroundColor = [UIColor colorWithHue:0.0000 saturation:0.0000 brightness:0.0192 alpha:0.4];
+    self.bkgView.backgroundColor = RGBColor(239, 247, 255, 1);
     
-    [self.view addSubview:self.WMTtableView];
-    
+    [self.view addSubview:self.FMtableView];
+
     self.addBtn = [[UIButton alloc] initWithFrame:CGRectMake(286*WIDTH, 569*HEIGHT, 61*WIDTH, 61*HEIGHT)];
     self.addBtn.backgroundColor = [UIColor clearColor];
     [self.addBtn setImage:[UIImage imageNamed:@"更多"] forState:UIControlStateNormal];
-    [self.addBtn addTarget:self action:@selector(ClickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [self.addBtn addTarget:self action:@selector(clickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.addBtn];
     self.tabBarController.tabBar.hidden = YES;
 }
 
+
+
+
+
+
 - (void)buildMyNavigationbar{
-    
-    
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(didClickEditBtn:)];
     self.navigationItem.rightBarButtonItem = right;
     
-    
-    UIView *titleView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 130, 30)];
-    UILabel *titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, 100, 30)];
-    titleLabel.text = @"入学必备";
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.font = [UIFont systemFontOfSize:19];
-    [titleView addSubview:titleLabel];
-    UIButton *detailBtn = [[UIButton alloc]initWithFrame:CGRectMake(85, 7.5, 15*WIDTH, 15*WIDTH)];
-    [detailBtn setImage:[UIImage imageNamed:@"详细信息入口"] forState:UIControlStateNormal];
-    [detailBtn addTarget: self action:@selector(didClickDetailBtn:) forControlEvents:UIControlEventTouchUpInside];
-    [titleView addSubview: detailBtn];
-    self.navigationItem.titleView = titleView;
+    self.title = @"入学必备";
 }
 
-#pragma mark - 数据
+#pragma - 数据
 - (void)getData{
-    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     NSString *urlStr = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/1";
-//    urlStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:urlStr method:HttpRequestGet parameters:nil prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.dict = responseObject;
-        NSArray *arr = self.dict[@"text"];
+    [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         self.dataArray = [@[] mutableCopy];
-        for (NSDictionary *dic in arr) {
-            GroupModel *model = [GroupModel groupWithDictinary:dic];
-            [_dataArray addObject:model];
+        self.titleArray = [@[] mutableCopy];
+        for (NSDictionary *dic in [responseObject objectForKey:@"text"]) {
+            [self.titleArray addObject:[dic objectForKey:@"title"]];
+            NSMutableArray *models = [@[] mutableCopy];
+            for (NSDictionary *data in [dic objectForKey:@"data"]) {
+                [models addObject:[DLNecessityModel DLNecessityModelWithDict:data]];
+            }
+            [self.dataArray addObject:[models mutableCopy]];
         }
         //回到主线程刷新tableview
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.WMTtableView reloadData];
-//        });
-        
-        [arr writeToFile:self.filePath atomically:YES];
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.FMtableView reloadData];
+        });
+        [self storageData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
         [alert show];
         NSLog(@"failure --- %@",error);
     }];
-    
-
 }
 
-- (void) initModel:(NSArray *)arr{
-    self.dataArray = [@[] mutableCopy];
-    for (NSDictionary *dic in arr) {
-      Model *model = [Model modelWithDictionary:dic];
-        NSNumber *isReady = dic[@"isReady"];
-        model.isReady = [isReady boolValue];
-        [_dataArray addObject:model];
-    }
+- (void)initModel{
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *dataPath = [docPath stringByAppendingPathComponent:@"dataArray.archiver"];
+    NSString *titlePath = [docPath stringByAppendingPathComponent:@"titleArray.archiver"];
+    self.dataArray = [NSKeyedUnarchiver unarchiveObjectWithFile:dataPath];
+    self.titleArray = [NSKeyedUnarchiver unarchiveObjectWithFile:titlePath];
 }
 
 
-- (void)StorageData:(NSMutableArray *)arr{
+- (void)storageData{
     dispatch_queue_t queue = dispatch_queue_create("storageQueue", DISPATCH_QUEUE_CONCURRENT);
     dispatch_async(queue, ^{
-        NSMutableArray *dataArr = [NSMutableArray array];
-        for (int i = 0; i < arr.count; i++) {
-            Model *model = arr[i];
-            NSNumber *isReady = [NSNumber numberWithBool:model.isReady];
-            NSDictionary *dic = @{@"name": model.necessity,
-                                  @"content":model.detail,
-                                  @"property":model.property,
-                                  @"isReady":isReady
-                                  };
-            [dataArr addObject:dic];
-        }
-        [dataArr writeToFile:self.filePath atomically:YES];
+        NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+        NSString *dataPath = [docPath stringByAppendingPathComponent:@"dataArray.archiver"];
+        NSString *titlePath = [docPath stringByAppendingPathComponent:@"titleArray.archiver"];
+        [NSKeyedArchiver archiveRootObject:self.dataArray toFile:dataPath];
+        [NSKeyedArchiver archiveRootObject:self.titleArray toFile:titlePath];
     });
 }
-#pragma mark - tableview的代理方法
+
+
+- (UITableView *)FMtableView{
+    if(!_FMtableView){
+        self.FMtableView = [[UITableView alloc]initWithFrame: CGRectMake(0, TOTAL_TOP_HEIGHT, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-65) style:UITableViewStyleGrouped];
+        self.FMtableView.delegate = self;
+        self.FMtableView.dataSource = self;
+        self.FMtableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.FMtableView.backgroundColor = [UIColor clearColor];
+    }
+    return _FMtableView;
+}
+
+
+#pragma - tableview的代理方法
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.dataArray.count;
+    return self.titleArray.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return ((GroupModel *)self.dataArray[section]).modelArray.count;
+    return self.dataArray[section].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    Model *model = ((GroupModel *)self.dataArray[indexPath.section]).modelArray[indexPath.row];
-    NecessityViewCell *cell = [NecessityViewCell cellWithTableView:tableView andIndexpath:indexPath];
+    FMNecessityTableViewCell *cell = [FMNecessityTableViewCell cellWithTableView:tableView andIndexpath:indexPath];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.WMTModel = model;
+    cell.DLNModel = self.dataArray[indexPath.section][indexPath.row];
     
     
-    cell.showTextBlock = ^(NecessityViewCell *Cell) {
+    cell.showTextBlock = ^(FMNecessityTableViewCell *Cell) {
         NSIndexPath *index = [tableView indexPathForCell:Cell];
         [tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
     cell.btn1.tag = indexPath.row;
     if(self.isEdit){
-        if ([cell.WMTModel.property isEqualToString:@"非必需"]) {
-            [cell.contentView addSubview:cell.btn3];
-        }
         [cell.btn1 removeFromSuperview];
+        [cell.contentView addSubview:cell.btn3];
         [cell.btn3 addTarget:self action:@selector(didClickSelectBtn: event:) forControlEvents:UIControlEventTouchUpInside];
     }
     else{
@@ -206,7 +196,7 @@
         [cell.contentView addSubview:cell.btn1];
         [cell.btn3 removeFromSuperview];
     }
-    if(cell.WMTModel.isReady){
+    if(cell.DLNModel.isReady){
         cell.label.textColor = [UIColor lightGrayColor];
         [cell.btn1 setImage:[UIImage imageNamed:@"蓝框选中"] forState:UIControlStateNormal];
     }
@@ -214,29 +204,50 @@
         cell.label.textColor = [UIColor blackColor];
         [cell.btn1 setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
     }
-    if(!cell.WMTModel.isSelected){
-        if ([cell.WMTModel.property isEqualToString:@"非必需"]) {
-            [cell.btn3 setImage:[UIImage imageNamed:@"删除蓝框"] forState:UIControlStateNormal];
-        }
+    
+    if(!cell.DLNModel.isSelected){
+            [cell.btn3 setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
     }
     
-    
+    if ([cell.DLNModel.detail isEqual:@""]) {
+        cell.btn2.hidden = YES;
+    }
     return cell;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return ((GroupModel *)self.dataArray[section]).headerTitle;
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Model *model = ((GroupModel *)self.dataArray[indexPath.section]).modelArray[indexPath.row];
+    DLNecessityModel *model = self.dataArray[indexPath.section][indexPath.row];
     if (model.isShowMore) {
-        return [NecessityViewCell cellMoreHeight:model];
+        return [FMNecessityTableViewCell cellMoreHeight:model];
     }else{
-        return [NecessityViewCell cellDefautHeight:model];
+        return [FMNecessityTableViewCell cellDefautHeight:model];
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return self.titleArray[section];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 60)];
+    view.backgroundColor = RGBColor(239, 247, 255, 1);
+    
+    UILabel *label = [[UILabel alloc] init];
+    [view addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(view).with.offset(15 * WIDTH);
+        make.centerY.equalTo(view);
+    }];
+    label.font = [UIFont systemFontOfSize:13];
+    label.textColor = RGBColor(119, 119, 119, 0.7);
+    label.text = self.titleArray[section];
+
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 40;
+}
 
 //cell上浮的动效
 - (void)starAnimationWithTableView:(UITableView *)tableView{
@@ -262,31 +273,21 @@
 //点击cell表示已完成的button
 
 - (void)didClickCellBtn1:(UIButton *)button event:(UIEvent *)event{
-    NSInteger count = self.dataArray.count;
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint point = [touch locationInView:_WMTtableView];
-    NSIndexPath *index = [_WMTtableView indexPathForRowAtPoint:point];
-   Model *model = ((GroupModel *)self.dataArray[index.section]).modelArray[index.row];
+    CGPoint point = [touch locationInView:_FMtableView];
+    NSIndexPath *index = [_FMtableView indexPathForRowAtPoint:point];
+    DLNecessityModel *model = self.dataArray[index.section][index.row];
     if(!model.isReady){
         model.isReady = YES;
-        [self.dataArray removeObjectAtIndex:index.row];
-        [self.WMTtableView deleteRow:index.row inSection:0 withRowAnimation:UITableViewRowAnimationTop];
-        [self.dataArray insertObject:model atIndex:0];
-        [self.WMTtableView insertRow:0 inSection:0 withRowAnimation:UITableViewRowAnimationTop];
         self.isFloat = YES;
     }
     else{
         model.isReady = NO;
-        [self.dataArray removeObjectAtIndex:index.row];
-        [self.WMTtableView deleteRow:index.row inSection:0 withRowAnimation:UITableViewRowAnimationBottom];
-        [self.dataArray insertObject:model atIndex:count-1];
-        [self.WMTtableView insertRow:self.dataArray.count-1 inSection:0 withRowAnimation:UITableViewRowAnimationBottom];
         self.isFloat = NO;
     }
-    //    [_FMtableView reloadData];
-    [self StorageData:self.dataArray];
-    //    [self starAnimationWithTableView:_FMtableView];
     
+    [self storageData];
+    [self.FMtableView reloadData];
 }
 
 
@@ -294,15 +295,17 @@
 - (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
     if(!self.isEdit){
         [barBtn setTitle:@"删除"];
-        [_WMTtableView reloadData];
-        [self StorageData:self.dataArray];
+        [_FMtableView reloadData];
+        [self storageData];
         self.isEdit = YES;
     }
     else{
         [barBtn setTitle:@"编辑"];
-        [self.dataArray removeObjectsInArray:self.deleteArray];
-        [self.WMTtableView reloadData];
-        [self StorageData:self.dataArray];
+        for (int i = 0; i < self.dataArray.count; ++i) {
+            [self.dataArray[i] removeObjectsInArray:self.deleteArray];
+        }
+        [self storageData];
+        [self.FMtableView reloadData];
         self.isEdit = NO;
     }
 }
@@ -311,33 +314,37 @@
 //删除页面点击圆框按钮
 - (void)didClickSelectBtn:(UIButton *)btn event:(UIEvent *)event{
     UITouch *touch = [[event allTouches] anyObject];
-    CGPoint point = [touch locationInView:_WMTtableView];
-    NSIndexPath *index = [_WMTtableView indexPathForRowAtPoint:point];
-    Model *model = self.dataArray[index.row];
+    CGPoint point = [touch locationInView:_FMtableView];
+    NSIndexPath *index = [_FMtableView indexPathForRowAtPoint:point];
+    DLNecessityModel *model = self.dataArray[index.section][index.row];
     if(!model.isSelected){
-        [btn setImage:[UIImage imageNamed:@"删除蓝框选中"] forState:UIControlStateNormal];
-        [self.deleteArray addObject:self.dataArray[index.row]];
+        [btn setImage:[UIImage imageNamed:@"蓝框选中"] forState:UIControlStateNormal];
+        [self.deleteArray addObject:self.dataArray[index.section][index.row]];
         model.isSelected = YES;
         self.model = model;
-        [self.dataArray replaceObjectAtIndex:index.row withObject:model];
-    }
-    else{
-        [btn setImage:[UIImage imageNamed:@"删除蓝框"] forState:UIControlStateNormal];
+        [self.dataArray[index.section] replaceObjectAtIndex:index.row withObject:model];
+    }else{
+        [btn setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
         model.isSelected = NO;
-        [self.dataArray replaceObjectAtIndex:index.row withObject:model];
-        [self.deleteArray removeObject:self.dataArray[index.row]];
+        [self.dataArray[index.section] replaceObjectAtIndex:index.row withObject:model];
+        [self.deleteArray removeObject:self.dataArray[index.section][index.row]];
+    }
+    if (self.deleteArray.count != 0) {
+        [self.navigationItem.rightBarButtonItem setTitle:[NSString stringWithFormat:@"删除(%lu)", (unsigned long)self.deleteArray.count]];
+    }else{
+        [self.navigationItem.rightBarButtonItem setTitle:[NSString stringWithFormat:@"删除"]];
     }
 }
 
 
 //点击悬浮添加按钮
-- (void)ClickAddBtn:(UIButton *)button{
+- (void)clickAddBtn:(UIButton *)button{
     self.isShowAddBtn = NO;
     NSTimeInterval animationDuration = 0.30f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:animationDuration];
     self.addBtn.hidden = YES;
-    self.AddView = [[addView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-60, [UIScreen mainScreen].bounds.size.width, 60)];
+    self.AddView = [[addView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height - 60, [UIScreen mainScreen].bounds.size.width, 60)];
     [self.AddView.btn addTarget:self action:@selector(didClickAddBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.AddView];
     [UIView commitAnimations];
@@ -415,20 +422,20 @@
                               @"content":@"",
                               @"property":@"非必需"
                               };
-        Model *model = [Model modelWithDictionary:dic];
+        DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
         model.isShowMoreBtn = NO;
         [_dataArray addObject:model];
-        [self.WMTtableView reloadData];
-        [self StorageData:_dataArray];
+        [self.FMtableView reloadData];
+        [self storageData];
     }
 }
 
 - (void)keyboardAction:(NSNotification*)sender{
     CGRect rect = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     if([sender.name isEqualToString:UIKeyboardWillShowNotification]){
-        self.AddView.frame = CGRectMake(0,SCREENH_HEIGHT-rect.size.height-60,SCREEN_WIDTH, 60);
+        self.AddView.frame = CGRectMake(0, SCREEN_HEIGHT - rect.size.height-60, SCREEN_WIDTH, 60);
     }else{
-        self.AddView.frame = CGRectMake(0,SCREENH_HEIGHT-60,SCREEN_WIDTH, 60);
+        self.AddView.frame = CGRectMake(0, SCREEN_HEIGHT - 60, SCREEN_WIDTH, 60);
     }
 }
 
@@ -446,11 +453,24 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

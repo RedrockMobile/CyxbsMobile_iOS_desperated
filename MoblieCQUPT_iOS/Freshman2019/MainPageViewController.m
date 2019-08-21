@@ -15,7 +15,7 @@
 #import "MainPageViewController.h"
 #import "WelcomeTableViewCell.h"
 #import "RoadIndex/RoadIndex.h"
-#import "Necessity/NecessityViewController.h"
+#import "DLNecessityViewController.h"
 #import "LQQwantMoreViewController.h"
 #import "LQQxiaoYuanZhiYinViewController.h"
 @interface MainPageViewController ()<UITableViewDataSource,UITableViewDelegate> {
@@ -131,7 +131,7 @@
 
 //跳转到入学必备
 - (void)gotoRegisterNecessary {
-    NecessityViewController *necessityVC = [[NecessityViewController alloc] init];
+    DLNecessityViewController *necessityVC = [[DLNecessityViewController alloc] init];
     [self.navigationController pushViewController:necessityVC animated:YES];
 }
 
