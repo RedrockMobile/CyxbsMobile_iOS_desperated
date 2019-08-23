@@ -23,13 +23,15 @@
 #import "IntroductionView.h"
 #import <AFNetworking.h>
 #import <Masonry.h>
+#import <MBProgressHUD.h>
 #import "BaseNavigationController.h"
 #import "SYCAddReminderViewController.h"
+#import "SYCEditReminderViewController.h"
 #define WIDTH [UIScreen mainScreen].bounds.size.width/375
 #define HEIGHT [UIScreen mainScreen].bounds.size.height/667
 
 
-@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, SYCAddReminderViewControllerDelegate, SYCEditReminderViewControllerDelagate>
 
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
@@ -57,20 +59,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.hidesBottomBarWhenPushed = YES;
-    
+    self.title = @"入学必备";
+    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(didClickEditBtn:)];
+    self.navigationItem.rightBarButtonItem = right;
   
     self.isShowAddBtn = YES;
     self.view.backgroundColor = RGBColor(239, 247, 255, 1);
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *dataPath = [docPath stringByAppendingPathComponent:@"dataArray.archiver"];
+    NSString *dataPath = [docPath stringByAppendingPathComponent:@""];
+    
     if ([NSKeyedUnarchiver unarchiveObjectWithFile:dataPath]){
         [self initModel];
-    }
-    else{
+    }else{
         [self getData];
     }
     
-    [self buildMyNavigationbar];
     self.deleteArray = [@[] mutableCopy];
     self.isShowIntroduce = 1;
     self.isEdit = NO;
@@ -92,45 +95,44 @@
     self.tabBarController.tabBar.hidden = YES;
 }
 
-
-
-
-
-
-- (void)buildMyNavigationbar{
-    UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(didClickEditBtn:)];
-    self.navigationItem.rightBarButtonItem = right;
-    
-    self.title = @"入学必备";
-}
-
 #pragma - 数据
 - (void)getData{
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.completionQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     NSString *urlStr = @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/1";
-    [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        self.dataArray = [@[] mutableCopy];
-        self.titleArray = [@[] mutableCopy];
-        for (NSDictionary *dic in [responseObject objectForKey:@"text"]) {
-            [self.titleArray addObject:[dic objectForKey:@"title"]];
-            NSMutableArray *models = [@[] mutableCopy];
-            for (NSDictionary *data in [dic objectForKey:@"data"]) {
-                [models addObject:[DLNecessityModel DLNecessityModelWithDict:data]];
+    
+    MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    HUD.labelText = @"加载数据中...";
+    
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+            self.dataArray = [@[] mutableCopy];
+            self.titleArray = [@[] mutableCopy];
+            for (NSDictionary *dic in [responseObject objectForKey:@"text"]) {
+                [self.titleArray addObject:[dic objectForKey:@"title"]];
+                NSMutableArray *models = [@[] mutableCopy];
+                for (NSDictionary *data in [dic objectForKey:@"data"]) {
+                    [models addObject:[DLNecessityModel DLNecessityModelWithDict:data]];
+                }
+                [self.dataArray addObject:[models mutableCopy]];
             }
-            [self.dataArray addObject:[models mutableCopy]];
-        }
-        //回到主线程刷新tableview
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.FMtableView reloadData];
-        });
-        [self storageData];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
-        [alert show];
-        NSLog(@"failure --- %@",error);
+            
+            //回到主线程刷新tableview
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [self.FMtableView reloadData];
+                [HUD hide:YES];
+            });
+            [self storageData];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+            [alert show];
+            [HUD hide:YES];
+            NSLog(@"failure --- %@",error);
+        }];
     }];
+    
+    
 }
 
 - (void)initModel{
@@ -188,16 +190,11 @@
         [tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationAutomatic];
     };
     cell.btn1.tag = indexPath.row;
-    if(self.isEdit){
-        [cell.btn1 removeFromSuperview];
-        [cell.contentView addSubview:cell.btn3];
-        [cell.btn3 addTarget:self action:@selector(didClickSelectBtn: event:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else{
-        [cell.btn1 addTarget:self action:@selector(didClickCellBtn1:event:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.contentView addSubview:cell.btn1];
-        [cell.btn3 removeFromSuperview];
-    }
+    
+    [cell.btn1 addTarget:self action:@selector(didClickCellBtn1:event:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.contentView addSubview:cell.btn1];
+    [cell.btn3 removeFromSuperview];
+    
     if(cell.DLNModel.isReady){
         cell.label.textColor = [UIColor lightGrayColor];
         [cell.btn1 setImage:[UIImage imageNamed:@"蓝框选中"] forState:UIControlStateNormal];
@@ -205,10 +202,6 @@
     else{
         cell.label.textColor = [UIColor blackColor];
         [cell.btn1 setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
-    }
-    
-    if(!cell.DLNModel.isSelected){
-            [cell.btn3 setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
     }
     
     if ([cell.DLNModel.detail isEqual:@""]) {
@@ -273,7 +266,6 @@
 
 #pragma - 点击button事件
 //点击cell表示已完成的button
-
 - (void)didClickCellBtn1:(UIButton *)button event:(UIEvent *)event{
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint point = [touch locationInView:_FMtableView];
@@ -292,139 +284,46 @@
     [self.FMtableView reloadData];
 }
 
+//点击悬浮添加按钮
+- (void)clickAddBtn:(UIButton *)button{
+    SYCAddReminderViewController *vc = [[SYCAddReminderViewController alloc] init];
+    vc.delegate = self;
+    [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
+}
+
+- (void)reloadWithData:(NSMutableArray *)dataArray title:(NSMutableArray *)titleArray{
+    self.dataArray = dataArray;
+    self.titleArray = titleArray;
+    if (_dataArray[0].count == 0) {
+        [_dataArray removeObjectAtIndex:0];
+        [_titleArray removeObjectAtIndex:0];
+    }
+    [self.FMtableView reloadData];
+    [self storageData];
+}
+
+- (void)reloadDataWithReminder:(NSMutableArray *)reminders{
+    self.dataArray[0] = reminders;
+    if (_dataArray[0].count == 0) {
+        [_dataArray removeObjectAtIndex:0];
+        [_titleArray removeObjectAtIndex:0];
+    }
+    [self.FMtableView reloadData];
+    [self storageData];
+}
 
 //点击navigationBar的编辑按钮
 - (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
-    if(!self.isEdit){
-        [barBtn setTitle:@"删除"];
-        [_FMtableView reloadData];
-        [self storageData];
-        self.isEdit = YES;
-    }
-    else{
-        [barBtn setTitle:@"编辑"];
-        for (int i = 0; i < self.dataArray.count; ++i) {
-            [self.dataArray[i] removeObjectsInArray:self.deleteArray];
-        }
-        [self storageData];
-        [self.FMtableView reloadData];
-        self.isEdit = NO;
-    }
-}
-
-
-//删除页面点击圆框按钮
-- (void)didClickSelectBtn:(UIButton *)btn event:(UIEvent *)event{
-    UITouch *touch = [[event allTouches] anyObject];
-    CGPoint point = [touch locationInView:_FMtableView];
-    NSIndexPath *index = [_FMtableView indexPathForRowAtPoint:point];
-    DLNecessityModel *model = self.dataArray[index.section][index.row];
-    if(!model.isSelected){
-        [btn setImage:[UIImage imageNamed:@"蓝框选中"] forState:UIControlStateNormal];
-        [self.deleteArray addObject:self.dataArray[index.section][index.row]];
-        model.isSelected = YES;
-        self.model = model;
-        [self.dataArray[index.section] replaceObjectAtIndex:index.row withObject:model];
-    }else{
-        [btn setImage:[UIImage imageNamed:@"蓝框"] forState:UIControlStateNormal];
-        model.isSelected = NO;
-        [self.dataArray[index.section] replaceObjectAtIndex:index.row withObject:model];
-        [self.deleteArray removeObject:self.dataArray[index.section][index.row]];
-    }
-    if (self.deleteArray.count != 0) {
-        [self.navigationItem.rightBarButtonItem setTitle:[NSString stringWithFormat:@"删除(%lu)", (unsigned long)self.deleteArray.count]];
-    }else{
-        [self.navigationItem.rightBarButtonItem setTitle:[NSString stringWithFormat:@"删除"]];
-    }
-}
-
-
-//点击悬浮添加按钮
-- (void)clickAddBtn:(UIButton *)button{
-    [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:[[SYCAddReminderViewController alloc] init]] animated:YES completion:^{
-        [self.FMtableView reloadData];
+    SYCEditReminderViewController *vc = [[SYCEditReminderViewController alloc] init];
+    vc.reminders = self.dataArray[0];
+    vc.delagete = self;
+    [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:^{
+        
     }];
 }
 
-#pragma - 输入监听
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.AddView.addContent resignFirstResponder];
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [self.AddView.addContent resignFirstResponder];
-    return YES;
-}
-
-- (void)GetText:(UITextField *)textField{
-    CGRect rect1 = [textField.text boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*HEIGHT]} context:nil];
-    CGFloat height1 = ceil(rect1.size.height);
-    NSString *str = @"十四个字十四个字十四个字十四";
-    CGRect rect2 = [str boundingRectWithSize:CGSizeMake(SCREEN_WIDTH-150, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15*HEIGHT]} context:nil];
-    CGFloat height2 = ceil(rect2.size.height);
-    if (height1 > height2) {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的待办字数太多了ψ(｀∇´)ψ" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else if (!textField.text.length){
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你没有输入任何待办哦(○o○)" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    else{
-        NSDictionary *dic = @{@"name":textField.text,
-                              @"content":@"",
-                              @"property":@"非必需"
-                              };
-        DLNecessityModel *model = [DLNecessityModel DLNecessityModelWithDict:dic];
-        model.isShowMoreBtn = NO;
-        [_dataArray addObject:model];
-        [self.FMtableView reloadData];
-        [self storageData];
-    }
-}
-
 - (void)keyboardAction:(NSNotification*)sender{
-    CGRect rect = [sender.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    if([sender.name isEqualToString:UIKeyboardWillShowNotification]){
-        self.AddView.frame = CGRectMake(0, SCREEN_HEIGHT - rect.size.height-60, SCREEN_WIDTH, 60);
-    }else{
-        self.AddView.frame = CGRectMake(0, SCREEN_HEIGHT - 60, SCREEN_WIDTH, 60);
-    }
+    
 }
-
-# pragma - 手势方法
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
-    if (_isShowAddBtn) {
-        self.addBtn.hidden = YES;
-    }
-}
-
-
--(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    if (_isShowAddBtn) {
-        self.addBtn.hidden = NO;
-    }
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

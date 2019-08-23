@@ -257,6 +257,7 @@
 		E46FCE59230C3D5C001FECE8 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE52230C3D5B001FECE8 /* FMNecessityTableViewCell.m */; };
 		E46FCE5A230C3D5C001FECE8 /* NecessityMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */; };
 		E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */; };
+		E46FCE60230FA788001FECE8 /* SYCEditReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE5F230FA788001FECE8 /* SYCEditReminderViewController.m */; };
 		E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D52227FAD20029501A /* IssueTableViewController.m */; };
 		E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D72227FAD20029501A /* DetailLostViewController.m */; };
 		E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9D82227FAD20029501A /* IssueTableViewController.xib */; };
@@ -1141,6 +1142,8 @@
 		E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NecessityMedia.xcassets; sourceTree = "<group>"; };
 		E46FCE5B230D3C74001FECE8 /* SYCAddReminderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCAddReminderViewController.h; sourceTree = "<group>"; };
 		E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCAddReminderViewController.m; sourceTree = "<group>"; };
+		E46FCE5E230FA788001FECE8 /* SYCEditReminderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCEditReminderViewController.h; sourceTree = "<group>"; };
+		E46FCE5F230FA788001FECE8 /* SYCEditReminderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCEditReminderViewController.m; sourceTree = "<group>"; };
 		E470C9D52227FAD20029501A /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
 		E470C9D62227FAD20029501A /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
 		E470C9D72227FAD20029501A /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
@@ -2502,6 +2505,8 @@
 				E46FCE47230C3D5B001FECE8 /* DLNecessityViewController.m */,
 				E46FCE5B230D3C74001FECE8 /* SYCAddReminderViewController.h */,
 				E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */,
+				E46FCE5E230FA788001FECE8 /* SYCEditReminderViewController.h */,
+				E46FCE5F230FA788001FECE8 /* SYCEditReminderViewController.m */,
 				E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */,
 				E46FCE45230C3D5B001FECE8 /* Necessity.plist */,
 				E46FCE49230C3D5B001FECE8 /* Model */,
@@ -2741,8 +2746,8 @@
 			isa = PBXGroup;
 			children = (
 				E46FCE44230C3D5B001FECE8 /* Necessity */,
-				EE19DD37230BDE1E0066A2ED /* 更多功能 */,
-				EE19DD3E230BDE1E0066A2ED /* 校园指引 */,
+				EE19DD37230BDE1E0066A2ED /* More */,
+				EE19DD3E230BDE1E0066A2ED /* CampusGuide */,
 				1A5A20212307FFCF00D6D329 /* AboutUs */,
 				1A5A1FEF2307FFCF00D6D329 /* OnlineCommunication */,
 				1A5A20132307FFCF00D6D329 /* StartStep */,
@@ -2914,7 +2919,7 @@
 			path = view;
 			sourceTree = "<group>";
 		};
-		EE19DD37230BDE1E0066A2ED /* 更多功能 */ = {
+		EE19DD37230BDE1E0066A2ED /* More */ = {
 			isa = PBXGroup;
 			children = (
 				EE19DD38230BDE1E0066A2ED /* QRCodeView.m */,
@@ -2924,10 +2929,10 @@
 				EE19DD3C230BDE1E0066A2ED /* QRCodeView.h */,
 				EE19DD3D230BDE1E0066A2ED /* LQQwantMoreViewController.h */,
 			);
-			path = "更多功能";
+			path = More;
 			sourceTree = "<group>";
 		};
-		EE19DD3E230BDE1E0066A2ED /* 校园指引 */ = {
+		EE19DD3E230BDE1E0066A2ED /* CampusGuide */ = {
 			isa = PBXGroup;
 			children = (
 				EE19DD3F230BDE1E0066A2ED /* 校园指引依赖文件 */,
@@ -2956,7 +2961,7 @@
 				EE19DDBF230BDE1E0066A2ED /* LQQpercentageOfStudent.m */,
 				EE19DDC0230BDE1E0066A2ED /* LQQchooseCollegeViewController.h */,
 			);
-			path = "校园指引";
+			path = CampusGuide;
 			sourceTree = "<group>";
 		};
 		EE19DD3F230BDE1E0066A2ED /* 校园指引依赖文件 */ = {
@@ -5084,6 +5089,7 @@
 				6E5C0AB420690E1200A73F64 /* myUILabel.m in Sources */,
 				6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */,
 				6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */,
+				E46FCE60230FA788001FECE8 /* SYCEditReminderViewController.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
 				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,

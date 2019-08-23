@@ -12,6 +12,7 @@
 
 @interface SYCAddReminderViewController () <UITextFieldDelegate>
 @property (nonatomic, strong) UITextField *text;
+
 @end
 
 @implementation SYCAddReminderViewController
@@ -91,19 +92,13 @@
             NSMutableArray<DLNecessityModel *> *models = [@[model] mutableCopy];
             [dataArray insertObject:models atIndex:0];
         }
-        [NSKeyedArchiver archiveRootObject:dataArray toFile:dataPath];
-        [NSKeyedArchiver archiveRootObject:titleArray toFile:titlePath];
+        [self.delegate reloadWithData:dataArray title:titleArray];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     
     
 }
 
-#pragma - 输入监听
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    [_text resignFirstResponder];
-    return YES;
-}
 
 
 

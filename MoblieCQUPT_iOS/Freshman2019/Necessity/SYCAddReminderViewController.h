@@ -7,11 +7,22 @@
 //
 
 #import "ViewController.h"
+#import "DLNecessityViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SYCAddReminderViewController : BaseViewController
+@protocol SYCAddReminderViewControllerDelegate <NSObject>
+
+- (void)reloadWithData:(NSMutableArray *)dataArray title:(NSMutableArray *)titleArray;
 
 @end
+
+@interface SYCAddReminderViewController : BaseViewController
+
+@property (nonatomic) id<SYCAddReminderViewControllerDelegate> delegate;
+
+@end
+
+
 
 NS_ASSUME_NONNULL_END
