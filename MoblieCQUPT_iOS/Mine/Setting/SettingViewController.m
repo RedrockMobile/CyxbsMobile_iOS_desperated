@@ -36,7 +36,7 @@
     UIButton *quitBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [quitBtn setImage:[UIImage imageNamed:@"backColor"] forState:UIControlStateNormal];
     quitBtn.frame = CGRectMake(self.view.centerX - (SCREEN_WIDTH - 40) / 2, self.view.centerY - 40, SCREEN_WIDTH - 40, 50  * SCREEN_WIDTH / 375);
-    [quitBtn addTarget:self action:@selector(cancel) forControlEvents:UIControlEventTouchUpInside];
+    [quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:quitBtn];
     _cellArray = @[@{@"cell":@"在课表上没课的地方显示备忘内容"},
                    @{@"cell":@"意见与反馈", @"controller":@"SuggestionViewController"},
@@ -102,6 +102,7 @@
         [cell.contentView addSubview:textLabel];
     return cell;
 }
+
 - (void)quit{
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *stuNum = [userDefault objectForKey:@"stuNum"];
@@ -126,6 +127,7 @@
     [self presentViewController:alert animated:YES completion:nil];
     }
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.row == 3) {
@@ -144,33 +146,12 @@
 
 }
 
-- (void)logOut {
-    //    NSLog(@"log out");
-    //    LoginViewController *login = [[LoginViewController alloc]init];
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    id view = [storyBoard instantiateViewControllerWithIdentifier:@"MainViewController"];
+- (void)logOut{
+    LoginViewController *vc = [[LoginViewController alloc] init];
     [LoginEntry loginOut];
-//    [LoginEntry loginoutWithParamArrayString:@[@"lessonResponse", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq",@"switchState"]];
-//    NSFileManager *manager=[NSFileManager defaultManager];
-//    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
-//    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
-//    NSString *failurePath = [path stringByAppendingPathComponent:@"failure.plist"];
-//    NSError *error;
-//    if ([manager removeItemAtPath:remindPath error:&error]) {
-//        NSLog(@"%@",error);
-//    }
-//    if ([manager removeItemAtPath:failurePath error:&error]) {
-//        NSLog(@"%@",error);
-//    }
-    [self.navigationController presentViewController:view animated:YES completion:nil];
-    //    [self dismissViewControllerAnimated:YES completion:^{
-    //
-    //    }];
-    //    [self.navigationController presentViewController:login animated:YES completion:^{
-    //        [LoginEntry loginoutWithParamArrayString:@[@"dataArray", @"weekDataArray", @"nowWeek", @"user_id", @"id", @"stuname", @"introduction", @"username", @"nickname", @"gender", @"photo_thumbnail_src", @"photo_src", @"updated_time", @"phone", @"qq"]];
-    //    }];
-    
+    [self presentViewController:vc animated:YES completion:nil];
 }
+
 - (void)displayCode{
     self.codeView = [[UIView alloc]initWithFrame:self.view.frame];
     self.codeView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];

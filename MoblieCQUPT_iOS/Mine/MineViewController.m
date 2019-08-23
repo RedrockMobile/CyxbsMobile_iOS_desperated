@@ -163,12 +163,6 @@
 
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        if (indexPath.row == 1 || indexPath.row == 2 ||indexPath.row==5) {
-            if (![UserDefaultTool getStuNum]) {
-                [self tint:vc];
-                return;
-            }
-        }
         if(indexPath.row == 3){
             if (![[NSUserDefaults standardUserDefaults] valueForKey:@"uid"]) {
                 vc = [[QueryLoginViewController alloc]init];
@@ -203,28 +197,7 @@
     MyInfoViewController *vc = [[MyInfoViewController alloc]init];
     vc.navigationItem.title = @"修改信息";
     vc.hidesBottomBarWhenPushed = YES;
-    if (![UserDefaultTool getStuNum]) {
-        [self tint:vc];
-        return;
-    }
     [self.navigationController pushViewController:vc animated:YES];
-}
-
-- (void)tint:(UIViewController *)controller{
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"是否登录？" message:@"登录后才能查看更多信息" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
-    __weak typeof(self) weakSelf = self;
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        LoginViewController *LVC = [[LoginViewController alloc] init];
-        LVC.loginSuccessHandler = ^(BOOL success) {
-            if (success) {
-            }
-        };
-        [weakSelf presentViewController:LVC animated:YES completion:nil];
-    }];
-    [alertC addAction:cancel];
-    [alertC addAction:confirm];
-    [self presentViewController:alertC animated:YES completion:nil];
 }
 
 @end

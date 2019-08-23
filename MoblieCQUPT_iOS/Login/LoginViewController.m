@@ -40,10 +40,6 @@ typedef NS_ENUM(NSInteger,LZLoginState){
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)dismissAction:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)login:(UIButton *)sender {
     self.loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     self.loadHud.labelText = @"正在登录";

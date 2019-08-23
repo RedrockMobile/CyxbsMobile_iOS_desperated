@@ -97,23 +97,25 @@
     //默认星期选择条不显示
     self.hiddenWeekChooseBar = YES;
     self.isLogin = NO;
-    //判断是否已经登录
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
-    if (stuNum == nil || idNum == nil) {
-        self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
-        [self.view addSubview:self.noLoginView];
-        [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else{
-        
-        self.stuNum = stuNum;
-        self.idNum = idNum;
+    if (![UserDefaultTool getStuNum]) {
+        LoginViewController *LVC = [[LoginViewController alloc] init];
+        [self presentViewController:LVC animated:YES completion:nil];
+        LVC.loginSuccessHandler = ^(BOOL success){
+            if (success) {
+                self.stuNum = [UserDefaultTool getStuNum];
+                self.idNum = [UserDefaultTool getIdNum];
+                [self initModel];
+                self.isLogin = YES;
+            }
+        };
+    }else{
+        self.stuNum = [UserDefaultTool getStuNum];
+        self.idNum = [UserDefaultTool getIdNum];
         [self initModel];
         self.isLogin = YES;
     }
     
-    
+
 }
 
 -(void)reloadView{
@@ -176,7 +178,6 @@
         
         
     }
-    
 }
 
 

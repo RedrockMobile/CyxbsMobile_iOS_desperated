@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "BaseNavigationController.h"
+#import "../Login/LoginViewController.h"
 @interface MainViewController ()
 @end
 
@@ -15,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
     NSArray *titles = @[@"课 表",@"邮 问",@"发 现",@"我 的",@"迎 新"];
     NSArray *images = @[@"tabbar_image_timetable",@"tabbar_image_youwen",@"tabbar_image_find",@"tabbar_image_mine",@""];
     self.tabBar.backgroundColor = [UIColor whiteColor];
@@ -28,6 +31,8 @@
         nvc.tabBarItem.image = [UIImage imageNamed:images[i]];
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(touchSplash:) name:@"touchSplash" object:nil];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -45,5 +50,6 @@
     BaseNavigationController *nvc = [self.viewControllers firstObject];
     [nvc pushViewController:vc animated:YES];
 }
+
 
 @end
