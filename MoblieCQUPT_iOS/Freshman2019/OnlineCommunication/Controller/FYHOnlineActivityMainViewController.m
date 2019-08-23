@@ -30,6 +30,7 @@
 @property (nonatomic, weak) UITableView *academyTable;
 @property (nonatomic, weak) UITableView *hometownTable;
 @property (nonatomic, assign) BOOL isKeyboardVisible;
+@property (nonatomic, weak) MBProgressHUD *hud;
 
 @end
 
@@ -42,6 +43,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(academyRequetsSucceeded:) name:@"model requests suceeded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedACell:) name:@"selected a cell" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinActivity:) name:@"join activity" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismisshud) name:@"academy requests succeeded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeKeyboardStatus:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeKeyboardStatus:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextFieldTextDidChangeNotification object:nil];
@@ -76,7 +78,11 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"努力加载中";
-    [hud hide:YES afterDelay:1];
+    self.hud = hud;
+}
+
+- (void)dismisshud {
+    [self.hud hide:YES];
 }
 
 - (void)dealloc

@@ -37,7 +37,7 @@
 
 @implementation SYCPictureDisplay
 
-- (void)setData:(NSArray<LZCarouselModel *> *)dataArray{
+- (void)loadWithData:(NSArray<LZCarouselModel *> *)dataArray{
     _distance = SCREEN_WIDTH * 0.05;
     _picGap = SCREEN_WIDTH * 0.03;
     _picHalfGap = _picGap / 2;
@@ -49,7 +49,7 @@
 }
 
 - (void)buildUI{
-        //初始化ScrollView
+    //初始化ScrollView
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(_distance, 0, self.frame.size.width - 2 * _distance, self.frame.size.height)];
     [self addSubview:self.scrollView];
     self.scrollView.pagingEnabled = YES;
@@ -100,17 +100,16 @@
                             placeholderImage:[UIImage imageNamed:@"cqupt3.jpg"]];
             self.index = i - 1;
         }
-        
         [_scrollView addSubview:picImageView];
     }
     
-        //设置轮播图当前的显示区域
+    //设置轮播图当前的显示区域
     self.scrollView.contentOffset = CGPointMake(self.scrollView.width, 0);
     self.scrollView.contentSize = CGSizeMake(self.scrollView.width * (_picCount + 2), 0);
     [self changeImgViewFrame];
     _offsetX = _scrollView.contentOffset.x;
     
-        //设置标签指示器
+    //设置标签指示器
     CGFloat indicatorWidth = _scrollView.width / 2;
     CGFloat indocatorHeight = 2.5;
     CGFloat segmentWidth;
@@ -127,7 +126,7 @@
     }
     _segmentArray[0].selected = YES;
     
-        //单击图片手势
+    //单击图片手势
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired = 1;

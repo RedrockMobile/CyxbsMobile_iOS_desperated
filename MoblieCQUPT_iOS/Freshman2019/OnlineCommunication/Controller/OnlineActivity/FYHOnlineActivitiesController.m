@@ -47,6 +47,8 @@
         self.acticityList = tempArray;
         
         [self.tableView reloadData];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"academy requests succeeded" object:nil];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"activity get failed" object:nil];
     }];

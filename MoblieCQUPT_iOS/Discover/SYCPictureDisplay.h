@@ -19,6 +19,6 @@
 
 @property (nonatomic, strong) id<SYCPictureDisplayDelegate> delegate;
 
-- (void)setData:(NSArray<LZCarouselModel *> *)dataArray;
+- (void)loadWithData:(NSArray<LZCarouselModel *> *)dataArray;
 
 @end

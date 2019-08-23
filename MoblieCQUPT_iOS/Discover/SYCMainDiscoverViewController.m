@@ -36,6 +36,7 @@
 @property (nonatomic, strong) NSArray *inusedTools;
 @property (nonatomic, strong) UICollectionView *toolsView;
 @property (nonatomic, strong) NSString *filePath;
+@property (nonatomic, strong) UIView *toolBackgroudView;
 
 @end
 
@@ -93,13 +94,13 @@
         make.height.equalTo(@(rows * itemHeight + (rows - 1) * 10));
     }];
     
-    UIView *toolBackgroudView = [[UIView alloc] init];
-    toolBackgroudView.backgroundColor = [UIColor whiteColor];
-    toolBackgroudView.layer.cornerRadius = 10.f;
-    [self.scrollView addSubview:toolBackgroudView];
-    [self.scrollView sendSubviewToBack:toolBackgroudView];
+    _toolBackgroudView = [[UIView alloc] init];
+    _toolBackgroudView.backgroundColor = [UIColor whiteColor];
+    _toolBackgroudView.layer.cornerRadius = 10.f;
+    [self.scrollView addSubview:_toolBackgroudView];
+    [self.scrollView sendSubviewToBack:_toolBackgroudView];
     self.toolsView.translatesAutoresizingMaskIntoConstraints = NO;
-    [toolBackgroudView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [_toolBackgroudView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.and.centerY.height.width.equalTo(self.toolsView);
     }];
     
@@ -141,24 +142,37 @@
         [SYCCustomLayoutModel sharedInstance].unuseTools = [unUseTitles copy];
         [[SYCCustomLayoutModel sharedInstance] save];
         [self.toolsView reloadData];
+        [self.view layoutIfNeeded];
     }];
 }
 
 - (void)getNetworkData{
+    for (int i = 0; i < 3; ++i) {
+        LZCarouselModel *model = [[LZCarouselModel alloc] init];
+        model.picture_url = @"";
+        model.picture_goto_url = @"";
+        model.keyword = @"";
+        [self.carouselDataArray addObject:model];
+    }
+    [self.pictureDisplay loadWithData:self.carouselDataArray];
+    
     HttpClient *client = [HttpClient defaultClient];
     [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        self.carouselDataArray = [@[] mutableCopy];
         NSArray *dataArray = [responseObject objectForKey:@"data"];
         for (NSDictionary *picData in dataArray) {
             LZCarouselModel *model = [[LZCarouselModel alloc] init];
             model.picture_url = [picData objectForKey:@"picture_url"];
             model.picture_goto_url = [picData objectForKey:@"picture_goto_url"];
             model.keyword = [picData objectForKey:@"keyword"];
-            [_carouselDataArray addObject:model];
+            [self.carouselDataArray addObject:model];
         }
-        [self.pictureDisplay setData:_carouselDataArray];
+        [self.pictureDisplay loadWithData:self.carouselDataArray];
     } failure:^(NSURLSessionDataTask *task, NSError *error){
+        
         NSLog(@"获取轮播图图片失败");
     }];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated{
