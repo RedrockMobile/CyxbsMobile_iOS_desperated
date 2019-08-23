@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"关于我们";
     UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     webView.delegate = self;
     
@@ -39,6 +39,7 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [self.hud hide:YES afterDelay:1];
 }
+
 
 
 @end
