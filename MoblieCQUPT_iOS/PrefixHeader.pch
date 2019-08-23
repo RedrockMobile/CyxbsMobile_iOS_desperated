@@ -137,6 +137,8 @@
 #define SEARCHHOMETOWNAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/select/province"
 // 线上活动
 #define ONLINEACTIVITYAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/8"
+// 入学流程
+#define STARTSTEPSAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/2"
 
 // 快递接口
 #define EXPRESSAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/33"

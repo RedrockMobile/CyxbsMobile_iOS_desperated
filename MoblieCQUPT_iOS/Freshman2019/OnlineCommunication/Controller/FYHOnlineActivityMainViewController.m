@@ -117,12 +117,6 @@
 #pragma mark - 请求数据
 // 请求模型数据
 - (void)requestsAcademyWithURL:(NSString *)url andModelName:(NSString *)modelName andPostData:(NSString *)data {
-    
-    NSLog(@"%@", data);
-    
-//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
-    
     NSDictionary *parameters;
     if ([modelName isEqualToString:@"academy"]) {
         parameters = @{@"college": data};
@@ -150,6 +144,10 @@
 
 // 通知回调(设置模型数据，展示结果表格)
 - (void)academyRequetsSucceeded:(NSNotification *)notification {
+    if (self.searchBar.textField.text.length == 0) {
+        self.warning.hidden = YES;
+        return;
+    }
     if ([notification.userInfo[@"modelArray"] count] == 0) {
         if (!self.warning) {
             UILabel *warning = [[UILabel alloc] init];
@@ -183,7 +181,7 @@
         
         if ( CELL_H * [notification.userInfo[@"modelArray"] count] >= MAIN_SCREEN_H) {
             [UIView animateWithDuration:0.3 animations:^{
-                self.resultTable.frame = CGRectMake(15, SEGMENTBAR_H + CELL_H + 15, MAIN_SCREEN_W - 30, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - SEGMENTBAR_H - 30 - CELL_H);
+                self.resultTable.frame = CGRectMake(15, SEGMENTBAR_H + CELL_H + 15, MAIN_SCREEN_W - 30, CELL_H * 6);
             }];
         } else {
             [UIView animateWithDuration:0.3 animations:^{
@@ -201,6 +199,9 @@
 }
 
 - (void)segmentButtonClick:(UIButton *)button {
+    self.searchBar.textField.text = @"";
+    self.warning.hidden = YES;
+    
     if (button.tag != self.selectedIndex) {
         [self foldResultTable];
         [self.view endEditing:YES];

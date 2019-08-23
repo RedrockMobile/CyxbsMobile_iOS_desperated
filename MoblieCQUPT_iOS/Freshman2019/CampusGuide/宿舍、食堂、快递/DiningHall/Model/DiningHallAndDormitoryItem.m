@@ -14,7 +14,9 @@
     if (!_cellHeight) {
         self.rollImageFrame = CGRectMake(33, 33, MAIN_SCREEN_W - 66, (MAIN_SCREEN_W - 36) * 0.618);
         
-        CGFloat titleLabel_Y = /*CGRectGetMaxY(self.rollImageFrame)*/self.rollImageFrame.size.height + 15+10;
+//        CGFloat titleLabel_Y = /*CGRectGetMaxY(self.rollImageFrame)*/self.rollImageFrame.size.height + 15+10;
+        CGFloat titleLabel_Y = CGRectGetMaxY(self.rollImageFrame) + 5;
+
         self.titleLabelFrame = CGRectMake(18, titleLabel_Y, MAIN_SCREEN_W - 66, 13);
         
         CGFloat detail_Y = CGRectGetMaxY(self.titleLabelFrame) + 8;
