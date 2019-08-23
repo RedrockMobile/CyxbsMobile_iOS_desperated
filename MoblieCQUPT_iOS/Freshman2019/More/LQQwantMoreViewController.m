@@ -241,7 +241,7 @@
 }
 -(void)longPress:(UITapGestureRecognizer*)sender{
     if(sender.state == UIGestureRecognizerStateBegan){
-        UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:@"保存二维码至个人相册" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"保存" otherButtonTitles: nil];
+        UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:@"保存二维码至个人相册" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"保存", nil];
         //展示活动列表
         [actionSheet showInView:self.view];
     }

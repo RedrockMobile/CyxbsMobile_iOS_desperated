@@ -310,6 +310,7 @@
     
     
     LQQchooseCollegeViewController*chooseCollegeTableViewController = [[LQQchooseCollegeViewController alloc]init];
+//    chooseCollegeTableViewController.view.backgroundColor = [UIColor whiteColor];
     [self addChildViewController:chooseCollegeTableViewController];
     [self.view addSubview:chooseCollegeTableViewController.view];
     chooseCollegeTableViewController.view.frame = CGRectMake(0,49, self.view.width, self.view.height-49);
@@ -336,11 +337,5 @@
 
 }
 
-//hhhhhhhh
 
--(void)buildInfiniteRollView{
-    
-   
-    
-}
 @end

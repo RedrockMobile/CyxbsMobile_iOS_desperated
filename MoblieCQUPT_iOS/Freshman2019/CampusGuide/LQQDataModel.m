@@ -236,7 +236,7 @@
         
         _biLi = @[[NSString stringWithFormat:@"%@",responseObject[@"text"][collegeIndex][@"girl"]],[NSString stringWithFormat:@"%@",responseObject[@"text"][collegeIndex][@"boy"]]];
         NSLog(@"The bili is %@",_biLi);
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"biliDataOK" object:nil];
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"biliDataOK" object:nil];
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"失败----%@", error);//失败的回调方法

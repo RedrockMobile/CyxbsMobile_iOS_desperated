@@ -24,10 +24,11 @@
 //    [self buildMyNavigationbar];
     _INeedData = [LQQDataModel sharedSingleton];
     UITableView*tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, self.view.frame.size.height - 49 - TOTAL_TOP_HEIGHT) style:UITableViewStylePlain];
-    tableView.backgroundColor = [UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1];
+    tableView.backgroundColor = [UIColor colorWithRed:235/255.0 green:245/255.0 blue:255/255.0 alpha:1];
     tableView.delegate = self;
     tableView.dataSource = self;
-    [tableView setSeparatorColor:[UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1]];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [tableView setSeparatorColor:[UIColor colorWithRed:235/255.0 green:245/255.0 blue:255/255.0 alpha:1]];
     [self.view addSubview:tableView];
     self.view.backgroundColor = tableView.backgroundColor;
     self.navigationController.navigationBar.topItem.title = @"";
@@ -60,15 +61,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
-static NSString *identifier = @"LQcell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LQcell"];
+UITableViewCell *cell/* = [tableView dequeueReusableCellWithIdentifier:@"LQcell"]*/;
     if(cell == nil){
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"LQcell"];
-        cell.contentView.backgroundColor = [UIColor colorWithRed:233/255.0 green:245/255.0 blue:255/255.0 alpha:1];
+        cell.contentView.backgroundColor = [UIColor colorWithRed:235/255.0 green:245/255.0 blue:255/255.0 alpha:1];
     }
 //    cell.backgroundColor = [UIColor redColor];
-    UIImageView*backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height*106.0/(1440-145))];
+    UIImageView*backImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 53)];
     UILabel*xueYuan = [[UILabel alloc]init];
     xueYuan.text = _INeedData.xueYuanName[indexPath.section];
     [backImageView addSubview:xueYuan];
@@ -84,14 +84,15 @@ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LQcell"];
     [backImageView setImage:[UIImage imageNamed:@"LQQcellImage"]];
 //    cell.imageView =backImageView;
 //    [backImageView setContentMode:UIViewContentModeScaleAspectFit];
-    [cell addSubview:backImageView];
+    [cell.contentView addSubview:backImageView];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    return 68;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    return self.view.height*(1227.0-1090-107)/(1440-145-97);
+    return /*self.view.height*(1227.0-1090-107)/(1440-145-97)*/0;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -104,15 +105,18 @@ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LQcell"];
     NSLog(@"用户选择的是%@",_usersXueYuan);
     LQQshuJuJieMiViewController* sjjm = [[LQQshuJuJieMiViewController alloc]init];
     sjjm.userXueYuan = _usersXueYuan;
+    sjjm.view.backgroundColor = [UIColor colorWithRed:233/255.0 green:245/255.0 blue:255/255.0 alpha:1];
     [self.navigationController pushViewController:sjjm animated:YES];
     //发一个通知给dataMode;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LQQuserCollege" object:nil userInfo:@{@"用户选择的学院":_usersXueYuan}];
 
+
     
     
 }
+
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section{
-    [view setBackgroundColor:[UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1]];
+    [view setBackgroundColor:[UIColor colorWithRed:235/255.0 green:245/255.0 blue:255/255.0 alpha:1]];
 }
 
 

@@ -256,6 +256,70 @@
 		E46FCE5A230C3D5C001FECE8 /* NecessityMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */; };
 		E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */; };
 		E46FCE60230FA788001FECE8 /* SYCEditReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE5F230FA788001FECE8 /* SYCEditReminderViewController.m */; };
+		E46FCEE4230FCF90001FECE8 /* DGActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE65230FCF8F001FECE8 /* DGActivityIndicatorView.m */; };
+		E46FCEE5230FCF90001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE69230FCF8F001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.m */; };
+		E46FCEE6230FCF90001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE6A230FCF8F001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m */; };
+		E46FCEE7230FCF90001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE71230FCF8F001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.m */; };
+		E46FCEE8230FCF90001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE73230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.m */; };
+		E46FCEE9230FCF90001FECE8 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE74230FCF8F001FECE8 /* DGActivityIndicatorTriplePulseAnimation.m */; };
+		E46FCEEA230FCF90001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE79230FCF8F001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.m */; };
+		E46FCEEB230FCF90001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE7B230FCF8F001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.m */; };
+		E46FCEEC230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE7E230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.m */; };
+		E46FCEED230FCF90001FECE8 /* DGActivityIndicatorBallRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE7F230FCF8F001FECE8 /* DGActivityIndicatorBallRotateAnimation.m */; };
+		E46FCEEE230FCF90001FECE8 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE80230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagAnimation.m */; };
+		E46FCEEF230FCF90001FECE8 /* DGActivityIndicatorThreeDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE81230FCF8F001FECE8 /* DGActivityIndicatorThreeDotsAnimation.m */; };
+		E46FCEF0230FCF90001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE82230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.m */; };
+		E46FCEF1230FCF90001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE83230FCF8F001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.m */; };
+		E46FCEF2230FCF90001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE87230FCF8F001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.m */; };
+		E46FCEF3230FCF90001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE88230FCF8F001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.m */; };
+		E46FCEF4230FCF90001FECE8 /* DGActivityIndicatorLineScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE89230FCF8F001FECE8 /* DGActivityIndicatorLineScaleAnimation.m */; };
+		E46FCEF5230FCF90001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE8A230FCF8F001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.m */; };
+		E46FCEF6230FCF90001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE8C230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */; };
+		E46FCEF7230FCF90001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE8E230FCF8F001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.m */; };
+		E46FCEF8230FCF90001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE8F230FCF8F001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.m */; };
+		E46FCEF9230FCF90001FECE8 /* DGActivityIndicatorBallPulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE90230FCF8F001FECE8 /* DGActivityIndicatorBallPulseAnimation.m */; };
+		E46FCEFA230FCF90001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE91230FCF8F001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m */; };
+		E46FCEFB230FCF90001FECE8 /* DGActivityIndicatorBallScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE94230FCF8F001FECE8 /* DGActivityIndicatorBallScaleAnimation.m */; };
+		E46FCEFC230FCF90001FECE8 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE95230FCF8F001FECE8 /* DGActivityIndicatorFiveDotsAnimation.m */; };
+		E46FCEFD230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE97230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */; };
+		E46FCEFE230FCF90001FECE8 /* DGActivityIndicatorNineDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE98230FCF8F001FECE8 /* DGActivityIndicatorNineDotsAnimation.m */; };
+		E46FCEFF230FCF90001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE99230FCF8F001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m */; };
+		E46FCF00230FCF90001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE9C230FCF8F001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.m */; };
+		E46FCF01230FCF90001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE9D230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.m */; };
+		E46FCF02230FCF90001FECE8 /* DGActivityIndicatorBallBeatAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE9F230FCF8F001FECE8 /* DGActivityIndicatorBallBeatAnimation.m */; };
+		E46FCF03230FCF90001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEA2230FCF8F001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.m */; };
+		E46FCF04230FCF90001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEA4230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.m */; };
+		E46FCF05230FCF90001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEA5230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */; };
+		E46FCF06230FCF90001FECE8 /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEAA230FCF8F001FECE8 /* FSSegmentTitleView.m */; };
+		E46FCF07230FCF90001FECE8 /* itemBackGroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEAE230FCF8F001FECE8 /* itemBackGroundImage.png */; };
+		E46FCF08230FCF90001FECE8 /* itemBackGroundImageV2.0.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEAF230FCF8F001FECE8 /* itemBackGroundImageV2.0.png */; };
+		E46FCF09230FCF90001FECE8 /* LQQ1.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEB0230FCF8F001FECE8 /* LQQ1.png */; };
+		E46FCF0A230FCF90001FECE8 /* LQQ0.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEB1230FCF8F001FECE8 /* LQQ0.png */; };
+		E46FCF0B230FCF90001FECE8 /* LQQ2.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEB2230FCF8F001FECE8 /* LQQ2.png */; };
+		E46FCF0C230FCF90001FECE8 /* LQQ3.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEB3230FCF8F001FECE8 /* LQQ3.png */; };
+		E46FCF0D230FCF90001FECE8 /* LQQ4.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEB4230FCF8F001FECE8 /* LQQ4.png */; };
+		E46FCF0E230FCF90001FECE8 /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEB5230FCF8F001FECE8 /* FSPageContentView.m */; };
+		E46FCF0F230FCF90001FECE8 /* shuJuJieMiMan0.1.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEB9230FCF8F001FECE8 /* shuJuJieMiMan0.1.png */; };
+		E46FCF10230FCF90001FECE8 /* shuJuJieMiV0.1.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEBA230FCF90001FECE8 /* shuJuJieMiV0.1.png */; };
+		E46FCF11230FCF90001FECE8 /* InfiniteRollScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEBB230FCF90001FECE8 /* InfiniteRollScrollView.m */; };
+		E46FCF12230FCF90001FECE8 /* LQQsubjectDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEBC230FCF90001FECE8 /* LQQsubjectDataView.m */; };
+		E46FCF13230FCF90001FECE8 /* xyZhou.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEBF230FCF90001FECE8 /* xyZhou.png */; };
+		E46FCF14230FCF90001FECE8 /* shuJuJieMiWoman0.1.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEC0230FCF90001FECE8 /* shuJuJieMiWoman0.1.png */; };
+		E46FCF15230FCF90001FECE8 /* LQQchooseCollegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEC1230FCF90001FECE8 /* LQQchooseCollegeViewController.m */; };
+		E46FCF16230FCF90001FECE8 /* LQQfirstChooseButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEC3230FCF90001FECE8 /* LQQfirstChooseButtonView.m */; };
+		E46FCF17230FCF90001FECE8 /* LQQcellImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E46FCEC4230FCF90001FECE8 /* LQQcellImage.png */; };
+		E46FCF18230FCF90001FECE8 /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEC5230FCF90001FECE8 /* ChildViewController.m */; };
+		E46FCF19230FCF90001FECE8 /* LQQDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEC6230FCF90001FECE8 /* LQQDataModel.m */; };
+		E46FCF1A230FCF90001FECE8 /* LQQshuJuJieMiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEC8230FCF90001FECE8 /* LQQshuJuJieMiViewController.m */; };
+		E46FCF1B230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEC9230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.m */; };
+		E46FCF1C230FCF90001FECE8 /* ExpressCompanyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCECF230FCF90001FECE8 /* ExpressCompanyItem.m */; };
+		E46FCF1D230FCF90001FECE8 /* ExpressSpotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCED0230FCF90001FECE8 /* ExpressSpotItem.m */; };
+		E46FCF1E230FCF90001FECE8 /* SchoolNavigatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCED3230FCF90001FECE8 /* SchoolNavigatorController.m */; };
+		E46FCF1F230FCF90001FECE8 /* 校园指引.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46FCED5230FCF90001FECE8 /* 校园指引.xcassets */; };
+		E46FCF20230FCF90001FECE8 /* SchoolNavigatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCED8230FCF90001FECE8 /* SchoolNavigatorCell.m */; };
+		E46FCF21230FCF90001FECE8 /* DiningHallAndDormitoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEDC230FCF90001FECE8 /* DiningHallAndDormitoryController.m */; };
+		E46FCF22230FCF90001FECE8 /* DiningHallAndDormitoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEDE230FCF90001FECE8 /* DiningHallAndDormitoryItem.m */; };
+		E46FCF23230FCF90001FECE8 /* LQQpercentageOfStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCEE2230FCF90001FECE8 /* LQQpercentageOfStudent.m */; };
 		E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D52227FAD20029501A /* IssueTableViewController.m */; };
 		E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E470C9D72227FAD20029501A /* DetailLostViewController.m */; };
 		E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E470C9D82227FAD20029501A /* IssueTableViewController.xib */; };
@@ -396,70 +460,6 @@
 		EE19DDC2230BDE1E0066A2ED /* LQQwantMoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD39230BDE1E0066A2ED /* LQQwantMoreViewController.m */; };
 		EE19DDC3230BDE1E0066A2ED /* erWeiMaV2.0.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD3A230BDE1E0066A2ED /* erWeiMaV2.0.png */; };
 		EE19DDC4230BDE1E0066A2ED /* LQQwantMore.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD3B230BDE1E0066A2ED /* LQQwantMore.png */; };
-		EE19DDC5230BDE1E0066A2ED /* DGActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD42230BDE1E0066A2ED /* DGActivityIndicatorView.m */; };
-		EE19DDC6230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD46230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.m */; };
-		EE19DDC7230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD47230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.m */; };
-		EE19DDC8230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD4E230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.m */; };
-		EE19DDC9230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD50230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.m */; };
-		EE19DDCA230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD51230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.m */; };
-		EE19DDCB230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD56230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.m */; };
-		EE19DDCC230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD58230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.m */; };
-		EE19DDCD230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD5B230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.m */; };
-		EE19DDCE230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD5C230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.m */; };
-		EE19DDCF230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD5D230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.m */; };
-		EE19DDD0230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD5E230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.m */; };
-		EE19DDD1230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD5F230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.m */; };
-		EE19DDD2230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD60230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.m */; };
-		EE19DDD3230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD64230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.m */; };
-		EE19DDD4230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD65230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.m */; };
-		EE19DDD5230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD66230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.m */; };
-		EE19DDD6230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD67230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.m */; };
-		EE19DDD7230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD69230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */; };
-		EE19DDD8230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD6B230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.m */; };
-		EE19DDD9230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD6C230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.m */; };
-		EE19DDDA230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD6D230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.m */; };
-		EE19DDDB230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD6E230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.m */; };
-		EE19DDDC230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD71230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.m */; };
-		EE19DDDD230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD72230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.m */; };
-		EE19DDDE230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD74230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */; };
-		EE19DDDF230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD75230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.m */; };
-		EE19DDE0230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD76230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.m */; };
-		EE19DDE1230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD79230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.m */; };
-		EE19DDE2230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD7A230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.m */; };
-		EE19DDE3230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD7C230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.m */; };
-		EE19DDE4230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD7F230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.m */; };
-		EE19DDE5230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD81230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.m */; };
-		EE19DDE6230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD82230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */; };
-		EE19DDE7230BDE1E0066A2ED /* FSSegmentTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD87230BDE1E0066A2ED /* FSSegmentTitleView.m */; };
-		EE19DDE8230BDE1E0066A2ED /* itemBackGroundImage.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD8B230BDE1E0066A2ED /* itemBackGroundImage.png */; };
-		EE19DDE9230BDE1E0066A2ED /* itemBackGroundImageV2.0.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD8C230BDE1E0066A2ED /* itemBackGroundImageV2.0.png */; };
-		EE19DDEA230BDE1E0066A2ED /* LQQ1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD8D230BDE1E0066A2ED /* LQQ1.png */; };
-		EE19DDEB230BDE1E0066A2ED /* LQQ0.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD8E230BDE1E0066A2ED /* LQQ0.png */; };
-		EE19DDEC230BDE1E0066A2ED /* LQQ2.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD8F230BDE1E0066A2ED /* LQQ2.png */; };
-		EE19DDED230BDE1E0066A2ED /* LQQ3.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD90230BDE1E0066A2ED /* LQQ3.png */; };
-		EE19DDEE230BDE1E0066A2ED /* LQQ4.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD91230BDE1E0066A2ED /* LQQ4.png */; };
-		EE19DDEF230BDE1E0066A2ED /* FSPageContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD92230BDE1E0066A2ED /* FSPageContentView.m */; };
-		EE19DDF0230BDE1E0066A2ED /* shuJuJieMiMan0.1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD96230BDE1E0066A2ED /* shuJuJieMiMan0.1.png */; };
-		EE19DDF1230BDE1E0066A2ED /* shuJuJieMiV0.1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD97230BDE1E0066A2ED /* shuJuJieMiV0.1.png */; };
-		EE19DDF2230BDE1E0066A2ED /* InfiniteRollScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD98230BDE1E0066A2ED /* InfiniteRollScrollView.m */; };
-		EE19DDF3230BDE1E0066A2ED /* LQQsubjectDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD99230BDE1E0066A2ED /* LQQsubjectDataView.m */; };
-		EE19DDF4230BDE1E0066A2ED /* xyZhou.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD9C230BDE1E0066A2ED /* xyZhou.png */; };
-		EE19DDF5230BDE1E0066A2ED /* shuJuJieMiWoman0.1.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DD9D230BDE1E0066A2ED /* shuJuJieMiWoman0.1.png */; };
-		EE19DDF6230BDE1E0066A2ED /* LQQchooseCollegeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DD9E230BDE1E0066A2ED /* LQQchooseCollegeViewController.m */; };
-		EE19DDF7230BDE1E0066A2ED /* LQQfirstChooseButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDA0230BDE1E0066A2ED /* LQQfirstChooseButtonView.m */; };
-		EE19DDF8230BDE1E0066A2ED /* LQQcellImage.png in Resources */ = {isa = PBXBuildFile; fileRef = EE19DDA1230BDE1E0066A2ED /* LQQcellImage.png */; };
-		EE19DDF9230BDE1E0066A2ED /* ChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDA2230BDE1E0066A2ED /* ChildViewController.m */; };
-		EE19DDFA230BDE1E0066A2ED /* LQQDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDA3230BDE1E0066A2ED /* LQQDataModel.m */; };
-		EE19DDFB230BDE1E0066A2ED /* LQQshuJuJieMiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDA5230BDE1E0066A2ED /* LQQshuJuJieMiViewController.m */; };
-		EE19DDFC230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDA6230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.m */; };
-		EE19DDFD230BDE1E0066A2ED /* ExpressCompanyItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDAC230BDE1E0066A2ED /* ExpressCompanyItem.m */; };
-		EE19DDFE230BDE1E0066A2ED /* ExpressSpotItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDAD230BDE1E0066A2ED /* ExpressSpotItem.m */; };
-		EE19DDFF230BDE1E0066A2ED /* SchoolNavigatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDB0230BDE1E0066A2ED /* SchoolNavigatorController.m */; };
-		EE19DE00230BDE1E0066A2ED /* 校园指引.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EE19DDB2230BDE1E0066A2ED /* 校园指引.xcassets */; };
-		EE19DE01230BDE1E0066A2ED /* SchoolNavigatorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDB5230BDE1E0066A2ED /* SchoolNavigatorCell.m */; };
-		EE19DE02230BDE1E0066A2ED /* DiningHallAndDormitoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDB9230BDE1E0066A2ED /* DiningHallAndDormitoryController.m */; };
-		EE19DE03230BDE1E0066A2ED /* DiningHallAndDormitoryItem.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDBB230BDE1E0066A2ED /* DiningHallAndDormitoryItem.m */; };
-		EE19DE04230BDE1E0066A2ED /* LQQpercentageOfStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = EE19DDBF230BDE1E0066A2ED /* LQQpercentageOfStudent.m */; };
 		F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */; };
 		F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */; };
 		F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */; };
@@ -1138,6 +1138,123 @@
 		E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCAddReminderViewController.m; sourceTree = "<group>"; };
 		E46FCE5E230FA788001FECE8 /* SYCEditReminderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCEditReminderViewController.h; sourceTree = "<group>"; };
 		E46FCE5F230FA788001FECE8 /* SYCEditReminderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SYCEditReminderViewController.m; sourceTree = "<group>"; };
+		E46FCE64230FCF8F001FECE8 /* DGActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorView.h; sourceTree = "<group>"; };
+		E46FCE65230FCF8F001FECE8 /* DGActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorView.m; sourceTree = "<group>"; };
+		E46FCE66230FCF8F001FECE8 /* DGActivityIndicatorAnimationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorAnimationProtocol.h; sourceTree = "<group>"; };
+		E46FCE68230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallClipRotateMultipleAnimation.h; sourceTree = "<group>"; };
+		E46FCE69230FCF8F001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTriangleSkewSpinAnimation.m; sourceTree = "<group>"; };
+		E46FCE6A230FCF8F001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTripleRingsAnimation.m; sourceTree = "<group>"; };
+		E46FCE6B230FCF8F001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallGridBeatAnimation.h; sourceTree = "<group>"; };
+		E46FCE6C230FCF8F001FECE8 /* DGActivityIndicatorLineScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScaleAnimation.h; sourceTree = "<group>"; };
+		E46FCE6D230FCF8F001FECE8 /* DGActivityIndicatorTwoDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTwoDotsAnimation.h; sourceTree = "<group>"; };
+		E46FCE6E230FCF8F001FECE8 /* DGActivityIndicatorNineDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorNineDotsAnimation.h; sourceTree = "<group>"; };
+		E46FCE6F230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleRippleMultipleAnimation.h; sourceTree = "<group>"; };
+		E46FCE70230FCF8F001FECE8 /* DGActivityIndicatorFiveDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorFiveDotsAnimation.h; sourceTree = "<group>"; };
+		E46FCE71230FCF8F001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallGridPulseAnimation.m; sourceTree = "<group>"; };
+		E46FCE72230FCF8F001FECE8 /* DGActivityIndicatorBallScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleAnimation.h; sourceTree = "<group>"; };
+		E46FCE73230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallClipRotatePulseAnimation.m; sourceTree = "<group>"; };
+		E46FCE74230FCF8F001FECE8 /* DGActivityIndicatorTriplePulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTriplePulseAnimation.m; sourceTree = "<group>"; };
+		E46FCE75230FCF8F001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallPulseSyncAnimation.h; sourceTree = "<group>"; };
+		E46FCE76230FCF8F001FECE8 /* DGActivityIndicatorBallPulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallPulseAnimation.h; sourceTree = "<group>"; };
+		E46FCE77230FCF8F001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingSandglassAnimation.h; sourceTree = "<group>"; };
+		E46FCE78230FCF8F001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallTrianglePathAnimation.h; sourceTree = "<group>"; };
+		E46FCE79230FCF8F001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingSquaresAnimation.m; sourceTree = "<group>"; };
+		E46FCE7A230FCF8F001FECE8 /* DGActivityIndicatorBallBeatAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallBeatAnimation.h; sourceTree = "<group>"; };
+		E46FCE7B230FCF8F001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleMultipleAnimation.m; sourceTree = "<group>"; };
+		E46FCE7C230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallZigZagDeflectAnimation.h; sourceTree = "<group>"; };
+		E46FCE7D230FCF8F001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallSpinFadeLoader.h; sourceTree = "<group>"; };
+		E46FCE7E230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleRippleAnimation.m; sourceTree = "<group>"; };
+		E46FCE7F230FCF8F001FECE8 /* DGActivityIndicatorBallRotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallRotateAnimation.m; sourceTree = "<group>"; };
+		E46FCE80230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallZigZagAnimation.m; sourceTree = "<group>"; };
+		E46FCE81230FCF8F001FECE8 /* DGActivityIndicatorThreeDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorThreeDotsAnimation.m; sourceTree = "<group>"; };
+		E46FCE82230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScalePulseOutAnimation.m; sourceTree = "<group>"; };
+		E46FCE83230FCF8F001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorDoubleBounceAnimation.m; sourceTree = "<group>"; };
+		E46FCE84230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScalePulseOutRapidAnimation.h; sourceTree = "<group>"; };
+		E46FCE85230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallClipRotateAnimation.h; sourceTree = "<group>"; };
+		E46FCE86230FCF8F001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingTrigonAnimation.h; sourceTree = "<group>"; };
+		E46FCE87230FCF8F001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorCookieTerminatorAnimation.m; sourceTree = "<group>"; };
+		E46FCE88230FCF8F001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScalePartyAnimation.m; sourceTree = "<group>"; };
+		E46FCE89230FCF8F001FECE8 /* DGActivityIndicatorLineScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScaleAnimation.m; sourceTree = "<group>"; };
+		E46FCE8A230FCF8F001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallGridBeatAnimation.m; sourceTree = "<group>"; };
+		E46FCE8B230FCF8F001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTriangleSkewSpinAnimation.h; sourceTree = "<group>"; };
+		E46FCE8C230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallClipRotateMultipleAnimation.m; sourceTree = "<group>"; };
+		E46FCE8D230FCF8F001FECE8 /* DGActivityIndicatorTripleRingsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTripleRingsAnimation.h; sourceTree = "<group>"; };
+		E46FCE8E230FCF8F001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallTrianglePathAnimation.m; sourceTree = "<group>"; };
+		E46FCE8F230FCF8F001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingSandglassAnimation.m; sourceTree = "<group>"; };
+		E46FCE90230FCF8F001FECE8 /* DGActivityIndicatorBallPulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallPulseAnimation.m; sourceTree = "<group>"; };
+		E46FCE91230FCF8F001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallPulseSyncAnimation.m; sourceTree = "<group>"; };
+		E46FCE92230FCF8F001FECE8 /* DGActivityIndicatorTriplePulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTriplePulseAnimation.h; sourceTree = "<group>"; };
+		E46FCE93230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallClipRotatePulseAnimation.h; sourceTree = "<group>"; };
+		E46FCE94230FCF8F001FECE8 /* DGActivityIndicatorBallScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleAnimation.m; sourceTree = "<group>"; };
+		E46FCE95230FCF8F001FECE8 /* DGActivityIndicatorFiveDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorFiveDotsAnimation.m; sourceTree = "<group>"; };
+		E46FCE96230FCF8F001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallGridPulseAnimation.h; sourceTree = "<group>"; };
+		E46FCE97230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleRippleMultipleAnimation.m; sourceTree = "<group>"; };
+		E46FCE98230FCF8F001FECE8 /* DGActivityIndicatorNineDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorNineDotsAnimation.m; sourceTree = "<group>"; };
+		E46FCE99230FCF8F001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTwoDotsAnimation.m; sourceTree = "<group>"; };
+		E46FCE9A230FCF8F001FECE8 /* DGActivityIndicatorBallRotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallRotateAnimation.h; sourceTree = "<group>"; };
+		E46FCE9B230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleRippleAnimation.h; sourceTree = "<group>"; };
+		E46FCE9C230FCF8F001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallSpinFadeLoader.m; sourceTree = "<group>"; };
+		E46FCE9D230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallZigZagDeflectAnimation.m; sourceTree = "<group>"; };
+		E46FCE9E230FCF8F001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleMultipleAnimation.h; sourceTree = "<group>"; };
+		E46FCE9F230FCF8F001FECE8 /* DGActivityIndicatorBallBeatAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallBeatAnimation.m; sourceTree = "<group>"; };
+		E46FCEA0230FCF8F001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingSquaresAnimation.h; sourceTree = "<group>"; };
+		E46FCEA1230FCF8F001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScalePartyAnimation.h; sourceTree = "<group>"; };
+		E46FCEA2230FCF8F001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingTrigonAnimation.m; sourceTree = "<group>"; };
+		E46FCEA3230FCF8F001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorCookieTerminatorAnimation.h; sourceTree = "<group>"; };
+		E46FCEA4230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallClipRotateAnimation.m; sourceTree = "<group>"; };
+		E46FCEA5230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScalePulseOutRapidAnimation.m; sourceTree = "<group>"; };
+		E46FCEA6230FCF8F001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorDoubleBounceAnimation.h; sourceTree = "<group>"; };
+		E46FCEA7230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScalePulseOutAnimation.h; sourceTree = "<group>"; };
+		E46FCEA8230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallZigZagAnimation.h; sourceTree = "<group>"; };
+		E46FCEA9230FCF8F001FECE8 /* DGActivityIndicatorThreeDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorThreeDotsAnimation.h; sourceTree = "<group>"; };
+		E46FCEAA230FCF8F001FECE8 /* FSSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSegmentTitleView.m; sourceTree = "<group>"; };
+		E46FCEAB230FCF8F001FECE8 /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
+		E46FCEAC230FCF8F001FECE8 /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
+		E46FCEAE230FCF8F001FECE8 /* itemBackGroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemBackGroundImage.png; sourceTree = "<group>"; };
+		E46FCEAF230FCF8F001FECE8 /* itemBackGroundImageV2.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemBackGroundImageV2.0.png; sourceTree = "<group>"; };
+		E46FCEB0230FCF8F001FECE8 /* LQQ1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ1.png; sourceTree = "<group>"; };
+		E46FCEB1230FCF8F001FECE8 /* LQQ0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ0.png; sourceTree = "<group>"; };
+		E46FCEB2230FCF8F001FECE8 /* LQQ2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ2.png; sourceTree = "<group>"; };
+		E46FCEB3230FCF8F001FECE8 /* LQQ3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ3.png; sourceTree = "<group>"; };
+		E46FCEB4230FCF8F001FECE8 /* LQQ4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ4.png; sourceTree = "<group>"; };
+		E46FCEB5230FCF8F001FECE8 /* FSPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageContentView.m; sourceTree = "<group>"; };
+		E46FCEB6230FCF8F001FECE8 /* FSSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSegmentTitleView.h; sourceTree = "<group>"; };
+		E46FCEB7230FCF8F001FECE8 /* LQQDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQDataModel.h; sourceTree = "<group>"; };
+		E46FCEB8230FCF8F001FECE8 /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
+		E46FCEB9230FCF8F001FECE8 /* shuJuJieMiMan0.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuJuJieMiMan0.1.png; sourceTree = "<group>"; };
+		E46FCEBA230FCF90001FECE8 /* shuJuJieMiV0.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuJuJieMiV0.1.png; sourceTree = "<group>"; };
+		E46FCEBB230FCF90001FECE8 /* InfiniteRollScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteRollScrollView.m; sourceTree = "<group>"; };
+		E46FCEBC230FCF90001FECE8 /* LQQsubjectDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQsubjectDataView.m; sourceTree = "<group>"; };
+		E46FCEBD230FCF90001FECE8 /* LQQshuJuJieMiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQshuJuJieMiViewController.h; sourceTree = "<group>"; };
+		E46FCEBE230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQXiaoYuanZhiYinViewController.h; sourceTree = "<group>"; };
+		E46FCEBF230FCF90001FECE8 /* xyZhou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xyZhou.png; sourceTree = "<group>"; };
+		E46FCEC0230FCF90001FECE8 /* shuJuJieMiWoman0.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuJuJieMiWoman0.1.png; sourceTree = "<group>"; };
+		E46FCEC1230FCF90001FECE8 /* LQQchooseCollegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQchooseCollegeViewController.m; sourceTree = "<group>"; };
+		E46FCEC2230FCF90001FECE8 /* LQQpercentageOfStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQpercentageOfStudent.h; sourceTree = "<group>"; };
+		E46FCEC3230FCF90001FECE8 /* LQQfirstChooseButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQfirstChooseButtonView.m; sourceTree = "<group>"; };
+		E46FCEC4230FCF90001FECE8 /* LQQcellImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQcellImage.png; sourceTree = "<group>"; };
+		E46FCEC5230FCF90001FECE8 /* ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
+		E46FCEC6230FCF90001FECE8 /* LQQDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQDataModel.m; sourceTree = "<group>"; };
+		E46FCEC7230FCF90001FECE8 /* InfiniteRollScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteRollScrollView.h; sourceTree = "<group>"; };
+		E46FCEC8230FCF90001FECE8 /* LQQshuJuJieMiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQshuJuJieMiViewController.m; sourceTree = "<group>"; };
+		E46FCEC9230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQXiaoYuanZhiYinViewController.m; sourceTree = "<group>"; };
+		E46FCECA230FCF90001FECE8 /* LQQsubjectDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQsubjectDataView.h; sourceTree = "<group>"; };
+		E46FCECE230FCF90001FECE8 /* ExpressSpotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressSpotItem.h; sourceTree = "<group>"; };
+		E46FCECF230FCF90001FECE8 /* ExpressCompanyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressCompanyItem.m; sourceTree = "<group>"; };
+		E46FCED0230FCF90001FECE8 /* ExpressSpotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressSpotItem.m; sourceTree = "<group>"; };
+		E46FCED1230FCF90001FECE8 /* ExpressCompanyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressCompanyItem.h; sourceTree = "<group>"; };
+		E46FCED3230FCF90001FECE8 /* SchoolNavigatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolNavigatorController.m; sourceTree = "<group>"; };
+		E46FCED4230FCF90001FECE8 /* SchoolNavigatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolNavigatorController.h; sourceTree = "<group>"; };
+		E46FCED5230FCF90001FECE8 /* 校园指引.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "校园指引.xcassets"; sourceTree = "<group>"; };
+		E46FCED7230FCF90001FECE8 /* SchoolNavigatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolNavigatorCell.h; sourceTree = "<group>"; };
+		E46FCED8230FCF90001FECE8 /* SchoolNavigatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolNavigatorCell.m; sourceTree = "<group>"; };
+		E46FCEDB230FCF90001FECE8 /* DiningHallAndDormitoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningHallAndDormitoryController.h; sourceTree = "<group>"; };
+		E46FCEDC230FCF90001FECE8 /* DiningHallAndDormitoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningHallAndDormitoryController.m; sourceTree = "<group>"; };
+		E46FCEDE230FCF90001FECE8 /* DiningHallAndDormitoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningHallAndDormitoryItem.m; sourceTree = "<group>"; };
+		E46FCEDF230FCF90001FECE8 /* DiningHallAndDormitoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningHallAndDormitoryItem.h; sourceTree = "<group>"; };
+		E46FCEE1230FCF90001FECE8 /* LQQfirstChooseButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQfirstChooseButtonView.h; sourceTree = "<group>"; };
+		E46FCEE2230FCF90001FECE8 /* LQQpercentageOfStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQpercentageOfStudent.m; sourceTree = "<group>"; };
+		E46FCEE3230FCF90001FECE8 /* LQQchooseCollegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQchooseCollegeViewController.h; sourceTree = "<group>"; };
 		E470C9D52227FAD20029501A /* IssueTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueTableViewController.m; sourceTree = "<group>"; };
 		E470C9D62227FAD20029501A /* LostTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LostTableViewController.h; sourceTree = "<group>"; };
 		E470C9D72227FAD20029501A /* DetailLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailLostViewController.m; sourceTree = "<group>"; };
@@ -1337,123 +1454,6 @@
 		EE19DD3B230BDE1E0066A2ED /* LQQwantMore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQwantMore.png; sourceTree = "<group>"; };
 		EE19DD3C230BDE1E0066A2ED /* QRCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeView.h; sourceTree = "<group>"; };
 		EE19DD3D230BDE1E0066A2ED /* LQQwantMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQwantMoreViewController.h; sourceTree = "<group>"; };
-		EE19DD41230BDE1E0066A2ED /* DGActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorView.h; sourceTree = "<group>"; };
-		EE19DD42230BDE1E0066A2ED /* DGActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorView.m; sourceTree = "<group>"; };
-		EE19DD43230BDE1E0066A2ED /* DGActivityIndicatorAnimationProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorAnimationProtocol.h; sourceTree = "<group>"; };
-		EE19DD45230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallClipRotateMultipleAnimation.h; sourceTree = "<group>"; };
-		EE19DD46230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTriangleSkewSpinAnimation.m; sourceTree = "<group>"; };
-		EE19DD47230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTripleRingsAnimation.m; sourceTree = "<group>"; };
-		EE19DD48230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallGridBeatAnimation.h; sourceTree = "<group>"; };
-		EE19DD49230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScaleAnimation.h; sourceTree = "<group>"; };
-		EE19DD4A230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTwoDotsAnimation.h; sourceTree = "<group>"; };
-		EE19DD4B230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorNineDotsAnimation.h; sourceTree = "<group>"; };
-		EE19DD4C230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleRippleMultipleAnimation.h; sourceTree = "<group>"; };
-		EE19DD4D230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorFiveDotsAnimation.h; sourceTree = "<group>"; };
-		EE19DD4E230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallGridPulseAnimation.m; sourceTree = "<group>"; };
-		EE19DD4F230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleAnimation.h; sourceTree = "<group>"; };
-		EE19DD50230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallClipRotatePulseAnimation.m; sourceTree = "<group>"; };
-		EE19DD51230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTriplePulseAnimation.m; sourceTree = "<group>"; };
-		EE19DD52230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallPulseSyncAnimation.h; sourceTree = "<group>"; };
-		EE19DD53230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallPulseAnimation.h; sourceTree = "<group>"; };
-		EE19DD54230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingSandglassAnimation.h; sourceTree = "<group>"; };
-		EE19DD55230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallTrianglePathAnimation.h; sourceTree = "<group>"; };
-		EE19DD56230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingSquaresAnimation.m; sourceTree = "<group>"; };
-		EE19DD57230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallBeatAnimation.h; sourceTree = "<group>"; };
-		EE19DD58230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleMultipleAnimation.m; sourceTree = "<group>"; };
-		EE19DD59230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallZigZagDeflectAnimation.h; sourceTree = "<group>"; };
-		EE19DD5A230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallSpinFadeLoader.h; sourceTree = "<group>"; };
-		EE19DD5B230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleRippleAnimation.m; sourceTree = "<group>"; };
-		EE19DD5C230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallRotateAnimation.m; sourceTree = "<group>"; };
-		EE19DD5D230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallZigZagAnimation.m; sourceTree = "<group>"; };
-		EE19DD5E230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorThreeDotsAnimation.m; sourceTree = "<group>"; };
-		EE19DD5F230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScalePulseOutAnimation.m; sourceTree = "<group>"; };
-		EE19DD60230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorDoubleBounceAnimation.m; sourceTree = "<group>"; };
-		EE19DD61230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScalePulseOutRapidAnimation.h; sourceTree = "<group>"; };
-		EE19DD62230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallClipRotateAnimation.h; sourceTree = "<group>"; };
-		EE19DD63230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingTrigonAnimation.h; sourceTree = "<group>"; };
-		EE19DD64230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorCookieTerminatorAnimation.m; sourceTree = "<group>"; };
-		EE19DD65230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScalePartyAnimation.m; sourceTree = "<group>"; };
-		EE19DD66230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScaleAnimation.m; sourceTree = "<group>"; };
-		EE19DD67230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallGridBeatAnimation.m; sourceTree = "<group>"; };
-		EE19DD68230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTriangleSkewSpinAnimation.h; sourceTree = "<group>"; };
-		EE19DD69230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallClipRotateMultipleAnimation.m; sourceTree = "<group>"; };
-		EE19DD6A230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTripleRingsAnimation.h; sourceTree = "<group>"; };
-		EE19DD6B230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallTrianglePathAnimation.m; sourceTree = "<group>"; };
-		EE19DD6C230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingSandglassAnimation.m; sourceTree = "<group>"; };
-		EE19DD6D230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallPulseAnimation.m; sourceTree = "<group>"; };
-		EE19DD6E230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallPulseSyncAnimation.m; sourceTree = "<group>"; };
-		EE19DD6F230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorTriplePulseAnimation.h; sourceTree = "<group>"; };
-		EE19DD70230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallClipRotatePulseAnimation.h; sourceTree = "<group>"; };
-		EE19DD71230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleAnimation.m; sourceTree = "<group>"; };
-		EE19DD72230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorFiveDotsAnimation.m; sourceTree = "<group>"; };
-		EE19DD73230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallGridPulseAnimation.h; sourceTree = "<group>"; };
-		EE19DD74230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallScaleRippleMultipleAnimation.m; sourceTree = "<group>"; };
-		EE19DD75230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorNineDotsAnimation.m; sourceTree = "<group>"; };
-		EE19DD76230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorTwoDotsAnimation.m; sourceTree = "<group>"; };
-		EE19DD77230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallRotateAnimation.h; sourceTree = "<group>"; };
-		EE19DD78230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleRippleAnimation.h; sourceTree = "<group>"; };
-		EE19DD79230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallSpinFadeLoader.m; sourceTree = "<group>"; };
-		EE19DD7A230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallZigZagDeflectAnimation.m; sourceTree = "<group>"; };
-		EE19DD7B230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallScaleMultipleAnimation.h; sourceTree = "<group>"; };
-		EE19DD7C230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallBeatAnimation.m; sourceTree = "<group>"; };
-		EE19DD7D230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorRotatingSquaresAnimation.h; sourceTree = "<group>"; };
-		EE19DD7E230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScalePartyAnimation.h; sourceTree = "<group>"; };
-		EE19DD7F230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorRotatingTrigonAnimation.m; sourceTree = "<group>"; };
-		EE19DD80230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorCookieTerminatorAnimation.h; sourceTree = "<group>"; };
-		EE19DD81230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorBallClipRotateAnimation.m; sourceTree = "<group>"; };
-		EE19DD82230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DGActivityIndicatorLineScalePulseOutRapidAnimation.m; sourceTree = "<group>"; };
-		EE19DD83230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorDoubleBounceAnimation.h; sourceTree = "<group>"; };
-		EE19DD84230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorLineScalePulseOutAnimation.h; sourceTree = "<group>"; };
-		EE19DD85230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorBallZigZagAnimation.h; sourceTree = "<group>"; };
-		EE19DD86230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGActivityIndicatorThreeDotsAnimation.h; sourceTree = "<group>"; };
-		EE19DD87230BDE1E0066A2ED /* FSSegmentTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSSegmentTitleView.m; sourceTree = "<group>"; };
-		EE19DD88230BDE1E0066A2ED /* FSPageContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPageContentView.h; sourceTree = "<group>"; };
-		EE19DD89230BDE1E0066A2ED /* FSScrollContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSScrollContentView.h; sourceTree = "<group>"; };
-		EE19DD8B230BDE1E0066A2ED /* itemBackGroundImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemBackGroundImage.png; sourceTree = "<group>"; };
-		EE19DD8C230BDE1E0066A2ED /* itemBackGroundImageV2.0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = itemBackGroundImageV2.0.png; sourceTree = "<group>"; };
-		EE19DD8D230BDE1E0066A2ED /* LQQ1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ1.png; sourceTree = "<group>"; };
-		EE19DD8E230BDE1E0066A2ED /* LQQ0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ0.png; sourceTree = "<group>"; };
-		EE19DD8F230BDE1E0066A2ED /* LQQ2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ2.png; sourceTree = "<group>"; };
-		EE19DD90230BDE1E0066A2ED /* LQQ3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ3.png; sourceTree = "<group>"; };
-		EE19DD91230BDE1E0066A2ED /* LQQ4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQ4.png; sourceTree = "<group>"; };
-		EE19DD92230BDE1E0066A2ED /* FSPageContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPageContentView.m; sourceTree = "<group>"; };
-		EE19DD93230BDE1E0066A2ED /* FSSegmentTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSSegmentTitleView.h; sourceTree = "<group>"; };
-		EE19DD94230BDE1E0066A2ED /* LQQDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQDataModel.h; sourceTree = "<group>"; };
-		EE19DD95230BDE1E0066A2ED /* ChildViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChildViewController.h; sourceTree = "<group>"; };
-		EE19DD96230BDE1E0066A2ED /* shuJuJieMiMan0.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuJuJieMiMan0.1.png; sourceTree = "<group>"; };
-		EE19DD97230BDE1E0066A2ED /* shuJuJieMiV0.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuJuJieMiV0.1.png; sourceTree = "<group>"; };
-		EE19DD98230BDE1E0066A2ED /* InfiniteRollScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfiniteRollScrollView.m; sourceTree = "<group>"; };
-		EE19DD99230BDE1E0066A2ED /* LQQsubjectDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQsubjectDataView.m; sourceTree = "<group>"; };
-		EE19DD9A230BDE1E0066A2ED /* LQQshuJuJieMiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQshuJuJieMiViewController.h; sourceTree = "<group>"; };
-		EE19DD9B230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQXiaoYuanZhiYinViewController.h; sourceTree = "<group>"; };
-		EE19DD9C230BDE1E0066A2ED /* xyZhou.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xyZhou.png; sourceTree = "<group>"; };
-		EE19DD9D230BDE1E0066A2ED /* shuJuJieMiWoman0.1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuJuJieMiWoman0.1.png; sourceTree = "<group>"; };
-		EE19DD9E230BDE1E0066A2ED /* LQQchooseCollegeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQchooseCollegeViewController.m; sourceTree = "<group>"; };
-		EE19DD9F230BDE1E0066A2ED /* LQQpercentageOfStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQpercentageOfStudent.h; sourceTree = "<group>"; };
-		EE19DDA0230BDE1E0066A2ED /* LQQfirstChooseButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQfirstChooseButtonView.m; sourceTree = "<group>"; };
-		EE19DDA1230BDE1E0066A2ED /* LQQcellImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LQQcellImage.png; sourceTree = "<group>"; };
-		EE19DDA2230BDE1E0066A2ED /* ChildViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChildViewController.m; sourceTree = "<group>"; };
-		EE19DDA3230BDE1E0066A2ED /* LQQDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQDataModel.m; sourceTree = "<group>"; };
-		EE19DDA4230BDE1E0066A2ED /* InfiniteRollScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfiniteRollScrollView.h; sourceTree = "<group>"; };
-		EE19DDA5230BDE1E0066A2ED /* LQQshuJuJieMiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQshuJuJieMiViewController.m; sourceTree = "<group>"; };
-		EE19DDA6230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQXiaoYuanZhiYinViewController.m; sourceTree = "<group>"; };
-		EE19DDA7230BDE1E0066A2ED /* LQQsubjectDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQsubjectDataView.h; sourceTree = "<group>"; };
-		EE19DDAB230BDE1E0066A2ED /* ExpressSpotItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressSpotItem.h; sourceTree = "<group>"; };
-		EE19DDAC230BDE1E0066A2ED /* ExpressCompanyItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressCompanyItem.m; sourceTree = "<group>"; };
-		EE19DDAD230BDE1E0066A2ED /* ExpressSpotItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExpressSpotItem.m; sourceTree = "<group>"; };
-		EE19DDAE230BDE1E0066A2ED /* ExpressCompanyItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExpressCompanyItem.h; sourceTree = "<group>"; };
-		EE19DDB0230BDE1E0066A2ED /* SchoolNavigatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolNavigatorController.m; sourceTree = "<group>"; };
-		EE19DDB1230BDE1E0066A2ED /* SchoolNavigatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolNavigatorController.h; sourceTree = "<group>"; };
-		EE19DDB2230BDE1E0066A2ED /* 校园指引.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "校园指引.xcassets"; sourceTree = "<group>"; };
-		EE19DDB4230BDE1E0066A2ED /* SchoolNavigatorCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolNavigatorCell.h; sourceTree = "<group>"; };
-		EE19DDB5230BDE1E0066A2ED /* SchoolNavigatorCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolNavigatorCell.m; sourceTree = "<group>"; };
-		EE19DDB8230BDE1E0066A2ED /* DiningHallAndDormitoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningHallAndDormitoryController.h; sourceTree = "<group>"; };
-		EE19DDB9230BDE1E0066A2ED /* DiningHallAndDormitoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningHallAndDormitoryController.m; sourceTree = "<group>"; };
-		EE19DDBB230BDE1E0066A2ED /* DiningHallAndDormitoryItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiningHallAndDormitoryItem.m; sourceTree = "<group>"; };
-		EE19DDBC230BDE1E0066A2ED /* DiningHallAndDormitoryItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiningHallAndDormitoryItem.h; sourceTree = "<group>"; };
-		EE19DDBE230BDE1E0066A2ED /* LQQfirstChooseButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQfirstChooseButtonView.h; sourceTree = "<group>"; };
-		EE19DDBF230BDE1E0066A2ED /* LQQpercentageOfStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQpercentageOfStudent.m; sourceTree = "<group>"; };
-		EE19DDC0230BDE1E0066A2ED /* LQQchooseCollegeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQchooseCollegeViewController.h; sourceTree = "<group>"; };
 		F20026CD1F4020FA00360991 /* mine_image_calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@2x.png"; sourceTree = "<group>"; };
 		F20026CE1F4020FA00360991 /* mine_image_calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_calendar@3x.png"; sourceTree = "<group>"; };
 		F20026CF1F4020FA00360991 /* mine_image_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mine_image_setting@2x.png"; sourceTree = "<group>"; };
@@ -2527,6 +2527,234 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		E46FCE61230FCF8F001FECE8 /* CampusGuide */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCECB230FCF90001FECE8 /* 宿舍、食堂、快递 */,
+				E46FCE62230FCF8F001FECE8 /* 校园指引依赖文件 */,
+				E46FCEB7230FCF8F001FECE8 /* LQQDataModel.h */,
+				E46FCEB8230FCF8F001FECE8 /* ChildViewController.h */,
+				E46FCEB9230FCF8F001FECE8 /* shuJuJieMiMan0.1.png */,
+				E46FCEBA230FCF90001FECE8 /* shuJuJieMiV0.1.png */,
+				E46FCEBB230FCF90001FECE8 /* InfiniteRollScrollView.m */,
+				E46FCEBC230FCF90001FECE8 /* LQQsubjectDataView.m */,
+				E46FCEBD230FCF90001FECE8 /* LQQshuJuJieMiViewController.h */,
+				E46FCEBE230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.h */,
+				E46FCEBF230FCF90001FECE8 /* xyZhou.png */,
+				E46FCEC0230FCF90001FECE8 /* shuJuJieMiWoman0.1.png */,
+				E46FCEC1230FCF90001FECE8 /* LQQchooseCollegeViewController.m */,
+				E46FCEC2230FCF90001FECE8 /* LQQpercentageOfStudent.h */,
+				E46FCEC3230FCF90001FECE8 /* LQQfirstChooseButtonView.m */,
+				E46FCEC4230FCF90001FECE8 /* LQQcellImage.png */,
+				E46FCEC5230FCF90001FECE8 /* ChildViewController.m */,
+				E46FCEC6230FCF90001FECE8 /* LQQDataModel.m */,
+				E46FCEC7230FCF90001FECE8 /* InfiniteRollScrollView.h */,
+				E46FCEC8230FCF90001FECE8 /* LQQshuJuJieMiViewController.m */,
+				E46FCEC9230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.m */,
+				E46FCECA230FCF90001FECE8 /* LQQsubjectDataView.h */,
+				E46FCEE1230FCF90001FECE8 /* LQQfirstChooseButtonView.h */,
+				E46FCEE2230FCF90001FECE8 /* LQQpercentageOfStudent.m */,
+				E46FCEE3230FCF90001FECE8 /* LQQchooseCollegeViewController.h */,
+			);
+			path = CampusGuide;
+			sourceTree = "<group>";
+		};
+		E46FCE62230FCF8F001FECE8 /* 校园指引依赖文件 */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCE63230FCF8F001FECE8 /* DGActivityIndicatorView */,
+				E46FCEAA230FCF8F001FECE8 /* FSSegmentTitleView.m */,
+				E46FCEAB230FCF8F001FECE8 /* FSPageContentView.h */,
+				E46FCEAC230FCF8F001FECE8 /* FSScrollContentView.h */,
+				E46FCEAD230FCF8F001FECE8 /* 图片资源 */,
+				E46FCEB5230FCF8F001FECE8 /* FSPageContentView.m */,
+				E46FCEB6230FCF8F001FECE8 /* FSSegmentTitleView.h */,
+			);
+			path = "校园指引依赖文件";
+			sourceTree = "<group>";
+		};
+		E46FCE63230FCF8F001FECE8 /* DGActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCE64230FCF8F001FECE8 /* DGActivityIndicatorView.h */,
+				E46FCE65230FCF8F001FECE8 /* DGActivityIndicatorView.m */,
+				E46FCE66230FCF8F001FECE8 /* DGActivityIndicatorAnimationProtocol.h */,
+				E46FCE67230FCF8F001FECE8 /* Animations */,
+			);
+			path = DGActivityIndicatorView;
+			sourceTree = "<group>";
+		};
+		E46FCE67230FCF8F001FECE8 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCE68230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.h */,
+				E46FCE69230FCF8F001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.m */,
+				E46FCE6A230FCF8F001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m */,
+				E46FCE6B230FCF8F001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.h */,
+				E46FCE6C230FCF8F001FECE8 /* DGActivityIndicatorLineScaleAnimation.h */,
+				E46FCE6D230FCF8F001FECE8 /* DGActivityIndicatorTwoDotsAnimation.h */,
+				E46FCE6E230FCF8F001FECE8 /* DGActivityIndicatorNineDotsAnimation.h */,
+				E46FCE6F230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h */,
+				E46FCE70230FCF8F001FECE8 /* DGActivityIndicatorFiveDotsAnimation.h */,
+				E46FCE71230FCF8F001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.m */,
+				E46FCE72230FCF8F001FECE8 /* DGActivityIndicatorBallScaleAnimation.h */,
+				E46FCE73230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.m */,
+				E46FCE74230FCF8F001FECE8 /* DGActivityIndicatorTriplePulseAnimation.m */,
+				E46FCE75230FCF8F001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.h */,
+				E46FCE76230FCF8F001FECE8 /* DGActivityIndicatorBallPulseAnimation.h */,
+				E46FCE77230FCF8F001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.h */,
+				E46FCE78230FCF8F001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.h */,
+				E46FCE79230FCF8F001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.m */,
+				E46FCE7A230FCF8F001FECE8 /* DGActivityIndicatorBallBeatAnimation.h */,
+				E46FCE7B230FCF8F001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.m */,
+				E46FCE7C230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.h */,
+				E46FCE7D230FCF8F001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.h */,
+				E46FCE7E230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.m */,
+				E46FCE7F230FCF8F001FECE8 /* DGActivityIndicatorBallRotateAnimation.m */,
+				E46FCE80230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagAnimation.m */,
+				E46FCE81230FCF8F001FECE8 /* DGActivityIndicatorThreeDotsAnimation.m */,
+				E46FCE82230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.m */,
+				E46FCE83230FCF8F001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.m */,
+				E46FCE84230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.h */,
+				E46FCE85230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.h */,
+				E46FCE86230FCF8F001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.h */,
+				E46FCE87230FCF8F001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.m */,
+				E46FCE88230FCF8F001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.m */,
+				E46FCE89230FCF8F001FECE8 /* DGActivityIndicatorLineScaleAnimation.m */,
+				E46FCE8A230FCF8F001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.m */,
+				E46FCE8B230FCF8F001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.h */,
+				E46FCE8C230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */,
+				E46FCE8D230FCF8F001FECE8 /* DGActivityIndicatorTripleRingsAnimation.h */,
+				E46FCE8E230FCF8F001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.m */,
+				E46FCE8F230FCF8F001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.m */,
+				E46FCE90230FCF8F001FECE8 /* DGActivityIndicatorBallPulseAnimation.m */,
+				E46FCE91230FCF8F001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m */,
+				E46FCE92230FCF8F001FECE8 /* DGActivityIndicatorTriplePulseAnimation.h */,
+				E46FCE93230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.h */,
+				E46FCE94230FCF8F001FECE8 /* DGActivityIndicatorBallScaleAnimation.m */,
+				E46FCE95230FCF8F001FECE8 /* DGActivityIndicatorFiveDotsAnimation.m */,
+				E46FCE96230FCF8F001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.h */,
+				E46FCE97230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */,
+				E46FCE98230FCF8F001FECE8 /* DGActivityIndicatorNineDotsAnimation.m */,
+				E46FCE99230FCF8F001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m */,
+				E46FCE9A230FCF8F001FECE8 /* DGActivityIndicatorBallRotateAnimation.h */,
+				E46FCE9B230FCF8F001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.h */,
+				E46FCE9C230FCF8F001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.m */,
+				E46FCE9D230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.m */,
+				E46FCE9E230FCF8F001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.h */,
+				E46FCE9F230FCF8F001FECE8 /* DGActivityIndicatorBallBeatAnimation.m */,
+				E46FCEA0230FCF8F001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.h */,
+				E46FCEA1230FCF8F001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.h */,
+				E46FCEA2230FCF8F001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.m */,
+				E46FCEA3230FCF8F001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.h */,
+				E46FCEA4230FCF8F001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.m */,
+				E46FCEA5230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */,
+				E46FCEA6230FCF8F001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.h */,
+				E46FCEA7230FCF8F001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.h */,
+				E46FCEA8230FCF8F001FECE8 /* DGActivityIndicatorBallZigZagAnimation.h */,
+				E46FCEA9230FCF8F001FECE8 /* DGActivityIndicatorThreeDotsAnimation.h */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
+		E46FCEAD230FCF8F001FECE8 /* 图片资源 */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCEAE230FCF8F001FECE8 /* itemBackGroundImage.png */,
+				E46FCEAF230FCF8F001FECE8 /* itemBackGroundImageV2.0.png */,
+				E46FCEB0230FCF8F001FECE8 /* LQQ1.png */,
+				E46FCEB1230FCF8F001FECE8 /* LQQ0.png */,
+				E46FCEB2230FCF8F001FECE8 /* LQQ2.png */,
+				E46FCEB3230FCF8F001FECE8 /* LQQ3.png */,
+				E46FCEB4230FCF8F001FECE8 /* LQQ4.png */,
+			);
+			path = "图片资源";
+			sourceTree = "<group>";
+		};
+		E46FCECB230FCF90001FECE8 /* 宿舍、食堂、快递 */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCECC230FCF90001FECE8 /* Express */,
+				E46FCED2230FCF90001FECE8 /* Controller */,
+				E46FCED5230FCF90001FECE8 /* 校园指引.xcassets */,
+				E46FCED6230FCF90001FECE8 /* View */,
+				E46FCED9230FCF90001FECE8 /* DiningHall */,
+			);
+			path = "宿舍、食堂、快递";
+			sourceTree = "<group>";
+		};
+		E46FCECC230FCF90001FECE8 /* Express */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCECD230FCF90001FECE8 /* Model */,
+			);
+			path = Express;
+			sourceTree = "<group>";
+		};
+		E46FCECD230FCF90001FECE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCECE230FCF90001FECE8 /* ExpressSpotItem.h */,
+				E46FCECF230FCF90001FECE8 /* ExpressCompanyItem.m */,
+				E46FCED0230FCF90001FECE8 /* ExpressSpotItem.m */,
+				E46FCED1230FCF90001FECE8 /* ExpressCompanyItem.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E46FCED2230FCF90001FECE8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCED3230FCF90001FECE8 /* SchoolNavigatorController.m */,
+				E46FCED4230FCF90001FECE8 /* SchoolNavigatorController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		E46FCED6230FCF90001FECE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCED7230FCF90001FECE8 /* SchoolNavigatorCell.h */,
+				E46FCED8230FCF90001FECE8 /* SchoolNavigatorCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E46FCED9230FCF90001FECE8 /* DiningHall */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCEDA230FCF90001FECE8 /* controller */,
+				E46FCEDD230FCF90001FECE8 /* Model */,
+				E46FCEE0230FCF90001FECE8 /* View */,
+			);
+			path = DiningHall;
+			sourceTree = "<group>";
+		};
+		E46FCEDA230FCF90001FECE8 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCEDB230FCF90001FECE8 /* DiningHallAndDormitoryController.h */,
+				E46FCEDC230FCF90001FECE8 /* DiningHallAndDormitoryController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		E46FCEDD230FCF90001FECE8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E46FCEDE230FCF90001FECE8 /* DiningHallAndDormitoryItem.m */,
+				E46FCEDF230FCF90001FECE8 /* DiningHallAndDormitoryItem.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E46FCEE0230FCF90001FECE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E470C9D32227FAD20029501A /* LostAndFound */ = {
 			isa = PBXGroup;
 			children = (
@@ -2735,9 +2963,9 @@
 		E4889CCF22F427CF006C66F6 /* Freshman2019 */ = {
 			isa = PBXGroup;
 			children = (
+				E46FCE61230FCF8F001FECE8 /* CampusGuide */,
 				E46FCE44230C3D5B001FECE8 /* Necessity */,
 				EE19DD37230BDE1E0066A2ED /* More */,
-				EE19DD3E230BDE1E0066A2ED /* CampusGuide */,
 				1A5A20212307FFCF00D6D329 /* AboutUs */,
 				1A5A1FEF2307FFCF00D6D329 /* OnlineCommunication */,
 				1A5A20132307FFCF00D6D329 /* StartStep */,
@@ -2920,234 +3148,6 @@
 				EE19DD3D230BDE1E0066A2ED /* LQQwantMoreViewController.h */,
 			);
 			path = More;
-			sourceTree = "<group>";
-		};
-		EE19DD3E230BDE1E0066A2ED /* CampusGuide */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DD3F230BDE1E0066A2ED /* 校园指引依赖文件 */,
-				EE19DD94230BDE1E0066A2ED /* LQQDataModel.h */,
-				EE19DD95230BDE1E0066A2ED /* ChildViewController.h */,
-				EE19DD96230BDE1E0066A2ED /* shuJuJieMiMan0.1.png */,
-				EE19DD97230BDE1E0066A2ED /* shuJuJieMiV0.1.png */,
-				EE19DD98230BDE1E0066A2ED /* InfiniteRollScrollView.m */,
-				EE19DD99230BDE1E0066A2ED /* LQQsubjectDataView.m */,
-				EE19DD9A230BDE1E0066A2ED /* LQQshuJuJieMiViewController.h */,
-				EE19DD9B230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.h */,
-				EE19DD9C230BDE1E0066A2ED /* xyZhou.png */,
-				EE19DD9D230BDE1E0066A2ED /* shuJuJieMiWoman0.1.png */,
-				EE19DD9E230BDE1E0066A2ED /* LQQchooseCollegeViewController.m */,
-				EE19DD9F230BDE1E0066A2ED /* LQQpercentageOfStudent.h */,
-				EE19DDA0230BDE1E0066A2ED /* LQQfirstChooseButtonView.m */,
-				EE19DDA1230BDE1E0066A2ED /* LQQcellImage.png */,
-				EE19DDA2230BDE1E0066A2ED /* ChildViewController.m */,
-				EE19DDA3230BDE1E0066A2ED /* LQQDataModel.m */,
-				EE19DDA4230BDE1E0066A2ED /* InfiniteRollScrollView.h */,
-				EE19DDA5230BDE1E0066A2ED /* LQQshuJuJieMiViewController.m */,
-				EE19DDA6230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.m */,
-				EE19DDA7230BDE1E0066A2ED /* LQQsubjectDataView.h */,
-				EE19DDA8230BDE1E0066A2ED /* 宿舍、食堂、快递 */,
-				EE19DDBE230BDE1E0066A2ED /* LQQfirstChooseButtonView.h */,
-				EE19DDBF230BDE1E0066A2ED /* LQQpercentageOfStudent.m */,
-				EE19DDC0230BDE1E0066A2ED /* LQQchooseCollegeViewController.h */,
-			);
-			path = CampusGuide;
-			sourceTree = "<group>";
-		};
-		EE19DD3F230BDE1E0066A2ED /* 校园指引依赖文件 */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DD40230BDE1E0066A2ED /* DGActivityIndicatorView */,
-				EE19DD87230BDE1E0066A2ED /* FSSegmentTitleView.m */,
-				EE19DD88230BDE1E0066A2ED /* FSPageContentView.h */,
-				EE19DD89230BDE1E0066A2ED /* FSScrollContentView.h */,
-				EE19DD8A230BDE1E0066A2ED /* 图片资源 */,
-				EE19DD92230BDE1E0066A2ED /* FSPageContentView.m */,
-				EE19DD93230BDE1E0066A2ED /* FSSegmentTitleView.h */,
-			);
-			path = "校园指引依赖文件";
-			sourceTree = "<group>";
-		};
-		EE19DD40230BDE1E0066A2ED /* DGActivityIndicatorView */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DD41230BDE1E0066A2ED /* DGActivityIndicatorView.h */,
-				EE19DD42230BDE1E0066A2ED /* DGActivityIndicatorView.m */,
-				EE19DD43230BDE1E0066A2ED /* DGActivityIndicatorAnimationProtocol.h */,
-				EE19DD44230BDE1E0066A2ED /* Animations */,
-			);
-			path = DGActivityIndicatorView;
-			sourceTree = "<group>";
-		};
-		EE19DD44230BDE1E0066A2ED /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DD45230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.h */,
-				EE19DD46230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.m */,
-				EE19DD47230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.m */,
-				EE19DD48230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.h */,
-				EE19DD49230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.h */,
-				EE19DD4A230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.h */,
-				EE19DD4B230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.h */,
-				EE19DD4C230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h */,
-				EE19DD4D230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.h */,
-				EE19DD4E230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.m */,
-				EE19DD4F230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.h */,
-				EE19DD50230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.m */,
-				EE19DD51230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.m */,
-				EE19DD52230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.h */,
-				EE19DD53230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.h */,
-				EE19DD54230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.h */,
-				EE19DD55230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.h */,
-				EE19DD56230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.m */,
-				EE19DD57230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.h */,
-				EE19DD58230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.m */,
-				EE19DD59230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.h */,
-				EE19DD5A230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.h */,
-				EE19DD5B230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.m */,
-				EE19DD5C230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.m */,
-				EE19DD5D230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.m */,
-				EE19DD5E230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.m */,
-				EE19DD5F230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.m */,
-				EE19DD60230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.m */,
-				EE19DD61230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.h */,
-				EE19DD62230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.h */,
-				EE19DD63230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.h */,
-				EE19DD64230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.m */,
-				EE19DD65230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.m */,
-				EE19DD66230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.m */,
-				EE19DD67230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.m */,
-				EE19DD68230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.h */,
-				EE19DD69230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */,
-				EE19DD6A230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.h */,
-				EE19DD6B230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.m */,
-				EE19DD6C230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.m */,
-				EE19DD6D230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.m */,
-				EE19DD6E230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.m */,
-				EE19DD6F230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.h */,
-				EE19DD70230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.h */,
-				EE19DD71230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.m */,
-				EE19DD72230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.m */,
-				EE19DD73230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.h */,
-				EE19DD74230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */,
-				EE19DD75230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.m */,
-				EE19DD76230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.m */,
-				EE19DD77230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.h */,
-				EE19DD78230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.h */,
-				EE19DD79230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.m */,
-				EE19DD7A230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.m */,
-				EE19DD7B230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.h */,
-				EE19DD7C230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.m */,
-				EE19DD7D230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.h */,
-				EE19DD7E230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.h */,
-				EE19DD7F230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.m */,
-				EE19DD80230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.h */,
-				EE19DD81230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.m */,
-				EE19DD82230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */,
-				EE19DD83230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.h */,
-				EE19DD84230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.h */,
-				EE19DD85230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.h */,
-				EE19DD86230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.h */,
-			);
-			path = Animations;
-			sourceTree = "<group>";
-		};
-		EE19DD8A230BDE1E0066A2ED /* 图片资源 */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DD8B230BDE1E0066A2ED /* itemBackGroundImage.png */,
-				EE19DD8C230BDE1E0066A2ED /* itemBackGroundImageV2.0.png */,
-				EE19DD8D230BDE1E0066A2ED /* LQQ1.png */,
-				EE19DD8E230BDE1E0066A2ED /* LQQ0.png */,
-				EE19DD8F230BDE1E0066A2ED /* LQQ2.png */,
-				EE19DD90230BDE1E0066A2ED /* LQQ3.png */,
-				EE19DD91230BDE1E0066A2ED /* LQQ4.png */,
-			);
-			path = "图片资源";
-			sourceTree = "<group>";
-		};
-		EE19DDA8230BDE1E0066A2ED /* 宿舍、食堂、快递 */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDA9230BDE1E0066A2ED /* Express */,
-				EE19DDAF230BDE1E0066A2ED /* Controller */,
-				EE19DDB2230BDE1E0066A2ED /* 校园指引.xcassets */,
-				EE19DDB3230BDE1E0066A2ED /* View */,
-				EE19DDB6230BDE1E0066A2ED /* DiningHall */,
-			);
-			path = "宿舍、食堂、快递";
-			sourceTree = "<group>";
-		};
-		EE19DDA9230BDE1E0066A2ED /* Express */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDAA230BDE1E0066A2ED /* Model */,
-			);
-			path = Express;
-			sourceTree = "<group>";
-		};
-		EE19DDAA230BDE1E0066A2ED /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDAB230BDE1E0066A2ED /* ExpressSpotItem.h */,
-				EE19DDAC230BDE1E0066A2ED /* ExpressCompanyItem.m */,
-				EE19DDAD230BDE1E0066A2ED /* ExpressSpotItem.m */,
-				EE19DDAE230BDE1E0066A2ED /* ExpressCompanyItem.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EE19DDAF230BDE1E0066A2ED /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDB0230BDE1E0066A2ED /* SchoolNavigatorController.m */,
-				EE19DDB1230BDE1E0066A2ED /* SchoolNavigatorController.h */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		EE19DDB3230BDE1E0066A2ED /* View */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDB4230BDE1E0066A2ED /* SchoolNavigatorCell.h */,
-				EE19DDB5230BDE1E0066A2ED /* SchoolNavigatorCell.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		EE19DDB6230BDE1E0066A2ED /* DiningHall */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDB7230BDE1E0066A2ED /* controller */,
-				EE19DDBA230BDE1E0066A2ED /* Model */,
-				EE19DDBD230BDE1E0066A2ED /* View */,
-			);
-			path = DiningHall;
-			sourceTree = "<group>";
-		};
-		EE19DDB7230BDE1E0066A2ED /* controller */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDB8230BDE1E0066A2ED /* DiningHallAndDormitoryController.h */,
-				EE19DDB9230BDE1E0066A2ED /* DiningHallAndDormitoryController.m */,
-			);
-			path = controller;
-			sourceTree = "<group>";
-		};
-		EE19DDBA230BDE1E0066A2ED /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				EE19DDBB230BDE1E0066A2ED /* DiningHallAndDormitoryItem.m */,
-				EE19DDBC230BDE1E0066A2ED /* DiningHallAndDormitoryItem.h */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		EE19DDBD230BDE1E0066A2ED /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		F20026E91F40336E00360991 /* Map */ = {
@@ -4257,7 +4257,7 @@
 			files = (
 				F26D968B1F3C400F0063B024 /* topic_image_alltopic@3x.png in Resources */,
 				F26D96A71F3C43EC0063B024 /* all_image_background@2x.png in Resources */,
-				EE19DDEA230BDE1E0066A2ED /* LQQ1.png in Resources */,
+				E46FCF09230FCF90001FECE8 /* LQQ1.png in Resources */,
 				E48DB68D223E3DAF00B9D744 /* 2@3x.png in Resources */,
 				82280CB61F60223D00A5921E /* upvote@2x.png in Resources */,
 				E48DB669223E3DAF00B9D744 /* 时长加号.png in Resources */,
@@ -4297,7 +4297,7 @@
 				4A3A08441FCD990A00A50393 /* shop_headImage@2x.png in Resources */,
 				F20027191F405B8500360991 /* remind_image_content@3x.png in Resources */,
 				82398C1421A432DE00300C91 /* mine_image_calendar1.png in Resources */,
-				EE19DDEE230BDE1E0066A2ED /* LQQ4.png in Resources */,
+				E46FCF0D230FCF90001FECE8 /* LQQ4.png in Resources */,
 				823D416E1F6533FA00C99D9B /* icon_upvote_inside_notselect@2x.png in Resources */,
 				E48DB695223E3DAF00B9D744 /* 背景板@3x.png in Resources */,
 				F238C6521F3DA29700FEB179 /* tabbar_image_find@3x.png in Resources */,
@@ -4398,14 +4398,14 @@
 				F26D96AD1F3C45540063B024 /* login_image_account@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
 				4A3A07D11FCC0EC700A50393 /* find_image_food@3x.png in Resources */,
+				E46FCF0B230FCF90001FECE8 /* LQQ2.png in Resources */,
 				E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */,
-				EE19DDEC230BDE1E0066A2ED /* LQQ2.png in Resources */,
 				825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */,
 				E48DB67A223E3DAF00B9D744 /* login_back@2x.png in Resources */,
 				E48DB690223E3DAF00B9D744 /* login_icon@3x.png in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
+				E46FCF08230FCF90001FECE8 /* itemBackGroundImageV2.0.png in Resources */,
 				E48DB675223E3DAF00B9D744 /* login_back.png in Resources */,
-				EE19DDE9230BDE1E0066A2ED /* itemBackGroundImageV2.0.png in Resources */,
 				E48DB66A223E3DAF00B9D744 /* volunteer_time_icon.png in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
 				E48DB66D223E3DAF00B9D744 /* 5@2x.png in Resources */,
@@ -4442,8 +4442,8 @@
 				4A3A07CE1FCC0EC700A50393 /* cqupt2@2x.jpg in Resources */,
 				F20026F81F40372100360991 /* appIcon@3x.png in Resources */,
 				F242DE961EBCB2BC005AC411 /* 无事项@2x.png in Resources */,
+				E46FCF10230FCF90001FECE8 /* shuJuJieMiV0.1.png in Resources */,
 				F242DE831EBCB2BC005AC411 /* 删除@2x.png in Resources */,
-				EE19DDF1230BDE1E0066A2ED /* shuJuJieMiV0.1.png in Resources */,
 				82398C1021A42F0F00300C91 /* ClassBookImg.xcassets in Resources */,
 				F242DDF91EBCB2BB005AC411 /* ShakeViewController.xib in Resources */,
 				F242DE941EBCB2BC005AC411 /* 提醒@2x.png in Resources */,
@@ -4495,7 +4495,7 @@
 				4A3A07DA1FCC0EC700A50393 /* find_image_query@2x.png in Resources */,
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
 				F20026E71F4020FA00360991 /* mine_image_date@2x.png in Resources */,
-				EE19DDF8230BDE1E0066A2ED /* LQQcellImage.png in Resources */,
+				E46FCF17230FCF90001FECE8 /* LQQcellImage.png in Resources */,
 				F20027081F404BE100360991 /* timeTable_image_pull@2x.png in Resources */,
 				F242DE811EBCB2BC005AC411 /* 书@2x.png in Resources */,
 				4A3A07FF1FCC0EC700A50393 /* shake_image_shake@2x.png in Resources */,
@@ -4508,7 +4508,7 @@
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
 				F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */,
-				EE19DDF4230BDE1E0066A2ED /* xyZhou.png in Resources */,
+				E46FCF13230FCF90001FECE8 /* xyZhou.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				E48DB693223E3DAF00B9D744 /* login_icon@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
@@ -4529,7 +4529,7 @@
 				F26D96A31F3C41130063B024 /* login_image_background@2x.png in Resources */,
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
 				F242DDC21EBCB2BB005AC411 /* reinstallImage.png in Resources */,
-				EE19DDF0230BDE1E0066A2ED /* shuJuJieMiMan0.1.png in Resources */,
+				E46FCF0F230FCF90001FECE8 /* shuJuJieMiMan0.1.png in Resources */,
 				E41AD25C222BF13D00360C56 /* ExamGradeViewController.xib in Resources */,
 				E48DB543223E36CF00B9D744 /* WYCClassDetailView.xib in Resources */,
 				F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */,
@@ -4554,12 +4554,12 @@
 				F26D96841F3C400F0063B024 /* icon_share_weibo@2x.png in Resources */,
 				E48DB677223E3DAF00B9D744 /* 1@3x.png in Resources */,
 				F242DDBE1EBCB2BB005AC411 /* rightIcon.png in Resources */,
-				EE19DDED230BDE1E0066A2ED /* LQQ3.png in Resources */,
+				E46FCF0C230FCF90001FECE8 /* LQQ3.png in Resources */,
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
 				E48DB665223E3DAF00B9D744 /* 服务记录矩形.png in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
-				EE19DDEB230BDE1E0066A2ED /* LQQ0.png in Resources */,
+				E46FCF0A230FCF90001FECE8 /* LQQ0.png in Resources */,
 				82398BDC21A42AFE00300C91 /* 没课约.png in Resources */,
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
 				F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */,
@@ -4579,7 +4579,7 @@
 				E470C9FE2227FAD20029501A /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
 				F242DDAA1EBCB2BB005AC411 /* angleImage.png in Resources */,
-				EE19DDE8230BDE1E0066A2ED /* itemBackGroundImage.png in Resources */,
+				E46FCF07230FCF90001FECE8 /* itemBackGroundImage.png in Resources */,
 				4A3A07CF1FCC0EC700A50393 /* cqupt3@2x.jpg in Resources */,
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
@@ -4612,8 +4612,8 @@
 				F242DE5F1EBCB2BC005AC411 /* RemindTableViewCell.xib in Resources */,
 				E48DB672223E3DAF00B9D744 /* login_back@3x.png in Resources */,
 				F242DDB51EBCB2BB005AC411 /* leftIcon.png in Resources */,
+				E46FCF14230FCF90001FECE8 /* shuJuJieMiWoman0.1.png in Resources */,
 				1A5A20352307FFD000D6D329 /* Assets.xcassets in Resources */,
-				EE19DDF5230BDE1E0066A2ED /* shuJuJieMiWoman0.1.png in Resources */,
 				1A5A203D2307FFDB00D6D329 /* Freshman2019.xcassets in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
@@ -4633,7 +4633,7 @@
 				E480E56E2306D80200F69199 /* RoadIndex.xcassets in Resources */,
 				F20027091F404BE100360991 /* timeTable_image_pull@3x.png in Resources */,
 				F26D96871F3C400F0063B024 /* support.png in Resources */,
-				EE19DE00230BDE1E0066A2ED /* 校园指引.xcassets in Resources */,
+				E46FCF1F230FCF90001FECE8 /* 校园指引.xcassets in Resources */,
 				E48DB68F223E3DAF00B9D744 /* 志愿时长@2x.png in Resources */,
 				82398BDF21A42AFE00300C91 /* 关于红岩.png in Resources */,
 			);
@@ -4742,60 +4742,61 @@
 				E41AD263222BF55000360C56 /* BeforeClassCell.m in Sources */,
 				6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */,
 				E48DB69A223E3DAF00B9D744 /* fiveViewController.m in Sources */,
+				E46FCEE7230FCF90001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */,
+				E46FCF05230FCF90001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
-				EE19DDD4230BDE1E0066A2ED /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
 				F2A92CE31F52E8BE00B4CEEF /* BaseNavigationController.m in Sources */,
-				EE19DDD6230BDE1E0066A2ED /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
 				F242DDAD1EBCB2BB005AC411 /* InstallBuildTableViewCell.m in Sources */,
 				F2A92CFB1F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m in Sources */,
 				F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */,
 				82A0A57020BEFF2000BD628E /* LXAskDetailModel.m in Sources */,
+				E46FCF03230FCF90001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */,
 				F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */,
-				EE19DDFE230BDE1E0066A2ED /* ExpressSpotItem.m in Sources */,
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
+				E46FCF21230FCF90001FECE8 /* DiningHallAndDormitoryController.m in Sources */,
 				6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */,
+				E46FCF20230FCF90001FECE8 /* SchoolNavigatorCell.m in Sources */,
 				F242DE671EBCB2BC005AC411 /* DetailViewController.m in Sources */,
-				EE19DDE7230BDE1E0066A2ED /* FSSegmentTitleView.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
 				E470CA272228055C0029501A /* LZPersonModel.m in Sources */,
 				E470CA242228055C0029501A /* LZNoCourseDateDetailViewController.m in Sources */,
 				6E3AB65520AD76A3003A65F5 /* YouWenWriteAnswerViewController.m in Sources */,
 				E4DA0D2322FED07F00A8D4D6 /* WelcomeTableViewCell.m in Sources */,
-				EE19DDD1230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
 				F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */,
-				EE19DE01230BDE1E0066A2ED /* SchoolNavigatorCell.m in Sources */,
 				F26D969E1F3C400F0063B024 /* MBComment_ViewModel.m in Sources */,
+				E46FCF19230FCF90001FECE8 /* LQQDataModel.m in Sources */,
 				E470CA262228055C0029501A /* LZNoCourseViewController.m in Sources */,
+				E46FCEEC230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
+				E46FCEF2230FCF90001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
 				F2509BCE1F440D7D0091F678 /* SegmentView.m in Sources */,
 				F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */,
 				1A5A202F2307FFD000D6D329 /* SuccessWindow.m in Sources */,
+				E46FCF1A230FCF90001FECE8 /* LQQshuJuJieMiViewController.m in Sources */,
 				F242DE621EBCB2BC005AC411 /* DetailLessonController.m in Sources */,
 				F242DDB11EBCB2BB005AC411 /* IntallFailViewController.m in Sources */,
-				EE19DDC8230BDE1E0066A2ED /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */,
 				F242DEC31EBCB2BC005AC411 /* main.m in Sources */,
 				F23BB4881F50538800DA62ED /* LZWeekScrollView.m in Sources */,
 				F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */,
 				6E3AB63720AD76A3003A65F5 /* AnswerCommentModel.m in Sources */,
 				F242DDB91EBCB2BB005AC411 /* QuerInfo.m in Sources */,
 				F2A92CFF1F52EB2600B4CEEF /* UIImage+ImageEffects.m in Sources */,
-				EE19DDC9230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
 				1A5A203B2307FFD000D6D329 /* AboutUsViewController.m in Sources */,
+				E46FCEE9230FCF90001FECE8 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */,
 				F242DEC21EBCB2BC005AC411 /* MainViewController.m in Sources */,
 				E4889CD222F42800006C66F6 /* MainPageViewController.m in Sources */,
-				EE19DDD0230BDE1E0066A2ED /* DGActivityIndicatorThreeDotsAnimation.m in Sources */,
 				E470CA0A2227FAD20029501A /* CategoryChooseView.m in Sources */,
-				EE19DDE1230BDE1E0066A2ED /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */,
 				E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */,
 				1A5A202B2307FFD000D6D329 /* FYHAcademyGroupController.m in Sources */,
 				6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */,
-				EE19DDFB230BDE1E0066A2ED /* LQQshuJuJieMiViewController.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				E41AD25D222BF13D00360C56 /* ExamGradeViewController.m in Sources */,
+				E46FCEEF230FCF90001FECE8 /* DGActivityIndicatorThreeDotsAnimation.m in Sources */,
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
+				E46FCEF7230FCF90001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
 				1A5A20282307FFD000D6D329 /* FYHOnlineActivityMainViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
 				E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */,
@@ -4803,13 +4804,15 @@
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
-				EE19DDDF230BDE1E0066A2ED /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				E470CA082227FAD20029501A /* LZLostRemindView.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */,
+				E46FCF15230FCF90001FECE8 /* LQQchooseCollegeViewController.m in Sources */,
+				E46FCF1D230FCF90001FECE8 /* ExpressSpotItem.m in Sources */,
 				E470CA002227FAD20029501A /* LostItem.m in Sources */,
+				E46FCEE8230FCF90001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
 				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
 				E41AD264222BF55000360C56 /* BeforeClassViewController.m in Sources */,
@@ -4817,60 +4820,55 @@
 				E470CA2C2228055C0029501A /* LZPersonSelectTableViewCell.m in Sources */,
 				E470CA232228055C0029501A /* LessonButtonViewModel.m in Sources */,
 				E480E5622306D80200F69199 /* SchoolPicView.m in Sources */,
-				EE19DDFD230BDE1E0066A2ED /* ExpressCompanyItem.m in Sources */,
+				E46FCEF9230FCF90001FECE8 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
 				F242DDAE1EBCB2BB005AC411 /* InstallcurrentViewController.m in Sources */,
 				6E3AB65B20AED319003A65F5 /* dailyAttendanceModel.m in Sources */,
-				EE19DDE2230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
+				E46FCEF3230FCF90001FECE8 /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */,
 				E470CA032227FAD20029501A /* IconTableViewCell.m in Sources */,
 				6E1F465E20C13F1D00B0F36F /* dailyAttendanceDetailViewController.m in Sources */,
 				F242DEBE1EBCB2BC005AC411 /* TickButton.m in Sources */,
 				F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */,
-				EE19DDF3230BDE1E0066A2ED /* LQQsubjectDataView.m in Sources */,
 				1A5A20362307FFD000D6D329 /* StartStepsController.m in Sources */,
 				6E12A33C20569A7800D07606 /* YouWenTopicView.m in Sources */,
 				F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */,
 				6E3AB63A20AD76A3003A65F5 /* AnswerDetailTableHeaderView.m in Sources */,
 				4A3A07921FCC0E7700A50393 /* ZJAddCommentView.m in Sources */,
 				F26D965D1F3C400F0063B024 /* MBCommunityCellTableViewCell.m in Sources */,
-				EE19DDEF230BDE1E0066A2ED /* FSPageContentView.m in Sources */,
 				4A3A07941FCC0E7700A50393 /* ZJshopTableViewCell.m in Sources */,
-				EE19DDFF230BDE1E0066A2ED /* SchoolNavigatorController.m in Sources */,
 				6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */,
 				82398BC921A4289500300C91 /* SYCEditToolsViewHeader.m in Sources */,
 				E41AD25B222BF13D00360C56 /* GradeView.m in Sources */,
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
-				EE19DDD8230BDE1E0066A2ED /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
-				EE19DE04230BDE1E0066A2ED /* LQQpercentageOfStudent.m in Sources */,
 				E480E56F2306D80200F69199 /* RoadIndex.m in Sources */,
 				6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */,
-				EE19DDF9230BDE1E0066A2ED /* ChildViewController.m in Sources */,
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
 				EE19DDC1230BDE1E0066A2ED /* QRCodeView.m in Sources */,
+				E46FCEFE230FCF90001FECE8 /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
 				F242DDBF1EBCB2BB005AC411 /* triangleView.m in Sources */,
 				E48DB6A5223E3DAF00B9D744 /* QueryModel.m in Sources */,
 				E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
 				82398BC421A4289500300C91 /* SYCMainDiscoverViewController.m in Sources */,
 				F242DEB11EBCB2BC005AC411 /* LessonBtnModel.m in Sources */,
-				EE19DDDA230BDE1E0066A2ED /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
 				E48DB6A4223E3DAF00B9D744 /* QueryDataModel.m in Sources */,
 				E480E5692306D80200F69199 /* RecommendedRouteHeaderView.m in Sources */,
-				EE19DDD9230BDE1E0066A2ED /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
 				F242DDBC1EBCB2BB005AC411 /* QuerNoteView.m in Sources */,
 				1A5A20302307FFD000D6D329 /* ActicytyQRCodeView.m in Sources */,
 				F2F194751F68395D0034A3BB /* SplashModel.m in Sources */,
 				F242DF021EBCB2BC005AC411 /* ExamScheduleViewController.m in Sources */,
 				F242DEB81EBCB2BC005AC411 /* CoverView.m in Sources */,
+				E46FCEF1230FCF90001FECE8 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
 				82398BC621A4289500300C91 /* SYCCustomLayoutModel.m in Sources */,
 				E480E5672306D80200F69199 /* BusRoutesModel.m in Sources */,
-				EE19DDD7230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				E48DB544223E36CF00B9D744 /* WYCWeekChooseBar.m in Sources */,
+				E46FCEE5230FCF90001FECE8 /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */,
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
 				E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */,
 				E470CA012227FAD20029501A /* LostModel.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
+				E46FCF04230FCF90001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
 				1A5A202E2307FFD000D6D329 /* FYHSearchResult.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
 				6E1F466520C1557000B0F36F /* dailyAttendanceCell.m in Sources */,
@@ -4880,7 +4878,7 @@
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
-				EE19DDCF230BDE1E0066A2ED /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
+				E46FCEF4230FCF90001FECE8 /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
 				82A0A56D20BEFD7700BD628E /* LXAskDeatilViewController.m in Sources */,
 				F242DDB71EBCB2BB005AC411 /* QuerCircleView.m in Sources */,
@@ -4890,27 +4888,25 @@
 				82398BCA21A4289500300C91 /* SYCEditToolsView.m in Sources */,
 				82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */,
 				82398BC721A4289500300C91 /* SYCToolsCell.m in Sources */,
+				E46FCF23230FCF90001FECE8 /* LQQpercentageOfStudent.m in Sources */,
 				6E3AB64220AD76A3003A65F5 /* YouWenDetailHeadView.m in Sources */,
 				F242DEBC1EBCB2BC005AC411 /* MainView.m in Sources */,
-				EE19DDC5230BDE1E0066A2ED /* DGActivityIndicatorView.m in Sources */,
 				E48DB52F223E36AB00B9D744 /* WYCClassBookViewController.m in Sources */,
-				EE19DE02230BDE1E0066A2ED /* DiningHallAndDormitoryController.m in Sources */,
+				E46FCEF6230FCF90001FECE8 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */,
 				6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */,
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				E48DB535223E36BD00B9D744 /* WYCClassAndRemindDataModel.m in Sources */,
+				E46FCF00230FCF90001FECE8 /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */,
 				E470C9FB2227FAD20029501A /* LostViewController.m in Sources */,
 				1A5A20292307FFD000D6D329 /* FYHHometownGroupController.m in Sources */,
 				E470CA022227FAD20029501A /* LZDatePicker.m in Sources */,
+				E46FCF02230FCF90001FECE8 /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				EE19DDC2230BDE1E0066A2ED /* LQQwantMoreViewController.m in Sources */,
-				EE19DDE3230BDE1E0066A2ED /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				1A5A20312307FFD000D6D329 /* FYHGroupsTabelViweCell.m in Sources */,
 				1A5A20252307FFD000D6D329 /* WelComeView.m in Sources */,
-				EE19DDF6230BDE1E0066A2ED /* LQQchooseCollegeViewController.m in Sources */,
 				E480E5612306D80200F69199 /* SchoolPicCollectionViewCell.m in Sources */,
 				F242DDBB1EBCB2BB005AC411 /* QuerLoginViewController.m in Sources */,
-				EE19DDCB230BDE1E0066A2ED /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				E470C9FC2227FAD20029501A /* LZIssueSucceedViewController.m in Sources */,
-				EE19DDF7230BDE1E0066A2ED /* LQQfirstChooseButtonView.m in Sources */,
 				E48DB6A0223E3DAF00B9D744 /* QueryTableViewCell.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				6E5C09FD205EA5D800A73F64 /* YouWenSubjectView.m in Sources */,
@@ -4918,16 +4914,19 @@
 				F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				6E17201C208C8057008967D9 /* ReportModel.m in Sources */,
+				E46FCF06230FCF90001FECE8 /* FSSegmentTitleView.m in Sources */,
+				E46FCEE6230FCF90001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
+				E46FCEFF230FCF90001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
+				E46FCF12230FCF90001FECE8 /* LQQsubjectDataView.m in Sources */,
 				E470CA292228055C0029501A /* LZSearchView.m in Sources */,
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
 				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				82398C0321A42F0F00300C91 /* ListModel.m in Sources */,
+				E46FCEFA230FCF90001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
-				EE19DDFA230BDE1E0066A2ED /* LQQDataModel.m in Sources */,
 				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,
 				6E50123020C2523600613B13 /* draftsTableViewCell.m in Sources */,
-				EE19DDDE230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
 				F28EA5DE1F6AC0E2002351EF /* LaunchScreenViewController.m in Sources */,
 				82398BCB21A4289500300C91 /* SYCToolModel.m in Sources */,
 				E41AD26F222BFE9000360C56 /* SYCSegmentView.m in Sources */,
@@ -4935,24 +4934,28 @@
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				E48DB6A1223E3DAF00B9D744 /* BackgroundTableViewCell.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
+				E46FCF1C230FCF90001FECE8 /* ExpressCompanyItem.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				F242DDB81EBCB2BB005AC411 /* QuerCurveView.m in Sources */,
+				E46FCF01230FCF90001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
 				E470CA042227FAD20029501A /* LZConfirmButton.m in Sources */,
 				1A5A202D2307FFD000D6D329 /* AcademyOrHometownItem.m in Sources */,
 				F242DF0F1EBCB2BC005AC411 /* MyMessagesTableViewCell.m in Sources */,
 				6E66BBAA1F8D10DF00C1CE1C /* LessonRemindNotification.m in Sources */,
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
-				EE19DDD5230BDE1E0066A2ED /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
 				E48DB69E223E3DAF00B9D744 /* QueryViewController.m in Sources */,
+				E46FCF22230FCF90001FECE8 /* DiningHallAndDormitoryItem.m in Sources */,
 				6E3AB64A20AD76A3003A65F5 /* YouWenAnswerDetailModel.m in Sources */,
 				6E1A3A3C20B721B4002D62FC /* shopViewController.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
+				E46FCEF5230FCF90001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
 				F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
+				E46FCF16230FCF90001FECE8 /* LQQfirstChooseButtonView.m in Sources */,
 				6E3AB63920AD76A3003A65F5 /* AnswerDetailTableViewCell.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				E48DB69C223E3DAF00B9D744 /* sevenViewController.m in Sources */,
@@ -4961,22 +4964,21 @@
 				82398BC521A4289500300C91 /* SYCPictureDisplay.m in Sources */,
 				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
-				EE19DDC7230BDE1E0066A2ED /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
-				EE19DDDD230BDE1E0066A2ED /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
+				E46FCEFD230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E3AB64520AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				E48DB6A2223E3DAF00B9D744 /* QueryLoginViewController.m in Sources */,
 				E48DB69F223E3DAF00B9D744 /* HeaderTableViewCell.m in Sources */,
-				EE19DDCA230BDE1E0066A2ED /* DGActivityIndicatorTriplePulseAnimation.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
 				E48DB699223E3DAF00B9D744 /* fourViewController.m in Sources */,
 				6E3AB64620AD76A3003A65F5 /* YouWenBottomButtonView.m in Sources */,
 				F2A92CFE1F52EB2600B4CEEF /* UIImage+Helper.m in Sources */,
-				EE19DDE5230BDE1E0066A2ED /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
+				E46FCEEA230FCF90001FECE8 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */,
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				82398BC821A4289500300C91 /* SYCCustomToolsControlView.m in Sources */,
-				EE19DDCC230BDE1E0066A2ED /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
+				E46FCEE4230FCF90001FECE8 /* DGActivityIndicatorView.m in Sources */,
+				E46FCF11230FCF90001FECE8 /* InfiniteRollScrollView.m in Sources */,
 				1A5A20272307FFD000D6D329 /* FYHOnlineActivitiesController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				E48DB6A3223E3DAF00B9D744 /* QueryHeader.m in Sources */,
@@ -4987,54 +4989,50 @@
 				E48DB548223E36CF00B9D744 /* WYCShowDetailView.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */,
+				E46FCF1B230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.m in Sources */,
 				E41AD267222BF64300360C56 /* ExamPickView.m in Sources */,
-				EE19DDE6230BDE1E0066A2ED /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				6E12A3362053D93400D07606 /* YouWenSoreView.m in Sources */,
-				EE19DDD3230BDE1E0066A2ED /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
 				6E12A32C20518F9C00D07606 /* TransparentView.m in Sources */,
 				F242DDB61EBCB2BB005AC411 /* PointingCircleView.m in Sources */,
 				1A5A20342307FFD000D6D329 /* WillCopy.m in Sources */,
-				EE19DDE4230BDE1E0066A2ED /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */,
+				E46FCEEE230FCF90001FECE8 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */,
 				6E7167261F85D6E700C46038 /* EmptyClassViewController.m in Sources */,
 				E48DB549223E36CF00B9D744 /* WYCClassBookView.m in Sources */,
 				6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */,
 				E48DB664223E3DAF00B9D744 /* HeaderGifRefresh.m in Sources */,
+				E46FCF0E230FCF90001FECE8 /* FSPageContentView.m in Sources */,
 				F26D96661F3C400F0063B024 /* DetailBannnerView.m in Sources */,
 				82398C0421A42F0F00300C91 /* ListTableViewCell.m in Sources */,
 				E46FCE59230C3D5C001FECE8 /* FMNecessityTableViewCell.m in Sources */,
-				EE19DDF2230BDE1E0066A2ED /* InfiniteRollScrollView.m in Sources */,
-				EE19DE03230BDE1E0066A2ED /* DiningHallAndDormitoryItem.m in Sources */,
 				F2A92CEF1F52E8F900B4CEEF /* UIImage+Color.m in Sources */,
 				E48DB534223E36BD00B9D744 /* DateModle.m in Sources */,
 				1A5A202C2307FFD000D6D329 /* ActivityItem.m in Sources */,
-				EE19DDDC230BDE1E0066A2ED /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
-				EE19DDDB230BDE1E0066A2ED /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
 				F242DF7D1EBCB2BC005AC411 /* MOHImageParamModel.m in Sources */,
 				F2C862C91F4E9F08005C887E /* MyInfoModel.m in Sources */,
 				F26D969B1F3C400F0063B024 /* MBPhotoContainerView.m in Sources */,
+				E46FCF1E230FCF90001FECE8 /* SchoolNavigatorController.m in Sources */,
 				F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */,
 				E480E5602306D80200F69199 /* SchoolMapView.m in Sources */,
+				E46FCEF0230FCF90001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
 				F2A92CE41F52E8BE00B4CEEF /* BaseTableViewController.m in Sources */,
 				F26D96691F3C400F0063B024 /* ImageWithLabels.m in Sources */,
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				E480E55D2306D80200F69199 /* CampusScenery.m in Sources */,
-				EE19DDD2230BDE1E0066A2ED /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				1A5A20382307FFD000D6D329 /* StartStepsCell.m in Sources */,
 				1A5A20372307FFD000D6D329 /* StepsModel.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
-				EE19DDCE230BDE1E0066A2ED /* DGActivityIndicatorBallRotateAnimation.m in Sources */,
+				E46FCEFC230FCF90001FECE8 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
 				E470C9FD2227FAD20029501A /* LostTableViewController.m in Sources */,
-				EE19DDFC230BDE1E0066A2ED /* LQQXiaoYuanZhiYinViewController.m in Sources */,
 				E470CA282228055C0029501A /* LZPersonAddView.m in Sources */,
 				E470CA062227FAD20029501A /* LostTableViewCell.m in Sources */,
-				EE19DDE0230BDE1E0066A2ED /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
 				6E3AB66520B06741003A65F5 /* countdayView.m in Sources */,
 				1A5A202A2307FFD000D6D329 /* FYHSegmentesController.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
 				6E3AB65020AD76A3003A65F5 /* YouWenDetailViewController.m in Sources */,
 				E480E5652306D80200F69199 /* BusRoutes.m in Sources */,
+				E46FCF18230FCF90001FECE8 /* ChildViewController.m in Sources */,
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				E48DB69D223E3DAF00B9D744 /* AllYearsViewController.m in Sources */,
@@ -5046,16 +5044,17 @@
 				6E12A339205532A300D07606 /* YouWenResultView.m in Sources */,
 				E48DB54A223E36CF00B9D744 /* WYCClassDetailView.m in Sources */,
 				E480E55F2306D80200F69199 /* CampusSceneryModel.m in Sources */,
+				E46FCEED230FCF90001FECE8 /* DGActivityIndicatorBallRotateAnimation.m in Sources */,
 				E480E56D2306D80200F69199 /* RecommendedRouteTableViewCell.m in Sources */,
 				F242DEBB1EBCB2BC005AC411 /* LessonNumLabel.m in Sources */,
 				1A5A203A2307FFD000D6D329 /* StartStepsTableView.m in Sources */,
 				E470CA2A2228055C0029501A /* LZTextField.m in Sources */,
 				E48DB5F0223E37EB00B9D744 /* HttpClient.m in Sources */,
-				EE19DDCD230BDE1E0066A2ED /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
 				F26D96641F3C400F0063B024 /* TopicRequest.m in Sources */,
 				E470CA072227FAD20029501A /* LostAndFoundButton.m in Sources */,
 				E470CA252228055C0029501A /* LZPersonSelectViewController.m in Sources */,
 				6E3AB65F20AFD7EE003A65F5 /* rotaryCountView.m in Sources */,
+				E46FCEFB230FCF90001FECE8 /* DGActivityIndicatorBallScaleAnimation.m in Sources */,
 				4A3A07961FCC0E7700A50393 /* ZJShopViewController.m in Sources */,
 				E48DB663223E3DAF00B9D744 /* AESCipher.m in Sources */,
 				E48DB6A6223E3DAF00B9D744 /* YearChooseBar.m in Sources */,
@@ -5064,7 +5063,6 @@
 				F26D966B1F3C400F0063B024 /* TopicBtn.m in Sources */,
 				F26D96651F3C400F0063B024 /* BannerScrollView.m in Sources */,
 				E48DB69B223E3DAF00B9D744 /* sixViewController.m in Sources */,
-				EE19DDC6230BDE1E0066A2ED /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */,
 				F242DEFB1EBCB2BC005AC411 /* AboutMeTableViewCell.m in Sources */,
 				82398BCC21A4289500300C91 /* LZCarouselModel.m in Sources */,
 				6E3213FA20D5426400E55145 /* UIViewController+BackButtonHandler.m in Sources */,
@@ -5074,10 +5072,12 @@
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
+				E46FCEF8230FCF90001FECE8 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */,
 				6E5C0AB420690E1200A73F64 /* myUILabel.m in Sources */,
 				6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */,
 				6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */,
 				E46FCE60230FA788001FECE8 /* SYCEditReminderViewController.m in Sources */,
+				E46FCEEB230FCF90001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,
 				F242DDB01EBCB2BB005AC411 /* InstallRoomViewController.m in Sources */,

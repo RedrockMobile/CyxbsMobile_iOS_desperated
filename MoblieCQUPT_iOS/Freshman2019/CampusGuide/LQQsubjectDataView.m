@@ -6,7 +6,7 @@
 //  Copyright © 2019 Orange-W. All rights reserved.
 //
 
-#define HIGHTPERONE 32//每个单位的高度
+#define HIGHTPERONE 26//每个单位的高度
 #import "LQQsubjectDataView.h"
 
 @implementation LQQsubjectDataView
@@ -122,6 +122,9 @@
         label.font = [UIFont fontWithName:@"PingFang-SC-Medium" size:13.0f];
         label.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:0.8f];
         [_viewThree addSubview:label];
+    }completion:^(BOOL finished) {
+        
+        
     }];
     UILabel*subject1 = [[UILabel alloc]init];//用来存放科目
     subject1.text = value0;

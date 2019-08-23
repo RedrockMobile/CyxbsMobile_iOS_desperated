@@ -15,7 +15,7 @@
 #import "InfiniteRollScrollView.h"
 #import "DGActivityIndicatorView.h"
 
-@interface LQQshuJuJieMiViewController ()
+@interface LQQshuJuJieMiViewController ()<FSPageContentViewDelegate,FSSegmentTitleViewDelegate>
 @property(nonatomic,strong)LQQDataModel*INeedData;
 @property (nonatomic, strong) FSPageContentView *pageContentView;
 @property (nonatomic, strong) FSSegmentTitleView *titleView;
@@ -60,7 +60,7 @@
 //    [activityIndicatorView startAnimating];
 //
 //
-     [self buildSubjectDataView];
+//     [self buildSubjectDataView];
     
       [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(downLoadNanNvBiLi) name:@"biliDataOK" object:nil];
     
@@ -104,35 +104,35 @@
     for (NSString *title in _INeedData.shuJuJieMi) {
         ChildViewController *vc = [[ChildViewController alloc]init];
                 vc.title = title;
-        vc.view.backgroundColor = [UIColor colorWithRed:236/255.0 green:246/255.0 blue:246/255.0 alpha:1];
+        vc.view.backgroundColor = [UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1];
         [_childVCs addObject:vc];
     }
     [_childVCs[0].backgroundView addSubview:znkm];
     [_childVCs[1].backgroundView addSubview:nanNvBiLi];
     //    childVCs[0].view.backgroundColor = [UIColor redColor];
-    self.pageContentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0,100, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 90) childVCs:_childVCs parentVC:self delegate:self];//把ChildVCs数组中的界面展示在pageContentview上
+    self.pageContentView = [[FSPageContentView alloc]initWithFrame:CGRectMake(0,100, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)) childVCs:_childVCs parentVC:self delegate:self];//把ChildVCs数组中的界面展示在pageContentview上
     [self.view addSubview:_pageContentView];
     [self.pageContentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(self.view);
         make.height.equalTo(self.view.mas_width).multipliedBy(656.0/750);
         make.centerX.equalTo(self.view);
         //        make.centerY.equalTo(self.view.mas_centerY).offset(15);
-        make.top.equalTo(_titleView.mas_bottom);
+        make.top.equalTo(self->_titleView.mas_bottom);
         
     }];
 
     [znkm mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(_childVCs[0].backgroundView).multipliedBy(0.85);
-        make.height.equalTo(_childVCs[0].backgroundView).multipliedBy(0.85);
-        make.top.equalTo(_childVCs[0].backgroundView).offset(30);
-        make.centerX.equalTo(_childVCs[0].backgroundView);
+        make.width.equalTo(self->_childVCs[0].backgroundView).multipliedBy(0.85);
+        make.height.equalTo(self->_childVCs[0].backgroundView).multipliedBy(0.85);
+        make.top.equalTo(self->_childVCs[0].backgroundView).offset(30);
+        make.centerX.equalTo(self->_childVCs[0].backgroundView);
         
     }];
     [nanNvBiLi mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(_childVCs[1].backgroundView).multipliedBy(0.85);
-        make.height.equalTo(_childVCs[1].backgroundView).multipliedBy(0.85);
-        make.top.equalTo(_childVCs[1].backgroundView).offset(30);
-        make.centerX.equalTo(_childVCs[1].backgroundView);
+        make.width.equalTo(self->_childVCs[1].backgroundView).multipliedBy(0.85);
+        make.height.equalTo(self->_childVCs[1].backgroundView).multipliedBy(0.85);
+        make.top.equalTo(self->_childVCs[1].backgroundView).offset(30);
+        make.centerX.equalTo(self->_childVCs[1].backgroundView);
         
     }];
 }
@@ -154,6 +154,7 @@
 }
 -(void)downLoadNanNvBiLi{
          [self buildSubjectDataView];
+    
 
 }
 
