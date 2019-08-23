@@ -244,7 +244,11 @@
 //NavigationBar的编辑按钮
 - (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
     SYCEditReminderViewController *vc = [[SYCEditReminderViewController alloc] init];
-    vc.reminders = self.dataArray[0];
+    if ([_titleArray[0] isEqual:@"备忘录"]) {
+        vc.reminders = self.dataArray[0];
+    }else{
+        vc.reminders = [@[] mutableCopy];
+    }
     vc.delagete = self;
     [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
 }
