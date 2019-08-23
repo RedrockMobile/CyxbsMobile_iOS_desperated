@@ -12,19 +12,23 @@
 #import "SchoolPicCollectionViewCell.h"
 #import "CampusSceneryModel.h"
 #import <Photos/Photos.h>
-@interface CampusScenery ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+
+@interface CampusScenery ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 @property(strong, nonatomic)SchoolMapView *schoolMapView;
 @property(strong, nonatomic)SchoolPicView *schoolPicView;
 @property(strong, nonatomic)NSMutableArray<NSURL *> *imgUrlArray;
 @property(strong, nonatomic)NSMutableArray<NSString *> *imgNameArray;
 @property(strong, nonatomic)CampusSceneryModel *model;
+@property(nonatomic, weak)UIImageView*imgView;
+@property (nonatomic, weak)UIScrollView *scrollView;
+
 @end
 
 @implementation CampusScenery
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"校园风采";
+    self.title = @"校园风光";
     self.view.backgroundColor = [UIColor colorWithHexString:@"eff7ff"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -45,38 +49,65 @@
     [self setSchoolPicView];
 }
 -(void)setSchoolMapView{
-    self.schoolMapView = [[SchoolMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 285)];
-    [self.schoolMapView.mapView setImageWithURL:self.model.schoolMapUrl placeholder:[UIImage imageNamed:@"SchoolPicNodataImg"]];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToWatch:)];
-    [self.schoolMapView.mapView addGestureRecognizer:tap];
-    [self.view addSubview:self.schoolMapView];
+//    self.schoolMapView = [[SchoolMapView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 285)];
+//    [self.schoolMapView.mapView setImageWithURL:self.model.schoolMapUrl placeholder:[UIImage imageNamed:@"SchoolPicNodataImg"]];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToWatch:)];
+//    [self.schoolMapView.mapView addGestureRecognizer:tap];
+//    [self.view addSubview:self.schoolMapView];
 }
 -(void)setSchoolPicView{
-    self.schoolPicView = [[SchoolPicView alloc]initWithFrame:CGRectMake(0, 285, self.view.width, self.view.height - 285)];
+//    self.schoolPicView = [[SchoolPicView alloc]initWithFrame:CGRectMake(0, 285, self.view.width, self.view.height - 285 - TOTAL_TOP_HEIGHT - SCREEN_HEIGHT * 0.06 - TABBARHEIGHT)];
+    self.schoolPicView = [[SchoolPicView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
     self.schoolPicView.schoolPicCollectionView.delegate = self;
     self.schoolPicView.schoolPicCollectionView.dataSource = self;
+    self.schoolPicView.schoolPicCollectionView.contentInset = UIEdgeInsetsMake(285, 0, 0, 0);
     
     [self.view addSubview:self.schoolPicView];
     [self.schoolPicView.schoolPicCollectionView registerClass:[SchoolPicCollectionViewCell class] forCellWithReuseIdentifier:@"cellId"];
+    
+    self.schoolMapView = [[SchoolMapView alloc]initWithFrame:CGRectMake(-15, -300, self.view.width, 285)];
+    [self.schoolMapView.mapView setImageWithURL:self.model.schoolMapUrl placeholder:[UIImage imageNamed:@"SchoolPicNodataImg"]];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToWatch:)];
+    [self.schoolMapView.mapView addGestureRecognizer:tap];
+    [self.schoolPicView.schoolPicCollectionView addSubview:self.schoolMapView];
 }
 -(void)setDataFromModel{
     self.imgUrlArray = self.model.schoolPicUrlArray;
     self.imgNameArray = self.model.schoolPicNameArray;
+//    self.imgNameArray = [@[@"八十万",@"八十万",@"八十万",@"八十万",@"八十万",@"八十万",@"八十万"] mutableCopy];
+//    for(int i = 0;i < 6;i++){
+//
+//        [self.imgUrlArray addObject:[UIImage imageNamed:@"SchoolPicNodataImg"]];
+//    }
+//    for (NSDictionary *dic in self.model.schoolPicArray) {
+//        [self.imgNameArray addObject:[dic objectForKey:@"name"]];
+//        NSString *photoName = [dic objectForKey:@"photo"];
+//        
+//        NSString *urlString = [NSString stringWithFormat:@"%@%@",@"http://129.28.185.138:8080/zsqy/image/",photoName];
+//        NSURL *url = [NSURL URLWithString:urlString];
+//        //        NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:url]];
+//        //        UIImage *image = [UIImage imageWithData:imgData];// 拿到image
+//        [self.imgUrlArray addObject:url];
+//    }
+
+    
 }
-
-
 #pragma mark collectionView代理方法
 //返回section个数
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
+{
     return 1;
 }
 
 //每个section的item个数
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
     return 23;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
     
     SchoolPicCollectionViewCell *cell = (SchoolPicCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellId" forIndexPath:indexPath];
     cell.backgroundColor = [UIColor whiteColor];
@@ -96,7 +127,7 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    CGFloat width = (self.view.width - 30)/2;
+    CGFloat width = (self.view.width - 35)/2;
     CGSize size = CGSizeMake(width, width*0.8);
     return size;
     
@@ -110,15 +141,27 @@
 //设置每个item水平间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 0;
+    return 5;
 }
 
 
 //设置每个item垂直间距
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
 {
-    return 10;
+    return 15;
 }
+
+
+//-(void)tapToWatch:(UITapGestureRecognizer *)tap{
+//    NSMutableArray *imageArray = [NSMutableArray array];
+//    for (int i = 0; i < 23; i++) {
+//        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
+//        SchoolPicCollectionViewCell *cell = (SchoolPicCollectionViewCell *)[self.schoolPicView.schoolPicCollectionView cellForItemAtIndexPath:indexPath];
+//        [imageArray addObject:cell.imageView.image];
+//    }
+//    SchoolPicScrollView *scrollImageView = [[SchoolPicScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds andPictures:self.imgUrlArray];
+//    [self.view addSubview:scrollImageView];
+//}
 
 
 -(void)tapToWatch:(UITapGestureRecognizer *)tap{
@@ -128,20 +171,34 @@
         [[[UIApplication sharedApplication].keyWindow viewWithTag:999] removeFromSuperview];
     }
     UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-    view.backgroundColor = [UIColor blackColor];
+    view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.8];
     //设置view的tag
     view.tag = 999;
     //添加手势
     UITapGestureRecognizer *tapToBackGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapToBack)];
     [view addGestureRecognizer:tapToBackGesture];
-    //往全屏view上添加内容
     
-   
-    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/2 - 100, SCREEN_WIDTH, 200)];
-    [view addSubview:imgView];
+    //往全屏view上添加内容
+    UIImage *image = ((UIImageView *)tap.view).image;
+    CGSize imageSize = image.size;
+    CGFloat imageHeight = imageSize.height;
+    CGFloat imageWidth = imageSize.width;
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    [view addSubview:scrollView];
+    scrollView.maximumZoomScale = 5;
+    scrollView.minimumZoomScale = 1;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    scrollView.delegate = self;
+    self.scrollView = scrollView;
+    
+    UIImageView *imgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, (imageHeight / imageWidth) * SCREEN_WIDTH)];
+    imgView.center = CGPointMake(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+    [scrollView addSubview:imgView];
     NSInteger index = tap.view.tag;
-    UIImageView *originalImgView = tap.view;
-    if(index == 0){
+    UIImageView *originalImgView = (UIImageView *)tap.view;
+    if(index == 0) {
         [imgView setImage:originalImgView.image];
         
     }else{
@@ -152,6 +209,8 @@
         [view addSubview:indexLabel];
         
     }
+    self.imgView = imgView;
+    
     UIButton *downloadBtn = [[UIButton alloc]initWithFrame:CGRectMake(SCREEN_WIDTH - 30, SCREEN_HEIGHT - 30, 15, 15)];
     downloadBtn.tag = index;
     [downloadBtn setImage:[UIImage imageNamed:@"DownloadBtn"] forState:UIControlStateNormal];
@@ -162,6 +221,7 @@
     
     //显示全屏view
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    window.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
     [window addSubview:view];
     CAKeyframeAnimation* animation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
     animation.duration = 0.3;
@@ -212,4 +272,21 @@
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+#pragma mark - scrollView代理
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    return self.imgView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    CGRect frame = self.imgView.frame;
+    
+    frame.origin.y = (self.scrollView.frame.size.height - self.imgView.frame.size.height) > 0 ? (self.scrollView.frame.size.height - self.imgView.frame.size.height) * 0.5 : 0;
+    frame.origin.x = (self.scrollView.frame.size.width - self.imgView.frame.size.width) > 0 ? (self.scrollView.frame.size.width - self.imgView.frame.size.width) * 0.5 : 0;
+    self.imgView.frame = frame;
+    
+    self.scrollView.contentSize = CGSizeMake(self.imgView.frame.size.width + 30, self.imgView.frame.size.height + 30);
+}
+
 @end

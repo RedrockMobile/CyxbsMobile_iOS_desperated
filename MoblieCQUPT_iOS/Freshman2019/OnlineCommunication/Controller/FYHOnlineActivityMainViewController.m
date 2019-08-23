@@ -38,6 +38,7 @@
 #pragma mark - 生命周期
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(academyRequetsSucceeded:) name:@"model requests suceeded" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selectedACell:) name:@"selected a cell" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(joinActivity:) name:@"join activity" object:nil];
@@ -71,6 +72,11 @@
     [self.view addSubview:self.resultTable];
     [self.view bringSubviewToFront:self.searchBar];
     [self.view bringSubviewToFront:self.segmentBar];
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"努力加载中";
+    [hud hide:YES afterDelay:1];
 }
 
 - (void)dealloc

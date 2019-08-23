@@ -13,7 +13,7 @@
     self = [super initWithFrame:frame];
     UIView *backgroundView = [[UIView alloc]initWithFrame:frame];
     UIImageView *backgroundImgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"SchoolMapBackgroundImg"]];
-    backgroundImgView.contentMode = UIViewContentModeScaleToFill;
+//    backgroundImgView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:backgroundImgView];
     [backgroundView addSubview:backgroundImgView];
     
@@ -21,6 +21,8 @@
 
     self.mapView.layer.borderWidth = 1;
     self.mapView.layer.borderColor =  [UIColor colorWithHexString:@"d2deff"].CGColor;
+    self.mapView.contentMode = UIViewContentModeScaleAspectFill;
+    self.mapView.clipsToBounds = YES;
     [backgroundView addSubview:self.mapView];
     self.mapView.userInteractionEnabled = YES;
     

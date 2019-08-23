@@ -8,8 +8,8 @@
 
 #import "LQQwantMoreViewController.h"
 #import "QRCodeView.h"
-#import <WebKit/WebKit.h>
-
+#import "welcomeNewWebController.h"
+#import "BaseNavigationController.h"
 @interface LQQwantMoreViewController ()<UIActionSheetDelegate,UIWebViewDelegate>
 @property (nonatomic, strong)UIButton*number1;//重邮2019迎新专题
 @property(nonatomic, strong)UIButton*number2;//掌上重邮新功能
@@ -171,11 +171,14 @@
 
 }
 -(void)clicknumber1{
-     WKWebView * webView = [[WKWebView alloc]initWithFrame:self.view.bounds];
-    NSURL * url = [NSURL URLWithString:@"http://https://web.redrock.team/welcome2019/mobile/"];
-    NSURLRequest * request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
-    [self.view addSubview:webView];
+
+    welcomeNewWebController*controller = [[welcomeNewWebController alloc]init];
+    BaseNavigationController*nav = [[BaseNavigationController alloc]initWithRootViewController:controller];
+    [self presentViewController:nav animated:YES completion:nil];
+    
+
+
+
 
 }
 -(void)clicknumber2{
@@ -241,7 +244,7 @@
 }
 -(void)longPress:(UITapGestureRecognizer*)sender{
     if(sender.state == UIGestureRecognizerStateBegan){
-        UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:@"保存二维码至个人相册" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"保存", nil];
+        UIActionSheet * actionSheet = [[UIActionSheet alloc]initWithTitle:@"保存二维码至个人相册" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles: @"保存",nil];
         //展示活动列表
         [actionSheet showInView:self.view];
     }

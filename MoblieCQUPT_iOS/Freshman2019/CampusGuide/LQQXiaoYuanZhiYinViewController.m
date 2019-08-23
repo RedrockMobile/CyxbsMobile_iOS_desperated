@@ -38,6 +38,7 @@
 @property (nonatomic, copy) NSArray<ExpressCompanyItem *> *companyArray;
 @property(nonatomic, assign)BOOL firstChoose;
 @property(nonatomic,strong)LQQchooseCollegeViewController*chooseCollegeTableViewController;
+@property(nonatomic, strong) MBProgressHUD *hud;
 
 @end
 
@@ -97,6 +98,10 @@
     _titleView.titleNormalColor = [UIColor colorWithRed:122/255.0 green:118/255.0 blue:127/255.0 alpha:0.8];
     _titleView.titleSelectColor = [UIColor colorWithRed:11/255.0 green:18/255.0 blue:16/255.0 alpha:0.9];
     _titleView.indicatorColor = [UIColor clearColor];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"努力加载中";
+    self.hud = hud;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -165,8 +170,8 @@
             [array addObject:dormitory.name];
             [dormitoryItems addObject:dormitory];
         }
-        _titleView.titlesArr = array;
-        [self.view addSubview:_titleView];
+        self.titleView.titlesArr = array;
+        [self.view addSubview:self.titleView];
 
         NSMutableArray *childVC = [NSMutableArray array];
         for (DiningHallAndDormitoryItem *item in dormitoryItems) {
@@ -176,6 +181,8 @@
         }
         self.fyhPageContentView = [[FSPageContentView alloc] initWithFrame:CGRectMake(0, 94 - 15, MAIN_SCREEN_W, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT - 94 + 15) childVCs:childVC parentVC:self delegate:self];
         [self.view addSubview:self.fyhPageContentView];
+        
+        [self.hud hide:YES];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", error);
     }];

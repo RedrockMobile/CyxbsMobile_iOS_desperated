@@ -239,6 +239,7 @@
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
+		E404FE84230FEDE80091141C /* welcomeNewWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE83230FEDE80091141C /* welcomeNewWebController.m */; };
 		E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */; };
 		E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */; };
 		E41AD25B222BF13D00360C56 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD258222BF13D00360C56 /* GradeView.m */; };
@@ -1109,6 +1110,8 @@
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
+		E404FE82230FEDE80091141C /* welcomeNewWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = welcomeNewWebController.h; sourceTree = "<group>"; };
+		E404FE83230FEDE80091141C /* welcomeNewWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = welcomeNewWebController.m; sourceTree = "<group>"; };
 		E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_mine@2x.png"; sourceTree = "<group>"; };
 		E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_youwen@2x.png"; sourceTree = "<group>"; };
 		E41AD256222BF13D00360C56 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
@@ -3140,6 +3143,8 @@
 		EE19DD37230BDE1E0066A2ED /* More */ = {
 			isa = PBXGroup;
 			children = (
+				E404FE82230FEDE80091141C /* welcomeNewWebController.h */,
+				E404FE83230FEDE80091141C /* welcomeNewWebController.m */,
 				EE19DD38230BDE1E0066A2ED /* QRCodeView.m */,
 				EE19DD39230BDE1E0066A2ED /* LQQwantMoreViewController.m */,
 				EE19DD3A230BDE1E0066A2ED /* erWeiMaV2.0.png */,
@@ -5026,6 +5031,7 @@
 				E470C9FD2227FAD20029501A /* LostTableViewController.m in Sources */,
 				E470CA282228055C0029501A /* LZPersonAddView.m in Sources */,
 				E470CA062227FAD20029501A /* LostTableViewCell.m in Sources */,
+				E404FE84230FEDE80091141C /* welcomeNewWebController.m in Sources */,
 				F242DE701EBCB2BC005AC411 /* TimeHandle.m in Sources */,
 				6E3AB66520B06741003A65F5 /* countdayView.m in Sources */,
 				1A5A202A2307FFD000D6D329 /* FYHSegmentesController.m in Sources */,

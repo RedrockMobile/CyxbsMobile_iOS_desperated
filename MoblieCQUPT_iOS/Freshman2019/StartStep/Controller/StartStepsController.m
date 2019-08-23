@@ -15,6 +15,7 @@
 
 @property (nonatomic, copy) NSArray<StepsModel *> *modelArray;
 @property (nonatomic, weak) UITableView *tableView;
+@property (nonatomic, weak) MBProgressHUD *hud;
 
 @end
 
@@ -33,9 +34,14 @@
     StartStepsTableView *tableView = [[StartStepsTableView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - TOTAL_TOP_HEIGHT) style:UITableViewStylePlain];
     tableView.delegate = self;
     tableView.dataSource = self;
-    tableView.backgroundColor = [UIColor colorWithRed:235/255.0 green:247/255.0 blue:255/255.0 alpha:1];
+    tableView.backgroundColor = [UIColor colorWithRed:239/255.0 green:247/255.0 blue:255/255.0 alpha:1];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.tableView animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"努力加载中";
+    self.hud = hud;
 }
 
 - (void)getModelArray {
@@ -53,6 +59,8 @@
         headerLabel.font = [UIFont systemFontOfSize:16];
         headerLabel.textColor = [UIColor colorWithRed:106/255.0 green:106/255.0 blue:106/255.0 alpha:1];
         [self.tableView setTableHeaderView:headerLabel];
+        
+        [self.hud hide:YES];
     }];
 }
 
