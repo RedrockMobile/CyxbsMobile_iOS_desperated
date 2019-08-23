@@ -2,59 +2,40 @@
 //  DLNecessityViewController.m
 //  MoblieCQUPT_iOS
 //
-//  Created by 丁磊 on 2018/8/13.
+//  Created by 施昱丞 on 2018/9/13.
 //  Copyright © 2018年 Orange-W. All rights reserved.
 //
 
-/*
- 
- 这个页面主要由一个tableView，一个悬浮的添加Button构成
- 点击navigationBar的问号按钮，跳出一个UIView介绍本页面并且同时跳出一个背景UIView设置透明度，使弹窗跳出后，背景变暗
- 点击编辑按钮，编辑按钮变为删除，页面变为删除页面，将原cell里的完成选中按钮移除，添加删除选中按钮
- 只能删除非必需的项目使用在model里设一个bool值来表示是否要删除
- 本页面的数据本地化使用plist文件,不更新会保存用户的删除添加和已完成的数据，升级会丢失数据
- 
- */
-
-#import "DLNecessityViewController.h"
-#import "FMNecessityTableViewCell.h"
-#import "addView.h"
-#import "DLNecessityModel.h"
-#import "IntroductionView.h"
 #import <AFNetworking.h>
 #import <Masonry.h>
 #import <MBProgressHUD.h>
+
+#import "SYCNecessityViewController.h"
+#import "FMNecessityTableViewCell.h"
+#import "DLNecessityModel.h"
 #import "BaseNavigationController.h"
 #import "SYCAddReminderViewController.h"
 #import "SYCEditReminderViewController.h"
-#define WIDTH [UIScreen mainScreen].bounds.size.width/375
-#define HEIGHT [UIScreen mainScreen].bounds.size.height/667
+
+#define WIDTH [UIScreen mainScreen].bounds.size.width / 375
+#define HEIGHT [UIScreen mainScreen].bounds.size.height / 667
 
 
-@interface DLNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, UIGestureRecognizerDelegate, SYCAddReminderViewControllerDelegate, SYCEditReminderViewControllerDelagate>
+@interface SYCNecessityViewController ()<UITableViewDelegate, UITableViewDataSource, SYCAddReminderViewControllerDelegate, SYCEditReminderViewControllerDelagate>
 
 
 @property (nonatomic, strong)UIButton *addBtn;  //下方圆形添加按钮
-@property (nonatomic, strong)UIButton *editBtn;   //编辑按钮
-@property (nonatomic, strong)UIView *bkgView;     //背景阴影
 @property (nonatomic, strong)UITableView *FMtableView;
 @property (nonatomic)NSMutableArray<NSMutableArray<DLNecessityModel *> *> *dataArray;
 @property (nonatomic)NSMutableArray<NSString *> *titleArray;
-@property (nonatomic, strong)NSMutableArray *deleteArray;  //需要删除的cell的array
-@property (nonatomic, strong)NSBundle *fileBundel;
-@property (nonatomic, strong)NSString *filePath;
-@property (nonatomic, strong)addView *AddView;   //下方添加栏
-@property (nonatomic, strong)IntroductionView *introduction; //介绍弹窗
-@property (nonatomic, strong)DLNecessityModel *model;
-@property (assign, nonatomic)NSInteger isShowIntroduce;   //如名字
-@property (assign, nonatomic)BOOL isEdit;  //是否编辑的flag
+
 @property (assign, nonatomic)BOOL isSelected;
-@property (assign, nonatomic)BOOL isFloat;//是否播放cell浮动的动效
+@property (assign, nonatomic)BOOL isFloat; //是否播放cell浮动的动效
 @property (assign, nonatomic)BOOL isShowAddBtn;
 
 @end
 
-@implementation DLNecessityViewController
+@implementation SYCNecessityViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -73,14 +54,7 @@
     }else{
         [self getData];
     }
-    
-    self.deleteArray = [@[] mutableCopy];
-    self.isShowIntroduce = 1;
-    self.isEdit = NO;
-    
-    
-    self.bkgView = [[UIView alloc]initWithFrame:self.view.frame];
-    self.bkgView.backgroundColor = RGBColor(239, 247, 255, 1);
+
     
     [self.view addSubview:self.FMtableView];
 
@@ -163,7 +137,7 @@
 }
 
 
-#pragma - tableview的代理方法
+#pragma - Tableview的代理方法
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return self.titleArray.count;
@@ -239,28 +213,9 @@
     return 40;
 }
 
-//cell上浮的动效
-- (void)starAnimationWithTableView:(UITableView *)tableView{
-    if(_isFloat){
-        NSArray *cells = tableView.visibleCells;
-        for (int i = 0; i < cells.count; i++) {
-            UITableViewCell *cell = [cells objectAtIndex:i];
-            cell.layer.opacity = 0.7;
-            cell.layer.transform = CATransform3DMakeTranslation(0, [[UIScreen mainScreen] bounds].size.height, 20);
-            NSTimeInterval totalTime = 0.5;
-            
-            [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.65 initialSpringVelocity:1/0.65 options:UIViewAnimationOptionCurveEaseIn animations:^{
-                cell.layer.opacity = 1.0;
-                cell.layer.transform = CATransform3DMakeTranslation(0, 0, 20);
-            } completion:^(BOOL finished) {
-                
-            }];
-        }
-    }
-}
 
-#pragma - 点击button事件
-//点击cell表示已完成的button
+#pragma - 点击事件
+//点击Cell表示已完成的Button
 - (void)didClickCellBtn1:(UIButton *)button event:(UIEvent *)event{
     UITouch *touch = [[event allTouches] anyObject];
     CGPoint point = [touch locationInView:_FMtableView];
@@ -279,14 +234,14 @@
     [self.FMtableView reloadData];
 }
 
-//点击悬浮添加按钮
+//添加按钮
 - (void)clickAddBtn:(UIButton *)button{
     SYCAddReminderViewController *vc = [[SYCAddReminderViewController alloc] init];
     vc.delegate = self;
     [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
 }
 
-//点击NavigationBar的编辑按钮
+//NavigationBar的编辑按钮
 - (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
     SYCEditReminderViewController *vc = [[SYCEditReminderViewController alloc] init];
     vc.reminders = self.dataArray[0];
@@ -294,6 +249,24 @@
     [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
 }
 
+//Cell上浮的动效
+- (void)starAnimationWithTableView:(UITableView *)tableView{
+    if(_isFloat){
+        NSArray *cells = tableView.visibleCells;
+        for (int i = 0; i < cells.count; i++) {
+            UITableViewCell *cell = [cells objectAtIndex:i];
+            cell.layer.opacity = 0.7;
+            cell.layer.transform = CATransform3DMakeTranslation(0, [[UIScreen mainScreen] bounds].size.height, 20);
+            NSTimeInterval totalTime = 0.5;
+            [UIView animateWithDuration:0.4 delay:i*(totalTime/cells.count) usingSpringWithDamping:0.65 initialSpringVelocity:1/0.65 options:UIViewAnimationOptionCurveEaseIn animations:^{
+                cell.layer.opacity = 1.0;
+                cell.layer.transform = CATransform3DMakeTranslation(0, 0, 20);
+            } completion:nil];
+        }
+    }
+}
+
+#pragma - 添加/删除备忘录的代理方法
 - (void)reloadWithData:(NSMutableArray *)dataArray title:(NSMutableArray *)titleArray{
     self.dataArray = dataArray;
     self.titleArray = titleArray;
@@ -314,6 +287,7 @@
     [self.FMtableView reloadData];
     [self storageData];
 }
+
 
 
 @end

@@ -250,10 +250,8 @@
 		E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD269222BFE9000360C56 /* SYCSegmentViewButton.m */; };
 		E41AD26F222BFE9000360C56 /* SYCSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD26A222BFE9000360C56 /* SYCSegmentView.m */; };
 		E46FCE54230C3D5C001FECE8 /* Necessity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE45230C3D5B001FECE8 /* Necessity.plist */; };
-		E46FCE55230C3D5C001FECE8 /* DLNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE47230C3D5B001FECE8 /* DLNecessityViewController.m */; };
+		E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */; };
 		E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE4B230C3D5B001FECE8 /* DLNecessityModel.m */; };
-		E46FCE57230C3D5C001FECE8 /* IntroductionView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE4D230C3D5B001FECE8 /* IntroductionView.m */; };
-		E46FCE58230C3D5C001FECE8 /* addView.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE51230C3D5B001FECE8 /* addView.m */; };
 		E46FCE59230C3D5C001FECE8 /* FMNecessityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE52230C3D5B001FECE8 /* FMNecessityTableViewCell.m */; };
 		E46FCE5A230C3D5C001FECE8 /* NecessityMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */; };
 		E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */; };
@@ -1129,15 +1127,11 @@
 		E41AD26B222BFE9000360C56 /* SYCSegmentViewButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCSegmentViewButton.h; sourceTree = "<group>"; };
 		E41AD26D222BFE9000360C56 /* SYCSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCSegmentView.h; sourceTree = "<group>"; };
 		E46FCE45230C3D5B001FECE8 /* Necessity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Necessity.plist; sourceTree = "<group>"; };
-		E46FCE47230C3D5B001FECE8 /* DLNecessityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLNecessityViewController.m; sourceTree = "<group>"; };
-		E46FCE48230C3D5B001FECE8 /* DLNecessityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLNecessityViewController.h; sourceTree = "<group>"; };
+		E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCNecessityViewController.m; sourceTree = "<group>"; };
+		E46FCE48230C3D5B001FECE8 /* SYCNecessityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCNecessityViewController.h; sourceTree = "<group>"; };
 		E46FCE4A230C3D5B001FECE8 /* DLNecessityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLNecessityModel.h; sourceTree = "<group>"; };
 		E46FCE4B230C3D5B001FECE8 /* DLNecessityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLNecessityModel.m; sourceTree = "<group>"; };
-		E46FCE4D230C3D5B001FECE8 /* IntroductionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionView.m; sourceTree = "<group>"; };
 		E46FCE4E230C3D5B001FECE8 /* FMNecessityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMNecessityTableViewCell.h; sourceTree = "<group>"; };
-		E46FCE4F230C3D5B001FECE8 /* addView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = addView.h; sourceTree = "<group>"; };
-		E46FCE50230C3D5B001FECE8 /* IntroductionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionView.h; sourceTree = "<group>"; };
-		E46FCE51230C3D5B001FECE8 /* addView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = addView.m; sourceTree = "<group>"; };
 		E46FCE52230C3D5B001FECE8 /* FMNecessityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMNecessityTableViewCell.m; sourceTree = "<group>"; };
 		E46FCE53230C3D5B001FECE8 /* NecessityMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = NecessityMedia.xcassets; sourceTree = "<group>"; };
 		E46FCE5B230D3C74001FECE8 /* SYCAddReminderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SYCAddReminderViewController.h; sourceTree = "<group>"; };
@@ -2501,8 +2495,8 @@
 		E46FCE44230C3D5B001FECE8 /* Necessity */ = {
 			isa = PBXGroup;
 			children = (
-				E46FCE48230C3D5B001FECE8 /* DLNecessityViewController.h */,
-				E46FCE47230C3D5B001FECE8 /* DLNecessityViewController.m */,
+				E46FCE48230C3D5B001FECE8 /* SYCNecessityViewController.h */,
+				E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */,
 				E46FCE5B230D3C74001FECE8 /* SYCAddReminderViewController.h */,
 				E46FCE5C230D3C74001FECE8 /* SYCAddReminderViewController.m */,
 				E46FCE5E230FA788001FECE8 /* SYCEditReminderViewController.h */,
@@ -2527,12 +2521,8 @@
 		E46FCE4C230C3D5B001FECE8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E46FCE50230C3D5B001FECE8 /* IntroductionView.h */,
-				E46FCE4D230C3D5B001FECE8 /* IntroductionView.m */,
 				E46FCE4E230C3D5B001FECE8 /* FMNecessityTableViewCell.h */,
 				E46FCE52230C3D5B001FECE8 /* FMNecessityTableViewCell.m */,
-				E46FCE4F230C3D5B001FECE8 /* addView.h */,
-				E46FCE51230C3D5B001FECE8 /* addView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -4808,7 +4798,7 @@
 				F242DDAF1EBCB2BB005AC411 /* InstallRoomDoneViewController.m in Sources */,
 				1A5A20282307FFD000D6D329 /* FYHOnlineActivityMainViewController.m in Sources */,
 				82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */,
-				E46FCE55230C3D5C001FECE8 /* DLNecessityViewController.m in Sources */,
+				E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */,
 				4A3A07931FCC0E7700A50393 /* ZJShopDeatilViewController.m in Sources */,
 				F242DF101EBCB2BC005AC411 /* MyMessagesViewController.m in Sources */,
 				F26D96981F3C400F0063B024 /* MBCommunityTableView.m in Sources */,
@@ -4909,7 +4899,6 @@
 				F242DDB41EBCB2BB005AC411 /* buildCircleView.m in Sources */,
 				E48DB535223E36BD00B9D744 /* WYCClassAndRemindDataModel.m in Sources */,
 				E470C9FB2227FAD20029501A /* LostViewController.m in Sources */,
-				E46FCE58230C3D5C001FECE8 /* addView.m in Sources */,
 				1A5A20292307FFD000D6D329 /* FYHHometownGroupController.m in Sources */,
 				E470CA022227FAD20029501A /* LZDatePicker.m in Sources */,
 				EE19DDC2230BDE1E0066A2ED /* LQQwantMoreViewController.m in Sources */,
@@ -5082,7 +5071,6 @@
 				F26D96971F3C400F0063B024 /* MBBrowserItem.m in Sources */,
 				1A5A20332307FFD000D6D329 /* OnlineActivitiesCell.m in Sources */,
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
-				E46FCE57230C3D5C001FECE8 /* IntroductionView.m in Sources */,
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
 				F242DF0C1EBCB2BC005AC411 /* MyInfoViewController.m in Sources */,
