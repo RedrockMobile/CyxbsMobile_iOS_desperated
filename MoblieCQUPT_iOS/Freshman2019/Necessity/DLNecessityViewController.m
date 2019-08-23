@@ -66,7 +66,7 @@
     self.isShowAddBtn = YES;
     self.view.backgroundColor = RGBColor(239, 247, 255, 1);
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *dataPath = [docPath stringByAppendingPathComponent:@""];
+    NSString *dataPath = [docPath stringByAppendingPathComponent:@"dataArray.archiver"];
     
     if ([NSKeyedUnarchiver unarchiveObjectWithFile:dataPath]){
         [self initModel];
@@ -77,9 +77,6 @@
     self.deleteArray = [@[] mutableCopy];
     self.isShowIntroduce = 1;
     self.isEdit = NO;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAction:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardAction:) name:UIKeyboardWillHideNotification object:nil];
     
     
     self.bkgView = [[UIView alloc]initWithFrame:self.view.frame];
@@ -105,31 +102,29 @@
     MBProgressHUD *HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     HUD.labelText = @"加载数据中...";
     
-    [HUD showAnimated:YES whileExecutingBlock:^{
-        [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-            self.dataArray = [@[] mutableCopy];
-            self.titleArray = [@[] mutableCopy];
-            for (NSDictionary *dic in [responseObject objectForKey:@"text"]) {
-                [self.titleArray addObject:[dic objectForKey:@"title"]];
-                NSMutableArray *models = [@[] mutableCopy];
-                for (NSDictionary *data in [dic objectForKey:@"data"]) {
-                    [models addObject:[DLNecessityModel DLNecessityModelWithDict:data]];
-                }
-                [self.dataArray addObject:[models mutableCopy]];
+    [manager GET:urlStr parameters:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        self.dataArray = [@[] mutableCopy];
+        self.titleArray = [@[] mutableCopy];
+        for (NSDictionary *dic in [responseObject objectForKey:@"text"]) {
+            [self.titleArray addObject:[dic objectForKey:@"title"]];
+            NSMutableArray *models = [@[] mutableCopy];
+            for (NSDictionary *data in [dic objectForKey:@"data"]) {
+                [models addObject:[DLNecessityModel DLNecessityModelWithDict:data]];
             }
-            
+            [self.dataArray addObject:[models mutableCopy]];
+        }
+        
             //回到主线程刷新tableview
-            dispatch_sync(dispatch_get_main_queue(), ^{
-                [self.FMtableView reloadData];
-                [HUD hide:YES];
-            });
-            [self storageData];
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
-            [alert show];
-            [HUD hide:YES];
-            NSLog(@"failure --- %@",error);
-        }];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            [self.FMtableView reloadData];
+        });
+        [self storageData];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"" message:@"你的网络坏掉了m(._.)m" delegate:self cancelButtonTitle:@"退出" otherButtonTitles:nil, nil];
+        [alert show];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        NSLog(@"failure --- %@",error);
     }];
     
     
@@ -291,6 +286,14 @@
     [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
 }
 
+//点击NavigationBar的编辑按钮
+- (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
+    SYCEditReminderViewController *vc = [[SYCEditReminderViewController alloc] init];
+    vc.reminders = self.dataArray[0];
+    vc.delagete = self;
+    [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:nil];
+}
+
 - (void)reloadWithData:(NSMutableArray *)dataArray title:(NSMutableArray *)titleArray{
     self.dataArray = dataArray;
     self.titleArray = titleArray;
@@ -312,18 +315,5 @@
     [self storageData];
 }
 
-//点击navigationBar的编辑按钮
-- (void)didClickEditBtn:(UIBarButtonItem *)barBtn{
-    SYCEditReminderViewController *vc = [[SYCEditReminderViewController alloc] init];
-    vc.reminders = self.dataArray[0];
-    vc.delagete = self;
-    [self presentViewController:[[BaseNavigationController alloc] initWithRootViewController:vc] animated:YES completion:^{
-        
-    }];
-}
-
-- (void)keyboardAction:(NSNotification*)sender{
-    
-}
 
 @end
