@@ -10,7 +10,6 @@
 @protocol WYCClassBookViewDelegate <NSObject>
 @required
 - (void)showDetail:(NSArray *)array;
-- (void)showChooseClassList:(NSString *)classNum classRoom:(NSString *)classRoom;
 @end
 
 
@@ -20,7 +19,7 @@
 @property (nonatomic, weak) id<WYCClassBookViewDelegate> detailDelegate;
 -(void)initView:(BOOL)isFirst;
 -(void)addBar:(NSArray *)date isFirst:(BOOL)isFirst;
-- (void)addBtn:(NSMutableArray *)day;
+-(void)addBtn:(NSMutableArray *)day;
 
 
 -(void)changeScrollViewContentSize:(CGSize)contentSize;

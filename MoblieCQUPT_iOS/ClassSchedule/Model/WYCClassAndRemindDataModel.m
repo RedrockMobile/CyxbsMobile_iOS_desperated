@@ -32,10 +32,10 @@
         self.classDataLoadFinish = YES;
         [self loadFinish];
     }else{
+        
         [self getClassBookArrayFromNet:stu_Num];
     }
 }
-
 - (void)getClassBookArrayFromNet:(NSString *)stu_Num{
     self.classDataLoadFinish = nil;
     self.weekArray = [[NSMutableArray alloc]init];

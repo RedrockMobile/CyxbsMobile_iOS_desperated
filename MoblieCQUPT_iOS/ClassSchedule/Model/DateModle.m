@@ -78,7 +78,9 @@
     NSInteger nowTime = [now timeIntervalSince1970];
     double day = (float)(nowTime - beginTime)/(float)86400/(float)7;
     NSInteger nowWeek = (int)ceil(day);
-    
+    if(nowWeek < 0){
+        nowWeek = 1;
+    }
     self.nowWeek = [NSNumber numberWithInteger:nowWeek];
     [UserDefaultTool saveValue:self.nowWeek forKey:@"nowWeek"];
     NSLog(@"nowweek:%ld",(long)nowWeek);

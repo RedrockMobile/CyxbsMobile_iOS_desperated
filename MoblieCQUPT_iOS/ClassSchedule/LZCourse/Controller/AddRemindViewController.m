@@ -349,6 +349,8 @@
             
         } success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"%@",responseObject);
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"RemindAddSuccess" object:nil];
+         
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSLog(@"%@",error);
             NSMutableArray *failureRequests = [NSMutableArray arrayWithContentsOfFile:failurePath];
@@ -383,6 +385,7 @@
             
         } success:^(NSURLSessionDataTask *task, id responseObject) {
             NSLog(@"%@",responseObject);
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"RemindEditSuccess" object:nil];
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             NSMutableArray *failureRequests = [NSMutableArray arrayWithContentsOfFile:failurePath];
             if(failureRequests == nil){
