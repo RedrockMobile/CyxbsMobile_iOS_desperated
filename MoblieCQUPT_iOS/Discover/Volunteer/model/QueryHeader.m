@@ -8,13 +8,15 @@
 
 #import "QueryHeader.h"
 @interface QueryHeader()
+
 @property UIImageView *redLine;
 @property CGFloat itemWidth;
 @property CGFloat itemHeight;
 @end
 
 @implementation QueryHeader
-- (instancetype)initWithFrame:(CGRect)frame andControllers:(NSArray <UIViewController *> *)controllers{
+
+- (instancetype)initWithFrame:(CGRect)frame andControllers:(NSArray <UIViewController *> *)controllers {
     self = [self initWithFrame:frame];
     if(self){
         self.controllers = controllers;
@@ -27,7 +29,6 @@
         [self setItems:_items];
     }
     return self;
-    
 }
 
 -(void)setItems:(NSArray *)items
@@ -37,7 +38,7 @@
     _itemHeight = self.frame.size.height-2;
     _btnArray = [NSMutableArray<UIButton *> array];
 
-    for (int i = 0; i< items.count;i++ ) {
+    for (int i = 0; i < items.count; i++) {
             
         UIButton *button = [[UIButton alloc]initWithFrame: CGRectMake(i*_itemWidth, 0, _itemWidth, _itemHeight)];
         [button setTitle:items[i] forState:UIControlStateNormal];
@@ -45,7 +46,7 @@
         button.titleLabel.font = [UIFont systemFontOfSize:13];
         UIColor *myColor = [UIColor colorWithRed:250/255.0 green:128/255.0 blue:114/225.0 alpha:1];
         [button setTitleColor:myColor forState:UIControlStateSelected];
-        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
         button.tag = Button_Origin_Tag+i;
         [self addSubview:button];
         [_btnArray addObject:button];
@@ -58,7 +59,7 @@
         _redLine.image = [UIImage imageNamed:@"scroll"];
         _redLine.contentMode = UIViewContentModeCenter;
         [self addSubview:_redLine];
-    }
+}
 
 
 -(void)buttonClick:(UIButton*)button{

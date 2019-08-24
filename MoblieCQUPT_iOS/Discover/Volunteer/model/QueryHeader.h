@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #define Button_Origin_Tag 78
+
 @interface QueryHeader : UIScrollView
+
 @property (nonatomic,copy) NSArray * items;
 @property (nonatomic,copy) void(^itemClickAtIndex)(NSInteger index);
 @property NSArray <UIViewController *> *controllers;
+@property (nonatomic,copy) NSMutableArray <UIButton *> *btnArray;
+
 -(void)setSelectAtIndex:(NSInteger)index;
 -(void)buttonClick:(UIButton*)button;
-@property (nonatomic,copy) NSMutableArray <UIButton *> *btnArray;
 
 @end

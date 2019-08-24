@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "volunteerItem.h"
 
 @interface QueryViewController : BaseViewController
-@property (nonatomic,assign) NSInteger index;
--(instancetype)initWithDic:(NSDictionary *)dic;
-@end
+
+//@property (nonatomic, strong)VolunteeringEventItem *;
+@property (nonatomic, strong)VolunteerItem *volunteer;
+- (instancetype)initWithVolunteerItem: (VolunteerItem *)volunteer;
+
+@end 

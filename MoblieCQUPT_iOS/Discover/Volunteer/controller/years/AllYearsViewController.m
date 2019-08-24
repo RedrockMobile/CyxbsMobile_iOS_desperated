@@ -10,20 +10,25 @@
 #import "HeaderTableViewCell.h"
 #import "QueryTableViewCell.h"
 #import "BackgroundTableViewCell.h"
-#import "QueryModel.h"
-#import "QueryDataModel.h"
 #import "HeaderGifRefresh.h"
 #import "HttpClient.h"
-@interface AllYearsViewController ()<UITableViewDataSource,UITableViewDelegate>
-@property (strong, nonatomic) NSMutableArray *mutArray;
-//@property (strong, nonatomic) NSMutableArray *mutableArray;
+
+
+@interface AllYearsViewController () <UITableViewDataSource, UITableViewDelegate>
+
+//@property (strong, nonatomic) NSMutableArray *mutArray;
+////@property (strong, nonatomic) NSMutableArray *mutableArray;
 @property (strong, nonatomic) UIImageView *noRecordImage;
 @property (strong, nonatomic) NSString *hour;
+@property (strong, nonatomic) NSArray<VolunteeringEventItem *> *eventsSortedByYears;
+
 @end
+
 @implementation AllYearsViewController
 #define REUESED_SIZE  100
 static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
 #define REUESED_FLAG  reUsedStr[0]
+
 + (void)initialize{
     if (self == [AllYearsViewController class]){
         for (int i = 0; i < REUESED_SIZE; i++){
@@ -34,89 +39,87 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
         }
     }
 }
-- (void)noRecord{
-    NSMutableArray *array = self.mutableArray[0];
-    NSMutableArray *array1 = self.mutableArray[1];
-    NSMutableArray *array2 = self.mutableArray[2];
-    NSMutableArray *array3 = self.mutableArray[3];
-    self.noRecordImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H-64)];
-    self.noRecordImage.image = [UIImage imageNamed:@"没有记录"];
-    if (array.count== 0 && array1.count== 0 && array2.count== 0 && array3.count== 0) {
+
+- (void)buildUI {
+        if (((NSArray *)self.eventsSortedByYears[0]).count == 0) {
+        self.noRecordImage = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H-64)];
+        self.noRecordImage.image = [UIImage imageNamed:@"没有记录"];
+        self.noRecordImage.contentMode = UIViewContentModeScaleAspectFit;
+        
         [self.view addSubview:self.noRecordImage];
-    }
-    else if (array.count!= 0 || array1.count!= 0 ||array2.count!= 0 || array3.count!= 0){
+    } else {
+        self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-HEADERHEIGHT-39) style:UITableViewStylePlain];
+        self.tableView.dataSource = self;
+        self.tableView.delegate = self;
+        UIColor *backgroundColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
+        self.tableView.backgroundColor = backgroundColor;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self.tableView reloadData];
+        
         [self.view addSubview:self.tableView];
     }
 }
 
-- (void)setMutableArray:(NSArray *)mutableArray{
-    _mutableArray = mutableArray;
-    [self noRecord];
+- (instancetype)initWithVolunteer:(VolunteerItem *)volunteer andYearIndex:(NSInteger)index {
+    self = [self init];
+    self.volunteer = volunteer;
+    self.index = index;
+    if (index == 0) {
+        self.eventsSortedByYears = volunteer.eventsSortedByYears;
+    } else {
+        self.eventsSortedByYears = @[volunteer.eventsSortedByYears[index - 1]];
+    }
+    
+    return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.hidden = YES;
-    self.navigationController.navigationBar.shadowImage = [[UIImage alloc]init];
-    self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39) style:UITableViewStylePlain];
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
-    UIColor *backgroundColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
-    self.tableView.backgroundColor = backgroundColor;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.tableView reloadData];
+    self.navigationController.navigationBar.shadowImage = [[UIImage alloc] init];
+    
+    [self buildUI];
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSUInteger row = 0;
+
+#pragma mark tableView数据源
+
+// 分组数
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.eventsSortedByYears.count + 2;
+}
+
+// 每组行数
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0 || section == 1) {
-        row = 1;
+        return 1;
+    } else {
+        // volunteer模型中的eventsSortedByYears是一个将志愿事件按照年份分组排序后的数组。
+        // 其中每一个元素都是一个数组，分别为每一年的志愿活动
+        return ((NSArray *)self.eventsSortedByYears[section - 2]).count;
     }
-    else if (section == 2 ){
-        NSMutableArray *array = self.mutableArray[0];
-        if (array!= nil) {
-            row = array.count;
-        }
-    }
-    else if (section == 3 ){
-        NSMutableArray *array = self.mutableArray[1];
-        if (array!= nil) {
-            row = array.count;
-        }
-    }
-    else if (section == 4 ){
-        NSMutableArray *array = self.mutableArray[2];
-        if (array!= nil) {
-            row = array.count;
-        }
-    }
-    else if (section == 5 ){
-        NSMutableArray *array = self.mutableArray[3];
-        if (array!= nil) {
-            row = array.count;
-        }
-        
-    }
-    return row;
 }
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 6;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+
+// 每行Cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 ){
         BackgroundTableViewCell *cell = [[BackgroundTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reUsedStr[indexPath.section]];
         UIColor *myColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
         cell.backgroundColor = myColor;
-        NSUserDefaults *hourDefault = [NSUserDefaults standardUserDefaults];
-        NSString *hour = [[hourDefault objectForKey:@"totalhour"] stringValue];
-        cell.backgroundLabel3.text = hour;
+        
+        NSInteger hours = 0;
+        for (NSArray *eventArray in self.eventsSortedByYears) {
+            for (VolunteeringEventItem *event in eventArray) {
+                hours += [event.hour integerValue];
+            }
+        }
+        cell.backgroundLabel3.text = [NSString stringWithFormat:@"%.1f", (CGFloat)hours];
+        
         cell.userInteractionEnabled = NO;
         cell.selected = false;
         return cell;
     }
     else if (indexPath.section == 1 ){
-       HeaderTableViewCell *cell = [[HeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reUsedStr[indexPath.section]];
+        HeaderTableViewCell *cell = [[HeaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reUsedStr[indexPath.section]];
         UIColor *myColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
         cell.backgroundColor = myColor;
         cell.userInteractionEnabled = NO;
@@ -127,36 +130,44 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
     if (cell == nil){
         cell = [[QueryTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reUsedStr[indexPath.section]];
     }
-    QueryModel *model = self.mutableArray[indexPath.section-2][indexPath.row];
+
     [cell.yearsImageView removeFromSuperview];
     [cell.yearsLabel removeFromSuperview];
+    
     if (indexPath.row == 0) {
-        NSDate  *currentDate = [NSDate date];
-        NSCalendar *calendar = [NSCalendar currentCalendar];
-        NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentDate];
-        NSInteger year=[components year];
+//        NSDate  *currentDate = [NSDate date];
+//        NSCalendar *calendar = [NSCalendar currentCalendar];
+//        NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentDate];
+//        NSInteger year=[components year];
+        NSInteger year = [[((VolunteeringEventItem *)((NSArray *)self.eventsSortedByYears[0])[0]).creatTime substringToIndex:4] integerValue];
         cell.yearsImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"年份圆圈"]];
         cell.yearsImageView.frame = CGRectMake(15, 0, 31, 31);
         [cell.contentView addSubview:cell.yearsImageView];
         [cell.contentView bringSubviewToFront:cell.yearsImageView];
         cell.yearsLabel = [[UILabel alloc]initWithFrame:CGRectMake(17, 9, 28, 11)];
         cell.yearsLabel.textColor = [UIColor whiteColor];
-        cell.yearsLabel.text = [NSString stringWithFormat:@"%ld",year+2-indexPath.section];
+        cell.yearsLabel.text = [NSString stringWithFormat:@"%ld",year - indexPath.section + 2];
         cell.yearsLabel.textAlignment = NSTextAlignmentCenter;
         cell.yearsLabel.font = [UIFont systemFontOfSize:11];
         cell.yearsLabel.backgroundColor = [UIColor clearColor];
         [cell.contentView addSubview:cell.yearsLabel];
     }
-    NSDate *date = [NSDate dateWithString:model.start_time format:@"yyyy-MM-dd"];
+    
+    // 每年的每一个志愿
+    VolunteeringEventItem *event = ((NSArray *)self.eventsSortedByYears[indexPath.section - 2])[indexPath.row];
+
+    NSDate *date = [NSDate dateWithString:event.creatTime format:@"yyyy-MM-dd"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init] ;
     [formatter setDateFormat:@"MM-dd"];
-    cell.cellHourLabel.text = model.hours;
+    cell.cellHourLabel.text = event.hour;
     cell.cellTimeLabel.text = [formatter stringFromDate:date];
-    cell.cellAddressLabel.text = model.address;
-    cell.cellContentLabel.text = model.content;
+    cell.cellAddressLabel.text = event.address;
+    cell.cellContentLabel.text = event.eventName;
     cell.userInteractionEnabled = NO;
+    
     return cell;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     UIView *redLine = [[UIView alloc]init];
     if (section == 2 || section == 3 || section == 4 || section == 5) {
@@ -166,9 +177,10 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
     if (section == 1) {
         redLine.backgroundColor = [UIColor colorWithRed:244/255.0 green:243/255.0 blue:243/255.0 alpha:1];
     }
-
+    
     return redLine;
 }
+
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
     UIView *redLine = [[UIView alloc]init];
     if ( section == 3 || section == 4 || section == 5) {
@@ -219,11 +231,5 @@ static NSString *reUsedStr[REUESED_SIZE] = {nil}; // 重用标示
     }
     return rowHeight;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

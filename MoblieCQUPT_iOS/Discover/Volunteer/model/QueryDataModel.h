@@ -8,16 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "QueryModel.h"
-@interface QueryDataModel : NSObject
-@property (nonatomic, copy) NSDictionary *data;
-@property (nonatomic, copy) NSString *login_name;
-@property (nonatomic, copy) NSString *uid;
-@property (nonatomic, copy) NSString *sid;
-@property (nonatomic, copy) NSString *hour;
-@property (nonatomic, copy) NSArray *record;
-@property NSArray <QueryModel *> *models;
--(instancetype)initWithData:(NSDictionary *)data;
--(void)volunteerLogin:(NSString *)account password:(NSString *)password;
--(void)getVolunteerInfo:(NSString *)uid;
+
+// 志愿者信息
+@interface VolunteerItem : NSObject
+
+
 
 @end

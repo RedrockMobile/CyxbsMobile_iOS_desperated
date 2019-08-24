@@ -9,120 +9,44 @@
 #import "QueryViewController.h"
 #import "QueryTableViewCell.h"
 #import "QueryLoginViewController.h"
-#import "fourViewController.h"
-#import "fiveViewController.h"
-#import "sixViewController.h"
-#import "sevenViewController.h"
 #import "AllYearsViewController.h"
 #import "MineViewController.h"
 #import "HeaderGifRefresh.h"
-#import "QueryDataModel.h"
+#import "VolunteerItem.h"
 #import "NoLoginView.h"
 #import "LoginViewController.h"
-@interface QueryViewController()<UIScrollViewDelegate>
+#import "SYCMainDiscoverViewController.h"
 
-@property QueryLoginViewController *queryLoginView;
-@property UIScrollView *scrollView;
-@property QueryHeader *headView;
-@property (nonatomic, strong) UIButton *allYears;
-@property (nonatomic, assign) NSInteger selectedIndex;
-@property (nonatomic, strong) NSMutableArray *array;
-@property (nonatomic, strong) AllYearsViewController *allYearsVC;
-@property (nonatomic, strong) sevenViewController *sevenVC;
-@property (nonatomic, strong) sixViewController *sixVC;
-@property (nonatomic, strong) fiveViewController *fiveVC;
-@property (nonatomic, strong) fourViewController *fourVC;
+
+@interface QueryViewController() <UIScrollViewDelegate>
+
 @property (nonatomic,strong) NoLoginView *noLoginView;
-@property (nonatomic, strong) QueryModel *model;
-@property (nonatomic, copy) NSString *account;
-@property (nonatomic, copy) NSString *passwd;
-@property (nonatomic, copy) NSString *uid;
+@property (nonatomic, assign) NSInteger selectedIndex;
+@property (nonatomic, strong) UIButton *allYears;
+@property (nonatomic, strong) QueryHeader *headView;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) NSArray *subViewControllers;
+
+@property (nonatomic, strong) AllYearsViewController *yearsVC;
 
 @end
 
 @implementation QueryViewController
 
--(void)viewWillAppear:(BOOL)animated{
-    
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
-    if (self.index) {
-        [self changeScrollview:self.index];
-    }
-}
-
--(instancetype)initWithDic:(NSDictionary *)dic{
-    self = [super init];
-    if (self) {
-        self.account = dic[@"account"];
-        self.passwd = dic[@"passwd"];
-    }
+- (instancetype)initWithVolunteerItem: (VolunteerItem *)volunteer {
+    self = [self init];
+    self.volunteer = volunteer;
     return self;
-}
-- (void)getVolunteerData{
-    
-    NSArray *array = self.model.record;
-    NSMutableArray *modelArray = [NSMutableArray array];
-    NSMutableArray *modelArray1 = [NSMutableArray array];
-    NSMutableArray *modelArray2 = [NSMutableArray array];
-    NSMutableArray *modelArray3 = [NSMutableArray array];
-    for (NSDictionary *data in array) {
-         QueryModel *model = [[QueryModel alloc]initWithDic:data];
-        NSString *start_time = data[@"start_time"];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *date = [formatter dateFromString:start_time];
-        [formatter setDateFormat:@"yyyy"];
-        NSInteger years = [[formatter stringFromDate:date]integerValue];
-        NSString *year = [NSString stringWithFormat:@"%ld",(long)years];
-        if ([year  isEqual: @"2019"]) {
-            [modelArray addObject:model];
-        }
-        if ([year isEqual: @"2018"]) {
-            [modelArray1 addObject:model];
-        }
-        if ([year isEqual: @"2017"]) {
-            [modelArray2 addObject:model];
-        }
-        if ([year isEqual: @"2016"]) {
-            [modelArray3 addObject:model];
-        }
-    }
-   
-   // [UserDefaultTool saveValue:uid forKey:@"uid"];
-    self.array = [NSMutableArray arrayWithObjects:modelArray,modelArray1,modelArray2,modelArray3, nil];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(volunteerBindingSuccess)
-                                                 name:@"volunteerBindingSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(volunteerBindingSuccess)
-                                                 name:@"volunteerBindingFailure" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(volunteerDataLoadSuccess)
-                                                 name:@"volunteerDataLoadSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(volunteerDataLoadFailure)
-                                                 name:@"volunteerDataLoadFailure" object:nil];
     
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
-    
-    if (stuNum == nil || idNum == nil) {
-        self.noLoginView = [[NoLoginView alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-(HEADERHEIGHT+TABBARHEIGHT))];
-        [self.view addSubview:self.noLoginView];
-        [self.noLoginView.loginButton addTarget:self action:@selector(clickLoginBtn) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else{
+    [self buildUI];
+    [self addViewControllsToScrollView];
+}
 
-        self.model = [[QueryModel alloc]init];
-        [self.model volunteerBinding:self.account passwd:self.passwd uid:stuNum];
-    }
-    
-    
+- (void)buildUI {
     self.navigationController.navigationBar.hidden = YES;
     UIImageView *toolBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,HEADERHEIGHT)];
     toolBarImageView.image = [UIImage imageNamed:@"toolbar_background"];
@@ -131,7 +55,7 @@
     
     int heightH = (STATUSBARHEIGHT+HEADERHEIGHT/2)-(18.f/667)*MAIN_SCREEN_H;
     UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,heightH,(10.f/375)*MAIN_SCREEN_W,(16.f/667)*MAIN_SCREEN_H)];
-    [back addTarget:self action:@selector(buttonAction1) forControlEvents:UIControlEventTouchUpInside];
+    [back addTarget:self action:@selector(clickedBackButton) forControlEvents:UIControlEventTouchUpInside];
     [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
     [self.view addSubview:back];
     
@@ -160,7 +84,7 @@
     
     __weak typeof(self) weakSelf = self;
     self.view.backgroundColor=[UIColor whiteColor];
-    _headView = [[QueryHeader alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, 39)];
+    _headView = [[QueryHeader alloc]initWithFrame:CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, 39)];
     NSDate  *currentDate = [NSDate date];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [calendar components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay fromDate:currentDate];
@@ -176,71 +100,58 @@
     };
     [self.view addSubview:_headView];
     
-    _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame),SCREEN_WIDTH,SCREEN_HEIGHT-CGRectGetMaxY(_headView.frame))];
-    _scrollView.backgroundColor = [UIColor whiteColor];
-    _scrollView.contentSize = CGSizeMake(_scrollView.bounds.size.width*5, _scrollView.bounds.size.height);
-    _scrollView.pagingEnabled = YES;
-    _scrollView.delegate = self;
-    _scrollView.bounces = NO;
-    _scrollView.directionalLockEnabled = YES;
-    [self.view addSubview:_scrollView];
-    
-    
+    self.scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_headView.frame),SCREEN_WIDTH,SCREEN_HEIGHT-CGRectGetMaxY(_headView.frame))];
+    self.scrollView.backgroundColor = [UIColor whiteColor];
+    self.scrollView.contentSize = CGSizeMake(self.scrollView.bounds.size.width*5, self.scrollView.bounds.size.height);
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.delegate = self;
+    self.scrollView.bounces = NO;
+    self.scrollView.directionalLockEnabled = YES;
+    [self.view addSubview:self.scrollView];
 }
-- (void)buttonAction1{
-    if ([[NSUserDefaults standardUserDefaults] valueForKey:@"uid"]) {
+
+#pragma mark - 添加子控制器
+- (void)addViewControllsToScrollView {
+    for (NSInteger index = 0; index < 5; index++) {
+        self.yearsVC = [[AllYearsViewController alloc] initWithVolunteer:self.volunteer andYearIndex:index];
+        self.yearsVC.view.frame = CGRectMake(_scrollView.bounds.size.width * index, 0, _scrollView.bounds.size.width, MAIN_SCREEN_H - HEADERHEIGHT);
+        //    self.allYearsVC.tableView.mj_header = [HeaderGifRefresh headerWithRefreshingTarget:self refreshingAction:@selector(refresh:)];
+        [_scrollView addSubview: self.yearsVC.view];
+        //self.scrollView.backgroundColor = backgroundColor;
+        [self addChildViewController: self.yearsVC];
+    }
+}
+
+#pragma mark - 按钮的actions
+// 返回按钮
+- (void)clickedBackButton {
+//    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+//    if ([user objectForKey:@"volunteer_account"]) {
         for (UIViewController *controller in self.navigationController.viewControllers) {
-            if ([controller isKindOfClass:[MineViewController class]]) {
-                MineViewController *main =(MineViewController *)controller;
-                [self.navigationController popToViewController:main animated:YES];
+            if ([controller isKindOfClass:[SYCMainDiscoverViewController class]]) {
+                [self.navigationController popToViewController:controller animated:YES];
             }
         }
-    }else{
-        [self.navigationController popViewControllerAnimated:true];
-    }
-}
-- (void)clickLoginBtn{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"是否登录" message:@"马上登录拯救课表菌" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"我再看看" style:UIAlertActionStyleCancel handler:nil];
-    UIAlertAction *loginAction = [UIAlertAction actionWithTitle:@"马上登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        LoginViewController *loginViewController = [[LoginViewController alloc]init];
-        
-        loginViewController.loginSuccessHandler = ^(BOOL success) {
-            if (success) {
-                //[self initModel];
-                [self.noLoginView removeFromSuperview];
-            }
-        };
-        [self.navigationController presentViewController:loginViewController animated:YES completion:nil];
-    }];
-    [alertController addAction:cancelAction];
-    [alertController addAction:loginAction];
-    [self.navigationController presentViewController:alertController animated:YES completion:nil];
+//        return;
+//    }
+//    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    for (UIViewController *controller in self.navigationController.viewControllers) {
-        if ([controller isKindOfClass:[QueryLoginViewController class]]) {
-            self.navigationController.viewControllers=@[self.navigationController.viewControllers[0],self];
-        }
-    }
-}
-
+// 取消绑定
 - (void)buttonActionRemove{
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"亲，真的要取消已经绑定的账号咩" message:@"" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+
+        [user removeObjectForKey:@"volunteer_account"];
+        [user synchronize];
+        
+//        [self.navigationController popViewControllerAnimated:YES];
         for (UIViewController *controller in self.navigationController.viewControllers) {
-            if ([controller isKindOfClass:[MineViewController class]]) {
-                QueryLoginViewController *vc = [[QueryLoginViewController alloc]init];
-                self.navigationController.viewControllers = @[self.navigationController.viewControllers[0],vc,self];
-                vc.hidesBottomBarWhenPushed = YES;
-                [self.navigationController popViewControllerAnimated:YES];
+            if ([controller isKindOfClass:[SYCMainDiscoverViewController class]]) {
+                [self.navigationController popToViewController:controller animated:YES];
             }
-            
-            [userDefaults removeObjectForKey:@"uid"];
-            [userDefaults synchronize];
         }
     }];
     [alertC addAction:cancel];
@@ -248,173 +159,61 @@
     [self presentViewController:alertC animated:YES completion:nil];
 }
 
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    NSInteger index = round(self.scrollView.contentOffset.x / self.scrollView.bounds.size.width);
-    if (self.selectedIndex != index) {
-        [self.scrollView setContentOffset:CGPointMake(index*scrollView.bounds.size.width, 0) animated:YES];
-        [_headView setSelectAtIndex:index];
-        
-        self.selectedIndex = index;
-        
-    }
-}
-
-- (void)addViewControllsToScrollView{
-    self.allYearsVC = [[AllYearsViewController alloc]init];
-    //self.allYearsVC .view.backgroundColor = backgroundColor;
-    self.allYearsVC .view.frame = CGRectMake(0, 0, _scrollView.bounds.size.width,MAIN_SCREEN_H);
-    self.allYearsVC.mutableArray = self.array;
-    self.allYearsVC.tableView.mj_header = [HeaderGifRefresh headerWithRefreshingTarget:self refreshingAction:@selector(refresh:)];
-    [_scrollView addSubview: self.allYearsVC.view];
-    //self.scrollView.backgroundColor = backgroundColor;
-    [self addChildViewController: self.allYearsVC];
-    
-    self.sevenVC = [[sevenViewController alloc]init];
-    self.sevenVC.view.frame = CGRectMake(_scrollView.bounds.size.width*1, 0, _scrollView.bounds.size.width,MAIN_SCREEN_H);
-    //self.sevenVC.view.backgroundColor = backgroundColor;
-    self.sevenVC.mutableArray = self.array;
-    self.sevenVC.tableView.mj_header = [HeaderGifRefresh headerWithRefreshingTarget:self refreshingAction:@selector(refresh:)];
-    [_scrollView addSubview:self.sevenVC.view];
-    [self addChildViewController:self.sevenVC];
-    
-    self.sixVC = [[sixViewController alloc]init];
-    self.sixVC.view.frame = CGRectMake(_scrollView.bounds.size.width*2, 0, _scrollView.bounds.size.width, MAIN_SCREEN_H);
-    //self.sixVC.view.backgroundColor = backgroundColor;
-    self.sixVC.mutableArray = self.array;
-    self.sixVC.tableView.mj_header = [HeaderGifRefresh headerWithRefreshingTarget:self refreshingAction:@selector(refresh:)];
-    [_scrollView addSubview:self.sixVC.view];
-    [self addChildViewController:self.sixVC];
-    
-    self.fiveVC = [[fiveViewController alloc]init];
-    self.fiveVC.view.frame = CGRectMake(_scrollView.bounds.size.width*3, 0, _scrollView.bounds.size.width, MAIN_SCREEN_H);
-    //self.fiveVC.view.backgroundColor = backgroundColor;
-    self.fiveVC.mutableArray = self.array;
-    self.fiveVC.tableView.mj_header = [HeaderGifRefresh headerWithRefreshingTarget:self refreshingAction:@selector(refresh:)];
-    [_scrollView addSubview:self.fiveVC.view];
-    [self addChildViewController:self.fiveVC];
-    
-    self.fourVC = [[fourViewController alloc]init];
-    self.fourVC.view.frame = CGRectMake(_scrollView.bounds.size.width*4, 0, _scrollView.bounds.size.width,MAIN_SCREEN_H);
-    //self.fourVC.view.backgroundColor = backgroundColor;
-    self.fourVC.mutableArray = self.array;
-    self.fourVC.tableView.mj_header = [HeaderGifRefresh headerWithRefreshingTarget:self refreshingAction:@selector(refresh:)];
-    [_scrollView addSubview:self.fourVC.view];
-    [self addChildViewController:self.fourVC];
-}
-- (void)adjustScrollView:(NSInteger)index{
-    [UIView animateWithDuration:0.2 animations:^{
-        _scrollView.contentOffset = CGPointMake(index*_scrollView.bounds.size.width, 0);
-    }];
-}
--(void)changeScrollview:(NSInteger)index{
-    
-    [UIView animateWithDuration:0.1f animations:^{
-        _scrollView.contentOffset = CGPointMake(index*_scrollView.bounds.size.width, 0);
-    }];
-    
-}
+// 年份折叠与展开
 - (void)buttonActionUnfold{
+    // 展开
     if (_headView.hidden) {
         _headView.hidden = NO;
-        [UIView animateWithDuration:0.1f animations:^{
+        [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.allYears.transform = CGAffineTransformMakeScale(1, 1);
-            _headView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 39);
-            _scrollView.frame = CGRectMake(0, 39+64, SCREEN_WIDTH, SCREEN_HEIGHT-64-39);
-            self.allYearsVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
-            self.sevenVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
-            self.sixVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
-            self.fiveVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
-            self.fourVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64-39);
+            _headView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, 39);
+            _scrollView.frame = CGRectMake(0, 39+HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-39);
+            
+            for (int i = 0; i < self.childViewControllers.count; i++) {
+                ((AllYearsViewController *)self.childViewControllers[i]).tableView.frame = CGRectMake(0, 0, MAIN_SCREEN_W, SCREEN_HEIGHT-HEADERHEIGHT - 39);
+            }
         } completion:^(BOOL finished) {
             
         }];
     }
-    else{
-        [UIView animateWithDuration:0.1f animations:^{
-            _headView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 0);
+    // 折叠
+    else {
+        [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            _headView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, 0);
             self.allYears.transform = CGAffineTransformMakeScale(1, -1);
-            _scrollView.frame = CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64);
-            self.allYearsVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
-            self.sevenVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
-            self.sixVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
-            self.fiveVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
-            self.fourVC.tableView.frame = CGRectMake(0, 0,MAIN_SCREEN_W, MAIN_SCREEN_H-64);
+            _scrollView.frame = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT);
             
-        }completion:^(BOOL finished) {
+            for (int i = 0; i < self.childViewControllers.count; i++) {
+                ((AllYearsViewController *)self.childViewControllers[i]).tableView.frame = CGRectMake(0, 0, MAIN_SCREEN_W, SCREEN_HEIGHT-HEADERHEIGHT);
+            }
+        } completion:^(BOOL finished) {
             _headView.hidden = YES;
         }];
     }
 }
 
-- (void)refresh:(MJRefreshGifHeader *)header{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self.allYearsVC.tableView.mj_header endRefreshing];
-        [self.sevenVC.tableView.mj_header endRefreshing];
-        [self.sixVC.tableView.mj_header endRefreshing];
-        [self.fiveVC.tableView.mj_header endRefreshing];
-        [self.fourVC.tableView.mj_header endRefreshing];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            NSString *url = @"https://wx.redrock.team/volunteer/select";
-            NSDictionary *head = @{@"Authorization":@"Basic enNjeTpyZWRyb2Nrenk=",@"Content-Type":@"application/x-www-form-urlencoded"};
-            NSDictionary *parameters = @{@"uid":self.uid};
-            HttpClient *client = [HttpClient defaultClient];
-            [client requestWithHead:url method:HttpRequestPost parameters:parameters head:head prepareExecute:^{
-                
-            } progress:^(NSProgress *progress) {
-            
-            } success:^(NSURLSessionDataTask *task, id responseObject) {
-                NSLog(@"请求成功%@",responseObject);
-                [self getVolunteerData];
-                [self.allYearsVC.tableView reloadData];
-                [self.sevenVC.tableView reloadData];
-                [self.sixVC.tableView reloadData];
-                [self.fiveVC.tableView reloadData];
-                [self.fourVC.tableView reloadData];
-            } failure:^(NSURLSessionDataTask *task, NSError *error) {
-                NSLog(@"请求失败%@",error);
-                UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"您的网络状态不好哟" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"再试试" style:UIAlertActionStyleCancel handler:nil];
-                [alertC addAction:cancel];
-                [self presentViewController:alertC animated:YES completion:nil];
-            }];
-        });
-    });
+#pragma mark - 滚动ScrollView
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSInteger index = round(self.scrollView.contentOffset.x / self.scrollView.bounds.size.width);
+    if (self.selectedIndex != index) {
+        [self.scrollView setContentOffset:CGPointMake(index*scrollView.bounds.size.width, 0) animated:YES];
+        [_headView setSelectAtIndex:index];
+        self.selectedIndex = index;
+    }
 }
-- (void)volunteerBindingSuccess{
-    NSString *uid = [UserDefaultTool getStuNum];
-  
-    [self.model volunteerTimes:uid];
+
+- (void)adjustScrollView:(NSInteger)index{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.scrollView.contentOffset = CGPointMake(index*self.scrollView.bounds.size.width, 0);
+    }];
+}
+
+-(void)changeScrollview:(NSInteger)index{
+    
+    [UIView animateWithDuration:0.1f animations:^{
+        self.scrollView.contentOffset = CGPointMake(index*self.scrollView.bounds.size.width, 0);
+    }];
     
 }
-- (void)volunteerBindingFailure{
-    
-    
-}
-- (void)volunteerDataLoadSuccess{
-    NSLog(@"datas");
-    self.uid = self.model.uid;
-    [self getVolunteerData];
-    [self addViewControllsToScrollView];
-}
--(void)volunteerDataLoadFailure{
-    
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
 
 @end

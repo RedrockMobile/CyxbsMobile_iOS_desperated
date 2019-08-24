@@ -2,57 +2,70 @@
 //  QueryLoginViewController.m
 //  MoblieCQUPT_iOS
 //
-//  Created by MaggieTang on 05/10/2017.
-//  Copyright © 2017 Orange-W. All rights reserved.
+//  Created by 方昱恒 on 2019/7/14.
+//  Copyright © 2019 Orange-W. All rights reserved.
 //
 
 #import "QueryLoginViewController.h"
-//#import "UIViewController.h"
 #import "QueryViewController.h"
-#import "QueryModel.h"
-#import "QueryDataModel.h"
+#import "VolunteeringEventItem.h"
+#import "VolunteerItem.h"
 #import <AFNetworking.h>
 
 @interface QueryLoginViewController ()
 
-@property (nonatomic,strong) QueryDataModel *model;
-@property (nonatomic,strong) UIImageView *accountImageView;
-@property (nonatomic,strong) UIImageView *passwordImageView;
-@property (nonatomic,strong) UITextField *passwordField;
-@property (nonatomic,strong) UITextField *accountField;
-@property (nonatomic,copy) NSString *hour;
-@property (nonatomic,copy) NSMutableArray *mutableArray;
-@property (nonatomic, assign) BOOL BindingSuccess;
+@property (nonatomic, strong) UIImageView *accountImageView;
+@property (nonatomic, strong) UIImageView *passwordImageView;
+@property (nonatomic, strong) UITextField *passwordField;
+@property (nonatomic, strong) UITextField *accountField;
+@property (nonatomic, strong) VolunteerItem *volunteer;
+@property (nonatomic, strong) MBProgressHUD *loadHud;
 
 @end
 
-
 @implementation QueryLoginViewController
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBar.hidden = YES;
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    if ([user objectForKey:@"volunteer_account"]) {
+        self.loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.loadHud.labelText = @"正在登录";
+        NSDictionary *account = [user objectForKey:@"volunteer_account"];
+        self.accountField.text = account[@"username"];
+        self.passwordField.text = account[@"password"];
+        
+        self.volunteer = [[VolunteerItem alloc] init];
+        [self.volunteer getVolunteerInfoWithUserName:account[@"username"] andPassWord:account[@"password"] finishBlock:^(VolunteerItem *volunteer) {
+            self.volunteer = volunteer;
+            QueryViewController *queryVC = [[QueryViewController alloc] initWithVolunteerItem:self.volunteer];
+            queryVC.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:queryVC animated:YES];
+        }];
+    }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(volunteerLoginSuccess)
-                                                 name:@"volunteerLoginSuccess" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(volunteerLoginFailure)
-                                                 name:@"volunteerLoginFailure" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginFailed) name:@"loginFailed" object:nil];
     
-    self.model = [[QueryDataModel alloc]init];
+    [self biuldUI];
+}
+
+#pragma mark - 搭建界面
+- (void)biuldUI {
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     self.navigationController.navigationBar.hidden = YES;
     [self.navigationController.navigationBar setBackgroundColor:[UIColor clearColor]];
     self.navigationController.navigationBar.shadowImage = [[UIImage alloc]init];
     self.navigationItem.title =@"完善信息";
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT * 0.328)];
     imageView.image = [UIImage imageNamed:@"志愿时长"];
+    imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:imageView];
     //设置返回按钮
     UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,(37.f/667)*MAIN_SCREEN_H,(11.f/375)*MAIN_SCREEN_W,(16.f/667)*MAIN_SCREEN_H)];
-    [back addTarget:self action:@selector(buttonAction1) forControlEvents:UIControlEventTouchUpInside];
+    [back addTarget:self action:@selector(clickedBackButton) forControlEvents:UIControlEventTouchUpInside];
     [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
     [self.view addSubview:back];
     //设置bartitle
@@ -66,10 +79,10 @@
     
     int padding = (35.f/375)*MAIN_SCREEN_W;
     //设置保存按钮
-    UIButton *save = [[UIButton alloc]initWithFrame:CGRectMake(padding, (483.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-2*padding, (40.f/667)*MAIN_SCREEN_H)];
+    UIButton *save = [[UIButton alloc]initWithFrame:CGRectMake(padding, (483.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-2*padding, (MAIN_SCREEN_W-2*padding) * 0.12)];
     [save addTarget:self action:@selector(tapSaveBtn) forControlEvents:UIControlEventTouchUpInside];
     [save setBackgroundImage:[UIImage imageNamed:@"login_icon"] forState:UIControlStateNormal];
-    [save setTitle:@"保 存" forState:UIControlStateNormal];
+    [save setTitle:@"登 陆" forState:UIControlStateNormal];
     save.titleEdgeInsets = UIEdgeInsetsMake(0, save.imageView.frame.size.width, 0, 0);
     [save setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:save];
@@ -94,13 +107,11 @@
     UIImage *accountImage = [UIImage imageNamed:@"login_number"];
     self.accountImageView = [[UIImageView alloc]initWithImage:accountImage];
     self.accountImageView.frame = CGRectMake((42.f/375)*MAIN_SCREEN_W, (339.f/667)*MAIN_SCREEN_H, (19.f/375)*MAIN_SCREEN_W, (20.f/667)*MAIN_SCREEN_H);
-    //accountImageView.contentMode = UIViewContentModeScaleToFill;
     
     
     UIImage *passwordImage = [UIImage imageNamed:@"login_password"];
     self.passwordImageView = [[UIImageView alloc]initWithImage:passwordImage];
     self.passwordImageView.frame = CGRectMake((42.f/375)*MAIN_SCREEN_W, (399.f/667)*MAIN_SCREEN_H, (19.f/375)*MAIN_SCREEN_W, (20.f/667)*MAIN_SCREEN_H);
-    //passwordImageView.contentMode = UIViewContentModeScaleToFill;
     
     
     [self.view addSubview:self.accountField];
@@ -108,11 +119,10 @@
     
     [self.view addSubview:self.accountImageView];
     [self.view addSubview:self.passwordImageView];
-    
-    
-    
 }
--(UITextField *)createTextFielfFrame:(CGRect)frame font:(UIFont *)font placeholder:(NSString *)placeholder{
+
+#pragma mark - 创建输入框
+- (UITextField *)createTextFielfFrame:(CGRect)frame font:(UIFont *)font placeholder:(NSString *)placeholder{
     UITextField *textField=[[UITextField alloc]initWithFrame:frame];
     textField.font=font;
     textField.textColor=[UIColor grayColor];
@@ -121,55 +131,59 @@
     return textField;
 }
 
+#pragma mark - 按钮的actions
+
+// 返回按钮
+- (void)clickedBackButton {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+// 保存按钮
 - (void)tapSaveBtn{
+    self.loadHud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.loadHud.labelText = @"正在登录";
+    NSString *account = self.accountField.text;
+    NSString *password = self.passwordField.text;
     
-    //    NSString *account = self.accountField.text;
-    //    NSString *password = self.passwordField.text;
-    NSString *account = @"cqupt2017210129";
-    NSString *password = @"wyc19990503";
-    [self.model volunteerLogin:account password:password];
-    
+    self.volunteer = [[VolunteerItem alloc] init];
+    dispatch_async(dispatch_queue_create("build volunteer model", DISPATCH_QUEUE_CONCURRENT), ^{
+        [self.volunteer getVolunteerInfoWithUserName:account andPassWord:password finishBlock:^(VolunteerItem *volunteer) {
+            self.volunteer = volunteer;
+            NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+            if (![user objectForKey:@"volunteer_account"]) {
+                NSDictionary *volAcc = @{
+                                         @"username": account,
+                                         @"password": password,
+                                         @"uid": volunteer.uid
+                                         };
+                [user setObject:volAcc forKey:@"volunteer_account"];
+                [user synchronize];
+            }
+            
+            QueryViewController *queryVC = [[QueryViewController alloc] initWithVolunteerItem:self.volunteer];
+            queryVC.view.backgroundColor = [UIColor whiteColor];
+            [self.navigationController pushViewController:queryVC animated:YES];
+        }];
+    });
 }
--(void)volunteerLoginSuccess{
-    NSUserDefaults *volunteerAccount = [NSUserDefaults standardUserDefaults];
-    [volunteerAccount setObject:self.accountField.text forKey:@"account"];
-    NSUserDefaults *volunteerPassWord = [NSUserDefaults standardUserDefaults];
-    [volunteerPassWord setObject:self.passwordField.text forKey:@"password"];
-    //NSDictionary *dic = @{@"account":self.accountField.text,@"passwd":self.passwordField.text};
-    NSDictionary *dic = @{@"account":@"cqupt2017210129",@"passwd":@"wyc19990503"};
-    QueryViewController *queryView = [[QueryViewController alloc]initWithDic:dic];
-    [self.navigationController pushViewController:queryView animated:true];
-}
--(void)volunteerLoginFailure{
-    
-    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"您的账号或密码错误" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"重新输入" style:UIAlertActionStyleCancel handler:nil];
+
+#pragma mark - 登陆失败
+- (void)loginFailed {
+    [self.loadHud hide:YES];
+    UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"账号或密码错误" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleCancel handler:nil];
     [alertC addAction:cancel];
     [self presentViewController:alertC animated:YES completion:nil];
-    
-}
-
-- (void)buttonAction1{
-    [self.navigationController popViewControllerAnimated:true];
-}
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.accountField resignFirstResponder];
-    [self.passwordField resignFirstResponder];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

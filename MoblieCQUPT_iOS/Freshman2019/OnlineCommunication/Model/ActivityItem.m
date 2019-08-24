@@ -14,9 +14,9 @@
     if (self = [super init]) {
         
         self.name = dict[@"name"];
-        self.photo = [NSString stringWithFormat:@"http://129.28.185.138:8080/zsqy/image/%@", dict[@"photo"]];
+        self.photo = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@", dict[@"photo"]];
         self.message = dict[@"message"];
-        self.QRCode = [NSString stringWithFormat:@"http://129.28.185.138:8080/zsqy/image/%@", dict[@"QR"]];
+        self.QRCode = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/zscy/zsqy/image/%@", dict[@"QR"]];
     }
     return self;
 }

@@ -7,7 +7,7 @@
 //
 
 #import "QueryTableViewCell.h"
-#import "QueryModel.h"
+#import "VolunteeringEventItem.h"
 @implementation QueryTableViewCell
 
 - (void)awakeFromNib {

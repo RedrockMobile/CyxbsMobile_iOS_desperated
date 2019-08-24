@@ -2,11 +2,16 @@
 //  QueryLoginViewController.h
 //  MoblieCQUPT_iOS
 //
-//  Created by MaggieTang on 05/10/2017.
-//  Copyright © 2017 Orange-W. All rights reserved.
+//  Created by 方昱恒 on 2019/7/14.
+//  Copyright © 2019 Orange-W. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface QueryLoginViewController :UIViewController
+NS_ASSUME_NONNULL_BEGIN
+
+@interface QueryLoginViewController : UIViewController
+
 @end
+
+NS_ASSUME_NONNULL_END

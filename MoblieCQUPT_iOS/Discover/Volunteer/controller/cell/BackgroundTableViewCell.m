@@ -46,7 +46,7 @@
         self.backgroundLabel1 = backgroundLabel1;
         [self.contentView addSubview:backgroundLabel1];
         int padding1 = (95.f/375)*MAIN_SCREEN_W;
-        UILabel *backgroundLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W-padding1-(60.f/375)*MAIN_SCREEN_W,(117.f/667)*MAIN_SCREEN_H, (80.f/375)*MAIN_SCREEN_W, (29.f/667)*MAIN_SCREEN_H)];
+        UILabel *backgroundLabel2 = [[UILabel alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W-padding1-(90.f/375)*MAIN_SCREEN_W,(117.f/667)*MAIN_SCREEN_H, (80.f/375)*MAIN_SCREEN_W, (29.f/667)*MAIN_SCREEN_H)];
         backgroundLabel2.font = [UIFont systemFontOfSize:29];
         backgroundLabel2.text = @"小时";
         backgroundLabel2.textAlignment = NSTextAlignmentCenter;
@@ -55,7 +55,7 @@
         self.backgroundLabel2 = backgroundLabel2;
         [self.contentView addSubview:backgroundLabel2];
         
-        UILabel *backgroundLabel3 = [[UILabel alloc]initWithFrame:CGRectMake((70.f/375)*MAIN_SCREEN_W,(107.f/667)*MAIN_SCREEN_H, (150.f/375)*MAIN_SCREEN_W, (40.f/667)*MAIN_SCREEN_H)];
+        UILabel *backgroundLabel3 = [[UILabel alloc]initWithFrame:CGRectMake((70.f/375)*MAIN_SCREEN_W,(110.f/667)*MAIN_SCREEN_H, (150.f/375)*MAIN_SCREEN_W, (40.f/667)*MAIN_SCREEN_H)];
         backgroundLabel3.font = [UIFont systemFontOfSize:40];
         backgroundLabel3.textAlignment = NSTextAlignmentCenter;
         backgroundLabel3.textColor = [UIColor whiteColor];
