@@ -15,10 +15,11 @@
 
 @end
 
-@interface SYCPictureDisplay : UIView
+@interface SYCPictureDisplayView : UIView
 
 @property (nonatomic, strong) id<SYCPictureDisplayDelegate> delegate;
 
-- (void)loadWithData:(NSArray<LZCarouselModel *> *)dataArray;
+- (instancetype)initWithData:(NSArray<LZCarouselModel *> *)dataArray;
+- (void)buildUI;
 
 @end

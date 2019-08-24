@@ -8,7 +8,7 @@
 #define SCREEN_MARGIN 10
 
 #import "SYCMainDiscoverViewController.h"
-#import "SYCPictureDisplay.h"
+#import "SYCPictureDisplayView.h"
 #import "SYCToolsCell.h"
 #import "SYCCustomToolsControlView.h"
 #import "SYCCustomLayoutModel.h"
@@ -31,7 +31,7 @@
 @interface SYCMainDiscoverViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray<LZCarouselModel *> *carouselDataArray;
-@property (nonatomic, strong) SYCPictureDisplay *pictureDisplay;
+@property (nonatomic, strong) SYCPictureDisplayView *pictureDisplay;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *inusedTools;
 @property (nonatomic, strong) UICollectionView *toolsView;
@@ -49,7 +49,7 @@
     self.inusedTools = [SYCCustomLayoutModel sharedInstance].inuseTools;
 
     [self setUpUI];
-    [self getNetworkData];
+//    [self getNetworkData];
 }
 
 
@@ -58,19 +58,28 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showChannel)];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - STATUSBARHEIGHT - TABBARHEIGHT - NVGBARHEIGHT)];
-
     self.scrollView.showsVerticalScrollIndicator = NO;
     self.scrollView.delegate = self;
     [self.view addSubview:self.scrollView];
     
-    self.pictureDisplay = [[SYCPictureDisplay alloc] init];
+    for (int i = 0; i < 3; ++i) {
+        LZCarouselModel *model = [[LZCarouselModel alloc] init];
+        model.picture_url = @"";
+        model.picture_goto_url = @"";
+        model.keyword = @"";
+        [self.carouselDataArray addObject:model];
+    }
+    self.pictureDisplay = [[SYCPictureDisplayView alloc] initWithData:self.carouselDataArray];
     [self.scrollView addSubview:self.pictureDisplay];
-    self.pictureDisplay.translatesAutoresizingMaskIntoConstraints = NO;
     [self.pictureDisplay mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.scrollView).with.offset(20);
         make.left.and.right.equalTo(self.view);
         make.height.equalTo(@(SCREEN_WIDTH * 0.55));
     }];
+    [self.view layoutIfNeeded];
+    [self.pictureDisplay buildUI];
+
+    
 
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
@@ -146,34 +155,33 @@
     }];
 }
 
-- (void)getNetworkData{
-    for (int i = 0; i < 3; ++i) {
-        LZCarouselModel *model = [[LZCarouselModel alloc] init];
-        model.picture_url = @"";
-        model.picture_goto_url = @"";
-        model.keyword = @"";
-        [self.carouselDataArray addObject:model];
-    }
-    [self.pictureDisplay loadWithData:self.carouselDataArray];
-    
-    HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-        self.carouselDataArray = [@[] mutableCopy];
-        NSArray *dataArray = [responseObject objectForKey:@"data"];
-        for (NSDictionary *picData in dataArray) {
-            LZCarouselModel *model = [[LZCarouselModel alloc] init];
-            model.picture_url = [picData objectForKey:@"picture_url"];
-            model.picture_goto_url = [picData objectForKey:@"picture_goto_url"];
-            model.keyword = [picData objectForKey:@"keyword"];
-            [self.carouselDataArray addObject:model];
-        }
-        [self.pictureDisplay loadWithData:self.carouselDataArray];
-    } failure:^(NSURLSessionDataTask *task, NSError *error){
-        
-        NSLog(@"获取轮播图图片失败");
-    }];
-    
-}
+//- (void)getNetworkData{
+//    for (int i = 0; i < 3; ++i) {
+//        LZCarouselModel *model = [[LZCarouselModel alloc] init];
+//        model.picture_url = @"";
+//        model.picture_goto_url = @"";
+//        model.keyword = @"";
+//        [self.carouselDataArray addObject:model];
+//    }
+//    [self.pictureDisplay loadWithData:self.carouselDataArray];
+//
+//    HttpClient *client = [HttpClient defaultClient];
+//    [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//        self.carouselDataArray = [@[] mutableCopy];
+//        NSArray *dataArray = [responseObject objectForKey:@"data"];
+//        for (NSDictionary *picData in dataArray) {
+//            LZCarouselModel *model = [[LZCarouselModel alloc] init];
+//            model.picture_url = [picData objectForKey:@"picture_url"];
+//            model.picture_goto_url = [picData objectForKey:@"picture_goto_url"];
+//            model.keyword = [picData objectForKey:@"keyword"];
+//            [self.carouselDataArray addObject:model];
+//        }
+//        [self.pictureDisplay loadWithData:self.carouselDataArray];
+//    } failure:^(NSURLSessionDataTask *task, NSError *error){
+//        NSLog(@"获取轮播图图片失败");
+//    }];
+//
+//}
 
 - (void)viewDidAppear:(BOOL)animated{
     self.navigationController.navigationBar.hidden = NO;

@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Shi Yucheng. All rights reserved.
 //
 
-#import "SYCPictureDisplay.h"
+#import "SYCPictureDisplayView.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -17,7 +17,7 @@
  *   3. distance : ScrollView距离父视图边界距离
  *   假设要露出上下页内容大小为m, m = distance - halfGap
  */
-@interface SYCPictureDisplay() <UIScrollViewDelegate>{
+@interface SYCPictureDisplayView() <UIScrollViewDelegate>{
     CGFloat _picHeight;
     CGFloat _picWidth;
     CGFloat _picGap;
@@ -35,17 +35,18 @@
 
 @end
 
-@implementation SYCPictureDisplay
+@implementation SYCPictureDisplayView
 
-- (void)loadWithData:(NSArray<LZCarouselModel *> *)dataArray{
-    _distance = SCREEN_WIDTH * 0.05;
-    _picGap = SCREEN_WIDTH * 0.03;
-    _picHalfGap = _picGap / 2;
-    
-    self.dataArray = dataArray;
-    self.picCount = dataArray.count;
-    
-    [self buildUI];
+- (instancetype)initWithData:(NSArray<LZCarouselModel *> *)dataArray{
+    self = [super init];
+    if (self) {
+        _distance = SCREEN_WIDTH * 0.05;
+        _picGap = SCREEN_WIDTH * 0.03;
+        _picHalfGap = _picGap / 2;
+        self.dataArray = dataArray;
+        self.picCount = dataArray.count;
+    }
+    return self;
 }
 
 - (void)buildUI{
@@ -93,11 +94,11 @@
             self.index = self.picCount - 1;
         }else if (i == self.picCount + 1) {
             [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[0].picture_url]
-                            placeholderImage:[UIImage imageNamed:@"cqupt2.jpg"]];
+                            placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
             self.index = 0;
         }else {
             [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[i - 1].picture_url]
-                            placeholderImage:[UIImage imageNamed:@"cqupt3.jpg"]];
+                            placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
             self.index = i - 1;
         }
         [_scrollView addSubview:picImageView];

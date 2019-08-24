@@ -179,7 +179,7 @@
 		82280CBB1F612A2300A5921E /* 灰色叉叉@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82280CB91F612A2300A5921E /* 灰色叉叉@3x.png */; };
 		82280CC11F613D8800A5921E /* LXDetailCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82280CC01F613D8800A5921E /* LXDetailCommentView.m */; };
 		82398BC421A4289500300C91 /* SYCMainDiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */; };
-		82398BC521A4289500300C91 /* SYCPictureDisplay.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB221A4289500300C91 /* SYCPictureDisplay.m */; };
+		82398BC521A4289500300C91 /* SYCPictureDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB221A4289500300C91 /* SYCPictureDisplayView.m */; };
 		82398BC621A4289500300C91 /* SYCCustomLayoutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */; };
 		82398BC721A4289500300C91 /* SYCToolsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB621A4289500300C91 /* SYCToolsCell.m */; };
 		82398BC821A4289500300C91 /* SYCCustomToolsControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BB921A4289500300C91 /* SYCCustomToolsControlView.m */; };
@@ -1022,7 +1022,7 @@
 		82280CBF1F613D8800A5921E /* LXDetailCommentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXDetailCommentView.h; sourceTree = "<group>"; };
 		82280CC01F613D8800A5921E /* LXDetailCommentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXDetailCommentView.m; sourceTree = "<group>"; };
 		82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCMainDiscoverViewController.m; sourceTree = "<group>"; };
-		82398BB221A4289500300C91 /* SYCPictureDisplay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCPictureDisplay.m; sourceTree = "<group>"; };
+		82398BB221A4289500300C91 /* SYCPictureDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCPictureDisplayView.m; sourceTree = "<group>"; };
 		82398BB321A4289500300C91 /* SYCToolModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCToolModel.h; sourceTree = "<group>"; };
 		82398BB421A4289500300C91 /* LZCarouselModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCarouselModel.h; sourceTree = "<group>"; };
 		82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCCustomLayoutModel.m; sourceTree = "<group>"; };
@@ -1033,7 +1033,7 @@
 		82398BBB21A4289500300C91 /* SYCCustomToolsControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCCustomToolsControlView.h; sourceTree = "<group>"; };
 		82398BBC21A4289500300C91 /* SYCEditToolsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCEditToolsView.m; sourceTree = "<group>"; };
 		82398BBD21A4289500300C91 /* SYCEditToolsViewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCEditToolsViewHeader.h; sourceTree = "<group>"; };
-		82398BBE21A4289500300C91 /* SYCPictureDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCPictureDisplay.h; sourceTree = "<group>"; };
+		82398BBE21A4289500300C91 /* SYCPictureDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCPictureDisplayView.h; sourceTree = "<group>"; };
 		82398BBF21A4289500300C91 /* SYCMainDiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCMainDiscoverViewController.h; sourceTree = "<group>"; };
 		82398BC021A4289500300C91 /* SYCToolModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCToolModel.m; sourceTree = "<group>"; };
 		82398BC121A4289500300C91 /* LZCarouselModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCarouselModel.m; sourceTree = "<group>"; };
@@ -3196,8 +3196,8 @@
 			children = (
 				82398BBF21A4289500300C91 /* SYCMainDiscoverViewController.h */,
 				82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */,
-				82398BBE21A4289500300C91 /* SYCPictureDisplay.h */,
-				82398BB221A4289500300C91 /* SYCPictureDisplay.m */,
+				82398BBE21A4289500300C91 /* SYCPictureDisplayView.h */,
+				82398BB221A4289500300C91 /* SYCPictureDisplayView.m */,
 				82398BB321A4289500300C91 /* SYCToolModel.h */,
 				82398BC021A4289500300C91 /* SYCToolModel.m */,
 				82398BC221A4289500300C91 /* SYCToolsCell.h */,
@@ -4966,7 +4966,7 @@
 				E48DB69C223E3DAF00B9D744 /* sevenViewController.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
 				E470C9F82227FAD20029501A /* IssueTableViewController.m in Sources */,
-				82398BC521A4289500300C91 /* SYCPictureDisplay.m in Sources */,
+				82398BC521A4289500300C91 /* SYCPictureDisplayView.m in Sources */,
 				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				E46FCEFD230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
