@@ -338,6 +338,7 @@
 		E404FF71231130B60091141C /* VolunteeringEventItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FF2F231130B50091141C /* VolunteeringEventItem.m */; };
 		E404FF72231130B60091141C /* VolunteerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FF30231130B50091141C /* VolunteerItem.m */; };
 		E404FF73231130B60091141C /* YearChooseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FF32231130B50091141C /* YearChooseBar.m */; };
+		E404FF7923117AD50091141C /* tabbar_freshman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7823117AD50091141C /* tabbar_freshman@2x.png */; };
 		E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */; };
 		E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */; };
 		E41AD25B222BF13D00360C56 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD258222BF13D00360C56 /* GradeView.m */; };
@@ -1241,6 +1242,7 @@
 		E404FF30231130B50091141C /* VolunteerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolunteerItem.m; sourceTree = "<group>"; };
 		E404FF32231130B50091141C /* YearChooseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearChooseBar.m; sourceTree = "<group>"; };
 		E404FF33231130B50091141C /* YearChooseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearChooseBar.h; sourceTree = "<group>"; };
+		E404FF7823117AD50091141C /* tabbar_freshman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_freshman@2x.png"; sourceTree = "<group>"; };
 		E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_mine@2x.png"; sourceTree = "<group>"; };
 		E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_youwen@2x.png"; sourceTree = "<group>"; };
 		E41AD256222BF13D00360C56 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
@@ -3531,6 +3533,7 @@
 		F242DC331EBCB2BB005AC411 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				E404FF7823117AD50091141C /* tabbar_freshman@2x.png */,
 				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
 				F242DC351EBCB2BB005AC411 /* MainViewController.m */,
 				F28EA5DC1F6AC0E2002351EF /* LaunchScreenViewController.h */,
@@ -4277,6 +4280,7 @@
 				F242DE9B1EBCB2BC005AC411 /* 无课@3x.png in Resources */,
 				E404FF38231130B50091141C /* 地点坐标.png in Resources */,
 				82280CAD1F601AFD00A5921E /* icon_comment_inside@3x.png in Resources */,
+				E404FF7923117AD50091141C /* tabbar_freshman@2x.png in Resources */,
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
 				F242DE9E1EBCB2BC005AC411 /* 椭圆@2x.png in Resources */,
 				4A3A07E71FCC0EC700A50393 /* lost_image_infocategory@3x.png in Resources */,
