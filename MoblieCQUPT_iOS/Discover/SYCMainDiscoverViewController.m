@@ -37,6 +37,7 @@
 @property (nonatomic, strong) UICollectionView *toolsView;
 @property (nonatomic, strong) NSString *filePath;
 @property (nonatomic, strong) UIView *toolBackgroudView;
+@property (nonatomic) double rows;
 
 @end
 
@@ -79,14 +80,13 @@
     [self.view layoutIfNeeded];
     [self.pictureDisplay buildUI];
 
-    
-
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     //CollectionViewn中内边距大约为10，每行3个按钮中间2个内边距2 * 10 = 20
     CGFloat itemWidth = ((SCREEN_WIDTH - 2 * SCREEN_MARGIN - 30) / 3);
     CGFloat itemHeight = itemWidth * 1.2;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
     self.toolsView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, 0) collectionViewLayout:layout];
     self.toolsView.backgroundColor = [UIColor clearColor];
     self.toolsView.scrollEnabled = NO;
@@ -94,13 +94,12 @@
     self.toolsView.dataSource = self;
     [self.toolsView registerClass:[SYCToolsCell class] forCellWithReuseIdentifier:@"SYCToolsCell"];
     [self.scrollView addSubview:self.toolsView];
-    double rows = ceil(self.inusedTools.count / 3);
     self.toolsView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.toolsView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.pictureDisplay.mas_bottom).with.offset(50);
         make.left.equalTo(self.view.mas_left).with.offset(SCREEN_MARGIN);
         make.right.equalTo(self.view.mas_right).with.offset(-SCREEN_MARGIN);
-        make.height.equalTo(@(rows * itemHeight + (rows - 1) * 10));
+        make.height.equalTo(@(self.rows * itemHeight + (self.rows - 1) * 10));
     }];
     
     _toolBackgroudView = [[UIView alloc] init];
@@ -113,9 +112,38 @@
         make.centerX.and.centerY.height.width.equalTo(self.toolsView);
     }];
     
-    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, 30 + SCREEN_WIDTH * 0.55 + 50 + (rows * itemHeight + (rows - 1) * 10));
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, 30 + SCREEN_WIDTH * 0.55 + 50 + (self.rows * itemHeight + (self.rows - 1) * 10));
 }
 
+-(void)showChannel{
+    [[SYCCustomToolsControlView shareInstance] showChannelViewWithInUseTitles:self.inusedTools unUseTitles:[SYCCustomLayoutModel sharedInstance].unuseTools finish:^(NSArray *inUseTitles, NSArray *unUseTitles) {
+        self.inusedTools = inUseTitles;
+        [SYCCustomLayoutModel sharedInstance].inuseTools = [inUseTitles copy];
+        [SYCCustomLayoutModel sharedInstance].unuseTools = [unUseTitles copy];
+        [[SYCCustomLayoutModel sharedInstance] save];
+        [self reloadView];
+    }];
+}
+
+- (void)reloadView{
+    CGFloat itemWidth = ((SCREEN_WIDTH - 2 * SCREEN_MARGIN - 30) / 3);
+    CGFloat itemHeight = itemWidth * 1.2;
+    self.scrollView.contentSize = CGSizeMake(SCREEN_WIDTH, 30 + SCREEN_WIDTH * 0.55 + 50 + (self.rows * itemHeight + (self.rows - 1) * 10));
+    [self.toolsView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(self.rows * itemHeight + (self.rows - 1) * 10));
+    }];
+    [self.view layoutIfNeeded];
+    [self.toolsView reloadData];
+    [_toolBackgroudView mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.centerX.and.centerY.height.width.equalTo(self.toolsView);
+    }];
+}
+
+- (double)rows{
+    return ceilf(self.inusedTools.count / 3.0);
+}
+
+#pragma -UICollectionView代理方法
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -144,17 +172,7 @@
 }
 
 
--(void)showChannel{
-    [[SYCCustomToolsControlView shareInstance] showChannelViewWithInUseTitles:self.inusedTools unUseTitles:[SYCCustomLayoutModel sharedInstance].unuseTools finish:^(NSArray *inUseTitles, NSArray *unUseTitles) {
-        self.inusedTools = inUseTitles;
-        [SYCCustomLayoutModel sharedInstance].inuseTools = [inUseTitles copy];
-        [SYCCustomLayoutModel sharedInstance].unuseTools = [unUseTitles copy];
-        [[SYCCustomLayoutModel sharedInstance] save];
-        [self.toolsView reloadData];
-        [self.view layoutIfNeeded];
-    }];
-}
-
+//轮播器获取网络图片
 //- (void)getNetworkData{
 //    for (int i = 0; i < 3; ++i) {
 //        LZCarouselModel *model = [[LZCarouselModel alloc] init];
