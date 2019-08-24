@@ -10,6 +10,7 @@
 #import "QRCodeView.h"
 #import "welcomeNewWebController.h"
 #import "BaseNavigationController.h"
+#import "MBProgressHUD.h"
 @interface LQQwantMoreViewController ()<UIActionSheetDelegate,UIWebViewDelegate>
 @property (nonatomic, strong)UIButton*number1;//重邮2019迎新专题
 @property(nonatomic, strong)UIButton*number2;//掌上重邮新功能
@@ -262,15 +263,13 @@
         [_BoLi removeFromSuperview];
     }
 }
-- (void)image:(UIImage *)image didFinshSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
-{
-    NSString *mes = nil;
-    if (error != nil) {
-        mes = @"保存图片失败";
-    } else {
-        mes = @"保存图片成功";
+- (void)image:(UIImage *)image didFinshSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if (error == nil) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"保存成功";
+        [hud hide:YES afterDelay:1];
     }
-
 }
 
 - (void)removeErWeiMa{
