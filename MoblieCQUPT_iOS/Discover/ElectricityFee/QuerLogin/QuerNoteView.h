@@ -11,5 +11,6 @@
 @interface QuerNoteView : UIView
 
 @property (nonatomic, strong) NSString *recordStr;
-
+@property (nonatomic, strong) NSString *year;
+@property(nonatomic,strong)NSString*nian;//汉字：年
 @end

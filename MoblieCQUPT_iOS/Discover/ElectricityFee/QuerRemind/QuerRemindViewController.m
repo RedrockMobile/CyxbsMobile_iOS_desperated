@@ -45,7 +45,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self addTextField];
     [self addDoneBtn];
 }
-
+/*******************
+ *   警告弹窗       *
+ ******************/
 - (void)showInfoView{
     _infoBigView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 667)];
     _infoBigView.backgroundColor = [UIColor colorWithRed:57/255.0 green:57/255.0 blue:57/255.0 alpha:0.7];
@@ -93,6 +95,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [[[UIApplication sharedApplication]keyWindow]endEditing:YES];
 }
 
+/*******************
+ *   上方图片       *
+ ******************/
 - (void)addTitleView{
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"remindImage.png"]];
     imageView.frame = CHANGE_CGRectMake(0, 64, 375, 295);
@@ -101,6 +106,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self.view addSubview:imageView];
 }
 
+/*******************
+ *   提醒文字       *
+ ******************/
 - (void)addTitleRemindLabel{
     UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(87, 403, 215, 20)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -112,6 +120,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self.view addSubview:label];
 }
 
+/*******************
+ *   钱的图片       *
+ ******************/
 - (void)addUnitView{
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"unitImage"]];
     imageView.frame = CHANGE_CGRectMake(108, 442, 33, 41);
@@ -120,7 +131,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self.view addSubview:imageView];
 }
 
-
+/*******************
+ *   文字框         *
+ ******************/
 - (void)addTextField{
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];
@@ -146,7 +159,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self.view addSubview:lineLabel];
     [self.view addSubview:_remindTextField];
 }
-
+/*******************
+ *   确定按钮       *
+ *******************/
 - (void)addDoneBtn{
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:@"确 定" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [content addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(21)]} range:NSMakeRange(0, content.length)];
@@ -162,7 +177,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     [self.view addSubview:doneBtn];
 }
-
+/******************************
+ *   确定按钮之后的回调方法       *
+ ******************************/
 - (void)saveData{
     if (!_remindTextField.text.length) {
         [self showInfoView];

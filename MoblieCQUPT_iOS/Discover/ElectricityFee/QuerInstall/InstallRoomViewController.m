@@ -11,6 +11,8 @@
 #import "QuerLoginViewController.h"
 #import "InstallRoomDoneViewController.h"
 #import "AppDelegate.h"
+#import <YYImage.h>
+#import <Masonry.h>
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 
 
@@ -40,6 +42,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 @property (nonatomic, strong) UIView *bigView;
 
 @property (nonatomic, strong) UIButton *achieveBtn;
+@property(nonatomic,strong)UIWebView *webView;
+@property(nonatomic,strong)UIImageView *buildView;
+@property(nonatomic,strong)UIImageView *roomView;
 
 @end
 
@@ -56,8 +61,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self.view addGestureRecognizer:tapGesture];
     
     [self addTitleView];
-    [self addRoomIcon];
+
     [self addBuildIcon];
+    [self addRoomIcon];
     [self addbuildLabel];
     [self addRoomTextField];
     [self addachieveBtn];
@@ -66,17 +72,27 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 - (void)hideKeyBoard{
     [[[UIApplication sharedApplication]keyWindow]endEditing:YES];
 }
-
+//播放gif
 - (void)addTitleView{
-    UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"querElecIcon.png"]];
-    titleView.frame = CHANGE_CGRectMake(0, 64, 375, 300);
-    titleView.contentMode = UIViewContentModeScaleToFill;
-    [self.view addSubview:titleView];
+
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"electricity_header_setting" ofType:@"gif"];
+    NSData *gifData = [NSData dataWithContentsOfFile:path];
+    _webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    _webView.scalesPageToFit = YES;
+    [_webView loadData:gifData MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+    _webView.backgroundColor = [UIColor clearColor];
+    _webView.opaque = NO;
+    [self.view addSubview:_webView];
+    
+
 }
 
+
 - (void)addbuildLabel{
-    _buildLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.7];
-    _buildLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 425, 250, 20)];
+
+    _buildLabel = [[UILabel alloc]init];
+//    _buildLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 425, 250, 20)];
     _buildLabel.font = [UIFont systemFontOfSize:font(16)];
     _buildLabel.text = @"请选择楼栋数";
     _buildLabel.textAlignment = NSTextAlignmentLeft;
@@ -85,17 +101,36 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBuildTableView)];
     [_buildLabel addGestureRecognizer:tapGesture];
-    
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 447.5, 250, 1)];
+    UILabel *lineLabel = [[UILabel alloc] init];
+//    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 447.5, 250, 1)];
     lineLabel.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.7];
     
     UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"angleImage.png"]];
     arrowView.contentMode = UIViewContentModeScaleToFill;
-    arrowView.frame = CHANGE_CGRectMake(311.5, 430, 15, 10);
+//    arrowView.frame = CHANGE_CGRectMake(311.5, 430, 15, 10);
     
     [self.view addSubview:arrowView];
     [self.view addSubview:lineLabel];
     [self.view addSubview:_buildLabel];
+    [arrowView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(lineLabel.mas_top).offset(-5);
+        make.width.equalTo(@15);
+        make.height.equalTo(@10);
+        make.right.equalTo(_buildLabel);
+    }];
+//    _buildLabel.backgroundColor = [UIColor redColor];
+    [_buildLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@20);
+        make.width.equalTo(@270);//200
+        make.centerY.equalTo(_buildView);
+        make.left.equalTo(_buildView.mas_right).offset(25);
+    }];
+    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(_buildLabel);
+        make.height.equalTo(@1);
+        make.top.equalTo(_buildLabel.mas_bottom);
+        make.left.equalTo(_buildLabel);
+    }];
 }
 
 - (void)addRoomTextField{
@@ -111,20 +146,34 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     
     _roomTextField.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
     _roomTextField.delegate = self;
-    
-    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 497.5, 250, 1)];
+    UILabel *lineLabel = [[UILabel alloc] init];
+//    UILabel *lineLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(82, 497.5, 250, 1)];
     lineLabel.backgroundColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.7];
     
     [self.view addSubview:lineLabel];
     [self.view addSubview:_roomTextField];
+    [_roomTextField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(_buildLabel);
+        make.height.equalTo(_buildLabel);
+        make.centerX.equalTo(_buildLabel);
+        make.centerY.equalTo(_roomView);
+    }];
+    [lineLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.width.equalTo(_roomTextField);
+        make.height.equalTo(@1);
+        make.top.equalTo(_roomTextField.mas_bottom);
+        make.left.equalTo(_roomTextField);
+        
+    }];
 }
 
-
+//确定按钮
 - (void)addachieveBtn{
     NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:@"确 定" attributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     [content addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(21)]} range:NSMakeRange(0, content.length)];
-    
-    _achieveBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(43.5, 544.5, 288,46)];
+    _achieveBtn = [[UIButton alloc] init];
+//    _achieveBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(43.5, 544.5, 288,46)];
     [_achieveBtn setAttributedTitle:content forState:UIControlStateNormal];
     _achieveBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
     
@@ -134,6 +183,13 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [_achieveBtn addTarget:self action:@selector(saveData) forControlEvents:UIControlEventTouchDown];
     
     [self.view addSubview:_achieveBtn];
+    [_achieveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@46);
+        make.width.equalTo(@288);
+        make.centerX.equalTo(self.view);
+
+        make.centerY.equalTo(self.view).offset(270);
+    }];
 }
 
 
@@ -168,20 +224,31 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem  alloc]  initWithTitle:@"返回"style:UIBarButtonItemStylePlain  target:nil  action:nil];
     [self.navigationController pushViewController:irdVC animated:YES];
 }
-
+/****************************
+ *        警告弹框            *
+ ****************************/
 - (void)showInfoView{
-    _infoBigView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(0, 0, 375, 667)];
+    _infoBigView = [[UIView alloc] init/*WithFrame:CHANGE_CGRectMake(0, 0, 375, 667)*/];
     _infoBigView.backgroundColor = [UIColor colorWithRed:57/255.0 green:57/255.0 blue:57/255.0 alpha:0.7];
+//    _infoBigView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_infoBigView];
     
-    UIView *achieveView = [[UIView alloc] initWithFrame:CHANGE_CGRectMake(31, 174.5, 313, 319)];
+    
+    
+    UIView *achieveView = [[UIView alloc] init/*WithFrame:CHANGE_CGRectMake(31, 174.5, 313, 319)*/];
     achieveView.layer.cornerRadius = 12;
     achieveView.layer.masksToBounds = YES;
     achieveView.backgroundColor = [UIColor whiteColor];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"achieveImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(0, 0, 313, 187.5);
+//    UIImageView *imageView = [[UIImageView alloc] init];
+//    imageView.backgroundColor = [UIColor redColor];
+    [imageView setContentMode:UIViewContentModeRedraw];
+    [imageView setContentMode:UIViewContentModeScaleAspectFit];
+//    imageView.frame = CHANGE_CGRectMake(0, 0, 313, 187.5);
     
-    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(100.5, 213.5, 116, 20)];
+    UILabel *infoLabel = [[UILabel alloc] init/*WithFrame:CHANGE_CGRectMake(100.5, 213.5, 116, 20)*/];
+//
     infoLabel.font = [UIFont systemFontOfSize:font(17)];
     infoLabel.textColor = [UIColor colorWithRed:119/255.0 green:119/255.0 blue:119/255.0 alpha:1];
     infoLabel.backgroundColor = [UIColor clearColor];
@@ -191,20 +258,49 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     infoLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     infoLabel.contentMode = UIViewContentModeRedraw;
     
-    UIButton *achieveBtn = [[UIButton alloc] initWithFrame:CHANGE_CGRectMake(31, 264, 252, 41.5)];
+    UIButton *achieveBtn = [[UIButton alloc] init/*WithFrame:CHANGE_CGRectMake(31, 264, 252, 41.5)*/];
     achieveBtn.backgroundColor = [UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1];
     [achieveBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [achieveBtn setTitle:@"确 定" forState:UIControlStateNormal];
     [achieveBtn addTarget:self action:@selector(removeInfoBigView) forControlEvents:UIControlEventTouchDown];
     achieveBtn.layer.cornerRadius = 5;
     achieveBtn.layer.masksToBounds = YES;
-    
+    [_infoBigView addSubview:achieveView];
     [achieveView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+//        make.centerY.equalTo(self.view).offset(-50);
+        make.top.equalTo(achieveView);
+        make.width.equalTo(achieveView);
+        make.height.equalTo(achieveView).multipliedBy(0.49);
+    }];
     [achieveView addSubview:infoLabel];
     [achieveView addSubview:achieveBtn];
-    
-    [_infoBigView addSubview:achieveView];
-    [self.view addSubview:_infoBigView];
+    [achieveView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(_infoBigView);
+        make.width.equalTo(@313);
+        make.height.equalTo(@400);
+//        make.centerY.equalTo(self.view);
+
+    }];
+    [achieveBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(achieveView).offset(-50);
+        make.width.equalTo(achieveView).multipliedBy(0.6);
+        make.centerX.equalTo(achieveView);
+        make.height.equalTo(@41.5);
+    }];
+    [infoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(achieveView);
+        make.centerY.equalTo(achieveBtn).offset(-85);
+        make.height.equalTo(@40);
+        make.width.equalTo(@146);
+    }];
+
+    [_infoBigView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+        make.width.equalTo(self.view);
+        make.height.equalTo(self.view);
+    }];
 }
 
 - (void)removeInfoBigView{
@@ -214,18 +310,39 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (void)addBuildIcon{
-    UIImageView *buildView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"buildIcon.png"]];
-    buildView.frame = CHANGE_CGRectMake(43.5, 425, 18, 19);
-    buildView.contentMode = UIViewContentModeScaleToFill;
-    [self.view addSubview:buildView];
+    _buildView= [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"buildIcon.png"]];
+//    buildView.frame = CHANGE_CGRectMake(43.5, 425, 18, 19);
+    _buildView.contentMode = UIViewContentModeScaleToFill;
+
+        [self.view addSubview:_buildView];
+    [_buildView mas_makeConstraints:^(MASConstraintMaker *make) {
+
+        make.width.equalTo(@18);
+        make.height.equalTo(@19);
+        make.centerX.equalTo(self.view).offset(-148);
+        make.centerY.equalTo(self.view).offset(115);
+    }];
+
+
 }
 
 - (void)addRoomIcon{
-    UIImageView *roomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"roomIcon.png"]];
-    roomView.frame = CHANGE_CGRectMake(43.5, 476, 18, 19);
-    [self.view addSubview:roomView];
+    _roomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"roomIcon.png"]];
+//    roomView.frame = CHANGE_CGRectMake(43.5, 476, 18, 19);
+    [self.view addSubview:_roomView];
+
+    [_roomView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.size.equalTo(_buildView);
+        make.width.equalTo(_buildView);
+        make.height.equalTo(_buildView);
+        make.centerY.equalTo(_buildView).offset(60);
+        make.centerX.equalTo(_buildView);
+    }];
 }
 
+/****************************
+ *   以下是TableView的代理    *
+ ****************************/
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -305,5 +422,6 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     // Pass the selected object to the new view controller.
 }
 */
+
 
 @end

@@ -18,16 +18,19 @@
 //用了多少度
 @property (nonatomic, strong) NSString *ElectrolysisStr;
 
-//日均量
-@property (nonatomic, strong) NSString *AveragELecStr;
-
-//月优惠量
-@property (nonatomic, strong) NSString *FreeElecStr;
-
-//电起度
-@property (nonatomic, strong) NSString *ElcStarStr;
-
-//电止度
-@property (nonatomic, strong) NSString *ElcEndStr;
-
+//
+//
+////日均量
+//@property (nonatomic, strong) NSString *AveragELecStr;
+//
+////月优惠量
+//@property (nonatomic, strong) NSString *FreeElecStr;
+//
+////电起度
+//@property (nonatomic, strong) NSString *ElcStarStr;
+//
+////电止度
+//@property (nonatomic, strong) NSString *ElcEndStr;
+-(void)highlightWithPercentage:(CGFloat)percentage;
+-(void)logIt;
 @end

@@ -8,7 +8,7 @@
 
 #import "QuerNoteView.h"
 #import "AppDelegate.h"
-
+#import <Masonry.h>
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 
 CG_INLINE CGRect
@@ -38,22 +38,17 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)drawRect:(CGRect)rect {
     [self drawDateLabel];
-    [self drawNoteLabel];
+//    [self drawNoteLabel];
     [self drawTelInfoLabel];
-    [self drawRecordTimeWithData:_recordStr];
+    [self drawRecordTimeWithData:_recordStr year:_year nian:_nian];
 }
 
-- (void)drawRecordTimeWithData:(NSString *)data{
+- (void)drawRecordTimeWithData:(NSString *)data year:(NSString*)year nian:(NSString*)nian{
     UILabel *label = [[UILabel alloc] init];
     
-    NSDate *currentDate = [NSDate date];
-    
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    
-    NSDateComponents *compoent = [calendar components:NSCalendarUnitYear fromDate:currentDate];
-    
-    NSString *text = [NSString stringWithFormat:@"%ld年%@",(long)[compoent year],data];
-    [self maekLabel:label WithText:text fontOfSize:font(13) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(94.5, 55, 100, 15)];
+
+    NSString *text = [NSString stringWithFormat:@"%@%@%@",year,nian,data];
+    [self makeLabel:label WithText:text fontOfSize:font(13) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(94.5, 55-30-10-5, 100, 15)];
     [self addSubview:label];
 }
 
@@ -63,7 +58,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [telInfoStr addAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:27/255.0 green:184/255.0 blue:250/255.0 alpha:1],NSBackgroundColorAttributeName:[UIColor clearColor]} range:NSMakeRange(0, 26)];
     [telInfoStr addAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]} range:NSMakeRange(0,14)];
   
-    label.frame = CHANGE_CGRectMake(31, 82, 265, 15);
+    label.frame = CHANGE_CGRectMake(31, 82-40-5, 265, 15);
     label.attributedText = telInfoStr;
     label.textAlignment = NSTextAlignmentLeft;
     label.adjustsFontSizeToFitWidth = YES;
@@ -74,17 +69,17 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)drawDateLabel{
     UILabel *label = [[UILabel alloc] init];
-    [self maekLabel:label WithText:@"抄表日期:" fontOfSize:font(13) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(31, 55 , 55, 15)];
+    [self makeLabel:label WithText:@"抄表日期:" fontOfSize:font(13) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(31, 55-40-5 , 55, 15)];
     [self addSubview:label];
 }
 
 - (void)drawNoteLabel{
     UILabel *label = [[UILabel alloc] init];
-    [self maekLabel:label WithText:@"注意事项" fontOfSize:font(14) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(31, 20, 55, 15)];
+    [self makeLabel:label WithText:@"注意事项" fontOfSize:font(14) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(31, 20, 55, 15)];
     [self addSubview:label];
 }
 
-- (void)maekLabel:(UILabel *)label WithText:(NSString *)text fontOfSize:(CGFloat)size textColor:(UIColor *)color frame:(CGRect)frame{
+- (void)makeLabel:(UILabel *)label WithText:(NSString *)text fontOfSize:(CGFloat)size textColor:(UIColor *)color frame:(CGRect)frame{
     label.frame = frame;
     label.text = text;
     label.textAlignment = NSTextAlignmentCenter;

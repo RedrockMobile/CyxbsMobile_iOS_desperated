@@ -8,6 +8,7 @@
 
 #import "QuerLoginViewController.h"
 #import "QuerCircleView.h"
+#import "QuerInfo.h"
 #import "QuerLoginModel.h"
 #import "QuerNoteView.h"
 #import "QuerPullTableViewCell.h"
@@ -17,9 +18,12 @@
 #import "QuerRemindViewController.h"
 #import "IntallFailViewController.h"
 #import "AppDelegate.h"
+#import <Masonry.h>
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 #define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
+#define NOTEVIEWHIGHT 570//底边栏高度
+
 
 CG_INLINE CGRect
 CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
@@ -43,16 +47,33 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 @property (nonatomic) BOOL on;
 
 @property (nonatomic, strong) NSDictionary *dataDic;
+
 @end
 
 @implementation QuerLoginViewController
 
 - (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
 
-    QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0, 450, 375, 247)];
+
+    [super viewWillAppear:animated];
     
-    QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CHANGE_CGRectMake(0, 94, 378, 264)];
+//    /************test****************/
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+//    hud.mode = MBProgressHUDModeText;
+//    hud.labelText = @"您的网络不给力!";
+//    [hud hide:YES afterDelay:1];
+//
+//    //
+    QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0, NOTEVIEWHIGHT, 375, 247)];
+
+    QuerCircleView *qcv = [[QuerCircleView alloc] init];
+        [self.view addSubview:qcv];
+    [qcv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height);
+        make.height.equalTo(self.view).multipliedBy(0.4);
+        make.width.equalTo(self.view);
+    }];
+    
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];
     NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
@@ -61,15 +82,13 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     QuerLoginModel *qlModel = [[QuerLoginModel alloc] init];
     [qlModel RequestWithBuildingNum:[NSString stringWithFormat:@"%@",dataDic[@"build"]] RoomNum:[NSString stringWithFormat:@"%@",dataDic[@"room"]]];
 
-    qcv.percentage = 0;
+//    qcv.percentage = 0;
     qcv.chargeStr = @"00.00";
     qcv.ElectrolysisStr = @"0";
-    qcv.AveragELecStr = @"0";
-    qcv.FreeElecStr = @"0";
-    qcv.ElcStarStr = @"0";
-    qcv.ElcEndStr = @"0";
-    qnv.recordStr = @"0月0日";
     
+    qnv.recordStr = @"";
+    qnv.year = @"";
+    qnv.nian = @"";
     if (dataDic[@"room"]&&dataDic[@"build"]) {
         qlModel.saveBlock = ^(NSDictionary *jsonDic){
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -81,11 +100,26 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
                 [qcv removeFromSuperview];
                 [qnv removeFromSuperview];
                 [self reloadElecData];
+
             }
         };
     }
     [self.view addSubview:qnv];
-    [self.view addSubview:qcv];
+
+    QuerInfo*qif = [[QuerInfo alloc]init];
+    qif.AveragELecStr = @"0";
+    qif.FreeElecStr = @"0";
+    qif.ElcStarStr = @"0";
+    qif.ElcEndStr = @"0";
+
+    qif.backgroundColor = COLOR_BULE3;
+    [self.view addSubview:qif];
+    [qif mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(qcv.mas_bottom);
+        make.width.equalTo(qcv);
+        make.bottom.equalTo(qnv.mas_top);
+    }];
+
 }
 
 - (void)reloadElecData{
@@ -96,30 +130,66 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSDictionary *dataDic = [userDefault objectForKey:@"elecData"];
     
-    QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0, 450, 375, 247)];
+
     
-    QuerCircleView *qcv = [[QuerCircleView alloc] initWithFrame:CHANGE_CGRectMake(0, 94, 378, 264)];
+    QuerCircleView *qcv = [[QuerCircleView alloc] init];
+    [self.view addSubview:qcv];
+    [qcv mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(self.navigationController.navigationBar.frame.size.height+[[UIApplication sharedApplication] statusBarFrame].size.height);
+        make.height.equalTo(self.view).multipliedBy(0.4);
+        make.width.equalTo(self.view);
+    }];
     
     NSString *charge = [NSString stringWithFormat:@"%@.%@",dataDic[@"elec_cost"][0],dataDic[@"elec_cost"][1]];
     qcv.chargeStr = charge;
     qcv.ElectrolysisStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_spend"]];
     NSInteger elec = [[NSString stringWithFormat:@"%@",dataDic[@"elec_spend"]] integerValue];
     NSInteger day = [[[NSString stringWithFormat:@"%@",dataDic[@"record_time"]] substringFromIndex:3] integerValue];
-    qcv.AveragELecStr = [NSString stringWithFormat:@"%ld",elec/day];
-    qcv.FreeElecStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_free"]];
-    qcv.ElcStarStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_start"]];
-    qcv.ElcEndStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_end"]];
+
     if (elecDic[@"remind"]) {
         qcv.percentage = (CGFloat)charge.integerValue/[elecDic[@"remind"] integerValue];
     }else{
     qcv.percentage = (CGFloat)charge.integerValue/200;
     }
-    
+
+        QuerNoteView *qnv = [[QuerNoteView alloc] initWithFrame:CHANGE_CGRectMake(0,NOTEVIEWHIGHT, 375, 247)];
     qnv.recordStr = [NSString stringWithFormat:@"%@",dataDic[@"record_time"]];
-    
+        NSDate *currentDate = [NSDate date];
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *compoent = [calendar components:NSCalendarUnitYear fromDate:currentDate];
+    qnv.year =[NSString stringWithFormat:@"%ld",(long)[compoent year]];
+    qnv.nian = @"年";
     [self.view addSubview:qnv];
-    [self.view addSubview:qcv];
+
+    QuerInfo*qif = [[QuerInfo alloc]init];
+    qif.AveragELecStr = [NSString stringWithFormat:@"%ld",elec/day];
+    qif.FreeElecStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_free"]];
+    qif.ElcStarStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_start"]];
+    qif.ElcEndStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_end"]];
+    qif.backgroundColor = COLOR_BULE3;
+    [self.view addSubview:qif];
+    [qif mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(qcv.mas_bottom);
+        make.width.equalTo(qcv);
+        make.bottom.equalTo(qnv.mas_top);
+    }];
+//    [qcv highlightWithPercentage:qcv.percentage];
+//    QuerCircleView*qqq =[[QuerCircleView alloc]init];
+//    [qqq highlightWithPercentage:qqq.percentage];
+
 }
+- (void)viewDidAppear:(BOOL)animated{
+    //小圆的圆心位置
+    
+}
+
+
+
+
+
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -129,21 +199,53 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     _tableView.dataSource = self;
     _tableView.scrollEnabled = NO;
     _on = NO;
-    
     self.view.backgroundColor = [UIColor whiteColor];
-    
-    UIBarButtonItem *barItem = [[UIBarButtonItem alloc] initWithTitle:@"..." style:UIBarButtonItemStylePlain target:self action:@selector(showMinTableView)];
-    
-    UILabel *label = [[UILabel alloc] initWithFrame:CHANGE_CGRectMake(0, 435, 375, 10)];
-    label.backgroundColor = [UIColor colorWithRed:240/255.0 green:241/255.0 blue:245/255.0 alpha:1];
-    [self.view addSubview:label];
-    
-    [barItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font(34)]} forState:UIControlStateNormal];
-    
-    
+    UIBarButtonItem*barItem =[[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(gotoLQview)];
+    //    if()
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = pathArray[0];
+    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    if (!data[@"room"])
+    {
+        [self gotoLQview];
+    }
     self.navigationItem.rightBarButtonItem = barItem;
     self.navigationItem.title = @"查电费";
 
+    
+    
+    
+}
+-(void)gotoLQview{
+//    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = pathArray[0];
+//    NSString *plistPath = [documentsDirectory stringByAppendingPathComponent:@"RoomAndBuild.plist"];
+//    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath];
+    
+//    NSDate *currentDate = [NSDate date];
+    
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+//    NSDateComponents *compoent = [calendar components:NSCalendarUnitMonth fromDate:currentDate];
+    
+            InstallRoomViewController *roomVC = [[InstallRoomViewController alloc] init];
+            [self.navigationController pushViewController:roomVC animated:YES];
+//    if (data[@"room"]) {
+//        if ([NSString stringWithFormat:@"%@",compoent].integerValue -[NSString stringWithFormat:@"%@",data[@"month"]].integerValue == 0) {
+//            IntallFailViewController *ifVC = [[IntallFailViewController alloc] init];
+//            [self.navigationController pushViewController:ifVC animated:YES];
+//            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:nil action:nil];
+//        }else{
+//            InstallcurrentViewController *icVC = [[InstallcurrentViewController alloc] init];
+//            [self.navigationController pushViewController:icVC animated:YES];
+//        }
+//
+//    }else{
+//        InstallRoomViewController *roomVC = [[InstallRoomViewController alloc] init];
+//        [self.navigationController pushViewController:roomVC animated:YES];
+//    }
+//
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -199,6 +301,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
                  InstallcurrentViewController *icVC = [[InstallcurrentViewController alloc] init];
             [self.navigationController pushViewController:icVC animated:YES];
             }
+            
         }else{
         InstallRoomViewController *roomVC = [[InstallRoomViewController alloc] init];
         [self.navigationController pushViewController:roomVC animated:YES];
@@ -231,7 +334,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         _on = NO;
     }
 }
-
+//返回手势
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch{
 // 若为UITableViewCellContentView（即点击了tableViewCell），则不截获Touch事件(只解除的是cell与手势间的冲突，cell以外仍然响应手势)
     if ([NSStringFromClass([touch.view class]) isEqualToString:@"UITableViewCellContentView"]) {
@@ -262,6 +365,9 @@ if ([touch.view isKindOfClass:[UITableView class]]){
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
+ */
+
+
 
 @end

@@ -38,9 +38,16 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (void)addTitleView{
     UIImageView *titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"reinstallImage.png"]];
-    titleView.frame = CHANGE_CGRectMake(0, 64, 375, 300);
-    titleView.contentMode = UIViewContentModeScaleToFill;
+
+    titleView.contentMode = UIViewContentModeScaleAspectFit;
     [self.view addSubview:titleView];
+    [titleView mas_makeConstraints:^(MASConstraintMaker *make) {
+
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+                make.top.equalTo(self.view);
+//        make.centerY.equalTo(self.view).offset(-200);
+    }];
 }
 
 - (void)addDormitoryLabel{

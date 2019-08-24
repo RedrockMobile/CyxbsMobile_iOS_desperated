@@ -7,62 +7,71 @@
 //
 
 #import "QuerInfo.h"
-
+#import <Masonry.h>
+#import "QuerCircleView.h"
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
+#define NUMBERSOFDATALUMP 5
 
 @implementation QuerInfo
 
 - (void)drawRect:(CGRect)rect {
-    UILabel *endlabel = [[UILabel alloc] init];
-    [self maekLabel:endlabel WithText:@"电止度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] ];
-    [self addSubview:endlabel];
-    
-    UILabel *startlabel = [[UILabel alloc] init];
-    [self maekLabel:startlabel WithText:@"电起度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] ];
-    [self addSubview:startlabel];
-    
-    UILabel *freelabel = [[UILabel alloc] init];
-    [self maekLabel:freelabel WithText:@"月优惠量/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] ];
-    [self addSubview:freelabel];
+    self.contentSize =  CGSizeMake(0,self.bounds.size.height/2.5*(int)(NUMBERSOFDATALUMP/2.0+0.5));//scrollView的宽高
+
+    [self drawDataLump];
+
+
 }
 
 
 
-- (void)drawElcEndLabelWithData:(NSString *)data{
-    self.ElcEndLabel = [[UILabel alloc] init];
-    [self maekLabel:self.ElcEndLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1]];
-    [self addSubview:self.ElcEndLabel];
+
+-(void)drawDataLump{
+    for (int i = 1; i <= NUMBERSOFDATALUMP; i++) {
+        UIImageView *dataLumpView= [[UIImageView alloc]init];
+        dataLumpView.backgroundColor = [UIColor whiteColor];
+        [self addSubview:dataLumpView];
+        [dataLumpView setWidth:0.45*self.bounds.size.width];
+        [dataLumpView setHeight:0.28*self.bounds.size.height];
+        [dataLumpView setCenter:CGPointMake(i%2==1?self.bounds.size.width/4.0:self.bounds.size.width*3/4.0, i%2==1? self.bounds.size.height*i/5.0:self.bounds.size.height*(i-1)/5.0)];
+        NSString*imageName = [NSString stringWithFormat:@"electricity_charge_ic_%d",i];
+        dataLumpView.layer.cornerRadius = 5;
+        dataLumpView.layer.masksToBounds = YES;
+        UIImage*image = [UIImage imageNamed:imageName];
+        UIImageView*imageView = [[UIImageView alloc]initWithImage:image];
+        [imageView setImage:image];
+        imageView.width = 0.9*dataLumpView.width/3;
+        imageView.height = 0.9*dataLumpView.height;
+        imageView.center = CGPointMake(dataLumpView.width/6.0+10, dataLumpView.height/2.0);
+        imageView.contentMode = UIViewContentModeCenter;
+//        imageView.backgroundColor = [UIColor redColor];
+        [dataLumpView addSubview:imageView];
+        NSArray<NSString*>*labelArray = [NSArray arrayWithObjects:@"费用/本月",@"日均量/度",@"电起度/度",@"电止度/度",@"月优惠量/度", nil];
+        UILabel*label = [[UILabel alloc]init];
+        [dataLumpView addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(imageView.mas_right).offset(30);
+            make.top.equalTo(dataLumpView).offset(17);
+            make.width.equalTo(@70);
+            make.height.equalTo(@20);
+        }];
+        label.text = labelArray[i-1];
+        label.font = [UIFont systemFontOfSize:12.5];
+        label.textColor = COLOR_BULE1;
+        NSArray<NSString*>*dataLabelArray = [NSArray arrayWithObjects:@"0",self.AveragELecStr,self.ElcStarStr,self.ElcEndStr
+                                             ,self.FreeElecStr, nil];
+        UILabel*dataLabel = [[UILabel alloc]init];
+        [dataLumpView addSubview:dataLabel];
+        [dataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(imageView.mas_right).offset(30);
+            make.top.equalTo(label.mas_bottom).offset(5);
+            make.width.equalTo(@80);
+            make.height.equalTo(@30);
+        }];
+        dataLabel.text = dataLabelArray[i-1];
+        dataLabel.font = [UIFont systemFontOfSize:25];
+        dataLabel.textColor = COLOR_BULE1;
+        
+        
+    }
 }
-
-- (void)drawElcStartLabelWithData:(NSString *)data{
-    self.ElcStartLabel = [[UILabel alloc] init];
-    [self maekLabel:self.ElcStartLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1]];
-    [self addSubview:self.ElcStartLabel];
-}
-
-- (void)drawFreeLabelWithData:(NSString *)data{
-    self.freeElcLabel = [[UILabel alloc] init];
-    [self maekLabel:self.freeElcLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1]];
-    [self addSubview:self.freeElcLabel];
-}
-
-- (void)drawAveragELecWithData:(NSString *)data{
-    self.avergaeElecLabel = [[UILabel alloc] init];
-    [self maekLabel:self.avergaeElecLabel WithText:data fontOfSize:font(25) textColor:[UIColor colorWithRed:18/255.0 green:185/255.0 blue:255/255.0 alpha:1]];
-    [self addSubview:self.avergaeElecLabel];
-}
-
-
-
-- (void)maekLabel:(UILabel *)label WithText:(NSString *)text fontOfSize:(CGFloat)size textColor:(UIColor *)color{
-    label.text = text;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = color;
-    label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont systemFontOfSize:size];
-    label.adjustsFontSizeToFitWidth = YES;
-    label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    label.contentMode = UIViewContentModeRedraw;
-}
-
 @end

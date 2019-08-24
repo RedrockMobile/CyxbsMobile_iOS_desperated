@@ -24,9 +24,10 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     return rect;
 }
 
-//@interface InstallRoomDoneViewController () <MyNavigationControllerShouldPopProtocol>
+@interface InstallRoomDoneViewController ()
+@property(nonatomic,strong)UIImageView*imageView;
 
-//@end
+@end
 
 @implementation InstallRoomDoneViewController
 
@@ -58,11 +59,18 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneImage.png"]];
-    imageView.frame = CHANGE_CGRectMake(91.5, 187, 194, 208);
-    imageView.contentMode = UIViewContentModeScaleToFill;
+    _imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"doneImage.png"]];
+        _imageView.contentMode = UIViewContentModeScaleAspectFit;
+        [self.view addSubview:_imageView];
+    [_imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+    }];
+//    imageView.frame = CHANGE_CGRectMake(91.5, 187, 194, 208);
+
     
-    [self.view addSubview:imageView];
+
 }
 
 - (void)didReceiveMemoryWarning {

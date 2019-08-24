@@ -8,19 +8,32 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QuerInfo : UIView
+@interface QuerInfo : UIScrollView
+//
+////日均量显示标签
+//@property (nonatomic, strong) UILabel *avergaeElecLabel;
+//
+////月优惠显示标签
+//@property (nonatomic, strong) UILabel *freeElcLabel;
+//
+////电起度显示标签
+//@property (nonatomic, strong) UILabel *ElcStartLabel;
+//
+////电止度显示标签
+//@property (nonatomic, strong) UILabel *ElcEndLabel;
 
-//日均量显示标签
-@property (nonatomic, strong) UILabel *avergaeElecLabel;
+//用了多少度
+@property (nonatomic, strong) NSString *ElectrolysisStr;
 
-//月优惠显示标签
-@property (nonatomic, strong) UILabel *freeElcLabel;
+//日均量
+@property (nonatomic, strong) NSString *AveragELecStr;
 
-//电起度显示标签
-@property (nonatomic, strong) UILabel *ElcStartLabel;
+//月优惠量
+@property (nonatomic, strong) NSString *FreeElecStr;
 
-//电止度显示标签
-@property (nonatomic, strong) UILabel *ElcEndLabel;
+//电起度
+@property (nonatomic, strong) NSString *ElcStarStr;
 
-
+//电止度
+@property (nonatomic, strong) NSString *ElcEndStr;
 @end
