@@ -335,6 +335,7 @@
 		E404FF72231130B60091141C /* VolunteerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FF30231130B50091141C /* VolunteerItem.m */; };
 		E404FF73231130B60091141C /* YearChooseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FF32231130B50091141C /* YearChooseBar.m */; };
 		E404FF7923117AD50091141C /* tabbar_freshman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7823117AD50091141C /* tabbar_freshman@2x.png */; };
+		E404FF7B231272600091141C /* touxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7A231272600091141C /* touxiang.png */; };
 		E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */; };
 		E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */; };
 		E41AD25B222BF13D00360C56 /* GradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41AD258222BF13D00360C56 /* GradeView.m */; };
@@ -1232,6 +1233,7 @@
 		E404FF32231130B50091141C /* YearChooseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearChooseBar.m; sourceTree = "<group>"; };
 		E404FF33231130B50091141C /* YearChooseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearChooseBar.h; sourceTree = "<group>"; };
 		E404FF7823117AD50091141C /* tabbar_freshman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_freshman@2x.png"; sourceTree = "<group>"; };
+		E404FF7A231272600091141C /* touxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang.png; sourceTree = "<group>"; };
 		E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_mine@2x.png"; sourceTree = "<group>"; };
 		E41AD246222BDD9000360C56 /* tabbar_image_youwen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_youwen@2x.png"; sourceTree = "<group>"; };
 		E41AD256222BF13D00360C56 /* GradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradeView.h; sourceTree = "<group>"; };
@@ -2245,6 +2247,7 @@
 				6E7C985D204182EE000BAA16 /* YouWenSortViewController.m */,
 				6E7C985F2041B5D5000BAA16 /* YouWenDataModel.h */,
 				6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */,
+				E404FF7A231272600091141C /* touxiang.png */,
 			);
 			path = sortView;
 			sourceTree = "<group>";
@@ -4443,6 +4446,7 @@
 				F20027171F405B8500360991 /* remind_image_confirm@3x.png in Resources */,
 				4A3A07EE1FCC0EC700A50393 /* lost_image_lacktel@2x.png in Resources */,
 				6E32140020D54EE100E55145 /* AboutMePraiseTableViewCell.xib in Resources */,
+				E404FF7B231272600091141C /* touxiang.png in Resources */,
 				F238C6441F3D911200FEB179 /* navbar_image_back@2x.png in Resources */,
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
@@ -4918,7 +4922,6 @@
 				E46FCF12230FCF90001FECE8 /* LQQsubjectDataView.m in Sources */,
 				E470CA292228055C0029501A /* LZSearchView.m in Sources */,
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
-				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				E46FCEFA230FCF90001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
 				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,

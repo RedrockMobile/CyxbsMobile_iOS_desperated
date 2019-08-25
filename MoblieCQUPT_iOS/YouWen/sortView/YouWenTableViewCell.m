@@ -10,7 +10,7 @@
 #import <Masonry.h>
 #import <SDWebImageManager.h>
 @interface YouWenTableViewCell()
-@property (strong, nonatomic) UIView *beyondView;
+@property (strong, nonatomic) UIView *backgrondView;
 @property (strong, nonatomic) UIImageView *headImageView;
 @property (strong, nonatomic) UILabel *nameLabel;
 @property (strong, nonatomic) UILabel *titleLabel;
@@ -23,53 +23,30 @@
 @end
 @implementation YouWenTableViewCell
 
-+ (instancetype)cellWithTableView:(UITableView *)tableView andDic: (NSDictionary *)dic
-{
-    static NSString *identify = @"YouWenTableViewCell";
-    YouWenTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identify];
-    if (cell == nil)
-    {
-        cell = [[YouWenTableViewCell alloc] initWithReuseIdentifier:identify WithDic:(NSDictionary *)dic];
-    }
-    [cell layoutIfNeeded];
-    return cell;
-}
-
-- (instancetype)initWithReuseIdentifier:(NSString *)identify WithDic:(NSDictionary *)dic{
-    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identify]){
-        self.dataDic = dic;
+- (instancetype)initWithDic:(NSDictionary *)dic{
+    self = [super init];
+    if (self) {
+        _dataDic = dic;
         _qusId = [[NSString alloc] initWithFormat:@"%@", dic[@"id"]];
         _title = [[NSString alloc] initWithFormat:@"%@", dic[@"title"]];
-        
         [self setUpCell];
         self.frame = CGRectMake(0, 0, SCREEN_WIDTH, 350);
     }
+    [self layoutIfNeeded];
     return self;
-}
-
-
-
-- (void)workOutSize{
-    CGSize size = CGSizeMake(SCREEN_WIDTH - 50, 300);
-    UIFont* font = [UIFont fontWithName:@"Arial" size:17];
-    NSDictionary *dic = @{NSFontAttributeName:font};
-    NSString *string = _dataDic[@"description"];
-    CGFloat height = [string boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin
-        attributes:dic context:nil].size.height;
-    _cellSize = CGRectMake(0, 0, SCREEN_WIDTH, height + 122);
 }
 
 - (void)setUpCell{
     self.backgroundColor = [UIColor clearColor];
-    _beyondView = [[UIView alloc] init];
-    _beyondView.backgroundColor = [UIColor whiteColor];
-    _beyondView.layer.cornerRadius = 10;
-    _beyondView.layer.masksToBounds = NO;
-    _beyondView.layer.shadowColor = [UIColor grayColor].CGColor;
-    _beyondView.layer.shadowOpacity = 0.2;
-    _beyondView.layer.shadowOffset = CGSizeMake(1, 1);
-    _beyondView.layer.shadowRadius = 3;
-    [self.contentView addSubview:_beyondView];
+    _backgrondView = [[UIView alloc] init];
+    _backgrondView.backgroundColor = [UIColor whiteColor];
+    _backgrondView.layer.cornerRadius = 10;
+    _backgrondView.layer.masksToBounds = NO;
+    _backgrondView.layer.shadowColor = [UIColor grayColor].CGColor;
+    _backgrondView.layer.shadowOpacity = 0.2;
+    _backgrondView.layer.shadowOffset = CGSizeMake(1, 1);
+    _backgrondView.layer.shadowRadius = 3;
+    [self.contentView addSubview:_backgrondView];
     [self setUpDetail];
 }
 
@@ -143,12 +120,11 @@
     [self.contentView addSubview:_soreImageView];
     [self.contentView addSubview:_deadTimeLabel];
     
-    [_headImageView sd_setImageWithURL:self.dataDic[@"photo_thumbnail_src"] placeholderImage:nil];
+    [_headImageView sd_setImageWithURL:self.dataDic[@"photo_thumbnail_src"] placeholderImage:[UIImage imageNamed:@"touxiang"]];
     _headImageView.layer.cornerRadius = 13;
     _headImageView.layer.masksToBounds = YES;
-    
-
 }
+
 - (void)layoutSubviews{
     [super layoutSubviews];
     
@@ -192,8 +168,8 @@
         make.top.equalTo(self.contentView.mas_top)
         .mas_offset(27);
         make.right.equalTo(self.contentView.mas_right)
-        .mas_offset(-25);
-        make.width.mas_equalTo(32);
+        .mas_offset(-30);
+        make.width.mas_equalTo(40);
         make.height.mas_equalTo(12);
     }];
     
@@ -221,7 +197,7 @@
     /*使用Masonry会因为还没有约束，而不起作用，解决方法直接取frame，
      整体内缩
      */
-    _beyondView.frame = CGRectMake(10, 5, self.contentView.width - 20, self.contentView.height - 10);
+    _backgrondView.frame = CGRectMake(10, 5, self.contentView.width - 20, self.contentView.height - 10);
 }
 
 
@@ -235,16 +211,4 @@
     NSInteger hour = time / 360;
     return [NSString  stringWithFormat:@"%ld", hour];
 }
-
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 @end

@@ -24,7 +24,8 @@
 @implementation YouWenSortViewController
 - (instancetype)initViewStyle:(NSString *)style{
     if (self = [super init]) {
-        _dataModel = [[YouWenDataModel alloc]initWithStyle:style];
+        _dataModel = [[YouWenDataModel alloc] initWithStyle:style];
+        [_tab registerClass:[YouWenTableViewCell class] forCellReuseIdentifier:@"YouWenTableViewCell"];
         _YWpage = 0;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableData:) name:[NSString stringWithFormat:@"%@DataLoading", style]object:nil];
     }
@@ -32,7 +33,7 @@
 }
 
 - (NSMutableArray *)dataArray{
-    if (_dataArray) {
+    if (!_dataArray) {
         _dataArray = [NSArray array].mutableCopy;
     }
     return _dataArray;
@@ -71,15 +72,14 @@
         if ([str isEqualToString:@"YES"]) {
             if (!_dataArray.count) {
                 _dataArray = _dataModel.YWdataArray.mutableCopy;
-            }
-            else {
+            }else {
                 [_dataModel.YWdataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     if ([obj[@"created_at"] isEqualToString:
-                         _dataArray[idx][@"created_at"]]){
+                         self.dataArray[idx][@"created_at"]]){
                         *stop = YES;
                     }
                     else {
-                        [_dataArray insertObject:obj atIndex:0];
+                        [self.dataArray insertObject:obj atIndex:0];
                     }
                 }];
             }
@@ -110,13 +110,19 @@
     _YWpage ++;
     [_dataModel newPage:[NSString stringWithFormat:@"%ld", (long)_YWpage]];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSDictionary *dic = _dataArray[indexPath.row];
-    YouWenTableViewCell *cell = [YouWenTableViewCell cellWithTableView:tableView andDic:dic];
+    YouWenTableViewCell *cell = [self.tab dequeueReusableCellWithIdentifier:@"YouWenTableViewCell"];
+    if (!cell) {
+        cell = [[YouWenTableViewCell alloc] initWithDic:dic];
+    }
+    
+    cell.dataDic = dic;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
