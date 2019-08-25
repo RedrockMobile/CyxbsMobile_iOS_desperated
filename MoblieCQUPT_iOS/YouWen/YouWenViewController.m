@@ -42,7 +42,10 @@
     otherView.title = @"其他";
     YouWenSortViewController *allView = [[YouWenSortViewController alloc] initViewStyle:@"全部"];
     allView.title = @"全部";
-    NSArray *views = @[allView, emtionView, learningView, otherView];
+    YouWenSortViewController *lifeView = [[YouWenSortViewController alloc] initViewStyle:@"生活"];
+    lifeView.title = @"生活";
+    
+    NSArray *views = @[allView, lifeView, emtionView, learningView, otherView];
     for (YouWenSortViewController *view in views) {
         view.superController = self;
     }

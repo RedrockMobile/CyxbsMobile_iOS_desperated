@@ -50,16 +50,17 @@
 - (YouWenBottomButtonView *)bottomView {
     if (!_bottomView) {
         _bottomView = [[YouWenBottomButtonView alloc] init];
+        _bottomView.hidden = YES;
         if ([self.detailQuestionModel.isSelf isEqualToString:@"1"]) {
             _bottomView.label1.text = @"加价";
             _bottomView.label2.text = @"取消提问";
             [_bottomView.btn1 addTarget:self action:@selector(addReward) forControlEvents:UIControlEventTouchUpInside];
             [_bottomView.btn2 addTarget:self action:@selector(cancelQuestion) forControlEvents:UIControlEventTouchUpInside];
         } else {
-            _bottomView.label1.text = @"忽略";
-            _bottomView.label2.text = @"帮助";
-            [_bottomView.btn1 addTarget:self action:@selector(ignore) forControlEvents:UIControlEventTouchUpInside];
-            [_bottomView.btn2 addTarget:self action:@selector(reply) forControlEvents:UIControlEventTouchUpInside];
+//            _bottomView.label2.text = @"帮助";
+//            [_bottomView.btn1 addTarget:self action:@selector(ignore) forControlEvents:UIControlEventTouchUpInside];
+//            [_bottomView.btn2 addTarget:self action:@selector(reply) forControlEvents:UIControlEventTouchUpInside];
+            
         }
     }
     
@@ -71,7 +72,7 @@
     [self.view addSubview:self.bottomView];
     [self.bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self.view);
-        make.height.mas_equalTo(@(45/720.0*SCREEN_HEIGHT));
+        make.height.mas_equalTo(@(45/720.0 * SCREEN_HEIGHT));
     }];
 }
 
@@ -79,7 +80,13 @@
     if (!_tableView) {
         [self.bottomView layoutIfNeeded];
         CGRect bottomViewRect = self.bottomView.frame;
-        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
+        CGRect tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT);
+        
+//        if (![self.detailQuestionModel.isSelf isEqualToString:@"1"]) {
+//            tableViewRect = CGRectMake(0, HEADERHEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT - HEADERHEIGHT - bottomViewRect.size.height);
+//        }
+        
+        
         _tableView = [[UITableView alloc] initWithFrame:tableViewRect style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -369,7 +376,7 @@
                 label.font = [UIFont systemFontOfSize:14.0];
                 label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
                 [footerView addSubview:label];
-                _tableView.tableFooterView = footerView;
+                self.tableView.tableFooterView = footerView;
             }
             
             [self.view addSubview:self.tableView];
@@ -461,13 +468,28 @@
     [self.tableView reloadData];
 }
 
-- (void) confirm {
+- (void)confirm {
     if (self.commitSuccessFrame) {
         [self.commitSuccessFrame free];
     }
 }
 
 - (void)cancelQuestion{
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSDictionary *parameters = @{
+                                 @"stuNum":[UserDefaultTool getStuNum],
+                                 @"idNum":[UserDefaultTool getIdNum],
+                                 @"question_id":self.detailQuestionModel.questionID,
+                                 };
+    
+    [manager POST:YOUWEN_CANCEL_QUESTION_API parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error:%@", error);
+    }];
+}
+
+- (void)addReward{
     
 }
 

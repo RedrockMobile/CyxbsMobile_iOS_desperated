@@ -2186,29 +2186,13 @@
 		6E3AB61120AD76A2003A65F5 /* questionDetail */ = {
 			isa = PBXGroup;
 			children = (
-				6E3AB61420AD76A2003A65F5 /* YouWenAnswerDetailModel.h */,
-				6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */,
-				6E3AB61520AD76A2003A65F5 /* YouWenQuestionDetailModel.h */,
-				6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */,
 				6E3AB61720AD76A2003A65F5 /* YouWenDetailViewController.h */,
 				6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */,
 				6E3AB61C20AD76A2003A65F5 /* YouWenWriteAnswerViewController.h */,
 				6E3AB63320AD76A2003A65F5 /* YouWenWriteAnswerViewController.m */,
-				6E3AB63420AD76A2003A65F5 /* YouWenDetailHeadView.h */,
-				6E3AB61D20AD76A2003A65F5 /* YouWenDetailHeadView.m */,
-				6E3AB61E20AD76A2003A65F5 /* YouWenDetailCell.h */,
-				6E3AB63220AD76A2003A65F5 /* YouWenDetailCell.m */,
-				6E3AB61920AD76A2003A65F5 /* YouWenDetailCell.xib */,
-				6E3AB62E20AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.h */,
-				6E3AB62120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.m */,
-				6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */,
-				6E3AB62D20AD76A2003A65F5 /* YouWenBottomButtonView.h */,
-				6E3AB62220AD76A2003A65F5 /* YouWenBottomButtonView.m */,
-				6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */,
-				825186E020C071850022B5D3 /* commitSuccessFrameView.h */,
-				825186E120C071850022B5D3 /* commitSuccessFrameView.m */,
-				825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */,
 				E4BDA94722C31A8700A20A80 /* QuestionDetail.xcassets */,
+				E404FF7D2312798F0091141C /* Model */,
+				E404FF7C2312795C0091141C /* View */,
 			);
 			path = questionDetail;
 			sourceTree = "<group>";
@@ -2239,8 +2223,6 @@
 		6E7C98622044601A000BAA16 /* sortView */ = {
 			isa = PBXGroup;
 			children = (
-				6E3AB60620AD76A2003A65F5 /* answerDetail */,
-				6E3AB61120AD76A2003A65F5 /* questionDetail */,
 				6E0F6932203342E800BB5EF3 /* YouWenTableViewCell.h */,
 				6E0F6933203342E800BB5EF3 /* YouWenTableViewCell.m */,
 				6E7C985C204182EE000BAA16 /* YouWenSortViewController.h */,
@@ -2248,6 +2230,8 @@
 				6E7C985F2041B5D5000BAA16 /* YouWenDataModel.h */,
 				6E7C98602041B5D5000BAA16 /* YouWenDataModel.m */,
 				E404FF7A231272600091141C /* touxiang.png */,
+				6E3AB60620AD76A2003A65F5 /* answerDetail */,
+				6E3AB61120AD76A2003A65F5 /* questionDetail */,
 			);
 			path = sortView;
 			sourceTree = "<group>";
@@ -2662,6 +2646,38 @@
 				E404FF33231130B50091141C /* YearChooseBar.h */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		E404FF7C2312795C0091141C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6E3AB63420AD76A2003A65F5 /* YouWenDetailHeadView.h */,
+				6E3AB61D20AD76A2003A65F5 /* YouWenDetailHeadView.m */,
+				6E3AB61E20AD76A2003A65F5 /* YouWenDetailCell.h */,
+				6E3AB63220AD76A2003A65F5 /* YouWenDetailCell.m */,
+				6E3AB61920AD76A2003A65F5 /* YouWenDetailCell.xib */,
+				6E3AB62E20AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.h */,
+				6E3AB62120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.m */,
+				6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */,
+				6E3AB62D20AD76A2003A65F5 /* YouWenBottomButtonView.h */,
+				6E3AB62220AD76A2003A65F5 /* YouWenBottomButtonView.m */,
+				6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */,
+				825186E020C071850022B5D3 /* commitSuccessFrameView.h */,
+				825186E120C071850022B5D3 /* commitSuccessFrameView.m */,
+				825186E320C0718F0022B5D3 /* commitSuccessFrameView.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E404FF7D2312798F0091141C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E3AB61420AD76A2003A65F5 /* YouWenAnswerDetailModel.h */,
+				6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */,
+				6E3AB61520AD76A2003A65F5 /* YouWenQuestionDetailModel.h */,
+				6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		E41AD24B222BECDE00360C56 /* #Outdated */ = {

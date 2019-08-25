@@ -107,7 +107,7 @@
 }
 
 - (void)getNewPageData{
-    _YWpage ++;
+    _YWpage++;
     [_dataModel newPage:[NSString stringWithFormat:@"%ld", (long)_YWpage]];
 }
 
