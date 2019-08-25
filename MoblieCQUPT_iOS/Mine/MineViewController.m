@@ -72,8 +72,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-    NSArray *array1 =   @[
-                @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
+//    NSArray *array1 =   @[
+//                @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
 //    NSArray *array2 = @[
 //                @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
 //                @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"LXAskViewController"},
@@ -87,7 +87,7 @@
                 @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeMainViewController"}];
     NSArray *array4 = @[
                 @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingViewController"}];
-    _cellDicArray = @[array1, array2, array3, array4];
+    _cellDicArray = @[array2, array3, array4];
     
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.top - 20, SCREEN_WIDTH, SCREEN_HEIGHT - _tableView.top - 20)];
     whiteView.backgroundColor = RGBColor(246, 246, 246, 1);;
@@ -131,7 +131,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell.type = MineCellTypeStart;
-        }else if (indexPath.row == 3){
+        }else if (indexPath.row == 2){
             cell.type = MineCellTypeEnd;
         }else{
             cell.type = MineCellTypeMiddle;
