@@ -291,9 +291,11 @@
     CGFloat titleLabelWidth = SCREEN_WIDTH * 0.3;
     self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((_titleView.width - titleLabelWidth)/ 2, 0, titleLabelWidth, _titleView.height)];
     self.titleLabel.backgroundColor = [UIColor clearColor];
-    NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"二十一周",@"二十二周",@"二十三周",@"二十四周",@"二十五周"] mutableCopy];
+    NSMutableArray *titleArray = [@[@"下学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"二十一周",@"二十二周",@"二十三周",@"二十四周",@"二十五周"] mutableCopy];
+    if(self.dateModel.nowWeek.integerValue != 0){
+        titleArray[self.dateModel.nowWeek.integerValue] = @"本 周";
+    }
     
-    titleArray[self.dateModel.nowWeek.integerValue] = @"本 周";
     
     self.titleText = titleArray[_index];
     self.titleLabel.text = self.titleText;
