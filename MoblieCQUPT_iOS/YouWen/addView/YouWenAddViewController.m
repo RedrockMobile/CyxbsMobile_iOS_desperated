@@ -87,20 +87,20 @@
     
 }
 
-- (BOOL)navigationShouldPopOnBackButton{
-    if (_detailTextView.text.length ||_titleTextView.text.length ) {
-        SheetAlertController *controller = [SheetAlertController draftsAlert];
-        controller.style = @"question";
-        controller.contentStr = _detailTextView.text;
-        controller.kind = self.style;
-        controller.titleStr = _titleTextView.text;
-        [self presentViewController:controller
-                           animated:YES
-                         completion:nil];
-        return NO;
-    }
-    return YES;
-}
+//- (BOOL)navigationShouldPopOnBackButton{
+//    if (_detailTextView.text.length ||_titleTextView.text.length ) {
+//        SheetAlertController *controller = [SheetAlertController draftsAlert];
+//        controller.style = @"question";
+//        controller.contentStr = _detailTextView.text;
+//        controller.kind = self.style;
+//        controller.titleStr = _titleTextView.text;
+//        [self presentViewController:controller
+//                           animated:YES
+//                         completion:nil];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 - (void)setView{
     self.navigationController.navigationItem.title = @"求助";

@@ -236,19 +236,19 @@
 }
 
 
-#pragma mark - 草稿箱
-- (BOOL)navigationShouldPopOnBackButton{
-    if (_textView.text.length) {
-        SheetAlertController *controller = [SheetAlertController draftsAlert];
-        controller.style = @"answer";
-        controller.contentStr = _textView.text;
-        [self presentViewController:controller
-                           animated:YES
-                         completion:nil];
-        return NO;
-    }
-    return YES;
-}
+//#pragma mark - 草稿箱
+//- (BOOL)navigationShouldPopOnBackButton{
+//    if (_textView.text.length) {
+//        SheetAlertController *controller = [SheetAlertController draftsAlert];
+//        controller.style = @"answer";
+//        controller.contentStr = _textView.text;
+//        [self presentViewController:controller
+//                           animated:YES
+//                         completion:nil];
+//        return NO;
+//    }
+//    return YES;
+//}
 
 
 #pragma mark - textView

@@ -92,7 +92,7 @@
     }
     else{
         if ([str isEqualToString:@"YES"]) {
-            [_dataArray addObjectsFromArray:_dataModel.YWdataArray.mutableCopy];
+            [_dataArray addObjectsFromArray:_dataModel.YWdataArray];
             [_tab reloadData];
             [_tab.mj_footer endRefreshing];
         }
