@@ -147,9 +147,22 @@
 }
 
 - (void)logOut{
-    LoginViewController *vc = [[LoginViewController alloc] init];
+    
+    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *remindPath = [path stringByAppendingPathComponent:@"remind.plist"];
+    NSString *lessonPath = [path stringByAppendingPathComponent:@"lesson.plist"];
+    NSFileManager * fileManager = [[NSFileManager alloc]init];
+    [fileManager removeItemAtPath:remindPath error:nil];
+    [fileManager removeItemAtPath:lessonPath error:nil];
     [LoginEntry loginOut];
-    [self presentViewController:vc animated:YES completion:nil];
+    LoginViewController *LVC = [[LoginViewController alloc] init];
+    [self presentViewController:LVC animated:YES completion:nil];
+    LVC.loginSuccessHandler = ^(BOOL success){
+        if (success) {
+            
+             [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadView" object:nil];
+        }
+    };
 }
 
 - (void)displayCode{
