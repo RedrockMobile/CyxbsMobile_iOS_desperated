@@ -44,6 +44,7 @@
 @property (nonatomic, copy) NSString *stuNum;
 @property (nonatomic, copy) NSString *idNum;
 @property (nonatomic, assign) BOOL isLogin;
+@property (nonatomic, assign) BOOL weekChooseBarLock;
 
 
 @end
@@ -87,25 +88,23 @@
         [self presentViewController:LVC animated:YES completion:nil];
         LVC.loginSuccessHandler = ^(BOOL success){
             if (success) {
-                self.stuNum = [UserDefaultTool getStuNum];
-                self.idNum = [UserDefaultTool getIdNum];
+               
                 [self initModel];
                 self.isLogin = YES;
             }
         };
     }else{
-        self.stuNum = [UserDefaultTool getStuNum];
-        self.idNum = [UserDefaultTool getIdNum];
+        
         [self initModel];
         self.isLogin = YES;
     }
 }
 
 -(void)reloadView{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    hud.mode = MBProgressHUDModeIndeterminate;
-    hud.labelText = @"加载数据中...";
-    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
+//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+//    hud.mode = MBProgressHUDModeIndeterminate;
+//    hud.labelText = @"加载数据中...";
+//    hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
     [self.view removeAllSubviews];
     [self initModel];
     
@@ -142,7 +141,9 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"加载数据中...";
     hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
-    
+    self.weekChooseBarLock = YES;
+    self.stuNum = [UserDefaultTool getStuNum];
+    self.idNum = [UserDefaultTool getIdNum];
     if (!self.model) {
         self.dateModel = [DateModle initWithStartDate:DateStart];
         self.index = self.dateModel.nowWeek.integerValue;
@@ -174,7 +175,7 @@
 - (void)ModelDataLoadSuccess{
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-   
+    self.weekChooseBarLock = NO;
     @autoreleasepool {
         for (int dateNum = 0; dateNum < self.dateModel.dateArray.count + 1; dateNum++) {
             
@@ -352,26 +353,30 @@
 
 //更新星期选择条状态
 - (void)updateWeekChooseBar{
-    if (self.hiddenWeekChooseBar) {
-        self.hiddenWeekChooseBar = NO;
-        [UIView animateWithDuration:0.1f animations:^{
-            self.weekChooseBar.layer.opacity = 1.0f;
-        } completion:^(BOOL finished) {
-            self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
-        }];
+    if (!self.weekChooseBarLock) {
         
-        [self initTitleBtn];
-        [self updateScrollViewFame];
         
-    }else{
-        self.hiddenWeekChooseBar = YES;
-        [UIView animateWithDuration:0.1f animations:^{
-            self.weekChooseBar.layer.opacity = 0.0f;
-        } completion:^(BOOL finished) {
-            self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
-        }];
-        [self initTitleBtn];
-        [self updateScrollViewFame];
+        if (self.hiddenWeekChooseBar) {
+            self.hiddenWeekChooseBar = NO;
+            [UIView animateWithDuration:0.1f animations:^{
+                self.weekChooseBar.layer.opacity = 1.0f;
+            } completion:^(BOOL finished) {
+                self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
+            }];
+            
+            [self initTitleBtn];
+            [self updateScrollViewFame];
+            
+        }else{
+            self.hiddenWeekChooseBar = YES;
+            [UIView animateWithDuration:0.1f animations:^{
+                self.weekChooseBar.layer.opacity = 0.0f;
+            } completion:^(BOOL finished) {
+                self.weekChooseBar.hidden = self.hiddenWeekChooseBar;
+            }];
+            [self initTitleBtn];
+            [self updateScrollViewFame];
+        }
     }
 }
 -(void)updateScrollViewFame{
