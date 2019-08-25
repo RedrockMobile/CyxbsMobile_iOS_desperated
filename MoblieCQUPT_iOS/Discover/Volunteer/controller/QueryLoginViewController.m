@@ -25,6 +25,10 @@
 
 @implementation QueryLoginViewController
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     if ([user objectForKey:@"volunteer_account"]) {
@@ -47,6 +51,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginFailed) name:@"loginFailed" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasHidden:) name:UIKeyboardWillHideNotification object:nil];
     
     [self biuldUI];
 }
@@ -88,7 +96,6 @@
     [self.view addSubview:save];
     //设置textfield
     self.accountField=[self createTextFielfFrame:CGRectMake((76.f/375)*MAIN_SCREEN_W, (335.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-padding*2-36, (30.f/667)*MAIN_SCREEN_H) font:[UIFont systemFontOfSize:15] placeholder:@"请输入志愿重庆账号"];
-    self.accountField.keyboardType=UIKeyboardTypeNumberPad;
     self.accountField.clearButtonMode = UITextFieldViewModeWhileEditing;
     UIView *accountLine = [[UIView alloc]initWithFrame:CGRectMake(padding, (367.f/667)*MAIN_SCREEN_H, MAIN_SCREEN_W-padding*2, (2.f/667)*MAIN_SCREEN_H)];
     accountLine.backgroundColor = [UIColor grayColor];
@@ -174,6 +181,21 @@
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"我知道了" style:UIAlertActionStyleCancel handler:nil];
     [alertC addAction:cancel];
     [self presentViewController:alertC animated:YES completion:nil];
+}
+
+#pragma mark - 键盘展开与收起
+- (void)keyboardWasShown:(NSNotification *)notification {
+    CGRect keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect oldFrame = self.view.frame;
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.view.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y - keyboardFrame.size.height + 60, oldFrame.size.width, oldFrame.size.height);
+    } completion:nil];
+}
+
+- (void)keyboardWasHidden:(NSNotification *)notification {
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        self.view.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H);
+    } completion:nil];
 }
 
 /*

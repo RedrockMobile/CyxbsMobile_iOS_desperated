@@ -70,7 +70,13 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
     dispatch_group_t group = dispatch_group_create();
     NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *idNum = [UserDefaultTool getIdNum];
-    self.parameters = @{@"stuNum":stuNum, @"idNum":idNum, @"nickname":_nicknameTextField.text, @"introduction":_introductionTextField.text, @"qq":_qqTextField.text, @"phone":_phoneTextField.text};
+    self.parameters = @{@"stuNum":stuNum,
+                        @"idNum":idNum,
+                        @"nickname":_nicknameTextField.text,
+                        @"introduction":_introductionTextField.text,
+                        @"qq":_qqTextField.text,
+                        @"phone":_phoneTextField.text
+                        };
     dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self refreshMyInfo];
     });
@@ -134,6 +140,9 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
     MOHImageParamModel *model = [[MOHImageParamModel alloc] init];
     model.paramName = @"fold";
     model.uploadImage = self.image;
+    if (!self.image) {
+        return;
+    }
     [NetWork uploadImageWithUrl:UPLOAD_IMAGE_API
                     imageParams:@[model]
                     otherParams:@{@"stunum":stuNum}
@@ -240,6 +249,7 @@ typedef NS_ENUM(NSInteger,XBSUploadState){
     UIImagePickerController *controller = [[UIImagePickerController alloc] init];
     controller.allowsEditing = YES;
     controller.delegate = self;
+//    controller.navigationBar.
     [self presentViewController:controller animated:YES completion:nil];
 }
 

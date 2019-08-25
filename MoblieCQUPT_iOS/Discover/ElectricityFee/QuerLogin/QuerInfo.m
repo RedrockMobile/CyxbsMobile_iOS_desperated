@@ -39,21 +39,23 @@
         UIImage*image = [UIImage imageNamed:imageName];
         UIImageView*imageView = [[UIImageView alloc]initWithImage:image];
         [imageView setImage:image];
-        imageView.width = 0.9*dataLumpView.width/3;
-        imageView.height = 0.9*dataLumpView.height;
+        imageView.width = 0.9*dataLumpView.width/3+12;
+        imageView.height = 0.9*dataLumpView.width/3+12;
+//        imageView.backgroundColor = [UIColor yellowColor];
         imageView.center = CGPointMake(dataLumpView.width/6.0+10, dataLumpView.height/2.0);
-        imageView.contentMode = UIViewContentModeCenter;
+        imageView.contentMode = UIViewContentModeScaleToFill;
 //        imageView.backgroundColor = [UIColor redColor];
         [dataLumpView addSubview:imageView];
         NSArray<NSString*>*labelArray = [NSArray arrayWithObjects:@"费用/本月",@"日均量/度",@"电起度/度",@"电止度/度",@"月优惠量/度", nil];
         UILabel*label = [[UILabel alloc]init];
         [dataLumpView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(imageView.mas_right).offset(30);
-            make.top.equalTo(dataLumpView).offset(17);
+            make.left.equalTo(imageView.mas_right).offset(15);
+            make.centerY.equalTo(dataLumpView).offset(-15);
             make.width.equalTo(@70);
             make.height.equalTo(@20);
         }];
+        label.backgroundColor = [UIColor clearColor];
         label.text = labelArray[i-1];
         label.font = [UIFont systemFontOfSize:12.5];
         label.textColor = COLOR_BULE1;
@@ -62,8 +64,8 @@
         UILabel*dataLabel = [[UILabel alloc]init];
         [dataLumpView addSubview:dataLabel];
         [dataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(imageView.mas_right).offset(30);
-            make.top.equalTo(label.mas_bottom).offset(5);
+            make.left.equalTo(imageView.mas_right).offset(15);
+            make.centerY.equalTo(dataLumpView).offset(+12);
             make.width.equalTo(@80);
             make.height.equalTo(@30);
         }];

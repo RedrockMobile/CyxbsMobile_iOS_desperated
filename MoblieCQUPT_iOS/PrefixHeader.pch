@@ -295,14 +295,17 @@
  其他
  */
 
+// baseURL
+#define YOUWEN_BASEURL @"https://cyxbsmobile.redrock.team"
+
 //签到
-#define YOUWEN_CHECKIN_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/checkIn"
+#define YOUWEN_CHECKIN_API [NSString stringWithFormat:@"%@%@", YOUWEN_BASEURL, @"/app/index.php/QA/Integral/checkIn"]
 
 //获取掌邮用户信息
-#define YOUWEN_USER_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/Home/Person/search"
+#define YOUWEN_USER_INFO_API [NSString stringWithFormat:@"%@%@", YOUWEN_BASEURL, @"/app/index.php/Home/Person/search"]
 
 //设置个人信息
-#define SET_MY_INFO_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/setInfo"
+#define SET_MY_INFO_API [NSString stringWithFormat:@"%@%@", YOUWEN_BASEURL, @"/app/index.php/Home/Person/setInfo"]
 
 
 /************************************************/

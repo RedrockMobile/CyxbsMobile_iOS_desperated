@@ -172,7 +172,7 @@
                                 </constraints>
                                 <state key="normal" image="edit"/>
                                 <connections>
-                                    <action selector="clickBtn:" destination="QRm-nB-PK6" eventType="touchUpInside" id="8vo-xB-auu"/>
+                                    <action selector="clickButton:" destination="QRm-nB-PK6" eventType="touchUpInside" id="9s1-i7-YvW"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Asz-Tj-mLX">

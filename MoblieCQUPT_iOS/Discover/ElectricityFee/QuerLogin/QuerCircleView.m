@@ -355,7 +355,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self addSubview:unitLabel];
     [unitLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self).offset(-10);
-        make.centerX.equalTo(self).offset(+55);
+        make.centerX.equalTo(self).offset(+50);
     }];
     unitLabel.textAlignment = NSTextAlignmentCenter;
     unitLabel.backgroundColor = [UIColor clearColor];
@@ -379,7 +379,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.centerLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.contentMode = UIViewContentModeRedraw;
     [_centerLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(self).offset(-15);
+        make.centerX.equalTo(self).offset(-12);
         make.centerY.equalTo(self).offset(-15);
     }];
 
@@ -423,8 +423,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.centerPoint = center;
 
     //计算圆形半径
-    CGFloat radius = (MIN(bounds.size.width, bounds.size.height) / 2.0) - 14
-    ;
+    CGFloat radius = (MIN(bounds.size.width, bounds.size.height) / 2.0) - 8;
 
     UIBezierPath *path = [[UIBezierPath alloc] init];
     
@@ -451,7 +450,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.centerPoint = center;
 
     //计算圆形半径
-    CGFloat radius =MIN(bounds.size.width, bounds.size.height)/2-35;
+    CGFloat radius =MIN(bounds.size.width, bounds.size.height)/2-25;
     NSLog(@"圆的半径是：%f",radius);
     
     UIBezierPath *path = [[UIBezierPath alloc] init];
@@ -482,7 +481,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
     //计算圆形半径
-    CGFloat radius = MIN(bounds.size.width, bounds.size.height)/2-45;
+    CGFloat radius = MIN(bounds.size.width, bounds.size.height)/2-35;
     
     UIBezierPath *path = [[UIBezierPath alloc] init];
     
@@ -522,7 +521,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     //小圆圆心：center
     
     //计算大圆形半径
-    CGFloat radius = MIN(bounds.size.width, bounds.size.height)/2-45;
+    CGFloat radius = MIN(bounds.size.width, bounds.size.height)/2-35;
     
     UIBezierPath *path = [[UIBezierPath alloc] init];
     
