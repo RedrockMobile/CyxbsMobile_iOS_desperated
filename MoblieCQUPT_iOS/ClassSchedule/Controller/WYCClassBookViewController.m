@@ -288,17 +288,18 @@
     if (_titleLabel) {
         [_titleLabel removeFromSuperview];
     }
-    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(_titleView.frame.size.width/2-50, 0, 100, _titleView.frame.size.height)];
+    CGFloat titleLabelWidth = SCREEN_WIDTH * 0.3;
+    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake((_titleView.width - titleLabelWidth)/ 2, 0, titleLabelWidth, _titleView.height)];
     self.titleLabel.backgroundColor = [UIColor clearColor];
-    NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"第二十一周",@"第二十二周",@"第二十三周",@"第二十四周",@"第二十五周"] mutableCopy];
+    NSMutableArray *titleArray = [@[@"整学期",@"第一周",@"第二周",@"第三周",@"第四周",@"第五周",@"第六周",@"第七周",@"第八周",@"第九周",@"第十周",@"第十一周",@"第十二周",@"第十三周",@"第十四周",@"第十五周",@"第十六周",@"第十七周",@"第十八周",@"第十九周",@"第二十周",@"二十一周",@"二十二周",@"二十三周",@"二十四周",@"二十五周"] mutableCopy];
     
-    titleArray[self.dateModel.nowWeek.integerValue] = @"本周";
+    titleArray[self.dateModel.nowWeek.integerValue] = @"本 周";
     
     self.titleText = titleArray[_index];
     self.titleLabel.text = self.titleText;
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.titleLabel.textColor = [UIColor whiteColor];
-    self.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.titleLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
     self.titleLabel.userInteractionEnabled = YES;
     
     //添加点击手势
@@ -311,7 +312,7 @@
     if (_titleBtn) {
         [_titleBtn removeFromSuperview];
     }
-    self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.frame.size.width-10, 0, 9, _titleView.frame.size.height)];
+    self.titleBtn = [[UIButton alloc]initWithFrame:CGRectMake(_titleView.width - 15, 0, 9, _titleView.height)];
     //判断箭头方向
     if (_hiddenWeekChooseBar) {
         [self.titleBtn setImage:[UIImage imageNamed:@"downarrow"] forState:UIControlStateNormal];   //初始是下箭头
@@ -375,10 +376,10 @@
     //NSLog(@"num:%lu",(unsigned long)_scrollView.subviews.count);
     if (self.hiddenWeekChooseBar) {
 
-        [UIView animateWithDuration:0.2f animations:^{
-            [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        }];
-
+        [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-NVGBARHEIGHT)];
+        } completion:nil];
+        
         for (int i = 0; i < 26; i++) {
             //NSLog(@"num:%d",i);
             WYCClassBookView *view = _scrollView.subviews[i];
@@ -387,15 +388,13 @@
             [view layoutSubviews];
         }
     }else{
-        [UIView animateWithDuration:0.2f animations:^{
-            [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        }];
-        
+        [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-NVGBARHEIGHT- self.weekChooseBar.frame.size.height)];
+        } completion:nil];
+
 
         for (int i = 0; i < 26; i++) {
-
             WYCClassBookView *view = _scrollView.subviews[i];
-            
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY + self.weekChooseBar.frame.size.height)];
             [view layoutIfNeeded];
             [view layoutSubviews];
@@ -436,7 +435,7 @@
     view.layer.opacity = 0.0f;
     [view addSubview:detailClassBookView];
     [window addSubview:view];
-    [UIView animateWithDuration:0.7f delay:0 usingSpringWithDamping:0.85 initialSpringVelocity:0.7 options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:0.5f delay:0 usingSpringWithDamping:0.8 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveLinear animations:^{
         view.layer.opacity = 1.0f;
         detailClassBookView.layer.opacity = 1.0f;
         detailClassBookView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
@@ -446,9 +445,9 @@
 - (void)hiddenDetailView{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
-    [UIView animateWithDuration:0.6f delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
-        view.layer.opacity = 0.0f;
+    [UIView animateWithDuration:0.4f animations:^{
         [view.subviews[1] setFrame: CGRectMake(0, 2 * SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        view.layer.opacity = 0.0f;
     } completion:^(BOOL finished) {
         [view removeFromSuperview];
     }];
@@ -457,7 +456,6 @@
 
 
 - (void)clickEditNoteBtn:(NSDictionary *)dic{
-    //NSLog(@"%@",[dic objectForKey:@"id"]);
     [self hiddenDetailView];
     AddRemindViewController *vc = [[AddRemindViewController alloc]initWithRemind:dic];
     vc.hidesBottomBarWhenPushed = YES;
