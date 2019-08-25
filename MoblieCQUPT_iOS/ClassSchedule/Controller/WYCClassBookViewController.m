@@ -16,15 +16,14 @@
 #import "WYCShowDetailView.h"
 #import "WYCWeekChooseBar.h"
 #import "LoginViewController.h"
-#import "NoLoginView.h"
+
 
 #import "AddRemindViewController.h"
 #import "UIFont+AdaptiveFont.h"
 #import "RemindNotification.h"
 
-#import "DLChooseClassListViewController.h"
 
-#define DateStart @"2019-02-25"
+#define DateStart @"2019-09-02"
 
 @interface WYCClassBookViewController ()<UIScrollViewDelegate,WYCClassBookViewDelegate,WYCShowDetailDelegate>
 @property (nonatomic, strong) UIView *titleView;
@@ -39,7 +38,6 @@
 @property (nonatomic, strong)  UIScrollView *scrollView;
 
 @property (nonatomic, strong) WYCWeekChooseBar *weekChooseBar;
-@property (nonatomic, strong) NoLoginView *noLoginView;
 @property (nonatomic, strong) DateModle *dateModel;
 @property (nonatomic, strong) WYCClassAndRemindDataModel *model;
 
@@ -47,24 +45,11 @@
 @property (nonatomic, copy) NSString *idNum;
 @property (nonatomic, assign) BOOL isLogin;
 
-@property (nonatomic, copy) NSString *remindModelLoadSuccess;
-@property (nonatomic, copy) NSString *classbookModelLoadSuccess;
 
 @end
 
 @implementation WYCClassBookViewController
 
-- (void)viewWillAppear:(BOOL)animated{
-    NSString *stuNum = [UserDefaultTool getStuNum];
-    NSString *idNum = [UserDefaultTool getIdNum];
-    
-    if (!self.isLogin) {
-        if (!(stuNum == nil || idNum  == nil)) {
-        [self initModel];
-        self.isLogin = YES;
-        }
-    }
-}
 
 - (void)viewDidLoad {
     
@@ -114,8 +99,6 @@
         [self initModel];
         self.isLogin = YES;
     }
-    
-
 }
 
 -(void)reloadView{
@@ -123,13 +106,9 @@
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"加载数据中...";
     hud.color = [UIColor colorWithWhite:0.f alpha:0.4f];
-    _remindModelLoadSuccess = @"";
-    _classbookModelLoadSuccess = @"";
-    [_scrollView removeAllSubviews];
-    self.stuNum = [UserDefaultTool getStuNum];
-    self.idNum = [UserDefaultTool getIdNum];
-    [self.model getClassBookArrayFromNet:_stuNum];
-    [self.model getRemindFromNet:_stuNum idNum:_idNum];
+    [self.view removeAllSubviews];
+    [self initModel];
+    
 }
 
 
@@ -156,6 +135,7 @@
     
     
 }
+
 - (void)initModel{
     
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -171,13 +151,23 @@
         [self initTitleLabel];
         [self initNavigationBar];
         
-        
         self.model = [[WYCClassAndRemindDataModel alloc]init];
         [self.model getClassBookArray:self.stuNum];
         [self.model getRemind:self.stuNum idNum:self.idNum];
         
         
+    }else{
+        [self initWeekChooseBar];
+        [self initScrollView];
+        [self initTitleLabel];
+        [self initNavigationBar];
+
+        [self.model getClassBookArrayFromNet:_stuNum];
+        [self.model getRemindFromNet:_stuNum idNum:_idNum];
+        
+        
     }
+    
 }
 
 
@@ -249,7 +239,7 @@
 - (void)ModelDataLoadFailure{
     
     [MBProgressHUD hideHUDForView:self.view animated:YES];
-    NSLog(@"classBook:%@,note:%@",_classbookModelLoadSuccess,_remindModelLoadSuccess);
+   
     UIAlertController *controller=[UIAlertController alertControllerWithTitle:@"网络错误" message:@"数据加载失败" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *act1=[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -317,7 +307,6 @@
     [self.titleLabel addGestureRecognizer:tapGesture];
     [self.titleView addSubview:self.titleLabel];
 }
-
 - (void)initTitleBtn{
     //添加箭头按钮
     if (_titleBtn) {
@@ -336,7 +325,6 @@
     
     self.navigationItem.titleView = self.titleView;
 }
-
 - (void)initRightButton{
     //添加备忘按钮
     UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"plus"] style:UIBarButtonItemStylePlain target:self action:@selector(addNote)];
@@ -384,14 +372,16 @@
         [self updateScrollViewFame];
     }
 }
-
 -(void)updateScrollViewFame{
+    //NSLog(@"num:%lu",(unsigned long)_scrollView.subviews.count);
     if (self.hiddenWeekChooseBar) {
-        [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
-        } completion:nil];
 
+        [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-NVGBARHEIGHT)];
+        } completion:nil];
+        
         for (int i = 0; i < 26; i++) {
+            //NSLog(@"num:%d",i);
             WYCClassBookView *view = _scrollView.subviews[i];
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY)];
             [view layoutIfNeeded];
@@ -399,17 +389,20 @@
         }
     }else{
         [UIView animateWithDuration:0.3f delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseOut animations:^{
-            [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT)];
+            [self.scrollView setFrame:CGRectMake(0, self.weekChooseBar.frame.size.height, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-NVGBARHEIGHT- self.weekChooseBar.frame.size.height)];
         } completion:nil];
+
 
         for (int i = 0; i < 26; i++) {
             WYCClassBookView *view = _scrollView.subviews[i];
             [view changeScrollViewContentSize:CGSizeMake(0, 606*autoSizeScaleY + self.weekChooseBar.frame.size.height)];
             [view layoutIfNeeded];
             [view layoutSubviews];
+
         }
     }
 }
+
 
 
 - (void)showDetail:(NSArray *)array{
@@ -449,7 +442,6 @@
     } completion:nil];
     
 }
-
 - (void)hiddenDetailView{
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [window viewWithTag:999];
@@ -462,15 +454,6 @@
 }
 
 
-//选课列表预留
-- (void)clickChooseClassListBtn:(NSDictionary *)dic{
-    DLChooseClassListViewController *vc = [[DLChooseClassListViewController alloc]init];
-    vc.teacher = dic[@"teacher"];
-    vc.classroom = dic[@"classroom"];
-    [self hiddenDetailView];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
-}
 
 - (void)clickEditNoteBtn:(NSDictionary *)dic{
     [self hiddenDetailView];

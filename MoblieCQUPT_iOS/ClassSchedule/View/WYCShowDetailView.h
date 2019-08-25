@@ -11,7 +11,6 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol WYCShowDetailDelegate <NSObject>
 @required
-- (void)clickChooseClassListBtn:(NSDictionary *)dic;
 - (void)clickEditNoteBtn:(NSDictionary *)dic;
 - (void)clickDeleteNoteBtn:(NSDictionary *)dic;
 @end

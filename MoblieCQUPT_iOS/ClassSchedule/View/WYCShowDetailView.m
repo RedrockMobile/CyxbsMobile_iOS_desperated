@@ -9,7 +9,6 @@
 #import "WYCShowDetailView.h"
 #import "WYCClassDetailView.h"
 #import "WYCNoteDetailView.h"
-#import "DLChooseClassListViewController.h"
 @interface WYCShowDetailView()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *rootView;
 @property (nonatomic, strong) UIScrollView *scrollView;
@@ -31,7 +30,7 @@
     self.rootView = [[UIView alloc]initWithFrame:CGRectMake(self.frame.size.width/2 - 135, self.frame.size.height/2 - 170, 270, 360)];
     self.rootView.backgroundColor = [UIColor whiteColor];
     self.rootView.layer.masksToBounds = YES;
-    self.rootView.layer.cornerRadius = 20;
+    self.rootView.layer.cornerRadius = 10;
     [self.rootView layoutIfNeeded];
     
     
@@ -61,9 +60,7 @@
             WYCClassDetailView *view = [WYCClassDetailView initViewFromXib];
             [view initWithDic:array[i]];
             [view setFrame:CGRectMake(i*self.rootView.width, 0,self.rootView.width,self.rootView.height)];
-            //view.detailDelegate = self;
-            view.chooseClassList.tag = i;
-            [view.chooseClassList addTarget:self action:@selector(chooseClassList:) forControlEvents:UIControlEventTouchUpInside];
+           
             [self.scrollView addSubview:view];
         }
         
@@ -95,11 +92,7 @@
     [_scrollView setContentOffset:CGPointMake(i*self.rootView.width, 0) animated:YES];
 }
 
--(void)chooseClassList:(UIButton *)sender{
-    if ([self.chooseClassListDelegate respondsToSelector:@selector(clickChooseClassListBtn:)]) {
-        [self.chooseClassListDelegate clickChooseClassListBtn:self.array[sender.tag]];
-    }
-}
+
 
 -(void)editNote:(UIButton *)sender{
     if ([self.chooseClassListDelegate respondsToSelector:@selector(clickEditNoteBtn:)]) {

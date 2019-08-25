@@ -19,7 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(WYCClassDetailView *)initViewFromXib;
 -(void)initWithDic:(NSDictionary *)dic;
-@property (strong, nonatomic) IBOutlet UIButton *chooseClassList;
 //@property (nonatomic, weak) id<WYCClassDetailViewDelegate> classbookDetailDelegate;
 
 @end

@@ -197,10 +197,6 @@
 		82398BDE21A42AFE00300C91 /* 重邮地图.png in Resources */ = {isa = PBXBuildFile; fileRef = 82398BD421A42AFD00300C91 /* 重邮地图.png */; };
 		82398BDF21A42AFE00300C91 /* 关于红岩.png in Resources */ = {isa = PBXBuildFile; fileRef = 82398BD521A42AFD00300C91 /* 关于红岩.png */; };
 		82398BE021A42AFE00300C91 /* 课前提醒.png in Resources */ = {isa = PBXBuildFile; fileRef = 82398BD621A42AFD00300C91 /* 课前提醒.png */; };
-		82398C0121A42F0F00300C91 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82398BE321A42F0F00300C91 /* Media.xcassets */; };
-		82398C0221A42F0F00300C91 /* DLChooseClassListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BE721A42F0F00300C91 /* DLChooseClassListViewController.m */; };
-		82398C0321A42F0F00300C91 /* ListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BE821A42F0F00300C91 /* ListModel.m */; };
-		82398C0421A42F0F00300C91 /* ListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82398BE921A42F0F00300C91 /* ListTableViewCell.m */; };
 		82398C1021A42F0F00300C91 /* ClassBookImg.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82398C0021A42F0F00300C91 /* ClassBookImg.xcassets */; };
 		82398C1321A432DE00300C91 /* mine_image_calendar2.png in Resources */ = {isa = PBXBuildFile; fileRef = 82398C1121A432DD00300C91 /* mine_image_calendar2.png */; };
 		82398C1421A432DE00300C91 /* mine_image_calendar1.png in Resources */ = {isa = PBXBuildFile; fileRef = 82398C1221A432DD00300C91 /* mine_image_calendar1.png */; };
@@ -1052,13 +1048,6 @@
 		82398BD421A42AFD00300C91 /* 重邮地图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "重邮地图.png"; sourceTree = "<group>"; };
 		82398BD521A42AFD00300C91 /* 关于红岩.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于红岩.png"; sourceTree = "<group>"; };
 		82398BD621A42AFD00300C91 /* 课前提醒.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "课前提醒.png"; sourceTree = "<group>"; };
-		82398BE321A42F0F00300C91 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		82398BE421A42F0F00300C91 /* DLChooseClassListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLChooseClassListViewController.h; sourceTree = "<group>"; };
-		82398BE521A42F0F00300C91 /* ListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListModel.h; sourceTree = "<group>"; };
-		82398BE621A42F0F00300C91 /* ListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewCell.h; sourceTree = "<group>"; };
-		82398BE721A42F0F00300C91 /* DLChooseClassListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLChooseClassListViewController.m; sourceTree = "<group>"; };
-		82398BE821A42F0F00300C91 /* ListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListModel.m; sourceTree = "<group>"; };
-		82398BE921A42F0F00300C91 /* ListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewCell.m; sourceTree = "<group>"; };
 		82398C0021A42F0F00300C91 /* ClassBookImg.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ClassBookImg.xcassets; sourceTree = "<group>"; };
 		82398C1121A432DD00300C91 /* mine_image_calendar2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_image_calendar2.png; sourceTree = "<group>"; };
 		82398C1221A432DD00300C91 /* mine_image_calendar1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_image_calendar1.png; sourceTree = "<group>"; };
@@ -2289,27 +2278,12 @@
 			isa = PBXGroup;
 			children = (
 				F242DB921EBCB2BB005AC411 /* LZCourse */,
-				82398BE221A42F0F00300C91 /* DLChooseClassList */,
 				82398BEA21A42F0F00300C91 /* Controller */,
 				82398BED21A42F0F00300C91 /* Model */,
 				82398BF221A42F0F00300C91 /* View */,
 				82398C0021A42F0F00300C91 /* ClassBookImg.xcassets */,
 			);
 			path = ClassSchedule;
-			sourceTree = "<group>";
-		};
-		82398BE221A42F0F00300C91 /* DLChooseClassList */ = {
-			isa = PBXGroup;
-			children = (
-				82398BE321A42F0F00300C91 /* Media.xcassets */,
-				82398BE421A42F0F00300C91 /* DLChooseClassListViewController.h */,
-				82398BE521A42F0F00300C91 /* ListModel.h */,
-				82398BE621A42F0F00300C91 /* ListTableViewCell.h */,
-				82398BE721A42F0F00300C91 /* DLChooseClassListViewController.m */,
-				82398BE821A42F0F00300C91 /* ListModel.m */,
-				82398BE921A42F0F00300C91 /* ListTableViewCell.m */,
-			);
-			path = DLChooseClassList;
 			sourceTree = "<group>";
 		};
 		82398BEA21A42F0F00300C91 /* Controller */ = {
@@ -4329,7 +4303,6 @@
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
 				6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */,
 				F26D96771F3C400F0063B024 /* arrowIcon.png in Resources */,
-				82398C0121A42F0F00300C91 /* Media.xcassets in Resources */,
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
 				F200271E1F405B8500360991 /* remind_image_title@2x.png in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
@@ -4945,7 +4918,7 @@
 				E46FCF12230FCF90001FECE8 /* LQQsubjectDataView.m in Sources */,
 				E470CA292228055C0029501A /* LZSearchView.m in Sources */,
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
-				82398C0321A42F0F00300C91 /* ListModel.m in Sources */,
+				F242DDBD1EBCB2BB005AC411 /* QuerPullTableViewCell.m in Sources */,
 				E46FCEFA230FCF90001FECE8 /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */,
 				F242DF0E1EBCB2BC005AC411 /* UITextField+Custom.m in Sources */,
 				6E12A32F2053904D00D07606 /* YouWenNextView.m in Sources */,
@@ -5003,7 +4976,6 @@
 				1A5A20272307FFD000D6D329 /* FYHOnlineActivitiesController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				E480E56C2306D80200F69199 /* SchoolAdressView.m in Sources */,
-				82398C0221A42F0F00300C91 /* DLChooseClassListViewController.m in Sources */,
 				6E3AB63820AD76A3003A65F5 /* AnswerDetailViewController.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				E48DB548223E36CF00B9D744 /* WYCShowDetailView.m in Sources */,
@@ -5020,7 +4992,6 @@
 				6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */,
 				E46FCF0E230FCF90001FECE8 /* FSPageContentView.m in Sources */,
 				F26D96661F3C400F0063B024 /* DetailBannnerView.m in Sources */,
-				82398C0421A42F0F00300C91 /* ListTableViewCell.m in Sources */,
 				E46FCE59230C3D5C001FECE8 /* FMNecessityTableViewCell.m in Sources */,
 				F2A92CEF1F52E8F900B4CEEF /* UIImage+Color.m in Sources */,
 				E48DB534223E36BD00B9D744 /* DateModle.m in Sources */,
