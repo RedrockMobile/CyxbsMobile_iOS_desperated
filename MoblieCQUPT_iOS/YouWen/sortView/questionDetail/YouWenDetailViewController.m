@@ -43,7 +43,7 @@
     [self addBottomView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
     self.title = @"求助详情";
 }
 
@@ -465,6 +465,10 @@
     if (self.commitSuccessFrame) {
         [self.commitSuccessFrame free];
     }
+}
+
+- (void)cancelQuestion{
+    
 }
 
 @end
