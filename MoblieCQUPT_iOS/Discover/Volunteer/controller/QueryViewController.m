@@ -39,6 +39,20 @@
     return self;
 }
 
+
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
+}
+-(void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    if([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    };
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -54,7 +68,7 @@
     self.selectedIndex = 0;
     
     int heightH = (STATUSBARHEIGHT+HEADERHEIGHT/2)-(18.f/667)*MAIN_SCREEN_H;
-    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,heightH,(10.f/375)*MAIN_SCREEN_W,(16.f/667)*MAIN_SCREEN_H)];
+    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,heightH,(12.f/375)*MAIN_SCREEN_W,(20.f/667)*MAIN_SCREEN_H)];
     [back addTarget:self action:@selector(clickedBackButton) forControlEvents:UIControlEventTouchUpInside];
     [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
     [self.view addSubview:back];

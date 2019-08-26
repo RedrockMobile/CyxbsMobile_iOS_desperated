@@ -72,7 +72,7 @@
     imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.view addSubview:imageView];
     //设置返回按钮
-    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,(37.f/667)*MAIN_SCREEN_H,(11.f/375)*MAIN_SCREEN_W,(16.f/667)*MAIN_SCREEN_H)];
+    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,(37.f/667)*MAIN_SCREEN_H,(12.f/375)*MAIN_SCREEN_W,(20.f/667)*MAIN_SCREEN_H)];
     [back addTarget:self action:@selector(clickedBackButton) forControlEvents:UIControlEventTouchUpInside];
     [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
     [self.view addSubview:back];
