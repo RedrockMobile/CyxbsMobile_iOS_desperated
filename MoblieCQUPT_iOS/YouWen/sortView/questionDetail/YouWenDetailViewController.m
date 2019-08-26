@@ -116,7 +116,7 @@
             NSArray *picArr = [NSArray arrayWithObjects:cell.imageView1, cell.imageView2, nil];
             for (int i = 0; i < self.answerModelArr[index].photoUrlArr.count; i++) {
                 UIImageView *temp = picArr[i];
-                [temp sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].photoUrlArr[i]] placeholderImage:nil];
+                [temp sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].photoUrlArr[i]] placeholderImage:[UIImage imageNamed:@"touxiang"]];
             }
         } else {
             //没图的cell
@@ -143,7 +143,7 @@
         //动态运行时绑定数据(传参数indexPath）
         objc_setAssociatedObject(cell.extendBtn, @"myBtn", indexPath, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
         [cell.extendBtn addTarget:self action:@selector(extendCell:) forControlEvents:UIControlEventTouchUpInside];
-        [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:nil];
+        [cell.avatar sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].avatarUrl] placeholderImage:[UIImage imageNamed:@"touxiang"]];
         cell.avatar.contentMode = UIViewContentModeScaleAspectFill;
         cell.avatar.layer.cornerRadius = cell.avatar.layer.bounds.size.width/2.0;
         cell.avatar.layer.masksToBounds = YES;
@@ -153,7 +153,7 @@
         } else {
             cell.genderImageView.image = [UIImage imageNamed:@"男"];
         }
-        cell.commentImageView.image = [UIImage imageNamed:@"评论"];
+//        cell.commentImageView.image = [UIImage imageNamed:@"评论"];
         if (self.answerModelArr[index].is_praised) {
             cell.upvoteImageView.image = [UIImage imageNamed:@"已点赞图标"];
         } else {
@@ -168,7 +168,7 @@
         cell.descriptionLabel.text = self.answerModelArr[index].content;
         cell.timeLabel.text = self.answerModelArr[index].timeStr;
         cell.upvoteNumLabel.text = self.answerModelArr[index].upvoteNum;
-        cell.commentNumLabel.text = self.answerModelArr[index].commentNum;
+//        cell.commentNumLabel.text = self.answerModelArr[index].commentNum;
 
     }
         
@@ -247,18 +247,18 @@
     self.headView.bottomView.timeLabel.text = self.detailQuestionModel.disappearTime;
     self.headView.bottomView.rewardImageView.image = [UIImage imageNamed:@"积分按钮"];
     self.headView.bottomView.rewardLabel.text = [NSString stringWithFormat:@"%d积分", [self.detailQuestionModel.reward intValue]];
-    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:nil];
+    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@"touxiang"]];
     if ([self.detailQuestionModel.gender isEqualToString:@"女"] ) {
         self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"女"];
     } else {
         self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"男"];
     }
-    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@""]];
+    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@"touxiang"]];
 
     NSArray *picArr = [NSArray arrayWithObjects:self.headView.imageview1, self.headView.imageview2, self.headView.imageview3, self.headView.imageview4, nil];
     for (int i = 0; i < num; i++) {
         UIImageView *temp = picArr[i];
-        [temp sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.picArr[i]] placeholderImage:nil];
+        [temp sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.picArr[i]] placeholderImage:[UIImage imageNamed:@"touxiang"]];
     }
 
     for (UIView *subview in self.headView.subviews) {

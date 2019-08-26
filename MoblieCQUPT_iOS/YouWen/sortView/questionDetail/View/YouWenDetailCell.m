@@ -7,6 +7,7 @@
 //
 
 #import "YouWenDetailCell.h"
+#import <SDWebImageManager.h>
 
 @implementation YouWenDetailCell
 
@@ -28,7 +29,7 @@
         [self.adoptBtn.layer setCornerRadius:10.0];
         self.genderImageView.contentMode = UIViewContentModeScaleAspectFit;
         self.upvoteImageView.contentMode = UIViewContentModeScaleAspectFit;;
-        self.commentImageView.contentMode = UIViewContentModeScaleAspectFit;
+//        self.commentImageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     
     return self;
