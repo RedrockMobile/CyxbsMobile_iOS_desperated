@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 #import <YYImage.h>
 #import <Masonry.h>
+#import "MBProgressHUD.h"
+
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 
 
@@ -195,7 +197,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 
 - (void)saveData{
-    if (_roomTextField.text.length!=3||_buildLabel.text.length!=3) {
+    if (_roomTextField.text.length!=3/*||_buildLabel.text.length!=3*/) {
         [self showInfoView];
     }else{
         NSDate *currentDate = [NSDate date];
@@ -213,7 +215,15 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         [data setObject:[NSString stringWithFormat:@"%@",compoent] forKey:@"month"];
             [data writeToFile:plistPath atomically:YES];
         
-        [self pushToDoneVC];
+//        [self pushToDoneVC];
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"设置成功";
+        [hud hide:YES afterDelay:1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"showTheSuccessHub" object:self];
+        [self.navigationController popViewControllerAnimated:YES];
+        
     }
     
 }
@@ -363,11 +373,53 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     InstallBuildTableViewCell *cell = [InstallBuildTableViewCell tableView:tableView cellForRowAtIndexPath:indexPath];
+    NSArray*buildArr = @[@"（知行苑1舍）",
+                         @"（知行苑2舍）",
+                         @"（知行苑3舍）",
+                         @"（知行苑4舍）",
+                         @"（知行苑5舍）",
+                         @"（知行苑6舍）",
+                         @"",
+                         @"（宁静苑1舍）",
+                         @"（宁静苑2舍）",
+                         @"（宁静苑3舍）",
+                         @"（宁静苑4舍）",
+                         @"（宁静苑5舍）",
+                         @"",
+                         @"",
+                         @"（知行苑7舍）",
+                         @"（知行苑8舍）",
+                         @"（兴业苑1舍）",
+                         @"（兴业苑2舍）",
+                         @"（兴业苑3舍）",
+                         @"（兴业苑4舍）",
+                         @"（兴业苑5舍）",
+                         @"（兴业苑6舍）",
+//                         @"（兴业苑7舍）",
+                         @"（兴业苑7、8舍）",
+                         @"（明理苑1舍）",
+                         @"（明理苑2舍）",
+                         @"（明理苑3舍）",
+                         @"（明理苑4舍）",
+                         @"（明理苑5舍）",
+                         @"（明理苑6舍）",
+                         @"（明理苑7舍）",
+                         @"（明理苑8舍）",
+                         @"（宁静苑6舍）",
+                         @"（宁静苑7舍）",
+                         @"（宁静苑8舍）",
+                         @"（宁静苑9舍）",
+                         @" (四海苑1舍)",
+                         @" (四海苑2舍)",
+                         @"",
+                         @"（明理苑9舍）"];
+    [cell.buildLabel setWidth:300];
     if (indexPath.row + 1 < 10) {
-        cell.buildLabel.text = [NSString stringWithFormat:@"0%ld栋",(long)indexPath.row+1];
+        cell.buildLabel.text = [NSString stringWithFormat:@"0%ld栋%@",(long)indexPath.row+1,buildArr[indexPath.row]];
     }else{
-        cell.buildLabel.text = [NSString stringWithFormat:@"%ld栋",(long)indexPath.row+1];
+        cell.buildLabel.text = [NSString stringWithFormat:@"%ld栋%@",(long)indexPath.row+1,buildArr[indexPath.row]];
     }
+
      return cell;
 }
 

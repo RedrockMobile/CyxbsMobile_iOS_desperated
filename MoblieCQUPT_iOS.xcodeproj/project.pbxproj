@@ -236,40 +236,6 @@
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
 		E404FE84230FEDE80091141C /* welcomeNewWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE83230FEDE80091141C /* welcomeNewWebController.m */; };
-		E404FEBC23112CA10091141C /* QuerCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE8723112CA10091141C /* QuerCurveView.m */; };
-		E404FEBD23112CA10091141C /* rightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE8823112CA10091141C /* rightIcon.png */; };
-		E404FEBE23112CA10091141C /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE8923112CA10091141C /* settings.png */; };
-		E404FEBF23112CA10091141C /* QuerLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE8A23112CA10091141C /* QuerLoginModel.m */; };
-		E404FEC023112CA10091141C /* QuerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE8B23112CA10091141C /* QuerInfo.m */; };
-		E404FEC123112CA10091141C /* leftIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE8C23112CA10091141C /* leftIcon.png */; };
-		E404FEC223112CA10091141C /* buildCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE8F23112CA10091141C /* buildCircleView.m */; };
-		E404FEC323112CA10091141C /* PointingCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE9023112CA10091141C /* PointingCircleView.m */; };
-		E404FEC423112CA10091141C /* QuerCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE9323112CA10091141C /* QuerCircleView.m */; };
-		E404FEC523112CA10091141C /* QuerPullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE9423112CA10091141C /* QuerPullTableViewCell.m */; };
-		E404FEC623112CA10091141C /* triangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE9623112CA10091141C /* triangleView.m */; };
-		E404FEC723112CA10091141C /* electricity_charge_ic_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE9723112CA10091141C /* electricity_charge_ic_1.png */; };
-		E404FEC823112CA10091141C /* electricity_charge_ic_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE9823112CA10091141C /* electricity_charge_ic_3.png */; };
-		E404FEC923112CA10091141C /* electricity_charge_ic_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE9923112CA10091141C /* electricity_charge_ic_2.png */; };
-		E404FECA23112CA10091141C /* electricity_charge_ic_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE9D23112CA10091141C /* electricity_charge_ic_5.png */; };
-		E404FECB23112CA10091141C /* electricity_charge_ic_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FE9E23112CA10091141C /* electricity_charge_ic_4.png */; };
-		E404FECC23112CA10091141C /* QuerNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEA023112CA10091141C /* QuerNoteView.m */; };
-		E404FECD23112CA10091141C /* QuerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEA223112CA10091141C /* QuerLoginViewController.m */; };
-		E404FECE23112CA10091141C /* unitImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEA323112CA10091141C /* unitImage.png */; };
-		E404FECF23112CA10091141C /* roomIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEA623112CA10091141C /* roomIcon.png */; };
-		E404FED023112CA10091141C /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEA723112CA10091141C /* angleImage.png */; };
-		E404FED123112CA10091141C /* electricity_header_setting.gif in Resources */ = {isa = PBXBuildFile; fileRef = E404FEA823112CA10091141C /* electricity_header_setting.gif */; };
-		E404FED223112CA10091141C /* doneImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEA923112CA10091141C /* doneImage.png */; };
-		E404FED323112CA10091141C /* InstallRoomDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEAA23112CA10091141C /* InstallRoomDoneViewController.m */; };
-		E404FED423112CA10091141C /* InstallcurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEAB23112CA10091141C /* InstallcurrentViewController.m */; };
-		E404FED523112CA10091141C /* InstallBuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEAC23112CA10091141C /* InstallBuildTableViewCell.m */; };
-		E404FED623112CA10091141C /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEAD23112CA10091141C /* achieveImage.png */; };
-		E404FED723112CA10091141C /* InstallRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEAF23112CA10091141C /* InstallRoomViewController.m */; };
-		E404FED823112CA10091141C /* IntallFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEB223112CA10091141C /* IntallFailViewController.m */; };
-		E404FED923112CA10091141C /* buildIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEB423112CA10091141C /* buildIcon.png */; };
-		E404FEDA23112CA10091141C /* querElecIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEB523112CA10091141C /* querElecIcon.png */; };
-		E404FEDB23112CA10091141C /* reinstallImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEB923112CA10091141C /* reinstallImage.png */; };
-		E404FEDC23112CA10091141C /* remindImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FEBA23112CA10091141C /* remindImage.png */; };
-		E404FEDD23112CA10091141C /* QuerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FEBB23112CA10091141C /* QuerRemindViewController.m */; };
 		E404FF7923117AD50091141C /* tabbar_freshman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7823117AD50091141C /* tabbar_freshman@2x.png */; };
 		E404FF7B231272600091141C /* touxiang.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7A231272600091141C /* touxiang.png */; };
 		E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */; };
@@ -346,6 +312,40 @@
 		E41B1E3F2313BB7C00CCFC09 /* VolunteeringEventItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1DFC2313BB7B00CCFC09 /* VolunteeringEventItem.m */; };
 		E41B1E402313BB7C00CCFC09 /* VolunteerItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1DFD2313BB7B00CCFC09 /* VolunteerItem.m */; };
 		E41B1E412313BB7C00CCFC09 /* YearChooseBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1DFF2313BB7B00CCFC09 /* YearChooseBar.m */; };
+		E41B1EF92313DCB900CCFC09 /* QuerCurveView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EC42313DCB800CCFC09 /* QuerCurveView.m */; };
+		E41B1EFA2313DCB900CCFC09 /* rightIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EC52313DCB800CCFC09 /* rightIcon.png */; };
+		E41B1EFB2313DCB900CCFC09 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EC62313DCB800CCFC09 /* settings.png */; };
+		E41B1EFC2313DCB900CCFC09 /* QuerLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EC72313DCB800CCFC09 /* QuerLoginModel.m */; };
+		E41B1EFD2313DCB900CCFC09 /* QuerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EC82313DCB800CCFC09 /* QuerInfo.m */; };
+		E41B1EFE2313DCB900CCFC09 /* leftIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EC92313DCB800CCFC09 /* leftIcon.png */; };
+		E41B1EFF2313DCB900CCFC09 /* buildCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1ECC2313DCB800CCFC09 /* buildCircleView.m */; };
+		E41B1F002313DCB900CCFC09 /* PointingCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1ECD2313DCB800CCFC09 /* PointingCircleView.m */; };
+		E41B1F012313DCB900CCFC09 /* QuerCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1ED02313DCB800CCFC09 /* QuerCircleView.m */; };
+		E41B1F022313DCB900CCFC09 /* QuerPullTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1ED12313DCB800CCFC09 /* QuerPullTableViewCell.m */; };
+		E41B1F032313DCB900CCFC09 /* triangleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1ED32313DCB800CCFC09 /* triangleView.m */; };
+		E41B1F042313DCB900CCFC09 /* electricity_charge_ic_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1ED42313DCB800CCFC09 /* electricity_charge_ic_1.png */; };
+		E41B1F052313DCB900CCFC09 /* electricity_charge_ic_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1ED52313DCB800CCFC09 /* electricity_charge_ic_3.png */; };
+		E41B1F062313DCB900CCFC09 /* electricity_charge_ic_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1ED62313DCB800CCFC09 /* electricity_charge_ic_2.png */; };
+		E41B1F072313DCB900CCFC09 /* electricity_charge_ic_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EDA2313DCB800CCFC09 /* electricity_charge_ic_5.png */; };
+		E41B1F082313DCB900CCFC09 /* electricity_charge_ic_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EDB2313DCB800CCFC09 /* electricity_charge_ic_4.png */; };
+		E41B1F092313DCB900CCFC09 /* QuerNoteView.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EDD2313DCB800CCFC09 /* QuerNoteView.m */; };
+		E41B1F0A2313DCB900CCFC09 /* QuerLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EDF2313DCB800CCFC09 /* QuerLoginViewController.m */; };
+		E41B1F0B2313DCB900CCFC09 /* unitImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EE02313DCB800CCFC09 /* unitImage.png */; };
+		E41B1F0C2313DCB900CCFC09 /* roomIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EE32313DCB800CCFC09 /* roomIcon.png */; };
+		E41B1F0D2313DCB900CCFC09 /* angleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EE42313DCB800CCFC09 /* angleImage.png */; };
+		E41B1F0E2313DCB900CCFC09 /* electricity_header_setting.gif in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EE52313DCB800CCFC09 /* electricity_header_setting.gif */; };
+		E41B1F0F2313DCB900CCFC09 /* doneImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EE62313DCB800CCFC09 /* doneImage.png */; };
+		E41B1F102313DCB900CCFC09 /* InstallRoomDoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EE72313DCB800CCFC09 /* InstallRoomDoneViewController.m */; };
+		E41B1F112313DCB900CCFC09 /* InstallcurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EE82313DCB800CCFC09 /* InstallcurrentViewController.m */; };
+		E41B1F122313DCB900CCFC09 /* InstallBuildTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EE92313DCB800CCFC09 /* InstallBuildTableViewCell.m */; };
+		E41B1F132313DCB900CCFC09 /* achieveImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EEA2313DCB800CCFC09 /* achieveImage.png */; };
+		E41B1F142313DCB900CCFC09 /* InstallRoomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EEC2313DCB800CCFC09 /* InstallRoomViewController.m */; };
+		E41B1F152313DCB900CCFC09 /* IntallFailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EEF2313DCB800CCFC09 /* IntallFailViewController.m */; };
+		E41B1F162313DCB900CCFC09 /* buildIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EF12313DCB800CCFC09 /* buildIcon.png */; };
+		E41B1F172313DCB900CCFC09 /* querElecIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EF22313DCB800CCFC09 /* querElecIcon.png */; };
+		E41B1F182313DCB900CCFC09 /* reinstallImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EF62313DCB800CCFC09 /* reinstallImage.png */; };
+		E41B1F192313DCB900CCFC09 /* remindImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EF72313DCB800CCFC09 /* remindImage.png */; };
+		E41B1F1A2313DCB900CCFC09 /* QuerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EF82313DCB800CCFC09 /* QuerRemindViewController.m */; };
 		E46FCE54230C3D5C001FECE8 /* Necessity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE45230C3D5B001FECE8 /* Necessity.plist */; };
 		E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */; };
 		E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE4B230C3D5B001FECE8 /* DLNecessityModel.m */; };
@@ -1105,56 +1105,6 @@
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
 		E404FE82230FEDE80091141C /* welcomeNewWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = welcomeNewWebController.h; sourceTree = "<group>"; };
 		E404FE83230FEDE80091141C /* welcomeNewWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = welcomeNewWebController.m; sourceTree = "<group>"; };
-		E404FE8723112CA10091141C /* QuerCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCurveView.m; sourceTree = "<group>"; };
-		E404FE8823112CA10091141C /* rightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightIcon.png; sourceTree = "<group>"; };
-		E404FE8923112CA10091141C /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		E404FE8A23112CA10091141C /* QuerLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginModel.m; sourceTree = "<group>"; };
-		E404FE8B23112CA10091141C /* QuerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerInfo.m; sourceTree = "<group>"; };
-		E404FE8C23112CA10091141C /* leftIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftIcon.png; sourceTree = "<group>"; };
-		E404FE8D23112CA10091141C /* QuerNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerNoteView.h; sourceTree = "<group>"; };
-		E404FE8F23112CA10091141C /* buildCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buildCircleView.m; sourceTree = "<group>"; };
-		E404FE9023112CA10091141C /* PointingCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointingCircleView.m; sourceTree = "<group>"; };
-		E404FE9123112CA10091141C /* buildCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildCircleView.h; sourceTree = "<group>"; };
-		E404FE9223112CA10091141C /* PointingCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointingCircleView.h; sourceTree = "<group>"; };
-		E404FE9323112CA10091141C /* QuerCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCircleView.m; sourceTree = "<group>"; };
-		E404FE9423112CA10091141C /* QuerPullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerPullTableViewCell.m; sourceTree = "<group>"; };
-		E404FE9523112CA10091141C /* QuerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginViewController.h; sourceTree = "<group>"; };
-		E404FE9623112CA10091141C /* triangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = triangleView.m; sourceTree = "<group>"; };
-		E404FE9723112CA10091141C /* electricity_charge_ic_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_1.png; sourceTree = "<group>"; };
-		E404FE9823112CA10091141C /* electricity_charge_ic_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_3.png; sourceTree = "<group>"; };
-		E404FE9923112CA10091141C /* electricity_charge_ic_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_2.png; sourceTree = "<group>"; };
-		E404FE9A23112CA10091141C /* QuerCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCurveView.h; sourceTree = "<group>"; };
-		E404FE9B23112CA10091141C /* QuerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerInfo.h; sourceTree = "<group>"; };
-		E404FE9C23112CA10091141C /* QuerLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginModel.h; sourceTree = "<group>"; };
-		E404FE9D23112CA10091141C /* electricity_charge_ic_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_5.png; sourceTree = "<group>"; };
-		E404FE9E23112CA10091141C /* electricity_charge_ic_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_4.png; sourceTree = "<group>"; };
-		E404FE9F23112CA10091141C /* QuerCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCircleView.h; sourceTree = "<group>"; };
-		E404FEA023112CA10091141C /* QuerNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerNoteView.m; sourceTree = "<group>"; };
-		E404FEA123112CA10091141C /* triangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangleView.h; sourceTree = "<group>"; };
-		E404FEA223112CA10091141C /* QuerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginViewController.m; sourceTree = "<group>"; };
-		E404FEA323112CA10091141C /* unitImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unitImage.png; sourceTree = "<group>"; };
-		E404FEA423112CA10091141C /* QuerPullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerPullTableViewCell.h; sourceTree = "<group>"; };
-		E404FEA623112CA10091141C /* roomIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roomIcon.png; sourceTree = "<group>"; };
-		E404FEA723112CA10091141C /* angleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleImage.png; sourceTree = "<group>"; };
-		E404FEA823112CA10091141C /* electricity_header_setting.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = electricity_header_setting.gif; sourceTree = "<group>"; };
-		E404FEA923112CA10091141C /* doneImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneImage.png; sourceTree = "<group>"; };
-		E404FEAA23112CA10091141C /* InstallRoomDoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomDoneViewController.m; sourceTree = "<group>"; };
-		E404FEAB23112CA10091141C /* InstallcurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallcurrentViewController.m; sourceTree = "<group>"; };
-		E404FEAC23112CA10091141C /* InstallBuildTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallBuildTableViewCell.m; sourceTree = "<group>"; };
-		E404FEAD23112CA10091141C /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
-		E404FEAE23112CA10091141C /* IntallFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntallFailViewController.h; sourceTree = "<group>"; };
-		E404FEAF23112CA10091141C /* InstallRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomViewController.m; sourceTree = "<group>"; };
-		E404FEB023112CA10091141C /* InstallcurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallcurrentViewController.h; sourceTree = "<group>"; };
-		E404FEB123112CA10091141C /* InstallRoomDoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomDoneViewController.h; sourceTree = "<group>"; };
-		E404FEB223112CA10091141C /* IntallFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntallFailViewController.m; sourceTree = "<group>"; };
-		E404FEB323112CA10091141C /* InstallBuildTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallBuildTableViewCell.h; sourceTree = "<group>"; };
-		E404FEB423112CA10091141C /* buildIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildIcon.png; sourceTree = "<group>"; };
-		E404FEB523112CA10091141C /* querElecIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = querElecIcon.png; sourceTree = "<group>"; };
-		E404FEB623112CA10091141C /* InstallRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomViewController.h; sourceTree = "<group>"; };
-		E404FEB823112CA10091141C /* QuerRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerRemindViewController.h; sourceTree = "<group>"; };
-		E404FEB923112CA10091141C /* reinstallImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reinstallImage.png; sourceTree = "<group>"; };
-		E404FEBA23112CA10091141C /* remindImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remindImage.png; sourceTree = "<group>"; };
-		E404FEBB23112CA10091141C /* QuerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerRemindViewController.m; sourceTree = "<group>"; };
 		E404FF7823117AD50091141C /* tabbar_freshman@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_freshman@2x.png"; sourceTree = "<group>"; };
 		E404FF7A231272600091141C /* touxiang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = touxiang.png; sourceTree = "<group>"; };
 		E41AD245222BDD9000360C56 /* tabbar_image_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_mine@2x.png"; sourceTree = "<group>"; };
@@ -1251,6 +1201,56 @@
 		E41B1DFD2313BB7B00CCFC09 /* VolunteerItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolunteerItem.m; sourceTree = "<group>"; };
 		E41B1DFF2313BB7B00CCFC09 /* YearChooseBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YearChooseBar.m; sourceTree = "<group>"; };
 		E41B1E002313BB7B00CCFC09 /* YearChooseBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YearChooseBar.h; sourceTree = "<group>"; };
+		E41B1EC42313DCB800CCFC09 /* QuerCurveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCurveView.m; sourceTree = "<group>"; };
+		E41B1EC52313DCB800CCFC09 /* rightIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightIcon.png; sourceTree = "<group>"; };
+		E41B1EC62313DCB800CCFC09 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		E41B1EC72313DCB800CCFC09 /* QuerLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginModel.m; sourceTree = "<group>"; };
+		E41B1EC82313DCB800CCFC09 /* QuerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerInfo.m; sourceTree = "<group>"; };
+		E41B1EC92313DCB800CCFC09 /* leftIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftIcon.png; sourceTree = "<group>"; };
+		E41B1ECA2313DCB800CCFC09 /* QuerNoteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerNoteView.h; sourceTree = "<group>"; };
+		E41B1ECC2313DCB800CCFC09 /* buildCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = buildCircleView.m; sourceTree = "<group>"; };
+		E41B1ECD2313DCB800CCFC09 /* PointingCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PointingCircleView.m; sourceTree = "<group>"; };
+		E41B1ECE2313DCB800CCFC09 /* buildCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buildCircleView.h; sourceTree = "<group>"; };
+		E41B1ECF2313DCB800CCFC09 /* PointingCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointingCircleView.h; sourceTree = "<group>"; };
+		E41B1ED02313DCB800CCFC09 /* QuerCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerCircleView.m; sourceTree = "<group>"; };
+		E41B1ED12313DCB800CCFC09 /* QuerPullTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerPullTableViewCell.m; sourceTree = "<group>"; };
+		E41B1ED22313DCB800CCFC09 /* QuerLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginViewController.h; sourceTree = "<group>"; };
+		E41B1ED32313DCB800CCFC09 /* triangleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = triangleView.m; sourceTree = "<group>"; };
+		E41B1ED42313DCB800CCFC09 /* electricity_charge_ic_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_1.png; sourceTree = "<group>"; };
+		E41B1ED52313DCB800CCFC09 /* electricity_charge_ic_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_3.png; sourceTree = "<group>"; };
+		E41B1ED62313DCB800CCFC09 /* electricity_charge_ic_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_2.png; sourceTree = "<group>"; };
+		E41B1ED72313DCB800CCFC09 /* QuerCurveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCurveView.h; sourceTree = "<group>"; };
+		E41B1ED82313DCB800CCFC09 /* QuerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerInfo.h; sourceTree = "<group>"; };
+		E41B1ED92313DCB800CCFC09 /* QuerLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerLoginModel.h; sourceTree = "<group>"; };
+		E41B1EDA2313DCB800CCFC09 /* electricity_charge_ic_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_5.png; sourceTree = "<group>"; };
+		E41B1EDB2313DCB800CCFC09 /* electricity_charge_ic_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = electricity_charge_ic_4.png; sourceTree = "<group>"; };
+		E41B1EDC2313DCB800CCFC09 /* QuerCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerCircleView.h; sourceTree = "<group>"; };
+		E41B1EDD2313DCB800CCFC09 /* QuerNoteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerNoteView.m; sourceTree = "<group>"; };
+		E41B1EDE2313DCB800CCFC09 /* triangleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = triangleView.h; sourceTree = "<group>"; };
+		E41B1EDF2313DCB800CCFC09 /* QuerLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerLoginViewController.m; sourceTree = "<group>"; };
+		E41B1EE02313DCB800CCFC09 /* unitImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = unitImage.png; sourceTree = "<group>"; };
+		E41B1EE12313DCB800CCFC09 /* QuerPullTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerPullTableViewCell.h; sourceTree = "<group>"; };
+		E41B1EE32313DCB800CCFC09 /* roomIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = roomIcon.png; sourceTree = "<group>"; };
+		E41B1EE42313DCB800CCFC09 /* angleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = angleImage.png; sourceTree = "<group>"; };
+		E41B1EE52313DCB800CCFC09 /* electricity_header_setting.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = electricity_header_setting.gif; sourceTree = "<group>"; };
+		E41B1EE62313DCB800CCFC09 /* doneImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doneImage.png; sourceTree = "<group>"; };
+		E41B1EE72313DCB800CCFC09 /* InstallRoomDoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomDoneViewController.m; sourceTree = "<group>"; };
+		E41B1EE82313DCB800CCFC09 /* InstallcurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallcurrentViewController.m; sourceTree = "<group>"; };
+		E41B1EE92313DCB800CCFC09 /* InstallBuildTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallBuildTableViewCell.m; sourceTree = "<group>"; };
+		E41B1EEA2313DCB800CCFC09 /* achieveImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = achieveImage.png; sourceTree = "<group>"; };
+		E41B1EEB2313DCB800CCFC09 /* IntallFailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntallFailViewController.h; sourceTree = "<group>"; };
+		E41B1EEC2313DCB800CCFC09 /* InstallRoomViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstallRoomViewController.m; sourceTree = "<group>"; };
+		E41B1EED2313DCB800CCFC09 /* InstallcurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallcurrentViewController.h; sourceTree = "<group>"; };
+		E41B1EEE2313DCB800CCFC09 /* InstallRoomDoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomDoneViewController.h; sourceTree = "<group>"; };
+		E41B1EEF2313DCB800CCFC09 /* IntallFailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntallFailViewController.m; sourceTree = "<group>"; };
+		E41B1EF02313DCB800CCFC09 /* InstallBuildTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallBuildTableViewCell.h; sourceTree = "<group>"; };
+		E41B1EF12313DCB800CCFC09 /* buildIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildIcon.png; sourceTree = "<group>"; };
+		E41B1EF22313DCB800CCFC09 /* querElecIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = querElecIcon.png; sourceTree = "<group>"; };
+		E41B1EF32313DCB800CCFC09 /* InstallRoomViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstallRoomViewController.h; sourceTree = "<group>"; };
+		E41B1EF52313DCB800CCFC09 /* QuerRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuerRemindViewController.h; sourceTree = "<group>"; };
+		E41B1EF62313DCB800CCFC09 /* reinstallImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reinstallImage.png; sourceTree = "<group>"; };
+		E41B1EF72313DCB800CCFC09 /* remindImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remindImage.png; sourceTree = "<group>"; };
+		E41B1EF82313DCB800CCFC09 /* QuerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerRemindViewController.m; sourceTree = "<group>"; };
 		E46FCE45230C3D5B001FECE8 /* Necessity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Necessity.plist; sourceTree = "<group>"; };
 		E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCNecessityViewController.m; sourceTree = "<group>"; };
 		E46FCE48230C3D5B001FECE8 /* SYCNecessityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCNecessityViewController.h; sourceTree = "<group>"; };
@@ -2411,95 +2411,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		E404FE8523112CA10091141C /* ElectricityFee */ = {
-			isa = PBXGroup;
-			children = (
-				E404FE8623112CA10091141C /* QuerLogin */,
-				E404FEA523112CA10091141C /* QuerInstall */,
-				E404FEB723112CA10091141C /* QuerRemind */,
-			);
-			path = ElectricityFee;
-			sourceTree = "<group>";
-		};
-		E404FE8623112CA10091141C /* QuerLogin */ = {
-			isa = PBXGroup;
-			children = (
-				E404FE8723112CA10091141C /* QuerCurveView.m */,
-				E404FE8823112CA10091141C /* rightIcon.png */,
-				E404FE8923112CA10091141C /* settings.png */,
-				E404FE8A23112CA10091141C /* QuerLoginModel.m */,
-				E404FE8B23112CA10091141C /* QuerInfo.m */,
-				E404FE8C23112CA10091141C /* leftIcon.png */,
-				E404FE8D23112CA10091141C /* QuerNoteView.h */,
-				E404FE8E23112CA10091141C /* UnUse */,
-				E404FE9323112CA10091141C /* QuerCircleView.m */,
-				E404FE9423112CA10091141C /* QuerPullTableViewCell.m */,
-				E404FE9523112CA10091141C /* QuerLoginViewController.h */,
-				E404FE9623112CA10091141C /* triangleView.m */,
-				E404FE9723112CA10091141C /* electricity_charge_ic_1.png */,
-				E404FE9823112CA10091141C /* electricity_charge_ic_3.png */,
-				E404FE9923112CA10091141C /* electricity_charge_ic_2.png */,
-				E404FE9A23112CA10091141C /* QuerCurveView.h */,
-				E404FE9B23112CA10091141C /* QuerInfo.h */,
-				E404FE9C23112CA10091141C /* QuerLoginModel.h */,
-				E404FE9D23112CA10091141C /* electricity_charge_ic_5.png */,
-				E404FE9E23112CA10091141C /* electricity_charge_ic_4.png */,
-				E404FE9F23112CA10091141C /* QuerCircleView.h */,
-				E404FEA023112CA10091141C /* QuerNoteView.m */,
-				E404FEA123112CA10091141C /* triangleView.h */,
-				E404FEA223112CA10091141C /* QuerLoginViewController.m */,
-				E404FEA323112CA10091141C /* unitImage.png */,
-				E404FEA423112CA10091141C /* QuerPullTableViewCell.h */,
-			);
-			path = QuerLogin;
-			sourceTree = "<group>";
-		};
-		E404FE8E23112CA10091141C /* UnUse */ = {
-			isa = PBXGroup;
-			children = (
-				E404FE8F23112CA10091141C /* buildCircleView.m */,
-				E404FE9023112CA10091141C /* PointingCircleView.m */,
-				E404FE9123112CA10091141C /* buildCircleView.h */,
-				E404FE9223112CA10091141C /* PointingCircleView.h */,
-			);
-			path = UnUse;
-			sourceTree = "<group>";
-		};
-		E404FEA523112CA10091141C /* QuerInstall */ = {
-			isa = PBXGroup;
-			children = (
-				E404FEA623112CA10091141C /* roomIcon.png */,
-				E404FEA723112CA10091141C /* angleImage.png */,
-				E404FEA823112CA10091141C /* electricity_header_setting.gif */,
-				E404FEA923112CA10091141C /* doneImage.png */,
-				E404FEAA23112CA10091141C /* InstallRoomDoneViewController.m */,
-				E404FEAB23112CA10091141C /* InstallcurrentViewController.m */,
-				E404FEAC23112CA10091141C /* InstallBuildTableViewCell.m */,
-				E404FEAD23112CA10091141C /* achieveImage.png */,
-				E404FEAE23112CA10091141C /* IntallFailViewController.h */,
-				E404FEAF23112CA10091141C /* InstallRoomViewController.m */,
-				E404FEB023112CA10091141C /* InstallcurrentViewController.h */,
-				E404FEB123112CA10091141C /* InstallRoomDoneViewController.h */,
-				E404FEB223112CA10091141C /* IntallFailViewController.m */,
-				E404FEB323112CA10091141C /* InstallBuildTableViewCell.h */,
-				E404FEB423112CA10091141C /* buildIcon.png */,
-				E404FEB523112CA10091141C /* querElecIcon.png */,
-				E404FEB623112CA10091141C /* InstallRoomViewController.h */,
-			);
-			path = QuerInstall;
-			sourceTree = "<group>";
-		};
-		E404FEB723112CA10091141C /* QuerRemind */ = {
-			isa = PBXGroup;
-			children = (
-				E404FEB823112CA10091141C /* QuerRemindViewController.h */,
-				E404FEB923112CA10091141C /* reinstallImage.png */,
-				E404FEBA23112CA10091141C /* remindImage.png */,
-				E404FEBB23112CA10091141C /* QuerRemindViewController.m */,
-			);
-			path = QuerRemind;
-			sourceTree = "<group>";
-		};
 		E404FF7C2312795C0091141C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -2726,6 +2637,95 @@
 				E41B1E002313BB7B00CCFC09 /* YearChooseBar.h */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		E41B1EC22313DCB800CCFC09 /* ElectricityFee */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1EC32313DCB800CCFC09 /* QuerLogin */,
+				E41B1EE22313DCB800CCFC09 /* QuerInstall */,
+				E41B1EF42313DCB800CCFC09 /* QuerRemind */,
+			);
+			path = ElectricityFee;
+			sourceTree = "<group>";
+		};
+		E41B1EC32313DCB800CCFC09 /* QuerLogin */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1EC42313DCB800CCFC09 /* QuerCurveView.m */,
+				E41B1EC52313DCB800CCFC09 /* rightIcon.png */,
+				E41B1EC62313DCB800CCFC09 /* settings.png */,
+				E41B1EC72313DCB800CCFC09 /* QuerLoginModel.m */,
+				E41B1EC82313DCB800CCFC09 /* QuerInfo.m */,
+				E41B1EC92313DCB800CCFC09 /* leftIcon.png */,
+				E41B1ECA2313DCB800CCFC09 /* QuerNoteView.h */,
+				E41B1ECB2313DCB800CCFC09 /* UnUse */,
+				E41B1ED02313DCB800CCFC09 /* QuerCircleView.m */,
+				E41B1ED12313DCB800CCFC09 /* QuerPullTableViewCell.m */,
+				E41B1ED22313DCB800CCFC09 /* QuerLoginViewController.h */,
+				E41B1ED32313DCB800CCFC09 /* triangleView.m */,
+				E41B1ED42313DCB800CCFC09 /* electricity_charge_ic_1.png */,
+				E41B1ED52313DCB800CCFC09 /* electricity_charge_ic_3.png */,
+				E41B1ED62313DCB800CCFC09 /* electricity_charge_ic_2.png */,
+				E41B1ED72313DCB800CCFC09 /* QuerCurveView.h */,
+				E41B1ED82313DCB800CCFC09 /* QuerInfo.h */,
+				E41B1ED92313DCB800CCFC09 /* QuerLoginModel.h */,
+				E41B1EDA2313DCB800CCFC09 /* electricity_charge_ic_5.png */,
+				E41B1EDB2313DCB800CCFC09 /* electricity_charge_ic_4.png */,
+				E41B1EDC2313DCB800CCFC09 /* QuerCircleView.h */,
+				E41B1EDD2313DCB800CCFC09 /* QuerNoteView.m */,
+				E41B1EDE2313DCB800CCFC09 /* triangleView.h */,
+				E41B1EDF2313DCB800CCFC09 /* QuerLoginViewController.m */,
+				E41B1EE02313DCB800CCFC09 /* unitImage.png */,
+				E41B1EE12313DCB800CCFC09 /* QuerPullTableViewCell.h */,
+			);
+			path = QuerLogin;
+			sourceTree = "<group>";
+		};
+		E41B1ECB2313DCB800CCFC09 /* UnUse */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1ECC2313DCB800CCFC09 /* buildCircleView.m */,
+				E41B1ECD2313DCB800CCFC09 /* PointingCircleView.m */,
+				E41B1ECE2313DCB800CCFC09 /* buildCircleView.h */,
+				E41B1ECF2313DCB800CCFC09 /* PointingCircleView.h */,
+			);
+			path = UnUse;
+			sourceTree = "<group>";
+		};
+		E41B1EE22313DCB800CCFC09 /* QuerInstall */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1EE32313DCB800CCFC09 /* roomIcon.png */,
+				E41B1EE42313DCB800CCFC09 /* angleImage.png */,
+				E41B1EE52313DCB800CCFC09 /* electricity_header_setting.gif */,
+				E41B1EE62313DCB800CCFC09 /* doneImage.png */,
+				E41B1EE72313DCB800CCFC09 /* InstallRoomDoneViewController.m */,
+				E41B1EE82313DCB800CCFC09 /* InstallcurrentViewController.m */,
+				E41B1EE92313DCB800CCFC09 /* InstallBuildTableViewCell.m */,
+				E41B1EEA2313DCB800CCFC09 /* achieveImage.png */,
+				E41B1EEB2313DCB800CCFC09 /* IntallFailViewController.h */,
+				E41B1EEC2313DCB800CCFC09 /* InstallRoomViewController.m */,
+				E41B1EED2313DCB800CCFC09 /* InstallcurrentViewController.h */,
+				E41B1EEE2313DCB800CCFC09 /* InstallRoomDoneViewController.h */,
+				E41B1EEF2313DCB800CCFC09 /* IntallFailViewController.m */,
+				E41B1EF02313DCB800CCFC09 /* InstallBuildTableViewCell.h */,
+				E41B1EF12313DCB800CCFC09 /* buildIcon.png */,
+				E41B1EF22313DCB800CCFC09 /* querElecIcon.png */,
+				E41B1EF32313DCB800CCFC09 /* InstallRoomViewController.h */,
+			);
+			path = QuerInstall;
+			sourceTree = "<group>";
+		};
+		E41B1EF42313DCB800CCFC09 /* QuerRemind */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1EF52313DCB800CCFC09 /* QuerRemindViewController.h */,
+				E41B1EF62313DCB800CCFC09 /* reinstallImage.png */,
+				E41B1EF72313DCB800CCFC09 /* remindImage.png */,
+				E41B1EF82313DCB800CCFC09 /* QuerRemindViewController.m */,
+			);
+			path = QuerRemind;
 			sourceTree = "<group>";
 		};
 		E46FCE44230C3D5B001FECE8 /* Necessity */ = {
@@ -3271,8 +3271,8 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				E41B1EC22313DCB800CCFC09 /* ElectricityFee */,
 				E41B1DAB2313BB7B00CCFC09 /* Volunteer */,
-				E404FE8523112CA10091141C /* ElectricityFee */,
 				82398BBF21A4289500300C91 /* SYCMainDiscoverViewController.h */,
 				82398BB121A4289500300C91 /* SYCMainDiscoverViewController.m */,
 				82398BBE21A4289500300C91 /* SYCPictureDisplayView.h */,
@@ -4279,9 +4279,9 @@
 				F242DE9E1EBCB2BC005AC411 /* 椭圆@2x.png in Resources */,
 				4A3A07E71FCC0EC700A50393 /* lost_image_infocategory@3x.png in Resources */,
 				E41B1E102313BB7C00CCFC09 /* login_password.png in Resources */,
+				E41B1EFA2313DCB900CCFC09 /* rightIcon.png in Resources */,
 				4A3A07F51FCC0EC700A50393 /* lost_image_place@3x.png in Resources */,
 				F26D96731F3C400F0063B024 /* MBReleaseViewController.xib in Resources */,
-				E404FEBD23112CA10091141C /* rightIcon.png in Resources */,
 				E41B1E0D2313BB7C00CCFC09 /* 5@2x.png in Resources */,
 				4A3A07DD1FCC0EC700A50393 /* find_image_shake@3x.png in Resources */,
 				F242DE731EBCB2BC005AC411 /* remind0@2x.png in Resources */,
@@ -4290,11 +4290,11 @@
 				E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */,
 				E41B1E352313BB7C00CCFC09 /* 背景板@3x.png in Resources */,
 				F210F0BC1F441CF7003BDF6A /* all_image_background@3x.png in Resources */,
+				E41B1F172313DCB900CCFC09 /* querElecIcon.png in Resources */,
 				F200271F1F405B8500360991 /* remind_image_title@3x.png in Resources */,
 				F26D967D1F3C400F0063B024 /* icon_share_qq@2x.png in Resources */,
 				F242DE971EBCB2BC005AC411 /* 无事项@3x.png in Resources */,
 				6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */,
-				E404FEDA23112CA10091141C /* querElecIcon.png in Resources */,
 				E41B1E252313BB7C00CCFC09 /* 6@3x.png in Resources */,
 				82398BE021A42AFE00300C91 /* 课前提醒.png in Resources */,
 				4A3A08451FCD990A00A50393 /* Address@2x.png in Resources */,
@@ -4316,6 +4316,7 @@
 				4A3A08441FCD990A00A50393 /* shop_headImage@2x.png in Resources */,
 				F20027191F405B8500360991 /* remind_image_content@3x.png in Resources */,
 				82398C1421A432DE00300C91 /* mine_image_calendar1.png in Resources */,
+				E41B1F072313DCB900CCFC09 /* electricity_charge_ic_5.png in Resources */,
 				E46FCF0D230FCF90001FECE8 /* LQQ4.png in Resources */,
 				823D416E1F6533FA00C99D9B /* icon_upvote_inside_notselect@2x.png in Resources */,
 				F238C6521F3DA29700FEB179 /* tabbar_image_find@3x.png in Resources */,
@@ -4325,12 +4326,12 @@
 				4A3A07D61FCC0EC700A50393 /* find_image_lostAndFound@2x.png in Resources */,
 				82D685651F6AC381004A5C7D /* extend@3x.png in Resources */,
 				E41B1E322313BB7C00CCFC09 /* 标签矩形@3x.png in Resources */,
-				E404FECA23112CA10091141C /* electricity_charge_ic_5.png in Resources */,
 				4A3A084B1FCD990A00A50393 /* tel@2x.png in Resources */,
 				E41B1E0F2313BB7C00CCFC09 /* 7@3x.png in Resources */,
 				F26D967F1F3C400F0063B024 /* icon_share_qzone@3x.png in Resources */,
 				6E3AB66E20B068DB003A65F5 /* countdayView.xib in Resources */,
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
+				E41B1F0E2313DCB900CCFC09 /* electricity_header_setting.gif in Resources */,
 				6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */,
 				F26D96771F3C400F0063B024 /* arrowIcon.png in Resources */,
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
@@ -4340,7 +4341,6 @@
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
 				82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */,
 				F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */,
-				E404FED123112CA10091141C /* electricity_header_setting.gif in Resources */,
 				E470CA092227FAD20029501A /* LostTableViewCell.xib in Resources */,
 				F20026E01F4020FA00360991 /* mine_image_classroom@3x.png in Resources */,
 				F26D96901F3C400F0063B024 /* 叉叉.png in Resources */,
@@ -4348,6 +4348,7 @@
 				E41B1E2D2313BB7C00CCFC09 /* 2@3x.png in Resources */,
 				F20026FC1F40372100360991 /* settingIcon@3x.png in Resources */,
 				4A3A07FE1FCC0EC700A50393 /* ok.png in Resources */,
+				E41B1F192313DCB900CCFC09 /* remindImage.png in Resources */,
 				4A3A07951FCC0E7700A50393 /* ZJshopTableViewCell.xib in Resources */,
 				E41B1E0B2313BB7C00CCFC09 /* 月日标签@3x.png in Resources */,
 				E4DA0D1822FECF6600A8D4D6 /* WebViewController.xib in Resources */,
@@ -4358,7 +4359,6 @@
 				F242DE9D1EBCB2BC005AC411 /* 时间@3x.png in Resources */,
 				4A3A07D91FCC0EC700A50393 /* find_image_map@3x.png in Resources */,
 				E46FCE54230C3D5C001FECE8 /* Necessity.plist in Resources */,
-				E404FEDC23112CA10091141C /* remindImage.png in Resources */,
 				F27A93411F4ABC32009860C3 /* remind_image_edit@2x.png in Resources */,
 				F242DE951EBCB2BC005AC411 /* 提醒@3x.png in Resources */,
 				4A3A07E51FCC0EC700A50393 /* lost_image_describe@3x.png in Resources */,
@@ -4375,6 +4375,7 @@
 				823D41701F6533FA00C99D9B /* icon_upvote_inside_selected@2x.png in Resources */,
 				F20026DD1F4020FA00360991 /* mine_image_setting@2x.png in Resources */,
 				E41B1E212313BB7C00CCFC09 /* 6@2x.png in Resources */,
+				E41B1F0B2313DCB900CCFC09 /* unitImage.png in Resources */,
 				E4DA0D2522FF271E00A8D4D6 /* MainPage.xcassets in Resources */,
 				F238C6511F3DA29700FEB179 /* tabbar_image_find@2x.png in Resources */,
 				F26D96761F3C400F0063B024 /* aNumIcon.png in Resources */,
@@ -4385,7 +4386,6 @@
 				F242DE501EBCB2BC005AC411 /* Images.xcassets in Resources */,
 				F26D96AF1F3C45540063B024 /* login_image_password@3x.png in Resources */,
 				4A3A07E61FCC0EC700A50393 /* lost_image_infocategory@2x.png in Resources */,
-				E404FECE23112CA10091141C /* unitImage.png in Resources */,
 				4A3A07D81FCC0EC700A50393 /* find_image_map@2x.png in Resources */,
 				F242DEFE1EBCB2BC005AC411 /* AboutMeViewController.xib in Resources */,
 				F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */,
@@ -4420,13 +4420,13 @@
 				E41B1E372313BB7C00CCFC09 /* 年份圆圈.png in Resources */,
 				4A3A07D11FCC0EC700A50393 /* find_image_food@3x.png in Resources */,
 				E46FCF0B230FCF90001FECE8 /* LQQ2.png in Resources */,
+				E41B1F042313DCB900CCFC09 /* electricity_charge_ic_1.png in Resources */,
 				E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */,
 				825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				E46FCF08230FCF90001FECE8 /* itemBackGroundImageV2.0.png in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
 				E41B1E062313BB7C00CCFC09 /* 地点坐标.png in Resources */,
-				E404FEC723112CA10091141C /* electricity_charge_ic_1.png in Resources */,
 				F242DE611EBCB2BC005AC411 /* AddRemindViewController.xib in Resources */,
 				6E3AB63620AD76A3003A65F5 /* AnswerDetailTableHeaderView.xib in Resources */,
 				E41B1E2A2313BB7C00CCFC09 /* 展开后@3x.png in Resources */,
@@ -4453,11 +4453,11 @@
 				EE19DDC4230BDE1E0066A2ED /* LQQwantMore.png in Resources */,
 				4A3A084A1FCD990A00A50393 /* Address@3x.png in Resources */,
 				F242DE781EBCB2BC005AC411 /* remind2@3x.png in Resources */,
+				E41B1F132313DCB900CCFC09 /* achieveImage.png in Resources */,
 				4A3A08011FCC0EC700A50393 /* shake_match.mp3 in Resources */,
 				4A3A08461FCD990A00A50393 /* close@3x.png in Resources */,
 				6E3AB63520AD76A3003A65F5 /* AnswerDetailTableViewCell.xib in Resources */,
 				4A3A07CE1FCC0EC700A50393 /* cqupt2.jpg in Resources */,
-				E404FED623112CA10091141C /* achieveImage.png in Resources */,
 				F20026F81F40372100360991 /* appIcon@3x.png in Resources */,
 				F242DE961EBCB2BC005AC411 /* 无事项@2x.png in Resources */,
 				E46FCF10230FCF90001FECE8 /* shuJuJieMiV0.1.png in Resources */,
@@ -4489,6 +4489,7 @@
 				F200271A1F405B8500360991 /* remind_image_remind@2x.png in Resources */,
 				F242DEA81EBCB2BC005AC411 /* 编辑箭头@2x.png in Resources */,
 				82398BDB21A42AFE00300C91 /* 查电费.png in Resources */,
+				E41B1F0F2313DCB900CCFC09 /* doneImage.png in Resources */,
 				E470C9FF2227FAD20029501A /* DetailLostViewController.xib in Resources */,
 				F200271D1F405B8500360991 /* remind_image_time@3x.png in Resources */,
 				82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */,
@@ -4496,7 +4497,6 @@
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
 				1A5A20262307FFD000D6D329 /* Assets.xcassets in Resources */,
 				F242DEA31EBCB2BC005AC411 /* 类型@3x.png in Resources */,
-				E404FED223112CA10091141C /* doneImage.png in Resources */,
 				6E3AB63F20AD76A3003A65F5 /* YouWenDetailCell.xib in Resources */,
 				82398BDE21A42AFE00300C91 /* 重邮地图.png in Resources */,
 				F242DEA11EBCB2BC005AC411 /* 箭头@3x.png in Resources */,
@@ -4506,8 +4506,8 @@
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
 				E480E5632306D80200F69199 /* BusRoutes.xcassets in Resources */,
 				4A3A08431FCD990A00A50393 /* rectangle@2x.png in Resources */,
+				E41B1EFE2313DCB900CCFC09 /* leftIcon.png in Resources */,
 				4A3A07DA1FCC0EC700A50393 /* find_image_query@2x.png in Resources */,
-				E404FEC123112CA10091141C /* leftIcon.png in Resources */,
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
 				E41B1E092313BB7C00CCFC09 /* 时长加号.png in Resources */,
 				E41B1E072313BB7C00CCFC09 /* 7@2x.png in Resources */,
@@ -4522,10 +4522,10 @@
 				4A3A07D51FCC0EC700A50393 /* find_image_hongyan@3x.png in Resources */,
 				823D41691F6407D300C99D9B /* icon_upvote_outside_selected@3x.png in Resources */,
 				F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */,
+				E41B1F182313DCB900CCFC09 /* reinstallImage.png in Resources */,
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
 				F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */,
-				E404FEDB23112CA10091141C /* reinstallImage.png in Resources */,
 				E46FCF13230FCF90001FECE8 /* xyZhou.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
@@ -4547,16 +4547,16 @@
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
 				E46FCF0F230FCF90001FECE8 /* shuJuJieMiMan0.1.png in Resources */,
 				E41AD25C222BF13D00360C56 /* ExamGradeViewController.xib in Resources */,
+				E41B1F0C2313DCB900CCFC09 /* roomIcon.png in Resources */,
 				E48DB543223E36CF00B9D744 /* WYCClassDetailView.xib in Resources */,
 				F26D96AE1F3C45540063B024 /* login_image_account@3x.png in Resources */,
-				E404FECF23112CA10091141C /* roomIcon.png in Resources */,
 				E41B1E272313BB7C00CCFC09 /* 4@2x.png in Resources */,
 				4A3A08411FCD990A00A50393 /* shop_headImage@3x.png in Resources */,
 				4A3A07FB1FCC0EC700A50393 /* lost_image_tel@3x.png in Resources */,
+				E41B1F162313DCB900CCFC09 /* buildIcon.png in Resources */,
 				82D685601F696DCF004A5C7D /* dottedLine@2x.png in Resources */,
 				E41B1E142313BB7C00CCFC09 /* login_number@2x.png in Resources */,
 				F242DE841EBCB2BC005AC411 /* 删除@3x.png in Resources */,
-				E404FED923112CA10091141C /* buildIcon.png in Resources */,
 				E41AD247222BDD9100360C56 /* tabbar_image_mine@2x.png in Resources */,
 				F242DE7F1EBCB2BC005AC411 /* 不提醒@2x.png in Resources */,
 				F26D96781F3C400F0063B024 /* cancel.png in Resources */,
@@ -4576,8 +4576,8 @@
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
 				E46FCF0A230FCF90001FECE8 /* LQQ0.png in Resources */,
+				E41B1EFB2313DCB900CCFC09 /* settings.png in Resources */,
 				82398BDC21A42AFE00300C91 /* 没课约.png in Resources */,
-				E404FEBE23112CA10091141C /* settings.png in Resources */,
 				F242DE5D1EBCB2BC005AC411 /* DetailRemindTableViewCell.xib in Resources */,
 				F242DEF81EBCB2BC005AC411 /* XBSAboutViewController.xib in Resources */,
 				4A3A07F21FCC0EC700A50393 /* lost_image_many@2x.png in Resources */,
@@ -4595,8 +4595,8 @@
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
 				E46FCF07230FCF90001FECE8 /* itemBackGroundImage.png in Resources */,
 				4A3A07CF1FCC0EC700A50393 /* cqupt3.jpg in Resources */,
-				E404FED023112CA10091141C /* angleImage.png in Resources */,
 				E41B1E172313BB7C00CCFC09 /* 1@3x.png in Resources */,
+				E41B1F0D2313DCB900CCFC09 /* angleImage.png in Resources */,
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
 				4A3A08481FCD990A00A50393 /* close@2x.png in Resources */,
@@ -4605,8 +4605,8 @@
 				82D6856D1F6E4F4B004A5C7D /* icon_up@3x.png in Resources */,
 				F200271C1F405B8500360991 /* remind_image_time@2x.png in Resources */,
 				F242DE8D1EBCB2BC005AC411 /* 多课1@3x.png in Resources */,
-				E404FEC823112CA10091141C /* electricity_charge_ic_3.png in Resources */,
 				4A3A08491FCD990A00A50393 /* yuan@3x.png in Resources */,
+				E41B1F052313DCB900CCFC09 /* electricity_charge_ic_3.png in Resources */,
 				E46FCE5A230C3D5C001FECE8 /* NecessityMedia.xcassets in Resources */,
 				F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */,
 				823D41671F6407D300C99D9B /* icon_upvote_outside_notselect@3x.png in Resources */,
@@ -4621,18 +4621,18 @@
 				4A3A07DC1FCC0EC700A50393 /* find_image_shake@2x.png in Resources */,
 				F26D96831F3C400F0063B024 /* icon_share_wechatTimeLine@3x.png in Resources */,
 				F242DEA01EBCB2BC005AC411 /* 箭头@2x.png in Resources */,
-				E404FECB23112CA10091141C /* electricity_charge_ic_4.png in Resources */,
 				F242DE5F1EBCB2BC005AC411 /* RemindTableViewCell.xib in Resources */,
 				E46FCF14230FCF90001FECE8 /* shuJuJieMiWoman0.1.png in Resources */,
 				1A5A20352307FFD000D6D329 /* Assets.xcassets in Resources */,
 				1A5A203D2307FFDB00D6D329 /* Freshman2019.xcassets in Resources */,
-				E404FEC923112CA10091141C /* electricity_charge_ic_2.png in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
+				E41B1F082313DCB900CCFC09 /* electricity_charge_ic_4.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
 				E41B1E022313BB7C00CCFC09 /* Volunteer.xcassets in Resources */,
 				E41B1E302313BB7C00CCFC09 /* login_icon@3x.png in Resources */,
 				E41B1E052313BB7C00CCFC09 /* 服务记录矩形.png in Resources */,
 				E41B1E242313BB7C00CCFC09 /* 展开前@3x.png in Resources */,
+				E41B1F062313DCB900CCFC09 /* electricity_charge_ic_2.png in Resources */,
 				4A3A07D01FCC0EC700A50393 /* find_image_food@2x.png in Resources */,
 				E41B1E1A2313BB7C00CCFC09 /* login_back@2x.png in Resources */,
 				F20027161F405B8500360991 /* remind_image_confirm@2x.png in Resources */,
@@ -4758,8 +4758,6 @@
 				E41AD263222BF55000360C56 /* BeforeClassCell.m in Sources */,
 				6E31E40C2081DA0E00649463 /* YouWenAddModel.m in Sources */,
 				E46FCEE7230FCF90001FECE8 /* DGActivityIndicatorBallGridPulseAnimation.m in Sources */,
-				E404FEC323112CA10091141C /* PointingCircleView.m in Sources */,
-				E404FED423112CA10091141C /* InstallcurrentViewController.m in Sources */,
 				E46FCF05230FCF90001FECE8 /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */,
 				F26D96941F3C400F0063B024 /* UIShortTapGestureRecognizer.m in Sources */,
 				F242DEB21EBCB2BC005AC411 /* LessonMatter.m in Sources */,
@@ -4773,11 +4771,14 @@
 				E46FCF21230FCF90001FECE8 /* DiningHallAndDormitoryController.m in Sources */,
 				6E7C98612041B5D5000BAA16 /* YouWenDataModel.m in Sources */,
 				E46FCF20230FCF90001FECE8 /* SchoolNavigatorCell.m in Sources */,
+				E41B1F1A2313DCB900CCFC09 /* QuerRemindViewController.m in Sources */,
 				F242DE671EBCB2BC005AC411 /* DetailViewController.m in Sources */,
 				F2A92CEE1F52E8F900B4CEEF /* UIFont+AdaptiveFont.m in Sources */,
 				E470CA272228055C0029501A /* LZPersonModel.m in Sources */,
+				E41B1EFD2313DCB900CCFC09 /* QuerInfo.m in Sources */,
 				E470CA242228055C0029501A /* LZNoCourseDateDetailViewController.m in Sources */,
 				6E3AB65520AD76A3003A65F5 /* YouWenWriteAnswerViewController.m in Sources */,
+				E41B1F152313DCB900CCFC09 /* IntallFailViewController.m in Sources */,
 				E4DA0D2322FED07F00A8D4D6 /* WelcomeTableViewCell.m in Sources */,
 				F242DEF71EBCB2BC005AC411 /* XBSAboutViewController.m in Sources */,
 				F242DEFD1EBCB2BC005AC411 /* AboutMeViewController.m in Sources */,
@@ -4786,6 +4787,7 @@
 				E470CA262228055C0029501A /* LZNoCourseViewController.m in Sources */,
 				E46FCEEC230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */,
 				E46FCEF2230FCF90001FECE8 /* DGActivityIndicatorCookieTerminatorAnimation.m in Sources */,
+				E41B1F002313DCB900CCFC09 /* PointingCircleView.m in Sources */,
 				F2509BCE1F440D7D0091F678 /* SegmentView.m in Sources */,
 				F242DF7C1EBCB2BC005AC411 /* HCHttp.m in Sources */,
 				1A5A202F2307FFD000D6D329 /* SuccessWindow.m in Sources */,
@@ -4820,6 +4822,7 @@
 				F242DEB61EBCB2BC005AC411 /* RemindNotification.m in Sources */,
 				E470CA082227FAD20029501A /* LZLostRemindView.m in Sources */,
 				F26D96911F3C400F0063B024 /* MBCommentModel.m in Sources */,
+				E41B1F092313DCB900CCFC09 /* QuerNoteView.m in Sources */,
 				F242DE6C1EBCB2BC005AC411 /* TimeChooseViewController.m in Sources */,
 				F26D96671F3C400F0063B024 /* HZLShareView.m in Sources */,
 				6E1A3A3820B71E0B002D62FC /* draftsViewController.m in Sources */,
@@ -4848,7 +4851,6 @@
 				F242DF0A1EBCB2BC005AC411 /* MineViewController.m in Sources */,
 				6E3AB63A20AD76A3003A65F5 /* AnswerDetailTableHeaderView.m in Sources */,
 				4A3A07921FCC0E7700A50393 /* ZJAddCommentView.m in Sources */,
-				E404FEDD23112CA10091141C /* QuerRemindViewController.m in Sources */,
 				F26D965D1F3C400F0063B024 /* MBCommunityCellTableViewCell.m in Sources */,
 				4A3A07941FCC0E7700A50393 /* ZJshopTableViewCell.m in Sources */,
 				6E12A3322053A31700D07606 /* YouWenTimeView.m in Sources */,
@@ -4857,6 +4859,7 @@
 				F242DEB71EBCB2BC005AC411 /* ChooseButton.m in Sources */,
 				E41B1E3A2313BB7C00CCFC09 /* HeaderTableViewCell.m in Sources */,
 				E480E56F2306D80200F69199 /* RoadIndex.m in Sources */,
+				E41B1F012313DCB900CCFC09 /* QuerCircleView.m in Sources */,
 				6E67F0EC20CAADE500F72C08 /* draftsModel.m in Sources */,
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
 				EE19DDC1230BDE1E0066A2ED /* QRCodeView.m in Sources */,
@@ -4890,15 +4893,13 @@
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
-				E404FED823112CA10091141C /* IntallFailViewController.m in Sources */,
 				E46FCEF4230FCF90001FECE8 /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
+				E41B1F142313DCB900CCFC09 /* InstallRoomViewController.m in Sources */,
 				F26D969A1F3C400F0063B024 /* MBPhotoBrowser.m in Sources */,
-				E404FECC23112CA10091141C /* QuerNoteView.m in Sources */,
 				82A0A56D20BEFD7700BD628E /* LXAskDeatilViewController.m in Sources */,
 				F242DDF81EBCB2BB005AC411 /* ShakeViewController.m in Sources */,
 				6E1D1BD620CF73F8008DA86C /* NSString+Emoji.m in Sources */,
 				82398BCA21A4289500300C91 /* SYCEditToolsView.m in Sources */,
-				E404FEC423112CA10091141C /* QuerCircleView.m in Sources */,
 				82A0A56420BEC93300BD628E /* YouWenAdoptFrame.m in Sources */,
 				82398BC721A4289500300C91 /* SYCToolsCell.m in Sources */,
 				E46FCF23230FCF90001FECE8 /* LQQpercentageOfStudent.m in Sources */,
@@ -4914,22 +4915,22 @@
 				E470CA022227FAD20029501A /* LZDatePicker.m in Sources */,
 				E46FCF02230FCF90001FECE8 /* DGActivityIndicatorBallBeatAnimation.m in Sources */,
 				EE19DDC2230BDE1E0066A2ED /* LQQwantMoreViewController.m in Sources */,
+				E41B1EF92313DCB900CCFC09 /* QuerCurveView.m in Sources */,
 				1A5A20312307FFD000D6D329 /* FYHGroupsTabelViweCell.m in Sources */,
 				1A5A20252307FFD000D6D329 /* WelComeView.m in Sources */,
 				E480E5612306D80200F69199 /* SchoolPicCollectionViewCell.m in Sources */,
+				E41B1F022313DCB900CCFC09 /* QuerPullTableViewCell.m in Sources */,
 				E470C9FC2227FAD20029501A /* LZIssueSucceedViewController.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				6E5C09FD205EA5D800A73F64 /* YouWenSubjectView.m in Sources */,
 				E480E56A2306D80200F69199 /* RecommendedRouteView.m in Sources */,
-				E404FECD23112CA10091141C /* QuerLoginViewController.m in Sources */,
 				F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */,
+				E41B1EFC2313DCB900CCFC09 /* QuerLoginModel.m in Sources */,
 				F242DEC01EBCB2BC005AC411 /* WeekChooseButton.m in Sources */,
 				6E17201C208C8057008967D9 /* ReportModel.m in Sources */,
 				E46FCF06230FCF90001FECE8 /* FSSegmentTitleView.m in Sources */,
-				E404FEC623112CA10091141C /* triangleView.m in Sources */,
 				E46FCEE6230FCF90001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
 				E46FCEFF230FCF90001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
-				E404FEBC23112CA10091141C /* QuerCurveView.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
 				E46FCF12230FCF90001FECE8 /* LQQsubjectDataView.m in Sources */,
 				E470CA292228055C0029501A /* LZSearchView.m in Sources */,
@@ -4942,13 +4943,13 @@
 				82398BCB21A4289500300C91 /* SYCToolModel.m in Sources */,
 				E41AD26F222BFE9000360C56 /* SYCSegmentView.m in Sources */,
 				F242DEF91EBCB2BC005AC411 /* AboutMePraiseTableViewCell.m in Sources */,
+				E41B1EFF2313DCB900CCFC09 /* buildCircleView.m in Sources */,
 				F2A92CF01F52E8F900B4CEEF /* UILabel+Adapter.m in Sources */,
 				F242DE5E1EBCB2BC005AC411 /* RemindTableViewCell.m in Sources */,
 				E46FCF1C230FCF90001FECE8 /* ExpressCompanyItem.m in Sources */,
 				F242DF171EBCB2BC005AC411 /* SettingViewController.m in Sources */,
 				F242DE521EBCB2BC005AC411 /* LoginViewController.m in Sources */,
 				E46FCF01230FCF90001FECE8 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */,
-				E404FEC223112CA10091141C /* buildCircleView.m in Sources */,
 				E470CA042227FAD20029501A /* LZConfirmButton.m in Sources */,
 				1A5A202D2307FFD000D6D329 /* AcademyOrHometownItem.m in Sources */,
 				E41B1E402313BB7C00CCFC09 /* VolunteerItem.m in Sources */,
@@ -4960,10 +4961,13 @@
 				E46FCF22230FCF90001FECE8 /* DiningHallAndDormitoryItem.m in Sources */,
 				6E3AB64A20AD76A3003A65F5 /* YouWenAnswerDetailModel.m in Sources */,
 				6E1A3A3C20B721B4002D62FC /* shopViewController.m in Sources */,
+				E41B1F0A2313DCB900CCFC09 /* QuerLoginViewController.m in Sources */,
+				E41B1F032313DCB900CCFC09 /* triangleView.m in Sources */,
 				F2CC3A9F1F46BE1B00B031BD /* MineTableViewCell.m in Sources */,
 				E46FCEF5230FCF90001FECE8 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */,
 				F2A92CE51F52E8BE00B4CEEF /* BaseViewController.m in Sources */,
 				F242DE6B1EBCB2BC005AC411 /* LessonController.m in Sources */,
+				E41B1F102313DCB900CCFC09 /* InstallRoomDoneViewController.m in Sources */,
 				F26D965F1F3C400F0063B024 /* DetailTopicViewController.m in Sources */,
 				E46FCF16230FCF90001FECE8 /* LQQfirstChooseButtonView.m in Sources */,
 				6E3AB63920AD76A3003A65F5 /* AnswerDetailTableViewCell.m in Sources */,
@@ -4977,7 +4981,6 @@
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				6E3AB64520AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
-				E404FED523112CA10091141C /* InstallBuildTableViewCell.m in Sources */,
 				E41B1E032313BB7C00CCFC09 /* AESCipher.m in Sources */,
 				F242DEBA1EBCB2BC005AC411 /* LessonButton.m in Sources */,
 				6E3AB64620AD76A3003A65F5 /* YouWenBottomButtonView.m in Sources */,
@@ -5025,16 +5028,12 @@
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
 				E480E55D2306D80200F69199 /* CampusScenery.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
-				E404FEBF23112CA10091141C /* QuerLoginModel.m in Sources */,
-				E404FEC523112CA10091141C /* QuerPullTableViewCell.m in Sources */,
 				1A5A20382307FFD000D6D329 /* StartStepsCell.m in Sources */,
 				E41B1E412313BB7C00CCFC09 /* YearChooseBar.m in Sources */,
 				1A5A20372307FFD000D6D329 /* StepsModel.m in Sources */,
 				F242DDC41EBCB2BB005AC411 /* WebViewController.m in Sources */,
 				E46FCEFC230FCF90001FECE8 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */,
-				E404FEC023112CA10091141C /* QuerInfo.m in Sources */,
 				E470C9FD2227FAD20029501A /* LostTableViewController.m in Sources */,
-				E404FED323112CA10091141C /* InstallRoomDoneViewController.m in Sources */,
 				E470CA282228055C0029501A /* LZPersonAddView.m in Sources */,
 				E470CA062227FAD20029501A /* LostTableViewCell.m in Sources */,
 				E404FE84230FEDE80091141C /* welcomeNewWebController.m in Sources */,
@@ -5045,8 +5044,8 @@
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
 				6E3AB65020AD76A3003A65F5 /* YouWenDetailViewController.m in Sources */,
 				E480E5652306D80200F69199 /* BusRoutes.m in Sources */,
+				E41B1F112313DCB900CCFC09 /* InstallcurrentViewController.m in Sources */,
 				E46FCF18230FCF90001FECE8 /* ChildViewController.m in Sources */,
-				E404FED723112CA10091141C /* InstallRoomViewController.m in Sources */,
 				6E12059E1F637F0F00E5020E /* MakeUpExamViewController.m in Sources */,
 				F242DEBD1EBCB2BC005AC411 /* NoLoginView.m in Sources */,
 				6E0F692F20309BE000BB5EF3 /* ReportTextView.m in Sources */,
@@ -5088,6 +5087,7 @@
 				6EDA4BC32034737200AA264E /* YouWenViewController.m in Sources */,
 				6E339D9E20B55EF4006F3999 /* attendanceMoreViewController.m in Sources */,
 				E46FCE60230FA788001FECE8 /* SYCEditReminderViewController.m in Sources */,
+				E41B1F122313DCB900CCFC09 /* InstallBuildTableViewCell.m in Sources */,
 				E46FCEEB230FCF90001FECE8 /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */,
 				F2A92CFC1F52EB2600B4CEEF /* NSNull+Helper.m in Sources */,
 				6E61712A1FDAED1D00FD2DDF /* NSDate+schoolDate.m in Sources */,

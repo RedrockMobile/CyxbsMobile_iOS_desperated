@@ -61,6 +61,8 @@
         label.textColor = COLOR_BULE1;
         NSArray<NSString*>*dataLabelArray = [NSArray arrayWithObjects:@"0",self.AveragELecStr,self.ElcStarStr,self.ElcEndStr
                                              ,self.FreeElecStr, nil];
+        
+        
         UILabel*dataLabel = [[UILabel alloc]init];
         [dataLumpView addSubview:dataLabel];
         [dataLabel mas_makeConstraints:^(MASConstraintMaker *make) {

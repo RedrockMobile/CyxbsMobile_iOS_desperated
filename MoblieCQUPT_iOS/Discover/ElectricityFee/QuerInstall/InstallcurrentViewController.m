@@ -39,6 +39,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     [self addUnitLabel];
     [self addBuildLabel];
     [self addInstallBtn];
+    
 }
 
 - (void)addTitleView{

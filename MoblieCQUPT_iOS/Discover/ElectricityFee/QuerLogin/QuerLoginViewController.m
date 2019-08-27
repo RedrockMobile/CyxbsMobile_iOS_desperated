@@ -19,6 +19,7 @@
 #import "IntallFailViewController.h"
 #import "AppDelegate.h"
 #import <Masonry.h>
+#import "MBProgressHUD.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
 #define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
@@ -48,6 +49,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 @property (nonatomic, strong) NSDictionary *dataDic;
 
+@property(nonatomic,assign)BOOL * shouldShowSuccessInfo;
 @end
 
 @implementation QuerLoginViewController
@@ -120,8 +122,12 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         make.bottom.equalTo(qnv.mas_top);
     }];
 
-}
 
+}
+- (void)showTheSuccessInfo{
+    self.shouldShowSuccessInfo = YES;
+    
+}
 - (void)reloadElecData{
     NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = pathArray[0];
@@ -173,10 +179,13 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
         make.width.equalTo(qcv);
         make.bottom.equalTo(qnv.mas_top);
     }];
-//    [qcv highlightWithPercentage:qcv.percentage];
-//    QuerCircleView*qqq =[[QuerCircleView alloc]init];
-//    [qqq highlightWithPercentage:qqq.percentage];
 
+    if(_shouldShowSuccessInfo){
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"保存成功";
+        [hud hide:YES afterDelay:1];
+    }
 }
 - (void)viewDidAppear:(BOOL)animated{
     //小圆的圆心位置
@@ -213,7 +222,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     self.navigationItem.rightBarButtonItem = barItem;
     self.navigationItem.title = @"查电费";
 
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTheSuccessInfo) name:@"showTheSuccessHub" object:nil];
     
     
 }
