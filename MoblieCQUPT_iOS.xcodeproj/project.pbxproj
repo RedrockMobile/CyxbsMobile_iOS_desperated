@@ -402,6 +402,7 @@
 		E41B200F2314FFD500CCFC09 /* SchoolCarRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FD82314FFD400CCFC09 /* SchoolCarRemindViewController.m */; };
 		E41B20102314FFD500CCFC09 /* ZJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FD92314FFD400CCFC09 /* ZJWebViewController.m */; };
 		E41B20112314FFD500CCFC09 /* SchoolCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FDA2314FFD400CCFC09 /* SchoolCarController.m */; };
+		E41B20152315095700CCFC09 /* 校车定位.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B2014231500AB00CCFC09 /* 校车定位.png */; };
 		E46FCE54230C3D5C001FECE8 /* Necessity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE45230C3D5B001FECE8 /* Necessity.plist */; };
 		E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */; };
 		E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE4B230C3D5B001FECE8 /* DLNecessityModel.m */; };
@@ -516,7 +517,6 @@
 		E480E56A2306D80200F69199 /* RecommendedRouteView.m in Sources */ = {isa = PBXBuildFile; fileRef = E480E5522306D80200F69199 /* RecommendedRouteView.m */; };
 		E480E56C2306D80200F69199 /* SchoolAdressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E480E5582306D80200F69199 /* SchoolAdressView.m */; };
 		E480E56D2306D80200F69199 /* RecommendedRouteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E480E5592306D80200F69199 /* RecommendedRouteTableViewCell.m */; };
-		E480E56E2306D80200F69199 /* RoadIndex.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E480E55B2306D80200F69199 /* RoadIndex.xcassets */; };
 		E480E56F2306D80200F69199 /* RoadIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = E480E55C2306D80200F69199 /* RoadIndex.m */; };
 		E4889CD222F42800006C66F6 /* MainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4889CD122F42800006C66F6 /* MainPageViewController.m */; };
 		E48DB52F223E36AB00B9D744 /* WYCClassBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E48DB52E223E36AB00B9D744 /* WYCClassBookViewController.m */; };
@@ -1577,7 +1577,6 @@
 		E480E5582306D80200F69199 /* SchoolAdressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolAdressView.m; sourceTree = "<group>"; };
 		E480E5592306D80200F69199 /* RecommendedRouteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendedRouteTableViewCell.m; sourceTree = "<group>"; };
 		E480E55A2306D80200F69199 /* BusRoutes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusRoutes.h; sourceTree = "<group>"; };
-		E480E55B2306D80200F69199 /* RoadIndex.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = RoadIndex.xcassets; sourceTree = "<group>"; };
 		E480E55C2306D80200F69199 /* RoadIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadIndex.m; sourceTree = "<group>"; };
 		E4889CD022F42800006C66F6 /* MainPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainPageViewController.h; sourceTree = "<group>"; };
 		E4889CD122F42800006C66F6 /* MainPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainPageViewController.m; sourceTree = "<group>"; };
@@ -3342,7 +3341,6 @@
 				E480E55C2306D80200F69199 /* RoadIndex.m */,
 				E480E5382306D80100F69199 /* CampusScenery */,
 				E480E5462306D80200F69199 /* BusRoutes */,
-				E480E55B2306D80200F69199 /* RoadIndex.xcassets */,
 			);
 			path = RoadIndex;
 			sourceTree = "<group>";
@@ -3508,7 +3506,6 @@
 				82398BC121A4289500300C91 /* LZCarouselModel.m */,
 				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
 				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
-				E41B2014231500AB00CCFC09 /* 校车定位.png */,
 				82398BB721A4289500300C91 /* EditTools */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */,
@@ -4038,6 +4035,7 @@
 				82398BD021A42AFC00300C91 /* 校历.png */,
 				82398BD321A42AFD00300C91 /* 志愿时长圆.png */,
 				82398BD421A42AFD00300C91 /* 重邮地图.png */,
+				E41B2014231500AB00CCFC09 /* 校车定位.png */,
 				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
 				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
 				4A3A08391FCD990900A50393 /* Address@2x.png */,
@@ -4694,6 +4692,7 @@
 				F20026E11F4020FA00360991 /* mine_image_edit@2x.png in Resources */,
 				F242DE741EBCB2BC005AC411 /* remind0@3x.png in Resources */,
 				4A3A07ED1FCC0EC700A50393 /* lost_image_lackplace@3x.png in Resources */,
+				E41B20152315095700CCFC09 /* 校车定位.png in Resources */,
 				EE19DDC4230BDE1E0066A2ED /* LQQwantMore.png in Resources */,
 				4A3A084A1FCD990A00A50393 /* Address@3x.png in Resources */,
 				F242DE781EBCB2BC005AC411 /* remind2@3x.png in Resources */,
@@ -4920,7 +4919,6 @@
 				E41B1E122313BB7C00CCFC09 /* login_back@3x.png in Resources */,
 				EE19DDC3230BDE1E0066A2ED /* erWeiMaV2.0.png in Resources */,
 				823D41661F6407D300C99D9B /* icon_upvote_outside_notselect@2x.png in Resources */,
-				E480E56E2306D80200F69199 /* RoadIndex.xcassets in Resources */,
 				F20027091F404BE100360991 /* timeTable_image_pull@3x.png in Resources */,
 				F26D96871F3C400F0063B024 /* support.png in Resources */,
 				E46FCF1F230FCF90001FECE8 /* 校园指引.xcassets in Resources */,
