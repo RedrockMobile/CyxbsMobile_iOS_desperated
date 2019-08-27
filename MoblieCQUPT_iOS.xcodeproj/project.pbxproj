@@ -346,6 +346,62 @@
 		E41B1F182313DCB900CCFC09 /* reinstallImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EF62313DCB800CCFC09 /* reinstallImage.png */; };
 		E41B1F192313DCB900CCFC09 /* remindImage.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1EF72313DCB800CCFC09 /* remindImage.png */; };
 		E41B1F1A2313DCB900CCFC09 /* QuerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1EF82313DCB800CCFC09 /* QuerRemindViewController.m */; };
+		E41B1F982314FE2600CCFC09 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E41B1F972314FE2600CCFC09 /* libc++.tbd */; };
+		E41B1FDB2314FFD500CCFC09 /* HWPopTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1F9C2314FFD400CCFC09 /* HWPopTool.m */; };
+		E41B1FDC2314FFD500CCFC09 /* 确定按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1F9E2314FFD400CCFC09 /* 确定按钮@3x.png */; };
+		E41B1FDD2314FFD500CCFC09 /* 数理学院logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1F9F2314FFD400CCFC09 /* 数理学院logo@3x.png */; };
+		E41B1FDE2314FFD500CCFC09 /* 上@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA02314FFD400CCFC09 /* 上@2x.png */; };
+		E41B1FDF2314FFD500CCFC09 /* 开场背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA12314FFD400CCFC09 /* 开场背景@3x.png */; };
+		E41B1FE02314FFD500CCFC09 /* 女生@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA22314FFD400CCFC09 /* 女生@3x.png */; };
+		E41B1FE12314FFD500CCFC09 /* 女生@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA32314FFD400CCFC09 /* 女生@2x.png */; };
+		E41B1FE22314FFD500CCFC09 /* 开场背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA42314FFD400CCFC09 /* 开场背景@2x.png */; };
+		E41B1FE32314FFD500CCFC09 /* 上@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA52314FFD400CCFC09 /* 上@3x.png */; };
+		E41B1FE42314FFD500CCFC09 /* 数理学院logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA62314FFD400CCFC09 /* 数理学院logo@2x.png */; };
+		E41B1FE52314FFD500CCFC09 /* 确定按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA72314FFD400CCFC09 /* 确定按钮@2x.png */; };
+		E41B1FE62314FFD500CCFC09 /* tip_item@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA82314FFD400CCFC09 /* tip_item@3x.png */; };
+		E41B1FE72314FFD500CCFC09 /* 全校@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FA92314FFD400CCFC09 /* 全校@2x.png */; };
+		E41B1FE82314FFD500CCFC09 /* 导航@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FAA2314FFD400CCFC09 /* 导航@3x.png */; };
+		E41B1FE92314FFD500CCFC09 /* 缩小@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FAB2314FFD400CCFC09 /* 缩小@2x.png */; };
+		E41B1FEA2314FFD500CCFC09 /* 用户@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FAC2314FFD400CCFC09 /* 用户@3x.png */; };
+		E41B1FEB2314FFD500CCFC09 /* 新校车@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FAD2314FFD400CCFC09 /* 新校车@2x.png */; };
+		E41B1FEC2314FFD500CCFC09 /* 定位弹窗@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FAE2314FFD400CCFC09 /* 定位弹窗@3x.png */; };
+		E41B1FED2314FFD500CCFC09 /* 定位弹窗@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FAF2314FFD400CCFC09 /* 定位弹窗@2x.png */; };
+		E41B1FEE2314FFD500CCFC09 /* 新校车@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB02314FFD400CCFC09 /* 新校车@3x.png */; };
+		E41B1FEF2314FFD500CCFC09 /* 用户@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB12314FFD400CCFC09 /* 用户@2x.png */; };
+		E41B1FF02314FFD500CCFC09 /* 缩小@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB22314FFD400CCFC09 /* 缩小@3x.png */; };
+		E41B1FF12314FFD500CCFC09 /* 导航@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB32314FFD400CCFC09 /* 导航@2x.png */; };
+		E41B1FF22314FFD500CCFC09 /* 全校@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB42314FFD400CCFC09 /* 全校@3x.png */; };
+		E41B1FF32314FFD500CCFC09 /* tip_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB52314FFD400CCFC09 /* tip_item@2x.png */; };
+		E41B1FF42314FFD500CCFC09 /* back_item@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB62314FFD400CCFC09 /* back_item@3x.png */; };
+		E41B1FF52314FFD500CCFC09 /* 失联弹窗按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB72314FFD400CCFC09 /* 失联弹窗按钮@2x.png */; };
+		E41B1FF62314FFD500CCFC09 /* 校车@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB82314FFD400CCFC09 /* 校车@3x.png */; };
+		E41B1FF72314FFD500CCFC09 /* 男生@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FB92314FFD400CCFC09 /* 男生@2x.png */; };
+		E41B1FF82314FFD500CCFC09 /* 取消按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FBA2314FFD400CCFC09 /* 取消按钮@3x.png */; };
+		E41B1FF92314FFD500CCFC09 /* 取消按钮@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FBB2314FFD400CCFC09 /* 取消按钮@2x.png */; };
+		E41B1FFA2314FFD500CCFC09 /* 男生@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FBC2314FFD400CCFC09 /* 男生@3x.png */; };
+		E41B1FFB2314FFD500CCFC09 /* 校车@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FBD2314FFD400CCFC09 /* 校车@2x.png */; };
+		E41B1FFC2314FFD500CCFC09 /* 失联弹窗按钮@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FBE2314FFD400CCFC09 /* 失联弹窗按钮@3x.png */; };
+		E41B1FFD2314FFD500CCFC09 /* back_item@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FBF2314FFD400CCFC09 /* back_item@2x.png */; };
+		E41B1FFE2314FFD500CCFC09 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC02314FFD400CCFC09 /* location.png */; };
+		E41B1FFF2314FFD500CCFC09 /* &@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC12314FFD400CCFC09 /* &@3x.png */; };
+		E41B20002314FFD500CCFC09 /* 网校logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC22314FFD400CCFC09 /* 网校logo@3x.png */; };
+		E41B20012314FFD500CCFC09 /* all_image_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC32314FFD400CCFC09 /* all_image_background@2x.png */; };
+		E41B20022314FFD500CCFC09 /* Tips_view@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC42314FFD400CCFC09 /* Tips_view@3x.png */; };
+		E41B20032314FFD500CCFC09 /* 放大@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC52314FFD400CCFC09 /* 放大@3x.png */; };
+		E41B20042314FFD500CCFC09 /* 失联弹窗@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC62314FFD400CCFC09 /* 失联弹窗@2x.png */; };
+		E41B20052314FFD500CCFC09 /* 弹窗部分@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC72314FFD400CCFC09 /* 弹窗部分@2x.png */; };
+		E41B20062314FFD500CCFC09 /* 弹窗部分@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC82314FFD400CCFC09 /* 弹窗部分@3x.png */; };
+		E41B20072314FFD500CCFC09 /* 失联弹窗@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FC92314FFD400CCFC09 /* 失联弹窗@3x.png */; };
+		E41B20082314FFD500CCFC09 /* 放大@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FCA2314FFD400CCFC09 /* 放大@2x.png */; };
+		E41B20092314FFD500CCFC09 /* Tips_view@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FCB2314FFD400CCFC09 /* Tips_view@2x.png */; };
+		E41B200A2314FFD500CCFC09 /* all_image_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FCC2314FFD400CCFC09 /* all_image_background@3x.png */; };
+		E41B200B2314FFD500CCFC09 /* 网校logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FCD2314FFD400CCFC09 /* 网校logo@2x.png */; };
+		E41B200C2314FFD500CCFC09 /* &@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41B1FCE2314FFD400CCFC09 /* &@2x.png */; };
+		E41B200D2314FFD500CCFC09 /* SchoolCarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FD02314FFD400CCFC09 /* SchoolCarModel.m */; };
+		E41B200E2314FFD500CCFC09 /* SCAnimateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FD72314FFD400CCFC09 /* SCAnimateViewController.m */; };
+		E41B200F2314FFD500CCFC09 /* SchoolCarRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FD82314FFD400CCFC09 /* SchoolCarRemindViewController.m */; };
+		E41B20102314FFD500CCFC09 /* ZJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FD92314FFD400CCFC09 /* ZJWebViewController.m */; };
+		E41B20112314FFD500CCFC09 /* SchoolCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41B1FDA2314FFD400CCFC09 /* SchoolCarController.m */; };
 		E46FCE54230C3D5C001FECE8 /* Necessity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE45230C3D5B001FECE8 /* Necessity.plist */; };
 		E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */; };
 		E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE4B230C3D5B001FECE8 /* DLNecessityModel.m */; };
@@ -1251,6 +1307,69 @@
 		E41B1EF62313DCB800CCFC09 /* reinstallImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reinstallImage.png; sourceTree = "<group>"; };
 		E41B1EF72313DCB800CCFC09 /* remindImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remindImage.png; sourceTree = "<group>"; };
 		E41B1EF82313DCB800CCFC09 /* QuerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuerRemindViewController.m; sourceTree = "<group>"; };
+		E41B1F972314FE2600CCFC09 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		E41B1F9B2314FFD400CCFC09 /* HWPopTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HWPopTool.h; sourceTree = "<group>"; };
+		E41B1F9C2314FFD400CCFC09 /* HWPopTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HWPopTool.m; sourceTree = "<group>"; };
+		E41B1F9E2314FFD400CCFC09 /* 确定按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确定按钮@3x.png"; sourceTree = "<group>"; };
+		E41B1F9F2314FFD400CCFC09 /* 数理学院logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数理学院logo@3x.png"; sourceTree = "<group>"; };
+		E41B1FA02314FFD400CCFC09 /* 上@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上@2x.png"; sourceTree = "<group>"; };
+		E41B1FA12314FFD400CCFC09 /* 开场背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开场背景@3x.png"; sourceTree = "<group>"; };
+		E41B1FA22314FFD400CCFC09 /* 女生@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "女生@3x.png"; sourceTree = "<group>"; };
+		E41B1FA32314FFD400CCFC09 /* 女生@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "女生@2x.png"; sourceTree = "<group>"; };
+		E41B1FA42314FFD400CCFC09 /* 开场背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "开场背景@2x.png"; sourceTree = "<group>"; };
+		E41B1FA52314FFD400CCFC09 /* 上@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "上@3x.png"; sourceTree = "<group>"; };
+		E41B1FA62314FFD400CCFC09 /* 数理学院logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数理学院logo@2x.png"; sourceTree = "<group>"; };
+		E41B1FA72314FFD400CCFC09 /* 确定按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "确定按钮@2x.png"; sourceTree = "<group>"; };
+		E41B1FA82314FFD400CCFC09 /* tip_item@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tip_item@3x.png"; sourceTree = "<group>"; };
+		E41B1FA92314FFD400CCFC09 /* 全校@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全校@2x.png"; sourceTree = "<group>"; };
+		E41B1FAA2314FFD400CCFC09 /* 导航@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "导航@3x.png"; sourceTree = "<group>"; };
+		E41B1FAB2314FFD400CCFC09 /* 缩小@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "缩小@2x.png"; sourceTree = "<group>"; };
+		E41B1FAC2314FFD400CCFC09 /* 用户@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "用户@3x.png"; sourceTree = "<group>"; };
+		E41B1FAD2314FFD400CCFC09 /* 新校车@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新校车@2x.png"; sourceTree = "<group>"; };
+		E41B1FAE2314FFD400CCFC09 /* 定位弹窗@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位弹窗@3x.png"; sourceTree = "<group>"; };
+		E41B1FAF2314FFD400CCFC09 /* 定位弹窗@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "定位弹窗@2x.png"; sourceTree = "<group>"; };
+		E41B1FB02314FFD400CCFC09 /* 新校车@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "新校车@3x.png"; sourceTree = "<group>"; };
+		E41B1FB12314FFD400CCFC09 /* 用户@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "用户@2x.png"; sourceTree = "<group>"; };
+		E41B1FB22314FFD400CCFC09 /* 缩小@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "缩小@3x.png"; sourceTree = "<group>"; };
+		E41B1FB32314FFD400CCFC09 /* 导航@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "导航@2x.png"; sourceTree = "<group>"; };
+		E41B1FB42314FFD400CCFC09 /* 全校@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "全校@3x.png"; sourceTree = "<group>"; };
+		E41B1FB52314FFD400CCFC09 /* tip_item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tip_item@2x.png"; sourceTree = "<group>"; };
+		E41B1FB62314FFD400CCFC09 /* back_item@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_item@3x.png"; sourceTree = "<group>"; };
+		E41B1FB72314FFD400CCFC09 /* 失联弹窗按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失联弹窗按钮@2x.png"; sourceTree = "<group>"; };
+		E41B1FB82314FFD400CCFC09 /* 校车@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校车@3x.png"; sourceTree = "<group>"; };
+		E41B1FB92314FFD400CCFC09 /* 男生@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "男生@2x.png"; sourceTree = "<group>"; };
+		E41B1FBA2314FFD400CCFC09 /* 取消按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "取消按钮@3x.png"; sourceTree = "<group>"; };
+		E41B1FBB2314FFD400CCFC09 /* 取消按钮@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "取消按钮@2x.png"; sourceTree = "<group>"; };
+		E41B1FBC2314FFD400CCFC09 /* 男生@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "男生@3x.png"; sourceTree = "<group>"; };
+		E41B1FBD2314FFD400CCFC09 /* 校车@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校车@2x.png"; sourceTree = "<group>"; };
+		E41B1FBE2314FFD400CCFC09 /* 失联弹窗按钮@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失联弹窗按钮@3x.png"; sourceTree = "<group>"; };
+		E41B1FBF2314FFD400CCFC09 /* back_item@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_item@2x.png"; sourceTree = "<group>"; };
+		E41B1FC02314FFD400CCFC09 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		E41B1FC12314FFD400CCFC09 /* &@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "&@3x.png"; sourceTree = "<group>"; };
+		E41B1FC22314FFD400CCFC09 /* 网校logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网校logo@3x.png"; sourceTree = "<group>"; };
+		E41B1FC32314FFD400CCFC09 /* all_image_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_image_background@2x.png"; sourceTree = "<group>"; };
+		E41B1FC42314FFD400CCFC09 /* Tips_view@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tips_view@3x.png"; sourceTree = "<group>"; };
+		E41B1FC52314FFD400CCFC09 /* 放大@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大@3x.png"; sourceTree = "<group>"; };
+		E41B1FC62314FFD400CCFC09 /* 失联弹窗@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失联弹窗@2x.png"; sourceTree = "<group>"; };
+		E41B1FC72314FFD400CCFC09 /* 弹窗部分@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "弹窗部分@2x.png"; sourceTree = "<group>"; };
+		E41B1FC82314FFD400CCFC09 /* 弹窗部分@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "弹窗部分@3x.png"; sourceTree = "<group>"; };
+		E41B1FC92314FFD400CCFC09 /* 失联弹窗@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失联弹窗@3x.png"; sourceTree = "<group>"; };
+		E41B1FCA2314FFD400CCFC09 /* 放大@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "放大@2x.png"; sourceTree = "<group>"; };
+		E41B1FCB2314FFD400CCFC09 /* Tips_view@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tips_view@2x.png"; sourceTree = "<group>"; };
+		E41B1FCC2314FFD400CCFC09 /* all_image_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "all_image_background@3x.png"; sourceTree = "<group>"; };
+		E41B1FCD2314FFD400CCFC09 /* 网校logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "网校logo@2x.png"; sourceTree = "<group>"; };
+		E41B1FCE2314FFD400CCFC09 /* &@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "&@2x.png"; sourceTree = "<group>"; };
+		E41B1FD02314FFD400CCFC09 /* SchoolCarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCarModel.m; sourceTree = "<group>"; };
+		E41B1FD12314FFD400CCFC09 /* SchoolCarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolCarModel.h; sourceTree = "<group>"; };
+		E41B1FD32314FFD400CCFC09 /* SchoolCarRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolCarRemindViewController.h; sourceTree = "<group>"; };
+		E41B1FD42314FFD400CCFC09 /* SCAnimateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAnimateViewController.h; sourceTree = "<group>"; };
+		E41B1FD52314FFD400CCFC09 /* SchoolCarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolCarController.h; sourceTree = "<group>"; };
+		E41B1FD62314FFD400CCFC09 /* ZJWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJWebViewController.h; sourceTree = "<group>"; };
+		E41B1FD72314FFD400CCFC09 /* SCAnimateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAnimateViewController.m; sourceTree = "<group>"; };
+		E41B1FD82314FFD400CCFC09 /* SchoolCarRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCarRemindViewController.m; sourceTree = "<group>"; };
+		E41B1FD92314FFD400CCFC09 /* ZJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJWebViewController.m; sourceTree = "<group>"; };
+		E41B1FDA2314FFD400CCFC09 /* SchoolCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCarController.m; sourceTree = "<group>"; };
+		E41B2014231500AB00CCFC09 /* 校车定位.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "校车定位.png"; sourceTree = "<group>"; };
 		E46FCE45230C3D5B001FECE8 /* Necessity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Necessity.plist; sourceTree = "<group>"; };
 		E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCNecessityViewController.m; sourceTree = "<group>"; };
 		E46FCE48230C3D5B001FECE8 /* SYCNecessityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCNecessityViewController.h; sourceTree = "<group>"; };
@@ -1875,6 +1994,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E41B1F982314FE2600CCFC09 /* libc++.tbd in Frameworks */,
 				F20027491F4354AC00360991 /* libz.1.dylib in Frameworks */,
 				3B26610B1BA6E417008632F3 /* UIKit.framework in Frameworks */,
 				3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */,
@@ -2342,6 +2462,7 @@
 		CE4334451BE7C52D000C407D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E41B1F972314FE2600CCFC09 /* libc++.tbd */,
 				F20027481F4354AC00360991 /* libz.1.dylib */,
 				E2594C621C9058EF00E612FE /* libxml2.2.tbd */,
 				CE4334461BE7C52D000C407D /* NotificationCenter.framework */,
@@ -2726,6 +2847,107 @@
 				E41B1EF82313DCB800CCFC09 /* QuerRemindViewController.m */,
 			);
 			path = QuerRemind;
+			sourceTree = "<group>";
+		};
+		E41B1F992314FFD400CCFC09 /* SchoolCar */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1F9A2314FFD400CCFC09 /* HWTotool */,
+				E41B1F9D2314FFD400CCFC09 /* Source */,
+				E41B1FCF2314FFD400CCFC09 /* Model */,
+				E41B1FD22314FFD400CCFC09 /* Controllers */,
+			);
+			name = SchoolCar;
+			path = ../../../../Desktop/SchoolCar;
+			sourceTree = "<group>";
+		};
+		E41B1F9A2314FFD400CCFC09 /* HWTotool */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1F9B2314FFD400CCFC09 /* HWPopTool.h */,
+				E41B1F9C2314FFD400CCFC09 /* HWPopTool.m */,
+			);
+			path = HWTotool;
+			sourceTree = "<group>";
+		};
+		E41B1F9D2314FFD400CCFC09 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1F9E2314FFD400CCFC09 /* 确定按钮@3x.png */,
+				E41B1F9F2314FFD400CCFC09 /* 数理学院logo@3x.png */,
+				E41B1FA02314FFD400CCFC09 /* 上@2x.png */,
+				E41B1FA12314FFD400CCFC09 /* 开场背景@3x.png */,
+				E41B1FA22314FFD400CCFC09 /* 女生@3x.png */,
+				E41B1FA32314FFD400CCFC09 /* 女生@2x.png */,
+				E41B1FA42314FFD400CCFC09 /* 开场背景@2x.png */,
+				E41B1FA52314FFD400CCFC09 /* 上@3x.png */,
+				E41B1FA62314FFD400CCFC09 /* 数理学院logo@2x.png */,
+				E41B1FA72314FFD400CCFC09 /* 确定按钮@2x.png */,
+				E41B1FA82314FFD400CCFC09 /* tip_item@3x.png */,
+				E41B1FA92314FFD400CCFC09 /* 全校@2x.png */,
+				E41B1FAA2314FFD400CCFC09 /* 导航@3x.png */,
+				E41B1FAB2314FFD400CCFC09 /* 缩小@2x.png */,
+				E41B1FAC2314FFD400CCFC09 /* 用户@3x.png */,
+				E41B1FAD2314FFD400CCFC09 /* 新校车@2x.png */,
+				E41B1FAE2314FFD400CCFC09 /* 定位弹窗@3x.png */,
+				E41B1FAF2314FFD400CCFC09 /* 定位弹窗@2x.png */,
+				E41B1FB02314FFD400CCFC09 /* 新校车@3x.png */,
+				E41B1FB12314FFD400CCFC09 /* 用户@2x.png */,
+				E41B1FB22314FFD400CCFC09 /* 缩小@3x.png */,
+				E41B1FB32314FFD400CCFC09 /* 导航@2x.png */,
+				E41B1FB42314FFD400CCFC09 /* 全校@3x.png */,
+				E41B1FB52314FFD400CCFC09 /* tip_item@2x.png */,
+				E41B1FB62314FFD400CCFC09 /* back_item@3x.png */,
+				E41B1FB72314FFD400CCFC09 /* 失联弹窗按钮@2x.png */,
+				E41B1FB82314FFD400CCFC09 /* 校车@3x.png */,
+				E41B1FB92314FFD400CCFC09 /* 男生@2x.png */,
+				E41B1FBA2314FFD400CCFC09 /* 取消按钮@3x.png */,
+				E41B1FBB2314FFD400CCFC09 /* 取消按钮@2x.png */,
+				E41B1FBC2314FFD400CCFC09 /* 男生@3x.png */,
+				E41B1FBD2314FFD400CCFC09 /* 校车@2x.png */,
+				E41B1FBE2314FFD400CCFC09 /* 失联弹窗按钮@3x.png */,
+				E41B1FBF2314FFD400CCFC09 /* back_item@2x.png */,
+				E41B1FC02314FFD400CCFC09 /* location.png */,
+				E41B1FC12314FFD400CCFC09 /* &@3x.png */,
+				E41B1FC22314FFD400CCFC09 /* 网校logo@3x.png */,
+				E41B1FC32314FFD400CCFC09 /* all_image_background@2x.png */,
+				E41B1FC42314FFD400CCFC09 /* Tips_view@3x.png */,
+				E41B1FC52314FFD400CCFC09 /* 放大@3x.png */,
+				E41B1FC62314FFD400CCFC09 /* 失联弹窗@2x.png */,
+				E41B1FC72314FFD400CCFC09 /* 弹窗部分@2x.png */,
+				E41B1FC82314FFD400CCFC09 /* 弹窗部分@3x.png */,
+				E41B1FC92314FFD400CCFC09 /* 失联弹窗@3x.png */,
+				E41B1FCA2314FFD400CCFC09 /* 放大@2x.png */,
+				E41B1FCB2314FFD400CCFC09 /* Tips_view@2x.png */,
+				E41B1FCC2314FFD400CCFC09 /* all_image_background@3x.png */,
+				E41B1FCD2314FFD400CCFC09 /* 网校logo@2x.png */,
+				E41B1FCE2314FFD400CCFC09 /* &@2x.png */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		E41B1FCF2314FFD400CCFC09 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1FD02314FFD400CCFC09 /* SchoolCarModel.m */,
+				E41B1FD12314FFD400CCFC09 /* SchoolCarModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E41B1FD22314FFD400CCFC09 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E41B1FD32314FFD400CCFC09 /* SchoolCarRemindViewController.h */,
+				E41B1FD42314FFD400CCFC09 /* SCAnimateViewController.h */,
+				E41B1FD52314FFD400CCFC09 /* SchoolCarController.h */,
+				E41B1FD62314FFD400CCFC09 /* ZJWebViewController.h */,
+				E41B1FD72314FFD400CCFC09 /* SCAnimateViewController.m */,
+				E41B1FD82314FFD400CCFC09 /* SchoolCarRemindViewController.m */,
+				E41B1FD92314FFD400CCFC09 /* ZJWebViewController.m */,
+				E41B1FDA2314FFD400CCFC09 /* SchoolCarController.m */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E46FCE44230C3D5B001FECE8 /* Necessity */ = {
@@ -3245,10 +3467,10 @@
 		F242DA551EBCB2BB005AC411 /* MoblieCQUPT_iOS */ = {
 			isa = PBXGroup;
 			children = (
+				E41AD24B222BECDE00360C56 /* #Outdated */,
 				F2A92CD71F52E8BE00B4CEEF /* Base */,
 				F242DC331EBCB2BB005AC411 /* Main */,
 				E4889CCF22F427CF006C66F6 /* Freshman2019 */,
-				E41AD24B222BECDE00360C56 /* #Outdated */,
 				82398BE121A42F0F00300C91 /* ClassSchedule */,
 				F242DB8C1EBCB2BB005AC411 /* Login */,
 				6E0F69312033424500BB5EF3 /* YouWen */,
@@ -3271,6 +3493,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				E41B1F992314FFD400CCFC09 /* SchoolCar */,
 				E41B1EC22313DCB800CCFC09 /* ElectricityFee */,
 				E41B1DAB2313BB7B00CCFC09 /* Volunteer */,
 				82398BBF21A4289500300C91 /* SYCMainDiscoverViewController.h */,
@@ -3285,6 +3508,7 @@
 				82398BC121A4289500300C91 /* LZCarouselModel.m */,
 				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
 				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
+				E41B2014231500AB00CCFC09 /* 校车定位.png */,
 				82398BB721A4289500300C91 /* EditTools */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */,
@@ -4277,7 +4501,10 @@
 				F20026DF1F4020FA00360991 /* mine_image_classroom@2x.png in Resources */,
 				E41B1E362313BB7C00CCFC09 /* 2@2x.png in Resources */,
 				F242DE9E1EBCB2BC005AC411 /* 椭圆@2x.png in Resources */,
+				E41B1FE52314FFD500CCFC09 /* 确定按钮@2x.png in Resources */,
 				4A3A07E71FCC0EC700A50393 /* lost_image_infocategory@3x.png in Resources */,
+				E41B1FED2314FFD500CCFC09 /* 定位弹窗@2x.png in Resources */,
+				E41B1FEA2314FFD500CCFC09 /* 用户@3x.png in Resources */,
 				E41B1E102313BB7C00CCFC09 /* login_password.png in Resources */,
 				E41B1EFA2313DCB900CCFC09 /* rightIcon.png in Resources */,
 				4A3A07F51FCC0EC700A50393 /* lost_image_place@3x.png in Resources */,
@@ -4290,10 +4517,13 @@
 				E470C9FA2227FAD20029501A /* IssueTableViewController.xib in Resources */,
 				E41B1E352313BB7C00CCFC09 /* 背景板@3x.png in Resources */,
 				F210F0BC1F441CF7003BDF6A /* all_image_background@3x.png in Resources */,
+				E41B200C2314FFD500CCFC09 /* &@2x.png in Resources */,
 				E41B1F172313DCB900CCFC09 /* querElecIcon.png in Resources */,
+				E41B20052314FFD500CCFC09 /* 弹窗部分@2x.png in Resources */,
 				F200271F1F405B8500360991 /* remind_image_title@3x.png in Resources */,
 				F26D967D1F3C400F0063B024 /* icon_share_qq@2x.png in Resources */,
 				F242DE971EBCB2BC005AC411 /* 无事项@3x.png in Resources */,
+				E41B1FF92314FFD500CCFC09 /* 取消按钮@2x.png in Resources */,
 				6E7C985B204158D2000BAA16 /* YouWenMedia.xcassets in Resources */,
 				E41B1E252313BB7C00CCFC09 /* 6@3x.png in Resources */,
 				82398BE021A42AFE00300C91 /* 课前提醒.png in Resources */,
@@ -4317,27 +4547,33 @@
 				F20027191F405B8500360991 /* remind_image_content@3x.png in Resources */,
 				82398C1421A432DE00300C91 /* mine_image_calendar1.png in Resources */,
 				E41B1F072313DCB900CCFC09 /* electricity_charge_ic_5.png in Resources */,
+				E41B1FF52314FFD500CCFC09 /* 失联弹窗按钮@2x.png in Resources */,
 				E46FCF0D230FCF90001FECE8 /* LQQ4.png in Resources */,
 				823D416E1F6533FA00C99D9B /* icon_upvote_inside_notselect@2x.png in Resources */,
 				F238C6521F3DA29700FEB179 /* tabbar_image_find@3x.png in Resources */,
 				F20026DC1F4020FA00360991 /* mine_image_calendar@3x.png in Resources */,
+				E41B1FDC2314FFD500CCFC09 /* 确定按钮@3x.png in Resources */,
 				F242DE8A1EBCB2BC005AC411 /* 多课0@2x.png in Resources */,
 				1A5A20242307FFD000D6D329 /* Assets.xcassets in Resources */,
+				E41B1FE32314FFD500CCFC09 /* 上@3x.png in Resources */,
 				4A3A07D61FCC0EC700A50393 /* find_image_lostAndFound@2x.png in Resources */,
 				82D685651F6AC381004A5C7D /* extend@3x.png in Resources */,
 				E41B1E322313BB7C00CCFC09 /* 标签矩形@3x.png in Resources */,
 				4A3A084B1FCD990A00A50393 /* tel@2x.png in Resources */,
 				E41B1E0F2313BB7C00CCFC09 /* 7@3x.png in Resources */,
+				E41B1FF22314FFD500CCFC09 /* 全校@3x.png in Resources */,
 				F26D967F1F3C400F0063B024 /* icon_share_qzone@3x.png in Resources */,
 				6E3AB66E20B068DB003A65F5 /* countdayView.xib in Resources */,
 				F242DE931EBCB2BC005AC411 /* 左三角@3x.png in Resources */,
 				E41B1F0E2313DCB900CCFC09 /* electricity_header_setting.gif in Resources */,
+				E41B200B2314FFD500CCFC09 /* 网校logo@2x.png in Resources */,
 				6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */,
 				F26D96771F3C400F0063B024 /* arrowIcon.png in Resources */,
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
 				F200271E1F405B8500360991 /* remind_image_title@2x.png in Resources */,
 				E41B1E162313BB7C00CCFC09 /* 1@2x.png in Resources */,
 				E41B1E2B2313BB7C00CCFC09 /* login_password@2x.png in Resources */,
+				E41B1FF42314FFD500CCFC09 /* back_item@3x.png in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
 				82D685701F6E701F004A5C7D /* headImage@2x.png in Resources */,
 				F2DD71A61F77D741009556BE /* date_image_addBtn@2x.png in Resources */,
@@ -4367,6 +4603,7 @@
 				4A3A07DF1FCC0EC700A50393 /* iconfont-shop2.png in Resources */,
 				E48DB547223E36CF00B9D744 /* WYCClassBookView.xib in Resources */,
 				82398BDD21A42AFE00300C91 /* 志愿时长圆.png in Resources */,
+				E41B200A2314FFD500CCFC09 /* all_image_background@3x.png in Resources */,
 				F26D968D1F3C400F0063B024 /* topic_image_join@2x.png in Resources */,
 				E41B1E1B2313BB7C00CCFC09 /* login_password@3x.png in Resources */,
 				F242DE821EBCB2BC005AC411 /* 书@3x.png in Resources */,
@@ -4388,6 +4625,7 @@
 				4A3A07E61FCC0EC700A50393 /* lost_image_infocategory@2x.png in Resources */,
 				4A3A07D81FCC0EC700A50393 /* find_image_map@2x.png in Resources */,
 				F242DEFE1EBCB2BC005AC411 /* AboutMeViewController.xib in Resources */,
+				E41B1FE02314FFD500CCFC09 /* 女生@3x.png in Resources */,
 				F20026DB1F4020FA00360991 /* mine_image_calendar@2x.png in Resources */,
 				82D685711F6E701F004A5C7D /* headImage@3x.png in Resources */,
 				4A3A07CD1FCC0EC700A50393 /* cqupt1.jpg in Resources */,
@@ -4396,7 +4634,9 @@
 				E41B1E0A2313BB7C00CCFC09 /* volunteer_time_icon.png in Resources */,
 				E41B1E1D2313BB7C00CCFC09 /* 没有记录@3x.png in Resources */,
 				4A3A08471FCD990A00A50393 /* tel@3x.png in Resources */,
+				E41B1FF62314FFD500CCFC09 /* 校车@3x.png in Resources */,
 				F242DE881EBCB2BC005AC411 /* 地点@2x.png in Resources */,
+				E41B20032314FFD500CCFC09 /* 放大@3x.png in Resources */,
 				F20026E41F4020FA00360991 /* mine_image_exam@3x.png in Resources */,
 				F20026F71F40372100360991 /* appIcon@2x.png in Resources */,
 				E470CA052227FAD20029501A /* IconTableViewCell.xib in Resources */,
@@ -4410,6 +4650,7 @@
 				F242DE921EBCB2BC005AC411 /* 左三角@2x.png in Resources */,
 				F20026E61F4020FA00360991 /* mine_image_remind@3x.png in Resources */,
 				E41B1E1C2313BB7C00CCFC09 /* 展开后@2x.png in Resources */,
+				E41B1FFE2314FFD500CCFC09 /* location.png in Resources */,
 				4A3A07E91FCC0EC700A50393 /* lost_image_itemcategory@3x.png in Resources */,
 				F242DE8B1EBCB2BC005AC411 /* 多课0@3x.png in Resources */,
 				F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */,
@@ -4422,6 +4663,7 @@
 				E46FCF0B230FCF90001FECE8 /* LQQ2.png in Resources */,
 				E41B1F042313DCB900CCFC09 /* electricity_charge_ic_1.png in Resources */,
 				E41AD248222BDD9100360C56 /* tabbar_image_youwen@2x.png in Resources */,
+				E41B1FE22314FFD500CCFC09 /* 开场背景@2x.png in Resources */,
 				825186E420C0718F0022B5D3 /* commitSuccessFrameView.xib in Resources */,
 				F242DE651EBCB2BC005AC411 /* DetailPageController.xib in Resources */,
 				E46FCF08230FCF90001FECE8 /* itemBackGroundImageV2.0.png in Resources */,
@@ -4435,6 +4677,7 @@
 				F20026E31F4020FA00360991 /* mine_image_exam@2x.png in Resources */,
 				F26D968F1F3C400F0063B024 /* xia.png in Resources */,
 				E41B1E112313BB7C00CCFC09 /* 年份圆圈@3x.png in Resources */,
+				E41B1FFA2314FFD500CCFC09 /* 男生@3x.png in Resources */,
 				F242DEA21EBCB2BC005AC411 /* 类型@2x.png in Resources */,
 				82398BD921A42AFE00300C91 /* 成绩单灰.png in Resources */,
 				F26D967C1F3C400F0063B024 /* icon_share_more@3x.png in Resources */,
@@ -4444,6 +4687,7 @@
 				4A3A07EB1FCC0EC700A50393 /* lost_image_lackcate@3x.png in Resources */,
 				F2DD71A51F77D73F009556BE /* date_image_addBtn@3x.png in Resources */,
 				4A3A07E31FCC0EC700A50393 /* lost_image_com@3x.png in Resources */,
+				E41B20042314FFD500CCFC09 /* 失联弹窗@2x.png in Resources */,
 				F20027211F405B8500360991 /* remind_image_week@3x.png in Resources */,
 				F242DEAF1EBCB2BC005AC411 /* 选择@3x.png in Resources */,
 				F26D965E1F3C400F0063B024 /* MBCommunityCellTableViewCell.xib in Resources */,
@@ -4453,6 +4697,7 @@
 				EE19DDC4230BDE1E0066A2ED /* LQQwantMore.png in Resources */,
 				4A3A084A1FCD990A00A50393 /* Address@3x.png in Resources */,
 				F242DE781EBCB2BC005AC411 /* remind2@3x.png in Resources */,
+				E41B1FE82314FFD500CCFC09 /* 导航@3x.png in Resources */,
 				E41B1F132313DCB900CCFC09 /* achieveImage.png in Resources */,
 				4A3A08011FCC0EC700A50393 /* shake_match.mp3 in Resources */,
 				4A3A08461FCD990A00A50393 /* close@3x.png in Resources */,
@@ -4463,9 +4708,11 @@
 				E46FCF10230FCF90001FECE8 /* shuJuJieMiV0.1.png in Resources */,
 				F242DE831EBCB2BC005AC411 /* 删除@2x.png in Resources */,
 				82398C1021A42F0F00300C91 /* ClassBookImg.xcassets in Resources */,
+				E41B1FE62314FFD500CCFC09 /* tip_item@3x.png in Resources */,
 				F242DDF91EBCB2BB005AC411 /* ShakeViewController.xib in Resources */,
 				F242DE941EBCB2BC005AC411 /* 提醒@2x.png in Resources */,
 				F20027171F405B8500360991 /* remind_image_confirm@3x.png in Resources */,
+				E41B1FEB2314FFD500CCFC09 /* 新校车@2x.png in Resources */,
 				4A3A07EE1FCC0EC700A50393 /* lost_image_lacktel@2x.png in Resources */,
 				6E32140020D54EE100E55145 /* AboutMePraiseTableViewCell.xib in Resources */,
 				E404FF7B231272600091141C /* touxiang.png in Resources */,
@@ -4475,9 +4722,11 @@
 				F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */,
 				E41B1E332313BB7C00CCFC09 /* login_icon@2x.png in Resources */,
 				4A3A084F1FCDAF8D00A50393 /* send-comment@3x.png in Resources */,
+				E41B1FE42314FFD500CCFC09 /* 数理学院logo@2x.png in Resources */,
 				E470CA2B2228055C0029501A /* LZPersonSelectTableViewCell.xib in Resources */,
 				F242DE791EBCB2BC005AC411 /* remind@2x.png in Resources */,
 				F20026E51F4020FA00360991 /* mine_image_remind@2x.png in Resources */,
+				E41B20092314FFD500CCFC09 /* Tips_view@2x.png in Resources */,
 				F242DE8F1EBCB2BC005AC411 /* 多课2@3x.png in Resources */,
 				F242DD891EBCB2BB005AC411 /* Main.storyboard in Resources */,
 				F242DF511EBCB2BC005AC411 /* Mobile_CQUPT_iOS.db in Resources */,
@@ -4485,9 +4734,11 @@
 				F26D96821F3C400F0063B024 /* icon_share_wechatTimeLine@2x.png in Resources */,
 				82A0A56620BEC94D00BD628E /* YouWenAdoptFrame.xib in Resources */,
 				F26D967E1F3C400F0063B024 /* icon_share_qq@3x.png in Resources */,
+				E41B1FFC2314FFD500CCFC09 /* 失联弹窗按钮@3x.png in Resources */,
 				82398BD821A42AFE00300C91 /* 空教室.png in Resources */,
 				F200271A1F405B8500360991 /* remind_image_remind@2x.png in Resources */,
 				F242DEA81EBCB2BC005AC411 /* 编辑箭头@2x.png in Resources */,
+				E41B1FE12314FFD500CCFC09 /* 女生@2x.png in Resources */,
 				82398BDB21A42AFE00300C91 /* 查电费.png in Resources */,
 				E41B1F0F2313DCB900CCFC09 /* doneImage.png in Resources */,
 				E470C9FF2227FAD20029501A /* DetailLostViewController.xib in Resources */,
@@ -4495,6 +4746,7 @@
 				82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */,
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
+				E41B20002314FFD500CCFC09 /* 网校logo@3x.png in Resources */,
 				1A5A20262307FFD000D6D329 /* Assets.xcassets in Resources */,
 				F242DEA31EBCB2BC005AC411 /* 类型@3x.png in Resources */,
 				6E3AB63F20AD76A3003A65F5 /* YouWenDetailCell.xib in Resources */,
@@ -4502,12 +4754,15 @@
 				F242DEA11EBCB2BC005AC411 /* 箭头@3x.png in Resources */,
 				F20026FA1F40372100360991 /* searchIcon@3x.png in Resources */,
 				4A3A07F91FCC0EC700A50393 /* lost_image_success@3x.png in Resources */,
+				E41B1FF32314FFD500CCFC09 /* tip_item@2x.png in Resources */,
 				F242DE8E1EBCB2BC005AC411 /* 多课2@2x.png in Resources */,
 				F23078DF1F73EF4E0079E187 /* date_image_add@3x.png in Resources */,
 				E480E5632306D80200F69199 /* BusRoutes.xcassets in Resources */,
 				4A3A08431FCD990A00A50393 /* rectangle@2x.png in Resources */,
 				E41B1EFE2313DCB900CCFC09 /* leftIcon.png in Resources */,
+				E41B1FDD2314FFD500CCFC09 /* 数理学院logo@3x.png in Resources */,
 				4A3A07DA1FCC0EC700A50393 /* find_image_query@2x.png in Resources */,
+				E41B20072314FFD500CCFC09 /* 失联弹窗@3x.png in Resources */,
 				4A3A08401FCD990A00A50393 /* rectangle@3x.png in Resources */,
 				E41B1E092313BB7C00CCFC09 /* 时长加号.png in Resources */,
 				E41B1E072313BB7C00CCFC09 /* 7@2x.png in Resources */,
@@ -4522,6 +4777,7 @@
 				4A3A07D51FCC0EC700A50393 /* find_image_hongyan@3x.png in Resources */,
 				823D41691F6407D300C99D9B /* icon_upvote_outside_selected@3x.png in Resources */,
 				F242DEFC1EBCB2BC005AC411 /* AboutMeTableViewCell.xib in Resources */,
+				E41B1FEE2314FFD500CCFC09 /* 新校车@3x.png in Resources */,
 				E41B1F182313DCB900CCFC09 /* reinstallImage.png in Resources */,
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
@@ -4529,9 +4785,11 @@
 				E46FCF13230FCF90001FECE8 /* xyZhou.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				4A3A07F81FCC0EC700A50393 /* lost_image_success@2x.png in Resources */,
+				E41B20022314FFD500CCFC09 /* Tips_view@3x.png in Resources */,
 				E4DA0D1D22FECF6600A8D4D6 /* 灰色叉叉@2x.png in Resources */,
 				E4DA0D1B22FECF6600A8D4D6 /* dottedLine@3x.png in Resources */,
 				E4DA0D1C22FECF6600A8D4D6 /* icon_share_weibo@3x.png in Resources */,
+				E41B1FE92314FFD500CCFC09 /* 缩小@2x.png in Resources */,
 				F242DE531EBCB2BC005AC411 /* LoginViewController.xib in Resources */,
 				4A3A07DB1FCC0EC700A50393 /* find_image_query@3x.png in Resources */,
 				F2E95B5E1F4B14DA000A136E /* date_image_cancel@3x.png in Resources */,
@@ -4543,6 +4801,7 @@
 				4A3A07EC1FCC0EC700A50393 /* lost_image_lackplace@2x.png in Resources */,
 				F242DE871EBCB2BC005AC411 /* 周数@3x.png in Resources */,
 				E480E55E2306D80200F69199 /* CampusScenery.xcassets in Resources */,
+				E41B20012314FFD500CCFC09 /* all_image_background@2x.png in Resources */,
 				F26D96A31F3C41130063B024 /* login_image_background@2x.png in Resources */,
 				F20027181F405B8500360991 /* remind_image_content@2x.png in Resources */,
 				E46FCF0F230FCF90001FECE8 /* shuJuJieMiMan0.1.png in Resources */,
@@ -4561,7 +4820,9 @@
 				F242DE7F1EBCB2BC005AC411 /* 不提醒@2x.png in Resources */,
 				F26D96781F3C400F0063B024 /* cancel.png in Resources */,
 				E41B1E1E2313BB7C00CCFC09 /* 时长加号@3x.png in Resources */,
+				E41B1FF02314FFD500CCFC09 /* 缩小@3x.png in Resources */,
 				82280CB21F60205200A5921E /* LXCommentTitle@2x.png in Resources */,
+				E41B1FFB2314FFD500CCFC09 /* 校车@2x.png in Resources */,
 				E41B1E222313BB7C00CCFC09 /* 展开前@2x.png in Resources */,
 				4A3A08001FCC0EC700A50393 /* shake_image_shake@3x.png in Resources */,
 				F242DEAA1EBCB2BC005AC411 /* 老师@2x.png in Resources */,
@@ -4574,6 +4835,7 @@
 				E46FCF0C230FCF90001FECE8 /* LQQ3.png in Resources */,
 				F242DE631EBCB2BC005AC411 /* DetailLessonController.xib in Resources */,
 				4A3A07E81FCC0EC700A50393 /* lost_image_itemcategory@2x.png in Resources */,
+				E41B1FEF2314FFD500CCFC09 /* 用户@2x.png in Resources */,
 				4A3A07FC1FCC0EC700A50393 /* lost_image_time@2x.png in Resources */,
 				E46FCF0A230FCF90001FECE8 /* LQQ0.png in Resources */,
 				E41B1EFB2313DCB900CCFC09 /* settings.png in Resources */,
@@ -4590,12 +4852,14 @@
 				F27A93441F4ABC32009860C3 /* remind_image_editing@3x.png in Resources */,
 				F2E95B5D1F4B14DA000A136E /* date_image_cancel@2x.png in Resources */,
 				823D41681F6407D300C99D9B /* icon_upvote_outside_selected@2x.png in Resources */,
+				E41B1FF72314FFD500CCFC09 /* 男生@2x.png in Resources */,
 				4A3A08421FCD990A00A50393 /* yuan@2x.png in Resources */,
 				E470C9FE2227FAD20029501A /* LZIssueSucceedViewController.xib in Resources */,
 				F242DE771EBCB2BC005AC411 /* remind2@2x.png in Resources */,
 				E46FCF07230FCF90001FECE8 /* itemBackGroundImage.png in Resources */,
 				4A3A07CF1FCC0EC700A50393 /* cqupt3.jpg in Resources */,
 				E41B1E172313BB7C00CCFC09 /* 1@3x.png in Resources */,
+				E41B1FF82314FFD500CCFC09 /* 取消按钮@3x.png in Resources */,
 				E41B1F0D2313DCB900CCFC09 /* angleImage.png in Resources */,
 				F20027071F404BE100360991 /* timeTable_image_add@3x.png in Resources */,
 				82D6856C1F6E4F4B004A5C7D /* icon_up@2x.png in Resources */,
@@ -4606,14 +4870,20 @@
 				F200271C1F405B8500360991 /* remind_image_time@2x.png in Resources */,
 				F242DE8D1EBCB2BC005AC411 /* 多课1@3x.png in Resources */,
 				4A3A08491FCD990A00A50393 /* yuan@3x.png in Resources */,
+				E41B1FE72314FFD500CCFC09 /* 全校@2x.png in Resources */,
+				E41B1FF12314FFD500CCFC09 /* 导航@2x.png in Resources */,
+				E41B1FFD2314FFD500CCFC09 /* back_item@2x.png in Resources */,
 				E41B1F052313DCB900CCFC09 /* electricity_charge_ic_3.png in Resources */,
 				E46FCE5A230C3D5C001FECE8 /* NecessityMedia.xcassets in Resources */,
 				F26D968E1F3C400F0063B024 /* topic_image_join@3x.png in Resources */,
+				E41B20062314FFD500CCFC09 /* 弹窗部分@3x.png in Resources */,
 				823D41671F6407D300C99D9B /* icon_upvote_outside_notselect@3x.png in Resources */,
 				F20027051F404BE100360991 /* courseMengbi.jpg in Resources */,
 				F242DE861EBCB2BC005AC411 /* 周数@2x.png in Resources */,
+				E41B1FDF2314FFD500CCFC09 /* 开场背景@3x.png in Resources */,
 				F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */,
 				E41B1E262313BB7C00CCFC09 /* login_icon.png in Resources */,
+				E41B1FEC2314FFD500CCFC09 /* 定位弹窗@3x.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
 				4A3A07E41FCC0EC700A50393 /* lost_image_describe@2x.png in Resources */,
 				4A3A07F31FCC0EC700A50393 /* lost_image_many@3x.png in Resources */,
@@ -4623,11 +4893,13 @@
 				F242DEA01EBCB2BC005AC411 /* 箭头@2x.png in Resources */,
 				F242DE5F1EBCB2BC005AC411 /* RemindTableViewCell.xib in Resources */,
 				E46FCF14230FCF90001FECE8 /* shuJuJieMiWoman0.1.png in Resources */,
+				E41B1FDE2314FFD500CCFC09 /* 上@2x.png in Resources */,
 				1A5A20352307FFD000D6D329 /* Assets.xcassets in Resources */,
 				1A5A203D2307FFDB00D6D329 /* Freshman2019.xcassets in Resources */,
 				823D416F1F6533FA00C99D9B /* icon_upvote_inside_notselect@3x.png in Resources */,
 				E41B1F082313DCB900CCFC09 /* electricity_charge_ic_4.png in Resources */,
 				F26D96A41F3C41130063B024 /* login_image_background@3x.png in Resources */,
+				E41B20082314FFD500CCFC09 /* 放大@2x.png in Resources */,
 				E41B1E022313BB7C00CCFC09 /* Volunteer.xcassets in Resources */,
 				E41B1E302313BB7C00CCFC09 /* login_icon@3x.png in Resources */,
 				E41B1E052313BB7C00CCFC09 /* 服务记录矩形.png in Resources */,
@@ -4641,6 +4913,7 @@
 				F26D95D71F3C3FF70063B024 /* iconfont.ttf in Resources */,
 				4A3A07E01FCC0EC700A50393 /* lost_image_add@2x.png in Resources */,
 				E41B1E202313BB7C00CCFC09 /* 4@3x.png in Resources */,
+				E41B1FFF2314FFD500CCFC09 /* &@3x.png in Resources */,
 				F20026F91F40372100360991 /* searchIcon@2x.png in Resources */,
 				E41B1E082313BB7C00CCFC09 /* 5@3x.png in Resources */,
 				F2C29EDD1F47FB2900150546 /* addPhoto.jpg in Resources */,
@@ -4664,7 +4937,8 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-resources.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-resources.sh",
+				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
 				"${PODS_ROOT}/GMImagePicker/GMImagePicker/GMEmptyFolder@1x.png",
 				"${PODS_ROOT}/GMImagePicker/GMImagePicker/GMEmptyFolder@2x.png",
 				"${PODS_ROOT}/GMImagePicker/GMImagePicker/GMSelected.png",
@@ -4685,6 +4959,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GMEmptyFolder@1x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GMEmptyFolder@2x.png",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GMSelected.png",
@@ -4705,7 +4980,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D547774CDBD719B739A4D9AB /* [CP] Check Pods Manifest.lock */ = {
@@ -4838,6 +5113,7 @@
 				E470CA232228055C0029501A /* LessonButtonViewModel.m in Sources */,
 				E480E5622306D80200F69199 /* SchoolPicView.m in Sources */,
 				E46FCEF9230FCF90001FECE8 /* DGActivityIndicatorBallPulseAnimation.m in Sources */,
+				E41B1FDB2314FFD500CCFC09 /* HWPopTool.m in Sources */,
 				6E0F6934203342E800BB5EF3 /* YouWenTableViewCell.m in Sources */,
 				F242DEFF1EBCB2BC005AC411 /* CalendarViewController.m in Sources */,
 				6E3AB65B20AED319003A65F5 /* dailyAttendanceModel.m in Sources */,
@@ -4864,6 +5140,7 @@
 				6E3AB65C20AED319003A65F5 /* dailyAttendanceViewController.m in Sources */,
 				EE19DDC1230BDE1E0066A2ED /* QRCodeView.m in Sources */,
 				E46FCEFE230FCF90001FECE8 /* DGActivityIndicatorNineDotsAnimation.m in Sources */,
+				E41B200E2314FFD500CCFC09 /* SCAnimateViewController.m in Sources */,
 				E41AD26E222BFE9000360C56 /* SYCSegmentViewButton.m in Sources */,
 				F242DF191EBCB2BC005AC411 /* SuggestionViewController.m in Sources */,
 				82398BC421A4289500300C91 /* SYCMainDiscoverViewController.m in Sources */,
@@ -4958,6 +5235,7 @@
 				F26D96611F3C400F0063B024 /* TopicSearchViewController.m in Sources */,
 				82280CA91F60169B00A5921E /* LXReplyView.m in Sources */,
 				F242DE6A1EBCB2BC005AC411 /* LessonButtonController.m in Sources */,
+				E41B20102314FFD500CCFC09 /* ZJWebViewController.m in Sources */,
 				E46FCF22230FCF90001FECE8 /* DiningHallAndDormitoryItem.m in Sources */,
 				6E3AB64A20AD76A3003A65F5 /* YouWenAnswerDetailModel.m in Sources */,
 				6E1A3A3C20B721B4002D62FC /* shopViewController.m in Sources */,
@@ -4979,6 +5257,7 @@
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
 				E46FCEFD230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
+				E41B200F2314FFD500CCFC09 /* SchoolCarRemindViewController.m in Sources */,
 				6E3AB64520AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				E41B1E032313BB7C00CCFC09 /* AESCipher.m in Sources */,
@@ -4997,6 +5276,7 @@
 				6E3AB63820AD76A3003A65F5 /* AnswerDetailViewController.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				E48DB548223E36CF00B9D744 /* WYCShowDetailView.m in Sources */,
+				E41B20112314FFD500CCFC09 /* SchoolCarController.m in Sources */,
 				6E7167291F85D70D00C46038 /* EmptyClassView.m in Sources */,
 				E470C9F92227FAD20029501A /* DetailLostViewController.m in Sources */,
 				E46FCF1B230FCF90001FECE8 /* LQQXiaoYuanZhiYinViewController.m in Sources */,
@@ -5020,6 +5300,7 @@
 				F26D969B1F3C400F0063B024 /* MBPhotoContainerView.m in Sources */,
 				E46FCF1E230FCF90001FECE8 /* SchoolNavigatorController.m in Sources */,
 				F242DEB31EBCB2BC005AC411 /* RemindMatter.m in Sources */,
+				E41B200D2314FFD500CCFC09 /* SchoolCarModel.m in Sources */,
 				E41B1E3D2313BB7C00CCFC09 /* QueryLoginViewController.m in Sources */,
 				E480E5602306D80200F69199 /* SchoolMapView.m in Sources */,
 				E46FCEF0230FCF90001FECE8 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */,
@@ -5194,7 +5475,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -5251,7 +5532,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -5279,7 +5560,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
@@ -5322,7 +5603,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HPM8HVK7C6;
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
