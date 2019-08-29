@@ -23,7 +23,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-s2-vIK">
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_image_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="iHd-s2-vIK">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="301.66666666666669"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKQ-Wr-dlZ">
@@ -128,7 +128,7 @@
         </view>
     </objects>
     <resources>
-        <image name="all_image_background.png" width="499.33334350585938" height="86"/>
+        <image name="all_image_background.png" width="414" height="71.333335876464844"/>
         <image name="login_image_account.png" width="15.666666984558105" height="18.666666030883789"/>
         <image name="login_image_background.png" width="375" height="284.66665649414062"/>
         <image name="login_image_password.png" width="14.666666984558105" height="18.333333969116211"/>
