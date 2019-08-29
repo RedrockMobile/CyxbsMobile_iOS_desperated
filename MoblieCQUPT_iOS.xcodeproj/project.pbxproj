@@ -403,6 +403,8 @@
 		E4611A742316B8BD00CFA56D /* SchoolCarRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4611A3D2316B8BC00CFA56D /* SchoolCarRemindViewController.m */; };
 		E4611A752316B8BD00CFA56D /* ZJWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4611A3E2316B8BC00CFA56D /* ZJWebViewController.m */; };
 		E4611A762316B8BD00CFA56D /* SchoolCarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4611A3F2316B8BC00CFA56D /* SchoolCarController.m */; };
+		E4611A7E2317A85600CFA56D /* schoolschedule_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E4611A7C2317A85500CFA56D /* schoolschedule_2.png */; };
+		E4611A7F2317A85600CFA56D /* schoolschedule_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E4611A7D2317A85600CFA56D /* schoolschedule_1.png */; };
 		E46FCE54230C3D5C001FECE8 /* Necessity.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46FCE45230C3D5B001FECE8 /* Necessity.plist */; };
 		E46FCE55230C3D5C001FECE8 /* SYCNecessityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */; };
 		E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E46FCE4B230C3D5B001FECE8 /* DLNecessityModel.m */; };
@@ -1370,6 +1372,8 @@
 		E4611A3D2316B8BC00CFA56D /* SchoolCarRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCarRemindViewController.m; sourceTree = "<group>"; };
 		E4611A3E2316B8BC00CFA56D /* ZJWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJWebViewController.m; sourceTree = "<group>"; };
 		E4611A3F2316B8BC00CFA56D /* SchoolCarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolCarController.m; sourceTree = "<group>"; };
+		E4611A7C2317A85500CFA56D /* schoolschedule_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schoolschedule_2.png; sourceTree = "<group>"; };
+		E4611A7D2317A85600CFA56D /* schoolschedule_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schoolschedule_1.png; sourceTree = "<group>"; };
 		E46FCE45230C3D5B001FECE8 /* Necessity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Necessity.plist; sourceTree = "<group>"; };
 		E46FCE47230C3D5B001FECE8 /* SYCNecessityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYCNecessityViewController.m; sourceTree = "<group>"; };
 		E46FCE48230C3D5B001FECE8 /* SYCNecessityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYCNecessityViewController.h; sourceTree = "<group>"; };
@@ -3490,6 +3494,8 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				E41AD25E222BF55000360C56 /* BeforeClass */,
+				82398BB721A4289500300C91 /* EditTools */,
 				E46119FE2316B8BC00CFA56D /* SchoolCar */,
 				E41B1EC22313DCB800CCFC09 /* ElectricityFee */,
 				E41B1DAB2313BB7B00CCFC09 /* Volunteer */,
@@ -3505,8 +3511,6 @@
 				82398BC121A4289500300C91 /* LZCarouselModel.m */,
 				82398BC321A4289500300C91 /* SYCCustomLayoutModel.h */,
 				82398BB521A4289500300C91 /* SYCCustomLayoutModel.m */,
-				82398BB721A4289500300C91 /* EditTools */,
-				E41AD25E222BF55000360C56 /* BeforeClass */,
 				F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */,
 				F242DC9E1EBCB2BB005AC411 /* ExamSchedule */,
 				F242DCA81EBCB2BB005AC411 /* EmptyClass */,
@@ -3825,6 +3829,8 @@
 		F242DC9B1EBCB2BB005AC411 /* SchoolCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				E4611A7D2317A85600CFA56D /* schoolschedule_1.png */,
+				E4611A7C2317A85500CFA56D /* schoolschedule_2.png */,
 				F242DC9C1EBCB2BB005AC411 /* CalendarViewController.h */,
 				F242DC9D1EBCB2BB005AC411 /* CalendarViewController.m */,
 			);
@@ -4743,6 +4749,7 @@
 				F200271D1F405B8500360991 /* remind_image_time@3x.png in Resources */,
 				82280CAC1F601AFD00A5921E /* icon_comment_inside@2x.png in Resources */,
 				F26D966E1F3C400F0063B024 /* MBCommuityDetailsViewController.xib in Resources */,
+				E4611A7F2317A85600CFA56D /* schoolschedule_1.png in Resources */,
 				E4611A652316B8BD00CFA56D /* 网校logo@3x.png in Resources */,
 				F26D96811F3C400F0063B024 /* icon_share_wechat@3x.png in Resources */,
 				1A5A20262307FFD000D6D329 /* Assets.xcassets in Resources */,
@@ -4916,6 +4923,7 @@
 				E41B1E082313BB7C00CCFC09 /* 5@3x.png in Resources */,
 				F2C29EDD1F47FB2900150546 /* addPhoto.jpg in Resources */,
 				E41B1E122313BB7C00CCFC09 /* login_back@3x.png in Resources */,
+				E4611A7E2317A85600CFA56D /* schoolschedule_2.png in Resources */,
 				EE19DDC3230BDE1E0066A2ED /* erWeiMaV2.0.png in Resources */,
 				823D41661F6407D300C99D9B /* icon_upvote_outside_notselect@2x.png in Resources */,
 				F20027091F404BE100360991 /* timeTable_image_pull@3x.png in Resources */,

@@ -26,7 +26,7 @@
 - (UIImageView *)calendarView1 {
     if (!_calendarView1) {
         _calendarView1 = [[UIImageView alloc] init];
-        _calendarView1.image = [UIImage imageNamed:@"mine_image_calendar1"];
+        _calendarView1.image = [UIImage imageNamed:@"schoolschedule_2"];
         [_calendarView1 sizeToFit];
         _calendarView1.frame = CGRectMake(8, 0, MAIN_SCREEN_W-16, (MAIN_SCREEN_W-16) * 2.13);
     }
@@ -36,7 +36,7 @@
 - (UIImageView *)calendarView2 {
     if (!_calendarView2) {
         _calendarView2 = [[UIImageView alloc] init];
-        _calendarView2.image = [UIImage imageNamed:@"mine_image_calendar2"];
+        _calendarView2.image = [UIImage imageNamed:@"schoolschedule_1"];
         [_calendarView2 sizeToFit];
         _calendarView2.frame = CGRectMake(8, _calendarView1.frame.size.height, MAIN_SCREEN_W-16, (MAIN_SCREEN_W-16) * 2.13);
     }
