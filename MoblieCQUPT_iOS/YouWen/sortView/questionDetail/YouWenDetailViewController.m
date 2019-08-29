@@ -20,7 +20,6 @@
 #import "TransparentView.h"
 #import "ReportViewController.h"
 #import "YouWenAdoptFrame.h"
-#import "YouWenReportView.h"
 #import "commitSuccessFrameView.h"
 
 @interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate, UIActionSheetDelegate>
