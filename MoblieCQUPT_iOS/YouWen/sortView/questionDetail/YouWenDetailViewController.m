@@ -20,9 +20,10 @@
 #import "TransparentView.h"
 #import "ReportViewController.h"
 #import "YouWenAdoptFrame.h"
+#import "YouWenReportView.h"
 #import "commitSuccessFrameView.h"
 
-@interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate>
+@interface YouWenDetailViewController () <UITableViewDelegate, UITableViewDataSource ,getNewView, YouWenWriteAnswerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic) YouWenQuestionDetailModel *detailQuestionModel;
@@ -43,7 +44,7 @@
     [self addBottomView];
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"andMore"] style:UIBarButtonItemStylePlain target:self action:@selector(moreInfor)];
     self.title = @"求助详情";
 }
 
@@ -449,9 +450,8 @@
     [self.navigationController pushViewController:view animated:YES];
 }
 - (void)moreInfor{
-    TransparentView *view = [[TransparentView alloc] initWithTypes:@[@"report",@"share",@"举报",@"分享"]];
-    view.delegate = self;
-    [[UIApplication sharedApplication].keyWindow addSubview:view];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:@"举报该问题" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"屏蔽此类问题" otherButtonTitles:@"垃圾广告信息", @"有害信息", @"侵权信息", @"其他", nil];
+    [action showInView:self.view];
 }
 
 
@@ -491,6 +491,26 @@
 
 - (void)addReward{
     
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"设置成功"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"好的"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+    }else if (buttonIndex != 5) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提交成功"
+                                                        message:@"我们将及时处理您反馈的问题"
+                                                       delegate:self
+                                              cancelButtonTitle:@"好的"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+    }
 }
 
 @end
