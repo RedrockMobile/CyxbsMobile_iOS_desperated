@@ -184,7 +184,7 @@
 }
 -(void)clicknumber2{
     //跳转至发现页面
-    self.tabBarController.selectedIndex = 2;
+    self.tabBarController.selectedIndex = 3;
 }
 -(void)clicknumber3{
     //毛玻璃

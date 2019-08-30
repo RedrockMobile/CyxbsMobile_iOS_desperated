@@ -19,7 +19,7 @@
 
 //    NSURL *imageURL = [NSURL URLWithString:spotModel.photo];
     SDCycleScrollView *scrollImage = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(33, 33, MAIN_SCREEN_W - 66, (MAIN_SCREEN_W - 66) * 0.618) imageNamesGroup:@[spotModel.photo]];
-    scrollImage.bannerImageViewContentMode = UIViewContentModeScaleAspectFit;
+    scrollImage.bannerImageViewContentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:scrollImage];
 }
 
