@@ -47,7 +47,7 @@
 }
 -(void)addWebView{
     WKWebView * webView = [[WKWebView alloc]initWithFrame:self.view.bounds];
-    NSURL * url = [NSURL URLWithString:@"https://web.redrock.team/welcome2019/mobile/"];
+    NSURL * url = [NSURL URLWithString:@"https://wx.idsbllp.cn/game/welcome2019/mobile/#/home"];
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
 
     [webView loadRequest:request];
