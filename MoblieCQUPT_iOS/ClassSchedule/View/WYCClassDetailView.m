@@ -102,7 +102,16 @@
     
     NSString *classNum = [NSString stringWithFormat:@"%ld-%ld节",begin_lesson.integerValue,(begin_lesson.integerValue + period.integerValue - 1)];
     NSString *beginTime = timeArray[begin_lesson.integerValue - 1];
-    NSString *finishTime = timeArray[begin_lesson.integerValue + period.integerValue - 2];
+    NSString *finishTime = @"";
+    if([period isEqualToNumber:@3]){
+        NSDateFormatter *dateFormate = [[NSDateFormatter alloc]init];
+        dateFormate.dateFormat = @"HH:mm";
+        NSDate *beginDate = [dateFormate dateFromString:beginTime];
+        NSDate *finishDate = [NSDate dateWithTimeInterval:10800 sinceDate:beginDate];
+        finishTime = [dateFormate stringFromDate:finishDate];
+    }else{
+        finishTime = timeArray[begin_lesson.integerValue + period.integerValue - 2];
+    }
     classTime = [NSString stringWithFormat:@"%@ ~ %@\n%@ ~ %@",day,classNum,beginTime,finishTime];
     
     return classTime;
