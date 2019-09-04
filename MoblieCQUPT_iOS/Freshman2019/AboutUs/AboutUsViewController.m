@@ -20,8 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"关于我们";
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.frame];
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - 64)];
     webView.delegate = self;
+    webView.backgroundColor = [UIColor whiteColor];
     
     NSURL *url = [NSURL URLWithString:@"https://wx.redrock.team/aboutus/mobile.html"];
     self.request = [NSURLRequest requestWithURL:url];
