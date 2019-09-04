@@ -89,7 +89,12 @@
 //周数的滑动栏
 -(UIScrollView *)setUpScrollView{
     //初始化时停在本周的位置上
-    NSNumber *num = [UserDefaultTool valueWithKey:@"nowWeek"];
+    NSNumber *num;
+    if ([UserDefaultTool valueWithKey:@"nowWeek"] == 0) {
+        num = @1;
+    }else{
+        num = [UserDefaultTool valueWithKey:@"nowWeek"];
+    }
     NSString *nowWeek = [num stringValue];
     UIScrollView *weekScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, self.size.width, self.size.height / 4)];
     weekScrollView.contentSize = CGSizeMake(65 * 19, 45);
@@ -219,8 +224,13 @@
     }
     return btnView;
 }
+
 //周数的点击事件
 - (void)changeWeek:(UIButton *)btn{
+    if (currentIndexInWeek == 0) {
+        currentIndexInWeek = 1;
+    }
+    
     if (![weekArray[currentIndexInWeek - 1] isEqual: btn]) {
         weekArray[currentIndexInWeek - 1].selected = NO;
         for (int i = 0; i < weekArray.count; i ++) {

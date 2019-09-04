@@ -3445,12 +3445,12 @@
 			children = (
 				E404FE82230FEDE80091141C /* welcomeNewWebController.h */,
 				E404FE83230FEDE80091141C /* welcomeNewWebController.m */,
+				EE19DD3C230BDE1E0066A2ED /* QRCodeView.h */,
 				EE19DD38230BDE1E0066A2ED /* QRCodeView.m */,
+				EE19DD3D230BDE1E0066A2ED /* LQQwantMoreViewController.h */,
 				EE19DD39230BDE1E0066A2ED /* LQQwantMoreViewController.m */,
 				EE19DD3A230BDE1E0066A2ED /* erWeiMaV2.0.png */,
 				EE19DD3B230BDE1E0066A2ED /* LQQwantMore.png */,
-				EE19DD3C230BDE1E0066A2ED /* QRCodeView.h */,
-				EE19DD3D230BDE1E0066A2ED /* LQQwantMoreViewController.h */,
 			);
 			path = More;
 			sourceTree = "<group>";
