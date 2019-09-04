@@ -32,6 +32,9 @@
 		1A5A203A2307FFD000D6D329 /* StartStepsTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5A201F2307FFCF00D6D329 /* StartStepsTableView.m */; };
 		1A5A203B2307FFD000D6D329 /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5A20222307FFCF00D6D329 /* AboutUsViewController.m */; };
 		1A5A203D2307FFDB00D6D329 /* Freshman2019.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5A203C2307FFDB00D6D329 /* Freshman2019.xcassets */; };
+		1AB1B53A231FEEFC003631B1 /* LQQDailyAttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B534231FEEFB003631B1 /* LQQDailyAttendanceViewController.m */; };
+		1AB1B53B231FEEFC003631B1 /* LQQAttendanceMindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B535231FEEFB003631B1 /* LQQAttendanceMindView.m */; };
+		1AB1B53C231FEEFC003631B1 /* AttendanceMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -875,6 +878,12 @@
 		1A5A20222307FFCF00D6D329 /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		1A5A20232307FFCF00D6D329 /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		1A5A203C2307FFDB00D6D329 /* Freshman2019.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Freshman2019.xcassets; sourceTree = "<group>"; };
+		1AB1B534231FEEFB003631B1 /* LQQDailyAttendanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQDailyAttendanceViewController.m; sourceTree = "<group>"; };
+		1AB1B535231FEEFB003631B1 /* LQQAttendanceMindView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LQQAttendanceMindView.m; sourceTree = "<group>"; };
+		1AB1B536231FEEFB003631B1 /* AttendanceMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceMainView.h; sourceTree = "<group>"; };
+		1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceMainView.m; sourceTree = "<group>"; };
+		1AB1B538231FEEFC003631B1 /* LQQAttendanceMindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQAttendanceMindView.h; sourceTree = "<group>"; };
+		1AB1B539231FEEFC003631B1 /* LQQDailyAttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQDailyAttendanceViewController.h; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2339,6 +2348,12 @@
 				6E1F466220C1557000B0F36F /* dailyAttendanceCell.h */,
 				6E1F466320C1557000B0F36F /* dailyAttendanceCell.m */,
 				6E1F466420C1557000B0F36F /* dailyAttendanceCell.xib */,
+				1AB1B536231FEEFB003631B1 /* AttendanceMainView.h */,
+				1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */,
+				1AB1B538231FEEFC003631B1 /* LQQAttendanceMindView.h */,
+				1AB1B535231FEEFB003631B1 /* LQQAttendanceMindView.m */,
+				1AB1B539231FEEFC003631B1 /* LQQDailyAttendanceViewController.h */,
+				1AB1B534231FEEFB003631B1 /* LQQDailyAttendanceViewController.m */,
 			);
 			path = DailyAttendance;
 			sourceTree = "<group>";
@@ -5045,6 +5060,7 @@
 				F2A92CFB1F52EB2600B4CEEF /* CAShapeLayer+ViewMask.m in Sources */,
 				F242DF181EBCB2BC005AC411 /* ORWInputTextView.m in Sources */,
 				82A0A57020BEFF2000BD628E /* LXAskDetailModel.m in Sources */,
+				1AB1B53B231FEEFC003631B1 /* LQQAttendanceMindView.m in Sources */,
 				E46FCF03230FCF90001FECE8 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */,
 				F26D966D1F3C400F0063B024 /* MBCommuityDetailsViewController.m in Sources */,
 				F26D96921F3C400F0063B024 /* MBCommunityModel.m in Sources */,
@@ -5214,6 +5230,7 @@
 				E46FCEE6230FCF90001FECE8 /* DGActivityIndicatorTripleRingsAnimation.m in Sources */,
 				E46FCEFF230FCF90001FECE8 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */,
 				6E7C986C20482ECA000BAA16 /* YouWenAddViewController.m in Sources */,
+				1AB1B53C231FEEFC003631B1 /* AttendanceMainView.m in Sources */,
 				E46FCF12230FCF90001FECE8 /* LQQsubjectDataView.m in Sources */,
 				E470CA292228055C0029501A /* LZSearchView.m in Sources */,
 				F26D96721F3C400F0063B024 /* MBReleaseViewController.m in Sources */,
@@ -5273,6 +5290,7 @@
 				F242DE661EBCB2BC005AC411 /* DetailRemindViewController.m in Sources */,
 				82398BC821A4289500300C91 /* SYCCustomToolsControlView.m in Sources */,
 				E46FCEE4230FCF90001FECE8 /* DGActivityIndicatorView.m in Sources */,
+				1AB1B53A231FEEFC003631B1 /* LQQDailyAttendanceViewController.m in Sources */,
 				E46FCF11230FCF90001FECE8 /* InfiniteRollScrollView.m in Sources */,
 				1A5A20272307FFD000D6D329 /* FYHOnlineActivitiesController.m in Sources */,
 				E41B1E392313BB7C00CCFC09 /* QueryViewController.m in Sources */,

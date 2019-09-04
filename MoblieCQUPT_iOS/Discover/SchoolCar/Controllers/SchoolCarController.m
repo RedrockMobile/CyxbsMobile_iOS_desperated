@@ -94,13 +94,13 @@ int mark1 = 1;
                 SchoolCarModel *model = [[SchoolCarModel alloc]initWithDic:dic];
                 [_SchoolCarMutableArray addObject:model];
                 }
-            _startLocation0.latitude = _SchoolCarMutableArray[0].latitude;
-            _startLocation0.longitude = _SchoolCarMutableArray[0].lonitude;
-            _startLocation1.latitude = _SchoolCarMutableArray[1].latitude;
-            _startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
+            self->_startLocation0.latitude = self->_SchoolCarMutableArray[0].latitude;
+            self->_startLocation0.longitude = self->_SchoolCarMutableArray[0].lonitude;
+            self->_startLocation1.latitude = self->_SchoolCarMutableArray[1].latitude;
+            self->_startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
             [self initSchoolCarAnnotationView:_startLocation0 AndCarID:1];
             [self initSchoolCarAnnotationView:_startLocation1 AndCarID:2];
-            _SchoolCarMutableArray = [NSMutableArray array];
+            self->_SchoolCarMutableArray = [NSMutableArray array];
                     }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"校车不在线");
@@ -215,28 +215,26 @@ int mark1 = 1;
 
 
 ////校车定位弹窗
-//- (void)popCarLocateView{
-//    _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 300)];
-//    _contentView.backgroundColor = [UIColor clearColor];
-//    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"定位弹窗"]];
-//    [_contentView addSubview:imgView];
+- (void)popCarLocateView{
+  _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 300)];    _contentView.backgroundColor = [UIColor clearColor];
+    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"定位弹窗"]];
+    [_contentView addSubview:imgView];
+
+   UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];    [cancelButton setImage:[UIImage imageNamed:@"取消按钮"] forState:UIControlStateNormal];
+    cancelButton.frame = CGRectMake(20, 270, 100, 60);
+    [cancelButton addTarget:self action:@selector(schoolLocation) forControlEvents:UIControlEventTouchUpInside];
+    [_contentView addSubview:cancelButton];
 //
-//    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [cancelButton setImage:[UIImage imageNamed:@"取消按钮"] forState:UIControlStateNormal];
-//    cancelButton.frame = CGRectMake(20, 270, 100, 60);
-//    [cancelButton addTarget:self action:@selector(schoolLocation) forControlEvents:UIControlEventTouchUpInside];
-//    [_contentView addSubview:cancelButton];
-//
-//    UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [confirmButton setImage:[UIImage imageNamed:@"确定按钮"] forState:0];
-//    confirmButton.frame = CGRectMake(140, 270, 100, 60);
-//    [confirmButton addTarget:self action:@selector(userLocations) forControlEvents:UIControlEventTouchUpInside];
-//    [_contentView addSubview:confirmButton];
-//
-//    [HWPopTool sharedInstance].shadeBackgroundType = ShadeBackgroundTypeSolid;
-//    [HWPopTool sharedInstance].closeButtonType = ButtonPositionTypeRight;
-//    [[HWPopTool sharedInstance] showWithPresentView:_contentView animated:YES];
-//}
+    UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [confirmButton setImage:[UIImage imageNamed:@"确定按钮"] forState:0];
+    confirmButton.frame = CGRectMake(140, 270, 100, 60);
+    [confirmButton addTarget:self action:@selector(userLocations) forControlEvents:UIControlEventTouchUpInside];
+    [_contentView addSubview:confirmButton];
+
+    [HWPopTool sharedInstance].shadeBackgroundType = ShadeBackgroundTypeSolid;
+    [HWPopTool sharedInstance].closeButtonType = ButtonPositionTypeRight;
+    [[HWPopTool sharedInstance] showWithPresentView:_contentView animated:YES];
+}
 
 
 //确定按钮，显示用户位置
