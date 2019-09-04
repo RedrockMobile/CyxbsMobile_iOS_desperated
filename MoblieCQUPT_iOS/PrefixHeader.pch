@@ -278,6 +278,9 @@
 //关于我的信息
 #define YOUWEN_MY_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/aboutMe"
 
+//签到信息
+#define YOUWEN_MY_CHECKININFO @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/getScoreStatus"
+
 /*
  举报部分
  */

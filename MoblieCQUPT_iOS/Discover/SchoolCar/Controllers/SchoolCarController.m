@@ -94,13 +94,13 @@ int mark1 = 1;
                 SchoolCarModel *model = [[SchoolCarModel alloc]initWithDic:dic];
                 [_SchoolCarMutableArray addObject:model];
                 }
-            _startLocation0.latitude = _SchoolCarMutableArray[0].latitude;
-            _startLocation0.longitude = _SchoolCarMutableArray[0].lonitude;
-            _startLocation1.latitude = _SchoolCarMutableArray[1].latitude;
-            _startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
+            self->_startLocation0.latitude = self->_SchoolCarMutableArray[0].latitude;
+            self->_startLocation0.longitude = self->_SchoolCarMutableArray[0].lonitude;
+            self->_startLocation1.latitude = self->_SchoolCarMutableArray[1].latitude;
+            self->_startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
             [self initSchoolCarAnnotationView:_startLocation0 AndCarID:1];
             [self initSchoolCarAnnotationView:_startLocation1 AndCarID:2];
-            _SchoolCarMutableArray = [NSMutableArray array];
+            self->_SchoolCarMutableArray = [NSMutableArray array];
                     }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"校车不在线");
