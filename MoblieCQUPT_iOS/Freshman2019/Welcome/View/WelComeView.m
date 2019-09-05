@@ -95,8 +95,8 @@
         self.rightDown = rightDown;
         
         
-        if (MAIN_SCREEN_H / MAIN_SCREEN_W == 667 / 375.0) {
-            self.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - 49 - 54);
+        if (MAIN_SCREEN_H / MAIN_SCREEN_W == 667 / 375.0 || MAIN_SCREEN_H / MAIN_SCREEN_W == 736 / 414) {
+            self.frame = CGRectMake(0, 0, MAIN_SCREEN_W, MAIN_SCREEN_H - 44 - 64);
             
             CGFloat self_W = self.frame.size.width;
             CGFloat self_H = self.frame.size.height;
