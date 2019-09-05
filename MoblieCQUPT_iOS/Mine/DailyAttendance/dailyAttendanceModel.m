@@ -10,12 +10,11 @@
 #import "HttpClient.h"
 #import "UserDefaultTool.h"
 
-#define URL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/getDiscountBalance"
-#define CONTINUEURL @"https://wx.idsbllp.cn/springtest/cyxbsMobile/index.php/QA/Integral/getCheckInStatus"
 @implementation dailyAttendanceModel
+
 - (void)requestNewScore{
     HttpClient * client = [HttpClient defaultClient];
-    [client requestWithPath:URL method:HttpRequestPost parameters:@{@"stuNum":[UserDefaultTool getStuNum], @"idNum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_CHECKIN_API method:HttpRequestPost parameters:@{@"stuNum":[UserDefaultTool getStuNum], @"idNum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSNumber *sore = responseObject[@"data"];
         NSString *str = [sore stringValue];
         [self.delegate getSore:str];
@@ -23,9 +22,10 @@
         [self.delegate getSore:@"NULL"];
     }];
 }
+
 - (void)requestContinueDay{
     HttpClient * client = [HttpClient defaultClient];
-    [client requestWithPath:CONTINUEURL method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_CREDIT_USE_RECORD_LIST_API method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *data = responseObject[@"data"];
         NSString *str = data[@"serialDays"];
         NSNumber *che = data[@"checked"];
