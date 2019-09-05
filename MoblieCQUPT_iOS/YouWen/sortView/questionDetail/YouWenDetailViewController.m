@@ -116,7 +116,7 @@
             NSArray *picArr = [NSArray arrayWithObjects:cell.imageView1, cell.imageView2, nil];
             for (int i = 0; i < self.answerModelArr[index].photoUrlArr.count; i++) {
                 UIImageView *temp = picArr[i];
-                [temp sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].photoUrlArr[i]] placeholderImage:[UIImage imageNamed:@"touxiang"]];
+                [temp sd_setImageWithURL:[NSURL URLWithString:self.answerModelArr[index].photoUrlArr[i]] placeholderImage:[UIImage imageNamed:@""]];
             }
         } else {
             //没图的cell
@@ -253,12 +253,12 @@
     } else {
         self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"男"];
     }
-    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@"touxiang"]];
+    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@""]];
 
     NSArray *picArr = [NSArray arrayWithObjects:self.headView.imageview1, self.headView.imageview2, self.headView.imageview3, self.headView.imageview4, nil];
     for (int i = 0; i < num; i++) {
         UIImageView *temp = picArr[i];
-        [temp sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.picArr[i]] placeholderImage:[UIImage imageNamed:@"touxiang"]];
+        [temp sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.picArr[i]] placeholderImage:[UIImage imageNamed:@""]];
     }
 
     for (UIView *subview in self.headView.subviews) {
