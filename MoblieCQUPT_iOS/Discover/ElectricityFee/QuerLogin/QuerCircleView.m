@@ -91,7 +91,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 //蓝环内边框
 //    [self drawDrakCircle];
 //电费
-    [self drawChargeLabelWithData:_chargeStr];
+    [self drawChargeLabelWithData:@"0"/*_chargeStr*/];
 //电费
     [self drawChargeUnitLabel];
 //
@@ -126,7 +126,7 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
 
 }
 /*
-//四个数据，如需数用，请反注释掉神兽上面的那段代码
+
 //- (void)drawElcEndUnitLabel{
 //    UILabel *label = [[UILabel alloc] init];
 //    [self maekLabel:label WithText:@"电止度/度" fontOfSize:font(12) textColor:[UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1] frame:CHANGE_CGRectMake(295.5,303, 65, 20)];

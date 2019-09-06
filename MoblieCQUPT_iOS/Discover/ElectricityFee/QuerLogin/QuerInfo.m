@@ -59,10 +59,11 @@
         label.text = labelArray[i-1];
         label.font = [UIFont systemFontOfSize:12.5];
         label.textColor = COLOR_BULE1;
-        NSArray<NSString*>*dataLabelArray = [NSArray arrayWithObjects:@"0",self.AveragELecStr,self.ElcStarStr,self.ElcEndStr
+        //设置第一个小标签的数据
+        NSDictionary *dataDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"elecData"];
+        NSArray<NSString*>*dataLabelArray = [NSArray arrayWithObjects:[NSString stringWithFormat:@"%@.%@",dataDic[@"elec_cost"][0],dataDic[@"elec_cost"][1]],self.AveragELecStr,self.ElcStarStr,self.ElcEndStr
                                              ,self.FreeElecStr, nil];
-        
-        
+
         UILabel*dataLabel = [[UILabel alloc]init];
         [dataLumpView addSubview:dataLabel];
         [dataLabel mas_makeConstraints:^(MASConstraintMaker *make) {
