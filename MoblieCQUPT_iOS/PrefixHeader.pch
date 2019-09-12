@@ -125,6 +125,8 @@
 #define GRADECLASSAPI @"https://wx.idsbllp.cn/api/examSchedule"
 //补考接口
 #define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
+//校车位置
+#define SCHOOLBUSAPI @"https://cqxbsmobile.redrock.team/234/schoolbus/status"
 
 /* 2019迎新接口 */
 // 学院群

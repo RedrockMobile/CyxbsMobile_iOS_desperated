@@ -16,6 +16,7 @@
 #import "SchoolCarModel.h"
 #import "ZJWebViewController.h"
 #import "SchoolCarRemindViewController.h"
+#import <CommonCrypto/CommonCrypto.h>
 #define Screen_width [UIScreen mainScreen].bounds.size.width/375
 @interface SchoolCarController ()<MAMapViewDelegate,AMapGeoFenceManagerDelegate,AMapLocationManagerDelegate>
 @property (nonatomic, strong) MAMapView *mapView;
@@ -36,6 +37,8 @@
 @property (assign) CLLocationCoordinate2D startLocation2;
 @property (assign) CLLocationCoordinate2D endLocation2;
 @property (strong, nonatomic) NSArray *locationArray;
+@property (weak, nonatomic) AFHTTPSessionManager *manager;
+
 @end
 @implementation SchoolCarController
 #pragma mark - Initialization
@@ -77,50 +80,64 @@ int mark1 = 1;
 
 //得到校车数据
 - (void)getSchoolLocation{
-    NSString *str = @"https://wx.idsbllp.cn/extension/test";
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:@"Redrock" forHTTPHeaderField:@"Authorization"];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    
     //参数
-    NSDictionary *parameters = @{@"t":@"1537425225",@"r":@"97d8def90c78d993c7908df0da616fc2",@"s":@"bd61c2c55c5a98d354a822bff05b15cd"
-
+    NSDate *datenow = [NSDate date];
+    NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)([datenow timeIntervalSince1970]*1000)];
+    timeSp = [timeSp substringToIndex:10];
+    NSDictionary *parameters = @{
+                                 @"s": [self md5:[timeSp stringByAppendingString:@".Redrock"]],
+                                 @"t": timeSp,
+                                 @"r": @"bd61c2c55c5a98d354a822bff05b15cd"
                                  };
-    [manager POST:str parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        {
+    
+    
+    NSDictionary *head = @{@"Authorization": @"Redrock"};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    self.manager = manager;
+    for (int i = 0; i < head.count; i++) {
+        [self.manager.requestSerializer setValue:head.allValues[i]  forHTTPHeaderField:head.allKeys[i]];
+    }
+    
+    // 以json格式向服务器发送请求
+    AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
+    [serializer setRemovesKeysWithNullValues:YES];
+    // 处理服务器返回null
+    //    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [self.manager setResponseSerializer:serializer];
+    self.manager.responseSerializer.acceptableContentTypes =  [self.manager.responseSerializer.acceptableContentTypes setByAddingObjectsFromSet:[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", @"text/plain",@"application/atom+xml",@"application/xml",@"text/xml",nil]];
+    [self.manager POST:SCHOOLBUSAPI parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+        NSLog(@"%@", responseObject);
         //经纬数据
         NSArray *dicResult = [responseObject objectForKey:@"data"];
-            for (NSDictionary *dic in dicResult) {
-                SchoolCarModel *model = [[SchoolCarModel alloc]initWithDic:dic];
-                [_SchoolCarMutableArray addObject:model];
-                }
-            self->_startLocation0.latitude = self->_SchoolCarMutableArray[0].latitude;
-            self->_startLocation0.longitude = self->_SchoolCarMutableArray[0].lonitude;
-            self->_startLocation1.latitude = self->_SchoolCarMutableArray[1].latitude;
-            self->_startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
-            [self initSchoolCarAnnotationView:_startLocation0 AndCarID:1];
-            [self initSchoolCarAnnotationView:_startLocation1 AndCarID:2];
-            self->_SchoolCarMutableArray = [NSMutableArray array];
-                    }
+        for (NSDictionary *dic in dicResult) {
+            SchoolCarModel *model = [[SchoolCarModel alloc]initWithDic:dic];
+            [self.SchoolCarMutableArray addObject:model];
+        }
+        self->_startLocation0.latitude = self->_SchoolCarMutableArray[0].latitude;
+        self->_startLocation0.longitude = self->_SchoolCarMutableArray[0].lonitude;
+        self->_startLocation1.latitude = self->_SchoolCarMutableArray[1].latitude;
+        self->_startLocation1.longitude = self.SchoolCarMutableArray[1].lonitude;
+        [self initSchoolCarAnnotationView:self->_startLocation0 AndCarID:1];
+        [self initSchoolCarAnnotationView:self->_startLocation1 AndCarID:2];
+        self.SchoolCarMutableArray = [NSMutableArray array];
+//        [self performSelector:@selector(getSchoolLocation) withObject:nil afterDelay:2];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"校车不在线");
+//        dispatch_cancel(self.time);
         [self popSchoolOffView];
-        dispatch_cancel(self.time);
+        NSLog(@"校车不在线     %@", error);
     }];
-
-//
 }
 //MD5加密
-//-(NSString *)md5:(NSString *)str{
-//    const char *cStr = [str UTF8String];//转换成utf-8
-//    unsigned char result[16];
-//    CC_MD5(cStr, (int)strlen(cStr), result);
-//    NSMutableString *Mstr = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH];
-//    for (int i = 0; i<CC_MD5_DIGEST_LENGTH; i++) {
-//        [Mstr appendFormat:@"%02X",result[i]];
-//    }
-//    return Mstr;
-//}
+-(NSString *)md5:(NSString *)str {
+    const char *cStr = [str UTF8String];//转换成utf-8
+    unsigned char result[16];
+    CC_MD5(cStr, (int)strlen(cStr), result);
+    NSMutableString *Mstr = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH];
+    for (int i = 0; i<CC_MD5_DIGEST_LENGTH; i++) {
+        [Mstr appendFormat:@"%02x",result[i]];
+    }
+    return Mstr;
+}
 //初始化地图
 - (void)initMapView{
     if (self.mapView == nil) {
@@ -199,14 +216,14 @@ int mark1 = 1;
     SchoolCarRemindViewController *remindVC = [[SchoolCarRemindViewController alloc]init];
     remindVC.backBlock = ^(int mark) {
         if (mark1 != 0) {
-        _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 300)];
-        _contentView.backgroundColor = [UIColor clearColor];
+            self->_contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 300)];
+            self->_contentView.backgroundColor = [UIColor clearColor];
         UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"弹窗部分"]];
-        [_contentView addSubview:imgView];
+            [self->_contentView addSubview:imgView];
         [self.mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];
         [HWPopTool sharedInstance].shadeBackgroundType = ShadeBackgroundTypeSolid;
         [HWPopTool sharedInstance].closeButtonType = ButtonPositionTypeRight;
-        [[HWPopTool sharedInstance] showWithPresentView:_contentView animated:YES];
+            [[HWPopTool sharedInstance] showWithPresentView:self->_contentView animated:YES];
         }
         
     };
@@ -314,6 +331,7 @@ int mark1 = 1;
     [self.mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];
     [self initControls];
 //    [self timer];
+    [self getSchoolLocation];
 }
 - (void)back{
     [self.navigationController popToRootViewControllerAnimated:YES];
@@ -322,6 +340,11 @@ int mark1 = 1;
     [self schoolRunTime];
 }
 
+- (void)dealloc
+{
+    [self.manager.operationQueue cancelAllOperations];
+    //    dispatch_cancel(self.time);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
