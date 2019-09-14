@@ -8,7 +8,7 @@
 
 #import "QuerLoginModel.h"
 #import "AFNetworking.h"
-#define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
+#define ELECTROLYSIS_URL @"https://cyxbsmobile.redrock.team/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
 
 @interface QuerLoginModel()
 

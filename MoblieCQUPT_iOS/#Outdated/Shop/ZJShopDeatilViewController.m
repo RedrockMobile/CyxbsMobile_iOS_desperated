@@ -75,7 +75,7 @@
 //添加评论
 -(void)addCommentData:(NSString *)content{
     
-    NSString *strURL = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/addCom"];
+    NSString *strURL = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/addCom"];
 //    NSString *stuNum = [UserDefaultTool getStuNum];
     NSString *stuName = [UserDefaultTool valueWithKey:@"name"];
    
@@ -120,7 +120,7 @@
 }
 //获取店铺信息，第一个section
 -(void)loadShopData{
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopInfo" WithParameter:@{@"id":_detailData[@"id"]} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopInfo" WithParameter:@{@"id":_detailData[@"id"]} WithReturnValeuBlock:^(id returnValue) {
         _shopInfo = [NSMutableDictionary dictionaryWithCapacity:10];
         [_shopInfo setObject:returnValue[@"data"] forKey:@"infoData"];
         [self.shopDetailTableView reloadData];
@@ -139,7 +139,7 @@
 //加载评论数据，第二个section
 -(void)loadCommentData{
     _flag = 1;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
         _commentArray = [[NSMutableArray alloc]init];
         if ([returnValue isEqual:[NSNull null]] || [returnValue[@"data"] isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
@@ -166,7 +166,7 @@
 //尾部评论刷新
 -(void)footerRefresh{
     _flag += 1;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/comList" WithParameter:@{@"shop_id":_detailData[@"id"],@"pid":[NSNumber numberWithInteger:_flag]} WithReturnValeuBlock:^(id returnValue) {
         if ([returnValue isEqual:[NSNull null]]) {
             [self.shopDetailTableView.mj_footer endRefreshingWithNoMoreData];
             self.shopDetailTableView.mj_footer.backgroundColor = [UIColor colorWithRed:240/255 green:240/255 blue:240/255 alpha:0.1];

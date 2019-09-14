@@ -88,7 +88,7 @@
 
 - (void)request{
     for (int i = 1; i<= 3; i++) {
-        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
+        [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInt:i]} WithReturnValeuBlock:^(id returnValue) {
             _data = [[NSMutableArray alloc] init];
             [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
         } WithFailureBlock:^{

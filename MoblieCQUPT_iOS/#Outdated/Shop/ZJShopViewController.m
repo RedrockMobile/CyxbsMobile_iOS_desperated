@@ -53,7 +53,7 @@
 }
 
 - (void) getInformation{
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
         _arrayData = [[NSMutableArray alloc]init];
         [self.view addSubview:self.tableView];
         [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
@@ -74,7 +74,7 @@
 //头部刷新
 - (void)headerRefresh{
     _page = 1;
-    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
+    [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":@1} WithReturnValeuBlock:^(id returnValue) {
         [_arrayData removeAllObjects];
         [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
         //刷新表格
@@ -96,7 +96,7 @@
 - (void)footerRefresh{
     _page++ ;
     if (_page <= 3) {
-        [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_page]} WithReturnValeuBlock:^(id returnValue) {
+        [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/shopList" WithParameter:@{@"pid":[NSNumber numberWithInteger:_page]} WithReturnValeuBlock:^(id returnValue) {
             [_arrayData addObjectsFromArray:[returnValue objectForKey:@"data"]];
             //刷新表格
             [self.tableView reloadData];

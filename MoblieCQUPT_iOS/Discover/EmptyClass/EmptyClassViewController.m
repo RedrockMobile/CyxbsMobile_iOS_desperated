@@ -102,11 +102,24 @@
             [self loadSameData:(NSDictionary *)_dataDic];
         }
         else{
-            [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:_dataDic WithReturnValeuBlock:^(id returnValue) {
-                _FinalData = [self handleData:returnValue[@"data"]];
+//            [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:_dataDic WithReturnValeuBlock:^(id returnValue) {
+//                _FinalData = [self handleData:returnValue[@"data"]];
+//                [self setUpDataView:_FinalData];
+//            } WithFailureBlock:^{
+//                [[NSNotificationCenter defaultCenter]postNotificationName:@"data" object:nil];
+//            }];
+            NSMutableDictionary *dataDic = _dataDic.mutableCopy;
+            NSArray *dataArry = [NSArray array];
+            dataArry = _dataDic[@"sectionNum"];
+            dataDic[@"sectionNum"] = dataArry[0];
+            [[HttpClient defaultClient] requestWithPath:EMPTYCLASSAPI method:HttpRequestPost parameters:dataDic prepareExecute:nil progress:^(NSProgress *progress) {
+
+            } success:^(NSURLSessionDataTask *task, id responseObject) {
+
+                _FinalData = [self handleData:responseObject[@"data"]];
                 [self setUpDataView:_FinalData];
-            } WithFailureBlock:^{
-                [[NSNotificationCenter defaultCenter]postNotificationName:@"data" object:nil];
+            } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  [[NSNotificationCenter defaultCenter]postNotificationName:@"data" object:nil];
             }];
         }
   }

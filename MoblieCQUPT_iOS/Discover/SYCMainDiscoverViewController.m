@@ -161,7 +161,7 @@
 //轮播器获取网络图片
 - (void)getNetworkData{
     HttpClient *client = [HttpClient defaultClient];
-    [client requestWithPath:@"https://wx.idsbllp.cn/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:@"https://cyxbsmobile.redrock.team/app/api/pictureCarousel.php" method:HttpRequestPost parameters:@{@"pic_num":@3} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         self.carouselDataArray = [@[] mutableCopy];
         NSArray *dataArray = [responseObject objectForKey:@"data"];
         for (NSDictionary *picData in dataArray) {
