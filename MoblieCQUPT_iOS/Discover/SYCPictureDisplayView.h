@@ -20,6 +20,7 @@
 @property (nonatomic, strong) id<SYCPictureDisplayDelegate> delegate;
 
 - (instancetype)initWithData:(NSArray<LZCarouselModel *> *)dataArray;
+
 - (void)buildUI;
 
 @end

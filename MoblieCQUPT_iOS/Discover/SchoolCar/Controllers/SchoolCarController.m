@@ -56,24 +56,24 @@ int mark1 = 1;
 }
 
 //定时器 每秒请求一次
-- (void)timer{
-    //获得队列
-    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
-    //创建一个定时器
-    self.time = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    //设置开始时间
-    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC));
-    //设置时间间隔
-    uint64_t interval = (uint64_t)(2.0* NSEC_PER_SEC);
-    //设置定时器
-    dispatch_source_set_timer(self.time, start, interval, 0);
-    //设置回调
-    dispatch_source_set_event_handler(self.time, ^{
-        [self getSchoolLocation];
-    });
-    //启动定时器、、、由于定时器是暂停的
-    dispatch_resume(self.time);
-}
+//- (void)timer{
+//    //获得队列
+//    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+//    //创建一个定时器
+//    self.time = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+//    //设置开始时间
+//    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC));
+//    //设置时间间隔
+//    uint64_t interval = (uint64_t)(2.0* NSEC_PER_SEC);
+//    //设置定时器
+//    dispatch_source_set_timer(self.time, start, interval, 0);
+//    //设置回调
+//    dispatch_source_set_event_handler(self.time, ^{
+//        [self getSchoolLocation];
+//    });
+//    //启动定时器、、、由于定时器是暂停的
+//    dispatch_resume(self.time);
+//}
 
 //得到校车数据
 - (void)getSchoolLocation{
@@ -94,13 +94,13 @@ int mark1 = 1;
                 SchoolCarModel *model = [[SchoolCarModel alloc]initWithDic:dic];
                 [_SchoolCarMutableArray addObject:model];
                 }
-            _startLocation0.latitude = _SchoolCarMutableArray[0].latitude;
-            _startLocation0.longitude = _SchoolCarMutableArray[0].lonitude;
-            _startLocation1.latitude = _SchoolCarMutableArray[1].latitude;
-            _startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
+            self->_startLocation0.latitude = self->_SchoolCarMutableArray[0].latitude;
+            self->_startLocation0.longitude = self->_SchoolCarMutableArray[0].lonitude;
+            self->_startLocation1.latitude = self->_SchoolCarMutableArray[1].latitude;
+            self->_startLocation1.longitude = _SchoolCarMutableArray[1].lonitude;
             [self initSchoolCarAnnotationView:_startLocation0 AndCarID:1];
             [self initSchoolCarAnnotationView:_startLocation1 AndCarID:2];
-            _SchoolCarMutableArray = [NSMutableArray array];
+            self->_SchoolCarMutableArray = [NSMutableArray array];
                     }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"校车不在线");
@@ -215,28 +215,28 @@ int mark1 = 1;
 
 
 ////校车定位弹窗
-//- (void)popCarLocateView{
-//    _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 300)];
-//    _contentView.backgroundColor = [UIColor clearColor];
-//    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"定位弹窗"]];
-//    [_contentView addSubview:imgView];
-//
-//    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [cancelButton setImage:[UIImage imageNamed:@"取消按钮"] forState:UIControlStateNormal];
-//    cancelButton.frame = CGRectMake(20, 270, 100, 60);
-//    [cancelButton addTarget:self action:@selector(schoolLocation) forControlEvents:UIControlEventTouchUpInside];
-//    [_contentView addSubview:cancelButton];
-//
-//    UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [confirmButton setImage:[UIImage imageNamed:@"确定按钮"] forState:0];
-//    confirmButton.frame = CGRectMake(140, 270, 100, 60);
-//    [confirmButton addTarget:self action:@selector(userLocations) forControlEvents:UIControlEventTouchUpInside];
-//    [_contentView addSubview:confirmButton];
-//
-//    [HWPopTool sharedInstance].shadeBackgroundType = ShadeBackgroundTypeSolid;
-//    [HWPopTool sharedInstance].closeButtonType = ButtonPositionTypeRight;
-//    [[HWPopTool sharedInstance] showWithPresentView:_contentView animated:YES];
-//}
+- (void)popCarLocateView{
+    _contentView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 270, 300)];
+    _contentView.backgroundColor = [UIColor clearColor];
+    UIImageView *imgView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"定位弹窗"]];
+    [_contentView addSubview:imgView];
+
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelButton setImage:[UIImage imageNamed:@"取消按钮"] forState:UIControlStateNormal];
+    cancelButton.frame = CGRectMake(20, 270, 100, 60);
+    [cancelButton addTarget:self action:@selector(schoolLocation) forControlEvents:UIControlEventTouchUpInside];
+    [_contentView addSubview:cancelButton];
+
+    UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [confirmButton setImage:[UIImage imageNamed:@"确定按钮"] forState:0];
+    confirmButton.frame = CGRectMake(140, 270, 100, 60);
+    [confirmButton addTarget:self action:@selector(userLocations) forControlEvents:UIControlEventTouchUpInside];
+    [_contentView addSubview:confirmButton];
+
+    [HWPopTool sharedInstance].shadeBackgroundType = ShadeBackgroundTypeSolid;
+    [HWPopTool sharedInstance].closeButtonType = ButtonPositionTypeRight;
+    [[HWPopTool sharedInstance] showWithPresentView:_contentView animated:YES];
+}
 
 
 //确定按钮，显示用户位置
@@ -313,7 +313,7 @@ int mark1 = 1;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back_item"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     [self.mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];
     [self initControls];
-    [self timer];
+//    [self timer];
 }
 - (void)back{
     [self.navigationController popToRootViewControllerAnimated:YES];

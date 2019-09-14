@@ -9,7 +9,9 @@
 #import "welcomeNewWebController.h"
 #import <WebKit/WebKit.h>
 #import "LQQwantMoreViewController.h"
-@interface welcomeNewWebController ()
+@interface welcomeNewWebController () <UIWebViewDelegate>
+
+@property (nonatomic, weak) MBProgressHUD *hud;
 
 @end
 
@@ -46,13 +48,26 @@
 
 }
 -(void)addWebView{
-    WKWebView * webView = [[WKWebView alloc]initWithFrame:self.view.bounds];
+    UIWebView * webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
+    webView.backgroundColor = [UIColor whiteColor];
     NSURL * url = [NSURL URLWithString:@"https://wx.idsbllp.cn/game/welcome2019/mobile/#/home"];
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
 
     [webView loadRequest:request];
     [self.view addSubview:webView];
+    webView.delegate = self;
+    
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeIndeterminate;
+    hud.labelText = @"努力加载中";
+    self.hud = hud;
+
 }
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    [self.hud hide:YES];
+}
+
 - (void)clickLeftButton{
     [self dismissViewControllerAnimated:YES completion:nil];
     

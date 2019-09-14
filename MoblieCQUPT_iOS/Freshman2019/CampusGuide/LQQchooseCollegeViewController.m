@@ -103,10 +103,11 @@ UITableViewCell *cell/* = [tableView dequeueReusableCellWithIdentifier:@"LQcell"
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.usersXueYuan =_INeedData.xueYuanName[indexPath.section];
     NSLog(@"用户选择的是%@",_usersXueYuan);
-    LQQshuJuJieMiViewController* sjjm = [[LQQshuJuJieMiViewController alloc]init];
+    LQQshuJuJieMiViewController* sjjm = [[LQQshuJuJieMiViewController alloc] init];
     sjjm.userXueYuan = _usersXueYuan;
     sjjm.view.backgroundColor = [UIColor colorWithRed:233/255.0 green:245/255.0 blue:255/255.0 alpha:1];
     [self.navigationController pushViewController:sjjm animated:YES];
+    
     //发一个通知给dataMode;
     [[NSNotificationCenter defaultCenter] postNotificationName:@"LQQuserCollege" object:nil userInfo:@{@"用户选择的学院":_usersXueYuan}];
 

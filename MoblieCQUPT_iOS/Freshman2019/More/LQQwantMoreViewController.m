@@ -200,6 +200,7 @@
     _BoLi = [[UIImageView alloc]init];
     _BoLi.frame =CGRectMake(0, 0,self.view.width,self.view.height);
     _BoLi.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+    _BoLi.alpha = 0;
     [self.view addSubview:_BoLi];
 
 //    UIButton *button = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height)];
@@ -218,6 +219,7 @@
     [_backImage setUserInteractionEnabled:YES];
     [_BoLi setUserInteractionEnabled:YES];
     UILabel*bottomLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
+    _backImage.alpha = 0;
     [_backImage addSubview:bottomLabel];
     [bottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(self->_backImage);
@@ -241,6 +243,11 @@
 
     UITapGestureRecognizer*tapErWeiMa = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(printThing)];
     [self.backImage addGestureRecognizer:tapErWeiMa];
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.BoLi.alpha = 1;
+        self.backImage.alpha = 1;
+    }];
     
 }
 -(void)longPress:(UITapGestureRecognizer*)sender{

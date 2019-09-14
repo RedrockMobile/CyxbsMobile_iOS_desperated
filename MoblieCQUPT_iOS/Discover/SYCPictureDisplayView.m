@@ -60,7 +60,7 @@
     _picHeight = _scrollView.height * 0.8625;
     _picWidth = _scrollView.width - 2 * _picHalfGap;
     
-        //循环创建添加轮播图片, 前后各添加一张
+    //循环创建添加轮播图片, 前后各添加一张
     for (int i = 0; i < _dataArray.count + 2; i++) {
         for (UIView *underView in self.scrollView.subviews) {
             if (underView.tag == 400 + i) {
@@ -87,18 +87,25 @@
          *  i -> (2 * i + 1) * halfGap + i * a ;
          */
         picImageView.frame = CGRectMake((2 * i + 1) * _picHalfGap + i * _picWidth, (_scrollView.height - _picHeight) / 2, _picWidth, _picHeight);
-        
+
         if (i == 0) {
             [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[self.picCount - 1].picture_url]
                             placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
             self.index = self.picCount - 1;
         }else if (i == self.picCount + 1) {
             [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[0].picture_url]
-                            placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
+                            placeholderImage:[UIImage imageNamed:@"cqupt3.jpg"]];
             self.index = 0;
         }else {
+            if (i == 1) {
+                [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[i - 1].picture_url]
+                                placeholderImage:[UIImage imageNamed:@"cqupt3.jpg"]];
+            }else if(i == _picCount){
+                [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[i - 1].picture_url]
+                                placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
+            }
             [picImageView sd_setImageWithURL:[NSURL URLWithString:_dataArray[i - 1].picture_url]
-                            placeholderImage:[UIImage imageNamed:@"cqupt1.jpg"]];
+                            placeholderImage:[UIImage imageNamed:@"cqupt2.jpg"]];
             self.index = i - 1;
         }
         [_scrollView addSubview:picImageView];

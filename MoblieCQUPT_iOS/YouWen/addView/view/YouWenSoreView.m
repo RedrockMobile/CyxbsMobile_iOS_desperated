@@ -18,6 +18,7 @@
 @property (strong, nonatomic) UILabel *loadingLab;
 //这里用了签到请求的积分，懒
 @property (strong, nonatomic) dailyAttendanceModel *soreData;
+
 @end
 @implementation YouWenSoreView
 

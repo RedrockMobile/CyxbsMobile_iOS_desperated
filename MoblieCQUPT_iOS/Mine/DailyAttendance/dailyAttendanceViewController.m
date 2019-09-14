@@ -61,7 +61,7 @@
     headImageView.layer.borderWidth = 1;
     headImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     headImageView.layer.masksToBounds = YES;
-
+    
     MyInfoModel *model = [MyInfoModel getMyInfo];
     if (model.photo_thumbnail_src == nil){
         headImageView.image = [UIImage imageNamed:@"headImage"];
@@ -111,7 +111,6 @@
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(15);
     }];
-    
     _continueView = [[rotaryCountView alloc] initWithFrame:CGRectMake(0 , headImageView.bottom + 60, 80, 50) andNum:@"1"];
     _continueView.centerX = _mainView.width / 2;
     [_mainView addSubview:_continueView];
@@ -244,17 +243,17 @@
     UNMutableNotificationContent* content = [[UNMutableNotificationContent alloc] init];
     content.title = [NSString localizedUserNotificationStringForKey:@"签到" arguments:nil];
     content.body = [NSString localizedUserNotificationStringForKey:@"记得签到哦"
-        arguments:nil];
+                                                         arguments:nil];
     
     content.sound = [UNNotificationSound defaultSound];
-
+    
     UNTimeIntervalNotificationTrigger* trigger = [UNTimeIntervalNotificationTrigger
-        triggerWithTimeInterval:24 * 60 * 60
-                        repeats:NO];
+                                                  triggerWithTimeInterval:24 * 60 * 60
+                                                  repeats:NO];
     
     UNNotificationRequest* request = [UNNotificationRequest requestWithIdentifier:@"FiveSecond"
-                      content:content
-                      trigger:trigger];
+                                                                          content:content
+                                                                          trigger:trigger];
     
     // Schedule the notification.
     UNUserNotificationCenter* center = [UNUserNotificationCenter currentNotificationCenter];
@@ -298,13 +297,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

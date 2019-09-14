@@ -80,7 +80,7 @@
 - (void)topicStyle:(NSString *)style{
     YouWenAddViewController *addView = [[YouWenAddViewController alloc] initWithStyle:style];
     addView.hidesBottomBarWhenPushed = YES;
-     [self.navigationController pushViewController:addView animated:YES];
+    [self.navigationController pushViewController:addView animated:YES];
 }
 
 @end

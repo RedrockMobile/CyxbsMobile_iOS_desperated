@@ -72,22 +72,22 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithHexString:@"f6f6f6"];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-//    NSArray *array1 =   @[
-//                @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"dailyAttendanceViewController"}];
-//    NSArray *array2 = @[
-//                @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
-//                @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"LXAskViewController"},
-//                @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"LXHelpViewController"},
-//                @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"draftsViewController"}];
+    NSArray *array1 =   @[
+                          @{@"title":@"每日签到",@"img":@"mine_sign_in",@"controller":@"LQQDailyAttendanceViewController"}];
+    //    NSArray *array2 = @[
+    //                @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
+    //                @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"LXAskViewController"},
+    //                @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"LXHelpViewController"},
+    //                @{@"title":@"草稿箱",@"img":@"mine_draft",@"controller":@"draftsViewController"}];
     NSArray *array2 = @[
                         @{@"title":@"积分商城",@"img":@"mine_score_shop",@"controller":@"shopViewController"},
                         @{@"title":@"问一问",@"img":@"mine_ask",@"controller":@"LXAskViewController"},
                         @{@"title":@"帮一帮",@"img":@"mine_help",@"controller":@"LXHelpViewController"}];
     NSArray *array3 = @[
-                @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeMainViewController"}];
+                        @{@"title":@"与我相关",@"img":@"mine_aboutMe",@"controller":@"AboutMeMainViewController"}];
     NSArray *array4 = @[
-                @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingViewController"}];
-    _cellDicArray = @[array2, array3, array4];
+                        @{@"title":@"设置",@"img":@"mine_setting",@"controller":@"SettingViewController"}];
+    _cellDicArray = @[array1,array2, array3, array4];
     
     UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0, _tableView.top - 20, SCREEN_WIDTH, SCREEN_HEIGHT - _tableView.top - 20)];
     whiteView.backgroundColor = RGBColor(246, 246, 246, 1);;
@@ -164,7 +164,7 @@
     
     UIViewController *vc;
     vc = (UIViewController *)[[NSClassFromString(className) alloc] init];
-
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         if(indexPath.row == 3){
