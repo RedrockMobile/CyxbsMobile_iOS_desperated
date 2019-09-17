@@ -31,12 +31,12 @@
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:MAKEAPI WithParameter:@{@"stuNum": stuNum} WithReturnValeuBlock:^(id returnValue) {
-        if (returnValue[@"data"]) {
+        if (!returnValue[@"data"]) {
             [self initFailViewWithDetail:@"暂无补考消息~"];
         }
         else{
             [MBProgressHUD hideHUDForView:self.view animated:YES];
-            _data = returnValue[@"data"];
+            self.data = returnValue[@"data"];
             [self setUpTableView];
         }
     } WithFailureBlock:^{
@@ -109,17 +109,32 @@
     NSArray *dateArray = @[@"零",@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
     
     int dateIndex = [_data[indexPath.row][@"weekday"] intValue];
-    NSString *examDateLabelText = [NSString stringWithFormat:@"%@周 周%@",_data[indexPath.row][@"week"],dateArray[dateIndex]];
+    
+    // 判断考试时间是否为开学前
+
+    NSString *examDateLabelText;
+    if ([_data[indexPath.row][@"week"] intValue] < 0) {
+        examDateLabelText = [NSString stringWithFormat:@"开学前%d周 周%@",-[_data[indexPath.row][@"week"] intValue] ,dateArray[dateIndex]];
+    } else {
+        examDateLabelText = [NSString stringWithFormat:@"%d周 周%@   ",[_data[indexPath.row][@"week"] intValue] ,dateArray[dateIndex]];
+    }
     cell.examDate.text = examDateLabelText;
     //日期
-    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
+//    NSDate *newDate = [[NSDate alloc] getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM-dd";
-    NSString *examDate = [formatter stringFromDate:newDate];
-
-    cell.month.text = [NSString stringWithFormat:@"%@月" ,[examDate substringWithRange:NSMakeRange(0, 2)]];
+//    NSString *examDate = [formatter stringFromDate:newDate];
+    switch (<#expression#>) {
+        case <#constant#>:
+            <#statements#>
+            break;
+            
+        default:
+            break;
+    }
+    cell.month.text = [NSString stringWithFormat:@"%@月" ,[_data[indexPath.row][@"date"] substringWithRange:NSMakeRange(0, 1)]];
     [cell.month sizeToFit];
-    cell.day.text = [examDate substringWithRange:NSMakeRange(3, 2)];
+    cell.day.text = [_data[indexPath.row][@"date"] substringWithRange:NSMakeRange(2, 2)];
     [cell.day sizeToFit];
     return cell;
 
