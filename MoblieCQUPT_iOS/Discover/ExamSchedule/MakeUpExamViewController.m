@@ -124,14 +124,6 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM-dd";
 //    NSString *examDate = [formatter stringFromDate:newDate];
-    switch (<#expression#>) {
-        case <#constant#>:
-            <#statements#>
-            break;
-            
-        default:
-            break;
-    }
     cell.month.text = [NSString stringWithFormat:@"%@月" ,[_data[indexPath.row][@"date"] substringWithRange:NSMakeRange(0, 1)]];
     [cell.month sizeToFit];
     cell.day.text = [_data[indexPath.row][@"date"] substringWithRange:NSMakeRange(2, 2)];

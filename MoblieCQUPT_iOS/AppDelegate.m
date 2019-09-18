@@ -225,13 +225,13 @@
     UIApplicationShortcutIcon *icon1 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeDate];
     UIApplicationShortcutIcon *icon2 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeMail];
     UIApplicationShortcutIcon *icon3 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeTime];
-    UIApplicationShortcutIcon *icon4 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeHome];
+//    UIApplicationShortcutIcon *icon4 = [UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeHome];
     
     NSMutableArray *items = [[NSMutableArray alloc] init];
     [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"course" localizedTitle:@"本周课表" localizedSubtitle:nil icon:icon1 userInfo:nil]];
     [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"news" localizedTitle:@"社区热门" localizedSubtitle:nil icon:icon2 userInfo:nil]];
     [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"exam" localizedTitle:@"考试安排" localizedSubtitle:nil icon:icon3 userInfo:nil]];
-    [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"release" localizedTitle:@"发送动态" localizedSubtitle:nil icon:icon4 userInfo:nil]];
+//    [items addObject:[[UIApplicationShortcutItem alloc] initWithType:@"release" localizedTitle:@"发送动态" localizedSubtitle:nil icon:icon4 userInfo:nil]];
     [UIApplication sharedApplication].shortcutItems = items;
 }
 

@@ -43,7 +43,6 @@
                    @{@"cell":@"关于", @"controller":@"XBSAboutViewController"},
                    @{@"cell":@"分享"},
                    @{@"cell":@"退出当前账号"}
-
                    ];
 }
 
