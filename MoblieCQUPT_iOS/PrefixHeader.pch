@@ -124,6 +124,10 @@
 //考试教室接口
 #define GRADECLASSAPI @"https://cyxbsmobile.redrock.team/api/examSchedule"
 //补考接口
+
+//校车位置
+#define SCHOOLBUSAPI @"https://cqxbsmobile.redrock.team/234/schoolbus/status"
+
 #define MAKEAPI @"https://cyxbsmobile.redrock.team/api/examReexam"
 
 /* 2019迎新接口 */

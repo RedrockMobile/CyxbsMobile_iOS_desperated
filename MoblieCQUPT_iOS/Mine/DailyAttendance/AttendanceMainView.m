@@ -170,7 +170,7 @@
 }
 -(void)touchAttendanceBtn {
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
-    hud.yOffset = -64;
+    hud.yOffset = 32;
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.labelText = @"正在签到";
     self.hud = hud;
@@ -198,13 +198,14 @@
 - (void)getCheckInInfo {
     HttpClient * client = [HttpClient defaultClient];
 
-    [client requestWithPath:@"https://cyxbsmobile.redrock.team/app/index.php/Home/Person/search" method:HttpRequestPost parameters:@{@"stuNum":[UserDefaultTool getStuNum], @"idNum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+    [client requestWithPath:YOUWEN_MY_CHECKININFO method:HttpRequestPost parameters:@{@"stunum":[UserDefaultTool getStuNum], @"idnum":[UserDefaultTool getIdNum]} prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         self.numberOfDay.text = [NSString stringWithFormat:@"%02d",[responseObject[@"data"][@"check_in_days"] intValue]];
         self.myScoreNumber.text = [NSString stringWithFormat:@"%@",responseObject[@"data"][@"integral"]];
         
         NSMutableDictionary *checkInCache = [[[NSUserDefaults standardUserDefaults] objectForKey:@"checkInInfo"] mutableCopy];
         
         if (!checkInCache) {
+            NSLog(@"%@", responseObject);
             checkInCache = [@{@"numberOfDays": responseObject[@"data"][@"check_in_days"],
                              @"integral": responseObject[@"data"][@"integral"]
                              } mutableCopy];

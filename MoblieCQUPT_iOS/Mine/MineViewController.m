@@ -54,6 +54,19 @@
     }
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
+    __block NSMutableDictionary *checkInInfo = [[[NSUserDefaults standardUserDefaults] valueForKey:@"checkInInfo"] mutableCopy];
+    NSDictionary *paras = @{
+                            @"stunum": [UserDefaultTool getStuNum],
+                            @"idnum": [UserDefaultTool getIdNum]
+                            };
+    [[HttpClient defaultClient] requestWithPath:YOUWEN_MY_CHECKININFO method:HttpRequestPost parameters:paras prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@", responseObject);
+        [checkInInfo setObject:responseObject[@"data"][@"is_check_today"] forKey:@"hasCheckedToday"];
+        [[NSUserDefaults standardUserDefaults] setObject:checkInInfo forKey:@"checkInInfo"];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
 }
 
 #pragma mark - LXAskDetailViewController delegate
