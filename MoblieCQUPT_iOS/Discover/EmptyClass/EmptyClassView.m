@@ -136,8 +136,8 @@
 //各个按钮栏
 - (UIView *)setUpWeekdayBtn:(NSArray *)array{
     UIView *btnView = [[UIView alloc] init];
-    NSString *index = [[NSString alloc]initWithFormat:@"%@",[UserDefaultTool valueWithKey:@"weekdayNum"]];
-    [_emptyClassData setObject:index forKey:@"weekdayNum"];
+    NSString *index = [[NSString alloc]initWithFormat:@"%@",[UserDefaultTool valueWithKey:@"weekDayNum"]];
+    [_emptyClassData setObject:index forKey:@"weekDayNum"];
     currentIndexInWeekday = index.intValue;
     weekdayArray = [NSMutableArray array];
     _imageForeWeekday = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ImageForeWeekday"]];
@@ -272,7 +272,7 @@
             if([weekdayArray[i] isEqual: btn]){
                 currentIndexInWeekday = i;
                 btn.selected = YES;
-                [_emptyClassData setObject:[NSString stringWithFormat:@"%d",i] forKey:@"weekdayNum"];
+                [_emptyClassData setObject:[NSString stringWithFormat:@"%d",i] forKey:@"weekDayNum"];
                 [self checkUpTheDic:_emptyClassData];
             }
         }
@@ -357,7 +357,7 @@
 
 - (void)checkUpTheDic:(NSDictionary *)dic{
 
-    if (_emptyClassData[@"week"] && _emptyClassData[@"weekdayNum"] && _emptyClassData[@"buildNum"] &&
+    if (_emptyClassData[@"week"] && _emptyClassData[@"weekDayNum"] && _emptyClassData[@"buildNum"] &&
         _emptyClassData[@"sectionNum"]) {
         [[NSNotificationCenter defaultCenter]postNotificationName:@"checkReady" object:[self changeTheDic:self.emptyClassData]];
     }
@@ -365,12 +365,12 @@
 //数据处理
 - (NSDictionary *)changeTheDic:(NSDictionary *)dic{
     NSString *week = [[NSString alloc]initWithString:dic[@"week"]];
-    NSString *weekdayNum = [[NSString alloc]initWithString:dic[@"weekdayNum"]];
+    NSString *weekDayNum = [[NSString alloc]initWithString:dic[@"weekDayNum"]];
     NSString *buildNum = [[NSString alloc]initWithString:dic[@"buildNum"]];
     NSArray *sectionNum = [[NSArray alloc] initWithArray:dic[@"sectionNum"]];
     NSMutableDictionary *newDic = [[NSMutableDictionary alloc]init];
     [newDic setObject:week forKey:@"week"];
-    [newDic setObject:[[NSString alloc] initWithFormat:@"%d",weekdayNum.intValue + 1] forKey:@"weekdayNum"];
+    [newDic setObject:[[NSString alloc] initWithFormat:@"%d",weekDayNum.intValue + 1] forKey:@"weekDayNum"];
     if ([buildNum isEqualToString:@"4"]) {
         buildNum = @"8";
     }

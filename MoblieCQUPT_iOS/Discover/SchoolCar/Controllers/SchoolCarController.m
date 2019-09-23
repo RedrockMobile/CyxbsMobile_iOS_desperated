@@ -77,7 +77,7 @@ int mark1 = 1;
 
 //得到校车数据
 - (void)getSchoolLocation{
-    NSString *str = @"https://wx.idsbllp.cn/extension/test";
+    NSString *str = @"https://cyxbsmobile.redrock.team/extension/test";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:@"Redrock" forHTTPHeaderField:@"Authorization"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

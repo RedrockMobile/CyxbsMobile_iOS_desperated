@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HttpClient.h"
-#define URL @"https://wx.idsbllp.cn/api/kebiao"
+#define URL @"https://cyxbsmobile.redrock.team/api/kebiao"
 
 @interface WYCClassAndRemindDataModel : NSObject
 

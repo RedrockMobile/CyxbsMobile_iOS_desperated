@@ -195,7 +195,7 @@
 //    NSString *stuNum = [UserDefaultTool getStuNum];
 //    NSString *idNum = [UserDefaultTool getIdNum];
 //    __weak typeof(self) weakSelf = self;
-//    [NetWork NetRequestPOSTWithRequestURL:@"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/NewArticle/searchContent"
+//    [NetWork NetRequestPOSTWithRequestURL:@"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/NewArticle/searchContent"
 //                            WithParameter:@{@"stunum":stuNum,
 //                                @"idnum":idNum,@"type":@1, @"article_id":_articleIdArray[indexPath.section],}
 //                     WithReturnValeuBlock:^(id returnValue) {

@@ -95,36 +95,36 @@
 //gege
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
 //登录
-#define LOGIN_API @"https://wx.idsbllp.cn/api/verify"
+#define LOGIN_API @"https://cyxbsmobile.redrock.team/api/verify"
 
 
 //首页图接口
-#define SPLASH_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Photo/showPicture"
-#define kebiaoAPI @"https://wx.idsbllp.cn/redapi2/api/kebiao"
-#define ADDREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/addTransaction"
-#define GETREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/getTransaction"
-#define EDITREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/editTransaction"
-#define DELETEREMINDAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Person/deleteTransaction"
-#define SEARCHPEOPLEAPI @"https://wx.idsbllp.cn/cyxbsMobile/index.php/home/searchPeople/peoplelist"
-#define PHOTOURL @"https://wx.idsbllp.cn/cyxbsMobile/Public/photo/"
-#define BASE_URL @"https://wx.idsbllp.cn"
-#define LOSTAPI @"https://wx.idsbllp.cn/laf/api"
-#define UPLOAD_IMAGE_API @"https://wx.idsbllp.cn/cyxbsMobile/index.php/home/photo/upload"
-#define SUGGESTION_API @"https://wx.idsbllp.cn/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion"
-#define GRADEAPI @"https://wx.idsbllp.cn/api/examGrade"
-#define MakeApi @"https://wx.idsbllp.cn/api/examReexam"
-#define EmptyClassApi @"https://wx.idsbllp.cn/api/roomEmpty"
-#define MYJOINTOPIC_URL @"https://wx.idsbllp.cn/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
-#define Carousel_API @"https://wx.idsbllp.cn/app/api/pictureCarousel.php"
+#define SPLASH_API @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Photo/showPicture"
+#define kebiaoAPI @"https://cyxbsmobile.redrock.team/api/kebiao"
+#define ADDREMINDAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Person/addTransaction"
+#define GETREMINDAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Person/getTransaction"
+#define EDITREMINDAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Person/editTransaction"
+#define DELETEREMINDAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Person/deleteTransaction"
+#define SEARCHPEOPLEAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/home/searchPeople/peoplelist"
+#define PHOTOURL @"https://cyxbsmobile.redrock.team/cyxbsMobile/Public/photo/"
+#define BASE_URL @"https://cyxbsmobile.redrock.team"
+#define LOSTAPI @"https://cyxbsmobile.redrock.team/laf/api"
+#define UPLOAD_IMAGE_API @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/home/photo/upload"
+#define SUGGESTION_API @"https://cyxbsmobile.redrock.team/cyxbs_api_2014/cqupthelp/index.php/admin/shop/registSuggestion"
+#define GRADEAPI @"https://cyxbsmobile.redrock.team/api/examGrade"
+#define MakeApi @"https://cyxbsmobile.redrock.team/api/examReexam"
+#define EmptyClassApi @"https://cyxbsmobile.redrock.team/234/newapi/roomEmpty"
+#define MYJOINTOPIC_URL @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Topic/myJoinedTopic"
+#define Carousel_API @"https://cyxbsmobile.redrock.team/app/api/pictureCarousel.php"
 
 //空教室接口
-#define EMPTYCLASSAPI @"https://wx.idsbllp.cn/api/roomEmpty"
+#define EMPTYCLASSAPI @"https://cyxbsmobile.redrock.team/234/newapi/roomEmpty"
 //成绩接口
-#define GRADEAPI @"https://wx.idsbllp.cn/api/examGrade"
+#define GRADEAPI @"https://cyxbsmobile.redrock.team/api/examGrade"
 //考试教室接口
-#define GRADECLASSAPI @"https://wx.idsbllp.cn/api/examSchedule"
+#define GRADECLASSAPI @"https://cyxbsmobile.redrock.team/api/examSchedule"
 //补考接口
-#define MAKEAPI @"https://wx.idsbllp.cn/api/examReexam"
+#define MAKEAPI @"https://cyxbsmobile.redrock.team/api/examReexam"
 
 /* 2019迎新接口 */
 // 学院群

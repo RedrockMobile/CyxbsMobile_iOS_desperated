@@ -302,7 +302,7 @@
                 NSString *textToShare = self.topic.keyword;
 //                UIImage *imageToShare = [UIImage captureWithView:self.tableView];
                 UIImage *imageToShare = image;
-                NSURL *urlToShare = [NSURL URLWithString:[NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id]];
+                NSURL *urlToShare = [NSURL URLWithString:[NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id]];
                 NSArray *activityItems = @[textToShare, imageToShare, urlToShare];
                 UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
 //                activityVC.excludedActivityTypes = @[UIActivityTypePostToFacebook,UIActivityTypePostToTwitter, UIActivityTypePostToWeibo,UIActivityTypeMessage,UIActivityTypeMail,UIActivityTypePrint,UIActivityTypeCopyToPasteboard,UIActivityTypeAssignToContact,UIActivityTypeSaveToCameraRoll,UIActivityTypeAddToReadingList,UIActivityTypePostToFlickr,UIActivityTypePostToVimeo,UIActivityTypePostToTencentWeibo,UIActivityTypeAirDrop,UIActivityTypeOpenInIBooks];
@@ -332,7 +332,7 @@
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.topic.keyword descr:self.topic.content thumImage:image];
     //设置网页地址
-    shareObject.webpageUrl = [NSString stringWithFormat:@"https://wx.idsbllp.cn/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id];
+    shareObject.webpageUrl = [NSString stringWithFormat:@"https://cyxbsmobile.redrock.team/cyxbsMobileTalk/react/?id=%@",self.topic.topic_id];
     
     //分享消息对象设置分享内容对象
     messageObject.shareObject = shareObject;

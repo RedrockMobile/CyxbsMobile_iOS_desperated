@@ -50,7 +50,7 @@
 -(void)addWebView{
     UIWebView * webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
     webView.backgroundColor = [UIColor whiteColor];
-    NSURL * url = [NSURL URLWithString:@"https://wx.idsbllp.cn/game/welcome2019/mobile/#/home"];
+    NSURL * url = [NSURL URLWithString:@"https://cyxbsmobile.redrock.team/game/welcome2019/mobile/#/home"];
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
 
     [webView loadRequest:request];

@@ -22,7 +22,7 @@
 #import "MBProgressHUD.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
-#define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
+#define ELECTROLYSIS_URL @"https://cyxbsmobile.redrock.team/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
 #define NOTEVIEWHIGHT 570//底边栏高度
 
 
