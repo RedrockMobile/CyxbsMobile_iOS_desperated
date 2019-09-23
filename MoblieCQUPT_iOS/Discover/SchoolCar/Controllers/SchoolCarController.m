@@ -80,7 +80,6 @@ int mark1 = 1;
 
 //得到校车数据
 - (void)getSchoolLocation{
-    NSString *str = @"https://cyxbsmobile.redrock.team/extension/test";
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager.requestSerializer setValue:@"Redrock" forHTTPHeaderField:@"Authorization"];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -97,7 +96,7 @@ int mark1 = 1;
     
     
     NSDictionary *head = @{@"Authorization": @"Redrock"};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     self.manager = manager;
     for (int i = 0; i < head.count; i++) {
         [self.manager.requestSerializer setValue:head.allValues[i]  forHTTPHeaderField:head.allKeys[i]];
