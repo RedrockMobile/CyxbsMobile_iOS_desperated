@@ -80,6 +80,11 @@ int mark1 = 1;
 
 //得到校车数据
 - (void)getSchoolLocation{
+    NSString *str = @"https://cyxbsmobile.redrock.team/extension/test";
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:@"Redrock" forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    
     //参数
     NSDate *datenow = [NSDate date];
     NSString *timeSp = [NSString stringWithFormat:@"%ld", (long)([datenow timeIntervalSince1970]*1000)];

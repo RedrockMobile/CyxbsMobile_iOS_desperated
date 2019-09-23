@@ -26,7 +26,7 @@
     [self.view addSubview:_indicatorView];
     [_indicatorView startAnimating];
     
-    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://wx.idsbllp.cn/aboutus/"]]];
+    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://cyxbsmobile.redrock.team/aboutus/"]]];
     
     _webView.scalesPageToFit = YES;
 }

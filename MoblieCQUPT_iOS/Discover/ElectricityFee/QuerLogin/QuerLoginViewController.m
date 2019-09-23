@@ -22,7 +22,7 @@
 #import "MBProgressHUD.h"
 
 #define font(R) (R)*([UIScreen mainScreen].bounds.size.width)/375.0
-#define ELECTROLYSIS_URL @"https://wx.idsbllp.cn/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
+#define ELECTROLYSIS_URL @"https://cyxbsmobile.redrock.team/MagicLoop/index.php?s=/addon/ElectricityQuery/ElectricityQuery/queryElecByRoom"
 #define NOTEVIEWHIGHT 570//底边栏高度
 
 
@@ -166,9 +166,9 @@ CHANGE_CGRectMake(CGFloat x, CGFloat y,CGFloat width,CGFloat height){
     qnv.year =[NSString stringWithFormat:@"%ld",(long)[compoent year]];
     qnv.nian = @"年";
     [self.view addSubview:qnv];
-
     QuerInfo*qif = [[QuerInfo alloc]init];
-    qif.AveragELecStr = [NSString stringWithFormat:@"%ld",elec/day];
+    qif.AveragELecStr = [NSString stringWithFormat:@"%.2lf",(CGFloat)elec/day];
+//    NSLog(@"elec is %ld,day is %ld",elec,day);
     qif.FreeElecStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_free"]];
     qif.ElcStarStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_start"]];
     qif.ElcEndStr = [NSString stringWithFormat:@"%@",dataDic[@"elec_end"]];
