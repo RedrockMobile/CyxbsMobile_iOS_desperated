@@ -103,8 +103,14 @@
                 _titleLabel.attributedText = attrString;
             }
             else if (i == 4){
-                NSString *temp = [[NSString alloc] initWithFormat:@"%@小时后消失", [self countHour: self.dataDic[array[i]]]];
-                labelArray[i].text = temp;
+                NSInteger timeLeft = [[self countHour: self.dataDic[array[i]]] integerValue];
+                if (timeLeft <= 24) {
+                    NSString *temp = [[NSString alloc] initWithFormat:@"%ld小时后消失", timeLeft];
+                    labelArray[i].text = temp;
+                } else {
+                    NSString *temp = [[NSString alloc] initWithFormat:@"%ld天后消失", timeLeft / 24];
+                    labelArray[i].text = temp;
+                }
             }
             else{
                 labelArray[i].text = self.dataDic[array[i]];
