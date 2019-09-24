@@ -111,13 +111,13 @@
             NSMutableDictionary *dataDic = _dataDic.mutableCopy;
             NSArray *dataArry = [NSArray array];
             dataArry = _dataDic[@"sectionNum"];
-            dataDic[@"sectionNum"] = dataArry[0];
+            dataDic[@"sectionNum"] = [NSString stringWithFormat:@"%d", [dataArry[0] intValue] + 1];
             [[HttpClient defaultClient] requestWithPath:EMPTYCLASSAPI method:HttpRequestPost parameters:dataDic prepareExecute:nil progress:^(NSProgress *progress) {
 
             } success:^(NSURLSessionDataTask *task, id responseObject) {
 
-                _FinalData = [self handleData:responseObject[@"data"]];
-                [self setUpDataView:_FinalData];
+                self->_FinalData = [self handleData:responseObject[@"data"]];
+                [self setUpDataView:self->_FinalData];
             } failure:^(NSURLSessionDataTask *task, NSError *error) {
                   [[NSNotificationCenter defaultCenter]postNotificationName:@"data" object:nil];
             }];
@@ -129,19 +129,21 @@
     NSArray *dataArry = [NSArray array];
     _sameArray = [NSArray array];
     dataArry = dic[@"sectionNum"];
+    __block int j = 0;                          // 别问，问就是历史遗留
     for (int i = 0; i < dataArry.count; i ++) {
         NSMutableDictionary *dataDic = dic.mutableCopy;
-        dataDic[@"sectionNum"] = dataArry[i];
+        dataDic[@"sectionNum"] = [NSString stringWithFormat:@"%d", [dataArry[i] intValue] + 1];
         [NetWork NetRequestPOSTWithRequestURL:EMPTYCLASSAPI WithParameter:dataDic WithReturnValeuBlock:^(id returnValue) {
             [self settingSameArray:returnValue[@"data"]];
-            if (i == dataArry.count - 1) {
-                _FinalData = [self handleData:_sameArray];
-                [self setUpDataView:_FinalData];
+            if (j == dataArry.count - 1) {
+                self->_FinalData = [self handleData:self->_sameArray];
+                [self setUpDataView:self->_FinalData];
             }
+            j++;
+            NSLog(@"%@", self.sameArray);
         } WithFailureBlock:^{
 
         }];
-
     }
 }
 -(void)settingSameArray:(NSArray *)sameArray{
@@ -186,7 +188,7 @@
 #pragma marks 数据处理
 - (UIView *)dataView:(NSArray *)arry With:(NSString *)key{
     UIView *dataView = [[UIView alloc]init];
-    NSArray *floorArry = @[@"一楼",@"二楼",@"三楼",@"四楼",@"五楼"];
+    NSArray *floorArry = @[@"一楼",@"二楼",@"三楼",@"四楼",@"五楼", @"六楼"];
     NSArray *eightFloorArry = @[@"一栋",@"二栋",@"三栋",@"四东",@"五栋"];
     UIImageView *besidesView = [[UIImageView alloc]initWithFrame:CGRectMake(31, 31 * SCREEN_WIDTH / 375, 2, 13)];
     besidesView.image = [UIImage imageNamed:@"ImageBesidesTheEmptyClass"];
@@ -239,7 +241,7 @@
 
 - (NSDictionary *)handleData:(NSArray *)array {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    NSArray *array1 = @[@"1",@"2",@"3",@"4",@"5"];
+    NSArray *array1 = @[@"1",@"2",@"3",@"4",@"5", @"6"];
     for (int i = 0; i < array1.count; i ++) {
         NSMutableArray *newArray = [NSMutableArray array];
         for (int j = 0; j < array.count; j++) {

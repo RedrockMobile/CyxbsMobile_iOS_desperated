@@ -216,6 +216,9 @@
 //问题详情
 #define YOUWEN_QUESTION_DETAIL_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getDetailedInfo"
 
+//问题回答列表
+#define YOUWEN_QUESTION_ANSWERLIST @"https://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getAnswerlist"
+
 //忽略问题
 #define YOUWEN_IGNORE_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/ignore"
 

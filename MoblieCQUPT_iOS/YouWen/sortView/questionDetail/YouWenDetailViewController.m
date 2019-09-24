@@ -351,7 +351,7 @@
                                  @"idNum":[UserDefaultTool getIdNum],
                                  @"question_id":self.question_id
                                  };
-    
+    NSLog(@"%@", parameters);
 
     [manager POST:YOUWEN_QUESTION_DETAIL_API parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
         if (responseObject) {
@@ -360,26 +360,39 @@
             
             self.answerModelArr = [NSMutableArray array];
             
-            for (NSDictionary *dic in responseObject[@"data"][@"answers"]) {
-                YouWenAnswerDetailModel *model = [[YouWenAnswerDetailModel alloc] initWithDic:dic];
-                [self.answerModelArr addObject:model];
-                if ([model.is_adopted isEqualToString:@"1"]) {
-                    self.isAdopted = @"1";
+            NSDictionary *answerListParameters = @{
+                @"stuNum":[UserDefaultTool getStuNum],
+                @"idNum":[UserDefaultTool getIdNum],
+                @"question_id":self.question_id,
+                @"page": @"1",
+                @"size": @"100"
+            };
+            
+            [manager POST:YOUWEN_QUESTION_ANSWERLIST parameters:answerListParameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
+                for (NSDictionary *dic in responseObject[@"data"]) {
+                    YouWenAnswerDetailModel *model = [[YouWenAnswerDetailModel alloc] initWithDic:dic];
+                    [self.answerModelArr addObject:model];
+                    if ([model.is_adopted isEqualToString:@"1"]) {
+                        self.isAdopted = @"1";
+                    }
                 }
-            }
+                
+                if (self.answerModelArr.count == 0) {
+                    UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+                    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
+                    label.text = @"快来成为第一个帮助者吧～";
+                    label.textAlignment = NSTextAlignmentCenter;
+                    label.font = [UIFont systemFontOfSize:14.0];
+                    label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
+                    [footerView addSubview:label];
+                    self.tableView.tableFooterView = footerView;
+                }
+                
+                [self.view addSubview:self.tableView];
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                
+            }];
             
-            if (self.answerModelArr.count == 0) {
-                UIView *footerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
-                UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
-                label.text = @"快来成为第一个帮助者吧～";
-                label.textAlignment = NSTextAlignmentCenter;
-                label.font = [UIFont systemFontOfSize:14.0];
-                label.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:0.8];
-                [footerView addSubview:label];
-                self.tableView.tableFooterView = footerView;
-            }
-            
-            [self.view addSubview:self.tableView];
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error);

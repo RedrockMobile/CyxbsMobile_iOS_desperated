@@ -28,6 +28,17 @@ typedef NS_ENUM(NSInteger,LZLoginState){
 
 @implementation LoginViewController
 
+// iOS 13更新以后modal视图变成了卡片式视图，导致登陆界面可能被跳过。
+// 因此在这里将登陆界面的视图样式改为“FullScreen”
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.modalPresentationStyle = UIModalPresentationFullScreen;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.whiteView.layer.cornerRadius = 3;

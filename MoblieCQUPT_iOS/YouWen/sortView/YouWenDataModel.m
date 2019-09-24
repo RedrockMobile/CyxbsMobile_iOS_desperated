@@ -20,9 +20,10 @@
  */
 - (instancetype)initWithStyle:(NSString *)style{
     if (self = [super init]) {
+        // 不要问我为什么这里的size是100，之前没有做上拉加载，只有尽量大地写了。。。
         _YWPostDic = @{
-                       @"page":@"0",
-                       @"size":@"6",
+                       @"page":@"1",
+                       @"size":@"100",
                        @"kind":style,
                        @"stunum":[UserDefaultTool getStuNum],
                        @"idnum":[UserDefaultTool getIdNum]
