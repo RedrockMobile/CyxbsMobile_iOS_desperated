@@ -107,7 +107,7 @@
         NSDateFormatter *dateFormate = [[NSDateFormatter alloc]init];
         dateFormate.dateFormat = @"HH:mm";
         NSDate *beginDate = [dateFormate dateFromString:beginTime];
-        NSDate *finishDate = [NSDate dateWithTimeInterval:10800 sinceDate:beginDate];
+        NSDate *finishDate = [NSDate dateWithTimeInterval:9300 sinceDate:beginDate];
         finishTime = [dateFormate stringFromDate:finishDate];
     }else{
         finishTime = timeArray[begin_lesson.integerValue + period.integerValue - 2];
