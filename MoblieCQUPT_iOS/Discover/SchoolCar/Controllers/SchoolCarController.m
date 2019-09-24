@@ -97,7 +97,7 @@ int mark1 = 1;
     
     
     NSDictionary *head = @{@"Authorization": @"Redrock"};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     self.manager = manager;
     for (int i = 0; i < head.count; i++) {
         [self.manager.requestSerializer setValue:head.allValues[i]  forHTTPHeaderField:head.allKeys[i]];
