@@ -194,8 +194,8 @@
             make.height.mas_equalTo(@(76/667.0*[UIScreen mainScreen].bounds.size.height));
             make.bottom.mas_equalTo(self.mas_bottom);
         }];
-        self.bottomView.avatarImageView.clipsToBounds = YES;
-        self.bottomView.avatarImageView.layer.cornerRadius = self.bottomView.avatarImageView.frame.size.width/2.0;
+//        self.bottomView.avatarImageView.clipsToBounds = YES;
+//        self.bottomView.avatarImageView.layer.cornerRadius = self.bottomView.avatarImageView.frame.size.width/2.0;
 //        [self mas_makeConstraints:^(MASConstraintMaker *make) {
 //            make.bottom.mas_equalTo(self.bottomView.mas_bottom);
 //        }];

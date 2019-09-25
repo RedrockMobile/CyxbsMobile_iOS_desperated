@@ -242,18 +242,19 @@
     self.headView = [[YouWenDetailHeadView alloc] initWithNumOfPic:(int)num];
     self.headView.titleLabel.text = self.detailQuestionModel.title;
     self.headView.descriptionLabel.text = self.detailQuestionModel.descriptionStr;
-    self.headView.bottomView.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailQuestionModel.avatar]]];
+//    self.headView.bottomView.avatarImageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.detailQuestionModel.avatar]]];
     self.headView.bottomView.nicknameLabel.text = self.detailQuestionModel.nickName;
     self.headView.bottomView.timeLabel.text = self.detailQuestionModel.disappearTime;
     self.headView.bottomView.rewardImageView.image = [UIImage imageNamed:@"积分按钮"];
     self.headView.bottomView.rewardLabel.text = [NSString stringWithFormat:@"%d积分", [self.detailQuestionModel.reward intValue]];
+    self.headView.bottomView.avatarImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@"touxiang"]];
     if ([self.detailQuestionModel.gender isEqualToString:@"女"] ) {
         self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"女"];
     } else {
         self.headView.bottomView.genderImageview.image = [UIImage imageNamed:@"男"];
     }
-    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@""]];
+//    [self.headView.bottomView.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.detailQuestionModel.avatar] placeholderImage:[UIImage imageNamed:@""]];
 
     NSArray *picArr = [NSArray arrayWithObjects:self.headView.imageview1, self.headView.imageview2, self.headView.imageview3, self.headView.imageview4, nil];
     for (int i = 0; i < num; i++) {
