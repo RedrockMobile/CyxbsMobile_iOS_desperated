@@ -210,11 +210,11 @@
 - (NSString *)countHour:(NSString *)string{
     NSDate *nowDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+//    [formatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *deadDate = [formatter dateFromString:string];
     NSTimeInterval time = [deadDate timeIntervalSinceDate:nowDate];
-    NSInteger hour = time / 360;
+    NSInteger hour = time / 3600;
     return [NSString  stringWithFormat:@"%ld", hour];
 }
 @end
