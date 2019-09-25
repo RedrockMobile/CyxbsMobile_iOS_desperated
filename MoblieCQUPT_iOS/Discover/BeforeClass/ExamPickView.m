@@ -10,7 +10,7 @@
 #define xgColor [UIColor colorWithRed:109/255.0 green:131/255.0 blue:238/255.0 alpha:1]
 #define xgBuleColor [UIColor colorWithRed:237/255.0 green:246/255.0 blue:253/255.0 alpha:1]
 @interface ExamPickView ()<UIPickerViewDelegate, UIPickerViewDataSource>
-@property (strong, nonatomic)UIImageView *quitImage;
+@property (strong, nonatomic)UIButton*quitBtn;
 @property (strong, nonatomic)UIButton *confirmBtn;
 @property (strong, nonatomic)UIPickerView *singlePicker;
 @property (strong, nonatomic)NSString *result;
@@ -34,13 +34,12 @@
     sliderView.backgroundColor = [UIColor colorWithRed:189/255.0  green:189/255.0 blue:189/255.0 alpha:0.5];
     [_topView addSubview:sliderView];
     //退出
-    _quitImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 15, 15, 14)];
-    _quitImage.image = [UIImage imageNamed:@"quitBtn"];
-    UITapGestureRecognizer *quitGesture = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cancel)];
-    _quitImage.userInteractionEnabled = YES;
-    [_quitImage addGestureRecognizer:quitGesture];
-    [_topView addSubview:_quitImage];
-    
+    _quitBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+       _quitBtn.frame = CGRectMake(10, 10, 30, 30);
+       [_quitBtn setImage:[UIImage imageNamed:@"cancel.png"] forState:UIControlStateNormal];
+       [_quitBtn addTarget:self action:@selector(quit) forControlEvents:UIControlEventTouchUpInside];
+       _quitBtn.userInteractionEnabled = YES;
+       [_topView addSubview:_quitBtn];
     
     _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _confirmBtn.frame = CGRectMake(SCREEN_WIDTH - 50, 5, 34, 19);
