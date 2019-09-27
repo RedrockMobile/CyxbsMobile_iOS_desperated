@@ -250,6 +250,8 @@
 		D0785608233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0785601233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib */; };
 		D0785609233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785602233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m */; };
 		D078560A233E34880028B2F4 /* WYCClassmateScheduleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785603233E34880028B2F4 /* WYCClassmateScheduleDetailView.m */; };
+		D078561B233E8A980028B2F4 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785616233E8A980028B2F4 /* NewsViewController.m */; };
+		D078561C233E8A980028B2F4 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785619233E8A980028B2F4 /* NewsModel.m */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
 		E404FE84230FEDE80091141C /* welcomeNewWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE83230FEDE80091141C /* welcomeNewWebController.m */; };
 		E404FF7923117AD50091141C /* tabbar_freshman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7823117AD50091141C /* tabbar_freshman@2x.png */; };
@@ -1186,6 +1188,10 @@
 		D0785602233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleShowDetailView.m; sourceTree = "<group>"; };
 		D0785603233E34880028B2F4 /* WYCClassmateScheduleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleDetailView.m; sourceTree = "<group>"; };
 		D0785604233E34880028B2F4 /* WYCClassmateScheduleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassmateScheduleView.h; sourceTree = "<group>"; };
+		D0785616233E8A980028B2F4 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		D0785617233E8A980028B2F4 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		D0785619233E8A980028B2F4 /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
+		D078561A233E8A980028B2F4 /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -2632,6 +2638,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		D0785614233E8A980028B2F4 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				D0785615233E8A980028B2F4 /* Controller */,
+				D0785618233E8A980028B2F4 /* Model */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		D0785615233E8A980028B2F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D0785616233E8A980028B2F4 /* NewsViewController.m */,
+				D0785617233E8A980028B2F4 /* NewsViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D0785618233E8A980028B2F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0785619233E8A980028B2F4 /* NewsModel.m */,
+				D078561A233E8A980028B2F4 /* NewsModel.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		E404FF7C2312795C0091141C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3526,6 +3559,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				D0785614233E8A980028B2F4 /* News */,
 				1A40266A233DDC26003E7B50 /* ClassmateClasses */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				82398BB721A4289500300C91 /* EditTools */,
@@ -5141,6 +5175,7 @@
 				E46FCEE8230FCF90001FECE8 /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */,
 				F26D969F1F3C400F0063B024 /* MBCommunity_ViewModel.m in Sources */,
 				825186E220C071850022B5D3 /* commitSuccessFrameView.m in Sources */,
+				D078561B233E8A980028B2F4 /* NewsViewController.m in Sources */,
 				E41AD264222BF55000360C56 /* BeforeClassViewController.m in Sources */,
 				F26D96991F3C400F0063B024 /* MBInputView.m in Sources */,
 				E470CA2C2228055C0029501A /* LZPersonSelectTableViewCell.m in Sources */,
@@ -5324,6 +5359,7 @@
 				E48DB549223E36CF00B9D744 /* WYCClassBookView.m in Sources */,
 				6E7C985E204182EE000BAA16 /* YouWenSortViewController.m in Sources */,
 				E46FCF0E230FCF90001FECE8 /* FSPageContentView.m in Sources */,
+				D078561C233E8A980028B2F4 /* NewsModel.m in Sources */,
 				F26D96661F3C400F0063B024 /* DetailBannnerView.m in Sources */,
 				E46FCE59230C3D5C001FECE8 /* FMNecessityTableViewCell.m in Sources */,
 				F2A92CEF1F52E8F900B4CEEF /* UIImage+Color.m in Sources */,
