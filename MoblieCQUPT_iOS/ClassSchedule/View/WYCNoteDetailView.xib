@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,14 +31,14 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="课程名称" translatesAutoresizingMaskIntoConstraints="NO" id="WHk-Yu-JN6">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classname" translatesAutoresizingMaskIntoConstraints="NO" id="WHk-Yu-JN6">
                     <rect key="frame" x="52" y="40" width="14" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="DTm-nc-Cwq"/>
                         <constraint firstAttribute="width" constant="14" id="hNW-eb-Cic"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="教师姓名" translatesAutoresizingMaskIntoConstraints="NO" id="Iaq-mw-sJd">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teacher" translatesAutoresizingMaskIntoConstraints="NO" id="Iaq-mw-sJd">
                     <rect key="frame" x="52" y="171" width="14" height="14"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="14" id="EPb-0X-329"/>
@@ -92,7 +92,7 @@
         </view>
     </objects>
     <resources>
-        <image name="教师姓名" width="14" height="14"/>
-        <image name="课程名称" width="12" height="14"/>
+        <image name="classname" width="12" height="14"/>
+        <image name="teacher" width="14" height="14.5"/>
     </resources>
 </document>
