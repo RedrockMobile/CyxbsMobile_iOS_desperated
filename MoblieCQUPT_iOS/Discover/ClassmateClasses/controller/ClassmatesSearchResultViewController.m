@@ -8,6 +8,8 @@
 
 #import "ClassmatesSearchResultViewController.h"
 #import "ClassmatesSearchResultCell.h"
+#import "ClassmateItem.h"
+#import "WYCClassmateScheduleViewController.h"
 
 @interface ClassmatesSearchResultViewController ()
 
@@ -55,4 +57,12 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ClassmateItem *item = self.classmatesList.classmatesArray[indexPath.row];
+    NSString *classmateNum = item.stuNum;
+    WYCClassmateScheduleViewController *vc = [[WYCClassmateScheduleViewController alloc]initWithClassmateNum:classmateNum];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    
+}
 @end

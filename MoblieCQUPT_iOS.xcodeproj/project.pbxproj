@@ -244,6 +244,12 @@
 		CE43344F1BE7C52D000C407D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE43344E1BE7C52D000C407D /* MainInterface.storyboard */; };
 		CE4334521BE7C52D000C407D /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CE4334441BE7C52D000C407D /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		CEA85C9F1B9FECA500CD30EB /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA85C9E1B9FECA500CD30EB /* AssetsLibrary.framework */; };
+		D0785605233E34880028B2F4 /* WYCClassmateScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D07855F8233E34880028B2F4 /* WYCClassmateScheduleViewController.m */; };
+		D0785606233E34880028B2F4 /* WYCClassmateScheduleDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D07855FC233E34880028B2F4 /* WYCClassmateScheduleDataModel.m */; };
+		D0785607233E34880028B2F4 /* WYCClassmateScheduleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785600233E34880028B2F4 /* WYCClassmateScheduleView.m */; };
+		D0785608233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0785601233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib */; };
+		D0785609233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785602233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m */; };
+		D078560A233E34880028B2F4 /* WYCClassmateScheduleDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0785603233E34880028B2F4 /* WYCClassmateScheduleDetailView.m */; };
 		E27A8D591C906B840010EBC8 /* libxml2.2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E2594C621C9058EF00E612FE /* libxml2.2.tbd */; };
 		E404FE84230FEDE80091141C /* welcomeNewWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404FE83230FEDE80091141C /* welcomeNewWebController.m */; };
 		E404FF7923117AD50091141C /* tabbar_freshman@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404FF7823117AD50091141C /* tabbar_freshman@2x.png */; };
@@ -1169,6 +1175,17 @@
 		CEF61B2A1B82BC950014B980 /* 掌上重邮.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "掌上重邮.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEF61B481B82BC950014B980 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CEF61B491B82BC950014B980 /* MoblieCQUPT_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoblieCQUPT_iOSTests.m; sourceTree = "<group>"; };
+		D07855F8233E34880028B2F4 /* WYCClassmateScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleViewController.m; sourceTree = "<group>"; };
+		D07855F9233E34880028B2F4 /* WYCClassmateScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassmateScheduleViewController.h; sourceTree = "<group>"; };
+		D07855FB233E34880028B2F4 /* WYCClassmateScheduleDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassmateScheduleDataModel.h; sourceTree = "<group>"; };
+		D07855FC233E34880028B2F4 /* WYCClassmateScheduleDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleDataModel.m; sourceTree = "<group>"; };
+		D07855FE233E34880028B2F4 /* WYCClassmateScheduleDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassmateScheduleDetailView.h; sourceTree = "<group>"; };
+		D07855FF233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassmateScheduleShowDetailView.h; sourceTree = "<group>"; };
+		D0785600233E34880028B2F4 /* WYCClassmateScheduleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleView.m; sourceTree = "<group>"; };
+		D0785601233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYCClassmateScheduleDetailView.xib; sourceTree = "<group>"; };
+		D0785602233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleShowDetailView.m; sourceTree = "<group>"; };
+		D0785603233E34880028B2F4 /* WYCClassmateScheduleDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYCClassmateScheduleDetailView.m; sourceTree = "<group>"; };
+		D0785604233E34880028B2F4 /* WYCClassmateScheduleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYCClassmateScheduleView.h; sourceTree = "<group>"; };
 		D9F548C41B9CA83F006F5EFF /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DF9F3927536C5F686AFC86EF /* libPods-MoblieCQUPT_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoblieCQUPT_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2594C621C9058EF00E612FE /* libxml2.2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.2.tbd; path = usr/lib/libxml2.2.tbd; sourceTree = SDKROOT; };
@@ -2572,6 +2589,48 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D07855F6233E34880028B2F4 /* ClassmateSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				D07855F7233E34880028B2F4 /* Controller */,
+				D07855FA233E34880028B2F4 /* Model */,
+				D07855FD233E34880028B2F4 /* View */,
+			);
+			path = ClassmateSchedule;
+			sourceTree = "<group>";
+		};
+		D07855F7233E34880028B2F4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D07855F8233E34880028B2F4 /* WYCClassmateScheduleViewController.m */,
+				D07855F9233E34880028B2F4 /* WYCClassmateScheduleViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		D07855FA233E34880028B2F4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D07855FB233E34880028B2F4 /* WYCClassmateScheduleDataModel.h */,
+				D07855FC233E34880028B2F4 /* WYCClassmateScheduleDataModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D07855FD233E34880028B2F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D07855FE233E34880028B2F4 /* WYCClassmateScheduleDetailView.h */,
+				D07855FF233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.h */,
+				D0785600233E34880028B2F4 /* WYCClassmateScheduleView.m */,
+				D0785601233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib */,
+				D0785602233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m */,
+				D0785603233E34880028B2F4 /* WYCClassmateScheduleDetailView.m */,
+				D0785604233E34880028B2F4 /* WYCClassmateScheduleView.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		E404FF7C2312795C0091141C /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -3466,6 +3525,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				D07855F6233E34880028B2F4 /* ClassmateSchedule */,
 				1A40266A233DDC26003E7B50 /* ClassmateClasses */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				82398BB721A4289500300C91 /* EditTools */,
@@ -4642,6 +4702,7 @@
 				E46FCF08230FCF90001FECE8 /* itemBackGroundImageV2.0.png in Resources */,
 				F242DE761EBCB2BC005AC411 /* remind1@3x.png in Resources */,
 				E41B1E062313BB7C00CCFC09 /* 地点坐标.png in Resources */,
+				D0785608233E34880028B2F4 /* WYCClassmateScheduleDetailView.xib in Resources */,
 				F242DE611EBCB2BC005AC411 /* AddRemindViewController.xib in Resources */,
 				6E3AB63620AD76A3003A65F5 /* AnswerDetailTableHeaderView.xib in Resources */,
 				E41B1E2A2313BB7C00CCFC09 /* 展开后@3x.png in Resources */,
@@ -5057,6 +5118,7 @@
 				E46FCE56230C3D5C001FECE8 /* DLNecessityModel.m in Sources */,
 				1A5A202B2307FFD000D6D329 /* FYHAcademyGroupController.m in Sources */,
 				6E67F0E920C9570500F72C08 /* AboutMeMainViewController.m in Sources */,
+				D0785609233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
 				E41AD25D222BF13D00360C56 /* ExamGradeViewController.m in Sources */,
@@ -5221,6 +5283,7 @@
 				6E3AB63920AD76A3003A65F5 /* AnswerDetailTableViewCell.m in Sources */,
 				F242DF7F1EBCB2BC005AC411 /* ORWRequestCache.m in Sources */,
 				F242DE5C1EBCB2BC005AC411 /* DetailRemindTableViewCell.m in Sources */,
+				D0785605233E34880028B2F4 /* WYCClassmateScheduleViewController.m in Sources */,
 				82398BC521A4289500300C91 /* SYCPictureDisplayView.m in Sources */,
 				6E0F69242030299200BB5EF3 /* ReportViewController.m in Sources */,
 				F26D966F1F3C400F0063B024 /* MBCommunityHandle.m in Sources */,
@@ -5244,6 +5307,7 @@
 				E41B1E392313BB7C00CCFC09 /* QueryViewController.m in Sources */,
 				F242DE641EBCB2BC005AC411 /* DetailPageController.m in Sources */,
 				E480E56C2306D80200F69199 /* SchoolAdressView.m in Sources */,
+				D0785606233E34880028B2F4 /* WYCClassmateScheduleDataModel.m in Sources */,
 				6E3AB63820AD76A3003A65F5 /* AnswerDetailViewController.m in Sources */,
 				F242DF001EBCB2BC005AC411 /* ExamScheduleTableViewCell.m in Sources */,
 				E48DB548223E36CF00B9D744 /* WYCShowDetailView.m in Sources */,
@@ -5321,12 +5385,14 @@
 				6E175E531F5FCFD400C0BE60 /* ExamSegementView.m in Sources */,
 				F26D966B1F3C400F0063B024 /* TopicBtn.m in Sources */,
 				F26D96651F3C400F0063B024 /* BannerScrollView.m in Sources */,
+				D078560A233E34880028B2F4 /* WYCClassmateScheduleDetailView.m in Sources */,
 				F242DEFB1EBCB2BC005AC411 /* AboutMeTableViewCell.m in Sources */,
 				82398BCC21A4289500300C91 /* LZCarouselModel.m in Sources */,
 				6E3213FA20D5426400E55145 /* UIViewController+BackButtonHandler.m in Sources */,
 				F26D96971F3C400F0063B024 /* MBBrowserItem.m in Sources */,
 				1A5A20332307FFD000D6D329 /* OnlineActivitiesCell.m in Sources */,
 				F26D96931F3C400F0063B024 /* MBTextView.m in Sources */,
+				D0785607233E34880028B2F4 /* WYCClassmateScheduleView.m in Sources */,
 				6E175E501F5E82EC00C0BE60 /* ExamTotalViewController.m in Sources */,
 				E41B1E042313BB7C00CCFC09 /* HeaderGifRefresh.m in Sources */,
 				F26D96951F3C400F0063B024 /* MBAddImageView.m in Sources */,
