@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A402671233DDC8D003E7B50 /* ClassmateSearchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A402670233DDC8D003E7B50 /* ClassmateSearchView.m */; };
+		1A402676233DE2E3003E7B50 /* ClassmateSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A402675233DE2E3003E7B50 /* ClassmateSearchViewController.m */; };
+		1A40267C233DE747003E7B50 /* ClassmateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A40267B233DE747003E7B50 /* ClassmateItem.m */; };
+		1A40267F233DE9B3003E7B50 /* ClassmatesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A40267E233DE9B3003E7B50 /* ClassmatesList.m */; };
+		1A402682233DEED6003E7B50 /* ClassmatesSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A402681233DEED6003E7B50 /* ClassmatesSearchResultViewController.m */; };
+		1A402685233DEF11003E7B50 /* ClassmatesSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A402684233DEF11003E7B50 /* ClassmatesSearchResultCell.m */; };
+		1A402689233E04E1003E7B50 /* ClassmatesClasses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A402688233E04E1003E7B50 /* ClassmatesClasses.xcassets */; };
 		1A5A20242307FFD000D6D329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5A1FEB2307FFCF00D6D329 /* Assets.xcassets */; };
 		1A5A20252307FFD000D6D329 /* WelComeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5A1FEE2307FFCF00D6D329 /* WelComeView.m */; };
 		1A5A20262307FFD000D6D329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5A1FF02307FFCF00D6D329 /* Assets.xcassets */; };
@@ -814,6 +821,20 @@
 
 /* Begin PBXFileReference section */
 		0D1D1EE8AA6A8688FE31B723 /* Pods-MoblieCQUPT_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoblieCQUPT_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoblieCQUPT_iOS/Pods-MoblieCQUPT_iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		1A40266F233DDC8D003E7B50 /* ClassmateSearchView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmateSearchView.h; sourceTree = "<group>"; };
+		1A402670233DDC8D003E7B50 /* ClassmateSearchView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmateSearchView.m; sourceTree = "<group>"; };
+		1A402673233DE115003E7B50 /* ClassmateSearchViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmateSearchViewDelegate.h; sourceTree = "<group>"; };
+		1A402674233DE2E3003E7B50 /* ClassmateSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmateSearchViewController.h; sourceTree = "<group>"; };
+		1A402675233DE2E3003E7B50 /* ClassmateSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmateSearchViewController.m; sourceTree = "<group>"; };
+		1A40267A233DE747003E7B50 /* ClassmateItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmateItem.h; sourceTree = "<group>"; };
+		1A40267B233DE747003E7B50 /* ClassmateItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmateItem.m; sourceTree = "<group>"; };
+		1A40267D233DE9B3003E7B50 /* ClassmatesList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmatesList.h; sourceTree = "<group>"; };
+		1A40267E233DE9B3003E7B50 /* ClassmatesList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmatesList.m; sourceTree = "<group>"; };
+		1A402680233DEED6003E7B50 /* ClassmatesSearchResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmatesSearchResultViewController.h; sourceTree = "<group>"; };
+		1A402681233DEED6003E7B50 /* ClassmatesSearchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmatesSearchResultViewController.m; sourceTree = "<group>"; };
+		1A402683233DEF11003E7B50 /* ClassmatesSearchResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmatesSearchResultCell.h; sourceTree = "<group>"; };
+		1A402684233DEF11003E7B50 /* ClassmatesSearchResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmatesSearchResultCell.m; sourceTree = "<group>"; };
+		1A402688233E04E1003E7B50 /* ClassmatesClasses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ClassmatesClasses.xcassets; sourceTree = "<group>"; };
 		1A5A1FEB2307FFCF00D6D329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A5A1FED2307FFCF00D6D329 /* WelComeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelComeView.h; sourceTree = "<group>"; };
 		1A5A1FEE2307FFCF00D6D329 /* WelComeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelComeView.m; sourceTree = "<group>"; };
@@ -1969,6 +1990,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A40266A233DDC26003E7B50 /* ClassmateClasses */ = {
+			isa = PBXGroup;
+			children = (
+				1A402672233DE0E0003E7B50 /* protocol */,
+				1A40266E233DDC5D003E7B50 /* model */,
+				1A40266D233DDC53003E7B50 /* view */,
+				1A40266B233DDC2D003E7B50 /* controller */,
+				1A402688233E04E1003E7B50 /* ClassmatesClasses.xcassets */,
+			);
+			path = ClassmateClasses;
+			sourceTree = "<group>";
+		};
+		1A40266B233DDC2D003E7B50 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A402674233DE2E3003E7B50 /* ClassmateSearchViewController.h */,
+				1A402675233DE2E3003E7B50 /* ClassmateSearchViewController.m */,
+				1A402680233DEED6003E7B50 /* ClassmatesSearchResultViewController.h */,
+				1A402681233DEED6003E7B50 /* ClassmatesSearchResultViewController.m */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		1A40266D233DDC53003E7B50 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				1A40266F233DDC8D003E7B50 /* ClassmateSearchView.h */,
+				1A402670233DDC8D003E7B50 /* ClassmateSearchView.m */,
+				1A402683233DEF11003E7B50 /* ClassmatesSearchResultCell.h */,
+				1A402684233DEF11003E7B50 /* ClassmatesSearchResultCell.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		1A40266E233DDC5D003E7B50 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				1A40267A233DE747003E7B50 /* ClassmateItem.h */,
+				1A40267B233DE747003E7B50 /* ClassmateItem.m */,
+				1A40267D233DE9B3003E7B50 /* ClassmatesList.h */,
+				1A40267E233DE9B3003E7B50 /* ClassmatesList.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		1A402672233DE0E0003E7B50 /* protocol */ = {
+			isa = PBXGroup;
+			children = (
+				1A402673233DE115003E7B50 /* ClassmateSearchViewDelegate.h */,
+			);
+			path = protocol;
+			sourceTree = "<group>";
+		};
 		1A5A1FEA2307FFCF00D6D329 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
@@ -3392,6 +3466,7 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				1A40266A233DDC26003E7B50 /* ClassmateClasses */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				82398BB721A4289500300C91 /* EditTools */,
 				E46119FE2316B8BC00CFA56D /* SchoolCar */,
@@ -4780,6 +4855,7 @@
 				E4611A442316B8BC00CFA56D /* 开场背景@3x.png in Resources */,
 				F242DE861EBCB2BC005AC411 /* 周数@2x.png in Resources */,
 				F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */,
+				1A402689233E04E1003E7B50 /* ClassmatesClasses.xcassets in Resources */,
 				E4611A512316B8BC00CFA56D /* 定位弹窗@3x.png in Resources */,
 				E41B1E262313BB7C00CCFC09 /* login_icon.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
@@ -5054,6 +5130,7 @@
 				F26D965B1F3C400F0063B024 /* MBCommentCell.m in Sources */,
 				E46FCE5D230D3C74001FECE8 /* SYCAddReminderViewController.m in Sources */,
 				F2C862CC1F4EFDB0005C887E /* LoginEntry.m in Sources */,
+				1A402671233DDC8D003E7B50 /* ClassmateSearchView.m in Sources */,
 				E46FCF04230FCF90001FECE8 /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */,
 				1A5A202E2307FFD000D6D329 /* FYHSearchResult.m in Sources */,
 				F26D969D1F3C400F0063B024 /* MBSegmentedView.m in Sources */,
@@ -5063,6 +5140,7 @@
 				F242DE601EBCB2BC005AC411 /* AddRemindViewController.m in Sources */,
 				F26D966C1F3C400F0063B024 /* TopicSearchCollectionViewCell.m in Sources */,
 				F26D96961F3C400F0063B024 /* MBAddPhotoContainerView.m in Sources */,
+				1A40267C233DE747003E7B50 /* ClassmateItem.m in Sources */,
 				F242DE6D1EBCB2BC005AC411 /* WeekChooseViewController.m in Sources */,
 				E46FCEF4230FCF90001FECE8 /* DGActivityIndicatorLineScaleAnimation.m in Sources */,
 				E41B1F142313DCB900CCFC09 /* InstallRoomViewController.m in Sources */,
@@ -5091,6 +5169,7 @@
 				E41B1F022313DCB900CCFC09 /* QuerPullTableViewCell.m in Sources */,
 				F26D969C1F3C400F0063B024 /* MBReplyView.m in Sources */,
 				6E5C09FD205EA5D800A73F64 /* YouWenSubjectView.m in Sources */,
+				1A402682233DEED6003E7B50 /* ClassmatesSearchResultViewController.m in Sources */,
 				E480E56A2306D80200F69199 /* RecommendedRouteView.m in Sources */,
 				F242DF7E1EBCB2BC005AC411 /* NetWork.m in Sources */,
 				E41B1EFC2313DCB900CCFC09 /* QuerLoginModel.m in Sources */,
@@ -5148,6 +5227,7 @@
 				E46FCEFD230FCF90001FECE8 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */,
 				F242DEBF1EBCB2BC005AC411 /* TimeChooseScrollView.m in Sources */,
 				E4611A742316B8BD00CFA56D /* SchoolCarRemindViewController.m in Sources */,
+				1A402676233DE2E3003E7B50 /* ClassmateSearchViewController.m in Sources */,
 				6E3AB64520AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.m in Sources */,
 				6E0F6927203038B400BB5EF3 /* ReportSortButton.m in Sources */,
 				E41B1E032313BB7C00CCFC09 /* AESCipher.m in Sources */,
@@ -5197,7 +5277,9 @@
 				F2A92CE41F52E8BE00B4CEEF /* BaseTableViewController.m in Sources */,
 				F26D96691F3C400F0063B024 /* ImageWithLabels.m in Sources */,
 				F26D96621F3C400F0063B024 /* TopicViewController.m in Sources */,
+				1A402685233DEF11003E7B50 /* ClassmatesSearchResultCell.m in Sources */,
 				E480E55D2306D80200F69199 /* CampusScenery.m in Sources */,
+				1A40267F233DE9B3003E7B50 /* ClassmatesList.m in Sources */,
 				F242DEB91EBCB2BC005AC411 /* DayLabel.m in Sources */,
 				1A5A20382307FFD000D6D329 /* StartStepsCell.m in Sources */,
 				E41B1E412313BB7C00CCFC09 /* YearChooseBar.m in Sources */,
