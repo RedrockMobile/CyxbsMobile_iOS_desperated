@@ -37,7 +37,7 @@
     }
 }
 - (void)getClassBookArrayFromNet:(NSString *)stu_Num{
-    self.classDataLoadFinish = nil;
+    self.classDataLoadFinish = NO;
     self.weekArray = [[NSMutableArray alloc]init];
     
     NSDictionary *parameters = @{@"stu_num":stu_Num};

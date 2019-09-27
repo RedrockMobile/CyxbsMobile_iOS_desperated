@@ -47,6 +47,7 @@ static SYCCustomLayoutModel *newInstance = nil;
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"志愿时长" ImageName:@"志愿时长圆" ClassName:@"QueryLoginViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"重邮地图" ImageName:@"重邮地图" ClassName:@"MapViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"校车定位" ImageName:@"校车定位" ClassName:@"SchoolCarController"]];
+        [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"同学课表" ImageName:@"同学课表" ClassName:@"ClassmateSearchViewController"]];
         
         self.unuseTools = [NSMutableArray array];
         
