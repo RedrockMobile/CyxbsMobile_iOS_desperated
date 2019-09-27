@@ -188,7 +188,7 @@
     CGRect keyboardFrame = [[[notification userInfo] objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGRect oldFrame = self.view.frame;
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-        self.view.frame = CGRectMake(oldFrame.origin.x, oldFrame.origin.y - keyboardFrame.size.height + 60, oldFrame.size.width, oldFrame.size.height);
+        self.view.frame = CGRectMake(oldFrame.origin.x, 0 - keyboardFrame.size.height + 60, oldFrame.size.width, oldFrame.size.height);
     } completion:nil];
 }
 

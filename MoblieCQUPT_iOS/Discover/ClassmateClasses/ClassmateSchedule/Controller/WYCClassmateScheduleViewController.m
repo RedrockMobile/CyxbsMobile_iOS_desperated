@@ -50,7 +50,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 -(instancetype)initWithClassmateNum:(NSString *)classmateNum{
     self = [super init];
@@ -216,7 +216,7 @@
 - (void)initScrollView{
     //[self.rootView layoutIfNeeded];
     self.scrollView = [[UIScrollView alloc]init];
-    [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT-NVGBARHEIGHT)];
+    [self.scrollView setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT-HEADERHEIGHT)];
     _scrollView.contentSize = CGSizeMake(self.dateModel.dateArray.count * _scrollView.frame.size.width, 0);
     _scrollView.pagingEnabled = YES;
     _scrollView.delegate = self;
