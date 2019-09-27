@@ -2748,8 +2748,8 @@
 				E41B1DEB2313BB7B00CCFC09 /* QueryViewController.h */,
 				E41B1DEC2313BB7B00CCFC09 /* QueryLoginViewController.h */,
 				E41B1DED2313BB7B00CCFC09 /* QueryViewController.m */,
-				E41B1DEE2313BB7B00CCFC09 /* cell */,
 				E41B1DF52313BB7B00CCFC09 /* QueryLoginViewController.m */,
+				E41B1DEE2313BB7B00CCFC09 /* cell */,
 			);
 			path = controller;
 			sourceTree = "<group>";
