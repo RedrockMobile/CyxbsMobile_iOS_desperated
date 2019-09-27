@@ -130,6 +130,13 @@
 
 #define MAKEAPI @"https://cyxbsmobile.redrock.team/api/examReexam"
 
+//教务新闻列表
+#define NEWSLIST @"https://cyxbsmobile.redrock.team/234/newapi/jwNews/list"
+//教务新闻详情
+#define NEWSDETAIL @"https://cyxbsmobile.redrock.team/234/newapi/jwNews/content"
+//教务新闻附件
+#define NEWSFILE @"https://cyxbsmobile.redrock.team/234/newapi/jwNews/file"
+
 /* 2019迎新接口 */
 // 学院群
 #define ACADEMYGROUPAPI @"https://cyxbsmobile.redrock.team/zscy/zsqy/json/7"
@@ -202,104 +209,104 @@
  */
 
 //全部问题列表
-#define YOUWEN_ALL_QUESTIONS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getQuestionList"
+#define YOUWEN_ALL_QUESTIONS_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Question/getQuestionList"
 
 //添加新问题
-#define YOUWEN_ADD_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/add"
+#define YOUWEN_ADD_QUESTION_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Question/add"
 
 //问题图片上传
-#define YOUWEN_UPLOAD_PIC_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/uploadPicture"
+#define YOUWEN_UPLOAD_PIC_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Question/uploadPicture"
 
 //取消提问
-#define YOUWEN_CANCEL_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/cancelQuestion"
+#define YOUWEN_CANCEL_QUESTION_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Question/cancelQuestion"
 
 //问题详情
-#define YOUWEN_QUESTION_DETAIL_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/getDetailedInfo"
+#define YOUWEN_QUESTION_DETAIL_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Question/getDetailedInfo"
 
 //问题回答列表
-#define YOUWEN_QUESTION_ANSWERLIST @"https://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getAnswerlist"
+#define YOUWEN_QUESTION_ANSWERLIST @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/getAnswerlist"
 
 //忽略问题
-#define YOUWEN_IGNORE_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Question/ignore"
+#define YOUWEN_IGNORE_QUESTION_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Question/ignore"
 
 /*
  回答部分
  */
 
 //回答问题
-#define YOUWEN_ANSWER_QUESTION_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
+#define YOUWEN_ANSWER_QUESTION_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/add"
 
 //某个问题下的回答列表
-#define YOUWEN_QUESTION_ANSWER_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/add"
+#define YOUWEN_QUESTION_ANSWER_LIST_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/add"
 
 //采纳答案
-#define YOUWEN_ADOPT_ANSWER_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/adopt"
+#define YOUWEN_ADOPT_ANSWER_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/adopt"
 
 //赞接口
-#define YOUWEN_ADD_LIKE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/praise"
+#define YOUWEN_ADD_LIKE_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/praise"
 
 //取消赞接口
-#define YOUWEN_CANCEL_LIKE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/cancelPraise"
+#define YOUWEN_CANCEL_LIKE_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/cancelPraise"
 
 //某个回答下的评论列表
-#define YOUWEN_QUESTION_DISUCESS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/getRemarkList"
+#define YOUWEN_QUESTION_DISUCESS_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/getRemarkList"
 
 //在回答下添加评论
-#define YOUWEN_ADD_DISCUSS_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Answer/remark"
+#define YOUWEN_ADD_DISCUSS_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Answer/remark"
 
 /*
  积分部分
  */
 
 //积分商城列表
-#define YOUWEN_STORE_ITEMS_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/getItemList"
+#define YOUWEN_STORE_ITEMS_LIST_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Integral/getItemList"
 
 //添加积分商城物品
-#define YOUWEN_STORE_ADD_ITEM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Integral/getItemList"
+#define YOUWEN_STORE_ADD_ITEM_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Integral/getItemList"
 
 //积分使用记录
-#define YOUWEN_CREDIT_USE_RECORD_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/integralRecord"
+#define YOUWEN_CREDIT_USE_RECORD_LIST_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/integralRecord"
 
 /*
  个人部分
  */
 
 //帮一帮
-#define YOUWEN_MY_HELP_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/help"
+#define YOUWEN_MY_HELP_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/help"
 
 //问一问
-#define YOUWEN_MY_ASK_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/ask"
+#define YOUWEN_MY_ASK_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/ask"
 
 //草稿箱列表
-#define YOUWEN_DARAFTBOX_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/getDraftList"
+#define YOUWEN_DARAFTBOX_LIST_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/getDraftList"
 
 //草稿箱删除
-#define YOUWEN_DARAFTBOX_DELETE_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/addItemInDraft"
+#define YOUWEN_DARAFTBOX_DELETE_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/addItemInDraft"
 
 //增加草稿箱内容
-#define YOUWEN_DARAFTBOX_ADD_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/addItemInDraft"
+#define YOUWEN_DARAFTBOX_ADD_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/addItemInDraft"
 
 //修改草稿箱内容
-#define YOUWEN_DARAFTBOX_MODIFY_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/updateItemInDraft"
+#define YOUWEN_DARAFTBOX_MODIFY_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/updateItemInDraft"
 
 //关于我的信息
-#define YOUWEN_MY_INFO_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/aboutMe"
+#define YOUWEN_MY_INFO_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/aboutMe"
 
 //签到信息
-#define YOUWEN_MY_CHECKININFO @"http://hongyan.cqupt.edu.cn/app/index.php/QA/User/getScoreStatus"
+#define YOUWEN_MY_CHECKININFO @"https://cyxbsmobile.redrock.team/app/index.php/QA/User/getScoreStatus"
 
 /*
  举报部分
  */
 
 //举报列表
-#define YOUWEN_INFORM_LIST_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/reportList"
+#define YOUWEN_INFORM_LIST_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Feedback/reportList"
 
 //增加举报
-#define YOUWEN_ADD_INFORM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/addReport"
+#define YOUWEN_ADD_INFORM_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Feedback/addReport"
 
 //删除举报
-#define YOUWEN_DELETE_INFORM_API @"http://hongyan.cqupt.edu.cn/app/index.php/QA/Feedback/addReport"
+#define YOUWEN_DELETE_INFORM_API @"https://cyxbsmobile.redrock.team/app/index.php/QA/Feedback/addReport"
 
 /*
  其他
