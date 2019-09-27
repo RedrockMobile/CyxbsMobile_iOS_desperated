@@ -2010,6 +2010,7 @@
 		1A40266A233DDC26003E7B50 /* ClassmateClasses */ = {
 			isa = PBXGroup;
 			children = (
+				D07855F6233E34880028B2F4 /* ClassmateSchedule */,
 				1A402672233DE0E0003E7B50 /* protocol */,
 				1A40266E233DDC5D003E7B50 /* model */,
 				1A40266D233DDC53003E7B50 /* view */,
@@ -3525,7 +3526,6 @@
 		F242DA6B1EBCB2BB005AC411 /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				D07855F6233E34880028B2F4 /* ClassmateSchedule */,
 				1A40266A233DDC26003E7B50 /* ClassmateClasses */,
 				E41AD25E222BF55000360C56 /* BeforeClass */,
 				82398BB721A4289500300C91 /* EditTools */,
