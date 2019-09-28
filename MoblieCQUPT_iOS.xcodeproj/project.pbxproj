@@ -42,7 +42,7 @@
 		1AB1B53B231FEEFC003631B1 /* LQQAttendanceMindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B535231FEEFB003631B1 /* LQQAttendanceMindView.m */; };
 		1AB1B53C231FEEFC003631B1 /* AttendanceMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */; };
 		1AC71857233F328B000A28FA /* 教务新闻.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71855233F328A000A28FA /* 教务新闻.png */; };
-		1AC71858233F328B000A28FA /* 同学课表.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71856233F328B000A28FA /* 同学课表.png */; };
+		1AC7185A233F3E01000A28FA /* 同学课表.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71859233F3E01000A28FA /* 同学课表.png */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -895,7 +895,7 @@
 		1AB1B538231FEEFC003631B1 /* LQQAttendanceMindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQAttendanceMindView.h; sourceTree = "<group>"; };
 		1AB1B539231FEEFC003631B1 /* LQQDailyAttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQDailyAttendanceViewController.h; sourceTree = "<group>"; };
 		1AC71855233F328A000A28FA /* 教务新闻.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "教务新闻.png"; sourceTree = "<group>"; };
-		1AC71856233F328B000A28FA /* 同学课表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "同学课表.png"; path = "../../../../../../Desktop/同学课表.png"; sourceTree = "<group>"; };
+		1AC71859233F3E01000A28FA /* 同学课表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同学课表.png"; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -4110,7 +4110,7 @@
 				82398BD421A42AFD00300C91 /* 重邮地图.png */,
 				E41B2014231500AB00CCFC09 /* 校车定位.png */,
 				1AC71855233F328A000A28FA /* 教务新闻.png */,
-				1AC71856233F328B000A28FA /* 同学课表.png */,
+				1AC71859233F3E01000A28FA /* 同学课表.png */,
 				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
 				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
 				4A3A08391FCD990900A50393 /* Address@2x.png */,
@@ -4644,7 +4644,6 @@
 				4A3A07DE1FCC0EC700A50393 /* iconfont-shop1.png in Resources */,
 				F200271E1F405B8500360991 /* remind_image_title@2x.png in Resources */,
 				E41B1E162313BB7C00CCFC09 /* 1@2x.png in Resources */,
-				1AC71858233F328B000A28FA /* 同学课表.png in Resources */,
 				E41B1E2B2313BB7C00CCFC09 /* login_password@2x.png in Resources */,
 				E4611A592316B8BD00CFA56D /* back_item@3x.png in Resources */,
 				F242DEA91EBCB2BC005AC411 /* 编辑箭头@3x.png in Resources */,
@@ -4726,6 +4725,7 @@
 				F242DE8B1EBCB2BC005AC411 /* 多课0@3x.png in Resources */,
 				F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */,
 				E41B1E2F2313BB7C00CCFC09 /* 志愿时长@2x.png in Resources */,
+				1AC7185A233F3E01000A28FA /* 同学课表.png in Resources */,
 				F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */,
 				F26D96AD1F3C45540063B024 /* login_image_account@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
