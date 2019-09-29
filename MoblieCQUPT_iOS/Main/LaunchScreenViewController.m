@@ -50,18 +50,30 @@
         splashView.image = image;
         splashView.frame = splashView.bounds;
         UIButton *skipBtn = [[UIButton alloc]init];
+        skipBtn.clipsToBounds = YES;
+        skipBtn.layer.cornerRadius = 15;
+        skipBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
         [splashView addSubview:skipBtn];
-        [skipBtn setTitle:@"跳过" forState:UIControlStateNormal];
+        [skipBtn setTitle:@"跳过 2" forState:UIControlStateNormal];
+        skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
+        [skipBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@30);
+            make.width.equalTo(@60.5);
             make.right.equalTo(splashView).offset(-20);
-            make.top.equalTo(splashView).offset(20);
+            make.bottom.equalTo(splashView).offset(-40);
         }];
         [skipBtn addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
-        
         [self.view addSubview:launchScreen];
         [self.view.window bringSubviewToFront:launchScreen];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.view.window.rootViewController = self.mainVC;
+        });
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [skipBtn setTitle:@"跳过 1" forState:UIControlStateNormal];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [skipBtn setTitle:@"跳过 0" forState:UIControlStateNormal];
+            });
         });
 //        [UIView animateWithDuration:3 animations:^{
 //            splashView.transform = CGAffineTransformMakeScale(1.2,1.2);
