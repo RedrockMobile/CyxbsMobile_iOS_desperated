@@ -43,6 +43,7 @@
 		1AB1B53C231FEEFC003631B1 /* AttendanceMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */; };
 		1AC71857233F328B000A28FA /* 教务新闻.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71855233F328A000A28FA /* 教务新闻.png */; };
 		1AC7185A233F3E01000A28FA /* 同学课表.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71859233F3E01000A28FA /* 同学课表.png */; };
+		1AC7186F234246EC000A28FA /* 掌邮闪屏页.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -896,6 +897,7 @@
 		1AB1B539231FEEFC003631B1 /* LQQDailyAttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQDailyAttendanceViewController.h; sourceTree = "<group>"; };
 		1AC71855233F328A000A28FA /* 教务新闻.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "教务新闻.png"; sourceTree = "<group>"; };
 		1AC71859233F3E01000A28FA /* 同学课表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同学课表.png"; sourceTree = "<group>"; };
+		1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "掌邮闪屏页.png"; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -3818,6 +3820,7 @@
 		F242DC331EBCB2BB005AC411 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */,
 				E404FF7823117AD50091141C /* tabbar_freshman@2x.png */,
 				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
 				F242DC351EBCB2BB005AC411 /* MainViewController.m */,
@@ -4958,6 +4961,7 @@
 				E41B1E262313BB7C00CCFC09 /* login_icon.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
 				4A3A07E41FCC0EC700A50393 /* lost_image_describe@2x.png in Resources */,
+				1AC7186F234246EC000A28FA /* 掌邮闪屏页.png in Resources */,
 				1AC71857233F328B000A28FA /* 教务新闻.png in Resources */,
 				4A3A07F31FCC0EC700A50393 /* lost_image_many@3x.png in Resources */,
 				82D685641F6AC381004A5C7D /* extend@2x.png in Resources */,
