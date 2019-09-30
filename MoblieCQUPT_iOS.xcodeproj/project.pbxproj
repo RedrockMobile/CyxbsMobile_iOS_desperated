@@ -13,7 +13,6 @@
 		1A40267F233DE9B3003E7B50 /* ClassmatesList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A40267E233DE9B3003E7B50 /* ClassmatesList.m */; };
 		1A402682233DEED6003E7B50 /* ClassmatesSearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A402681233DEED6003E7B50 /* ClassmatesSearchResultViewController.m */; };
 		1A402685233DEF11003E7B50 /* ClassmatesSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A402684233DEF11003E7B50 /* ClassmatesSearchResultCell.m */; };
-		1A402689233E04E1003E7B50 /* ClassmatesClasses.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A402688233E04E1003E7B50 /* ClassmatesClasses.xcassets */; };
 		1A5A20242307FFD000D6D329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5A1FEB2307FFCF00D6D329 /* Assets.xcassets */; };
 		1A5A20252307FFD000D6D329 /* WelComeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A5A1FEE2307FFCF00D6D329 /* WelComeView.m */; };
 		1A5A20262307FFD000D6D329 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5A1FF02307FFCF00D6D329 /* Assets.xcassets */; };
@@ -42,6 +41,9 @@
 		1AB1B53A231FEEFC003631B1 /* LQQDailyAttendanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B534231FEEFB003631B1 /* LQQDailyAttendanceViewController.m */; };
 		1AB1B53B231FEEFC003631B1 /* LQQAttendanceMindView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B535231FEEFB003631B1 /* LQQAttendanceMindView.m */; };
 		1AB1B53C231FEEFC003631B1 /* AttendanceMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */; };
+		1AC71857233F328B000A28FA /* 教务新闻.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71855233F328A000A28FA /* 教务新闻.png */; };
+		1AC7185A233F3E01000A28FA /* 同学课表.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71859233F3E01000A28FA /* 同学课表.png */; };
+		1AC7186F234246EC000A28FA /* 掌邮闪屏页.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -842,7 +844,6 @@
 		1A402681233DEED6003E7B50 /* ClassmatesSearchResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmatesSearchResultViewController.m; sourceTree = "<group>"; };
 		1A402683233DEF11003E7B50 /* ClassmatesSearchResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClassmatesSearchResultCell.h; sourceTree = "<group>"; };
 		1A402684233DEF11003E7B50 /* ClassmatesSearchResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassmatesSearchResultCell.m; sourceTree = "<group>"; };
-		1A402688233E04E1003E7B50 /* ClassmatesClasses.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ClassmatesClasses.xcassets; sourceTree = "<group>"; };
 		1A5A1FEB2307FFCF00D6D329 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A5A1FED2307FFCF00D6D329 /* WelComeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelComeView.h; sourceTree = "<group>"; };
 		1A5A1FEE2307FFCF00D6D329 /* WelComeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelComeView.m; sourceTree = "<group>"; };
@@ -894,6 +895,9 @@
 		1AB1B537231FEEFC003631B1 /* AttendanceMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceMainView.m; sourceTree = "<group>"; };
 		1AB1B538231FEEFC003631B1 /* LQQAttendanceMindView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQAttendanceMindView.h; sourceTree = "<group>"; };
 		1AB1B539231FEEFC003631B1 /* LQQDailyAttendanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LQQDailyAttendanceViewController.h; sourceTree = "<group>"; };
+		1AC71855233F328A000A28FA /* 教务新闻.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "教务新闻.png"; sourceTree = "<group>"; };
+		1AC71859233F3E01000A28FA /* 同学课表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同学课表.png"; sourceTree = "<group>"; };
+		1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "掌邮闪屏页.png"; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -2021,7 +2025,6 @@
 				1A40266E233DDC5D003E7B50 /* model */,
 				1A40266D233DDC53003E7B50 /* view */,
 				1A40266B233DDC2D003E7B50 /* controller */,
-				1A402688233E04E1003E7B50 /* ClassmatesClasses.xcassets */,
 			);
 			path = ClassmateClasses;
 			sourceTree = "<group>";
@@ -3817,6 +3820,7 @@
 		F242DC331EBCB2BB005AC411 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */,
 				E404FF7823117AD50091141C /* tabbar_freshman@2x.png */,
 				F242DC341EBCB2BB005AC411 /* MainViewController.h */,
 				F242DC351EBCB2BB005AC411 /* MainViewController.m */,
@@ -4108,6 +4112,8 @@
 				82398BD321A42AFD00300C91 /* 志愿时长圆.png */,
 				82398BD421A42AFD00300C91 /* 重邮地图.png */,
 				E41B2014231500AB00CCFC09 /* 校车定位.png */,
+				1AC71855233F328A000A28FA /* 教务新闻.png */,
+				1AC71859233F3E01000A28FA /* 同学课表.png */,
 				4A3A084C1FCDAF8D00A50393 /* send-comment@2x.png */,
 				4A3A084D1FCDAF8D00A50393 /* send-comment@3x.png */,
 				4A3A08391FCD990900A50393 /* Address@2x.png */,
@@ -4722,6 +4728,7 @@
 				F242DE8B1EBCB2BC005AC411 /* 多课0@3x.png in Resources */,
 				F27A93421F4ABC32009860C3 /* remind_image_edit@3x.png in Resources */,
 				E41B1E2F2313BB7C00CCFC09 /* 志愿时长@2x.png in Resources */,
+				1AC7185A233F3E01000A28FA /* 同学课表.png in Resources */,
 				F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */,
 				F26D96AD1F3C45540063B024 /* login_image_account@2x.png in Resources */,
 				4A3A084E1FCDAF8D00A50393 /* send-comment@2x.png in Resources */,
@@ -4950,11 +4957,12 @@
 				E4611A442316B8BC00CFA56D /* 开场背景@3x.png in Resources */,
 				F242DE861EBCB2BC005AC411 /* 周数@2x.png in Resources */,
 				F26D96B01F3C45540063B024 /* login_image_password@2x.png in Resources */,
-				1A402689233E04E1003E7B50 /* ClassmatesClasses.xcassets in Resources */,
 				E4611A512316B8BC00CFA56D /* 定位弹窗@3x.png in Resources */,
 				E41B1E262313BB7C00CCFC09 /* login_icon.png in Resources */,
 				F242DEAE1EBCB2BC005AC411 /* 选择@2x.png in Resources */,
 				4A3A07E41FCC0EC700A50393 /* lost_image_describe@2x.png in Resources */,
+				1AC7186F234246EC000A28FA /* 掌邮闪屏页.png in Resources */,
+				1AC71857233F328B000A28FA /* 教务新闻.png in Resources */,
 				4A3A07F31FCC0EC700A50393 /* lost_image_many@3x.png in Resources */,
 				82D685641F6AC381004A5C7D /* extend@2x.png in Resources */,
 				4A3A07DC1FCC0EC700A50393 /* find_image_shake@2x.png in Resources */,

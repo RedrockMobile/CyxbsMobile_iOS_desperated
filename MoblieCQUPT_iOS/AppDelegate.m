@@ -75,7 +75,7 @@
     NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
     NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
     SplashModel *model = [[SplashModel alloc]initWithDic:data];
-    if ([NSData dataWithContentsOfFile:imageFilePath] && [NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
+    if ([NSData dataWithContentsOfFile:imageFilePath]/* && [NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday*/) {
         LaunchScreenViewController *launchScreenVC = [[LaunchScreenViewController alloc]initWithSplashModel:model];
         self.window.rootViewController = launchScreenVC;
     }
@@ -101,15 +101,31 @@
     } progress:^(NSProgress *progress) {
         
     } success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSDictionary *cacheDatadict = [NSDictionary dictionaryWithContentsOfFile:dataPath];
         for (NSDictionary *dic in responseObject[@"data"]) {
             SplashModel *model = [[SplashModel alloc]initWithDic:dic];
-            if ([NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
-                dispatch_async(dispatch_get_global_queue(0, 0), ^{
-                    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.photo_src]] scale:1];
-                    [UIImagePNGRepresentation(image) writeToFile:imageFilePath atomically:YES];
-                    [dic writeToFile:dataPath atomically:YES];
-                });
-                return;
+            // 如果后端返回了有效图片URL，则加载图片
+            if (dic[@"photo_src"] && [dic[@"photo_src"] hasPrefix:@"http"]) {
+                // 如果图像更新了，或者本地没有缓存图片，则更新本地图片
+                NSLog(@"%@", cacheDatadict[@"photo_src"]);
+                if (![cacheDatadict[@"photo_src"] isEqualToString:dic[@"photo_src"]] || !cacheDatadict) {
+                    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                        UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:model.photo_src]] scale:1];
+                        [UIImagePNGRepresentation(image) writeToFile:imageFilePath atomically:YES];
+                        [dic writeToFile:dataPath atomically:YES];
+                    });
+                    return;
+                } else {        // 没有更新图片则return
+                    return;
+                }
+            } else {            // 如果没有返回有效URL，则不展示图片，删除本地图片。
+                // 如果本地存在图片，则删除
+                NSError *error;
+                if ([[NSFileManager defaultManager] fileExistsAtPath:imageFilePath]) {
+                    [[NSFileManager defaultManager] removeItemAtPath:imageFilePath error:&error];
+                } else {        // 如果本地没有缓存图片，则return
+                    return;
+                }
             }
         }
         NSError *error1,*error2;
