@@ -99,7 +99,7 @@
 
 
 //首页图接口
-#define SPLASH_API @"https://getman.cn/mock/splash"
+#define SPLASH_API @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Photo/showPicture"
 #define kebiaoAPI @"https://cyxbsmobile.redrock.team/api/kebiao"
 #define ADDREMINDAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Person/addTransaction"
 #define GETREMINDAPI @"https://cyxbsmobile.redrock.team/cyxbsMobile/index.php/Home/Person/getTransaction"
