@@ -75,7 +75,7 @@
     NSString *dataPath = [path stringByAppendingPathComponent:@"splash.plist"];
     NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];
     SplashModel *model = [[SplashModel alloc]initWithDic:data];
-    if ([NSData dataWithContentsOfFile:imageFilePath]/* && [NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday*/) {
+    if ([NSData dataWithContentsOfFile:imageFilePath] && [NSDate dateWithString:model.start format:@"YYYY-MM-dd HH:mm:ss"].isToday) {
         LaunchScreenViewController *launchScreenVC = [[LaunchScreenViewController alloc]initWithSplashModel:model];
         self.window.rootViewController = launchScreenVC;
     }
@@ -109,8 +109,6 @@
                     [UIImagePNGRepresentation(image) writeToFile:imageFilePath atomically:YES];
                     [dic writeToFile:dataPath atomically:YES];
                 });
-                return;
-            } else {
                 return;
             }
         }

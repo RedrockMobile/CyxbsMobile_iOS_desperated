@@ -49,20 +49,94 @@
         splashView.contentMode = UIViewContentModeScaleAspectFill;
         splashView.image = image;
         splashView.frame = splashView.bounds;
-        UIButton *skipBtn = [[UIButton alloc]init];
+        
+        UIView *bottomView = [[UIView alloc] init];
+        bottomView.backgroundColor = [UIColor whiteColor];
+        [splashView addSubview:bottomView];
+
+        [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.width.bottom.equalTo(splashView);
+            make.height.equalTo(@87);
+        }];
+        
+        UIButton *skipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         skipBtn.clipsToBounds = YES;
         skipBtn.layer.cornerRadius = 15;
-        skipBtn.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-        [splashView addSubview:skipBtn];
-        [skipBtn setTitle:@"跳过 2" forState:UIControlStateNormal];
-        skipBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-        [skipBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.height.equalTo(@30);
-            make.width.equalTo(@60.5);
-            make.right.equalTo(splashView).offset(-20);
-            make.bottom.equalTo(splashView).offset(-40);
-        }];
+        skipBtn.backgroundColor = [UIColor whiteColor];
+        skipBtn.layer.borderWidth = 1;
+        skipBtn.layer.borderColor = [UIColor colorWithRed:221/255.0 green:211/255.0 blue:221/255.0 alpha:1].CGColor;
+        [bottomView addSubview:skipBtn];
+        
+        UILabel *skipLabel = [[UILabel alloc] init];
+        skipLabel.text = @"跳过";
+        [skipBtn addSubview:skipLabel];
+        skipLabel.font = [UIFont systemFontOfSize:14];
+        skipLabel.textColor = [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1];
+        
+        UILabel *timeLabel = [[UILabel alloc] init];
+        timeLabel.text = @"3";
+        [skipBtn addSubview:timeLabel];
+        timeLabel.font = [UIFont systemFontOfSize:14];
+        timeLabel.textColor = [UIColor colorWithRed:117/255.0 green:144/255.0 blue:249/255.0 alpha:1];
+        
+        UIImageView *logoImageView = [[UIImageView alloc] init];
+        logoImageView.image = [UIImage imageNamed:@"掌邮闪屏页"];
+        [bottomView addSubview:logoImageView];
+        
+        if (IS_IPHONEX) {
+            [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@57);
+                make.width.equalTo(@114);
+                make.right.equalTo(splashView).offset(-18);
+                make.bottom.equalTo(splashView).offset(-20);
+            }];
+            skipBtn.clipsToBounds = YES;
+            skipBtn.layer.cornerRadius = 28.5;
+            
+            [skipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(skipBtn).offset(27);
+                make.centerY.equalTo(skipBtn);
+            }];
+            
+            [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(skipLabel.mas_right).offset(9);
+                make.centerY.equalTo(skipBtn);
+            }];
+            
+            [logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(bottomView);
+                make.bottom.equalTo(bottomView).offset(-40);
+                make.width.equalTo(@123);
+                make.height.equalTo(@37);
+            }];
+        } else {
+            [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@38);
+                make.width.equalTo(@76);
+                make.right.equalTo(splashView).offset(-12);
+                make.bottom.equalTo(splashView).offset(-13);
+            }];
+            skipBtn.clipsToBounds = YES;
+            skipBtn.layer.cornerRadius = 19;
+            
+            [skipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(skipBtn).offset(18);
+                make.centerY.equalTo(skipBtn);
+            }];
+            
+            [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(skipLabel.mas_right).offset(6);
+                make.centerY.equalTo(skipBtn);
+            }];
+            
+            [logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.centerX.equalTo(bottomView);
+                make.bottom.equalTo(bottomView).offset(-27);
+                make.width.equalTo(@123);
+                make.height.equalTo(@37);
+            }];
+        }
+        
         [skipBtn addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:launchScreen];
         [self.view.window bringSubviewToFront:launchScreen];
@@ -70,9 +144,9 @@
             self.view.window.rootViewController = self.mainVC;
         });
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [skipBtn setTitle:@"跳过 1" forState:UIControlStateNormal];
+            timeLabel.text = @"2";
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [skipBtn setTitle:@"跳过 0" forState:UIControlStateNormal];
+                    timeLabel.text = @"1";
             });
         });
 //        [UIView animateWithDuration:3 animations:^{
@@ -90,10 +164,10 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if (![self.model.target_url isEqualToString:@""]) {
-        self.view.window.rootViewController = self.mainVC;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"touchSplash" object:self.model.target_url];
-    }
+//    if (![self.model.target_url isEqualToString:@""]) {
+//        self.view.window.rootViewController = self.mainVC;
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"touchSplash" object:self.model.target_url];
+//    }
 }
 /*
 #pragma mark - Navigation
