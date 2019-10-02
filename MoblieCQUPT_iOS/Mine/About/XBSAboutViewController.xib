@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,17 +17,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CopyRight@2015-2017 All Rights Reserved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mkS-7h-n5t">
-                    <rect key="frame" x="18" y="699" width="378" height="17"/>
+                    <rect key="frame" x="18" y="859" width="378" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="version v3.5.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="noA-jV-5d1">
-                    <rect key="frame" x="18" y="279.66666666666669" width="378" height="20"/>
+                    <rect key="frame" x="18" y="349.5" width="378" height="20"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="95" id="cid-qX-70q"/>
                     </constraints>
@@ -44,7 +41,7 @@
                     </variation>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="appIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="MYp-eg-MXO">
-                    <rect key="frame" x="147" y="80" width="120" height="120"/>
+                    <rect key="frame" x="147" y="150" width="120" height="120"/>
                     <color key="tintColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="MYp-eg-MXO" secondAttribute="height" multiplier="1:1" id="Wcy-v0-Ing"/>
@@ -52,7 +49,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="掌上重邮" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qj2-jC-mua">
-                    <rect key="frame" x="18" y="230" width="378" height="19.666666666666657"/>
+                    <rect key="frame" x="18" y="300" width="378" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -65,14 +62,16 @@
                 <constraint firstAttribute="bottom" secondItem="mkS-7h-n5t" secondAttribute="bottom" constant="20" id="DBc-9C-iD5"/>
                 <constraint firstItem="qj2-jC-mua" firstAttribute="top" secondItem="MYp-eg-MXO" secondAttribute="bottom" constant="30" id="FGr-hi-riv"/>
                 <constraint firstItem="qj2-jC-mua" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="REG-bs-P1U"/>
-                <constraint firstItem="MYp-eg-MXO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="80" id="RVq-D8-dAn"/>
+                <constraint firstItem="MYp-eg-MXO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="150" id="RVq-D8-dAn">
+                    <variation key="widthClass=compact" constant="150"/>
+                </constraint>
                 <constraint firstItem="MYp-eg-MXO" firstAttribute="centerX" secondItem="qj2-jC-mua" secondAttribute="centerX" id="chz-dc-IHQ"/>
                 <constraint firstItem="noA-jV-5d1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="18" id="nHR-iu-ail"/>
                 <constraint firstAttribute="trailing" secondItem="qj2-jC-mua" secondAttribute="trailing" constant="18" id="nJe-nS-r8c"/>
                 <constraint firstItem="noA-jV-5d1" firstAttribute="top" secondItem="qj2-jC-mua" secondAttribute="bottom" constant="30" id="p0U-M2-8i5"/>
                 <constraint firstAttribute="trailing" secondItem="noA-jV-5d1" secondAttribute="trailing" constant="18" id="vk0-1t-IYc"/>
             </constraints>
-            <point key="canvasLocation" x="157" y="101"/>
+            <point key="canvasLocation" x="156.52173913043478" y="100.44642857142857"/>
         </view>
     </objects>
     <resources>
