@@ -18,6 +18,8 @@
 @property (strong, nonatomic) NSArray *pointArray;
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
+@property (weak, nonatomic)UIImageView *noExamArrangeImageView;
+@property (weak, nonatomic)UILabel *noExamArrangeLabel;
 @end
 
 @implementation ExamScheduleViewController
@@ -51,18 +53,42 @@
                             WithParameter:@{@"stuNum": stuNum}
                      WithReturnValeuBlock:^(id returnValue) {
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
-                         _data = [[NSMutableArray alloc] init];
-                         [_data addObjectsFromArray:[returnValue objectForKey:@"data"]];
-                         [_data reverse];
-                         
-                         [_tableView reloadData];
-                         
+        self.data = [[NSMutableArray alloc] init];
+        [self.data addObjectsFromArray:[returnValue objectForKey:@"data"]];
+        if(self.data.count == 0){
+            NSLog(@"it's a empty array");
+            [self showNoExamArrangeImage];
+            
+        }
+        [self.data reverse];
+        [self.tableView reloadData];
                      } WithFailureBlock:^{
                          
                          [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
                      }];
 }
 
+/// 展示没有考试时显示的图片和一行文字
+-(void) showNoExamArrangeImage{
+    //图片
+    UIImageView*image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"emptyImage"]];
+    self.noExamArrangeImageView = image;
+    [self.tableView addSubview:self.noExamArrangeImageView];
+    [self.noExamArrangeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+//        make.height.width.equalTo(@"300");
+    }];
+    //文字
+    UILabel* label = [[UILabel alloc]init];
+    label.text = @"暂无考试安排";
+    label.textColor = [UIColor colorWithRed:77/255.0 green:85/255.0 blue:93/255.0 alpha:1];
+    self.noExamArrangeLabel = label;
+    [self.tableView addSubview:self.noExamArrangeLabel];
+    [self.noExamArrangeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.noExamArrangeImageView).offset(80);
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
