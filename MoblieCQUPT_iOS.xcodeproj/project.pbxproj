@@ -44,6 +44,7 @@
 		1AC71857233F328B000A28FA /* 教务新闻.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71855233F328A000A28FA /* 教务新闻.png */; };
 		1AC7185A233F3E01000A28FA /* 同学课表.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC71859233F3E01000A28FA /* 同学课表.png */; };
 		1AC7186F234246EC000A28FA /* 掌邮闪屏页.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */; };
+		1AEE9C412348DC590084B9A3 /* YouWenDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE9C402348DC590084B9A3 /* YouWenDetailViewController.m */; };
 		3B2661051BA6E3F5008632F3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661041BA6E3F5008632F3 /* QuartzCore.framework */; };
 		3B2661071BA6E401008632F3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661061BA6E401008632F3 /* Foundation.framework */; };
 		3B2661091BA6E40A008632F3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2661081BA6E40A008632F3 /* CoreGraphics.framework */; };
@@ -158,7 +159,6 @@
 		6E3AB64920AD76A3003A65F5 /* YouWenQuestionDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */; };
 		6E3AB64A20AD76A3003A65F5 /* YouWenAnswerDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */; };
 		6E3AB64B20AD76A3003A65F5 /* YouWenBottomButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */; };
-		6E3AB65020AD76A3003A65F5 /* YouWenDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */; };
 		6E3AB65320AD76A3003A65F5 /* YouWenDeatilHeadViewBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */; };
 		6E3AB65420AD76A3003A65F5 /* YouWenDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB63220AD76A2003A65F5 /* YouWenDetailCell.m */; };
 		6E3AB65520AD76A3003A65F5 /* YouWenWriteAnswerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3AB63320AD76A2003A65F5 /* YouWenWriteAnswerViewController.m */; };
@@ -596,7 +596,7 @@
 		F238C6571F3DA3C400FEB179 /* tabbar_image_timetable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6551F3DA3C400FEB179 /* tabbar_image_timetable@2x.png */; };
 		F238C6581F3DA3C400FEB179 /* tabbar_image_timetable@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F238C6561F3DA3C400FEB179 /* tabbar_image_timetable@3x.png */; };
 		F238C65B1F3DC87900FEB179 /* UserDefaultTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F238C65A1F3DC87900FEB179 /* UserDefaultTool.m */; };
-		F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F23BB4811F50485A00DA62ED /* 启动页.jpg */; };
+		F23BB4821F50485A00DA62ED /* LaunchScreen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F23BB4811F50485A00DA62ED /* LaunchScreen.jpg */; };
 		F23BB4881F50538800DA62ED /* LZWeekScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F23BB4871F50538800DA62ED /* LZWeekScrollView.m */; };
 		F242DD871EBCB2BB005AC411 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F242DA571EBCB2BB005AC411 /* AppDelegate.m */; };
 		F242DD881EBCB2BB005AC411 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F242DA581EBCB2BB005AC411 /* LaunchScreen.xib */; };
@@ -898,6 +898,7 @@
 		1AC71855233F328A000A28FA /* 教务新闻.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "教务新闻.png"; sourceTree = "<group>"; };
 		1AC71859233F3E01000A28FA /* 同学课表.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "同学课表.png"; sourceTree = "<group>"; };
 		1AC7186E234246EB000A28FA /* 掌邮闪屏页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "掌邮闪屏页.png"; sourceTree = "<group>"; };
+		1AEE9C402348DC590084B9A3 /* YouWenDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenDetailViewController.m; sourceTree = "<group>"; };
 		3B2661041BA6E3F5008632F3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3B2661061BA6E401008632F3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3B2661081BA6E40A008632F3 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1047,7 +1048,6 @@
 		6E3AB62520AD76A2003A65F5 /* YouWenQuestionDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenQuestionDetailModel.m; sourceTree = "<group>"; };
 		6E3AB62620AD76A2003A65F5 /* YouWenAnswerDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenAnswerDetailModel.m; sourceTree = "<group>"; };
 		6E3AB62720AD76A2003A65F5 /* YouWenBottomButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouWenBottomButtonView.xib; sourceTree = "<group>"; };
-		6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouWenDetailViewController.m; sourceTree = "<group>"; };
 		6E3AB62D20AD76A2003A65F5 /* YouWenBottomButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenBottomButtonView.h; sourceTree = "<group>"; };
 		6E3AB62E20AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouWenDeatilHeadViewBottomView.h; sourceTree = "<group>"; };
 		6E3AB63120AD76A2003A65F5 /* YouWenDeatilHeadViewBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouWenDeatilHeadViewBottomView.xib; sourceTree = "<group>"; };
@@ -1673,7 +1673,7 @@
 		F238C6561F3DA3C400FEB179 /* tabbar_image_timetable@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabbar_image_timetable@3x.png"; sourceTree = "<group>"; };
 		F238C6591F3DC87900FEB179 /* UserDefaultTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDefaultTool.h; sourceTree = "<group>"; };
 		F238C65A1F3DC87900FEB179 /* UserDefaultTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDefaultTool.m; sourceTree = "<group>"; };
-		F23BB4811F50485A00DA62ED /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "启动页.jpg"; sourceTree = "<group>"; };
+		F23BB4811F50485A00DA62ED /* LaunchScreen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LaunchScreen.jpg; sourceTree = "<group>"; };
 		F23BB4861F50538800DA62ED /* LZWeekScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZWeekScrollView.h; sourceTree = "<group>"; };
 		F23BB4871F50538800DA62ED /* LZWeekScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZWeekScrollView.m; sourceTree = "<group>"; };
 		F242DA561EBCB2BB005AC411 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -2368,7 +2368,7 @@
 			isa = PBXGroup;
 			children = (
 				6E3AB61720AD76A2003A65F5 /* YouWenDetailViewController.h */,
-				6E3AB62C20AD76A2003A65F5 /* YouWenDetailViewController.m */,
+				1AEE9C402348DC590084B9A3 /* YouWenDetailViewController.m */,
 				6E3AB61C20AD76A2003A65F5 /* YouWenWriteAnswerViewController.h */,
 				6E3AB63320AD76A2003A65F5 /* YouWenWriteAnswerViewController.m */,
 				E4BDA94722C31A8700A20A80 /* QuestionDetail.xcassets */,
@@ -4194,7 +4194,7 @@
 				F238C6431F3D911200FEB179 /* navbar_image_back@3x.png */,
 				F26D96A51F3C43EC0063B024 /* all_image_background@2x.png */,
 				F210F0BB1F441CF7003BDF6A /* all_image_background@3x.png */,
-				F23BB4811F50485A00DA62ED /* 启动页.jpg */,
+				F23BB4811F50485A00DA62ED /* LaunchScreen.jpg */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -4857,7 +4857,7 @@
 				E41B1F182313DCB900CCFC09 /* reinstallImage.png in Resources */,
 				F26D967B1F3C400F0063B024 /* icon_share_more@2x.png in Resources */,
 				82280CB71F60223D00A5921E /* upvote@3x.png in Resources */,
-				F23BB4821F50485A00DA62ED /* 启动页.jpg in Resources */,
+				F23BB4821F50485A00DA62ED /* LaunchScreen.jpg in Resources */,
 				E46FCF13230FCF90001FECE8 /* xyZhou.png in Resources */,
 				F20027201F405B8500360991 /* remind_image_week@2x.png in Resources */,
 				E4611A672316B8BD00CFA56D /* Tips_view@3x.png in Resources */,
@@ -5163,6 +5163,7 @@
 				D0785609233E34880028B2F4 /* WYCClassmateScheduleShowDetailView.m in Sources */,
 				82A0A57420BEFFC800BD628E /* LXAskTableViewCell.m in Sources */,
 				F26D96631F3C400F0063B024 /* TopicModel.m in Sources */,
+				1AEE9C412348DC590084B9A3 /* YouWenDetailViewController.m in Sources */,
 				E41AD25D222BF13D00360C56 /* ExamGradeViewController.m in Sources */,
 				E46FCEEF230FCF90001FECE8 /* DGActivityIndicatorThreeDotsAnimation.m in Sources */,
 				E46FCEF7230FCF90001FECE8 /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */,
@@ -5401,7 +5402,6 @@
 				E41B1E3C2313BB7C00CCFC09 /* BackgroundTableViewCell.m in Sources */,
 				1A5A202A2307FFD000D6D329 /* FYHSegmentesController.m in Sources */,
 				F26D96681F3C400F0063B024 /* ImageWithLabel.m in Sources */,
-				6E3AB65020AD76A3003A65F5 /* YouWenDetailViewController.m in Sources */,
 				E480E5652306D80200F69199 /* BusRoutes.m in Sources */,
 				E41B1F112313DCB900CCFC09 /* InstallcurrentViewController.m in Sources */,
 				E46FCF18230FCF90001FECE8 /* ChildViewController.m in Sources */,
