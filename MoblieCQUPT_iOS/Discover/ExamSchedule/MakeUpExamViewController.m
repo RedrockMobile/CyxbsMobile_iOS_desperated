@@ -15,6 +15,8 @@
 @property (strong, nonatomic) NSArray *data;
 @property (strong, nonatomic) NSArray *pointArray;
 @property (strong, nonatomic) UITableView *MakeUpExamTableView;
+@property (weak, nonatomic)UIImageView *noExamArrangeImageView;
+@property (weak, nonatomic)UILabel *noExamArrangeLabel;
 @end
 
 @implementation MakeUpExamViewController
@@ -31,10 +33,20 @@
     NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
     NSString *stuNum = [defaults objectForKey:@"stuNum"];
     [NetWork NetRequestPOSTWithRequestURL:MAKEAPI WithParameter:@{@"stuNum": stuNum} WithReturnValeuBlock:^(id returnValue) {
-        if (!returnValue[@"data"]) {
-            [self initFailViewWithDetail:@"暂无补考消息~"];
+        self.data = returnValue[@"data"];
+        if (self.data.count == 0) {
+            if(self.data.count == 0){
+                NSLog(@"1");
+            }
+            if(!returnValue[@"data"]){
+                NSLog(@"2");
+            }
+//            [self initFailViewWithDetail:@"暂无补考消息~"];
+            [self showNoExamArrangeImage];
+            [self.hub hide:YES];
         }
-        else{
+//        if (returnValue[@"data"])
+        else {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             self.data = returnValue[@"data"];
             [self setUpTableView];
@@ -42,6 +54,27 @@
     } WithFailureBlock:^{
         [self initFailViewWithDetail:@"哎呀！网络开小差了 T^T"];
 
+    }];
+}
+/// 展示没有考试时显示的图片和一行文字
+-(void) showNoExamArrangeImage{
+    //图片
+    UIImageView*image = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"emptyImage"]];
+    self.noExamArrangeImageView = image;
+    [self.view addSubview:self.noExamArrangeImageView];
+    [self.noExamArrangeImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.view);
+//        make.height.width.equalTo(@"300");
+    }];
+    //文字
+    UILabel* label = [[UILabel alloc]init];
+    label.text = @"暂无补考安排";
+    label.textColor = [UIColor colorWithRed:77/255.0 green:85/255.0 blue:93/255.0 alpha:1];
+    self.noExamArrangeLabel = label;
+    [self.view addSubview:self.noExamArrangeLabel];
+    [self.noExamArrangeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.view);
+        make.centerY.equalTo(self.noExamArrangeImageView).offset(80);
     }];
 }
 - (void)setUpTableView{
