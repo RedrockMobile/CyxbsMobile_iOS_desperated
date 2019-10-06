@@ -32,10 +32,13 @@ static SYCCustomLayoutModel *newInstance = nil;
     self.filePath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"customLayout.archiver"];
     NSDictionary *toolsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
     
-    if (toolsArray) {
-        self.inuseTools = [toolsArray objectForKey:@"inuseTools"];
-        self.unuseTools = [toolsArray objectForKey:@"unuseTools"];
-    }else{
+    
+    // 无论toolsArray是否有值，都要重新写入缓存，以防止用户更新以后看不到新模块
+    
+//    if (toolsArray) {
+//        self.inuseTools = [toolsArray objectForKey:@"inuseTools"];
+//        self.unuseTools = [toolsArray objectForKey:@"unuseTools"];
+//    }else{
         self.inuseTools = [NSMutableArray array];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"我的考试" ImageName:@"成绩单" ClassName:@"ExamTotalViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"查电费" ImageName:@"查电费" ClassName:@"QuerLoginViewController"]];
@@ -53,9 +56,9 @@ static SYCCustomLayoutModel *newInstance = nil;
         self.unuseTools = [NSMutableArray array];
         
         
-        NSDictionary *toolsArray = @{@"inuseTools":self.inuseTools, @"unuseTools":self.unuseTools};
+        toolsArray = @{@"inuseTools":self.inuseTools, @"unuseTools":self.unuseTools};
         [NSKeyedArchiver archiveRootObject:toolsArray toFile:self.filePath];
-    }
+//    }
 }
 
 - (void)save{
