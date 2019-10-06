@@ -26,6 +26,7 @@
     
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self.class) owner:self options:nil] firstObject];
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         self.avatarImageView.clipsToBounds = YES;
         self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width/2.0;
     }
