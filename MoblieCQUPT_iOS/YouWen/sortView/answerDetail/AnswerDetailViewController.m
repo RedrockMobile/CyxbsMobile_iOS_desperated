@@ -368,7 +368,7 @@
             NSInteger row  = indexPath.row;
             cell.nickname.text = self.answerCommentModelArr[row].nickname;
             cell.avatarImageView.contentMode = UIViewContentModeScaleToFill;
-            [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.answerCommentModelArr[row].avatarUrlStr]];
+            [cell.avatarImageView sd_setImageWithURL:[NSURL URLWithString:self.answerCommentModelArr[row].avatarUrlStr] placeholderImage:[UIImage imageNamed:@"touxiang"]];
             cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width/2.0;
             cell.imageView.clipsToBounds = YES;
             cell.dateLabel.text = self.answerCommentModelArr[row].date;

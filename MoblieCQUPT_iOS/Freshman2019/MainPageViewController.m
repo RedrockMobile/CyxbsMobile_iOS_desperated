@@ -56,7 +56,7 @@
     _dataArr = @[
                  @{
                      @"title":@"入学必备",
-                     @"description":@"报道必备 军训用品",
+                     @"description":@"报到必备 军训用品",
                      @"selector": NSStringFromSelector(@selector(gotoRegisterNecessary))
                      },
                  @{

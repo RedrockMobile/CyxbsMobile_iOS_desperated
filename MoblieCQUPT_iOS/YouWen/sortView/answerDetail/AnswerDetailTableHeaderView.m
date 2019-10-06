@@ -22,6 +22,9 @@
         self.nicknameLabel.text = model.nickname;
         NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:model.avatarUrl]];
         self.avatarImageView.image = [UIImage imageWithData:imageData];
+        if (!imageData) {
+            self.avatarImageView.image = [UIImage imageNamed:@"touxiang"];
+        }
         self.avatarImageView.clipsToBounds = YES;
         self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.width/2.0;
     }

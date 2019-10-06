@@ -63,6 +63,8 @@
     [[HttpClient defaultClient] requestWithPath:YOUWEN_MY_CHECKININFO method:HttpRequestPost parameters:paras prepareExecute:nil progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@", responseObject);
         [checkInInfo setObject:responseObject[@"data"][@"is_check_today"] forKey:@"hasCheckedToday"];
+        [checkInInfo setObject:responseObject[@"data"][@"check_in_days"] forKey:@"numberOfDays"];
+        [checkInInfo setObject:responseObject[@"data"][@"integral"] forKey:@"integral"];
         [[NSUserDefaults standardUserDefaults] setObject:checkInInfo forKey:@"checkInInfo"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         

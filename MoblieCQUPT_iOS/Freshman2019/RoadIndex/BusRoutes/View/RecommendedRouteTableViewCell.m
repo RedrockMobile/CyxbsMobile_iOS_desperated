@@ -17,6 +17,7 @@
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.roadLabel = [[UILabel alloc]init];
     self.roadLabel.numberOfLines = 0;
     _roadLabel.font = [UIFont systemFontOfSize:12];

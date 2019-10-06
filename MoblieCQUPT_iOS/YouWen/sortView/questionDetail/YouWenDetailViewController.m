@@ -104,7 +104,7 @@
     YouWenDetailCell *cell;
     if (self.answerModelArr.count > 0) {
         NSInteger index = indexPath.row;
-        
+        /*
         //有图的cell
         if (self.answerModelArr[index].photoUrlArr.count > 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"YouWenDetailCellFirst"];
@@ -125,6 +125,12 @@
             if (!cell) {
                 cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YouWenDetailCellSecond"];
             }
+        }*/
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:@"YouWenDetailCellSecond"];
+        
+        if (!cell) {
+            cell = [[YouWenDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"YouWenDetailCellSecond"];
         }
         
         if ([self.isSelf isEqualToString:@"1"]) {

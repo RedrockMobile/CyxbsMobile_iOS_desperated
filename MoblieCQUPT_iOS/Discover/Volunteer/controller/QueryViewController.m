@@ -27,6 +27,10 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *subViewControllers;
 
+@property (nonatomic, weak) UILabel *centerTitle;
+@property (nonatomic, weak) UIButton * removeBind;
+@property (nonatomic, weak)UIImageView *toolBarImageView;
+@property (nonatomic, weak)UIButton *backButton;
 @property (nonatomic, strong) AllYearsViewController *yearsVC;
 
 @end
@@ -57,24 +61,30 @@
     [super viewDidLoad];
     
     [self buildUI];
+    [self makeContains];//对按钮进行约束布局
     [self addViewControllsToScrollView];
 }
 
 - (void)buildUI {
     self.navigationController.navigationBar.hidden = YES;
     UIImageView *toolBarImageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH,HEADERHEIGHT)];
+    self.toolBarImageView = toolBarImageView;
     toolBarImageView.image = [UIImage imageNamed:@"toolbar_background"];
     [self.view addSubview:toolBarImageView];
     self.selectedIndex = 0;
     
     int heightH = (STATUSBARHEIGHT+HEADERHEIGHT/2)-(18.f/667)*MAIN_SCREEN_H;
-    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,heightH,(12.f/375)*MAIN_SCREEN_W,(20.f/667)*MAIN_SCREEN_H)];
+//    UIButton *back = [[UIButton alloc]initWithFrame:CGRectMake((16.f/375)*MAIN_SCREEN_W,heightH,(12.f/375)*MAIN_SCREEN_W,(20.f/667)*MAIN_SCREEN_H)];
+    UIButton *back = [[UIButton alloc]init];
+    self.backButton = back;
     [back addTarget:self action:@selector(clickedBackButton) forControlEvents:UIControlEventTouchUpInside];
     [back setBackgroundImage:[UIImage imageNamed:@"login_back"] forState:UIControlStateNormal];
     [self.view addSubview:back];
     
     int padding = (155.f/375)*MAIN_SCREEN_W;
-    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(padding, heightH, MAIN_SCREEN_W-padding*2, (19.f/667)*MAIN_SCREEN_H)];
+//    UILabel *title = [[UILabel alloc]initWithFrame:CGRectMake(padding, heightH, MAIN_SCREEN_W-padding*2, (19.f/667)*MAIN_SCREEN_H)];
+    UILabel *title = [[UILabel alloc]init];
+    self.centerTitle = title;
     title.text = @"全部";
     title.textAlignment = NSTextAlignmentCenter;
     title.font = [UIFont systemFontOfSize:18];
@@ -82,7 +92,9 @@
     [self.view addSubview:title];
     
     //解除绑定button
-    UIButton *removeBind = [[UIButton alloc]initWithFrame:CGRectMake((280.f/375)*MAIN_SCREEN_W,heightH,(84.f/375)*MAIN_SCREEN_W,(18.f/667)*MAIN_SCREEN_H)];
+//    UIButton *removeBind = [[UIButton alloc]initWithFrame:CGRectMake((280.f/375)*MAIN_SCREEN_W,heightH,(84.f/375)*MAIN_SCREEN_W,(18.f/667)*MAIN_SCREEN_H)];
+    UIButton * removeBind = [[UIButton alloc]init];
+    self.removeBind = removeBind;
     [removeBind addTarget:self action:@selector(buttonActionRemove) forControlEvents:UIControlEventTouchUpInside];
     [removeBind setBackgroundColor:[UIColor clearColor]];
     [removeBind setTitle:@"解绑账号" forState:UIControlStateNormal];
@@ -91,7 +103,9 @@
     [removeBind setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.view addSubview:removeBind];
     //全部展开button
-    self.allYears = [[UIButton alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W/2+(MAIN_SCREEN_W-padding*2)/2,heightH+6,(15.f/375)*MAIN_SCREEN_W,(8.f/667)*MAIN_SCREEN_H)];
+//    self.allYears = [[UIButton alloc]initWithFrame:CGRectMake(MAIN_SCREEN_W/2+(MAIN_SCREEN_W-padding*2)/2,heightH+6,(15.f/375)*MAIN_SCREEN_W,(8.f/667)*MAIN_SCREEN_H)];
+    self.allYears = [[UIButton alloc]init];
+    
     [self.allYears addTarget:self action:@selector(buttonActionUnfold) forControlEvents:UIControlEventTouchUpInside];
     [self.allYears setBackgroundImage:[UIImage imageNamed:@"展开后"] forState:UIControlStateNormal];
     [self.view addSubview:self.allYears];
@@ -229,5 +243,29 @@
     }];
     
 }
-
+-(void)makeContains{
+     [self.centerTitle mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(self.toolBarImageView);
+         make.centerY.equalTo(self.toolBarImageView).offset(15);
+    }];
+//    UIBarButtonItem *removeBindButton = [[UIBarButtonItem alloc]initWithTitle:@"解除绑定" style:UIBarButtonItemStylePlain target:self action:@selector(buttonActionRemove)];
+//    [self.navigationItem setRightBarButtonItem:removeBindButton];
+    [self.removeBind mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.toolBarImageView).offset(-10);
+        make.centerY.equalTo(self.centerTitle);
+    }];
+    [self.allYears mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.centerTitle.mas_right).offset(5);
+        make.centerY.equalTo(self.centerTitle);
+        make.height.equalTo(@10);
+        make.width.equalTo(@16);
+        
+    }];
+    [self.backButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.equalTo(self.centerTitle);
+        make.left.equalTo(self.toolBarImageView).offset(10);
+        make.height.equalTo(@16);
+        make.width.equalTo(@10);
+    }];
+}
 @end
