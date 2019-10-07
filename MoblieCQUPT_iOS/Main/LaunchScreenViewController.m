@@ -83,26 +83,26 @@
         logoImageView.image = [UIImage imageNamed:@"掌邮闪屏页"];
         [bottomView addSubview:logoImageView];
         
+        [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@38);
+            make.width.equalTo(@76);
+            make.right.equalTo(splashView).offset(-18);
+            make.bottom.equalTo(splashView).offset(-20);
+        }];
+        skipBtn.clipsToBounds = YES;
+        skipBtn.layer.cornerRadius = 19;
+        
+        [skipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(skipBtn).offset(18);
+            make.centerY.equalTo(skipBtn);
+        }];
+        
+        [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(skipLabel.mas_right).offset(6);
+            make.centerY.equalTo(skipBtn);
+        }];
+        
         if (IS_IPHONEX) {
-            [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo(@57);
-                make.width.equalTo(@114);
-                make.right.equalTo(splashView).offset(-18);
-                make.bottom.equalTo(splashView).offset(-20);
-            }];
-            skipBtn.clipsToBounds = YES;
-            skipBtn.layer.cornerRadius = 28.5;
-            
-            [skipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(skipBtn).offset(27);
-                make.centerY.equalTo(skipBtn);
-            }];
-            
-            [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(skipLabel.mas_right).offset(9);
-                make.centerY.equalTo(skipBtn);
-            }];
-            
             [logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(bottomView);
                 make.bottom.equalTo(bottomView).offset(-40);
@@ -110,25 +110,6 @@
                 make.height.equalTo(@37);
             }];
         } else {
-            [skipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.height.equalTo(@38);
-                make.width.equalTo(@76);
-                make.right.equalTo(splashView).offset(-12);
-                make.bottom.equalTo(splashView).offset(-13);
-            }];
-            skipBtn.clipsToBounds = YES;
-            skipBtn.layer.cornerRadius = 19;
-            
-            [skipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(skipBtn).offset(18);
-                make.centerY.equalTo(skipBtn);
-            }];
-            
-            [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-                make.left.equalTo(skipLabel.mas_right).offset(6);
-                make.centerY.equalTo(skipBtn);
-            }];
-            
             [logoImageView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.centerX.equalTo(bottomView);
                 make.bottom.equalTo(bottomView).offset(-27);
