@@ -59,24 +59,24 @@ int mark1 = 1;
 }
 
 //定时器 每秒请求一次
-//- (void)timer{
-//    //获得队列
-//    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
-//    //创建一个定时器
-//    self.time = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-//    //设置开始时间
-//    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC));
-//    //设置时间间隔
-//    uint64_t interval = (uint64_t)(2.0* NSEC_PER_SEC);
-//    //设置定时器
-//    dispatch_source_set_timer(self.time, start, interval, 0);
-//    //设置回调
-//    dispatch_source_set_event_handler(self.time, ^{
-//        [self getSchoolLocation];
-//    });
-//    //启动定时器、、、由于定时器是暂停的
-//    dispatch_resume(self.time);
-//}
+- (void)timer{
+    //获得队列
+    dispatch_queue_t queue = dispatch_get_global_queue(0, 0);
+    //创建一个定时器
+    self.time = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    //设置开始时间
+    dispatch_time_t start = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC));
+    //设置时间间隔
+    uint64_t interval = (uint64_t)(2.0* NSEC_PER_SEC);
+    //设置定时器
+    dispatch_source_set_timer(self.time, start, interval, 0);
+    //设置回调
+    dispatch_source_set_event_handler(self.time, ^{
+        [self getSchoolLocation];
+    });
+    //启动定时器、、、由于定时器是暂停的
+    dispatch_resume(self.time);
+}
 
 //得到校车数据
 - (void)getSchoolLocation{
@@ -126,7 +126,7 @@ int mark1 = 1;
         self.SchoolCarMutableArray = [NSMutableArray array];
 //        [self performSelector:@selector(getSchoolLocation) withObject:nil afterDelay:2];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        dispatch_cancel(self.time);
+        dispatch_cancel(self.time);
         [self popSchoolOffView];
         NSLog(@"校车不在线     %@", error);
     }];
@@ -245,7 +245,7 @@ int mark1 = 1;
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [cancelButton setImage:[UIImage imageNamed:@"取消按钮"] forState:UIControlStateNormal];
     cancelButton.frame = CGRectMake(20, 270, 100, 60);
-    [cancelButton addTarget:self action:@selector(schoolLocation) forControlEvents:UIControlEventTouchUpInside];
+    [cancelButton addTarget:self action:@selector(getSchoolLocation)forControlEvents:UIControlEventTouchUpInside];
     [_contentView addSubview:cancelButton];
 
     UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -334,7 +334,7 @@ int mark1 = 1;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back_item"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
     [self.mapView setUserTrackingMode:MAUserTrackingModeFollow animated:YES];
     [self initControls];
-//    [self timer];
+    [self timer];
     [self getSchoolLocation];
 }
 - (void)back{
@@ -395,14 +395,14 @@ int mark1 = 1;
 
 }
 //划线
-//-(MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay{
-//    if ([overlay isKindOfClass:[MAPolyline class] ]) {
-//        MAPolylineRenderer *poly = [[MAPolylineRenderer alloc]initWithPolyline:overlay];
-//        poly.lineWidth = 5.f;
-//        poly.strokeColor = [UIColor redColor];
-//        return poly;
-//    }
-//    return nil;
-//}
+-(MAOverlayRenderer *)mapView:(MAMapView *)mapView rendererForOverlay:(id<MAOverlay>)overlay{
+    if ([overlay isKindOfClass:[MAPolyline class] ]) {
+        MAPolylineRenderer *poly = [[MAPolylineRenderer alloc]initWithPolyline:overlay];
+        poly.lineWidth = 5.f;
+        poly.strokeColor = [UIColor redColor];
+        return poly;
+    }
+    return nil;
+}
 
 @end
