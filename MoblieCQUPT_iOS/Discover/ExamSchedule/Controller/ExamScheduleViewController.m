@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *data;
+@property (assign, nonatomic) NSNumber *nowWeek;
 @property (strong, nonatomic) NSArray *pointArray;
 @property (strong, nonatomic) MBProgressHUD *hub;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
@@ -55,6 +56,9 @@
                          [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.data = [[NSMutableArray alloc] init];
         [self.data addObjectsFromArray:[returnValue objectForKey:@"data"]];
+                    
+        self.nowWeek = [returnValue objectForKey:@"nowWeek"];
+                         
         if(self.data.count == 0){
             NSLog(@"it's a empty array");
             [self showNoExamArrangeImage];
@@ -131,9 +135,10 @@
 //    NSDateFormatter *dateFormatter = [NSDateFormatter new];
 //    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
 //    NSDate *myDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@-%@-12", [NSString stringWithFormat:@"0%@", [schoolData substringWithRange:NSMakeRange(0, 4)]], [schoolData substringWithRange:NSMakeRange(4, 1)]]];
-    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"]];
+    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"] nowWeek:self.nowWeek.integerValue];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MM-dd";
+    [formatter setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
     NSString *examDate = [formatter stringFromDate:newDate];
     //横杆
     if (indexPath.row == 0) {

@@ -9,13 +9,10 @@
 #import "NSDate+schoolDate.h"
 
 @implementation NSDate(schoolDate)
-- (NSDate *)getShoolData:(NSString *)week andWeekday:(NSString *)weekday{
+- (NSDate *)getShoolData:(NSString *)week andWeekday:(NSString *)weekday nowWeek:(NSInteger)nowWeek{
     CGFloat week_float = week.floatValue;
     CGFloat weekday_float = weekday.floatValue;
-    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
-    NSString *nowWeek = [userdefaults objectForKey:@"nowWeek"];
-    CGFloat nowWeek_float = nowWeek.floatValue;
-    CGFloat diffNum = week_float - nowWeek_float;
+    CGFloat diffNum = week_float - nowWeek;
     NSDate *nowDate = [NSDate date];
     NSCalendar*calendar = [NSCalendar currentCalendar];
     NSDateComponents*comps;
@@ -24,6 +21,7 @@
     NSArray *weekdays = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"EEEE";
+    [formatter setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
     NSString *string = [formatter stringFromDate:nowDate];
     NSInteger day = 7;
     for (NSString *str in weekdays) {
@@ -32,7 +30,10 @@
             break;
         }
     }
-    NSDate *examDate = [nowDate dateByAddingTimeInterval: 60 * 60 * 24 * ((diffNum - 1) * 7 + day + weekday_float)];
+
+
+    NSDate *examDate = [nowDate dateByAddingTimeInterval: 60 * 60 * 24 * ((diffNum - 1) * 7 + 5 + day + weekday_float)];
+    
     return examDate;
 }
 

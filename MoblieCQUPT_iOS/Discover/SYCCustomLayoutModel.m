@@ -33,12 +33,11 @@ static SYCCustomLayoutModel *newInstance = nil;
     NSDictionary *toolsArray = [NSKeyedUnarchiver unarchiveObjectWithFile:self.filePath];
     
     
-    // 无论toolsArray是否有值，都要重新写入缓存，以防止用户更新以后看不到新模块
     
-//    if (toolsArray) {
-//        self.inuseTools = [toolsArray objectForKey:@"inuseTools"];
-//        self.unuseTools = [toolsArray objectForKey:@"unuseTools"];
-//    }else{
+    if (toolsArray) {
+        self.inuseTools = [toolsArray objectForKey:@"inuseTools"];
+        self.unuseTools = [toolsArray objectForKey:@"unuseTools"];
+    }else{
         self.inuseTools = [NSMutableArray array];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"我的考试" ImageName:@"成绩单" ClassName:@"ExamTotalViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"查电费" ImageName:@"查电费" ClassName:@"QuerLoginViewController"]];
@@ -51,14 +50,14 @@ static SYCCustomLayoutModel *newInstance = nil;
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"重邮地图" ImageName:@"重邮地图" ClassName:@"MapViewController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"校车定位" ImageName:@"校车定位" ClassName:@"SchoolCarController"]];
         [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"同学课表" ImageName:@"同学课表" ClassName:@"ClassmateSearchViewController"]];
-//        [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"教务新闻" ImageName:@"教务新闻" ClassName:@"NewsViewController"]];
+        //        [self.inuseTools addObject:[[SYCToolModel alloc] initWithTitle:@"教务新闻" ImageName:@"教务新闻" ClassName:@"NewsViewController"]];
         
         self.unuseTools = [NSMutableArray array];
         
         
         toolsArray = @{@"inuseTools":self.inuseTools, @"unuseTools":self.unuseTools};
         [NSKeyedArchiver archiveRootObject:toolsArray toFile:self.filePath];
-//    }
+    }
 }
 
 - (void)save{
