@@ -135,11 +135,13 @@
 //    NSDateFormatter *dateFormatter = [NSDateFormatter new];
 //    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
 //    NSDate *myDate = [dateFormatter dateFromString:[NSString stringWithFormat:@"%@-%@-12", [NSString stringWithFormat:@"0%@", [schoolData substringWithRange:NSMakeRange(0, 4)]], [schoolData substringWithRange:NSMakeRange(4, 1)]]];
-    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"] nowWeek:self.nowWeek.integerValue];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    formatter.dateFormat = @"MM-dd";
-    [formatter setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
-    NSString *examDate = [formatter stringFromDate:newDate];
+//    NSDate *newDate = [[NSDate alloc]getShoolData:_data[indexPath.row][@"week"] andWeekday:_data[indexPath.row][@"weekday"] nowWeek:self.nowWeek.integerValue];
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+//    formatter.dateFormat = @"MM-dd";
+//    [formatter setLocale:[[NSLocale alloc]initWithLocaleIdentifier:@"zh_CN"]];
+//    NSString *examDate = [formatter stringFromDate:newDate];
+    NSString *examDate = _data[indexPath.row][@"date"];
+    examDate = [NSString stringWithFormat:@"%@" ,[examDate substringWithRange:NSMakeRange(5, 5)]];
     //横杆
     if (indexPath.row == 0) {
         cell.upView.backgroundColor = [UIColor clearColor];

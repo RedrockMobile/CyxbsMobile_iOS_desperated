@@ -23,8 +23,6 @@
 #import "RemindNotification.h"
 
 
-#define DateStart @"2019-09-02"
-
 @interface WYCClassBookViewController ()<UIScrollViewDelegate,WYCClassBookViewDelegate,WYCShowDetailDelegate>
 @property (nonatomic, strong) UIView *titleView;
 @property (nonatomic, strong) UILabel *titleLabel;
