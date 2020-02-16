@@ -96,7 +96,7 @@
 #define BACK_GRAY_COLOR [UIColor colorWithRed:236/255.0 green:236/255.0 blue:236/255.0 alpha:1]
 
 //学期开始时间
-#define DateStart @"2019-09-02"
+#define DateStart @"2020-02-17"
 
 //登录
 #define LOGIN_API @"https://cyxbsmobile.redrock.team/api/verify"
